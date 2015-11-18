@@ -1,0 +1,9 @@
+*.iml
+pom.xml
+/target/
+/out/
+tools/_workdir/
+.lein*
+pom.xml.*
+.idea
+test/_generated

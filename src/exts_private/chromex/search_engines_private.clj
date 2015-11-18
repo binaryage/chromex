@@ -1,0 +1,119 @@
+(ns chromex.search-engines-private
+  "Use the chrome.searchEnginesPrivate API to get or set
+   preferences from the settings UI.
+   
+     * available since Chrome 47
+     * https://developer.chrome.com/extensions/searchEnginesPrivate"
+
+  (:refer-clojure :only [defmacro defn apply declare meta let])
+  (:require [chromex-lib.apigen :refer [gen-wrap-from-table]]
+            [chromex-lib.callgen :refer [gen-call-from-table gen-tap-all-call]]
+            [chromex-lib.config :refer [get-static-config gen-active-config]]))
+
+(declare api-table)
+(declare gen-call)
+
+; -- functions ------------------------------------------------------------------------------------------------------
+
+(defmacro get-search-engines
+  "Gets a list of the search engines. Exactly one of the values should have default == true."
+  [#_callback]
+  (gen-call :function ::get-search-engines (meta &form)))
+
+(defmacro set-selected-search-engine
+  "Sets the search engine with the given GUID as the selected default."
+  [guid]
+  (gen-call :function ::set-selected-search-engine (meta &form) guid))
+
+(defmacro add-other-search-engine
+  "Adds a new 'other' (non-default) search engine with the given name, keyword, and URL."
+  [name keyword url]
+  (gen-call :function ::add-other-search-engine (meta &form) name keyword url))
+
+(defmacro update-search-engine
+  "Updates the search engine that has the given GUID, with the given name, keyword, and URL."
+  [guid name keyword url]
+  (gen-call :function ::update-search-engine (meta &form) guid name keyword url))
+
+(defmacro remove-search-engine
+  "Removes the search engine with the given GUID."
+  [guid]
+  (gen-call :function ::remove-search-engine (meta &form) guid))
+
+(defmacro get-hotword-state
+  "Gets the hotword state."
+  [#_callback]
+  (gen-call :function ::get-hotword-state (meta &form)))
+
+(defmacro opt-into-hotwording
+  "Opts in to hotwording; |retrain| indicates whether the user wants to retrain the hotword system with their voice by
+   launching the audio verification app."
+  [retrain]
+  (gen-call :function ::opt-into-hotwording (meta &form) retrain))
+
+; -- events ---------------------------------------------------------------------------------------------------------
+
+(defmacro tap-on-search-engines-changed
+  "Fires when the list of search engines changes or when the user selects a preferred default search engine. The new
+   list of engines is passed along."
+  [channel]
+  (gen-call :event ::on-search-engines-changed (meta &form) channel))
+
+; -- convenience ----------------------------------------------------------------------------------------------------
+
+(defmacro tap-all [chan]
+  (let [static-config (get-static-config)
+        config (gen-active-config static-config)]
+    (gen-tap-all-call static-config api-table (meta &form) config chan)))
+
+; -------------------------------------------------------------------------------------------------------------------
+; -- API TABLE ------------------------------------------------------------------------------------------------------
+; -------------------------------------------------------------------------------------------------------------------
+
+(def api-table
+  {:namespace "chrome.searchEnginesPrivate",
+   :since "47",
+   :functions
+   [{:id ::get-search-engines,
+     :name "getSearchEngines",
+     :callback? true,
+     :params
+     [{:name "callback",
+       :type :callback,
+       :callback {:params [{:name "engines", :type "[array-of-searchEnginesPrivate.SearchEngines]"}]}}]}
+    {:id ::set-selected-search-engine,
+     :name "setSelectedSearchEngine",
+     :params [{:name "guid", :type "string"}]}
+    {:id ::add-other-search-engine,
+     :name "addOtherSearchEngine",
+     :params [{:name "name", :type "string"} {:name "keyword", :type "string"} {:name "url", :type "string"}]}
+    {:id ::update-search-engine,
+     :name "updateSearchEngine",
+     :params
+     [{:name "guid", :type "string"}
+      {:name "name", :type "string"}
+      {:name "keyword", :type "string"}
+      {:name "url", :type "string"}]}
+    {:id ::remove-search-engine, :name "removeSearchEngine", :params [{:name "guid", :type "string"}]}
+    {:id ::get-hotword-state,
+     :name "getHotwordState",
+     :callback? true,
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "state", :type "object"}]}}]}
+    {:id ::opt-into-hotwording, :name "optIntoHotwording", :params [{:name "retrain", :type "boolean"}]}],
+   :events
+   [{:id ::on-search-engines-changed,
+     :name "onSearchEnginesChanged",
+     :params [{:name "engines", :type "[array-of-searchEnginesPrivate.SearchEngines]"}]}]})
+
+; -- helpers --------------------------------------------------------------------------------------------------------
+
+; code generation for native API wrapper
+(defmacro gen-wrap [kind item-id config & args]
+  (let [static-config (get-static-config)]
+    (apply gen-wrap-from-table static-config api-table kind item-id config args)))
+
+; code generation for API call-site
+(defn gen-call [kind item src-info & args]
+  (let [static-config (get-static-config)
+        config (gen-active-config static-config)]
+    (apply gen-call-from-table static-config api-table kind item src-info config args)))
