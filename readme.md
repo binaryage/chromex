@@ -36,12 +36,12 @@ to specify how particular types will be marshalled when crossing API boundary.
 
 By default we marshall only a few types where it makes good sense. We don't want to blindly run all
 parameters through `clj->js` and `js->clj` conversions. That could have unexpected consequences and maybe
-performance implications. Instead we keep marshalling lean and give you an easy way how to hook your own macro which
-can generate marshalling code on-demand during compilation.
+performance implications. Instead we keep marshalling lean and give you an easy way how to provide your own macro which
+can optionally generate required marshalling code (during compilation).
 
 There is also a practical reason. This library is huge (auto-generated) and it would be too laborous to maintain
 hairy marshalling conventions up-to-date with evolving Chrome API index. If you want to provide richer set of
-marshalling for particular APIs you use in your project, you get a simple tool to do that consistently.
+marshalling for particular APIs you use in your project, you can do that consistently.
 
 #### Callbacks as core.async channels
 
@@ -54,7 +54,7 @@ This mechanism is pluggable, so you can optionally implement your own mechanism 
 
 #### Events are emitted into core.async channels
 
-Chrome API namespaces usually provide `event` Javascript objects, which you can subscribe with `.addListener`.
+Chrome API namespaces usually provide multiple `event` objects, which you can subscribe with `.addListener`.
 You provide a callback function which will get called with future events as they occur. Later you can call `.removeListener`
 to unsubscribe from the event stream.
 
