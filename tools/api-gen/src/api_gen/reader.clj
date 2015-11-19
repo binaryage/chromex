@@ -9,7 +9,6 @@
     keyword))
 
 (defn read-json [file-name]
-  (println file-name)
   (-> file-name
     (slurp)
     (json/read-str :key-fn keywordize-key)))

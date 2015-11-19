@@ -15,7 +15,7 @@
    ["-h" "--help"]])
 
 (defn usage [options-summary]
-  (string/join \newline ["Converts raw API JSON file from server2cache to filtered/normalized EDN file for further processing."
+  (string/join \newline ["Takes distilled API JSON file and generates Chromex files."
                          ""
                          "Usage: api-gen [options]"
                          ""
@@ -36,7 +36,7 @@
     (println "STATS:")
     (print-table [:namespace :properties :functions :events] namespaces)
     (println "------------------------------------------------------")
-    (println "total stats:" "properties:" total-properties "functions:" total-functions "events:" total-events)))
+    (println "totals:" "properties:" total-properties "functions:" total-functions "events:" total-events)))
 
 (defn run-job! [options]
   (let [{:keys [input outdir chromium-sha filter]} options

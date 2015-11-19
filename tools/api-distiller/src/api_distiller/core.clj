@@ -3,7 +3,7 @@
     [clojure.string :as string]
     [clojure.tools.cli :refer [parse-opts]]
     [api-distiller.reader :refer [read-json]]
-    [api-distiller.writer :refer [write-edn]]
+    [api-distiller.writer :refer [write-json]]
     [api-distiller.transformer :refer [transform]])
   (:gen-class))
 
@@ -33,7 +33,7 @@
     (->> input
       (read-json)
       (transform)
-      (write-edn output))))
+      (write-json output))))
 
 (defn -main [& args]
   (let [{:keys [options arguments errors summary]} (parse-opts args cli-options)]
