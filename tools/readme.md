@@ -2,11 +2,11 @@
 
 To generate Chromex files, you have to clone chromium sources and point our scripts to them via `CHROMIUM_SRC` env variable.
 Google's python scripts for generating [documentation site](https://developer.chrome.com/extensions/api_index) are located in [`chrome/common/extensions/docs/server2`](https://code.google.com/p/chromium/codesearch#chromium/src/chrome/common/extensions/docs/server2/).
-The [`update_cache.py`](https://code.google.com/p/chromium/codesearch#chromium/src/chrome/common/extensions/docs/server2/update_cache.py&q=update_cache%20file:%5Esrc/chrome/common/extensions/docs/server2/&sq=package:chromium&l=1)
+The [`update_cache.py`](https://code.google.com/p/chromium/codesearch#chromium/src/chrome/common/extensions/docs/server2/update_cache.py)
 is particularly interesting, because is used for incremental updating database of information
 about APIs and it saves its state into a cache file. We leverage this knowledge and generate our files from their cache.
 
-You should consult [their readme](https://code.google.com/p/chromium/codesearch#chromium/src/chrome/common/extensions/docs/server2/README&q=README%20file:%5Esrc/chrome/common/extensions/docs/server2/&sq=package:chromium&l=1)
+You should consult [their readme](https://code.google.com/p/chromium/codesearch#chromium/src/chrome/common/extensions/docs/server2/README)
 on how to setup your system for update_cache.py to work properly. Especially this
 paragraph is important:
 
