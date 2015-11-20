@@ -6,7 +6,7 @@
      * https://developer.chrome.com/extensions/fileManagerPrivate"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
-  (:require [chromex-lib.apigen :refer [gen-wrap-from-table]]
+  (:require [chromex-lib.wrapgen :refer [gen-wrap-from-table]]
             [chromex-lib.callgen :refer [gen-call-from-table gen-tap-all-call]]
             [chromex-lib.config :refer [get-static-config gen-active-config]]))
 

@@ -2,7 +2,7 @@
 
 ; -- helpers --------------------------------------------------------------------------------------------------------
 
-(defn get-star-call-symbol [id]
+(defn get-wrap-symbol [id]
   (symbol (str (namespace id)) (str (name id) "*")))
 
 (defn get-item-by-id [id coll]
@@ -64,6 +64,8 @@
         (str "The API call to '" api-name "' is not available. "
           "Target API version '" version "' is not within required range " (user-friendly-range-str range)))))
   nil)
+
+; -- deprecation warnings -------------------------------------------------------------------------------------------
 
 (defn check-deprecated [_static-config src-info api-name deprecated]
   (if deprecated

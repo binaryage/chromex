@@ -1,5 +1,5 @@
 (ns chromex-lib.callgen
-  (:require [chromex-lib.support :refer [check-api-version check-deprecated get-star-call-symbol get-api-id
+  (:require [chromex-lib.support :refer [check-api-version check-deprecated get-wrap-symbol get-api-id
                                          get-item-by-id]]))
 
 ; -------------------------------------------------------------------------------------------------------------------
@@ -10,11 +10,11 @@
         since (or (:since descriptor) (:since api-table))
         until (or (:until descriptor) (:until api-table))
         deprecated (or (:deprecated descriptor) (:deprecated api-table))
-        star-call (get-star-call-symbol id)]
+        call-wrap (get-wrap-symbol id)]
     `(do
        ~(check-api-version static-config src-info api since until)
        ~(check-deprecated static-config src-info api deprecated)
-       (~star-call ~config ~@args))))
+       (~call-wrap ~config ~@args))))
 
 (defn gen-call-from-group [collection tag singular static-config api-table item-id src-info config & args]
   (if-let [descriptor (get-item-by-id item-id (collection api-table))]
