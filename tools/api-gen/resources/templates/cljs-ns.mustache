@@ -1,0 +1,12 @@
+(ns {{{ns-name}}}(:require-macros [{{{ns-name}}} :refer [gen-wrap]])
+(:require [chromex-lib.core]))
+
+{{#has-properties}}; -- properties -----------------------------------------------------------------------------------------------------{{/has-properties}}
+{{#properties}}{{{enter}}}{{>cljs-property}}{{/properties}}
+{{{enter}}}
+{{#has-functions}}; -- functions ------------------------------------------------------------------------------------------------------{{/has-functions}}
+{{#functions}}{{{enter}}}{{>cljs-function}}{{/functions}}
+{{{enter}}}
+{{#has-events}}; -- events ---------------------------------------------------------------------------------------------------------{{/has-events}}
+{{#events}}{{{enter}}}{{>cljs-event}}{{/events}}
+{{{enter}}}
