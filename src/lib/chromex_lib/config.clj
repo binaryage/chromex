@@ -5,12 +5,14 @@
 (def ^:dynamic *silence-compilation-warnings* false)
 (def ^:dynamic *gen-marshalling* default-gen-marshalling)
 (def ^:dynamic *gen-active-config* default-gen-active-config)
+(def ^:dynamic *elide-verbose-logging* false)
 
 (defn get-static-config []
   {:target-api-version           *target-api-version*
    :silence-compilation-warnings *silence-compilation-warnings*
    :gen-marshalling              *gen-marshalling*
-   :gen-active-config            *gen-active-config*})
+   :gen-active-config            *gen-active-config*
+   :elide-verbose-logging        *elide-verbose-logging*})
 
 (defn gen-active-config [static-config]
   (let [gen-fn (:gen-active-config static-config)]

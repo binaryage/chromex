@@ -24,13 +24,14 @@
 
 ; -- logging support ------------------------------------------------------------------------------------------------
 
-(defn log-if-verbose [config & args]
-  `(let [config# ~config]
-     (if (:verbose-logging config#)
-       (let [logger# (:logger config#)]
-         (assert (and logger# (fn? logger#))
-           "invalid :logger in chromex config")
-         (logger# ~@args)))))
+(defn log-if-verbose [static-config config & args]
+  (if-not (:elide-verbose-logging static-config)
+    `(let [config# ~config]
+       (if (:verbose-logging config#)
+         (let [logger# (:logger config#)]
+           (assert (and logger# (fn? logger#))
+             "invalid :logger in chromex config")
+           (logger# ~@args))))))
 
 ; -- api versioning -------------------------------------------------------------------------------------------------
 

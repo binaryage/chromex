@@ -29,18 +29,18 @@
 
 ; -------------------------------------------------------------------------------------------------------------------
 
-(defn wrap-callback-with-logging [label api config [callback-sym callback-info]]
+(defn wrap-callback-with-logging [static-config label api config [callback-sym callback-info]]
   (if callback-info
     (let [{:keys [params]} callback-info
           param-syms (map #(gensym (str "cb-param-" (:name %))) params)]
       `(fn [~@param-syms]
-         ~(apply log-if-verbose config label api param-syms)
+         ~(apply log-if-verbose static-config config label api param-syms)
          (~callback-sym ~@param-syms)))
     callback-sym))
 
 ; -------------------------------------------------------------------------------------------------------------------
 
-(defn gen-api-access-or-call [_static-config api-table descriptor config & args]
+(defn gen-api-access-or-call [static-config api-table descriptor config & args]
   (let [{:keys [namespace]} api-table
         {:keys [name params property?]} descriptor
         api (get-api-id api-table descriptor)
@@ -51,10 +51,10 @@
               "args: " args))
         js-name (symbol (str (if property? ".-" ".") name))
         js-namespace (symbol (str "js/" namespace))
-        wrapped-args (map (partial wrap-callback-with-logging "callback:" api config) (zipmap args (map :callback-info params)))
+        wrapped-args (map (partial wrap-callback-with-logging static-config "callback:" api config) (zipmap args (map :callback-info params)))
         operation (if property? "accessing:" "calling:")]
     `(do
-       ~(apply log-if-verbose config operation api args)
+       ~(apply log-if-verbose static-config config operation api args)
        (~js-name ~js-namespace ~@wrapped-args))))
 
 ; -------------------------------------------------------------------------------------------------------------------
@@ -121,7 +121,7 @@
         js-event (symbol (str "js/" api))]
     `(let [~event-fn-sym ~(make-event-fn config event-id chan)
            ~handler-fn-sym ~(marshall-callback static-config (str api ".handler") [event-fn-sym descriptor])
-           ~logging-fn-sym ~(wrap-callback-with-logging "event:" api config [handler-fn-sym descriptor])
+           ~logging-fn-sym ~(wrap-callback-with-logging static-config "event:" api config [handler-fn-sym descriptor])
            result# (chromex-lib.chrome-event-subscription/make-chrome-event-subscription ~js-event ~logging-fn-sym ~chan)]
        (chromex-lib.protocols/subscribe result#)
        result#)))
