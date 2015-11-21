@@ -22,14 +22,14 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-proxy-error
+(defmacro tap-on-proxy-error-events
   "Notifies about proxy errors."
   [channel]
   (gen-call :event ::on-proxy-error (meta &form) channel))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

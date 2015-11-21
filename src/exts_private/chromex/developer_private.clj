@@ -189,19 +189,19 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-item-state-changed
+(defmacro tap-on-item-state-changed-events
   "Fired when a item state is changed."
   [channel]
   (gen-call :event ::on-item-state-changed (meta &form) channel))
 
-(defmacro tap-on-profile-state-changed
+(defmacro tap-on-profile-state-changed-events
   "Fired when the profile's state has changed."
   [channel]
   (gen-call :event ::on-profile-state-changed (meta &form) channel))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

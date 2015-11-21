@@ -33,7 +33,7 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-state-changed
+(defmacro tap-on-state-changed-events
   "Fired when the system changes to an active, idle or locked state. The event fires with 'locked' if the screen is
    locked or the screensaver activates, 'idle' if the system is unlocked and the user has not generated any input for
    a specified number of seconds, and 'active' when the user generates input on an idle system."
@@ -42,7 +42,7 @@
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

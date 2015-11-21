@@ -39,14 +39,14 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-display-changed
+(defmacro tap-on-display-changed-events
   "Fired when anything changes to the display configuration."
   [channel]
   (gen-call :event ::on-display-changed (meta &form) channel))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

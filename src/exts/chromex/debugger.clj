@@ -57,12 +57,12 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-event
+(defmacro tap-on-event-events
   "Fired whenever debugging target issues instrumentation event."
   [channel]
   (gen-call :event ::on-event (meta &form) channel))
 
-(defmacro tap-on-detach
+(defmacro tap-on-detach-events
   "Fired when browser terminates debugging session for the tab. This happens when either the tab is being closed or
    Chrome DevTools is being invoked for the attached tab."
   [channel]
@@ -70,7 +70,7 @@
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

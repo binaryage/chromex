@@ -47,14 +47,14 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-prefs-changed
+(defmacro tap-on-prefs-changed-events
   "Fired when a set of prefs has changed.|prefs| The prefs that changed."
   [channel]
   (gen-call :event ::on-prefs-changed (meta &form) channel))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

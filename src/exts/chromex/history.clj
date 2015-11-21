@@ -48,13 +48,13 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-visited
+(defmacro tap-on-visited-events
   "Fired when a URL is visited, providing the HistoryItem data for that URL.  This event fires before the page has
    loaded."
   [channel]
   (gen-call :event ::on-visited (meta &form) channel))
 
-(defmacro tap-on-visit-removed
+(defmacro tap-on-visit-removed-events
   "Fired when one or more URLs are removed from the history service.  When all visits have been removed the URL is
    purged from history."
   [channel]
@@ -62,7 +62,7 @@
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

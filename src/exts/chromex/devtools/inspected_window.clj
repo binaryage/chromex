@@ -51,12 +51,12 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-resource-added
+(defmacro tap-on-resource-added-events
   "Fired when a new resource is added to the inspected page."
   [channel]
   (gen-call :event ::on-resource-added (meta &form) channel))
 
-(defmacro tap-on-resource-content-committed
+(defmacro tap-on-resource-content-committed-events
   "Fired when a new revision of the resource is committed (e.g. user saves an edited version of the resource in the
    Developer Tools)."
   [channel]
@@ -64,7 +64,7 @@
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

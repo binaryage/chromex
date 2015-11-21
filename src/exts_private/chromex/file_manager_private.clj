@@ -393,33 +393,33 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-mount-completed [channel]
+(defmacro tap-on-mount-completed-events [channel]
   (gen-call :event ::on-mount-completed (meta &form) channel))
 
-(defmacro tap-on-file-transfers-updated [channel]
+(defmacro tap-on-file-transfers-updated-events [channel]
   (gen-call :event ::on-file-transfers-updated (meta &form) channel))
 
-(defmacro tap-on-copy-progress [channel]
+(defmacro tap-on-copy-progress-events [channel]
   (gen-call :event ::on-copy-progress (meta &form) channel))
 
-(defmacro tap-on-directory-changed [channel]
+(defmacro tap-on-directory-changed-events [channel]
   (gen-call :event ::on-directory-changed (meta &form) channel))
 
-(defmacro tap-on-preferences-changed [channel]
+(defmacro tap-on-preferences-changed-events [channel]
   (gen-call :event ::on-preferences-changed (meta &form) channel))
 
-(defmacro tap-on-drive-connection-status-changed [channel]
+(defmacro tap-on-drive-connection-status-changed-events [channel]
   (gen-call :event ::on-drive-connection-status-changed (meta &form) channel))
 
-(defmacro tap-on-device-changed [channel]
+(defmacro tap-on-device-changed-events [channel]
   (gen-call :event ::on-device-changed (meta &form) channel))
 
-(defmacro tap-on-drive-sync-error [channel]
+(defmacro tap-on-drive-sync-error-events [channel]
   (gen-call :event ::on-drive-sync-error (meta &form) channel))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

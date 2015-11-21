@@ -25,7 +25,7 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-execute-mime-type-handler
+(defmacro tap-on-execute-mime-type-handler-events
   "Fired when a resource is fetched which matches a mime type handled by this extension. The resource request is
    cancelled, and the extension is expected to handle the request. The event is restricted to a small number of
    white-listed extensions."
@@ -34,7 +34,7 @@
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

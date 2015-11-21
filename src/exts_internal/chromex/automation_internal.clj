@@ -51,20 +51,20 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-accessibility-event
+(defmacro tap-on-accessibility-event-events
   "Fired when an accessibility event occurs"
   [channel]
   (gen-call :event ::on-accessibility-event (meta &form) channel))
 
-(defmacro tap-on-accessibility-tree-destroyed [channel]
+(defmacro tap-on-accessibility-tree-destroyed-events [channel]
   (gen-call :event ::on-accessibility-tree-destroyed (meta &form) channel))
 
-(defmacro tap-on-tree-change [channel]
+(defmacro tap-on-tree-change-events [channel]
   (gen-call :event ::on-tree-change (meta &form) channel))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

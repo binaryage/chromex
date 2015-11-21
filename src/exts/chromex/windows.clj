@@ -65,17 +65,17 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-created
+(defmacro tap-on-created-events
   "Fired when a window is created."
   [channel]
   (gen-call :event ::on-created (meta &form) channel))
 
-(defmacro tap-on-removed
+(defmacro tap-on-removed-events
   "Fired when a window is removed (closed)."
   [channel]
   (gen-call :event ::on-removed (meta &form) channel))
 
-(defmacro tap-on-focus-changed
+(defmacro tap-on-focus-changed-events
   "Fired when the currently focused window changes. Will be chrome.windows.WINDOW_ID_NONE if all chrome windows have
    lost focus. Note: On some Linux window managers, WINDOW_ID_NONE will always be sent immediately preceding a switch
    from one chrome window to another."
@@ -84,7 +84,7 @@
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

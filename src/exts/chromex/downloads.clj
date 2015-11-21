@@ -135,23 +135,23 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-created
+(defmacro tap-on-created-events
   "This event fires with the 'DownloadItem' object when a download begins."
   [channel]
   (gen-call :event ::on-created (meta &form) channel))
 
-(defmacro tap-on-erased
+(defmacro tap-on-erased-events
   "Fires with the downloadId when a download is erased from history."
   [channel]
   (gen-call :event ::on-erased (meta &form) channel))
 
-(defmacro tap-on-changed
+(defmacro tap-on-changed-events
   "When any of a 'DownloadItem''s properties except bytesReceived and estimatedEndTime changes, this event fires with
    the downloadId and an object containing the properties that changed."
   [channel]
   (gen-call :event ::on-changed (meta &form) channel))
 
-(defmacro tap-on-determining-filename
+(defmacro tap-on-determining-filename-events
   "During the filename determination process, extensions will be given the opportunity to override the target
    'DownloadItem.filename'. Each extension may not register more than one listener for this event. Each listener must
    call suggest exactly once, either synchronously or asynchronously. If the listener calls suggest asynchronously,
@@ -168,7 +168,7 @@
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

@@ -62,35 +62,35 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-closed [channel]
+(defmacro tap-on-closed-events [channel]
   (gen-call :event ::on-closed (meta &form) channel))
 
-(defmacro tap-on-bounds-changed [channel]
+(defmacro tap-on-bounds-changed-events [channel]
   (gen-call :event ::on-bounds-changed (meta &form) channel))
 
-(defmacro tap-on-fullscreened [channel]
+(defmacro tap-on-fullscreened-events [channel]
   (gen-call :event ::on-fullscreened (meta &form) channel))
 
-(defmacro tap-on-minimized [channel]
+(defmacro tap-on-minimized-events [channel]
   (gen-call :event ::on-minimized (meta &form) channel))
 
-(defmacro tap-on-maximized [channel]
+(defmacro tap-on-maximized-events [channel]
   (gen-call :event ::on-maximized (meta &form) channel))
 
-(defmacro tap-on-restored [channel]
+(defmacro tap-on-restored-events [channel]
   (gen-call :event ::on-restored (meta &form) channel))
 
-(defmacro tap-on-alpha-enabled-changed [channel]
+(defmacro tap-on-alpha-enabled-changed-events [channel]
   (gen-call :event ::on-alpha-enabled-changed (meta &form) channel))
 
-(defmacro tap-on-window-shown-for-tests
+(defmacro tap-on-window-shown-for-tests-events
   "Only sent in tests."
   [channel]
   (gen-call :event ::on-window-shown-for-tests (meta &form) channel))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

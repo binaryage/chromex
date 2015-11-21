@@ -46,19 +46,19 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-received
+(defmacro tap-on-received-events
   "Audio tokens have been received."
   [channel]
   (gen-call :event ::on-received (meta &form) channel))
 
-(defmacro tap-on-transmit-fail
+(defmacro tap-on-transmit-fail-events
   "Transmit could not be confirmed. The speaker volume might be too low."
   [channel]
   (gen-call :event ::on-transmit-fail (meta &form) channel))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

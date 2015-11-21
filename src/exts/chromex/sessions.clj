@@ -41,14 +41,14 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-changed
+(defmacro tap-on-changed-events
   "Fired when recently closed tabs and/or windows are changed. This event does not monitor synced sessions changes."
   [channel]
   (gen-call :event ::on-changed (meta &form) channel))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

@@ -105,64 +105,64 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-activate
+(defmacro tap-on-activate-events
   "This event is sent when an IME is activated. It signals that the IME will be receiving onKeyPress events."
   [channel]
   (gen-call :event ::on-activate (meta &form) channel))
 
-(defmacro tap-on-deactivated
+(defmacro tap-on-deactivated-events
   "This event is sent when an IME is deactivated. It signals that the IME will no longer be receiving onKeyPress
    events."
   [channel]
   (gen-call :event ::on-deactivated (meta &form) channel))
 
-(defmacro tap-on-focus
+(defmacro tap-on-focus-events
   "This event is sent when focus enters a text box. It is sent to all extensions that are listening to this event, and
    enabled by the user."
   [channel]
   (gen-call :event ::on-focus (meta &form) channel))
 
-(defmacro tap-on-blur
+(defmacro tap-on-blur-events
   "This event is sent when focus leaves a text box. It is sent to all extensions that are listening to this event, and
    enabled by the user."
   [channel]
   (gen-call :event ::on-blur (meta &form) channel))
 
-(defmacro tap-on-input-context-update
+(defmacro tap-on-input-context-update-events
   "This event is sent when the properties of the current InputContext change, such as the the type. It is sent to all
    extensions that are listening to this event, and enabled by the user."
   [channel]
   (gen-call :event ::on-input-context-update (meta &form) channel))
 
-(defmacro tap-on-key-event
+(defmacro tap-on-key-event-events
   "This event is sent if this extension owns the active IME."
   [channel]
   (gen-call :event ::on-key-event (meta &form) channel))
 
-(defmacro tap-on-candidate-clicked
+(defmacro tap-on-candidate-clicked-events
   "This event is sent if this extension owns the active IME."
   [channel]
   (gen-call :event ::on-candidate-clicked (meta &form) channel))
 
-(defmacro tap-on-menu-item-activated
+(defmacro tap-on-menu-item-activated-events
   "Called when the user selects a menu item"
   [channel]
   (gen-call :event ::on-menu-item-activated (meta &form) channel))
 
-(defmacro tap-on-surrounding-text-changed
+(defmacro tap-on-surrounding-text-changed-events
   "Called when the editable string around caret is changed or when the caret position is moved. The text length is
    limited to 100 characters for each back and forth direction."
   [channel]
   (gen-call :event ::on-surrounding-text-changed (meta &form) channel))
 
-(defmacro tap-on-reset
+(defmacro tap-on-reset-events
   "This event is sent when chrome terminates ongoing text input session."
   [channel]
   (gen-call :event ::on-reset (meta &form) channel))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

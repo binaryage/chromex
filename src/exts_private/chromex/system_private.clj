@@ -31,29 +31,29 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-volume-changed
+(defmacro tap-on-volume-changed-events
   "Fired when the volume is changed."
   [channel]
   (gen-call :event ::on-volume-changed (meta &form) channel))
 
-(defmacro tap-on-brightness-changed
+(defmacro tap-on-brightness-changed-events
   "Fired when the screen brightness is changed."
   [channel]
   (gen-call :event ::on-brightness-changed (meta &form) channel))
 
-(defmacro tap-on-screen-unlocked
+(defmacro tap-on-screen-unlocked-events
   "Fired when the screen is unlocked."
   [channel]
   (gen-call :event ::on-screen-unlocked (meta &form) channel))
 
-(defmacro tap-on-woke-up
+(defmacro tap-on-woke-up-events
   "Fired when the device wakes up from sleep."
   [channel]
   (gen-call :event ::on-woke-up (meta &form) channel))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

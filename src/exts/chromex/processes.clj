@@ -41,13 +41,13 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-updated
+(defmacro tap-on-updated-events
   "Fired each time the Task Manager updates its process statistics, providing the dictionary of updated Process
    objects, indexed by process ID."
   [channel]
   (gen-call :event ::on-updated (meta &form) channel))
 
-(defmacro tap-on-updated-with-memory
+(defmacro tap-on-updated-with-memory-events
   "Fired each time the Task Manager updates its process statistics, providing the dictionary of updated Process
    objects, indexed by process ID. Identical to onUpdate, with the addition of memory usage details included in each
    Process object. Note, collecting memory usage information incurs extra CPU usage and should only be listened for
@@ -55,24 +55,24 @@
   [channel]
   (gen-call :event ::on-updated-with-memory (meta &form) channel))
 
-(defmacro tap-on-created
+(defmacro tap-on-created-events
   "Fired each time a process is created, providing the corrseponding Process object."
   [channel]
   (gen-call :event ::on-created (meta &form) channel))
 
-(defmacro tap-on-unresponsive
+(defmacro tap-on-unresponsive-events
   "Fired each time a process becomes unresponsive, providing the corrseponding Process object."
   [channel]
   (gen-call :event ::on-unresponsive (meta &form) channel))
 
-(defmacro tap-on-exited
+(defmacro tap-on-exited-events
   "Fired each time a process is terminated, providing the type of exit."
   [channel]
   (gen-call :event ::on-exited (meta &form) channel))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

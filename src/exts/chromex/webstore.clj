@@ -30,13 +30,13 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-install-stage-changed
+(defmacro tap-on-install-stage-changed-events
   "Fired when an inline installation enters a new InstallStage. In order to receive notifications about this event,
    listeners must be registered before the inline installation begins."
   [channel]
   (gen-call :event ::on-install-stage-changed (meta &form) channel))
 
-(defmacro tap-on-download-progress
+(defmacro tap-on-download-progress-events
   "Fired periodically with the download progress of an inline install. In order to receive notifications about this
    event, listeners must be registered before the inline installation begins."
   [channel]
@@ -44,7 +44,7 @@
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

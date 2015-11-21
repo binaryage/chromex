@@ -29,14 +29,14 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-introduce-chrome-vox
+(defmacro tap-on-introduce-chrome-vox-events
   "Fired whenever ChromeVox should output introduction."
   [channel]
   (gen-call :event ::on-introduce-chrome-vox (meta &form) channel))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

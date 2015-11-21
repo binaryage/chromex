@@ -93,29 +93,29 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-font-changed
+(defmacro tap-on-font-changed-events
   "Fired when a font setting changes."
   [channel]
   (gen-call :event ::on-font-changed (meta &form) channel))
 
-(defmacro tap-on-default-font-size-changed
+(defmacro tap-on-default-font-size-changed-events
   "Fired when the default font size setting changes."
   [channel]
   (gen-call :event ::on-default-font-size-changed (meta &form) channel))
 
-(defmacro tap-on-default-fixed-font-size-changed
+(defmacro tap-on-default-fixed-font-size-changed-events
   "Fired when the default fixed font size setting changes."
   [channel]
   (gen-call :event ::on-default-fixed-font-size-changed (meta &form) channel))
 
-(defmacro tap-on-minimum-font-size-changed
+(defmacro tap-on-minimum-font-size-changed-events
   "Fired when the minimum font size setting changes."
   [channel]
   (gen-call :event ::on-minimum-font-size-changed (meta &form) channel))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

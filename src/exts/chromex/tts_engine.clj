@@ -17,26 +17,26 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-speak
+(defmacro tap-on-speak-events
   "Called when the user makes a call to tts.speak() and one of the voices from this extension's manifest is the first
    to match the options object."
   [channel]
   (gen-call :event ::on-speak (meta &form) channel))
 
-(defmacro tap-on-stop
+(defmacro tap-on-stop-events
   "Fired when a call is made to tts.stop and this extension may be in the middle of speaking. If an extension receives
    a call to onStop and speech is already stopped, it should do nothing (not raise an error). If speech is in the
    paused state, this should cancel the paused state."
   [channel]
   (gen-call :event ::on-stop (meta &form) channel))
 
-(defmacro tap-on-pause
+(defmacro tap-on-pause-events
   "Optional: if an engine supports the pause event, it should pause the current utterance being spoken, if any, until
    it receives a resume event or stop event. Note that a stop event should also clear the paused state."
   [channel]
   (gen-call :event ::on-pause (meta &form) channel))
 
-(defmacro tap-on-resume
+(defmacro tap-on-resume-events
   "Optional: if an engine supports the pause event, it should also support the resume event, to continue speaking the
    current utterance, if any. Note that a stop event should also clear the paused state."
   [channel]
@@ -44,7 +44,7 @@
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

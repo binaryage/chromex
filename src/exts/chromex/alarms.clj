@@ -58,14 +58,14 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-alarm
+(defmacro tap-on-alarm-events
   "Fired when an alarm has elapsed. Useful for event pages."
   [channel]
   (gen-call :event ::on-alarm (meta &form) channel))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

@@ -57,22 +57,22 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-adapter-state-changed
+(defmacro tap-on-adapter-state-changed-events
   "Fired when the state of the Bluetooth adapter changes."
   [channel]
   (gen-call :event ::on-adapter-state-changed (meta &form) channel))
 
-(defmacro tap-on-device-added
+(defmacro tap-on-device-added-events
   "Fired when information about a new Bluetooth device is available."
   [channel]
   (gen-call :event ::on-device-added (meta &form) channel))
 
-(defmacro tap-on-device-changed
+(defmacro tap-on-device-changed-events
   "Fired when information about a known Bluetooth device has changed."
   [channel]
   (gen-call :event ::on-device-changed (meta &form) channel))
 
-(defmacro tap-on-device-removed
+(defmacro tap-on-device-removed-events
   "Fired when a Bluetooth device that was previously discovered has been out of range for long enough to be considered
    unavailable again, and when a paired device is removed."
   [channel]
@@ -80,7 +80,7 @@
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

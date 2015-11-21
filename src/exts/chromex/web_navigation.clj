@@ -31,58 +31,58 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-before-navigate
+(defmacro tap-on-before-navigate-events
   "Fired when a navigation is about to occur."
   [channel]
   (gen-call :event ::on-before-navigate (meta &form) channel))
 
-(defmacro tap-on-committed
+(defmacro tap-on-committed-events
   "Fired when a navigation is committed. The document (and the resources it refers to, such as images and subframes)
    might still be downloading, but at least part of the document has been received from the server and the browser has
    decided to switch to the new document."
   [channel]
   (gen-call :event ::on-committed (meta &form) channel))
 
-(defmacro tap-on-dom-content-loaded
+(defmacro tap-on-dom-content-loaded-events
   "Fired when the page's DOM is fully constructed, but the referenced resources may not finish loading."
   [channel]
   (gen-call :event ::on-dom-content-loaded (meta &form) channel))
 
-(defmacro tap-on-completed
+(defmacro tap-on-completed-events
   "Fired when a document, including the resources it refers to, is completely loaded and initialized."
   [channel]
   (gen-call :event ::on-completed (meta &form) channel))
 
-(defmacro tap-on-error-occurred
+(defmacro tap-on-error-occurred-events
   "Fired when an error occurs and the navigation is aborted. This can happen if either a network error occurred, or
    the user aborted the navigation."
   [channel]
   (gen-call :event ::on-error-occurred (meta &form) channel))
 
-(defmacro tap-on-created-navigation-target
+(defmacro tap-on-created-navigation-target-events
   "Fired when a new window, or a new tab in an existing window, is created to host a navigation."
   [channel]
   (gen-call :event ::on-created-navigation-target (meta &form) channel))
 
-(defmacro tap-on-reference-fragment-updated
+(defmacro tap-on-reference-fragment-updated-events
   "Fired when the reference fragment of a frame was updated. All future events for that frame will use the updated
    URL."
   [channel]
   (gen-call :event ::on-reference-fragment-updated (meta &form) channel))
 
-(defmacro tap-on-tab-replaced
+(defmacro tap-on-tab-replaced-events
   "Fired when the contents of the tab is replaced by a different (usually previously pre-rendered) tab."
   [channel]
   (gen-call :event ::on-tab-replaced (meta &form) channel))
 
-(defmacro tap-on-history-state-updated
+(defmacro tap-on-history-state-updated-events
   "Fired when the frame's history was updated to a new URL. All future events for that frame will use the updated URL."
   [channel]
   (gen-call :event ::on-history-state-updated (meta &form) channel))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

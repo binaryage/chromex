@@ -19,14 +19,14 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-hangout-requested
+(defmacro tap-on-hangout-requested-events
   "Fired when Chrome wants to request a new hangout be opened up with a user (or set of users)."
   [channel]
   (gen-call :event ::on-hangout-requested (meta &form) channel))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

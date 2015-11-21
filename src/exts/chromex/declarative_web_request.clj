@@ -17,10 +17,10 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-request [channel]
+(defmacro tap-on-request-events [channel]
   (gen-call :event ::on-request (meta &form) channel))
 
-(defmacro tap-on-message
+(defmacro tap-on-message-events
   "Fired when a message is sent via 'declarativeWebRequest.SendMessageToExtension' from an action of the declarative
    web request API."
   [channel]
@@ -28,7 +28,7 @@
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

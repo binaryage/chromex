@@ -83,19 +83,19 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-request
+(defmacro tap-on-request-events
   "Fired when a request is sent from either an extension process or a content script."
   [channel]
   (gen-call :event ::on-request (meta &form) channel))
 
-(defmacro tap-on-request-external
+(defmacro tap-on-request-external-events
   "Fired when a request is sent from another extension."
   [channel]
   (gen-call :event ::on-request-external (meta &form) channel))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

@@ -24,19 +24,19 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-displayed
+(defmacro tap-on-displayed-events
   "Fired when an interesting piece of UI is shown to the user."
   [channel]
   (gen-call :event ::on-displayed (meta &form) channel))
 
-(defmacro tap-on-decision
+(defmacro tap-on-decision-events
   "Fired when a user makes a decision about an interesting piece of UI."
   [channel]
   (gen-call :event ::on-decision (meta &form) channel))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

@@ -157,29 +157,29 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-drag-enter
+(defmacro tap-on-drag-enter-events
   "Fired when dragging bookmarks over the document."
   [channel]
   (gen-call :event ::on-drag-enter (meta &form) channel))
 
-(defmacro tap-on-drag-leave
+(defmacro tap-on-drag-leave-events
   "Fired when the drag and drop leaves the document."
   [channel]
   (gen-call :event ::on-drag-leave (meta &form) channel))
 
-(defmacro tap-on-drop
+(defmacro tap-on-drop-events
   "Fired when the user drops bookmarks on the document."
   [channel]
   (gen-call :event ::on-drop (meta &form) channel))
 
-(defmacro tap-on-meta-info-changed
+(defmacro tap-on-meta-info-changed-events
   "Fired when the meta info of a node changes."
   [channel]
   (gen-call :event ::on-meta-info-changed (meta &form) channel))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

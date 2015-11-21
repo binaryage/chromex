@@ -48,14 +48,14 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-sinks-changed
+(defmacro tap-on-sinks-changed-events
   "Fired when audio sink devices are added or removed."
   [channel]
   (gen-call :event ::on-sinks-changed (meta &form) channel))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

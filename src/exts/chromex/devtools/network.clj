@@ -24,19 +24,19 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-request-finished
+(defmacro tap-on-request-finished-events
   "Fired when a network request is finished and all request data are available."
   [channel]
   (gen-call :event ::on-request-finished (meta &form) channel))
 
-(defmacro tap-on-navigated
+(defmacro tap-on-navigated-events
   "Fired when the inspected window navigates to a new page."
   [channel]
   (gen-call :event ::on-navigated (meta &form) channel))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

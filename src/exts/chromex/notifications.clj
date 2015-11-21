@@ -63,27 +63,27 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-closed
+(defmacro tap-on-closed-events
   "The notification closed, either by the system or by user action."
   [channel]
   (gen-call :event ::on-closed (meta &form) channel))
 
-(defmacro tap-on-clicked
+(defmacro tap-on-clicked-events
   "The user clicked in a non-button area of the notification."
   [channel]
   (gen-call :event ::on-clicked (meta &form) channel))
 
-(defmacro tap-on-button-clicked
+(defmacro tap-on-button-clicked-events
   "The user pressed a button in the notification."
   [channel]
   (gen-call :event ::on-button-clicked (meta &form) channel))
 
-(defmacro tap-on-permission-level-changed
+(defmacro tap-on-permission-level-changed-events
   "The user changes the permission level.  As of Chrome 47, only ChromeOS has UI that dispatches this event."
   [channel]
   (gen-call :event ::on-permission-level-changed (meta &form) channel))
 
-(defmacro tap-on-show-settings
+(defmacro tap-on-show-settings-events
   "The user clicked on a link for the app's notification settings.  As of Chrome 47, only ChromeOS has UI that
    dispatches this event."
   [channel]
@@ -91,7 +91,7 @@
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

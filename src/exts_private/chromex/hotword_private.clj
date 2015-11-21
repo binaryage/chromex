@@ -103,55 +103,55 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-enabled-changed
+(defmacro tap-on-enabled-changed-events
   "Fired when the hotword detector enabled state should be changed. This can be from various sources, e.g. a pref
    change or training a speaker model."
   [channel]
   (gen-call :event ::on-enabled-changed (meta &form) channel))
 
-(defmacro tap-on-hotword-session-requested
+(defmacro tap-on-hotword-session-requested-events
   "Fired when the browser wants to start a hotword session."
   [channel]
   (gen-call :event ::on-hotword-session-requested (meta &form) channel))
 
-(defmacro tap-on-hotword-session-stopped
+(defmacro tap-on-hotword-session-stopped-events
   "Fired when the browser wants to stop the requested hotword session."
   [channel]
   (gen-call :event ::on-hotword-session-stopped (meta &form) channel))
 
-(defmacro tap-on-finalize-speaker-model
+(defmacro tap-on-finalize-speaker-model-events
   "Fired when the speaker model should be finalized."
   [channel]
   (gen-call :event ::on-finalize-speaker-model (meta &form) channel))
 
-(defmacro tap-on-speaker-model-saved
+(defmacro tap-on-speaker-model-saved-events
   "Fired when the speaker model has been saved."
   [channel]
   (gen-call :event ::on-speaker-model-saved (meta &form) channel))
 
-(defmacro tap-on-hotword-triggered
+(defmacro tap-on-hotword-triggered-events
   "Fired when a hotword has triggered."
   [channel]
   (gen-call :event ::on-hotword-triggered (meta &form) channel))
 
-(defmacro tap-on-delete-speaker-model
+(defmacro tap-on-delete-speaker-model-events
   "Fired when the speaker model should be deleted."
   [channel]
   (gen-call :event ::on-delete-speaker-model (meta &form) channel))
 
-(defmacro tap-on-speaker-model-exists
+(defmacro tap-on-speaker-model-exists-events
   "Fired when the browser wants to find out whether the speaker model exists."
   [channel]
   (gen-call :event ::on-speaker-model-exists (meta &form) channel))
 
-(defmacro tap-on-microphone-state-changed
+(defmacro tap-on-microphone-state-changed-events
   "Fired when the microphone state changes."
   [channel]
   (gen-call :event ::on-microphone-state-changed (meta &form) channel))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

@@ -39,19 +39,19 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-added
+(defmacro tap-on-added-events
   "Fired when the extension acquires new permissions."
   [channel]
   (gen-call :event ::on-added (meta &form) channel))
 
-(defmacro tap-on-removed
+(defmacro tap-on-removed-events
   "Fired when access to permissions has been removed from the extension."
   [channel]
   (gen-call :event ::on-removed (meta &form) channel))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

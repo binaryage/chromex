@@ -30,59 +30,59 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-before-request
+(defmacro tap-on-before-request-events
   "Fired when a request is about to occur."
   [channel]
   (gen-call :event ::on-before-request (meta &form) channel))
 
-(defmacro tap-on-before-send-headers
+(defmacro tap-on-before-send-headers-events
   "Fired before sending an HTTP request, once the request headers are available. This may occur after a TCP connection
    is made to the server, but before any HTTP data is sent."
   [channel]
   (gen-call :event ::on-before-send-headers (meta &form) channel))
 
-(defmacro tap-on-send-headers
+(defmacro tap-on-send-headers-events
   "Fired just before a request is going to be sent to the server (modifications of previous onBeforeSendHeaders
    callbacks are visible by the time onSendHeaders is fired)."
   [channel]
   (gen-call :event ::on-send-headers (meta &form) channel))
 
-(defmacro tap-on-headers-received
+(defmacro tap-on-headers-received-events
   "Fired when HTTP response headers of a request have been received."
   [channel]
   (gen-call :event ::on-headers-received (meta &form) channel))
 
-(defmacro tap-on-auth-required
+(defmacro tap-on-auth-required-events
   "Fired when an authentication failure is received. The listener has three options: it can provide authentication
    credentials, it can cancel the request and display the error page, or it can take no action on the challenge. If
    bad user credentials are provided, this may be called multiple times for the same request."
   [channel]
   (gen-call :event ::on-auth-required (meta &form) channel))
 
-(defmacro tap-on-response-started
+(defmacro tap-on-response-started-events
   "Fired when the first byte of the response body is received. For HTTP requests, this means that the status line and
    response headers are available."
   [channel]
   (gen-call :event ::on-response-started (meta &form) channel))
 
-(defmacro tap-on-before-redirect
+(defmacro tap-on-before-redirect-events
   "Fired when a server-initiated redirect is about to occur."
   [channel]
   (gen-call :event ::on-before-redirect (meta &form) channel))
 
-(defmacro tap-on-completed
+(defmacro tap-on-completed-events
   "Fired when a request is completed."
   [channel]
   (gen-call :event ::on-completed (meta &form) channel))
 
-(defmacro tap-on-error-occurred
+(defmacro tap-on-error-occurred-events
   "Fired when an error occurs."
   [channel]
   (gen-call :event ::on-error-occurred (meta &form) channel))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

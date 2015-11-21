@@ -26,19 +26,19 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-messages-received
+(defmacro tap-on-messages-received-events
   "Fired when new messages arrive."
   [channel]
   (gen-call :event ::on-messages-received (meta &form) channel))
 
-(defmacro tap-on-status-updated
+(defmacro tap-on-status-updated-events
   "Fired when a new copresence status update is available."
   [channel]
   (gen-call :event ::on-status-updated (meta &form) channel))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

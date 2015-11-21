@@ -30,19 +30,19 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-display-state-changed
+(defmacro tap-on-display-state-changed-events
   "Fired when a braille display is connected or disconnected."
   [channel]
   (gen-call :event ::on-display-state-changed (meta &form) channel))
 
-(defmacro tap-on-key-event
+(defmacro tap-on-key-event-events
   "Fired when an input event is received from the display."
   [channel]
   (gen-call :event ::on-key-event (meta &form) channel))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

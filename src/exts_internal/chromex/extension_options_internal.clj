@@ -14,18 +14,18 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-close [channel]
+(defmacro tap-on-close-events [channel]
   (gen-call :event ::on-close (meta &form) channel))
 
-(defmacro tap-on-load [channel]
+(defmacro tap-on-load-events [channel]
   (gen-call :event ::on-load (meta &form) channel))
 
-(defmacro tap-on-preferred-size-changed [channel]
+(defmacro tap-on-preferred-size-changed-events [channel]
   (gen-call :event ::on-preferred-size-changed (meta &form) channel))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

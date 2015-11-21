@@ -38,7 +38,7 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-captive-portal-detected
+(defmacro tap-on-captive-portal-detected-events
   "This event fires everytime a captive portal is detected on a network matching any of the currently registered
    network filters and the user consents to use the extension for authentication. Network filters may be set using the
    'setNetworkFilter'. Upon receiving this event the extension should start its authentication attempt with the
@@ -49,7 +49,7 @@
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

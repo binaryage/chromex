@@ -69,30 +69,30 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-spellcheck-dictionaries-changed
+(defmacro tap-on-spellcheck-dictionaries-changed-events
   "Called when the pref for the dictionaries used for spell checking changes or the status of one of the spell check
    dictionaries changes."
   [channel]
   (gen-call :event ::on-spellcheck-dictionaries-changed (meta &form) channel))
 
-(defmacro tap-on-custom-dictionary-changed
+(defmacro tap-on-custom-dictionary-changed-events
   "Called when words are added to and/or removed from the custom spell check dictionary."
   [channel]
   (gen-call :event ::on-custom-dictionary-changed (meta &form) channel))
 
-(defmacro tap-on-input-method-added
+(defmacro tap-on-input-method-added-events
   "Called when an input method is added."
   [channel]
   (gen-call :event ::on-input-method-added (meta &form) channel))
 
-(defmacro tap-on-input-method-removed
+(defmacro tap-on-input-method-removed-events
   "Called when an input method is removed."
   [channel]
   (gen-call :event ::on-input-method-removed (meta &form) channel))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

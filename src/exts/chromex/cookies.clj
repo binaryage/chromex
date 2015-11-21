@@ -53,7 +53,7 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-changed
+(defmacro tap-on-changed-events
   "Fired when a cookie is set or removed. As a special case, note that updating a cookie's properties is implemented
    as a two step process: the cookie to be updated is first removed entirely, generating a notification with 'cause'
    of 'overwrite' .  Afterwards, a new cookie is written with the updated values, generating a second notification
@@ -63,7 +63,7 @@
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

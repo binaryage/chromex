@@ -34,19 +34,19 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-location-update
+(defmacro tap-on-location-update-events
   "Fired when a location change is detected."
   [channel]
   (gen-call :event ::on-location-update (meta &form) channel))
 
-(defmacro tap-on-location-error
+(defmacro tap-on-location-error-events
   "Fired when detecting location in not possible."
   [channel]
   (gen-call :event ::on-location-error (meta &form) channel))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

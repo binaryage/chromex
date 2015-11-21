@@ -35,19 +35,19 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-attached
+(defmacro tap-on-attached-events
   "Fired when a new removable storage is attached to the system."
   [channel]
   (gen-call :event ::on-attached (meta &form) channel))
 
-(defmacro tap-on-detached
+(defmacro tap-on-detached-events
   "Fired when a removable storage is detached from the system."
   [channel]
   (gen-call :event ::on-detached (meta &form) channel))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

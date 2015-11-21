@@ -75,24 +75,24 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-started
+(defmacro tap-on-started-events
   "Event fired when a Cast RTP stream has started."
   [channel]
   (gen-call :event ::on-started (meta &form) channel))
 
-(defmacro tap-on-stopped
+(defmacro tap-on-stopped-events
   "Event fired when a Cast RTP stream has stopped."
   [channel]
   (gen-call :event ::on-stopped (meta &form) channel))
 
-(defmacro tap-on-error
+(defmacro tap-on-error-events
   "Event fired when a Cast RTP stream has error."
   [channel]
   (gen-call :event ::on-error (meta &form) channel))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

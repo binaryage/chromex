@@ -66,29 +66,29 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-changed
+(defmacro tap-on-changed-events
   "Fired when the input method is changed."
   [channel]
   (gen-call :event ::on-changed (meta &form) channel))
 
-(defmacro tap-on-composition-bounds-changed
+(defmacro tap-on-composition-bounds-changed-events
   "Fired when the composition bounds or cursor bounds are changed."
   [channel]
   (gen-call :event ::on-composition-bounds-changed (meta &form) channel))
 
-(defmacro tap-on-dictionary-loaded
+(defmacro tap-on-dictionary-loaded-events
   "Fired when the custom spelling dictionary is loaded."
   [channel]
   (gen-call :event ::on-dictionary-loaded (meta &form) channel))
 
-(defmacro tap-on-dictionary-changed
+(defmacro tap-on-dictionary-changed-events
   "Fired when words are added or removed from the custom spelling dictionary."
   [channel]
   (gen-call :event ::on-dictionary-changed (meta &form) channel))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

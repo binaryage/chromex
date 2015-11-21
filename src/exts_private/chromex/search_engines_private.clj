@@ -53,7 +53,7 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-search-engines-changed
+(defmacro tap-on-search-engines-changed-events
   "Fires when the list of search engines changes or when the user selects a preferred default search engine. The new
    list of engines is passed along."
   [channel]
@@ -61,7 +61,7 @@
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
