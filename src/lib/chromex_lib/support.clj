@@ -17,9 +17,10 @@
   (let [{:keys [file line column]} src-info]
     (str "(in '" file ":" line ":" column "')")))
 
-(defn print-compile-time-warning [src-info msg]
-  (binding [*out* *err*]
-    (println "WARNING:" msg (get-source-location src-info))))
+(defn print-compile-time-warning [static-config src-info msg]
+  (if-not (:silence-compilation-warnings static-config)
+    (binding [*out* *err*]
+      (println "WARNING:" msg (get-source-location src-info)))))
 
 ; -- logging support ------------------------------------------------------------------------------------------------
 
@@ -63,13 +64,13 @@
 
 (defn emit-api-version-warning [static-config src-info api-name]
   (let [version (:target-api-version static-config)]
-    (print-compile-time-warning src-info
+    (print-compile-time-warning static-config src-info
       (str "The API call to '" api-name "' is not available. "
         "Target API version '" version "' is not within required range " (user-friendly-range-str range)))))
 
 
 ; -- deprecation warnings -------------------------------------------------------------------------------------------
 
-(defn emit-deprecation-warning [_static-config src-info api-name details]
-  (print-compile-time-warning src-info
+(defn emit-deprecation-warning [static-config src-info api-name details]
+  (print-compile-time-warning static-config src-info
     (str "The API call to '" api-name "' is deprecated. " details)))
