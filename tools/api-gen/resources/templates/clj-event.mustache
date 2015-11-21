@@ -1,2 +1,2 @@
-(defmacro tap-{{{event-name}}}{{{event-docstring}}}[channel]
+(defmacro tap-{{{event-name}}}-events{{{event-docstring}}}[channel]
   (gen-call :event ::{{{event-name}}} (meta &form) channel))

@@ -24,12 +24,12 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-something [chan]
+(defmacro tap-on-something-events [chan]
   (gen-call :event ::on-something (meta &form) chan))
 
 ; -- helpers --------------------------------------------------------------------------------------------------------
 
-(defmacro tap-all [chan]
+(defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

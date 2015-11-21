@@ -20,7 +20,11 @@
 (defn test-logger [& args]
   (apply console-log "[chromex (test)]" (friendly-args args)))
 
-(let [new-config (-> (get-active-config) (assoc :logger test-logger))]
+; -------------------------------------------------------------------------------------------------------------------
+
+(let [new-config (-> (get-active-config)
+                   (assoc :logger test-logger)
+                   (assoc :verbose-logging true))]
   (set-active-config! new-config))
 
 (test/run-tests
