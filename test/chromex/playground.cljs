@@ -20,3 +20,6 @@
 
 (defn on-something* [config chan]
   (gen-wrap :event ::on-something config chan))
+
+(defn on-something-deprecated* [config chan]
+  (gen-wrap :event ::on-something-deprecated config chan))

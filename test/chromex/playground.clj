@@ -27,6 +27,9 @@
 (defmacro tap-on-something-events [chan]
   (gen-call :event ::on-something (meta &form) chan))
 
+(defmacro tap-on-something-deprecated-events [chan]
+  (gen-call :event ::on-something-deprecated (meta &form) chan))
+
 ; -- helpers --------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
@@ -63,6 +66,11 @@
                                                    :type "mock-callback-param1"}]}}]}]
    :events     [{:id     ::on-something
                  :name   "onSomething"
+                 :params [{:name "ep1"
+                           :type "event-param-type1"}]}
+                {:id     ::on-something-deprecated
+                 :name   "onSomethingDeprecated"
+                 :deprecated "Use onSomething instead."
                  :params [{:name "ep1"
                            :type "event-param-type1"}]}]})
 

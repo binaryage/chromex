@@ -10,12 +10,13 @@
         since (or (:since descriptor) (:since api-table))
         until (or (:until descriptor) (:until api-table))
         valid? (valid-api-version? static-config since until)
-        deprecated (or (:deprecated descriptor) (:deprecated api-table))
-        deprecated? (boolean deprecated)
-        wrap-sym (get-wrap-symbol id)]
+        deprecation-info (or (:deprecated descriptor) (:deprecated api-table))
+        deprecated? (not (nil? deprecation-info))
+        wrap-sym (get-wrap-symbol id)
+        wrap-call `(~wrap-sym ~config ~@args)]
     (if-not valid? (emit-api-version-warning static-config src-info api))
-    (if deprecated? (emit-deprecation-warning static-config src-info api deprecated))
-    `(~wrap-sym ~config ~@args)))
+    (if deprecated? (emit-deprecation-warning static-config src-info api deprecation-info))
+    (with-meta wrap-call {:deprecated? deprecated? :valid? valid?})))
 
 (defn gen-call-from-group [collection tag singular static-config api-table item-id src-info config & args]
   (if-let [descriptor (get-item-by-id item-id (collection api-table))]
@@ -43,7 +44,12 @@
   (let [chan-sym (gensym "chan")
         config-sym (gensym "config")
         event-ids (map :id (:events api-table))
-        taps (map #(gen-event-call static-config api-table % src-info config-sym chan-sym) event-ids)]
+        static-config-no-warnings (assoc static-config :silence-compilation-warnings true)
+        all-tap-events-calls (map #(gen-event-call static-config-no-warnings api-table % src-info config-sym chan-sym) event-ids)
+        valid-and-non-deprecated? (fn [call]
+                                    (let [{:keys [valid? deprecated?]} (meta call)]
+                                      (and valid? (not deprecated?))))
+        tap-events-calls (filter valid-and-non-deprecated? all-tap-events-calls)]
     `(let [~chan-sym ~chan
            ~config-sym ~config]
-       ~@taps)))
+       ~@tap-events-calls)))

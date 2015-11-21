@@ -14,15 +14,29 @@
 (defn do-something-mock [param1]
   (str "got " param1))
 
+(def on-something-mock-active (volatile! false))
 (def on-something-mock
   #js {"addListener"    (fn [f]
+                          (vreset! on-something-mock-active true)
                           (go
-                            #_(println "add listener" f)
                             (dotimes [n 5]
-                              (f n)
-                              (<! (timeout 1000)))))
+                              (if @on-something-mock-active
+                                (f n))
+                              (<! (timeout 100)))))
        "removeListener" (fn [f]
-                          #_(println "remove listener" f))})
+                          (vreset! on-something-mock-active false))})
+
+(def on-something-deprecated-mock-active (volatile! false))
+(def on-something-deprecated-mock
+  #js {"addListener"    (fn [f]
+                          (vreset! on-something-deprecated-mock-active true)
+                          (go
+                            (dotimes [n 5]
+                              (if @on-something-deprecated-mock-active
+                                (f (str "deprecated-" n)))
+                              (<! (timeout 100)))))
+       "removeListener" (fn [f]
+                          (vreset! on-something-deprecated-mock-active false))})
 
 (aset js/window "chrome" #js {})
 (aset js/window.chrome "playground" #js {})
@@ -31,6 +45,7 @@
 (aset js/window.chrome.playground "doSomething" do-something-mock)
 (aset js/window.chrome.playground "someProp" "prop1val")
 (aset js/window.chrome.playground "onSomething" on-something-mock)
+(aset js/window.chrome.playground "onSomethingDeprecated" on-something-deprecated-mock)
 
 (defn gs []
   (get-something "p1"))
