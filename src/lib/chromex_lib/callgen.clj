@@ -1,24 +1,25 @@
 (ns chromex-lib.callgen
-  (:require [chromex-lib.support :refer [check-api-version check-deprecated get-wrap-symbol get-api-id
-                                         get-item-by-id]]))
+  (:require [chromex-lib.support :refer [valid-api-version? emit-api-version-warning emit-deprecation-warning
+                                         get-wrap-symbol get-api-id get-item-by-id]]))
 
 ; -------------------------------------------------------------------------------------------------------------------
 
-(defn gen-star-call [static-config src-info api-table descriptor config & args]
+(defn gen-wrap-call [static-config src-info api-table descriptor config & args]
   (let [{:keys [id]} descriptor
         api (get-api-id api-table descriptor)
         since (or (:since descriptor) (:since api-table))
         until (or (:until descriptor) (:until api-table))
+        valid? (valid-api-version? static-config since until)
         deprecated (or (:deprecated descriptor) (:deprecated api-table))
-        call-wrap (get-wrap-symbol id)]
-    `(do
-       ~(check-api-version static-config src-info api since until)
-       ~(check-deprecated static-config src-info api deprecated)
-       (~call-wrap ~config ~@args))))
+        deprecated? (boolean deprecated)
+        wrap-sym (get-wrap-symbol id)]
+    (if-not valid? (emit-api-version-warning static-config src-info api))
+    (if deprecated? (emit-deprecation-warning static-config src-info api deprecated))
+    `(~wrap-sym ~config ~@args)))
 
 (defn gen-call-from-group [collection tag singular static-config api-table item-id src-info config & args]
   (if-let [descriptor (get-item-by-id item-id (collection api-table))]
-    (apply gen-star-call static-config src-info api-table (assoc descriptor tag true) config args)
+    (apply gen-wrap-call static-config src-info api-table (assoc descriptor tag true) config args)
     (assert false (str "unable to find " singular " with id " item-id "in:\n" api-table))))
 
 (defn gen-property-call [static-config api-table item-id src-info config & args]

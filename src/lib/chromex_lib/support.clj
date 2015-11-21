@@ -57,18 +57,19 @@
 (defn user-friendly-range-str [[left right]]
   (str "[" (or left "*") " - " (or right "*") "]"))
 
-(defn check-api-version [static-config src-info api-name & range]
+(defn valid-api-version? [static-config & range]
   (let [version (:target-api-version static-config)]
-    (if-not (version-in-range? version range)
-      (print-compile-time-warning src-info
-        (str "The API call to '" api-name "' is not available. "
-          "Target API version '" version "' is not within required range " (user-friendly-range-str range)))))
-  nil)
+    (version-in-range? version range)))
+
+(defn emit-api-version-warning [static-config src-info api-name]
+  (let [version (:target-api-version static-config)]
+    (print-compile-time-warning src-info
+      (str "The API call to '" api-name "' is not available. "
+        "Target API version '" version "' is not within required range " (user-friendly-range-str range)))))
+
 
 ; -- deprecation warnings -------------------------------------------------------------------------------------------
 
-(defn check-deprecated [_static-config src-info api-name deprecated]
-  (if deprecated
-    (print-compile-time-warning src-info
-      (str "The API call to '" api-name "' is deprecated. " deprecated)))
-  nil)
+(defn emit-deprecation-warning [_static-config src-info api-name details]
+  (print-compile-time-warning src-info
+    (str "The API call to '" api-name "' is deprecated. " details)))
