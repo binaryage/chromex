@@ -1,5 +1,6 @@
 (ns chromex-lib.chrome-event-subscription
-  (:require [chromex-lib.protocols :as protocols :refer [IChromeEventSubscription IChromeEventChannel]]))
+  (:require [chromex-lib.protocols :as protocols :refer [IChromeEventSubscription IChromeEventChannel]]
+            [chromex-lib.support :refer-macros [oget ocall]]))
 
 ; exception handlers, see https://www.youtube.com/watch?v=zp0OEDcAro0
 (declare *subscribe-called-while-subscribed*)
@@ -17,13 +18,13 @@
         (if (satisfies? IChromeEventChannel chan)
           (protocols/register chan this))
         (set! subscribed-count (inc subscribed-count))
-        (.addListener chrome-event listener))))
+        (ocall chrome-event "addListener" listener))))
   (unsubscribe [this]
     (if-not (= subscribed-count 1)
       (*unsubscribe-called-while-not-subscribed* this)
       (do
         (set! subscribed-count (dec subscribed-count))
-        (.removeListener chrome-event listener)
+        (ocall chrome-event "removeListener" listener)
         (if (satisfies? IChromeEventChannel chan)
           (protocols/unregister chan this))))))
 
