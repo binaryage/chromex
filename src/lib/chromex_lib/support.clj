@@ -33,6 +33,10 @@
     (binding [*out* *err*]
       (println "WARNING:" msg (get-source-location src-info)))))
 
+(defn debug-print [msg]
+  (binding [*out* *err*]
+    (println "DEBUG:" msg)))
+
 ; -- logging support ------------------------------------------------------------------------------------------------
 
 (defn log-if-verbose [static-config config & args]

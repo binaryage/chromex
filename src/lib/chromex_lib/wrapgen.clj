@@ -1,5 +1,5 @@
 (ns chromex-lib.wrapgen
-  (:require [chromex-lib.support :refer [log-if-verbose print-compile-time-warning get-item-by-id get-api-id]]))
+  (:require [chromex-lib.support :refer [log-if-verbose print-compile-time-warning get-item-by-id get-api-id debug-print]]))
 
 ; -- hooks in runtime config  ---------------------------------------------------------------------------------------
 
@@ -71,11 +71,14 @@
 ; -------------------------------------------------------------------------------------------------------------------
 
 (defn marshall [static-config & args]
-  (let [gen-marshalling (:gen-marshalling static-config)]
+  (let [{:keys [gen-marshalling debug-marshalling]} static-config]
     (assert (and gen-marshalling (fn? gen-marshalling))
       (str "invalid ::gen-marshalling in static-config\n"
         "static-config: " static-config))
-    (apply gen-marshalling args)))
+    (let [marshalled-code (apply gen-marshalling args)]
+      (if debug-marshalling
+        (debug-print (str "marshalling request " args " => " marshalled-code)))
+      marshalled-code)))
 
 (defn marshall-callback-param [static-config api [callback-param-sym type]]
   (marshall static-config :from-chrome api type callback-param-sym))
