@@ -37,7 +37,26 @@ fi
 
 pushd .
 cd "${CHROMIUM_SRC}chrome/common/extensions/docs"
-python ./server2/update_cache.py --no-push --save-file="$APIS_CACHE_FILE"
+
+LAST_SHA=`cat "$APIS_LAST_FILE"`
+if [ ! "$LAST_SHA" ] ; then
+  echo "'$APIS_LAST_FILE' does not exist, run ./build-cache.sh for first run"
+  popd
+  popd
+  exit 2
+fi
+
+CURRENT_SHA=`git rev-parse HEAD`
+if [ "$CURRENT_SHA" == "$LAST_SHA" ] ; then
+  echo "chromium sources have been already cached for this commit ($CURRENT_SHA)"
+  echo "maybe you forgot to pull latest changes?"
+  echo "cd \"$CHROMIUM_SRC\" && git pull && gclient sync --with_branch_heads"
+  popd
+  popd
+  exit 3
+fi
+
+python ./server2/update_cache.py --no-push --save-file="$APIS_CACHE_FILE" --commit="$LAST_SHA"
 
 cd "${CHROMIUM_SRC}"
 SHA=`git rev-parse HEAD`
