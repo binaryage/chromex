@@ -73,7 +73,7 @@
   (let [{:keys [params]} callback-info
         param-syms (map #(gensym (:name %)) params)
         param-types (map :type params)
-        params (zipmap param-syms param-types)
+        params (partition 2 (interleave param-syms param-types))
         marshalled-params (map (partial marshall-callback-param static-config api) params)]
     (if (empty? param-syms)
       sym
@@ -94,15 +94,20 @@
       (marshall-callback static-config (str api ".callback") [arg (:callback param)])
       (marshall-param static-config api [arg type]))))
 
+(defn marshall-function-params [static-config api args params]
+  (assert (= (count params) (count args))
+    (str "a mismatch between parameters and arguments passed into marshall-function-params\n"
+      "api: " api "\n"
+      "args: " args
+      "params:" params))
+  (let [pairs (partition 2 (interleave args params))]
+    (for [pair pairs]
+      (marshall-function-param static-config api pair))))
+
 (defn gen-marshalling [static-config api-table descriptor config & args]
   (let [api (get-api-id api-table descriptor)
         {:keys [params return-type]} descriptor
-        _ (assert (= (count params) (count args))
-            (str "a mismatch between parameters and arguments passed into gen-marshalling\n"
-              "api: " api "\n"
-              "descriptor: " descriptor "\n"
-              "args: " args))
-        marshalled-params (map (partial marshall-function-param static-config api) (zipmap args params))
+        marshalled-params (marshall-function-params static-config api args params)
         param-syms (map #(gensym (:name %)) params)
         marshalling (interleave param-syms marshalled-params)
         result-sym (gensym "result")]
