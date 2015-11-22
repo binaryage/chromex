@@ -1,16 +1,16 @@
 (ns chromex-lib.marshalling)
 
-(defn marshall-in [_id type param]
+(defn marshall-to-chrome [_id type param]
   (case type
     "Port" `(chromex_lib.marshalling/to-native-chrome-port ~param)
     param))
 
-(defn marshall-out [_id type param]
+(defn marshall-from-chrome [_id type param]
   (case type
     "Port" `(chromex_lib.marshalling/from-native-chrome-port ~param)
     param))
 
 (defn gen-marshalling [direction id type param]
   (case direction
-    :in (marshall-in id type param)
-    :out (marshall-out id type param)))
+    :to-chrome (marshall-to-chrome id type param)
+    :from-chrome (marshall-from-chrome id type param)))

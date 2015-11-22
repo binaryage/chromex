@@ -67,7 +67,7 @@
     (apply gen-marshalling args)))
 
 (defn marshall-callback-param [static-config api [sym type]]
-  (marshall static-config :out api type sym))
+  (marshall static-config :from-chrome api type sym))
 
 (defn marshall-callback [static-config api [sym callback-info]]
   (let [{:keys [params]} callback-info
@@ -81,10 +81,10 @@
          (~sym ~@marshalled-params)))))
 
 (defn marshall-result [static-config api [sym type]]
-  (marshall static-config :out api type sym))
+  (marshall static-config :from-chrome api type sym))
 
 (defn marshall-param [static-config api [sym type]]
-  (marshall static-config :in api type sym))
+  (marshall static-config :to-chrome api type sym))
 
 (defn marshall-function-param [static-config api [arg param]]
   (let [{:keys [name type]} param]
