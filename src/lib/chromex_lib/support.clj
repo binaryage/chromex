@@ -1,5 +1,16 @@
 (ns chromex-lib.support)
 
+; -- we don't want to rely on externs -------------------------------------------------------------------------------
+
+(defmacro ocall [o name & params]
+  `(let [o# ~o]
+     (.call (goog.object/get o# ~name) o# ~@params)))
+
+(defmacro oget
+  ([o k1] `(goog.object/get ~o ~k1))
+  ([o k1 k2] `(when-let [o# (goog.object/get ~o ~k1)] (goog.object/get o# ~k2)))
+  ([o k1 k2 & ks] `(when-let [o# (goog.object/get ~o ~k1 ~k2)] (oget o# ~@ks))))
+
 ; -- helpers --------------------------------------------------------------------------------------------------------
 
 (defn get-wrap-symbol [id]
