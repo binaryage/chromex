@@ -11,7 +11,7 @@
     (set! subscriptions (disj subscriptions subscription)))
   (unsubscribe-all! [_this]
     (doseq [subscription subscriptions]
-      (protocols/unsubscribe subscription))
+      (protocols/unsubscribe! subscription))
     (set! subscriptions #{}))
 
   core-async/WritePort

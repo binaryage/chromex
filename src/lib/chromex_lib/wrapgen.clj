@@ -146,7 +146,7 @@
            ~handler-fn-sym ~(marshall-callback static-config (str api ".handler") [event-fn-sym descriptor])
            ~logging-fn-sym ~(wrap-callback-with-logging static-config "event:" api config [handler-fn-sym descriptor])
            result# (chromex-lib.chrome-event-subscription/make-chrome-event-subscription ~js-event ~logging-fn-sym ~chan)]
-       (chromex-lib.protocols/subscribe result#)
+       (chromex-lib.protocols/subscribe! result#)
        result#)))
 
 ; -------------------------------------------------------------------------------------------------------------------

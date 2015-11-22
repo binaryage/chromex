@@ -1,8 +1,8 @@
 (ns chromex-lib.protocols)
 
 (defprotocol IChromeEventSubscription
-  (subscribe [this])
-  (unsubscribe [this]))
+  (subscribe! [this])
+  (unsubscribe! [this]))
 
 (defprotocol IChromeEventChannel
   (register! [this subscription])

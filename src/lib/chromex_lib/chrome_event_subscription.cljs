@@ -11,7 +11,7 @@
 (deftype ChromeEventSubscription [chrome-event listener chan ^:mutable subscribed-count]
 
   IChromeEventSubscription
-  (subscribe [this]
+  (subscribe! [this]
     (if-not (= subscribed-count 0)
       (*subscribe-called-while-subscribed* this)
       (do
@@ -19,7 +19,7 @@
           (protocols/register! chan this))
         (set! subscribed-count (inc subscribed-count))
         (ocall chrome-event "addListener" listener))))
-  (unsubscribe [this]
+  (unsubscribe! [this]
     (if-not (= subscribed-count 1)
       (*unsubscribe-called-while-not-subscribed* this)
       (do
