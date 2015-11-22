@@ -5,9 +5,9 @@
   (unsubscribe [this]))
 
 (defprotocol IChromeEventChannel
-  (register [this subscription])
-  (unregister [this subscription])
-  (unsubscribe-all [this]))
+  (register! [this subscription])
+  (unregister! [this subscription])
+  (unsubscribe-all! [this]))
 
 (defprotocol IChromePort
   (get-native-port [this])

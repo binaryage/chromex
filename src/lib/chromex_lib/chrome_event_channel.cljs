@@ -5,11 +5,11 @@
 (deftype ChromeEventChannel [chan ^:mutable subscriptions]
 
   IChromeEventChannel
-  (register [_this subscription]
+  (register! [_this subscription]
     (set! subscriptions (conj subscriptions subscription)))
-  (unregister [_this subscription]
+  (unregister! [_this subscription]
     (set! subscriptions (disj subscriptions subscription)))
-  (unsubscribe-all [_this]
+  (unsubscribe-all! [_this]
     (doseq [subscription subscriptions]
       (protocols/unsubscribe subscription))
     (set! subscriptions #{}))
@@ -26,7 +26,7 @@
   (closed? [_this]
     (core-async/closed? chan))
   (close! [this]
-    (protocols/unsubscribe-all this)
+    (protocols/unsubscribe-all! this)
     (core-async/close! chan)))
 
 (defn make-chrome-event-channel [chan]

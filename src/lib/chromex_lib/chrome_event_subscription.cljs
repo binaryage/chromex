@@ -16,7 +16,7 @@
       (*subscribe-called-while-subscribed* this)
       (do
         (if (satisfies? IChromeEventChannel chan)
-          (protocols/register chan this))
+          (protocols/register! chan this))
         (set! subscribed-count (inc subscribed-count))
         (ocall chrome-event "addListener" listener))))
   (unsubscribe [this]
@@ -26,7 +26,7 @@
         (set! subscribed-count (dec subscribed-count))
         (ocall chrome-event "removeListener" listener)
         (if (satisfies? IChromeEventChannel chan)
-          (protocols/unregister chan this))))))
+          (protocols/unregister! chan this))))))
 
 ; -- constructor ----------------------------------------------------------------------------------------------------
 
