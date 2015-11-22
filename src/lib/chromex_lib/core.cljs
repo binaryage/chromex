@@ -1,6 +1,5 @@
 (ns chromex-lib.core
-  (:require [goog.object]
-            [chromex-lib.config :as config]
+  (:require [chromex-lib.config :as config]
             [chromex-lib.marshalling]
             [chromex-lib.chrome-event-subscription]
             [chromex-lib.chrome-event-channel]

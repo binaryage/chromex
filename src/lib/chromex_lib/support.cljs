@@ -1,1 +1,2 @@
-(ns chromex-lib.support)
+(ns chromex-lib.support
+  (:require [goog.object]))

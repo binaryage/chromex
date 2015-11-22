@@ -36,11 +36,15 @@
       (*disconnect-called-on-disconnected-port* this)))
   (on-disconnect! [this callback]
     (if connected?
-      (ocall native-chrome-port "onDisconnect" callback)
+      (let [on-disconnect-event (oget native-chrome-port "onDisconnect")]
+        (assert on-disconnect-event)
+        (ocall on-disconnect-event "addListener" callback))
       (*on-disconnect-called-on-disconnected-port* this)))
   (on-message! [this callback]
     (if connected?
-      (ocall native-chrome-port "onMessage" callback)
+      (let [on-message-event (oget native-chrome-port "onMessage")]
+        (assert on-message-event)
+        (ocall on-message-event "addListener" callback))
       (*on-message-called-on-disconnected-port* this)))
 
   IChromePortState
