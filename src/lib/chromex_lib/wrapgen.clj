@@ -30,13 +30,23 @@
 ; -------------------------------------------------------------------------------------------------------------------
 
 (defn wrap-callback-with-logging [static-config label api config [callback-sym callback-info]]
-  (if callback-info
-    (let [{:keys [params]} callback-info
-          param-syms (map #(gensym (str "cb-param-" (:name %))) params)]
-      `(fn [~@param-syms]
-         ~(apply log-if-verbose static-config config label api param-syms)
-         (~callback-sym ~@param-syms)))
-    callback-sym))
+  (let [{:keys [params]} callback-info
+        param-syms (map #(gensym (str "cb-param-" (:name %))) params)]
+    `(fn [~@param-syms]
+       ~(apply log-if-verbose static-config config label api param-syms)
+       (~callback-sym ~@param-syms))))
+
+(defn wrap-callback-args-with-logging [static-config api config args params]
+  (assert (= (count params) (count args))
+    (str "a mismatch between parameters and arguments passed into wrap-callback-args-with-logging\n"
+      "api: " api "\n"
+      "params: " params "\n"
+      "args: " args))
+  (let [pairs (partition 2 (interleave args (map :callback-info params)))]
+    (for [[callback-sym callback-info] pairs]
+      (if callback-info
+        (wrap-callback-with-logging static-config "callback:" api config [callback-sym callback-info])
+        callback-sym))))
 
 ; -------------------------------------------------------------------------------------------------------------------
 
@@ -44,18 +54,19 @@
   (let [{:keys [namespace]} api-table
         {:keys [name params property?]} descriptor
         api (get-api-id api-table descriptor)
-        _ (assert (= (count params) (count args))
-            (str "a mismatch between parameters and arguments passed into gen-api-call\n"
-              "api: " api "\n"
-              "descriptor: " descriptor "\n"
-              "args: " args))
-        js-name (symbol (str (if property? ".-" ".") name))
         js-namespace (symbol (str "js/" namespace))
-        wrapped-args (map (partial wrap-callback-with-logging static-config "callback:" api config) (zipmap args (map :callback-info params)))
-        operation (if property? "accessing:" "calling:")]
-    `(do
+        wrapped-args (wrap-callback-args-with-logging static-config api config args params)
+        operation (if property? "accessing:" "calling:")
+        real-args-sym (gensym "real-args")
+        ns-sym (gensym "ns")
+        thing-sym (gensym "thing")]
+    `(let [~real-args-sym (into-array (remove (fn [x#] (cljs.core/keyword-identical? x# :omit)) [~@wrapped-args]))    ; TODO: validate if omitted args were really optional
+           ~ns-sym ~js-namespace                                                                                      ; TODO: this needs to survive advanced mode compilation
+           ~thing-sym (chromex-lib.support/oget ~ns-sym ~name)]
        ~(apply log-if-verbose static-config config operation api args)
-       (~js-name ~js-namespace ~@wrapped-args))))
+       ~(if property?
+          thing-sym
+          `(.apply ~thing-sym ~ns-sym ~real-args-sym)))))
 
 ; -------------------------------------------------------------------------------------------------------------------
 
@@ -66,25 +77,29 @@
         "static-config: " static-config))
     (apply gen-marshalling args)))
 
-(defn marshall-callback-param [static-config api [sym type]]
-  (marshall static-config :from-chrome api type sym))
+(defn marshall-callback-param [static-config api [callback-param-sym type]]
+  (marshall static-config :from-chrome api type callback-param-sym))
 
-(defn marshall-callback [static-config api [sym callback-info]]
+(defn marshall-callback [static-config api [callback-sym callback-info]]
   (let [{:keys [params]} callback-info
         param-syms (map #(gensym (:name %)) params)
         param-types (map :type params)
         params (partition 2 (interleave param-syms param-types))
         marshalled-params (map (partial marshall-callback-param static-config api) params)]
     (if (empty? param-syms)
-      sym
+      callback-sym
       `(fn [~@param-syms]
-         (~sym ~@marshalled-params)))))
+         (~callback-sym ~@marshalled-params)))))
 
-(defn marshall-result [static-config api [sym type]]
-  (marshall static-config :from-chrome api type sym))
+(defn marshall-result [static-config api [result-sym type]]
+  (marshall static-config :from-chrome api type result-sym))
 
 (defn marshall-param [static-config api [sym type]]
-  (marshall static-config :to-chrome api type sym))
+  (let [temp-sym (gensym)]
+    `(let [~temp-sym ~sym]
+       (if (cljs.core/keyword-identical? ~temp-sym :omit)
+         :omit
+         ~(marshall static-config :to-chrome api type temp-sym)))))
 
 (defn marshall-function-param [static-config api [arg param]]
   (let [{:keys [name type]} param]

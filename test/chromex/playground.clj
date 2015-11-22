@@ -87,4 +87,4 @@
 
 ; -------------------------------------------------------------------------------------------------------------------
 
-;(print-code (macroexpand-1 '(gen-api :event ::on-something config chan)))
+;(print-code (macroexpand-1 '(gen-wrap :function ::do-something config paramX)))

@@ -47,14 +47,11 @@
 (aset js/window.chrome.playground "onSomething" on-something-mock)
 (aset js/window.chrome.playground "onSomethingDeprecated" on-something-deprecated-mock)
 
-(defn gs []
-  (get-something "p1"))
-
 (deftest test-get-something
   (testing "get something"
     (async done
       (go
-        (let [[result] (<! (gs))]
+        (let [[result] (<! (get-something "p1"))]
           (is (= result "<answer is p1!!!>"))
           (done))))))
 
@@ -79,7 +76,7 @@
               (is (= event :chromex.playground/on-something))
               (is (= item (str "~" n)))))
           (close! chan)
-          (<! (timeout 1000))
+          (<! (timeout 100))
           (done))))))
 
 (deftest test-tapping-all-events
@@ -93,5 +90,5 @@
               (is (= event :chromex.playground/on-something))
               (is (= item (str "~" n)))))
           (close! chan)
-          (<! (timeout 1000))
+          (<! (timeout 100))
           (done))))))
