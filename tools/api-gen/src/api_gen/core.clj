@@ -31,12 +31,17 @@
   (System/exit status))
 
 (defn print-stats [stats]
-  (let [{:keys [namespaces total-functions total-properties total-events]} stats]
+  (let [{:keys [namespaces total-functions total-properties total-events]} stats
+        namespaces-count (count namespaces)]
     (println)
     (println "STATS:")
     (print-table [:namespace :properties :functions :events] namespaces)
     (println "------------------------------------------------------")
-    (println "totals:" "properties:" total-properties "functions:" total-functions "events:" total-events)))
+    (println "RESULT:"
+      namespaces-count "namespaces containing"
+      total-properties "properties"
+      total-functions "functions" "and"
+      total-events "events.")))
 
 (defn run-job! [options]
   (let [{:keys [input outdir chromium-sha filter]} options
