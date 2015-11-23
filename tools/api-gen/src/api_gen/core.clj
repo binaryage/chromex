@@ -38,10 +38,10 @@
     (print-table [:namespace :properties :functions :events] namespaces)
     (println "------------------------------------------------------")
     (println "RESULT:"
-      namespaces-count "namespaces containing"
-      total-properties "properties"
-      total-functions "functions" "and"
-      total-events "events.")))
+      namespaces-count "|"
+      total-properties "|"
+      total-functions "|"
+      total-events "|")))
 
 (defn run-job! [options]
   (let [{:keys [input outdir chromium-sha filter]} options

@@ -84,12 +84,12 @@ cp -R "$API_SOURCE_DIR/"* "$SRC"
 
 popd
 
-STATS_HEADER1="| API family | stats |"
-STATS_HEADER2="| --- | --- |"
+STATS_HEADER1="| API family | namespaces | properties | functions | events |"
+STATS_HEADER2="| --- | --- | --- | --- | --- |"
 
-PUBLIC_APIS="${EXTS_RESULT/RESULT:/| [Public Chrome Extension APIs](src/exts) |} |"
-PRIVATE_APIS="${EXTS_PRIVATE_RESULT/RESULT:/| [Private Chrome Extension APIs](src/exts_private) |} |"
-INTERNAL_APIS="${EXTS_INTERNAL_RESULT/RESULT:/| [Internal Chrome Extension APIs](src/exts_internal) |} |"
+PUBLIC_APIS="${EXTS_RESULT/RESULT:/| [Public Chrome Extension APIs](src/exts) |}"
+PRIVATE_APIS="${EXTS_PRIVATE_RESULT/RESULT:/| [Private Chrome Extension APIs](src/exts_private) |}"
+INTERNAL_APIS="${EXTS_INTERNAL_RESULT/RESULT:/| [Internal Chrome Extension APIs](src/exts_internal) |}"
 
 STATS_TABLE="
 $STATS_HEADER1

@@ -4,13 +4,13 @@
 
 This library is auto-generated from [chromium sources](https://www.chromium.org/developers).
 
-Currently the Chromex provides following wrappers:
+Currently Chromex provides following wrappers:
 
-| API family | stats |
-| --- | --- |
-| [Public Chrome Extension APIs](src/exts) | 82 namespaces containing 44 properties 354 functions and 185 events. |
-| [Private Chrome Extension APIs](src/exts_private) | 45 namespaces containing 3 properties 315 functions and 67 events. |
-| [Internal Chrome Extension APIs](src/exts_internal) | 16 namespaces containing 0 properties 89 functions and 15 events. |
+| API family | namespaces | properties | functions | events |
+| --- | --- | --- | --- | --- |
+| [Public Chrome Extension APIs](src/exts) | 82 | 44 | 354 | 185 |
+| [Private Chrome Extension APIs](src/exts_private) | 45 | 3 | 315 | 67 |
+| [Internal Chrome Extension APIs](src/exts_internal) | 16 | 0 | 89 | 15 |
 
 Note: Chromex generator uses the same data source as the [developer.chrome.com/extensions/api_index](https://developer.chrome.com/extensions/api_index) web site.
 
