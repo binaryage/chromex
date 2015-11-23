@@ -372,7 +372,7 @@
         le "))"
         indent 4
         columns (- (- MAX-COLUMNS 20) indent)
-        text (string/join "\n" (map #(build-require % columns) api-tables))
+        text (string/join "\n\n" (map #(build-require % columns) api-tables))
         prefixed-text (prefix-text (indent-str indent) text)]
     (str l1 l2 l3 prefixed-text le)))
 
