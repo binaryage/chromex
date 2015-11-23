@@ -1,6 +1,6 @@
 (ns chromex-lib.callgen
   (:require [chromex-lib.support :refer [valid-api-version? emit-api-version-warning emit-deprecation-warning
-                                         get-wrap-symbol get-api-id get-item-by-id]]))
+                                         get-wrap-symbol get-api-id get-item-by-id get-src-info]]))
 
 ; -------------------------------------------------------------------------------------------------------------------
 
@@ -32,16 +32,18 @@
 (defn gen-event-call [static-config api-table item-id src-info config & args]
   (apply gen-call-from-group :events :event? "event" static-config api-table item-id src-info config args))
 
-(defn gen-call-from-table [static-config api-table kind item-id src-info config & args]
-  (case kind
-    :function (apply gen-function-call static-config api-table item-id src-info config args)
-    :property (apply gen-property-call static-config api-table item-id src-info config args)
-    :event (apply gen-event-call static-config api-table item-id src-info config args)))
+(defn gen-call-from-table [static-config api-table kind item-id form config & args]
+  (let [src-info (get-src-info form)]
+    (case kind
+      :function (apply gen-function-call static-config api-table item-id src-info config args)
+      :property (apply gen-property-call static-config api-table item-id src-info config args)
+      :event (apply gen-event-call static-config api-table item-id src-info config args))))
 
 ; -------------------------------------------------------------------------------------------------------------------
 
-(defn gen-tap-all-call [static-config api-table src-info config chan]
-  (let [chan-sym (gensym "chan")
+(defn gen-tap-all-call [static-config api-table form config chan]
+  (let [src-info (get-src-info form)
+        chan-sym (gensym "chan")
         config-sym (gensym "config")
         event-ids (map :id (:events api-table))
         static-config-no-warnings (assoc static-config :silence-compilation-warnings true)

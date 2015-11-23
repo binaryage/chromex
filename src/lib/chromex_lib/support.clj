@@ -22,6 +22,9 @@
 (defn get-api-id [api-table descriptor]
   (str (:namespace api-table) "." (:name descriptor)))
 
+(defn get-src-info [form]
+  (meta form))
+
 ; -- miscelaneous ---------------------------------------------------------------------------------------------------
 
 (defn get-source-location [src-info]

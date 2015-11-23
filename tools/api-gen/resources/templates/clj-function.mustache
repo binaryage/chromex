@@ -1,7 +1,7 @@
 {{^has-optionals}}
-(defmacro {{{fn-name}}}{{{fn-docstring}}}([{{{user-param-list}}}] (gen-call :function ::{{{fn-name}}} (meta &form) {{{param-list}}})))
+(defmacro {{{fn-name}}}{{{fn-docstring}}}([{{{user-param-list}}}] (gen-call :function ::{{{fn-name}}} &form {{{param-list}}})))
 {{/has-optionals}}
 {{#has-optionals}}
-(defmacro {{{fn-name}}}{{{fn-docstring}}}([{{{user-param-list}}}] (gen-call :function ::{{{fn-name}}} (meta &form) {{{param-list}}}))
+(defmacro {{{fn-name}}}{{{fn-docstring}}}([{{{user-param-list}}}] (gen-call :function ::{{{fn-name}}} &form {{{param-list}}}))
 {{{additional-arities}}})
 {{/has-optionals}}

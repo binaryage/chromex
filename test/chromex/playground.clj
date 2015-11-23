@@ -12,18 +12,18 @@
 ; -- properties -----------------------------------------------------------------------------------------------------
 
 (defmacro get-some-prop []
-  (gen-call :property ::some-prop (meta &form)))
+  (gen-call :property ::some-prop &form))
 
 ; -- functions ------------------------------------------------------------------------------------------------------
 
 (defmacro get-something [param1]
-  (gen-call :function ::get-something (meta &form) param1 #_callback))
+  (gen-call :function ::get-something &form param1 #_callback))
 
 (defmacro do-something [param1]
-  (gen-call :function ::do-something (meta &form) param1))
+  (gen-call :function ::do-something &form param1))
 
 (defmacro do-something-optional-args
-  ([opt-p1 opt-p2 opt-p3] (gen-call :function ::do-something-optional-args (meta &form) opt-p1 opt-p2 opt-p3))
+  ([opt-p1 opt-p2 opt-p3] (gen-call :function ::do-something-optional-args &form opt-p1 opt-p2 opt-p3))
   ([opt-p1 opt-p2] `(do-something-optional-args ~opt-p1 ~opt-p2 :omit))
   ([opt-p1] `(do-something-optional-args ~opt-p1 :omit :omit))
   ([] `(do-something-optional-args :omit :omit :omit)))
@@ -31,17 +31,17 @@
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-something-events [chan]
-  (gen-call :event ::on-something (meta &form) chan))
+  (gen-call :event ::on-something &form chan))
 
 (defmacro tap-on-something-deprecated-events [chan]
-  (gen-call :event ::on-something-deprecated (meta &form) chan))
+  (gen-call :event ::on-something-deprecated &form chan))
 
 ; -- helpers --------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
-    (gen-tap-all-call static-config api-table (meta &form) config chan)))
+    (gen-tap-all-call static-config api-table &form config chan)))
 
 ; -------------------------------------------------------------------------------------------------------------------
 ; -- API-TABLE ------------------------------------------------------------------------------------------------------
