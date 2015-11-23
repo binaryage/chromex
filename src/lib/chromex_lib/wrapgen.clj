@@ -58,16 +58,16 @@
         namespace-elements (string/split namespace #"\.")
         wrapped-args (wrap-callback-args-with-logging static-config api config args params)
         operation (if property? "accessing:" "calling:")
-        real-args-sym (gensym "real-args")
+        final-args-sym (gensym "final-args")
         ns-sym (gensym "ns")
-        thing-sym (gensym "thing")]
-    `(let [~real-args-sym (into-array (remove (fn [x#] (cljs.core/keyword-identical? x# :omit)) [~@wrapped-args]))            ; TODO: validate if omitted args were really optional
+        target-sym (gensym "target")]
+    `(let [~final-args-sym (into-array (remove #(cljs.core/keyword-identical? % :omit) [~@wrapped-args]))                     ; TODO: validate if omitted args were really optional
            ~ns-sym (chromex-lib.support/oget js/window ~@namespace-elements)
-           ~thing-sym (chromex-lib.support/oget ~ns-sym ~name)]
+           ~target-sym (chromex-lib.support/oget ~ns-sym ~name)]
        ~(apply log-if-verbose static-config config operation api args)
        ~(if property?
-          thing-sym
-          `(.apply ~thing-sym ~ns-sym ~real-args-sym)))))
+          target-sym
+          `(.apply ~target-sym ~ns-sym ~final-args-sym)))))
 
 ; ---------------------------------------------------------------------------------------------------------------------------
 
