@@ -218,7 +218,8 @@
 ; -------------------------------------------------------------------------------------------------------------------
 
 (defn number-of-trailing-optional-arguments-except-callbacks [params]
-  (count (take-while :optional? (reverse (remove #(= (:type %) :callback) params)))))
+  (let [is-callback? (fn [param] (= (:type param) :callback))]
+    (count (take-while :optional? (reverse (remove is-callback? params))))))
 
 (defn build-optional-arity [fn-name param-tokens param-count total-count]
   (let [params (take param-count param-tokens)
