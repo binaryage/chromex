@@ -38,8 +38,7 @@
 
 (defmacro tap-on-captured-events-events
   "Receives events of type which is currently being captured."
-  [channel]
-  (gen-call :event ::on-captured-events (meta &form) channel))
+  ([channel] (gen-call :event ::on-captured-events (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

@@ -18,15 +18,13 @@
 (defmacro tap-on-certificates-requested-events
   "This event fires every time the browser requests the current list of certificates provided by this extension. The
    extension must call reportCallback exactly once with the current list of certificates."
-  [channel]
-  (gen-call :event ::on-certificates-requested (meta &form) channel))
+  ([channel] (gen-call :event ::on-certificates-requested (meta &form) channel)))
 
 (defmacro tap-on-sign-digest-requested-events
   "This event fires every time the browser needs to sign a message using a certificate provided by this extension in
    reply to an 'onCertificatesRequested' event. The extension must sign the data in request using the appropriate
    algorithm and private key and return it by calling reportCallback. reportCallback must be called exactly once."
-  [channel]
-  (gen-call :event ::on-sign-digest-requested (meta &form) channel))
+  ([channel] (gen-call :event ::on-sign-digest-requested (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

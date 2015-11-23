@@ -34,13 +34,11 @@
 
 (defmacro tap-on-location-update-events
   "Fired when a location change is detected."
-  [channel]
-  (gen-call :event ::on-location-update (meta &form) channel))
+  ([channel] (gen-call :event ::on-location-update (meta &form) channel)))
 
 (defmacro tap-on-location-error-events
   "Fired when detecting location in not possible."
-  [channel]
-  (gen-call :event ::on-location-error (meta &form) channel))
+  ([channel] (gen-call :event ::on-location-error (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

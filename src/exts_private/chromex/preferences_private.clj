@@ -15,20 +15,17 @@
 (defmacro get-easy-unlock-proximity-required
   "If true, a remote Easy Unlock device can only unlock the local device if it is in very close proximity (roughly,
    within a foot). This preference's value is a boolean, defaulting to false."
-  []
-  (gen-call :property ::easy-unlock-proximity-required (meta &form)))
+  ([] (gen-call :property ::easy-unlock-proximity-required (meta &form))))
 
 (defmacro get-google-geolocation-access-enabled
   "If enabled, Google services can access the user's location. This preference's value is a boolean, defaulting to
    false."
-  []
-  (gen-call :property ::google-geolocation-access-enabled (meta &form)))
+  ([] (gen-call :property ::google-geolocation-access-enabled (meta &form))))
 
 (defmacro get-data-reduction-update-daily-lengths
   "Flag to indicate that dataReductionDailyContentLength and dataReductionDailyReceivedLength must be updated with
    their latest values. This preference's value is a boolean, defaulting to false."
-  []
-  (gen-call :property ::data-reduction-update-daily-lengths (meta &form)))
+  ([] (gen-call :property ::data-reduction-update-daily-lengths (meta &form))))
 
 ; -- functions ------------------------------------------------------------------------------------------------------
 

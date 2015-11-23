@@ -19,14 +19,12 @@
 (defmacro get-last-error
   "Set for the lifetime of a callback if an ansychronous extension api has resulted in an error. If no error has
    occured lastError will be undefined."
-  []
-  (gen-call :property ::last-error (meta &form)))
+  ([] (gen-call :property ::last-error (meta &form))))
 
 (defmacro get-in-incognito-context
   "True for content scripts running inside incognito tabs, and for extension pages running inside an incognito
    process. The latter only applies to extensions with 'split' incognito_behavior."
-  []
-  (gen-call :property ::in-incognito-context (meta &form)))
+  ([] (gen-call :property ::in-incognito-context (meta &form))))
 
 ; -- functions ------------------------------------------------------------------------------------------------------
 
@@ -79,13 +77,11 @@
 
 (defmacro tap-on-request-events
   "Fired when a request is sent from either an extension process or a content script."
-  [channel]
-  (gen-call :event ::on-request (meta &form) channel))
+  ([channel] (gen-call :event ::on-request (meta &form) channel)))
 
 (defmacro tap-on-request-external-events
   "Fired when a request is sent from another extension."
-  [channel]
-  (gen-call :event ::on-request-external (meta &form) channel))
+  ([channel] (gen-call :event ::on-request-external (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

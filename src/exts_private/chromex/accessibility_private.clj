@@ -29,8 +29,7 @@
 
 (defmacro tap-on-introduce-chrome-vox-events
   "Fired whenever ChromeVox should output introduction."
-  [channel]
-  (gen-call :event ::on-introduce-chrome-vox (meta &form) channel))
+  ([channel] (gen-call :event ::on-introduce-chrome-vox (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

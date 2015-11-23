@@ -95,23 +95,19 @@
 
 (defmacro tap-on-installed-events
   "Fired when an app or extension has been installed."
-  [channel]
-  (gen-call :event ::on-installed (meta &form) channel))
+  ([channel] (gen-call :event ::on-installed (meta &form) channel)))
 
 (defmacro tap-on-uninstalled-events
   "Fired when an app or extension has been uninstalled."
-  [channel]
-  (gen-call :event ::on-uninstalled (meta &form) channel))
+  ([channel] (gen-call :event ::on-uninstalled (meta &form) channel)))
 
 (defmacro tap-on-enabled-events
   "Fired when an app or extension has been enabled."
-  [channel]
-  (gen-call :event ::on-enabled (meta &form) channel))
+  ([channel] (gen-call :event ::on-enabled (meta &form) channel)))
 
 (defmacro tap-on-disabled-events
   "Fired when an app or extension has been disabled."
-  [channel]
-  (gen-call :event ::on-disabled (meta &form) channel))
+  ([channel] (gen-call :event ::on-disabled (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

@@ -42,8 +42,7 @@
    'setNetworkFilter'. Upon receiving this event the extension should start its authentication attempt with the
    captive portal. When the extension finishes its attempt, it must call 'finishAuthentication' with the GUID received
    with this event and the appropriate authentication result."
-  [channel]
-  (gen-call :event ::on-captive-portal-detected (meta &form) channel))
+  ([channel] (gen-call :event ::on-captive-portal-detected (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

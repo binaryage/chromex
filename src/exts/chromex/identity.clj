@@ -73,8 +73,7 @@
 
 (defmacro tap-on-sign-in-changed-events
   "Fired when signin state changes for an account on the user's profile."
-  [channel]
-  (gen-call :event ::on-sign-in-changed (meta &form) channel))
+  ([channel] (gen-call :event ::on-sign-in-changed (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

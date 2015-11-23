@@ -53,8 +53,7 @@
 (defmacro tap-on-status-changed-events
   "Event fired when the capture status of a tab changes. This allows extension authors to keep track of the capture
    status of tabs to keep UI elements like page actions in sync."
-  [channel]
-  (gen-call :event ::on-status-changed (meta &form) channel))
+  ([channel] (gen-call :event ::on-status-changed (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

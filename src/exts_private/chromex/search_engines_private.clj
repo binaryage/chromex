@@ -49,8 +49,7 @@
 (defmacro tap-on-search-engines-changed-events
   "Fires when the list of search engines changes or when the user selects a preferred default search engine. The new
    list of engines is passed along."
-  [channel]
-  (gen-call :event ::on-search-engines-changed (meta &form) channel))
+  ([channel] (gen-call :event ::on-search-engines-changed (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

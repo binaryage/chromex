@@ -18,25 +18,21 @@
 
 (defmacro tap-on-get-printers-requested-events
   "Event fired when print manager requests printers provided by extensions."
-  [channel]
-  (gen-call :event ::on-get-printers-requested (meta &form) channel))
+  ([channel] (gen-call :event ::on-get-printers-requested (meta &form) channel)))
 
 (defmacro tap-on-get-usb-printer-info-requested-events
   "Event fired when print manager requests information about a USB device that may be a printer. Note: An application
    should not rely on this event being fired more than once per device. If a connected device is supported it should
    be returned in the 'onGetPrintersRequested' event."
-  [channel]
-  (gen-call :event ::on-get-usb-printer-info-requested (meta &form) channel))
+  ([channel] (gen-call :event ::on-get-usb-printer-info-requested (meta &form) channel)))
 
 (defmacro tap-on-get-capability-requested-events
   "Event fired when print manager requests printer capabilities."
-  [channel]
-  (gen-call :event ::on-get-capability-requested (meta &form) channel))
+  ([channel] (gen-call :event ::on-get-capability-requested (meta &form) channel)))
 
 (defmacro tap-on-print-requested-events
   "Event fired when print manager requests printing."
-  [channel]
-  (gen-call :event ::on-print-requested (meta &form) channel))
+  ([channel] (gen-call :event ::on-print-requested (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

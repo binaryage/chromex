@@ -28,8 +28,7 @@
   "Fired when a resource is fetched which matches a mime type handled by this extension. The resource request is
    cancelled, and the extension is expected to handle the request. The event is restricted to a small number of
    white-listed extensions."
-  [channel]
-  (gen-call :event ::on-execute-mime-type-handler (meta &form) channel))
+  ([channel] (gen-call :event ::on-execute-mime-type-handler (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

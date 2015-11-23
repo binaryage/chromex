@@ -72,13 +72,11 @@
 
 (defmacro tap-on-text-input-box-focused-events
   "This event is sent when focus enters a text input box."
-  [channel]
-  (gen-call :event ::on-text-input-box-focused (meta &form) channel))
+  ([channel] (gen-call :event ::on-text-input-box-focused (meta &form) channel)))
 
 (defmacro tap-on-bounds-changed-events
   "This event is sent when virtual keyboard bounds changed and overscroll/resize is enabled."
-  [channel]
-  (gen-call :event ::on-bounds-changed (meta &form) channel))
+  ([channel] (gen-call :event ::on-bounds-changed (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

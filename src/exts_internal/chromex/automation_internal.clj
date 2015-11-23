@@ -48,14 +48,11 @@
 
 (defmacro tap-on-accessibility-event-events
   "Fired when an accessibility event occurs"
-  [channel]
-  (gen-call :event ::on-accessibility-event (meta &form) channel))
+  ([channel] (gen-call :event ::on-accessibility-event (meta &form) channel)))
 
-(defmacro tap-on-accessibility-tree-destroyed-events [channel]
-  (gen-call :event ::on-accessibility-tree-destroyed (meta &form) channel))
+(defmacro tap-on-accessibility-tree-destroyed-events ([channel] (gen-call :event ::on-accessibility-tree-destroyed (meta &form) channel)))
 
-(defmacro tap-on-tree-change-events [channel]
-  (gen-call :event ::on-tree-change (meta &form) channel))
+(defmacro tap-on-tree-change-events ([channel] (gen-call :event ::on-tree-change (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

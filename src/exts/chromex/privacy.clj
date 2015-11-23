@@ -17,19 +17,16 @@
 
 (defmacro get-network
   "Settings that influence Chrome's handling of network connections in general."
-  []
-  (gen-call :property ::network (meta &form)))
+  ([] (gen-call :property ::network (meta &form))))
 
 (defmacro get-services
   "Settings that enable or disable features that require third-party network services provided by Google and your
    default search provider."
-  []
-  (gen-call :property ::services (meta &form)))
+  ([] (gen-call :property ::services (meta &form))))
 
 (defmacro get-websites
   "Settings that determine what information Chrome makes available to websites."
-  []
-  (gen-call :property ::websites (meta &form)))
+  ([] (gen-call :property ::websites (meta &form))))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

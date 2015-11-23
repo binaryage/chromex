@@ -30,8 +30,7 @@
 
 (defmacro tap-on-message-added-events
   "Fired when a new message is added to the console."
-  [channel]
-  (gen-call :event ::on-message-added (meta &form) channel))
+  ([channel] (gen-call :event ::on-message-added (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

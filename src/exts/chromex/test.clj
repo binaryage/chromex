@@ -121,8 +121,7 @@
 
 (defmacro tap-on-message-events
   "Used to test sending messages to extensions."
-  [channel]
-  (gen-call :event ::on-message (meta &form) channel))
+  ([channel] (gen-call :event ::on-message (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

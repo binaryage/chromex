@@ -48,31 +48,23 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-closed-events [channel]
-  (gen-call :event ::on-closed (meta &form) channel))
+(defmacro tap-on-closed-events ([channel] (gen-call :event ::on-closed (meta &form) channel)))
 
-(defmacro tap-on-bounds-changed-events [channel]
-  (gen-call :event ::on-bounds-changed (meta &form) channel))
+(defmacro tap-on-bounds-changed-events ([channel] (gen-call :event ::on-bounds-changed (meta &form) channel)))
 
-(defmacro tap-on-fullscreened-events [channel]
-  (gen-call :event ::on-fullscreened (meta &form) channel))
+(defmacro tap-on-fullscreened-events ([channel] (gen-call :event ::on-fullscreened (meta &form) channel)))
 
-(defmacro tap-on-minimized-events [channel]
-  (gen-call :event ::on-minimized (meta &form) channel))
+(defmacro tap-on-minimized-events ([channel] (gen-call :event ::on-minimized (meta &form) channel)))
 
-(defmacro tap-on-maximized-events [channel]
-  (gen-call :event ::on-maximized (meta &form) channel))
+(defmacro tap-on-maximized-events ([channel] (gen-call :event ::on-maximized (meta &form) channel)))
 
-(defmacro tap-on-restored-events [channel]
-  (gen-call :event ::on-restored (meta &form) channel))
+(defmacro tap-on-restored-events ([channel] (gen-call :event ::on-restored (meta &form) channel)))
 
-(defmacro tap-on-alpha-enabled-changed-events [channel]
-  (gen-call :event ::on-alpha-enabled-changed (meta &form) channel))
+(defmacro tap-on-alpha-enabled-changed-events ([channel] (gen-call :event ::on-alpha-enabled-changed (meta &form) channel)))
 
 (defmacro tap-on-window-shown-for-tests-events
   "Only sent in tests."
-  [channel]
-  (gen-call :event ::on-window-shown-for-tests (meta &form) channel))
+  ([channel] (gen-call :event ::on-window-shown-for-tests (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

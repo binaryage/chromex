@@ -53,8 +53,7 @@
 
 (defmacro tap-on-clicked-events
   "Fired when a page action icon is clicked.  This event will not fire if the page action has a popup."
-  [channel]
-  (gen-call :event ::on-clicked (meta &form) channel))
+  ([channel] (gen-call :event ::on-clicked (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

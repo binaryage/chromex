@@ -28,8 +28,7 @@
 
 (defmacro tap-on-device-info-change-events
   "Fired if the DeviceInfo object of any of the signed in devices change or a new device is added or a device removed."
-  [channel]
-  (gen-call :event ::on-device-info-change (meta &form) channel))
+  ([channel] (gen-call :event ::on-device-info-change (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

@@ -170,13 +170,11 @@
 
 (defmacro tap-on-item-state-changed-events
   "Fired when a item state is changed."
-  [channel]
-  (gen-call :event ::on-item-state-changed (meta &form) channel))
+  ([channel] (gen-call :event ::on-item-state-changed (meta &form) channel)))
 
 (defmacro tap-on-profile-state-changed-events
   "Fired when the profile's state has changed."
-  [channel]
-  (gen-call :event ::on-profile-state-changed (meta &form) channel))
+  ([channel] (gen-call :event ::on-profile-state-changed (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

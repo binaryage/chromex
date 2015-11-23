@@ -25,13 +25,11 @@
 
 (defmacro tap-on-request-finished-events
   "Fired when a network request is finished and all request data are available."
-  [channel]
-  (gen-call :event ::on-request-finished (meta &form) channel))
+  ([channel] (gen-call :event ::on-request-finished (meta &form) channel)))
 
 (defmacro tap-on-navigated-events
   "Fired when the inspected window navigates to a new page."
-  [channel]
-  (gen-call :event ::on-navigated (meta &form) channel))
+  ([channel] (gen-call :event ::on-navigated (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

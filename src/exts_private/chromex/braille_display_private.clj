@@ -30,13 +30,11 @@
 
 (defmacro tap-on-display-state-changed-events
   "Fired when a braille display is connected or disconnected."
-  [channel]
-  (gen-call :event ::on-display-state-changed (meta &form) channel))
+  ([channel] (gen-call :event ::on-display-state-changed (meta &form) channel)))
 
 (defmacro tap-on-key-event-events
   "Fired when an input event is received from the display."
-  [channel]
-  (gen-call :event ::on-key-event (meta &form) channel))
+  ([channel] (gen-call :event ::on-key-event (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

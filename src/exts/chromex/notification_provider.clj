@@ -75,18 +75,15 @@
 
 (defmacro tap-on-created-events
   "A new notification is created."
-  [channel]
-  (gen-call :event ::on-created (meta &form) channel))
+  ([channel] (gen-call :event ::on-created (meta &form) channel)))
 
 (defmacro tap-on-updated-events
   "A notification is updated by the notifier."
-  [channel]
-  (gen-call :event ::on-updated (meta &form) channel))
+  ([channel] (gen-call :event ::on-updated (meta &form) channel)))
 
 (defmacro tap-on-cleared-events
   "A notification is cleared by the notifier."
-  [channel]
-  (gen-call :event ::on-cleared (meta &form) channel))
+  ([channel] (gen-call :event ::on-cleared (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

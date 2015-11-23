@@ -124,19 +124,16 @@
 
 (defmacro tap-on-created-events
   "This event fires with the 'DownloadItem' object when a download begins."
-  [channel]
-  (gen-call :event ::on-created (meta &form) channel))
+  ([channel] (gen-call :event ::on-created (meta &form) channel)))
 
 (defmacro tap-on-erased-events
   "Fires with the downloadId when a download is erased from history."
-  [channel]
-  (gen-call :event ::on-erased (meta &form) channel))
+  ([channel] (gen-call :event ::on-erased (meta &form) channel)))
 
 (defmacro tap-on-changed-events
   "When any of a 'DownloadItem''s properties except bytesReceived and estimatedEndTime changes, this event fires with
    the downloadId and an object containing the properties that changed."
-  [channel]
-  (gen-call :event ::on-changed (meta &form) channel))
+  ([channel] (gen-call :event ::on-changed (meta &form) channel)))
 
 (defmacro tap-on-determining-filename-events
   "During the filename determination process, extensions will be given the opportunity to override the target
@@ -150,8 +147,7 @@
    suggest wins. In order to avoid confusion regarding which extension will win, users should not install extensions
    that may conflict. If the download is initiated by 'download' and the target filename is known before the MIME type
    and tentative filename have been determined, pass filename to 'download' instead."
-  [channel]
-  (gen-call :event ::on-determining-filename (meta &form) channel))
+  ([channel] (gen-call :event ::on-determining-filename (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

@@ -25,8 +25,7 @@
 
 (defmacro tap-on-command-events
   "Fired when a registered command is activated using a keyboard shortcut."
-  [channel]
-  (gen-call :event ::on-command (meta &form) channel))
+  ([channel] (gen-call :event ::on-command (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

@@ -53,23 +53,19 @@
 (defmacro tap-on-sinks-updated-events
   "Event fired when the available sinks are modified (either their amount or properties) |sinks| the list of all
    currently available sinks"
-  [channel]
-  (gen-call :event ::on-sinks-updated (meta &form) channel))
+  ([channel] (gen-call :event ::on-sinks-updated (meta &form) channel)))
 
 (defmacro tap-on-session-started-events
   "Event fired when the Display session is started. |sinkId| Id of the peer sink"
-  [channel]
-  (gen-call :event ::on-session-started (meta &form) channel))
+  ([channel] (gen-call :event ::on-session-started (meta &form) channel)))
 
 (defmacro tap-on-session-terminated-events
   "Event fired when the Display session is terminated. |sinkId| Id of the peer sink"
-  [channel]
-  (gen-call :event ::on-session-terminated (meta &form) channel))
+  ([channel] (gen-call :event ::on-session-terminated (meta &form) channel)))
 
 (defmacro tap-on-session-error-occured-events
   "Event fired when an error occurs. |sinkId| Id of the peer sink |errorInfo| error description"
-  [channel]
-  (gen-call :event ::on-session-error-occured (meta &form) channel))
+  ([channel] (gen-call :event ::on-session-error-occured (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

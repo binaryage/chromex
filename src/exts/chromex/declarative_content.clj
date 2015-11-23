@@ -15,8 +15,7 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-page-changed-events [channel]
-  (gen-call :event ::on-page-changed (meta &form) channel))
+(defmacro tap-on-page-changed-events ([channel] (gen-call :event ::on-page-changed (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

@@ -27,13 +27,11 @@
 
 (defmacro tap-on-messages-received-events
   "Fired when new messages arrive."
-  [channel]
-  (gen-call :event ::on-messages-received (meta &form) channel))
+  ([channel] (gen-call :event ::on-messages-received (meta &form) channel)))
 
 (defmacro tap-on-status-updated-events
   "Fired when a new copresence status update is available."
-  [channel]
-  (gen-call :event ::on-status-updated (meta &form) channel))
+  ([channel] (gen-call :event ::on-status-updated (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

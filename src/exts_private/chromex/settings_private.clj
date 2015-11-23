@@ -44,8 +44,7 @@
 
 (defmacro tap-on-prefs-changed-events
   "Fired when a set of prefs has changed.|prefs| The prefs that changed."
-  [channel]
-  (gen-call :event ::on-prefs-changed (meta &form) channel))
+  ([channel] (gen-call :event ::on-prefs-changed (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

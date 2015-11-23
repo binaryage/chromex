@@ -17,14 +17,12 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-request-events [channel]
-  (gen-call :event ::on-request (meta &form) channel))
+(defmacro tap-on-request-events ([channel] (gen-call :event ::on-request (meta &form) channel)))
 
 (defmacro tap-on-message-events
   "Fired when a message is sent via 'declarativeWebRequest.SendMessageToExtension' from an action of the declarative
    web request API."
-  [channel]
-  (gen-call :event ::on-message (meta &form) channel))
+  ([channel] (gen-call :event ::on-message (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

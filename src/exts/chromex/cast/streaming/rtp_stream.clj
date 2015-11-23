@@ -71,18 +71,15 @@
 
 (defmacro tap-on-started-events
   "Event fired when a Cast RTP stream has started."
-  [channel]
-  (gen-call :event ::on-started (meta &form) channel))
+  ([channel] (gen-call :event ::on-started (meta &form) channel)))
 
 (defmacro tap-on-stopped-events
   "Event fired when a Cast RTP stream has stopped."
-  [channel]
-  (gen-call :event ::on-stopped (meta &form) channel))
+  ([channel] (gen-call :event ::on-stopped (meta &form) channel)))
 
 (defmacro tap-on-error-events
   "Event fired when a Cast RTP stream has error."
-  [channel]
-  (gen-call :event ::on-error (meta &form) channel))
+  ([channel] (gen-call :event ::on-error (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

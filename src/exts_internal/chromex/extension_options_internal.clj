@@ -14,14 +14,11 @@
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-close-events [channel]
-  (gen-call :event ::on-close (meta &form) channel))
+(defmacro tap-on-close-events ([channel] (gen-call :event ::on-close (meta &form) channel)))
 
-(defmacro tap-on-load-events [channel]
-  (gen-call :event ::on-load (meta &form) channel))
+(defmacro tap-on-load-events ([channel] (gen-call :event ::on-load (meta &form) channel)))
 
-(defmacro tap-on-preferred-size-changed-events [channel]
-  (gen-call :event ::on-preferred-size-changed (meta &form) channel))
+(defmacro tap-on-preferred-size-changed-events ([channel] (gen-call :event ::on-preferred-size-changed (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

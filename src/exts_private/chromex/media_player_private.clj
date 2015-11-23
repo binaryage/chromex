@@ -14,18 +14,15 @@
 
 (defmacro tap-on-next-track-events
   "Notifies that the next track was requested."
-  [channel]
-  (gen-call :event ::on-next-track (meta &form) channel))
+  ([channel] (gen-call :event ::on-next-track (meta &form) channel)))
 
 (defmacro tap-on-prev-track-events
   "Notifies that the previous tack was requested."
-  [channel]
-  (gen-call :event ::on-prev-track (meta &form) channel))
+  ([channel] (gen-call :event ::on-prev-track (meta &form) channel)))
 
 (defmacro tap-on-toggle-play-state-events
   "Notifies that a play/pause toggle was requested."
-  [channel]
-  (gen-call :event ::on-toggle-play-state (meta &form) channel))
+  ([channel] (gen-call :event ::on-toggle-play-state (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

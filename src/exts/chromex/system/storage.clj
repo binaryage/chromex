@@ -34,13 +34,11 @@
 
 (defmacro tap-on-attached-events
   "Fired when a new removable storage is attached to the system."
-  [channel]
-  (gen-call :event ::on-attached (meta &form) channel))
+  ([channel] (gen-call :event ::on-attached (meta &form) channel)))
 
 (defmacro tap-on-detached-events
   "Fired when a removable storage is detached from the system."
-  [channel]
-  (gen-call :event ::on-detached (meta &form) channel))
+  ([channel] (gen-call :event ::on-detached (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

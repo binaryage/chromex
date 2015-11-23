@@ -17,13 +17,11 @@
 
 (defmacro get-elements
   "Elements panel."
-  []
-  (gen-call :property ::elements (meta &form)))
+  ([] (gen-call :property ::elements (meta &form))))
 
 (defmacro get-sources
   "Sources panel."
-  []
-  (gen-call :property ::sources (meta &form)))
+  ([] (gen-call :property ::sources (meta &form))))
 
 ; -- functions ------------------------------------------------------------------------------------------------------
 

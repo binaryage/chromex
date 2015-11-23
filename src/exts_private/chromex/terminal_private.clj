@@ -49,8 +49,7 @@
 
 (defmacro tap-on-process-output-events
   "Fired when an opened process writes something to its output."
-  [channel]
-  (gen-call :event ::on-process-output (meta &form) channel))
+  ([channel] (gen-call :event ::on-process-output (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

@@ -37,13 +37,11 @@
 
 (defmacro tap-on-added-events
   "Fired when the extension acquires new permissions."
-  [channel]
-  (gen-call :event ::on-added (meta &form) channel))
+  ([channel] (gen-call :event ::on-added (meta &form) channel)))
 
 (defmacro tap-on-removed-events
   "Fired when access to permissions has been removed from the extension."
-  [channel]
-  (gen-call :event ::on-removed (meta &form) channel))
+  ([channel] (gen-call :event ::on-removed (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

@@ -141,23 +141,19 @@
 
 (defmacro tap-on-drag-enter-events
   "Fired when dragging bookmarks over the document."
-  [channel]
-  (gen-call :event ::on-drag-enter (meta &form) channel))
+  ([channel] (gen-call :event ::on-drag-enter (meta &form) channel)))
 
 (defmacro tap-on-drag-leave-events
   "Fired when the drag and drop leaves the document."
-  [channel]
-  (gen-call :event ::on-drag-leave (meta &form) channel))
+  ([channel] (gen-call :event ::on-drag-leave (meta &form) channel)))
 
 (defmacro tap-on-drop-events
   "Fired when the user drops bookmarks on the document."
-  [channel]
-  (gen-call :event ::on-drop (meta &form) channel))
+  ([channel] (gen-call :event ::on-drop (meta &form) channel)))
 
 (defmacro tap-on-meta-info-changed-events
   "Fired when the meta info of a node changes."
-  [channel]
-  (gen-call :event ::on-meta-info-changed (meta &form) channel))
+  ([channel] (gen-call :event ::on-meta-info-changed (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

@@ -39,8 +39,7 @@
 
 (defmacro tap-on-extension-activity-events
   "Fired when a given extension performs another activity."
-  [channel]
-  (gen-call :event ::on-extension-activity (meta &form) channel))
+  ([channel] (gen-call :event ::on-extension-activity (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

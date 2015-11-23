@@ -17,8 +17,7 @@
 
 (defmacro get-max-message-size
   "The maximum size (in bytes) of all key/value pairs in a message."
-  []
-  (gen-call :property ::max-message-size (meta &form)))
+  ([] (gen-call :property ::max-message-size (meta &form))))
 
 ; -- functions ------------------------------------------------------------------------------------------------------
 
@@ -51,19 +50,16 @@
 
 (defmacro tap-on-message-events
   "Fired when a message is received through GCM."
-  [channel]
-  (gen-call :event ::on-message (meta &form) channel))
+  ([channel] (gen-call :event ::on-message (meta &form) channel)))
 
 (defmacro tap-on-messages-deleted-events
   "Fired when a GCM server had to delete messages sent by an app server to the application. See Messages deleted event
    section of Cloud Messaging documentation for details on handling this event."
-  [channel]
-  (gen-call :event ::on-messages-deleted (meta &form) channel))
+  ([channel] (gen-call :event ::on-messages-deleted (meta &form) channel)))
 
 (defmacro tap-on-send-error-events
   "Fired when it was not possible to send a message to the GCM server."
-  [channel]
-  (gen-call :event ::on-send-error (meta &form) channel))
+  ([channel] (gen-call :event ::on-send-error (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

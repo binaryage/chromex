@@ -17,8 +17,7 @@
 
 (defmacro get-tab-id-none
   "An ID which represents the absence of a browser tab."
-  []
-  (gen-call :property ::tab-id-none (meta &form)))
+  ([] (gen-call :property ::tab-id-none (meta &form))))
 
 ; -- functions ------------------------------------------------------------------------------------------------------
 
@@ -186,72 +185,59 @@
 (defmacro tap-on-created-events
   "Fired when a tab is created. Note that the tab's URL may not be set at the time this event fired, but you can
    listen to onUpdated events to be notified when a URL is set."
-  [channel]
-  (gen-call :event ::on-created (meta &form) channel))
+  ([channel] (gen-call :event ::on-created (meta &form) channel)))
 
 (defmacro tap-on-updated-events
   "Fired when a tab is updated."
-  [channel]
-  (gen-call :event ::on-updated (meta &form) channel))
+  ([channel] (gen-call :event ::on-updated (meta &form) channel)))
 
 (defmacro tap-on-moved-events
   "Fired when a tab is moved within a window. Only one move event is fired, representing the tab the user directly
    moved. Move events are not fired for the other tabs that must move in response. This event is not fired when a tab
    is moved between windows. For that, see 'tabs.onDetached'."
-  [channel]
-  (gen-call :event ::on-moved (meta &form) channel))
+  ([channel] (gen-call :event ::on-moved (meta &form) channel)))
 
 (defmacro tap-on-selection-changed-events
   "Fires when the selected tab in a window changes."
-  [channel]
-  (gen-call :event ::on-selection-changed (meta &form) channel))
+  ([channel] (gen-call :event ::on-selection-changed (meta &form) channel)))
 
 (defmacro tap-on-active-changed-events
   "Fires when the selected tab in a window changes. Note that the tab's URL may not be set at the time this event
    fired, but you can listen to 'tabs.onUpdated' events to be notified when a URL is set."
-  [channel]
-  (gen-call :event ::on-active-changed (meta &form) channel))
+  ([channel] (gen-call :event ::on-active-changed (meta &form) channel)))
 
 (defmacro tap-on-activated-events
   "Fires when the active tab in a window changes. Note that the tab's URL may not be set at the time this event fired,
    but you can listen to onUpdated events to be notified when a URL is set."
-  [channel]
-  (gen-call :event ::on-activated (meta &form) channel))
+  ([channel] (gen-call :event ::on-activated (meta &form) channel)))
 
 (defmacro tap-on-highlight-changed-events
   "Fired when the highlighted or selected tabs in a window changes."
-  [channel]
-  (gen-call :event ::on-highlight-changed (meta &form) channel))
+  ([channel] (gen-call :event ::on-highlight-changed (meta &form) channel)))
 
 (defmacro tap-on-highlighted-events
   "Fired when the highlighted or selected tabs in a window changes."
-  [channel]
-  (gen-call :event ::on-highlighted (meta &form) channel))
+  ([channel] (gen-call :event ::on-highlighted (meta &form) channel)))
 
 (defmacro tap-on-detached-events
   "Fired when a tab is detached from a window, for example because it is being moved between windows."
-  [channel]
-  (gen-call :event ::on-detached (meta &form) channel))
+  ([channel] (gen-call :event ::on-detached (meta &form) channel)))
 
 (defmacro tap-on-attached-events
   "Fired when a tab is attached to a window, for example because it was moved between windows."
-  [channel]
-  (gen-call :event ::on-attached (meta &form) channel))
+  ([channel] (gen-call :event ::on-attached (meta &form) channel)))
 
 (defmacro tap-on-removed-events
   "Fired when a tab is closed."
-  [channel]
-  (gen-call :event ::on-removed (meta &form) channel))
+  ([channel] (gen-call :event ::on-removed (meta &form) channel)))
 
 (defmacro tap-on-replaced-events
   "Fired when a tab is replaced with another tab due to prerendering or instant."
-  [channel]
-  (gen-call :event ::on-replaced (meta &form) channel))
+  ([channel] (gen-call :event ::on-replaced (meta &form) channel)))
 
 (defmacro tap-on-zoom-change-events
   "Fired when a tab is zoomed."
-  [channel]
-  (gen-call :event ::on-zoom-change (meta &form) channel))
+  ([channel] (gen-call :event ::on-zoom-change (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

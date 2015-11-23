@@ -57,8 +57,7 @@
 
 (defmacro tap-on-alarm-events
   "Fired when an alarm has elapsed. Useful for event pages."
-  [channel]
-  (gen-call :event ::on-alarm (meta &form) channel))
+  ([channel] (gen-call :event ::on-alarm (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

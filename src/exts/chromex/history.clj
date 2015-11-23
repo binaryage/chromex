@@ -45,14 +45,12 @@
 (defmacro tap-on-visited-events
   "Fired when a URL is visited, providing the HistoryItem data for that URL.  This event fires before the page has
    loaded."
-  [channel]
-  (gen-call :event ::on-visited (meta &form) channel))
+  ([channel] (gen-call :event ::on-visited (meta &form) channel)))
 
 (defmacro tap-on-visit-removed-events
   "Fired when one or more URLs are removed from the history service.  When all visits have been removed the URL is
    purged from history."
-  [channel]
-  (gen-call :event ::on-visit-removed (meta &form) channel))
+  ([channel] (gen-call :event ::on-visit-removed (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

@@ -56,14 +56,12 @@
 
 (defmacro tap-on-event-events
   "Fired whenever debugging target issues instrumentation event."
-  [channel]
-  (gen-call :event ::on-event (meta &form) channel))
+  ([channel] (gen-call :event ::on-event (meta &form) channel)))
 
 (defmacro tap-on-detach-events
   "Fired when browser terminates debugging session for the tab. This happens when either the tab is being closed or
    Chrome DevTools is being invoked for the attached tab."
-  [channel]
-  (gen-call :event ::on-detach (meta &form) channel))
+  ([channel] (gen-call :event ::on-detach (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

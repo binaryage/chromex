@@ -18,8 +18,7 @@
 (defmacro get-action-menu-top-level-limit
   "The maximum number of top level extension items that can be added to an extension action context menu. Any items
    beyond this limit will be ignored."
-  []
-  (gen-call :property ::action-menu-top-level-limit (meta &form)))
+  ([] (gen-call :property ::action-menu-top-level-limit (meta &form))))
 
 ; -- functions ------------------------------------------------------------------------------------------------------
 
@@ -56,8 +55,7 @@
 
 (defmacro tap-on-clicked-events
   "Fired when a context menu item is clicked."
-  [channel]
-  (gen-call :event ::on-clicked (meta &form) channel))
+  ([channel] (gen-call :event ::on-clicked (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

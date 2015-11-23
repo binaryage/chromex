@@ -56,8 +56,7 @@
 
 (defmacro tap-on-token-refresh-events
   "Fired when all the granted tokens need to be refreshed."
-  [channel]
-  (gen-call :event ::on-token-refresh (meta &form) channel))
+  ([channel] (gen-call :event ::on-token-refresh (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

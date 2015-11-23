@@ -16,8 +16,7 @@
 
 (defmacro get-max-session-results
   "The maximum number of 'sessions.Session' that will be included in a requested list."
-  []
-  (gen-call :property ::max-session-results (meta &form)))
+  ([] (gen-call :property ::max-session-results (meta &form))))
 
 ; -- functions ------------------------------------------------------------------------------------------------------
 
@@ -43,8 +42,7 @@
 
 (defmacro tap-on-changed-events
   "Fired when recently closed tabs and/or windows are changed. This event does not monitor synced sessions changes."
-  [channel]
-  (gen-call :event ::on-changed (meta &form) channel))
+  ([channel] (gen-call :event ::on-changed (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

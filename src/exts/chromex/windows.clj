@@ -17,13 +17,11 @@
 
 (defmacro get-window-id-none
   "The windowId value that represents the absence of a chrome browser window."
-  []
-  (gen-call :property ::window-id-none (meta &form)))
+  ([] (gen-call :property ::window-id-none (meta &form))))
 
 (defmacro get-window-id-current
   "The windowId value that represents the current window."
-  []
-  (gen-call :property ::window-id-current (meta &form)))
+  ([] (gen-call :property ::window-id-current (meta &form))))
 
 ; -- functions ------------------------------------------------------------------------------------------------------
 
@@ -65,20 +63,17 @@
 
 (defmacro tap-on-created-events
   "Fired when a window is created."
-  [channel]
-  (gen-call :event ::on-created (meta &form) channel))
+  ([channel] (gen-call :event ::on-created (meta &form) channel)))
 
 (defmacro tap-on-removed-events
   "Fired when a window is removed (closed)."
-  [channel]
-  (gen-call :event ::on-removed (meta &form) channel))
+  ([channel] (gen-call :event ::on-removed (meta &form) channel)))
 
 (defmacro tap-on-focus-changed-events
   "Fired when the currently focused window changes. Will be chrome.windows.WINDOW_ID_NONE if all chrome windows have
    lost focus. Note: On some Linux window managers, WINDOW_ID_NONE will always be sent immediately preceding a switch
    from one chrome window to another."
-  [channel]
-  (gen-call :event ::on-focus-changed (meta &form) channel))
+  ([channel] (gen-call :event ::on-focus-changed (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

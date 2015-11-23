@@ -27,23 +27,19 @@
 (defmacro tap-on-input-started-events
   "User has started a keyword input session by typing the extension's keyword. This is guaranteed to be sent exactly
    once per input session, and before any onInputChanged events."
-  [channel]
-  (gen-call :event ::on-input-started (meta &form) channel))
+  ([channel] (gen-call :event ::on-input-started (meta &form) channel)))
 
 (defmacro tap-on-input-changed-events
   "User has changed what is typed into the omnibox."
-  [channel]
-  (gen-call :event ::on-input-changed (meta &form) channel))
+  ([channel] (gen-call :event ::on-input-changed (meta &form) channel)))
 
 (defmacro tap-on-input-entered-events
   "User has accepted what is typed into the omnibox."
-  [channel]
-  (gen-call :event ::on-input-entered (meta &form) channel))
+  ([channel] (gen-call :event ::on-input-entered (meta &form) channel)))
 
 (defmacro tap-on-input-cancelled-events
   "User has ended the keyword input session without accepting the input."
-  [channel]
-  (gen-call :event ::on-input-cancelled (meta &form) channel))
+  ([channel] (gen-call :event ::on-input-cancelled (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

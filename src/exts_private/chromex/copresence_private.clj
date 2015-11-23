@@ -31,18 +31,15 @@
 
 (defmacro tap-on-config-audio-events
   "Fired to request audio configuration of the whisper.net library."
-  [channel]
-  (gen-call :event ::on-config-audio (meta &form) channel))
+  ([channel] (gen-call :event ::on-config-audio (meta &form) channel)))
 
 (defmacro tap-on-encode-token-request-events
   "Fired to request encoding of the given token."
-  [channel]
-  (gen-call :event ::on-encode-token-request (meta &form) channel))
+  ([channel] (gen-call :event ::on-encode-token-request (meta &form) channel)))
 
 (defmacro tap-on-decode-samples-request-events
   "Fired when we have new samples to decode."
-  [channel]
-  (gen-call :event ::on-decode-samples-request (meta &form) channel))
+  ([channel] (gen-call :event ::on-decode-samples-request (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

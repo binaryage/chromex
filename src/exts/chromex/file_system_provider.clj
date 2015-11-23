@@ -68,124 +68,104 @@
   "Raised when unmounting for the file system with the fileSystemId identifier is requested. In the response, the
    'unmount' API method must be called together with successCallback. If unmounting is not possible (eg. due to a
    pending operation), then errorCallback must be called."
-  [channel]
-  (gen-call :event ::on-unmount-requested (meta &form) channel))
+  ([channel] (gen-call :event ::on-unmount-requested (meta &form) channel)))
 
 (defmacro tap-on-get-metadata-requested-events
   "Raised when metadata of a file or a directory at entryPath is requested. The metadata must be returned with the
    successCallback call. In case of an error, errorCallback must be called."
-  [channel]
-  (gen-call :event ::on-get-metadata-requested (meta &form) channel))
+  ([channel] (gen-call :event ::on-get-metadata-requested (meta &form) channel)))
 
 (defmacro tap-on-get-actions-requested-events
   "Raised when a list of actions for a set of files or directories at entryPaths is requested. All of the returned
    actions must be applicable to each entry. If there are no such actions, an empty array should be returned. The
    actions must be returned with the successCallback call. In case of an error, errorCallback must be called."
-  [channel]
-  (gen-call :event ::on-get-actions-requested (meta &form) channel))
+  ([channel] (gen-call :event ::on-get-actions-requested (meta &form) channel)))
 
 (defmacro tap-on-read-directory-requested-events
   "Raised when contents of a directory at directoryPath are requested. The results must be returned in chunks by
    calling the successCallback several times. In case of an error, errorCallback must be called."
-  [channel]
-  (gen-call :event ::on-read-directory-requested (meta &form) channel))
+  ([channel] (gen-call :event ::on-read-directory-requested (meta &form) channel)))
 
 (defmacro tap-on-open-file-requested-events
   "Raised when opening a file at filePath is requested. If the file does not exist, then the operation must fail.
    Maximum number of files opened at once can be specified with MountOptions."
-  [channel]
-  (gen-call :event ::on-open-file-requested (meta &form) channel))
+  ([channel] (gen-call :event ::on-open-file-requested (meta &form) channel)))
 
 (defmacro tap-on-close-file-requested-events
   "Raised when opening a file previously opened with openRequestId is requested to be closed."
-  [channel]
-  (gen-call :event ::on-close-file-requested (meta &form) channel))
+  ([channel] (gen-call :event ::on-close-file-requested (meta &form) channel)))
 
 (defmacro tap-on-read-file-requested-events
   "Raised when reading contents of a file opened previously with openRequestId is requested. The results must be
    returned in chunks by calling successCallback several times. In case of an error, errorCallback must be called."
-  [channel]
-  (gen-call :event ::on-read-file-requested (meta &form) channel))
+  ([channel] (gen-call :event ::on-read-file-requested (meta &form) channel)))
 
 (defmacro tap-on-create-directory-requested-events
   "Raised when creating a directory is requested. The operation must fail with the EXISTS error if the target
    directory already exists. If recursive is true, then all of the missing directories on the directory path must be
    created."
-  [channel]
-  (gen-call :event ::on-create-directory-requested (meta &form) channel))
+  ([channel] (gen-call :event ::on-create-directory-requested (meta &form) channel)))
 
 (defmacro tap-on-delete-entry-requested-events
   "Raised when deleting an entry is requested. If recursive is true, and the entry is a directory, then all of the
    entries inside must be recursively deleted as well."
-  [channel]
-  (gen-call :event ::on-delete-entry-requested (meta &form) channel))
+  ([channel] (gen-call :event ::on-delete-entry-requested (meta &form) channel)))
 
 (defmacro tap-on-create-file-requested-events
   "Raised when creating a file is requested. If the file already exists, then errorCallback must be called with the
    'EXISTS' error code."
-  [channel]
-  (gen-call :event ::on-create-file-requested (meta &form) channel))
+  ([channel] (gen-call :event ::on-create-file-requested (meta &form) channel)))
 
 (defmacro tap-on-copy-entry-requested-events
   "Raised when copying an entry (recursively if a directory) is requested. If an error occurs, then errorCallback must
    be called."
-  [channel]
-  (gen-call :event ::on-copy-entry-requested (meta &form) channel))
+  ([channel] (gen-call :event ::on-copy-entry-requested (meta &form) channel)))
 
 (defmacro tap-on-move-entry-requested-events
   "Raised when moving an entry (recursively if a directory) is requested. If an error occurs, then errorCallback must
    be called."
-  [channel]
-  (gen-call :event ::on-move-entry-requested (meta &form) channel))
+  ([channel] (gen-call :event ::on-move-entry-requested (meta &form) channel)))
 
 (defmacro tap-on-truncate-requested-events
   "Raised when truncating a file to a desired length is requested. If an error occurs, then errorCallback must be
    called."
-  [channel]
-  (gen-call :event ::on-truncate-requested (meta &form) channel))
+  ([channel] (gen-call :event ::on-truncate-requested (meta &form) channel)))
 
 (defmacro tap-on-write-file-requested-events
   "Raised when writing contents to a file opened previously with openRequestId is requested."
-  [channel]
-  (gen-call :event ::on-write-file-requested (meta &form) channel))
+  ([channel] (gen-call :event ::on-write-file-requested (meta &form) channel)))
 
 (defmacro tap-on-abort-requested-events
   "Raised when aborting an operation with operationRequestId is requested. The operation executed with
    operationRequestId must be immediately stopped and successCallback of this abort request executed. If aborting
    fails, then errorCallback must be called. Note, that callbacks of the aborted operation must not be called, as they
    will be ignored. Despite calling errorCallback, the request may be forcibly aborted."
-  [channel]
-  (gen-call :event ::on-abort-requested (meta &form) channel))
+  ([channel] (gen-call :event ::on-abort-requested (meta &form) channel)))
 
 (defmacro tap-on-configure-requested-events
   "Raised when showing a configuration dialog for fileSystemId is requested. If it's handled, the
    file_system_provider.configurable manfiest option must be set to true."
-  [channel]
-  (gen-call :event ::on-configure-requested (meta &form) channel))
+  ([channel] (gen-call :event ::on-configure-requested (meta &form) channel)))
 
 (defmacro tap-on-mount-requested-events
   "Raised when showing a dialog for mounting a new file system is requested. If the extension/app is a file handler,
    then this event shouldn't be handled. Instead app.runtime.onLaunched should be handled in order to mount new file
    systems when a file is opened. For multiple mounts, the file_system_provider.multiple_mounts manifest option must
    be set to true."
-  [channel]
-  (gen-call :event ::on-mount-requested (meta &form) channel))
+  ([channel] (gen-call :event ::on-mount-requested (meta &form) channel)))
 
 (defmacro tap-on-add-watcher-requested-events
   "Raised when setting a new directory watcher is requested. If an error occurs, then errorCallback must be called."
-  [channel]
-  (gen-call :event ::on-add-watcher-requested (meta &form) channel))
+  ([channel] (gen-call :event ::on-add-watcher-requested (meta &form) channel)))
 
 (defmacro tap-on-remove-watcher-requested-events
   "Raised when the watcher should be removed. If an error occurs, then errorCallback must be called."
-  [channel]
-  (gen-call :event ::on-remove-watcher-requested (meta &form) channel))
+  ([channel] (gen-call :event ::on-remove-watcher-requested (meta &form) channel)))
 
 (defmacro tap-on-execute-action-requested-events
   "Raised when executing an action for a set of files or directories is\\ requested. After the action is completed,
    successCallback must be called. On error, errorCallback must be called."
-  [channel]
-  (gen-call :event ::on-execute-action-requested (meta &form) channel))
+  ([channel] (gen-call :event ::on-execute-action-requested (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

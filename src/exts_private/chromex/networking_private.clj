@@ -239,24 +239,20 @@
 (defmacro tap-on-networks-changed-events
   "Fired when the properties change on any of the networks.  Sends a list of GUIDs for networks whose properties have
    changed."
-  [channel]
-  (gen-call :event ::on-networks-changed (meta &form) channel))
+  ([channel] (gen-call :event ::on-networks-changed (meta &form) channel)))
 
 (defmacro tap-on-network-list-changed-events
   "Fired when the list of networks has changed.  Sends a complete list of GUIDs for all the current networks."
-  [channel]
-  (gen-call :event ::on-network-list-changed (meta &form) channel))
+  ([channel] (gen-call :event ::on-network-list-changed (meta &form) channel)))
 
 (defmacro tap-on-device-state-list-changed-events
   "Fired when the list of devices has changed or any device state properties have changed."
-  [channel]
-  (gen-call :event ::on-device-state-list-changed (meta &form) channel))
+  ([channel] (gen-call :event ::on-device-state-list-changed (meta &form) channel)))
 
 (defmacro tap-on-portal-detection-completed-events
   "Fired when a portal detection for a network completes. Sends the guid of the network and the corresponding captive
    portal status."
-  [channel]
-  (gen-call :event ::on-portal-detection-completed (meta &form) channel))
+  ([channel] (gen-call :event ::on-portal-detection-completed (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

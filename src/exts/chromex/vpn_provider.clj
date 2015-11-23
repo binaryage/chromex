@@ -57,29 +57,24 @@
 
 (defmacro tap-on-platform-message-events
   "Triggered when a message is received from the platform for a VPN configuration owned by the extension."
-  [channel]
-  (gen-call :event ::on-platform-message (meta &form) channel))
+  ([channel] (gen-call :event ::on-platform-message (meta &form) channel)))
 
 (defmacro tap-on-packet-received-events
   "Triggered when an IP packet is received via the tunnel for the VPN session owned by the extension."
-  [channel]
-  (gen-call :event ::on-packet-received (meta &form) channel))
+  ([channel] (gen-call :event ::on-packet-received (meta &form) channel)))
 
 (defmacro tap-on-config-removed-events
   "Triggered when a configuration created by the extension is removed by the platform."
-  [channel]
-  (gen-call :event ::on-config-removed (meta &form) channel))
+  ([channel] (gen-call :event ::on-config-removed (meta &form) channel)))
 
 (defmacro tap-on-config-created-events
   "Triggered when a configuration is created by the platform for the extension."
-  [channel]
-  (gen-call :event ::on-config-created (meta &form) channel))
+  ([channel] (gen-call :event ::on-config-created (meta &form) channel)))
 
 (defmacro tap-on-ui-event-events
   "Triggered when there is a UI event for the extension. UI events are signals from the platform that indicate to the
    app that a UI dialog needs to be shown to the user."
-  [channel]
-  (gen-call :event ::on-ui-event (meta &form) channel))
+  ([channel] (gen-call :event ::on-ui-event (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

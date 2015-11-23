@@ -47,8 +47,7 @@
 
 (defmacro tap-on-pairing-events
   "Fired when a pairing event occurs."
-  [channel]
-  (gen-call :event ::on-pairing (meta &form) channel))
+  ([channel] (gen-call :event ::on-pairing (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

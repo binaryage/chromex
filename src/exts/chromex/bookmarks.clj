@@ -15,11 +15,9 @@
 
 ; -- properties -----------------------------------------------------------------------------------------------------
 
-(defmacro get-max-write-operations-per-hour []
-  (gen-call :property ::max-write-operations-per-hour (meta &form)))
+(defmacro get-max-write-operations-per-hour ([] (gen-call :property ::max-write-operations-per-hour (meta &form))))
 
-(defmacro get-max-sustained-write-operations-per-minute []
-  (gen-call :property ::max-sustained-write-operations-per-minute (meta &form)))
+(defmacro get-max-sustained-write-operations-per-minute ([] (gen-call :property ::max-sustained-write-operations-per-minute (meta &form))))
 
 ; -- functions ------------------------------------------------------------------------------------------------------
 
@@ -83,41 +81,34 @@
 
 (defmacro tap-on-created-events
   "Fired when a bookmark or folder is created."
-  [channel]
-  (gen-call :event ::on-created (meta &form) channel))
+  ([channel] (gen-call :event ::on-created (meta &form) channel)))
 
 (defmacro tap-on-removed-events
   "Fired when a bookmark or folder is removed.  When a folder is removed recursively, a single notification is fired
    for the folder, and none for its contents."
-  [channel]
-  (gen-call :event ::on-removed (meta &form) channel))
+  ([channel] (gen-call :event ::on-removed (meta &form) channel)))
 
 (defmacro tap-on-changed-events
   "Fired when a bookmark or folder changes.  Note: Currently, only title and url changes trigger this."
-  [channel]
-  (gen-call :event ::on-changed (meta &form) channel))
+  ([channel] (gen-call :event ::on-changed (meta &form) channel)))
 
 (defmacro tap-on-moved-events
   "Fired when a bookmark or folder is moved to a different parent folder."
-  [channel]
-  (gen-call :event ::on-moved (meta &form) channel))
+  ([channel] (gen-call :event ::on-moved (meta &form) channel)))
 
 (defmacro tap-on-children-reordered-events
   "Fired when the children of a folder have changed their order due to the order being sorted in the UI.  This is not
    called as a result of a move()."
-  [channel]
-  (gen-call :event ::on-children-reordered (meta &form) channel))
+  ([channel] (gen-call :event ::on-children-reordered (meta &form) channel)))
 
 (defmacro tap-on-import-began-events
   "Fired when a bookmark import session is begun.  Expensive observers should ignore onCreated updates until
    onImportEnded is fired.  Observers should still handle other notifications immediately."
-  [channel]
-  (gen-call :event ::on-import-began (meta &form) channel))
+  ([channel] (gen-call :event ::on-import-began (meta &form) channel)))
 
 (defmacro tap-on-import-ended-events
   "Fired when a bookmark import session is ended."
-  [channel]
-  (gen-call :event ::on-import-ended (meta &form) channel))
+  ([channel] (gen-call :event ::on-import-ended (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

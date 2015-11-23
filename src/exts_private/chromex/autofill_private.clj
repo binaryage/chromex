@@ -63,15 +63,13 @@
 (defmacro tap-on-address-list-changed-events
   "Fired when the address list has changed, meaning that an entry has been added, removed, or changed.  |entries| The
    updated list of entries."
-  [channel]
-  (gen-call :event ::on-address-list-changed (meta &form) channel))
+  ([channel] (gen-call :event ::on-address-list-changed (meta &form) channel)))
 
 (defmacro tap-on-credit-card-list-changed-events
   "Fired when the credit card list has changed, meaning that an entry has been added, removed, or changed.  |entries
 
    The updated list of entries."
-  [channel]
-  (gen-call :event ::on-credit-card-list-changed (meta &form) channel))
+  ([channel] (gen-call :event ::on-credit-card-list-changed (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

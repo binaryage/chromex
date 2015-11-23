@@ -20,43 +20,35 @@
 
 (defmacro get-spoken-feedback
   "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example."
-  []
-  (gen-call :property ::spoken-feedback (meta &form)))
+  ([] (gen-call :property ::spoken-feedback (meta &form))))
 
 (defmacro get-large-cursor
   "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example."
-  []
-  (gen-call :property ::large-cursor (meta &form)))
+  ([] (gen-call :property ::large-cursor (meta &form))))
 
 (defmacro get-sticky-keys
   "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example."
-  []
-  (gen-call :property ::sticky-keys (meta &form)))
+  ([] (gen-call :property ::sticky-keys (meta &form))))
 
 (defmacro get-high-contrast
   "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example."
-  []
-  (gen-call :property ::high-contrast (meta &form)))
+  ([] (gen-call :property ::high-contrast (meta &form))))
 
 (defmacro get-screen-magnifier
   "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example."
-  []
-  (gen-call :property ::screen-magnifier (meta &form)))
+  ([] (gen-call :property ::screen-magnifier (meta &form))))
 
 (defmacro get-autoclick
   "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example."
-  []
-  (gen-call :property ::autoclick (meta &form)))
+  ([] (gen-call :property ::autoclick (meta &form))))
 
 (defmacro get-virtual-keyboard
   "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example."
-  []
-  (gen-call :property ::virtual-keyboard (meta &form)))
+  ([] (gen-call :property ::virtual-keyboard (meta &form))))
 
 (defmacro get-animation-policy
   "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example."
-  []
-  (gen-call :property ::animation-policy (meta &form)))
+  ([] (gen-call :property ::animation-policy (meta &form))))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

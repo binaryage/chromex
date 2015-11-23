@@ -42,20 +42,17 @@
 (defmacro tap-on-saved-passwords-list-changed-events
   "Fired when the saved passwords list has changed, meaning that an entry has been added or removed. Note that this
    event fires as soon as a  listener is added."
-  [channel]
-  (gen-call :event ::on-saved-passwords-list-changed (meta &form) channel))
+  ([channel] (gen-call :event ::on-saved-passwords-list-changed (meta &form) channel)))
 
 (defmacro tap-on-password-exceptions-list-changed-events
   "Fired when the password exceptions list has changed, meaning that an entry has been added or removed. Note that
    this event fires as soon as a listener is added."
-  [channel]
-  (gen-call :event ::on-password-exceptions-list-changed (meta &form) channel))
+  ([channel] (gen-call :event ::on-password-exceptions-list-changed (meta &form) channel)))
 
 (defmacro tap-on-plaintext-password-retrieved-events
   "Fired when a plaintext password has been fetched in response to a call to
    chrome.passwordsPrivate.requestPlaintextPassword()."
-  [channel]
-  (gen-call :event ::on-plaintext-password-retrieved (meta &form) channel))
+  ([channel] (gen-call :event ::on-plaintext-password-retrieved (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

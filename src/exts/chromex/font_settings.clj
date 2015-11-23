@@ -88,23 +88,19 @@
 
 (defmacro tap-on-font-changed-events
   "Fired when a font setting changes."
-  [channel]
-  (gen-call :event ::on-font-changed (meta &form) channel))
+  ([channel] (gen-call :event ::on-font-changed (meta &form) channel)))
 
 (defmacro tap-on-default-font-size-changed-events
   "Fired when the default font size setting changes."
-  [channel]
-  (gen-call :event ::on-default-font-size-changed (meta &form) channel))
+  ([channel] (gen-call :event ::on-default-font-size-changed (meta &form) channel)))
 
 (defmacro tap-on-default-fixed-font-size-changed-events
   "Fired when the default fixed font size setting changes."
-  [channel]
-  (gen-call :event ::on-default-fixed-font-size-changed (meta &form) channel))
+  ([channel] (gen-call :event ::on-default-fixed-font-size-changed (meta &form) channel)))
 
 (defmacro tap-on-minimum-font-size-changed-events
   "Fired when the minimum font size setting changes."
-  [channel]
-  (gen-call :event ::on-minimum-font-size-changed (meta &form) channel))
+  ([channel] (gen-call :event ::on-minimum-font-size-changed (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

@@ -38,8 +38,7 @@
   "Fired when the a user requests the launch of the feedback UI. We're using an event for this versus using the
    override API since we want to be invoked, but not showing a UI, so the feedback extension can take a screenshot of
    the user's desktop."
-  [channel]
-  (gen-call :event ::on-feedback-requested (meta &form) channel))
+  ([channel] (gen-call :event ::on-feedback-requested (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

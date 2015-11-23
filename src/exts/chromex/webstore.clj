@@ -34,14 +34,12 @@
 (defmacro tap-on-install-stage-changed-events
   "Fired when an inline installation enters a new InstallStage. In order to receive notifications about this event,
    listeners must be registered before the inline installation begins."
-  [channel]
-  (gen-call :event ::on-install-stage-changed (meta &form) channel))
+  ([channel] (gen-call :event ::on-install-stage-changed (meta &form) channel)))
 
 (defmacro tap-on-download-progress-events
   "Fired periodically with the download progress of an inline install. In order to receive notifications about this
    event, listeners must be registered before the inline installation begins."
-  [channel]
-  (gen-call :event ::on-download-progress (meta &form) channel))
+  ([channel] (gen-call :event ::on-download-progress (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

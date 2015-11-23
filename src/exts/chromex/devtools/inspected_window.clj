@@ -18,8 +18,7 @@
 
 (defmacro get-tab-id
   "The ID of the tab being inspected. This ID may be used with chrome.tabs.* API."
-  []
-  (gen-call :property ::tab-id (meta &form)))
+  ([] (gen-call :property ::tab-id (meta &form))))
 
 ; -- functions ------------------------------------------------------------------------------------------------------
 
@@ -52,14 +51,12 @@
 
 (defmacro tap-on-resource-added-events
   "Fired when a new resource is added to the inspected page."
-  [channel]
-  (gen-call :event ::on-resource-added (meta &form) channel))
+  ([channel] (gen-call :event ::on-resource-added (meta &form) channel)))
 
 (defmacro tap-on-resource-content-committed-events
   "Fired when a new revision of the resource is committed (e.g. user saves an edited version of the resource in the
    Developer Tools)."
-  [channel]
-  (gen-call :event ::on-resource-content-committed (meta &form) channel))
+  ([channel] (gen-call :event ::on-resource-content-committed (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

@@ -38,8 +38,7 @@
 
 (defmacro tap-on-display-changed-events
   "Fired when anything changes to the display configuration."
-  [channel]
-  (gen-call :event ::on-display-changed (meta &form) channel))
+  ([channel] (gen-call :event ::on-display-changed (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

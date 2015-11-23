@@ -46,8 +46,7 @@
 
 (defmacro tap-on-sinks-changed-events
   "Fired when audio sink devices are added or removed."
-  [channel]
-  (gen-call :event ::on-sinks-changed (meta &form) channel))
+  ([channel] (gen-call :event ::on-sinks-changed (meta &form) channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
