@@ -1,7 +1,7 @@
 (ns chromex.chrome-web-view-internal (:require-macros [chromex.chrome-web-view-internal :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn context-menus-create* [config create-properties]
   (gen-wrap :function ::context-menus-create config create-properties))

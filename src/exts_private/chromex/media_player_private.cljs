@@ -1,7 +1,7 @@
 (ns chromex.media-player-private (:require-macros [chromex.media-player-private :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-next-track* [config channel]
   (gen-wrap :event ::on-next-track config channel))

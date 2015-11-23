@@ -1,12 +1,12 @@
 (ns chromex.tabs (:require-macros [chromex.tabs :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- properties -----------------------------------------------------------------------------------------------------
+; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defn tab-id-none* [config]
   (gen-wrap :property ::tab-id-none config))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn get* [config tab-id]
   (gen-wrap :function ::get config tab-id))
@@ -77,7 +77,7 @@
 (defn get-zoom-settings* [config tab-id]
   (gen-wrap :function ::get-zoom-settings config tab-id))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-created* [config channel]
   (gen-wrap :event ::on-created config channel))

@@ -16,7 +16,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro destroy
   "Destroys a Cast RTP stream.
@@ -25,8 +25,8 @@
   ([stream-id] (gen-call :function ::destroy &form stream-id)))
 
 (defmacro get-supported-params
-  "Returns an array of supported parameters with default values. This includes a list of supported codecs on this
-   platform and corresponding encoding and RTP parameters.
+  "Returns an array of supported parameters with default values. This includes a list of supported codecs on this platform and
+   corresponding encoding and RTP parameters.
    
      |streamId| - The RTP stream ID."
   ([stream-id] (gen-call :function ::get-supported-params &form stream-id)))
@@ -54,8 +54,8 @@
   "Get raw events for a stream in the current session.
    
      |streamId| - Stream to get events for.
-     |extraData| - Extra data to attach to the log, e.g. system info or              experiment tags, in key-value
-                   JSON string format.
+     |extraData| - Extra data to attach to the log, e.g. system info or              experiment tags, in key-value JSON
+                   string format.
      |callback| - Called with the raw events.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
@@ -71,7 +71,7 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([stream-id #_callback] (gen-call :function ::get-stats &form stream-id)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-started-events
   "Event fired when a Cast RTP stream has started."
@@ -85,16 +85,16 @@
   "Event fired when a Cast RTP stream has error."
   ([channel] (gen-call :event ::on-error &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.cast.streaming.rtpStream",
@@ -107,8 +107,7 @@
      :params [{:name "stream-id", :type "integer"}]}
     {:id ::start,
      :name "start",
-     :params
-     [{:name "stream-id", :type "integer"} {:name "params", :type "cast.streaming.rtpStream.RtpParams"}]}
+     :params [{:name "stream-id", :type "integer"} {:name "params", :type "cast.streaming.rtpStream.RtpParams"}]}
     {:id ::stop, :name "stop", :params [{:name "stream-id", :type "integer"}]}
     {:id ::toggle-logging,
      :name "toggleLogging",
@@ -133,7 +132,7 @@
      :name "onError",
      :params [{:name "stream-id", :type "integer"} {:name "error-string", :type "string"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

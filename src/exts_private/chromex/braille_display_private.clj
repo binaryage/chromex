@@ -12,7 +12,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro get-display-state
   "Gets the current display state.
@@ -21,14 +21,13 @@
   ([#_callback] (gen-call :function ::get-display-state &form)))
 
 (defmacro write-dots
-  "Write the given dot patterns to the display.  The buffer contains one byte for each braille cell on the display,
-   starting from the leftmost cell. Each byte contains a bit pattern indicating which dots should be raised in the
-   corresponding cell with the low-order bit representing dot 1 and so on until bit 7 which corresponds to dot 8.  If
-   the number of bytes in the buffer is not equal to the display size, the buffer will either be clipped or padded
-   with blank cells on the right."
+  "Write the given dot patterns to the display.  The buffer contains one byte for each braille cell on the display, starting
+   from the leftmost cell. Each byte contains a bit pattern indicating which dots should be raised in the corresponding cell
+   with the low-order bit representing dot 1 and so on until bit 7 which corresponds to dot 8.  If the number of bytes in the
+   buffer is not equal to the display size, the buffer will either be clipped or padded with blank cells on the right."
   ([cells] (gen-call :function ::write-dots &form cells)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-display-state-changed-events
   "Fired when a braille display is connected or disconnected."
@@ -38,16 +37,16 @@
   "Fired when an input event is received from the display."
   ([channel] (gen-call :event ::on-key-event &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.brailleDisplayPrivate",
@@ -67,7 +66,7 @@
      :params [{:name "state", :type "brailleDisplayPrivate.DisplayState"}]}
     {:id ::on-key-event, :name "onKeyEvent", :params [{:name "event", :type "object"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

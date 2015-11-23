@@ -12,47 +12,46 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro install
-  "  |url| - If you have more than one &lt;link&gt; tag on your page with the chrome-webstore-item relation, you can
-             choose which item you'd like to install by passing in its URL here. If it is omitted, then the first
-             (or only) link will be used. An exception will be thrown if the passed in URL does not exist on the
-             page.
-     |successCallback| - This function is invoked when inline installation successfully completes (after the dialog
-                         is shown and the user agrees to add the item to Chrome). You may wish to use this to hide
-                         the user interface element that prompted the user to install the app or extension.
-     |failureCallback| - This function is invoked when inline installation does not successfully complete. Possible
-                         reasons for this include the user canceling the dialog, the linked item not being found in
-                         the store, or the install being initiated from a non-verified site.
+  "  |url| - If you have more than one &lt;link&gt; tag on your page with the chrome-webstore-item relation, you can choose
+             which item you'd like to install by passing in its URL here. If it is omitted, then the first (or only) link
+             will be used. An exception will be thrown if the passed in URL does not exist on the page.
+     |successCallback| - This function is invoked when inline installation successfully completes (after the dialog is shown
+                         and the user agrees to add the item to Chrome). You may wish to use this to hide the user interface
+                         element that prompted the user to install the app or extension.
+     |failureCallback| - This function is invoked when inline installation does not successfully complete. Possible reasons
+                         for this include the user canceling the dialog, the linked item not being found in the store, or
+                         the install being initiated from a non-verified site.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([url success-callback #_failure-callback] (gen-call :function ::install &form url success-callback))
   ([url] `(install ~url :omit))
   ([] `(install :omit :omit)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-install-stage-changed-events
-  "Fired when an inline installation enters a new InstallStage. In order to receive notifications about this event,
-   listeners must be registered before the inline installation begins."
+  "Fired when an inline installation enters a new InstallStage. In order to receive notifications about this event, listeners
+   must be registered before the inline installation begins."
   ([channel] (gen-call :event ::on-install-stage-changed &form channel)))
 
 (defmacro tap-on-download-progress-events
-  "Fired periodically with the download progress of an inline install. In order to receive notifications about this
-   event, listeners must be registered before the inline installation begins."
+  "Fired periodically with the download progress of an inline install. In order to receive notifications about this event,
+   listeners must be registered before the inline installation begins."
   ([channel] (gen-call :event ::on-download-progress &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.webstore",
@@ -69,8 +68,7 @@
        :type :callback,
        :callback
        {:params
-        [{:name "error", :type "string"}
-         {:name "error-code", :optional? "true", :type "webstore.ErrorCode"}]}}]}],
+        [{:name "error", :type "string"} {:name "error-code", :optional? "true", :type "webstore.ErrorCode"}]}}]}],
    :events
    [{:id ::on-install-stage-changed,
      :name "onInstallStageChanged",
@@ -81,7 +79,7 @@
      :since "35",
      :params [{:name "percent-downloaded", :type "double"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

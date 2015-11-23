@@ -1,7 +1,7 @@
 (ns chromex.runtime (:require-macros [chromex.runtime :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- properties -----------------------------------------------------------------------------------------------------
+; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defn last-error* [config]
   (gen-wrap :property ::last-error config))
@@ -9,7 +9,7 @@
 (defn id* [config]
   (gen-wrap :property ::id config))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn get-background-page* [config]
   (gen-wrap :function ::get-background-page config))
@@ -53,7 +53,7 @@
 (defn get-package-directory-entry* [config]
   (gen-wrap :function ::get-package-directory-entry config))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-startup* [config channel]
   (gen-wrap :event ::on-startup config channel))

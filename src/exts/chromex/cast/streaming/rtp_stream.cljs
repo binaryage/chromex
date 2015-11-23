@@ -1,7 +1,7 @@
 (ns chromex.cast.streaming.rtp-stream (:require-macros [chromex.cast.streaming.rtp-stream :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn destroy* [config stream-id]
   (gen-wrap :function ::destroy config stream-id))
@@ -24,7 +24,7 @@
 (defn get-stats* [config stream-id]
   (gen-wrap :function ::get-stats config stream-id))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-started* [config channel]
   (gen-wrap :event ::on-started config channel))

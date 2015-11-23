@@ -14,11 +14,10 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro get-info
-  "Get the storage information from the system. The argument passed to the callback is an array of StorageUnitInfo
-   objects.
+  "Get the storage information from the system. The argument passed to the callback is an array of StorageUnitInfo objects.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([#_callback] (gen-call :function ::get-info &form)))
@@ -30,13 +29,12 @@
   ([id #_callback] (gen-call :function ::eject-device &form id)))
 
 (defmacro get-available-capacity
-  "Get the available capacity of a specified |id| storage device. The |id| is the transient device ID from
-   StorageUnitInfo.
+  "Get the available capacity of a specified |id| storage device. The |id| is the transient device ID from StorageUnitInfo.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([id #_callback] (gen-call :function ::get-available-capacity &form id)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-attached-events
   "Fired when a new removable storage is attached to the system."
@@ -46,16 +44,16 @@
   "Fired when a removable storage is detached from the system."
   ([channel] (gen-call :event ::on-detached &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.system.storage",
@@ -85,7 +83,7 @@
    [{:id ::on-attached, :name "onAttached", :params [{:name "info", :type "system.storage.StorageUnitInfo"}]}
     {:id ::on-detached, :name "onDetached", :params [{:name "id", :type "string"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

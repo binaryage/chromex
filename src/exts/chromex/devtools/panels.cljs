@@ -1,7 +1,7 @@
 (ns chromex.devtools.panels (:require-macros [chromex.devtools.panels :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- properties -----------------------------------------------------------------------------------------------------
+; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defn elements* [config]
   (gen-wrap :property ::elements config))
@@ -9,7 +9,7 @@
 (defn sources* [config]
   (gen-wrap :property ::sources config))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn create* [config title icon-path page-path]
   (gen-wrap :function ::create config title icon-path page-path))

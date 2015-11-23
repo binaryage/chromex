@@ -1,6 +1,6 @@
 (ns chromex.bookmarks
-  "Use the chrome.bookmarks API to create, organize, and otherwise manipulate bookmarks. Also see Override Pages,
-   which you can use to create a custom Bookmark Manager page.
+  "Use the chrome.bookmarks API to create, organize, and otherwise manipulate bookmarks. Also see Override Pages, which you
+   can use to create a custom Bookmark Manager page.
    
      * available since Chrome 5
      * https://developer.chrome.com/extensions/bookmarks"
@@ -13,13 +13,13 @@
 (declare api-table)
 (declare gen-call)
 
-; -- properties -----------------------------------------------------------------------------------------------------
+; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defmacro get-max-write-operations-per-hour ([] (gen-call :property ::max-write-operations-per-hour &form)))
 
 (defmacro get-max-sustained-write-operations-per-minute ([] (gen-call :property ::max-sustained-write-operations-per-minute &form)))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro get
   "Retrieves the specified BookmarkTreeNode(s).
@@ -61,9 +61,9 @@
   "Searches for BookmarkTreeNodes matching the given query. Queries specified with an object produce BookmarkTreeNodes
    matching all specified properties.
    
-     |query| - Either a string of words and quoted phrases that are matched against bookmark URLs and titles, or an
-               object. If an object, the properties query, url, and title may be specified and bookmarks matching
-               all specified properties will be produced.
+     |query| - Either a string of words and quoted phrases that are matched against bookmark URLs and titles, or an object.
+               If an object, the properties query, url, and title may be specified and bookmarks matching all specified
+               properties will be produced.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([query #_callback] (gen-call :function ::search &form query)))
@@ -81,8 +81,8 @@
   ([id destination #_callback] (gen-call :function ::move &form id destination)))
 
 (defmacro update
-  "Updates the properties of a bookmark or folder. Specify only the properties that you want to change; unspecified
-   properties will be left unchanged.  Note: Currently, only 'title' and 'url' are supported.
+  "Updates the properties of a bookmark or folder. Specify only the properties that you want to change; unspecified properties
+   will be left unchanged.  Note: Currently, only 'title' and 'url' are supported.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([id changes #_callback] (gen-call :function ::update &form id changes)))
@@ -99,15 +99,15 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([id #_callback] (gen-call :function ::remove-tree &form id)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-created-events
   "Fired when a bookmark or folder is created."
   ([channel] (gen-call :event ::on-created &form channel)))
 
 (defmacro tap-on-removed-events
-  "Fired when a bookmark or folder is removed.  When a folder is removed recursively, a single notification is fired
-   for the folder, and none for its contents."
+  "Fired when a bookmark or folder is removed.  When a folder is removed recursively, a single notification is fired for the
+   folder, and none for its contents."
   ([channel] (gen-call :event ::on-removed &form channel)))
 
 (defmacro tap-on-changed-events
@@ -119,29 +119,29 @@
   ([channel] (gen-call :event ::on-moved &form channel)))
 
 (defmacro tap-on-children-reordered-events
-  "Fired when the children of a folder have changed their order due to the order being sorted in the UI.  This is not
-   called as a result of a move()."
+  "Fired when the children of a folder have changed their order due to the order being sorted in the UI.  This is not called
+   as a result of a move()."
   ([channel] (gen-call :event ::on-children-reordered &form channel)))
 
 (defmacro tap-on-import-began-events
-  "Fired when a bookmark import session is begun.  Expensive observers should ignore onCreated updates until
-   onImportEnded is fired.  Observers should still handle other notifications immediately."
+  "Fired when a bookmark import session is begun.  Expensive observers should ignore onCreated updates until onImportEnded is
+   fired.  Observers should still handle other notifications immediately."
   ([channel] (gen-call :event ::on-import-began &form channel)))
 
 (defmacro tap-on-import-ended-events
   "Fired when a bookmark import session is ended."
   ([channel] (gen-call :event ::on-import-ended &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.bookmarks",
@@ -247,22 +247,16 @@
    [{:id ::on-created,
      :name "onCreated",
      :params [{:name "id", :type "string"} {:name "bookmark", :type "bookmarks.BookmarkTreeNode"}]}
-    {:id ::on-removed,
-     :name "onRemoved",
-     :params [{:name "id", :type "string"} {:name "remove-info", :type "object"}]}
-    {:id ::on-changed,
-     :name "onChanged",
-     :params [{:name "id", :type "string"} {:name "change-info", :type "object"}]}
-    {:id ::on-moved,
-     :name "onMoved",
-     :params [{:name "id", :type "string"} {:name "move-info", :type "object"}]}
+    {:id ::on-removed, :name "onRemoved", :params [{:name "id", :type "string"} {:name "remove-info", :type "object"}]}
+    {:id ::on-changed, :name "onChanged", :params [{:name "id", :type "string"} {:name "change-info", :type "object"}]}
+    {:id ::on-moved, :name "onMoved", :params [{:name "id", :type "string"} {:name "move-info", :type "object"}]}
     {:id ::on-children-reordered,
      :name "onChildrenReordered",
      :params [{:name "id", :type "string"} {:name "reorder-info", :type "object"}]}
     {:id ::on-import-began, :name "onImportBegan"}
     {:id ::on-import-ended, :name "onImportEnded"}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

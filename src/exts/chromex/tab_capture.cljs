@@ -1,7 +1,7 @@
 (ns chromex.tab-capture (:require-macros [chromex.tab-capture :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn capture* [config options]
   (gen-wrap :function ::capture config options))
@@ -12,7 +12,7 @@
 (defn capture-offscreen-tab* [config start-url options]
   (gen-wrap :function ::capture-offscreen-tab config start-url options))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-status-changed* [config channel]
   (gen-wrap :event ::on-status-changed config channel))

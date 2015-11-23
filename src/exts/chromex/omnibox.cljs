@@ -1,12 +1,12 @@
 (ns chromex.omnibox (:require-macros [chromex.omnibox :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn set-default-suggestion* [config suggestion]
   (gen-wrap :function ::set-default-suggestion config suggestion))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-input-started* [config channel]
   (gen-wrap :event ::on-input-started config channel))

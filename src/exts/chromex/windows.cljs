@@ -1,7 +1,7 @@
 (ns chromex.windows (:require-macros [chromex.windows :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- properties -----------------------------------------------------------------------------------------------------
+; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defn window-id-none* [config]
   (gen-wrap :property ::window-id-none config))
@@ -9,7 +9,7 @@
 (defn window-id-current* [config]
   (gen-wrap :property ::window-id-current config))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn get* [config window-id get-info]
   (gen-wrap :function ::get config window-id get-info))
@@ -32,7 +32,7 @@
 (defn remove* [config window-id]
   (gen-wrap :function ::remove config window-id))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-created* [config channel]
   (gen-wrap :event ::on-created config channel))

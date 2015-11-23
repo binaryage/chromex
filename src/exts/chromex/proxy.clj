@@ -1,6 +1,6 @@
 (ns chromex.proxy
-  "Use the chrome.proxy API to manage Chrome's proxy settings. This API relies on the ChromeSetting prototype of the
-   type API for getting and setting the proxy configuration.
+  "Use the chrome.proxy API to manage Chrome's proxy settings. This API relies on the ChromeSetting prototype of the type API
+   for getting and setting the proxy configuration.
    
      * available since Chrome 13
      * https://developer.chrome.com/extensions/proxy"
@@ -13,28 +13,28 @@
 (declare api-table)
 (declare gen-call)
 
-; -- properties -----------------------------------------------------------------------------------------------------
+; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defmacro get-settings
   "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example."
   ([] (gen-call :property ::settings &form)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-proxy-error-events
   "Notifies about proxy errors."
   ([channel] (gen-call :event ::on-proxy-error &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.proxy",
@@ -42,7 +42,7 @@
    :properties [{:id ::settings, :name "settings", :return-type "object"}],
    :events [{:id ::on-proxy-error, :name "onProxyError", :params [{:name "details", :type "object"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

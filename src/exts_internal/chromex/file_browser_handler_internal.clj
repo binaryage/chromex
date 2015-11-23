@@ -10,11 +10,11 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro select-file
-  "Prompts user to select file path under which a new file will be created. If the user selects file, the file gets
-   created or, if it already exists, truncated. The function has to be called with user gesture.
+  "Prompts user to select file path under which a new file will be created. If the user selects file, the file gets created
+   or, if it already exists, truncated. The function has to be called with user gesture.
    
      |selectionParams| - Parameters that will be used to create new file.
      |callback| - Function called upon completion.
@@ -22,16 +22,16 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([selection-params #_callback] (gen-call :function ::select-file &form selection-params)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.fileBrowserHandlerInternal",
@@ -44,7 +44,7 @@
      [{:name "selection-params", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

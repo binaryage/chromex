@@ -1,7 +1,7 @@
 (ns chromex.file-manager-private (:require-macros [chromex.file-manager-private :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn logout-user-for-reauthentication* [config]
   (gen-wrap :function ::logout-user-for-reauthentication config))
@@ -153,7 +153,7 @@
 (defn execute-custom-action* [config entries action-id]
   (gen-wrap :function ::execute-custom-action config entries action-id))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-mount-completed* [config channel]
   (gen-wrap :event ::on-mount-completed config channel))

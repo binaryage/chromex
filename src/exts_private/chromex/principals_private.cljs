@@ -1,7 +1,7 @@
 (ns chromex.principals-private (:require-macros [chromex.principals-private :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn sign-out* [config]
   (gen-wrap :function ::sign-out config))

@@ -12,43 +12,43 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro query-state
-  "Returns 'locked' if the system is locked, 'idle' if the user has not generated any input for a specified number of
-   seconds, or 'active' otherwise.
+  "Returns 'locked' if the system is locked, 'idle' if the user has not generated any input for a specified number of seconds,
+   or 'active' otherwise.
    
-     |detectionIntervalInSeconds| - The system is considered idle if detectionIntervalInSeconds seconds have elapsed
-                                    since the last user input detected.
+     |detectionIntervalInSeconds| - The system is considered idle if detectionIntervalInSeconds seconds have elapsed since
+                                    the last user input detected.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([detection-interval-in-seconds #_callback] (gen-call :function ::query-state &form detection-interval-in-seconds)))
 
 (defmacro set-detection-interval
-  "Sets the interval, in seconds, used to determine when the system is in an idle state for onStateChanged events. The
-   default interval is 60 seconds.
+  "Sets the interval, in seconds, used to determine when the system is in an idle state for onStateChanged events. The default
+   interval is 60 seconds.
    
      |intervalInSeconds| - Threshold, in seconds, used to determine when the system is in an idle state."
   ([interval-in-seconds] (gen-call :function ::set-detection-interval &form interval-in-seconds)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-state-changed-events
-  "Fired when the system changes to an active, idle or locked state. The event fires with 'locked' if the screen is
-   locked or the screensaver activates, 'idle' if the system is unlocked and the user has not generated any input for
-   a specified number of seconds, and 'active' when the user generates input on an idle system."
+  "Fired when the system changes to an active, idle or locked state. The event fires with 'locked' if the screen is locked or
+   the screensaver activates, 'idle' if the system is unlocked and the user has not generated any input for a specified number
+   of seconds, and 'active' when the user generates input on an idle system."
   ([channel] (gen-call :event ::on-state-changed &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.idle",
@@ -64,10 +64,9 @@
      :name "setDetectionInterval",
      :since "25",
      :params [{:name "interval-in-seconds", :type "integer"}]}],
-   :events
-   [{:id ::on-state-changed, :name "onStateChanged", :params [{:name "new-state", :type "idle.IdleState"}]}]})
+   :events [{:id ::on-state-changed, :name "onStateChanged", :params [{:name "new-state", :type "idle.IdleState"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

@@ -13,28 +13,27 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro request-keep-awake
-  "Requests that power management be temporarily disabled. |level| describes the degree to which power management
-   should be disabled. If a request previously made by the same app is still active, it will be replaced by the new
-   request."
+  "Requests that power management be temporarily disabled. |level| describes the degree to which power management should be
+   disabled. If a request previously made by the same app is still active, it will be replaced by the new request."
   ([level] (gen-call :function ::request-keep-awake &form level)))
 
 (defmacro release-keep-awake
   "Releases a request previously made via requestKeepAwake()."
   ([] (gen-call :function ::release-keep-awake &form)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.power",
@@ -43,7 +42,7 @@
    [{:id ::request-keep-awake, :name "requestKeepAwake", :params [{:name "level", :type "power.Level"}]}
     {:id ::release-keep-awake, :name "releaseKeepAwake"}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

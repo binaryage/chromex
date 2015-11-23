@@ -13,19 +13,19 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro execute
-  "Executes a set of copresence operations in one batch. They will either all be executed, or none will be executed
-   (due to an error in one or more of them). Publish/Subscribe operations are executed in the order that they exist in
-   the array. Unpublish and Unsubscribe are processsed at the end, again, in the order that they exist in the array.
+  "Executes a set of copresence operations in one batch. They will either all be executed, or none will be executed (due to an
+   error in one or more of them). Publish/Subscribe operations are executed in the order that they exist in the array.
+   Unpublish and Unsubscribe are processsed at the end, again, in the order that they exist in the array.
    
      |callback| - Callback to return the status of a completed batchExecute() call.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([operations #_callback] (gen-call :function ::execute &form operations)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-messages-received-events
   "Fired when new messages arrive."
@@ -35,16 +35,16 @@
   "Fired when a new copresence status update is available."
   ([channel] (gen-call :event ::on-status-updated &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.copresence",
@@ -59,11 +59,10 @@
    :events
    [{:id ::on-messages-received,
      :name "onMessagesReceived",
-     :params
-     [{:name "subscription-id", :type "string"} {:name "messages", :type "[array-of-copresence.Messages]"}]}
+     :params [{:name "subscription-id", :type "string"} {:name "messages", :type "[array-of-copresence.Messages]"}]}
     {:id ::on-status-updated, :name "onStatusUpdated", :params [{:name "status", :type "unknown-type"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

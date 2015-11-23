@@ -1,12 +1,12 @@
 (ns chromex.sessions (:require-macros [chromex.sessions :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- properties -----------------------------------------------------------------------------------------------------
+; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defn max-session-results* [config]
   (gen-wrap :property ::max-session-results config))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn get-recently-closed* [config filter]
   (gen-wrap :function ::get-recently-closed config filter))
@@ -17,7 +17,7 @@
 (defn restore* [config session-id]
   (gen-wrap :function ::restore config session-id))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-changed* [config channel]
   (gen-wrap :event ::on-changed config channel))

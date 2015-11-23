@@ -12,7 +12,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro get-whitelisted-users
   "Gets a list of the currently whitelisted users.
@@ -21,16 +21,15 @@
   ([#_callback] (gen-call :function ::get-whitelisted-users &form)))
 
 (defmacro add-whitelisted-user
-  "Adds a new user with the given email to the whitelist. The callback is called with true if the user was added
-   succesfully, or with false if not (e.g. because the user was already present, or the current user isn't the owner).
+  "Adds a new user with the given email to the whitelist. The callback is called with true if the user was added succesfully,
+   or with false if not (e.g. because the user was already present, or the current user isn't the owner).
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([email #_callback] (gen-call :function ::add-whitelisted-user &form email)))
 
 (defmacro remove-whitelisted-user
   "Removes the user with the given email from the whitelist. The callback is called with true if the user was removed
-   succesfully, or with false if not (e.g. because the user was not already present, or the current user isn't the
-   owner).
+   succesfully, or with false if not (e.g. because the user was not already present, or the current user isn't the owner).
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([email #_callback] (gen-call :function ::remove-whitelisted-user &form email)))
@@ -47,16 +46,16 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([#_callback] (gen-call :function ::is-whitelist-managed &form)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.usersPrivate",
@@ -65,8 +64,7 @@
    [{:id ::get-whitelisted-users,
      :name "getWhitelistedUsers",
      :callback? true,
-     :params
-     [{:name "callback", :type :callback, :callback {:params [{:name "users", :type "[array-of-objects]"}]}}]}
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "users", :type "[array-of-objects]"}]}}]}
     {:id ::add-whitelisted-user,
      :name "addWhitelistedUser",
      :callback? true,
@@ -88,7 +86,7 @@
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "managed", :type "boolean"}]}}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

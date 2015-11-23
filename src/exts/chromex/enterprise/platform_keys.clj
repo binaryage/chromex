@@ -16,13 +16,12 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro get-tokens
-  "Returns the available Tokens. In a regular user's session the list will always contain the user's token with id
-   'user'. If a system-wide TPM token is available, the returned list will also contain the system-wide token with id
-   'system'. The system-wide token will be the same for all sessions on this device (device in the sense of e.g. a
-   Chromebook).
+  "Returns the available Tokens. In a regular user's session the list will always contain the user's token with id 'user'. If
+   a system-wide TPM token is available, the returned list will also contain the system-wide token with id 'system'. The
+   system-wide token will be the same for all sessions on this device (device in the sense of e.g. a Chromebook).
    
      |callback| - Invoked by getTokens with the list of available Tokens.
    
@@ -30,8 +29,8 @@
   ([#_callback] (gen-call :function ::get-tokens &form)))
 
 (defmacro get-certificates
-  "Returns the list of all client certificates available from the given token. Can be used to check for the existence
-   and expiration of client certificates that are usable for a certain authentication.
+  "Returns the list of all client certificates available from the given token. Can be used to check for the existence and
+   expiration of client certificates that are usable for a certain authentication.
    
      |tokenId| - The id of a Token returned by getTokens.
      |callback| - Called back with the list of the available certificates.
@@ -41,8 +40,8 @@
 
 (defmacro import-certificate
   "Imports certificate to the given token if the certified key is already stored in this token. After a successful
-   certification request, this function should be used to store the obtained certificate and to make it available to
-   the operating system and browser for authentication.
+   certification request, this function should be used to store the obtained certificate and to make it available to the
+   operating system and browser for authentication.
    
      |tokenId| - The id of a Token returned by getTokens.
      |certificate| - The DER encoding of a X.509 certificate.
@@ -52,9 +51,9 @@
   ([token-id certificate #_callback] (gen-call :function ::import-certificate &form token-id certificate)))
 
 (defmacro remove-certificate
-  "Removes certificate from the given token if present. Should be used to remove obsolete certificates so that they
-   are not considered during authentication and do not clutter the certificate choice. Should be used to free storage
-   in the certificate store.
+  "Removes certificate from the given token if present. Should be used to remove obsolete certificates so that they are not
+   considered during authentication and do not clutter the certificate choice. Should be used to free storage in the
+   certificate store.
    
      |tokenId| - The id of a Token returned by getTokens.
      |certificate| - The DER encoding of a X.509 certificate.
@@ -63,16 +62,16 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([token-id certificate #_callback] (gen-call :function ::remove-certificate &form token-id certificate)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.enterprise.platformKeys",
@@ -108,7 +107,7 @@
       {:name "certificate", :type "ArrayBuffer"}
       {:name "callback", :optional? true, :type :callback}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

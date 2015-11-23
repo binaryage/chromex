@@ -14,14 +14,13 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro enable-tab
-  "Enable automation of the tab with the given id, or the active tab if no tab id is given, and retrieves
-   accessibility tree id for use in future updates.
+  "Enable automation of the tab with the given id, or the active tab if no tab id is given, and retrieves accessibility tree
+   id for use in future updates.
    
-     |callback| - Returns the accessibility tree id of the web contents who's accessibility was enabled using
-                  enableTab().
+     |callback| - Returns the accessibility tree id of the web contents who's accessibility was enabled using enableTab().
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([args #_callback] (gen-call :function ::enable-tab &form args)))
@@ -50,7 +49,7 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([args #_callback] (gen-call :function ::query-selector &form args)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-accessibility-event-events
   "Fired when an accessibility event occurs"
@@ -60,16 +59,16 @@
 
 (defmacro tap-on-tree-change-events ([channel] (gen-call :event ::on-tree-change &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.automationInternal",
@@ -105,11 +104,9 @@
     {:id ::on-tree-change,
      :name "onTreeChange",
      :params
-     [{:name "tree-id", :type "integer"}
-      {:name "node-id", :type "integer"}
-      {:name "change-type", :type "string"}]}]})
+     [{:name "tree-id", :type "integer"} {:name "node-id", :type "integer"} {:name "change-type", :type "string"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

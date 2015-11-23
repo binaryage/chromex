@@ -13,7 +13,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro get-language-list
   "Gets languages available for translate, spell checking, input and locale.
@@ -58,16 +58,16 @@
   ([#_callback] (gen-call :function ::get-input-method-lists &form)))
 
 (defmacro add-input-method
-  "Adds the input method to the current user's list of enabled input methods, enabling the input method for the
-   current user. Chrome OS only."
+  "Adds the input method to the current user's list of enabled input methods, enabling the input method for the current user.
+   Chrome OS only."
   ([input-method-id] (gen-call :function ::add-input-method &form input-method-id)))
 
 (defmacro remove-input-method
-  "Removes the input method from the current user's list of enabled input methods, disabling the input method for the
-   current user. Chrome OS only."
+  "Removes the input method from the current user's list of enabled input methods, disabling the input method for the current
+   user. Chrome OS only."
   ([input-method-id] (gen-call :function ::remove-input-method &form input-method-id)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-spellcheck-dictionaries-changed-events
   "Called when the pref for the dictionaries used for spell checking changes or the status of one of the spell check
@@ -86,16 +86,16 @@
   "Called when an input method is removed."
   ([channel] (gen-call :event ::on-input-method-removed &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.languageSettingsPrivate",
@@ -105,12 +105,8 @@
      :name "getLanguageList",
      :callback? true,
      :params
-     [{:name "callback",
-       :type :callback,
-       :callback {:params [{:name "languages", :type "[array-of-objects]"}]}}]}
-    {:id ::set-language-list,
-     :name "setLanguageList",
-     :params [{:name "language-codes", :type "[array-of-strings]"}]}
+     [{:name "callback", :type :callback, :callback {:params [{:name "languages", :type "[array-of-objects]"}]}}]}
+    {:id ::set-language-list, :name "setLanguageList", :params [{:name "language-codes", :type "[array-of-strings]"}]}
     {:id ::get-spellcheck-dictionary-statuses,
      :name "getSpellcheckDictionaryStatuses",
      :callback? true,
@@ -122,45 +118,30 @@
     {:id ::get-spellcheck-words,
      :name "getSpellcheckWords",
      :callback? true,
-     :params
-     [{:name "callback", :type :callback, :callback {:params [{:name "words", :type "[array-of-strings]"}]}}]}
-    {:id ::add-spellcheck-word,
-     :name "addSpellcheckWord",
-     :since "48",
-     :params [{:name "word", :type "string"}]}
-    {:id ::remove-spellcheck-word,
-     :name "removeSpellcheckWord",
-     :since "48",
-     :params [{:name "word", :type "string"}]}
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "words", :type "[array-of-strings]"}]}}]}
+    {:id ::add-spellcheck-word, :name "addSpellcheckWord", :since "48", :params [{:name "word", :type "string"}]}
+    {:id ::remove-spellcheck-word, :name "removeSpellcheckWord", :since "48", :params [{:name "word", :type "string"}]}
     {:id ::get-translate-target-language,
      :name "getTranslateTargetLanguage",
      :callback? true,
-     :params
-     [{:name "callback", :type :callback, :callback {:params [{:name "language-code", :type "string"}]}}]}
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "language-code", :type "string"}]}}]}
     {:id ::get-input-method-lists,
      :name "getInputMethodLists",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "lists", :type "object"}]}}]}
     {:id ::add-input-method, :name "addInputMethod", :params [{:name "input-method-id", :type "string"}]}
-    {:id ::remove-input-method,
-     :name "removeInputMethod",
-     :params [{:name "input-method-id", :type "string"}]}],
+    {:id ::remove-input-method, :name "removeInputMethod", :params [{:name "input-method-id", :type "string"}]}],
    :events
    [{:id ::on-spellcheck-dictionaries-changed,
      :name "onSpellcheckDictionariesChanged",
      :params [{:name "statuses", :type "[array-of-languageSettingsPrivate.SpellcheckDictionaryStatuss]"}]}
     {:id ::on-custom-dictionary-changed,
      :name "onCustomDictionaryChanged",
-     :params
-     [{:name "words-added", :type "[array-of-strings]"} {:name "words-removed", :type "[array-of-strings]"}]}
-    {:id ::on-input-method-added,
-     :name "onInputMethodAdded",
-     :params [{:name "input-method-id", :type "string"}]}
-    {:id ::on-input-method-removed,
-     :name "onInputMethodRemoved",
-     :params [{:name "input-method-id", :type "string"}]}]})
+     :params [{:name "words-added", :type "[array-of-strings]"} {:name "words-removed", :type "[array-of-strings]"}]}
+    {:id ::on-input-method-added, :name "onInputMethodAdded", :params [{:name "input-method-id", :type "string"}]}
+    {:id ::on-input-method-removed, :name "onInputMethodRemoved", :params [{:name "input-method-id", :type "string"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

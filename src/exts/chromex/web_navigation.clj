@@ -12,11 +12,11 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro get-frame
-  "Retrieves information about the given frame. A frame refers to an &lt;iframe&gt; or a &lt;frame&gt; of a web page
-   and is identified by a tab ID and a frame ID.
+  "Retrieves information about the given frame. A frame refers to an &lt;iframe&gt; or a &lt;frame&gt; of a web page and is
+   identified by a tab ID and a frame ID.
    
      |details| - Information about the frame to retrieve information about.
    
@@ -31,16 +31,16 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([details #_callback] (gen-call :function ::get-all-frames &form details)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-before-navigate-events
   "Fired when a navigation is about to occur."
   ([channel] (gen-call :event ::on-before-navigate &form channel)))
 
 (defmacro tap-on-committed-events
-  "Fired when a navigation is committed. The document (and the resources it refers to, such as images and subframes)
-   might still be downloading, but at least part of the document has been received from the server and the browser has
-   decided to switch to the new document."
+  "Fired when a navigation is committed. The document (and the resources it refers to, such as images and subframes) might
+   still be downloading, but at least part of the document has been received from the server and the browser has decided to
+   switch to the new document."
   ([channel] (gen-call :event ::on-committed &form channel)))
 
 (defmacro tap-on-dom-content-loaded-events
@@ -52,8 +52,8 @@
   ([channel] (gen-call :event ::on-completed &form channel)))
 
 (defmacro tap-on-error-occurred-events
-  "Fired when an error occurs and the navigation is aborted. This can happen if either a network error occurred, or
-   the user aborted the navigation."
+  "Fired when an error occurs and the navigation is aborted. This can happen if either a network error occurred, or the user
+   aborted the navigation."
   ([channel] (gen-call :event ::on-error-occurred &form channel)))
 
 (defmacro tap-on-created-navigation-target-events
@@ -61,8 +61,7 @@
   ([channel] (gen-call :event ::on-created-navigation-target &form channel)))
 
 (defmacro tap-on-reference-fragment-updated-events
-  "Fired when the reference fragment of a frame was updated. All future events for that frame will use the updated
-   URL."
+  "Fired when the reference fragment of a frame was updated. All future events for that frame will use the updated URL."
   ([channel] (gen-call :event ::on-reference-fragment-updated &form channel)))
 
 (defmacro tap-on-tab-replaced-events
@@ -73,16 +72,16 @@
   "Fired when the frame's history was updated to a new URL. All future events for that frame will use the updated URL."
   ([channel] (gen-call :event ::on-history-state-updated &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.webNavigation",
@@ -93,9 +92,7 @@
      :callback? true,
      :params
      [{:name "details", :type "object"}
-      {:name "callback",
-       :type :callback,
-       :callback {:params [{:name "details", :optional? true, :type "object"}]}}]}
+      {:name "callback", :type :callback, :callback {:params [{:name "details", :optional? true, :type "object"}]}}]}
     {:id ::get-all-frames,
      :name "getAllFrames",
      :callback? true,
@@ -110,9 +107,7 @@
     {:id ::on-dom-content-loaded, :name "onDOMContentLoaded", :params [{:name "details", :type "object"}]}
     {:id ::on-completed, :name "onCompleted", :params [{:name "details", :type "object"}]}
     {:id ::on-error-occurred, :name "onErrorOccurred", :params [{:name "details", :type "object"}]}
-    {:id ::on-created-navigation-target,
-     :name "onCreatedNavigationTarget",
-     :params [{:name "details", :type "object"}]}
+    {:id ::on-created-navigation-target, :name "onCreatedNavigationTarget", :params [{:name "details", :type "object"}]}
     {:id ::on-reference-fragment-updated,
      :name "onReferenceFragmentUpdated",
      :params [{:name "details", :type "object"}]}
@@ -122,7 +117,7 @@
      :since "22",
      :params [{:name "details", :type "object"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

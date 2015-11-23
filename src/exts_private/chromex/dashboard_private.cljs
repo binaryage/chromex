@@ -1,7 +1,7 @@
 (ns chromex.dashboard-private (:require-macros [chromex.dashboard-private :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn show-permission-prompt-for-delegated-install* [config details]
   (gen-wrap :function ::show-permission-prompt-for-delegated-install config details))

@@ -1,7 +1,7 @@
 (ns chromex.system-indicator (:require-macros [chromex.system-indicator :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn set-icon* [config details]
   (gen-wrap :function ::set-icon config details))
@@ -12,7 +12,7 @@
 (defn disable* [config]
   (gen-wrap :function ::disable config))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-clicked* [config channel]
   (gen-wrap :event ::on-clicked config channel))

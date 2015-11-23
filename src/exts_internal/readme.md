@@ -56,18 +56,17 @@ Generated 16 namespaces containing 0 properties, 89 functions and 15 events:
 (ns your.project
   (:require
     [chromex.app.current-window-internal refer-macros:[
-      focus fullscreen minimize maximize restore draw-attention clear-attention show hide
-      set-bounds set-size-constraints set-icon set-shape set-always-on-top
-      set-visible-on-all-workspaces tap-on-closed tap-on-bounds-changed tap-on-fullscreened
-      tap-on-minimized tap-on-maximized tap-on-restored tap-on-alpha-enabled-changed
-      tap-on-window-shown-for-tests]]
+      focus fullscreen minimize maximize restore draw-attention clear-attention show hide set-bounds
+      set-size-constraints set-icon set-shape set-always-on-top set-visible-on-all-workspaces
+      tap-on-closed tap-on-bounds-changed tap-on-fullscreened tap-on-minimized tap-on-maximized
+      tap-on-restored tap-on-alpha-enabled-changed tap-on-window-shown-for-tests]]
     
     [chromex.app-view-guest-internal refer-macros:[
       attach-frame deny-request]]
     
     [chromex.automation-internal refer-macros:[
-      enable-tab enable-frame enable-desktop perform-action query-selector
-      tap-on-accessibility-event tap-on-accessibility-tree-destroyed tap-on-tree-change]]
+      enable-tab enable-frame enable-desktop perform-action query-selector tap-on-accessibility-event
+      tap-on-accessibility-tree-destroyed tap-on-tree-change]]
     
     [chromex.certificate-provider-internal refer-macros:[
       report-signature report-certificates]]
@@ -92,11 +91,10 @@ Generated 16 namespaces containing 0 properties, 89 functions and 15 events:
       select-file]]
     
     [chromex.file-manager-private-internal refer-macros:[
-      resolve-isolated-entries get-entry-properties add-file-watch remove-file-watch
-      get-custom-actions execute-custom-action compute-checksum get-mime-type pin-drive-file
-      execute-task set-default-task get-file-tasks get-share-url get-download-url
-      request-drive-share set-entry-tag cancel-file-transfers start-copy zip-selection
-      validate-path-name-length]]
+      resolve-isolated-entries get-entry-properties add-file-watch remove-file-watch get-custom-actions
+      execute-custom-action compute-checksum get-mime-type pin-drive-file execute-task set-default-task
+      get-file-tasks get-share-url get-download-url request-drive-share set-entry-tag
+      cancel-file-transfers start-copy zip-selection validate-path-name-length]]
     
     [chromex.guest-view-internal refer-macros:[
       create-guest destroy-guest set-size]]
@@ -105,15 +103,13 @@ Generated 16 namespaces containing 0 properties, 89 functions and 15 events:
       select-client-certificates sign get-public-key]]
     
     [chromex.printer-provider-internal refer-macros:[
-      report-printers report-usb-printer-info report-printer-capability report-print-result
-      get-print-data]]
+      report-printers report-usb-printer-info report-printer-capability report-print-result get-print-data]]
     
     [chromex.web-request-internal refer-macros:[
       add-event-listener event-handled]]
     
     [chromex.web-view-internal refer-macros:[
       execute-script insert-css add-content-scripts remove-content-scripts set-zoom get-zoom
-      set-zoom-mode get-zoom-mode find stop-finding load-data-with-base-url go
-      override-user-agent reload set-allow-transparency set-allow-scaling set-name set-permission
-      navigate stop terminate clear-data]]))
+      set-zoom-mode get-zoom-mode find stop-finding load-data-with-base-url go override-user-agent reload
+      set-allow-transparency set-allow-scaling set-name set-permission navigate stop terminate clear-data]]))
 ```

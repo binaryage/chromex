@@ -1,6 +1,6 @@
 (ns chromex.input.ime
-  "Use the chrome.input.ime API to implement a custom IME for Chrome OS. This allows your extension to handle
-   keystrokes, set the composition, and manage the candidate window.
+  "Use the chrome.input.ime API to implement a custom IME for Chrome OS. This allows your extension to handle keystrokes, set
+   the composition, and manage the candidate window.
    
      * available since Chrome 21
      * https://developer.chrome.com/extensions/input.ime"
@@ -13,13 +13,13 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro set-composition
   "Set the current composition. If this extension does not own the active IME, this fails.
    
-     |callback| - Called when the operation completes with a boolean indicating if the text was accepted or not. On
-                  failure, chrome.runtime.lastError is set.
+     |callback| - Called when the operation completes with a boolean indicating if the text was accepted or not. On failure,
+                  chrome.runtime.lastError is set.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([parameters #_callback] (gen-call :function ::set-composition &form parameters)))
@@ -27,8 +27,8 @@
 (defmacro clear-composition
   "Clear the current composition. If this extension does not own the active IME, this fails.
    
-     |callback| - Called when the operation completes with a boolean indicating if the text was accepted or not. On
-                  failure, chrome.runtime.lastError is set.
+     |callback| - Called when the operation completes with a boolean indicating if the text was accepted or not. On failure,
+                  chrome.runtime.lastError is set.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([parameters #_callback] (gen-call :function ::clear-composition &form parameters)))
@@ -36,15 +36,15 @@
 (defmacro commit-text
   "Commits the provided text to the current input.
    
-     |callback| - Called when the operation completes with a boolean indicating if the text was accepted or not. On
-                  failure, chrome.runtime.lastError is set.
+     |callback| - Called when the operation completes with a boolean indicating if the text was accepted or not. On failure,
+                  chrome.runtime.lastError is set.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([parameters #_callback] (gen-call :function ::commit-text &form parameters)))
 
 (defmacro send-key-events
-  "Sends the key events.  This function is expected to be used by virtual keyboards.  When key(s) on a virtual
-   keyboard is pressed by a user, this function is used to propagate that event to the system.
+  "Sends the key events.  This function is expected to be used by virtual keyboards.  When key(s) on a virtual keyboard is
+   pressed by a user, this function is used to propagate that event to the system.
    
      |callback| - Called when the operation completes.
    
@@ -52,8 +52,8 @@
   ([parameters #_callback] (gen-call :function ::send-key-events &form parameters)))
 
 (defmacro hide-input-view
-  "Hides the input view window, which is popped up automatically by system. If the input view window is already
-   hidden, this function will do nothing."
+  "Hides the input view window, which is popped up automatically by system. If the input view window is already hidden, this
+   function will do nothing."
   ([] (gen-call :function ::hide-input-view &form)))
 
 (defmacro set-candidate-window-properties
@@ -73,8 +73,7 @@
   ([parameters #_callback] (gen-call :function ::set-candidates &form parameters)))
 
 (defmacro set-cursor-position
-  "Set the position of the cursor in the candidate window. This is a no-op if this extension does not own the active
-   IME.
+  "Set the position of the cursor in the candidate window. This is a no-op if this extension does not own the active IME.
    
      |callback| - Called when the operation completes
    
@@ -104,32 +103,31 @@
   ([parameters #_callback] (gen-call :function ::delete-surrounding-text &form parameters)))
 
 (defmacro key-event-handled
-  "Indicates that the key event received by onKeyEvent is handled.  This should only be called if the onKeyEvent
-   listener is asynchronous.
+  "Indicates that the key event received by onKeyEvent is handled.  This should only be called if the onKeyEvent listener is
+   asynchronous.
    
      |requestId| - Request id of the event that was handled.  This should come from keyEvent.requestId
      |response| - True if the keystroke was handled, false if not"
   ([request-id response] (gen-call :function ::key-event-handled &form request-id response)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-activate-events
   "This event is sent when an IME is activated. It signals that the IME will be receiving onKeyPress events."
   ([channel] (gen-call :event ::on-activate &form channel)))
 
 (defmacro tap-on-deactivated-events
-  "This event is sent when an IME is deactivated. It signals that the IME will no longer be receiving onKeyPress
-   events."
+  "This event is sent when an IME is deactivated. It signals that the IME will no longer be receiving onKeyPress events."
   ([channel] (gen-call :event ::on-deactivated &form channel)))
 
 (defmacro tap-on-focus-events
-  "This event is sent when focus enters a text box. It is sent to all extensions that are listening to this event, and
-   enabled by the user."
+  "This event is sent when focus enters a text box. It is sent to all extensions that are listening to this event, and enabled
+   by the user."
   ([channel] (gen-call :event ::on-focus &form channel)))
 
 (defmacro tap-on-blur-events
-  "This event is sent when focus leaves a text box. It is sent to all extensions that are listening to this event, and
-   enabled by the user."
+  "This event is sent when focus leaves a text box. It is sent to all extensions that are listening to this event, and enabled
+   by the user."
   ([channel] (gen-call :event ::on-blur &form channel)))
 
 (defmacro tap-on-input-context-update-events
@@ -150,24 +148,24 @@
   ([channel] (gen-call :event ::on-menu-item-activated &form channel)))
 
 (defmacro tap-on-surrounding-text-changed-events
-  "Called when the editable string around caret is changed or when the caret position is moved. The text length is
-   limited to 100 characters for each back and forth direction."
+  "Called when the editable string around caret is changed or when the caret position is moved. The text length is limited to
+   100 characters for each back and forth direction."
   ([channel] (gen-call :event ::on-surrounding-text-changed &form channel)))
 
 (defmacro tap-on-reset-events
   "This event is sent when chrome terminates ongoing text input session."
   ([channel] (gen-call :event ::on-reset &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.input.ime",
@@ -178,28 +176,19 @@
      :callback? true,
      :params
      [{:name "parameters", :type "object"}
-      {:name "callback",
-       :optional? true,
-       :type :callback,
-       :callback {:params [{:name "success", :type "boolean"}]}}]}
+      {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::clear-composition,
      :name "clearComposition",
      :callback? true,
      :params
      [{:name "parameters", :type "object"}
-      {:name "callback",
-       :optional? true,
-       :type :callback,
-       :callback {:params [{:name "success", :type "boolean"}]}}]}
+      {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::commit-text,
      :name "commitText",
      :callback? true,
      :params
      [{:name "parameters", :type "object"}
-      {:name "callback",
-       :optional? true,
-       :type :callback,
-       :callback {:params [{:name "success", :type "boolean"}]}}]}
+      {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::send-key-events,
      :name "sendKeyEvents",
      :since "33",
@@ -211,28 +200,19 @@
      :callback? true,
      :params
      [{:name "parameters", :type "object"}
-      {:name "callback",
-       :optional? true,
-       :type :callback,
-       :callback {:params [{:name "success", :type "boolean"}]}}]}
+      {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::set-candidates,
      :name "setCandidates",
      :callback? true,
      :params
      [{:name "parameters", :type "object"}
-      {:name "callback",
-       :optional? true,
-       :type :callback,
-       :callback {:params [{:name "success", :type "boolean"}]}}]}
+      {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::set-cursor-position,
      :name "setCursorPosition",
      :callback? true,
      :params
      [{:name "parameters", :type "object"}
-      {:name "callback",
-       :optional? true,
-       :type :callback,
-       :callback {:params [{:name "success", :type "boolean"}]}}]}
+      {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::set-menu-items,
      :name "setMenuItems",
      :callback? true,
@@ -278,7 +258,7 @@
      :params [{:name "engine-id", :type "string"} {:name "surrounding-info", :type "object"}]}
     {:id ::on-reset, :name "onReset", :since "29", :params [{:name "engine-id", :type "string"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

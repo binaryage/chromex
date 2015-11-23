@@ -1,7 +1,7 @@
 (ns chromex.log-private (:require-macros [chromex.log-private :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn get-historical* [config filter]
   (gen-wrap :function ::get-historical config filter))
@@ -15,7 +15,7 @@
 (defn dump-logs* [config]
   (gen-wrap :function ::dump-logs config))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-captured-events* [config channel]
   (gen-wrap :event ::on-captured-events config channel))

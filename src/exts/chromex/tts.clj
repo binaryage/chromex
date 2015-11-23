@@ -1,6 +1,6 @@
 (ns chromex.tts
-  "Use the chrome.tts API to play synthesized text-to-speech (TTS). See also the related ttsEngine API, which allows
-   an extension to implement a speech engine.
+  "Use the chrome.tts API to play synthesized text-to-speech (TTS). See also the related ttsEngine API, which allows an
+   extension to implement a speech engine.
    
      * available since Chrome 14
      * https://developer.chrome.com/extensions/tts"
@@ -13,25 +13,25 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro speak
   "Speaks text using a text-to-speech engine.
    
-     |utterance| - The text to speak, either plain text or a complete, well-formed SSML document. Speech engines
-                   that do not support SSML will strip away the tags and speak the text. The maximum length of the
-                   text is 32,768 characters.
+     |utterance| - The text to speak, either plain text or a complete, well-formed SSML document. Speech engines that do not
+                   support SSML will strip away the tags and speak the text. The maximum length of the text is 32,768
+                   characters.
      |options| - The speech options.
-     |callback| - Called right away, before speech finishes. Check chrome.runtime.lastError to make sure there were
-                  no errors. Use options.onEvent to get more detailed feedback.
+     |callback| - Called right away, before speech finishes. Check chrome.runtime.lastError to make sure there were no
+                  errors. Use options.onEvent to get more detailed feedback.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([utterance options #_callback] (gen-call :function ::speak &form utterance options))
   ([utterance] `(speak ~utterance :omit)))
 
 (defmacro stop
-  "Stops any current speech and flushes the queue of any pending utterances. In addition, if speech was paused, it
-   will now be un-paused for the next call to speak."
+  "Stops any current speech and flushes the queue of any pending utterances. In addition, if speech was paused, it will now be
+   un-paused for the next call to speak."
   ([] (gen-call :function ::stop &form)))
 
 (defmacro pause
@@ -43,8 +43,8 @@
   ([] (gen-call :function ::resume &form)))
 
 (defmacro is-speaking
-  "Checks whether the engine is currently speaking. On Mac OS X, the result is true whenever the system speech engine
-   is speaking, even if the speech wasn't initiated by Chrome.
+  "Checks whether the engine is currently speaking. On Mac OS X, the result is true whenever the system speech engine is
+   speaking, even if the speech wasn't initiated by Chrome.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([#_callback] (gen-call :function ::is-speaking &form)))
@@ -55,16 +55,16 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([#_callback] (gen-call :function ::get-voices &form)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.tts",
@@ -84,10 +84,7 @@
      :name "isSpeaking",
      :callback? true,
      :params
-     [{:name "callback",
-       :optional? true,
-       :type :callback,
-       :callback {:params [{:name "speaking", :type "boolean"}]}}]}
+     [{:name "callback", :optional? true, :type :callback, :callback {:params [{:name "speaking", :type "boolean"}]}}]}
     {:id ::get-voices,
      :name "getVoices",
      :callback? true,
@@ -97,7 +94,7 @@
        :type :callback,
        :callback {:params [{:name "voices", :type "[array-of-tts.TtsVoices]"}]}}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

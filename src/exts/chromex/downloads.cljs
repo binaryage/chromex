@@ -1,7 +1,7 @@
 (ns chromex.downloads (:require-macros [chromex.downloads :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn download* [config options]
   (gen-wrap :function ::download config options))
@@ -45,7 +45,7 @@
 (defn set-shelf-enabled* [config enabled]
   (gen-wrap :function ::set-shelf-enabled config enabled))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-created* [config channel]
   (gen-wrap :event ::on-created config channel))

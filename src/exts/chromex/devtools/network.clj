@@ -1,6 +1,6 @@
 (ns chromex.devtools.network
-  "Use the chrome.devtools.network API to retrieve the information about network requests displayed by the Developer
-   Tools in the Network panel.
+  "Use the chrome.devtools.network API to retrieve the information about network requests displayed by the Developer Tools in
+   the Network panel.
    
      * available since Chrome 18
      * https://developer.chrome.com/extensions/devtools.network"
@@ -13,7 +13,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro get-har
   "Returns HAR log that contains all known network requests.
@@ -23,7 +23,7 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([#_callback] (gen-call :function ::get-har &form)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-request-finished-events
   "Fired when a network request is finished and all request data are available."
@@ -33,16 +33,16 @@
   "Fired when the inspected window navigates to a new page."
   ([channel] (gen-call :event ::on-navigated &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.devtools.network",
@@ -58,7 +58,7 @@
      :params [{:name "request", :type "devtools.network.Request"}]}
     {:id ::on-navigated, :name "onNavigated", :params [{:name "url", :type "string"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

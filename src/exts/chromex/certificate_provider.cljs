@@ -1,7 +1,7 @@
 (ns chromex.certificate-provider (:require-macros [chromex.certificate-provider :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-certificates-requested* [config channel]
   (gen-wrap :event ::on-certificates-requested config channel))

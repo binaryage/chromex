@@ -1,7 +1,7 @@
 (ns chromex.alarms (:require-macros [chromex.alarms :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn create* [config name alarm-info]
   (gen-wrap :function ::create config name alarm-info))
@@ -18,7 +18,7 @@
 (defn clear-all* [config]
   (gen-wrap :function ::clear-all config))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-alarm* [config channel]
   (gen-wrap :event ::on-alarm config channel))

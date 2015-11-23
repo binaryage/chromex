@@ -10,7 +10,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro get-incognito-mode-availability
   "Returns whether the incognito mode is enabled, disabled or forced
@@ -32,7 +32,7 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([#_callback] (gen-call :function ::get-api-key &form)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-volume-changed-events
   "Fired when the volume is changed."
@@ -50,16 +50,16 @@
   "Fired when the device wakes up from sleep."
   ([channel] (gen-call :event ::on-woke-up &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.systemPrivate",
@@ -76,25 +76,21 @@
      :name "getUpdateStatus",
      :callback? true,
      :params
-     [{:name "callback",
-       :type :callback,
-       :callback {:params [{:name "status", :type "systemPrivate.UpdateStatus"}]}}]}
+     [{:name "callback", :type :callback, :callback {:params [{:name "status", :type "systemPrivate.UpdateStatus"}]}}]}
     {:id ::get-api-key,
      :name "getApiKey",
      :since "33",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "key", :type "string"}]}}]}],
    :events
-   [{:id ::on-volume-changed,
-     :name "onVolumeChanged",
-     :params [{:name "volume", :type "systemPrivate.VolumeInfo"}]}
+   [{:id ::on-volume-changed, :name "onVolumeChanged", :params [{:name "volume", :type "systemPrivate.VolumeInfo"}]}
     {:id ::on-brightness-changed,
      :name "onBrightnessChanged",
      :params [{:name "brightness", :type "systemPrivate.BrightnessChangeInfo"}]}
     {:id ::on-screen-unlocked, :name "onScreenUnlocked"}
     {:id ::on-woke-up, :name "onWokeUp"}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

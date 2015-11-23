@@ -1,6 +1,6 @@
 (ns chromex.page-action
-  "Use the chrome.pageAction API to put icons inside the address bar. Page actions represent actions that can be
-   taken on the current page, but that aren't applicable to all pages.
+  "Use the chrome.pageAction API to put icons inside the address bar. Page actions represent actions that can be taken on the
+   current page, but that aren't applicable to all pages.
    
      * available since Chrome 5
      * https://developer.chrome.com/extensions/pageAction"
@@ -13,7 +13,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro show
   "Shows the page action. The page action is shown whenever the tab is selected.
@@ -38,9 +38,8 @@
   ([details #_callback] (gen-call :function ::get-title &form details)))
 
 (defmacro set-icon
-  "Sets the icon for the page action. The icon can be specified either as the path to an image file or as the pixel
-   data from a canvas element, or as dictionary of either one of those. Either the path or the imageData property must
-   be specified.
+  "Sets the icon for the page action. The icon can be specified either as the path to an image file or as the pixel data from
+   a canvas element, or as dictionary of either one of those. Either the path or the imageData property must be specified.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([details #_callback] (gen-call :function ::set-icon &form details)))
@@ -55,22 +54,22 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([details #_callback] (gen-call :function ::get-popup &form details)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-clicked-events
   "Fired when a page action icon is clicked.  This event will not fire if the page action has a popup."
   ([channel] (gen-call :event ::on-clicked &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.pageAction",
@@ -100,7 +99,7 @@
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "string"}]}}]}],
    :events [{:id ::on-clicked, :name "onClicked", :params [{:name "tab", :type "tabs.Tab"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

@@ -1,17 +1,17 @@
 (ns chromex.web-request (:require-macros [chromex.web-request :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- properties -----------------------------------------------------------------------------------------------------
+; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defn max-handler-behavior-changed-calls-per10-minutes* [config]
   (gen-wrap :property ::max-handler-behavior-changed-calls-per10-minutes config))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn handler-behavior-changed* [config]
   (gen-wrap :function ::handler-behavior-changed config))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-before-request* [config channel]
   (gen-wrap :event ::on-before-request config channel))

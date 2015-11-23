@@ -1,7 +1,7 @@
 (ns chromex.webrtc-audio-private (:require-macros [chromex.webrtc-audio-private :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn get-sinks* [config]
   (gen-wrap :function ::get-sinks config))
@@ -15,7 +15,7 @@
 (defn get-associated-sink* [config security-origin source-id-in-origin]
   (gen-wrap :function ::get-associated-sink config security-origin source-id-in-origin))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-sinks-changed* [config channel]
   (gen-wrap :event ::on-sinks-changed config channel))

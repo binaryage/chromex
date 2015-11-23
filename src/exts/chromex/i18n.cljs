@@ -1,7 +1,7 @@
 (ns chromex.i18n (:require-macros [chromex.i18n :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn get-accept-languages* [config]
   (gen-wrap :function ::get-accept-languages config))

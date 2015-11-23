@@ -1,7 +1,7 @@
 (ns chromex.app (:require-macros [chromex.app :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn get-is-installed* [config]
   (gen-wrap :function ::get-is-installed config))

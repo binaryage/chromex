@@ -1,7 +1,7 @@
 (ns chromex.preferences-private (:require-macros [chromex.preferences-private :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- properties -----------------------------------------------------------------------------------------------------
+; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defn easy-unlock-proximity-required* [config]
   (gen-wrap :property ::easy-unlock-proximity-required config))
@@ -12,7 +12,7 @@
 (defn data-reduction-update-daily-lengths* [config]
   (gen-wrap :property ::data-reduction-update-daily-lengths config))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn get-sync-categories-without-passphrase* [config]
   (gen-wrap :function ::get-sync-categories-without-passphrase config))

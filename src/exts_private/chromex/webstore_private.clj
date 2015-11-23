@@ -10,7 +10,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro install
   "Installs the extension corresponding to the given id
@@ -23,15 +23,14 @@
 (defmacro begin-install-with-manifest3
   "Initiates the install process for the given extension.
    
-     |callback| - Called when the user has either accepted/rejected the dialog, or some error occurred (such as
-                  invalid manifest or icon image data).
+     |callback| - Called when the user has either accepted/rejected the dialog, or some error occurred (such as invalid
+                  manifest or icon image data).
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([details #_callback] (gen-call :function ::begin-install-with-manifest3 &form details)))
 
 (defmacro complete-install
-  "  |expected_id| - The id of the extension to be installed. This should match a previous call to
-                     beginInstallWithManifest3.
+  "  |expected_id| - The id of the extension to be installed. This should match a previous call to beginInstallWithManifest3.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([expected-id #_callback] (gen-call :function ::complete-install &form expected-id)))
@@ -40,9 +39,8 @@
   "Initiates the install process for the given bundle of extensions.
    
      |contents| - An array of extension details to be installed.
-     |callback| - Called when the install process completes. Upon failures, chrome.runtime.lastError will be set to
-                  'Invalid bundle', 'Invalid icon url', 'This item is already installed', or 'User cancelled
-                  install'.
+     |callback| - Called when the install process completes. Upon failures, chrome.runtime.lastError will be set to 'Invalid
+                  bundle', 'Invalid icon url', 'This item is already installed', or 'User cancelled install'.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([details contents #_callback] (gen-call :function ::install-bundle &form details contents)))
@@ -96,24 +94,23 @@
   ([#_callback] (gen-call :function ::get-ephemeral-apps-enabled &form)))
 
 (defmacro launch-ephemeral-app
-  "Installs an app ephemerally in Chrome (if not already fully installed) and launches the app. A user gesture is
-   required.
+  "Installs an app ephemerally in Chrome (if not already fully installed) and launches the app. A user gesture is required.
    
      |id| - The extension id of the app to launch.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([id #_callback] (gen-call :function ::launch-ephemeral-app &form id)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.webstorePrivate",
@@ -176,20 +173,17 @@
      :name "getIsLauncherEnabled",
      :since "26",
      :callback? true,
-     :params
-     [{:name "callback", :type :callback, :callback {:params [{:name "is-enabled", :type "boolean"}]}}]}
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "is-enabled", :type "boolean"}]}}]}
     {:id ::is-in-incognito-mode,
      :name "isInIncognitoMode",
      :since "30",
      :callback? true,
-     :params
-     [{:name "callback", :type :callback, :callback {:params [{:name "is-incognito", :type "boolean"}]}}]}
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "is-incognito", :type "boolean"}]}}]}
     {:id ::get-ephemeral-apps-enabled,
      :name "getEphemeralAppsEnabled",
      :since "38",
      :callback? true,
-     :params
-     [{:name "callback", :type :callback, :callback {:params [{:name "is-enabled", :type "boolean"}]}}]}
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "is-enabled", :type "boolean"}]}}]}
     {:id ::launch-ephemeral-app,
      :name "launchEphemeralApp",
      :since "38",
@@ -201,7 +195,7 @@
        :type :callback,
        :callback {:params [{:name "result", :type "webstorePrivate.Result"}]}}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

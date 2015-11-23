@@ -1,6 +1,6 @@
 (ns chromex.devtools.panels
-  "Use the chrome.devtools.panels API to integrate your extension into Developer Tools window UI: create your own
-   panels, access existing panels, and add sidebars.
+  "Use the chrome.devtools.panels API to integrate your extension into Developer Tools window UI: create your own panels,
+   access existing panels, and add sidebars.
    
      * available since Chrome 18
      * https://developer.chrome.com/extensions/devtools.panels"
@@ -13,7 +13,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- properties -----------------------------------------------------------------------------------------------------
+; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defmacro get-elements
   "Elements panel."
@@ -23,7 +23,7 @@
   "Sources panel."
   ([] (gen-call :property ::sources &form)))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro create
   "Creates an extension panel.
@@ -37,11 +37,11 @@
   ([title icon-path page-path #_callback] (gen-call :function ::create &form title icon-path page-path)))
 
 (defmacro set-open-resource-handler
-  "Specifies the function to be called when the user clicks a resource link in the Developer Tools window. To unset
-   the handler, either call the method with no parameters or pass null as the parameter.
+  "Specifies the function to be called when the user clicks a resource link in the Developer Tools window. To unset the
+   handler, either call the method with no parameters or pass null as the parameter.
    
-     |callback| - A function that is called when the user clicks on a valid resource link in Developer Tools window.
-                  Note that if the user clicks an invalid URL or an XHR, this function is not called.
+     |callback| - A function that is called when the user clicks on a valid resource link in Developer Tools window. Note
+                  that if the user clicks an invalid URL or an XHR, this function is not called.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([#_callback] (gen-call :function ::set-open-resource-handler &form)))
@@ -56,16 +56,16 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([url line-number #_callback] (gen-call :function ::open-resource &form url line-number)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.devtools.panels",
@@ -102,7 +102,7 @@
       {:name "line-number", :type "integer"}
       {:name "callback", :optional? true, :type :callback}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

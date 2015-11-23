@@ -10,7 +10,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro insert-text
   "Inserts text into the currently focused text field.
@@ -42,8 +42,7 @@
   ([enable] (gen-call :function ::set-hotrod-keyboard &form enable)))
 
 (defmacro lock-keyboard
-  "Sets the lock state of the virtual keyboard. A locked keyboard remains visible even after a text area loses input
-   focus."
+  "Sets the lock state of the virtual keyboard. A locked keyboard remains visible even after a text area loses input focus."
   ([lock] (gen-call :function ::lock-keyboard &form lock)))
 
 (defmacro keyboard-loaded
@@ -78,7 +77,7 @@
      |state| - The value of the virtual keyboard state to change to."
   ([state] (gen-call :function ::set-keyboard-state &form state)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-text-input-box-focused-events
   "This event is sent when focus enters a text input box."
@@ -88,16 +87,16 @@
   "This event is sent when virtual keyboard bounds changed and overscroll/resize is enabled."
   ([channel] (gen-call :event ::on-bounds-changed &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.virtualKeyboardPrivate",
@@ -117,10 +116,7 @@
      :name "hideKeyboard",
      :callback? true,
      :params [{:name "callback", :optional? true, :type :callback}]}
-    {:id ::set-hotrod-keyboard,
-     :name "setHotrodKeyboard",
-     :since "46",
-     :params [{:name "enable", :type "boolean"}]}
+    {:id ::set-hotrod-keyboard, :name "setHotrodKeyboard", :since "46", :params [{:name "enable", :type "boolean"}]}
     {:id ::lock-keyboard, :name "lockKeyboard", :since "33", :params [{:name "lock", :type "boolean"}]}
     {:id ::keyboard-loaded,
      :name "keyboardLoaded",
@@ -132,10 +128,7 @@
      :since "34",
      :callback? true,
      :params
-     [{:name "callback",
-       :optional? true,
-       :type :callback,
-       :callback {:params [{:name "config", :type "object"}]}}]}
+     [{:name "callback", :optional? true, :type :callback, :callback {:params [{:name "config", :type "object"}]}}]}
     {:id ::open-settings, :name "openSettings", :since "37"}
     {:id ::set-mode,
      :name "setMode",
@@ -146,15 +139,13 @@
      :since "46",
      :params [{:name "state", :type "virtualKeyboardPrivate.KeyboardState"}]}],
    :events
-   [{:id ::on-text-input-box-focused,
-     :name "onTextInputBoxFocused",
-     :params [{:name "context", :type "object"}]}
+   [{:id ::on-text-input-box-focused, :name "onTextInputBoxFocused", :params [{:name "context", :type "object"}]}
     {:id ::on-bounds-changed,
      :name "onBoundsChanged",
      :since "44",
      :params [{:name "bounds", :type "virtualKeyboardPrivate.Bounds"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

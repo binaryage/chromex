@@ -1,7 +1,7 @@
 (ns chromex.vpn-provider (:require-macros [chromex.vpn-provider :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn create-config* [config name]
   (gen-wrap :function ::create-config config name))
@@ -18,7 +18,7 @@
 (defn notify-connection-state-changed* [config state]
   (gen-wrap :function ::notify-connection-state-changed config state))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-platform-message* [config channel]
   (gen-wrap :event ::on-platform-message config channel))

@@ -1,7 +1,7 @@
 (ns chromex.debugger (:require-macros [chromex.debugger :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn attach* [config target required-version]
   (gen-wrap :function ::attach config target required-version))
@@ -15,7 +15,7 @@
 (defn get-targets* [config]
   (gen-wrap :function ::get-targets config))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-event* [config channel]
   (gen-wrap :event ::on-event config channel))

@@ -1,7 +1,7 @@
 (ns chromex.autotest-private (:require-macros [chromex.autotest-private :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn logout* [config]
   (gen-wrap :function ::logout config))

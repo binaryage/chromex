@@ -1,7 +1,7 @@
 (ns chromex.accessibility-features (:require-macros [chromex.accessibility-features :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- properties -----------------------------------------------------------------------------------------------------
+; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defn spoken-feedback* [config]
   (gen-wrap :property ::spoken-feedback config))

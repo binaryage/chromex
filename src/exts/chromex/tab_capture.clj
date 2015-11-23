@@ -13,12 +13,12 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro capture
-  "Captures the visible area of the currently active tab.  Capture can only be started on the currently active tab
-   after the extension has been invoked.  Capture is maintained across page navigations within the tab, and stops when
-   the tab is closed, or the media stream is closed by the extension.
+  "Captures the visible area of the currently active tab.  Capture can only be started on the currently active tab after the
+   extension has been invoked.  Capture is maintained across page navigations within the tab, and stops when the tab is
+   closed, or the media stream is closed by the extension.
    
      |options| - Configures the returned media stream.
      |callback| - Callback with either the tab capture stream or   null.
@@ -27,9 +27,9 @@
   ([options #_callback] (gen-call :function ::capture &form options)))
 
 (defmacro get-captured-tabs
-  "Returns a list of tabs that have requested capture or are being captured, i.e. status != stopped and status !=
-   error. This allows extensions to inform the user that there is an existing tab capture that would prevent a new tab
-   capture from succeeding (or to prevent redundant requests for the same tab).
+  "Returns a list of tabs that have requested capture or are being captured, i.e. status != stopped and status != error. This
+   allows extensions to inform the user that there is an existing tab capture that would prevent a new tab capture from
+   succeeding (or to prevent redundant requests for the same tab).
    
      |callback| - Callback invoked with CaptureInfo[] for captured tabs.
    
@@ -37,16 +37,15 @@
   ([#_callback] (gen-call :function ::get-captured-tabs &form)))
 
 (defmacro capture-offscreen-tab
-  "Creates an off-screen tab and navigates it to the given |startUrl|. Then, capture is started and a MediaStream is
-   returned via |callback|.Off-screen tabs are isolated from the user's normal browser experience. They do not show up
-   in the browser window or tab strip, nor are they visible to extensions (e.g., via the chrome.tabs.* APIs).An
-   off-screen tab remains alive until one of three events occurs: 1. All MediaStreams providing its captured content
-   are closed; 2. the page self-closes (e.g., via window.close()); 3. the extension that called captureOffscreenTab()
-   is unloaded.Sandboxing: The off-screen tab does not have any access whatsoever to the local user profile (including
-   cookies, HTTP auth, etc.).  Instead, it is provided its own sandboxed profile.  Also, it cannot access any
-   interactive resources such as keyboard/mouse input, media recording devices (e.g., web cams), copy/paste to/from
-   the system clipboard, etc.Note: This is a new API, currently only available in Canary/Dev channel, and may change
-   without notice.
+  "Creates an off-screen tab and navigates it to the given |startUrl|. Then, capture is started and a MediaStream is returned
+   via |callback|.Off-screen tabs are isolated from the user's normal browser experience. They do not show up in the browser
+   window or tab strip, nor are they visible to extensions (e.g., via the chrome.tabs.* APIs).An off-screen tab remains alive
+   until one of three events occurs: 1. All MediaStreams providing its captured content are closed; 2. the page self-closes
+   (e.g., via window.close()); 3. the extension that called captureOffscreenTab() is unloaded.Sandboxing: The off-screen tab
+   does not have any access whatsoever to the local user profile (including cookies, HTTP auth, etc.).  Instead, it is
+   provided its own sandboxed profile.  Also, it cannot access any interactive resources such as keyboard/mouse input, media
+   recording devices (e.g., web cams), copy/paste to/from the system clipboard, etc.Note: This is a new API, currently only
+   available in Canary/Dev channel, and may change without notice.
    
      |options| - Constraints for the capture and returned MediaStream.
      |callback| - null on error.
@@ -54,23 +53,23 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([start-url options #_callback] (gen-call :function ::capture-offscreen-tab &form start-url options)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-status-changed-events
-  "Event fired when the capture status of a tab changes. This allows extension authors to keep track of the capture
-   status of tabs to keep UI elements like page actions in sync."
+  "Event fired when the capture status of a tab changes. This allows extension authors to keep track of the capture status of
+   tabs to keep UI elements like page actions in sync."
   ([channel] (gen-call :event ::on-status-changed &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.tabCapture",
@@ -98,11 +97,9 @@
       {:name "options", :type "tabCapture.CaptureOptions"}
       {:name "callback", :type :callback, :callback {:params [{:name "stream", :type "LocalMediaStream"}]}}]}],
    :events
-   [{:id ::on-status-changed,
-     :name "onStatusChanged",
-     :params [{:name "info", :type "tabCapture.CaptureInfo"}]}]})
+   [{:id ::on-status-changed, :name "onStatusChanged", :params [{:name "info", :type "tabCapture.CaptureInfo"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

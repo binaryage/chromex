@@ -13,11 +13,11 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro save-address
-  "Saves the given address. If |address| has an empty string as its ID, it will be assigned a new one and added as a
-   new entry.
+  "Saves the given address. If |address| has an empty string as its ID, it will be assigned a new one and added as a new
+   entry.
    
      |address| - The address entry to save."
   ([address] (gen-call :function ::save-address &form address)))
@@ -25,16 +25,16 @@
 (defmacro get-address-components
   "Gets the address components for a given country code.
    
-     |countryCode| - A two-character string representing the address' country     whose components should be
-                     returned. See autofill_country.cc for a     list of valid codes.
+     |countryCode| - A two-character string representing the address' country     whose components should be returned. See
+                     autofill_country.cc for a     list of valid codes.
      |callback| - Callback which will be called with components.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([country-code #_callback] (gen-call :function ::get-address-components &form country-code)))
 
 (defmacro save-credit-card
-  "Saves the given credit card. If |card| has an empty string as its ID, it will be assigned a new one and added as a
-   new entry.
+  "Saves the given credit card. If |card| has an empty string as its ID, it will be assigned a new one and added as a new
+   entry.
    
      |card| - The card entry to save."
   ([card] (gen-call :function ::save-credit-card &form card)))
@@ -56,35 +56,34 @@
   ([params #_callback] (gen-call :function ::validate-phone-numbers &form params)))
 
 (defmacro mask-credit-card
-  "Clears the data associated with a wallet card which was saved locally so that the saved copy is masked (e.g., 'Card
-   ending in 1234').
+  "Clears the data associated with a wallet card which was saved locally so that the saved copy is masked (e.g., 'Card ending
+   in 1234').
    
      |guid| - GUID of the credit card to mask."
   ([guid] (gen-call :function ::mask-credit-card &form guid)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-address-list-changed-events
-  "Fired when the address list has changed, meaning that an entry has been added, removed, or changed.  |entries| The
-   updated list of entries."
+  "Fired when the address list has changed, meaning that an entry has been added, removed, or changed.  |entries| The updated
+   list of entries."
   ([channel] (gen-call :event ::on-address-list-changed &form channel)))
 
 (defmacro tap-on-credit-card-list-changed-events
-  "Fired when the credit card list has changed, meaning that an entry has been added, removed, or changed.  |entries
-
-   The updated list of entries."
+  "Fired when the credit card list has changed, meaning that an entry has been added, removed, or changed.  |entries| The
+   updated list of entries."
   ([channel] (gen-call :event ::on-credit-card-list-changed &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.autofillPrivate",
@@ -97,9 +96,7 @@
      :params
      [{:name "country-code", :type "string"}
       {:name "callback", :type :callback, :callback {:params [{:name "components", :type "object"}]}}]}
-    {:id ::save-credit-card,
-     :name "saveCreditCard",
-     :params [{:name "card", :type "autofillPrivate.CreditCardEntry"}]}
+    {:id ::save-credit-card, :name "saveCreditCard", :params [{:name "card", :type "autofillPrivate.CreditCardEntry"}]}
     {:id ::remove-entry, :name "removeEntry", :params [{:name "guid", :type "string"}]}
     {:id ::validate-phone-numbers,
      :name "validatePhoneNumbers",
@@ -118,7 +115,7 @@
      :name "onCreditCardListChanged",
      :params [{:name "entries", :type "[array-of-autofillPrivate.CreditCardEntrys]"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

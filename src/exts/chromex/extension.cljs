@@ -1,7 +1,7 @@
 (ns chromex.extension (:require-macros [chromex.extension :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- properties -----------------------------------------------------------------------------------------------------
+; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defn last-error* [config]
   (gen-wrap :property ::last-error config))
@@ -9,7 +9,7 @@
 (defn in-incognito-context* [config]
   (gen-wrap :property ::in-incognito-context config))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn send-request* [config extension-id request]
   (gen-wrap :function ::send-request config extension-id request))
@@ -35,7 +35,7 @@
 (defn set-update-url-data* [config data]
   (gen-wrap :function ::set-update-url-data config data))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-request* [config channel]
   (gen-wrap :event ::on-request config channel))

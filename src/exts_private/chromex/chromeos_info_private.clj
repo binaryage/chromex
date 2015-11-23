@@ -10,7 +10,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro get
   "Fetches customization values for the given property names. See property names in the declaration of the returned
@@ -28,16 +28,16 @@
      |propertyValue| - Chrome OS system property value"
   ([property-name property-value] (gen-call :function ::set &form property-name property-value)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.chromeosInfoPrivate",
@@ -48,17 +48,14 @@
      :callback? true,
      :params
      [{:name "property-names", :type "[array-of-strings]"}
-      {:name "callback",
-       :type :callback,
-       :callback {:params [{:name "properties-dictionary", :type "object"}]}}]}
+      {:name "callback", :type :callback, :callback {:params [{:name "properties-dictionary", :type "object"}]}}]}
     {:id ::set,
      :name "set",
      :since "32",
      :params
-     [{:name "property-name", :type "chromeosInfoPrivate.PropertyName"}
-      {:name "property-value", :type "any"}]}]})
+     [{:name "property-name", :type "chromeosInfoPrivate.PropertyName"} {:name "property-value", :type "any"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

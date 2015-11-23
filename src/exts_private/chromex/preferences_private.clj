@@ -10,42 +10,41 @@
 (declare api-table)
 (declare gen-call)
 
-; -- properties -----------------------------------------------------------------------------------------------------
+; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defmacro get-easy-unlock-proximity-required
-  "If true, a remote Easy Unlock device can only unlock the local device if it is in very close proximity (roughly,
-   within a foot). This preference's value is a boolean, defaulting to false."
+  "If true, a remote Easy Unlock device can only unlock the local device if it is in very close proximity (roughly, within a
+   foot). This preference's value is a boolean, defaulting to false."
   ([] (gen-call :property ::easy-unlock-proximity-required &form)))
 
 (defmacro get-google-geolocation-access-enabled
-  "If enabled, Google services can access the user's location. This preference's value is a boolean, defaulting to
-   false."
+  "If enabled, Google services can access the user's location. This preference's value is a boolean, defaulting to false."
   ([] (gen-call :property ::google-geolocation-access-enabled &form)))
 
 (defmacro get-data-reduction-update-daily-lengths
-  "Flag to indicate that dataReductionDailyContentLength and dataReductionDailyReceivedLength must be updated with
-   their latest values. This preference's value is a boolean, defaulting to false."
+  "Flag to indicate that dataReductionDailyContentLength and dataReductionDailyReceivedLength must be updated with their
+   latest values. This preference's value is a boolean, defaulting to false."
   ([] (gen-call :property ::data-reduction-update-daily-lengths &form)))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro get-sync-categories-without-passphrase
-  "Returns a list of sync categories the user has enabled without using a custom passphrase for encryption. The
-   possible values are those that can be returned from syncer::ModelTypeToString in sync/syncable/model_type.cc.
+  "Returns a list of sync categories the user has enabled without using a custom passphrase for encryption. The possible
+   values are those that can be returned from syncer::ModelTypeToString in sync/syncable/model_type.cc.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([#_callback] (gen-call :function ::get-sync-categories-without-passphrase &form)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.preferencesPrivate",
@@ -67,11 +66,9 @@
      :name "getSyncCategoriesWithoutPassphrase",
      :callback? true,
      :params
-     [{:name "callback",
-       :type :callback,
-       :callback {:params [{:name "categories", :type "[array-of-strings]"}]}}]}]})
+     [{:name "callback", :type :callback, :callback {:params [{:name "categories", :type "[array-of-strings]"}]}}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

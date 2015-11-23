@@ -1,7 +1,7 @@
 (ns chromex.webcam-private (:require-macros [chromex.webcam-private :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn open-serial-webcam* [config path protocol]
   (gen-wrap :function ::open-serial-webcam config path protocol))

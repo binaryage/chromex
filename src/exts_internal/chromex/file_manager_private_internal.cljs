@@ -1,7 +1,7 @@
 (ns chromex.file-manager-private-internal (:require-macros [chromex.file-manager-private-internal :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn resolve-isolated-entries* [config urls]
   (gen-wrap :function ::resolve-isolated-entries config urls))

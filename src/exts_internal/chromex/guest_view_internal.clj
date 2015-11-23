@@ -10,7 +10,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro create-guest
   "
@@ -25,23 +25,22 @@
   ([instance-id #_callback] (gen-call :function ::destroy-guest &form instance-id)))
 
 (defmacro set-size
-  "  |instanceId| - The instance ID of the guest &lt;webview&gt; process. This not exposed to developers through the
-                    API.
+  "  |instanceId| - The instance ID of the guest &lt;webview&gt; process. This not exposed to developers through the API.
      |params| - Size parameters.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([instance-id params #_callback] (gen-call :function ::set-size &form instance-id params)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.guestViewInternal",
@@ -65,7 +64,7 @@
       {:name "params", :type "object"}
       {:name "callback", :optional? true, :type :callback}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

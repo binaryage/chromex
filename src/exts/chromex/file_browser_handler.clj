@@ -1,6 +1,6 @@
 (ns chromex.file-browser-handler
-  "Use the chrome.fileBrowserHandler API to extend the Chrome OS file browser. For example, you can use this API to
-   enable users to upload files to your website.
+  "Use the chrome.fileBrowserHandler API to extend the Chrome OS file browser. For example, you can use this API to enable
+   users to upload files to your website.
    
      * available since Chrome 12
      * https://developer.chrome.com/extensions/fileBrowserHandler"
@@ -13,13 +13,13 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro select-file
-  "Prompts user to select file path under which file should be saved. When the file is selected, file access
-   permission required to use the file (read, write and create) are granted to the caller. The file will not actually
-   get created during the function call, so function caller must ensure its existence before using it. The function
-   has to be invoked with a user gesture.
+  "Prompts user to select file path under which file should be saved. When the file is selected, file access permission
+   required to use the file (read, write and create) are granted to the caller. The file will not actually get created during
+   the function call, so function caller must ensure its existence before using it. The function has to be invoked with a user
+   gesture.
    
      |selectionParams| - Parameters that will be used while selecting the file.
      |callback| - Function called upon completion.
@@ -27,22 +27,22 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([selection-params #_callback] (gen-call :function ::select-file &form selection-params)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-execute-events
   "Fired when file system action is executed from ChromeOS file browser."
   ([channel] (gen-call :event ::on-execute &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.fileBrowserHandler",
@@ -59,10 +59,9 @@
    [{:id ::on-execute,
      :name "onExecute",
      :params
-     [{:name "id", :type "string"}
-      {:name "details", :type "fileBrowserHandler.FileHandlerExecuteEventDetails"}]}]})
+     [{:name "id", :type "string"} {:name "details", :type "fileBrowserHandler.FileHandlerExecuteEventDetails"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

@@ -1,7 +1,7 @@
 (ns chromex.font-settings (:require-macros [chromex.font-settings :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn clear-font* [config details]
   (gen-wrap :function ::clear-font config details))
@@ -42,7 +42,7 @@
 (defn set-minimum-font-size* [config details]
   (gen-wrap :function ::set-minimum-font-size config details))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-font-changed* [config channel]
   (gen-wrap :event ::on-font-changed config channel))

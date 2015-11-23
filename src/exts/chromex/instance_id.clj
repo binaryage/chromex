@@ -12,7 +12,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro get-id
   "Retrieves an identifier for the app instance. The instance ID will be returned by the callback. The same ID will be
@@ -37,8 +37,8 @@
   "Return a token that allows the authorized entity to access the service defined by scope.
    
      |getTokenParams| - Parameters for getToken.
-     |callback| - Function called when the retrieval completes. It should check 'runtime.lastError' for error when
-                  token is empty.
+     |callback| - Function called when the retrieval completes. It should check 'runtime.lastError' for error when token is
+                  empty.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([get-token-params #_callback] (gen-call :function ::get-token &form get-token-params)))
@@ -62,22 +62,22 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([#_callback] (gen-call :function ::delete-id &form)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-token-refresh-events
   "Fired when all the granted tokens need to be refreshed."
   ([channel] (gen-call :event ::on-token-refresh &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.instanceID",
@@ -86,13 +86,11 @@
    [{:id ::get-id,
      :name "getID",
      :callback? true,
-     :params
-     [{:name "callback", :type :callback, :callback {:params [{:name "instance-id", :type "string"}]}}]}
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "instance-id", :type "string"}]}}]}
     {:id ::get-creation-time,
      :name "getCreationTime",
      :callback? true,
-     :params
-     [{:name "callback", :type :callback, :callback {:params [{:name "creation-time", :type "double"}]}}]}
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "creation-time", :type "double"}]}}]}
     {:id ::get-token,
      :name "getToken",
      :callback? true,
@@ -106,7 +104,7 @@
     {:id ::delete-id, :name "deleteID", :callback? true, :params [{:name "callback", :type :callback}]}],
    :events [{:id ::on-token-refresh, :name "onTokenRefresh"}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

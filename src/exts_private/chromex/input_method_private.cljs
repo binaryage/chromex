@@ -1,7 +1,7 @@
 (ns chromex.input-method-private (:require-macros [chromex.input-method-private :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn get-input-method-config* [config]
   (gen-wrap :function ::get-input-method-config config))
@@ -24,7 +24,7 @@
 (defn get-encrypt-sync-enabled* [config]
   (gen-wrap :function ::get-encrypt-sync-enabled config))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-changed* [config channel]
   (gen-wrap :event ::on-changed config channel))

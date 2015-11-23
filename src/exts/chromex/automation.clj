@@ -16,13 +16,12 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro get-tree
-  "Get the automation tree for the tab with the given tabId, or the current tab if no tabID is given, enabling
-   automation if necessary. Returns a tree with a placeholder root node; listen for the 'loadComplete' event to get a
-   notification that the tree has fully loaded (the previous root node reference will stop working at or before this
-   point).
+  "Get the automation tree for the tab with the given tabId, or the current tab if no tabID is given, enabling automation if
+   necessary. Returns a tree with a placeholder root node; listen for the 'loadComplete' event to get a notification that the
+   tree has fully loaded (the previous root node reference will stop working at or before this point).
    
      |callback| - Called when the AutomationNode for the page is available.
    
@@ -31,8 +30,8 @@
   ([] `(get-tree :omit)))
 
 (defmacro get-desktop
-  "Get the automation tree for the whole desktop which consists of all on screen views. Note this API is currently
-   only supported on Chrome OS.
+  "Get the automation tree for the whole desktop which consists of all on screen views. Note this API is currently only
+   supported on Chrome OS.
    
      |callback| - Called when the AutomationNode for the page is available.
    
@@ -56,23 +55,23 @@
   ([#_observer] (gen-call :function ::remove-tree-change-observer &form)))
 
 (defmacro set-document-selection
-  "Sets the selection in a tree. This creates a selection in a single tree (anchorObject and focusObject must have the
-   same root). Everything in the tree between the two node/offset pairs gets included in the selection. The anchor is
-   where the user started the selection, while the focus is the point at which the selection gets extended e.g. when
-   dragging with a mouse or using the keyboard. For nodes with the role staticText, the offset gives the character
-   offset within the value where the selection starts or ends, respectively."
+  "Sets the selection in a tree. This creates a selection in a single tree (anchorObject and focusObject must have the same
+   root). Everything in the tree between the two node/offset pairs gets included in the selection. The anchor is where the
+   user started the selection, while the focus is the point at which the selection gets extended e.g. when dragging with a
+   mouse or using the keyboard. For nodes with the role staticText, the offset gives the character offset within the value
+   where the selection starts or ends, respectively."
   ([params] (gen-call :function ::set-document-selection &form params)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.automation",
@@ -97,21 +96,17 @@
      :name "addTreeChangeObserver",
      :callback? true,
      :params
-     [{:name "observer",
-       :type :callback,
-       :callback {:params [{:name "tree-change", :type "automation.TreeChange"}]}}]}
+     [{:name "observer", :type :callback, :callback {:params [{:name "tree-change", :type "automation.TreeChange"}]}}]}
     {:id ::remove-tree-change-observer,
      :name "removeTreeChangeObserver",
      :callback? true,
      :params
-     [{:name "observer",
-       :type :callback,
-       :callback {:params [{:name "tree-change", :type "automation.TreeChange"}]}}]}
+     [{:name "observer", :type :callback, :callback {:params [{:name "tree-change", :type "automation.TreeChange"}]}}]}
     {:id ::set-document-selection,
      :name "setDocumentSelection",
      :params [{:name "params", :type "automation.SetDocumentSelectionParams"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

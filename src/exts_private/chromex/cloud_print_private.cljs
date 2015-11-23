@@ -1,7 +1,7 @@
 (ns chromex.cloud-print-private (:require-macros [chromex.cloud-print-private :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn setup-connector* [config user-email robot-email credentials user-settings]
   (gen-wrap :function ::setup-connector config user-email robot-email credentials user-settings))

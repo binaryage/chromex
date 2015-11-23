@@ -13,7 +13,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro send-initialized
   "Send a boolean indicating whether our initialization was successful."
@@ -27,7 +27,7 @@
   "Send an array buffer of samples encoded for the specified token."
   ([client-id token samples] (gen-call :function ::send-samples &form client-id token samples)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-config-audio-events
   "Fired to request audio configuration of the whisper.net library."
@@ -41,16 +41,16 @@
   "Fired when we have new samples to decode."
   ([channel] (gen-call :event ::on-decode-samples-request &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.copresencePrivate",
@@ -59,8 +59,7 @@
    [{:id ::send-initialized, :name "sendInitialized", :params [{:name "success", :type "boolean"}]}
     {:id ::send-found,
      :name "sendFound",
-     :params
-     [{:name "client-id", :type "string"} {:name "tokens", :type "[array-of-copresencePrivate.Tokens]"}]}
+     :params [{:name "client-id", :type "string"} {:name "tokens", :type "[array-of-copresencePrivate.Tokens]"}]}
     {:id ::send-samples,
      :name "sendSamples",
      :params
@@ -79,7 +78,7 @@
      :name "onDecodeSamplesRequest",
      :params [{:name "client-id", :type "string"} {:name "decode-params", :type "object"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

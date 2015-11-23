@@ -1,7 +1,7 @@
 (ns chromex.hotword-private (:require-macros [chromex.hotword-private :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn set-enabled* [config state]
   (gen-wrap :function ::set-enabled config state))
@@ -48,7 +48,7 @@
 (defn speaker-model-exists-result* [config exists]
   (gen-wrap :function ::speaker-model-exists-result config exists))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-enabled-changed* [config channel]
   (gen-wrap :event ::on-enabled-changed config channel))

@@ -1,6 +1,6 @@
 (ns chromex.declarative-content
-  "Use the chrome.declarativeContent API to take actions depending on the content of a page, without requiring
-   permission to read the page's content.
+  "Use the chrome.declarativeContent API to take actions depending on the content of a page, without requiring permission to
+   read the page's content.
    
      * available since Chrome 33
      * https://developer.chrome.com/extensions/declarativeContent"
@@ -13,25 +13,25 @@
 (declare api-table)
 (declare gen-call)
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-page-changed-events ([channel] (gen-call :event ::on-page-changed &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.declarativeContent", :since "33", :events [{:id ::on-page-changed, :name "onPageChanged"}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

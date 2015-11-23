@@ -1,7 +1,7 @@
 (ns chromex.web-view-internal (:require-macros [chromex.web-view-internal :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn execute-script* [config instance-id src details]
   (gen-wrap :function ::execute-script config instance-id src details))

@@ -15,12 +15,12 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro set-icon
   "Set the image to be used as an indicator icon, using a set of ImageData objects. These objects should have multiple
-   resolutions so that an appropriate size can be selected for the given icon size and DPI scaling settings. Only
-   square ImageData objects are accepted.
+   resolutions so that an appropriate size can be selected for the given icon size and DPI scaling settings. Only square
+   ImageData objects are accepted.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([details #_callback] (gen-call :function ::set-icon &form details)))
@@ -33,22 +33,22 @@
   "Hide the icon from the status tray."
   ([] (gen-call :function ::disable &form)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-clicked-events
   "Fired only when a click on the icon does not result in a menu being shown."
   ([channel] (gen-call :event ::on-clicked &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.systemIndicator",
@@ -62,7 +62,7 @@
     {:id ::disable, :name "disable"}],
    :events [{:id ::on-clicked, :name "onClicked"}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

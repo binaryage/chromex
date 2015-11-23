@@ -10,7 +10,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro set-offer-info
   "Sets the offer info in Local State.
@@ -43,24 +43,24 @@
 
 (defmacro get-user-consent
   "If device policy allows user to redeem offer, displays a native dialog asking user for a consent to verify device's
-   eligibility for the offer. If the device policy forbids user to redeem offers, displays a native dialog informing
-   user the offer redeeming is disabled.
+   eligibility for the offer. If the device policy forbids user to redeem offers, displays a native dialog informing user the
+   offer redeeming is disabled.
    
      |consentRequester| - Information about the service requesting user consent.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([consent-requester #_callback] (gen-call :function ::get-user-consent &form consent-requester)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.echoPrivate",
@@ -96,7 +96,7 @@
      [{:name "consent-requester", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

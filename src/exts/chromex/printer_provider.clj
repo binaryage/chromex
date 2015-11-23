@@ -14,16 +14,16 @@
 (declare api-table)
 (declare gen-call)
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-get-printers-requested-events
   "Event fired when print manager requests printers provided by extensions."
   ([channel] (gen-call :event ::on-get-printers-requested &form channel)))
 
 (defmacro tap-on-get-usb-printer-info-requested-events
-  "Event fired when print manager requests information about a USB device that may be a printer. Note: An application
-   should not rely on this event being fired more than once per device. If a connected device is supported it should
-   be returned in the 'onGetPrintersRequested' event."
+  "Event fired when print manager requests information about a USB device that may be a printer. Note: An application should
+   not rely on this event being fired more than once per device. If a connected device is supported it should be returned in
+   the 'onGetPrintersRequested' event."
   ([channel] (gen-call :event ::on-get-usb-printer-info-requested &form channel)))
 
 (defmacro tap-on-get-capability-requested-events
@@ -34,16 +34,16 @@
   "Event fired when print manager requests printing."
   ([channel] (gen-call :event ::on-print-requested &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.printerProvider",
@@ -63,7 +63,7 @@
      :name "onPrintRequested",
      :params [{:name "print-job", :type "object"} {:name "result-callback", :type :callback}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

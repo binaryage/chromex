@@ -1,7 +1,7 @@
 (ns chromex.enterprise.platform-keys-internal (:require-macros [chromex.enterprise.platform-keys-internal :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn get-tokens* [config]
   (gen-wrap :function ::get-tokens config))

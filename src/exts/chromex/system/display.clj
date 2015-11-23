@@ -12,7 +12,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro get-info
   "Get the information of all attached display devices.
@@ -21,12 +21,12 @@
   ([#_callback] (gen-call :function ::get-info &form)))
 
 (defmacro set-display-properties
-  "Updates the properties for the display specified by |id|, according to the information provided in |info|. On
-   failure, 'runtime.lastError' will be set.
+  "Updates the properties for the display specified by |id|, according to the information provided in |info|. On failure,
+   'runtime.lastError' will be set.
    
      |id| - The display's unique identifier.
-     |info| - The information about display properties that should be changed.     A property will be changed only
-              if a new value for it is specified in     |info|.
+     |info| - The information about display properties that should be changed.     A property will be changed only if a new
+              value for it is specified in     |info|.
      |callback| - Empty function called when the function finishes. To find out     whether the function succeeded,
                   'runtime.lastError' should be     queried.
    
@@ -34,26 +34,26 @@
   ([id info #_callback] (gen-call :function ::set-display-properties &form id info)))
 
 (defmacro enable-unified-desktop
-  "Enables/disables the unified desktop feature. Note that this simply enables the feature, but will not change the
-   actual desktop mode. (That is, if the desktop is in mirror mode, it will stay in mirror mode)"
+  "Enables/disables the unified desktop feature. Note that this simply enables the feature, but will not change the actual
+   desktop mode. (That is, if the desktop is in mirror mode, it will stay in mirror mode)"
   ([enabled] (gen-call :function ::enable-unified-desktop &form enabled)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-display-changed-events
   "Fired when anything changes to the display configuration."
   ([channel] (gen-call :event ::on-display-changed &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.system.display",
@@ -63,9 +63,7 @@
      :name "getInfo",
      :callback? true,
      :params
-     [{:name "callback",
-       :type :callback,
-       :callback {:params [{:name "display-info", :type "[array-of-objects]"}]}}]}
+     [{:name "callback", :type :callback, :callback {:params [{:name "display-info", :type "[array-of-objects]"}]}}]}
     {:id ::set-display-properties,
      :name "setDisplayProperties",
      :callback? true,
@@ -79,7 +77,7 @@
      :params [{:name "enabled", :type "boolean"}]}],
    :events [{:id ::on-display-changed, :name "onDisplayChanged"}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

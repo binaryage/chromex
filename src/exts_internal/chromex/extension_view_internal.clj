@@ -10,7 +10,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro load-src
   "
@@ -24,16 +24,16 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([src #_callback] (gen-call :function ::parse-src &form src)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.extensionViewInternal",
@@ -46,9 +46,7 @@
      :params
      [{:name "instance-id", :type "integer"}
       {:name "src", :type "string"}
-      {:name "callback",
-       :type :callback,
-       :callback {:params [{:name "has-load-succeeded", :type "boolean"}]}}]}
+      {:name "callback", :type :callback, :callback {:params [{:name "has-load-succeeded", :type "boolean"}]}}]}
     {:id ::parse-src,
      :name "parseSrc",
      :since "45",
@@ -59,7 +57,7 @@
        :type :callback,
        :callback {:params [{:name "is-src-valid", :type "boolean"} {:name "extension-id", :type "string"}]}}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

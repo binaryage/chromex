@@ -12,15 +12,15 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro choose-desktop-media
   "Shows desktop media picker UI with the specified set of sources.
    
      |sources| - Set of sources that should be shown to the user.
-     |targetTab| - Optional tab for which the stream is created. If not specified then the resulting stream can be
-                   used only by the calling extension. The stream can only be used by frames in the given tab whose
-                   security origin matches tab.url.
+     |targetTab| - Optional tab for which the stream is created. If not specified then the resulting stream can be used only
+                   by the calling extension. The stream can only be used by frames in the given tab whose security origin
+                   matches tab.url.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([sources target-tab #_callback] (gen-call :function ::choose-desktop-media &form sources target-tab))
@@ -32,16 +32,16 @@
      |desktopMediaRequestId| - Id returned by chooseDesktopMedia()"
   ([desktop-media-request-id] (gen-call :function ::cancel-choose-desktop-media &form desktop-media-request-id)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.desktopCapture",
@@ -59,7 +59,7 @@
      :name "cancelChooseDesktopMedia",
      :params [{:name "desktop-media-request-id", :type "integer"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

@@ -1,7 +1,7 @@
 (ns chromex.bluetooth-private (:require-macros [chromex.bluetooth-private :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn set-adapter-state* [config adapter-state]
   (gen-wrap :function ::set-adapter-state config adapter-state))
@@ -24,7 +24,7 @@
 (defn pair* [config device-address]
   (gen-wrap :function ::pair config device-address))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-pairing* [config channel]
   (gen-wrap :event ::on-pairing config channel))

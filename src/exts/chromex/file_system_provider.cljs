@@ -1,7 +1,7 @@
 (ns chromex.file-system-provider (:require-macros [chromex.file-system-provider :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn mount* [config options]
   (gen-wrap :function ::mount config options))
@@ -18,7 +18,7 @@
 (defn notify* [config options]
   (gen-wrap :function ::notify config options))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-unmount-requested* [config channel]
   (gen-wrap :event ::on-unmount-requested config channel))

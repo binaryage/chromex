@@ -1,7 +1,7 @@
 (ns chromex.bookmarks (:require-macros [chromex.bookmarks :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- properties -----------------------------------------------------------------------------------------------------
+; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defn max-write-operations-per-hour* [config]
   (gen-wrap :property ::max-write-operations-per-hour config))
@@ -9,7 +9,7 @@
 (defn max-sustained-write-operations-per-minute* [config]
   (gen-wrap :property ::max-sustained-write-operations-per-minute config))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn get* [config id-or-id-list]
   (gen-wrap :function ::get config id-or-id-list))
@@ -44,7 +44,7 @@
 (defn remove-tree* [config id]
   (gen-wrap :function ::remove-tree config id))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-created* [config channel]
   (gen-wrap :event ::on-created config channel))

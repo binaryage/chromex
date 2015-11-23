@@ -13,7 +13,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro get-device-info
   "Returns local device information.
@@ -55,9 +55,9 @@
   ([session-id code #_callback] (gen-call :function ::confirm-code &form session-id code)))
 
 (defmacro send-message
-  "Send an encrypted message to the device. If the message is a setup message with a wifi SSID specified but no
-   password, the password cached by |prefetchWifiPassword| will be used and the call will fail if it's not available.
-   For open networks use an empty string as the password.
+  "Send an encrypted message to the device. If the message is a setup message with a wifi SSID specified but no password, the
+   password cached by |prefetchWifiPassword| will be used and the call will fail if it's not available. For open networks use
+   an empty string as the password.
    
      |sessionId| - The ID of the session created with |establishSession|.
      |api| - The Privet API name to call.
@@ -73,16 +73,16 @@
      |sessionId| - The ID of the session created with |establishSession|."
   ([session-id] (gen-call :function ::terminate-session &form session-id)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.gcdPrivate",
@@ -96,8 +96,7 @@
      [{:name "service-name", :type "string"}
       {:name "callback",
        :type :callback,
-       :callback
-       {:params [{:name "status", :type "gcdPrivate.Status"} {:name "device-info", :type "object"}]}}]}
+       :callback {:params [{:name "status", :type "gcdPrivate.Status"} {:name "device-info", :type "object"}]}}]}
     {:id ::create-session,
      :name "createSession",
      :since "43",
@@ -137,7 +136,7 @@
        :callback {:params [{:name "status", :type "gcdPrivate.Status"} {:name "response", :type "object"}]}}]}
     {:id ::terminate-session, :name "terminateSession", :params [{:name "session-id", :type "integer"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

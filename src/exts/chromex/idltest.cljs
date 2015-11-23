@@ -1,7 +1,7 @@
 (ns chromex.idltest (:require-macros [chromex.idltest :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn send-array-buffer* [config input]
   (gen-wrap :function ::send-array-buffer config input))

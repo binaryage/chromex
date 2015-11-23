@@ -1,7 +1,7 @@
 (ns chromex.declarative-web-request (:require-macros [chromex.declarative-web-request :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-request* [config channel]
   (gen-wrap :event ::on-request config channel))

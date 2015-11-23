@@ -10,7 +10,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro get-is-crash-reporting-enabled
   "Returns true if the user opted in to sending crash reports.
@@ -19,8 +19,7 @@
   ([#_callback] (gen-call :function ::get-is-crash-reporting-enabled &form)))
 
 (defmacro get-field-trial
-  "Returns the group name chosen for the named trial, or the empty string if the trial does not exist or is not
-   enabled.
+  "Returns the group name chosen for the named trial, or the empty string if the trial does not exist or is not enabled.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([name #_callback] (gen-call :function ::get-field-trial &form name)))
@@ -71,16 +70,16 @@
   "Adds a value to the given metric."
   ([metric value] (gen-call :function ::record-value &form metric value)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.metricsPrivate",
@@ -90,8 +89,7 @@
      :name "getIsCrashReportingEnabled",
      :since "29",
      :callback? true,
-     :params
-     [{:name "callback", :type :callback, :callback {:params [{:name "is-enabled", :type "boolean"}]}}]}
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "is-enabled", :type "boolean"}]}}]}
     {:id ::get-field-trial,
      :name "getFieldTrial",
      :since "29",
@@ -105,9 +103,7 @@
      :callback? true,
      :params
      [{:name "name", :type "string"}
-      {:name "callback",
-       :type :callback,
-       :callback {:params [{:name "params", :optional? true, :type "object"}]}}]}
+      {:name "callback", :type :callback, :callback {:params [{:name "params", :optional? true, :type "object"}]}}]}
     {:id ::record-user-action, :name "recordUserAction", :params [{:name "name", :type "string"}]}
     {:id ::record-percentage,
      :name "recordPercentage",
@@ -138,7 +134,7 @@
      :name "recordValue",
      :params [{:name "metric", :type "metricsPrivate.MetricType"} {:name "value", :type "integer"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

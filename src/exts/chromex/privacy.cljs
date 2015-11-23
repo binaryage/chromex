@@ -1,7 +1,7 @@
 (ns chromex.privacy (:require-macros [chromex.privacy :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- properties -----------------------------------------------------------------------------------------------------
+; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defn network* [config]
   (gen-wrap :property ::network config))

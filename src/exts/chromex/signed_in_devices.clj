@@ -13,35 +13,35 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro get
   "Gets the array of signed in devices, signed into the same account as the current profile.
    
-     |isLocal| - If true only return the information for the local device. If false or omitted return the list of
-                 all devices including the local device.
+     |isLocal| - If true only return the information for the local device. If false or omitted return the list of all
+                 devices including the local device.
      |callback| - The callback to be invoked with the array of DeviceInfo objects.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([is-local #_callback] (gen-call :function ::get &form is-local))
   ([] `(get :omit)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-device-info-change-events
   "Fired if the DeviceInfo object of any of the signed in devices change or a new device is added or a device removed."
   ([channel] (gen-call :event ::on-device-info-change &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.signedInDevices",
@@ -60,7 +60,7 @@
      :name "onDeviceInfoChange",
      :params [{:name "devices", :type "[array-of-signedInDevices.DeviceInfos]"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

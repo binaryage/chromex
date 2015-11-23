@@ -1,7 +1,7 @@
 (ns chromex.webrtc-desktop-capture-private (:require-macros [chromex.webrtc-desktop-capture-private :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn choose-desktop-media* [config sources request]
   (gen-wrap :function ::choose-desktop-media config sources request))

@@ -20,14 +20,13 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro create
-  "Creates a Cast session using the provided audio and video track as source. The tracks must be of type
-   MediaStreamTrack. This will create two RTP streams and a UDP transport that builds the session. Either |audioTrack
-
-   or |videoTrack| can be null but not both. This means creating a session with only audio or video. If a given track
-   is null then the created stream ID will be null.
+  "Creates a Cast session using the provided audio and video track as source. The tracks must be of type MediaStreamTrack.
+   This will create two RTP streams and a UDP transport that builds the session. Either |audioTrack| or |videoTrack| can be
+   null but not both. This means creating a session with only audio or video. If a given track is null then the created stream
+   ID will be null.
    
      |audioTrack| - the source audio track.
      |videoTrack| - the source video track.
@@ -38,16 +37,16 @@
   ([audio-track] `(create ~audio-track :omit))
   ([] `(create :omit :omit)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.cast.streaming.session",
@@ -67,7 +66,7 @@
          {:name "video-stream-id", :type "integer"}
          {:name "udp-transport-id", :type "integer"}]}}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

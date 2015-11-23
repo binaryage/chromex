@@ -1,7 +1,7 @@
 (ns chromex.platform-keys (:require-macros [chromex.platform-keys :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn select-client-certificates* [config details]
   (gen-wrap :function ::select-client-certificates config details))

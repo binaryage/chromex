@@ -1,7 +1,7 @@
 (ns chromex.devtools.inspected-window
-  "Use the chrome.devtools.inspectedWindow API to interact with the inspected window: obtain the tab ID for the
-   inspected page, evaluate the code in the context of the inspected window, reload the page, or obtain the list of
-   resources within the page.
+  "Use the chrome.devtools.inspectedWindow API to interact with the inspected window: obtain the tab ID for the inspected
+   page, evaluate the code in the context of the inspected window, reload the page, or obtain the list of resources within
+   the page.
    
      * available since Chrome 18
      * https://developer.chrome.com/extensions/devtools.inspectedWindow"
@@ -14,21 +14,21 @@
 (declare api-table)
 (declare gen-call)
 
-; -- properties -----------------------------------------------------------------------------------------------------
+; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defmacro get-tab-id
   "The ID of the tab being inspected. This ID may be used with chrome.tabs.* API."
   ([] (gen-call :property ::tab-id &form)))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro eval
-  "Evaluates a JavaScript expression in the context of the main frame of the inspected page. The expression must
-   evaluate to a JSON-compliant object, otherwise an exception is thrown. The eval function can report either a
-   DevTools-side error or a JavaScript exception that occurs during evaluation. In either case, the result parameter
-   of the callback is undefined. In the case of a DevTools-side error, the isException parameter is non-null and has
-   isError set to true and code set to an error code. In the case of a JavaScript error, isException is set to true
-   and value is set to the string value of thrown object.
+  "Evaluates a JavaScript expression in the context of the main frame of the inspected page. The expression must evaluate to a
+   JSON-compliant object, otherwise an exception is thrown. The eval function can report either a DevTools-side error or a
+   JavaScript exception that occurs during evaluation. In either case, the result parameter of the callback is undefined. In
+   the case of a DevTools-side error, the isException parameter is non-null and has isError set to true and code set to an
+   error code. In the case of a JavaScript error, isException is set to true and value is set to the string value of thrown
+   object.
    
      |expression| - An expression to evaluate.
      |options| - The options parameter can contain one or more options.
@@ -51,27 +51,27 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([#_callback] (gen-call :function ::get-resources &form)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-resource-added-events
   "Fired when a new resource is added to the inspected page."
   ([channel] (gen-call :event ::on-resource-added &form channel)))
 
 (defmacro tap-on-resource-content-committed-events
-  "Fired when a new revision of the resource is committed (e.g. user saves an edited version of the resource in the
-   Developer Tools)."
+  "Fired when a new revision of the resource is committed (e.g. user saves an edited version of the resource in the Developer
+   Tools)."
   ([channel] (gen-call :event ::on-resource-content-committed &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.devtools.inspectedWindow",
@@ -102,10 +102,9 @@
      :params [{:name "resource", :type "devtools.inspectedWindow.Resource"}]}
     {:id ::on-resource-content-committed,
      :name "onResourceContentCommitted",
-     :params
-     [{:name "resource", :type "devtools.inspectedWindow.Resource"} {:name "content", :type "string"}]}]})
+     :params [{:name "resource", :type "devtools.inspectedWindow.Resource"} {:name "content", :type "string"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

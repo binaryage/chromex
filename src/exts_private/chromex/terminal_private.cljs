@@ -1,7 +1,7 @@
 (ns chromex.terminal-private (:require-macros [chromex.terminal-private :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn open-terminal-process* [config process-name]
   (gen-wrap :function ::open-terminal-process config process-name))
@@ -15,7 +15,7 @@
 (defn on-terminal-resize* [config pid width height]
   (gen-wrap :function ::on-terminal-resize config pid width height))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-process-output* [config channel]
   (gen-wrap :event ::on-process-output config channel))

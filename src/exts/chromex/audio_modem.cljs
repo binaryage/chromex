@@ -1,7 +1,7 @@
 (ns chromex.audio-modem (:require-macros [chromex.audio-modem :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn transmit* [config params token]
   (gen-wrap :function ::transmit config params token))
@@ -15,7 +15,7 @@
 (defn stop-receive* [config band]
   (gen-wrap :function ::stop-receive config band))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-received* [config channel]
   (gen-wrap :event ::on-received config channel))

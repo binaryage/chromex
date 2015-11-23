@@ -1,7 +1,7 @@
 (ns chromex.system-private (:require-macros [chromex.system-private :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn get-incognito-mode-availability* [config]
   (gen-wrap :function ::get-incognito-mode-availability config))
@@ -12,7 +12,7 @@
 (defn get-api-key* [config]
   (gen-wrap :function ::get-api-key config))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-volume-changed* [config channel]
   (gen-wrap :event ::on-volume-changed config channel))

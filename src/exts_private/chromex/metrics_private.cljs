@@ -1,7 +1,7 @@
 (ns chromex.metrics-private (:require-macros [chromex.metrics-private :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn get-is-crash-reporting-enabled* [config]
   (gen-wrap :function ::get-is-crash-reporting-enabled config))

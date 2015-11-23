@@ -12,13 +12,13 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro get-strings
-  "Gets localized strings for a component extension. Includes default WebUI loadTimeData values for text and language
-   settings (fontsize, fontfamily, language, textdirection). See
-   chrome/browser/extensions/api/resources_private/resources_private_api.cc for instructions on adding a new component
-   to this API.
+  "Gets localized strings for a component extension. Includes default WebUI loadTimeData values for text and language settings
+   (fontsize, fontfamily, language, textdirection). See
+   chrome/browser/extensions/api/resources_private/resources_private_api.cc for instructions on adding a new component to this
+   API.
    
      |component| - Internal chrome component to get strings for.
      |callback| - Called with a dictionary mapping names to strings.
@@ -26,16 +26,16 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([component #_callback] (gen-call :function ::get-strings &form component)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.resourcesPrivate",
@@ -48,7 +48,7 @@
      [{:name "component", :type "unknown-type"}
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

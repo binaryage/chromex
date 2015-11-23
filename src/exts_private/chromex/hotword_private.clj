@@ -18,7 +18,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro set-enabled
   "Sets the current enabled state of hotword search. True: enable hotword search. False: disable hotword search.
@@ -29,9 +29,8 @@
 (defmacro get-status
   "Retrieves the current state of hotword search. The result is put into a StatusDetails object.
    
-     |getOptionalFields| - If true, fills in fields tagged as optional in StatusDetails with valid values. These
-                           fields are not valid by default since their current implementations may cause blocking
-                           operations.
+     |getOptionalFields| - If true, fills in fields tagged as optional in StatusDetails with valid values. These fields are
+                           not valid by default since their current implementations may cause blocking operations.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([get-optional-fields #_callback] (gen-call :function ::get-status &form get-optional-fields))
@@ -50,8 +49,8 @@
   ([state #_callback] (gen-call :function ::set-audio-logging-enabled &form state)))
 
 (defmacro set-hotword-always-on-search-enabled
-  "Sets the current enabled state of hotword-always-on-search pref. True: enable hotword always on search. False:
-   disable hotword always on search.
+  "Sets the current enabled state of hotword-always-on-search pref. True: enable hotword always on search. False: disable
+   hotword always on search.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([state #_callback] (gen-call :function ::set-hotword-always-on-search-enabled &form state)))
@@ -70,8 +69,7 @@
   ([type] `(notify-hotword-recognition ~type :omit)))
 
 (defmacro get-launch-state
-  "Retrieves the state that the Hotword Audio Verification app was launched in. The result is put into a LaunchState
-   object.
+  "Retrieves the state that the Hotword Audio Verification app was launched in. The result is put into a LaunchState object.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([#_callback] (gen-call :function ::get-launch-state &form)))
@@ -118,11 +116,11 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([exists #_callback] (gen-call :function ::speaker-model-exists-result &form exists)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-enabled-changed-events
-  "Fired when the hotword detector enabled state should be changed. This can be from various sources, e.g. a pref
-   change or training a speaker model."
+  "Fired when the hotword detector enabled state should be changed. This can be from various sources, e.g. a pref change or
+   training a speaker model."
   ([channel] (gen-call :event ::on-enabled-changed &form channel)))
 
 (defmacro tap-on-hotword-session-requested-events
@@ -157,16 +155,16 @@
   "Fired when the microphone state changes."
   ([channel] (gen-call :event ::on-microphone-state-changed &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.hotwordPrivate",
@@ -261,7 +259,7 @@
      :since "44",
      :params [{:name "enabled", :type "boolean"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

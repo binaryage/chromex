@@ -12,26 +12,25 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro get-accounts
-  "Retrieves a list of AccountInfo objects describing the accounts present on the profile.getAccounts is only
-   supported on dev channel.
+  "Retrieves a list of AccountInfo objects describing the accounts present on the profile.getAccounts is only supported on dev
+   channel.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([#_callback] (gen-call :function ::get-accounts &form)))
 
 (defmacro get-auth-token
-  "Gets an OAuth2 access token using the client ID and scopes specified in the oauth2 section of manifest.json.The
-   Identity API caches access tokens in memory, so it's ok to call getAuthToken non-interactively any time a token is
-   required. The token cache automatically handles expiration.For a good user experience it is important interactive
-   token requests are initiated by UI in your app explaining what the authorization is for. Failing to do this will
-   cause your users to get authorization requests, or Chrome sign in screens if they are not signed in, with with no
-   context. In particular, do not use getAuthToken interactively when your app is first launched.
+  "Gets an OAuth2 access token using the client ID and scopes specified in the oauth2 section of manifest.json.The Identity
+   API caches access tokens in memory, so it's ok to call getAuthToken non-interactively any time a token is required. The
+   token cache automatically handles expiration.For a good user experience it is important interactive token requests are
+   initiated by UI in your app explaining what the authorization is for. Failing to do this will cause your users to get
+   authorization requests, or Chrome sign in screens if they are not signed in, with with no context. In particular, do not
+   use getAuthToken interactively when your app is first launched.
    
      |details| - Token options.
-     |callback| - Called with an OAuth2 access token as specified by the manifest, or undefined if there was an
-                  error.
+     |callback| - Called with an OAuth2 access token as specified by the manifest, or undefined if there was an error.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([details #_callback] (gen-call :function ::get-auth-token &form details))
@@ -39,16 +38,16 @@
 
 (defmacro get-profile-user-info
   "Retrieves email address and obfuscated gaia id of the user signed into a profile.This API is different from
-   identity.getAccounts in two ways. The information returned is available offline, and it only applies to the primary
-   account for the profile.
+   identity.getAccounts in two ways. The information returned is available offline, and it only applies to the primary account
+   for the profile.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([#_callback] (gen-call :function ::get-profile-user-info &form)))
 
 (defmacro remove-cached-auth-token
-  "Removes an OAuth2 access token from the Identity API's token cache.If an access token is discovered to be invalid,
-   it should be passed to removeCachedAuthToken to remove it from the cache. The app may then retrieve a fresh token
-   with getAuthToken.
+  "Removes an OAuth2 access token from the Identity API's token cache.If an access token is discovered to be invalid, it
+   should be passed to removeCachedAuthToken to remove it from the cache. The app may then retrieve a fresh token with
+   getAuthToken.
    
      |details| - Token information.
      |callback| - Called when the token has been removed from the cache.
@@ -57,13 +56,12 @@
   ([details #_callback] (gen-call :function ::remove-cached-auth-token &form details)))
 
 (defmacro launch-web-auth-flow
-  "Starts an auth flow at the specified URL.This method enables auth flows with non-Google identity providers by
-   launching a web view and navigating it to the first URL in the provider's auth flow. When the provider redirects to
-   a URL matching the pattern https://&lt;app-id&gt;.chromiumapp.org/*, the window will close, and the final redirect
-   URL will be passed to the callback function.For a good user experience it is important interactive auth flows are
-   initiated by UI in your app explaining what the authorization is for. Failing to do this will cause your users to
-   get authorization requests with no context. In particular, do not launch an interactive auth flow when your app is
-   first launched.
+  "Starts an auth flow at the specified URL.This method enables auth flows with non-Google identity providers by launching a
+   web view and navigating it to the first URL in the provider's auth flow. When the provider redirects to a URL matching the
+   pattern https://&lt;app-id&gt;.chromiumapp.org/*, the window will close, and the final redirect URL will be passed to the
+   callback function.For a good user experience it is important interactive auth flows are initiated by UI in your app
+   explaining what the authorization is for. Failing to do this will cause your users to get authorization requests with no
+   context. In particular, do not launch an interactive auth flow when your app is first launched.
    
      |details| - WebAuth flow options.
      |callback| - Called with the URL redirected back to your application.
@@ -79,22 +77,22 @@
   ([path] (gen-call :function ::get-redirect-url &form path))
   ([] `(get-redirect-url :omit)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-sign-in-changed-events
   "Fired when signin state changes for an account on the user's profile."
   ([channel] (gen-call :event ::on-sign-in-changed &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.identity",
@@ -145,7 +143,7 @@
      :since "33",
      :params [{:name "account", :type "identity.AccountInfo"} {:name "signed-in", :type "boolean"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

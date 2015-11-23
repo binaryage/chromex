@@ -1,6 +1,5 @@
 (ns chromex.gcm
-  "Use chrome.gcm to enable apps and extensions to send and receive messages through the Google Cloud Messaging
-   Service.
+  "Use chrome.gcm to enable apps and extensions to send and receive messages through the Google Cloud Messaging Service.
    
      * available since Chrome 35
      * https://developer.chrome.com/extensions/gcm"
@@ -13,20 +12,20 @@
 (declare api-table)
 (declare gen-call)
 
-; -- properties -----------------------------------------------------------------------------------------------------
+; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defmacro get-max-message-size
   "The maximum size (in bytes) of all key/value pairs in a message."
   ([] (gen-call :property ::max-message-size &form)))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro register
-  "Registers the application with GCM. The registration ID will be returned by the callback. If register is called
-   again with the same list of senderIds, the same registration ID will be returned.
+  "Registers the application with GCM. The registration ID will be returned by the callback. If register is called again with
+   the same list of senderIds, the same registration ID will be returned.
    
-     |senderIds| - A list of server IDs that are allowed to send messages to the application. It should contain at
-                   least one and no more than 100 sender IDs.
+     |senderIds| - A list of server IDs that are allowed to send messages to the application. It should contain at least one
+                   and no more than 100 sender IDs.
      |callback| - Function called when registration completes. It should check 'runtime.lastError' for error when
                   registrationId is empty.
    
@@ -36,8 +35,8 @@
 (defmacro unregister
   "Unregisters the application from GCM.
    
-     |callback| - A function called after the unregistration completes. Unregistration was successful if
-                  'runtime.lastError' is not set.
+     |callback| - A function called after the unregistration completes. Unregistration was successful if 'runtime.lastError'
+                  is not set.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([#_callback] (gen-call :function ::unregister &form)))
@@ -46,37 +45,37 @@
   "Sends a message according to its contents.
    
      |message| - A message to send to the other party via GCM.
-     |callback| - A function called after the message is successfully queued for sending. 'runtime.lastError' should
-                  be checked, to ensure a message was sent without problems.
+     |callback| - A function called after the message is successfully queued for sending. 'runtime.lastError' should be
+                  checked, to ensure a message was sent without problems.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([message #_callback] (gen-call :function ::send &form message)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-message-events
   "Fired when a message is received through GCM."
   ([channel] (gen-call :event ::on-message &form channel)))
 
 (defmacro tap-on-messages-deleted-events
-  "Fired when a GCM server had to delete messages sent by an app server to the application. See Messages deleted event
-   section of Cloud Messaging documentation for details on handling this event."
+  "Fired when a GCM server had to delete messages sent by an app server to the application. See Messages deleted event section
+   of Cloud Messaging documentation for details on handling this event."
   ([channel] (gen-call :event ::on-messages-deleted &form channel)))
 
 (defmacro tap-on-send-error-events
   "Fired when it was not possible to send a message to the GCM server."
   ([channel] (gen-call :event ::on-send-error &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.gcm",
@@ -101,7 +100,7 @@
     {:id ::on-messages-deleted, :name "onMessagesDeleted"}
     {:id ::on-send-error, :name "onSendError", :params [{:name "error", :type "object"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

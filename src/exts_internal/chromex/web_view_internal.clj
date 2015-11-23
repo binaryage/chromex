@@ -10,15 +10,15 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro execute-script
   "Injects JavaScript code into a  page.
    
      |instanceId| - The instance ID of the guest  process.
      |src| - The src of the guest  tag.
-     |details| - Details of the script or CSS to inject. Either the code or the file property must be set, but both
-                 may not be set at the same time.
+     |details| - Details of the script or CSS to inject. Either the code or the file property must be set, but both may not
+                 be set at the same time.
      |callback| - Called after all the JavaScript has been executed.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
@@ -29,8 +29,8 @@
    
      |instanceId| - The instance ID of the guest  process.
      |src| - The src of the guest  tag.
-     |details| - Details of the script or CSS to inject. Either the code or the file property must be set, but both
-                 may not be set at the same time.
+     |details| - Details of the script or CSS to inject. Either the code or the file property must be set, but both may not
+                 be set at the same time.
      |callback| - Called when all the CSS has been inserted.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
@@ -44,12 +44,12 @@
   ([instance-id content-script-list] (gen-call :function ::add-content-scripts &form instance-id content-script-list)))
 
 (defmacro remove-content-scripts
-  "Removes specified content scripts from a  page. For details, see the programmatic injection section of the content
-   scripts doc.
+  "Removes specified content scripts from a  page. For details, see the programmatic injection section of the content scripts
+   doc.
    
      |instanceId| - The instance ID of the guest  process.
-     |scriptNameList| - A list of names of content scripts that will be removed. If the list is empty, all the
-                        content scripts added to the  page will be removed."
+     |scriptNameList| - A list of names of content scripts that will be removed. If the list is empty, all the content
+                        scripts added to the  page will be removed."
   ([instance-id script-name-list] (gen-call :function ::remove-content-scripts &form instance-id script-name-list))
   ([instance-id] `(remove-content-scripts ~instance-id :omit)))
 
@@ -103,14 +103,14 @@
    
      |instanceId| - The instance ID of the guest  process.
      |action| - Determines what to do with the active match after the find session has ended. 'clear' will clear the
-                highlighting over the active match; 'keep' will keep the active match highlighted; 'activate' will
-                keep the active match highlighted and simulate a user click on that match."
+                highlighting over the active match; 'keep' will keep the active match highlighted; 'activate' will keep the
+                active match highlighted and simulate a user click on that match."
   ([instance-id action] (gen-call :function ::stop-finding &form instance-id action))
   ([instance-id] `(stop-finding ~instance-id :omit)))
 
 (defmacro load-data-with-base-url
-  "Loads a data URL with a specified base URL used for relative links. Optionally, a virtual URL can be provided to be
-   shown to the user instead of the data URL.
+  "Loads a data URL with a specified base URL used for relative links. Optionally, a virtual URL can be provided to be shown
+   to the user instead of the data URL.
    
      |instanceId| - The instance ID of the guest  process.
      |dataUrl| - The data URL to load.
@@ -162,16 +162,16 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([instance-id options data-to-remove #_callback] (gen-call :function ::clear-data &form instance-id options data-to-remove)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.webViewInternal",
@@ -198,13 +198,11 @@
       {:name "callback", :optional? true, :type :callback}]}
     {:id ::add-content-scripts,
      :name "addContentScripts",
-     :params
-     [{:name "instance-id", :type "integer"} {:name "content-script-list", :type "[array-of-objects]"}]}
+     :params [{:name "instance-id", :type "integer"} {:name "content-script-list", :type "[array-of-objects]"}]}
     {:id ::remove-content-scripts,
      :name "removeContentScripts",
      :params
-     [{:name "instance-id", :type "integer"}
-      {:name "script-name-list", :optional? true, :type "[array-of-strings]"}]}
+     [{:name "instance-id", :type "integer"} {:name "script-name-list", :optional? true, :type "[array-of-strings]"}]}
     {:id ::set-zoom,
      :name "setZoom",
      :callback? true,
@@ -260,10 +258,7 @@
      :params
      [{:name "instance-id", :type "integer"}
       {:name "relative-index", :type "integer"}
-      {:name "callback",
-       :optional? true,
-       :type :callback,
-       :callback {:params [{:name "success", :type "boolean"}]}}]}
+      {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::override-user-agent,
      :name "overrideUserAgent",
      :params [{:name "instance-id", :type "integer"} {:name "user-agent-override", :type "string"}]}
@@ -285,13 +280,8 @@
       {:name "request-id", :type "integer"}
       {:name "action", :type "unknown-type"}
       {:name "user-input", :optional? true, :type "string"}
-      {:name "callback",
-       :optional? true,
-       :type :callback,
-       :callback {:params [{:name "allowed", :type "boolean"}]}}]}
-    {:id ::navigate,
-     :name "navigate",
-     :params [{:name "instance-id", :type "integer"} {:name "src", :type "string"}]}
+      {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "allowed", :type "boolean"}]}}]}
+    {:id ::navigate, :name "navigate", :params [{:name "instance-id", :type "integer"} {:name "src", :type "string"}]}
     {:id ::stop, :name "stop", :params [{:name "instance-id", :type "integer"}]}
     {:id ::terminate, :name "terminate", :params [{:name "instance-id", :type "integer"}]}
     {:id ::clear-data,
@@ -303,7 +293,7 @@
       {:name "data-to-remove", :type "object"}
       {:name "callback", :optional? true, :type :callback}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

@@ -1,7 +1,7 @@
 (ns chromex.networking-private (:require-macros [chromex.networking-private :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn get-properties* [config network-guid]
   (gen-wrap :function ::get-properties config network-guid))
@@ -75,7 +75,7 @@
 (defn set-cellular-sim-state* [config network-guid sim-state]
   (gen-wrap :function ::set-cellular-sim-state config network-guid sim-state))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-networks-changed* [config channel]
   (gen-wrap :event ::on-networks-changed config channel))

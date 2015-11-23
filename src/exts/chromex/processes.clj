@@ -12,7 +12,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro terminate
   "Terminates the specified renderer process. Equivalent to visiting about:crash, but without changing the tab's URL.
@@ -33,27 +33,26 @@
 (defmacro get-process-info
   "Retrieves the process information for each process ID specified.
    
-     |processIds| - The list of process IDs or single process ID for which to return the process information. An
-                    empty list indicates all processes are requested.
-     |includeMemory| - True if detailed memory usage is required. Note, collecting memory usage information incurs
-                       extra CPU usage and should only be queried for when needed.
+     |processIds| - The list of process IDs or single process ID for which to return the process information. An empty list
+                    indicates all processes are requested.
+     |includeMemory| - True if detailed memory usage is required. Note, collecting memory usage information incurs extra CPU
+                       usage and should only be queried for when needed.
      |callback| - Called when the processes information is collected.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([process-ids include-memory #_callback] (gen-call :function ::get-process-info &form process-ids include-memory)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-updated-events
-  "Fired each time the Task Manager updates its process statistics, providing the dictionary of updated Process
-   objects, indexed by process ID."
+  "Fired each time the Task Manager updates its process statistics, providing the dictionary of updated Process objects,
+   indexed by process ID."
   ([channel] (gen-call :event ::on-updated &form channel)))
 
 (defmacro tap-on-updated-with-memory-events
-  "Fired each time the Task Manager updates its process statistics, providing the dictionary of updated Process
-   objects, indexed by process ID. Identical to onUpdate, with the addition of memory usage details included in each
-   Process object. Note, collecting memory usage information incurs extra CPU usage and should only be listened for
-   when needed."
+  "Fired each time the Task Manager updates its process statistics, providing the dictionary of updated Process objects,
+   indexed by process ID. Identical to onUpdate, with the addition of memory usage details included in each Process object.
+   Note, collecting memory usage information incurs extra CPU usage and should only be listened for when needed."
   ([channel] (gen-call :event ::on-updated-with-memory &form channel)))
 
 (defmacro tap-on-created-events
@@ -68,16 +67,16 @@
   "Fired each time a process is terminated, providing the type of exit."
   ([channel] (gen-call :event ::on-exited &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.processes",
@@ -117,7 +116,7 @@
       {:name "exit-type", :type "integer"}
       {:name "exit-code", :type "integer"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

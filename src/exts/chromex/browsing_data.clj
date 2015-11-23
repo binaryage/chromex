@@ -12,12 +12,12 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro settings
-  "Reports which types of data are currently selected in the 'Clear browsing data' settings UI.  Note: some of the
-   data types included in this API are not available in the settings UI, and some UI settings control more than one
-   data type listed here.
+  "Reports which types of data are currently selected in the 'Clear browsing data' settings UI.  Note: some of the data types
+   included in this API are not available in the settings UI, and some UI settings control more than one data type listed
+   here.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([#_callback] (gen-call :function ::settings &form)))
@@ -127,16 +127,16 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([options #_callback] (gen-call :function ::remove-web-sql &form options)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.browsingData",
@@ -158,76 +158,64 @@
      :name "removeAppcache",
      :callback? true,
      :params
-     [{:name "options", :type "browsingData.RemovalOptions"}
-      {:name "callback", :optional? true, :type :callback}]}
+     [{:name "options", :type "browsingData.RemovalOptions"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-cache,
      :name "removeCache",
      :callback? true,
      :params
-     [{:name "options", :type "browsingData.RemovalOptions"}
-      {:name "callback", :optional? true, :type :callback}]}
+     [{:name "options", :type "browsingData.RemovalOptions"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-cookies,
      :name "removeCookies",
      :callback? true,
      :params
-     [{:name "options", :type "browsingData.RemovalOptions"}
-      {:name "callback", :optional? true, :type :callback}]}
+     [{:name "options", :type "browsingData.RemovalOptions"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-downloads,
      :name "removeDownloads",
      :callback? true,
      :params
-     [{:name "options", :type "browsingData.RemovalOptions"}
-      {:name "callback", :optional? true, :type :callback}]}
+     [{:name "options", :type "browsingData.RemovalOptions"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-file-systems,
      :name "removeFileSystems",
      :callback? true,
      :params
-     [{:name "options", :type "browsingData.RemovalOptions"}
-      {:name "callback", :optional? true, :type :callback}]}
+     [{:name "options", :type "browsingData.RemovalOptions"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-form-data,
      :name "removeFormData",
      :callback? true,
      :params
-     [{:name "options", :type "browsingData.RemovalOptions"}
-      {:name "callback", :optional? true, :type :callback}]}
+     [{:name "options", :type "browsingData.RemovalOptions"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-history,
      :name "removeHistory",
      :callback? true,
      :params
-     [{:name "options", :type "browsingData.RemovalOptions"}
-      {:name "callback", :optional? true, :type :callback}]}
+     [{:name "options", :type "browsingData.RemovalOptions"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-indexed-db,
      :name "removeIndexedDB",
      :callback? true,
      :params
-     [{:name "options", :type "browsingData.RemovalOptions"}
-      {:name "callback", :optional? true, :type :callback}]}
+     [{:name "options", :type "browsingData.RemovalOptions"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-local-storage,
      :name "removeLocalStorage",
      :callback? true,
      :params
-     [{:name "options", :type "browsingData.RemovalOptions"}
-      {:name "callback", :optional? true, :type :callback}]}
+     [{:name "options", :type "browsingData.RemovalOptions"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-plugin-data,
      :name "removePluginData",
      :callback? true,
      :params
-     [{:name "options", :type "browsingData.RemovalOptions"}
-      {:name "callback", :optional? true, :type :callback}]}
+     [{:name "options", :type "browsingData.RemovalOptions"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-passwords,
      :name "removePasswords",
      :callback? true,
      :params
-     [{:name "options", :type "browsingData.RemovalOptions"}
-      {:name "callback", :optional? true, :type :callback}]}
+     [{:name "options", :type "browsingData.RemovalOptions"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-web-sql,
      :name "removeWebSQL",
      :callback? true,
      :params
-     [{:name "options", :type "browsingData.RemovalOptions"}
-      {:name "callback", :optional? true, :type :callback}]}]})
+     [{:name "options", :type "browsingData.RemovalOptions"} {:name "callback", :optional? true, :type :callback}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

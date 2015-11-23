@@ -1,7 +1,7 @@
 (ns chromex.activity-log-private (:require-macros [chromex.activity-log-private :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn get-extension-activities* [config filter]
   (gen-wrap :function ::get-extension-activities config filter))
@@ -15,7 +15,7 @@
 (defn delete-urls* [config urls]
   (gen-wrap :function ::delete-urls config urls))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-extension-activity* [config channel]
   (gen-wrap :event ::on-extension-activity config channel))

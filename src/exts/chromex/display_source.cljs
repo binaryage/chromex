@@ -1,7 +1,7 @@
 (ns chromex.display-source (:require-macros [chromex.display-source :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn get-available-sinks* [config]
   (gen-wrap :function ::get-available-sinks config))
@@ -15,7 +15,7 @@
 (defn terminate-session* [config sink-id]
   (gen-wrap :function ::terminate-session config sink-id))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-sinks-updated* [config channel]
   (gen-wrap :event ::on-sinks-updated config channel))

@@ -21,7 +21,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro report-printers
   "Runs callback to printerProvider.onGetPrintersRequested event.
@@ -52,8 +52,8 @@
   ([request-id] `(report-print-result ~request-id :omit)))
 
 (defmacro get-print-data
-  "Gets information needed to create a print data blob for a print request. The blob will be dispatched to the
-   extension via printerProvider.onPrintRequested event.
+  "Gets information needed to create a print data blob for a print request. The blob will be dispatched to the extension via
+   printerProvider.onPrintRequested event.
    
      |requestId| - The request id for the print request for which data is     needed.
      |callback| - Callback called with the information needed to create a blob     of print data.
@@ -61,16 +61,16 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([request-id #_callback] (gen-call :function ::get-print-data &form request-id)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.printerProviderInternal",
@@ -100,7 +100,7 @@
      [{:name "request-id", :type "integer"}
       {:name "callback", :type :callback, :callback {:params [{:name "blob-info", :type "object"}]}}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

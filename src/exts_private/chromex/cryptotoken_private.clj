@@ -13,28 +13,28 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro can-origin-assert-app-id
   "Checks whether the origin is allowed to assert the appId, according to the same origin policy defined at
-   http://fidoalliance.org/specs/fido-u2f-v1.0-ps-20141009/     fido-appid-and-facets-ps-20141009.html
-   |securityOrigin| is the origin as seen by the extension, and |appIdUrl| is the appId being asserted by the origin.
+   http://fidoalliance.org/specs/fido-u2f-v1.0-ps-20141009/     fido-appid-and-facets-ps-20141009.html |securityOrigin| is the
+   origin as seen by the extension, and |appIdUrl| is the appId being asserted by the origin.
    
      |callback| - Callback for appId check
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([security-origin app-id-url #_callback] (gen-call :function ::can-origin-assert-app-id &form security-origin app-id-url)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.cryptotokenPrivate",
@@ -49,7 +49,7 @@
       {:name "app-id-url", :type "string"}
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

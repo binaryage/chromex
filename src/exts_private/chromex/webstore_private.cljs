@@ -1,7 +1,7 @@
 (ns chromex.webstore-private (:require-macros [chromex.webstore-private :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn install* [config expected-id]
   (gen-wrap :function ::install config expected-id))

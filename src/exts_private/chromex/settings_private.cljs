@@ -1,7 +1,7 @@
 (ns chromex.settings-private (:require-macros [chromex.settings-private :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn set-pref* [config name value page-id]
   (gen-wrap :function ::set-pref config name value page-id))
@@ -18,7 +18,7 @@
 (defn set-default-zoom-percent* [config percent]
   (gen-wrap :function ::set-default-zoom-percent config percent))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-prefs-changed* [config channel]
   (gen-wrap :event ::on-prefs-changed config channel))

@@ -1,7 +1,7 @@
 (ns chromex.instance-id (:require-macros [chromex.instance-id :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn get-id* [config]
   (gen-wrap :function ::get-id config))
@@ -18,7 +18,7 @@
 (defn delete-id* [config]
   (gen-wrap :function ::delete-id config))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-token-refresh* [config channel]
   (gen-wrap :event ::on-token-refresh config channel))

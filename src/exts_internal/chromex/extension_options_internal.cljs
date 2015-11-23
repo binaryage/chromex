@@ -1,7 +1,7 @@
 (ns chromex.extension-options-internal (:require-macros [chromex.extension-options-internal :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-close* [config channel]
   (gen-wrap :event ::on-close config channel))

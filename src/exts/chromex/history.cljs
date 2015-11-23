@@ -1,7 +1,7 @@
 (ns chromex.history (:require-macros [chromex.history :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn search* [config query]
   (gen-wrap :function ::search config query))
@@ -21,7 +21,7 @@
 (defn delete-all* [config]
   (gen-wrap :function ::delete-all config))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-visited* [config channel]
   (gen-wrap :event ::on-visited config channel))

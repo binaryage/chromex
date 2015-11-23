@@ -1,7 +1,7 @@
 (ns chromex.input.ime (:require-macros [chromex.input.ime :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn set-composition* [config parameters]
   (gen-wrap :function ::set-composition config parameters))
@@ -39,7 +39,7 @@
 (defn key-event-handled* [config request-id response]
   (gen-wrap :function ::key-event-handled config request-id response))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-activate* [config channel]
   (gen-wrap :event ::on-activate config channel))

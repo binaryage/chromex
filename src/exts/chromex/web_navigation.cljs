@@ -1,7 +1,7 @@
 (ns chromex.web-navigation (:require-macros [chromex.web-navigation :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn get-frame* [config details]
   (gen-wrap :function ::get-frame config details))
@@ -9,7 +9,7 @@
 (defn get-all-frames* [config details]
   (gen-wrap :function ::get-all-frames config details))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-before-navigate* [config channel]
   (gen-wrap :event ::on-before-navigate config channel))

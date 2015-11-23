@@ -1,12 +1,12 @@
 (ns chromex.devtools.inspected-window (:require-macros [chromex.devtools.inspected-window :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- properties -----------------------------------------------------------------------------------------------------
+; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defn tab-id* [config]
   (gen-wrap :property ::tab-id config))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn eval* [config expression options]
   (gen-wrap :function ::eval config expression options))
@@ -17,7 +17,7 @@
 (defn get-resources* [config]
   (gen-wrap :function ::get-resources config))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-resource-added* [config channel]
   (gen-wrap :event ::on-resource-added config channel))

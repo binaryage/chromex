@@ -1,12 +1,12 @@
 (ns chromex.gcm (:require-macros [chromex.gcm :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- properties -----------------------------------------------------------------------------------------------------
+; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defn max-message-size* [config]
   (gen-wrap :property ::max-message-size config))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn register* [config sender-ids]
   (gen-wrap :function ::register config sender-ids))
@@ -17,7 +17,7 @@
 (defn send* [config message]
   (gen-wrap :function ::send config message))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-message* [config channel]
   (gen-wrap :event ::on-message config channel))

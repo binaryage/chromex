@@ -1,6 +1,6 @@
 (ns chromex.management
-  "The chrome.management API provides ways to manage the list of extensions/apps that are installed and running. It
-   is particularly useful for extensions that override the built-in New Tab page.
+  "The chrome.management API provides ways to manage the list of extensions/apps that are installed and running. It is
+   particularly useful for extensions that override the built-in New Tab page.
    
      * available since Chrome 8
      * https://developer.chrome.com/extensions/management"
@@ -13,7 +13,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro get-all
   "Returns a list of information about installed extensions and apps.
@@ -30,8 +30,8 @@
   ([id #_callback] (gen-call :function ::get &form id)))
 
 (defmacro get-self
-  "Returns information about the calling extension, app, or theme. Note: This function can be used without requesting
-   the 'management' permission in the manifest.
+  "Returns information about the calling extension, app, or theme. Note: This function can be used without requesting the
+   'management' permission in the manifest.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([#_callback] (gen-call :function ::get-self &form)))
@@ -45,8 +45,8 @@
   ([id #_callback] (gen-call :function ::get-permission-warnings-by-id &form id)))
 
 (defmacro get-permission-warnings-by-manifest
-  "Returns a list of permission warnings for the given extension manifest string. Note: This function can be used
-   without requesting the 'management' permission in the manifest.
+  "Returns a list of permission warnings for the given extension manifest string. Note: This function can be used without
+   requesting the 'management' permission in the manifest.
    
      |manifestStr| - Extension manifest JSON string.
    
@@ -72,8 +72,8 @@
   ([id] `(uninstall ~id :omit)))
 
 (defmacro uninstall-self
-  "Uninstalls the calling extension. Note: This function can be used without requesting the 'management' permission in
-   the manifest.
+  "Uninstalls the calling extension. Note: This function can be used without requesting the 'management' permission in the
+   manifest.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([options #_callback] (gen-call :function ::uninstall-self &form options))
@@ -100,8 +100,8 @@
    
      |id| - This should be the id from an app item of 'management.ExtensionInfo'.
      |launchType| - The target launch type. Always check and make sure this launch type is in
-                    'ExtensionInfo.availableLaunchTypes', because the available launch types vary on different
-                    platforms and configurations.
+                    'ExtensionInfo.availableLaunchTypes', because the available launch types vary on different platforms and
+                    configurations.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([id launch-type #_callback] (gen-call :function ::set-launch-type &form id launch-type)))
@@ -115,7 +115,7 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([url title #_callback] (gen-call :function ::generate-app-for-link &form url title)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-installed-events
   "Fired when an app or extension has been installed."
@@ -133,16 +133,16 @@
   "Fired when an app or extension has been disabled."
   ([channel] (gen-call :event ::on-disabled &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.management",
@@ -213,8 +213,7 @@
      :name "uninstallSelf",
      :since "26",
      :callback? true,
-     :params
-     [{:name "options", :optional? true, :type "object"} {:name "callback", :optional? true, :type :callback}]}
+     :params [{:name "options", :optional? true, :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::launch-app,
      :name "launchApp",
      :callback? true,
@@ -249,7 +248,7 @@
     {:id ::on-enabled, :name "onEnabled", :params [{:name "info", :type "management.ExtensionInfo"}]}
     {:id ::on-disabled, :name "onDisabled", :params [{:name "info", :type "management.ExtensionInfo"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

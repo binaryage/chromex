@@ -10,11 +10,11 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro context-menus-create
-  "  |callback| - Called when the item has been created in the browser. If there were any problems creating the
-                  item, details will be available in chrome.runtime.lastError.
+  "  |callback| - Called when the item has been created in the browser. If there were any problems creating the item,
+                  details will be available in chrome.runtime.lastError.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([create-properties #_callback] (gen-call :function ::context-menus-create &form create-properties)))
@@ -47,24 +47,23 @@
   ([#_callback] (gen-call :function ::context-menus-remove-all &form)))
 
 (defmacro show-context-menu
-  "  |instanceId| - The instance ID of the guest &lt;webview&gt; process. This not exposed to developers through the
-                    API.
-     |requestId| - The strictly increasing request counter that serves as ID for the context menu. This not exposed
-                   to developers through the API.
+  "  |instanceId| - The instance ID of the guest &lt;webview&gt; process. This not exposed to developers through the API.
+     |requestId| - The strictly increasing request counter that serves as ID for the context menu. This not exposed to
+                   developers through the API.
      |itemsToShow| - Items to be shown in the context menu. These are top level items as opposed to children items."
   ([instance-id request-id items-to-show] (gen-call :function ::show-context-menu &form instance-id request-id items-to-show))
   ([instance-id request-id] `(show-context-menu ~instance-id ~request-id :omit)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.chromeWebViewInternal",
@@ -74,8 +73,7 @@
      :name "contextMenusCreate",
      :callback? true,
      :return-type "integer-or-string",
-     :params
-     [{:name "create-properties", :type "object"} {:name "callback", :optional? true, :type :callback}]}
+     :params [{:name "create-properties", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::context-menus-update,
      :name "contextMenusUpdate",
      :callback? true,
@@ -86,8 +84,7 @@
     {:id ::context-menus-remove,
      :name "contextMenusRemove",
      :callback? true,
-     :params
-     [{:name "menu-item-id", :type "integer-or-string"} {:name "callback", :optional? true, :type :callback}]}
+     :params [{:name "menu-item-id", :type "integer-or-string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::context-menus-remove-all,
      :name "contextMenusRemoveAll",
      :callback? true,
@@ -99,7 +96,7 @@
       {:name "request-id", :type "integer"}
       {:name "items-to-show", :optional? true, :type "[array-of-objects]"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

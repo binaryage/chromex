@@ -10,7 +10,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro get-config
   "Gives configuration options set by the test.
@@ -19,13 +19,11 @@
   ([#_callback] (gen-call :function ::get-config &form)))
 
 (defmacro notify-fail
-  "Notifies the browser process that test code running in the extension failed.  This is only used for internal unit
-   testing."
+  "Notifies the browser process that test code running in the extension failed.  This is only used for internal unit testing."
   ([message] (gen-call :function ::notify-fail &form message)))
 
 (defmacro notify-pass
-  "Notifies the browser process that test code running in the extension passed.  This is only used for internal unit
-   testing."
+  "Notifies the browser process that test code running in the extension passed.  This is only used for internal unit testing."
   ([message] (gen-call :function ::notify-pass &form message))
   ([] `(notify-pass :omit)))
 
@@ -147,8 +145,8 @@
   ([message #_callback] (gen-call :function ::wait-for-round-trip &form message)))
 
 (defmacro set-exception-handler
-  "Sets the function to be called when an exception occurs. By default this is a function which fails the test. This
-   is reset for every test run through test.runTests.
+  "Sets the function to be called when an exception occurs. By default this is a function which fails the test. This is reset
+   for every test run through test.runTests.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([#_callback] (gen-call :function ::set-exception-handler &form)))
@@ -157,22 +155,22 @@
   "Returns the wake-event-page API function, which can be called to wake up the extension's event page."
   ([] (gen-call :function ::get-wake-event-page &form)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-message-events
   "Used to test sending messages to extensions."
   ([channel] (gen-call :event ::on-message &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.test",
@@ -182,8 +180,7 @@
      :name "getConfig",
      :since "9",
      :callback? true,
-     :params
-     [{:name "callback", :type :callback, :callback {:params [{:name "test-config", :type "object"}]}}]}
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "test-config", :type "object"}]}}]}
     {:id ::notify-fail, :name "notifyFail", :params [{:name "message", :type "string"}]}
     {:id ::notify-pass, :name "notifyPass", :params [{:name "message", :optional? true, :type "string"}]}
     {:id ::log, :name "log", :params [{:name "message", :type "string"}]}
@@ -193,10 +190,7 @@
      :callback? true,
      :params
      [{:name "message", :type "string"}
-      {:name "callback",
-       :optional? true,
-       :type :callback,
-       :callback {:params [{:name "response", :type "string"}]}}]}
+      {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "response", :type "string"}]}}]}
     {:id ::callback-added, :name "callbackAdded", :since "27"}
     {:id ::run-next-test, :name "runNextTest", :since "27"}
     {:id ::fail, :name "fail", :since "27", :params [{:name "message", :optional? true, :type "any"}]}
@@ -238,10 +232,7 @@
       {:name "actual", :optional? true, :type "any"}
       {:name "message", :optional? true, :type "string"}]}
     {:id ::assert-no-last-error, :name "assertNoLastError", :since "27"}
-    {:id ::assert-last-error,
-     :name "assertLastError",
-     :since "27",
-     :params [{:name "expected-error", :type "string"}]}
+    {:id ::assert-last-error, :name "assertLastError", :since "27", :params [{:name "expected-error", :type "string"}]}
     {:id ::assert-throws,
      :name "assertThrows",
      :since "29",
@@ -256,8 +247,7 @@
      :since "27",
      :callback? true,
      :params
-     [{:name "expected-error", :optional? true, :type "string"}
-      {:name "func", :optional? true, :type :callback}]}
+     [{:name "expected-error", :optional? true, :type "string"} {:name "func", :optional? true, :type :callback}]}
     {:id ::listen-once,
      :name "listenOnce",
      :since "27",
@@ -313,7 +303,7 @@
     {:id ::get-wake-event-page, :name "getWakeEventPage", :since "46", :return-type "function"}],
    :events [{:id ::on-message, :name "onMessage", :params [{:name "info", :type "object"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

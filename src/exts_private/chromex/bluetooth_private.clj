@@ -14,7 +14,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro set-adapter-state
   "Changes the state of the Bluetooth adapter.
@@ -47,8 +47,8 @@
   ([discovery-filter #_callback] (gen-call :function ::set-discovery-filter &form discovery-filter)))
 
 (defmacro connect
-  "Connects to the given device. This will only throw an error if the device address is invalid or the device is
-   already connected. Otherwise this will succeed and invoke |callback| with ConnectResultType.
+  "Connects to the given device. This will only throw an error if the device address is invalid or the device is already
+   connected. Otherwise this will succeed and invoke |callback| with ConnectResultType.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([device-address #_callback] (gen-call :function ::connect &form device-address)))
@@ -59,22 +59,22 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([device-address #_callback] (gen-call :function ::pair &form device-address)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-pairing-events
   "Fired when a pairing event occurs."
   ([channel] (gen-call :event ::on-pairing &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.bluetoothPrivate",
@@ -120,7 +120,7 @@
      :params [{:name "device-address", :type "string"} {:name "callback", :optional? true, :type :callback}]}],
    :events [{:id ::on-pairing, :name "onPairing", :params [{:name "pairing-event", :type "object"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

@@ -12,7 +12,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro clear-font
   "Clears the font set by this extension, if any.
@@ -110,7 +110,7 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([details #_callback] (gen-call :function ::set-minimum-font-size &form details)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-font-changed-events
   "Fired when a font setting changes."
@@ -128,16 +128,16 @@
   "Fired when the minimum font size setting changes."
   ([channel] (gen-call :event ::on-minimum-font-size-changed &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.fontSettings",
@@ -152,10 +152,7 @@
      :callback? true,
      :params
      [{:name "details", :type "object"}
-      {:name "callback",
-       :optional? true,
-       :type :callback,
-       :callback {:params [{:name "details", :type "object"}]}}]}
+      {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "details", :type "object"}]}}]}
     {:id ::set-font,
      :name "setFont",
      :callback? true,
@@ -170,17 +167,13 @@
     {:id ::clear-default-font-size,
      :name "clearDefaultFontSize",
      :callback? true,
-     :params
-     [{:name "details", :optional? true, :type "object"} {:name "callback", :optional? true, :type :callback}]}
+     :params [{:name "details", :optional? true, :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-default-font-size,
      :name "getDefaultFontSize",
      :callback? true,
      :params
      [{:name "details", :optional? true, :type "object"}
-      {:name "callback",
-       :optional? true,
-       :type :callback,
-       :callback {:params [{:name "details", :type "object"}]}}]}
+      {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "details", :type "object"}]}}]}
     {:id ::set-default-font-size,
      :name "setDefaultFontSize",
      :callback? true,
@@ -188,17 +181,13 @@
     {:id ::clear-default-fixed-font-size,
      :name "clearDefaultFixedFontSize",
      :callback? true,
-     :params
-     [{:name "details", :optional? true, :type "object"} {:name "callback", :optional? true, :type :callback}]}
+     :params [{:name "details", :optional? true, :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-default-fixed-font-size,
      :name "getDefaultFixedFontSize",
      :callback? true,
      :params
      [{:name "details", :optional? true, :type "object"}
-      {:name "callback",
-       :optional? true,
-       :type :callback,
-       :callback {:params [{:name "details", :type "object"}]}}]}
+      {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "details", :type "object"}]}}]}
     {:id ::set-default-fixed-font-size,
      :name "setDefaultFixedFontSize",
      :callback? true,
@@ -206,34 +195,26 @@
     {:id ::clear-minimum-font-size,
      :name "clearMinimumFontSize",
      :callback? true,
-     :params
-     [{:name "details", :optional? true, :type "object"} {:name "callback", :optional? true, :type :callback}]}
+     :params [{:name "details", :optional? true, :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-minimum-font-size,
      :name "getMinimumFontSize",
      :callback? true,
      :params
      [{:name "details", :optional? true, :type "object"}
-      {:name "callback",
-       :optional? true,
-       :type :callback,
-       :callback {:params [{:name "details", :type "object"}]}}]}
+      {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "details", :type "object"}]}}]}
     {:id ::set-minimum-font-size,
      :name "setMinimumFontSize",
      :callback? true,
      :params [{:name "details", :type "object"} {:name "callback", :optional? true, :type :callback}]}],
    :events
    [{:id ::on-font-changed, :name "onFontChanged", :params [{:name "details", :type "object"}]}
-    {:id ::on-default-font-size-changed,
-     :name "onDefaultFontSizeChanged",
-     :params [{:name "details", :type "object"}]}
+    {:id ::on-default-font-size-changed, :name "onDefaultFontSizeChanged", :params [{:name "details", :type "object"}]}
     {:id ::on-default-fixed-font-size-changed,
      :name "onDefaultFixedFontSizeChanged",
      :params [{:name "details", :type "object"}]}
-    {:id ::on-minimum-font-size-changed,
-     :name "onMinimumFontSizeChanged",
-     :params [{:name "details", :type "object"}]}]})
+    {:id ::on-minimum-font-size-changed, :name "onMinimumFontSizeChanged", :params [{:name "details", :type "object"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

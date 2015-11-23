@@ -1,7 +1,7 @@
 (ns chromex.webrtc-logging-private (:require-macros [chromex.webrtc-logging-private :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn set-meta-data* [config request security-origin meta-data]
   (gen-wrap :function ::set-meta-data config request security-origin meta-data))

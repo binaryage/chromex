@@ -1,7 +1,7 @@
 (ns chromex.language-settings-private (:require-macros [chromex.language-settings-private :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn get-language-list* [config]
   (gen-wrap :function ::get-language-list config))
@@ -33,7 +33,7 @@
 (defn remove-input-method* [config input-method-id]
   (gen-wrap :function ::remove-input-method config input-method-id))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-spellcheck-dictionaries-changed* [config channel]
   (gen-wrap :event ::on-spellcheck-dictionaries-changed config channel))

@@ -13,7 +13,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro set-pref
   "Sets a settings value.
@@ -50,22 +50,22 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([percent #_callback] (gen-call :function ::set-default-zoom-percent &form percent)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-prefs-changed-events
   "Fired when a set of prefs has changed.|prefs| The prefs that changed."
   ([channel] (gen-call :event ::on-prefs-changed &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.settingsPrivate",
@@ -91,9 +91,7 @@
      :callback? true,
      :params
      [{:name "name", :type "string"}
-      {:name "callback",
-       :type :callback,
-       :callback {:params [{:name "pref", :type "settingsPrivate.PrefObject"}]}}]}
+      {:name "callback", :type :callback, :callback {:params [{:name "pref", :type "settingsPrivate.PrefObject"}]}}]}
     {:id ::get-default-zoom-percent,
      :name "getDefaultZoomPercent",
      :since "48",
@@ -114,7 +112,7 @@
      :name "onPrefsChanged",
      :params [{:name "prefs", :type "[array-of-settingsPrivate.PrefObjects]"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

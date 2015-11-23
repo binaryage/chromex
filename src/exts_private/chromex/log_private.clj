@@ -13,7 +13,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro get-historical
   "Get the existing logs from ChromeOS system.
@@ -34,30 +34,30 @@
   ([event-type #_callback] (gen-call :function ::stop-event-recorder &form event-type)))
 
 (defmacro dump-logs
-  "Dump all system and captured events into a .tar.gz file. The archive file will contain following top level
-   directories:   /var/log/       ChromeOS system logs.   /home/chronos/user/log/       Session specific logs (chrome
-   app logs).   /home/chronos/user/log/apps/       Contains webapp specific logs including those collected with
+  "Dump all system and captured events into a .tar.gz file. The archive file will contain following top level directories:
+   /var/log/       ChromeOS system logs.   /home/chronos/user/log/       Session specific logs (chrome app logs).
+   /home/chronos/user/log/apps/       Contains webapp specific logs including those collected with
    startEventRecorder(..., sink='file') call.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([#_callback] (gen-call :function ::dump-logs &form)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-captured-events-events
   "Receives events of type which is currently being captured."
   ([channel] (gen-call :event ::on-captured-events &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.logPrivate",
@@ -85,11 +85,9 @@
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "logs", :type "FileEntry"}]}}]}],
    :events
-   [{:id ::on-captured-events,
-     :name "onCapturedEvents",
-     :params [{:name "entries", :type "[array-of-objects]"}]}]})
+   [{:id ::on-captured-events, :name "onCapturedEvents", :params [{:name "entries", :type "[array-of-objects]"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

@@ -1,7 +1,7 @@
 (ns chromex.browser-action (:require-macros [chromex.browser-action :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn set-title* [config details]
   (gen-wrap :function ::set-title config details))
@@ -36,7 +36,7 @@
 (defn disable* [config tab-id]
   (gen-wrap :function ::disable config tab-id))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-clicked* [config channel]
   (gen-wrap :event ::on-clicked config channel))

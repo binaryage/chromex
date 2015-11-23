@@ -13,7 +13,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro get-available-sinks
   "Queries the list of the currently available Display sinks.
@@ -28,21 +28,20 @@
    
      |sinkId| - Id of the sink
      |callback| - Called when authentication info retrieved from the sink. The argument |method| field contains the
-                  authentication method required by the sink for connection; the |data| field can be null or can
-                  contain some supplementary data provided by the sink. If authentication info cannot be retrieved
-                  from the sink the 'chrome.runtime.lastError' property is defined.
+                  authentication method required by the sink for connection; the |data| field can be null or can contain
+                  some supplementary data provided by the sink. If authentication info cannot be retrieved from the sink the
+                  'chrome.runtime.lastError' property is defined.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([sink-id #_callback] (gen-call :function ::request-authentication &form sink-id)))
 
 (defmacro start-session
-  "Creates a Display session using the provided StartSessionInfo instance. The input argument fields must be
-   initialized as described below: The |sinkId|  must be a valid id of a sink (obtained via ‘getAvailableSinks’).The
-   |audioTrack| or |videoTrack| must be of type MediaStreamTrack. Either |audioTrack| or |videoTrack| can be null but
-   not both. This means creating a session with only audio or video.The |authenticationInfo| can be null if no
-   additional authentication data are required by the sink; otherwise its |data| field must contain the required
-   authentication data (e.g. PIN value) and its |method| field must be the same as one obtained from
-   ‘requestAuthentication’."
+  "Creates a Display session using the provided StartSessionInfo instance. The input argument fields must be initialized as
+   described below: The |sinkId|  must be a valid id of a sink (obtained via ‘getAvailableSinks’).The |audioTrack| or
+   |videoTrack| must be of type MediaStreamTrack. Either |audioTrack| or |videoTrack| can be null but not both. This means
+   creating a session with only audio or video.The |authenticationInfo| can be null if no additional authentication data are
+   required by the sink; otherwise its |data| field must contain the required authentication data (e.g. PIN value) and its
+   |method| field must be the same as one obtained from ‘requestAuthentication’."
   ([session-info] (gen-call :function ::start-session &form session-info)))
 
 (defmacro terminate-session
@@ -54,11 +53,11 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([sink-id #_callback] (gen-call :function ::terminate-session &form sink-id)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-sinks-updated-events
-  "Event fired when the available sinks are modified (either their amount or properties) |sinks| the list of all
-   currently available sinks"
+  "Event fired when the available sinks are modified (either their amount or properties) |sinks| the list of all currently
+   available sinks"
   ([channel] (gen-call :event ::on-sinks-updated &form channel)))
 
 (defmacro tap-on-session-started-events
@@ -73,16 +72,16 @@
   "Event fired when an error occurs. |sinkId| Id of the peer sink |errorInfo| error description"
   ([channel] (gen-call :event ::on-session-error-occured &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.displaySource",
@@ -118,7 +117,7 @@
      :name "onSessionErrorOccured",
      :params [{:name "sink-id", :type "integer"} {:name "error-info", :type "object"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

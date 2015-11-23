@@ -1,6 +1,6 @@
 (ns chromex.windows
-  "Use the chrome.windows API to interact with browser windows. You can use this API to create, modify, and rearrange
-   windows in the browser.
+  "Use the chrome.windows API to interact with browser windows. You can use this API to create, modify, and rearrange windows
+   in the browser.
    
      * available since Chrome 5
      * https://developer.chrome.com/extensions/windows"
@@ -13,7 +13,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- properties -----------------------------------------------------------------------------------------------------
+; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defmacro get-window-id-none
   "The windowId value that represents the absence of a chrome browser window."
@@ -23,7 +23,7 @@
   "The windowId value that represents the current window."
   ([] (gen-call :property ::window-id-current &form)))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro get
   "Gets details about a window.
@@ -61,8 +61,8 @@
   ([] `(create :omit)))
 
 (defmacro update
-  "Updates the properties of a window. Specify only the properties that you want to change; unspecified properties
-   will be left unchanged.
+  "Updates the properties of a window. Specify only the properties that you want to change; unspecified properties will be
+   left unchanged.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([window-id update-info #_callback] (gen-call :function ::update &form window-id update-info)))
@@ -73,7 +73,7 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([window-id #_callback] (gen-call :function ::remove &form window-id)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-created-events
   "Fired when a window is created."
@@ -84,21 +84,21 @@
   ([channel] (gen-call :event ::on-removed &form channel)))
 
 (defmacro tap-on-focus-changed-events
-  "Fired when the currently focused window changes. Will be chrome.windows.WINDOW_ID_NONE if all chrome windows have
-   lost focus. Note: On some Linux window managers, WINDOW_ID_NONE will always be sent immediately preceding a switch
-   from one chrome window to another."
+  "Fired when the currently focused window changes. Will be chrome.windows.WINDOW_ID_NONE if all chrome windows have lost
+   focus. Note: On some Linux window managers, WINDOW_ID_NONE will always be sent immediately preceding a switch from one
+   chrome window to another."
   ([channel] (gen-call :event ::on-focus-changed &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.windows",
@@ -162,7 +162,7 @@
     {:id ::on-removed, :name "onRemoved", :params [{:name "window-id", :type "integer"}]}
     {:id ::on-focus-changed, :name "onFocusChanged", :params [{:name "window-id", :type "integer"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

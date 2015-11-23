@@ -13,11 +13,10 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro transmit
-  "Transmit a token. Only one can be transmitted at a time. Transmission of any previous tokens (by this app) will
-   stop.
+  "Transmit a token. Only one can be transmitted at a time. Transmission of any previous tokens (by this app) will stop.
    
      |callback| - A callback to report the status of a request.
    
@@ -48,7 +47,7 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([band #_callback] (gen-call :function ::stop-receive &form band)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-received-events
   "Audio tokens have been received."
@@ -58,16 +57,16 @@
   "Transmit could not be confirmed. The speaker volume might be too low."
   ([channel] (gen-call :event ::on-transmit-fail &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.audioModem",
@@ -97,14 +96,12 @@
      :callback? true,
      :params
      [{:name "band", :type "audioModem.Audioband"}
-      {:name "callback",
-       :type :callback,
-       :callback {:params [{:name "status", :type "audioModem.Status"}]}}]}],
+      {:name "callback", :type :callback, :callback {:params [{:name "status", :type "audioModem.Status"}]}}]}],
    :events
    [{:id ::on-received, :name "onReceived", :params [{:name "tokens", :type "[array-of-objects]"}]}
     {:id ::on-transmit-fail, :name "onTransmitFail", :params [{:name "band", :type "audioModem.Audioband"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

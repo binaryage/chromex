@@ -12,36 +12,35 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro abort
   "Abort the URL request on the given stream.
    
      |streamUrl| - The URL of the stream to abort.
-     |callback| - Called when the stream URL is guaranteed to be invalid. The underlying URL request may not yet
-                  have been aborted when this is run.
+     |callback| - Called when the stream URL is guaranteed to be invalid. The underlying URL request may not yet have been
+                  aborted when this is run.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([stream-url #_callback] (gen-call :function ::abort &form stream-url)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-execute-mime-type-handler-events
-  "Fired when a resource is fetched which matches a mime type handled by this extension. The resource request is
-   cancelled, and the extension is expected to handle the request. The event is restricted to a small number of
-   white-listed extensions."
+  "Fired when a resource is fetched which matches a mime type handled by this extension. The resource request is cancelled,
+   and the extension is expected to handle the request. The event is restricted to a small number of white-listed extensions."
   ([channel] (gen-call :event ::on-execute-mime-type-handler &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.streamsPrivate",
@@ -57,7 +56,7 @@
      :name "onExecuteMimeTypeHandler",
      :params [{:name "stream-info", :type "object"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

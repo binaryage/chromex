@@ -1,7 +1,7 @@
 (ns chromex.developer-private (:require-macros [chromex.developer-private :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn auto-update* [config]
   (gen-wrap :function ::auto-update config))
@@ -81,7 +81,7 @@
 (defn inspect* [config options]
   (gen-wrap :function ::inspect config options))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-item-state-changed* [config channel]
   (gen-wrap :event ::on-item-state-changed config channel))

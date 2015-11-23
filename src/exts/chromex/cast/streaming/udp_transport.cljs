@@ -1,7 +1,7 @@
 (ns chromex.cast.streaming.udp-transport (:require-macros [chromex.cast.streaming.udp-transport :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn destroy* [config transport-id]
   (gen-wrap :function ::destroy config transport-id))

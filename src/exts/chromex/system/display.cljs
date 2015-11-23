@@ -1,7 +1,7 @@
 (ns chromex.system.display (:require-macros [chromex.system.display :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn get-info* [config]
   (gen-wrap :function ::get-info config))
@@ -12,7 +12,7 @@
 (defn enable-unified-desktop* [config enabled]
   (gen-wrap :function ::enable-unified-desktop config enabled))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-display-changed* [config channel]
   (gen-wrap :event ::on-display-changed config channel))

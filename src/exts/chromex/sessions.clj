@@ -12,13 +12,13 @@
 (declare api-table)
 (declare gen-call)
 
-; -- properties -----------------------------------------------------------------------------------------------------
+; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defmacro get-max-session-results
   "The maximum number of 'sessions.Session' that will be included in a requested list."
   ([] (gen-call :property ::max-session-results &form)))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro get-recently-closed
   "Gets the list of recently closed tabs and/or windows.
@@ -37,29 +37,29 @@
 (defmacro restore
   "Reopens a 'windows.Window' or 'tabs.Tab', with an optional callback to run when the entry has been restored.
    
-     |sessionId| - The 'windows.Window.sessionId', or 'tabs.Tab.sessionId' to restore. If this parameter is not
-                   specified, the most recently closed session is restored.
+     |sessionId| - The 'windows.Window.sessionId', or 'tabs.Tab.sessionId' to restore. If this parameter is not specified,
+                   the most recently closed session is restored.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([session-id #_callback] (gen-call :function ::restore &form session-id))
   ([] `(restore :omit)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-changed-events
   "Fired when recently closed tabs and/or windows are changed. This event does not monitor synced sessions changes."
   ([channel] (gen-call :event ::on-changed &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.sessions",
@@ -93,7 +93,7 @@
        :callback {:params [{:name "restored-session", :type "sessions.Session"}]}}]}],
    :events [{:id ::on-changed, :name "onChanged"}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

@@ -1,7 +1,7 @@
 (ns chromex.notifications (:require-macros [chromex.notifications :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn create* [config notification-id options]
   (gen-wrap :function ::create config notification-id options))
@@ -18,7 +18,7 @@
 (defn get-permission-level* [config]
   (gen-wrap :function ::get-permission-level config))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-closed* [config channel]
   (gen-wrap :event ::on-closed config channel))

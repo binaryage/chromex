@@ -10,11 +10,11 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro set-native-accessibility-enabled
-  "Enables or disables native accessibility support. Once disabled, it is up to the calling extension to provide
-   accessibility for web contents.
+  "Enables or disables native accessibility support. Once disabled, it is up to the calling extension to provide accessibility
+   for web contents.
    
      |enabled| - True if native accessibility support should be enabled."
   ([enabled] (gen-call :function ::set-native-accessibility-enabled &form enabled)))
@@ -25,22 +25,22 @@
      |rects| - Array of rectangles to draw the accessibility focus ring around."
   ([rects] (gen-call :function ::set-focus-ring &form rects)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-introduce-chrome-vox-events
   "Fired whenever ChromeVox should output introduction."
   ([channel] (gen-call :event ::on-introduce-chrome-vox &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.accessibilityPrivate",
@@ -55,7 +55,7 @@
      :params [{:name "rects", :type "[array-of-accessibilityPrivate.ScreenRects]"}]}],
    :events [{:id ::on-introduce-chrome-vox, :name "onIntroduceChromeVox", :since "42"}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

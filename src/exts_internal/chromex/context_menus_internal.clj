@@ -1,6 +1,6 @@
 (ns chromex.context-menus-internal
-  "Use the chrome.contextMenus API to add items to Google Chrome's context menu. You can choose what types of objects
-   your context menu additions apply to, such as images, hyperlinks, and pages.
+  "Use the chrome.contextMenus API to add items to Google Chrome's context menu. You can choose what types of objects your
+   context menu additions apply to, such as images, hyperlinks, and pages.
    
      * available since Chrome 35
      * https://developer.chrome.com/extensions/contextMenusInternal"
@@ -13,22 +13,22 @@
 (declare api-table)
 (declare gen-call)
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-clicked-events
   "Fired when a context menu item is clicked."
   ([channel] (gen-call :event ::on-clicked &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.contextMenusInternal",
@@ -38,7 +38,7 @@
      :name "onClicked",
      :params [{:name "info", :type "object"} {:name "tab", :optional? true, :type "tabs.Tab"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

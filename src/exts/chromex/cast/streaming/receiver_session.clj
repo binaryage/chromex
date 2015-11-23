@@ -14,12 +14,12 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro create-and-bind
-  "Creates a Cast receiver session which receives data from a UDP socket. The receiver will decode the incoming data
-   into an audio and a video track which will be added to the provided media stream. The |audioParams| and
-   |videoParams| are generally provided by the sender through some other messaging channel.
+  "Creates a Cast receiver session which receives data from a UDP socket. The receiver will decode the incoming data into an
+   audio and a video track which will be added to the provided media stream. The |audioParams| and |videoParams| are generally
+   provided by the sender through some other messaging channel.
    
      |audioParams| - Audio stream parameters.
      |videoParams| - Video stream parameters.
@@ -32,16 +32,16 @@
   ([audio-params video-params local-endpoint max-width max-height max-frame-rate media-stream-url transport-options #_error-callback] (gen-call :function ::create-and-bind &form audio-params video-params local-endpoint max-width max-height max-frame-rate media-stream-url transport-options))
   ([audio-params video-params local-endpoint max-width max-height max-frame-rate media-stream-url] `(create-and-bind ~audio-params ~video-params ~local-endpoint ~max-width ~max-height ~max-frame-rate ~media-stream-url :omit)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.cast.streaming.receiverSession",
@@ -61,7 +61,7 @@
       {:name "transport-options", :optional? true, :type "object"}
       {:name "error-callback", :type :callback, :callback {:params [{:name "error", :type "string"}]}}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

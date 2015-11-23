@@ -1,7 +1,7 @@
 (ns chromex.enterprise.platform-keys-private (:require-macros [chromex.enterprise.platform-keys-private :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn challenge-machine-key* [config challenge]
   (gen-wrap :function ::challenge-machine-key config challenge))

@@ -13,18 +13,17 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro create
   "Creates and displays a notification.
    
-     |notificationId| - Identifier of the notification. If not set or empty, an ID will automatically be generated.
-                        If it matches an existing notification, this method first clears that notification before
-                        proceeding with the create operation.The notificationId parameter is required before Chrome
-                        42.
+     |notificationId| - Identifier of the notification. If not set or empty, an ID will automatically be generated. If it
+                        matches an existing notification, this method first clears that notification before proceeding with
+                        the create operation.The notificationId parameter is required before Chrome 42.
      |options| - Contents of the notification.
-     |callback| - Returns the notification id (either supplied or generated) that represents the created
-                  notification.The callback is required before Chrome 42.
+     |callback| - Returns the notification id (either supplied or generated) that represents the created notification.The
+                  callback is required before Chrome 42.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([notification-id options #_callback] (gen-call :function ::create &form notification-id options)))
@@ -34,8 +33,7 @@
    
      |notificationId| - The id of the notification to be updated. This is returned by 'notifications.create' method.
      |options| - Contents of the notification to update to.
-     |callback| - Called to indicate whether a matching notification existed.The callback is required before Chrome
-                  42.
+     |callback| - Called to indicate whether a matching notification existed.The callback is required before Chrome 42.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([notification-id options #_callback] (gen-call :function ::update &form notification-id options)))
@@ -44,8 +42,7 @@
   "Clears the specified notification.
    
      |notificationId| - The id of the notification to be cleared. This is returned by 'notifications.create' method.
-     |callback| - Called to indicate whether a matching notification existed.The callback is required before Chrome
-                  42.
+     |callback| - Called to indicate whether a matching notification existed.The callback is required before Chrome 42.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([notification-id #_callback] (gen-call :function ::clear &form notification-id)))
@@ -66,7 +63,7 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([#_callback] (gen-call :function ::get-permission-level &form)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-closed-events
   "The notification closed, either by the system or by user action."
@@ -85,20 +82,20 @@
   ([channel] (gen-call :event ::on-permission-level-changed &form channel)))
 
 (defmacro tap-on-show-settings-events
-  "The user clicked on a link for the app's notification settings.  As of Chrome 47, only ChromeOS has UI that
-   dispatches this event."
+  "The user clicked on a link for the app's notification settings.  As of Chrome 47, only ChromeOS has UI that dispatches this
+   event."
   ([channel] (gen-call :event ::on-show-settings &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.notifications",
@@ -137,8 +134,7 @@
      :name "getAll",
      :since "29",
      :callback? true,
-     :params
-     [{:name "callback", :type :callback, :callback {:params [{:name "notifications", :type "object"}]}}]}
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "notifications", :type "object"}]}}]}
     {:id ::get-permission-level,
      :name "getPermissionLevel",
      :since "32",
@@ -161,7 +157,7 @@
      :params [{:name "level", :type "notifications.PermissionLevel"}]}
     {:id ::on-show-settings, :name "onShowSettings", :since "32"}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

@@ -1,7 +1,7 @@
 (ns chromex.copresence-private (:require-macros [chromex.copresence-private :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn send-initialized* [config success]
   (gen-wrap :function ::send-initialized config success))
@@ -12,7 +12,7 @@
 (defn send-samples* [config client-id token samples]
   (gen-wrap :function ::send-samples config client-id token samples))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-config-audio* [config channel]
   (gen-wrap :event ::on-config-audio config channel))

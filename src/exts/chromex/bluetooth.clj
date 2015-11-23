@@ -13,7 +13,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro get-adapter-state
   "Get information about the Bluetooth adapter.
@@ -41,11 +41,10 @@
   ([#_callback] (gen-call :function ::get-devices &form)))
 
 (defmacro start-discovery
-  "Start discovery. Newly discovered devices will be returned via the onDeviceAdded event. Previously discovered
-   devices already known to the adapter must be obtained using getDevices and will only be updated using the
-   |onDeviceChanged| event if information about them changes.Discovery will fail to start if this application has
-   already called startDiscovery.  Discovery can be resource intensive: stopDiscovery should be called as soon as
-   possible.
+  "Start discovery. Newly discovered devices will be returned via the onDeviceAdded event. Previously discovered devices
+   already known to the adapter must be obtained using getDevices and will only be updated using the |onDeviceChanged| event
+   if information about them changes.Discovery will fail to start if this application has already called startDiscovery.
+   Discovery can be resource intensive: stopDiscovery should be called as soon as possible.
    
      |callback| - Called to indicate success or failure.
    
@@ -60,7 +59,7 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([#_callback] (gen-call :function ::stop-discovery &form)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-adapter-state-changed-events
   "Fired when the state of the Bluetooth adapter changes."
@@ -79,16 +78,16 @@
    unavailable again, and when a paired device is removed."
   ([channel] (gen-call :event ::on-device-removed &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.bluetooth",
@@ -108,9 +107,7 @@
      :callback? true,
      :params
      [{:name "device-address", :type "string"}
-      {:name "callback",
-       :type :callback,
-       :callback {:params [{:name "device-info", :type "bluetooth.Device"}]}}]}
+      {:name "callback", :type :callback, :callback {:params [{:name "device-info", :type "bluetooth.Device"}]}}]}
     {:id ::get-devices,
      :name "getDevices",
      :callback? true,
@@ -131,10 +128,7 @@
      :name "onAdapterStateChanged",
      :since "25",
      :params [{:name "state", :type "bluetooth.AdapterState"}]}
-    {:id ::on-device-added,
-     :name "onDeviceAdded",
-     :since "35",
-     :params [{:name "device", :type "bluetooth.Device"}]}
+    {:id ::on-device-added, :name "onDeviceAdded", :since "35", :params [{:name "device", :type "bluetooth.Device"}]}
     {:id ::on-device-changed,
      :name "onDeviceChanged",
      :since "35",
@@ -144,7 +138,7 @@
      :since "35",
      :params [{:name "device", :type "bluetooth.Device"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

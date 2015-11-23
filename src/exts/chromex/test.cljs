@@ -1,7 +1,7 @@
 (ns chromex.test (:require-macros [chromex.test :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn get-config* [config]
   (gen-wrap :function ::get-config config))
@@ -102,7 +102,7 @@
 (defn get-wake-event-page* [config]
   (gen-wrap :function ::get-wake-event-page config))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-message* [config channel]
   (gen-wrap :event ::on-message config channel))

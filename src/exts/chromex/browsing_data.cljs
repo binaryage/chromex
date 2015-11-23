@@ -1,7 +1,7 @@
 (ns chromex.browsing-data (:require-macros [chromex.browsing-data :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn settings* [config]
   (gen-wrap :function ::settings config))

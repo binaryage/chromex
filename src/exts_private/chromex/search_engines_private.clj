@@ -13,7 +13,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro get-search-engines
   "Gets a list of the search engines. Exactly one of the values should have default == true.
@@ -48,23 +48,23 @@
    launching the audio verification app."
   ([retrain] (gen-call :function ::opt-into-hotwording &form retrain)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-search-engines-changed-events
-  "Fires when the list of search engines changes or when the user selects a preferred default search engine. The new
-   list of engines is passed along."
+  "Fires when the list of search engines changes or when the user selects a preferred default search engine. The new list of
+   engines is passed along."
   ([channel] (gen-call :event ::on-search-engines-changed &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.searchEnginesPrivate",
@@ -77,9 +77,7 @@
      [{:name "callback",
        :type :callback,
        :callback {:params [{:name "engines", :type "[array-of-searchEnginesPrivate.SearchEngines]"}]}}]}
-    {:id ::set-selected-search-engine,
-     :name "setSelectedSearchEngine",
-     :params [{:name "guid", :type "string"}]}
+    {:id ::set-selected-search-engine, :name "setSelectedSearchEngine", :params [{:name "guid", :type "string"}]}
     {:id ::add-other-search-engine,
      :name "addOtherSearchEngine",
      :params [{:name "name", :type "string"} {:name "keyword", :type "string"} {:name "url", :type "string"}]}
@@ -101,7 +99,7 @@
      :name "onSearchEnginesChanged",
      :params [{:name "engines", :type "[array-of-searchEnginesPrivate.SearchEngines]"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

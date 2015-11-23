@@ -1,7 +1,7 @@
 (ns chromex.users-private (:require-macros [chromex.users-private :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn get-whitelisted-users* [config]
   (gen-wrap :function ::get-whitelisted-users config))

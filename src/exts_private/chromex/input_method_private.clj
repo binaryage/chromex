@@ -10,7 +10,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro get-input-method-config
   "Gets configurations for input methods.
@@ -40,8 +40,7 @@
   "Sets the current input method.
    
      |inputMethodId| - The input method ID to be set as current input method.
-     |callback| - Callback which is called once the current input method is set. If unsuccessful 'runtime.lastError'
-                  is set.
+     |callback| - Callback which is called once the current input method is set. If unsuccessful 'runtime.lastError' is set.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([input-method-id #_callback] (gen-call :function ::set-current-input-method &form input-method-id)))
@@ -71,7 +70,7 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([#_callback] (gen-call :function ::get-encrypt-sync-enabled &form)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-changed-events
   "Fired when the input method is changed."
@@ -89,16 +88,16 @@
   "Fired when words are added or removed from the custom spelling dictionary."
   ([channel] (gen-call :event ::on-dictionary-changed &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.inputMethodPrivate",
@@ -114,15 +113,12 @@
      :since "37",
      :callback? true,
      :params
-     [{:name "callback",
-       :type :callback,
-       :callback {:params [{:name "input-methods", :type "[array-of-objects]"}]}}]}
+     [{:name "callback", :type :callback, :callback {:params [{:name "input-methods", :type "[array-of-objects]"}]}}]}
     {:id ::get-current-input-method,
      :name "getCurrentInputMethod",
      :since "37",
      :callback? true,
-     :params
-     [{:name "callback", :type :callback, :callback {:params [{:name "input-method-id", :type "string"}]}}]}
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "input-method-id", :type "string"}]}}]}
     {:id ::set-current-input-method,
      :name "setCurrentInputMethod",
      :since "37",
@@ -132,8 +128,7 @@
      :name "fetchAllDictionaryWords",
      :since "43",
      :callback? true,
-     :params
-     [{:name "callback", :type :callback, :callback {:params [{:name "words", :type "[array-of-strings]"}]}}]}
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "words", :type "[array-of-strings]"}]}}]}
     {:id ::add-word-to-dictionary,
      :name "addWordToDictionary",
      :since "43",
@@ -160,7 +155,7 @@
      :since "43",
      :params [{:name "added", :type "[array-of-strings]"} {:name "removed", :type "[array-of-strings]"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

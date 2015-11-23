@@ -1,7 +1,7 @@
 (ns chromex.printer-provider-internal (:require-macros [chromex.printer-provider-internal :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn report-printers* [config request-id printers]
   (gen-wrap :function ::report-printers config request-id printers))

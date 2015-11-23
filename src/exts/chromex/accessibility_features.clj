@@ -1,9 +1,9 @@
 (ns chromex.accessibility-features
-  "Use the chrome.accessibilityFeatures API to manage Chrome's accessibility features. This API relies on the
-   ChromeSetting prototype of the type API for getting and setting individual accessibility features. In order to get
-   feature states the extension must request accessibilityFeatures.read permission. For modifying feature state, the
-   extension needs accessibilityFeatures.modify permission. Note that accessibilityFeatures.modify does not imply
-   accessibilityFeatures.read permission.
+  "Use the chrome.accessibilityFeatures API to manage Chrome's accessibility features. This API relies on the ChromeSetting
+   prototype of the type API for getting and setting individual accessibility features. In order to get feature states the
+   extension must request accessibilityFeatures.read permission. For modifying feature state, the extension needs
+   accessibilityFeatures.modify permission. Note that accessibilityFeatures.modify does not imply accessibilityFeatures.read
+   permission.
    
      * available since Chrome 37
      * https://developer.chrome.com/extensions/accessibilityFeatures"
@@ -16,7 +16,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- properties -----------------------------------------------------------------------------------------------------
+; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defmacro get-spoken-feedback
   "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example."
@@ -50,16 +50,16 @@
   "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example."
   ([] (gen-call :property ::animation-policy &form)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.accessibilityFeatures",
@@ -74,7 +74,7 @@
     {:id ::virtual-keyboard, :name "virtualKeyboard", :return-type "object"}
     {:id ::animation-policy, :name "animationPolicy", :since "42", :return-type "object"}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

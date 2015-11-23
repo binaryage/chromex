@@ -1,7 +1,7 @@
 (ns chromex.automation (:require-macros [chromex.automation :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn get-tree* [config tab-id]
   (gen-wrap :function ::get-tree config tab-id))

@@ -12,7 +12,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- properties -----------------------------------------------------------------------------------------------------
+; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defmacro get-sync
   "Items in the sync storage area are synced using Chrome Sync."
@@ -23,26 +23,26 @@
   ([] (gen-call :property ::local &form)))
 
 (defmacro get-managed
-  "Items in the managed storage area are set by the domain administrator, and are read-only for the extension; trying
-   to modify this namespace results in an error."
+  "Items in the managed storage area are set by the domain administrator, and are read-only for the extension; trying to
+   modify this namespace results in an error."
   ([] (gen-call :property ::managed &form)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-changed-events
   "Fired when one or more items change."
   ([channel] (gen-call :event ::on-changed &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.storage",
@@ -56,7 +56,7 @@
      :name "onChanged",
      :params [{:name "changes", :type "object"} {:name "area-name", :type "string"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

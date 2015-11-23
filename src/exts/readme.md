@@ -201,34 +201,33 @@ Generated 82 namespaces containing 44 properties, 354 functions and 185 events:
       transmit stop-transmit receive stop-receive tap-on-received tap-on-transmit-fail]]
     
     [chromex.automation refer-macros:[
-      get-tree get-desktop add-tree-change-observer remove-tree-change-observer
-      set-document-selection]]
+      get-tree get-desktop add-tree-change-observer remove-tree-change-observer set-document-selection]]
     
     [chromex.bluetooth refer-macros:[
       get-adapter-state get-device get-devices start-discovery stop-discovery
       tap-on-adapter-state-changed tap-on-device-added tap-on-device-changed tap-on-device-removed]]
     
     [chromex.bookmarks refer-macros:[
-      get-max-write-operations-per-hour get-max-sustained-write-operations-per-minute get
-      get-children get-recent get-tree get-sub-tree search create move update remove remove-tree
-      tap-on-created tap-on-removed tap-on-changed tap-on-moved tap-on-children-reordered
-      tap-on-import-began tap-on-import-ended]]
+      get-max-write-operations-per-hour get-max-sustained-write-operations-per-minute get get-children
+      get-recent get-tree get-sub-tree search create move update remove remove-tree tap-on-created
+      tap-on-removed tap-on-changed tap-on-moved tap-on-children-reordered tap-on-import-began
+      tap-on-import-ended]]
     
     [chromex.browser-action refer-macros:[
       set-title get-title set-icon set-popup get-popup set-badge-text get-badge-text
       set-badge-background-color get-badge-background-color enable disable tap-on-clicked]]
     
     [chromex.browsing-data refer-macros:[
-      settings remove remove-appcache remove-cache remove-cookies remove-downloads
-      remove-file-systems remove-form-data remove-history remove-indexed-db remove-local-storage
-      remove-plugin-data remove-passwords remove-web-sql]]
+      settings remove remove-appcache remove-cache remove-cookies remove-downloads remove-file-systems
+      remove-form-data remove-history remove-indexed-db remove-local-storage remove-plugin-data
+      remove-passwords remove-web-sql]]
     
     [chromex.cast.streaming.receiver-session refer-macros:[
       create-and-bind]]
     
     [chromex.cast.streaming.rtp-stream refer-macros:[
-      destroy get-supported-params start stop toggle-logging get-raw-events get-stats
-      tap-on-started tap-on-stopped tap-on-error]]
+      destroy get-supported-params start stop toggle-logging get-raw-events get-stats tap-on-started
+      tap-on-stopped tap-on-error]]
     
     [chromex.cast.streaming.session refer-macros:[
       create]]
@@ -278,9 +277,8 @@ Generated 82 namespaces containing 44 properties, 354 functions and 185 events:
       get-elements get-sources create set-open-resource-handler open-resource]]
     
     [chromex.display-source refer-macros:[
-      get-available-sinks request-authentication start-session terminate-session
-      tap-on-sinks-updated tap-on-session-started tap-on-session-terminated
-      tap-on-session-error-occured]]
+      get-available-sinks request-authentication start-session terminate-session tap-on-sinks-updated
+      tap-on-session-started tap-on-session-terminated tap-on-session-error-occured]]
     
     [chromex.dns refer-macros:[
       resolve]]
@@ -289,9 +287,9 @@ Generated 82 namespaces containing 44 properties, 354 functions and 185 events:
       scan]]
     
     [chromex.downloads refer-macros:[
-      download search pause resume cancel get-file-icon open show show-default-folder erase
-      remove-file accept-danger drag set-shelf-enabled tap-on-created tap-on-erased
-      tap-on-changed tap-on-determining-filename]]
+      download search pause resume cancel get-file-icon open show show-default-folder erase remove-file
+      accept-danger drag set-shelf-enabled tap-on-created tap-on-erased tap-on-changed
+      tap-on-determining-filename]]
     
     [chromex.enterprise.device-attributes refer-macros:[
       get-directory-device-id]]
@@ -307,8 +305,8 @@ Generated 82 namespaces containing 44 properties, 354 functions and 185 events:
     
     [chromex.extension refer-macros:[
       get-last-error get-in-incognito-context send-request get-url get-views get-background-page
-      get-extension-tabs is-allowed-incognito-access is-allowed-file-scheme-access
-      set-update-url-data tap-on-request tap-on-request-external]]
+      get-extension-tabs is-allowed-incognito-access is-allowed-file-scheme-access set-update-url-data
+      tap-on-request tap-on-request-external]]
     
     [chromex.file-browser-handler refer-macros:[
       select-file tap-on-execute]]
@@ -325,24 +323,23 @@ Generated 82 namespaces containing 44 properties, 354 functions and 185 events:
     [chromex.font-settings refer-macros:[
       clear-font get-font set-font get-font-list clear-default-font-size get-default-font-size
       set-default-font-size clear-default-fixed-font-size get-default-fixed-font-size
-      set-default-fixed-font-size clear-minimum-font-size get-minimum-font-size
-      set-minimum-font-size tap-on-font-changed tap-on-default-font-size-changed
-      tap-on-default-fixed-font-size-changed tap-on-minimum-font-size-changed]]
+      set-default-fixed-font-size clear-minimum-font-size get-minimum-font-size set-minimum-font-size
+      tap-on-font-changed tap-on-default-font-size-changed tap-on-default-fixed-font-size-changed
+      tap-on-minimum-font-size-changed]]
     
     [chromex.gcm refer-macros:[
       get-max-message-size register unregister send tap-on-message tap-on-messages-deleted
       tap-on-send-error]]
     
     [chromex.history refer-macros:[
-      search get-visits add-url delete-url delete-range delete-all tap-on-visited
-      tap-on-visit-removed]]
+      search get-visits add-url delete-url delete-range delete-all tap-on-visited tap-on-visit-removed]]
     
     [chromex.i18n refer-macros:[
       get-accept-languages get-message get-ui-language detect-language]]
     
     [chromex.identity refer-macros:[
-      get-accounts get-auth-token get-profile-user-info remove-cached-auth-token
-      launch-web-auth-flow get-redirect-url tap-on-sign-in-changed]]
+      get-accounts get-auth-token get-profile-user-info remove-cached-auth-token launch-web-auth-flow
+      get-redirect-url tap-on-sign-in-changed]]
     
     [chromex.idle refer-macros:[
       query-state set-detection-interval tap-on-state-changed]]
@@ -352,11 +349,10 @@ Generated 82 namespaces containing 44 properties, 354 functions and 185 events:
     
     [chromex.input.ime refer-macros:[
       set-composition clear-composition commit-text send-key-events hide-input-view
-      set-candidate-window-properties set-candidates set-cursor-position set-menu-items
-      update-menu-items delete-surrounding-text key-event-handled tap-on-activate
-      tap-on-deactivated tap-on-focus tap-on-blur tap-on-input-context-update tap-on-key-event
-      tap-on-candidate-clicked tap-on-menu-item-activated tap-on-surrounding-text-changed
-      tap-on-reset]]
+      set-candidate-window-properties set-candidates set-cursor-position set-menu-items update-menu-items
+      delete-surrounding-text key-event-handled tap-on-activate tap-on-deactivated tap-on-focus
+      tap-on-blur tap-on-input-context-update tap-on-key-event tap-on-candidate-clicked
+      tap-on-menu-item-activated tap-on-surrounding-text-changed tap-on-reset]]
     
     [chromex.instance-id refer-macros:[
       get-id get-creation-time get-token delete-token delete-id tap-on-token-refresh]]
@@ -365,21 +361,20 @@ Generated 82 namespaces containing 44 properties, 354 functions and 185 events:
       watch-location clear-watch tap-on-location-update tap-on-location-error]]
     
     [chromex.management refer-macros:[
-      get-all get get-self get-permission-warnings-by-id get-permission-warnings-by-manifest
-      set-enabled uninstall uninstall-self launch-app create-app-shortcut set-launch-type
-      generate-app-for-link tap-on-installed tap-on-uninstalled tap-on-enabled tap-on-disabled]]
+      get-all get get-self get-permission-warnings-by-id get-permission-warnings-by-manifest set-enabled
+      uninstall uninstall-self launch-app create-app-shortcut set-launch-type generate-app-for-link
+      tap-on-installed tap-on-uninstalled tap-on-enabled tap-on-disabled]]
     
     [chromex.networking.config refer-macros:[
       set-network-filter finish-authentication tap-on-captive-portal-detected]]
     
     [chromex.notification-provider refer-macros:[
-      notify-on-cleared notify-on-clicked notify-on-button-clicked
-      notify-on-permission-level-changed notify-on-show-settings get-notifier get-all-notifiers
-      tap-on-created tap-on-updated tap-on-cleared]]
+      notify-on-cleared notify-on-clicked notify-on-button-clicked notify-on-permission-level-changed
+      notify-on-show-settings get-notifier get-all-notifiers tap-on-created tap-on-updated tap-on-cleared]]
     
     [chromex.notifications refer-macros:[
-      create update clear get-all get-permission-level tap-on-closed tap-on-clicked
-      tap-on-button-clicked tap-on-permission-level-changed tap-on-show-settings]]
+      create update clear get-all get-permission-level tap-on-closed tap-on-clicked tap-on-button-clicked
+      tap-on-permission-level-changed tap-on-show-settings]]
     
     [chromex.omnibox refer-macros:[
       set-default-suggestion tap-on-input-started tap-on-input-changed tap-on-input-entered
@@ -401,8 +396,8 @@ Generated 82 namespaces containing 44 properties, 354 functions and 185 events:
       request-keep-awake release-keep-awake]]
     
     [chromex.printer-provider refer-macros:[
-      tap-on-get-printers-requested tap-on-get-usb-printer-info-requested
-      tap-on-get-capability-requested tap-on-print-requested]]
+      tap-on-get-printers-requested tap-on-get-usb-printer-info-requested tap-on-get-capability-requested
+      tap-on-print-requested]]
     
     [chromex.privacy refer-macros:[
       get-network get-services get-websites]]
@@ -415,12 +410,11 @@ Generated 82 namespaces containing 44 properties, 354 functions and 185 events:
       get-settings tap-on-proxy-error]]
     
     [chromex.runtime refer-macros:[
-      get-last-error get-id get-background-page open-options-page get-manifest get-url
-      set-uninstall-url reload request-update-check restart connect connect-native send-message
-      send-native-message get-platform-info get-package-directory-entry tap-on-startup
-      tap-on-installed tap-on-suspend tap-on-suspend-canceled tap-on-update-available
-      tap-on-browser-update-available tap-on-connect tap-on-connect-external tap-on-message
-      tap-on-message-external tap-on-restart-required]]
+      get-last-error get-id get-background-page open-options-page get-manifest get-url set-uninstall-url
+      reload request-update-check restart connect connect-native send-message send-native-message
+      get-platform-info get-package-directory-entry tap-on-startup tap-on-installed tap-on-suspend
+      tap-on-suspend-canceled tap-on-update-available tap-on-browser-update-available tap-on-connect
+      tap-on-connect-external tap-on-message tap-on-message-external tap-on-restart-required]]
     
     [chromex.sessions refer-macros:[
       get-max-session-results get-recently-closed get-devices restore tap-on-changed]]
@@ -450,22 +444,20 @@ Generated 82 namespaces containing 44 properties, 354 functions and 185 events:
       capture get-captured-tabs capture-offscreen-tab tap-on-status-changed]]
     
     [chromex.tabs refer-macros:[
-      get-tab-id-none get get-current connect send-request send-message get-selected
-      get-all-in-window create duplicate query highlight update move reload remove
-      detect-language capture-visible-tab execute-script insert-css set-zoom get-zoom
-      set-zoom-settings get-zoom-settings tap-on-created tap-on-updated tap-on-moved
-      tap-on-selection-changed tap-on-active-changed tap-on-activated tap-on-highlight-changed
-      tap-on-highlighted tap-on-detached tap-on-attached tap-on-removed tap-on-replaced
-      tap-on-zoom-change]]
+      get-tab-id-none get get-current connect send-request send-message get-selected get-all-in-window
+      create duplicate query highlight update move reload remove detect-language capture-visible-tab
+      execute-script insert-css set-zoom get-zoom set-zoom-settings get-zoom-settings tap-on-created
+      tap-on-updated tap-on-moved tap-on-selection-changed tap-on-active-changed tap-on-activated
+      tap-on-highlight-changed tap-on-highlighted tap-on-detached tap-on-attached tap-on-removed
+      tap-on-replaced tap-on-zoom-change]]
     
     [chromex.test refer-macros:[
-      get-config notify-fail notify-pass log send-message callback-added run-next-test fail
-      succeed run-with-natives-enabled get-module-system assert-true assert-false assert-bool
-      check-deep-eq assert-eq assert-no-last-error assert-last-error assert-throws callback
-      listen-once listen-forever callback-pass callback-fail run-tests get-api-features
-      get-api-definitions is-processing-user-gesture run-with-user-gesture
-      run-without-user-gesture wait-for-round-trip set-exception-handler get-wake-event-page
-      tap-on-message]]
+      get-config notify-fail notify-pass log send-message callback-added run-next-test fail succeed
+      run-with-natives-enabled get-module-system assert-true assert-false assert-bool check-deep-eq
+      assert-eq assert-no-last-error assert-last-error assert-throws callback listen-once listen-forever
+      callback-pass callback-fail run-tests get-api-features get-api-definitions
+      is-processing-user-gesture run-with-user-gesture run-without-user-gesture wait-for-round-trip
+      set-exception-handler get-wake-event-page tap-on-message]]
     
     [chromex.top-sites refer-macros:[
       get]]
@@ -490,15 +482,14 @@ Generated 82 namespaces containing 44 properties, 354 functions and 185 events:
       tap-on-reference-fragment-updated tap-on-tab-replaced tap-on-history-state-updated]]
     
     [chromex.web-request refer-macros:[
-      get-max-handler-behavior-changed-calls-per10-minutes handler-behavior-changed
-      tap-on-before-request tap-on-before-send-headers tap-on-send-headers
-      tap-on-headers-received tap-on-auth-required tap-on-response-started tap-on-before-redirect
-      tap-on-completed tap-on-error-occurred]]
+      get-max-handler-behavior-changed-calls-per10-minutes handler-behavior-changed tap-on-before-request
+      tap-on-before-send-headers tap-on-send-headers tap-on-headers-received tap-on-auth-required
+      tap-on-response-started tap-on-before-redirect tap-on-completed tap-on-error-occurred]]
     
     [chromex.webstore refer-macros:[
       install tap-on-install-stage-changed tap-on-download-progress]]
     
     [chromex.windows refer-macros:[
-      get-window-id-none get-window-id-current get get-current get-last-focused get-all create
-      update remove tap-on-created tap-on-removed tap-on-focus-changed]]))
+      get-window-id-none get-window-id-current get get-current get-last-focused get-all create update
+      remove tap-on-created tap-on-removed tap-on-focus-changed]]))
 ```

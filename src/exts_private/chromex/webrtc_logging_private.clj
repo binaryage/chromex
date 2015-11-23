@@ -13,52 +13,51 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro set-meta-data
-  "Sets additional custom meta data that will be uploaded along with the log. |metaData| is a dictionary of the
-   metadata (key, value).
+  "Sets additional custom meta data that will be uploaded along with the log. |metaData| is a dictionary of the metadata (key,
+   value).
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([request security-origin meta-data #_callback] (gen-call :function ::set-meta-data &form request security-origin meta-data)))
 
 (defmacro start
-  "Starts logging. If logging has already been started for this render process, the call will be ignored.
-   |appSessionId| is the unique session ID which will be added to the log.
+  "Starts logging. If logging has already been started for this render process, the call will be ignored. |appSessionId| is
+   the unique session ID which will be added to the log.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([request security-origin #_callback] (gen-call :function ::start &form request security-origin)))
 
 (defmacro set-upload-on-render-close
-  "Sets whether the log should be uploaded automatically for the case when the render process goes away (tab is closed
-   or crashes) and stop has not been called before that. If |shouldUpload| is true it will be uploaded, otherwise it
-   will be discarded. The default setting is to discard it."
+  "Sets whether the log should be uploaded automatically for the case when the render process goes away (tab is closed or
+   crashes) and stop has not been called before that. If |shouldUpload| is true it will be uploaded, otherwise it will be
+   discarded. The default setting is to discard it."
   ([request security-origin should-upload] (gen-call :function ::set-upload-on-render-close &form request security-origin should-upload)))
 
 (defmacro stop
-  "Stops logging. After stop has finished, either upload() or discard() should be called, otherwise the log will be
-   kept in memory until the render process is closed or logging restarted.
+  "Stops logging. After stop has finished, either upload() or discard() should be called, otherwise the log will be kept in
+   memory until the render process is closed or logging restarted.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([request security-origin #_callback] (gen-call :function ::stop &form request security-origin)))
 
 (defmacro store
-  "Stores the current log without uploading. The log may stay around for as much as 5 days. The application has the
-   option of supplying an id for uniquely identifying the log for later upload via a call to uploadStored().
+  "Stores the current log without uploading. The log may stay around for as much as 5 days. The application has the option of
+   supplying an id for uniquely identifying the log for later upload via a call to uploadStored().
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([request security-origin log-id #_callback] (gen-call :function ::store &form request security-origin log-id)))
 
 (defmacro upload-stored
-  "Uploads a previously kept log that was stored via a call to store(). The caller needs to know the logId as was
-   originally provided in the call to store().
+  "Uploads a previously kept log that was stored via a call to store(). The caller needs to know the logId as was originally
+   provided in the call to store().
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([request security-origin log-id #_callback] (gen-call :function ::upload-stored &form request security-origin log-id)))
 
 (defmacro upload
-  "Uploads the log and the RTP dumps, if they exist. Logging and RTP dumping must be stopped before this function is
-   called.
+  "Uploads the log and the RTP dumps, if they exist. Logging and RTP dumping must be stopped before this function is called.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([request security-origin #_callback] (gen-call :function ::upload &form request security-origin)))
@@ -76,22 +75,22 @@
   ([request security-origin incoming outgoing #_callback] (gen-call :function ::start-rtp-dump &form request security-origin incoming outgoing)))
 
 (defmacro stop-rtp-dump
-  "Stops RTP dumping. After stop has finished, the dumps will be uploaded with the log if upload is called. Otherwise,
-   the dumps will be discarded.
+  "Stops RTP dumping. After stop has finished, the dumps will be uploaded with the log if upload is called. Otherwise, the
+   dumps will be discarded.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([request security-origin incoming outgoing #_callback] (gen-call :function ::stop-rtp-dump &form request security-origin incoming outgoing)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.webrtcLoggingPrivate",
@@ -180,7 +179,7 @@
       {:name "outgoing", :type "boolean"}
       {:name "callback", :type :callback}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

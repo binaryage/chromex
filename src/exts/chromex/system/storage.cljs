@@ -1,7 +1,7 @@
 (ns chromex.system.storage (:require-macros [chromex.system.storage :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn get-info* [config]
   (gen-wrap :function ::get-info config))
@@ -12,7 +12,7 @@
 (defn get-available-capacity* [config id]
   (gen-wrap :function ::get-available-capacity config id))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-attached* [config channel]
   (gen-wrap :event ::on-attached config channel))

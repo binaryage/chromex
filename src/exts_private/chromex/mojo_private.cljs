@@ -1,7 +1,7 @@
 (ns chromex.mojo-private (:require-macros [chromex.mojo-private :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn define* [config module-name dependencies]
   (gen-wrap :function ::define config module-name dependencies))

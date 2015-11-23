@@ -1,7 +1,6 @@
 (ns chromex.experience-sampling-private
-  "The experienceSamplingPrivate API listens for when various types of UI elements are displayed and closed
-   (interstitials, infobars, etc.) and pass these events along to whitelisted extensions, along with information
-   about the user’s decisions.
+  "The experienceSamplingPrivate API listens for when various types of UI elements are displayed and closed (interstitials,
+   infobars, etc.) and pass these events along to whitelisted extensions, along with information about the user’s decisions.
    
      * available since Chrome 39
      * https://developer.chrome.com/extensions/experienceSamplingPrivate"
@@ -14,16 +13,16 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro get-browser-info
-  "Retrives information about the current browser context (experimental variation information), passing a BrowserInfo
-   object to the callback function.
+  "Retrives information about the current browser context (experimental variation information), passing a BrowserInfo object
+   to the callback function.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([#_callback] (gen-call :function ::get-browser-info &form)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-displayed-events
   "Fired when an interesting piece of UI is shown to the user."
@@ -33,16 +32,16 @@
   "Fired when a user makes a decision about an interesting piece of UI."
   ([channel] (gen-call :event ::on-decision &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.experienceSamplingPrivate",
@@ -56,16 +55,14 @@
        :type :callback,
        :callback {:params [{:name "info", :type "experienceSamplingPrivate.BrowserInfo"}]}}]}],
    :events
-   [{:id ::on-displayed,
-     :name "onDisplayed",
-     :params [{:name "element", :type "experienceSamplingPrivate.UIElement"}]}
+   [{:id ::on-displayed, :name "onDisplayed", :params [{:name "element", :type "experienceSamplingPrivate.UIElement"}]}
     {:id ::on-decision,
      :name "onDecision",
      :params
      [{:name "element", :type "experienceSamplingPrivate.UIElement"}
       {:name "decision", :type "experienceSamplingPrivate.UserDecision"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

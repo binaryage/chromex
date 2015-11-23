@@ -1,7 +1,7 @@
 (ns chromex.printer-provider (:require-macros [chromex.printer-provider :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-get-printers-requested* [config channel]
   (gen-wrap :event ::on-get-printers-requested config channel))

@@ -17,7 +17,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro destroy
   "Destroys a UDP transport.
@@ -33,24 +33,24 @@
   ([transport-id destination] (gen-call :function ::set-destination &form transport-id destination)))
 
 (defmacro set-options
-  "Sets the options. Attributes of this object will be used to activate optional behaviours in the transport. Normally
-   this is only used for experimentation. Must be called before setDestination.
+  "Sets the options. Attributes of this object will be used to activate optional behaviours in the transport. Normally this is
+   only used for experimentation. Must be called before setDestination.
    
      |transportId| - The transport ID that is created by chrome.cast.streaming.session.create().
-     |options| - A dictionary of key-value pairs of options. See media/cast/net/cast_transport_sender_impl.h for
-                 supported options."
+     |options| - A dictionary of key-value pairs of options. See media/cast/net/cast_transport_sender_impl.h for supported
+                 options."
   ([transport-id options] (gen-call :function ::set-options &form transport-id options)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.cast.streaming.udpTransport",
@@ -64,7 +64,7 @@
      :name "setOptions",
      :params [{:name "transport-id", :type "integer"} {:name "options", :type "object"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

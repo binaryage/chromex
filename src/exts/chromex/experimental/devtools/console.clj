@@ -1,6 +1,6 @@
 (ns chromex.experimental.devtools.console
-  "Use the chrome.experimental.devtools.console API to retrieve messages from the inspected page console and post
-   messages there.
+  "Use the chrome.experimental.devtools.console API to retrieve messages from the inspected page console and post messages
+   there.
      * https://developer.chrome.com/extensions/experimental.devtools.console"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
@@ -11,7 +11,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro add-message
   "Adds a message to the console.
@@ -28,44 +28,42 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([#_callback] (gen-call :function ::get-messages &form)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-message-added-events
   "Fired when a new message is added to the console."
   ([channel] (gen-call :event ::on-message-added &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.experimental.devtools.console",
    :functions
    [{:id ::add-message,
      :name "addMessage",
-     :params
-     [{:name "severity", :type "experimental.devtools.console.Severity"} {:name "text", :type "string"}]}
+     :params [{:name "severity", :type "experimental.devtools.console.Severity"} {:name "text", :type "string"}]}
     {:id ::get-messages,
      :name "getMessages",
      :callback? true,
      :params
      [{:name "callback",
        :type :callback,
-       :callback
-       {:params [{:name "messages", :type "[array-of-experimental.devtools.console.ConsoleMessages]"}]}}]}],
+       :callback {:params [{:name "messages", :type "[array-of-experimental.devtools.console.ConsoleMessages]"}]}}]}],
    :events
    [{:id ::on-message-added,
      :name "onMessageAdded",
      :params [{:name "message", :type "experimental.devtools.console.ConsoleMessage"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

@@ -12,7 +12,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-close-events ([channel] (gen-call :event ::on-close &form channel)))
 
@@ -20,16 +20,16 @@
 
 (defmacro tap-on-preferred-size-changed-events ([channel] (gen-call :event ::on-preferred-size-changed &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.extensionOptionsInternal",
@@ -37,11 +37,9 @@
    :events
    [{:id ::on-close, :name "onClose"}
     {:id ::on-load, :name "onLoad"}
-    {:id ::on-preferred-size-changed,
-     :name "onPreferredSizeChanged",
-     :params [{:name "options", :type "object"}]}]})
+    {:id ::on-preferred-size-changed, :name "onPreferredSizeChanged", :params [{:name "options", :type "object"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

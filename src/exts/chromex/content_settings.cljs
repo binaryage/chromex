@@ -1,7 +1,7 @@
 (ns chromex.content-settings (:require-macros [chromex.content-settings :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- properties -----------------------------------------------------------------------------------------------------
+; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defn cookies* [config]
   (gen-wrap :property ::cookies config))

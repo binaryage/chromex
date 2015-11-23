@@ -1,7 +1,7 @@
 (ns chromex.autofill-private (:require-macros [chromex.autofill-private :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn save-address* [config address]
   (gen-wrap :function ::save-address config address))
@@ -21,7 +21,7 @@
 (defn mask-credit-card* [config guid]
   (gen-wrap :function ::mask-credit-card config guid))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-address-list-changed* [config channel]
   (gen-wrap :event ::on-address-list-changed config channel))

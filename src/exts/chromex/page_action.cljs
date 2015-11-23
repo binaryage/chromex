@@ -1,7 +1,7 @@
 (ns chromex.page-action (:require-macros [chromex.page-action :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn show* [config tab-id]
   (gen-wrap :function ::show config tab-id))
@@ -24,7 +24,7 @@
 (defn get-popup* [config details]
   (gen-wrap :function ::get-popup config details))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-clicked* [config channel]
   (gen-wrap :event ::on-clicked config channel))

@@ -1,12 +1,12 @@
 (ns chromex.context-menus (:require-macros [chromex.context-menus :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- properties -----------------------------------------------------------------------------------------------------
+; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defn action-menu-top-level-limit* [config]
   (gen-wrap :property ::action-menu-top-level-limit config))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn create* [config create-properties]
   (gen-wrap :function ::create config create-properties))
@@ -20,7 +20,7 @@
 (defn remove-all* [config]
   (gen-wrap :function ::remove-all config))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-clicked* [config channel]
   (gen-wrap :event ::on-clicked config channel))

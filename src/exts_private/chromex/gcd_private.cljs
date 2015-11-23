@@ -1,7 +1,7 @@
 (ns chromex.gcd-private (:require-macros [chromex.gcd-private :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn get-device-info* [config service-name]
   (gen-wrap :function ::get-device-info config service-name))

@@ -12,7 +12,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro resolve-isolated-entries
   "
@@ -134,16 +134,16 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([parent-url name #_callback] (gen-call :function ::validate-path-name-length &form parent-url name)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.fileManagerPrivateInternal",
@@ -154,9 +154,7 @@
      :callback? true,
      :params
      [{:name "urls", :type "[array-of-strings]"}
-      {:name "callback",
-       :type :callback,
-       :callback {:params [{:name "entries", :type "[array-of-objects]"}]}}]}
+      {:name "callback", :type :callback, :callback {:params [{:name "entries", :type "[array-of-objects]"}]}}]}
     {:id ::get-entry-properties,
      :name "getEntryProperties",
      :since "45",
@@ -166,26 +164,21 @@
       {:name "names", :type "[array-of-fileManagerPrivate.EntryPropertyNames]"}
       {:name "callback",
        :type :callback,
-       :callback
-       {:params [{:name "entry-properties", :type "[array-of-fileManagerPrivate.EntryPropertiess]"}]}}]}
+       :callback {:params [{:name "entry-properties", :type "[array-of-fileManagerPrivate.EntryPropertiess]"}]}}]}
     {:id ::add-file-watch,
      :name "addFileWatch",
      :since "45",
      :callback? true,
      :params
      [{:name "url", :type "string"}
-      {:name "callback",
-       :type :callback,
-       :callback {:params [{:name "success", :optional? true, :type "boolean"}]}}]}
+      {:name "callback", :type :callback, :callback {:params [{:name "success", :optional? true, :type "boolean"}]}}]}
     {:id ::remove-file-watch,
      :name "removeFileWatch",
      :since "45",
      :callback? true,
      :params
      [{:name "url", :type "string"}
-      {:name "callback",
-       :type :callback,
-       :callback {:params [{:name "success", :optional? true, :type "boolean"}]}}]}
+      {:name "callback", :type :callback, :callback {:params [{:name "success", :optional? true, :type "boolean"}]}}]}
     {:id ::get-custom-actions,
      :name "getCustomActions",
      :since "47",
@@ -221,8 +214,7 @@
      :name "pinDriveFile",
      :since "46",
      :callback? true,
-     :params
-     [{:name "url", :type "string"} {:name "pin", :type "boolean"} {:name "callback", :type :callback}]}
+     :params [{:name "url", :type "string"} {:name "pin", :type "boolean"} {:name "callback", :type :callback}]}
     {:id ::execute-task,
      :name "executeTask",
      :since "46",
@@ -305,9 +297,7 @@
      [{:name "parent-url", :type "string"}
       {:name "urls", :type "[array-of-strings]"}
       {:name "dest-name", :type "string"}
-      {:name "callback",
-       :type :callback,
-       :callback {:params [{:name "success", :optional? true, :type "boolean"}]}}]}
+      {:name "callback", :type :callback, :callback {:params [{:name "success", :optional? true, :type "boolean"}]}}]}
     {:id ::validate-path-name-length,
      :name "validatePathNameLength",
      :since "46",
@@ -317,7 +307,7 @@
       {:name "name", :type "string"}
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

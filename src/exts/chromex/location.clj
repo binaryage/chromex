@@ -14,11 +14,11 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro watch-location
-  "Starts a location watching request. If there is another location watching request with the same name (or no name if
-   none is specified), it will be cancelled and replaced by this request.
+  "Starts a location watching request. If there is another location watching request with the same name (or no name if none is
+   specified), it will be cancelled and replaced by this request.
    
      |name| - Optional name to identify this request. Defaults to the empty string.
      |requestInfo| - Optional parameters for this request."
@@ -30,7 +30,7 @@
      |name| - Optional name to identify the request to remove. Defaults to the empty string."
   ([name] (gen-call :function ::clear-watch &form name)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-location-update-events
   "Fired when a location change is detected."
@@ -40,16 +40,16 @@
   "Fired when detecting location in not possible."
   ([channel] (gen-call :event ::on-location-error &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.location",
@@ -63,7 +63,7 @@
    [{:id ::on-location-update, :name "onLocationUpdate", :params [{:name "location", :type "object"}]}
     {:id ::on-location-error, :name "onLocationError", :params [{:name "error", :type "string"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

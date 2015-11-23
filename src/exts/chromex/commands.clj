@@ -1,6 +1,6 @@
 (ns chromex.commands
-  "Use the commands API to add keyboard shortcuts that trigger actions in your extension, for example, an action to
-   open the browser action or send a command to the extension.
+  "Use the commands API to add keyboard shortcuts that trigger actions in your extension, for example, an action to open the
+   browser action or send a command to the extension.
    
      * available since Chrome 25
      * https://developer.chrome.com/extensions/commands"
@@ -13,7 +13,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro get-all
   "Returns all the registered extension commands for this extension and their shortcut (if active).
@@ -23,22 +23,22 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([#_callback] (gen-call :function ::get-all &form)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-command-events
   "Fired when a registered command is activated using a keyboard shortcut."
   ([channel] (gen-call :event ::on-command &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.commands",
@@ -54,7 +54,7 @@
        :callback {:params [{:name "commands", :type "[array-of-commands.Commands]"}]}}]}],
    :events [{:id ::on-command, :name "onCommand", :params [{:name "command", :type "string"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

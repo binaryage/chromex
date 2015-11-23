@@ -1,7 +1,7 @@
 (ns chromex.echo-private (:require-macros [chromex.echo-private :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn set-offer-info* [config id offer-info]
   (gen-wrap :function ::set-offer-info config id offer-info))

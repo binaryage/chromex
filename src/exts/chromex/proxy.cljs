@@ -1,12 +1,12 @@
 (ns chromex.proxy (:require-macros [chromex.proxy :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- properties -----------------------------------------------------------------------------------------------------
+; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defn settings* [config]
   (gen-wrap :property ::settings config))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-proxy-error* [config channel]
   (gen-wrap :event ::on-proxy-error config channel))

@@ -1,7 +1,7 @@
 (ns chromex.feedback-private (:require-macros [chromex.feedback-private :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn get-user-email* [config]
   (gen-wrap :function ::get-user-email config))
@@ -15,7 +15,7 @@
 (defn get-strings* [config]
   (gen-wrap :function ::get-strings config))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-feedback-requested* [config channel]
   (gen-wrap :event ::on-feedback-requested config channel))

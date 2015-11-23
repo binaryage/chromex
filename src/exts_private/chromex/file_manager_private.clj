@@ -13,7 +13,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro logout-user-for-reauthentication
   "Logout the current user for navigating to the re-authentication screen for the Google account."
@@ -24,8 +24,8 @@
   ([] (gen-call :function ::cancel-dialog &form)))
 
 (defmacro execute-task
-  "Executes file browser task over selected files. |taskId| The unique identifier of task to execute. |entries| Array
-   of entries |callback
+  "Executes file browser task over selected files. |taskId| The unique identifier of task to execute. |entries| Array of
+   entries |callback
 
    
      |callback| - |result| Result of the task execution.
@@ -34,10 +34,10 @@
   ([task-id entries #_callback] (gen-call :function ::execute-task &form task-id entries)))
 
 (defmacro set-default-task
-  "Sets the default task for the supplied MIME types and path extensions. Lists of MIME types and URLs may contain
-   duplicates. Additionally, the list of MIME types can be empty. |taskId| The unique identifier of task to mark as
-   default. |entries| Array of selected entries to extract path extensions from. |mimeTypes| Array of selected file
-   MIME types. |callback
+  "Sets the default task for the supplied MIME types and path extensions. Lists of MIME types and URLs may contain duplicates.
+   Additionally, the list of MIME types can be empty. |taskId| The unique identifier of task to mark as default. |entries
+
+   Array of selected entries to extract path extensions from. |mimeTypes| Array of selected file MIME types. |callback
 
    
      |callback| - Callback that does not take arguments.
@@ -91,14 +91,13 @@
   ([entry #_callback] (gen-call :function ::remove-file-watch &form entry)))
 
 (defmacro enable-external-file-scheme
-  "Enables the extenal file scheme necessary to initiate drags to the browser window for files on the external
-   backend."
+  "Enables the extenal file scheme necessary to initiate drags to the browser window for files on the external backend."
   ([] (gen-call :function ::enable-external-file-scheme &form)))
 
 (defmacro grant-access
-  "Requests granting R/W permissions for the passed entries. It's a best effort operation. Some files may not be
-   granted access if the url is invalid or not backed by the external file system. |entryUrls| Urls for the entries to
-   be accessed. |callback
+  "Requests granting R/W permissions for the passed entries. It's a best effort operation. Some files may not be granted
+   access if the url is invalid or not backed by the external file system. |entryUrls| Urls for the entries to be accessed.
+   |callback
 
    
      |callback| - Callback that does not take arguments.
@@ -107,8 +106,8 @@
   ([entry-urls #_callback] (gen-call :function ::grant-access &form entry-urls)))
 
 (defmacro select-files
-  "Selects multiple files. |selectedPaths| Array of selected paths |shouldReturnLocalPath| true if paths need to be
-   resolved to local paths. |callback
+  "Selects multiple files. |selectedPaths| Array of selected paths |shouldReturnLocalPath| true if paths need to be resolved
+   to local paths. |callback
 
    
      |callback| - Callback that does not take arguments.
@@ -117,8 +116,8 @@
   ([selected-paths should-return-local-path #_callback] (gen-call :function ::select-files &form selected-paths should-return-local-path)))
 
 (defmacro select-file
-  "Selects a file. |selectedPath| A selected path |index| Index of Filter |forOpening| true if paths are selected for
-   opening. false if for saving. |shouldReturnLocalPath| true if paths need to be resolved to local paths. |callback
+  "Selects a file. |selectedPath| A selected path |index| Index of Filter |forOpening| true if paths are selected for opening.
+   false if for saving. |shouldReturnLocalPath| true if paths need to be resolved to local paths. |callback
 
    
      |callback| - Callback that does not take arguments.
@@ -127,9 +126,9 @@
   ([selected-path index for-opening should-return-local-path #_callback] (gen-call :function ::select-file &form selected-path index for-opening should-return-local-path)))
 
 (defmacro get-entry-properties
-  "Requests additional properties for files. |entries| list of entries |names| list of requested properties by their
-   names. |callback| Completion callback. May return less than requested properties     if some are not available. In
-   the same time, it can return properties     which were not requested (if it's cheap to compute them).
+  "Requests additional properties for files. |entries| list of entries |names| list of requested properties by their names.
+   |callback| Completion callback. May return less than requested properties     if some are not available. In the same time,
+   it can return properties     which were not requested (if it's cheap to compute them).
    
      |callback| - |entryProperties| A dictionary containing properties of the requested entries.
    
@@ -137,9 +136,8 @@
   ([entries names #_callback] (gen-call :function ::get-entry-properties &form entries names)))
 
 (defmacro pin-drive-file
-  "Pins/unpins a Drive file in the cache. |entry| Entry to pin/unpin. |pin| Pass true to pin the file. |callback
-
-   Completion callback. 'runtime.lastError' will be set if     there was an error.
+  "Pins/unpins a Drive file in the cache. |entry| Entry to pin/unpin. |pin| Pass true to pin the file. |callback| Completion
+   callback. 'runtime.lastError' will be set if     there was an error.
    
      |callback| - Callback that does not take arguments.
    
@@ -147,9 +145,9 @@
   ([entry pin #_callback] (gen-call :function ::pin-drive-file &form entry pin)))
 
 (defmacro resolve-isolated-entries
-  "Resolves entries in the isolated file system and returns corresponding entries in the external file system mounted
-   to Chrome OS file manager backend. If resolving entry fails, the entry will be just ignored and the corresponding
-   entry does not appear in the result.
+  "Resolves entries in the isolated file system and returns corresponding entries in the external file system mounted to
+   Chrome OS file manager backend. If resolving entry fails, the entry will be just ignored and the corresponding entry does
+   not appear in the result.
    
      |callback| - |entries| External entries.
    
@@ -157,8 +155,8 @@
   ([entries #_callback] (gen-call :function ::resolve-isolated-entries &form entries)))
 
 (defmacro add-mount
-  "Mount a resource or a file. |source| Mount point source. For compressed files it is relative file path     within
-   external file system |callback
+  "Mount a resource or a file. |source| Mount point source. For compressed files it is relative file path     within external
+   file system |callback
 
    
      |callback| - |sourcePath| Source path of the mount.
@@ -180,8 +178,8 @@
   ([#_callback] (gen-call :function ::get-volume-metadata-list &form)))
 
 (defmacro cancel-file-transfers
-  "Cancels ongoing file transfers for selected files. |entries| Array of files for which ongoing transfer should be
-   canceled. |callback| Completion callback of the cancel.
+  "Cancels ongoing file transfers for selected files. |entries| Array of files for which ongoing transfer should be canceled.
+   |callback| Completion callback of the cancel.
    
      |callback| - Callback that does not take arguments.
    
@@ -197,9 +195,9 @@
   ([#_callback] (gen-call :function ::cancel-all-file-transfers &form)))
 
 (defmacro start-copy
-  "Starts to copy an entry. If the source is a directory, the copy is done recursively. |entry| Entry of the source
-   entry to be copied. |parentEntry| Entry for the destination (parent) directory. |newName| Name of the new entry. It
-   must not contain '/'. |callback| Completion callback.
+  "Starts to copy an entry. If the source is a directory, the copy is done recursively. |entry| Entry of the source entry to
+   be copied. |parentEntry| Entry for the destination (parent) directory. |newName| Name of the new entry. It must not contain
+   '/'. |callback| Completion callback.
    
      |callback| - |copyId| ID of the copy task. Can be used to identify the progress, and to cancel the task.
    
@@ -207,8 +205,7 @@
   ([entry parent-entry new-name #_callback] (gen-call :function ::start-copy &form entry parent-entry new-name)))
 
 (defmacro cancel-copy
-  "Cancels the running copy task. |copyId| ID of the copy task to be cancelled. |callback| Completion callback of the
-   cancel.
+  "Cancels the running copy task. |copyId| ID of the copy task to be cancelled. |callback| Completion callback of the cancel.
    
      |callback| - Callback that does not take arguments.
    
@@ -243,8 +240,8 @@
   "Performs drive content search. |searchParams| |callback
 
    
-     |callback| - |entries| |nextFeed| ID of the feed that contains next chunk of the search result.     Should be
-                  sent to the next searchDrive request to perform     incremental search.
+     |callback| - |entries| |nextFeed| ID of the feed that contains next chunk of the search result.     Should be sent to
+                  the next searchDrive request to perform     incremental search.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([search-params #_callback] (gen-call :function ::search-drive &form search-params)))
@@ -259,17 +256,19 @@
 (defmacro search-files-by-hashes
   "Search files in the volume having |volumeId| by using |hashList|. sub-directories) the given |targetDirectoryUrl|.
    
-     |callback| - |urls| The map of hash and array of FileEntry's URL. The array can be empty if the corresponding
-                  file is not found.
+     |callback| - |urls| The map of hash and array of FileEntry's URL. The array can be empty if the corresponding file is
+                  not found.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([volume-id hash-list #_callback] (gen-call :function ::search-files-by-hashes &form volume-id hash-list)))
 
 (defmacro zip-selection
-  "Create a zip file for the selected files. |parentEntry| Entry of the directory containing the selected files.
-   |entries| Entries of the selected files. The files must be under the     directory specified by |parentEntry|.
-   |destName| Name of the destination zip file. The zip file will be created     under the directory specified by
-   |parentEntry|. |callback| TODO(mtomasz): Swap order of |entries| and |parentEntry|.
+  "Create a zip file for the selected files. |parentEntry| Entry of the directory containing the selected files. |entries
+
+   Entries of the selected files. The files must be under the     directory specified by |parentEntry|. |destName| Name of the
+   destination zip file. The zip file will be created     under the directory specified by |parentEntry|. |callback
+
+   TODO(mtomasz): Swap order of |entries| and |parentEntry|.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([parent-entry entries dest-name #_callback] (gen-call :function ::zip-selection &form parent-entry entries dest-name)))
@@ -282,8 +281,8 @@
   ([#_callback] (gen-call :function ::get-drive-connection-state &form)))
 
 (defmacro validate-path-name-length
-  "Checks whether the path name length fits in the limit of the filesystem. |parentEntry| The entry of the parent
-   directory entry. |name| The name of the file. |callback| Called back when the check is finished.
+  "Checks whether the path name length fits in the limit of the filesystem. |parentEntry| The entry of the parent directory
+   entry. |name| The name of the file. |callback| Called back when the check is finished.
    
      |callback| - |result| true if the length is in the valid range, false otherwise.
    
@@ -295,8 +294,8 @@
   ([operation] (gen-call :function ::zoom &form operation)))
 
 (defmacro request-access-token
-  "Requests a Drive API OAuth2 access token. |refresh| Whether the token should be refetched instead of using the
-   cached     one. |callback
+  "Requests a Drive API OAuth2 access token. |refresh| Whether the token should be refetched instead of using the cached
+   one. |callback
 
    
      |callback| - |accessToken| OAuth2 access token, or an empty string if failed to fetch.
@@ -342,8 +341,8 @@
 (defmacro get-profiles
   "Obtains a list of profiles that are logged-in.
    
-     |callback| - |profiles| List of profile information. |runningProfile| ID of the profile that runs the
-                  application instance. |showingProfile| ID of the profile that shows the application window.
+     |callback| - |profiles| List of profile information. |runningProfile| ID of the profile that runs the application
+                  instance. |showingProfile| ID of the profile that shows the application window.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([#_callback] (gen-call :function ::get-profiles &form)))
@@ -394,8 +393,7 @@
   ([#_callback] (gen-call :function ::get-providing-extensions &form)))
 
 (defmacro add-provided-file-system
-  "Requests adding a new provided file system. If not possible, then an error via chrome.runtime.lastError is
-   returned.
+  "Requests adding a new provided file system. If not possible, then an error via chrome.runtime.lastError is returned.
    
      |callback| - Callback that does not take arguments.
    
@@ -411,8 +409,8 @@
   ([volume-id #_callback] (gen-call :function ::configure-volume &form volume-id)))
 
 (defmacro get-custom-actions
-  "Requests list of custom actions for the specified entries. If not possible, then an error via
-   chrome.runtime.lastError is returned.
+  "Requests list of custom actions for the specified entries. If not possible, then an error via chrome.runtime.lastError is
+   returned.
    
      |callback| - |actions| List of actions.
    
@@ -420,15 +418,14 @@
   ([entries #_callback] (gen-call :function ::get-custom-actions &form entries)))
 
 (defmacro execute-custom-action
-  "Executes a custom action for a set of entries. If not possible, then an error via chrome.runtime.lastError is
-   returned.
+  "Executes a custom action for a set of entries. If not possible, then an error via chrome.runtime.lastError is returned.
    
      |callback| - Callback that does not take arguments.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([entries action-id #_callback] (gen-call :function ::execute-custom-action &form entries action-id)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-mount-completed-events ([channel] (gen-call :event ::on-mount-completed &form channel)))
 
@@ -446,16 +443,16 @@
 
 (defmacro tap-on-drive-sync-error-events ([channel] (gen-call :event ::on-drive-sync-error &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.fileManagerPrivate",
@@ -500,17 +497,13 @@
      :callback? true,
      :params
      [{:name "entry", :type "object"}
-      {:name "callback",
-       :type :callback,
-       :callback {:params [{:name "success", :optional? true, :type "boolean"}]}}]}
+      {:name "callback", :type :callback, :callback {:params [{:name "success", :optional? true, :type "boolean"}]}}]}
     {:id ::remove-file-watch,
      :name "removeFileWatch",
      :callback? true,
      :params
      [{:name "entry", :type "object"}
-      {:name "callback",
-       :type :callback,
-       :callback {:params [{:name "success", :optional? true, :type "boolean"}]}}]}
+      {:name "callback", :type :callback, :callback {:params [{:name "success", :optional? true, :type "boolean"}]}}]}
     {:id ::enable-external-file-scheme, :name "enableExternalFileScheme", :since "43"}
     {:id ::grant-access,
      :name "grantAccess",
@@ -545,8 +538,7 @@
     {:id ::pin-drive-file,
      :name "pinDriveFile",
      :callback? true,
-     :params
-     [{:name "entry", :type "object"} {:name "pin", :type "boolean"} {:name "callback", :type :callback}]}
+     :params [{:name "entry", :type "object"} {:name "pin", :type "boolean"} {:name "callback", :type :callback}]}
     {:id ::resolve-isolated-entries,
      :name "resolveIsolatedEntries",
      :callback? true,
@@ -566,8 +558,7 @@
      :params
      [{:name "callback",
        :type :callback,
-       :callback
-       {:params [{:name "volume-metadata-list", :type "[array-of-fileManagerPrivate.VolumeMetadatas]"}]}}]}
+       :callback {:params [{:name "volume-metadata-list", :type "[array-of-fileManagerPrivate.VolumeMetadatas]"}]}}]}
     {:id ::cancel-file-transfers,
      :name "cancelFileTransfers",
      :callback? true,
@@ -610,16 +601,13 @@
      [{:name "search-params", :type "object"}
       {:name "callback",
        :type :callback,
-       :callback
-       {:params [{:name "entries", :type "[array-of-Entrys]"} {:name "next-feed", :type "string"}]}}]}
+       :callback {:params [{:name "entries", :type "[array-of-Entrys]"} {:name "next-feed", :type "string"}]}}]}
     {:id ::search-drive-metadata,
      :name "searchDriveMetadata",
      :callback? true,
      :params
      [{:name "search-params", :type "object"}
-      {:name "callback",
-       :type :callback,
-       :callback {:params [{:name "results", :type "[array-of-objects]"}]}}]}
+      {:name "callback", :type :callback, :callback {:params [{:name "results", :type "[array-of-objects]"}]}}]}
     {:id ::search-files-by-hashes,
      :name "searchFilesByHashes",
      :since "42",
@@ -635,9 +623,7 @@
      [{:name "parent-entry", :type "object"}
       {:name "entries", :type "[array-of-objects]"}
       {:name "dest-name", :type "string"}
-      {:name "callback",
-       :type :callback,
-       :callback {:params [{:name "success", :optional? true, :type "boolean"}]}}]}
+      {:name "callback", :type :callback, :callback {:params [{:name "success", :optional? true, :type "boolean"}]}}]}
     {:id ::get-drive-connection-state,
      :name "getDriveConnectionState",
      :callback? true,
@@ -659,8 +645,7 @@
     {:id ::request-web-store-access-token,
      :name "requestWebStoreAccessToken",
      :callback? true,
-     :params
-     [{:name "callback", :type :callback, :callback {:params [{:name "access-token", :type "string"}]}}]}
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "access-token", :type "string"}]}}]}
     {:id ::get-share-url,
      :name "getShareUrl",
      :callback? true,
@@ -677,9 +662,7 @@
      :name "requestDriveShare",
      :callback? true,
      :params
-     [{:name "entry", :type "object"}
-      {:name "share-type", :type "unknown-type"}
-      {:name "callback", :type :callback}]}
+     [{:name "entry", :type "object"} {:name "share-type", :type "unknown-type"} {:name "callback", :type :callback}]}
     {:id ::get-profiles,
      :name "getProfiles",
      :callback? true,
@@ -724,9 +707,7 @@
      :since "44",
      :callback? true,
      :params
-     [{:name "callback",
-       :type :callback,
-       :callback {:params [{:name "extensions", :type "[array-of-objects]"}]}}]}
+     [{:name "callback", :type :callback, :callback {:params [{:name "extensions", :type "[array-of-objects]"}]}}]}
     {:id ::add-provided-file-system,
      :name "addProvidedFileSystem",
      :since "44",
@@ -766,7 +747,7 @@
     {:id ::on-device-changed, :name "onDeviceChanged", :params [{:name "event", :type "object"}]}
     {:id ::on-drive-sync-error, :name "onDriveSyncError", :params [{:name "event", :type "object"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

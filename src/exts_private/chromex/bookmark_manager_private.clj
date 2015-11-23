@@ -10,7 +10,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro copy
   "Copies the given bookmarks into the clipboard.
@@ -68,14 +68,14 @@
   "Performs the drop action of the drag and drop session.
    
      |parentId| - The ID of the folder that the drop was made.
-     |index| - The index of the position to drop at. If left out the dropped items will be placed at the end of the
-               existing children."
+     |index| - The index of the position to drop at. If left out the dropped items will be placed at the end of the existing
+               children."
   ([parent-id index] (gen-call :function ::drop &form parent-id index))
   ([parent-id] `(drop ~parent-id :omit)))
 
 (defmacro get-subtree
-  "Retrieves a bookmark hierarchy from the given node.  If the node id is empty, it is the full tree.  If foldersOnly
-   is true, it will only return folders, not actual bookmarks.
+  "Retrieves a bookmark hierarchy from the given node.  If the node id is empty, it is the full tree.  If foldersOnly is true,
+   it will only return folders, not actual bookmarks.
    
      |id| - ID of the root of the tree to pull.  If empty, the entire tree will be returned.
      |foldersOnly| - Pass true to only return folders.
@@ -169,7 +169,7 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([version #_callback] (gen-call :function ::set-version &form version)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-drag-enter-events
   "Fired when dragging bookmarks over the document."
@@ -187,16 +187,16 @@
   "Fired when the meta info of a node changes."
   ([channel] (gen-call :event ::on-meta-info-changed &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.bookmarkManagerPrivate",
@@ -205,13 +205,11 @@
    [{:id ::copy,
      :name "copy",
      :callback? true,
-     :params
-     [{:name "id-list", :type "[array-of-strings]"} {:name "callback", :optional? true, :type :callback}]}
+     :params [{:name "id-list", :type "[array-of-strings]"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::cut,
      :name "cut",
      :callback? true,
-     :params
-     [{:name "id-list", :type "[array-of-strings]"} {:name "callback", :optional? true, :type :callback}]}
+     :params [{:name "id-list", :type "[array-of-strings]"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::paste,
      :name "paste",
      :callback? true,
@@ -257,8 +255,7 @@
      :name "removeTrees",
      :since "30",
      :callback? true,
-     :params
-     [{:name "id-list", :type "[array-of-strings]"} {:name "callback", :optional? true, :type :callback}]}
+     :params [{:name "id-list", :type "[array-of-strings]"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::record-launch, :name "recordLaunch", :since "27"}
     {:id ::create-with-meta-info,
      :name "createWithMetaInfo",
@@ -329,10 +326,9 @@
      :name "onMetaInfoChanged",
      :since "35",
      :params
-     [{:name "id", :type "string"}
-      {:name "meta-info-changes", :type "bookmarkManagerPrivate.MetaInfoFields"}]}]})
+     [{:name "id", :type "string"} {:name "meta-info-changes", :type "bookmarkManagerPrivate.MetaInfoFields"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

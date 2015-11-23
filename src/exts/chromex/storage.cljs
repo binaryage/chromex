@@ -1,7 +1,7 @@
 (ns chromex.storage (:require-macros [chromex.storage :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- properties -----------------------------------------------------------------------------------------------------
+; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defn sync* [config]
   (gen-wrap :property ::sync config))
@@ -12,7 +12,7 @@
 (defn managed* [config]
   (gen-wrap :property ::managed config))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-changed* [config channel]
   (gen-wrap :event ::on-changed config channel))

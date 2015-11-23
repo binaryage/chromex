@@ -1,7 +1,7 @@
 (ns chromex.tts-engine (:require-macros [chromex.tts-engine :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-speak* [config channel]
   (gen-wrap :event ::on-speak config channel))

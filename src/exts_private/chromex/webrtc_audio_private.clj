@@ -22,7 +22,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro get-sinks
   "Retrieves a list of available audio sink devices.
@@ -43,29 +43,29 @@
   ([request sink-id #_callback] (gen-call :function ::set-active-sink &form request sink-id)))
 
 (defmacro get-associated-sink
-  "Given a security origin and an input device ID valid for that security origin, retrieve an audio sink ID valid for
-   the extension, or the empty string if there is no associated audio sink.The associated sink ID can be used as a
-   sink ID for setActiveSink. It is valid irrespective of which process you are setting the active sink for.
+  "Given a security origin and an input device ID valid for that security origin, retrieve an audio sink ID valid for the
+   extension, or the empty string if there is no associated audio sink.The associated sink ID can be used as a sink ID for
+   setActiveSink. It is valid irrespective of which process you are setting the active sink for.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([security-origin source-id-in-origin #_cb] (gen-call :function ::get-associated-sink &form security-origin source-id-in-origin)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-sinks-changed-events
   "Fired when audio sink devices are added or removed."
   ([channel] (gen-call :event ::on-sinks-changed &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.webrtcAudioPrivate",
@@ -75,9 +75,7 @@
      :name "getSinks",
      :callback? true,
      :params
-     [{:name "callback",
-       :type :callback,
-       :callback {:params [{:name "sink-info", :type "[array-of-objects]"}]}}]}
+     [{:name "callback", :type :callback, :callback {:params [{:name "sink-info", :type "[array-of-objects]"}]}}]}
     {:id ::get-active-sink,
      :name "getActiveSink",
      :callback? true,
@@ -100,7 +98,7 @@
       {:name "cb", :type :callback, :callback {:params [{:name "sink-id", :type "string"}]}}]}],
    :events [{:id ::on-sinks-changed, :name "onSinksChanged"}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

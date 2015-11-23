@@ -1,7 +1,7 @@
 (ns chromex.notification-provider (:require-macros [chromex.notification-provider :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn notify-on-cleared* [config notifier-id notification-id]
   (gen-wrap :function ::notify-on-cleared config notifier-id notification-id))
@@ -24,7 +24,7 @@
 (defn get-all-notifiers* [config]
   (gen-wrap :function ::get-all-notifiers config))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-created* [config channel]
   (gen-wrap :event ::on-created config channel))

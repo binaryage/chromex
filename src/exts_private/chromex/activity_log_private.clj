@@ -10,7 +10,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro get-extension-activities
   "Retrieves activity from the ActivityLog that matches the specified filter.
@@ -37,22 +37,22 @@
   ([urls] (gen-call :function ::delete-urls &form urls))
   ([] `(delete-urls :omit)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-extension-activity-events
   "Fired when a given extension performs another activity."
   ([channel] (gen-call :event ::on-extension-activity &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.activityLogPrivate",
@@ -71,15 +71,13 @@
      :since "34",
      :params [{:name "activity-ids", :type "[array-of-strings]"}]}
     {:id ::delete-database, :name "deleteDatabase"}
-    {:id ::delete-urls,
-     :name "deleteUrls",
-     :params [{:name "urls", :optional? true, :type "[array-of-strings]"}]}],
+    {:id ::delete-urls, :name "deleteUrls", :params [{:name "urls", :optional? true, :type "[array-of-strings]"}]}],
    :events
    [{:id ::on-extension-activity,
      :name "onExtensionActivity",
      :params [{:name "activity", :type "activityLogPrivate.ExtensionActivity"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

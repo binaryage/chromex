@@ -12,7 +12,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro open-serial-webcam
   "Open a serial port that controls a webcam.
@@ -33,20 +33,20 @@
 (defmacro set ([webcam-id config] (gen-call :function ::set &form webcam-id config)))
 
 (defmacro reset
-  "Reset a webcam. Note: the value of the parameter have no effect, it's the presence of the parameter that matters.
-   E.g.: reset(webcamId, {pan: 0,  tilt: 1}); will reset pan & tilt, but not zoom."
+  "Reset a webcam. Note: the value of the parameter have no effect, it's the presence of the parameter that matters. E.g.:
+   reset(webcamId, {pan: 0,  tilt: 1}); will reset pan & tilt, but not zoom."
   ([webcam-id config] (gen-call :function ::reset &form webcam-id config)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.webcamPrivate",
@@ -74,10 +74,9 @@
      :params [{:name "webcam-id", :type "string"} {:name "config", :type "webcamPrivate.WebcamConfiguration"}]}
     {:id ::reset,
      :name "reset",
-     :params
-     [{:name "webcam-id", :type "string"} {:name "config", :type "webcamPrivate.WebcamConfiguration"}]}]})
+     :params [{:name "webcam-id", :type "string"} {:name "config", :type "webcamPrivate.WebcamConfiguration"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

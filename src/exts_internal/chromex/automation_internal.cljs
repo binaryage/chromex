@@ -1,7 +1,7 @@
 (ns chromex.automation-internal (:require-macros [chromex.automation-internal :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn enable-tab* [config args]
   (gen-wrap :function ::enable-tab config args))
@@ -18,7 +18,7 @@
 (defn query-selector* [config args]
   (gen-wrap :function ::query-selector config args))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-accessibility-event* [config channel]
   (gen-wrap :event ::on-accessibility-event config channel))

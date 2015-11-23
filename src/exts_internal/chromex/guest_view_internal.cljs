@@ -1,7 +1,7 @@
 (ns chromex.guest-view-internal (:require-macros [chromex.guest-view-internal :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn create-guest* [config create-params]
   (gen-wrap :function ::create-guest config create-params))

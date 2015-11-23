@@ -1,7 +1,7 @@
 (ns chromex.accessibility-private (:require-macros [chromex.accessibility-private :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn set-native-accessibility-enabled* [config enabled]
   (gen-wrap :function ::set-native-accessibility-enabled config enabled))
@@ -9,7 +9,7 @@
 (defn set-focus-ring* [config rects]
   (gen-wrap :function ::set-focus-ring config rects))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-introduce-chrome-vox* [config channel]
   (gen-wrap :event ::on-introduce-chrome-vox config channel))

@@ -14,7 +14,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro auto-update
   "Runs auto update for extensions and apps immediately.
@@ -62,9 +62,8 @@
 (defmacro update-profile-configuration
   "Updates the active profile.
    
-     |update| - The parameters for updating the profile's configuration.  Any     properties omitted from |update
-
-                will not be changed.
+     |update| - The parameters for updating the profile's configuration.  Any     properties omitted from |update| will not
+                be changed.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([update #_callback] (gen-call :function ::update-profile-configuration &form update)))
@@ -90,9 +89,8 @@
 (defmacro update-extension-configuration
   "Modifies an extension's current configuration.
    
-     |update| - The parameters for updating the extension's configuration.     Any properties omitted from |update
-
-                will not be changed.
+     |update| - The parameters for updating the extension's configuration.     Any properties omitted from |update| will not
+                be changed.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([update #_callback] (gen-call :function ::update-extension-configuration &form update)))
@@ -226,7 +224,7 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([options #_callback] (gen-call :function ::inspect &form options)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-item-state-changed-events
   "Fired when a item state is changed."
@@ -236,16 +234,16 @@
   "Fired when the profile's state has changed."
   ([channel] (gen-call :event ::on-profile-state-changed &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.developerPrivate",
@@ -255,10 +253,7 @@
      :name "autoUpdate",
      :callback? true,
      :params
-     [{:name "callback",
-       :optional? true,
-       :type :callback,
-       :callback {:params [{:name "result", :type "boolean"}]}}]}
+     [{:name "callback", :optional? true, :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
     {:id ::get-extensions-info,
      :name "getExtensionsInfo",
      :since "43",
@@ -293,9 +288,7 @@
      :since "44",
      :callback? true,
      :params
-     [{:name "callback",
-       :type :callback,
-       :callback {:params [{:name "info", :type "developerPrivate.ProfileInfo"}]}}]}
+     [{:name "callback", :type :callback, :callback {:params [{:name "info", :type "developerPrivate.ProfileInfo"}]}}]}
     {:id ::update-profile-configuration,
      :name "updateProfileConfiguration",
      :since "44",
@@ -321,8 +314,7 @@
     {:id ::load-unpacked,
      :name "loadUnpacked",
      :callback? true,
-     :params
-     [{:name "options", :optional? true, :type "object"} {:name "callback", :optional? true, :type :callback}]}
+     :params [{:name "options", :optional? true, :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::load-directory,
      :name "loadDirectory",
      :since "34",
@@ -346,10 +338,7 @@
      [{:name "path", :type "string"}
       {:name "private-key-path", :optional? true, :type "string"}
       {:name "flags", :optional? true, :type "integer"}
-      {:name "callback",
-       :optional? true,
-       :type :callback,
-       :callback {:params [{:name "response", :type "object"}]}}]}
+      {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "response", :type "object"}]}}]}
     {:id ::is-profile-managed,
      :name "isProfileManaged",
      :since "31",
@@ -431,16 +420,13 @@
      :callback? true,
      :params [{:name "options", :type "object"} {:name "callback", :optional? true, :type :callback}]}],
    :events
-   [{:id ::on-item-state-changed,
-     :name "onItemStateChanged",
-     :since "30",
-     :params [{:name "response", :type "object"}]}
+   [{:id ::on-item-state-changed, :name "onItemStateChanged", :since "30", :params [{:name "response", :type "object"}]}
     {:id ::on-profile-state-changed,
      :name "onProfileStateChanged",
      :since "45",
      :params [{:name "info", :type "developerPrivate.ProfileInfo"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

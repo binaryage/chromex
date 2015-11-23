@@ -1,7 +1,7 @@
 (ns chromex.tts (:require-macros [chromex.tts :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn speak* [config utterance options]
   (gen-wrap :function ::speak config utterance options))

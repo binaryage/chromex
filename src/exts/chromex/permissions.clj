@@ -1,6 +1,6 @@
 (ns chromex.permissions
-  "Use the chrome.permissions API to request declared optional permissions at run time rather than install time, so
-   users understand why the permissions are needed and grant only those that are necessary.
+  "Use the chrome.permissions API to request declared optional permissions at run time rather than install time, so users
+   understand why the permissions are needed and grant only those that are necessary.
    
      * available since Chrome 16
      * https://developer.chrome.com/extensions/permissions"
@@ -13,7 +13,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro get-all
   "Gets the extension's current set of permissions.
@@ -28,20 +28,20 @@
   ([permissions #_callback] (gen-call :function ::contains &form permissions)))
 
 (defmacro request
-  "Requests access to the specified permissions. These permissions must be defined in the optional_permissions field
-   of the manifest. If there are any problems requesting the permissions, 'runtime.lastError' will be set.
+  "Requests access to the specified permissions. These permissions must be defined in the optional_permissions field of the
+   manifest. If there are any problems requesting the permissions, 'runtime.lastError' will be set.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([permissions #_callback] (gen-call :function ::request &form permissions)))
 
 (defmacro remove
-  "Removes access to the specified permissions. If there are any problems removing the permissions,
-   'runtime.lastError' will be set.
+  "Removes access to the specified permissions. If there are any problems removing the permissions, 'runtime.lastError' will
+   be set.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([permissions #_callback] (gen-call :function ::remove &form permissions)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-added-events
   "Fired when the extension acquires new permissions."
@@ -51,16 +51,16 @@
   "Fired when access to permissions has been removed from the extension."
   ([channel] (gen-call :event ::on-removed &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.permissions",
@@ -84,10 +84,7 @@
      :callback? true,
      :params
      [{:name "permissions", :type "permissions.Permissions"}
-      {:name "callback",
-       :optional? true,
-       :type :callback,
-       :callback {:params [{:name "granted", :type "boolean"}]}}]}
+      {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "granted", :type "boolean"}]}}]}
     {:id ::remove,
      :name "remove",
      :callback? true,
@@ -101,7 +98,7 @@
    [{:id ::on-added, :name "onAdded", :params [{:name "permissions", :type "permissions.Permissions"}]}
     {:id ::on-removed, :name "onRemoved", :params [{:name "permissions", :type "permissions.Permissions"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

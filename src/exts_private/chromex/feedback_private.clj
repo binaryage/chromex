@@ -13,7 +13,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro get-user-email
   "Returns the email of the currently active or logged in user.
@@ -34,30 +34,29 @@
   ([feedback #_callback] (gen-call :function ::send-feedback &form feedback)))
 
 (defmacro get-strings
-  "Gets localized translated strings for feedback. It returns the strings as a dictionary mapping from string
-   identifier to the translated string to use in the feedback app UI.
+  "Gets localized translated strings for feedback. It returns the strings as a dictionary mapping from string identifier to
+   the translated string to use in the feedback app UI.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([#_callback] (gen-call :function ::get-strings &form)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-feedback-requested-events
-  "Fired when the a user requests the launch of the feedback UI. We're using an event for this versus using the
-   override API since we want to be invoked, but not showing a UI, so the feedback extension can take a screenshot of
-   the user's desktop."
+  "Fired when the a user requests the launch of the feedback UI. We're using an event for this versus using the override API
+   since we want to be invoked, but not showing a UI, so the feedback extension can take a screenshot of the user's desktop."
   ([channel] (gen-call :event ::on-feedback-requested &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.feedbackPrivate",
@@ -73,8 +72,7 @@
      :params
      [{:name "callback",
        :type :callback,
-       :callback
-       {:params [{:name "system-information", :type "[array-of-feedbackPrivate.SystemInformations]"}]}}]}
+       :callback {:params [{:name "system-information", :type "[array-of-feedbackPrivate.SystemInformations]"}]}}]}
     {:id ::send-feedback,
      :name "sendFeedback",
      :callback? true,
@@ -91,7 +89,7 @@
      :name "onFeedbackRequested",
      :params [{:name "feedback", :type "feedbackPrivate.FeedbackInfo"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

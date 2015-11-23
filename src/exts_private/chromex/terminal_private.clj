@@ -10,13 +10,13 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro open-terminal-process
   "Starts new process.
    
-     |processName| - Name of the process to open. Initially only 'crosh' is supported. Another processes may be
-                     added in future.
+     |processName| - Name of the process to open. Initially only 'crosh' is supported. Another processes may be added in
+                     future.
      |callback| - Returns pid of the launched process. If no process was launched returns -1.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
@@ -26,8 +26,7 @@
   "Closes previousy opened process.
    
      |pid| - Process id of the process we want to close.
-     |callback| - Function that gets called when close operation is started for the process. Returns success of the
-                  function.
+     |callback| - Function that gets called when close operation is started for the process. Returns success of the function.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([pid #_callback] (gen-call :function ::close-terminal-process &form pid)))
@@ -53,22 +52,22 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([pid width height #_callback] (gen-call :function ::on-terminal-resize &form pid width height)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-process-output-events
   "Fired when an opened process writes something to its output."
   ([channel] (gen-call :event ::on-process-output &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.terminalPrivate",
@@ -85,20 +84,14 @@
      :callback? true,
      :params
      [{:name "pid", :type "integer"}
-      {:name "callback",
-       :optional? true,
-       :type :callback,
-       :callback {:params [{:name "success", :type "boolean"}]}}]}
+      {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::send-input,
      :name "sendInput",
      :callback? true,
      :params
      [{:name "pid", :type "integer"}
       {:name "input", :type "string"}
-      {:name "callback",
-       :optional? true,
-       :type :callback,
-       :callback {:params [{:name "success", :type "boolean"}]}}]}
+      {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::on-terminal-resize,
      :name "onTerminalResize",
      :since "19",
@@ -119,7 +112,7 @@
       {:name "type", :type "terminalPrivate.OutputType"}
       {:name "text", :type "string"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

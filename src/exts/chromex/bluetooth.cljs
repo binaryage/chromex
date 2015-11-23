@@ -1,7 +1,7 @@
 (ns chromex.bluetooth (:require-macros [chromex.bluetooth :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn get-adapter-state* [config]
   (gen-wrap :function ::get-adapter-state config))
@@ -18,7 +18,7 @@
 (defn stop-discovery* [config]
   (gen-wrap :function ::stop-discovery config))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-adapter-state-changed* [config channel]
   (gen-wrap :event ::on-adapter-state-changed config channel))

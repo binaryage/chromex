@@ -1,7 +1,7 @@
 (ns chromex.management (:require-macros [chromex.management :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn get-all* [config]
   (gen-wrap :function ::get-all config))
@@ -39,7 +39,7 @@
 (defn generate-app-for-link* [config url title]
   (gen-wrap :function ::generate-app-for-link config url title))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-installed* [config channel]
   (gen-wrap :event ::on-installed config channel))

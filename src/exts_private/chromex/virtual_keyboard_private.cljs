@@ -1,7 +1,7 @@
 (ns chromex.virtual-keyboard-private (:require-macros [chromex.virtual-keyboard-private :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn insert-text* [config text]
   (gen-wrap :function ::insert-text config text))
@@ -33,7 +33,7 @@
 (defn set-keyboard-state* [config state]
   (gen-wrap :function ::set-keyboard-state config state))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-text-input-box-focused* [config channel]
   (gen-wrap :event ::on-text-input-box-focused config channel))

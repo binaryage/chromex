@@ -12,7 +12,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro get-tokens
   "Internal version of entrprise.platformKeys.getTokens. Returns a list of token IDs instead of token objects.
@@ -23,26 +23,26 @@
   ([#_callback] (gen-call :function ::get-tokens &form)))
 
 (defmacro generate-key
-  "Internal version of Token.generateKey, currently supporting only RSASSA-PKCS1-v1_5. |tokenId| The id of a Token
-   returned by |getTokens|. |modulusLength| The length, in bits, of the RSA modulus. |callback| Called back with the
-   Subject Public Key Info of the generated     key.
+  "Internal version of Token.generateKey, currently supporting only RSASSA-PKCS1-v1_5. |tokenId| The id of a Token returned by
+   |getTokens|. |modulusLength| The length, in bits, of the RSA modulus. |callback| Called back with the Subject Public Key
+   Info of the generated     key.
    
-     |callback| - Invoked by generateKey. |publicKey| The Subject Public Key Info (see X.509) of the generated key
-                  in DER encoding.
+     |callback| - Invoked by generateKey. |publicKey| The Subject Public Key Info (see X.509) of the generated key     in
+                  DER encoding.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([token-id modulus-length #_callback] (gen-call :function ::generate-key &form token-id modulus-length)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.enterprise.platformKeysInternal",
@@ -52,9 +52,7 @@
      :name "getTokens",
      :callback? true,
      :params
-     [{:name "callback",
-       :type :callback,
-       :callback {:params [{:name "token-ids", :type "[array-of-strings]"}]}}]}
+     [{:name "callback", :type :callback, :callback {:params [{:name "token-ids", :type "[array-of-strings]"}]}}]}
     {:id ::generate-key,
      :name "generateKey",
      :callback? true,
@@ -63,7 +61,7 @@
       {:name "modulus-length", :type "integer"}
       {:name "callback", :type :callback, :callback {:params [{:name "public-key", :type "ArrayBuffer"}]}}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

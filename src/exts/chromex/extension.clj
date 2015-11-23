@@ -1,7 +1,6 @@
 (ns chromex.extension
-  "The chrome.extension API has utilities that can be used by any extension page. It includes support for exchanging
-   messages between an extension and its content scripts or between extensions, as described in detail in Message
-   Passing.
+  "The chrome.extension API has utilities that can be used by any extension page. It includes support for exchanging messages
+   between an extension and its content scripts or between extensions, as described in detail in Message Passing.
    
      * available since Chrome 5
      * https://developer.chrome.com/extensions/extension"
@@ -14,26 +13,25 @@
 (declare api-table)
 (declare gen-call)
 
-; -- properties -----------------------------------------------------------------------------------------------------
+; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defmacro get-last-error
-  "Set for the lifetime of a callback if an ansychronous extension api has resulted in an error. If no error has
-   occured lastError will be undefined."
+  "Set for the lifetime of a callback if an ansychronous extension api has resulted in an error. If no error has occured
+   lastError will be undefined."
   ([] (gen-call :property ::last-error &form)))
 
 (defmacro get-in-incognito-context
-  "True for content scripts running inside incognito tabs, and for extension pages running inside an incognito
-   process. The latter only applies to extensions with 'split' incognito_behavior."
+  "True for content scripts running inside incognito tabs, and for extension pages running inside an incognito process. The
+   latter only applies to extensions with 'split' incognito_behavior."
   ([] (gen-call :property ::in-incognito-context &form)))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro send-request
-  "Sends a single request to other listeners within the extension. Similar to 'runtime.connect', but only sends a
-   single request with an optional response. The 'extension.onRequest' event is fired in each page of the extension.
+  "Sends a single request to other listeners within the extension. Similar to 'runtime.connect', but only sends a single
+   request with an optional response. The 'extension.onRequest' event is fired in each page of the extension.
    
-     |extensionId| - The extension ID of the extension you want to connect to. If omitted, default is your own
-                     extension.
+     |extensionId| - The extension ID of the extension you want to connect to. If omitted, default is your own extension.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([extension-id request #_response-callback] (gen-call :function ::send-request &form extension-id request)))
@@ -50,13 +48,13 @@
   ([] `(get-views :omit)))
 
 (defmacro get-background-page
-  "Returns the JavaScript 'window' object for the background page running inside the current extension. Returns null
-   if the extension has no background page."
+  "Returns the JavaScript 'window' object for the background page running inside the current extension. Returns null if the
+   extension has no background page."
   ([] (gen-call :function ::get-background-page &form)))
 
 (defmacro get-extension-tabs
-  "Returns an array of the JavaScript 'window' objects for each of the tabs running inside the current extension. If
-   windowId is specified, returns only the 'window' objects of tabs attached to the specified window."
+  "Returns an array of the JavaScript 'window' objects for each of the tabs running inside the current extension. If windowId
+   is specified, returns only the 'window' objects of tabs attached to the specified window."
   ([window-id] (gen-call :function ::get-extension-tabs &form window-id))
   ([] `(get-extension-tabs :omit)))
 
@@ -68,18 +66,18 @@
   ([#_callback] (gen-call :function ::is-allowed-incognito-access &form)))
 
 (defmacro is-allowed-file-scheme-access
-  "Retrieves the state of the extension's access to the 'file://' scheme (as determined by the user-controlled 'Allow
-   access to File URLs' checkbox.
+  "Retrieves the state of the extension's access to the 'file://' scheme (as determined by the user-controlled 'Allow access
+   to File URLs' checkbox.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([#_callback] (gen-call :function ::is-allowed-file-scheme-access &form)))
 
 (defmacro set-update-url-data
-  "Sets the value of the ap CGI parameter used in the extension's update URL.  This value is ignored for extensions
-   that are hosted in the Chrome Extension Gallery."
+  "Sets the value of the ap CGI parameter used in the extension's update URL.  This value is ignored for extensions that are
+   hosted in the Chrome Extension Gallery."
   ([data] (gen-call :function ::set-update-url-data &form data)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-request-events
   "Fired when a request is sent from either an extension process or a content script."
@@ -89,16 +87,16 @@
   "Fired when a request is sent from another extension."
   ([channel] (gen-call :event ::on-request-external &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.extension",
@@ -135,18 +133,13 @@
      :name "isAllowedIncognitoAccess",
      :since "12",
      :callback? true,
-     :params
-     [{:name "callback", :type :callback, :callback {:params [{:name "is-allowed-access", :type "boolean"}]}}]}
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "is-allowed-access", :type "boolean"}]}}]}
     {:id ::is-allowed-file-scheme-access,
      :name "isAllowedFileSchemeAccess",
      :since "12",
      :callback? true,
-     :params
-     [{:name "callback", :type :callback, :callback {:params [{:name "is-allowed-access", :type "boolean"}]}}]}
-    {:id ::set-update-url-data,
-     :name "setUpdateUrlData",
-     :since "9",
-     :params [{:name "data", :type "string"}]}],
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "is-allowed-access", :type "boolean"}]}}]}
+    {:id ::set-update-url-data, :name "setUpdateUrlData", :since "9", :params [{:name "data", :type "string"}]}],
    :events
    [{:id ::on-request,
      :name "onRequest",
@@ -165,7 +158,7 @@
       {:name "sender", :type "runtime.MessageSender"}
       {:name "send-response", :type :callback}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

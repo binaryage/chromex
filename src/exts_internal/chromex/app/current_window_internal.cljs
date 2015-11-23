@@ -1,7 +1,7 @@
 (ns chromex.app.current-window-internal (:require-macros [chromex.app.current-window-internal :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn focus* [config]
   (gen-wrap :function ::focus config))
@@ -48,7 +48,7 @@
 (defn set-visible-on-all-workspaces* [config always-visible]
   (gen-wrap :function ::set-visible-on-all-workspaces config always-visible))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-closed* [config channel]
   (gen-wrap :event ::on-closed config channel))

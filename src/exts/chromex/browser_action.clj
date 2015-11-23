@@ -1,6 +1,6 @@
 (ns chromex.browser-action
-  "Use browser actions to put icons in the main Google Chrome toolbar, to the right of the address bar. In addition
-   to its icon, a browser action can also have a tooltip, a badge, and a popup.
+  "Use browser actions to put icons in the main Google Chrome toolbar, to the right of the address bar. In addition to its
+   icon, a browser action can also have a tooltip, a badge, and a popup.
    
      * available since Chrome 5
      * https://developer.chrome.com/extensions/browserAction"
@@ -13,7 +13,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro set-title
   "Sets the title of the browser action. This shows up in the tooltip."
@@ -26,9 +26,9 @@
   ([details #_callback] (gen-call :function ::get-title &form details)))
 
 (defmacro set-icon
-  "Sets the icon for the browser action. The icon can be specified either as the path to an image file or as the pixel
-   data from a canvas element, or as dictionary of either one of those. Either the path or the imageData property must
-   be specified.
+  "Sets the icon for the browser action. The icon can be specified either as the path to an image file or as the pixel data
+   from a canvas element, or as dictionary of either one of those. Either the path or the imageData property must be
+   specified.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([details #_callback] (gen-call :function ::set-icon &form details)))
@@ -77,22 +77,22 @@
   ([tab-id] (gen-call :function ::disable &form tab-id))
   ([] `(disable :omit)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-clicked-events
   "Fired when a browser action icon is clicked.  This event will not fire if the browser action has a popup."
   ([channel] (gen-call :event ::on-clicked &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.browserAction",
@@ -126,26 +126,19 @@
      :params
      [{:name "details", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "string"}]}}]}
-    {:id ::set-badge-background-color,
-     :name "setBadgeBackgroundColor",
-     :params [{:name "details", :type "object"}]}
+    {:id ::set-badge-background-color, :name "setBadgeBackgroundColor", :params [{:name "details", :type "object"}]}
     {:id ::get-badge-background-color,
      :name "getBadgeBackgroundColor",
      :since "19",
      :callback? true,
      :params
      [{:name "details", :type "object"}
-      {:name "callback",
-       :type :callback,
-       :callback {:params [{:name "result", :type "browserAction.ColorArray"}]}}]}
+      {:name "callback", :type :callback, :callback {:params [{:name "result", :type "browserAction.ColorArray"}]}}]}
     {:id ::enable, :name "enable", :since "22", :params [{:name "tab-id", :optional? true, :type "integer"}]}
-    {:id ::disable,
-     :name "disable",
-     :since "22",
-     :params [{:name "tab-id", :optional? true, :type "integer"}]}],
+    {:id ::disable, :name "disable", :since "22", :params [{:name "tab-id", :optional? true, :type "integer"}]}],
    :events [{:id ::on-clicked, :name "onClicked", :params [{:name "tab", :type "tabs.Tab"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

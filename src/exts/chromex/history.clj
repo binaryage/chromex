@@ -1,6 +1,6 @@
 (ns chromex.history
-  "Use the chrome.history API to interact with the browser's record of visited pages. You can add, remove, and query
-   for URLs in the browser's history. To override the history page with your own version, see Override Pages.
+  "Use the chrome.history API to interact with the browser's record of visited pages. You can add, remove, and query for URLs
+   in the browser's history. To override the history page with your own version, see Override Pages.
    
      * available since Chrome 5
      * https://developer.chrome.com/extensions/history"
@@ -13,7 +13,7 @@
 (declare api-table)
 (declare gen-call)
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro search
   "Searches the history for the last visit time of each page matching the query.
@@ -40,8 +40,8 @@
   ([details #_callback] (gen-call :function ::delete-url &form details)))
 
 (defmacro delete-range
-  "Removes all items within the specified date range from the history.  Pages will not be removed from the history
-   unless all visits fall within the range.
+  "Removes all items within the specified date range from the history.  Pages will not be removed from the history unless all
+   visits fall within the range.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([range #_callback] (gen-call :function ::delete-range &form range)))
@@ -52,28 +52,27 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([#_callback] (gen-call :function ::delete-all &form)))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-visited-events
-  "Fired when a URL is visited, providing the HistoryItem data for that URL.  This event fires before the page has
-   loaded."
+  "Fired when a URL is visited, providing the HistoryItem data for that URL.  This event fires before the page has loaded."
   ([channel] (gen-call :event ::on-visited &form channel)))
 
 (defmacro tap-on-visit-removed-events
-  "Fired when one or more URLs are removed from the history service.  When all visits have been removed the URL is
-   purged from history."
+  "Fired when one or more URLs are removed from the history service.  When all visits have been removed the URL is purged from
+   history."
   ([channel] (gen-call :event ::on-visit-removed &form channel)))
 
-; -- convenience ----------------------------------------------------------------------------------------------------
+; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
-; -- API TABLE ------------------------------------------------------------------------------------------------------
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
+; -- API TABLE --------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
   {:namespace "chrome.history",
@@ -112,7 +111,7 @@
    [{:id ::on-visited, :name "onVisited", :params [{:name "result", :type "history.HistoryItem"}]}
     {:id ::on-visit-removed, :name "onVisitRemoved", :params [{:name "removed", :type "object"}]}]})
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]

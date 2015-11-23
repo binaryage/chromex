@@ -1,7 +1,7 @@
 (ns chromex.bookmark-manager-private (:require-macros [chromex.bookmark-manager-private :refer [gen-wrap]])
     (:require [chromex-lib.core]))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn copy* [config id-list]
   (gen-wrap :function ::copy config id-list))
@@ -69,7 +69,7 @@
 (defn set-version* [config version]
   (gen-wrap :function ::set-version config version))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-drag-enter* [config channel]
   (gen-wrap :event ::on-drag-enter config channel))
