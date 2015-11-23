@@ -3,7 +3,7 @@
   (:require [cljs.test :refer-macros [deftest testing is async]]
             [cljs.core.async :refer [<! >! timeout chan close!]]
             [chromex.playground :refer-macros [get-something do-something get-some-prop tap-on-something-events
-                                               tap-all-events]]
+                                               tap-all-events do-something-optional-args]]
             [chromex-lib.chrome-event-channel :refer [make-chrome-event-channel]]))
 
 (defn get-something-mock [param1 callback]
@@ -13,6 +13,9 @@
 
 (defn do-something-mock [param1]
   (str "got " param1))
+
+(defn do-something-optional-args-mock [& args]
+  (str "got " args))
 
 (def on-something-mock-active (volatile! false))
 (def on-something-mock
@@ -43,6 +46,7 @@
 
 (aset js/window.chrome.playground "getSomething" get-something-mock)
 (aset js/window.chrome.playground "doSomething" do-something-mock)
+(aset js/window.chrome.playground "doSomethingOptionalArgs" do-something-optional-args-mock)
 (aset js/window.chrome.playground "someProp" "prop1val")
 (aset js/window.chrome.playground "onSomething" on-something-mock)
 (aset js/window.chrome.playground "onSomethingDeprecated" on-something-deprecated-mock)
@@ -59,6 +63,12 @@
   (testing "do something"
     (let [result (do-something "x1")]
       (is (= result "[got x1!!!]")))))
+
+(deftest test-do-something-with-optional-args
+  (testing "do something with optional args"
+    (is (= (do-something-optional-args 1 2 3) "got (1 2 3)"))
+    (is (= (do-something-optional-args 1 2) "got (1 2)"))
+    (is (= (do-something-optional-args 1) "got (1)"))))
 
 (deftest test-prop
   (testing "read prop"

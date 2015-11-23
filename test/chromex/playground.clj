@@ -22,6 +22,11 @@
 (defmacro do-something [param1]
   (gen-call :function ::do-something (meta &form) param1))
 
+(defmacro do-something-optional-args
+  ([param1 opt-p2 opt-p3] (gen-call :function ::do-something-optional-args (meta &form) param1 opt-p2 opt-p3))
+  ([param1 opt-p2] `(do-something-optional-args ~param1 ~opt-p2 :omit))
+  ([param1] `(do-something-optional-args ~param1 :omit :omit)))
+
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-something-events [chan]
@@ -63,16 +68,28 @@
                              {:name     "callback"
                               :type     :callback
                               :callback {:params [{:name "callback-param"
-                                                   :type "mock-callback-param1"}]}}]}]
+                                                   :type "mock-callback-param1"}]}}]}
+                {:id          ::do-something-optional-args
+                 :name        "doSomethingOptionalArgs"
+                 :since       "10"
+                 :return-type "some-type"
+                 :params      [{:name "param1"
+                                :type "some-type"}
+                               {:name      "op2"
+                                :optional? true
+                                :type      "some-type"}
+                               {:name      "op3"
+                                :optional? true
+                                :type      "some-type"}]}]
    :events     [{:id     ::on-something
                  :name   "onSomething"
                  :params [{:name "ep1"
                            :type "event-param-type1"}]}
-                {:id     ::on-something-deprecated
-                 :name   "onSomethingDeprecated"
+                {:id         ::on-something-deprecated
+                 :name       "onSomethingDeprecated"
                  :deprecated "Use onSomething instead."
-                 :params [{:name "ep1"
-                           :type "event-param-type1"}]}]})
+                 :params     [{:name "ep1"
+                               :type "event-param-type1"}]}]})
 
 ; -- helpers --------------------------------------------------------------------------------------------------------
 
