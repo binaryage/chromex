@@ -15,7 +15,7 @@
   (str "got " param1))
 
 (defn do-something-optional-args-mock [& args]
-  (str "got " args))
+  (str "got " (vec args)))
 
 (def on-something-mock-active (volatile! false))
 (def on-something-mock
@@ -66,10 +66,13 @@
 
 (deftest test-do-something-with-optional-args
   (testing "do something with optional args"
-    (is (= (do-something-optional-args 1 2 3) "got (1 2 3)"))
-    (is (= (do-something-optional-args 1 2) "got (1 2)"))
-    (is (= (do-something-optional-args 1) "got (1)"))
-    (is (= (do-something-optional-args 1 :omit 3) "got (1 3)"))))
+    (is (= (do-something-optional-args 1 2 3) "got [1 2 3]"))
+    (is (= (do-something-optional-args 1 2) "got [1 2]"))
+    (is (= (do-something-optional-args 1) "got [1]"))
+    (is (= (do-something-optional-args) "got []"))
+    (is (= (do-something-optional-args 1 :omit 3) "got [1 3]"))
+    (is (= (do-something-optional-args :omit :omit 3) "got [3]"))
+    (is (= (do-something-optional-args :omit :omit :omit) "got []"))))
 
 (deftest test-prop
   (testing "read prop"

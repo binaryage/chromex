@@ -23,9 +23,10 @@
   (gen-call :function ::do-something (meta &form) param1))
 
 (defmacro do-something-optional-args
-  ([param1 opt-p2 opt-p3] (gen-call :function ::do-something-optional-args (meta &form) param1 opt-p2 opt-p3))
-  ([param1 opt-p2] `(do-something-optional-args ~param1 ~opt-p2 :omit))
-  ([param1] `(do-something-optional-args ~param1 :omit :omit)))
+  ([opt-p1 opt-p2 opt-p3] (gen-call :function ::do-something-optional-args (meta &form) opt-p1 opt-p2 opt-p3))
+  ([opt-p1 opt-p2] `(do-something-optional-args ~opt-p1 ~opt-p2 :omit))
+  ([opt-p1] `(do-something-optional-args ~opt-p1 :omit :omit))
+  ([] `(do-something-optional-args :omit :omit :omit)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
@@ -73,8 +74,9 @@
                  :name        "doSomethingOptionalArgs"
                  :since       "10"
                  :return-type "some-type"
-                 :params      [{:name "param1"
-                                :type "some-type"}
+                 :params      [{:name      "op1"
+                                :optional? true
+                                :type      "some-type"}
                                {:name      "op2"
                                 :optional? true
                                 :type      "some-type"}
