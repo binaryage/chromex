@@ -68,7 +68,8 @@
   (testing "do something with optional args"
     (is (= (do-something-optional-args 1 2 3) "got (1 2 3)"))
     (is (= (do-something-optional-args 1 2) "got (1 2)"))
-    (is (= (do-something-optional-args 1) "got (1)"))))
+    (is (= (do-something-optional-args 1) "got (1)"))
+    (is (= (do-something-optional-args 1 :omit 3) "got (1 3)"))))
 
 (deftest test-prop
   (testing "read prop"
