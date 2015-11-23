@@ -70,28 +70,30 @@
      :name "contextMenusCreate",
      :callback? true,
      :return-type "integer-or-string",
-     :params [{:name "create-properties", :type "object"} {:name "callback", :type :callback}]}
+     :params
+     [{:name "create-properties", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::context-menus-update,
      :name "contextMenusUpdate",
      :callback? true,
      :params
      [{:name "id", :type "integer-or-string"}
       {:name "update-properties", :type "object"}
-      {:name "callback", :type :callback}]}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::context-menus-remove,
      :name "contextMenusRemove",
      :callback? true,
-     :params [{:name "menu-item-id", :type "integer-or-string"} {:name "callback", :type :callback}]}
+     :params
+     [{:name "menu-item-id", :type "integer-or-string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::context-menus-remove-all,
      :name "contextMenusRemoveAll",
      :callback? true,
-     :params [{:name "callback", :type :callback}]}
+     :params [{:name "callback", :optional? true, :type :callback}]}
     {:id ::show-context-menu,
      :name "showContextMenu",
      :params
      [{:name "instance-id", :type "integer"}
       {:name "request-id", :type "integer"}
-      {:name "items-to-show", :type "[array-of-objects]"}]}]})
+      {:name "items-to-show", :optional? true, :type "[array-of-objects]"}]}]})
 
 ; -- helpers --------------------------------------------------------------------------------------------------------
 

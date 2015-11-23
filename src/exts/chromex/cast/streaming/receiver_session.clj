@@ -56,7 +56,7 @@
       {:name "max-height", :type "integer"}
       {:name "max-frame-rate", :type "double"}
       {:name "media-stream-url", :type "string"}
-      {:name "transport-options", :type "object"}
+      {:name "transport-options", :optional? true, :type "object"}
       {:name "error-callback", :type :callback, :callback {:params [{:name "error", :type "string"}]}}]}]})
 
 ; -- helpers --------------------------------------------------------------------------------------------------------

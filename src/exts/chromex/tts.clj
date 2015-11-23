@@ -74,20 +74,25 @@
      :callback? true,
      :params
      [{:name "utterance", :type "string"}
-      {:name "options", :type "object"}
-      {:name "callback", :type :callback}]}
+      {:name "options", :optional? true, :type "object"}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::stop, :name "stop"}
     {:id ::pause, :name "pause", :since "29"}
     {:id ::resume, :name "resume", :since "29"}
     {:id ::is-speaking,
      :name "isSpeaking",
      :callback? true,
-     :params [{:name "callback", :type :callback, :callback {:params [{:name "speaking", :type "boolean"}]}}]}
+     :params
+     [{:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "speaking", :type "boolean"}]}}]}
     {:id ::get-voices,
      :name "getVoices",
      :callback? true,
      :params
      [{:name "callback",
+       :optional? true,
        :type :callback,
        :callback {:params [{:name "voices", :type "[array-of-tts.TtsVoices]"}]}}]}]})
 

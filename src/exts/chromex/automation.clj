@@ -78,7 +78,7 @@
      :name "getTree",
      :callback? true,
      :params
-     [{:name "tab-id", :type "integer"}
+     [{:name "tab-id", :optional? true, :type "integer"}
       {:name "callback",
        :type :callback,
        :callback {:params [{:name "root-node", :type "automation.AutomationNode"}]}}]}

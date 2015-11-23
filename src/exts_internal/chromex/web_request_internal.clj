@@ -45,7 +45,7 @@
      :callback? true,
      :params
      [{:name "filter", :type "webRequest.RequestFilter"}
-      {:name "extra-info-spec", :type "[array-of-unknown-types]"}
+      {:name "extra-info-spec", :optional? true, :type "[array-of-unknown-types]"}
       {:name "event-name", :type "string"}
       {:name "sub-event-name", :type "string"}
       {:name "web-view-instance-id", :type "integer"}
@@ -56,7 +56,7 @@
      [{:name "event-name", :type "string"}
       {:name "sub-event-name", :type "string"}
       {:name "request-id", :type "string"}
-      {:name "response", :type "webRequest.BlockingResponse"}]}]})
+      {:name "response", :optional? true, :type "webRequest.BlockingResponse"}]}]})
 
 ; -- helpers --------------------------------------------------------------------------------------------------------
 

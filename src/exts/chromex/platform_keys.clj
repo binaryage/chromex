@@ -88,7 +88,9 @@
       {:name "parameters", :type "object"}
       {:name "callback",
        :type :callback,
-       :callback {:params [{:name "public-key", :type "object"} {:name "private-key", :type "object"}]}}]}
+       :callback
+       {:params
+        [{:name "public-key", :type "object"} {:name "private-key", :optional? true, :type "object"}]}}]}
     {:id ::subtle-crypto, :name "subtleCrypto", :return-type "object"}
     {:id ::verify-tls-server-certificate,
      :name "verifyTLSServerCertificate",

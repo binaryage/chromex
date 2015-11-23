@@ -186,7 +186,10 @@
      :callback? true,
      :params
      [{:name "options", :type "object"}
-      {:name "callback", :type :callback, :callback {:params [{:name "download-id", :type "integer"}]}}]}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "download-id", :type "integer"}]}}]}
     {:id ::search,
      :name "search",
      :callback? true,
@@ -198,22 +201,24 @@
     {:id ::pause,
      :name "pause",
      :callback? true,
-     :params [{:name "download-id", :type "integer"} {:name "callback", :type :callback}]}
+     :params [{:name "download-id", :type "integer"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::resume,
      :name "resume",
      :callback? true,
-     :params [{:name "download-id", :type "integer"} {:name "callback", :type :callback}]}
+     :params [{:name "download-id", :type "integer"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::cancel,
      :name "cancel",
      :callback? true,
-     :params [{:name "download-id", :type "integer"} {:name "callback", :type :callback}]}
+     :params [{:name "download-id", :type "integer"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-file-icon,
      :name "getFileIcon",
      :callback? true,
      :params
      [{:name "download-id", :type "integer"}
-      {:name "options", :type "object"}
-      {:name "callback", :type :callback, :callback {:params [{:name "icon-url", :type "string"}]}}]}
+      {:name "options", :optional? true, :type "object"}
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "icon-url", :optional? true, :type "string"}]}}]}
     {:id ::open, :name "open", :params [{:name "download-id", :type "integer"}]}
     {:id ::show, :name "show", :params [{:name "download-id", :type "integer"}]}
     {:id ::show-default-folder, :name "showDefaultFolder"}
@@ -223,16 +228,17 @@
      :params
      [{:name "query", :type "object"}
       {:name "callback",
+       :optional? true,
        :type :callback,
        :callback {:params [{:name "erased-ids", :type "[array-of-integers]"}]}}]}
     {:id ::remove-file,
      :name "removeFile",
      :callback? true,
-     :params [{:name "download-id", :type "integer"} {:name "callback", :type :callback}]}
+     :params [{:name "download-id", :type "integer"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::accept-danger,
      :name "acceptDanger",
      :callback? true,
-     :params [{:name "download-id", :type "integer"} {:name "callback", :type :callback}]}
+     :params [{:name "download-id", :type "integer"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::drag, :name "drag", :params [{:name "download-id", :type "integer"}]}
     {:id ::set-shelf-enabled, :name "setShelfEnabled", :params [{:name "enabled", :type "boolean"}]}],
    :events

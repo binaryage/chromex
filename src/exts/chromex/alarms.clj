@@ -80,13 +80,15 @@
    :functions
    [{:id ::create,
      :name "create",
-     :params [{:name "name", :type "string"} {:name "alarm-info", :type "object"}]}
+     :params [{:name "name", :optional? true, :type "string"} {:name "alarm-info", :type "object"}]}
     {:id ::get,
      :name "get",
      :callback? true,
      :params
-     [{:name "name", :type "string"}
-      {:name "callback", :type :callback, :callback {:params [{:name "alarm", :type "alarms.Alarm"}]}}]}
+     [{:name "name", :optional? true, :type "string"}
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "alarm", :optional? true, :type "alarms.Alarm"}]}}]}
     {:id ::get-all,
      :name "getAll",
      :callback? true,
@@ -98,13 +100,19 @@
      :name "clear",
      :callback? true,
      :params
-     [{:name "name", :type "string"}
-      {:name "callback", :type :callback, :callback {:params [{:name "was-cleared", :type "boolean"}]}}]}
+     [{:name "name", :optional? true, :type "string"}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "was-cleared", :type "boolean"}]}}]}
     {:id ::clear-all,
      :name "clearAll",
      :callback? true,
      :params
-     [{:name "callback", :type :callback, :callback {:params [{:name "was-cleared", :type "boolean"}]}}]}],
+     [{:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "was-cleared", :type "boolean"}]}}]}],
    :events [{:id ::on-alarm, :name "onAlarm", :params [{:name "alarm", :type "alarms.Alarm"}]}]})
 
 ; -- helpers --------------------------------------------------------------------------------------------------------

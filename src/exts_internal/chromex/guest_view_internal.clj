@@ -49,14 +49,14 @@
     {:id ::destroy-guest,
      :name "destroyGuest",
      :callback? true,
-     :params [{:name "instance-id", :type "integer"} {:name "callback", :type :callback}]}
+     :params [{:name "instance-id", :type "integer"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::set-size,
      :name "setSize",
      :callback? true,
      :params
      [{:name "instance-id", :type "integer"}
       {:name "params", :type "object"}
-      {:name "callback", :type :callback}]}]})
+      {:name "callback", :optional? true, :type :callback}]}]})
 
 ; -- helpers --------------------------------------------------------------------------------------------------------
 

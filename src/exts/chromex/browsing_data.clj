@@ -139,55 +139,79 @@
      :params
      [{:name "options", :type "browsingData.RemovalOptions"}
       {:name "data-to-remove", :type "browsingData.DataTypeSet"}
-      {:name "callback", :type :callback}]}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-appcache,
      :name "removeAppcache",
      :callback? true,
-     :params [{:name "options", :type "browsingData.RemovalOptions"} {:name "callback", :type :callback}]}
+     :params
+     [{:name "options", :type "browsingData.RemovalOptions"}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-cache,
      :name "removeCache",
      :callback? true,
-     :params [{:name "options", :type "browsingData.RemovalOptions"} {:name "callback", :type :callback}]}
+     :params
+     [{:name "options", :type "browsingData.RemovalOptions"}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-cookies,
      :name "removeCookies",
      :callback? true,
-     :params [{:name "options", :type "browsingData.RemovalOptions"} {:name "callback", :type :callback}]}
+     :params
+     [{:name "options", :type "browsingData.RemovalOptions"}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-downloads,
      :name "removeDownloads",
      :callback? true,
-     :params [{:name "options", :type "browsingData.RemovalOptions"} {:name "callback", :type :callback}]}
+     :params
+     [{:name "options", :type "browsingData.RemovalOptions"}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-file-systems,
      :name "removeFileSystems",
      :callback? true,
-     :params [{:name "options", :type "browsingData.RemovalOptions"} {:name "callback", :type :callback}]}
+     :params
+     [{:name "options", :type "browsingData.RemovalOptions"}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-form-data,
      :name "removeFormData",
      :callback? true,
-     :params [{:name "options", :type "browsingData.RemovalOptions"} {:name "callback", :type :callback}]}
+     :params
+     [{:name "options", :type "browsingData.RemovalOptions"}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-history,
      :name "removeHistory",
      :callback? true,
-     :params [{:name "options", :type "browsingData.RemovalOptions"} {:name "callback", :type :callback}]}
+     :params
+     [{:name "options", :type "browsingData.RemovalOptions"}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-indexed-db,
      :name "removeIndexedDB",
      :callback? true,
-     :params [{:name "options", :type "browsingData.RemovalOptions"} {:name "callback", :type :callback}]}
+     :params
+     [{:name "options", :type "browsingData.RemovalOptions"}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-local-storage,
      :name "removeLocalStorage",
      :callback? true,
-     :params [{:name "options", :type "browsingData.RemovalOptions"} {:name "callback", :type :callback}]}
+     :params
+     [{:name "options", :type "browsingData.RemovalOptions"}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-plugin-data,
      :name "removePluginData",
      :callback? true,
-     :params [{:name "options", :type "browsingData.RemovalOptions"} {:name "callback", :type :callback}]}
+     :params
+     [{:name "options", :type "browsingData.RemovalOptions"}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-passwords,
      :name "removePasswords",
      :callback? true,
-     :params [{:name "options", :type "browsingData.RemovalOptions"} {:name "callback", :type :callback}]}
+     :params
+     [{:name "options", :type "browsingData.RemovalOptions"}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-web-sql,
      :name "removeWebSQL",
      :callback? true,
-     :params [{:name "options", :type "browsingData.RemovalOptions"} {:name "callback", :type :callback}]}]})
+     :params
+     [{:name "options", :type "browsingData.RemovalOptions"}
+      {:name "callback", :optional? true, :type :callback}]}]})
 
 ; -- helpers --------------------------------------------------------------------------------------------------------
 

@@ -59,7 +59,7 @@
    [{:id ::set-icon,
      :name "setIcon",
      :callback? true,
-     :params [{:name "details", :type "object"} {:name "callback", :type :callback}]}
+     :params [{:name "details", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::enable, :name "enable"}
     {:id ::disable, :name "disable"}],
    :events [{:id ::on-clicked, :name "onClicked"}]})

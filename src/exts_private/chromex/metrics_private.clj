@@ -112,7 +112,9 @@
      :callback? true,
      :params
      [{:name "name", :type "string"}
-      {:name "callback", :type :callback, :callback {:params [{:name "params", :type "object"}]}}]}
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "params", :optional? true, :type "object"}]}}]}
     {:id ::record-user-action, :name "recordUserAction", :params [{:name "name", :type "string"}]}
     {:id ::record-percentage,
      :name "recordPercentage",

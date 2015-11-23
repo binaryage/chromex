@@ -89,19 +89,23 @@
      :params
      [{:name "target", :type "debugger.Debuggee"}
       {:name "required-version", :type "string"}
-      {:name "callback", :type :callback}]}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::detach,
      :name "detach",
      :callback? true,
-     :params [{:name "target", :type "debugger.Debuggee"} {:name "callback", :type :callback}]}
+     :params
+     [{:name "target", :type "debugger.Debuggee"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::send-command,
      :name "sendCommand",
      :callback? true,
      :params
      [{:name "target", :type "debugger.Debuggee"}
       {:name "method", :type "string"}
-      {:name "command-params", :type "object"}
-      {:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}
+      {:name "command-params", :optional? true, :type "object"}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "result", :optional? true, :type "object"}]}}]}
     {:id ::get-targets,
      :name "getTargets",
      :since "28",
@@ -116,7 +120,7 @@
      :params
      [{:name "source", :type "debugger.Debuggee"}
       {:name "method", :type "string"}
-      {:name "params", :type "object"}]}
+      {:name "params", :optional? true, :type "object"}]}
     {:id ::on-detach,
      :name "onDetach",
      :params [{:name "source", :type "debugger.Debuggee"} {:name "reason", :type "debugger.DetachReason"}]}]})

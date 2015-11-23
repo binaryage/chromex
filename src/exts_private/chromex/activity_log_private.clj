@@ -73,7 +73,9 @@
      :since "34",
      :params [{:name "activity-ids", :type "[array-of-strings]"}]}
     {:id ::delete-database, :name "deleteDatabase"}
-    {:id ::delete-urls, :name "deleteUrls", :params [{:name "urls", :type "[array-of-strings]"}]}],
+    {:id ::delete-urls,
+     :name "deleteUrls",
+     :params [{:name "urls", :optional? true, :type "[array-of-strings]"}]}],
    :events
    [{:id ::on-extension-activity,
      :name "onExtensionActivity",

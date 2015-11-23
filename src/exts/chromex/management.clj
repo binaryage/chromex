@@ -143,6 +143,7 @@
      :callback? true,
      :params
      [{:name "callback",
+       :optional? true,
        :type :callback,
        :callback {:params [{:name "result", :type "[array-of-management.ExtensionInfos]"}]}}]}
     {:id ::get,
@@ -152,6 +153,7 @@
      :params
      [{:name "id", :type "string"}
       {:name "callback",
+       :optional? true,
        :type :callback,
        :callback {:params [{:name "result", :type "management.ExtensionInfo"}]}}]}
     {:id ::get-self,
@@ -160,6 +162,7 @@
      :callback? true,
      :params
      [{:name "callback",
+       :optional? true,
        :type :callback,
        :callback {:params [{:name "result", :type "management.ExtensionInfo"}]}}]}
     {:id ::get-permission-warnings-by-id,
@@ -169,6 +172,7 @@
      :params
      [{:name "id", :type "string"}
       {:name "callback",
+       :optional? true,
        :type :callback,
        :callback {:params [{:name "permission-warnings", :type "[array-of-strings]"}]}}]}
     {:id ::get-permission-warnings-by-manifest,
@@ -178,32 +182,38 @@
      :params
      [{:name "manifest-str", :type "string"}
       {:name "callback",
+       :optional? true,
        :type :callback,
        :callback {:params [{:name "permission-warnings", :type "[array-of-strings]"}]}}]}
     {:id ::set-enabled,
      :name "setEnabled",
      :callback? true,
      :params
-     [{:name "id", :type "string"} {:name "enabled", :type "boolean"} {:name "callback", :type :callback}]}
+     [{:name "id", :type "string"}
+      {:name "enabled", :type "boolean"}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::uninstall,
      :name "uninstall",
      :callback? true,
      :params
-     [{:name "id", :type "string"} {:name "options", :type "object"} {:name "callback", :type :callback}]}
+     [{:name "id", :type "string"}
+      {:name "options", :optional? true, :type "object"}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::uninstall-self,
      :name "uninstallSelf",
      :since "26",
      :callback? true,
-     :params [{:name "options", :type "object"} {:name "callback", :type :callback}]}
+     :params
+     [{:name "options", :optional? true, :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::launch-app,
      :name "launchApp",
      :callback? true,
-     :params [{:name "id", :type "string"} {:name "callback", :type :callback}]}
+     :params [{:name "id", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::create-app-shortcut,
      :name "createAppShortcut",
      :since "37",
      :callback? true,
-     :params [{:name "id", :type "string"} {:name "callback", :type :callback}]}
+     :params [{:name "id", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::set-launch-type,
      :name "setLaunchType",
      :since "37",
@@ -211,7 +221,7 @@
      :params
      [{:name "id", :type "string"}
       {:name "launch-type", :type "management.LaunchType"}
-      {:name "callback", :type :callback}]}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::generate-app-for-link,
      :name "generateAppForLink",
      :since "37",
@@ -220,6 +230,7 @@
      [{:name "url", :type "string"}
       {:name "title", :type "string"}
       {:name "callback",
+       :optional? true,
        :type :callback,
        :callback {:params [{:name "result", :type "management.ExtensionInfo"}]}}]}],
    :events

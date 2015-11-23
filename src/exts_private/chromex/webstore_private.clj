@@ -107,7 +107,7 @@
    [{:id ::install,
      :name "install",
      :callback? true,
-     :params [{:name "expected-id", :type "string"} {:name "callback", :type :callback}]}
+     :params [{:name "expected-id", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::begin-install-with-manifest3,
      :name "beginInstallWithManifest3",
      :since "16",
@@ -115,13 +115,14 @@
      :params
      [{:name "details", :type "object"}
       {:name "callback",
+       :optional? true,
        :type :callback,
        :callback {:params [{:name "result", :type "webstorePrivate.Result"}]}}]}
     {:id ::complete-install,
      :name "completeInstall",
      :since "8",
      :callback? true,
-     :params [{:name "expected-id", :type "string"} {:name "callback", :type :callback}]}
+     :params [{:name "expected-id", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::install-bundle,
      :name "installBundle",
      :since "19",
@@ -129,12 +130,12 @@
      :params
      [{:name "details", :type "object"}
       {:name "contents", :type "[array-of-objects]"}
-      {:name "callback", :type :callback}]}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::enable-app-launcher,
      :name "enableAppLauncher",
      :since "28",
      :callback? true,
-     :params [{:name "callback", :type :callback}]}
+     :params [{:name "callback", :optional? true, :type :callback}]}
     {:id ::get-browser-login,
      :name "getBrowserLogin",
      :since "8",
@@ -147,7 +148,7 @@
     {:id ::set-store-login,
      :name "setStoreLogin",
      :callback? true,
-     :params [{:name "login", :type "string"} {:name "callback", :type :callback}]}
+     :params [{:name "login", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-web-gl-status,
      :name "getWebGLStatus",
      :since "18",
@@ -181,6 +182,7 @@
      :params
      [{:name "id", :type "string"}
       {:name "callback",
+       :optional? true,
        :type :callback,
        :callback {:params [{:name "result", :type "webstorePrivate.Result"}]}}]}]})
 

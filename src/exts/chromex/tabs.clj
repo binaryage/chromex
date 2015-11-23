@@ -290,11 +290,14 @@
     {:id ::get-current,
      :name "getCurrent",
      :callback? true,
-     :params [{:name "callback", :type :callback, :callback {:params [{:name "tab", :type "tabs.Tab"}]}}]}
+     :params
+     [{:name "callback",
+       :type :callback,
+       :callback {:params [{:name "tab", :optional? true, :type "tabs.Tab"}]}}]}
     {:id ::connect,
      :name "connect",
      :return-type "runtime.Port",
-     :params [{:name "tab-id", :type "integer"} {:name "connect-info", :type "object"}]}
+     :params [{:name "tab-id", :type "integer"} {:name "connect-info", :optional? true, :type "object"}]}
     {:id ::send-request,
      :name "sendRequest",
      :since "33",
@@ -303,7 +306,10 @@
      :params
      [{:name "tab-id", :type "integer"}
       {:name "request", :type "any"}
-      {:name "response-callback", :type :callback, :callback {:params [{:name "response", :type "any"}]}}]}
+      {:name "response-callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "response", :type "any"}]}}]}
     {:id ::send-message,
      :name "sendMessage",
      :since "20",
@@ -311,15 +317,18 @@
      :params
      [{:name "tab-id", :type "integer"}
       {:name "message", :type "any"}
-      {:name "options", :type "object"}
-      {:name "response-callback", :type :callback, :callback {:params [{:name "response", :type "any"}]}}]}
+      {:name "options", :optional? true, :type "object"}
+      {:name "response-callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "response", :type "any"}]}}]}
     {:id ::get-selected,
      :name "getSelected",
      :since "33",
      :deprecated "Please use 'tabs.query' {active: true}.",
      :callback? true,
      :params
-     [{:name "window-id", :type "integer"}
+     [{:name "window-id", :optional? true, :type "integer"}
       {:name "callback", :type :callback, :callback {:params [{:name "tab", :type "tabs.Tab"}]}}]}
     {:id ::get-all-in-window,
      :name "getAllInWindow",
@@ -327,21 +336,27 @@
      :deprecated "Please use 'tabs.query' {windowId: windowId}.",
      :callback? true,
      :params
-     [{:name "window-id", :type "integer"}
+     [{:name "window-id", :optional? true, :type "integer"}
       {:name "callback", :type :callback, :callback {:params [{:name "tabs", :type "[array-of-tabs.Tabs]"}]}}]}
     {:id ::create,
      :name "create",
      :callback? true,
      :params
      [{:name "create-properties", :type "object"}
-      {:name "callback", :type :callback, :callback {:params [{:name "tab", :type "tabs.Tab"}]}}]}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "tab", :type "tabs.Tab"}]}}]}
     {:id ::duplicate,
      :name "duplicate",
      :since "23",
      :callback? true,
      :params
      [{:name "tab-id", :type "integer"}
-      {:name "callback", :type :callback, :callback {:params [{:name "tab", :type "tabs.Tab"}]}}]}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "tab", :optional? true, :type "tabs.Tab"}]}}]}
     {:id ::query,
      :name "query",
      :since "16",
@@ -357,14 +372,20 @@
      :callback? true,
      :params
      [{:name "highlight-info", :type "object"}
-      {:name "callback", :type :callback, :callback {:params [{:name "window", :type "windows.Window"}]}}]}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "window", :type "windows.Window"}]}}]}
     {:id ::update,
      :name "update",
      :callback? true,
      :params
-     [{:name "tab-id", :type "integer"}
+     [{:name "tab-id", :optional? true, :type "integer"}
       {:name "update-properties", :type "object"}
-      {:name "callback", :type :callback, :callback {:params [{:name "tab", :type "tabs.Tab"}]}}]}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "tab", :optional? true, :type "tabs.Tab"}]}}]}
     {:id ::move,
      :name "move",
      :callback? true,
@@ -372,6 +393,7 @@
      [{:name "tab-ids", :type "integer-or-[array-of-integers]"}
       {:name "move-properties", :type "object"}
       {:name "callback",
+       :optional? true,
        :type :callback,
        :callback {:params [{:name "tabs", :type "tabs.Tab-or-[array-of-tabs.Tabs]"}]}}]}
     {:id ::reload,
@@ -379,67 +401,74 @@
      :since "16",
      :callback? true,
      :params
-     [{:name "tab-id", :type "integer"}
-      {:name "reload-properties", :type "object"}
-      {:name "callback", :type :callback}]}
+     [{:name "tab-id", :optional? true, :type "integer"}
+      {:name "reload-properties", :optional? true, :type "object"}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove,
      :name "remove",
      :callback? true,
-     :params [{:name "tab-ids", :type "integer-or-[array-of-integers]"} {:name "callback", :type :callback}]}
+     :params
+     [{:name "tab-ids", :type "integer-or-[array-of-integers]"}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::detect-language,
      :name "detectLanguage",
      :callback? true,
      :params
-     [{:name "tab-id", :type "integer"}
+     [{:name "tab-id", :optional? true, :type "integer"}
       {:name "callback", :type :callback, :callback {:params [{:name "language", :type "string"}]}}]}
     {:id ::capture-visible-tab,
      :name "captureVisibleTab",
      :callback? true,
      :params
-     [{:name "window-id", :type "integer"}
-      {:name "options", :type "object"}
+     [{:name "window-id", :optional? true, :type "integer"}
+      {:name "options", :optional? true, :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "data-url", :type "string"}]}}]}
     {:id ::execute-script,
      :name "executeScript",
      :callback? true,
      :params
-     [{:name "tab-id", :type "integer"}
+     [{:name "tab-id", :optional? true, :type "integer"}
       {:name "details", :type "object"}
-      {:name "callback", :type :callback, :callback {:params [{:name "result", :type "[array-of-anys]"}]}}]}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "result", :optional? true, :type "[array-of-anys]"}]}}]}
     {:id ::insert-css,
      :name "insertCSS",
      :callback? true,
      :params
-     [{:name "tab-id", :type "integer"} {:name "details", :type "object"} {:name "callback", :type :callback}]}
+     [{:name "tab-id", :optional? true, :type "integer"}
+      {:name "details", :type "object"}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::set-zoom,
      :name "setZoom",
      :since "42",
      :callback? true,
      :params
-     [{:name "tab-id", :type "integer"}
+     [{:name "tab-id", :optional? true, :type "integer"}
       {:name "zoom-factor", :type "double"}
-      {:name "callback", :type :callback}]}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-zoom,
      :name "getZoom",
      :since "42",
      :callback? true,
      :params
-     [{:name "tab-id", :type "integer"}
+     [{:name "tab-id", :optional? true, :type "integer"}
       {:name "callback", :type :callback, :callback {:params [{:name "zoom-factor", :type "double"}]}}]}
     {:id ::set-zoom-settings,
      :name "setZoomSettings",
      :since "42",
      :callback? true,
      :params
-     [{:name "tab-id", :type "integer"}
+     [{:name "tab-id", :optional? true, :type "integer"}
       {:name "zoom-settings", :type "tabs.ZoomSettings"}
-      {:name "callback", :type :callback}]}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-zoom-settings,
      :name "getZoomSettings",
      :since "42",
      :callback? true,
      :params
-     [{:name "tab-id", :type "integer"}
+     [{:name "tab-id", :optional? true, :type "integer"}
       {:name "callback",
        :type :callback,
        :callback {:params [{:name "zoom-settings", :type "tabs.ZoomSettings"}]}}]}],

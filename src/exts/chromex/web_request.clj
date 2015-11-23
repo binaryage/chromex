@@ -103,7 +103,7 @@
    [{:id ::handler-behavior-changed,
      :name "handlerBehaviorChanged",
      :callback? true,
-     :params [{:name "callback", :type :callback}]}],
+     :params [{:name "callback", :optional? true, :type :callback}]}],
    :events
    [{:id ::on-before-request, :name "onBeforeRequest", :params [{:name "details", :type "object"}]}
     {:id ::on-before-send-headers, :name "onBeforeSendHeaders", :params [{:name "details", :type "object"}]}
@@ -111,7 +111,7 @@
     {:id ::on-headers-received, :name "onHeadersReceived", :params [{:name "details", :type "object"}]}
     {:id ::on-auth-required,
      :name "onAuthRequired",
-     :params [{:name "details", :type "object"} {:name "callback", :type :callback}]}
+     :params [{:name "details", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::on-response-started, :name "onResponseStarted", :params [{:name "details", :type "object"}]}
     {:id ::on-before-redirect, :name "onBeforeRedirect", :params [{:name "details", :type "object"}]}
     {:id ::on-completed, :name "onCompleted", :params [{:name "details", :type "object"}]}

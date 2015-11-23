@@ -75,38 +75,41 @@
    [{:id ::set-adapter-state,
      :name "setAdapterState",
      :callback? true,
-     :params [{:name "adapter-state", :type "object"} {:name "callback", :type :callback}]}
+     :params [{:name "adapter-state", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::set-pairing-response,
      :name "setPairingResponse",
      :callback? true,
-     :params [{:name "options", :type "object"} {:name "callback", :type :callback}]}
+     :params [{:name "options", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::disconnect-all,
      :name "disconnectAll",
      :since "41",
      :callback? true,
-     :params [{:name "device-address", :type "string"} {:name "callback", :type :callback}]}
+     :params [{:name "device-address", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::forget-device,
      :name "forgetDevice",
      :since "48",
      :callback? true,
-     :params [{:name "device-address", :type "string"} {:name "callback", :type :callback}]}
+     :params [{:name "device-address", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::set-discovery-filter,
      :name "setDiscoveryFilter",
      :since "43",
      :callback? true,
-     :params [{:name "discovery-filter", :type "object"} {:name "callback", :type :callback}]}
+     :params [{:name "discovery-filter", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::connect,
      :name "connect",
      :since "48",
      :callback? true,
      :params
      [{:name "device-address", :type "string"}
-      {:name "callback", :type :callback, :callback {:params [{:name "result", :type "unknown-type"}]}}]}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "result", :type "unknown-type"}]}}]}
     {:id ::pair,
      :name "pair",
      :since "47",
      :callback? true,
-     :params [{:name "device-address", :type "string"} {:name "callback", :type :callback}]}],
+     :params [{:name "device-address", :type "string"} {:name "callback", :optional? true, :type :callback}]}],
    :events [{:id ::on-pairing, :name "onPairing", :params [{:name "pairing-event", :type "object"}]}]})
 
 ; -- helpers --------------------------------------------------------------------------------------------------------

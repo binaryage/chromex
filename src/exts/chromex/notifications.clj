@@ -108,22 +108,31 @@
      :name "create",
      :callback? true,
      :params
-     [{:name "notification-id", :type "string"}
+     [{:name "notification-id", :optional? true, :type "string"}
       {:name "options", :type "notifications.NotificationOptions"}
-      {:name "callback", :type :callback, :callback {:params [{:name "notification-id", :type "string"}]}}]}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "notification-id", :type "string"}]}}]}
     {:id ::update,
      :name "update",
      :callback? true,
      :params
      [{:name "notification-id", :type "string"}
       {:name "options", :type "notifications.NotificationOptions"}
-      {:name "callback", :type :callback, :callback {:params [{:name "was-updated", :type "boolean"}]}}]}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "was-updated", :type "boolean"}]}}]}
     {:id ::clear,
      :name "clear",
      :callback? true,
      :params
      [{:name "notification-id", :type "string"}
-      {:name "callback", :type :callback, :callback {:params [{:name "was-cleared", :type "boolean"}]}}]}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "was-cleared", :type "boolean"}]}}]}
     {:id ::get-all,
      :name "getAll",
      :since "29",

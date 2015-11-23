@@ -66,7 +66,7 @@
      :name "getRecentlyClosed",
      :callback? true,
      :params
-     [{:name "filter", :type "sessions.Filter"}
+     [{:name "filter", :optional? true, :type "sessions.Filter"}
       {:name "callback",
        :type :callback,
        :callback {:params [{:name "sessions", :type "[array-of-sessions.Sessions]"}]}}]}
@@ -74,7 +74,7 @@
      :name "getDevices",
      :callback? true,
      :params
-     [{:name "filter", :type "sessions.Filter"}
+     [{:name "filter", :optional? true, :type "sessions.Filter"}
       {:name "callback",
        :type :callback,
        :callback {:params [{:name "devices", :type "[array-of-sessions.Devices]"}]}}]}
@@ -82,8 +82,9 @@
      :name "restore",
      :callback? true,
      :params
-     [{:name "session-id", :type "string"}
+     [{:name "session-id", :optional? true, :type "string"}
       {:name "callback",
+       :optional? true,
        :type :callback,
        :callback {:params [{:name "restored-session", :type "sessions.Session"}]}}]}],
    :events [{:id ::on-changed, :name "onChanged"}]})

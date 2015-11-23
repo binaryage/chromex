@@ -471,13 +471,17 @@
      :callback? true,
      :params
      [{:name "entry", :type "object"}
-      {:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "success", :optional? true, :type "boolean"}]}}]}
     {:id ::remove-file-watch,
      :name "removeFileWatch",
      :callback? true,
      :params
      [{:name "entry", :type "object"}
-      {:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "success", :optional? true, :type "boolean"}]}}]}
     {:id ::enable-external-file-scheme, :name "enableExternalFileScheme", :since "43"}
     {:id ::grant-access,
      :name "grantAccess",
@@ -561,7 +565,9 @@
      :callback? true,
      :params
      [{:name "volume-id", :type "string"}
-      {:name "callback", :type :callback, :callback {:params [{:name "size-stats", :type "object"}]}}]}
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "size-stats", :optional? true, :type "object"}]}}]}
     {:id ::format-volume, :name "formatVolume", :params [{:name "volume-id", :type "string"}]}
     {:id ::get-preferences,
      :name "getPreferences",
@@ -600,7 +606,9 @@
      [{:name "parent-entry", :type "object"}
       {:name "entries", :type "[array-of-objects]"}
       {:name "dest-name", :type "string"}
-      {:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "success", :optional? true, :type "boolean"}]}}]}
     {:id ::get-drive-connection-state,
      :name "getDriveConnectionState",
      :callback? true,

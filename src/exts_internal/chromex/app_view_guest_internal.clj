@@ -41,7 +41,10 @@
      :name "attachFrame",
      :callback? true,
      :params
-     [{:name "callback", :type :callback, :callback {:params [{:name "instance-id", :type "integer"}]}}]}
+     [{:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "instance-id", :type "integer"}]}}]}
     {:id ::deny-request, :name "denyRequest"}]})
 
 ; -- helpers --------------------------------------------------------------------------------------------------------

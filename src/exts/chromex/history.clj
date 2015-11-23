@@ -94,11 +94,11 @@
     {:id ::add-url,
      :name "addUrl",
      :callback? true,
-     :params [{:name "details", :type "object"} {:name "callback", :type :callback}]}
+     :params [{:name "details", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::delete-url,
      :name "deleteUrl",
      :callback? true,
-     :params [{:name "details", :type "object"} {:name "callback", :type :callback}]}
+     :params [{:name "details", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::delete-range,
      :name "deleteRange",
      :callback? true,

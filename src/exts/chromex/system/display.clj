@@ -69,7 +69,10 @@
     {:id ::set-display-properties,
      :name "setDisplayProperties",
      :callback? true,
-     :params [{:name "id", :type "string"} {:name "info", :type "object"} {:name "callback", :type :callback}]}
+     :params
+     [{:name "id", :type "string"}
+      {:name "info", :type "object"}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::enable-unified-desktop,
      :name "enableUnifiedDesktop",
      :since "46",

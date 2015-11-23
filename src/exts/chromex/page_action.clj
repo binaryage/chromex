@@ -91,7 +91,7 @@
     {:id ::set-icon,
      :name "setIcon",
      :callback? true,
-     :params [{:name "details", :type "object"} {:name "callback", :type :callback}]}
+     :params [{:name "details", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::set-popup, :name "setPopup", :params [{:name "details", :type "object"}]}
     {:id ::get-popup,
      :name "getPopup",

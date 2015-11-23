@@ -74,7 +74,7 @@
      :params
      [{:name "guid", :type "string"}
       {:name "result", :type "unknown-type"}
-      {:name "callback", :type :callback}]}],
+      {:name "callback", :optional? true, :type :callback}]}],
    :events
    [{:id ::on-captive-portal-detected,
      :name "onCaptivePortalDetected",

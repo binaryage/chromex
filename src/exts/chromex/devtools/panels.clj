@@ -81,6 +81,7 @@
       {:name "icon-path", :type "string"}
       {:name "page-path", :type "string"}
       {:name "callback",
+       :optional? true,
        :type :callback,
        :callback {:params [{:name "panel", :type "devtools.panels.ExtensionPanel"}]}}]}
     {:id ::set-open-resource-handler,
@@ -88,6 +89,7 @@
      :callback? true,
      :params
      [{:name "callback",
+       :optional? true,
        :type :callback,
        :callback {:params [{:name "resource", :type "devtools.inspectedWindow.Resource"}]}}]}
     {:id ::open-resource,
@@ -97,7 +99,7 @@
      :params
      [{:name "url", :type "string"}
       {:name "line-number", :type "integer"}
-      {:name "callback", :type :callback}]}]})
+      {:name "callback", :optional? true, :type :callback}]}]})
 
 ; -- helpers --------------------------------------------------------------------------------------------------------
 

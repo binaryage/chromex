@@ -37,7 +37,7 @@
    :events
    [{:id ::on-clicked,
      :name "onClicked",
-     :params [{:name "info", :type "object"} {:name "tab", :type "tabs.Tab"}]}]})
+     :params [{:name "info", :type "object"} {:name "tab", :optional? true, :type "tabs.Tab"}]}]})
 
 ; -- helpers --------------------------------------------------------------------------------------------------------
 

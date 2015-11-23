@@ -49,6 +49,7 @@
      :callback? true,
      :params
      [{:name "callback",
+       :optional? true,
        :type :callback,
        :callback {:params [{:name "commands", :type "[array-of-commands.Commands]"}]}}]}],
    :events [{:id ::on-command, :name "onCommand", :params [{:name "command", :type "string"}]}]})

@@ -82,14 +82,20 @@
      :callback? true,
      :params
      [{:name "pid", :type "integer"}
-      {:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::send-input,
      :name "sendInput",
      :callback? true,
      :params
      [{:name "pid", :type "integer"}
       {:name "input", :type "string"}
-      {:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::on-terminal-resize,
      :name "onTerminalResize",
      :since "19",
@@ -98,7 +104,10 @@
      [{:name "pid", :type "integer"}
       {:name "width", :type "integer"}
       {:name "height", :type "integer"}
-      {:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}],
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "success", :type "boolean"}]}}]}],
    :events
    [{:id ::on-process-output,
      :name "onProcessOutput",

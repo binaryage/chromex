@@ -117,21 +117,24 @@
      :deprecated "Please use 'runtime.sendMessage'.",
      :callback? true,
      :params
-     [{:name "extension-id", :type "string"}
+     [{:name "extension-id", :optional? true, :type "string"}
       {:name "request", :type "any"}
-      {:name "response-callback", :type :callback, :callback {:params [{:name "response", :type "any"}]}}]}
+      {:name "response-callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "response", :type "any"}]}}]}
     {:id ::get-url, :name "getURL", :return-type "string", :params [{:name "path", :type "string"}]}
     {:id ::get-views,
      :name "getViews",
      :return-type "[array-of-Windows]",
-     :params [{:name "fetch-properties", :type "object"}]}
+     :params [{:name "fetch-properties", :optional? true, :type "object"}]}
     {:id ::get-background-page, :name "getBackgroundPage", :return-type "Window"}
     {:id ::get-extension-tabs,
      :name "getExtensionTabs",
      :since "33",
      :deprecated "Please use 'extension.getViews' {type: \"tab\"}.",
      :return-type "[array-of-Windows]",
-     :params [{:name "window-id", :type "integer"}]}
+     :params [{:name "window-id", :optional? true, :type "integer"}]}
     {:id ::is-allowed-incognito-access,
      :name "isAllowedIncognitoAccess",
      :since "12",
@@ -154,7 +157,7 @@
      :since "33",
      :deprecated "Please use 'runtime.onMessage'.",
      :params
-     [{:name "request", :type "any"}
+     [{:name "request", :optional? true, :type "any"}
       {:name "sender", :type "runtime.MessageSender"}
       {:name "send-response", :type :callback}]}
     {:id ::on-request-external,
@@ -162,7 +165,7 @@
      :since "33",
      :deprecated "Please use 'runtime.onMessageExternal'.",
      :params
-     [{:name "request", :type "any"}
+     [{:name "request", :optional? true, :type "any"}
       {:name "sender", :type "runtime.MessageSender"}
       {:name "send-response", :type :callback}]}]})
 

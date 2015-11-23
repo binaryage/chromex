@@ -46,7 +46,7 @@
      :callback? true,
      :params
      [{:name "module-name", :type "string"}
-      {:name "dependencies", :type "[array-of-strings]"}
+      {:name "dependencies", :optional? true, :type "[array-of-strings]"}
       {:name "factory", :type :callback, :callback {:params [{:name "modules", :type "[array-of-anys]"}]}}]}
     {:id ::require-async, :name "requireAsync", :return-type "any", :params [{:name "name", :type "string"}]}]})
 

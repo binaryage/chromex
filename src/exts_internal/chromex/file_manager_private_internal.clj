@@ -114,14 +114,18 @@
      :callback? true,
      :params
      [{:name "url", :type "string"}
-      {:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "success", :optional? true, :type "boolean"}]}}]}
     {:id ::remove-file-watch,
      :name "removeFileWatch",
      :since "45",
      :callback? true,
      :params
      [{:name "url", :type "string"}
-      {:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "success", :optional? true, :type "boolean"}]}}]}
     {:id ::get-custom-actions,
      :name "getCustomActions",
      :since "47",
@@ -223,7 +227,7 @@
      :name "cancelFileTransfers",
      :since "46",
      :callback? true,
-     :params [{:name "urls", :type "[array-of-strings]"} {:name "callback", :type :callback}]}
+     :params [{:name "urls", :type "[array-of-strings]"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::start-copy,
      :name "startCopy",
      :since "46",
@@ -241,7 +245,9 @@
      [{:name "parent-url", :type "string"}
       {:name "urls", :type "[array-of-strings]"}
       {:name "dest-name", :type "string"}
-      {:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "success", :optional? true, :type "boolean"}]}}]}
     {:id ::validate-path-name-length,
      :name "validatePathNameLength",
      :since "46",

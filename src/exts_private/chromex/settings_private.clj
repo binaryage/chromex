@@ -101,7 +101,10 @@
      :callback? true,
      :params
      [{:name "percent", :type "integer"}
-      {:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}],
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "success", :type "boolean"}]}}]}],
    :events
    [{:id ::on-prefs-changed,
      :name "onPrefsChanged",

@@ -90,7 +90,10 @@
      :callback? true,
      :params
      [{:name "process-id", :type "integer"}
-      {:name "callback", :type :callback, :callback {:params [{:name "did-terminate", :type "boolean"}]}}]}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "did-terminate", :type "boolean"}]}}]}
     {:id ::get-process-id-for-tab,
      :name "getProcessIdForTab",
      :callback? true,

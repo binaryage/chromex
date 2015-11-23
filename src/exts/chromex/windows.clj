@@ -105,25 +105,25 @@
      :callback? true,
      :params
      [{:name "window-id", :type "integer"}
-      {:name "get-info", :type "object"}
+      {:name "get-info", :optional? true, :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "window", :type "windows.Window"}]}}]}
     {:id ::get-current,
      :name "getCurrent",
      :callback? true,
      :params
-     [{:name "get-info", :type "object"}
+     [{:name "get-info", :optional? true, :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "window", :type "windows.Window"}]}}]}
     {:id ::get-last-focused,
      :name "getLastFocused",
      :callback? true,
      :params
-     [{:name "get-info", :type "object"}
+     [{:name "get-info", :optional? true, :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "window", :type "windows.Window"}]}}]}
     {:id ::get-all,
      :name "getAll",
      :callback? true,
      :params
-     [{:name "get-info", :type "object"}
+     [{:name "get-info", :optional? true, :type "object"}
       {:name "callback",
        :type :callback,
        :callback {:params [{:name "windows", :type "[array-of-windows.Windows]"}]}}]}
@@ -131,19 +131,25 @@
      :name "create",
      :callback? true,
      :params
-     [{:name "create-data", :type "object"}
-      {:name "callback", :type :callback, :callback {:params [{:name "window", :type "windows.Window"}]}}]}
+     [{:name "create-data", :optional? true, :type "object"}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "window", :optional? true, :type "windows.Window"}]}}]}
     {:id ::update,
      :name "update",
      :callback? true,
      :params
      [{:name "window-id", :type "integer"}
       {:name "update-info", :type "object"}
-      {:name "callback", :type :callback, :callback {:params [{:name "window", :type "windows.Window"}]}}]}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "window", :type "windows.Window"}]}}]}
     {:id ::remove,
      :name "remove",
      :callback? true,
-     :params [{:name "window-id", :type "integer"} {:name "callback", :type :callback}]}],
+     :params [{:name "window-id", :type "integer"} {:name "callback", :optional? true, :type :callback}]}],
    :events
    [{:id ::on-created, :name "onCreated", :params [{:name "window", :type "windows.Window"}]}
     {:id ::on-removed, :name "onRemoved", :params [{:name "window-id", :type "integer"}]}

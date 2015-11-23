@@ -131,17 +131,20 @@
    [{:id ::clear-font,
      :name "clearFont",
      :callback? true,
-     :params [{:name "details", :type "object"} {:name "callback", :type :callback}]}
+     :params [{:name "details", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-font,
      :name "getFont",
      :callback? true,
      :params
      [{:name "details", :type "object"}
-      {:name "callback", :type :callback, :callback {:params [{:name "details", :type "object"}]}}]}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "details", :type "object"}]}}]}
     {:id ::set-font,
      :name "setFont",
      :callback? true,
-     :params [{:name "details", :type "object"} {:name "callback", :type :callback}]}
+     :params [{:name "details", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-font-list,
      :name "getFontList",
      :callback? true,
@@ -152,45 +155,57 @@
     {:id ::clear-default-font-size,
      :name "clearDefaultFontSize",
      :callback? true,
-     :params [{:name "details", :type "object"} {:name "callback", :type :callback}]}
+     :params
+     [{:name "details", :optional? true, :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-default-font-size,
      :name "getDefaultFontSize",
      :callback? true,
      :params
-     [{:name "details", :type "object"}
-      {:name "callback", :type :callback, :callback {:params [{:name "details", :type "object"}]}}]}
+     [{:name "details", :optional? true, :type "object"}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "details", :type "object"}]}}]}
     {:id ::set-default-font-size,
      :name "setDefaultFontSize",
      :callback? true,
-     :params [{:name "details", :type "object"} {:name "callback", :type :callback}]}
+     :params [{:name "details", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::clear-default-fixed-font-size,
      :name "clearDefaultFixedFontSize",
      :callback? true,
-     :params [{:name "details", :type "object"} {:name "callback", :type :callback}]}
+     :params
+     [{:name "details", :optional? true, :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-default-fixed-font-size,
      :name "getDefaultFixedFontSize",
      :callback? true,
      :params
-     [{:name "details", :type "object"}
-      {:name "callback", :type :callback, :callback {:params [{:name "details", :type "object"}]}}]}
+     [{:name "details", :optional? true, :type "object"}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "details", :type "object"}]}}]}
     {:id ::set-default-fixed-font-size,
      :name "setDefaultFixedFontSize",
      :callback? true,
-     :params [{:name "details", :type "object"} {:name "callback", :type :callback}]}
+     :params [{:name "details", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::clear-minimum-font-size,
      :name "clearMinimumFontSize",
      :callback? true,
-     :params [{:name "details", :type "object"} {:name "callback", :type :callback}]}
+     :params
+     [{:name "details", :optional? true, :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-minimum-font-size,
      :name "getMinimumFontSize",
      :callback? true,
      :params
-     [{:name "details", :type "object"}
-      {:name "callback", :type :callback, :callback {:params [{:name "details", :type "object"}]}}]}
+     [{:name "details", :optional? true, :type "object"}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "details", :type "object"}]}}]}
     {:id ::set-minimum-font-size,
      :name "setMinimumFontSize",
      :callback? true,
-     :params [{:name "details", :type "object"} {:name "callback", :type :callback}]}],
+     :params [{:name "details", :type "object"} {:name "callback", :optional? true, :type :callback}]}],
    :events
    [{:id ::on-font-changed, :name "onFontChanged", :params [{:name "details", :type "object"}]}
     {:id ::on-default-font-size-changed,

@@ -180,56 +180,74 @@
      :callback? true,
      :params
      [{:name "parameters", :type "object"}
-      {:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::clear-composition,
      :name "clearComposition",
      :callback? true,
      :params
      [{:name "parameters", :type "object"}
-      {:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::commit-text,
      :name "commitText",
      :callback? true,
      :params
      [{:name "parameters", :type "object"}
-      {:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::send-key-events,
      :name "sendKeyEvents",
      :since "33",
      :callback? true,
-     :params [{:name "parameters", :type "object"} {:name "callback", :type :callback}]}
+     :params [{:name "parameters", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::hide-input-view, :name "hideInputView", :since "34"}
     {:id ::set-candidate-window-properties,
      :name "setCandidateWindowProperties",
      :callback? true,
      :params
      [{:name "parameters", :type "object"}
-      {:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::set-candidates,
      :name "setCandidates",
      :callback? true,
      :params
      [{:name "parameters", :type "object"}
-      {:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::set-cursor-position,
      :name "setCursorPosition",
      :callback? true,
      :params
      [{:name "parameters", :type "object"}
-      {:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::set-menu-items,
      :name "setMenuItems",
      :callback? true,
-     :params [{:name "parameters", :type "object"} {:name "callback", :type :callback}]}
+     :params [{:name "parameters", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::update-menu-items,
      :name "updateMenuItems",
      :callback? true,
-     :params [{:name "parameters", :type "object"} {:name "callback", :type :callback}]}
+     :params [{:name "parameters", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::delete-surrounding-text,
      :name "deleteSurroundingText",
      :since "27",
      :callback? true,
-     :params [{:name "parameters", :type "object"} {:name "callback", :type :callback}]}
+     :params [{:name "parameters", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::key-event-handled,
      :name "keyEventHandled",
      :since "25",

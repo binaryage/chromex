@@ -109,7 +109,7 @@
     {:id ::set-icon,
      :name "setIcon",
      :callback? true,
-     :params [{:name "details", :type "object"} {:name "callback", :type :callback}]}
+     :params [{:name "details", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::set-popup, :name "setPopup", :params [{:name "details", :type "object"}]}
     {:id ::get-popup,
      :name "getPopup",
@@ -138,8 +138,11 @@
       {:name "callback",
        :type :callback,
        :callback {:params [{:name "result", :type "browserAction.ColorArray"}]}}]}
-    {:id ::enable, :name "enable", :since "22", :params [{:name "tab-id", :type "integer"}]}
-    {:id ::disable, :name "disable", :since "22", :params [{:name "tab-id", :type "integer"}]}],
+    {:id ::enable, :name "enable", :since "22", :params [{:name "tab-id", :optional? true, :type "integer"}]}
+    {:id ::disable,
+     :name "disable",
+     :since "22",
+     :params [{:name "tab-id", :optional? true, :type "integer"}]}],
    :events [{:id ::on-clicked, :name "onClicked", :params [{:name "tab", :type "tabs.Tab"}]}]})
 
 ; -- helpers --------------------------------------------------------------------------------------------------------

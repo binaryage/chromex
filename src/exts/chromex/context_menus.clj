@@ -87,24 +87,29 @@
      :name "create",
      :callback? true,
      :return-type "integer-or-string",
-     :params [{:name "create-properties", :type "object"} {:name "callback", :type :callback}]}
+     :params
+     [{:name "create-properties", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::update,
      :name "update",
      :callback? true,
      :params
      [{:name "id", :type "integer-or-string"}
       {:name "update-properties", :type "object"}
-      {:name "callback", :type :callback}]}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove,
      :name "remove",
      :callback? true,
-     :params [{:name "menu-item-id", :type "integer-or-string"} {:name "callback", :type :callback}]}
-    {:id ::remove-all, :name "removeAll", :callback? true, :params [{:name "callback", :type :callback}]}],
+     :params
+     [{:name "menu-item-id", :type "integer-or-string"} {:name "callback", :optional? true, :type :callback}]}
+    {:id ::remove-all,
+     :name "removeAll",
+     :callback? true,
+     :params [{:name "callback", :optional? true, :type :callback}]}],
    :events
    [{:id ::on-clicked,
      :name "onClicked",
      :since "21",
-     :params [{:name "info", :type "object"} {:name "tab", :type "tabs.Tab"}]}]})
+     :params [{:name "info", :type "object"} {:name "tab", :optional? true, :type "tabs.Tab"}]}]})
 
 ; -- helpers --------------------------------------------------------------------------------------------------------
 

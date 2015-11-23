@@ -321,7 +321,7 @@
      :params
      [{:name "network-guid", :type "string"}
       {:name "properties", :type "networkingPrivate.NetworkConfigProperties"}
-      {:name "callback", :type :callback}]}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::create-network,
      :name "createNetwork",
      :since "31",
@@ -329,12 +329,15 @@
      :params
      [{:name "shared", :type "boolean"}
       {:name "properties", :type "networkingPrivate.NetworkConfigProperties"}
-      {:name "callback", :type :callback, :callback {:params [{:name "result", :type "string"}]}}]}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "result", :type "string"}]}}]}
     {:id ::forget-network,
      :name "forgetNetwork",
      :since "43",
      :callback? true,
-     :params [{:name "network-guid", :type "string"} {:name "callback", :type :callback}]}
+     :params [{:name "network-guid", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-networks,
      :name "getNetworks",
      :since "37",
@@ -381,19 +384,19 @@
     {:id ::start-connect,
      :name "startConnect",
      :callback? true,
-     :params [{:name "network-guid", :type "string"} {:name "callback", :type :callback}]}
+     :params [{:name "network-guid", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::start-disconnect,
      :name "startDisconnect",
      :callback? true,
-     :params [{:name "network-guid", :type "string"} {:name "callback", :type :callback}]}
+     :params [{:name "network-guid", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::start-activate,
      :name "startActivate",
      :since "43",
      :callback? true,
      :params
      [{:name "network-guid", :type "string"}
-      {:name "carrier", :type "string"}
-      {:name "callback", :type :callback}]}
+      {:name "carrier", :optional? true, :type "string"}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::verify-destination,
      :name "verifyDestination",
      :callback? true,
@@ -421,7 +424,10 @@
      :params
      [{:name "ip-or-mac-address", :type "string"}
       {:name "enabled", :type "boolean"}
-      {:name "callback", :type :callback, :callback {:params [{:name "result", :type "string"}]}}]}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "result", :type "string"}]}}]}
     {:id ::get-wifi-tdls-status,
      :name "getWifiTDLSStatus",
      :since "34",
@@ -445,8 +451,8 @@
      :params
      [{:name "network-guid", :type "string"}
       {:name "pin", :type "string"}
-      {:name "puk", :type "string"}
-      {:name "callback", :type :callback}]}
+      {:name "puk", :optional? true, :type "string"}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::set-cellular-sim-state,
      :name "setCellularSimState",
      :since "46",
@@ -454,7 +460,7 @@
      :params
      [{:name "network-guid", :type "string"}
       {:name "sim-state", :type "object"}
-      {:name "callback", :type :callback}]}],
+      {:name "callback", :optional? true, :type :callback}]}],
    :events
    [{:id ::on-networks-changed,
      :name "onNetworksChanged",

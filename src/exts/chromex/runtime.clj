@@ -224,19 +224,21 @@
      :name "getBackgroundPage",
      :callback? true,
      :params
-     [{:name "callback", :type :callback, :callback {:params [{:name "background-page", :type "Window"}]}}]}
+     [{:name "callback",
+       :type :callback,
+       :callback {:params [{:name "background-page", :optional? true, :type "Window"}]}}]}
     {:id ::open-options-page,
      :name "openOptionsPage",
      :since "42",
      :callback? true,
-     :params [{:name "callback", :type :callback}]}
+     :params [{:name "callback", :optional? true, :type :callback}]}
     {:id ::get-manifest, :name "getManifest", :return-type "object"}
     {:id ::get-url, :name "getURL", :return-type "string", :params [{:name "path", :type "string"}]}
     {:id ::set-uninstall-url,
      :name "setUninstallURL",
      :since "41",
      :callback? true,
-     :params [{:name "url", :type "string"} {:name "callback", :type :callback}]}
+     :params [{:name "url", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::reload, :name "reload", :since "25"}
     {:id ::request-update-check,
      :name "requestUpdateCheck",
@@ -247,13 +249,16 @@
        :type :callback,
        :callback
        {:params
-        [{:name "status", :type "runtime.RequestUpdateCheckStatus"} {:name "details", :type "object"}]}}]}
+        [{:name "status", :type "runtime.RequestUpdateCheckStatus"}
+         {:name "details", :optional? true, :type "object"}]}}]}
     {:id ::restart, :name "restart", :since "32"}
     {:id ::connect,
      :name "connect",
      :since "26",
      :return-type "runtime.Port",
-     :params [{:name "extension-id", :type "string"} {:name "connect-info", :type "object"}]}
+     :params
+     [{:name "extension-id", :optional? true, :type "string"}
+      {:name "connect-info", :optional? true, :type "object"}]}
     {:id ::connect-native,
      :name "connectNative",
      :since "28",
@@ -264,10 +269,13 @@
      :since "26",
      :callback? true,
      :params
-     [{:name "extension-id", :type "string"}
+     [{:name "extension-id", :optional? true, :type "string"}
       {:name "message", :type "any"}
-      {:name "options", :type "object"}
-      {:name "response-callback", :type :callback, :callback {:params [{:name "response", :type "any"}]}}]}
+      {:name "options", :optional? true, :type "object"}
+      {:name "response-callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "response", :type "any"}]}}]}
     {:id ::send-native-message,
      :name "sendNativeMessage",
      :since "28",
@@ -275,7 +283,10 @@
      :params
      [{:name "application", :type "string"}
       {:name "message", :type "object"}
-      {:name "response-callback", :type :callback, :callback {:params [{:name "response", :type "any"}]}}]}
+      {:name "response-callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "response", :type "any"}]}}]}
     {:id ::get-platform-info,
      :name "getPlatformInfo",
      :since "29",
@@ -314,14 +325,14 @@
      :name "onMessage",
      :since "26",
      :params
-     [{:name "message", :type "any"}
+     [{:name "message", :optional? true, :type "any"}
       {:name "sender", :type "runtime.MessageSender"}
       {:name "send-response", :type :callback}]}
     {:id ::on-message-external,
      :name "onMessageExternal",
      :since "26",
      :params
-     [{:name "message", :type "any"}
+     [{:name "message", :optional? true, :type "any"}
       {:name "sender", :type "runtime.MessageSender"}
       {:name "send-response", :type :callback}]}
     {:id ::on-restart-required,

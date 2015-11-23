@@ -195,18 +195,20 @@
    [{:id ::copy,
      :name "copy",
      :callback? true,
-     :params [{:name "id-list", :type "[array-of-strings]"} {:name "callback", :type :callback}]}
+     :params
+     [{:name "id-list", :type "[array-of-strings]"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::cut,
      :name "cut",
      :callback? true,
-     :params [{:name "id-list", :type "[array-of-strings]"} {:name "callback", :type :callback}]}
+     :params
+     [{:name "id-list", :type "[array-of-strings]"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::paste,
      :name "paste",
      :callback? true,
      :params
      [{:name "parent-id", :type "string"}
-      {:name "selected-id-list", :type "[array-of-strings]"}
-      {:name "callback", :type :callback}]}
+      {:name "selected-id-list", :optional? true, :type "[array-of-strings]"}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::can-paste,
      :name "canPaste",
      :callback? true,
@@ -221,7 +223,9 @@
     {:id ::start-drag,
      :name "startDrag",
      :params [{:name "id-list", :type "[array-of-strings]"} {:name "is-from-touch", :type "boolean"}]}
-    {:id ::drop, :name "drop", :params [{:name "parent-id", :type "string"} {:name "index", :type "integer"}]}
+    {:id ::drop,
+     :name "drop",
+     :params [{:name "parent-id", :type "string"} {:name "index", :optional? true, :type "integer"}]}
     {:id ::get-subtree,
      :name "getSubtree",
      :callback? true,
@@ -243,7 +247,8 @@
      :name "removeTrees",
      :since "30",
      :callback? true,
-     :params [{:name "id-list", :type "[array-of-strings]"} {:name "callback", :type :callback}]}
+     :params
+     [{:name "id-list", :type "[array-of-strings]"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::record-launch, :name "recordLaunch", :since "27"}
     {:id ::create-with-meta-info,
      :name "createWithMetaInfo",
@@ -253,6 +258,7 @@
      [{:name "bookmark", :type "bookmarks.CreateDetails"}
       {:name "meta-info", :type "bookmarkManagerPrivate.MetaInfoFields"}
       {:name "callback",
+       :optional? true,
        :type :callback,
        :callback {:params [{:name "result", :type "bookmarks.BookmarkTreeNode"}]}}]}
     {:id ::get-meta-info,
@@ -260,9 +266,11 @@
      :since "33",
      :callback? true,
      :params
-     [{:name "id", :type "string"}
-      {:name "key", :type "string"}
-      {:name "callback", :type :callback, :callback {:params [{:name "value", :type "string-or-object"}]}}]}
+     [{:name "id", :optional? true, :type "string"}
+      {:name "key", :optional? true, :type "string"}
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "value", :optional? true, :type "string-or-object"}]}}]}
     {:id ::set-meta-info,
      :name "setMetaInfo",
      :since "33",
@@ -271,7 +279,7 @@
      [{:name "id", :type "string"}
       {:name "key", :type "string"}
       {:name "value", :type "string"}
-      {:name "callback", :type :callback}]}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::update-meta-info,
      :name "updateMetaInfo",
      :since "36",
@@ -279,7 +287,7 @@
      :params
      [{:name "id", :type "string"}
       {:name "meta-info-changes", :type "bookmarkManagerPrivate.MetaInfoFields"}
-      {:name "callback", :type :callback}]}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::undo, :name "undo", :since "34"}
     {:id ::redo, :name "redo", :since "34"}
     {:id ::get-undo-info,
@@ -296,7 +304,7 @@
      :name "setVersion",
      :since "40",
      :callback? true,
-     :params [{:name "version", :type "string"} {:name "callback", :type :callback}]}],
+     :params [{:name "version", :type "string"} {:name "callback", :optional? true, :type :callback}]}],
    :events
    [{:id ::on-drag-enter,
      :name "onDragEnter",

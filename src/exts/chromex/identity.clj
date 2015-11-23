@@ -107,8 +107,11 @@
      :name "getAuthToken",
      :callback? true,
      :params
-     [{:name "details", :type "object"}
-      {:name "callback", :type :callback, :callback {:params [{:name "token", :type "string"}]}}]}
+     [{:name "details", :optional? true, :type "object"}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "token", :optional? true, :type "string"}]}}]}
     {:id ::get-profile-user-info,
      :name "getProfileUserInfo",
      :since "37",
@@ -117,18 +120,20 @@
     {:id ::remove-cached-auth-token,
      :name "removeCachedAuthToken",
      :callback? true,
-     :params [{:name "details", :type "object"} {:name "callback", :type :callback}]}
+     :params [{:name "details", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::launch-web-auth-flow,
      :name "launchWebAuthFlow",
      :callback? true,
      :params
      [{:name "details", :type "object"}
-      {:name "callback", :type :callback, :callback {:params [{:name "response-url", :type "string"}]}}]}
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "response-url", :optional? true, :type "string"}]}}]}
     {:id ::get-redirect-url,
      :name "getRedirectURL",
      :since "33",
      :return-type "string",
-     :params [{:name "path", :type "string"}]}],
+     :params [{:name "path", :optional? true, :type "string"}]}],
    :events
    [{:id ::on-sign-in-changed,
      :name "onSignInChanged",

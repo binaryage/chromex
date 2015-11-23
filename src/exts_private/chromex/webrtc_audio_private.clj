@@ -87,7 +87,7 @@
      :params
      [{:name "request", :type "webrtcAudioPrivate.RequestInfo"}
       {:name "sink-id", :type "string"}
-      {:name "callback", :type :callback}]}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-associated-sink,
      :name "getAssociatedSink",
      :callback? true,

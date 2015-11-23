@@ -68,7 +68,7 @@
     {:id ::get-message,
      :name "getMessage",
      :return-type "string",
-     :params [{:name "message-name", :type "string"} {:name "substitutions", :type "any"}]}
+     :params [{:name "message-name", :type "string"} {:name "substitutions", :optional? true, :type "any"}]}
     {:id ::get-ui-language, :name "getUILanguage", :since "35", :return-type "string"}
     {:id ::detect-language,
      :name "detectLanguage",

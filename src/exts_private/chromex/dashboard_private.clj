@@ -50,6 +50,7 @@
      :params
      [{:name "details", :type "object"}
       {:name "callback",
+       :optional? true,
        :type :callback,
        :callback {:params [{:name "result", :type "dashboardPrivate.Result"}]}}]}
     {:id ::show-permission-prompt-for-delegated-bundle-install,
@@ -58,7 +59,7 @@
      :params
      [{:name "details", :type "object"}
       {:name "contents", :type "[array-of-objects]"}
-      {:name "callback", :type :callback}]}]})
+      {:name "callback", :optional? true, :type :callback}]}]})
 
 ; -- helpers --------------------------------------------------------------------------------------------------------
 

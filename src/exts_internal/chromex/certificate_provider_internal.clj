@@ -52,15 +52,16 @@
      :callback? true,
      :params
      [{:name "request-id", :type "integer"}
-      {:name "signature", :type "ArrayBuffer"}
-      {:name "callback", :type :callback}]}
+      {:name "signature", :optional? true, :type "ArrayBuffer"}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::report-certificates,
      :name "reportCertificates",
      :callback? true,
      :params
      [{:name "request-id", :type "integer"}
-      {:name "certificates", :type "[array-of-certificateProvider.CertificateInfos]"}
+      {:name "certificates", :optional? true, :type "[array-of-certificateProvider.CertificateInfos]"}
       {:name "callback",
+       :optional? true,
        :type :callback,
        :callback {:params [{:name "rejected-certificates", :type "[array-of-ArrayBuffers]"}]}}]}]})
 

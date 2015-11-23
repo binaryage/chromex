@@ -124,7 +124,7 @@
      :name "setCurrentInputMethod",
      :since "37",
      :callback? true,
-     :params [{:name "input-method-id", :type "string"} {:name "callback", :type :callback}]}
+     :params [{:name "input-method-id", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::fetch-all-dictionary-words,
      :name "fetchAllDictionaryWords",
      :since "43",
@@ -135,12 +135,16 @@
      :name "addWordToDictionary",
      :since "43",
      :callback? true,
-     :params [{:name "word", :type "string"} {:name "callback", :type :callback}]}
+     :params [{:name "word", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-encrypt-sync-enabled,
      :name "getEncryptSyncEnabled",
      :since "45",
      :callback? true,
-     :params [{:name "callback", :type :callback, :callback {:params [{:name "enabled", :type "boolean"}]}}]}],
+     :params
+     [{:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "enabled", :type "boolean"}]}}]}],
    :events
    [{:id ::on-changed, :name "onChanged", :params [{:name "new-input-method-id", :type "string"}]}
     {:id ::on-composition-bounds-changed,

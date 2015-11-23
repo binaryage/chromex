@@ -79,18 +79,19 @@
      :name "reportPrinters",
      :params
      [{:name "request-id", :type "integer"}
-      {:name "printers", :type "[array-of-printerProvider.PrinterInfos]"}]}
+      {:name "printers", :optional? true, :type "[array-of-printerProvider.PrinterInfos]"}]}
     {:id ::report-usb-printer-info,
      :name "reportUsbPrinterInfo",
      :since "45",
      :params
-     [{:name "request-id", :type "integer"} {:name "printer-info", :type "printerProvider.PrinterInfo"}]}
+     [{:name "request-id", :type "integer"}
+      {:name "printer-info", :optional? true, :type "printerProvider.PrinterInfo"}]}
     {:id ::report-printer-capability,
      :name "reportPrinterCapability",
-     :params [{:name "request-id", :type "integer"} {:name "capability", :type "object"}]}
+     :params [{:name "request-id", :type "integer"} {:name "capability", :optional? true, :type "object"}]}
     {:id ::report-print-result,
      :name "reportPrintResult",
-     :params [{:name "request-id", :type "integer"} {:name "error", :type "unknown-type"}]}
+     :params [{:name "request-id", :type "integer"} {:name "error", :optional? true, :type "unknown-type"}]}
     {:id ::get-print-data,
      :name "getPrintData",
      :callback? true,

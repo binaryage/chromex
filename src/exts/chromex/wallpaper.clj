@@ -40,7 +40,9 @@
      :callback? true,
      :params
      [{:name "details", :type "object"}
-      {:name "callback", :type :callback, :callback {:params [{:name "thumbnail", :type "binary"}]}}]}]})
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "thumbnail", :optional? true, :type "binary"}]}}]}]})
 
 ; -- helpers --------------------------------------------------------------------------------------------------------
 

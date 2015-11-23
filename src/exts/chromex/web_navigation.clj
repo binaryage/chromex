@@ -100,7 +100,9 @@
      :callback? true,
      :params
      [{:name "details", :type "object"}
-      {:name "callback", :type :callback, :callback {:params [{:name "details", :type "object"}]}}]}
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "details", :optional? true, :type "object"}]}}]}
     {:id ::get-all-frames,
      :name "getAllFrames",
      :callback? true,
@@ -108,7 +110,7 @@
      [{:name "details", :type "object"}
       {:name "callback",
        :type :callback,
-       :callback {:params [{:name "details", :type "[array-of-objects]"}]}}]}],
+       :callback {:params [{:name "details", :optional? true, :type "[array-of-objects]"}]}}]}],
    :events
    [{:id ::on-before-navigate, :name "onBeforeNavigate", :params [{:name "details", :type "object"}]}
     {:id ::on-committed, :name "onCommitted", :params [{:name "details", :type "object"}]}

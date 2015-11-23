@@ -95,14 +95,14 @@
      :params
      [{:name "token-id", :type "string"}
       {:name "certificate", :type "ArrayBuffer"}
-      {:name "callback", :type :callback}]}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-certificate,
      :name "removeCertificate",
      :callback? true,
      :params
      [{:name "token-id", :type "string"}
       {:name "certificate", :type "ArrayBuffer"}
-      {:name "callback", :type :callback}]}]})
+      {:name "callback", :optional? true, :type :callback}]}]})
 
 ; -- helpers --------------------------------------------------------------------------------------------------------
 

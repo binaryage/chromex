@@ -81,7 +81,9 @@
      :callback? true,
      :params
      [{:name "details", :type "object"}
-      {:name "callback", :type :callback, :callback {:params [{:name "cookie", :type "cookies.Cookie"}]}}]}
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "cookie", :optional? true, :type "cookies.Cookie"}]}}]}
     {:id ::get-all,
      :name "getAll",
      :callback? true,
@@ -95,13 +97,19 @@
      :callback? true,
      :params
      [{:name "details", :type "object"}
-      {:name "callback", :type :callback, :callback {:params [{:name "cookie", :type "cookies.Cookie"}]}}]}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "cookie", :optional? true, :type "cookies.Cookie"}]}}]}
     {:id ::remove,
      :name "remove",
      :callback? true,
      :params
      [{:name "details", :type "object"}
-      {:name "callback", :type :callback, :callback {:params [{:name "details", :type "object"}]}}]}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "details", :optional? true, :type "object"}]}}]}
     {:id ::get-all-cookie-stores,
      :name "getAllCookieStores",
      :callback? true,

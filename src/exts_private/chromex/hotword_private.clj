@@ -167,12 +167,12 @@
    [{:id ::set-enabled,
      :name "setEnabled",
      :callback? true,
-     :params [{:name "state", :type "boolean"} {:name "callback", :type :callback}]}
+     :params [{:name "state", :type "boolean"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-status,
      :name "getStatus",
      :callback? true,
      :params
-     [{:name "get-optional-fields", :type "boolean"}
+     [{:name "get-optional-fields", :optional? true, :type "boolean"}
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}
     {:id ::get-localized-strings,
      :name "getLocalizedStrings",
@@ -181,20 +181,22 @@
     {:id ::set-audio-logging-enabled,
      :name "setAudioLoggingEnabled",
      :callback? true,
-     :params [{:name "state", :type "boolean"} {:name "callback", :type :callback}]}
+     :params [{:name "state", :type "boolean"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::set-hotword-always-on-search-enabled,
      :name "setHotwordAlwaysOnSearchEnabled",
      :callback? true,
-     :params [{:name "state", :type "boolean"} {:name "callback", :type :callback}]}
+     :params [{:name "state", :type "boolean"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::set-hotword-session-state,
      :name "setHotwordSessionState",
      :callback? true,
-     :params [{:name "started", :type "boolean"} {:name "callback", :type :callback}]}
+     :params [{:name "started", :type "boolean"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::notify-hotword-recognition,
      :name "notifyHotwordRecognition",
      :callback? true,
      :params
-     [{:name "type", :type "unknown-type"} {:name "log", :type "object"} {:name "callback", :type :callback}]}
+     [{:name "type", :type "unknown-type"}
+      {:name "log", :optional? true, :type "object"}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-launch-state,
      :name "getLaunchState",
      :callback? true,
@@ -202,22 +204,26 @@
     {:id ::start-training,
      :name "startTraining",
      :callback? true,
-     :params [{:name "callback", :type :callback}]}
+     :params [{:name "callback", :optional? true, :type :callback}]}
     {:id ::finalize-speaker-model,
      :name "finalizeSpeakerModel",
      :callback? true,
-     :params [{:name "callback", :type :callback}]}
+     :params [{:name "callback", :optional? true, :type :callback}]}
     {:id ::notify-speaker-model-saved,
      :name "notifySpeakerModelSaved",
      :callback? true,
-     :params [{:name "callback", :type :callback}]}
-    {:id ::stop-training, :name "stopTraining", :callback? true, :params [{:name "callback", :type :callback}]}
+     :params [{:name "callback", :optional? true, :type :callback}]}
+    {:id ::stop-training,
+     :name "stopTraining",
+     :callback? true,
+     :params [{:name "callback", :optional? true, :type :callback}]}
     {:id ::set-audio-history-enabled,
      :name "setAudioHistoryEnabled",
      :callback? true,
      :params
      [{:name "enabled", :type "boolean"}
       {:name "callback",
+       :optional? true,
        :type :callback,
        :callback {:params [{:name "result", :type "hotwordPrivate.AudioHistoryState"}]}}]}
     {:id ::get-audio-history-enabled,
@@ -225,13 +231,14 @@
      :callback? true,
      :params
      [{:name "callback",
+       :optional? true,
        :type :callback,
        :callback {:params [{:name "result", :type "hotwordPrivate.AudioHistoryState"}]}}]}
     {:id ::speaker-model-exists-result,
      :name "speakerModelExistsResult",
      :since "43",
      :callback? true,
-     :params [{:name "exists", :type "boolean"} {:name "callback", :type :callback}]}],
+     :params [{:name "exists", :type "boolean"} {:name "callback", :optional? true, :type :callback}]}],
    :events
    [{:id ::on-enabled-changed, :name "onEnabledChanged"}
     {:id ::on-hotword-session-requested, :name "onHotwordSessionRequested"}

@@ -82,13 +82,19 @@
      :callback? true,
      :params
      [{:name "permissions", :type "permissions.Permissions"}
-      {:name "callback", :type :callback, :callback {:params [{:name "granted", :type "boolean"}]}}]}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "granted", :type "boolean"}]}}]}
     {:id ::remove,
      :name "remove",
      :callback? true,
      :params
      [{:name "permissions", :type "permissions.Permissions"}
-      {:name "callback", :type :callback, :callback {:params [{:name "removed", :type "boolean"}]}}]}],
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "removed", :type "boolean"}]}}]}],
    :events
    [{:id ::on-added, :name "onAdded", :params [{:name "permissions", :type "permissions.Permissions"}]}
     {:id ::on-removed, :name "onRemoved", :params [{:name "permissions", :type "permissions.Permissions"}]}]})

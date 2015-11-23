@@ -108,14 +108,17 @@
    [{:id ::insert-text,
      :name "insertText",
      :callback? true,
-     :params [{:name "text", :type "string"} {:name "callback", :type :callback}]}
+     :params [{:name "text", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::send-key-event,
      :name "sendKeyEvent",
      :callback? true,
      :params
      [{:name "key-event", :type "virtualKeyboardPrivate.VirtualKeyboardEvent"}
-      {:name "callback", :type :callback}]}
-    {:id ::hide-keyboard, :name "hideKeyboard", :callback? true, :params [{:name "callback", :type :callback}]}
+      {:name "callback", :optional? true, :type :callback}]}
+    {:id ::hide-keyboard,
+     :name "hideKeyboard",
+     :callback? true,
+     :params [{:name "callback", :optional? true, :type :callback}]}
     {:id ::set-hotrod-keyboard,
      :name "setHotrodKeyboard",
      :since "46",
@@ -125,12 +128,16 @@
      :name "keyboardLoaded",
      :since "32",
      :callback? true,
-     :params [{:name "callback", :type :callback}]}
+     :params [{:name "callback", :optional? true, :type :callback}]}
     {:id ::get-keyboard-config,
      :name "getKeyboardConfig",
      :since "34",
      :callback? true,
-     :params [{:name "callback", :type :callback, :callback {:params [{:name "config", :type "object"}]}}]}
+     :params
+     [{:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "config", :type "object"}]}}]}
     {:id ::open-settings, :name "openSettings", :since "37"}
     {:id ::set-mode,
      :name "setMode",

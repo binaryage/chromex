@@ -83,11 +83,12 @@
      :callback? true,
      :params
      [{:name "expression", :type "string"}
-      {:name "options", :type "object"}
+      {:name "options", :optional? true, :type "object"}
       {:name "callback",
+       :optional? true,
        :type :callback,
        :callback {:params [{:name "result", :type "object"} {:name "exception-info", :type "object"}]}}]}
-    {:id ::reload, :name "reload", :params [{:name "reload-options", :type "object"}]}
+    {:id ::reload, :name "reload", :params [{:name "reload-options", :optional? true, :type "object"}]}
     {:id ::get-resources,
      :name "getResources",
      :callback? true,

@@ -41,7 +41,9 @@
      :callback? true,
      :params
      [{:name "details", :type "object"}
-      {:name "callback", :type :callback, :callback {:params [{:name "mhtml-data", :type "binary"}]}}]}]})
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "mhtml-data", :optional? true, :type "binary"}]}}]}]})
 
 ; -- helpers --------------------------------------------------------------------------------------------------------
 

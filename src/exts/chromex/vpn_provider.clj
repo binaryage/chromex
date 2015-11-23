@@ -110,7 +110,7 @@
     {:id ::destroy-config,
      :name "destroyConfig",
      :callback? true,
-     :params [{:name "id", :type "string"} {:name "callback", :type :callback}]}
+     :params [{:name "id", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::set-parameters,
      :name "setParameters",
      :callback? true,
@@ -118,11 +118,11 @@
     {:id ::send-packet,
      :name "sendPacket",
      :callback? true,
-     :params [{:name "data", :type "ArrayBuffer"} {:name "callback", :type :callback}]}
+     :params [{:name "data", :type "ArrayBuffer"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::notify-connection-state-changed,
      :name "notifyConnectionStateChanged",
      :callback? true,
-     :params [{:name "state", :type "unknown-type"} {:name "callback", :type :callback}]}],
+     :params [{:name "state", :type "unknown-type"} {:name "callback", :optional? true, :type :callback}]}],
    :events
    [{:id ::on-platform-message,
      :name "onPlatformMessage",
@@ -135,7 +135,7 @@
      :params [{:name "id", :type "string"} {:name "name", :type "string"} {:name "data", :type "object"}]}
     {:id ::on-ui-event,
      :name "onUIEvent",
-     :params [{:name "event", :type "unknown-type"} {:name "id", :type "string"}]}]})
+     :params [{:name "event", :type "unknown-type"} {:name "id", :optional? true, :type "string"}]}]})
 
 ; -- helpers --------------------------------------------------------------------------------------------------------
 

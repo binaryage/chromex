@@ -51,7 +51,7 @@
      :name "abort",
      :since "37",
      :callback? true,
-     :params [{:name "stream-url", :type "string"} {:name "callback", :type :callback}]}],
+     :params [{:name "stream-url", :type "string"} {:name "callback", :optional? true, :type :callback}]}],
    :events
    [{:id ::on-execute-mime-type-handler,
      :name "onExecuteMimeTypeHandler",

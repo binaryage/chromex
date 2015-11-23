@@ -109,7 +109,7 @@
     {:id ::terminate-session,
      :name "terminateSession",
      :callback? true,
-     :params [{:name "sink-id", :type "integer"} {:name "callback", :type :callback}]}],
+     :params [{:name "sink-id", :type "integer"} {:name "callback", :optional? true, :type :callback}]}],
    :events
    [{:id ::on-sinks-updated,
      :name "onSinksUpdated",

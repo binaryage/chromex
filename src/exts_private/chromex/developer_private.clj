@@ -217,14 +217,19 @@
    [{:id ::auto-update,
      :name "autoUpdate",
      :callback? true,
-     :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
+     :params
+     [{:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "result", :type "boolean"}]}}]}
     {:id ::get-extensions-info,
      :name "getExtensionsInfo",
      :since "43",
      :callback? true,
      :params
-     [{:name "options", :type "object"}
+     [{:name "options", :optional? true, :type "object"}
       {:name "callback",
+       :optional? true,
        :type :callback,
        :callback {:params [{:name "result", :type "[array-of-developerPrivate.ExtensionInfos]"}]}}]}
     {:id ::get-extension-info,
@@ -234,6 +239,7 @@
      :params
      [{:name "id", :type "string"}
       {:name "callback",
+       :optional? true,
        :type :callback,
        :callback {:params [{:name "result", :type "developerPrivate.ExtensionInfo"}]}}]}
     {:id ::get-items-info,
@@ -257,28 +263,29 @@
      :name "updateProfileConfiguration",
      :since "44",
      :callback? true,
-     :params [{:name "update", :type "object"} {:name "callback", :type :callback}]}
+     :params [{:name "update", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::show-permissions-dialog,
      :name "showPermissionsDialog",
      :since "28",
      :callback? true,
-     :params [{:name "extension-id", :type "string"} {:name "callback", :type :callback}]}
+     :params [{:name "extension-id", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::reload,
      :name "reload",
      :callback? true,
      :params
      [{:name "extension-id", :type "string"}
-      {:name "options", :type "object"}
-      {:name "callback", :type :callback}]}
+      {:name "options", :optional? true, :type "object"}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::update-extension-configuration,
      :name "updateExtensionConfiguration",
      :since "43",
      :callback? true,
-     :params [{:name "update", :type "object"} {:name "callback", :type :callback}]}
+     :params [{:name "update", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::load-unpacked,
      :name "loadUnpacked",
      :callback? true,
-     :params [{:name "options", :type "object"} {:name "callback", :type :callback}]}
+     :params
+     [{:name "options", :optional? true, :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::load-directory,
      :name "loadDirectory",
      :since "34",
@@ -300,9 +307,12 @@
      :callback? true,
      :params
      [{:name "path", :type "string"}
-      {:name "private-key-path", :type "string"}
-      {:name "flags", :type "integer"}
-      {:name "callback", :type :callback, :callback {:params [{:name "response", :type "object"}]}}]}
+      {:name "private-key-path", :optional? true, :type "string"}
+      {:name "flags", :optional? true, :type "integer"}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "response", :type "object"}]}}]}
     {:id ::is-profile-managed,
      :name "isProfileManaged",
      :since "31",
@@ -319,44 +329,46 @@
      :name "openDevTools",
      :since "34",
      :callback? true,
-     :params [{:name "properties", :type "object"} {:name "callback", :type :callback}]}
+     :params [{:name "properties", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::delete-extension-errors,
      :name "deleteExtensionErrors",
      :since "43",
      :callback? true,
-     :params [{:name "properties", :type "object"} {:name "callback", :type :callback}]}
+     :params [{:name "properties", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::repair-extension,
      :name "repairExtension",
      :since "44",
      :callback? true,
-     :params [{:name "extension-id", :type "string"} {:name "callback", :type :callback}]}
+     :params [{:name "extension-id", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::show-options,
      :name "showOptions",
      :since "44",
      :callback? true,
-     :params [{:name "extension-id", :type "string"} {:name "callback", :type :callback}]}
+     :params [{:name "extension-id", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::show-path,
      :name "showPath",
      :since "44",
      :callback? true,
-     :params [{:name "extension-id", :type "string"} {:name "callback", :type :callback}]}
+     :params [{:name "extension-id", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::set-shortcut-handling-suspended,
      :name "setShortcutHandlingSuspended",
      :since "45",
      :callback? true,
-     :params [{:name "is-suspended", :type "boolean"} {:name "callback", :type :callback}]}
+     :params [{:name "is-suspended", :type "boolean"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::update-extension-command,
      :name "updateExtensionCommand",
      :since "45",
      :callback? true,
-     :params [{:name "update", :type "object"} {:name "callback", :type :callback}]}
+     :params [{:name "update", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::enable,
      :name "enable",
      :since "43",
      :deprecated "Use management.setEnabled",
      :callback? true,
      :params
-     [{:name "id", :type "string"} {:name "enabled", :type "boolean"} {:name "callback", :type :callback}]}
+     [{:name "id", :type "string"}
+      {:name "enabled", :type "boolean"}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::allow-incognito,
      :name "allowIncognito",
      :since "43",
@@ -365,7 +377,7 @@
      :params
      [{:name "extension-id", :type "string"}
       {:name "allow", :type "boolean"}
-      {:name "callback", :type :callback}]}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::allow-file-access,
      :name "allowFileAccess",
      :since "43",
@@ -374,13 +386,13 @@
      :params
      [{:name "extension-id", :type "string"}
       {:name "allow", :type "boolean"}
-      {:name "callback", :type :callback}]}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::inspect,
      :name "inspect",
      :since "43",
      :deprecated "Use openDevTools",
      :callback? true,
-     :params [{:name "options", :type "object"} {:name "callback", :type :callback}]}],
+     :params [{:name "options", :type "object"} {:name "callback", :optional? true, :type :callback}]}],
    :events
    [{:id ::on-item-state-changed,
      :name "onItemStateChanged",

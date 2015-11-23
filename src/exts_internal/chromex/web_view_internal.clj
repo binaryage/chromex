@@ -175,7 +175,10 @@
      [{:name "instance-id", :type "integer"}
       {:name "src", :type "string"}
       {:name "details", :type "object"}
-      {:name "callback", :type :callback, :callback {:params [{:name "result", :type "[array-of-anys]"}]}}]}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "result", :optional? true, :type "[array-of-anys]"}]}}]}
     {:id ::insert-css,
      :name "insertCSS",
      :callback? true,
@@ -183,21 +186,23 @@
      [{:name "instance-id", :type "integer"}
       {:name "src", :type "string"}
       {:name "details", :type "object"}
-      {:name "callback", :type :callback}]}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::add-content-scripts,
      :name "addContentScripts",
      :params
      [{:name "instance-id", :type "integer"} {:name "content-script-list", :type "[array-of-objects]"}]}
     {:id ::remove-content-scripts,
      :name "removeContentScripts",
-     :params [{:name "instance-id", :type "integer"} {:name "script-name-list", :type "[array-of-strings]"}]}
+     :params
+     [{:name "instance-id", :type "integer"}
+      {:name "script-name-list", :optional? true, :type "[array-of-strings]"}]}
     {:id ::set-zoom,
      :name "setZoom",
      :callback? true,
      :params
      [{:name "instance-id", :type "integer"}
       {:name "zoom-factor", :type "double"}
-      {:name "callback", :type :callback}]}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-zoom,
      :name "getZoom",
      :callback? true,
@@ -210,7 +215,7 @@
      :params
      [{:name "instance-id", :type "integer"}
       {:name "zoom-mode", :type "unknown-type"}
-      {:name "callback", :type :callback}]}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-zoom-mode,
      :name "getZoomMode",
      :callback? true,
@@ -223,11 +228,14 @@
      :params
      [{:name "instance-id", :type "integer"}
       {:name "search-text", :type "string"}
-      {:name "options", :type "object"}
-      {:name "callback", :type :callback, :callback {:params [{:name "results", :type "object"}]}}]}
+      {:name "options", :optional? true, :type "object"}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "results", :optional? true, :type "object"}]}}]}
     {:id ::stop-finding,
      :name "stopFinding",
-     :params [{:name "instance-id", :type "integer"} {:name "action", :type "unknown-type"}]}
+     :params [{:name "instance-id", :type "integer"} {:name "action", :optional? true, :type "unknown-type"}]}
     {:id ::load-data-with-base-url,
      :name "loadDataWithBaseUrl",
      :callback? true,
@@ -235,7 +243,7 @@
      [{:name "instance-id", :type "integer"}
       {:name "data-url", :type "string"}
       {:name "base-url", :type "string"}
-      {:name "virtual-url", :type "string"}
+      {:name "virtual-url", :optional? true, :type "string"}
       {:name "callback", :type :callback}]}
     {:id ::go,
      :name "go",
@@ -243,7 +251,10 @@
      :params
      [{:name "instance-id", :type "integer"}
       {:name "relative-index", :type "integer"}
-      {:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::override-user-agent,
      :name "overrideUserAgent",
      :params [{:name "instance-id", :type "integer"} {:name "user-agent-override", :type "string"}]}
@@ -264,8 +275,11 @@
      [{:name "instance-id", :type "integer"}
       {:name "request-id", :type "integer"}
       {:name "action", :type "unknown-type"}
-      {:name "user-input", :type "string"}
-      {:name "callback", :type :callback, :callback {:params [{:name "allowed", :type "boolean"}]}}]}
+      {:name "user-input", :optional? true, :type "string"}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "allowed", :type "boolean"}]}}]}
     {:id ::navigate,
      :name "navigate",
      :params [{:name "instance-id", :type "integer"} {:name "src", :type "string"}]}
@@ -278,7 +292,7 @@
      [{:name "instance-id", :type "integer"}
       {:name "options", :type "object"}
       {:name "data-to-remove", :type "object"}
-      {:name "callback", :type :callback}]}]})
+      {:name "callback", :optional? true, :type :callback}]}]})
 
 ; -- helpers --------------------------------------------------------------------------------------------------------
 

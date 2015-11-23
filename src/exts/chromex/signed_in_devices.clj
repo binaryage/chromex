@@ -50,7 +50,7 @@
      :name "get",
      :callback? true,
      :params
-     [{:name "is-local", :type "boolean"}
+     [{:name "is-local", :optional? true, :type "boolean"}
       {:name "callback",
        :type :callback,
        :callback {:params [{:name "devices", :type "[array-of-signedInDevices.DeviceInfos]"}]}}]}],

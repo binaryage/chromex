@@ -52,7 +52,7 @@
      :return-type "integer",
      :params
      [{:name "sources", :type "[array-of-desktopCapture.DesktopCaptureSourceTypes]"}
-      {:name "target-tab", :type "tabs.Tab"}
+      {:name "target-tab", :optional? true, :type "tabs.Tab"}
       {:name "callback", :type :callback, :callback {:params [{:name "stream-id", :type "string"}]}}]}
     {:id ::cancel-choose-desktop-media,
      :name "cancelChooseDesktopMedia",

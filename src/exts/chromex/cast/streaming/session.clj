@@ -54,8 +54,8 @@
      :name "create",
      :callback? true,
      :params
-     [{:name "audio-track", :type "MediaStreamTrack"}
-      {:name "video-track", :type "MediaStreamTrack"}
+     [{:name "audio-track", :optional? true, :type "MediaStreamTrack"}
+      {:name "video-track", :optional? true, :type "MediaStreamTrack"}
       {:name "callback",
        :type :callback,
        :callback

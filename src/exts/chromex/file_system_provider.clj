@@ -210,11 +210,11 @@
    [{:id ::mount,
      :name "mount",
      :callback? true,
-     :params [{:name "options", :type "object"} {:name "callback", :type :callback}]}
+     :params [{:name "options", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::unmount,
      :name "unmount",
      :callback? true,
-     :params [{:name "options", :type "object"} {:name "callback", :type :callback}]}
+     :params [{:name "options", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-all,
      :name "getAll",
      :callback? true,
@@ -235,7 +235,7 @@
      :name "notify",
      :since "45",
      :callback? true,
-     :params [{:name "options", :type "object"} {:name "callback", :type :callback}]}],
+     :params [{:name "options", :type "object"} {:name "callback", :optional? true, :type :callback}]}],
    :events
    [{:id ::on-unmount-requested,
      :name "onUnmountRequested",

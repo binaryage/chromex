@@ -110,7 +110,7 @@
     {:id ::restore, :name "restore"}
     {:id ::draw-attention, :name "drawAttention"}
     {:id ::clear-attention, :name "clearAttention"}
-    {:id ::show, :name "show", :params [{:name "focused", :type "boolean"}]}
+    {:id ::show, :name "show", :params [{:name "focused", :optional? true, :type "boolean"}]}
     {:id ::hide, :name "hide"}
     {:id ::set-bounds,
      :name "setBounds",

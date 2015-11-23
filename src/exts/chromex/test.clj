@@ -165,7 +165,7 @@
      :params
      [{:name "callback", :type :callback, :callback {:params [{:name "test-config", :type "object"}]}}]}
     {:id ::notify-fail, :name "notifyFail", :params [{:name "message", :type "string"}]}
-    {:id ::notify-pass, :name "notifyPass", :params [{:name "message", :type "string"}]}
+    {:id ::notify-pass, :name "notifyPass", :params [{:name "message", :optional? true, :type "string"}]}
     {:id ::log, :name "log", :params [{:name "message", :type "string"}]}
     {:id ::send-message,
      :name "sendMessage",
@@ -173,11 +173,14 @@
      :callback? true,
      :params
      [{:name "message", :type "string"}
-      {:name "callback", :type :callback, :callback {:params [{:name "response", :type "string"}]}}]}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "response", :type "string"}]}}]}
     {:id ::callback-added, :name "callbackAdded", :since "27"}
     {:id ::run-next-test, :name "runNextTest", :since "27"}
-    {:id ::fail, :name "fail", :since "27", :params [{:name "message", :type "any"}]}
-    {:id ::succeed, :name "succeed", :since "27", :params [{:name "message", :type "any"}]}
+    {:id ::fail, :name "fail", :since "27", :params [{:name "message", :optional? true, :type "any"}]}
+    {:id ::succeed, :name "succeed", :since "27", :params [{:name "message", :optional? true, :type "any"}]}
     {:id ::run-with-natives-enabled,
      :name "runWithNativesEnabled",
      :since "46",
@@ -191,26 +194,29 @@
     {:id ::assert-true,
      :name "assertTrue",
      :since "27",
-     :params [{:name "test", :type "string-or-boolean"} {:name "message", :type "string"}]}
+     :params [{:name "test", :type "string-or-boolean"} {:name "message", :optional? true, :type "string"}]}
     {:id ::assert-false,
      :name "assertFalse",
      :since "27",
-     :params [{:name "test", :type "string-or-boolean"} {:name "message", :type "string"}]}
+     :params [{:name "test", :type "string-or-boolean"} {:name "message", :optional? true, :type "string"}]}
     {:id ::assert-bool,
      :name "assertBool",
      :since "27",
      :params
      [{:name "test", :type "string-or-boolean"}
       {:name "expected", :type "boolean"}
-      {:name "message", :type "string"}]}
+      {:name "message", :optional? true, :type "string"}]}
     {:id ::check-deep-eq,
      :name "checkDeepEq",
      :since "27",
-     :params [{:name "expected", :type "any"} {:name "actual", :type "any"}]}
+     :params [{:name "expected", :optional? true, :type "any"} {:name "actual", :optional? true, :type "any"}]}
     {:id ::assert-eq,
      :name "assertEq",
      :since "27",
-     :params [{:name "expected", :type "any"} {:name "actual", :type "any"} {:name "message", :type "string"}]}
+     :params
+     [{:name "expected", :optional? true, :type "any"}
+      {:name "actual", :optional? true, :type "any"}
+      {:name "message", :optional? true, :type "string"}]}
     {:id ::assert-no-last-error, :name "assertNoLastError", :since "27"}
     {:id ::assert-last-error,
      :name "assertLastError",
@@ -221,15 +227,17 @@
      :since "29",
      :callback? true,
      :params
-     [{:name "self", :type "object"}
+     [{:name "self", :optional? true, :type "object"}
       {:name "args", :type "[array-of-anys]"}
-      {:name "message", :type "string-or-RegExp"}
+      {:name "message", :optional? true, :type "string-or-RegExp"}
       {:name "fn", :type :callback}]}
     {:id ::callback,
      :name "callback",
      :since "27",
      :callback? true,
-     :params [{:name "expected-error", :type "string"} {:name "func", :type :callback}]}
+     :params
+     [{:name "expected-error", :optional? true, :type "string"}
+      {:name "func", :optional? true, :type :callback}]}
     {:id ::listen-once,
      :name "listenOnce",
      :since "27",
@@ -244,18 +252,18 @@
      :name "callbackPass",
      :since "27",
      :callback? true,
-     :params [{:name "func", :type :callback}]}
+     :params [{:name "func", :optional? true, :type :callback}]}
     {:id ::callback-fail,
      :name "callbackFail",
      :since "27",
      :callback? true,
-     :params [{:name "expected-error", :type "string"} {:name "func", :type :callback}]}
+     :params [{:name "expected-error", :type "string"} {:name "func", :optional? true, :type :callback}]}
     {:id ::run-tests, :name "runTests", :since "27", :params [{:name "tests", :type "[array-of-functions]"}]}
     {:id ::get-api-features, :name "getApiFeatures", :since "29"}
     {:id ::get-api-definitions,
      :name "getApiDefinitions",
      :since "27",
-     :params [{:name "api-names", :type "[array-of-strings]"}]}
+     :params [{:name "api-names", :optional? true, :type "[array-of-strings]"}]}
     {:id ::is-processing-user-gesture, :name "isProcessingUserGesture", :since "32"}
     {:id ::run-with-user-gesture,
      :name "runWithUserGesture",

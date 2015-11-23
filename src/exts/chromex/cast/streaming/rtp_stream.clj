@@ -123,7 +123,7 @@
      :callback? true,
      :params
      [{:name "stream-id", :type "integer"}
-      {:name "extra-data", :type "string"}
+      {:name "extra-data", :optional? true, :type "string"}
       {:name "callback", :type :callback, :callback {:params [{:name "raw-events", :type "ArrayBuffer"}]}}]}
     {:id ::get-stats,
      :name "getStats",

@@ -210,6 +210,7 @@
      :params
      [{:name "bookmark", :type "object"}
       {:name "callback",
+       :optional? true,
        :type :callback,
        :callback {:params [{:name "result", :type "bookmarks.BookmarkTreeNode"}]}}]}
     {:id ::move,
@@ -219,6 +220,7 @@
      [{:name "id", :type "string"}
       {:name "destination", :type "object"}
       {:name "callback",
+       :optional? true,
        :type :callback,
        :callback {:params [{:name "result", :type "bookmarks.BookmarkTreeNode"}]}}]}
     {:id ::update,
@@ -228,16 +230,17 @@
      [{:name "id", :type "string"}
       {:name "changes", :type "object"}
       {:name "callback",
+       :optional? true,
        :type :callback,
        :callback {:params [{:name "result", :type "bookmarks.BookmarkTreeNode"}]}}]}
     {:id ::remove,
      :name "remove",
      :callback? true,
-     :params [{:name "id", :type "string"} {:name "callback", :type :callback}]}
+     :params [{:name "id", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-tree,
      :name "removeTree",
      :callback? true,
-     :params [{:name "id", :type "string"} {:name "callback", :type :callback}]}],
+     :params [{:name "id", :type "string"} {:name "callback", :optional? true, :type :callback}]}],
    :events
    [{:id ::on-created,
      :name "onCreated",

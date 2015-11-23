@@ -61,12 +61,15 @@
      :name "install",
      :callback? true,
      :params
-     [{:name "url", :type "string"}
-      {:name "success-callback", :type "function"}
+     [{:name "url", :optional? true, :type "string"}
+      {:name "success-callback", :optional? true, :type "function"}
       {:name "failure-callback",
+       :optional? true,
        :type :callback,
        :callback
-       {:params [{:name "error", :type "string"} {:name "error-code", :type "webstore.ErrorCode"}]}}]}],
+       {:params
+        [{:name "error", :type "string"}
+         {:name "error-code", :optional? "true", :type "webstore.ErrorCode"}]}}]}],
    :events
    [{:id ::on-install-stage-changed,
      :name "onInstallStageChanged",

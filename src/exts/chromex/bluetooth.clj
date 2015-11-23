@@ -120,11 +120,11 @@
     {:id ::start-discovery,
      :name "startDiscovery",
      :callback? true,
-     :params [{:name "callback", :type :callback}]}
+     :params [{:name "callback", :optional? true, :type :callback}]}
     {:id ::stop-discovery,
      :name "stopDiscovery",
      :callback? true,
-     :params [{:name "callback", :type :callback}]}],
+     :params [{:name "callback", :optional? true, :type :callback}]}],
    :events
    [{:id ::on-adapter-state-changed,
      :name "onAdapterStateChanged",
