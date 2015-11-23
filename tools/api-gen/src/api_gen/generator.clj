@@ -217,13 +217,39 @@
 
 ; -------------------------------------------------------------------------------------------------------------------
 
+(defn number-of-trailing-optional-arguments-except-callbacks [params]
+  (count (take-while :optional? (reverse (remove #(= (:type %) :callback) params)))))
+
+(defn build-optional-arity [fn-name param-tokens param-count total-count]
+  (let [params (take param-count param-tokens)
+        param-list (string/join " " params)
+        tilde-params (map #(str "~" %) params)
+        omit-count (- total-count param-count)
+        omit-params (repeat omit-count ":omit")
+        call-params (concat tilde-params omit-params)
+        arg-list (string/join " " call-params)]
+    (str "([" param-list "] `(" fn-name " " arg-list "))")))
+
+(defn build-optional-arities [fn-name param-list opt-args-count]
+  (let [param-tokens (string/split param-list #" ")
+        total-count (count param-tokens)]
+    (string/join "\n"
+      (reverse
+        (for [cnt (range (- total-count opt-args-count) total-count)]
+          (build-optional-arity fn-name param-tokens cnt total-count))))))
+
 (defn prepare-function-data [data]
-  (let [{:keys [name]} data
-        {:keys [doc user-param-list param-list]} (meta data)]
-    {:fn-name         (kebab-case name)
-     :fn-docstring    doc
-     :user-param-list user-param-list
-     :param-list      param-list}))
+  (let [{:keys [name params]} data
+        {:keys [doc user-param-list param-list]} (meta data)
+        optional-args-count (number-of-trailing-optional-arguments-except-callbacks params)
+        has-optionals (pos? optional-args-count)
+        fn-name (kebab-case name)]
+    {:fn-name            fn-name
+     :fn-docstring       doc
+     :has-optionals      has-optionals
+     :additional-arities (if has-optionals (build-optional-arities fn-name param-list optional-args-count))
+     :user-param-list    user-param-list
+     :param-list         param-list}))
 
 (defn prepare-property-data [data]
   (let [{:keys [name]} data
