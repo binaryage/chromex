@@ -1,5 +1,6 @@
 (ns chromex-lib.wrapgen
-  (:require [chromex-lib.support :refer [log-if-verbose print-compile-time-warning get-item-by-id get-api-id debug-print]]))
+  (:require [chromex-lib.support :refer [log-if-verbose print-compile-time-warning get-item-by-id get-api-id debug-print]]
+            [clojure.string :as string]))
 
 ; -- hooks in runtime config  -----------------------------------------------------------------------------------------------
 
@@ -54,14 +55,14 @@
   (let [{:keys [namespace]} api-table
         {:keys [name params property?]} descriptor
         api (get-api-id api-table descriptor)
-        js-namespace (symbol (str "js/" namespace))
+        namespace-elements (string/split namespace #"\.")
         wrapped-args (wrap-callback-args-with-logging static-config api config args params)
         operation (if property? "accessing:" "calling:")
         real-args-sym (gensym "real-args")
         ns-sym (gensym "ns")
         thing-sym (gensym "thing")]
     `(let [~real-args-sym (into-array (remove (fn [x#] (cljs.core/keyword-identical? x# :omit)) [~@wrapped-args]))            ; TODO: validate if omitted args were really optional
-           ~ns-sym ~js-namespace                                                                                              ; TODO: this needs to survive advanced mode compilation
+           ~ns-sym (chromex-lib.support/oget js/window ~@namespace-elements)
            ~thing-sym (chromex-lib.support/oget ~ns-sym ~name)]
        ~(apply log-if-verbose static-config config operation api args)
        ~(if property?
