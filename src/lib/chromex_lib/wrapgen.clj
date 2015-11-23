@@ -57,11 +57,15 @@
         api (get-api-id api-table descriptor)
         namespace-elements (string/split namespace #"\.")
         wrapped-args (wrap-callback-args-with-logging static-config api config args params)
+        param-names (map :name params)
+        param-optionalities (map :optional? params)
+        arg-descriptors (vec (map vec (partition 3 (interleave wrapped-args param-names param-optionalities))))
         operation (if property? "accessing:" "calling:")
         final-args-sym (gensym "final-args")
         ns-sym (gensym "ns")
-        target-sym (gensym "target")]
-    `(let [~final-args-sym (into-array (remove #(cljs.core/keyword-identical? % :omit) [~@wrapped-args]))                     ; TODO: validate if omitted args were really optional
+        target-sym (gensym "target")
+        call-info (str "to " api)]
+    `(let [~final-args-sym (chromex-lib.support/prepare-final-args ~arg-descriptors ~call-info)
            ~ns-sym (chromex-lib.support/oget js/window ~@namespace-elements)
            ~target-sym (chromex-lib.support/oget ~ns-sym ~name)]
        ~(apply log-if-verbose static-config config operation api args)

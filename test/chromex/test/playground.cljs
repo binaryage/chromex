@@ -6,6 +6,8 @@
                                                tap-all-events do-something-optional-args]]
             [chromex-lib.chrome-event-channel :refer [make-chrome-event-channel]]))
 
+; -- chrome API mocks -------------------------------------------------------------------------------------------------------
+
 (defn get-something-mock [param1 callback]
   (go
     (<! (timeout 100))
@@ -51,7 +53,13 @@
 (aset js/window.chrome.playground "onSomething" on-something-mock)
 (aset js/window.chrome.playground "onSomethingDeprecated" on-something-deprecated-mock)
 
-(deftest test-get-something
+; ---------------------------------------------------------------------------------------------------------------------------
+
+(deftest test-plain-api-call
+  (testing "do something"
+    (is (= (do-something "x1") "[got x1!!!]"))))
+
+(deftest test-api-call-with-callback
   (testing "get something"
     (async done
       (go
@@ -59,12 +67,7 @@
           (is (= result "<answer is p1!!!>"))
           (done))))))
 
-(deftest test-do-something
-  (testing "do something"
-    (let [result (do-something "x1")]
-      (is (= result "[got x1!!!]")))))
-
-(deftest test-do-something-with-optional-args
+(deftest test-optional-args
   (testing "do something with optional args"
     (is (= (do-something-optional-args 1 2 3) "got [1 2 3]"))
     (is (= (do-something-optional-args 1 2) "got [1 2]"))
@@ -72,14 +75,16 @@
     (is (= (do-something-optional-args) "got []"))
     (is (= (do-something-optional-args 1 :omit 3) "got [1 3]"))
     (is (= (do-something-optional-args :omit :omit 3) "got [3]"))
-    (is (= (do-something-optional-args :omit :omit :omit) "got []"))))
+    (is (= (do-something-optional-args :omit :omit :omit) "got []")))
+  (testing "try to omit non-optional arg"
+    (is (thrown-with-msg? js/Error #"cannot be omitted" (do-something :omit)))))
 
-(deftest test-prop
+(deftest test-property-access
   (testing "read prop"
     (let [result (get-some-prop)]
       (is (= result "@(prop1val)")))))
 
-(deftest test-on-something
+(deftest test-events
   (testing "tap on-something events"
     (async done
       (let [chan (make-chrome-event-channel (chan))]
