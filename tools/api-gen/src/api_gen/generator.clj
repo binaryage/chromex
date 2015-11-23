@@ -138,14 +138,15 @@
     {:params (vec (map (partial build-api-table-param-info nil) parameters))}))
 
 (defn build-api-table-param-info [callback-data data]
-  (let [{:keys [name is-callback]} data
-        param-name (kebab-case name)]
-    (if-not is-callback
-      {:name param-name
-       :type (extract-type data)}
-      {:name     param-name
-       :type     :callback
-       :callback (build-api-table-callback-info callback-data)})))
+  (let [{:keys [name is-callback optional]} data
+        param-name (kebab-case name)
+        base-part {:name      param-name
+                   :optional? optional}
+        flexible-part (if-not is-callback
+                        {:type (extract-type data)}
+                        {:type     :callback
+                         :callback (build-api-table-callback-info callback-data)})]
+    (merge base-part flexible-part)))
 
 (defn build-api-table-function-params [parameters callback-data]
   (vec (map (partial build-api-table-param-info callback-data) parameters)))
