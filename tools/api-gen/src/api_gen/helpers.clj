@@ -11,7 +11,7 @@
 
 (def ^:const INDENT-CHAR " ")
 
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (defn pprint-edn-as-str [code columns]
   (binding [*print-right-margin* columns]
@@ -97,7 +97,7 @@
     (remove-consecutive-blank-lines)))
 
 (defn patch-snake-case [s]
-  (string/replace s #"_([0-9])" "$1"))                                                                                ; we don't want numbers to be treated as separate
+  (string/replace s #"_([0-9])" "$1"))                                                                                        ; we don't want numbers to be treated as separate
 
 (defn snake-case [s]
   (if (and (string? s) (not (empty? s)))
@@ -105,7 +105,7 @@
     (throw (Exception. (str "snake-case: expected non-empty string: '" s "'" (type s))))))
 
 (defn patch-kebab-case [s]
-  (string/replace s #"-([0-9])" "$1"))                                                                                ; we don't want numbers to be treated as separate
+  (string/replace s #"-([0-9])" "$1"))                                                                                        ; we don't want numbers to be treated as separate
 
 (defn kebab-case [s]
   (if (and (string? s) (not (empty? s)))
@@ -114,7 +114,7 @@
 
 (defn safe-empty? [v]
   (try
-    (empty? v)                                                                                                        ; v might throw because it does not implement ISeq
+    (empty? v)                                                                                                                ; v might throw because it does not implement ISeq
     (catch Exception _
       false)))
 

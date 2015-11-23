@@ -15,7 +15,7 @@
 (declare *on-disconnect-called-on-disconnected-port*)
 (declare *on-message-called-on-disconnected-port*)
 
-; -- ChromePort -----------------------------------------------------------------------------------------------------
+; -- ChromePort -------------------------------------------------------------------------------------------------------------
 
 (deftype ChromePort [native-chrome-port channel ^:mutable connected?]
 
@@ -65,7 +65,7 @@
   (close! [this]
     (protocols/disconnect! this)))
 
-; -- constructor ----------------------------------------------------------------------------------------------------
+; -- constructor ------------------------------------------------------------------------------------------------------------
 
 (defn make-chrome-port
   ([native-chrome-port] (make-chrome-port native-chrome-port (chan)))
@@ -75,7 +75,7 @@
      (protocols/on-disconnect! chrome-port (*on-disconnect-fn-factory* chrome-port))
      chrome-port)))
 
-; -- default factories ----------------------------------------------------------------------------------------------
+; -- default factories ------------------------------------------------------------------------------------------------------
 
 (defn ^:dynamic *on-message-fn-factory* [chrome-port]
   (fn [message]
@@ -88,7 +88,7 @@
     (protocols/set-connected! chrome-port false)
     nil))
 
-; -- default exception handlers -------------------------------------------------------------------------------------
+; -- default exception handlers ---------------------------------------------------------------------------------------------
 
 (defn ^:dynamic *disconnect-called-on-disconnected-port* [_chrome-port]
   (assert false "ChromePort: disconnect called on already disconnected port")

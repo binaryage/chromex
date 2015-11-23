@@ -3,12 +3,12 @@
   (:require [chromex-lib.core]
             [chromex.test.marshalling]))
 
-; -- properties -----------------------------------------------------------------------------------------------------
+; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defn some-prop* [config]
   (gen-wrap :property ::some-prop config))
 
-; -- functions ------------------------------------------------------------------------------------------------------
+; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn get-something* [config param1]
   (gen-wrap :function ::get-something config param1))
@@ -19,7 +19,7 @@
 (defn do-something-optional-args* [config opt-p1 opt-p2 opt-p3]
   (gen-wrap :function ::do-something-optional-args config opt-p1 opt-p2 opt-p3))
 
-; -- events ---------------------------------------------------------------------------------------------------------
+; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-something* [config chan]
   (gen-wrap :event ::on-something config chan))

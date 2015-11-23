@@ -1,7 +1,7 @@
 (ns chromex-lib.defaults
   (:require [cljs.core.async :refer [put! chan]]))
 
-; -- callback support -----------------------------------------------------------------------------------------------
+; -- callback support -------------------------------------------------------------------------------------------------------
 ;
 ; async methods using core.async channels
 
@@ -16,7 +16,7 @@
   (fn [& args]
     (put! chan [event-id (vec args)])))
 
-; -- logging support ------------------------------------------------------------------------------------------------
+; -- logging support --------------------------------------------------------------------------------------------------------
 
 (defn console-log [& args]
   (.apply (.-log js/console) js/console (apply array args)))
@@ -24,7 +24,7 @@
 (defn default-logger [& args]
   (apply console-log "[chromex]" args))
 
-; -- default config -------------------------------------------------------------------------------------------------
+; -- default config ---------------------------------------------------------------------------------------------------------
 
 (def default-config
   {:callback-channel-factory default-callback-channel-factory

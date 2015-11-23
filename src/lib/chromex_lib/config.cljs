@@ -1,7 +1,7 @@
 (ns chromex-lib.config
   (:require [chromex-lib.defaults :refer [default-config]]))
 
-; -- active config --------------------------------------------------------------------------------------------------
+; -- active config ----------------------------------------------------------------------------------------------------------
 
 (def ^:dynamic *active-config* default-config)
 

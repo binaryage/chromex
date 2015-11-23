@@ -1,7 +1,7 @@
 (ns chromex-lib.wrapgen
   (:require [chromex-lib.support :refer [log-if-verbose print-compile-time-warning get-item-by-id get-api-id debug-print]]))
 
-; -- hooks in runtime config  ---------------------------------------------------------------------------------------
+; -- hooks in runtime config  -----------------------------------------------------------------------------------------------
 
 (defn make-callback-fn [config chan]
   `(let [config# ~config
@@ -27,7 +27,7 @@
          "config: " config#))
      (event-fn-factory# config# ~event-id ~chan)))
 
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (defn wrap-callback-with-logging [static-config label api config [callback-sym callback-info]]
   (let [{:keys [params]} callback-info
@@ -48,7 +48,7 @@
         (wrap-callback-with-logging static-config "callback:" api config [callback-sym callback-info])
         callback-sym))))
 
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (defn gen-api-access-or-call [static-config api-table descriptor config & args]
   (let [{:keys [namespace]} api-table
@@ -60,15 +60,15 @@
         real-args-sym (gensym "real-args")
         ns-sym (gensym "ns")
         thing-sym (gensym "thing")]
-    `(let [~real-args-sym (into-array (remove (fn [x#] (cljs.core/keyword-identical? x# :omit)) [~@wrapped-args]))    ; TODO: validate if omitted args were really optional
-           ~ns-sym ~js-namespace                                                                                      ; TODO: this needs to survive advanced mode compilation
+    `(let [~real-args-sym (into-array (remove (fn [x#] (cljs.core/keyword-identical? x# :omit)) [~@wrapped-args]))            ; TODO: validate if omitted args were really optional
+           ~ns-sym ~js-namespace                                                                                              ; TODO: this needs to survive advanced mode compilation
            ~thing-sym (chromex-lib.support/oget ~ns-sym ~name)]
        ~(apply log-if-verbose static-config config operation api args)
        ~(if property?
           thing-sym
           `(.apply ~thing-sym ~ns-sym ~real-args-sym)))))
 
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (defn marshall [static-config & args]
   (let [{:keys [gen-marshalling debug-marshalling]} static-config]
@@ -133,9 +133,9 @@
            ~result-sym ~(apply gen-api-access-or-call static-config api-table descriptor config param-syms)]
        ~(marshall-result static-config api [result-sym return-type]))))
 
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
-(defn gen-event [static-config api-table descriptor config chan & args]                                               ; TODO pass extra args into .addListener call
+(defn gen-event [static-config api-table descriptor config chan & args]                                                       ; TODO pass extra args into .addListener call
   (let [api (get-api-id api-table descriptor)
         event-id (:id descriptor)
         event-fn-sym (gensym "event-fn")
@@ -149,7 +149,7 @@
        (chromex-lib.protocols/subscribe! result#)
        result#)))
 
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (defn gen-callback-function-wrap [static-config api-table descriptor config & args]
   (let [chan-sym (gensym "chan")]
@@ -180,7 +180,7 @@
         tagged-descriptor (assoc descriptor :event? true)]
     (apply gen-event static-config api-table tagged-descriptor config args)))
 
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (defn gen-wrap-from-table [static-config api-table kind item-id config & args]
   (case kind

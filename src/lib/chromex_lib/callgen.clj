@@ -2,7 +2,7 @@
   (:require [chromex-lib.support :refer [valid-api-version? emit-api-version-warning emit-deprecation-warning
                                          get-wrap-symbol get-api-id get-item-by-id get-src-info]]))
 
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (defn gen-wrap-call [static-config src-info api-table descriptor config & args]
   (let [{:keys [id]} descriptor
@@ -39,7 +39,7 @@
       :property (apply gen-property-call static-config api-table item-id src-info config args)
       :event (apply gen-event-call static-config api-table item-id src-info config args))))
 
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (defn gen-tap-all-call [static-config api-table form config chan]
   (let [src-info (get-src-info form)
@@ -47,7 +47,8 @@
         config-sym (gensym "config")
         event-ids (map :id (:events api-table))
         static-config-no-warnings (assoc static-config :silence-compilation-warnings true)
-        all-tap-events-calls (map #(gen-event-call static-config-no-warnings api-table % src-info config-sym chan-sym) event-ids)
+        gen-event-call-for-id #(gen-event-call static-config-no-warnings api-table % src-info config-sym chan-sym)
+        all-tap-events-calls (map gen-event-call-for-id event-ids)
         valid-and-non-deprecated? (fn [call]
                                     (let [{:keys [valid? deprecated?]} (meta call)]
                                       (and valid? (not deprecated?))))

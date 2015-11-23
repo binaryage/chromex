@@ -6,7 +6,7 @@
 (declare *subscribe-called-while-subscribed*)
 (declare *unsubscribe-called-while-not-subscribed*)
 
-; -- ChromeEventSubscription ----------------------------------------------------------------------------------------
+; -- ChromeEventSubscription ------------------------------------------------------------------------------------------------
 
 (deftype ChromeEventSubscription [chrome-event listener chan ^:mutable subscribed-count]
 
@@ -28,12 +28,12 @@
         (if (satisfies? IChromeEventChannel chan)
           (protocols/unregister! chan this))))))
 
-; -- constructor ----------------------------------------------------------------------------------------------------
+; -- constructor ------------------------------------------------------------------------------------------------------------
 
 (defn make-chrome-event-subscription [chrome-event listener chan]
   (ChromeEventSubscription. chrome-event listener chan 0))
 
-; -- default exception handlers -------------------------------------------------------------------------------------
+; -- default exception handlers ---------------------------------------------------------------------------------------------
 
 (defn ^:dynamic *subscribe-called-while-subscribed* [_chrome-event-subscription]
   (assert false "ChromeEventSubscription: subscribe called while already subscribed")

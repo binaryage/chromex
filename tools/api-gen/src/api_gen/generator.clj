@@ -11,14 +11,14 @@
             [api-gen.helpers :refer :all]))
 
 (def ^:const NS-PREFIX "chromex.")
-(def ^:const MAX-COLUMNS 118)                                                                                         ; for good github look
+(def ^:const MAX-COLUMNS 126)                                                                                                 ; for nice github look
 (def shared-template-data {:enter "\n"})
 (def chromex-folder "chromex")
 
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (defn pprint-api-table-as-str [api-table]
-  (string/replace (pprint-edn-as-str api-table (- MAX-COLUMNS 8)) #":id :" ":id ::"))                                 ; HACK: turn ids into fully qualified keywords
+  (string/replace (pprint-edn-as-str api-table (- MAX-COLUMNS 8)) #":id :" ":id ::"))                                         ; HACK: turn ids into fully qualified keywords
 
 (defn build-path [folder name ext]
   (let [parts (string/split (snake-case name) #"\.")
@@ -115,7 +115,7 @@
   (if-let [version (get-in data [:availability :version])]
     (str version)))
 
-(defn extract-avail-until [_data])                                                                                    ; note: it looks like nothing has been removed
+(defn extract-avail-until [_data])                                                                                            ; note: it looks like nothing has been removed
 
 (defn extract-namespace-since [data]
   (let [{:keys [intro-list]} data]
@@ -133,7 +133,7 @@
   (let [callback-doc "\n\nNote: Instead of passing a callback function, you receive a core.async channel as return value."]
     (build-docstring 2 description parameters (if callback? callback-doc ""))))
 
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (declare build-api-table-param-info)
 
@@ -174,7 +174,8 @@
 (defn build-api-table-functions [function-names data]
   (let [* (fn [name]
             (let [function-data (get-in data [:by-name (keyword name)])]
-              (assert function-data (str "unable to lookup function by name '" (keyword name) "' in\n" (keys (get data :by-name))))
+              (assert function-data (str "unable to lookup function by name '" (keyword name)
+                                      "' in\n" (keys (get data :by-name))))
               (build-api-table-function function-data)))]
     (vec (map * function-names))))
 
@@ -220,7 +221,7 @@
       {:name name
        :doc  (build-ns-docstring name intro-list)})))
 
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (defn number-of-trailing-optional-arguments-except-callbacks [params]
   (let [is-callback? (fn [param] (= (:type param) :callback))]
@@ -269,7 +270,7 @@
     {:event-name      (kebab-case name)
      :event-docstring doc}))
 
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (defn generate-cljs-ns [api-table]
   (let [{:keys [functions properties events]} api-table
@@ -295,7 +296,7 @@
         content (render-resource "templates/cljs-ns.mustache" template-data partials)]
     [file-path (post-process content)]))
 
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (defn generate-clj-ns [api-table]
   (let [{:keys [functions properties events]} api-table
@@ -322,7 +323,7 @@
         content (render-resource "templates/clj-ns.mustache" template-data partials)]
     [file-path (post-process content)]))
 
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (defn generate-stats [api-tables]
   (let [table-stats (fn [table]
@@ -342,7 +343,7 @@
                :total-properties 0
                :total-events     0} api-tables)))
 
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (def generation-date-formatter (time-format/formatters :date))
 
@@ -392,7 +393,8 @@
         template-data (merge
                         shared-template-data
                         {:generation-date   (time-format/unparse generation-date-formatter (time/now))
-                         :generation-source (str "[Chromium @ " (subs chromium-sha 0 7) "](https://chromium.googlesource.com/chromium/src.git/+/" chromium-sha ")")
+                         :generation-source (str "[Chromium @ " (subs chromium-sha 0 7)
+                                              "](https://chromium.googlesource.com/chromium/src.git/+/" chromium-sha ")")
                          :requires          (build-requires api-tables)
                          :files             (build-api-files api-tables)
                          :total-properties  total-properties
@@ -403,14 +405,14 @@
         content (render-resource "templates/readme.mustache" template-data)]
     ["readme.md" content]))
 
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (defn generate-files-for-table [api-table]
   (println (str "generating files for '" (:namespace api-table) "'"))
   [(generate-cljs-ns api-table)
    (generate-clj-ns api-table)])
 
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (defn build-api-table [ns]
   (println (str "preparing '" (:name ns) "'"))
@@ -441,7 +443,7 @@
   (let [filtered-data (filter #(matches-filter? % tag) data)]
     (keep (comp build-api-table second) filtered-data)))
 
-; -------------------------------------------------------------------------------------------------------------------
+; ---------------------------------------------------------------------------------------------------------------------------
 
 (defn generate-files [chromium-sha api-tables]
   (conj (mapcat generate-files-for-table api-tables) (generate-readme chromium-sha api-tables)))

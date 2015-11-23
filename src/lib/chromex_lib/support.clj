@@ -1,6 +1,6 @@
 (ns chromex-lib.support)
 
-; -- we don't want to rely on externs -------------------------------------------------------------------------------
+; -- we don't want to rely on externs ---------------------------------------------------------------------------------------
 
 (defmacro ocall [o name & params]
   `(let [o# ~o]
@@ -11,7 +11,7 @@
   ([o k1 k2] `(when-let [o# (goog.object/get ~o ~k1)] (goog.object/get o# ~k2)))
   ([o k1 k2 & ks] `(when-let [o# (goog.object/get ~o ~k1 ~k2)] (oget o# ~@ks))))
 
-; -- helpers --------------------------------------------------------------------------------------------------------
+; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 (defn get-wrap-symbol [id]
   (symbol (str (namespace id)) (str (name id) "*")))
@@ -25,7 +25,7 @@
 (defn get-src-info [form]
   (meta form))
 
-; -- miscelaneous ---------------------------------------------------------------------------------------------------
+; -- miscelaneous -----------------------------------------------------------------------------------------------------------
 
 (defn get-source-location [src-info]
   (let [{:keys [file line column]} src-info]
@@ -40,7 +40,7 @@
   (binding [*out* *err*]
     (println "DEBUG:" msg)))
 
-; -- logging support ------------------------------------------------------------------------------------------------
+; -- logging support --------------------------------------------------------------------------------------------------------
 
 (defn log-if-verbose [static-config config & args]
   (if-not (:elide-verbose-logging static-config)
@@ -51,7 +51,7 @@
              "invalid :logger in chromex config")
            (logger# ~@args))))))
 
-; -- api versioning -------------------------------------------------------------------------------------------------
+; -- api versioning ---------------------------------------------------------------------------------------------------------
 
 ; http://stackoverflow.com/a/12503724/84283
 (defn parse-int [s]
@@ -88,7 +88,7 @@
         "Target API version '" version "' is not within required range " (user-friendly-range-str range)))))
 
 
-; -- deprecation warnings -------------------------------------------------------------------------------------------
+; -- deprecation warnings ---------------------------------------------------------------------------------------------------
 
 (defn emit-deprecation-warning [static-config src-info api-name details]
   (print-compile-time-warning static-config src-info
