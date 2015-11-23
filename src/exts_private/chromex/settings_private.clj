@@ -21,30 +21,40 @@
      |name| - The name of the pref.
      |value| - The new value of the pref.
      |pageId| - The user metrics identifier or null.
-     |callback| - The callback for whether the pref was set or not."
-  ([name value page-id #_callback] (gen-call :function ::set-pref (meta &form) name value page-id)))
+     |callback| - The callback for whether the pref was set or not.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([name value page-id #_callback] (gen-call :function ::set-pref &form name value page-id)))
 
 (defmacro get-all-prefs
-  "Gets an array of all the prefs."
-  ([#_callback] (gen-call :function ::get-all-prefs (meta &form))))
+  "Gets an array of all the prefs.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-all-prefs &form)))
 
 (defmacro get-pref
-  "Gets the value of a specific pref."
-  ([name #_callback] (gen-call :function ::get-pref (meta &form) name)))
+  "Gets the value of a specific pref.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([name #_callback] (gen-call :function ::get-pref &form name)))
 
 (defmacro get-default-zoom-percent
-  "Gets the page zoom factor as an integer percentage."
-  ([#_callback] (gen-call :function ::get-default-zoom-percent (meta &form))))
+  "Gets the page zoom factor as an integer percentage.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-default-zoom-percent &form)))
 
 (defmacro set-default-zoom-percent
-  "Sets the page zoom factor from a zoom percentage."
-  ([percent #_callback] (gen-call :function ::set-default-zoom-percent (meta &form) percent)))
+  "Sets the page zoom factor from a zoom percentage.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([percent #_callback] (gen-call :function ::set-default-zoom-percent &form percent)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-prefs-changed-events
   "Fired when a set of prefs has changed.|prefs| The prefs that changed."
-  ([channel] (gen-call :event ::on-prefs-changed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-prefs-changed &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

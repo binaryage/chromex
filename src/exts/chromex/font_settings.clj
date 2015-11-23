@@ -15,92 +15,118 @@
 ; -- functions ------------------------------------------------------------------------------------------------------
 
 (defmacro clear-font
-  "Clears the font set by this extension, if any."
-  ([details #_callback] (gen-call :function ::clear-font (meta &form) details)))
+  "Clears the font set by this extension, if any.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([details #_callback] (gen-call :function ::clear-font &form details)))
 
 (defmacro get-font
-  "Gets the font for a given script and generic font family."
-  ([details #_callback] (gen-call :function ::get-font (meta &form) details)))
+  "Gets the font for a given script and generic font family.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([details #_callback] (gen-call :function ::get-font &form details)))
 
 (defmacro set-font
-  "Sets the font for a given script and generic font family."
-  ([details #_callback] (gen-call :function ::set-font (meta &form) details)))
+  "Sets the font for a given script and generic font family.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([details #_callback] (gen-call :function ::set-font &form details)))
 
 (defmacro get-font-list
-  "Gets a list of fonts on the system."
-  ([#_callback] (gen-call :function ::get-font-list (meta &form))))
+  "Gets a list of fonts on the system.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-font-list &form)))
 
 (defmacro clear-default-font-size
   "Clears the default font size set by this extension, if any.
    
-     |details| - This parameter is currently unused."
-  ([details #_callback] (gen-call :function ::clear-default-font-size (meta &form) details))
+     |details| - This parameter is currently unused.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([details #_callback] (gen-call :function ::clear-default-font-size &form details))
   ([] `(clear-default-font-size :omit)))
 
 (defmacro get-default-font-size
   "Gets the default font size.
    
-     |details| - This parameter is currently unused."
-  ([details #_callback] (gen-call :function ::get-default-font-size (meta &form) details))
+     |details| - This parameter is currently unused.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([details #_callback] (gen-call :function ::get-default-font-size &form details))
   ([] `(get-default-font-size :omit)))
 
 (defmacro set-default-font-size
-  "Sets the default font size."
-  ([details #_callback] (gen-call :function ::set-default-font-size (meta &form) details)))
+  "Sets the default font size.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([details #_callback] (gen-call :function ::set-default-font-size &form details)))
 
 (defmacro clear-default-fixed-font-size
   "Clears the default fixed font size set by this extension, if any.
    
-     |details| - This parameter is currently unused."
-  ([details #_callback] (gen-call :function ::clear-default-fixed-font-size (meta &form) details))
+     |details| - This parameter is currently unused.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([details #_callback] (gen-call :function ::clear-default-fixed-font-size &form details))
   ([] `(clear-default-fixed-font-size :omit)))
 
 (defmacro get-default-fixed-font-size
   "Gets the default size for fixed width fonts.
    
-     |details| - This parameter is currently unused."
-  ([details #_callback] (gen-call :function ::get-default-fixed-font-size (meta &form) details))
+     |details| - This parameter is currently unused.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([details #_callback] (gen-call :function ::get-default-fixed-font-size &form details))
   ([] `(get-default-fixed-font-size :omit)))
 
 (defmacro set-default-fixed-font-size
-  "Sets the default size for fixed width fonts."
-  ([details #_callback] (gen-call :function ::set-default-fixed-font-size (meta &form) details)))
+  "Sets the default size for fixed width fonts.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([details #_callback] (gen-call :function ::set-default-fixed-font-size &form details)))
 
 (defmacro clear-minimum-font-size
   "Clears the minimum font size set by this extension, if any.
    
-     |details| - This parameter is currently unused."
-  ([details #_callback] (gen-call :function ::clear-minimum-font-size (meta &form) details))
+     |details| - This parameter is currently unused.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([details #_callback] (gen-call :function ::clear-minimum-font-size &form details))
   ([] `(clear-minimum-font-size :omit)))
 
 (defmacro get-minimum-font-size
   "Gets the minimum font size.
    
-     |details| - This parameter is currently unused."
-  ([details #_callback] (gen-call :function ::get-minimum-font-size (meta &form) details))
+     |details| - This parameter is currently unused.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([details #_callback] (gen-call :function ::get-minimum-font-size &form details))
   ([] `(get-minimum-font-size :omit)))
 
 (defmacro set-minimum-font-size
-  "Sets the minimum font size."
-  ([details #_callback] (gen-call :function ::set-minimum-font-size (meta &form) details)))
+  "Sets the minimum font size.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([details #_callback] (gen-call :function ::set-minimum-font-size &form details)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-font-changed-events
   "Fired when a font setting changes."
-  ([channel] (gen-call :event ::on-font-changed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-font-changed &form channel)))
 
 (defmacro tap-on-default-font-size-changed-events
   "Fired when the default font size setting changes."
-  ([channel] (gen-call :event ::on-default-font-size-changed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-default-font-size-changed &form channel)))
 
 (defmacro tap-on-default-fixed-font-size-changed-events
   "Fired when the default fixed font size setting changes."
-  ([channel] (gen-call :event ::on-default-fixed-font-size-changed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-default-fixed-font-size-changed &form channel)))
 
 (defmacro tap-on-minimum-font-size-changed-events
   "Fired when the minimum font size setting changes."
-  ([channel] (gen-call :event ::on-minimum-font-size-changed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-minimum-font-size-changed &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

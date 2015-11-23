@@ -18,56 +18,60 @@
   "Retrieves information about the given frame. A frame refers to an &lt;iframe&gt; or a &lt;frame&gt; of a web page
    and is identified by a tab ID and a frame ID.
    
-     |details| - Information about the frame to retrieve information about."
-  ([details #_callback] (gen-call :function ::get-frame (meta &form) details)))
+     |details| - Information about the frame to retrieve information about.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([details #_callback] (gen-call :function ::get-frame &form details)))
 
 (defmacro get-all-frames
   "Retrieves information about all frames of a given tab.
    
-     |details| - Information about the tab to retrieve all frames from."
-  ([details #_callback] (gen-call :function ::get-all-frames (meta &form) details)))
+     |details| - Information about the tab to retrieve all frames from.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([details #_callback] (gen-call :function ::get-all-frames &form details)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-before-navigate-events
   "Fired when a navigation is about to occur."
-  ([channel] (gen-call :event ::on-before-navigate (meta &form) channel)))
+  ([channel] (gen-call :event ::on-before-navigate &form channel)))
 
 (defmacro tap-on-committed-events
   "Fired when a navigation is committed. The document (and the resources it refers to, such as images and subframes)
    might still be downloading, but at least part of the document has been received from the server and the browser has
    decided to switch to the new document."
-  ([channel] (gen-call :event ::on-committed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-committed &form channel)))
 
 (defmacro tap-on-dom-content-loaded-events
   "Fired when the page's DOM is fully constructed, but the referenced resources may not finish loading."
-  ([channel] (gen-call :event ::on-dom-content-loaded (meta &form) channel)))
+  ([channel] (gen-call :event ::on-dom-content-loaded &form channel)))
 
 (defmacro tap-on-completed-events
   "Fired when a document, including the resources it refers to, is completely loaded and initialized."
-  ([channel] (gen-call :event ::on-completed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-completed &form channel)))
 
 (defmacro tap-on-error-occurred-events
   "Fired when an error occurs and the navigation is aborted. This can happen if either a network error occurred, or
    the user aborted the navigation."
-  ([channel] (gen-call :event ::on-error-occurred (meta &form) channel)))
+  ([channel] (gen-call :event ::on-error-occurred &form channel)))
 
 (defmacro tap-on-created-navigation-target-events
   "Fired when a new window, or a new tab in an existing window, is created to host a navigation."
-  ([channel] (gen-call :event ::on-created-navigation-target (meta &form) channel)))
+  ([channel] (gen-call :event ::on-created-navigation-target &form channel)))
 
 (defmacro tap-on-reference-fragment-updated-events
   "Fired when the reference fragment of a frame was updated. All future events for that frame will use the updated
    URL."
-  ([channel] (gen-call :event ::on-reference-fragment-updated (meta &form) channel)))
+  ([channel] (gen-call :event ::on-reference-fragment-updated &form channel)))
 
 (defmacro tap-on-tab-replaced-events
   "Fired when the contents of the tab is replaced by a different (usually previously pre-rendered) tab."
-  ([channel] (gen-call :event ::on-tab-replaced (meta &form) channel)))
+  ([channel] (gen-call :event ::on-tab-replaced &form channel)))
 
 (defmacro tap-on-history-state-updated-events
   "Fired when the frame's history was updated to a new URL. All future events for that frame will use the updated URL."
-  ([channel] (gen-call :event ::on-history-state-updated (meta &form) channel)))
+  ([channel] (gen-call :event ::on-history-state-updated &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

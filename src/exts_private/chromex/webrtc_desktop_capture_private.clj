@@ -16,12 +16,14 @@
 ; -- functions ------------------------------------------------------------------------------------------------------
 
 (defmacro choose-desktop-media
-  "Shows desktop media picker UI with the specified set of sources."
-  ([sources request #_callback] (gen-call :function ::choose-desktop-media (meta &form) sources request)))
+  "Shows desktop media picker UI with the specified set of sources.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([sources request #_callback] (gen-call :function ::choose-desktop-media &form sources request)))
 
 (defmacro cancel-choose-desktop-media
   "Hides desktop media picker dialog shown by chooseDesktopMedia()."
-  ([desktop-media-request-id] (gen-call :function ::cancel-choose-desktop-media (meta &form) desktop-media-request-id)))
+  ([desktop-media-request-id] (gen-call :function ::cancel-choose-desktop-media &form desktop-media-request-id)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

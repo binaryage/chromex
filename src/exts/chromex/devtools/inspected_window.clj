@@ -18,7 +18,7 @@
 
 (defmacro get-tab-id
   "The ID of the tab being inspected. This ID may be used with chrome.tabs.* API."
-  ([] (gen-call :property ::tab-id (meta &form))))
+  ([] (gen-call :property ::tab-id &form)))
 
 ; -- functions ------------------------------------------------------------------------------------------------------
 
@@ -32,31 +32,35 @@
    
      |expression| - An expression to evaluate.
      |options| - The options parameter can contain one or more options.
-     |callback| - A function called when evaluation completes."
-  ([expression options #_callback] (gen-call :function ::eval (meta &form) expression options))
+     |callback| - A function called when evaluation completes.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([expression options #_callback] (gen-call :function ::eval &form expression options))
   ([expression] `(eval ~expression :omit)))
 
 (defmacro reload
   "Reloads the inspected page."
-  ([reload-options] (gen-call :function ::reload (meta &form) reload-options))
+  ([reload-options] (gen-call :function ::reload &form reload-options))
   ([] `(reload :omit)))
 
 (defmacro get-resources
   "Retrieves the list of resources from the inspected page.
    
-     |callback| - A function that receives the list of resources when the request completes."
-  ([#_callback] (gen-call :function ::get-resources (meta &form))))
+     |callback| - A function that receives the list of resources when the request completes.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-resources &form)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-resource-added-events
   "Fired when a new resource is added to the inspected page."
-  ([channel] (gen-call :event ::on-resource-added (meta &form) channel)))
+  ([channel] (gen-call :event ::on-resource-added &form channel)))
 
 (defmacro tap-on-resource-content-committed-events
   "Fired when a new revision of the resource is committed (e.g. user saves an edited version of the resource in the
    Developer Tools)."
-  ([channel] (gen-call :event ::on-resource-content-committed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-resource-content-committed &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

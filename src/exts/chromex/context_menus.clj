@@ -18,7 +18,7 @@
 (defmacro get-action-menu-top-level-limit
   "The maximum number of top level extension items that can be added to an extension action context menu. Any items
    beyond this limit will be ignored."
-  ([] (gen-call :property ::action-menu-top-level-limit (meta &form))))
+  ([] (gen-call :property ::action-menu-top-level-limit &form)))
 
 ; -- functions ------------------------------------------------------------------------------------------------------
 
@@ -27,35 +27,43 @@
    creation callback fires (the details will be in chrome.runtime.lastError).
    
      |callback| - Called when the item has been created in the browser. If there were any problems creating the
-                  item, details will be available in chrome.runtime.lastError."
-  ([create-properties #_callback] (gen-call :function ::create (meta &form) create-properties)))
+                  item, details will be available in chrome.runtime.lastError.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([create-properties #_callback] (gen-call :function ::create &form create-properties)))
 
 (defmacro update
   "Updates a previously created context menu item.
    
      |id| - The ID of the item to update.
      |updateProperties| - The properties to update. Accepts the same values as the create function.
-     |callback| - Called when the context menu has been updated."
-  ([id update-properties #_callback] (gen-call :function ::update (meta &form) id update-properties)))
+     |callback| - Called when the context menu has been updated.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([id update-properties #_callback] (gen-call :function ::update &form id update-properties)))
 
 (defmacro remove
   "Removes a context menu item.
    
      |menuItemId| - The ID of the context menu item to remove.
-     |callback| - Called when the context menu has been removed."
-  ([menu-item-id #_callback] (gen-call :function ::remove (meta &form) menu-item-id)))
+     |callback| - Called when the context menu has been removed.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([menu-item-id #_callback] (gen-call :function ::remove &form menu-item-id)))
 
 (defmacro remove-all
   "Removes all context menu items added by this extension.
    
-     |callback| - Called when removal is complete."
-  ([#_callback] (gen-call :function ::remove-all (meta &form))))
+     |callback| - Called when removal is complete.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::remove-all &form)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-clicked-events
   "Fired when a context menu item is clicked."
-  ([channel] (gen-call :event ::on-clicked (meta &form) channel)))
+  ([channel] (gen-call :event ::on-clicked &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

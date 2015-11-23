@@ -21,8 +21,10 @@
    to this API.
    
      |component| - Internal chrome component to get strings for.
-     |callback| - Called with a dictionary mapping names to strings."
-  ([component #_callback] (gen-call :function ::get-strings (meta &form) component)))
+     |callback| - Called with a dictionary mapping names to strings.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([component #_callback] (gen-call :function ::get-strings &form component)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

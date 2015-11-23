@@ -25,28 +25,36 @@
 ; -- functions ------------------------------------------------------------------------------------------------------
 
 (defmacro get-sinks
-  "Retrieves a list of available audio sink devices."
-  ([#_callback] (gen-call :function ::get-sinks (meta &form))))
+  "Retrieves a list of available audio sink devices.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-sinks &form)))
 
 (defmacro get-active-sink
-  "Retrieves the currently active audio sink for the given requesting process."
-  ([request #_callback] (gen-call :function ::get-active-sink (meta &form) request)))
+  "Retrieves the currently active audio sink for the given requesting process.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([request #_callback] (gen-call :function ::get-active-sink &form request)))
 
 (defmacro set-active-sink
-  "Sets the active audio sink device for the specified requesting process."
-  ([request sink-id #_callback] (gen-call :function ::set-active-sink (meta &form) request sink-id)))
+  "Sets the active audio sink device for the specified requesting process.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([request sink-id #_callback] (gen-call :function ::set-active-sink &form request sink-id)))
 
 (defmacro get-associated-sink
   "Given a security origin and an input device ID valid for that security origin, retrieve an audio sink ID valid for
    the extension, or the empty string if there is no associated audio sink.The associated sink ID can be used as a
-   sink ID for setActiveSink. It is valid irrespective of which process you are setting the active sink for."
-  ([security-origin source-id-in-origin #_cb] (gen-call :function ::get-associated-sink (meta &form) security-origin source-id-in-origin)))
+   sink ID for setActiveSink. It is valid irrespective of which process you are setting the active sink for.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([security-origin source-id-in-origin #_cb] (gen-call :function ::get-associated-sink &form security-origin source-id-in-origin)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-sinks-changed-events
   "Fired when audio sink devices are added or removed."
-  ([channel] (gen-call :event ::on-sinks-changed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-sinks-changed &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

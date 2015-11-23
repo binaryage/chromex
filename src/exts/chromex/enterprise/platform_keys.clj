@@ -24,16 +24,20 @@
    'system'. The system-wide token will be the same for all sessions on this device (device in the sense of e.g. a
    Chromebook).
    
-     |callback| - Invoked by getTokens with the list of available Tokens."
-  ([#_callback] (gen-call :function ::get-tokens (meta &form))))
+     |callback| - Invoked by getTokens with the list of available Tokens.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-tokens &form)))
 
 (defmacro get-certificates
   "Returns the list of all client certificates available from the given token. Can be used to check for the existence
    and expiration of client certificates that are usable for a certain authentication.
    
      |tokenId| - The id of a Token returned by getTokens.
-     |callback| - Called back with the list of the available certificates."
-  ([token-id #_callback] (gen-call :function ::get-certificates (meta &form) token-id)))
+     |callback| - Called back with the list of the available certificates.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([token-id #_callback] (gen-call :function ::get-certificates &form token-id)))
 
 (defmacro import-certificate
   "Imports certificate to the given token if the certified key is already stored in this token. After a successful
@@ -42,8 +46,10 @@
    
      |tokenId| - The id of a Token returned by getTokens.
      |certificate| - The DER encoding of a X.509 certificate.
-     |callback| - Called back when this operation is finished."
-  ([token-id certificate #_callback] (gen-call :function ::import-certificate (meta &form) token-id certificate)))
+     |callback| - Called back when this operation is finished.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([token-id certificate #_callback] (gen-call :function ::import-certificate &form token-id certificate)))
 
 (defmacro remove-certificate
   "Removes certificate from the given token if present. Should be used to remove obsolete certificates so that they
@@ -52,8 +58,10 @@
    
      |tokenId| - The id of a Token returned by getTokens.
      |certificate| - The DER encoding of a X.509 certificate.
-     |callback| - Called back when this operation is finished."
-  ([token-id certificate #_callback] (gen-call :function ::remove-certificate (meta &form) token-id certificate)))
+     |callback| - Called back when this operation is finished.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([token-id certificate #_callback] (gen-call :function ::remove-certificate &form token-id certificate)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

@@ -15,21 +15,27 @@
 ; -- functions ------------------------------------------------------------------------------------------------------
 
 (defmacro open-serial-webcam
-  "Open a serial port that controls a webcam."
-  ([path protocol #_callback] (gen-call :function ::open-serial-webcam (meta &form) path protocol)))
+  "Open a serial port that controls a webcam.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([path protocol #_callback] (gen-call :function ::open-serial-webcam &form path protocol)))
 
 (defmacro close-webcam
   "Close a serial port connection to a webcam."
-  ([webcam-id] (gen-call :function ::close-webcam (meta &form) webcam-id)))
+  ([webcam-id] (gen-call :function ::close-webcam &form webcam-id)))
 
-(defmacro get ([webcam-id #_callback] (gen-call :function ::get (meta &form) webcam-id)))
+(defmacro get
+  "
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([webcam-id #_callback] (gen-call :function ::get &form webcam-id)))
 
-(defmacro set ([webcam-id config] (gen-call :function ::set (meta &form) webcam-id config)))
+(defmacro set ([webcam-id config] (gen-call :function ::set &form webcam-id config)))
 
 (defmacro reset
   "Reset a webcam. Note: the value of the parameter have no effect, it's the presence of the parameter that matters.
    E.g.: reset(webcamId, {pan: 0,  tilt: 1}); will reset pan & tilt, but not zoom."
-  ([webcam-id config] (gen-call :function ::reset (meta &form) webcam-id config)))
+  ([webcam-id config] (gen-call :function ::reset &form webcam-id config)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

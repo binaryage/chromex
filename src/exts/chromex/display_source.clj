@@ -18,8 +18,10 @@
 (defmacro get-available-sinks
   "Queries the list of the currently available Display sinks.
    
-     |callback| - Called when the request is completed. The argument list is empty if no available sinks were found."
-  ([#_callback] (gen-call :function ::get-available-sinks (meta &form))))
+     |callback| - Called when the request is completed. The argument list is empty if no available sinks were found.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-available-sinks &form)))
 
 (defmacro request-authentication
   "Queries authentication data from the sink device.
@@ -28,8 +30,10 @@
      |callback| - Called when authentication info retrieved from the sink. The argument |method| field contains the
                   authentication method required by the sink for connection; the |data| field can be null or can
                   contain some supplementary data provided by the sink. If authentication info cannot be retrieved
-                  from the sink the 'chrome.runtime.lastError' property is defined."
-  ([sink-id #_callback] (gen-call :function ::request-authentication (meta &form) sink-id)))
+                  from the sink the 'chrome.runtime.lastError' property is defined.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([sink-id #_callback] (gen-call :function ::request-authentication &form sink-id)))
 
 (defmacro start-session
   "Creates a Display session using the provided StartSessionInfo instance. The input argument fields must be
@@ -39,33 +43,35 @@
    additional authentication data are required by the sink; otherwise its |data| field must contain the required
    authentication data (e.g. PIN value) and its |method| field must be the same as one obtained from
    ‘requestAuthentication’."
-  ([session-info] (gen-call :function ::start-session (meta &form) session-info)))
+  ([session-info] (gen-call :function ::start-session &form session-info)))
 
 (defmacro terminate-session
   "Terminates the active Display session.
    
      |sinkId| - Id of the connected sink.
-     |callback| - Called when the session is terminated."
-  ([sink-id #_callback] (gen-call :function ::terminate-session (meta &form) sink-id)))
+     |callback| - Called when the session is terminated.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([sink-id #_callback] (gen-call :function ::terminate-session &form sink-id)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-sinks-updated-events
   "Event fired when the available sinks are modified (either their amount or properties) |sinks| the list of all
    currently available sinks"
-  ([channel] (gen-call :event ::on-sinks-updated (meta &form) channel)))
+  ([channel] (gen-call :event ::on-sinks-updated &form channel)))
 
 (defmacro tap-on-session-started-events
   "Event fired when the Display session is started. |sinkId| Id of the peer sink"
-  ([channel] (gen-call :event ::on-session-started (meta &form) channel)))
+  ([channel] (gen-call :event ::on-session-started &form channel)))
 
 (defmacro tap-on-session-terminated-events
   "Event fired when the Display session is terminated. |sinkId| Id of the peer sink"
-  ([channel] (gen-call :event ::on-session-terminated (meta &form) channel)))
+  ([channel] (gen-call :event ::on-session-terminated &form channel)))
 
 (defmacro tap-on-session-error-occured-events
   "Event fired when an error occurs. |sinkId| Id of the peer sink |errorInfo| error description"
-  ([channel] (gen-call :event ::on-session-error-occured (meta &form) channel)))
+  ([channel] (gen-call :event ::on-session-error-occured &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

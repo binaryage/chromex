@@ -15,34 +15,40 @@
 (defmacro get-incognito-mode-availability
   "Returns whether the incognito mode is enabled, disabled or forced
    
-     |callback| - Called with the result."
-  ([#_callback] (gen-call :function ::get-incognito-mode-availability (meta &form))))
+     |callback| - Called with the result.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-incognito-mode-availability &form)))
 
 (defmacro get-update-status
-  "Gets information about the system update."
-  ([#_callback] (gen-call :function ::get-update-status (meta &form))))
+  "Gets information about the system update.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-update-status &form)))
 
 (defmacro get-api-key
-  "Gets Chrome's API key to use for requests to Google services."
-  ([#_callback] (gen-call :function ::get-api-key (meta &form))))
+  "Gets Chrome's API key to use for requests to Google services.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-api-key &form)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-volume-changed-events
   "Fired when the volume is changed."
-  ([channel] (gen-call :event ::on-volume-changed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-volume-changed &form channel)))
 
 (defmacro tap-on-brightness-changed-events
   "Fired when the screen brightness is changed."
-  ([channel] (gen-call :event ::on-brightness-changed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-brightness-changed &form channel)))
 
 (defmacro tap-on-screen-unlocked-events
   "Fired when the screen is unlocked."
-  ([channel] (gen-call :event ::on-screen-unlocked (meta &form) channel)))
+  ([channel] (gen-call :event ::on-screen-unlocked &form channel)))
 
 (defmacro tap-on-woke-up-events
   "Fired when the device wakes up from sleep."
-  ([channel] (gen-call :event ::on-woke-up (meta &form) channel)))
+  ([channel] (gen-call :event ::on-woke-up &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

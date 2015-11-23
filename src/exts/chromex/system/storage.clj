@@ -18,27 +18,33 @@
 
 (defmacro get-info
   "Get the storage information from the system. The argument passed to the callback is an array of StorageUnitInfo
-   objects."
-  ([#_callback] (gen-call :function ::get-info (meta &form))))
+   objects.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-info &form)))
 
 (defmacro eject-device
-  "Ejects a removable storage device."
-  ([id #_callback] (gen-call :function ::eject-device (meta &form) id)))
+  "Ejects a removable storage device.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([id #_callback] (gen-call :function ::eject-device &form id)))
 
 (defmacro get-available-capacity
   "Get the available capacity of a specified |id| storage device. The |id| is the transient device ID from
-   StorageUnitInfo."
-  ([id #_callback] (gen-call :function ::get-available-capacity (meta &form) id)))
+   StorageUnitInfo.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([id #_callback] (gen-call :function ::get-available-capacity &form id)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-attached-events
   "Fired when a new removable storage is attached to the system."
-  ([channel] (gen-call :event ::on-attached (meta &form) channel)))
+  ([channel] (gen-call :event ::on-attached &form channel)))
 
 (defmacro tap-on-detached-events
   "Fired when a removable storage is detached from the system."
-  ([channel] (gen-call :event ::on-detached (meta &form) channel)))
+  ([channel] (gen-call :event ::on-detached &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

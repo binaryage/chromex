@@ -21,7 +21,7 @@
 
 (defmacro tap-on-hangout-requested-events
   "Fired when Chrome wants to request a new hangout be opened up with a user (or set of users)."
-  ([channel] (gen-call :event ::on-hangout-requested (meta &form) channel)))
+  ([channel] (gen-call :event ::on-hangout-requested &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

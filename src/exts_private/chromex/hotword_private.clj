@@ -21,111 +21,141 @@
 ; -- functions ------------------------------------------------------------------------------------------------------
 
 (defmacro set-enabled
-  "Sets the current enabled state of hotword search. True: enable hotword search. False: disable hotword search."
-  ([state #_callback] (gen-call :function ::set-enabled (meta &form) state)))
+  "Sets the current enabled state of hotword search. True: enable hotword search. False: disable hotword search.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([state #_callback] (gen-call :function ::set-enabled &form state)))
 
 (defmacro get-status
   "Retrieves the current state of hotword search. The result is put into a StatusDetails object.
    
      |getOptionalFields| - If true, fills in fields tagged as optional in StatusDetails with valid values. These
                            fields are not valid by default since their current implementations may cause blocking
-                           operations."
-  ([get-optional-fields #_callback] (gen-call :function ::get-status (meta &form) get-optional-fields))
+                           operations.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([get-optional-fields #_callback] (gen-call :function ::get-status &form get-optional-fields))
   ([] `(get-status :omit)))
 
 (defmacro get-localized-strings
-  "Retrieves a dictionary mapping names to localized resource strings."
-  ([#_callback] (gen-call :function ::get-localized-strings (meta &form))))
+  "Retrieves a dictionary mapping names to localized resource strings.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-localized-strings &form)))
 
 (defmacro set-audio-logging-enabled
-  "Sets the current enabled state of audio logging in the extension. True: logging enabled. False: no logging."
-  ([state #_callback] (gen-call :function ::set-audio-logging-enabled (meta &form) state)))
+  "Sets the current enabled state of audio logging in the extension. True: logging enabled. False: no logging.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([state #_callback] (gen-call :function ::set-audio-logging-enabled &form state)))
 
 (defmacro set-hotword-always-on-search-enabled
   "Sets the current enabled state of hotword-always-on-search pref. True: enable hotword always on search. False:
-   disable hotword always on search."
-  ([state #_callback] (gen-call :function ::set-hotword-always-on-search-enabled (meta &form) state)))
+   disable hotword always on search.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([state #_callback] (gen-call :function ::set-hotword-always-on-search-enabled &form state)))
 
 (defmacro set-hotword-session-state
-  "Sets the current state of the browser-requested hotword session."
-  ([started #_callback] (gen-call :function ::set-hotword-session-state (meta &form) started)))
+  "Sets the current state of the browser-requested hotword session.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([started #_callback] (gen-call :function ::set-hotword-session-state &form started)))
 
 (defmacro notify-hotword-recognition
-  "Notifies that a hotword has been recognized in the browser-requested hotword session."
-  ([type log #_callback] (gen-call :function ::notify-hotword-recognition (meta &form) type log))
+  "Notifies that a hotword has been recognized in the browser-requested hotword session.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([type log #_callback] (gen-call :function ::notify-hotword-recognition &form type log))
   ([type] `(notify-hotword-recognition ~type :omit)))
 
 (defmacro get-launch-state
   "Retrieves the state that the Hotword Audio Verification app was launched in. The result is put into a LaunchState
-   object."
-  ([#_callback] (gen-call :function ::get-launch-state (meta &form))))
+   object.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-launch-state &form)))
 
 (defmacro start-training
-  "Starts the speaker model training."
-  ([#_callback] (gen-call :function ::start-training (meta &form))))
+  "Starts the speaker model training.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::start-training &form)))
 
 (defmacro finalize-speaker-model
-  "Finalizess the speaker model."
-  ([#_callback] (gen-call :function ::finalize-speaker-model (meta &form))))
+  "Finalizess the speaker model.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::finalize-speaker-model &form)))
 
 (defmacro notify-speaker-model-saved
-  "Notifies that the speaker model has been saved."
-  ([#_callback] (gen-call :function ::notify-speaker-model-saved (meta &form))))
+  "Notifies that the speaker model has been saved.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::notify-speaker-model-saved &form)))
 
 (defmacro stop-training
-  "Stops the speaker model training."
-  ([#_callback] (gen-call :function ::stop-training (meta &form))))
+  "Stops the speaker model training.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::stop-training &form)))
 
 (defmacro set-audio-history-enabled
-  "Sets the audio history opt-in state."
-  ([enabled #_callback] (gen-call :function ::set-audio-history-enabled (meta &form) enabled)))
+  "Sets the audio history opt-in state.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([enabled #_callback] (gen-call :function ::set-audio-history-enabled &form enabled)))
 
 (defmacro get-audio-history-enabled
-  "Gets the audio history opt-in state."
-  ([#_callback] (gen-call :function ::get-audio-history-enabled (meta &form))))
+  "Gets the audio history opt-in state.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-audio-history-enabled &form)))
 
 (defmacro speaker-model-exists-result
-  "Sends the result of whether a speaker model exists to the browser."
-  ([exists #_callback] (gen-call :function ::speaker-model-exists-result (meta &form) exists)))
+  "Sends the result of whether a speaker model exists to the browser.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([exists #_callback] (gen-call :function ::speaker-model-exists-result &form exists)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-enabled-changed-events
   "Fired when the hotword detector enabled state should be changed. This can be from various sources, e.g. a pref
    change or training a speaker model."
-  ([channel] (gen-call :event ::on-enabled-changed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-enabled-changed &form channel)))
 
 (defmacro tap-on-hotword-session-requested-events
   "Fired when the browser wants to start a hotword session."
-  ([channel] (gen-call :event ::on-hotword-session-requested (meta &form) channel)))
+  ([channel] (gen-call :event ::on-hotword-session-requested &form channel)))
 
 (defmacro tap-on-hotword-session-stopped-events
   "Fired when the browser wants to stop the requested hotword session."
-  ([channel] (gen-call :event ::on-hotword-session-stopped (meta &form) channel)))
+  ([channel] (gen-call :event ::on-hotword-session-stopped &form channel)))
 
 (defmacro tap-on-finalize-speaker-model-events
   "Fired when the speaker model should be finalized."
-  ([channel] (gen-call :event ::on-finalize-speaker-model (meta &form) channel)))
+  ([channel] (gen-call :event ::on-finalize-speaker-model &form channel)))
 
 (defmacro tap-on-speaker-model-saved-events
   "Fired when the speaker model has been saved."
-  ([channel] (gen-call :event ::on-speaker-model-saved (meta &form) channel)))
+  ([channel] (gen-call :event ::on-speaker-model-saved &form channel)))
 
 (defmacro tap-on-hotword-triggered-events
   "Fired when a hotword has triggered."
-  ([channel] (gen-call :event ::on-hotword-triggered (meta &form) channel)))
+  ([channel] (gen-call :event ::on-hotword-triggered &form channel)))
 
 (defmacro tap-on-delete-speaker-model-events
   "Fired when the speaker model should be deleted."
-  ([channel] (gen-call :event ::on-delete-speaker-model (meta &form) channel)))
+  ([channel] (gen-call :event ::on-delete-speaker-model &form channel)))
 
 (defmacro tap-on-speaker-model-exists-events
   "Fired when the browser wants to find out whether the speaker model exists."
-  ([channel] (gen-call :event ::on-speaker-model-exists (meta &form) channel)))
+  ([channel] (gen-call :event ::on-speaker-model-exists &form channel)))
 
 (defmacro tap-on-microphone-state-changed-events
   "Fired when the microphone state changes."
-  ([channel] (gen-call :event ::on-microphone-state-changed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-microphone-state-changed &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

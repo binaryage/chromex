@@ -18,18 +18,20 @@
 
 (defmacro get-browser-info
   "Retrives information about the current browser context (experimental variation information), passing a BrowserInfo
-   object to the callback function."
-  ([#_callback] (gen-call :function ::get-browser-info (meta &form))))
+   object to the callback function.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-browser-info &form)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-displayed-events
   "Fired when an interesting piece of UI is shown to the user."
-  ([channel] (gen-call :event ::on-displayed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-displayed &form channel)))
 
 (defmacro tap-on-decision-events
   "Fired when a user makes a decision about an interesting piece of UI."
-  ([channel] (gen-call :event ::on-decision (meta &form) channel)))
+  ([channel] (gen-call :event ::on-decision &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

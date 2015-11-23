@@ -21,16 +21,20 @@
    the tab is closed, or the media stream is closed by the extension.
    
      |options| - Configures the returned media stream.
-     |callback| - Callback with either the tab capture stream or   null."
-  ([options #_callback] (gen-call :function ::capture (meta &form) options)))
+     |callback| - Callback with either the tab capture stream or   null.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([options #_callback] (gen-call :function ::capture &form options)))
 
 (defmacro get-captured-tabs
   "Returns a list of tabs that have requested capture or are being captured, i.e. status != stopped and status !=
    error. This allows extensions to inform the user that there is an existing tab capture that would prevent a new tab
    capture from succeeding (or to prevent redundant requests for the same tab).
    
-     |callback| - Callback invoked with CaptureInfo[] for captured tabs."
-  ([#_callback] (gen-call :function ::get-captured-tabs (meta &form))))
+     |callback| - Callback invoked with CaptureInfo[] for captured tabs.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-captured-tabs &form)))
 
 (defmacro capture-offscreen-tab
   "Creates an off-screen tab and navigates it to the given |startUrl|. Then, capture is started and a MediaStream is
@@ -45,15 +49,17 @@
    without notice.
    
      |options| - Constraints for the capture and returned MediaStream.
-     |callback| - null on error."
-  ([start-url options #_callback] (gen-call :function ::capture-offscreen-tab (meta &form) start-url options)))
+     |callback| - null on error.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([start-url options #_callback] (gen-call :function ::capture-offscreen-tab &form start-url options)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-status-changed-events
   "Event fired when the capture status of a tab changes. This allows extension authors to keep track of the capture
    status of tabs to keep UI elements like page actions in sync."
-  ([channel] (gen-call :event ::on-status-changed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-status-changed &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

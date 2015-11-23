@@ -17,13 +17,13 @@
 
 (defmacro get-settings
   "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example."
-  ([] (gen-call :property ::settings (meta &form))))
+  ([] (gen-call :property ::settings &form)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-proxy-error-events
   "Notifies about proxy errors."
-  ([channel] (gen-call :event ::on-proxy-error (meta &form) channel)))
+  ([channel] (gen-call :event ::on-proxy-error &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

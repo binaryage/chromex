@@ -18,38 +18,42 @@
 
 (defmacro get-last-error
   "This will be defined during an API method callback if there was an error"
-  ([] (gen-call :property ::last-error (meta &form))))
+  ([] (gen-call :property ::last-error &form)))
 
 (defmacro get-id
   "The ID of the extension/app."
-  ([] (gen-call :property ::id (meta &form))))
+  ([] (gen-call :property ::id &form)))
 
 ; -- functions ------------------------------------------------------------------------------------------------------
 
 (defmacro get-background-page
   "Retrieves the JavaScript 'window' object for the background page running inside the current extension/app. If the
    background page is an event page, the system will ensure it is loaded before calling the callback. If there is no
-   background page, an error is set."
-  ([#_callback] (gen-call :function ::get-background-page (meta &form))))
+   background page, an error is set.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-background-page &form)))
 
 (defmacro open-options-page
   "Open your Extension's options page, if possible.The precise behavior may depend on your manifest's options_ui or
    options_page key, or what Chrome happens to support at the time. For example, the page may be opened in a new tab,
    within chrome://extensions, within an App, or it may just focus an open options page. It will never cause the
    caller page to reload.If your Extension does not declare an options page, or Chrome failed to create one for some
-   other reason, the callback will set 'lastError'."
-  ([#_callback] (gen-call :function ::open-options-page (meta &form))))
+   other reason, the callback will set 'lastError'.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::open-options-page &form)))
 
 (defmacro get-manifest
   "Returns details about the app or extension from the manifest. The object returned is a serialization of the full
    manifest file."
-  ([] (gen-call :function ::get-manifest (meta &form))))
+  ([] (gen-call :function ::get-manifest &form)))
 
 (defmacro get-url
   "Converts a relative path within an app/extension install directory to a fully-qualified URL.
    
      |path| - A path to a resource within an app/extension expressed relative to its install directory."
-  ([path] (gen-call :function ::get-url (meta &form) path)))
+  ([path] (gen-call :function ::get-url &form path)))
 
 (defmacro set-uninstall-url
   "Sets the URL to be visited upon uninstallation. This may be used to clean up server-side data, do analytics, and
@@ -57,21 +61,25 @@
    
      |url| - URL to be opened after the extension is uninstalled. This URL must have an http: or https: scheme. Set
              an empty string to not open a new tab upon uninstallation.
-     |callback| - Called when the uninstall URL is set. If the given URL is invalid, 'runtime.lastError' will be set."
-  ([url #_callback] (gen-call :function ::set-uninstall-url (meta &form) url)))
+     |callback| - Called when the uninstall URL is set. If the given URL is invalid, 'runtime.lastError' will be set.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([url #_callback] (gen-call :function ::set-uninstall-url &form url)))
 
 (defmacro reload
   "Reloads the app or extension. This method is not supported in kiosk mode. For kiosk mode, use
    chrome.runtime.restart() method."
-  ([] (gen-call :function ::reload (meta &form))))
+  ([] (gen-call :function ::reload &form)))
 
 (defmacro request-update-check
-  "Requests an update check for this app/extension."
-  ([#_callback] (gen-call :function ::request-update-check (meta &form))))
+  "Requests an update check for this app/extension.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::request-update-check &form)))
 
 (defmacro restart
   "Restart the ChromeOS device when the app runs in kiosk mode. Otherwise, it's no-op."
-  ([] (gen-call :function ::restart (meta &form))))
+  ([] (gen-call :function ::restart &form)))
 
 (defmacro connect
   "Attempts to connect to connect listeners within an extension/app (such as the background page), or other
@@ -81,7 +89,7 @@
    
      |extensionId| - The ID of the extension or app to connect to. If omitted, a connection will be attempted with
                      your own extension. Required if sending messages from a web page for web messaging."
-  ([extension-id connect-info] (gen-call :function ::connect (meta &form) extension-id connect-info))
+  ([extension-id connect-info] (gen-call :function ::connect &form extension-id connect-info))
   ([extension-id] `(connect ~extension-id :omit))
   ([] `(connect :omit :omit)))
 
@@ -89,7 +97,7 @@
   "Connects to a native application in the host machine.
    
      |application| - The name of the registered application to connect to."
-  ([application] (gen-call :function ::connect-native (meta &form) application)))
+  ([application] (gen-call :function ::connect-native &form application)))
 
 (defmacro send-message
   "Sends a single message to event listeners within your extension/app or a different extension/app. Similar to
@@ -99,49 +107,57 @@
    scripts, use tabs.sendMessage.
    
      |extensionId| - The ID of the extension/app to send the message to. If omitted, the message will be sent to
-                     your own extension/app. Required if sending messages from a web page for web messaging."
-  ([extension-id message options #_response-callback] (gen-call :function ::send-message (meta &form) extension-id message options))
+                     your own extension/app. Required if sending messages from a web page for web messaging.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([extension-id message options #_response-callback] (gen-call :function ::send-message &form extension-id message options))
   ([extension-id message] `(send-message ~extension-id ~message :omit)))
 
 (defmacro send-native-message
   "Send a single message to a native application.
    
      |application| - The name of the native messaging host.
-     |message| - The message that will be passed to the native messaging host."
-  ([application message #_response-callback] (gen-call :function ::send-native-message (meta &form) application message)))
+     |message| - The message that will be passed to the native messaging host.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([application message #_response-callback] (gen-call :function ::send-native-message &form application message)))
 
 (defmacro get-platform-info
   "Returns information about the current platform.
    
-     |callback| - Called with results"
-  ([#_callback] (gen-call :function ::get-platform-info (meta &form))))
+     |callback| - Called with results
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-platform-info &form)))
 
 (defmacro get-package-directory-entry
-  "Returns a DirectoryEntry for the package directory."
-  ([#_callback] (gen-call :function ::get-package-directory-entry (meta &form))))
+  "Returns a DirectoryEntry for the package directory.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-package-directory-entry &form)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-startup-events
   "Fired when a profile that has this extension installed first starts up. This event is not fired when an incognito
    profile is started, even if this extension is operating in 'split' incognito mode."
-  ([channel] (gen-call :event ::on-startup (meta &form) channel)))
+  ([channel] (gen-call :event ::on-startup &form channel)))
 
 (defmacro tap-on-installed-events
   "Fired when the extension is first installed, when the extension is updated to a new version, and when Chrome is
    updated to a new version."
-  ([channel] (gen-call :event ::on-installed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-installed &form channel)))
 
 (defmacro tap-on-suspend-events
   "Sent to the event page just before it is unloaded. This gives the extension opportunity to do some clean up. Note
    that since the page is unloading, any asynchronous operations started while handling this event are not guaranteed
    to complete. If more activity for the event page occurs before it gets unloaded the onSuspendCanceled event will be
    sent and the page won't be unloaded."
-  ([channel] (gen-call :event ::on-suspend (meta &form) channel)))
+  ([channel] (gen-call :event ::on-suspend &form channel)))
 
 (defmacro tap-on-suspend-canceled-events
   "Sent after onSuspend to indicate that the app won't be unloaded after all."
-  ([channel] (gen-call :event ::on-suspend-canceled (meta &form) channel)))
+  ([channel] (gen-call :event ::on-suspend-canceled &form channel)))
 
 (defmacro tap-on-update-available-events
   "Fired when an update is available, but isn't installed immediately because the app is currently running. If you do
@@ -151,33 +167,33 @@
    manually in response to this event the update will not get installed until the next time chrome itself restarts. If
    no handlers are listening for this event, and your extension has a persistent background page, it behaves as if
    chrome.runtime.reload() is called in response to this event."
-  ([channel] (gen-call :event ::on-update-available (meta &form) channel)))
+  ([channel] (gen-call :event ::on-update-available &form channel)))
 
 (defmacro tap-on-browser-update-available-events
   "Fired when a Chrome update is available, but isn't installed immediately because a browser restart is required."
-  ([channel] (gen-call :event ::on-browser-update-available (meta &form) channel)))
+  ([channel] (gen-call :event ::on-browser-update-available &form channel)))
 
 (defmacro tap-on-connect-events
   "Fired when a connection is made from either an extension process or a content script."
-  ([channel] (gen-call :event ::on-connect (meta &form) channel)))
+  ([channel] (gen-call :event ::on-connect &form channel)))
 
 (defmacro tap-on-connect-external-events
   "Fired when a connection is made from another extension."
-  ([channel] (gen-call :event ::on-connect-external (meta &form) channel)))
+  ([channel] (gen-call :event ::on-connect-external &form channel)))
 
 (defmacro tap-on-message-events
   "Fired when a message is sent from either an extension process or a content script."
-  ([channel] (gen-call :event ::on-message (meta &form) channel)))
+  ([channel] (gen-call :event ::on-message &form channel)))
 
 (defmacro tap-on-message-external-events
   "Fired when a message is sent from another extension/app. Cannot be used in a content script."
-  ([channel] (gen-call :event ::on-message-external (meta &form) channel)))
+  ([channel] (gen-call :event ::on-message-external &form channel)))
 
 (defmacro tap-on-restart-required-events
   "Fired when an app or the device that it runs on needs to be restarted. The app should close all its windows at its
    earliest convenient time to let the restart to happen. If the app does nothing, a restart will be enforced after a
    24-hour grace period has passed. Currently, this event is only fired for Chrome OS kiosk apps."
-  ([channel] (gen-call :event ::on-restart-required (meta &form) channel)))
+  ([channel] (gen-call :event ::on-restart-required &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

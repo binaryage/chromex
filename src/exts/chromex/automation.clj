@@ -24,28 +24,36 @@
    notification that the tree has fully loaded (the previous root node reference will stop working at or before this
    point).
    
-     |callback| - Called when the AutomationNode for the page is available."
-  ([tab-id #_callback] (gen-call :function ::get-tree (meta &form) tab-id))
+     |callback| - Called when the AutomationNode for the page is available.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([tab-id #_callback] (gen-call :function ::get-tree &form tab-id))
   ([] `(get-tree :omit)))
 
 (defmacro get-desktop
   "Get the automation tree for the whole desktop which consists of all on screen views. Note this API is currently
    only supported on Chrome OS.
    
-     |callback| - Called when the AutomationNode for the page is available."
-  ([#_callback] (gen-call :function ::get-desktop (meta &form))))
+     |callback| - Called when the AutomationNode for the page is available.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-desktop &form)))
 
 (defmacro add-tree-change-observer
   "Add a tree change observer. Tree change observers are static/global, they listen to changes across all trees.
    
-     |observer| - A listener for changes on the AutomationNode tree."
-  ([#_observer] (gen-call :function ::add-tree-change-observer (meta &form))))
+     |observer| - A listener for changes on the AutomationNode tree.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_observer] (gen-call :function ::add-tree-change-observer &form)))
 
 (defmacro remove-tree-change-observer
   "Remove a tree change observer.
    
-     |observer| - A listener for changes on the AutomationNode tree."
-  ([#_observer] (gen-call :function ::remove-tree-change-observer (meta &form))))
+     |observer| - A listener for changes on the AutomationNode tree.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_observer] (gen-call :function ::remove-tree-change-observer &form)))
 
 (defmacro set-document-selection
   "Sets the selection in a tree. This creates a selection in a single tree (anchorObject and focusObject must have the
@@ -53,7 +61,7 @@
    where the user started the selection, while the focus is the point at which the selection gets extended e.g. when
    dragging with a mouse or using the keyboard. For nodes with the role staticText, the offset gives the character
    offset within the value where the selection starts or ends, respectively."
-  ([params] (gen-call :function ::set-document-selection (meta &form) params)))
+  ([params] (gen-call :function ::set-document-selection &form params)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

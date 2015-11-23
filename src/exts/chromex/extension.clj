@@ -19,12 +19,12 @@
 (defmacro get-last-error
   "Set for the lifetime of a callback if an ansychronous extension api has resulted in an error. If no error has
    occured lastError will be undefined."
-  ([] (gen-call :property ::last-error (meta &form))))
+  ([] (gen-call :property ::last-error &form)))
 
 (defmacro get-in-incognito-context
   "True for content scripts running inside incognito tabs, and for extension pages running inside an incognito
    process. The latter only applies to extensions with 'split' incognito_behavior."
-  ([] (gen-call :property ::in-incognito-context (meta &form))))
+  ([] (gen-call :property ::in-incognito-context &form)))
 
 ; -- functions ------------------------------------------------------------------------------------------------------
 
@@ -33,55 +33,61 @@
    single request with an optional response. The 'extension.onRequest' event is fired in each page of the extension.
    
      |extensionId| - The extension ID of the extension you want to connect to. If omitted, default is your own
-                     extension."
-  ([extension-id request #_response-callback] (gen-call :function ::send-request (meta &form) extension-id request)))
+                     extension.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([extension-id request #_response-callback] (gen-call :function ::send-request &form extension-id request)))
 
 (defmacro get-url
   "Converts a relative path within an extension install directory to a fully-qualified URL.
    
      |path| - A path to a resource within an extension expressed relative to its install directory."
-  ([path] (gen-call :function ::get-url (meta &form) path)))
+  ([path] (gen-call :function ::get-url &form path)))
 
 (defmacro get-views
   "Returns an array of the JavaScript 'window' objects for each of the pages running inside the current extension."
-  ([fetch-properties] (gen-call :function ::get-views (meta &form) fetch-properties))
+  ([fetch-properties] (gen-call :function ::get-views &form fetch-properties))
   ([] `(get-views :omit)))
 
 (defmacro get-background-page
   "Returns the JavaScript 'window' object for the background page running inside the current extension. Returns null
    if the extension has no background page."
-  ([] (gen-call :function ::get-background-page (meta &form))))
+  ([] (gen-call :function ::get-background-page &form)))
 
 (defmacro get-extension-tabs
   "Returns an array of the JavaScript 'window' objects for each of the tabs running inside the current extension. If
    windowId is specified, returns only the 'window' objects of tabs attached to the specified window."
-  ([window-id] (gen-call :function ::get-extension-tabs (meta &form) window-id))
+  ([window-id] (gen-call :function ::get-extension-tabs &form window-id))
   ([] `(get-extension-tabs :omit)))
 
 (defmacro is-allowed-incognito-access
   "Retrieves the state of the extension's access to Incognito-mode (as determined by the user-controlled 'Allowed in
-   Incognito' checkbox."
-  ([#_callback] (gen-call :function ::is-allowed-incognito-access (meta &form))))
+   Incognito' checkbox.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::is-allowed-incognito-access &form)))
 
 (defmacro is-allowed-file-scheme-access
   "Retrieves the state of the extension's access to the 'file://' scheme (as determined by the user-controlled 'Allow
-   access to File URLs' checkbox."
-  ([#_callback] (gen-call :function ::is-allowed-file-scheme-access (meta &form))))
+   access to File URLs' checkbox.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::is-allowed-file-scheme-access &form)))
 
 (defmacro set-update-url-data
   "Sets the value of the ap CGI parameter used in the extension's update URL.  This value is ignored for extensions
    that are hosted in the Chrome Extension Gallery."
-  ([data] (gen-call :function ::set-update-url-data (meta &form) data)))
+  ([data] (gen-call :function ::set-update-url-data &form data)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-request-events
   "Fired when a request is sent from either an extension process or a content script."
-  ([channel] (gen-call :event ::on-request (meta &form) channel)))
+  ([channel] (gen-call :event ::on-request &form channel)))
 
 (defmacro tap-on-request-external-events
   "Fired when a request is sent from another extension."
-  ([channel] (gen-call :event ::on-request-external (meta &form) channel)))
+  ([channel] (gen-call :event ::on-request-external &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

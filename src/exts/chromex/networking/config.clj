@@ -21,8 +21,10 @@
    
      |networks| - Network filters to set. Every NetworkInfo must             either have the SSID or HexSSID
                   set. Other fields will be ignored.
-     |callback| - Called back when this operation is finished."
-  ([networks #_callback] (gen-call :function ::set-network-filter (meta &form) networks)))
+     |callback| - Called back when this operation is finished.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([networks #_callback] (gen-call :function ::set-network-filter &form networks)))
 
 (defmacro finish-authentication
   "Called by the extension to notify the network config API that it finished a captive portal authentication attempt
@@ -31,8 +33,10 @@
    
      |GUID| - Unique network identifier obtained from         'onCaptivePortalDetected'.
      |result| - The result of the authentication attempt.
-     |callback| - Called back when this operation is finished."
-  ([guid result #_callback] (gen-call :function ::finish-authentication (meta &form) guid result)))
+     |callback| - Called back when this operation is finished.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([guid result #_callback] (gen-call :function ::finish-authentication &form guid result)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
@@ -42,7 +46,7 @@
    'setNetworkFilter'. Upon receiving this event the extension should start its authentication attempt with the
    captive portal. When the extension finishes its attempt, it must call 'finishAuthentication' with the GUID received
    with this event and the appropriate authentication result."
-  ([channel] (gen-call :event ::on-captive-portal-detected (meta &form) channel)))
+  ([channel] (gen-call :event ::on-captive-portal-detected &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

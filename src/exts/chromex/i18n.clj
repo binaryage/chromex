@@ -16,8 +16,10 @@
 
 (defmacro get-accept-languages
   "Gets the accept-languages of the browser. This is different from the locale used by the browser; to get the locale,
-   use 'i18n.getUILanguage'."
-  ([#_callback] (gen-call :function ::get-accept-languages (meta &form))))
+   use 'i18n.getUILanguage'.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-accept-languages &form)))
 
 (defmacro get-message
   "Gets the localized string for the specified message. If the message is missing, this method returns an empty string
@@ -26,19 +28,21 @@
    
      |messageName| - The name of the message, as specified in the messages.json file.
      |substitutions| - Up to 9 substitution strings, if the message requires any."
-  ([message-name substitutions] (gen-call :function ::get-message (meta &form) message-name substitutions))
+  ([message-name substitutions] (gen-call :function ::get-message &form message-name substitutions))
   ([message-name] `(get-message ~message-name :omit)))
 
 (defmacro get-ui-language
   "Gets the browser UI language of the browser. This is different from 'i18n.getAcceptLanguages' which returns the
    preferred user languages."
-  ([] (gen-call :function ::get-ui-language (meta &form))))
+  ([] (gen-call :function ::get-ui-language &form)))
 
 (defmacro detect-language
   "Detects the language of the provided text using CLD.
    
-     |text| - User input string to be translated."
-  ([text #_callback] (gen-call :function ::detect-language (meta &form) text)))
+     |text| - User input string to be translated.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([text #_callback] (gen-call :function ::detect-language &form text)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

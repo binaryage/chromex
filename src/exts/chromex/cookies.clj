@@ -19,32 +19,42 @@
    one with the longest path will be returned. For cookies with the same path length, the cookie with the earliest
    creation time will be returned.
    
-     |details| - Details to identify the cookie being retrieved."
-  ([details #_callback] (gen-call :function ::get (meta &form) details)))
+     |details| - Details to identify the cookie being retrieved.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([details #_callback] (gen-call :function ::get &form details)))
 
 (defmacro get-all
   "Retrieves all cookies from a single cookie store that match the given information.  The cookies returned will be
    sorted, with those with the longest path first.  If multiple cookies have the same path length, those with the
    earliest creation time will be first.
    
-     |details| - Information to filter the cookies being retrieved."
-  ([details #_callback] (gen-call :function ::get-all (meta &form) details)))
+     |details| - Information to filter the cookies being retrieved.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([details #_callback] (gen-call :function ::get-all &form details)))
 
 (defmacro set
   "Sets a cookie with the given cookie data; may overwrite equivalent cookies if they exist.
    
-     |details| - Details about the cookie being set."
-  ([details #_callback] (gen-call :function ::set (meta &form) details)))
+     |details| - Details about the cookie being set.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([details #_callback] (gen-call :function ::set &form details)))
 
 (defmacro remove
   "Deletes a cookie by name.
    
-     |details| - Information to identify the cookie to remove."
-  ([details #_callback] (gen-call :function ::remove (meta &form) details)))
+     |details| - Information to identify the cookie to remove.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([details #_callback] (gen-call :function ::remove &form details)))
 
 (defmacro get-all-cookie-stores
-  "Lists all existing cookie stores."
-  ([#_callback] (gen-call :function ::get-all-cookie-stores (meta &form))))
+  "Lists all existing cookie stores.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-all-cookie-stores &form)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
@@ -53,7 +63,7 @@
    as a two step process: the cookie to be updated is first removed entirely, generating a notification with 'cause'
    of 'overwrite' .  Afterwards, a new cookie is written with the updated values, generating a second notification
    with 'cause' 'explicit'."
-  ([channel] (gen-call :event ::on-changed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-changed &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

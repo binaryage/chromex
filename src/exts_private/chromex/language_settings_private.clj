@@ -16,65 +16,75 @@
 ; -- functions ------------------------------------------------------------------------------------------------------
 
 (defmacro get-language-list
-  "Gets languages available for translate, spell checking, input and locale."
-  ([#_callback] (gen-call :function ::get-language-list (meta &form))))
+  "Gets languages available for translate, spell checking, input and locale.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-language-list &form)))
 
 (defmacro set-language-list
   "Sets the accepted languages, used to decide which languages to translate, generate the Accept-Language header, etc."
-  ([language-codes] (gen-call :function ::set-language-list (meta &form) language-codes)))
+  ([language-codes] (gen-call :function ::set-language-list &form language-codes)))
 
 (defmacro get-spellcheck-dictionary-statuses
-  "Gets the current status of the chosen spell check dictionaries."
-  ([#_callback] (gen-call :function ::get-spellcheck-dictionary-statuses (meta &form))))
+  "Gets the current status of the chosen spell check dictionaries.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-spellcheck-dictionary-statuses &form)))
 
 (defmacro get-spellcheck-words
-  "Gets the custom spell check words, in sorted order."
-  ([#_callback] (gen-call :function ::get-spellcheck-words (meta &form))))
+  "Gets the custom spell check words, in sorted order.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-spellcheck-words &form)))
 
 (defmacro add-spellcheck-word
   "Adds a word to the custom dictionary."
-  ([word] (gen-call :function ::add-spellcheck-word (meta &form) word)))
+  ([word] (gen-call :function ::add-spellcheck-word &form word)))
 
 (defmacro remove-spellcheck-word
   "Removes a word from the custom dictionary."
-  ([word] (gen-call :function ::remove-spellcheck-word (meta &form) word)))
+  ([word] (gen-call :function ::remove-spellcheck-word &form word)))
 
 (defmacro get-translate-target-language
-  "Gets the translate target language (in most cases, the display locale)."
-  ([#_callback] (gen-call :function ::get-translate-target-language (meta &form))))
+  "Gets the translate target language (in most cases, the display locale).
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-translate-target-language &form)))
 
 (defmacro get-input-method-lists
-  "Gets all supported input methods, including third-party IMEs. Chrome OS only."
-  ([#_callback] (gen-call :function ::get-input-method-lists (meta &form))))
+  "Gets all supported input methods, including third-party IMEs. Chrome OS only.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-input-method-lists &form)))
 
 (defmacro add-input-method
   "Adds the input method to the current user's list of enabled input methods, enabling the input method for the
    current user. Chrome OS only."
-  ([input-method-id] (gen-call :function ::add-input-method (meta &form) input-method-id)))
+  ([input-method-id] (gen-call :function ::add-input-method &form input-method-id)))
 
 (defmacro remove-input-method
   "Removes the input method from the current user's list of enabled input methods, disabling the input method for the
    current user. Chrome OS only."
-  ([input-method-id] (gen-call :function ::remove-input-method (meta &form) input-method-id)))
+  ([input-method-id] (gen-call :function ::remove-input-method &form input-method-id)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-spellcheck-dictionaries-changed-events
   "Called when the pref for the dictionaries used for spell checking changes or the status of one of the spell check
    dictionaries changes."
-  ([channel] (gen-call :event ::on-spellcheck-dictionaries-changed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-spellcheck-dictionaries-changed &form channel)))
 
 (defmacro tap-on-custom-dictionary-changed-events
   "Called when words are added to and/or removed from the custom spell check dictionary."
-  ([channel] (gen-call :event ::on-custom-dictionary-changed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-custom-dictionary-changed &form channel)))
 
 (defmacro tap-on-input-method-added-events
   "Called when an input method is added."
-  ([channel] (gen-call :event ::on-input-method-added (meta &form) channel)))
+  ([channel] (gen-call :event ::on-input-method-added &form channel)))
 
 (defmacro tap-on-input-method-removed-events
   "Called when an input method is removed."
-  ([channel] (gen-call :event ::on-input-method-removed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-input-method-removed &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

@@ -19,44 +19,54 @@
    returned as long as the application identity has not been revoked or expired.
    
      |callback| - Function called when the retrieval completes. It should check 'runtime.lastError' for error when
-                  instanceID is empty."
-  ([#_callback] (gen-call :function ::get-id (meta &form))))
+                  instanceID is empty.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-id &form)))
 
 (defmacro get-creation-time
   "Retrieves the time when the InstanceID has been generated. The creation time will be returned by the callback.
    
      |callback| - Function called when the retrieval completes. It should check 'runtime.lastError' for error when
-                  creationTime is zero."
-  ([#_callback] (gen-call :function ::get-creation-time (meta &form))))
+                  creationTime is zero.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-creation-time &form)))
 
 (defmacro get-token
   "Return a token that allows the authorized entity to access the service defined by scope.
    
      |getTokenParams| - Parameters for getToken.
      |callback| - Function called when the retrieval completes. It should check 'runtime.lastError' for error when
-                  token is empty."
-  ([get-token-params #_callback] (gen-call :function ::get-token (meta &form) get-token-params)))
+                  token is empty.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([get-token-params #_callback] (gen-call :function ::get-token &form get-token-params)))
 
 (defmacro delete-token
   "Revokes a granted token.
    
      |deleteTokenParams| - Parameters for deleteToken.
      |callback| - Function called when the token deletion completes. The token was revoked successfully if
-                  'runtime.lastError' is not set."
-  ([delete-token-params #_callback] (gen-call :function ::delete-token (meta &form) delete-token-params)))
+                  'runtime.lastError' is not set.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([delete-token-params #_callback] (gen-call :function ::delete-token &form delete-token-params)))
 
 (defmacro delete-id
   "Resets the app instance identifier and revokes all tokens associated with it.
    
      |callback| - Function called when the deletion completes. The instance identifier was revoked successfully if
-                  'runtime.lastError' is not set."
-  ([#_callback] (gen-call :function ::delete-id (meta &form))))
+                  'runtime.lastError' is not set.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::delete-id &form)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-token-refresh-events
   "Fired when all the granted tokens need to be refreshed."
-  ([channel] (gen-call :event ::on-token-refresh (meta &form) channel)))
+  ([channel] (gen-call :event ::on-token-refresh &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

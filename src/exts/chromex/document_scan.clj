@@ -19,8 +19,10 @@
   "Performs a document scan.  On success, the PNG data will be sent to the callback.
    
      |options| - Object containing scan parameters.
-     |callback| - Called with the result and data from the scan."
-  ([options #_callback] (gen-call :function ::scan (meta &form) options)))
+     |callback| - Called with the result and data from the scan.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([options #_callback] (gen-call :function ::scan &form options)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

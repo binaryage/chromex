@@ -24,8 +24,10 @@
                         42.
      |options| - Contents of the notification.
      |callback| - Returns the notification id (either supplied or generated) that represents the created
-                  notification.The callback is required before Chrome 42."
-  ([notification-id options #_callback] (gen-call :function ::create (meta &form) notification-id options)))
+                  notification.The callback is required before Chrome 42.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([notification-id options #_callback] (gen-call :function ::create &form notification-id options)))
 
 (defmacro update
   "Updates an existing notification.
@@ -33,51 +35,59 @@
      |notificationId| - The id of the notification to be updated. This is returned by 'notifications.create' method.
      |options| - Contents of the notification to update to.
      |callback| - Called to indicate whether a matching notification existed.The callback is required before Chrome
-                  42."
-  ([notification-id options #_callback] (gen-call :function ::update (meta &form) notification-id options)))
+                  42.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([notification-id options #_callback] (gen-call :function ::update &form notification-id options)))
 
 (defmacro clear
   "Clears the specified notification.
    
      |notificationId| - The id of the notification to be cleared. This is returned by 'notifications.create' method.
      |callback| - Called to indicate whether a matching notification existed.The callback is required before Chrome
-                  42."
-  ([notification-id #_callback] (gen-call :function ::clear (meta &form) notification-id)))
+                  42.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([notification-id #_callback] (gen-call :function ::clear &form notification-id)))
 
 (defmacro get-all
   "Retrieves all the notifications.
    
-     |callback| - Returns the set of notification_ids currently in the system."
-  ([#_callback] (gen-call :function ::get-all (meta &form))))
+     |callback| - Returns the set of notification_ids currently in the system.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-all &form)))
 
 (defmacro get-permission-level
   "Retrieves whether the user has enabled notifications from this app or extension.
    
-     |callback| - Returns the current permission level."
-  ([#_callback] (gen-call :function ::get-permission-level (meta &form))))
+     |callback| - Returns the current permission level.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-permission-level &form)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-closed-events
   "The notification closed, either by the system or by user action."
-  ([channel] (gen-call :event ::on-closed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-closed &form channel)))
 
 (defmacro tap-on-clicked-events
   "The user clicked in a non-button area of the notification."
-  ([channel] (gen-call :event ::on-clicked (meta &form) channel)))
+  ([channel] (gen-call :event ::on-clicked &form channel)))
 
 (defmacro tap-on-button-clicked-events
   "The user pressed a button in the notification."
-  ([channel] (gen-call :event ::on-button-clicked (meta &form) channel)))
+  ([channel] (gen-call :event ::on-button-clicked &form channel)))
 
 (defmacro tap-on-permission-level-changed-events
   "The user changes the permission level.  As of Chrome 47, only ChromeOS has UI that dispatches this event."
-  ([channel] (gen-call :event ::on-permission-level-changed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-permission-level-changed &form channel)))
 
 (defmacro tap-on-show-settings-events
   "The user clicked on a link for the app's notification settings.  As of Chrome 47, only ChromeOS has UI that
    dispatches this event."
-  ([channel] (gen-call :event ::on-show-settings (meta &form) channel)))
+  ([channel] (gen-call :event ::on-show-settings &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

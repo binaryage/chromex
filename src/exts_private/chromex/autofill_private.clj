@@ -20,56 +20,60 @@
    new entry.
    
      |address| - The address entry to save."
-  ([address] (gen-call :function ::save-address (meta &form) address)))
+  ([address] (gen-call :function ::save-address &form address)))
 
 (defmacro get-address-components
   "Gets the address components for a given country code.
    
      |countryCode| - A two-character string representing the address' country     whose components should be
                      returned. See autofill_country.cc for a     list of valid codes.
-     |callback| - Callback which will be called with components."
-  ([country-code #_callback] (gen-call :function ::get-address-components (meta &form) country-code)))
+     |callback| - Callback which will be called with components.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([country-code #_callback] (gen-call :function ::get-address-components &form country-code)))
 
 (defmacro save-credit-card
   "Saves the given credit card. If |card| has an empty string as its ID, it will be assigned a new one and added as a
    new entry.
    
      |card| - The card entry to save."
-  ([card] (gen-call :function ::save-credit-card (meta &form) card)))
+  ([card] (gen-call :function ::save-credit-card &form card)))
 
 (defmacro remove-entry
   "Removes the entry (address or credit card) with the given ID.
    
      |guid| - ID of the entry to remove."
-  ([guid] (gen-call :function ::remove-entry (meta &form) guid)))
+  ([guid] (gen-call :function ::remove-entry &form guid)))
 
 (defmacro validate-phone-numbers
   "Validates a newly-added phone number and invokes the callback with a list of validated numbers. Note that if the
    newly-added number was invalid, it will not be returned in the list of valid numbers.
    
      |params| - The parameters to this function.
-     |callback| - Callback which will be called with validated phone numbers."
-  ([params #_callback] (gen-call :function ::validate-phone-numbers (meta &form) params)))
+     |callback| - Callback which will be called with validated phone numbers.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([params #_callback] (gen-call :function ::validate-phone-numbers &form params)))
 
 (defmacro mask-credit-card
   "Clears the data associated with a wallet card which was saved locally so that the saved copy is masked (e.g., 'Card
    ending in 1234').
    
      |guid| - GUID of the credit card to mask."
-  ([guid] (gen-call :function ::mask-credit-card (meta &form) guid)))
+  ([guid] (gen-call :function ::mask-credit-card &form guid)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-address-list-changed-events
   "Fired when the address list has changed, meaning that an entry has been added, removed, or changed.  |entries| The
    updated list of entries."
-  ([channel] (gen-call :event ::on-address-list-changed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-address-list-changed &form channel)))
 
 (defmacro tap-on-credit-card-list-changed-events
   "Fired when the credit card list has changed, meaning that an entry has been added, removed, or changed.  |entries
 
    The updated list of entries."
-  ([channel] (gen-call :event ::on-credit-card-list-changed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-credit-card-list-changed &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

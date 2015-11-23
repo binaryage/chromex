@@ -17,63 +17,77 @@
 
 (defmacro get-window-id-none
   "The windowId value that represents the absence of a chrome browser window."
-  ([] (gen-call :property ::window-id-none (meta &form))))
+  ([] (gen-call :property ::window-id-none &form)))
 
 (defmacro get-window-id-current
   "The windowId value that represents the current window."
-  ([] (gen-call :property ::window-id-current (meta &form))))
+  ([] (gen-call :property ::window-id-current &form)))
 
 ; -- functions ------------------------------------------------------------------------------------------------------
 
 (defmacro get
-  "Gets details about a window."
-  ([window-id get-info #_callback] (gen-call :function ::get (meta &form) window-id get-info))
+  "Gets details about a window.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([window-id get-info #_callback] (gen-call :function ::get &form window-id get-info))
   ([window-id] `(get ~window-id :omit)))
 
 (defmacro get-current
-  "Gets the current window."
-  ([get-info #_callback] (gen-call :function ::get-current (meta &form) get-info))
+  "Gets the current window.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([get-info #_callback] (gen-call :function ::get-current &form get-info))
   ([] `(get-current :omit)))
 
 (defmacro get-last-focused
-  "Gets the window that was most recently focused &mdash; typically the window 'on top'."
-  ([get-info #_callback] (gen-call :function ::get-last-focused (meta &form) get-info))
+  "Gets the window that was most recently focused &mdash; typically the window 'on top'.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([get-info #_callback] (gen-call :function ::get-last-focused &form get-info))
   ([] `(get-last-focused :omit)))
 
 (defmacro get-all
-  "Gets all windows."
-  ([get-info #_callback] (gen-call :function ::get-all (meta &form) get-info))
+  "Gets all windows.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([get-info #_callback] (gen-call :function ::get-all &form get-info))
   ([] `(get-all :omit)))
 
 (defmacro create
-  "Creates (opens) a new browser with any optional sizing, position or default URL provided."
-  ([create-data #_callback] (gen-call :function ::create (meta &form) create-data))
+  "Creates (opens) a new browser with any optional sizing, position or default URL provided.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([create-data #_callback] (gen-call :function ::create &form create-data))
   ([] `(create :omit)))
 
 (defmacro update
   "Updates the properties of a window. Specify only the properties that you want to change; unspecified properties
-   will be left unchanged."
-  ([window-id update-info #_callback] (gen-call :function ::update (meta &form) window-id update-info)))
+   will be left unchanged.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([window-id update-info #_callback] (gen-call :function ::update &form window-id update-info)))
 
 (defmacro remove
-  "Removes (closes) a window, and all the tabs inside it."
-  ([window-id #_callback] (gen-call :function ::remove (meta &form) window-id)))
+  "Removes (closes) a window, and all the tabs inside it.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([window-id #_callback] (gen-call :function ::remove &form window-id)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-created-events
   "Fired when a window is created."
-  ([channel] (gen-call :event ::on-created (meta &form) channel)))
+  ([channel] (gen-call :event ::on-created &form channel)))
 
 (defmacro tap-on-removed-events
   "Fired when a window is removed (closed)."
-  ([channel] (gen-call :event ::on-removed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-removed &form channel)))
 
 (defmacro tap-on-focus-changed-events
   "Fired when the currently focused window changes. Will be chrome.windows.WINDOW_ID_NONE if all chrome windows have
    lost focus. Note: On some Linux window managers, WINDOW_ID_NONE will always be sent immediately preceding a switch
    from one chrome window to another."
-  ([channel] (gen-call :event ::on-focus-changed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-focus-changed &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

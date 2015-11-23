@@ -29,35 +29,43 @@
                    delayInMinutes (but not both).  If periodInMinutes is set, the alarm will repeat every
                    periodInMinutes minutes after the initial event.  If neither when or delayInMinutes is set for a
                    repeating alarm, periodInMinutes is used as the default for delayInMinutes."
-  ([name alarm-info] (gen-call :function ::create (meta &form) name alarm-info)))
+  ([name alarm-info] (gen-call :function ::create &form name alarm-info)))
 
 (defmacro get
   "Retrieves details about the specified alarm.
    
-     |name| - The name of the alarm to get. Defaults to the empty string."
-  ([name #_callback] (gen-call :function ::get (meta &form) name))
+     |name| - The name of the alarm to get. Defaults to the empty string.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([name #_callback] (gen-call :function ::get &form name))
   ([] `(get :omit)))
 
 (defmacro get-all
-  "Gets an array of all the alarms."
-  ([#_callback] (gen-call :function ::get-all (meta &form))))
+  "Gets an array of all the alarms.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-all &form)))
 
 (defmacro clear
   "Clears the alarm with the given name.
    
-     |name| - The name of the alarm to clear. Defaults to the empty string."
-  ([name #_callback] (gen-call :function ::clear (meta &form) name))
+     |name| - The name of the alarm to clear. Defaults to the empty string.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([name #_callback] (gen-call :function ::clear &form name))
   ([] `(clear :omit)))
 
 (defmacro clear-all
-  "Clears all alarms."
-  ([#_callback] (gen-call :function ::clear-all (meta &form))))
+  "Clears all alarms.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::clear-all &form)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-alarm-events
   "Fired when an alarm has elapsed. Useful for event pages."
-  ([channel] (gen-call :event ::on-alarm (meta &form) channel)))
+  ([channel] (gen-call :event ::on-alarm &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

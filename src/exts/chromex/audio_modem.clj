@@ -19,36 +19,44 @@
   "Transmit a token. Only one can be transmitted at a time. Transmission of any previous tokens (by this app) will
    stop.
    
-     |callback| - A callback to report the status of a request."
-  ([params token #_callback] (gen-call :function ::transmit (meta &form) params token)))
+     |callback| - A callback to report the status of a request.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([params token #_callback] (gen-call :function ::transmit &form params token)))
 
 (defmacro stop-transmit
   "Stop any active transmission on the specified band.
    
-     |callback| - A callback to report the status of a request."
-  ([band #_callback] (gen-call :function ::stop-transmit (meta &form) band)))
+     |callback| - A callback to report the status of a request.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([band #_callback] (gen-call :function ::stop-transmit &form band)))
 
 (defmacro receive
   "Start listening for audio tokens. For now, only one app will be able to listen at a time.
    
-     |callback| - A callback to report the status of a request."
-  ([params #_callback] (gen-call :function ::receive (meta &form) params)))
+     |callback| - A callback to report the status of a request.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([params #_callback] (gen-call :function ::receive &form params)))
 
 (defmacro stop-receive
   "Stop any active listening on the specified band.
    
-     |callback| - A callback to report the status of a request."
-  ([band #_callback] (gen-call :function ::stop-receive (meta &form) band)))
+     |callback| - A callback to report the status of a request.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([band #_callback] (gen-call :function ::stop-receive &form band)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-received-events
   "Audio tokens have been received."
-  ([channel] (gen-call :event ::on-received (meta &form) channel)))
+  ([channel] (gen-call :event ::on-received &form channel)))
 
 (defmacro tap-on-transmit-fail-events
   "Transmit could not be confirmed. The speaker volume might be too low."
-  ([channel] (gen-call :event ::on-transmit-fail (meta &form) channel)))
+  ([channel] (gen-call :event ::on-transmit-fail &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

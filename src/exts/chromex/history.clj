@@ -16,41 +16,53 @@
 ; -- functions ------------------------------------------------------------------------------------------------------
 
 (defmacro search
-  "Searches the history for the last visit time of each page matching the query."
-  ([query #_callback] (gen-call :function ::search (meta &form) query)))
+  "Searches the history for the last visit time of each page matching the query.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([query #_callback] (gen-call :function ::search &form query)))
 
 (defmacro get-visits
-  "Retrieves information about visits to a URL."
-  ([details #_callback] (gen-call :function ::get-visits (meta &form) details)))
+  "Retrieves information about visits to a URL.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([details #_callback] (gen-call :function ::get-visits &form details)))
 
 (defmacro add-url
-  "Adds a URL to the history at the current time with a transition type of 'link'."
-  ([details #_callback] (gen-call :function ::add-url (meta &form) details)))
+  "Adds a URL to the history at the current time with a transition type of 'link'.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([details #_callback] (gen-call :function ::add-url &form details)))
 
 (defmacro delete-url
-  "Removes all occurrences of the given URL from the history."
-  ([details #_callback] (gen-call :function ::delete-url (meta &form) details)))
+  "Removes all occurrences of the given URL from the history.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([details #_callback] (gen-call :function ::delete-url &form details)))
 
 (defmacro delete-range
   "Removes all items within the specified date range from the history.  Pages will not be removed from the history
-   unless all visits fall within the range."
-  ([range #_callback] (gen-call :function ::delete-range (meta &form) range)))
+   unless all visits fall within the range.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([range #_callback] (gen-call :function ::delete-range &form range)))
 
 (defmacro delete-all
-  "Deletes all items from the history."
-  ([#_callback] (gen-call :function ::delete-all (meta &form))))
+  "Deletes all items from the history.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::delete-all &form)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-visited-events
   "Fired when a URL is visited, providing the HistoryItem data for that URL.  This event fires before the page has
    loaded."
-  ([channel] (gen-call :event ::on-visited (meta &form) channel)))
+  ([channel] (gen-call :event ::on-visited &form channel)))
 
 (defmacro tap-on-visit-removed-events
   "Fired when one or more URLs are removed from the history service.  When all visits have been removed the URL is
    purged from history."
-  ([channel] (gen-call :event ::on-visit-removed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-visit-removed &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

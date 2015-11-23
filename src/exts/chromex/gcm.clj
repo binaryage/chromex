@@ -17,7 +17,7 @@
 
 (defmacro get-max-message-size
   "The maximum size (in bytes) of all key/value pairs in a message."
-  ([] (gen-call :property ::max-message-size (meta &form))))
+  ([] (gen-call :property ::max-message-size &form)))
 
 ; -- functions ------------------------------------------------------------------------------------------------------
 
@@ -28,38 +28,44 @@
      |senderIds| - A list of server IDs that are allowed to send messages to the application. It should contain at
                    least one and no more than 100 sender IDs.
      |callback| - Function called when registration completes. It should check 'runtime.lastError' for error when
-                  registrationId is empty."
-  ([sender-ids #_callback] (gen-call :function ::register (meta &form) sender-ids)))
+                  registrationId is empty.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([sender-ids #_callback] (gen-call :function ::register &form sender-ids)))
 
 (defmacro unregister
   "Unregisters the application from GCM.
    
      |callback| - A function called after the unregistration completes. Unregistration was successful if
-                  'runtime.lastError' is not set."
-  ([#_callback] (gen-call :function ::unregister (meta &form))))
+                  'runtime.lastError' is not set.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::unregister &form)))
 
 (defmacro send
   "Sends a message according to its contents.
    
      |message| - A message to send to the other party via GCM.
      |callback| - A function called after the message is successfully queued for sending. 'runtime.lastError' should
-                  be checked, to ensure a message was sent without problems."
-  ([message #_callback] (gen-call :function ::send (meta &form) message)))
+                  be checked, to ensure a message was sent without problems.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([message #_callback] (gen-call :function ::send &form message)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-message-events
   "Fired when a message is received through GCM."
-  ([channel] (gen-call :event ::on-message (meta &form) channel)))
+  ([channel] (gen-call :event ::on-message &form channel)))
 
 (defmacro tap-on-messages-deleted-events
   "Fired when a GCM server had to delete messages sent by an app server to the application. See Messages deleted event
    section of Cloud Messaging documentation for details on handling this event."
-  ([channel] (gen-call :event ::on-messages-deleted (meta &form) channel)))
+  ([channel] (gen-call :event ::on-messages-deleted &form channel)))
 
 (defmacro tap-on-send-error-events
   "Fired when it was not possible to send a message to the GCM server."
-  ([channel] (gen-call :event ::on-send-error (meta &form) channel)))
+  ([channel] (gen-call :event ::on-send-error &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

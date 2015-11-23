@@ -31,8 +31,10 @@
    
      |audioTrack| - the source audio track.
      |videoTrack| - the source video track.
-     |callback| - Called when the sesion has been created."
-  ([audio-track video-track #_callback] (gen-call :function ::create (meta &form) audio-track video-track))
+     |callback| - Called when the sesion has been created.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([audio-track video-track #_callback] (gen-call :function ::create &form audio-track video-track))
   ([audio-track] `(create ~audio-track :omit))
   ([] `(create :omit :omit)))
 

@@ -17,11 +17,11 @@
 
 (defmacro get-elements
   "Elements panel."
-  ([] (gen-call :property ::elements (meta &form))))
+  ([] (gen-call :property ::elements &form)))
 
 (defmacro get-sources
   "Sources panel."
-  ([] (gen-call :property ::sources (meta &form))))
+  ([] (gen-call :property ::sources &form)))
 
 ; -- functions ------------------------------------------------------------------------------------------------------
 
@@ -31,24 +31,30 @@
      |title| - Title that is displayed next to the extension icon in the Developer Tools toolbar.
      |iconPath| - Path of the panel's icon relative to the extension directory.
      |pagePath| - Path of the panel's HTML page relative to the extension directory.
-     |callback| - A function that is called when the panel is created."
-  ([title icon-path page-path #_callback] (gen-call :function ::create (meta &form) title icon-path page-path)))
+     |callback| - A function that is called when the panel is created.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([title icon-path page-path #_callback] (gen-call :function ::create &form title icon-path page-path)))
 
 (defmacro set-open-resource-handler
   "Specifies the function to be called when the user clicks a resource link in the Developer Tools window. To unset
    the handler, either call the method with no parameters or pass null as the parameter.
    
      |callback| - A function that is called when the user clicks on a valid resource link in Developer Tools window.
-                  Note that if the user clicks an invalid URL or an XHR, this function is not called."
-  ([#_callback] (gen-call :function ::set-open-resource-handler (meta &form))))
+                  Note that if the user clicks an invalid URL or an XHR, this function is not called.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::set-open-resource-handler &form)))
 
 (defmacro open-resource
   "Requests DevTools to open a URL in a Developer Tools panel.
    
      |url| - The URL of the resource to open.
      |lineNumber| - Specifies the line number to scroll to when the resource is loaded.
-     |callback| - A function that is called when the resource has been successfully loaded."
-  ([url line-number #_callback] (gen-call :function ::open-resource (meta &form) url line-number)))
+     |callback| - A function that is called when the resource has been successfully loaded.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([url line-number #_callback] (gen-call :function ::open-resource &form url line-number)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

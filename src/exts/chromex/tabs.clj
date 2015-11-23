@@ -17,102 +17,132 @@
 
 (defmacro get-tab-id-none
   "An ID which represents the absence of a browser tab."
-  ([] (gen-call :property ::tab-id-none (meta &form))))
+  ([] (gen-call :property ::tab-id-none &form)))
 
 ; -- functions ------------------------------------------------------------------------------------------------------
 
 (defmacro get
-  "Retrieves details about the specified tab."
-  ([tab-id #_callback] (gen-call :function ::get (meta &form) tab-id)))
+  "Retrieves details about the specified tab.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([tab-id #_callback] (gen-call :function ::get &form tab-id)))
 
 (defmacro get-current
   "Gets the tab that this script call is being made from. May be undefined if called from a non-tab context (for
-   example: a background page or popup view)."
-  ([#_callback] (gen-call :function ::get-current (meta &form))))
+   example: a background page or popup view).
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-current &form)))
 
 (defmacro connect
   "Connects to the content script(s) in the specified tab. The 'runtime.onConnect' event is fired in each content
    script running in the specified tab for the current extension. For more details, see Content Script Messaging."
-  ([tab-id connect-info] (gen-call :function ::connect (meta &form) tab-id connect-info))
+  ([tab-id connect-info] (gen-call :function ::connect &form tab-id connect-info))
   ([tab-id] `(connect ~tab-id :omit)))
 
 (defmacro send-request
   "Sends a single request to the content script(s) in the specified tab, with an optional callback to run when a
    response is sent back.  The 'extension.onRequest' event is fired in each content script running in the specified
-   tab for the current extension."
-  ([tab-id request #_response-callback] (gen-call :function ::send-request (meta &form) tab-id request)))
+   tab for the current extension.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([tab-id request #_response-callback] (gen-call :function ::send-request &form tab-id request)))
 
 (defmacro send-message
   "Sends a single message to the content script(s) in the specified tab, with an optional callback to run when a
    response is sent back.  The 'runtime.onMessage' event is fired in each content script running in the specified tab
-   for the current extension."
-  ([tab-id message options #_response-callback] (gen-call :function ::send-message (meta &form) tab-id message options))
+   for the current extension.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([tab-id message options #_response-callback] (gen-call :function ::send-message &form tab-id message options))
   ([tab-id message] `(send-message ~tab-id ~message :omit)))
 
 (defmacro get-selected
   "Gets the tab that is selected in the specified window.
    
-     |windowId| - Defaults to the current window."
-  ([window-id #_callback] (gen-call :function ::get-selected (meta &form) window-id))
+     |windowId| - Defaults to the current window.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([window-id #_callback] (gen-call :function ::get-selected &form window-id))
   ([] `(get-selected :omit)))
 
 (defmacro get-all-in-window
   "Gets details about all tabs in the specified window.
    
-     |windowId| - Defaults to the current window."
-  ([window-id #_callback] (gen-call :function ::get-all-in-window (meta &form) window-id))
+     |windowId| - Defaults to the current window.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([window-id #_callback] (gen-call :function ::get-all-in-window &form window-id))
   ([] `(get-all-in-window :omit)))
 
 (defmacro create
-  "Creates a new tab."
-  ([create-properties #_callback] (gen-call :function ::create (meta &form) create-properties)))
+  "Creates a new tab.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([create-properties #_callback] (gen-call :function ::create &form create-properties)))
 
 (defmacro duplicate
   "Duplicates a tab.
    
-     |tabId| - The ID of the tab which is to be duplicated."
-  ([tab-id #_callback] (gen-call :function ::duplicate (meta &form) tab-id)))
+     |tabId| - The ID of the tab which is to be duplicated.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([tab-id #_callback] (gen-call :function ::duplicate &form tab-id)))
 
 (defmacro query
-  "Gets all tabs that have the specified properties, or all tabs if no properties are specified."
-  ([query-info #_callback] (gen-call :function ::query (meta &form) query-info)))
+  "Gets all tabs that have the specified properties, or all tabs if no properties are specified.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([query-info #_callback] (gen-call :function ::query &form query-info)))
 
 (defmacro highlight
-  "Highlights the given tabs."
-  ([highlight-info #_callback] (gen-call :function ::highlight (meta &form) highlight-info)))
+  "Highlights the given tabs.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([highlight-info #_callback] (gen-call :function ::highlight &form highlight-info)))
 
 (defmacro update
   "Modifies the properties of a tab. Properties that are not specified in updateProperties are not modified.
    
-     |tabId| - Defaults to the selected tab of the current window."
-  ([tab-id update-properties #_callback] (gen-call :function ::update (meta &form) tab-id update-properties)))
+     |tabId| - Defaults to the selected tab of the current window.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([tab-id update-properties #_callback] (gen-call :function ::update &form tab-id update-properties)))
 
 (defmacro move
   "Moves one or more tabs to a new position within its window, or to a new window. Note that tabs can only be moved to
    and from normal (window.type === 'normal') windows.
    
-     |tabIds| - The tab or list of tabs to move."
-  ([tab-ids move-properties #_callback] (gen-call :function ::move (meta &form) tab-ids move-properties)))
+     |tabIds| - The tab or list of tabs to move.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([tab-ids move-properties #_callback] (gen-call :function ::move &form tab-ids move-properties)))
 
 (defmacro reload
   "Reload a tab.
    
-     |tabId| - The ID of the tab to reload; defaults to the selected tab of the current window."
-  ([tab-id reload-properties #_callback] (gen-call :function ::reload (meta &form) tab-id reload-properties))
+     |tabId| - The ID of the tab to reload; defaults to the selected tab of the current window.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([tab-id reload-properties #_callback] (gen-call :function ::reload &form tab-id reload-properties))
   ([tab-id] `(reload ~tab-id :omit))
   ([] `(reload :omit :omit)))
 
 (defmacro remove
   "Closes one or more tabs.
    
-     |tabIds| - The tab or list of tabs to close."
-  ([tab-ids #_callback] (gen-call :function ::remove (meta &form) tab-ids)))
+     |tabIds| - The tab or list of tabs to close.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([tab-ids #_callback] (gen-call :function ::remove &form tab-ids)))
 
 (defmacro detect-language
   "Detects the primary language of the content in a tab.
    
-     |tabId| - Defaults to the active tab of the current window."
-  ([tab-id #_callback] (gen-call :function ::detect-language (meta &form) tab-id))
+     |tabId| - Defaults to the active tab of the current window.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([tab-id #_callback] (gen-call :function ::detect-language &form tab-id))
   ([] `(detect-language :omit)))
 
 (defmacro capture-visible-tab
@@ -120,8 +150,10 @@
    permission to use this method.
    
      |windowId| - The target window. Defaults to the current window.
-     |options| - Details about the format and quality of an image."
-  ([window-id options #_callback] (gen-call :function ::capture-visible-tab (meta &form) window-id options))
+     |options| - Details about the format and quality of an image.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([window-id options #_callback] (gen-call :function ::capture-visible-tab &form window-id options))
   ([window-id] `(capture-visible-tab ~window-id :omit))
   ([] `(capture-visible-tab :omit :omit)))
 
@@ -132,8 +164,10 @@
      |tabId| - The ID of the tab in which to run the script; defaults to the active tab of the current window.
      |details| - Details of the script or CSS to inject. Either the code or the file property must be set, but both
                  may not be set at the same time.
-     |callback| - Called after all the JavaScript has been executed."
-  ([tab-id details #_callback] (gen-call :function ::execute-script (meta &form) tab-id details)))
+     |callback| - Called after all the JavaScript has been executed.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([tab-id details #_callback] (gen-call :function ::execute-script &form tab-id details)))
 
 (defmacro insert-css
   "Injects CSS into a page. For details, see the programmatic injection section of the content scripts doc.
@@ -141,8 +175,10 @@
      |tabId| - The ID of the tab in which to insert the CSS; defaults to the active tab of the current window.
      |details| - Details of the script or CSS to inject. Either the code or the file property must be set, but both
                  may not be set at the same time.
-     |callback| - Called when all the CSS has been inserted."
-  ([tab-id details #_callback] (gen-call :function ::insert-css (meta &form) tab-id details)))
+     |callback| - Called when all the CSS has been inserted.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([tab-id details #_callback] (gen-call :function ::insert-css &form tab-id details)))
 
 (defmacro set-zoom
   "Zooms a specified tab.
@@ -150,16 +186,20 @@
      |tabId| - The ID of the tab to zoom; defaults to the active tab of the current window.
      |zoomFactor| - The new zoom factor. Use a value of 0 here to set the tab to its current default zoom factor.
                     Values greater than zero specify a (possibly non-default) zoom factor for the tab.
-     |callback| - Called after the zoom factor has been changed."
-  ([tab-id zoom-factor #_callback] (gen-call :function ::set-zoom (meta &form) tab-id zoom-factor)))
+     |callback| - Called after the zoom factor has been changed.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([tab-id zoom-factor #_callback] (gen-call :function ::set-zoom &form tab-id zoom-factor)))
 
 (defmacro get-zoom
   "Gets the current zoom factor of a specified tab.
    
      |tabId| - The ID of the tab to get the current zoom factor from; defaults to the active tab of the current
                window.
-     |callback| - Called with the tab's current zoom factor after it has been fetched."
-  ([tab-id #_callback] (gen-call :function ::get-zoom (meta &form) tab-id))
+     |callback| - Called with the tab's current zoom factor after it has been fetched.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([tab-id #_callback] (gen-call :function ::get-zoom &form tab-id))
   ([] `(get-zoom :omit)))
 
 (defmacro set-zoom-settings
@@ -168,16 +208,20 @@
    
      |tabId| - The ID of the tab to change the zoom settings for; defaults to the active tab of the current window.
      |zoomSettings| - Defines how zoom changes are handled and at what scope.
-     |callback| - Called after the zoom settings have been changed."
-  ([tab-id zoom-settings #_callback] (gen-call :function ::set-zoom-settings (meta &form) tab-id zoom-settings)))
+     |callback| - Called after the zoom settings have been changed.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([tab-id zoom-settings #_callback] (gen-call :function ::set-zoom-settings &form tab-id zoom-settings)))
 
 (defmacro get-zoom-settings
   "Gets the current zoom settings of a specified tab.
    
      |tabId| - The ID of the tab to get the current zoom settings from; defaults to the active tab of the current
                window.
-     |callback| - Called with the tab's current zoom settings."
-  ([tab-id #_callback] (gen-call :function ::get-zoom-settings (meta &form) tab-id))
+     |callback| - Called with the tab's current zoom settings.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([tab-id #_callback] (gen-call :function ::get-zoom-settings &form tab-id))
   ([] `(get-zoom-settings :omit)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
@@ -185,59 +229,59 @@
 (defmacro tap-on-created-events
   "Fired when a tab is created. Note that the tab's URL may not be set at the time this event fired, but you can
    listen to onUpdated events to be notified when a URL is set."
-  ([channel] (gen-call :event ::on-created (meta &form) channel)))
+  ([channel] (gen-call :event ::on-created &form channel)))
 
 (defmacro tap-on-updated-events
   "Fired when a tab is updated."
-  ([channel] (gen-call :event ::on-updated (meta &form) channel)))
+  ([channel] (gen-call :event ::on-updated &form channel)))
 
 (defmacro tap-on-moved-events
   "Fired when a tab is moved within a window. Only one move event is fired, representing the tab the user directly
    moved. Move events are not fired for the other tabs that must move in response. This event is not fired when a tab
    is moved between windows. For that, see 'tabs.onDetached'."
-  ([channel] (gen-call :event ::on-moved (meta &form) channel)))
+  ([channel] (gen-call :event ::on-moved &form channel)))
 
 (defmacro tap-on-selection-changed-events
   "Fires when the selected tab in a window changes."
-  ([channel] (gen-call :event ::on-selection-changed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-selection-changed &form channel)))
 
 (defmacro tap-on-active-changed-events
   "Fires when the selected tab in a window changes. Note that the tab's URL may not be set at the time this event
    fired, but you can listen to 'tabs.onUpdated' events to be notified when a URL is set."
-  ([channel] (gen-call :event ::on-active-changed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-active-changed &form channel)))
 
 (defmacro tap-on-activated-events
   "Fires when the active tab in a window changes. Note that the tab's URL may not be set at the time this event fired,
    but you can listen to onUpdated events to be notified when a URL is set."
-  ([channel] (gen-call :event ::on-activated (meta &form) channel)))
+  ([channel] (gen-call :event ::on-activated &form channel)))
 
 (defmacro tap-on-highlight-changed-events
   "Fired when the highlighted or selected tabs in a window changes."
-  ([channel] (gen-call :event ::on-highlight-changed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-highlight-changed &form channel)))
 
 (defmacro tap-on-highlighted-events
   "Fired when the highlighted or selected tabs in a window changes."
-  ([channel] (gen-call :event ::on-highlighted (meta &form) channel)))
+  ([channel] (gen-call :event ::on-highlighted &form channel)))
 
 (defmacro tap-on-detached-events
   "Fired when a tab is detached from a window, for example because it is being moved between windows."
-  ([channel] (gen-call :event ::on-detached (meta &form) channel)))
+  ([channel] (gen-call :event ::on-detached &form channel)))
 
 (defmacro tap-on-attached-events
   "Fired when a tab is attached to a window, for example because it was moved between windows."
-  ([channel] (gen-call :event ::on-attached (meta &form) channel)))
+  ([channel] (gen-call :event ::on-attached &form channel)))
 
 (defmacro tap-on-removed-events
   "Fired when a tab is closed."
-  ([channel] (gen-call :event ::on-removed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-removed &form channel)))
 
 (defmacro tap-on-replaced-events
   "Fired when a tab is replaced with another tab due to prerendering or instant."
-  ([channel] (gen-call :event ::on-replaced (meta &form) channel)))
+  ([channel] (gen-call :event ::on-replaced &form channel)))
 
 (defmacro tap-on-zoom-change-events
   "Fired when a tab is zoomed."
-  ([channel] (gen-call :event ::on-zoom-change (meta &form) channel)))
+  ([channel] (gen-call :event ::on-zoom-change &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

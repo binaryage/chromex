@@ -18,14 +18,16 @@
 (defmacro get-all
   "Returns all the registered extension commands for this extension and their shortcut (if active).
    
-     |callback| - Called to return the registered commands."
-  ([#_callback] (gen-call :function ::get-all (meta &form))))
+     |callback| - Called to return the registered commands.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-all &form)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-command-events
   "Fired when a registered command is activated using a keyboard shortcut."
-  ([channel] (gen-call :event ::on-command (meta &form) channel)))
+  ([channel] (gen-call :event ::on-command &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

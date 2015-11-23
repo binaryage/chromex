@@ -16,64 +16,84 @@
 ; -- functions ------------------------------------------------------------------------------------------------------
 
 (defmacro get-all
-  "Returns a list of information about installed extensions and apps."
-  ([#_callback] (gen-call :function ::get-all (meta &form))))
+  "Returns a list of information about installed extensions and apps.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-all &form)))
 
 (defmacro get
   "Returns information about the installed extension, app, or theme that has the given ID.
    
-     |id| - The ID from an item of 'management.ExtensionInfo'."
-  ([id #_callback] (gen-call :function ::get (meta &form) id)))
+     |id| - The ID from an item of 'management.ExtensionInfo'.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([id #_callback] (gen-call :function ::get &form id)))
 
 (defmacro get-self
   "Returns information about the calling extension, app, or theme. Note: This function can be used without requesting
-   the 'management' permission in the manifest."
-  ([#_callback] (gen-call :function ::get-self (meta &form))))
+   the 'management' permission in the manifest.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-self &form)))
 
 (defmacro get-permission-warnings-by-id
   "Returns a list of permission warnings for the given extension id.
    
-     |id| - The ID of an already installed extension."
-  ([id #_callback] (gen-call :function ::get-permission-warnings-by-id (meta &form) id)))
+     |id| - The ID of an already installed extension.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([id #_callback] (gen-call :function ::get-permission-warnings-by-id &form id)))
 
 (defmacro get-permission-warnings-by-manifest
   "Returns a list of permission warnings for the given extension manifest string. Note: This function can be used
    without requesting the 'management' permission in the manifest.
    
-     |manifestStr| - Extension manifest JSON string."
-  ([manifest-str #_callback] (gen-call :function ::get-permission-warnings-by-manifest (meta &form) manifest-str)))
+     |manifestStr| - Extension manifest JSON string.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([manifest-str #_callback] (gen-call :function ::get-permission-warnings-by-manifest &form manifest-str)))
 
 (defmacro set-enabled
   "Enables or disables an app or extension.
    
      |id| - This should be the id from an item of 'management.ExtensionInfo'.
-     |enabled| - Whether this item should be enabled or disabled."
-  ([id enabled #_callback] (gen-call :function ::set-enabled (meta &form) id enabled)))
+     |enabled| - Whether this item should be enabled or disabled.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([id enabled #_callback] (gen-call :function ::set-enabled &form id enabled)))
 
 (defmacro uninstall
   "Uninstalls a currently installed app or extension.
    
-     |id| - This should be the id from an item of 'management.ExtensionInfo'."
-  ([id options #_callback] (gen-call :function ::uninstall (meta &form) id options))
+     |id| - This should be the id from an item of 'management.ExtensionInfo'.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([id options #_callback] (gen-call :function ::uninstall &form id options))
   ([id] `(uninstall ~id :omit)))
 
 (defmacro uninstall-self
   "Uninstalls the calling extension. Note: This function can be used without requesting the 'management' permission in
-   the manifest."
-  ([options #_callback] (gen-call :function ::uninstall-self (meta &form) options))
+   the manifest.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([options #_callback] (gen-call :function ::uninstall-self &form options))
   ([] `(uninstall-self :omit)))
 
 (defmacro launch-app
   "Launches an application.
    
-     |id| - The extension id of the application."
-  ([id #_callback] (gen-call :function ::launch-app (meta &form) id)))
+     |id| - The extension id of the application.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([id #_callback] (gen-call :function ::launch-app &form id)))
 
 (defmacro create-app-shortcut
   "Display options to create shortcuts for an app. On Mac, only packaged app shortcuts can be created.
    
-     |id| - This should be the id from an app item of 'management.ExtensionInfo'."
-  ([id #_callback] (gen-call :function ::create-app-shortcut (meta &form) id)))
+     |id| - This should be the id from an app item of 'management.ExtensionInfo'.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([id #_callback] (gen-call :function ::create-app-shortcut &form id)))
 
 (defmacro set-launch-type
   "Set the launch type of an app.
@@ -81,33 +101,37 @@
      |id| - This should be the id from an app item of 'management.ExtensionInfo'.
      |launchType| - The target launch type. Always check and make sure this launch type is in
                     'ExtensionInfo.availableLaunchTypes', because the available launch types vary on different
-                    platforms and configurations."
-  ([id launch-type #_callback] (gen-call :function ::set-launch-type (meta &form) id launch-type)))
+                    platforms and configurations.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([id launch-type #_callback] (gen-call :function ::set-launch-type &form id launch-type)))
 
 (defmacro generate-app-for-link
   "Generate an app for a URL. Returns the generated bookmark app.
    
      |url| - The URL of a web page. The scheme of the URL can only be 'http' or 'https'.
-     |title| - The title of the generated app."
-  ([url title #_callback] (gen-call :function ::generate-app-for-link (meta &form) url title)))
+     |title| - The title of the generated app.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([url title #_callback] (gen-call :function ::generate-app-for-link &form url title)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-installed-events
   "Fired when an app or extension has been installed."
-  ([channel] (gen-call :event ::on-installed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-installed &form channel)))
 
 (defmacro tap-on-uninstalled-events
   "Fired when an app or extension has been uninstalled."
-  ([channel] (gen-call :event ::on-uninstalled (meta &form) channel)))
+  ([channel] (gen-call :event ::on-uninstalled &form channel)))
 
 (defmacro tap-on-enabled-events
   "Fired when an app or extension has been enabled."
-  ([channel] (gen-call :event ::on-enabled (meta &form) channel)))
+  ([channel] (gen-call :event ::on-enabled &form channel)))
 
 (defmacro tap-on-disabled-events
   "Fired when an app or extension has been disabled."
-  ([channel] (gen-call :event ::on-disabled (meta &form) channel)))
+  ([channel] (gen-call :event ::on-disabled &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

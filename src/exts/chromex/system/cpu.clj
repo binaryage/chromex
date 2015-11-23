@@ -15,8 +15,10 @@
 ; -- functions ------------------------------------------------------------------------------------------------------
 
 (defmacro get-info
-  "Queries basic CPU information of the system."
-  ([#_callback] (gen-call :function ::get-info (meta &form))))
+  "Queries basic CPU information of the system.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-info &form)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

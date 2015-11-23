@@ -16,16 +16,20 @@
   "Challenge a machine key.
    
      |challenge| - Challenge to be signed in base64.
-     |callback| - Callback function."
-  ([challenge #_callback] (gen-call :function ::challenge-machine-key (meta &form) challenge)))
+     |callback| - Callback function.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([challenge #_callback] (gen-call :function ::challenge-machine-key &form challenge)))
 
 (defmacro challenge-user-key
   "Challenge an user key.
    
      |challenge| - Challenge to be signed in base64.
      |registerKey| - If true, the key will be registered.
-     |callback| - Callback function."
-  ([challenge register-key #_callback] (gen-call :function ::challenge-user-key (meta &form) challenge register-key)))
+     |callback| - Callback function.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([challenge register-key #_callback] (gen-call :function ::challenge-user-key &form challenge register-key)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

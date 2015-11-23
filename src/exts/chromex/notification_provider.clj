@@ -22,16 +22,20 @@
    
      |notifierId| - The id of the notifier that sent the notification.
      |notificationId| - The id of the notification that was closed.
-     |callback| - Called to indicate whether a matching notification existed."
-  ([notifier-id notification-id #_callback] (gen-call :function ::notify-on-cleared (meta &form) notifier-id notification-id)))
+     |callback| - Called to indicate whether a matching notification existed.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([notifier-id notification-id #_callback] (gen-call :function ::notify-on-cleared &form notifier-id notification-id)))
 
 (defmacro notify-on-clicked
   "Inform the notifier that the user clicked in a non-button area of a notification sent from that notifier.
    
      |notifierId| - The id of the notifier that sent the notification.
      |notificationId| - The id of the notification that was clicked on.
-     |callback| - Called to indicate whether a matching notification existed."
-  ([notifier-id notification-id #_callback] (gen-call :function ::notify-on-clicked (meta &form) notifier-id notification-id)))
+     |callback| - Called to indicate whether a matching notification existed.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([notifier-id notification-id #_callback] (gen-call :function ::notify-on-clicked &form notifier-id notification-id)))
 
 (defmacro notify-on-button-clicked
   "Inform the notifier that the user pressed a button in the notification sent from that notifier.
@@ -39,8 +43,10 @@
      |notifierId| - The id of the notifier that sent the notification.
      |notificationId| - The id of the notification that was clicked on its button.
      |buttonIndex| - The index of the button that was clicked.
-     |callback| - Called to indicate whether a matching notification existed."
-  ([notifier-id notification-id button-index #_callback] (gen-call :function ::notify-on-button-clicked (meta &form) notifier-id notification-id button-index)))
+     |callback| - Called to indicate whether a matching notification existed.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([notifier-id notification-id button-index #_callback] (gen-call :function ::notify-on-button-clicked &form notifier-id notification-id button-index)))
 
 (defmacro notify-on-permission-level-changed
   "Inform the notifier that the user changed the permission level of that notifier.
@@ -48,42 +54,50 @@
      |notifierId| - The id of the notifier that sent the notification.
      |notifierType| - The type of the notifier that sent the notification.
      |level| - The perission level of the notifier
-     |callback| - Called to indicate whether the permission level was changed."
-  ([notifier-id notifier-type level #_callback] (gen-call :function ::notify-on-permission-level-changed (meta &form) notifier-id notifier-type level)))
+     |callback| - Called to indicate whether the permission level was changed.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([notifier-id notifier-type level #_callback] (gen-call :function ::notify-on-permission-level-changed &form notifier-id notifier-type level)))
 
 (defmacro notify-on-show-settings
   "Inform the notifier that the user chose to see advanced settings of that notifier.
    
      |notifierId| - The id of the notifier that sent the notification.
      |notifierType| - The type of the notifier that sent the notification.
-     |callback| - Called to indicate whether the notifier has extra settings."
-  ([notifier-id notifier-type #_callback] (gen-call :function ::notify-on-show-settings (meta &form) notifier-id notifier-type)))
+     |callback| - Called to indicate whether the notifier has extra settings.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([notifier-id notifier-type #_callback] (gen-call :function ::notify-on-show-settings &form notifier-id notifier-type)))
 
 (defmacro get-notifier
   "To get a notifier from it's notifier ID.
    
-     |callback| - Returns the notifier object of the given ID."
-  ([#_callback] (gen-call :function ::get-notifier (meta &form))))
+     |callback| - Returns the notifier object of the given ID.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-notifier &form)))
 
 (defmacro get-all-notifiers
   "To get all the notifiers that could send notifications.
    
-     |callback| - Returns the set of notifiers currently in the system."
-  ([#_callback] (gen-call :function ::get-all-notifiers (meta &form))))
+     |callback| - Returns the set of notifiers currently in the system.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-all-notifiers &form)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-created-events
   "A new notification is created."
-  ([channel] (gen-call :event ::on-created (meta &form) channel)))
+  ([channel] (gen-call :event ::on-created &form channel)))
 
 (defmacro tap-on-updated-events
   "A notification is updated by the notifier."
-  ([channel] (gen-call :event ::on-updated (meta &form) channel)))
+  ([channel] (gen-call :event ::on-updated &form channel)))
 
 (defmacro tap-on-cleared-events
   "A notification is cleared by the notifier."
-  ([channel] (gen-call :event ::on-cleared (meta &form) channel)))
+  ([channel] (gen-call :event ::on-cleared &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

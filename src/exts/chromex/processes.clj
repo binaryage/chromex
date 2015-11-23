@@ -17,14 +17,18 @@
 (defmacro terminate
   "Terminates the specified renderer process. Equivalent to visiting about:crash, but without changing the tab's URL.
    
-     |processId| - The ID of the process to be terminated."
-  ([process-id #_callback] (gen-call :function ::terminate (meta &form) process-id)))
+     |processId| - The ID of the process to be terminated.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([process-id #_callback] (gen-call :function ::terminate &form process-id)))
 
 (defmacro get-process-id-for-tab
   "Returns the ID of the renderer process for the specified tab.
    
-     |tabId| - The ID of the tab for which the renderer process ID is to be returned."
-  ([tab-id #_callback] (gen-call :function ::get-process-id-for-tab (meta &form) tab-id)))
+     |tabId| - The ID of the tab for which the renderer process ID is to be returned.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([tab-id #_callback] (gen-call :function ::get-process-id-for-tab &form tab-id)))
 
 (defmacro get-process-info
   "Retrieves the process information for each process ID specified.
@@ -33,34 +37,36 @@
                     empty list indicates all processes are requested.
      |includeMemory| - True if detailed memory usage is required. Note, collecting memory usage information incurs
                        extra CPU usage and should only be queried for when needed.
-     |callback| - Called when the processes information is collected."
-  ([process-ids include-memory #_callback] (gen-call :function ::get-process-info (meta &form) process-ids include-memory)))
+     |callback| - Called when the processes information is collected.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([process-ids include-memory #_callback] (gen-call :function ::get-process-info &form process-ids include-memory)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-updated-events
   "Fired each time the Task Manager updates its process statistics, providing the dictionary of updated Process
    objects, indexed by process ID."
-  ([channel] (gen-call :event ::on-updated (meta &form) channel)))
+  ([channel] (gen-call :event ::on-updated &form channel)))
 
 (defmacro tap-on-updated-with-memory-events
   "Fired each time the Task Manager updates its process statistics, providing the dictionary of updated Process
    objects, indexed by process ID. Identical to onUpdate, with the addition of memory usage details included in each
    Process object. Note, collecting memory usage information incurs extra CPU usage and should only be listened for
    when needed."
-  ([channel] (gen-call :event ::on-updated-with-memory (meta &form) channel)))
+  ([channel] (gen-call :event ::on-updated-with-memory &form channel)))
 
 (defmacro tap-on-created-events
   "Fired each time a process is created, providing the corrseponding Process object."
-  ([channel] (gen-call :event ::on-created (meta &form) channel)))
+  ([channel] (gen-call :event ::on-created &form channel)))
 
 (defmacro tap-on-unresponsive-events
   "Fired each time a process becomes unresponsive, providing the corrseponding Process object."
-  ([channel] (gen-call :event ::on-unresponsive (meta &form) channel)))
+  ([channel] (gen-call :event ::on-unresponsive &form channel)))
 
 (defmacro tap-on-exited-events
   "Fired each time a process is terminated, providing the type of exit."
-  ([channel] (gen-call :event ::on-exited (meta &form) channel)))
+  ([channel] (gen-call :event ::on-exited &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

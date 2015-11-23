@@ -18,19 +18,21 @@
    
      |severity| - The severity of the message.
      |text| - The text of the message."
-  ([severity text] (gen-call :function ::add-message (meta &form) severity text)))
+  ([severity text] (gen-call :function ::add-message &form severity text)))
 
 (defmacro get-messages
   "Retrieves console messages.
    
-     |callback| - A function that receives console messages when the request completes."
-  ([#_callback] (gen-call :function ::get-messages (meta &form))))
+     |callback| - A function that receives console messages when the request completes.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-messages &form)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-message-added-events
   "Fired when a new message is added to the console."
-  ([channel] (gen-call :event ::on-message-added (meta &form) channel)))
+  ([channel] (gen-call :event ::on-message-added &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

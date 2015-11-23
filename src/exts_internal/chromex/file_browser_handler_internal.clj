@@ -17,8 +17,10 @@
    created or, if it already exists, truncated. The function has to be called with user gesture.
    
      |selectionParams| - Parameters that will be used to create new file.
-     |callback| - Function called upon completion."
-  ([selection-params #_callback] (gen-call :function ::select-file (meta &form) selection-params)))
+     |callback| - Function called upon completion.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([selection-params #_callback] (gen-call :function ::select-file &form selection-params)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

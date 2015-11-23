@@ -19,8 +19,10 @@
    
      |streamUrl| - The URL of the stream to abort.
      |callback| - Called when the stream URL is guaranteed to be invalid. The underlying URL request may not yet
-                  have been aborted when this is run."
-  ([stream-url #_callback] (gen-call :function ::abort (meta &form) stream-url)))
+                  have been aborted when this is run.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([stream-url #_callback] (gen-call :function ::abort &form stream-url)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
@@ -28,7 +30,7 @@
   "Fired when a resource is fetched which matches a mime type handled by this extension. The resource request is
    cancelled, and the extension is expected to handle the request. The event is restricted to a small number of
    white-listed extensions."
-  ([channel] (gen-call :event ::on-execute-mime-type-handler (meta &form) channel)))
+  ([channel] (gen-call :event ::on-execute-mime-type-handler &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

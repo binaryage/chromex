@@ -18,21 +18,27 @@
 (defmacro get-adapter-state
   "Get information about the Bluetooth adapter.
    
-     |callback| - Called with an AdapterState object describing the adapter              state."
-  ([#_callback] (gen-call :function ::get-adapter-state (meta &form))))
+     |callback| - Called with an AdapterState object describing the adapter              state.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-adapter-state &form)))
 
 (defmacro get-device
   "Get information about a Bluetooth device known to the system.
    
      |deviceAddress| - Address of device to get.
-     |callback| - Called with the Device object describing the device."
-  ([device-address #_callback] (gen-call :function ::get-device (meta &form) device-address)))
+     |callback| - Called with the Device object describing the device.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([device-address #_callback] (gen-call :function ::get-device &form device-address)))
 
 (defmacro get-devices
   "Get a list of Bluetooth devices known to the system, including paired and recently discovered devices.
    
-     |callback| - Called when the search is completed."
-  ([#_callback] (gen-call :function ::get-devices (meta &form))))
+     |callback| - Called when the search is completed.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-devices &form)))
 
 (defmacro start-discovery
   "Start discovery. Newly discovered devices will be returned via the onDeviceAdded event. Previously discovered
@@ -41,33 +47,37 @@
    already called startDiscovery.  Discovery can be resource intensive: stopDiscovery should be called as soon as
    possible.
    
-     |callback| - Called to indicate success or failure."
-  ([#_callback] (gen-call :function ::start-discovery (meta &form))))
+     |callback| - Called to indicate success or failure.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::start-discovery &form)))
 
 (defmacro stop-discovery
   "Stop discovery.
    
-     |callback| - Called to indicate success or failure."
-  ([#_callback] (gen-call :function ::stop-discovery (meta &form))))
+     |callback| - Called to indicate success or failure.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::stop-discovery &form)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-adapter-state-changed-events
   "Fired when the state of the Bluetooth adapter changes."
-  ([channel] (gen-call :event ::on-adapter-state-changed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-adapter-state-changed &form channel)))
 
 (defmacro tap-on-device-added-events
   "Fired when information about a new Bluetooth device is available."
-  ([channel] (gen-call :event ::on-device-added (meta &form) channel)))
+  ([channel] (gen-call :event ::on-device-added &form channel)))
 
 (defmacro tap-on-device-changed-events
   "Fired when information about a known Bluetooth device has changed."
-  ([channel] (gen-call :event ::on-device-changed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-device-changed &form channel)))
 
 (defmacro tap-on-device-removed-events
   "Fired when a Bluetooth device that was previously discovered has been out of range for long enough to be considered
    unavailable again, and when a paired device is removed."
-  ([channel] (gen-call :event ::on-device-removed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-device-removed &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

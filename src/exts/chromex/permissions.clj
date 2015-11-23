@@ -16,32 +16,40 @@
 ; -- functions ------------------------------------------------------------------------------------------------------
 
 (defmacro get-all
-  "Gets the extension's current set of permissions."
-  ([#_callback] (gen-call :function ::get-all (meta &form))))
+  "Gets the extension's current set of permissions.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-all &form)))
 
 (defmacro contains
-  "Checks if the extension has the specified permissions."
-  ([permissions #_callback] (gen-call :function ::contains (meta &form) permissions)))
+  "Checks if the extension has the specified permissions.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([permissions #_callback] (gen-call :function ::contains &form permissions)))
 
 (defmacro request
   "Requests access to the specified permissions. These permissions must be defined in the optional_permissions field
-   of the manifest. If there are any problems requesting the permissions, 'runtime.lastError' will be set."
-  ([permissions #_callback] (gen-call :function ::request (meta &form) permissions)))
+   of the manifest. If there are any problems requesting the permissions, 'runtime.lastError' will be set.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([permissions #_callback] (gen-call :function ::request &form permissions)))
 
 (defmacro remove
   "Removes access to the specified permissions. If there are any problems removing the permissions,
-   'runtime.lastError' will be set."
-  ([permissions #_callback] (gen-call :function ::remove (meta &form) permissions)))
+   'runtime.lastError' will be set.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([permissions #_callback] (gen-call :function ::remove &form permissions)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-added-events
   "Fired when the extension acquires new permissions."
-  ([channel] (gen-call :event ::on-added (meta &form) channel)))
+  ([channel] (gen-call :event ::on-added &form channel)))
 
 (defmacro tap-on-removed-events
   "Fired when access to permissions has been removed from the extension."
-  ([channel] (gen-call :event ::on-removed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-removed &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

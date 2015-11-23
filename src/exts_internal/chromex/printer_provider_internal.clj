@@ -28,7 +28,7 @@
    
      |requestId| - Parameter identifying the event instance for which the     callback is run.
      |printers| - List of printers reported by the extension."
-  ([request-id printers] (gen-call :function ::report-printers (meta &form) request-id printers))
+  ([request-id printers] (gen-call :function ::report-printers &form request-id printers))
   ([request-id] `(report-printers ~request-id :omit)))
 
 (defmacro report-usb-printer-info
@@ -36,19 +36,19 @@
    
      |requestId| - Parameter identifying the event instance for which the     callback is run.
      |printerInfo| - Printer information reported by the extension."
-  ([request-id printer-info] (gen-call :function ::report-usb-printer-info (meta &form) request-id printer-info))
+  ([request-id printer-info] (gen-call :function ::report-usb-printer-info &form request-id printer-info))
   ([request-id] `(report-usb-printer-info ~request-id :omit)))
 
 (defmacro report-printer-capability
   "Runs callback to printerProvider.onGetCapabilityRequested event."
-  ([request-id capability] (gen-call :function ::report-printer-capability (meta &form) request-id capability))
+  ([request-id capability] (gen-call :function ::report-printer-capability &form request-id capability))
   ([request-id] `(report-printer-capability ~request-id :omit)))
 
 (defmacro report-print-result
   "Runs callback to printerProvider.onPrintRequested event.
    
      |error| - The requested print job result."
-  ([request-id error] (gen-call :function ::report-print-result (meta &form) request-id error))
+  ([request-id error] (gen-call :function ::report-print-result &form request-id error))
   ([request-id] `(report-print-result ~request-id :omit)))
 
 (defmacro get-print-data
@@ -56,8 +56,10 @@
    extension via printerProvider.onPrintRequested event.
    
      |requestId| - The request id for the print request for which data is     needed.
-     |callback| - Callback called with the information needed to create a blob     of print data."
-  ([request-id #_callback] (gen-call :function ::get-print-data (meta &form) request-id)))
+     |callback| - Callback called with the information needed to create a blob     of print data.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([request-id #_callback] (gen-call :function ::get-print-data &form request-id)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

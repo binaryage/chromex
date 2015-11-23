@@ -23,14 +23,14 @@
   "Destroys a UDP transport.
    
      |transportId| - The transport ID."
-  ([transport-id] (gen-call :function ::destroy (meta &form) transport-id)))
+  ([transport-id] (gen-call :function ::destroy &form transport-id)))
 
 (defmacro set-destination
   "Sets parameters for this UDP transport. This can only be called once per transport.
    
      |transportId| - The transport ID.
      |destination| - The address and port to send packets to."
-  ([transport-id destination] (gen-call :function ::set-destination (meta &form) transport-id destination)))
+  ([transport-id destination] (gen-call :function ::set-destination &form transport-id destination)))
 
 (defmacro set-options
   "Sets the options. Attributes of this object will be used to activate optional behaviours in the transport. Normally
@@ -39,7 +39,7 @@
      |transportId| - The transport ID that is created by chrome.cast.streaming.session.create().
      |options| - A dictionary of key-value pairs of options. See media/cast/net/cast_transport_sender_impl.h for
                  supported options."
-  ([transport-id options] (gen-call :function ::set-options (meta &form) transport-id options)))
+  ([transport-id options] (gen-call :function ::set-options &form transport-id options)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

@@ -15,8 +15,10 @@
 (defmacro has-switch
   "Returns whether a switch is specified on the command line when launching Chrome.
    
-     |name| - The name of a command line switch, without leading '--', such as 'enable-experimental-extension-apis'."
-  ([name #_callback] (gen-call :function ::has-switch (meta &form) name)))
+     |name| - The name of a command line switch, without leading '--', such as 'enable-experimental-extension-apis'.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([name #_callback] (gen-call :function ::has-switch &form name)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

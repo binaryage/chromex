@@ -17,24 +17,30 @@
    
      |processName| - Name of the process to open. Initially only 'crosh' is supported. Another processes may be
                      added in future.
-     |callback| - Returns pid of the launched process. If no process was launched returns -1."
-  ([process-name #_callback] (gen-call :function ::open-terminal-process (meta &form) process-name)))
+     |callback| - Returns pid of the launched process. If no process was launched returns -1.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([process-name #_callback] (gen-call :function ::open-terminal-process &form process-name)))
 
 (defmacro close-terminal-process
   "Closes previousy opened process.
    
      |pid| - Process id of the process we want to close.
      |callback| - Function that gets called when close operation is started for the process. Returns success of the
-                  function."
-  ([pid #_callback] (gen-call :function ::close-terminal-process (meta &form) pid)))
+                  function.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([pid #_callback] (gen-call :function ::close-terminal-process &form pid)))
 
 (defmacro send-input
   "Sends input that will be routed to stdin of the process with the specified pid.
    
      |pid| - The pid of the process to which we want to send input.
      |input| - Input we are sending to the process.
-     |callback| - Callback that will be called when sendInput method ends. Returns success."
-  ([pid input #_callback] (gen-call :function ::send-input (meta &form) pid input)))
+     |callback| - Callback that will be called when sendInput method ends. Returns success.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([pid input #_callback] (gen-call :function ::send-input &form pid input)))
 
 (defmacro on-terminal-resize
   "Notify the process with the id pid that terminal window size has changed.
@@ -42,14 +48,16 @@
      |pid| - The pid of the process.
      |width| - New window width (as column count).
      |height| - New window height (as row count).
-     |callback| - Callback that will be called when sendInput method ends. Returns success."
-  ([pid width height #_callback] (gen-call :function ::on-terminal-resize (meta &form) pid width height)))
+     |callback| - Callback that will be called when sendInput method ends. Returns success.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([pid width height #_callback] (gen-call :function ::on-terminal-resize &form pid width height)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-process-output-events
   "Fired when an opened process writes something to its output."
-  ([channel] (gen-call :event ::on-process-output (meta &form) channel)))
+  ([channel] (gen-call :event ::on-process-output &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

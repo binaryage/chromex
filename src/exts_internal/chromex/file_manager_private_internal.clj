@@ -14,45 +14,125 @@
 
 ; -- functions ------------------------------------------------------------------------------------------------------
 
-(defmacro resolve-isolated-entries ([urls #_callback] (gen-call :function ::resolve-isolated-entries (meta &form) urls)))
+(defmacro resolve-isolated-entries
+  "
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([urls #_callback] (gen-call :function ::resolve-isolated-entries &form urls)))
 
-(defmacro get-entry-properties ([urls names #_callback] (gen-call :function ::get-entry-properties (meta &form) urls names)))
+(defmacro get-entry-properties
+  "
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([urls names #_callback] (gen-call :function ::get-entry-properties &form urls names)))
 
-(defmacro add-file-watch ([url #_callback] (gen-call :function ::add-file-watch (meta &form) url)))
+(defmacro add-file-watch
+  "
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([url #_callback] (gen-call :function ::add-file-watch &form url)))
 
-(defmacro remove-file-watch ([url #_callback] (gen-call :function ::remove-file-watch (meta &form) url)))
+(defmacro remove-file-watch
+  "
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([url #_callback] (gen-call :function ::remove-file-watch &form url)))
 
-(defmacro get-custom-actions ([urls #_callback] (gen-call :function ::get-custom-actions (meta &form) urls)))
+(defmacro get-custom-actions
+  "
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([urls #_callback] (gen-call :function ::get-custom-actions &form urls)))
 
-(defmacro execute-custom-action ([urls action-id #_callback] (gen-call :function ::execute-custom-action (meta &form) urls action-id)))
+(defmacro execute-custom-action
+  "
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([urls action-id #_callback] (gen-call :function ::execute-custom-action &form urls action-id)))
 
-(defmacro compute-checksum ([url #_callback] (gen-call :function ::compute-checksum (meta &form) url)))
+(defmacro compute-checksum
+  "
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([url #_callback] (gen-call :function ::compute-checksum &form url)))
 
-(defmacro get-mime-type ([url #_callback] (gen-call :function ::get-mime-type (meta &form) url)))
+(defmacro get-mime-type
+  "
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([url #_callback] (gen-call :function ::get-mime-type &form url)))
 
-(defmacro pin-drive-file ([url pin #_callback] (gen-call :function ::pin-drive-file (meta &form) url pin)))
+(defmacro pin-drive-file
+  "
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([url pin #_callback] (gen-call :function ::pin-drive-file &form url pin)))
 
-(defmacro execute-task ([task-id urls #_callback] (gen-call :function ::execute-task (meta &form) task-id urls)))
+(defmacro execute-task
+  "
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([task-id urls #_callback] (gen-call :function ::execute-task &form task-id urls)))
 
-(defmacro set-default-task ([task-id urls mime-types #_callback] (gen-call :function ::set-default-task (meta &form) task-id urls mime-types)))
+(defmacro set-default-task
+  "
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([task-id urls mime-types #_callback] (gen-call :function ::set-default-task &form task-id urls mime-types)))
 
-(defmacro get-file-tasks ([urls #_callback] (gen-call :function ::get-file-tasks (meta &form) urls)))
+(defmacro get-file-tasks
+  "
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([urls #_callback] (gen-call :function ::get-file-tasks &form urls)))
 
-(defmacro get-share-url ([url #_callback] (gen-call :function ::get-share-url (meta &form) url)))
+(defmacro get-share-url
+  "
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([url #_callback] (gen-call :function ::get-share-url &form url)))
 
-(defmacro get-download-url ([url #_callback] (gen-call :function ::get-download-url (meta &form) url)))
+(defmacro get-download-url
+  "
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([url #_callback] (gen-call :function ::get-download-url &form url)))
 
-(defmacro request-drive-share ([url share-type #_callback] (gen-call :function ::request-drive-share (meta &form) url share-type)))
+(defmacro request-drive-share
+  "
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([url share-type #_callback] (gen-call :function ::request-drive-share &form url share-type)))
 
-(defmacro set-entry-tag ([url visibility key value #_callback] (gen-call :function ::set-entry-tag (meta &form) url visibility key value)))
+(defmacro set-entry-tag
+  "
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([url visibility key value #_callback] (gen-call :function ::set-entry-tag &form url visibility key value)))
 
-(defmacro cancel-file-transfers ([urls #_callback] (gen-call :function ::cancel-file-transfers (meta &form) urls)))
+(defmacro cancel-file-transfers
+  "
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([urls #_callback] (gen-call :function ::cancel-file-transfers &form urls)))
 
-(defmacro start-copy ([url parent-url new-name #_callback] (gen-call :function ::start-copy (meta &form) url parent-url new-name)))
+(defmacro start-copy
+  "
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([url parent-url new-name #_callback] (gen-call :function ::start-copy &form url parent-url new-name)))
 
-(defmacro zip-selection ([parent-url urls dest-name #_callback] (gen-call :function ::zip-selection (meta &form) parent-url urls dest-name)))
+(defmacro zip-selection
+  "
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([parent-url urls dest-name #_callback] (gen-call :function ::zip-selection &form parent-url urls dest-name)))
 
-(defmacro validate-path-name-length ([parent-url name #_callback] (gen-call :function ::validate-path-name-length (meta &form) parent-url name)))
+(defmacro validate-path-name-length
+  "
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([parent-url name #_callback] (gen-call :function ::validate-path-name-length &form parent-url name)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

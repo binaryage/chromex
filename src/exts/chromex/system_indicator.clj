@@ -20,22 +20,24 @@
 (defmacro set-icon
   "Set the image to be used as an indicator icon, using a set of ImageData objects. These objects should have multiple
    resolutions so that an appropriate size can be selected for the given icon size and DPI scaling settings. Only
-   square ImageData objects are accepted."
-  ([details #_callback] (gen-call :function ::set-icon (meta &form) details)))
+   square ImageData objects are accepted.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([details #_callback] (gen-call :function ::set-icon &form details)))
 
 (defmacro enable
   "Show the icon in the status tray."
-  ([] (gen-call :function ::enable (meta &form))))
+  ([] (gen-call :function ::enable &form)))
 
 (defmacro disable
   "Hide the icon from the status tray."
-  ([] (gen-call :function ::disable (meta &form))))
+  ([] (gen-call :function ::disable &form)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-clicked-events
   "Fired only when a click on the icon does not result in a menu being shown."
-  ([channel] (gen-call :event ::on-clicked (meta &form) channel)))
+  ([channel] (gen-call :event ::on-clicked &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

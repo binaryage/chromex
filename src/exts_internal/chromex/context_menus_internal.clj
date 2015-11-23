@@ -17,7 +17,7 @@
 
 (defmacro tap-on-clicked-events
   "Fired when a context menu item is clicked."
-  ([channel] (gen-call :event ::on-clicked (meta &form) channel)))
+  ([channel] (gen-call :event ::on-clicked &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

@@ -15,8 +15,10 @@
 ; -- functions ------------------------------------------------------------------------------------------------------
 
 (defmacro get
-  "Gets a list of top sites."
-  ([#_callback] (gen-call :function ::get (meta &form))))
+  "Gets a list of top sites.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get &form)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

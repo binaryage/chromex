@@ -25,16 +25,20 @@
                          matching major version and greater or equal minor version. List of the protocol versions
                          can be obtained here.
      |callback| - Called once the attach operation succeeds or fails. Callback receives no arguments. If the attach
-                  fails, 'runtime.lastError' will be set to the error message."
-  ([target required-version #_callback] (gen-call :function ::attach (meta &form) target required-version)))
+                  fails, 'runtime.lastError' will be set to the error message.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([target required-version #_callback] (gen-call :function ::attach &form target required-version)))
 
 (defmacro detach
   "Detaches debugger from the given target.
    
      |target| - Debugging target from which you want to detach.
      |callback| - Called once the detach operation succeeds or fails. Callback receives no arguments. If the detach
-                  fails, 'runtime.lastError' will be set to the error message."
-  ([target #_callback] (gen-call :function ::detach (meta &form) target)))
+                  fails, 'runtime.lastError' will be set to the error message.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([target #_callback] (gen-call :function ::detach &form target)))
 
 (defmacro send-command
   "Sends given command to the debugging target.
@@ -44,24 +48,28 @@
      |commandParams| - JSON object with request parameters. This object must conform to the remote debugging params
                        scheme for given method.
      |callback| - Response body. If an error occurs while posting the message, the callback will be called with no
-                  arguments and 'runtime.lastError' will be set to the error message."
-  ([target method command-params #_callback] (gen-call :function ::send-command (meta &form) target method command-params))
+                  arguments and 'runtime.lastError' will be set to the error message.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([target method command-params #_callback] (gen-call :function ::send-command &form target method command-params))
   ([target method] `(send-command ~target ~method :omit)))
 
 (defmacro get-targets
-  "Returns the list of available debug targets."
-  ([#_callback] (gen-call :function ::get-targets (meta &form))))
+  "Returns the list of available debug targets.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-targets &form)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-event-events
   "Fired whenever debugging target issues instrumentation event."
-  ([channel] (gen-call :event ::on-event (meta &form) channel)))
+  ([channel] (gen-call :event ::on-event &form channel)))
 
 (defmacro tap-on-detach-events
   "Fired when browser terminates debugging session for the tab. This happens when either the tab is being closed or
    Chrome DevTools is being invoked for the attached tab."
-  ([channel] (gen-call :event ::on-detach (meta &form) channel)))
+  ([channel] (gen-call :event ::on-detach &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

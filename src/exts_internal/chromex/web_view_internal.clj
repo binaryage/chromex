@@ -19,8 +19,10 @@
      |src| - The src of the guest  tag.
      |details| - Details of the script or CSS to inject. Either the code or the file property must be set, but both
                  may not be set at the same time.
-     |callback| - Called after all the JavaScript has been executed."
-  ([instance-id src details #_callback] (gen-call :function ::execute-script (meta &form) instance-id src details)))
+     |callback| - Called after all the JavaScript has been executed.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([instance-id src details #_callback] (gen-call :function ::execute-script &form instance-id src details)))
 
 (defmacro insert-css
   "Injects CSS into a  page. For details, see the programmatic injection section of the content scripts doc.
@@ -29,15 +31,17 @@
      |src| - The src of the guest  tag.
      |details| - Details of the script or CSS to inject. Either the code or the file property must be set, but both
                  may not be set at the same time.
-     |callback| - Called when all the CSS has been inserted."
-  ([instance-id src details #_callback] (gen-call :function ::insert-css (meta &form) instance-id src details)))
+     |callback| - Called when all the CSS has been inserted.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([instance-id src details #_callback] (gen-call :function ::insert-css &form instance-id src details)))
 
 (defmacro add-content-scripts
   "Adds content scripts into a  page. For details, see the programmatic injection section of the content scripts doc.
    
      |instanceId| - The instance ID of the guest  process.
      |contentScriptList| - Details of the content scripts to add."
-  ([instance-id content-script-list] (gen-call :function ::add-content-scripts (meta &form) instance-id content-script-list)))
+  ([instance-id content-script-list] (gen-call :function ::add-content-scripts &form instance-id content-script-list)))
 
 (defmacro remove-content-scripts
   "Removes specified content scripts from a  page. For details, see the programmatic injection section of the content
@@ -46,42 +50,52 @@
      |instanceId| - The instance ID of the guest  process.
      |scriptNameList| - A list of names of content scripts that will be removed. If the list is empty, all the
                         content scripts added to the  page will be removed."
-  ([instance-id script-name-list] (gen-call :function ::remove-content-scripts (meta &form) instance-id script-name-list))
+  ([instance-id script-name-list] (gen-call :function ::remove-content-scripts &form instance-id script-name-list))
   ([instance-id] `(remove-content-scripts ~instance-id :omit)))
 
 (defmacro set-zoom
   "  |instanceId| - The instance ID of the guest  process.
      |zoomFactor| - The new zoom factor.
-     |callback| - Called after the zoom message has been sent to the guest process."
-  ([instance-id zoom-factor #_callback] (gen-call :function ::set-zoom (meta &form) instance-id zoom-factor)))
+     |callback| - Called after the zoom message has been sent to the guest process.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([instance-id zoom-factor #_callback] (gen-call :function ::set-zoom &form instance-id zoom-factor)))
 
 (defmacro get-zoom
   "  |instanceId| - The instance ID of the guest  process.
-     |callback| - Called after the current zoom factor is retrieved."
-  ([instance-id #_callback] (gen-call :function ::get-zoom (meta &form) instance-id)))
+     |callback| - Called after the current zoom factor is retrieved.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([instance-id #_callback] (gen-call :function ::get-zoom &form instance-id)))
 
 (defmacro set-zoom-mode
   "Sets the zoom mode of the webview.
    
      |instanceId| - The instance ID of the guest  process.
      |ZoomMode| - Defines the how zooming is handled in the webview.
-     |callback| - Called after the zoom mode has been changed."
-  ([instance-id zoom-mode #_callback] (gen-call :function ::set-zoom-mode (meta &form) instance-id zoom-mode)))
+     |callback| - Called after the zoom mode has been changed.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([instance-id zoom-mode #_callback] (gen-call :function ::set-zoom-mode &form instance-id zoom-mode)))
 
 (defmacro get-zoom-mode
   "Gets the current zoom mode.
    
      |instanceId| - The instance ID of the guest  process.
-     |callback| - Called with the webview's current zoom mode."
-  ([instance-id #_callback] (gen-call :function ::get-zoom-mode (meta &form) instance-id)))
+     |callback| - Called with the webview's current zoom mode.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([instance-id #_callback] (gen-call :function ::get-zoom-mode &form instance-id)))
 
 (defmacro find
   "Initiates a find-in-page request.
    
      |instanceId| - The instance ID of the guest  process.
      |searchText| - The string to find in the page.
-     |callback| - Called after all find results have been returned for this find request."
-  ([instance-id search-text options #_callback] (gen-call :function ::find (meta &form) instance-id search-text options))
+     |callback| - Called after all find results have been returned for this find request.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([instance-id search-text options #_callback] (gen-call :function ::find &form instance-id search-text options))
   ([instance-id search-text] `(find ~instance-id ~search-text :omit)))
 
 (defmacro stop-finding
@@ -91,7 +105,7 @@
      |action| - Determines what to do with the active match after the find session has ended. 'clear' will clear the
                 highlighting over the active match; 'keep' will keep the active match highlighted; 'activate' will
                 keep the active match highlighted and simulate a user click on that match."
-  ([instance-id action] (gen-call :function ::stop-finding (meta &form) instance-id action))
+  ([instance-id action] (gen-call :function ::stop-finding &form instance-id action))
   ([instance-id] `(stop-finding ~instance-id :omit)))
 
 (defmacro load-data-with-base-url
@@ -102,30 +116,40 @@
      |dataUrl| - The data URL to load.
      |baseUrl| - The base URL that will be used for relative links.
      |virtualUrl| - The URL that will be displayed to the user.
-     |callback| - Called internally for the purpose of reporting errors to console.error()."
-  ([instance-id data-url base-url virtual-url #_callback] (gen-call :function ::load-data-with-base-url (meta &form) instance-id data-url base-url virtual-url))
+     |callback| - Called internally for the purpose of reporting errors to console.error().
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([instance-id data-url base-url virtual-url #_callback] (gen-call :function ::load-data-with-base-url &form instance-id data-url base-url virtual-url))
   ([instance-id data-url base-url] `(load-data-with-base-url ~instance-id ~data-url ~base-url :omit)))
 
-(defmacro go ([instance-id relative-index #_callback] (gen-call :function ::go (meta &form) instance-id relative-index)))
+(defmacro go
+  "
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([instance-id relative-index #_callback] (gen-call :function ::go &form instance-id relative-index)))
 
-(defmacro override-user-agent ([instance-id user-agent-override] (gen-call :function ::override-user-agent (meta &form) instance-id user-agent-override)))
+(defmacro override-user-agent ([instance-id user-agent-override] (gen-call :function ::override-user-agent &form instance-id user-agent-override)))
 
-(defmacro reload ([instance-id] (gen-call :function ::reload (meta &form) instance-id)))
+(defmacro reload ([instance-id] (gen-call :function ::reload &form instance-id)))
 
-(defmacro set-allow-transparency ([instance-id allow] (gen-call :function ::set-allow-transparency (meta &form) instance-id allow)))
+(defmacro set-allow-transparency ([instance-id allow] (gen-call :function ::set-allow-transparency &form instance-id allow)))
 
-(defmacro set-allow-scaling ([instance-id allow] (gen-call :function ::set-allow-scaling (meta &form) instance-id allow)))
+(defmacro set-allow-scaling ([instance-id allow] (gen-call :function ::set-allow-scaling &form instance-id allow)))
 
-(defmacro set-name ([instance-id frame-name] (gen-call :function ::set-name (meta &form) instance-id frame-name)))
+(defmacro set-name ([instance-id frame-name] (gen-call :function ::set-name &form instance-id frame-name)))
 
-(defmacro set-permission ([instance-id request-id action user-input #_callback] (gen-call :function ::set-permission (meta &form) instance-id request-id action user-input))
+(defmacro set-permission
+  "
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([instance-id request-id action user-input #_callback] (gen-call :function ::set-permission &form instance-id request-id action user-input))
   ([instance-id request-id action] `(set-permission ~instance-id ~request-id ~action :omit)))
 
-(defmacro navigate ([instance-id src] (gen-call :function ::navigate (meta &form) instance-id src)))
+(defmacro navigate ([instance-id src] (gen-call :function ::navigate &form instance-id src)))
 
-(defmacro stop ([instance-id] (gen-call :function ::stop (meta &form) instance-id)))
+(defmacro stop ([instance-id] (gen-call :function ::stop &form instance-id)))
 
-(defmacro terminate ([instance-id] (gen-call :function ::terminate (meta &form) instance-id)))
+(defmacro terminate ([instance-id] (gen-call :function ::terminate &form instance-id)))
 
 (defmacro clear-data
   "Clears various types of browsing data stored in a storage partition of a .
@@ -133,8 +157,10 @@
      |instanceId| - The instance ID of the guest  process.
      |options| - Options that determine exactly what data will be removed.
      |dataToRemove| - A set of data types. Missing data types are interpreted as false.
-     |callback| - Called when deletion has completed."
-  ([instance-id options data-to-remove #_callback] (gen-call :function ::clear-data (meta &form) instance-id options data-to-remove)))
+     |callback| - Called when deletion has completed.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([instance-id options data-to-remove #_callback] (gen-call :function ::clear-data &form instance-id options data-to-remove)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

@@ -20,18 +20,20 @@
    (due to an error in one or more of them). Publish/Subscribe operations are executed in the order that they exist in
    the array. Unpublish and Unsubscribe are processsed at the end, again, in the order that they exist in the array.
    
-     |callback| - Callback to return the status of a completed batchExecute() call."
-  ([operations #_callback] (gen-call :function ::execute (meta &form) operations)))
+     |callback| - Callback to return the status of a completed batchExecute() call.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([operations #_callback] (gen-call :function ::execute &form operations)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-messages-received-events
   "Fired when new messages arrive."
-  ([channel] (gen-call :event ::on-messages-received (meta &form) channel)))
+  ([channel] (gen-call :event ::on-messages-received &form channel)))
 
 (defmacro tap-on-status-updated-events
   "Fired when a new copresence status update is available."
-  ([channel] (gen-call :event ::on-status-updated (meta &form) channel)))
+  ([channel] (gen-call :event ::on-status-updated &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

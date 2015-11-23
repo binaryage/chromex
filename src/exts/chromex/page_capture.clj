@@ -17,8 +17,10 @@
 (defmacro save-as-mhtml
   "Saves the content of the tab with given id as MHTML.
    
-     |callback| - Called when the MHTML has been generated."
-  ([details #_callback] (gen-call :function ::save-as-mhtml (meta &form) details)))
+     |callback| - Called when the MHTML has been generated.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([details #_callback] (gen-call :function ::save-as-mhtml &form details)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

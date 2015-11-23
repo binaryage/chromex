@@ -18,18 +18,20 @@
 (defmacro get-har
   "Returns HAR log that contains all known network requests.
    
-     |callback| - A function that receives the HAR log when the request completes."
-  ([#_callback] (gen-call :function ::get-har (meta &form))))
+     |callback| - A function that receives the HAR log when the request completes.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-har &form)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-request-finished-events
   "Fired when a network request is finished and all request data are available."
-  ([channel] (gen-call :event ::on-request-finished (meta &form) channel)))
+  ([channel] (gen-call :event ::on-request-finished &form channel)))
 
 (defmacro tap-on-navigated-events
   "Fired when the inspected window navigates to a new page."
-  ([channel] (gen-call :event ::on-navigated (meta &form) channel)))
+  ([channel] (gen-call :event ::on-navigated &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

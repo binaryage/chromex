@@ -16,22 +16,22 @@
 
 (defmacro get-sync
   "Items in the sync storage area are synced using Chrome Sync."
-  ([] (gen-call :property ::sync (meta &form))))
+  ([] (gen-call :property ::sync &form)))
 
 (defmacro get-local
   "Items in the local storage area are local to each machine."
-  ([] (gen-call :property ::local (meta &form))))
+  ([] (gen-call :property ::local &form)))
 
 (defmacro get-managed
   "Items in the managed storage area are set by the domain administrator, and are read-only for the extension; trying
    to modify this namespace results in an error."
-  ([] (gen-call :property ::managed (meta &form))))
+  ([] (gen-call :property ::managed &form)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-changed-events
   "Fired when one or more items change."
-  ([channel] (gen-call :event ::on-changed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-changed &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

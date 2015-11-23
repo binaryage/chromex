@@ -24,38 +24,48 @@
    guaranteed to remain backwards compatible between releases. Extensions must not parse it.
    
      |options| - What to download and how.
-     |callback| - Called with the id of the new 'DownloadItem'."
-  ([options #_callback] (gen-call :function ::download (meta &form) options)))
+     |callback| - Called with the id of the new 'DownloadItem'.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([options #_callback] (gen-call :function ::download &form options)))
 
 (defmacro search
   "Find 'DownloadItem'. Set query to the empty object to get all 'DownloadItem'. To get a specific 'DownloadItem', set
    only the id field. To page through a large number of items, set orderBy: ['-startTime'], set limit to the number of
-   items per page, and set startedAfter to the startTime of the last item from the last page."
-  ([query #_callback] (gen-call :function ::search (meta &form) query)))
+   items per page, and set startedAfter to the startTime of the last item from the last page.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([query #_callback] (gen-call :function ::search &form query)))
 
 (defmacro pause
   "Pause the download. If the request was successful the download is in a paused state. Otherwise 'runtime.lastError'
    contains an error message. The request will fail if the download is not active.
    
      |downloadId| - The id of the download to pause.
-     |callback| - Called when the pause request is completed."
-  ([download-id #_callback] (gen-call :function ::pause (meta &form) download-id)))
+     |callback| - Called when the pause request is completed.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([download-id #_callback] (gen-call :function ::pause &form download-id)))
 
 (defmacro resume
   "Resume a paused download. If the request was successful the download is in progress and unpaused. Otherwise
    'runtime.lastError' contains an error message. The request will fail if the download is not active.
    
      |downloadId| - The id of the download to resume.
-     |callback| - Called when the resume request is completed."
-  ([download-id #_callback] (gen-call :function ::resume (meta &form) download-id)))
+     |callback| - Called when the resume request is completed.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([download-id #_callback] (gen-call :function ::resume &form download-id)))
 
 (defmacro cancel
   "Cancel a download. When callback is run, the download is cancelled, completed, interrupted or doesn't exist
    anymore.
    
      |downloadId| - The id of the download to cancel.
-     |callback| - Called when the cancel request is completed."
-  ([download-id #_callback] (gen-call :function ::cancel (meta &form) download-id)))
+     |callback| - Called when the cancel request is completed.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([download-id #_callback] (gen-call :function ::cancel &form download-id)))
 
 (defmacro get-file-icon
   "Retrieve an icon for the specified download. For new downloads, file icons are available after the 'onCreated'
@@ -66,8 +76,10 @@
    determined, 'runtime.lastError' will contain an error message.
    
      |downloadId| - The identifier for the download.
-     |callback| - A URL to an image that represents the download."
-  ([download-id options #_callback] (gen-call :function ::get-file-icon (meta &form) download-id options))
+     |callback| - A URL to an image that represents the download.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([download-id options #_callback] (gen-call :function ::get-file-icon &form download-id options))
   ([download-id] `(get-file-icon ~download-id :omit)))
 
 (defmacro open
@@ -76,27 +88,31 @@
    'onChanged' event will fire when the item is opened for the first time.
    
      |downloadId| - The identifier for the downloaded file."
-  ([download-id] (gen-call :function ::open (meta &form) download-id)))
+  ([download-id] (gen-call :function ::open &form download-id)))
 
 (defmacro show
   "Show the downloaded file in its folder in a file manager.
    
      |downloadId| - The identifier for the downloaded file."
-  ([download-id] (gen-call :function ::show (meta &form) download-id)))
+  ([download-id] (gen-call :function ::show &form download-id)))
 
 (defmacro show-default-folder
   "Show the default Downloads folder in a file manager."
-  ([] (gen-call :function ::show-default-folder (meta &form))))
+  ([] (gen-call :function ::show-default-folder &form)))
 
 (defmacro erase
   "Erase matching 'DownloadItem' from history without deleting the downloaded file. An 'onErased' event will fire for
-   each 'DownloadItem' that matches query, then callback will be called."
-  ([query #_callback] (gen-call :function ::erase (meta &form) query)))
+   each 'DownloadItem' that matches query, then callback will be called.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([query #_callback] (gen-call :function ::erase &form query)))
 
 (defmacro remove-file
   "Remove the downloaded file if it exists and the 'DownloadItem' is complete; otherwise return an error through
-   'runtime.lastError'."
-  ([download-id #_callback] (gen-call :function ::remove-file (meta &form) download-id)))
+   'runtime.lastError'.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([download-id #_callback] (gen-call :function ::remove-file &form download-id)))
 
 (defmacro accept-danger
   "Prompt the user to accept a dangerous download. Can only be called from a visible context (tab, window, or
@@ -106,34 +122,36 @@
    target filename, the |state| changes to 'complete', and 'onChanged' fires.
    
      |downloadId| - The identifier for the 'DownloadItem'.
-     |callback| - Called when the danger prompt dialog closes."
-  ([download-id #_callback] (gen-call :function ::accept-danger (meta &form) download-id)))
+     |callback| - Called when the danger prompt dialog closes.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([download-id #_callback] (gen-call :function ::accept-danger &form download-id)))
 
 (defmacro drag
   "Initiate dragging the downloaded file to another application. Call in a javascript ondragstart handler."
-  ([download-id] (gen-call :function ::drag (meta &form) download-id)))
+  ([download-id] (gen-call :function ::drag &form download-id)))
 
 (defmacro set-shelf-enabled
   "Enable or disable the gray shelf at the bottom of every window associated with the current browser profile. The
    shelf will be disabled as long as at least one extension has disabled it. Enabling the shelf while at least one
    other extension has disabled it will return an error through 'runtime.lastError'. Requires the 'downloads.shelf'
    permission in addition to the 'downloads' permission."
-  ([enabled] (gen-call :function ::set-shelf-enabled (meta &form) enabled)))
+  ([enabled] (gen-call :function ::set-shelf-enabled &form enabled)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-created-events
   "This event fires with the 'DownloadItem' object when a download begins."
-  ([channel] (gen-call :event ::on-created (meta &form) channel)))
+  ([channel] (gen-call :event ::on-created &form channel)))
 
 (defmacro tap-on-erased-events
   "Fires with the downloadId when a download is erased from history."
-  ([channel] (gen-call :event ::on-erased (meta &form) channel)))
+  ([channel] (gen-call :event ::on-erased &form channel)))
 
 (defmacro tap-on-changed-events
   "When any of a 'DownloadItem''s properties except bytesReceived and estimatedEndTime changes, this event fires with
    the downloadId and an object containing the properties that changed."
-  ([channel] (gen-call :event ::on-changed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-changed &form channel)))
 
 (defmacro tap-on-determining-filename-events
   "During the filename determination process, extensions will be given the opportunity to override the target
@@ -147,7 +165,7 @@
    suggest wins. In order to avoid confusion regarding which extension will win, users should not install extensions
    that may conflict. If the download is initiated by 'download' and the target filename is known before the MIME type
    and tentative filename have been determined, pass filename to 'download' instead."
-  ([channel] (gen-call :event ::on-determining-filename (meta &form) channel)))
+  ([channel] (gen-call :event ::on-determining-filename &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

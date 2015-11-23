@@ -22,23 +22,23 @@
    
      |name| - Optional name to identify this request. Defaults to the empty string.
      |requestInfo| - Optional parameters for this request."
-  ([name request-info] (gen-call :function ::watch-location (meta &form) name request-info)))
+  ([name request-info] (gen-call :function ::watch-location &form name request-info)))
 
 (defmacro clear-watch
   "Ends a location watching request.
    
      |name| - Optional name to identify the request to remove. Defaults to the empty string."
-  ([name] (gen-call :function ::clear-watch (meta &form) name)))
+  ([name] (gen-call :function ::clear-watch &form name)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-location-update-events
   "Fired when a location change is detected."
-  ([channel] (gen-call :event ::on-location-update (meta &form) channel)))
+  ([channel] (gen-call :event ::on-location-update &form channel)))
 
 (defmacro tap-on-location-error-events
   "Fired when detecting location in not possible."
-  ([channel] (gen-call :event ::on-location-error (meta &form) channel)))
+  ([channel] (gen-call :event ::on-location-error &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

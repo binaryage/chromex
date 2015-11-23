@@ -16,21 +16,29 @@
 ; -- functions ------------------------------------------------------------------------------------------------------
 
 (defmacro get-user-email
-  "Returns the email of the currently active or logged in user."
-  ([#_callback] (gen-call :function ::get-user-email (meta &form))))
+  "Returns the email of the currently active or logged in user.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-user-email &form)))
 
 (defmacro get-system-information
-  "Returns the system information dictionary."
-  ([#_callback] (gen-call :function ::get-system-information (meta &form))))
+  "Returns the system information dictionary.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-system-information &form)))
 
 (defmacro send-feedback
-  "Sends a feedback report."
-  ([feedback #_callback] (gen-call :function ::send-feedback (meta &form) feedback)))
+  "Sends a feedback report.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([feedback #_callback] (gen-call :function ::send-feedback &form feedback)))
 
 (defmacro get-strings
   "Gets localized translated strings for feedback. It returns the strings as a dictionary mapping from string
-   identifier to the translated string to use in the feedback app UI."
-  ([#_callback] (gen-call :function ::get-strings (meta &form))))
+   identifier to the translated string to use in the feedback app UI.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-strings &form)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
@@ -38,7 +46,7 @@
   "Fired when the a user requests the launch of the feedback UI. We're using an event for this versus using the
    override API since we want to be invoked, but not showing a UI, so the feedback extension can take a screenshot of
    the user's desktop."
-  ([channel] (gen-call :event ::on-feedback-requested (meta &form) channel)))
+  ([channel] (gen-call :event ::on-feedback-requested &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

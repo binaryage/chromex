@@ -20,8 +20,10 @@
    http://fidoalliance.org/specs/fido-u2f-v1.0-ps-20141009/     fido-appid-and-facets-ps-20141009.html
    |securityOrigin| is the origin as seen by the extension, and |appIdUrl| is the appId being asserted by the origin.
    
-     |callback| - Callback for appId check"
-  ([security-origin app-id-url #_callback] (gen-call :function ::can-origin-assert-app-id (meta &form) security-origin app-id-url)))
+     |callback| - Callback for appId check
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([security-origin app-id-url #_callback] (gen-call :function ::can-origin-assert-app-id &form security-origin app-id-url)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

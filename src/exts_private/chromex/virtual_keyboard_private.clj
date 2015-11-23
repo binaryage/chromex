@@ -16,67 +16,77 @@
   "Inserts text into the currently focused text field.
    
      |text| - The text that will be inserted.
-     |callback| - Called when the insertion is completed."
-  ([text #_callback] (gen-call :function ::insert-text (meta &form) text)))
+     |callback| - Called when the insertion is completed.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([text #_callback] (gen-call :function ::insert-text &form text)))
 
 (defmacro send-key-event
   "Sends a fabricated key event to the focused input field.
    
-     |callback| - Called after processing the event."
-  ([key-event #_callback] (gen-call :function ::send-key-event (meta &form) key-event)))
+     |callback| - Called after processing the event.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([key-event #_callback] (gen-call :function ::send-key-event &form key-event)))
 
 (defmacro hide-keyboard
   "Hides the virtual keyboard.
    
-     |callback| - Called when the keyboard is hidden."
-  ([#_callback] (gen-call :function ::hide-keyboard (meta &form))))
+     |callback| - Called when the keyboard is hidden.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::hide-keyboard &form)))
 
 (defmacro set-hotrod-keyboard
   "Sets the state of the hotrod virtual keyboard. This API should only be used by hotrod."
-  ([enable] (gen-call :function ::set-hotrod-keyboard (meta &form) enable)))
+  ([enable] (gen-call :function ::set-hotrod-keyboard &form enable)))
 
 (defmacro lock-keyboard
   "Sets the lock state of the virtual keyboard. A locked keyboard remains visible even after a text area loses input
    focus."
-  ([lock] (gen-call :function ::lock-keyboard (meta &form) lock)))
+  ([lock] (gen-call :function ::lock-keyboard &form lock)))
 
 (defmacro keyboard-loaded
   "Inform the system that the keyboard has loaded.
    
-     |callback| - Called when load acknowledgement is complete."
-  ([#_callback] (gen-call :function ::keyboard-loaded (meta &form))))
+     |callback| - Called when load acknowledgement is complete.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::keyboard-loaded &form)))
 
 (defmacro get-keyboard-config
   "Gets the virtual keyboard configuration.
    
-     |callback| - Called when querying virtual keyboard configuration is complete."
-  ([#_callback] (gen-call :function ::get-keyboard-config (meta &form))))
+     |callback| - Called when querying virtual keyboard configuration is complete.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-keyboard-config &form)))
 
 (defmacro open-settings
   "Opens chrome://settings/languages page."
-  ([] (gen-call :function ::open-settings (meta &form))))
+  ([] (gen-call :function ::open-settings &form)))
 
 (defmacro set-mode
   "Sets the virtual keyboard mode.
    
      |mode| - The value of the virtual keyboard mode to set to."
-  ([mode] (gen-call :function ::set-mode (meta &form) mode)))
+  ([mode] (gen-call :function ::set-mode &form mode)))
 
 (defmacro set-keyboard-state
   "Requests the virtual keyboard to change state.
    
      |state| - The value of the virtual keyboard state to change to."
-  ([state] (gen-call :function ::set-keyboard-state (meta &form) state)))
+  ([state] (gen-call :function ::set-keyboard-state &form state)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-text-input-box-focused-events
   "This event is sent when focus enters a text input box."
-  ([channel] (gen-call :event ::on-text-input-box-focused (meta &form) channel)))
+  ([channel] (gen-call :event ::on-text-input-box-focused &form channel)))
 
 (defmacro tap-on-bounds-changed-events
   "This event is sent when virtual keyboard bounds changed and overscroll/resize is enabled."
-  ([channel] (gen-call :event ::on-bounds-changed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-bounds-changed &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

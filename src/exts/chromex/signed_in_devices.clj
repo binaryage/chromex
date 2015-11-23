@@ -20,15 +20,17 @@
    
      |isLocal| - If true only return the information for the local device. If false or omitted return the list of
                  all devices including the local device.
-     |callback| - The callback to be invoked with the array of DeviceInfo objects."
-  ([is-local #_callback] (gen-call :function ::get (meta &form) is-local))
+     |callback| - The callback to be invoked with the array of DeviceInfo objects.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([is-local #_callback] (gen-call :function ::get &form is-local))
   ([] `(get :omit)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-device-info-change-events
   "Fired if the DeviceInfo object of any of the signed in devices change or a new device is added or a device removed."
-  ([channel] (gen-call :event ::on-device-info-change (meta &form) channel)))
+  ([channel] (gen-call :event ::on-device-info-change &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

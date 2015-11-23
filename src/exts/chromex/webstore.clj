@@ -24,8 +24,10 @@
                          the user interface element that prompted the user to install the app or extension.
      |failureCallback| - This function is invoked when inline installation does not successfully complete. Possible
                          reasons for this include the user canceling the dialog, the linked item not being found in
-                         the store, or the install being initiated from a non-verified site."
-  ([url success-callback #_failure-callback] (gen-call :function ::install (meta &form) url success-callback))
+                         the store, or the install being initiated from a non-verified site.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([url success-callback #_failure-callback] (gen-call :function ::install &form url success-callback))
   ([url] `(install ~url :omit))
   ([] `(install :omit :omit)))
 
@@ -34,12 +36,12 @@
 (defmacro tap-on-install-stage-changed-events
   "Fired when an inline installation enters a new InstallStage. In order to receive notifications about this event,
    listeners must be registered before the inline installation begins."
-  ([channel] (gen-call :event ::on-install-stage-changed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-install-stage-changed &form channel)))
 
 (defmacro tap-on-download-progress-events
   "Fired periodically with the download progress of an inline install. In order to receive notifications about this
    event, listeners must be registered before the inline installation begins."
-  ([channel] (gen-call :event ::on-download-progress (meta &form) channel)))
+  ([channel] (gen-call :event ::on-download-progress &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

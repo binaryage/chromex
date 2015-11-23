@@ -15,37 +15,47 @@
 
 ; -- properties -----------------------------------------------------------------------------------------------------
 
-(defmacro get-max-write-operations-per-hour ([] (gen-call :property ::max-write-operations-per-hour (meta &form))))
+(defmacro get-max-write-operations-per-hour ([] (gen-call :property ::max-write-operations-per-hour &form)))
 
-(defmacro get-max-sustained-write-operations-per-minute ([] (gen-call :property ::max-sustained-write-operations-per-minute (meta &form))))
+(defmacro get-max-sustained-write-operations-per-minute ([] (gen-call :property ::max-sustained-write-operations-per-minute &form)))
 
 ; -- functions ------------------------------------------------------------------------------------------------------
 
 (defmacro get
   "Retrieves the specified BookmarkTreeNode(s).
    
-     |idOrIdList| - A single string-valued id, or an array of string-valued ids"
-  ([id-or-id-list #_callback] (gen-call :function ::get (meta &form) id-or-id-list)))
+     |idOrIdList| - A single string-valued id, or an array of string-valued ids
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([id-or-id-list #_callback] (gen-call :function ::get &form id-or-id-list)))
 
 (defmacro get-children
-  "Retrieves the children of the specified BookmarkTreeNode id."
-  ([id #_callback] (gen-call :function ::get-children (meta &form) id)))
+  "Retrieves the children of the specified BookmarkTreeNode id.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([id #_callback] (gen-call :function ::get-children &form id)))
 
 (defmacro get-recent
   "Retrieves the recently added bookmarks.
    
-     |numberOfItems| - The maximum number of items to return."
-  ([number-of-items #_callback] (gen-call :function ::get-recent (meta &form) number-of-items)))
+     |numberOfItems| - The maximum number of items to return.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([number-of-items #_callback] (gen-call :function ::get-recent &form number-of-items)))
 
 (defmacro get-tree
-  "Retrieves the entire Bookmarks hierarchy."
-  ([#_callback] (gen-call :function ::get-tree (meta &form))))
+  "Retrieves the entire Bookmarks hierarchy.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-tree &form)))
 
 (defmacro get-sub-tree
   "Retrieves part of the Bookmarks hierarchy, starting at the specified node.
    
-     |id| - The ID of the root of the subtree to retrieve."
-  ([id #_callback] (gen-call :function ::get-sub-tree (meta &form) id)))
+     |id| - The ID of the root of the subtree to retrieve.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([id #_callback] (gen-call :function ::get-sub-tree &form id)))
 
 (defmacro search
   "Searches for BookmarkTreeNodes matching the given query. Queries specified with an object produce BookmarkTreeNodes
@@ -53,62 +63,74 @@
    
      |query| - Either a string of words and quoted phrases that are matched against bookmark URLs and titles, or an
                object. If an object, the properties query, url, and title may be specified and bookmarks matching
-               all specified properties will be produced."
-  ([query #_callback] (gen-call :function ::search (meta &form) query)))
+               all specified properties will be produced.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([query #_callback] (gen-call :function ::search &form query)))
 
 (defmacro create
-  "Creates a bookmark or folder under the specified parentId.  If url is NULL or missing, it will be a folder."
-  ([bookmark #_callback] (gen-call :function ::create (meta &form) bookmark)))
+  "Creates a bookmark or folder under the specified parentId.  If url is NULL or missing, it will be a folder.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([bookmark #_callback] (gen-call :function ::create &form bookmark)))
 
 (defmacro move
-  "Moves the specified BookmarkTreeNode to the provided location."
-  ([id destination #_callback] (gen-call :function ::move (meta &form) id destination)))
+  "Moves the specified BookmarkTreeNode to the provided location.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([id destination #_callback] (gen-call :function ::move &form id destination)))
 
 (defmacro update
   "Updates the properties of a bookmark or folder. Specify only the properties that you want to change; unspecified
-   properties will be left unchanged.  Note: Currently, only 'title' and 'url' are supported."
-  ([id changes #_callback] (gen-call :function ::update (meta &form) id changes)))
+   properties will be left unchanged.  Note: Currently, only 'title' and 'url' are supported.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([id changes #_callback] (gen-call :function ::update &form id changes)))
 
 (defmacro remove
-  "Removes a bookmark or an empty bookmark folder."
-  ([id #_callback] (gen-call :function ::remove (meta &form) id)))
+  "Removes a bookmark or an empty bookmark folder.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([id #_callback] (gen-call :function ::remove &form id)))
 
 (defmacro remove-tree
-  "Recursively removes a bookmark folder."
-  ([id #_callback] (gen-call :function ::remove-tree (meta &form) id)))
+  "Recursively removes a bookmark folder.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([id #_callback] (gen-call :function ::remove-tree &form id)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-created-events
   "Fired when a bookmark or folder is created."
-  ([channel] (gen-call :event ::on-created (meta &form) channel)))
+  ([channel] (gen-call :event ::on-created &form channel)))
 
 (defmacro tap-on-removed-events
   "Fired when a bookmark or folder is removed.  When a folder is removed recursively, a single notification is fired
    for the folder, and none for its contents."
-  ([channel] (gen-call :event ::on-removed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-removed &form channel)))
 
 (defmacro tap-on-changed-events
   "Fired when a bookmark or folder changes.  Note: Currently, only title and url changes trigger this."
-  ([channel] (gen-call :event ::on-changed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-changed &form channel)))
 
 (defmacro tap-on-moved-events
   "Fired when a bookmark or folder is moved to a different parent folder."
-  ([channel] (gen-call :event ::on-moved (meta &form) channel)))
+  ([channel] (gen-call :event ::on-moved &form channel)))
 
 (defmacro tap-on-children-reordered-events
   "Fired when the children of a folder have changed their order due to the order being sorted in the UI.  This is not
    called as a result of a move()."
-  ([channel] (gen-call :event ::on-children-reordered (meta &form) channel)))
+  ([channel] (gen-call :event ::on-children-reordered &form channel)))
 
 (defmacro tap-on-import-began-events
   "Fired when a bookmark import session is begun.  Expensive observers should ignore onCreated updates until
    onImportEnded is fired.  Observers should still handle other notifications immediately."
-  ([channel] (gen-call :event ::on-import-began (meta &form) channel)))
+  ([channel] (gen-call :event ::on-import-began &form channel)))
 
 (defmacro tap-on-import-ended-events
   "Fired when a bookmark import session is ended."
-  ([channel] (gen-call :event ::on-import-ended (meta &form) channel)))
+  ([channel] (gen-call :event ::on-import-ended &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

@@ -12,9 +12,17 @@
 
 ; -- functions ------------------------------------------------------------------------------------------------------
 
-(defmacro load-src ([instance-id src #_callback] (gen-call :function ::load-src (meta &form) instance-id src)))
+(defmacro load-src
+  "
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([instance-id src #_callback] (gen-call :function ::load-src &form instance-id src)))
 
-(defmacro parse-src ([src #_callback] (gen-call :function ::parse-src (meta &form) src)))
+(defmacro parse-src
+  "
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([src #_callback] (gen-call :function ::parse-src &form src)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

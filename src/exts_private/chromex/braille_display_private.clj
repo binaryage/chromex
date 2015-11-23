@@ -15,8 +15,10 @@
 ; -- functions ------------------------------------------------------------------------------------------------------
 
 (defmacro get-display-state
-  "Gets the current display state."
-  ([#_callback] (gen-call :function ::get-display-state (meta &form))))
+  "Gets the current display state.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-display-state &form)))
 
 (defmacro write-dots
   "Write the given dot patterns to the display.  The buffer contains one byte for each braille cell on the display,
@@ -24,17 +26,17 @@
    corresponding cell with the low-order bit representing dot 1 and so on until bit 7 which corresponds to dot 8.  If
    the number of bytes in the buffer is not equal to the display size, the buffer will either be clipped or padded
    with blank cells on the right."
-  ([cells] (gen-call :function ::write-dots (meta &form) cells)))
+  ([cells] (gen-call :function ::write-dots &form cells)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-display-state-changed-events
   "Fired when a braille display is connected or disconnected."
-  ([channel] (gen-call :event ::on-display-state-changed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-display-state-changed &form channel)))
 
 (defmacro tap-on-key-event-events
   "Fired when an input event is received from the display."
-  ([channel] (gen-call :event ::on-key-event (meta &form) channel)))
+  ([channel] (gen-call :event ::on-key-event &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

@@ -22,14 +22,16 @@
    has to be invoked with a user gesture.
    
      |selectionParams| - Parameters that will be used while selecting the file.
-     |callback| - Function called upon completion."
-  ([selection-params #_callback] (gen-call :function ::select-file (meta &form) selection-params)))
+     |callback| - Function called upon completion.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([selection-params #_callback] (gen-call :function ::select-file &form selection-params)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-execute-events
   "Fired when file system action is executed from ChromeOS file browser."
-  ([channel] (gen-call :event ::on-execute (meta &form) channel)))
+  ([channel] (gen-call :event ::on-execute &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

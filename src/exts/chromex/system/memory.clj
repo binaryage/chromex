@@ -15,8 +15,10 @@
 ; -- functions ------------------------------------------------------------------------------------------------------
 
 (defmacro get-info
-  "Get physical memory information."
-  ([#_callback] (gen-call :function ::get-info (meta &form))))
+  "Get physical memory information.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-info &form)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

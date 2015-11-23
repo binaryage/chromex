@@ -15,65 +15,79 @@
 (defmacro get-input-method-config
   "Gets configurations for input methods.
    
-     |callback| - Callback which is called with the config object."
-  ([#_callback] (gen-call :function ::get-input-method-config (meta &form))))
+     |callback| - Callback which is called with the config object.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-input-method-config &form)))
 
 (defmacro get-input-methods
   "Gets all whitelisted input methods.
    
-     |callback| - Callback which is called with the input method objects."
-  ([#_callback] (gen-call :function ::get-input-methods (meta &form))))
+     |callback| - Callback which is called with the input method objects.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-input-methods &form)))
 
 (defmacro get-current-input-method
   "Gets the current input method.
    
-     |callback| - Callback which is called with the current input method."
-  ([#_callback] (gen-call :function ::get-current-input-method (meta &form))))
+     |callback| - Callback which is called with the current input method.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-current-input-method &form)))
 
 (defmacro set-current-input-method
   "Sets the current input method.
    
      |inputMethodId| - The input method ID to be set as current input method.
      |callback| - Callback which is called once the current input method is set. If unsuccessful 'runtime.lastError'
-                  is set."
-  ([input-method-id #_callback] (gen-call :function ::set-current-input-method (meta &form) input-method-id)))
+                  is set.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([input-method-id #_callback] (gen-call :function ::set-current-input-method &form input-method-id)))
 
 (defmacro fetch-all-dictionary-words
   "Fetches a list of all the words currently in the dictionary.
    
-     |callback| - Callback which is called once the list of dictionary words are ready."
-  ([#_callback] (gen-call :function ::fetch-all-dictionary-words (meta &form))))
+     |callback| - Callback which is called once the list of dictionary words are ready.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::fetch-all-dictionary-words &form)))
 
 (defmacro add-word-to-dictionary
   "Adds a single word to be stored in the dictionary.
    
      |word| - A new word to add to the dictionary.
-     |callback| - Callback which is called once the word is added. If unsuccessful 'runtime.lastError' is set."
-  ([word #_callback] (gen-call :function ::add-word-to-dictionary (meta &form) word)))
+     |callback| - Callback which is called once the word is added. If unsuccessful 'runtime.lastError' is set.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([word #_callback] (gen-call :function ::add-word-to-dictionary &form word)))
 
 (defmacro get-encrypt-sync-enabled
   "Gets whether the encrypt sync is enabled.
    
-     |callback| - Callback which is called to provide the result."
-  ([#_callback] (gen-call :function ::get-encrypt-sync-enabled (meta &form))))
+     |callback| - Callback which is called to provide the result.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-encrypt-sync-enabled &form)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-changed-events
   "Fired when the input method is changed."
-  ([channel] (gen-call :event ::on-changed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-changed &form channel)))
 
 (defmacro tap-on-composition-bounds-changed-events
   "Fired when the composition bounds or cursor bounds are changed."
-  ([channel] (gen-call :event ::on-composition-bounds-changed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-composition-bounds-changed &form channel)))
 
 (defmacro tap-on-dictionary-loaded-events
   "Fired when the custom spelling dictionary is loaded."
-  ([channel] (gen-call :event ::on-dictionary-loaded (meta &form) channel)))
+  ([channel] (gen-call :event ::on-dictionary-loaded &form channel)))
 
 (defmacro tap-on-dictionary-changed-events
   "Fired when words are added or removed from the custom spelling dictionary."
-  ([channel] (gen-call :event ::on-dictionary-changed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-dictionary-changed &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

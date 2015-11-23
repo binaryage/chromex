@@ -16,16 +16,20 @@
   "Shows a permission prompt for the given extension, for installing to a different account.
    
      |callback| - Called when the user has either accepted/rejected the dialog, or some error occurred (such as
-                  invalid manifest or icon image data)."
-  ([details #_callback] (gen-call :function ::show-permission-prompt-for-delegated-install (meta &form) details)))
+                  invalid manifest or icon image data).
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([details #_callback] (gen-call :function ::show-permission-prompt-for-delegated-install &form details)))
 
 (defmacro show-permission-prompt-for-delegated-bundle-install
   "Shows a permission prompt for the given bundle, for installing to a different account.
    
      |contents| - An array of extension details to be installed.
      |callback| - Called when the install process completes. Upon failures, chrome.runtime.lastError will be set to
-                  'Invalid bundle', 'Invalid icon url', or 'User cancelled install'."
-  ([details contents #_callback] (gen-call :function ::show-permission-prompt-for-delegated-bundle-install (meta &form) details contents)))
+                  'Invalid bundle', 'Invalid icon url', or 'User cancelled install'.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([details contents #_callback] (gen-call :function ::show-permission-prompt-for-delegated-bundle-install &form details contents)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

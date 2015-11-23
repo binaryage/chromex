@@ -15,8 +15,10 @@
 ; -- functions ------------------------------------------------------------------------------------------------------
 
 (defmacro set-wallpaper
-  "Sets wallpaper to the image at url or wallpaperData with the specified layout"
-  ([details #_callback] (gen-call :function ::set-wallpaper (meta &form) details)))
+  "Sets wallpaper to the image at url or wallpaperData with the specified layout
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([details #_callback] (gen-call :function ::set-wallpaper &form details)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

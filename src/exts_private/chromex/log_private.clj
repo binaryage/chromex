@@ -16,29 +16,37 @@
 ; -- functions ------------------------------------------------------------------------------------------------------
 
 (defmacro get-historical
-  "Get the existing logs from ChromeOS system."
-  ([filter #_callback] (gen-call :function ::get-historical (meta &form) filter)))
+  "Get the existing logs from ChromeOS system.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([filter #_callback] (gen-call :function ::get-historical &form filter)))
 
 (defmacro start-event-recorder
-  "Start capturing events of specific type."
-  ([event-type sink #_callback] (gen-call :function ::start-event-recorder (meta &form) event-type sink)))
+  "Start capturing events of specific type.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([event-type sink #_callback] (gen-call :function ::start-event-recorder &form event-type sink)))
 
 (defmacro stop-event-recorder
-  "Stop  capturing events of specific type."
-  ([event-type #_callback] (gen-call :function ::stop-event-recorder (meta &form) event-type)))
+  "Stop  capturing events of specific type.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([event-type #_callback] (gen-call :function ::stop-event-recorder &form event-type)))
 
 (defmacro dump-logs
   "Dump all system and captured events into a .tar.gz file. The archive file will contain following top level
    directories:   /var/log/       ChromeOS system logs.   /home/chronos/user/log/       Session specific logs (chrome
    app logs).   /home/chronos/user/log/apps/       Contains webapp specific logs including those collected with
-   startEventRecorder(..., sink='file') call."
-  ([#_callback] (gen-call :function ::dump-logs (meta &form))))
+   startEventRecorder(..., sink='file') call.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::dump-logs &form)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-captured-events-events
   "Receives events of type which is currently being captured."
-  ([channel] (gen-call :event ::on-captured-events (meta &form) channel)))
+  ([channel] (gen-call :event ::on-captured-events &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

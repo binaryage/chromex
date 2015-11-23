@@ -18,8 +18,10 @@
   "Resolves the given hostname or IP address literal.
    
      |hostname| - The hostname to resolve.
-     |callback| - Called when the resolution operation completes."
-  ([hostname #_callback] (gen-call :function ::resolve (meta &form) hostname)))
+     |callback| - Called when the resolution operation completes.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([hostname #_callback] (gen-call :function ::resolve &form hostname)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

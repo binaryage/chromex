@@ -17,37 +17,53 @@
 ; -- functions ------------------------------------------------------------------------------------------------------
 
 (defmacro set-adapter-state
-  "Changes the state of the Bluetooth adapter."
-  ([adapter-state #_callback] (gen-call :function ::set-adapter-state (meta &form) adapter-state)))
+  "Changes the state of the Bluetooth adapter.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([adapter-state #_callback] (gen-call :function ::set-adapter-state &form adapter-state)))
 
-(defmacro set-pairing-response ([options #_callback] (gen-call :function ::set-pairing-response (meta &form) options)))
+(defmacro set-pairing-response
+  "
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([options #_callback] (gen-call :function ::set-pairing-response &form options)))
 
 (defmacro disconnect-all
-  "Tears down all connections to the given device."
-  ([device-address #_callback] (gen-call :function ::disconnect-all (meta &form) device-address)))
+  "Tears down all connections to the given device.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([device-address #_callback] (gen-call :function ::disconnect-all &form device-address)))
 
 (defmacro forget-device
-  "Forgets the given device."
-  ([device-address #_callback] (gen-call :function ::forget-device (meta &form) device-address)))
+  "Forgets the given device.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([device-address #_callback] (gen-call :function ::forget-device &form device-address)))
 
 (defmacro set-discovery-filter
-  "Set or clear discovery filter."
-  ([discovery-filter #_callback] (gen-call :function ::set-discovery-filter (meta &form) discovery-filter)))
+  "Set or clear discovery filter.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([discovery-filter #_callback] (gen-call :function ::set-discovery-filter &form discovery-filter)))
 
 (defmacro connect
   "Connects to the given device. This will only throw an error if the device address is invalid or the device is
-   already connected. Otherwise this will succeed and invoke |callback| with ConnectResultType."
-  ([device-address #_callback] (gen-call :function ::connect (meta &form) device-address)))
+   already connected. Otherwise this will succeed and invoke |callback| with ConnectResultType.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([device-address #_callback] (gen-call :function ::connect &form device-address)))
 
 (defmacro pair
-  "Pairs the given device."
-  ([device-address #_callback] (gen-call :function ::pair (meta &form) device-address)))
+  "Pairs the given device.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([device-address #_callback] (gen-call :function ::pair &form device-address)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-pairing-events
   "Fired when a pairing event occurs."
-  ([channel] (gen-call :event ::on-pairing (meta &form) channel)))
+  ([channel] (gen-call :event ::on-pairing &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

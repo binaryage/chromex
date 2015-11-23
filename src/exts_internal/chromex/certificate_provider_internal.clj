@@ -22,14 +22,18 @@
 ; -- functions ------------------------------------------------------------------------------------------------------
 
 (defmacro report-signature
-  "Matches certificateProvider.SignCallback. Must be called without the signature to report an error."
-  ([request-id signature #_callback] (gen-call :function ::report-signature (meta &form) request-id signature))
+  "Matches certificateProvider.SignCallback. Must be called without the signature to report an error.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([request-id signature #_callback] (gen-call :function ::report-signature &form request-id signature))
   ([request-id] `(report-signature ~request-id :omit)))
 
 (defmacro report-certificates
   "Matches certificateProvider.CertificatesCallback. Must be called without the certificates argument to report an
-   error."
-  ([request-id certificates #_callback] (gen-call :function ::report-certificates (meta &form) request-id certificates))
+   error.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([request-id certificates #_callback] (gen-call :function ::report-certificates &form request-id certificates))
   ([request-id] `(report-certificates ~request-id :omit)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------

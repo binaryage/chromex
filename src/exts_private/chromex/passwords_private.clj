@@ -20,14 +20,14 @@
    is a no-op.
    
      |loginPair| - The LoginPair corresponding to the entry to remove."
-  ([login-pair] (gen-call :function ::remove-saved-password (meta &form) login-pair)))
+  ([login-pair] (gen-call :function ::remove-saved-password &form login-pair)))
 
 (defmacro remove-password-exception
   "Removes the saved password exception corresponding to |exceptionUrl|. If no exception with this URL exists, this
    function is a no-op.
    
      |exceptionUrl| - The URL corresponding to the exception to remove."
-  ([exception-url] (gen-call :function ::remove-password-exception (meta &form) exception-url)))
+  ([exception-url] (gen-call :function ::remove-password-exception &form exception-url)))
 
 (defmacro request-plaintext-password
   "Returns the plaintext password corresponding to |loginPair|. Note that on some operating systems, this call may
@@ -35,24 +35,24 @@
    onPlaintextPasswordRetrieved event.
    
      |loginPair| - The LoginPair corresponding to the entry whose password     is to be returned."
-  ([login-pair] (gen-call :function ::request-plaintext-password (meta &form) login-pair)))
+  ([login-pair] (gen-call :function ::request-plaintext-password &form login-pair)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-saved-passwords-list-changed-events
   "Fired when the saved passwords list has changed, meaning that an entry has been added or removed. Note that this
    event fires as soon as a  listener is added."
-  ([channel] (gen-call :event ::on-saved-passwords-list-changed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-saved-passwords-list-changed &form channel)))
 
 (defmacro tap-on-password-exceptions-list-changed-events
   "Fired when the password exceptions list has changed, meaning that an entry has been added or removed. Note that
    this event fires as soon as a listener is added."
-  ([channel] (gen-call :event ::on-password-exceptions-list-changed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-password-exceptions-list-changed &form channel)))
 
 (defmacro tap-on-plaintext-password-retrieved-events
   "Fired when a plaintext password has been fetched in response to a call to
    chrome.passwordsPrivate.requestPlaintextPassword()."
-  ([channel] (gen-call :event ::on-plaintext-password-retrieved (meta &form) channel)))
+  ([channel] (gen-call :event ::on-plaintext-password-retrieved &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

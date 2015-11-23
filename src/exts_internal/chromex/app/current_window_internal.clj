@@ -15,56 +15,56 @@
 
 ; -- functions ------------------------------------------------------------------------------------------------------
 
-(defmacro focus ([] (gen-call :function ::focus (meta &form))))
+(defmacro focus ([] (gen-call :function ::focus &form)))
 
-(defmacro fullscreen ([] (gen-call :function ::fullscreen (meta &form))))
+(defmacro fullscreen ([] (gen-call :function ::fullscreen &form)))
 
-(defmacro minimize ([] (gen-call :function ::minimize (meta &form))))
+(defmacro minimize ([] (gen-call :function ::minimize &form)))
 
-(defmacro maximize ([] (gen-call :function ::maximize (meta &form))))
+(defmacro maximize ([] (gen-call :function ::maximize &form)))
 
-(defmacro restore ([] (gen-call :function ::restore (meta &form))))
+(defmacro restore ([] (gen-call :function ::restore &form)))
 
-(defmacro draw-attention ([] (gen-call :function ::draw-attention (meta &form))))
+(defmacro draw-attention ([] (gen-call :function ::draw-attention &form)))
 
-(defmacro clear-attention ([] (gen-call :function ::clear-attention (meta &form))))
+(defmacro clear-attention ([] (gen-call :function ::clear-attention &form)))
 
-(defmacro show ([focused] (gen-call :function ::show (meta &form) focused))
+(defmacro show ([focused] (gen-call :function ::show &form focused))
   ([] `(show :omit)))
 
-(defmacro hide ([] (gen-call :function ::hide (meta &form))))
+(defmacro hide ([] (gen-call :function ::hide &form)))
 
-(defmacro set-bounds ([bounds-type bounds] (gen-call :function ::set-bounds (meta &form) bounds-type bounds)))
+(defmacro set-bounds ([bounds-type bounds] (gen-call :function ::set-bounds &form bounds-type bounds)))
 
-(defmacro set-size-constraints ([bounds-type constraints] (gen-call :function ::set-size-constraints (meta &form) bounds-type constraints)))
+(defmacro set-size-constraints ([bounds-type constraints] (gen-call :function ::set-size-constraints &form bounds-type constraints)))
 
-(defmacro set-icon ([icon-url] (gen-call :function ::set-icon (meta &form) icon-url)))
+(defmacro set-icon ([icon-url] (gen-call :function ::set-icon &form icon-url)))
 
-(defmacro set-shape ([region] (gen-call :function ::set-shape (meta &form) region)))
+(defmacro set-shape ([region] (gen-call :function ::set-shape &form region)))
 
-(defmacro set-always-on-top ([always-on-top] (gen-call :function ::set-always-on-top (meta &form) always-on-top)))
+(defmacro set-always-on-top ([always-on-top] (gen-call :function ::set-always-on-top &form always-on-top)))
 
-(defmacro set-visible-on-all-workspaces ([always-visible] (gen-call :function ::set-visible-on-all-workspaces (meta &form) always-visible)))
+(defmacro set-visible-on-all-workspaces ([always-visible] (gen-call :function ::set-visible-on-all-workspaces &form always-visible)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-closed-events ([channel] (gen-call :event ::on-closed (meta &form) channel)))
+(defmacro tap-on-closed-events ([channel] (gen-call :event ::on-closed &form channel)))
 
-(defmacro tap-on-bounds-changed-events ([channel] (gen-call :event ::on-bounds-changed (meta &form) channel)))
+(defmacro tap-on-bounds-changed-events ([channel] (gen-call :event ::on-bounds-changed &form channel)))
 
-(defmacro tap-on-fullscreened-events ([channel] (gen-call :event ::on-fullscreened (meta &form) channel)))
+(defmacro tap-on-fullscreened-events ([channel] (gen-call :event ::on-fullscreened &form channel)))
 
-(defmacro tap-on-minimized-events ([channel] (gen-call :event ::on-minimized (meta &form) channel)))
+(defmacro tap-on-minimized-events ([channel] (gen-call :event ::on-minimized &form channel)))
 
-(defmacro tap-on-maximized-events ([channel] (gen-call :event ::on-maximized (meta &form) channel)))
+(defmacro tap-on-maximized-events ([channel] (gen-call :event ::on-maximized &form channel)))
 
-(defmacro tap-on-restored-events ([channel] (gen-call :event ::on-restored (meta &form) channel)))
+(defmacro tap-on-restored-events ([channel] (gen-call :event ::on-restored &form channel)))
 
-(defmacro tap-on-alpha-enabled-changed-events ([channel] (gen-call :event ::on-alpha-enabled-changed (meta &form) channel)))
+(defmacro tap-on-alpha-enabled-changed-events ([channel] (gen-call :event ::on-alpha-enabled-changed &form channel)))
 
 (defmacro tap-on-window-shown-for-tests-events
   "Only sent in tests."
-  ([channel] (gen-call :event ::on-window-shown-for-tests (meta &form) channel)))
+  ([channel] (gen-call :event ::on-window-shown-for-tests &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

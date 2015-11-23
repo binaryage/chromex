@@ -16,33 +16,39 @@
 
 (defmacro get-max-session-results
   "The maximum number of 'sessions.Session' that will be included in a requested list."
-  ([] (gen-call :property ::max-session-results (meta &form))))
+  ([] (gen-call :property ::max-session-results &form)))
 
 ; -- functions ------------------------------------------------------------------------------------------------------
 
 (defmacro get-recently-closed
-  "Gets the list of recently closed tabs and/or windows."
-  ([filter #_callback] (gen-call :function ::get-recently-closed (meta &form) filter))
+  "Gets the list of recently closed tabs and/or windows.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([filter #_callback] (gen-call :function ::get-recently-closed &form filter))
   ([] `(get-recently-closed :omit)))
 
 (defmacro get-devices
-  "Retrieves all devices with synced sessions."
-  ([filter #_callback] (gen-call :function ::get-devices (meta &form) filter))
+  "Retrieves all devices with synced sessions.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([filter #_callback] (gen-call :function ::get-devices &form filter))
   ([] `(get-devices :omit)))
 
 (defmacro restore
   "Reopens a 'windows.Window' or 'tabs.Tab', with an optional callback to run when the entry has been restored.
    
      |sessionId| - The 'windows.Window.sessionId', or 'tabs.Tab.sessionId' to restore. If this parameter is not
-                   specified, the most recently closed session is restored."
-  ([session-id #_callback] (gen-call :function ::restore (meta &form) session-id))
+                   specified, the most recently closed session is restored.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([session-id #_callback] (gen-call :function ::restore &form session-id))
   ([] `(restore :omit)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-changed-events
   "Fired when recently closed tabs and/or windows are changed. This event does not monitor synced sessions changes."
-  ([channel] (gen-call :event ::on-changed (meta &form) channel)))
+  ([channel] (gen-call :event ::on-changed &form channel)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

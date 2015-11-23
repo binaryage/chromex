@@ -15,27 +15,37 @@
 ; -- functions ------------------------------------------------------------------------------------------------------
 
 (defmacro get-whitelisted-users
-  "Gets a list of the currently whitelisted users."
-  ([#_callback] (gen-call :function ::get-whitelisted-users (meta &form))))
+  "Gets a list of the currently whitelisted users.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-whitelisted-users &form)))
 
 (defmacro add-whitelisted-user
   "Adds a new user with the given email to the whitelist. The callback is called with true if the user was added
-   succesfully, or with false if not (e.g. because the user was already present, or the current user isn't the owner)."
-  ([email #_callback] (gen-call :function ::add-whitelisted-user (meta &form) email)))
+   succesfully, or with false if not (e.g. because the user was already present, or the current user isn't the owner).
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([email #_callback] (gen-call :function ::add-whitelisted-user &form email)))
 
 (defmacro remove-whitelisted-user
   "Removes the user with the given email from the whitelist. The callback is called with true if the user was removed
    succesfully, or with false if not (e.g. because the user was not already present, or the current user isn't the
-   owner)."
-  ([email #_callback] (gen-call :function ::remove-whitelisted-user (meta &form) email)))
+   owner).
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([email #_callback] (gen-call :function ::remove-whitelisted-user &form email)))
 
 (defmacro is-current-user-owner
-  "Whether the current user is the owner of the device."
-  ([#_callback] (gen-call :function ::is-current-user-owner (meta &form))))
+  "Whether the current user is the owner of the device.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::is-current-user-owner &form)))
 
 (defmacro is-whitelist-managed
-  "Whether the whitelist is managed by enterprise."
-  ([#_callback] (gen-call :function ::is-whitelist-managed (meta &form))))
+  "Whether the whitelist is managed by enterprise.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::is-whitelist-managed &form)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 
