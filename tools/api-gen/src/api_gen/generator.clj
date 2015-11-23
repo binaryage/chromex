@@ -76,12 +76,12 @@
           wrapped-description (wrap-text description-indent (- columns indent) plain-description)]
       [(str prefix wrapped-description)])))
 
-(defn build-docstring [indent description parameters]
+(defn build-docstring [indent description parameters & extras]
   (let [columns (- MAX-COLUMNS indent)
         desc (if description (wrap-text 0 columns (plain-doc description)) "")
         params (string/join "\n" (mapcat (partial build-param-doc 2 columns) parameters))
         parts (remove empty? [desc params])
-        docstring (string/join "\n\n" parts)]
+        docstring (apply str (string/join "\n\n" parts) extras)]
     (wrap-docstring indent MAX-COLUMNS docstring)))
 
 (defn build-ns-docstring [name intro-list]
@@ -129,6 +129,10 @@
 (defn build-id [name]
   (keyword (kebab-case name)))
 
+(defn build-function-docstring [description parameters callback?]
+  (let [callback-doc "\n\nNote: Instead of passing a callback function, you receive a core.async channel as return value."]
+    (build-docstring 2 description parameters (if callback? callback-doc ""))))
+
 ; -------------------------------------------------------------------------------------------------------------------
 
 (declare build-api-table-param-info)
@@ -152,17 +156,18 @@
   (vec (map (partial build-api-table-param-info callback-data) parameters)))
 
 (defn build-api-table-function [data]
-  (let [{:keys [name description parameters returns callback]} data]
+  (let [{:keys [name description parameters returns callback]} data
+        callback? (not (nil? callback))]
     (with-meta
       {:id          (build-id name)
        :name        name
        :since       (extract-avail-since data)
        :until       (extract-avail-until data)
        :deprecated  (extract-deprecated data)
-       :callback?   (not (nil? callback))
+       :callback?   callback?
        :return-type (if returns (extract-type returns))
        :params      (build-api-table-function-params parameters callback)}
-      {:doc             (build-docstring 2 description parameters)
+      {:doc             (build-function-docstring description parameters callback?)
        :user-param-list (build-param-list parameters build-param-comment-out-callback)
        :param-list      (build-param-list parameters build-param-no-callback)})))
 
