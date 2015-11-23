@@ -2,7 +2,185 @@
 
 # This is generated API
 
-Generated on **2015-11-21** from **[Chromium @ 4a2a27c](https://chromium.googlesource.com/chromium/src.git/+/4a2a27ce1945b17948af4a385de1c8c2311dd57e)**.
+Generated on **2015-11-23** from **[Chromium @ 072e10c](https://chromium.googlesource.com/chromium/src.git/+/072e10ce1f1ee83f28c79bf5647b40738d772b23)**.
+
+### Files
+
+| JS namespace | CLJS wrapper |
+| --- | --- |
+| [chrome.accessibilityFeatures](https://developer.chrome.com/extensions/accessibilityFeatures) | [chromex/accessibility_features.clj](chromex/accessibility_features.clj) |
+| [chrome.alarms](https://developer.chrome.com/extensions/alarms) | [chromex/alarms.clj](chromex/alarms.clj) |
+| [chrome.app](https://developer.chrome.com/extensions/app) | [chromex/app.clj](chromex/app.clj) |
+| [chrome.audioModem](https://developer.chrome.com/extensions/audioModem) | [chromex/audio_modem.clj](chromex/audio_modem.clj) |
+| [chrome.automation](https://developer.chrome.com/extensions/automation) | [chromex/automation.clj](chromex/automation.clj) |
+| [chrome.bluetooth](https://developer.chrome.com/extensions/bluetooth) | [chromex/bluetooth.clj](chromex/bluetooth.clj) |
+| [chrome.bookmarks](https://developer.chrome.com/extensions/bookmarks) | [chromex/bookmarks.clj](chromex/bookmarks.clj) |
+| [chrome.browserAction](https://developer.chrome.com/extensions/browserAction) | [chromex/browser_action.clj](chromex/browser_action.clj) |
+| [chrome.browsingData](https://developer.chrome.com/extensions/browsingData) | [chromex/browsing_data.clj](chromex/browsing_data.clj) |
+| [chrome.cast.streaming.receiverSession](https://developer.chrome.com/extensions/cast.streaming.receiverSession) | [chromex/cast/streaming/receiver_session.clj](chromex/cast/streaming/receiver_session.clj) |
+| [chrome.cast.streaming.rtpStream](https://developer.chrome.com/extensions/cast.streaming.rtpStream) | [chromex/cast/streaming/rtp_stream.clj](chromex/cast/streaming/rtp_stream.clj) |
+| [chrome.cast.streaming.session](https://developer.chrome.com/extensions/cast.streaming.session) | [chromex/cast/streaming/session.clj](chromex/cast/streaming/session.clj) |
+| [chrome.cast.streaming.udpTransport](https://developer.chrome.com/extensions/cast.streaming.udpTransport) | [chromex/cast/streaming/udp_transport.clj](chromex/cast/streaming/udp_transport.clj) |
+| [chrome.certificateProvider](https://developer.chrome.com/extensions/certificateProvider) | [chromex/certificate_provider.clj](chromex/certificate_provider.clj) |
+| [chrome.commands](https://developer.chrome.com/extensions/commands) | [chromex/commands.clj](chromex/commands.clj) |
+| [chrome.contentSettings](https://developer.chrome.com/extensions/contentSettings) | [chromex/content_settings.clj](chromex/content_settings.clj) |
+| [chrome.contextMenus](https://developer.chrome.com/extensions/contextMenus) | [chromex/context_menus.clj](chromex/context_menus.clj) |
+| [chrome.cookies](https://developer.chrome.com/extensions/cookies) | [chromex/cookies.clj](chromex/cookies.clj) |
+| [chrome.copresence](https://developer.chrome.com/extensions/copresence) | [chromex/copresence.clj](chromex/copresence.clj) |
+| [chrome.debugger](https://developer.chrome.com/extensions/debugger) | [chromex/debugger.clj](chromex/debugger.clj) |
+| [chrome.declarativeContent](https://developer.chrome.com/extensions/declarativeContent) | [chromex/declarative_content.clj](chromex/declarative_content.clj) |
+| [chrome.declarativeWebRequest](https://developer.chrome.com/extensions/declarativeWebRequest) | [chromex/declarative_web_request.clj](chromex/declarative_web_request.clj) |
+| [chrome.desktopCapture](https://developer.chrome.com/extensions/desktopCapture) | [chromex/desktop_capture.clj](chromex/desktop_capture.clj) |
+| [chrome.devtools.inspectedWindow](https://developer.chrome.com/extensions/devtools.inspectedWindow) | [chromex/devtools/inspected_window.clj](chromex/devtools/inspected_window.clj) |
+| [chrome.devtools.network](https://developer.chrome.com/extensions/devtools.network) | [chromex/devtools/network.clj](chromex/devtools/network.clj) |
+| [chrome.devtools.panels](https://developer.chrome.com/extensions/devtools.panels) | [chromex/devtools/panels.clj](chromex/devtools/panels.clj) |
+| [chrome.displaySource](https://developer.chrome.com/extensions/displaySource) | [chromex/display_source.clj](chromex/display_source.clj) |
+| [chrome.dns](https://developer.chrome.com/extensions/dns) | [chromex/dns.clj](chromex/dns.clj) |
+| [chrome.documentScan](https://developer.chrome.com/extensions/documentScan) | [chromex/document_scan.clj](chromex/document_scan.clj) |
+| [chrome.downloads](https://developer.chrome.com/extensions/downloads) | [chromex/downloads.clj](chromex/downloads.clj) |
+| [chrome.enterprise.deviceAttributes](https://developer.chrome.com/extensions/enterprise.deviceAttributes) | [chromex/enterprise/device_attributes.clj](chromex/enterprise/device_attributes.clj) |
+| [chrome.enterprise.platformKeys](https://developer.chrome.com/extensions/enterprise.platformKeys) | [chromex/enterprise/platform_keys.clj](chromex/enterprise/platform_keys.clj) |
+| [chrome.experimental.devtools.audits](https://developer.chrome.com/extensions/experimental.devtools.audits) | [chromex/experimental/devtools/audits.clj](chromex/experimental/devtools/audits.clj) |
+| [chrome.experimental.devtools.console](https://developer.chrome.com/extensions/experimental.devtools.console) | [chromex/experimental/devtools/console.clj](chromex/experimental/devtools/console.clj) |
+| [chrome.extension](https://developer.chrome.com/extensions/extension) | [chromex/extension.clj](chromex/extension.clj) |
+| [chrome.fileBrowserHandler](https://developer.chrome.com/extensions/fileBrowserHandler) | [chromex/file_browser_handler.clj](chromex/file_browser_handler.clj) |
+| [chrome.fileSystemProvider](https://developer.chrome.com/extensions/fileSystemProvider) | [chromex/file_system_provider.clj](chromex/file_system_provider.clj) |
+| [chrome.fontSettings](https://developer.chrome.com/extensions/fontSettings) | [chromex/font_settings.clj](chromex/font_settings.clj) |
+| [chrome.gcm](https://developer.chrome.com/extensions/gcm) | [chromex/gcm.clj](chromex/gcm.clj) |
+| [chrome.history](https://developer.chrome.com/extensions/history) | [chromex/history.clj](chromex/history.clj) |
+| [chrome.i18n](https://developer.chrome.com/extensions/i18n) | [chromex/i18n.clj](chromex/i18n.clj) |
+| [chrome.identity](https://developer.chrome.com/extensions/identity) | [chromex/identity.clj](chromex/identity.clj) |
+| [chrome.idle](https://developer.chrome.com/extensions/idle) | [chromex/idle.clj](chromex/idle.clj) |
+| [chrome.idltest](https://developer.chrome.com/extensions/idltest) | [chromex/idltest.clj](chromex/idltest.clj) |
+| [chrome.input.ime](https://developer.chrome.com/extensions/input.ime) | [chromex/input/ime.clj](chromex/input/ime.clj) |
+| [chrome.instanceID](https://developer.chrome.com/extensions/instanceID) | [chromex/instance_id.clj](chromex/instance_id.clj) |
+| [chrome.location](https://developer.chrome.com/extensions/location) | [chromex/location.clj](chromex/location.clj) |
+| [chrome.management](https://developer.chrome.com/extensions/management) | [chromex/management.clj](chromex/management.clj) |
+| [chrome.networking.config](https://developer.chrome.com/extensions/networking.config) | [chromex/networking/config.clj](chromex/networking/config.clj) |
+| [chrome.notificationProvider](https://developer.chrome.com/extensions/notificationProvider) | [chromex/notification_provider.clj](chromex/notification_provider.clj) |
+| [chrome.notifications](https://developer.chrome.com/extensions/notifications) | [chromex/notifications.clj](chromex/notifications.clj) |
+| [chrome.omnibox](https://developer.chrome.com/extensions/omnibox) | [chromex/omnibox.clj](chromex/omnibox.clj) |
+| [chrome.pageAction](https://developer.chrome.com/extensions/pageAction) | [chromex/page_action.clj](chromex/page_action.clj) |
+| [chrome.pageCapture](https://developer.chrome.com/extensions/pageCapture) | [chromex/page_capture.clj](chromex/page_capture.clj) |
+| [chrome.permissions](https://developer.chrome.com/extensions/permissions) | [chromex/permissions.clj](chromex/permissions.clj) |
+| [chrome.platformKeys](https://developer.chrome.com/extensions/platformKeys) | [chromex/platform_keys.clj](chromex/platform_keys.clj) |
+| [chrome.power](https://developer.chrome.com/extensions/power) | [chromex/power.clj](chromex/power.clj) |
+| [chrome.printerProvider](https://developer.chrome.com/extensions/printerProvider) | [chromex/printer_provider.clj](chromex/printer_provider.clj) |
+| [chrome.privacy](https://developer.chrome.com/extensions/privacy) | [chromex/privacy.clj](chromex/privacy.clj) |
+| [chrome.processes](https://developer.chrome.com/extensions/processes) | [chromex/processes.clj](chromex/processes.clj) |
+| [chrome.proxy](https://developer.chrome.com/extensions/proxy) | [chromex/proxy.clj](chromex/proxy.clj) |
+| [chrome.runtime](https://developer.chrome.com/extensions/runtime) | [chromex/runtime.clj](chromex/runtime.clj) |
+| [chrome.sessions](https://developer.chrome.com/extensions/sessions) | [chromex/sessions.clj](chromex/sessions.clj) |
+| [chrome.signedInDevices](https://developer.chrome.com/extensions/signedInDevices) | [chromex/signed_in_devices.clj](chromex/signed_in_devices.clj) |
+| [chrome.storage](https://developer.chrome.com/extensions/storage) | [chromex/storage.clj](chromex/storage.clj) |
+| [chrome.system.cpu](https://developer.chrome.com/extensions/system.cpu) | [chromex/system/cpu.clj](chromex/system/cpu.clj) |
+| [chrome.system.display](https://developer.chrome.com/extensions/system.display) | [chromex/system/display.clj](chromex/system/display.clj) |
+| [chrome.system.memory](https://developer.chrome.com/extensions/system.memory) | [chromex/system/memory.clj](chromex/system/memory.clj) |
+| [chrome.system.storage](https://developer.chrome.com/extensions/system.storage) | [chromex/system/storage.clj](chromex/system/storage.clj) |
+| [chrome.systemIndicator](https://developer.chrome.com/extensions/systemIndicator) | [chromex/system_indicator.clj](chromex/system_indicator.clj) |
+| [chrome.tabCapture](https://developer.chrome.com/extensions/tabCapture) | [chromex/tab_capture.clj](chromex/tab_capture.clj) |
+| [chrome.tabs](https://developer.chrome.com/extensions/tabs) | [chromex/tabs.clj](chromex/tabs.clj) |
+| [chrome.test](https://developer.chrome.com/extensions/test) | [chromex/test.clj](chromex/test.clj) |
+| [chrome.topSites](https://developer.chrome.com/extensions/topSites) | [chromex/top_sites.clj](chromex/top_sites.clj) |
+| [chrome.tts](https://developer.chrome.com/extensions/tts) | [chromex/tts.clj](chromex/tts.clj) |
+| [chrome.ttsEngine](https://developer.chrome.com/extensions/ttsEngine) | [chromex/tts_engine.clj](chromex/tts_engine.clj) |
+| [chrome.vpnProvider](https://developer.chrome.com/extensions/vpnProvider) | [chromex/vpn_provider.clj](chromex/vpn_provider.clj) |
+| [chrome.wallpaper](https://developer.chrome.com/extensions/wallpaper) | [chromex/wallpaper.clj](chromex/wallpaper.clj) |
+| [chrome.webNavigation](https://developer.chrome.com/extensions/webNavigation) | [chromex/web_navigation.clj](chromex/web_navigation.clj) |
+| [chrome.webRequest](https://developer.chrome.com/extensions/webRequest) | [chromex/web_request.clj](chromex/web_request.clj) |
+| [chrome.webstore](https://developer.chrome.com/extensions/webstore) | [chromex/webstore.clj](chromex/webstore.clj) |
+| [chrome.windows](https://developer.chrome.com/extensions/windows) | [chromex/windows.clj](chromex/windows.clj) |
+
+
+### API stats
+
+Generated in total: 44 properties, 354 functions and 185 events as 82 namespaces.
+
+
+    |                            :namespace | :properties | :functions | :events |
+    |---------------------------------------+-------------+------------+---------|
+    |          chrome.accessibilityFeatures |           8 |          0 |       0 |
+    |                         chrome.alarms |           0 |          5 |       1 |
+    |                            chrome.app |           0 |          4 |       0 |
+    |                     chrome.audioModem |           0 |          4 |       2 |
+    |                     chrome.automation |           0 |          5 |       0 |
+    |                      chrome.bluetooth |           0 |          5 |       4 |
+    |                      chrome.bookmarks |           2 |         11 |       7 |
+    |                  chrome.browserAction |           0 |         11 |       1 |
+    |                   chrome.browsingData |           0 |         14 |       0 |
+    | chrome.cast.streaming.receiverSession |           0 |          1 |       0 |
+    |       chrome.cast.streaming.rtpStream |           0 |          7 |       3 |
+    |         chrome.cast.streaming.session |           0 |          1 |       0 |
+    |    chrome.cast.streaming.udpTransport |           0 |          3 |       0 |
+    |            chrome.certificateProvider |           0 |          0 |       2 |
+    |                       chrome.commands |           0 |          1 |       1 |
+    |                chrome.contentSettings |          13 |          0 |       0 |
+    |                   chrome.contextMenus |           1 |          4 |       1 |
+    |                        chrome.cookies |           0 |          5 |       1 |
+    |                     chrome.copresence |           0 |          1 |       2 |
+    |                       chrome.debugger |           0 |          4 |       2 |
+    |             chrome.declarativeContent |           0 |          0 |       1 |
+    |          chrome.declarativeWebRequest |           0 |          0 |       2 |
+    |                 chrome.desktopCapture |           0 |          2 |       0 |
+    |       chrome.devtools.inspectedWindow |           1 |          3 |       2 |
+    |               chrome.devtools.network |           0 |          1 |       2 |
+    |                chrome.devtools.panels |           2 |          3 |       0 |
+    |                  chrome.displaySource |           0 |          4 |       4 |
+    |                            chrome.dns |           0 |          1 |       0 |
+    |                   chrome.documentScan |           0 |          1 |       0 |
+    |                      chrome.downloads |           0 |         14 |       4 |
+    |    chrome.enterprise.deviceAttributes |           0 |          1 |       0 |
+    |        chrome.enterprise.platformKeys |           0 |          4 |       0 |
+    |   chrome.experimental.devtools.audits |           0 |          1 |       0 |
+    |  chrome.experimental.devtools.console |           0 |          2 |       1 |
+    |                      chrome.extension |           2 |          8 |       2 |
+    |             chrome.fileBrowserHandler |           0 |          1 |       1 |
+    |             chrome.fileSystemProvider |           0 |          5 |      20 |
+    |                   chrome.fontSettings |           0 |         13 |       4 |
+    |                            chrome.gcm |           1 |          3 |       3 |
+    |                        chrome.history |           0 |          6 |       2 |
+    |                           chrome.i18n |           0 |          4 |       0 |
+    |                       chrome.identity |           0 |          6 |       1 |
+    |                           chrome.idle |           0 |          2 |       1 |
+    |                        chrome.idltest |           0 |          4 |       0 |
+    |                      chrome.input.ime |           0 |         12 |      10 |
+    |                     chrome.instanceID |           0 |          5 |       1 |
+    |                       chrome.location |           0 |          2 |       2 |
+    |                     chrome.management |           0 |         12 |       4 |
+    |              chrome.networking.config |           0 |          2 |       1 |
+    |           chrome.notificationProvider |           0 |          7 |       3 |
+    |                  chrome.notifications |           0 |          5 |       5 |
+    |                        chrome.omnibox |           0 |          1 |       4 |
+    |                     chrome.pageAction |           0 |          7 |       1 |
+    |                    chrome.pageCapture |           0 |          1 |       0 |
+    |                    chrome.permissions |           0 |          4 |       2 |
+    |                   chrome.platformKeys |           0 |          4 |       0 |
+    |                          chrome.power |           0 |          2 |       0 |
+    |                chrome.printerProvider |           0 |          0 |       4 |
+    |                        chrome.privacy |           3 |          0 |       0 |
+    |                      chrome.processes |           0 |          3 |       5 |
+    |                          chrome.proxy |           1 |          0 |       1 |
+    |                        chrome.runtime |           2 |         14 |      11 |
+    |                       chrome.sessions |           1 |          3 |       1 |
+    |                chrome.signedInDevices |           0 |          1 |       1 |
+    |                        chrome.storage |           3 |          0 |       1 |
+    |                     chrome.system.cpu |           0 |          1 |       0 |
+    |                 chrome.system.display |           0 |          3 |       1 |
+    |                  chrome.system.memory |           0 |          1 |       0 |
+    |                 chrome.system.storage |           0 |          3 |       2 |
+    |                chrome.systemIndicator |           0 |          3 |       1 |
+    |                     chrome.tabCapture |           0 |          3 |       1 |
+    |                           chrome.tabs |           1 |         23 |      13 |
+    |                           chrome.test |           0 |         33 |       1 |
+    |                       chrome.topSites |           0 |          1 |       0 |
+    |                            chrome.tts |           0 |          6 |       0 |
+    |                      chrome.ttsEngine |           0 |          0 |       4 |
+    |                    chrome.vpnProvider |           0 |          5 |       5 |
+    |                      chrome.wallpaper |           0 |          1 |       0 |
+    |                  chrome.webNavigation |           0 |          2 |       9 |
+    |                     chrome.webRequest |           1 |          1 |       9 |
+    |                       chrome.webstore |           0 |          1 |       2 |
+    |                        chrome.windows |           2 |          7 |       3 |
 
 ### Requires
 
@@ -243,181 +421,3 @@ Generated on **2015-11-21** from **[Chromium @ 4a2a27c](https://chromium.googles
       get-window-id-none get-window-id-current get get-current get-last-focused get-all create
       update remove tap-on-created tap-on-removed tap-on-focus-changed]]))
 ```
-
-### Files
-
-| JS namespace | CLJS wrapper |
-| --- | --- |
-| [chrome.accessibilityFeatures](https://developer.chrome.com/extensions/accessibilityFeatures) | [chromex/accessibility_features.clj](chromex/accessibility_features.clj) |
-| [chrome.alarms](https://developer.chrome.com/extensions/alarms) | [chromex/alarms.clj](chromex/alarms.clj) |
-| [chrome.app](https://developer.chrome.com/extensions/app) | [chromex/app.clj](chromex/app.clj) |
-| [chrome.audioModem](https://developer.chrome.com/extensions/audioModem) | [chromex/audio_modem.clj](chromex/audio_modem.clj) |
-| [chrome.automation](https://developer.chrome.com/extensions/automation) | [chromex/automation.clj](chromex/automation.clj) |
-| [chrome.bluetooth](https://developer.chrome.com/extensions/bluetooth) | [chromex/bluetooth.clj](chromex/bluetooth.clj) |
-| [chrome.bookmarks](https://developer.chrome.com/extensions/bookmarks) | [chromex/bookmarks.clj](chromex/bookmarks.clj) |
-| [chrome.browserAction](https://developer.chrome.com/extensions/browserAction) | [chromex/browser_action.clj](chromex/browser_action.clj) |
-| [chrome.browsingData](https://developer.chrome.com/extensions/browsingData) | [chromex/browsing_data.clj](chromex/browsing_data.clj) |
-| [chrome.cast.streaming.receiverSession](https://developer.chrome.com/extensions/cast.streaming.receiverSession) | [chromex/cast/streaming/receiver_session.clj](chromex/cast/streaming/receiver_session.clj) |
-| [chrome.cast.streaming.rtpStream](https://developer.chrome.com/extensions/cast.streaming.rtpStream) | [chromex/cast/streaming/rtp_stream.clj](chromex/cast/streaming/rtp_stream.clj) |
-| [chrome.cast.streaming.session](https://developer.chrome.com/extensions/cast.streaming.session) | [chromex/cast/streaming/session.clj](chromex/cast/streaming/session.clj) |
-| [chrome.cast.streaming.udpTransport](https://developer.chrome.com/extensions/cast.streaming.udpTransport) | [chromex/cast/streaming/udp_transport.clj](chromex/cast/streaming/udp_transport.clj) |
-| [chrome.certificateProvider](https://developer.chrome.com/extensions/certificateProvider) | [chromex/certificate_provider.clj](chromex/certificate_provider.clj) |
-| [chrome.commands](https://developer.chrome.com/extensions/commands) | [chromex/commands.clj](chromex/commands.clj) |
-| [chrome.contentSettings](https://developer.chrome.com/extensions/contentSettings) | [chromex/content_settings.clj](chromex/content_settings.clj) |
-| [chrome.contextMenus](https://developer.chrome.com/extensions/contextMenus) | [chromex/context_menus.clj](chromex/context_menus.clj) |
-| [chrome.cookies](https://developer.chrome.com/extensions/cookies) | [chromex/cookies.clj](chromex/cookies.clj) |
-| [chrome.copresence](https://developer.chrome.com/extensions/copresence) | [chromex/copresence.clj](chromex/copresence.clj) |
-| [chrome.debugger](https://developer.chrome.com/extensions/debugger) | [chromex/debugger.clj](chromex/debugger.clj) |
-| [chrome.declarativeContent](https://developer.chrome.com/extensions/declarativeContent) | [chromex/declarative_content.clj](chromex/declarative_content.clj) |
-| [chrome.declarativeWebRequest](https://developer.chrome.com/extensions/declarativeWebRequest) | [chromex/declarative_web_request.clj](chromex/declarative_web_request.clj) |
-| [chrome.desktopCapture](https://developer.chrome.com/extensions/desktopCapture) | [chromex/desktop_capture.clj](chromex/desktop_capture.clj) |
-| [chrome.devtools.inspectedWindow](https://developer.chrome.com/extensions/devtools.inspectedWindow) | [chromex/devtools/inspected_window.clj](chromex/devtools/inspected_window.clj) |
-| [chrome.devtools.network](https://developer.chrome.com/extensions/devtools.network) | [chromex/devtools/network.clj](chromex/devtools/network.clj) |
-| [chrome.devtools.panels](https://developer.chrome.com/extensions/devtools.panels) | [chromex/devtools/panels.clj](chromex/devtools/panels.clj) |
-| [chrome.displaySource](https://developer.chrome.com/extensions/displaySource) | [chromex/display_source.clj](chromex/display_source.clj) |
-| [chrome.dns](https://developer.chrome.com/extensions/dns) | [chromex/dns.clj](chromex/dns.clj) |
-| [chrome.documentScan](https://developer.chrome.com/extensions/documentScan) | [chromex/document_scan.clj](chromex/document_scan.clj) |
-| [chrome.downloads](https://developer.chrome.com/extensions/downloads) | [chromex/downloads.clj](chromex/downloads.clj) |
-| [chrome.enterprise.deviceAttributes](https://developer.chrome.com/extensions/enterprise.deviceAttributes) | [chromex/enterprise/device_attributes.clj](chromex/enterprise/device_attributes.clj) |
-| [chrome.enterprise.platformKeys](https://developer.chrome.com/extensions/enterprise.platformKeys) | [chromex/enterprise/platform_keys.clj](chromex/enterprise/platform_keys.clj) |
-| [chrome.experimental.devtools.audits](https://developer.chrome.com/extensions/experimental.devtools.audits) | [chromex/experimental/devtools/audits.clj](chromex/experimental/devtools/audits.clj) |
-| [chrome.experimental.devtools.console](https://developer.chrome.com/extensions/experimental.devtools.console) | [chromex/experimental/devtools/console.clj](chromex/experimental/devtools/console.clj) |
-| [chrome.extension](https://developer.chrome.com/extensions/extension) | [chromex/extension.clj](chromex/extension.clj) |
-| [chrome.fileBrowserHandler](https://developer.chrome.com/extensions/fileBrowserHandler) | [chromex/file_browser_handler.clj](chromex/file_browser_handler.clj) |
-| [chrome.fileSystemProvider](https://developer.chrome.com/extensions/fileSystemProvider) | [chromex/file_system_provider.clj](chromex/file_system_provider.clj) |
-| [chrome.fontSettings](https://developer.chrome.com/extensions/fontSettings) | [chromex/font_settings.clj](chromex/font_settings.clj) |
-| [chrome.gcm](https://developer.chrome.com/extensions/gcm) | [chromex/gcm.clj](chromex/gcm.clj) |
-| [chrome.history](https://developer.chrome.com/extensions/history) | [chromex/history.clj](chromex/history.clj) |
-| [chrome.i18n](https://developer.chrome.com/extensions/i18n) | [chromex/i18n.clj](chromex/i18n.clj) |
-| [chrome.identity](https://developer.chrome.com/extensions/identity) | [chromex/identity.clj](chromex/identity.clj) |
-| [chrome.idle](https://developer.chrome.com/extensions/idle) | [chromex/idle.clj](chromex/idle.clj) |
-| [chrome.idltest](https://developer.chrome.com/extensions/idltest) | [chromex/idltest.clj](chromex/idltest.clj) |
-| [chrome.input.ime](https://developer.chrome.com/extensions/input.ime) | [chromex/input/ime.clj](chromex/input/ime.clj) |
-| [chrome.instanceID](https://developer.chrome.com/extensions/instanceID) | [chromex/instance_id.clj](chromex/instance_id.clj) |
-| [chrome.location](https://developer.chrome.com/extensions/location) | [chromex/location.clj](chromex/location.clj) |
-| [chrome.management](https://developer.chrome.com/extensions/management) | [chromex/management.clj](chromex/management.clj) |
-| [chrome.networking.config](https://developer.chrome.com/extensions/networking.config) | [chromex/networking/config.clj](chromex/networking/config.clj) |
-| [chrome.notificationProvider](https://developer.chrome.com/extensions/notificationProvider) | [chromex/notification_provider.clj](chromex/notification_provider.clj) |
-| [chrome.notifications](https://developer.chrome.com/extensions/notifications) | [chromex/notifications.clj](chromex/notifications.clj) |
-| [chrome.omnibox](https://developer.chrome.com/extensions/omnibox) | [chromex/omnibox.clj](chromex/omnibox.clj) |
-| [chrome.pageAction](https://developer.chrome.com/extensions/pageAction) | [chromex/page_action.clj](chromex/page_action.clj) |
-| [chrome.pageCapture](https://developer.chrome.com/extensions/pageCapture) | [chromex/page_capture.clj](chromex/page_capture.clj) |
-| [chrome.permissions](https://developer.chrome.com/extensions/permissions) | [chromex/permissions.clj](chromex/permissions.clj) |
-| [chrome.platformKeys](https://developer.chrome.com/extensions/platformKeys) | [chromex/platform_keys.clj](chromex/platform_keys.clj) |
-| [chrome.power](https://developer.chrome.com/extensions/power) | [chromex/power.clj](chromex/power.clj) |
-| [chrome.printerProvider](https://developer.chrome.com/extensions/printerProvider) | [chromex/printer_provider.clj](chromex/printer_provider.clj) |
-| [chrome.privacy](https://developer.chrome.com/extensions/privacy) | [chromex/privacy.clj](chromex/privacy.clj) |
-| [chrome.processes](https://developer.chrome.com/extensions/processes) | [chromex/processes.clj](chromex/processes.clj) |
-| [chrome.proxy](https://developer.chrome.com/extensions/proxy) | [chromex/proxy.clj](chromex/proxy.clj) |
-| [chrome.runtime](https://developer.chrome.com/extensions/runtime) | [chromex/runtime.clj](chromex/runtime.clj) |
-| [chrome.sessions](https://developer.chrome.com/extensions/sessions) | [chromex/sessions.clj](chromex/sessions.clj) |
-| [chrome.signedInDevices](https://developer.chrome.com/extensions/signedInDevices) | [chromex/signed_in_devices.clj](chromex/signed_in_devices.clj) |
-| [chrome.storage](https://developer.chrome.com/extensions/storage) | [chromex/storage.clj](chromex/storage.clj) |
-| [chrome.system.cpu](https://developer.chrome.com/extensions/system.cpu) | [chromex/system/cpu.clj](chromex/system/cpu.clj) |
-| [chrome.system.display](https://developer.chrome.com/extensions/system.display) | [chromex/system/display.clj](chromex/system/display.clj) |
-| [chrome.system.memory](https://developer.chrome.com/extensions/system.memory) | [chromex/system/memory.clj](chromex/system/memory.clj) |
-| [chrome.system.storage](https://developer.chrome.com/extensions/system.storage) | [chromex/system/storage.clj](chromex/system/storage.clj) |
-| [chrome.systemIndicator](https://developer.chrome.com/extensions/systemIndicator) | [chromex/system_indicator.clj](chromex/system_indicator.clj) |
-| [chrome.tabCapture](https://developer.chrome.com/extensions/tabCapture) | [chromex/tab_capture.clj](chromex/tab_capture.clj) |
-| [chrome.tabs](https://developer.chrome.com/extensions/tabs) | [chromex/tabs.clj](chromex/tabs.clj) |
-| [chrome.test](https://developer.chrome.com/extensions/test) | [chromex/test.clj](chromex/test.clj) |
-| [chrome.topSites](https://developer.chrome.com/extensions/topSites) | [chromex/top_sites.clj](chromex/top_sites.clj) |
-| [chrome.tts](https://developer.chrome.com/extensions/tts) | [chromex/tts.clj](chromex/tts.clj) |
-| [chrome.ttsEngine](https://developer.chrome.com/extensions/ttsEngine) | [chromex/tts_engine.clj](chromex/tts_engine.clj) |
-| [chrome.vpnProvider](https://developer.chrome.com/extensions/vpnProvider) | [chromex/vpn_provider.clj](chromex/vpn_provider.clj) |
-| [chrome.wallpaper](https://developer.chrome.com/extensions/wallpaper) | [chromex/wallpaper.clj](chromex/wallpaper.clj) |
-| [chrome.webNavigation](https://developer.chrome.com/extensions/webNavigation) | [chromex/web_navigation.clj](chromex/web_navigation.clj) |
-| [chrome.webRequest](https://developer.chrome.com/extensions/webRequest) | [chromex/web_request.clj](chromex/web_request.clj) |
-| [chrome.webstore](https://developer.chrome.com/extensions/webstore) | [chromex/webstore.clj](chromex/webstore.clj) |
-| [chrome.windows](https://developer.chrome.com/extensions/windows) | [chromex/windows.clj](chromex/windows.clj) |
-
-
-### API stats
-
-Generated in total: 44 properties, 354 functions and 185 events as 82 namespaces.
-
-
-    |                            :namespace | :properties | :functions | :events |
-    |---------------------------------------+-------------+------------+---------|
-    |          chrome.accessibilityFeatures |           8 |          0 |       0 |
-    |                         chrome.alarms |           0 |          5 |       1 |
-    |                            chrome.app |           0 |          4 |       0 |
-    |                     chrome.audioModem |           0 |          4 |       2 |
-    |                     chrome.automation |           0 |          5 |       0 |
-    |                      chrome.bluetooth |           0 |          5 |       4 |
-    |                      chrome.bookmarks |           2 |         11 |       7 |
-    |                  chrome.browserAction |           0 |         11 |       1 |
-    |                   chrome.browsingData |           0 |         14 |       0 |
-    | chrome.cast.streaming.receiverSession |           0 |          1 |       0 |
-    |       chrome.cast.streaming.rtpStream |           0 |          7 |       3 |
-    |         chrome.cast.streaming.session |           0 |          1 |       0 |
-    |    chrome.cast.streaming.udpTransport |           0 |          3 |       0 |
-    |            chrome.certificateProvider |           0 |          0 |       2 |
-    |                       chrome.commands |           0 |          1 |       1 |
-    |                chrome.contentSettings |          13 |          0 |       0 |
-    |                   chrome.contextMenus |           1 |          4 |       1 |
-    |                        chrome.cookies |           0 |          5 |       1 |
-    |                     chrome.copresence |           0 |          1 |       2 |
-    |                       chrome.debugger |           0 |          4 |       2 |
-    |             chrome.declarativeContent |           0 |          0 |       1 |
-    |          chrome.declarativeWebRequest |           0 |          0 |       2 |
-    |                 chrome.desktopCapture |           0 |          2 |       0 |
-    |       chrome.devtools.inspectedWindow |           1 |          3 |       2 |
-    |               chrome.devtools.network |           0 |          1 |       2 |
-    |                chrome.devtools.panels |           2 |          3 |       0 |
-    |                  chrome.displaySource |           0 |          4 |       4 |
-    |                            chrome.dns |           0 |          1 |       0 |
-    |                   chrome.documentScan |           0 |          1 |       0 |
-    |                      chrome.downloads |           0 |         14 |       4 |
-    |    chrome.enterprise.deviceAttributes |           0 |          1 |       0 |
-    |        chrome.enterprise.platformKeys |           0 |          4 |       0 |
-    |   chrome.experimental.devtools.audits |           0 |          1 |       0 |
-    |  chrome.experimental.devtools.console |           0 |          2 |       1 |
-    |                      chrome.extension |           2 |          8 |       2 |
-    |             chrome.fileBrowserHandler |           0 |          1 |       1 |
-    |             chrome.fileSystemProvider |           0 |          5 |      20 |
-    |                   chrome.fontSettings |           0 |         13 |       4 |
-    |                            chrome.gcm |           1 |          3 |       3 |
-    |                        chrome.history |           0 |          6 |       2 |
-    |                           chrome.i18n |           0 |          4 |       0 |
-    |                       chrome.identity |           0 |          6 |       1 |
-    |                           chrome.idle |           0 |          2 |       1 |
-    |                        chrome.idltest |           0 |          4 |       0 |
-    |                      chrome.input.ime |           0 |         12 |      10 |
-    |                     chrome.instanceID |           0 |          5 |       1 |
-    |                       chrome.location |           0 |          2 |       2 |
-    |                     chrome.management |           0 |         12 |       4 |
-    |              chrome.networking.config |           0 |          2 |       1 |
-    |           chrome.notificationProvider |           0 |          7 |       3 |
-    |                  chrome.notifications |           0 |          5 |       5 |
-    |                        chrome.omnibox |           0 |          1 |       4 |
-    |                     chrome.pageAction |           0 |          7 |       1 |
-    |                    chrome.pageCapture |           0 |          1 |       0 |
-    |                    chrome.permissions |           0 |          4 |       2 |
-    |                   chrome.platformKeys |           0 |          4 |       0 |
-    |                          chrome.power |           0 |          2 |       0 |
-    |                chrome.printerProvider |           0 |          0 |       4 |
-    |                        chrome.privacy |           3 |          0 |       0 |
-    |                      chrome.processes |           0 |          3 |       5 |
-    |                          chrome.proxy |           1 |          0 |       1 |
-    |                        chrome.runtime |           2 |         14 |      11 |
-    |                       chrome.sessions |           1 |          3 |       1 |
-    |                chrome.signedInDevices |           0 |          1 |       1 |
-    |                        chrome.storage |           3 |          0 |       1 |
-    |                     chrome.system.cpu |           0 |          1 |       0 |
-    |                 chrome.system.display |           0 |          3 |       1 |
-    |                  chrome.system.memory |           0 |          1 |       0 |
-    |                 chrome.system.storage |           0 |          3 |       2 |
-    |                chrome.systemIndicator |           0 |          3 |       1 |
-    |                     chrome.tabCapture |           0 |          3 |       1 |
-    |                           chrome.tabs |           1 |         23 |      13 |
-    |                           chrome.test |           0 |         33 |       1 |
-    |                       chrome.topSites |           0 |          1 |       0 |
-    |                            chrome.tts |           0 |          6 |       0 |
-    |                      chrome.ttsEngine |           0 |          0 |       4 |
-    |                    chrome.vpnProvider |           0 |          5 |       5 |
-    |                      chrome.wallpaper |           0 |          1 |       0 |
-    |                  chrome.webNavigation |           0 |          2 |       9 |
-    |                     chrome.webRequest |           1 |          1 |       9 |
-    |                       chrome.webstore |           0 |          1 |       2 |
-    |                        chrome.windows |           2 |          7 |       3 |

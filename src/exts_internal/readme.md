@@ -2,7 +2,53 @@
 
 # This is generated API
 
-Generated on **2015-11-21** from **[Chromium @ 4a2a27c](https://chromium.googlesource.com/chromium/src.git/+/4a2a27ce1945b17948af4a385de1c8c2311dd57e)**.
+Generated on **2015-11-23** from **[Chromium @ 072e10c](https://chromium.googlesource.com/chromium/src.git/+/072e10ce1f1ee83f28c79bf5647b40738d772b23)**.
+
+### Files
+
+| JS namespace | CLJS wrapper |
+| --- | --- |
+| [chrome.app.currentWindowInternal](https://developer.chrome.com/extensions/app.currentWindowInternal) | [chromex/app/current_window_internal.clj](chromex/app/current_window_internal.clj) |
+| [chrome.appViewGuestInternal](https://developer.chrome.com/extensions/appViewGuestInternal) | [chromex/app_view_guest_internal.clj](chromex/app_view_guest_internal.clj) |
+| [chrome.automationInternal](https://developer.chrome.com/extensions/automationInternal) | [chromex/automation_internal.clj](chromex/automation_internal.clj) |
+| [chrome.certificateProviderInternal](https://developer.chrome.com/extensions/certificateProviderInternal) | [chromex/certificate_provider_internal.clj](chromex/certificate_provider_internal.clj) |
+| [chrome.chromeWebViewInternal](https://developer.chrome.com/extensions/chromeWebViewInternal) | [chromex/chrome_web_view_internal.clj](chromex/chrome_web_view_internal.clj) |
+| [chrome.contextMenusInternal](https://developer.chrome.com/extensions/contextMenusInternal) | [chromex/context_menus_internal.clj](chromex/context_menus_internal.clj) |
+| [chrome.enterprise.platformKeysInternal](https://developer.chrome.com/extensions/enterprise.platformKeysInternal) | [chromex/enterprise/platform_keys_internal.clj](chromex/enterprise/platform_keys_internal.clj) |
+| [chrome.extensionOptionsInternal](https://developer.chrome.com/extensions/extensionOptionsInternal) | [chromex/extension_options_internal.clj](chromex/extension_options_internal.clj) |
+| [chrome.extensionViewInternal](https://developer.chrome.com/extensions/extensionViewInternal) | [chromex/extension_view_internal.clj](chromex/extension_view_internal.clj) |
+| [chrome.fileBrowserHandlerInternal](https://developer.chrome.com/extensions/fileBrowserHandlerInternal) | [chromex/file_browser_handler_internal.clj](chromex/file_browser_handler_internal.clj) |
+| [chrome.fileManagerPrivateInternal](https://developer.chrome.com/extensions/fileManagerPrivateInternal) | [chromex/file_manager_private_internal.clj](chromex/file_manager_private_internal.clj) |
+| [chrome.guestViewInternal](https://developer.chrome.com/extensions/guestViewInternal) | [chromex/guest_view_internal.clj](chromex/guest_view_internal.clj) |
+| [chrome.platformKeysInternal](https://developer.chrome.com/extensions/platformKeysInternal) | [chromex/platform_keys_internal.clj](chromex/platform_keys_internal.clj) |
+| [chrome.printerProviderInternal](https://developer.chrome.com/extensions/printerProviderInternal) | [chromex/printer_provider_internal.clj](chromex/printer_provider_internal.clj) |
+| [chrome.webRequestInternal](https://developer.chrome.com/extensions/webRequestInternal) | [chromex/web_request_internal.clj](chromex/web_request_internal.clj) |
+| [chrome.webViewInternal](https://developer.chrome.com/extensions/webViewInternal) | [chromex/web_view_internal.clj](chromex/web_view_internal.clj) |
+
+
+### API stats
+
+Generated in total: 0 properties, 89 functions and 15 events as 16 namespaces.
+
+
+    |                             :namespace | :properties | :functions | :events |
+    |----------------------------------------+-------------+------------+---------|
+    |       chrome.app.currentWindowInternal |           0 |         15 |       8 |
+    |            chrome.appViewGuestInternal |           0 |          2 |       0 |
+    |              chrome.automationInternal |           0 |          5 |       3 |
+    |     chrome.certificateProviderInternal |           0 |          2 |       0 |
+    |           chrome.chromeWebViewInternal |           0 |          5 |       0 |
+    |            chrome.contextMenusInternal |           0 |          0 |       1 |
+    | chrome.enterprise.platformKeysInternal |           0 |          2 |       0 |
+    |        chrome.extensionOptionsInternal |           0 |          0 |       3 |
+    |           chrome.extensionViewInternal |           0 |          2 |       0 |
+    |      chrome.fileBrowserHandlerInternal |           0 |          1 |       0 |
+    |      chrome.fileManagerPrivateInternal |           0 |         20 |       0 |
+    |               chrome.guestViewInternal |           0 |          3 |       0 |
+    |            chrome.platformKeysInternal |           0 |          3 |       0 |
+    |         chrome.printerProviderInternal |           0 |          5 |       0 |
+    |              chrome.webRequestInternal |           0 |          2 |       0 |
+    |                 chrome.webViewInternal |           0 |         22 |       0 |
 
 ### Requires
 
@@ -56,49 +102,3 @@ Generated on **2015-11-21** from **[Chromium @ 4a2a27c](https://chromium.googles
       override-user-agent reload set-allow-transparency set-allow-scaling set-name set-permission
       navigate stop terminate clear-data]]))
 ```
-
-### Files
-
-| JS namespace | CLJS wrapper |
-| --- | --- |
-| [chrome.app.currentWindowInternal](https://developer.chrome.com/extensions/app.currentWindowInternal) | [chromex/app/current_window_internal.clj](chromex/app/current_window_internal.clj) |
-| [chrome.appViewGuestInternal](https://developer.chrome.com/extensions/appViewGuestInternal) | [chromex/app_view_guest_internal.clj](chromex/app_view_guest_internal.clj) |
-| [chrome.automationInternal](https://developer.chrome.com/extensions/automationInternal) | [chromex/automation_internal.clj](chromex/automation_internal.clj) |
-| [chrome.certificateProviderInternal](https://developer.chrome.com/extensions/certificateProviderInternal) | [chromex/certificate_provider_internal.clj](chromex/certificate_provider_internal.clj) |
-| [chrome.chromeWebViewInternal](https://developer.chrome.com/extensions/chromeWebViewInternal) | [chromex/chrome_web_view_internal.clj](chromex/chrome_web_view_internal.clj) |
-| [chrome.contextMenusInternal](https://developer.chrome.com/extensions/contextMenusInternal) | [chromex/context_menus_internal.clj](chromex/context_menus_internal.clj) |
-| [chrome.enterprise.platformKeysInternal](https://developer.chrome.com/extensions/enterprise.platformKeysInternal) | [chromex/enterprise/platform_keys_internal.clj](chromex/enterprise/platform_keys_internal.clj) |
-| [chrome.extensionOptionsInternal](https://developer.chrome.com/extensions/extensionOptionsInternal) | [chromex/extension_options_internal.clj](chromex/extension_options_internal.clj) |
-| [chrome.extensionViewInternal](https://developer.chrome.com/extensions/extensionViewInternal) | [chromex/extension_view_internal.clj](chromex/extension_view_internal.clj) |
-| [chrome.fileBrowserHandlerInternal](https://developer.chrome.com/extensions/fileBrowserHandlerInternal) | [chromex/file_browser_handler_internal.clj](chromex/file_browser_handler_internal.clj) |
-| [chrome.fileManagerPrivateInternal](https://developer.chrome.com/extensions/fileManagerPrivateInternal) | [chromex/file_manager_private_internal.clj](chromex/file_manager_private_internal.clj) |
-| [chrome.guestViewInternal](https://developer.chrome.com/extensions/guestViewInternal) | [chromex/guest_view_internal.clj](chromex/guest_view_internal.clj) |
-| [chrome.platformKeysInternal](https://developer.chrome.com/extensions/platformKeysInternal) | [chromex/platform_keys_internal.clj](chromex/platform_keys_internal.clj) |
-| [chrome.printerProviderInternal](https://developer.chrome.com/extensions/printerProviderInternal) | [chromex/printer_provider_internal.clj](chromex/printer_provider_internal.clj) |
-| [chrome.webRequestInternal](https://developer.chrome.com/extensions/webRequestInternal) | [chromex/web_request_internal.clj](chromex/web_request_internal.clj) |
-| [chrome.webViewInternal](https://developer.chrome.com/extensions/webViewInternal) | [chromex/web_view_internal.clj](chromex/web_view_internal.clj) |
-
-
-### API stats
-
-Generated in total: 0 properties, 89 functions and 15 events as 16 namespaces.
-
-
-    |                             :namespace | :properties | :functions | :events |
-    |----------------------------------------+-------------+------------+---------|
-    |       chrome.app.currentWindowInternal |           0 |         15 |       8 |
-    |            chrome.appViewGuestInternal |           0 |          2 |       0 |
-    |              chrome.automationInternal |           0 |          5 |       3 |
-    |     chrome.certificateProviderInternal |           0 |          2 |       0 |
-    |           chrome.chromeWebViewInternal |           0 |          5 |       0 |
-    |            chrome.contextMenusInternal |           0 |          0 |       1 |
-    | chrome.enterprise.platformKeysInternal |           0 |          2 |       0 |
-    |        chrome.extensionOptionsInternal |           0 |          0 |       3 |
-    |           chrome.extensionViewInternal |           0 |          2 |       0 |
-    |      chrome.fileBrowserHandlerInternal |           0 |          1 |       0 |
-    |      chrome.fileManagerPrivateInternal |           0 |         20 |       0 |
-    |               chrome.guestViewInternal |           0 |          3 |       0 |
-    |            chrome.platformKeysInternal |           0 |          3 |       0 |
-    |         chrome.printerProviderInternal |           0 |          5 |       0 |
-    |              chrome.webRequestInternal |           0 |          2 |       0 |
-    |                 chrome.webViewInternal |           0 |         22 |       0 |
