@@ -30,11 +30,15 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defmacro tap-on-something-events [chan]
-  (gen-call :event ::on-something &form chan))
+(defmacro tap-on-something-events
+  ([chan] (gen-call :event ::on-something &form chan)))
 
-(defmacro tap-on-something-deprecated-events [chan]
-  (gen-call :event ::on-something-deprecated &form chan))
+(defmacro tap-on-something-deprecated-events
+  ([chan] (gen-call :event ::on-something-deprecated &form chan)))
+
+(defmacro tap-on-event-supporting-filters
+  ([chan] (gen-call :event ::on-something-supporting-filters &form chan))
+  ([chan filters] (gen-call :event ::on-something-supporting-filters &form chan filters)))
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
@@ -91,7 +95,11 @@
                  :name       "onSomethingDeprecated"
                  :deprecated "Use onSomething instead."
                  :params     [{:name "ep1"
-                               :type "event-param-type1"}]}]})
+                               :type "event-param-type1"}]}
+                {:id     ::on-something-supporting-filters
+                 :name   "onSomethingSupportingFilters"
+                 :params [{:name "ep1"
+                           :type "some-type"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

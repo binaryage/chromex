@@ -195,14 +195,16 @@
 
 (defn build-api-table-event [data]
   (let [{:keys [name description parameters]} data
-        callback-data (get-in data [:by-name :add-listener :callback])]
+        callback-data (get-in data [:by-name :add-listener :callback])
+        filters (:filters data)]
     (with-meta
-      {:id         (build-id name)
-       :name       name
-       :since      (extract-avail-since data)
-       :until      (extract-avail-until data)
-       :deprecated (extract-deprecated data)
-       :params     (:params (build-api-table-callback-info callback-data))}
+      {:id               (build-id name)
+       :name             name
+       :since            (extract-avail-since data)
+       :until            (extract-avail-until data)
+       :deprecated       (extract-deprecated data)
+       :supports-filters (not (empty? filters))
+       :params           (:params (build-api-table-callback-info callback-data))}
       {:doc (build-docstring 2 description parameters)})))
 
 (defn build-api-table-events [data]
@@ -265,10 +267,11 @@
      :prop-docstring doc}))
 
 (defn prepare-event-data [data]
-  (let [{:keys [name]} data
+  (let [{:keys [name supports-filters]} data
         {:keys [doc]} (meta data)]
     {:event-name      (kebab-case name)
-     :event-docstring doc}))
+     :event-docstring doc
+     :supports-filters supports-filters}))
 
 ; ---------------------------------------------------------------------------------------------------------------------------
 

@@ -1,2 +1,5 @@
-(defn {{{event-name}}}*[config channel]
-  (gen-wrap :event ::{{{event-name}}} config channel))
+{{^supports-filters}}(defn {{{event-name}}}*[config channel]
+  (gen-wrap :event ::{{{event-name}}} config channel)){{/supports-filters}}
+{{#supports-filters}}(defn {{{event-name}}}*
+  ([config channel] (gen-wrap :event ::{{{event-name}}} config channel))
+  ([config channel filters] (gen-wrap :event ::{{{event-name}}} config channel filters))){{/supports-filters}}

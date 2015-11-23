@@ -3,7 +3,7 @@
   (:require [cljs.test :refer-macros [deftest testing is async]]
             [cljs.core.async :refer [<! >! timeout chan close!]]
             [chromex.playground :refer-macros [get-something do-something get-some-prop tap-on-something-events
-                                               tap-all-events do-something-optional-args]]
+                                               tap-all-events do-something-optional-args tap-on-event-supporting-filters]]
             [chromex-lib.chrome-event-channel :refer [make-chrome-event-channel]]))
 
 ; -- chrome API mocks -------------------------------------------------------------------------------------------------------
@@ -31,6 +31,18 @@
        "removeListener" (fn [f]
                           (vreset! on-something-mock-active false))})
 
+(def on-something-supporting-filters-mock-active (volatile! false))
+(def on-something-supporting-filters-mock
+  #js {"addListener"    (fn [f filters]
+                          (vreset! on-something-supporting-filters-mock-active true)
+                          (go
+                            (dotimes [n 5]
+                              (if @on-something-supporting-filters-mock-active
+                                (f (str n " filters:" filters)))
+                              (<! (timeout 100)))))
+       "removeListener" (fn [f]
+                          (vreset! on-something-supporting-filters-mock-active false))})
+
 (def on-something-deprecated-mock-active (volatile! false))
 (def on-something-deprecated-mock
   #js {"addListener"    (fn [f]
@@ -51,6 +63,7 @@
 (aset js/window.chrome.playground "doSomethingOptionalArgs" do-something-optional-args-mock)
 (aset js/window.chrome.playground "someProp" "prop1val")
 (aset js/window.chrome.playground "onSomething" on-something-mock)
+(aset js/window.chrome.playground "onSomethingSupportingFilters" on-something-supporting-filters-mock)
 (aset js/window.chrome.playground "onSomethingDeprecated" on-something-deprecated-mock)
 
 ; ---------------------------------------------------------------------------------------------------------------------------
@@ -92,8 +105,22 @@
         (go
           (dotimes [n 3]
             (let [[event [item]] (<! chan)]
-              (is (= event :chromex.playground/on-something))
+              (is (keyword-identical? event :chromex.playground/on-something))
               (is (= item (str "~" n)))))
+          (close! chan)
+          (<! (timeout 100))
+          (done))))))
+
+(deftest test-passing-filters-to-events
+  (testing "tap event with filters"
+    (async done
+      (let [chan (make-chrome-event-channel (chan))]
+        (tap-on-event-supporting-filters chan 42)
+        (go
+          (dotimes [n 3]
+            (let [[event [item]] (<! chan)]
+              (is (keyword-identical? event :chromex.playground/on-something-supporting-filters))
+              (is (= item (str n " filters:42")))))
           (close! chan)
           (<! (timeout 100))
           (done))))))
@@ -105,9 +132,10 @@
         (tap-all-events chan)
         (go
           (dotimes [n 3]
-            (let [[event [item]] (<! chan)]
-              (is (= event :chromex.playground/on-something))
-              (is (= item (str "~" n)))))
+            (let [[event _] (<! chan)]
+              (is (or
+                    (keyword-identical? event :chromex.playground/on-something)
+                    (keyword-identical? event :chromex.playground/on-something-supporting-filters)))))
           (close! chan)
           (<! (timeout 100))
           (done))))))

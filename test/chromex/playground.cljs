@@ -26,3 +26,7 @@
 
 (defn on-something-deprecated* [config chan]
   (gen-wrap :event ::on-something-deprecated config chan))
+
+(defn on-something-supporting-filters*
+  ([config chan] (gen-wrap :event ::on-something-supporting-filters config chan))
+  ([config chan filters] (gen-wrap :event ::on-something-supporting-filters config chan filters)))

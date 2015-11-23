@@ -6,6 +6,10 @@
   `(let [o# ~o]
      (.call (goog.object/get o# ~name) o# ~@params)))
 
+(defmacro oapply [o name param-coll]
+  `(let [o# ~o]
+     (.apply (goog.object/get o# ~name) o# (into-array ~param-coll))))
+
 (defmacro oget
   ([o k1] `(goog.object/get ~o ~k1))
   ([o k1 k2] `(when-let [o# (goog.object/get ~o ~k1)] (goog.object/get o# ~k2)))

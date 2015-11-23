@@ -35,34 +35,41 @@
 
 (defmacro tap-on-before-navigate-events
   "Fired when a navigation is about to occur."
-  ([channel] (gen-call :event ::on-before-navigate &form channel)))
+  ([channel] (gen-call :event ::on-before-navigate &form channel))
+  ([channel filters] (gen-call :event ::on-before-navigate &form channel filters)))
 
 (defmacro tap-on-committed-events
   "Fired when a navigation is committed. The document (and the resources it refers to, such as images and subframes) might
    still be downloading, but at least part of the document has been received from the server and the browser has decided to
    switch to the new document."
-  ([channel] (gen-call :event ::on-committed &form channel)))
+  ([channel] (gen-call :event ::on-committed &form channel))
+  ([channel filters] (gen-call :event ::on-committed &form channel filters)))
 
 (defmacro tap-on-dom-content-loaded-events
   "Fired when the page's DOM is fully constructed, but the referenced resources may not finish loading."
-  ([channel] (gen-call :event ::on-dom-content-loaded &form channel)))
+  ([channel] (gen-call :event ::on-dom-content-loaded &form channel))
+  ([channel filters] (gen-call :event ::on-dom-content-loaded &form channel filters)))
 
 (defmacro tap-on-completed-events
   "Fired when a document, including the resources it refers to, is completely loaded and initialized."
-  ([channel] (gen-call :event ::on-completed &form channel)))
+  ([channel] (gen-call :event ::on-completed &form channel))
+  ([channel filters] (gen-call :event ::on-completed &form channel filters)))
 
 (defmacro tap-on-error-occurred-events
   "Fired when an error occurs and the navigation is aborted. This can happen if either a network error occurred, or the user
    aborted the navigation."
-  ([channel] (gen-call :event ::on-error-occurred &form channel)))
+  ([channel] (gen-call :event ::on-error-occurred &form channel))
+  ([channel filters] (gen-call :event ::on-error-occurred &form channel filters)))
 
 (defmacro tap-on-created-navigation-target-events
   "Fired when a new window, or a new tab in an existing window, is created to host a navigation."
-  ([channel] (gen-call :event ::on-created-navigation-target &form channel)))
+  ([channel] (gen-call :event ::on-created-navigation-target &form channel))
+  ([channel filters] (gen-call :event ::on-created-navigation-target &form channel filters)))
 
 (defmacro tap-on-reference-fragment-updated-events
   "Fired when the reference fragment of a frame was updated. All future events for that frame will use the updated URL."
-  ([channel] (gen-call :event ::on-reference-fragment-updated &form channel)))
+  ([channel] (gen-call :event ::on-reference-fragment-updated &form channel))
+  ([channel filters] (gen-call :event ::on-reference-fragment-updated &form channel filters)))
 
 (defmacro tap-on-tab-replaced-events
   "Fired when the contents of the tab is replaced by a different (usually previously pre-rendered) tab."
@@ -70,7 +77,8 @@
 
 (defmacro tap-on-history-state-updated-events
   "Fired when the frame's history was updated to a new URL. All future events for that frame will use the updated URL."
-  ([channel] (gen-call :event ::on-history-state-updated &form channel)))
+  ([channel] (gen-call :event ::on-history-state-updated &form channel))
+  ([channel filters] (gen-call :event ::on-history-state-updated &form channel filters)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
@@ -102,19 +110,33 @@
        :type :callback,
        :callback {:params [{:name "details", :optional? true, :type "[array-of-objects]"}]}}]}],
    :events
-   [{:id ::on-before-navigate, :name "onBeforeNavigate", :params [{:name "details", :type "object"}]}
-    {:id ::on-committed, :name "onCommitted", :params [{:name "details", :type "object"}]}
-    {:id ::on-dom-content-loaded, :name "onDOMContentLoaded", :params [{:name "details", :type "object"}]}
-    {:id ::on-completed, :name "onCompleted", :params [{:name "details", :type "object"}]}
-    {:id ::on-error-occurred, :name "onErrorOccurred", :params [{:name "details", :type "object"}]}
-    {:id ::on-created-navigation-target, :name "onCreatedNavigationTarget", :params [{:name "details", :type "object"}]}
+   [{:id ::on-before-navigate,
+     :name "onBeforeNavigate",
+     :supports-filters true,
+     :params [{:name "details", :type "object"}]}
+    {:id ::on-committed, :name "onCommitted", :supports-filters true, :params [{:name "details", :type "object"}]}
+    {:id ::on-dom-content-loaded,
+     :name "onDOMContentLoaded",
+     :supports-filters true,
+     :params [{:name "details", :type "object"}]}
+    {:id ::on-completed, :name "onCompleted", :supports-filters true, :params [{:name "details", :type "object"}]}
+    {:id ::on-error-occurred,
+     :name "onErrorOccurred",
+     :supports-filters true,
+     :params [{:name "details", :type "object"}]}
+    {:id ::on-created-navigation-target,
+     :name "onCreatedNavigationTarget",
+     :supports-filters true,
+     :params [{:name "details", :type "object"}]}
     {:id ::on-reference-fragment-updated,
      :name "onReferenceFragmentUpdated",
+     :supports-filters true,
      :params [{:name "details", :type "object"}]}
     {:id ::on-tab-replaced, :name "onTabReplaced", :since "22", :params [{:name "details", :type "object"}]}
     {:id ::on-history-state-updated,
      :name "onHistoryStateUpdated",
      :since "22",
+     :supports-filters true,
      :params [{:name "details", :type "object"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

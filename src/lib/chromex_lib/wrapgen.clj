@@ -140,7 +140,7 @@
 
 ; ---------------------------------------------------------------------------------------------------------------------------
 
-(defn gen-event [static-config api-table descriptor config chan & args]                                                       ; TODO pass extra args into .addListener call
+(defn gen-event [static-config api-table descriptor config chan & args]
   (let [api (get-api-id api-table descriptor)
         event-id (:id descriptor)
         event-fn-sym (gensym "event-fn")
@@ -151,7 +151,7 @@
            ~handler-fn-sym ~(marshall-callback static-config (str api ".handler") [event-fn-sym descriptor])
            ~logging-fn-sym ~(wrap-callback-with-logging static-config "event:" api config [handler-fn-sym descriptor])
            result# (chromex-lib.chrome-event-subscription/make-chrome-event-subscription ~js-event ~logging-fn-sym ~chan)]
-       (chromex-lib.protocols/subscribe! result#)
+       (chromex-lib.protocols/subscribe! result# ~@args)                                                                      ; additional args may specify filtered events, see https://developer.chrome.com/extensions/events#filtered
        result#)))
 
 ; ---------------------------------------------------------------------------------------------------------------------------
