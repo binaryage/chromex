@@ -19,19 +19,16 @@
 (defmacro get-info
   "Get the storage information from the system. The argument passed to the callback is an array of StorageUnitInfo
    objects."
-  [#_callback]
-  (gen-call :function ::get-info (meta &form)))
+  ([#_callback] (gen-call :function ::get-info (meta &form))))
 
 (defmacro eject-device
   "Ejects a removable storage device."
-  [id #_callback]
-  (gen-call :function ::eject-device (meta &form) id))
+  ([id #_callback] (gen-call :function ::eject-device (meta &form) id)))
 
 (defmacro get-available-capacity
   "Get the available capacity of a specified |id| storage device. The |id| is the transient device ID from
    StorageUnitInfo."
-  [id #_callback]
-  (gen-call :function ::get-available-capacity (meta &form) id))
+  ([id #_callback] (gen-call :function ::get-available-capacity (meta &form) id)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

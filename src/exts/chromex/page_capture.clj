@@ -18,8 +18,7 @@
   "Saves the content of the tab with given id as MHTML.
    
      |callback| - Called when the MHTML has been generated."
-  [details #_callback]
-  (gen-call :function ::save-as-mhtml (meta &form) details))
+  ([details #_callback] (gen-call :function ::save-as-mhtml (meta &form) details)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

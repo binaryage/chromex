@@ -18,13 +18,12 @@
   "Defines a AMD module.
    
      |factory| - |modules| is an array of the values returned by |dependencies| factories."
-  [module-name dependencies #_factory]
-  (gen-call :function ::define (meta &form) module-name dependencies))
+  ([module-name dependencies #_factory] (gen-call :function ::define (meta &form) module-name dependencies))
+  ([module-name] `(define ~module-name :omit)))
 
 (defmacro require-async
   "Returns a promise that will resolve to an asynchronously loaded module."
-  [name]
-  (gen-call :function ::require-async (meta &form) name))
+  ([name] (gen-call :function ::require-async (meta &form) name)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

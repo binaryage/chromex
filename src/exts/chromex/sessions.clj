@@ -23,21 +23,21 @@
 
 (defmacro get-recently-closed
   "Gets the list of recently closed tabs and/or windows."
-  [filter #_callback]
-  (gen-call :function ::get-recently-closed (meta &form) filter))
+  ([filter #_callback] (gen-call :function ::get-recently-closed (meta &form) filter))
+  ([] `(get-recently-closed :omit)))
 
 (defmacro get-devices
   "Retrieves all devices with synced sessions."
-  [filter #_callback]
-  (gen-call :function ::get-devices (meta &form) filter))
+  ([filter #_callback] (gen-call :function ::get-devices (meta &form) filter))
+  ([] `(get-devices :omit)))
 
 (defmacro restore
   "Reopens a 'windows.Window' or 'tabs.Tab', with an optional callback to run when the entry has been restored.
    
      |sessionId| - The 'windows.Window.sessionId', or 'tabs.Tab.sessionId' to restore. If this parameter is not
                    specified, the most recently closed session is restored."
-  [session-id #_callback]
-  (gen-call :function ::restore (meta &form) session-id))
+  ([session-id #_callback] (gen-call :function ::restore (meta &form) session-id))
+  ([] `(restore :omit)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

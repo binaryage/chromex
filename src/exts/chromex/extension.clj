@@ -36,50 +36,44 @@
    
      |extensionId| - The extension ID of the extension you want to connect to. If omitted, default is your own
                      extension."
-  [extension-id request #_response-callback]
-  (gen-call :function ::send-request (meta &form) extension-id request))
+  ([extension-id request #_response-callback] (gen-call :function ::send-request (meta &form) extension-id request)))
 
 (defmacro get-url
   "Converts a relative path within an extension install directory to a fully-qualified URL.
    
      |path| - A path to a resource within an extension expressed relative to its install directory."
-  [path]
-  (gen-call :function ::get-url (meta &form) path))
+  ([path] (gen-call :function ::get-url (meta &form) path)))
 
 (defmacro get-views
   "Returns an array of the JavaScript 'window' objects for each of the pages running inside the current extension."
-  [fetch-properties]
-  (gen-call :function ::get-views (meta &form) fetch-properties))
+  ([fetch-properties] (gen-call :function ::get-views (meta &form) fetch-properties))
+  ([] `(get-views :omit)))
 
 (defmacro get-background-page
   "Returns the JavaScript 'window' object for the background page running inside the current extension. Returns null
    if the extension has no background page."
-  []
-  (gen-call :function ::get-background-page (meta &form)))
+  ([] (gen-call :function ::get-background-page (meta &form))))
 
 (defmacro get-extension-tabs
   "Returns an array of the JavaScript 'window' objects for each of the tabs running inside the current extension. If
    windowId is specified, returns only the 'window' objects of tabs attached to the specified window."
-  [window-id]
-  (gen-call :function ::get-extension-tabs (meta &form) window-id))
+  ([window-id] (gen-call :function ::get-extension-tabs (meta &form) window-id))
+  ([] `(get-extension-tabs :omit)))
 
 (defmacro is-allowed-incognito-access
   "Retrieves the state of the extension's access to Incognito-mode (as determined by the user-controlled 'Allowed in
    Incognito' checkbox."
-  [#_callback]
-  (gen-call :function ::is-allowed-incognito-access (meta &form)))
+  ([#_callback] (gen-call :function ::is-allowed-incognito-access (meta &form))))
 
 (defmacro is-allowed-file-scheme-access
   "Retrieves the state of the extension's access to the 'file://' scheme (as determined by the user-controlled 'Allow
    access to File URLs' checkbox."
-  [#_callback]
-  (gen-call :function ::is-allowed-file-scheme-access (meta &form)))
+  ([#_callback] (gen-call :function ::is-allowed-file-scheme-access (meta &form))))
 
 (defmacro set-update-url-data
   "Sets the value of the ap CGI parameter used in the extension's update URL.  This value is ignored for extensions
    that are hosted in the Chrome Extension Gallery."
-  [data]
-  (gen-call :function ::set-update-url-data (meta &form) data))
+  ([data] (gen-call :function ::set-update-url-data (meta &form) data)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

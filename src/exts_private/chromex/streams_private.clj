@@ -20,8 +20,7 @@
      |streamUrl| - The URL of the stream to abort.
      |callback| - Called when the stream URL is guaranteed to be invalid. The underlying URL request may not yet
                   have been aborted when this is run."
-  [stream-url #_callback]
-  (gen-call :function ::abort (meta &form) stream-url))
+  ([stream-url #_callback] (gen-call :function ::abort (meta &form) stream-url)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

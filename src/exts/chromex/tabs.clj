@@ -24,106 +24,97 @@
 
 (defmacro get
   "Retrieves details about the specified tab."
-  [tab-id #_callback]
-  (gen-call :function ::get (meta &form) tab-id))
+  ([tab-id #_callback] (gen-call :function ::get (meta &form) tab-id)))
 
 (defmacro get-current
   "Gets the tab that this script call is being made from. May be undefined if called from a non-tab context (for
    example: a background page or popup view)."
-  [#_callback]
-  (gen-call :function ::get-current (meta &form)))
+  ([#_callback] (gen-call :function ::get-current (meta &form))))
 
 (defmacro connect
   "Connects to the content script(s) in the specified tab. The 'runtime.onConnect' event is fired in each content
    script running in the specified tab for the current extension. For more details, see Content Script Messaging."
-  [tab-id connect-info]
-  (gen-call :function ::connect (meta &form) tab-id connect-info))
+  ([tab-id connect-info] (gen-call :function ::connect (meta &form) tab-id connect-info))
+  ([tab-id] `(connect ~tab-id :omit)))
 
 (defmacro send-request
   "Sends a single request to the content script(s) in the specified tab, with an optional callback to run when a
    response is sent back.  The 'extension.onRequest' event is fired in each content script running in the specified
    tab for the current extension."
-  [tab-id request #_response-callback]
-  (gen-call :function ::send-request (meta &form) tab-id request))
+  ([tab-id request #_response-callback] (gen-call :function ::send-request (meta &form) tab-id request)))
 
 (defmacro send-message
   "Sends a single message to the content script(s) in the specified tab, with an optional callback to run when a
    response is sent back.  The 'runtime.onMessage' event is fired in each content script running in the specified tab
    for the current extension."
-  [tab-id message options #_response-callback]
-  (gen-call :function ::send-message (meta &form) tab-id message options))
+  ([tab-id message options #_response-callback] (gen-call :function ::send-message (meta &form) tab-id message options))
+  ([tab-id message] `(send-message ~tab-id ~message :omit)))
 
 (defmacro get-selected
   "Gets the tab that is selected in the specified window.
    
      |windowId| - Defaults to the current window."
-  [window-id #_callback]
-  (gen-call :function ::get-selected (meta &form) window-id))
+  ([window-id #_callback] (gen-call :function ::get-selected (meta &form) window-id))
+  ([] `(get-selected :omit)))
 
 (defmacro get-all-in-window
   "Gets details about all tabs in the specified window.
    
      |windowId| - Defaults to the current window."
-  [window-id #_callback]
-  (gen-call :function ::get-all-in-window (meta &form) window-id))
+  ([window-id #_callback] (gen-call :function ::get-all-in-window (meta &form) window-id))
+  ([] `(get-all-in-window :omit)))
 
 (defmacro create
   "Creates a new tab."
-  [create-properties #_callback]
-  (gen-call :function ::create (meta &form) create-properties))
+  ([create-properties #_callback] (gen-call :function ::create (meta &form) create-properties)))
 
 (defmacro duplicate
   "Duplicates a tab.
    
      |tabId| - The ID of the tab which is to be duplicated."
-  [tab-id #_callback]
-  (gen-call :function ::duplicate (meta &form) tab-id))
+  ([tab-id #_callback] (gen-call :function ::duplicate (meta &form) tab-id)))
 
 (defmacro query
   "Gets all tabs that have the specified properties, or all tabs if no properties are specified."
-  [query-info #_callback]
-  (gen-call :function ::query (meta &form) query-info))
+  ([query-info #_callback] (gen-call :function ::query (meta &form) query-info)))
 
 (defmacro highlight
   "Highlights the given tabs."
-  [highlight-info #_callback]
-  (gen-call :function ::highlight (meta &form) highlight-info))
+  ([highlight-info #_callback] (gen-call :function ::highlight (meta &form) highlight-info)))
 
 (defmacro update
   "Modifies the properties of a tab. Properties that are not specified in updateProperties are not modified.
    
      |tabId| - Defaults to the selected tab of the current window."
-  [tab-id update-properties #_callback]
-  (gen-call :function ::update (meta &form) tab-id update-properties))
+  ([tab-id update-properties #_callback] (gen-call :function ::update (meta &form) tab-id update-properties)))
 
 (defmacro move
   "Moves one or more tabs to a new position within its window, or to a new window. Note that tabs can only be moved to
    and from normal (window.type === 'normal') windows.
    
      |tabIds| - The tab or list of tabs to move."
-  [tab-ids move-properties #_callback]
-  (gen-call :function ::move (meta &form) tab-ids move-properties))
+  ([tab-ids move-properties #_callback] (gen-call :function ::move (meta &form) tab-ids move-properties)))
 
 (defmacro reload
   "Reload a tab.
    
      |tabId| - The ID of the tab to reload; defaults to the selected tab of the current window."
-  [tab-id reload-properties #_callback]
-  (gen-call :function ::reload (meta &form) tab-id reload-properties))
+  ([tab-id reload-properties #_callback] (gen-call :function ::reload (meta &form) tab-id reload-properties))
+  ([tab-id] `(reload ~tab-id :omit))
+  ([] `(reload :omit :omit)))
 
 (defmacro remove
   "Closes one or more tabs.
    
      |tabIds| - The tab or list of tabs to close."
-  [tab-ids #_callback]
-  (gen-call :function ::remove (meta &form) tab-ids))
+  ([tab-ids #_callback] (gen-call :function ::remove (meta &form) tab-ids)))
 
 (defmacro detect-language
   "Detects the primary language of the content in a tab.
    
      |tabId| - Defaults to the active tab of the current window."
-  [tab-id #_callback]
-  (gen-call :function ::detect-language (meta &form) tab-id))
+  ([tab-id #_callback] (gen-call :function ::detect-language (meta &form) tab-id))
+  ([] `(detect-language :omit)))
 
 (defmacro capture-visible-tab
   "Captures the visible area of the currently active tab in the specified window. You must have &lt;all_urls&gt;
@@ -131,8 +122,9 @@
    
      |windowId| - The target window. Defaults to the current window.
      |options| - Details about the format and quality of an image."
-  [window-id options #_callback]
-  (gen-call :function ::capture-visible-tab (meta &form) window-id options))
+  ([window-id options #_callback] (gen-call :function ::capture-visible-tab (meta &form) window-id options))
+  ([window-id] `(capture-visible-tab ~window-id :omit))
+  ([] `(capture-visible-tab :omit :omit)))
 
 (defmacro execute-script
   "Injects JavaScript code into a page. For details, see the programmatic injection section of the content scripts
@@ -142,8 +134,7 @@
      |details| - Details of the script or CSS to inject. Either the code or the file property must be set, but both
                  may not be set at the same time.
      |callback| - Called after all the JavaScript has been executed."
-  [tab-id details #_callback]
-  (gen-call :function ::execute-script (meta &form) tab-id details))
+  ([tab-id details #_callback] (gen-call :function ::execute-script (meta &form) tab-id details)))
 
 (defmacro insert-css
   "Injects CSS into a page. For details, see the programmatic injection section of the content scripts doc.
@@ -152,8 +143,7 @@
      |details| - Details of the script or CSS to inject. Either the code or the file property must be set, but both
                  may not be set at the same time.
      |callback| - Called when all the CSS has been inserted."
-  [tab-id details #_callback]
-  (gen-call :function ::insert-css (meta &form) tab-id details))
+  ([tab-id details #_callback] (gen-call :function ::insert-css (meta &form) tab-id details)))
 
 (defmacro set-zoom
   "Zooms a specified tab.
@@ -162,8 +152,7 @@
      |zoomFactor| - The new zoom factor. Use a value of 0 here to set the tab to its current default zoom factor.
                     Values greater than zero specify a (possibly non-default) zoom factor for the tab.
      |callback| - Called after the zoom factor has been changed."
-  [tab-id zoom-factor #_callback]
-  (gen-call :function ::set-zoom (meta &form) tab-id zoom-factor))
+  ([tab-id zoom-factor #_callback] (gen-call :function ::set-zoom (meta &form) tab-id zoom-factor)))
 
 (defmacro get-zoom
   "Gets the current zoom factor of a specified tab.
@@ -171,8 +160,8 @@
      |tabId| - The ID of the tab to get the current zoom factor from; defaults to the active tab of the current
                window.
      |callback| - Called with the tab's current zoom factor after it has been fetched."
-  [tab-id #_callback]
-  (gen-call :function ::get-zoom (meta &form) tab-id))
+  ([tab-id #_callback] (gen-call :function ::get-zoom (meta &form) tab-id))
+  ([] `(get-zoom :omit)))
 
 (defmacro set-zoom-settings
   "Sets the zoom settings for a specified tab, which define how zoom changes are handled. These settings are reset to
@@ -181,8 +170,7 @@
      |tabId| - The ID of the tab to change the zoom settings for; defaults to the active tab of the current window.
      |zoomSettings| - Defines how zoom changes are handled and at what scope.
      |callback| - Called after the zoom settings have been changed."
-  [tab-id zoom-settings #_callback]
-  (gen-call :function ::set-zoom-settings (meta &form) tab-id zoom-settings))
+  ([tab-id zoom-settings #_callback] (gen-call :function ::set-zoom-settings (meta &form) tab-id zoom-settings)))
 
 (defmacro get-zoom-settings
   "Gets the current zoom settings of a specified tab.
@@ -190,8 +178,8 @@
      |tabId| - The ID of the tab to get the current zoom settings from; defaults to the active tab of the current
                window.
      |callback| - Called with the tab's current zoom settings."
-  [tab-id #_callback]
-  (gen-call :function ::get-zoom-settings (meta &form) tab-id))
+  ([tab-id #_callback] (gen-call :function ::get-zoom-settings (meta &form) tab-id))
+  ([] `(get-zoom-settings :omit)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

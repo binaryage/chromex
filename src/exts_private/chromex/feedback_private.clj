@@ -17,24 +17,20 @@
 
 (defmacro get-user-email
   "Returns the email of the currently active or logged in user."
-  [#_callback]
-  (gen-call :function ::get-user-email (meta &form)))
+  ([#_callback] (gen-call :function ::get-user-email (meta &form))))
 
 (defmacro get-system-information
   "Returns the system information dictionary."
-  [#_callback]
-  (gen-call :function ::get-system-information (meta &form)))
+  ([#_callback] (gen-call :function ::get-system-information (meta &form))))
 
 (defmacro send-feedback
   "Sends a feedback report."
-  [feedback #_callback]
-  (gen-call :function ::send-feedback (meta &form) feedback))
+  ([feedback #_callback] (gen-call :function ::send-feedback (meta &form) feedback)))
 
 (defmacro get-strings
   "Gets localized translated strings for feedback. It returns the strings as a dictionary mapping from string
    identifier to the translated string to use in the feedback app UI."
-  [#_callback]
-  (gen-call :function ::get-strings (meta &form)))
+  ([#_callback] (gen-call :function ::get-strings (meta &form))))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

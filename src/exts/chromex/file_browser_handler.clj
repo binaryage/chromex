@@ -23,8 +23,7 @@
    
      |selectionParams| - Parameters that will be used while selecting the file.
      |callback| - Function called upon completion."
-  [selection-params #_callback]
-  (gen-call :function ::select-file (meta &form) selection-params))
+  ([selection-params #_callback] (gen-call :function ::select-file (meta &form) selection-params)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

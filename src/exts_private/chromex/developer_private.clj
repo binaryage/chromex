@@ -20,24 +20,22 @@
   "Runs auto update for extensions and apps immediately.
    
      |callback| - Called with the boolean result, true if autoUpdate is successful."
-  [#_callback]
-  (gen-call :function ::auto-update (meta &form)))
+  ([#_callback] (gen-call :function ::auto-update (meta &form))))
 
 (defmacro get-extensions-info
   "Returns information of all the extensions and apps installed.
    
      |options| - Options to restrict the items returned.
      |callback| - Called with extensions info."
-  [options #_callback]
-  (gen-call :function ::get-extensions-info (meta &form) options))
+  ([options #_callback] (gen-call :function ::get-extensions-info (meta &form) options))
+  ([] `(get-extensions-info :omit)))
 
 (defmacro get-extension-info
   "Returns information of a particular extension.
    
      |id| - The id of the extension.
      |callback| - Called with the result."
-  [id #_callback]
-  (gen-call :function ::get-extension-info (meta &form) id))
+  ([id #_callback] (gen-call :function ::get-extension-info (meta &form) id)))
 
 (defmacro get-items-info
   "Returns information of all the extensions and apps installed.
@@ -45,13 +43,11 @@
      |includeDisabled| - include disabled items.
      |includeTerminated| - include terminated items.
      |callback| - Called with items info."
-  [include-disabled include-terminated #_callback]
-  (gen-call :function ::get-items-info (meta &form) include-disabled include-terminated))
+  ([include-disabled include-terminated #_callback] (gen-call :function ::get-items-info (meta &form) include-disabled include-terminated)))
 
 (defmacro get-profile-configuration
   "Returns the current profile's configuration."
-  [#_callback]
-  (gen-call :function ::get-profile-configuration (meta &form)))
+  ([#_callback] (gen-call :function ::get-profile-configuration (meta &form))))
 
 (defmacro update-profile-configuration
   "Updates the active profile.
@@ -59,23 +55,21 @@
      |update| - The parameters for updating the profile's configuration.  Any     properties omitted from |update
 
                 will not be changed."
-  [update #_callback]
-  (gen-call :function ::update-profile-configuration (meta &form) update))
+  ([update #_callback] (gen-call :function ::update-profile-configuration (meta &form) update)))
 
 (defmacro show-permissions-dialog
   "Opens a permissions dialog.
    
      |extensionId| - The id of the extension to show permissions for."
-  [extension-id #_callback]
-  (gen-call :function ::show-permissions-dialog (meta &form) extension-id))
+  ([extension-id #_callback] (gen-call :function ::show-permissions-dialog (meta &form) extension-id)))
 
 (defmacro reload
   "Reloads a given extension.
    
      |extensionId| - The id of the extension to reload.
      |options| - Additional configuration parameters."
-  [extension-id options #_callback]
-  (gen-call :function ::reload (meta &form) extension-id options))
+  ([extension-id options #_callback] (gen-call :function ::reload (meta &form) extension-id options))
+  ([extension-id] `(reload ~extension-id :omit)))
 
 (defmacro update-extension-configuration
   "Modifies an extension's current configuration.
@@ -83,22 +77,20 @@
      |update| - The parameters for updating the extension's configuration.     Any properties omitted from |update
 
                 will not be changed."
-  [update #_callback]
-  (gen-call :function ::update-extension-configuration (meta &form) update))
+  ([update #_callback] (gen-call :function ::update-extension-configuration (meta &form) update)))
 
 (defmacro load-unpacked
   "Loads a user-selected unpacked item.
    
      |options| - Additional configuration parameters."
-  [options #_callback]
-  (gen-call :function ::load-unpacked (meta &form) options))
+  ([options #_callback] (gen-call :function ::load-unpacked (meta &form) options))
+  ([] `(load-unpacked :omit)))
 
 (defmacro load-directory
   "Loads an extension / app.
    
      |directory| - The directory to load the extension from."
-  [directory #_callback]
-  (gen-call :function ::load-directory (meta &form) directory))
+  ([directory #_callback] (gen-call :function ::load-directory (meta &form) directory)))
 
 (defmacro choose-path
   "Open Dialog to browse to an entry.
@@ -106,8 +98,7 @@
      |selectType| - Select a file or a folder.
      |fileType| - Required file type. For example, pem type is for private key and load type is for an unpacked item.
      |callback| - called with selected item's path."
-  [select-type file-type #_callback]
-  (gen-call :function ::choose-path (meta &form) select-type file-type))
+  ([select-type file-type #_callback] (gen-call :function ::choose-path (meta &form) select-type file-type)))
 
 (defmacro pack-directory
   "Pack an extension.
@@ -115,77 +106,65 @@
      |privateKeyPath| - The path of the private key, if one is given.
      |flags| - Special flags to apply to the loading process, if any.
      |callback| - called with the success result string."
-  [path private-key-path flags #_callback]
-  (gen-call :function ::pack-directory (meta &form) path private-key-path flags))
+  ([path private-key-path flags #_callback] (gen-call :function ::pack-directory (meta &form) path private-key-path flags))
+  ([path private-key-path] `(pack-directory ~path ~private-key-path :omit))
+  ([path] `(pack-directory ~path :omit :omit)))
 
 (defmacro is-profile-managed
   "Returns true if the profile is managed."
-  [#_callback]
-  (gen-call :function ::is-profile-managed (meta &form)))
+  ([#_callback] (gen-call :function ::is-profile-managed (meta &form))))
 
 (defmacro request-file-source
   "Reads and returns the contents of a file related to an extension which caused an error."
-  [properties #_callback]
-  (gen-call :function ::request-file-source (meta &form) properties))
+  ([properties #_callback] (gen-call :function ::request-file-source (meta &form) properties)))
 
 (defmacro open-dev-tools
   "Open the developer tools to focus on a particular error."
-  [properties #_callback]
-  (gen-call :function ::open-dev-tools (meta &form) properties))
+  ([properties #_callback] (gen-call :function ::open-dev-tools (meta &form) properties)))
 
 (defmacro delete-extension-errors
   "Delete reported extension erors.
    
      |properties| - The properties specifying the errors to remove."
-  [properties #_callback]
-  (gen-call :function ::delete-extension-errors (meta &form) properties))
+  ([properties #_callback] (gen-call :function ::delete-extension-errors (meta &form) properties)))
 
 (defmacro repair-extension
   "Repairs the extension specified.
    
      |extensionId| - The id of the extension to repair."
-  [extension-id #_callback]
-  (gen-call :function ::repair-extension (meta &form) extension-id))
+  ([extension-id #_callback] (gen-call :function ::repair-extension (meta &form) extension-id)))
 
 (defmacro show-options
   "Shows the options page for the extension specified.
    
      |extensionId| - The id of the extension to show the options page for."
-  [extension-id #_callback]
-  (gen-call :function ::show-options (meta &form) extension-id))
+  ([extension-id #_callback] (gen-call :function ::show-options (meta &form) extension-id)))
 
 (defmacro show-path
   "Shows the path of the extension specified.
    
      |extensionId| - The id of the extension to show the path for."
-  [extension-id #_callback]
-  (gen-call :function ::show-path (meta &form) extension-id))
+  ([extension-id #_callback] (gen-call :function ::show-path (meta &form) extension-id)))
 
 (defmacro set-shortcut-handling-suspended
   "(Un)suspends global shortcut handling.
    
      |isSuspended| - Whether or not shortcut handling should be suspended."
-  [is-suspended #_callback]
-  (gen-call :function ::set-shortcut-handling-suspended (meta &form) is-suspended))
+  ([is-suspended #_callback] (gen-call :function ::set-shortcut-handling-suspended (meta &form) is-suspended)))
 
 (defmacro update-extension-command
   "Updates an extension command.
    
      |update| - The parameters for updating the extension command."
-  [update #_callback]
-  (gen-call :function ::update-extension-command (meta &form) update))
+  ([update #_callback] (gen-call :function ::update-extension-command (meta &form) update)))
 
-(defmacro enable [id enabled #_callback]
-  (gen-call :function ::enable (meta &form) id enabled))
+(defmacro enable ([id enabled #_callback] (gen-call :function ::enable (meta &form) id enabled)))
 
-(defmacro allow-incognito [extension-id allow #_callback]
-  (gen-call :function ::allow-incognito (meta &form) extension-id allow))
+(defmacro allow-incognito ([extension-id allow #_callback] (gen-call :function ::allow-incognito (meta &form) extension-id allow)))
 
-(defmacro allow-file-access [extension-id allow #_callback]
-  (gen-call :function ::allow-file-access (meta &form) extension-id allow))
+(defmacro allow-file-access ([extension-id allow #_callback] (gen-call :function ::allow-file-access (meta &form) extension-id allow)))
 
-(defmacro inspect [options #_callback]
-  (gen-call :function ::inspect (meta &form) options))
+(defmacro inspect ([options #_callback] (gen-call :function ::inspect (meta &form) options)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

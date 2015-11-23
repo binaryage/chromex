@@ -17,16 +17,14 @@
    dictionary.
    
      |propertyNames| - Chrome OS Property names"
-  [property-names #_callback]
-  (gen-call :function ::get (meta &form) property-names))
+  ([property-names #_callback] (gen-call :function ::get (meta &form) property-names)))
 
 (defmacro set
   "Sets values for the given system property.
    
      |propertyName| - Chrome OS system property name
      |propertyValue| - Chrome OS system property value"
-  [property-name property-value]
-  (gen-call :function ::set (meta &form) property-name property-value))
+  ([property-name property-value] (gen-call :function ::set (meta &form) property-name property-value)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

@@ -27,32 +27,27 @@
   "Retrieves the specified BookmarkTreeNode(s).
    
      |idOrIdList| - A single string-valued id, or an array of string-valued ids"
-  [id-or-id-list #_callback]
-  (gen-call :function ::get (meta &form) id-or-id-list))
+  ([id-or-id-list #_callback] (gen-call :function ::get (meta &form) id-or-id-list)))
 
 (defmacro get-children
   "Retrieves the children of the specified BookmarkTreeNode id."
-  [id #_callback]
-  (gen-call :function ::get-children (meta &form) id))
+  ([id #_callback] (gen-call :function ::get-children (meta &form) id)))
 
 (defmacro get-recent
   "Retrieves the recently added bookmarks.
    
      |numberOfItems| - The maximum number of items to return."
-  [number-of-items #_callback]
-  (gen-call :function ::get-recent (meta &form) number-of-items))
+  ([number-of-items #_callback] (gen-call :function ::get-recent (meta &form) number-of-items)))
 
 (defmacro get-tree
   "Retrieves the entire Bookmarks hierarchy."
-  [#_callback]
-  (gen-call :function ::get-tree (meta &form)))
+  ([#_callback] (gen-call :function ::get-tree (meta &form))))
 
 (defmacro get-sub-tree
   "Retrieves part of the Bookmarks hierarchy, starting at the specified node.
    
      |id| - The ID of the root of the subtree to retrieve."
-  [id #_callback]
-  (gen-call :function ::get-sub-tree (meta &form) id))
+  ([id #_callback] (gen-call :function ::get-sub-tree (meta &form) id)))
 
 (defmacro search
   "Searches for BookmarkTreeNodes matching the given query. Queries specified with an object produce BookmarkTreeNodes
@@ -61,34 +56,28 @@
      |query| - Either a string of words and quoted phrases that are matched against bookmark URLs and titles, or an
                object. If an object, the properties query, url, and title may be specified and bookmarks matching
                all specified properties will be produced."
-  [query #_callback]
-  (gen-call :function ::search (meta &form) query))
+  ([query #_callback] (gen-call :function ::search (meta &form) query)))
 
 (defmacro create
   "Creates a bookmark or folder under the specified parentId.  If url is NULL or missing, it will be a folder."
-  [bookmark #_callback]
-  (gen-call :function ::create (meta &form) bookmark))
+  ([bookmark #_callback] (gen-call :function ::create (meta &form) bookmark)))
 
 (defmacro move
   "Moves the specified BookmarkTreeNode to the provided location."
-  [id destination #_callback]
-  (gen-call :function ::move (meta &form) id destination))
+  ([id destination #_callback] (gen-call :function ::move (meta &form) id destination)))
 
 (defmacro update
   "Updates the properties of a bookmark or folder. Specify only the properties that you want to change; unspecified
    properties will be left unchanged.  Note: Currently, only 'title' and 'url' are supported."
-  [id changes #_callback]
-  (gen-call :function ::update (meta &form) id changes))
+  ([id changes #_callback] (gen-call :function ::update (meta &form) id changes)))
 
 (defmacro remove
   "Removes a bookmark or an empty bookmark folder."
-  [id #_callback]
-  (gen-call :function ::remove (meta &form) id))
+  ([id #_callback] (gen-call :function ::remove (meta &form) id)))
 
 (defmacro remove-tree
   "Recursively removes a bookmark folder."
-  [id #_callback]
-  (gen-call :function ::remove-tree (meta &form) id))
+  ([id #_callback] (gen-call :function ::remove-tree (meta &form) id)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

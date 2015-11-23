@@ -19,8 +19,7 @@
    
      |hostname| - The hostname to resolve.
      |callback| - Called when the resolution operation completes."
-  [hostname #_callback]
-  (gen-call :function ::resolve (meta &form) hostname))
+  ([hostname #_callback] (gen-call :function ::resolve (meta &form) hostname)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

@@ -20,79 +20,68 @@
    
      |callback| - Called when the operation completes with a boolean indicating if the text was accepted or not. On
                   failure, chrome.runtime.lastError is set."
-  [parameters #_callback]
-  (gen-call :function ::set-composition (meta &form) parameters))
+  ([parameters #_callback] (gen-call :function ::set-composition (meta &form) parameters)))
 
 (defmacro clear-composition
   "Clear the current composition. If this extension does not own the active IME, this fails.
    
      |callback| - Called when the operation completes with a boolean indicating if the text was accepted or not. On
                   failure, chrome.runtime.lastError is set."
-  [parameters #_callback]
-  (gen-call :function ::clear-composition (meta &form) parameters))
+  ([parameters #_callback] (gen-call :function ::clear-composition (meta &form) parameters)))
 
 (defmacro commit-text
   "Commits the provided text to the current input.
    
      |callback| - Called when the operation completes with a boolean indicating if the text was accepted or not. On
                   failure, chrome.runtime.lastError is set."
-  [parameters #_callback]
-  (gen-call :function ::commit-text (meta &form) parameters))
+  ([parameters #_callback] (gen-call :function ::commit-text (meta &form) parameters)))
 
 (defmacro send-key-events
   "Sends the key events.  This function is expected to be used by virtual keyboards.  When key(s) on a virtual
    keyboard is pressed by a user, this function is used to propagate that event to the system.
    
      |callback| - Called when the operation completes."
-  [parameters #_callback]
-  (gen-call :function ::send-key-events (meta &form) parameters))
+  ([parameters #_callback] (gen-call :function ::send-key-events (meta &form) parameters)))
 
 (defmacro hide-input-view
   "Hides the input view window, which is popped up automatically by system. If the input view window is already
    hidden, this function will do nothing."
-  []
-  (gen-call :function ::hide-input-view (meta &form)))
+  ([] (gen-call :function ::hide-input-view (meta &form))))
 
 (defmacro set-candidate-window-properties
   "Sets the properties of the candidate window. This fails if the extension doesn't own the active IME
    
      |callback| - Called when the operation completes."
-  [parameters #_callback]
-  (gen-call :function ::set-candidate-window-properties (meta &form) parameters))
+  ([parameters #_callback] (gen-call :function ::set-candidate-window-properties (meta &form) parameters)))
 
 (defmacro set-candidates
   "Sets the current candidate list. This fails if this extension doesn't own the active IME
    
      |callback| - Called when the operation completes."
-  [parameters #_callback]
-  (gen-call :function ::set-candidates (meta &form) parameters))
+  ([parameters #_callback] (gen-call :function ::set-candidates (meta &form) parameters)))
 
 (defmacro set-cursor-position
   "Set the position of the cursor in the candidate window. This is a no-op if this extension does not own the active
    IME.
    
      |callback| - Called when the operation completes"
-  [parameters #_callback]
-  (gen-call :function ::set-cursor-position (meta &form) parameters))
+  ([parameters #_callback] (gen-call :function ::set-cursor-position (meta &form) parameters)))
 
 (defmacro set-menu-items
   "Adds the provided menu items to the language menu when this IME is active."
-  [parameters #_callback]
-  (gen-call :function ::set-menu-items (meta &form) parameters))
+  ([parameters #_callback] (gen-call :function ::set-menu-items (meta &form) parameters)))
 
 (defmacro update-menu-items
   "Updates the state of the MenuItems specified
    
      |callback| - Called when the operation completes"
-  [parameters #_callback]
-  (gen-call :function ::update-menu-items (meta &form) parameters))
+  ([parameters #_callback] (gen-call :function ::update-menu-items (meta &form) parameters)))
 
 (defmacro delete-surrounding-text
   "Deletes the text around the caret.
    
      |callback| - Called when the operation completes."
-  [parameters #_callback]
-  (gen-call :function ::delete-surrounding-text (meta &form) parameters))
+  ([parameters #_callback] (gen-call :function ::delete-surrounding-text (meta &form) parameters)))
 
 (defmacro key-event-handled
   "Indicates that the key event received by onKeyEvent is handled.  This should only be called if the onKeyEvent
@@ -100,8 +89,7 @@
    
      |requestId| - Request id of the event that was handled.  This should come from keyEvent.requestId
      |response| - True if the keystroke was handled, false if not"
-  [request-id response]
-  (gen-call :function ::key-event-handled (meta &form) request-id response))
+  ([request-id response] (gen-call :function ::key-event-handled (meta &form) request-id response)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

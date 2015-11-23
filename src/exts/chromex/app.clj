@@ -14,23 +14,19 @@
 
 (defmacro get-is-installed
   "TODO"
-  []
-  (gen-call :function ::get-is-installed (meta &form)))
+  ([] (gen-call :function ::get-is-installed (meta &form))))
 
 (defmacro install-state
   "TODO"
-  [#_callback]
-  (gen-call :function ::install-state (meta &form)))
+  ([#_callback] (gen-call :function ::install-state (meta &form))))
 
 (defmacro running-state
   "TODO"
-  []
-  (gen-call :function ::running-state (meta &form)))
+  ([] (gen-call :function ::running-state (meta &form))))
 
 (defmacro get-details
   "TODO"
-  []
-  (gen-call :function ::get-details (meta &form)))
+  ([] (gen-call :function ::get-details (meta &form))))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

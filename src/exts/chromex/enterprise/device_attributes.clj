@@ -20,8 +20,7 @@
    cloud record of the device for querying in the cloud directory API.
    
      |callback| - Called with the device identifier of the directory API when received."
-  [#_callback]
-  (gen-call :function ::get-directory-device-id (meta &form)))
+  ([#_callback] (gen-call :function ::get-directory-device-id (meta &form))))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

@@ -20,8 +20,7 @@
    creation time will be returned.
    
      |details| - Details to identify the cookie being retrieved."
-  [details #_callback]
-  (gen-call :function ::get (meta &form) details))
+  ([details #_callback] (gen-call :function ::get (meta &form) details)))
 
 (defmacro get-all
   "Retrieves all cookies from a single cookie store that match the given information.  The cookies returned will be
@@ -29,27 +28,23 @@
    earliest creation time will be first.
    
      |details| - Information to filter the cookies being retrieved."
-  [details #_callback]
-  (gen-call :function ::get-all (meta &form) details))
+  ([details #_callback] (gen-call :function ::get-all (meta &form) details)))
 
 (defmacro set
   "Sets a cookie with the given cookie data; may overwrite equivalent cookies if they exist.
    
      |details| - Details about the cookie being set."
-  [details #_callback]
-  (gen-call :function ::set (meta &form) details))
+  ([details #_callback] (gen-call :function ::set (meta &form) details)))
 
 (defmacro remove
   "Deletes a cookie by name.
    
      |details| - Information to identify the cookie to remove."
-  [details #_callback]
-  (gen-call :function ::remove (meta &form) details))
+  ([details #_callback] (gen-call :function ::remove (meta &form) details)))
 
 (defmacro get-all-cookie-stores
   "Lists all existing cookie stores."
-  [#_callback]
-  (gen-call :function ::get-all-cookie-stores (meta &form)))
+  ([#_callback] (gen-call :function ::get-all-cookie-stores (meta &form))))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

@@ -18,15 +18,13 @@
    
      |severity| - The severity of the message.
      |text| - The text of the message."
-  [severity text]
-  (gen-call :function ::add-message (meta &form) severity text))
+  ([severity text] (gen-call :function ::add-message (meta &form) severity text)))
 
 (defmacro get-messages
   "Retrieves console messages.
    
      |callback| - A function that receives console messages when the request completes."
-  [#_callback]
-  (gen-call :function ::get-messages (meta &form)))
+  ([#_callback] (gen-call :function ::get-messages (meta &form))))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

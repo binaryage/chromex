@@ -17,8 +17,7 @@
    
      |displayName| - A display name for the category.
      |resultCount| - The expected number of audit results in the category."
-  [display-name result-count]
-  (gen-call :function ::add-category (meta &form) display-name result-count))
+  ([display-name result-count] (gen-call :function ::add-category (meta &form) display-name result-count)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

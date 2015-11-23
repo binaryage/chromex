@@ -17,34 +17,28 @@
 
 (defmacro search
   "Searches the history for the last visit time of each page matching the query."
-  [query #_callback]
-  (gen-call :function ::search (meta &form) query))
+  ([query #_callback] (gen-call :function ::search (meta &form) query)))
 
 (defmacro get-visits
   "Retrieves information about visits to a URL."
-  [details #_callback]
-  (gen-call :function ::get-visits (meta &form) details))
+  ([details #_callback] (gen-call :function ::get-visits (meta &form) details)))
 
 (defmacro add-url
   "Adds a URL to the history at the current time with a transition type of 'link'."
-  [details #_callback]
-  (gen-call :function ::add-url (meta &form) details))
+  ([details #_callback] (gen-call :function ::add-url (meta &form) details)))
 
 (defmacro delete-url
   "Removes all occurrences of the given URL from the history."
-  [details #_callback]
-  (gen-call :function ::delete-url (meta &form) details))
+  ([details #_callback] (gen-call :function ::delete-url (meta &form) details)))
 
 (defmacro delete-range
   "Removes all items within the specified date range from the history.  Pages will not be removed from the history
    unless all visits fall within the range."
-  [range #_callback]
-  (gen-call :function ::delete-range (meta &form) range))
+  ([range #_callback] (gen-call :function ::delete-range (meta &form) range)))
 
 (defmacro delete-all
   "Deletes all items from the history."
-  [#_callback]
-  (gen-call :function ::delete-all (meta &form)))
+  ([#_callback] (gen-call :function ::delete-all (meta &form))))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

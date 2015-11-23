@@ -23,8 +23,7 @@
    for which the extension has permission to access the certificate and its private key. If interactive is true, the
    user is presented a dialog where he can select from matching certificates and grant the extension access to the
    certificate. The selected/filtered client certificates will be passed to callback."
-  [details #_callback]
-  (gen-call :function ::select-client-certificates (meta &form) details))
+  ([details #_callback] (gen-call :function ::select-client-certificates (meta &form) details)))
 
 (defmacro get-key-pair
   "Passes the key pair of certificate for usage with 'platformKeys.subtleCrypto' to callback.
@@ -39,14 +38,12 @@
                     'SHA-384', and 'SHA-512'.
      |callback| - The public and private CryptoKey of a certificate which can only be used with
                   'platformKeys.subtleCrypto'."
-  [certificate parameters #_callback]
-  (gen-call :function ::get-key-pair (meta &form) certificate parameters))
+  ([certificate parameters #_callback] (gen-call :function ::get-key-pair (meta &form) certificate parameters)))
 
 (defmacro subtle-crypto
   "An implementation of WebCrypto's  SubtleCrypto that allows crypto operations on keys of client certificates that
    are available to this extension."
-  []
-  (gen-call :function ::subtle-crypto (meta &form)))
+  ([] (gen-call :function ::subtle-crypto (meta &form))))
 
 (defmacro verify-tls-server-certificate
   "Checks whether details.serverCertificateChain can be trusted for details.hostname according to the trust settings
@@ -54,8 +51,7 @@
    future. The API implementation verifies certificate expiration, validates the certification path and checks trust
    by a known CA. The implementation is supposed to respect the EKU serverAuth and to support subject alternative
    names."
-  [details #_callback]
-  (gen-call :function ::verify-tls-server-certificate (meta &form) details))
+  ([details #_callback] (gen-call :function ::verify-tls-server-certificate (meta &form) details)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

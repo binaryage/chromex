@@ -25,15 +25,13 @@
    
      |options| - What to download and how.
      |callback| - Called with the id of the new 'DownloadItem'."
-  [options #_callback]
-  (gen-call :function ::download (meta &form) options))
+  ([options #_callback] (gen-call :function ::download (meta &form) options)))
 
 (defmacro search
   "Find 'DownloadItem'. Set query to the empty object to get all 'DownloadItem'. To get a specific 'DownloadItem', set
    only the id field. To page through a large number of items, set orderBy: ['-startTime'], set limit to the number of
    items per page, and set startedAfter to the startTime of the last item from the last page."
-  [query #_callback]
-  (gen-call :function ::search (meta &form) query))
+  ([query #_callback] (gen-call :function ::search (meta &form) query)))
 
 (defmacro pause
   "Pause the download. If the request was successful the download is in a paused state. Otherwise 'runtime.lastError'
@@ -41,8 +39,7 @@
    
      |downloadId| - The id of the download to pause.
      |callback| - Called when the pause request is completed."
-  [download-id #_callback]
-  (gen-call :function ::pause (meta &form) download-id))
+  ([download-id #_callback] (gen-call :function ::pause (meta &form) download-id)))
 
 (defmacro resume
   "Resume a paused download. If the request was successful the download is in progress and unpaused. Otherwise
@@ -50,8 +47,7 @@
    
      |downloadId| - The id of the download to resume.
      |callback| - Called when the resume request is completed."
-  [download-id #_callback]
-  (gen-call :function ::resume (meta &form) download-id))
+  ([download-id #_callback] (gen-call :function ::resume (meta &form) download-id)))
 
 (defmacro cancel
   "Cancel a download. When callback is run, the download is cancelled, completed, interrupted or doesn't exist
@@ -59,8 +55,7 @@
    
      |downloadId| - The id of the download to cancel.
      |callback| - Called when the cancel request is completed."
-  [download-id #_callback]
-  (gen-call :function ::cancel (meta &form) download-id))
+  ([download-id #_callback] (gen-call :function ::cancel (meta &form) download-id)))
 
 (defmacro get-file-icon
   "Retrieve an icon for the specified download. For new downloads, file icons are available after the 'onCreated'
@@ -72,8 +67,8 @@
    
      |downloadId| - The identifier for the download.
      |callback| - A URL to an image that represents the download."
-  [download-id options #_callback]
-  (gen-call :function ::get-file-icon (meta &form) download-id options))
+  ([download-id options #_callback] (gen-call :function ::get-file-icon (meta &form) download-id options))
+  ([download-id] `(get-file-icon ~download-id :omit)))
 
 (defmacro open
   "Open the downloaded file now if the 'DownloadItem' is complete; otherwise returns an error through
@@ -81,32 +76,27 @@
    'onChanged' event will fire when the item is opened for the first time.
    
      |downloadId| - The identifier for the downloaded file."
-  [download-id]
-  (gen-call :function ::open (meta &form) download-id))
+  ([download-id] (gen-call :function ::open (meta &form) download-id)))
 
 (defmacro show
   "Show the downloaded file in its folder in a file manager.
    
      |downloadId| - The identifier for the downloaded file."
-  [download-id]
-  (gen-call :function ::show (meta &form) download-id))
+  ([download-id] (gen-call :function ::show (meta &form) download-id)))
 
 (defmacro show-default-folder
   "Show the default Downloads folder in a file manager."
-  []
-  (gen-call :function ::show-default-folder (meta &form)))
+  ([] (gen-call :function ::show-default-folder (meta &form))))
 
 (defmacro erase
   "Erase matching 'DownloadItem' from history without deleting the downloaded file. An 'onErased' event will fire for
    each 'DownloadItem' that matches query, then callback will be called."
-  [query #_callback]
-  (gen-call :function ::erase (meta &form) query))
+  ([query #_callback] (gen-call :function ::erase (meta &form) query)))
 
 (defmacro remove-file
   "Remove the downloaded file if it exists and the 'DownloadItem' is complete; otherwise return an error through
    'runtime.lastError'."
-  [download-id #_callback]
-  (gen-call :function ::remove-file (meta &form) download-id))
+  ([download-id #_callback] (gen-call :function ::remove-file (meta &form) download-id)))
 
 (defmacro accept-danger
   "Prompt the user to accept a dangerous download. Can only be called from a visible context (tab, window, or
@@ -117,21 +107,18 @@
    
      |downloadId| - The identifier for the 'DownloadItem'.
      |callback| - Called when the danger prompt dialog closes."
-  [download-id #_callback]
-  (gen-call :function ::accept-danger (meta &form) download-id))
+  ([download-id #_callback] (gen-call :function ::accept-danger (meta &form) download-id)))
 
 (defmacro drag
   "Initiate dragging the downloaded file to another application. Call in a javascript ondragstart handler."
-  [download-id]
-  (gen-call :function ::drag (meta &form) download-id))
+  ([download-id] (gen-call :function ::drag (meta &form) download-id)))
 
 (defmacro set-shelf-enabled
   "Enable or disable the gray shelf at the bottom of every window associated with the current browser profile. The
    shelf will be disabled as long as at least one extension has disabled it. Enabling the shelf while at least one
    other extension has disabled it will return an error through 'runtime.lastError'. Requires the 'downloads.shelf'
    permission in addition to the 'downloads' permission."
-  [enabled]
-  (gen-call :function ::set-shelf-enabled (meta &form) enabled))
+  ([enabled] (gen-call :function ::set-shelf-enabled (meta &form) enabled)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

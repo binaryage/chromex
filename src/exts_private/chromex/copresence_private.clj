@@ -17,18 +17,15 @@
 
 (defmacro send-initialized
   "Send a boolean indicating whether our initialization was successful."
-  [success]
-  (gen-call :function ::send-initialized (meta &form) success))
+  ([success] (gen-call :function ::send-initialized (meta &form) success)))
 
 (defmacro send-found
   "Sends an array of found tokens to Chrome."
-  [client-id tokens]
-  (gen-call :function ::send-found (meta &form) client-id tokens))
+  ([client-id tokens] (gen-call :function ::send-found (meta &form) client-id tokens)))
 
 (defmacro send-samples
   "Send an array buffer of samples encoded for the specified token."
-  [client-id token samples]
-  (gen-call :function ::send-samples (meta &form) client-id token samples))
+  ([client-id token samples] (gen-call :function ::send-samples (meta &form) client-id token samples)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

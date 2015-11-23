@@ -16,22 +16,19 @@
   "Gets configurations for input methods.
    
      |callback| - Callback which is called with the config object."
-  [#_callback]
-  (gen-call :function ::get-input-method-config (meta &form)))
+  ([#_callback] (gen-call :function ::get-input-method-config (meta &form))))
 
 (defmacro get-input-methods
   "Gets all whitelisted input methods.
    
      |callback| - Callback which is called with the input method objects."
-  [#_callback]
-  (gen-call :function ::get-input-methods (meta &form)))
+  ([#_callback] (gen-call :function ::get-input-methods (meta &form))))
 
 (defmacro get-current-input-method
   "Gets the current input method.
    
      |callback| - Callback which is called with the current input method."
-  [#_callback]
-  (gen-call :function ::get-current-input-method (meta &form)))
+  ([#_callback] (gen-call :function ::get-current-input-method (meta &form))))
 
 (defmacro set-current-input-method
   "Sets the current input method.
@@ -39,30 +36,26 @@
      |inputMethodId| - The input method ID to be set as current input method.
      |callback| - Callback which is called once the current input method is set. If unsuccessful 'runtime.lastError'
                   is set."
-  [input-method-id #_callback]
-  (gen-call :function ::set-current-input-method (meta &form) input-method-id))
+  ([input-method-id #_callback] (gen-call :function ::set-current-input-method (meta &form) input-method-id)))
 
 (defmacro fetch-all-dictionary-words
   "Fetches a list of all the words currently in the dictionary.
    
      |callback| - Callback which is called once the list of dictionary words are ready."
-  [#_callback]
-  (gen-call :function ::fetch-all-dictionary-words (meta &form)))
+  ([#_callback] (gen-call :function ::fetch-all-dictionary-words (meta &form))))
 
 (defmacro add-word-to-dictionary
   "Adds a single word to be stored in the dictionary.
    
      |word| - A new word to add to the dictionary.
      |callback| - Callback which is called once the word is added. If unsuccessful 'runtime.lastError' is set."
-  [word #_callback]
-  (gen-call :function ::add-word-to-dictionary (meta &form) word))
+  ([word #_callback] (gen-call :function ::add-word-to-dictionary (meta &form) word)))
 
 (defmacro get-encrypt-sync-enabled
   "Gets whether the encrypt sync is enabled.
    
      |callback| - Callback which is called to provide the result."
-  [#_callback]
-  (gen-call :function ::get-encrypt-sync-enabled (meta &form)))
+  ([#_callback] (gen-call :function ::get-encrypt-sync-enabled (meta &form))))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

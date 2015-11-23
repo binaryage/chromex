@@ -17,15 +17,13 @@
    accessibility for web contents.
    
      |enabled| - True if native accessibility support should be enabled."
-  [enabled]
-  (gen-call :function ::set-native-accessibility-enabled (meta &form) enabled))
+  ([enabled] (gen-call :function ::set-native-accessibility-enabled (meta &form) enabled)))
 
 (defmacro set-focus-ring
   "Set the bounds of the accessibility focus ring.
    
      |rects| - Array of rectangles to draw the accessibility focus ring around."
-  [rects]
-  (gen-call :function ::set-focus-ring (meta &form) rects))
+  ([rects] (gen-call :function ::set-focus-ring (meta &form) rects)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

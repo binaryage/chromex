@@ -18,8 +18,7 @@
    
      |selectionParams| - Parameters that will be used to create new file.
      |callback| - Function called upon completion."
-  [selection-params #_callback]
-  (gen-call :function ::select-file (meta &form) selection-params))
+  ([selection-params #_callback] (gen-call :function ::select-file (meta &form) selection-params)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

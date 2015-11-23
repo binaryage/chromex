@@ -22,32 +22,27 @@
    
      |callback| - Returns the accessibility tree id of the web contents who's accessibility was enabled using
                   enableTab()."
-  [args #_callback]
-  (gen-call :function ::enable-tab (meta &form) args))
+  ([args #_callback] (gen-call :function ::enable-tab (meta &form) args)))
 
 (defmacro enable-frame
   "Enable automation of the frame with the given tree id."
-  [tree-id]
-  (gen-call :function ::enable-frame (meta &form) tree-id))
+  ([tree-id] (gen-call :function ::enable-frame (meta &form) tree-id)))
 
 (defmacro enable-desktop
   "Enables desktop automation.
    
      |callback| - Callback called when enableDesktop() returns."
-  [routing-id #_callback]
-  (gen-call :function ::enable-desktop (meta &form) routing-id))
+  ([routing-id #_callback] (gen-call :function ::enable-desktop (meta &form) routing-id)))
 
 (defmacro perform-action
   "Performs an action on an automation node."
-  [args opt-args]
-  (gen-call :function ::perform-action (meta &form) args opt-args))
+  ([args opt-args] (gen-call :function ::perform-action (meta &form) args opt-args)))
 
 (defmacro query-selector
   "Performs a query selector query.
    
      |callback| - Callback called when querySelector() returns."
-  [args #_callback]
-  (gen-call :function ::query-selector (meta &form) args))
+  ([args #_callback] (gen-call :function ::query-selector (meta &form) args)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

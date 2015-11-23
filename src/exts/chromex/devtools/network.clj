@@ -19,8 +19,7 @@
   "Returns HAR log that contains all known network requests.
    
      |callback| - A function that receives the HAR log when the request completes."
-  [#_callback]
-  (gen-call :function ::get-har (meta &form)))
+  ([#_callback] (gen-call :function ::get-har (meta &form))))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

@@ -15,50 +15,36 @@
 
 ; -- functions ------------------------------------------------------------------------------------------------------
 
-(defmacro focus []
-  (gen-call :function ::focus (meta &form)))
+(defmacro focus ([] (gen-call :function ::focus (meta &form))))
 
-(defmacro fullscreen []
-  (gen-call :function ::fullscreen (meta &form)))
+(defmacro fullscreen ([] (gen-call :function ::fullscreen (meta &form))))
 
-(defmacro minimize []
-  (gen-call :function ::minimize (meta &form)))
+(defmacro minimize ([] (gen-call :function ::minimize (meta &form))))
 
-(defmacro maximize []
-  (gen-call :function ::maximize (meta &form)))
+(defmacro maximize ([] (gen-call :function ::maximize (meta &form))))
 
-(defmacro restore []
-  (gen-call :function ::restore (meta &form)))
+(defmacro restore ([] (gen-call :function ::restore (meta &form))))
 
-(defmacro draw-attention []
-  (gen-call :function ::draw-attention (meta &form)))
+(defmacro draw-attention ([] (gen-call :function ::draw-attention (meta &form))))
 
-(defmacro clear-attention []
-  (gen-call :function ::clear-attention (meta &form)))
+(defmacro clear-attention ([] (gen-call :function ::clear-attention (meta &form))))
 
-(defmacro show [focused]
-  (gen-call :function ::show (meta &form) focused))
+(defmacro show ([focused] (gen-call :function ::show (meta &form) focused))
+  ([] `(show :omit)))
 
-(defmacro hide []
-  (gen-call :function ::hide (meta &form)))
+(defmacro hide ([] (gen-call :function ::hide (meta &form))))
 
-(defmacro set-bounds [bounds-type bounds]
-  (gen-call :function ::set-bounds (meta &form) bounds-type bounds))
+(defmacro set-bounds ([bounds-type bounds] (gen-call :function ::set-bounds (meta &form) bounds-type bounds)))
 
-(defmacro set-size-constraints [bounds-type constraints]
-  (gen-call :function ::set-size-constraints (meta &form) bounds-type constraints))
+(defmacro set-size-constraints ([bounds-type constraints] (gen-call :function ::set-size-constraints (meta &form) bounds-type constraints)))
 
-(defmacro set-icon [icon-url]
-  (gen-call :function ::set-icon (meta &form) icon-url))
+(defmacro set-icon ([icon-url] (gen-call :function ::set-icon (meta &form) icon-url)))
 
-(defmacro set-shape [region]
-  (gen-call :function ::set-shape (meta &form) region))
+(defmacro set-shape ([region] (gen-call :function ::set-shape (meta &form) region)))
 
-(defmacro set-always-on-top [always-on-top]
-  (gen-call :function ::set-always-on-top (meta &form) always-on-top))
+(defmacro set-always-on-top ([always-on-top] (gen-call :function ::set-always-on-top (meta &form) always-on-top)))
 
-(defmacro set-visible-on-all-workspaces [always-visible]
-  (gen-call :function ::set-visible-on-all-workspaces (meta &form) always-visible))
+(defmacro set-visible-on-all-workspaces ([always-visible] (gen-call :function ::set-visible-on-all-workspaces (meta &form) always-visible)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

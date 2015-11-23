@@ -18,8 +18,7 @@
   "Internal version of entrprise.platformKeys.getTokens. Returns a list of token IDs instead of token objects.
    
      |callback| - Invoked by getTokens. |tokenIds| The list of IDs of the avialable Tokens."
-  [#_callback]
-  (gen-call :function ::get-tokens (meta &form)))
+  ([#_callback] (gen-call :function ::get-tokens (meta &form))))
 
 (defmacro generate-key
   "Internal version of Token.generateKey, currently supporting only RSASSA-PKCS1-v1_5. |tokenId| The id of a Token
@@ -28,8 +27,7 @@
    
      |callback| - Invoked by generateKey. |publicKey| The Subject Public Key Info (see X.509) of the generated key
                   in DER encoding."
-  [token-id modulus-length #_callback]
-  (gen-call :function ::generate-key (meta &form) token-id modulus-length))
+  ([token-id modulus-length #_callback] (gen-call :function ::generate-key (meta &form) token-id modulus-length)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

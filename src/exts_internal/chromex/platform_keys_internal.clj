@@ -17,8 +17,7 @@
 
 (defmacro select-client-certificates
   "See documentation in platformKeys."
-  [details #_callback]
-  (gen-call :function ::select-client-certificates (meta &form) details))
+  ([details #_callback] (gen-call :function ::select-client-certificates (meta &form) details)))
 
 (defmacro sign
   "Internal version of platformKeys.subtleCrypto.sign and enterprise.platformKeys.Token.subtleCrypto.sign. |tokenId
@@ -32,8 +31,7 @@
    Instead of ArrayBuffer should be (ArrayBuffer or ArrayBufferView), or at least (ArrayBuffer or Uint8Array).
    
      |callback| - Invoked by sign. |signature| The signature, a octet string."
-  [token-id public-key hash-algorithm-name data #_callback]
-  (gen-call :function ::sign (meta &form) token-id public-key hash-algorithm-name data))
+  ([token-id public-key hash-algorithm-name data #_callback] (gen-call :function ::sign (meta &form) token-id public-key hash-algorithm-name data)))
 
 (defmacro get-public-key
   "Checks whether certificate certifies a key that allows usage of the WebCrypto algorithm algorithmName. If so, calls
@@ -43,8 +41,7 @@
      |callback| - Called back by getPublicKey. |publicKey| The Subject Public Key Info (see X.509) of the requested
                   certificate. |algorithm| A partial WebCrypto KeyAlgorithm containing all information   that is
                   available from the Subject Public Key Info. It does not contain   signature/hash parameters."
-  [certificate algorithm-name #_callback]
-  (gen-call :function ::get-public-key (meta &form) certificate algorithm-name))
+  ([certificate algorithm-name #_callback] (gen-call :function ::get-public-key (meta &form) certificate algorithm-name)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

@@ -22,8 +22,7 @@
 
 (defmacro set-enabled
   "Sets the current enabled state of hotword search. True: enable hotword search. False: disable hotword search."
-  [state #_callback]
-  (gen-call :function ::set-enabled (meta &form) state))
+  ([state #_callback] (gen-call :function ::set-enabled (meta &form) state)))
 
 (defmacro get-status
   "Retrieves the current state of hotword search. The result is put into a StatusDetails object.
@@ -31,75 +30,63 @@
      |getOptionalFields| - If true, fills in fields tagged as optional in StatusDetails with valid values. These
                            fields are not valid by default since their current implementations may cause blocking
                            operations."
-  [get-optional-fields #_callback]
-  (gen-call :function ::get-status (meta &form) get-optional-fields))
+  ([get-optional-fields #_callback] (gen-call :function ::get-status (meta &form) get-optional-fields))
+  ([] `(get-status :omit)))
 
 (defmacro get-localized-strings
   "Retrieves a dictionary mapping names to localized resource strings."
-  [#_callback]
-  (gen-call :function ::get-localized-strings (meta &form)))
+  ([#_callback] (gen-call :function ::get-localized-strings (meta &form))))
 
 (defmacro set-audio-logging-enabled
   "Sets the current enabled state of audio logging in the extension. True: logging enabled. False: no logging."
-  [state #_callback]
-  (gen-call :function ::set-audio-logging-enabled (meta &form) state))
+  ([state #_callback] (gen-call :function ::set-audio-logging-enabled (meta &form) state)))
 
 (defmacro set-hotword-always-on-search-enabled
   "Sets the current enabled state of hotword-always-on-search pref. True: enable hotword always on search. False:
    disable hotword always on search."
-  [state #_callback]
-  (gen-call :function ::set-hotword-always-on-search-enabled (meta &form) state))
+  ([state #_callback] (gen-call :function ::set-hotword-always-on-search-enabled (meta &form) state)))
 
 (defmacro set-hotword-session-state
   "Sets the current state of the browser-requested hotword session."
-  [started #_callback]
-  (gen-call :function ::set-hotword-session-state (meta &form) started))
+  ([started #_callback] (gen-call :function ::set-hotword-session-state (meta &form) started)))
 
 (defmacro notify-hotword-recognition
   "Notifies that a hotword has been recognized in the browser-requested hotword session."
-  [type log #_callback]
-  (gen-call :function ::notify-hotword-recognition (meta &form) type log))
+  ([type log #_callback] (gen-call :function ::notify-hotword-recognition (meta &form) type log))
+  ([type] `(notify-hotword-recognition ~type :omit)))
 
 (defmacro get-launch-state
   "Retrieves the state that the Hotword Audio Verification app was launched in. The result is put into a LaunchState
    object."
-  [#_callback]
-  (gen-call :function ::get-launch-state (meta &form)))
+  ([#_callback] (gen-call :function ::get-launch-state (meta &form))))
 
 (defmacro start-training
   "Starts the speaker model training."
-  [#_callback]
-  (gen-call :function ::start-training (meta &form)))
+  ([#_callback] (gen-call :function ::start-training (meta &form))))
 
 (defmacro finalize-speaker-model
   "Finalizess the speaker model."
-  [#_callback]
-  (gen-call :function ::finalize-speaker-model (meta &form)))
+  ([#_callback] (gen-call :function ::finalize-speaker-model (meta &form))))
 
 (defmacro notify-speaker-model-saved
   "Notifies that the speaker model has been saved."
-  [#_callback]
-  (gen-call :function ::notify-speaker-model-saved (meta &form)))
+  ([#_callback] (gen-call :function ::notify-speaker-model-saved (meta &form))))
 
 (defmacro stop-training
   "Stops the speaker model training."
-  [#_callback]
-  (gen-call :function ::stop-training (meta &form)))
+  ([#_callback] (gen-call :function ::stop-training (meta &form))))
 
 (defmacro set-audio-history-enabled
   "Sets the audio history opt-in state."
-  [enabled #_callback]
-  (gen-call :function ::set-audio-history-enabled (meta &form) enabled))
+  ([enabled #_callback] (gen-call :function ::set-audio-history-enabled (meta &form) enabled)))
 
 (defmacro get-audio-history-enabled
   "Gets the audio history opt-in state."
-  [#_callback]
-  (gen-call :function ::get-audio-history-enabled (meta &form)))
+  ([#_callback] (gen-call :function ::get-audio-history-enabled (meta &form))))
 
 (defmacro speaker-model-exists-result
   "Sends the result of whether a speaker model exists to the browser."
-  [exists #_callback]
-  (gen-call :function ::speaker-model-exists-result (meta &form) exists))
+  ([exists #_callback] (gen-call :function ::speaker-model-exists-result (meta &form) exists)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

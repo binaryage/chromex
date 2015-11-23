@@ -22,8 +22,7 @@
    
      |options| - Configures the returned media stream.
      |callback| - Callback with either the tab capture stream or   null."
-  [options #_callback]
-  (gen-call :function ::capture (meta &form) options))
+  ([options #_callback] (gen-call :function ::capture (meta &form) options)))
 
 (defmacro get-captured-tabs
   "Returns a list of tabs that have requested capture or are being captured, i.e. status != stopped and status !=
@@ -31,8 +30,7 @@
    capture from succeeding (or to prevent redundant requests for the same tab).
    
      |callback| - Callback invoked with CaptureInfo[] for captured tabs."
-  [#_callback]
-  (gen-call :function ::get-captured-tabs (meta &form)))
+  ([#_callback] (gen-call :function ::get-captured-tabs (meta &form))))
 
 (defmacro capture-offscreen-tab
   "Creates an off-screen tab and navigates it to the given |startUrl|. Then, capture is started and a MediaStream is
@@ -48,8 +46,7 @@
    
      |options| - Constraints for the capture and returned MediaStream.
      |callback| - null on error."
-  [start-url options #_callback]
-  (gen-call :function ::capture-offscreen-tab (meta &form) start-url options))
+  ([start-url options #_callback] (gen-call :function ::capture-offscreen-tab (meta &form) start-url options)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

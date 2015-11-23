@@ -17,39 +17,32 @@
 
 (defmacro get-search-engines
   "Gets a list of the search engines. Exactly one of the values should have default == true."
-  [#_callback]
-  (gen-call :function ::get-search-engines (meta &form)))
+  ([#_callback] (gen-call :function ::get-search-engines (meta &form))))
 
 (defmacro set-selected-search-engine
   "Sets the search engine with the given GUID as the selected default."
-  [guid]
-  (gen-call :function ::set-selected-search-engine (meta &form) guid))
+  ([guid] (gen-call :function ::set-selected-search-engine (meta &form) guid)))
 
 (defmacro add-other-search-engine
   "Adds a new 'other' (non-default) search engine with the given name, keyword, and URL."
-  [name keyword url]
-  (gen-call :function ::add-other-search-engine (meta &form) name keyword url))
+  ([name keyword url] (gen-call :function ::add-other-search-engine (meta &form) name keyword url)))
 
 (defmacro update-search-engine
   "Updates the search engine that has the given GUID, with the given name, keyword, and URL."
-  [guid name keyword url]
-  (gen-call :function ::update-search-engine (meta &form) guid name keyword url))
+  ([guid name keyword url] (gen-call :function ::update-search-engine (meta &form) guid name keyword url)))
 
 (defmacro remove-search-engine
   "Removes the search engine with the given GUID."
-  [guid]
-  (gen-call :function ::remove-search-engine (meta &form) guid))
+  ([guid] (gen-call :function ::remove-search-engine (meta &form) guid)))
 
 (defmacro get-hotword-state
   "Gets the hotword state."
-  [#_callback]
-  (gen-call :function ::get-hotword-state (meta &form)))
+  ([#_callback] (gen-call :function ::get-hotword-state (meta &form))))
 
 (defmacro opt-into-hotwording
   "Opts in to hotwording; |retrain| indicates whether the user wants to retrain the hotword system with their voice by
    launching the audio verification app."
-  [retrain]
-  (gen-call :function ::opt-into-hotwording (meta &form) retrain))
+  ([retrain] (gen-call :function ::opt-into-hotwording (meta &form) retrain)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

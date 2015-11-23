@@ -14,69 +14,56 @@
 
 (defmacro get-is-crash-reporting-enabled
   "Returns true if the user opted in to sending crash reports."
-  [#_callback]
-  (gen-call :function ::get-is-crash-reporting-enabled (meta &form)))
+  ([#_callback] (gen-call :function ::get-is-crash-reporting-enabled (meta &form))))
 
 (defmacro get-field-trial
   "Returns the group name chosen for the named trial, or the empty string if the trial does not exist or is not
    enabled."
-  [name #_callback]
-  (gen-call :function ::get-field-trial (meta &form) name))
+  ([name #_callback] (gen-call :function ::get-field-trial (meta &form) name)))
 
 (defmacro get-variation-params
   "Returns variation parameters for the named trial if available, or undefined otherwise."
-  [name #_callback]
-  (gen-call :function ::get-variation-params (meta &form) name))
+  ([name #_callback] (gen-call :function ::get-variation-params (meta &form) name)))
 
 (defmacro record-user-action
   "Records an action performed by the user."
-  [name]
-  (gen-call :function ::record-user-action (meta &form) name))
+  ([name] (gen-call :function ::record-user-action (meta &form) name)))
 
 (defmacro record-percentage
   "Records a percentage value from 1 to 100."
-  [metric-name value]
-  (gen-call :function ::record-percentage (meta &form) metric-name value))
+  ([metric-name value] (gen-call :function ::record-percentage (meta &form) metric-name value)))
 
 (defmacro record-count
   "Records a value than can range from 1 to 1,000,000."
-  [metric-name value]
-  (gen-call :function ::record-count (meta &form) metric-name value))
+  ([metric-name value] (gen-call :function ::record-count (meta &form) metric-name value)))
 
 (defmacro record-small-count
   "Records a value than can range from 1 to 100."
-  [metric-name value]
-  (gen-call :function ::record-small-count (meta &form) metric-name value))
+  ([metric-name value] (gen-call :function ::record-small-count (meta &form) metric-name value)))
 
 (defmacro record-medium-count
   "Records a value than can range from 1 to 10,000."
-  [metric-name value]
-  (gen-call :function ::record-medium-count (meta &form) metric-name value))
+  ([metric-name value] (gen-call :function ::record-medium-count (meta &form) metric-name value)))
 
 (defmacro record-time
   "Records an elapsed time of no more than 10 seconds.  The sample value is specified in milliseconds."
-  [metric-name value]
-  (gen-call :function ::record-time (meta &form) metric-name value))
+  ([metric-name value] (gen-call :function ::record-time (meta &form) metric-name value)))
 
 (defmacro record-medium-time
   "Records an elapsed time of no more than 3 minutes.  The sample value is specified in milliseconds."
-  [metric-name value]
-  (gen-call :function ::record-medium-time (meta &form) metric-name value))
+  ([metric-name value] (gen-call :function ::record-medium-time (meta &form) metric-name value)))
 
 (defmacro record-long-time
   "Records an elapsed time of no more than 1 hour.  The sample value is specified in milliseconds."
-  [metric-name value]
-  (gen-call :function ::record-long-time (meta &form) metric-name value))
+  ([metric-name value] (gen-call :function ::record-long-time (meta &form) metric-name value)))
 
 (defmacro record-sparse-value
   "Increments the count associated with |value| in the sparse histogram defined by the |metricName|."
-  [metric-name value]
-  (gen-call :function ::record-sparse-value (meta &form) metric-name value))
+  ([metric-name value] (gen-call :function ::record-sparse-value (meta &form) metric-name value)))
 
 (defmacro record-value
   "Adds a value to the given metric."
-  [metric value]
-  (gen-call :function ::record-value (meta &form) metric value))
+  ([metric value] (gen-call :function ::record-value (meta &form) metric value)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

@@ -20,16 +20,14 @@
    is a no-op.
    
      |loginPair| - The LoginPair corresponding to the entry to remove."
-  [login-pair]
-  (gen-call :function ::remove-saved-password (meta &form) login-pair))
+  ([login-pair] (gen-call :function ::remove-saved-password (meta &form) login-pair)))
 
 (defmacro remove-password-exception
   "Removes the saved password exception corresponding to |exceptionUrl|. If no exception with this URL exists, this
    function is a no-op.
    
      |exceptionUrl| - The URL corresponding to the exception to remove."
-  [exception-url]
-  (gen-call :function ::remove-password-exception (meta &form) exception-url))
+  ([exception-url] (gen-call :function ::remove-password-exception (meta &form) exception-url)))
 
 (defmacro request-plaintext-password
   "Returns the plaintext password corresponding to |loginPair|. Note that on some operating systems, this call may
@@ -37,8 +35,7 @@
    onPlaintextPasswordRetrieved event.
    
      |loginPair| - The LoginPair corresponding to the entry whose password     is to be returned."
-  [login-pair]
-  (gen-call :function ::request-plaintext-password (meta &form) login-pair))
+  ([login-pair] (gen-call :function ::request-plaintext-password (meta &form) login-pair)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

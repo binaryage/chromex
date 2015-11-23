@@ -34,20 +34,19 @@
      |expression| - An expression to evaluate.
      |options| - The options parameter can contain one or more options.
      |callback| - A function called when evaluation completes."
-  [expression options #_callback]
-  (gen-call :function ::eval (meta &form) expression options))
+  ([expression options #_callback] (gen-call :function ::eval (meta &form) expression options))
+  ([expression] `(eval ~expression :omit)))
 
 (defmacro reload
   "Reloads the inspected page."
-  [reload-options]
-  (gen-call :function ::reload (meta &form) reload-options))
+  ([reload-options] (gen-call :function ::reload (meta &form) reload-options))
+  ([] `(reload :omit)))
 
 (defmacro get-resources
   "Retrieves the list of resources from the inspected page.
    
      |callback| - A function that receives the list of resources when the request completes."
-  [#_callback]
-  (gen-call :function ::get-resources (meta &form)))
+  ([#_callback] (gen-call :function ::get-resources (meta &form))))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

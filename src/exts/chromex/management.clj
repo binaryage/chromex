@@ -17,71 +17,63 @@
 
 (defmacro get-all
   "Returns a list of information about installed extensions and apps."
-  [#_callback]
-  (gen-call :function ::get-all (meta &form)))
+  ([#_callback] (gen-call :function ::get-all (meta &form))))
 
 (defmacro get
   "Returns information about the installed extension, app, or theme that has the given ID.
    
      |id| - The ID from an item of 'management.ExtensionInfo'."
-  [id #_callback]
-  (gen-call :function ::get (meta &form) id))
+  ([id #_callback] (gen-call :function ::get (meta &form) id)))
 
 (defmacro get-self
   "Returns information about the calling extension, app, or theme. Note: This function can be used without requesting
    the 'management' permission in the manifest."
-  [#_callback]
-  (gen-call :function ::get-self (meta &form)))
+  ([#_callback] (gen-call :function ::get-self (meta &form))))
 
 (defmacro get-permission-warnings-by-id
   "Returns a list of permission warnings for the given extension id.
    
      |id| - The ID of an already installed extension."
-  [id #_callback]
-  (gen-call :function ::get-permission-warnings-by-id (meta &form) id))
+  ([id #_callback] (gen-call :function ::get-permission-warnings-by-id (meta &form) id)))
 
 (defmacro get-permission-warnings-by-manifest
   "Returns a list of permission warnings for the given extension manifest string. Note: This function can be used
    without requesting the 'management' permission in the manifest.
    
      |manifestStr| - Extension manifest JSON string."
-  [manifest-str #_callback]
-  (gen-call :function ::get-permission-warnings-by-manifest (meta &form) manifest-str))
+  ([manifest-str #_callback] (gen-call :function ::get-permission-warnings-by-manifest (meta &form) manifest-str)))
 
 (defmacro set-enabled
   "Enables or disables an app or extension.
    
      |id| - This should be the id from an item of 'management.ExtensionInfo'.
      |enabled| - Whether this item should be enabled or disabled."
-  [id enabled #_callback]
-  (gen-call :function ::set-enabled (meta &form) id enabled))
+  ([id enabled #_callback] (gen-call :function ::set-enabled (meta &form) id enabled)))
 
 (defmacro uninstall
   "Uninstalls a currently installed app or extension.
    
      |id| - This should be the id from an item of 'management.ExtensionInfo'."
-  [id options #_callback]
-  (gen-call :function ::uninstall (meta &form) id options))
+  ([id options #_callback] (gen-call :function ::uninstall (meta &form) id options))
+  ([id] `(uninstall ~id :omit)))
 
 (defmacro uninstall-self
   "Uninstalls the calling extension. Note: This function can be used without requesting the 'management' permission in
    the manifest."
-  [options #_callback]
-  (gen-call :function ::uninstall-self (meta &form) options))
+  ([options #_callback] (gen-call :function ::uninstall-self (meta &form) options))
+  ([] `(uninstall-self :omit)))
 
 (defmacro launch-app
   "Launches an application.
    
      |id| - The extension id of the application."
-  [id #_callback]
-  (gen-call :function ::launch-app (meta &form) id))
+  ([id #_callback] (gen-call :function ::launch-app (meta &form) id)))
 
 (defmacro create-app-shortcut
   "Display options to create shortcuts for an app. On Mac, only packaged app shortcuts can be created.
    
      |id| - This should be the id from an app item of 'management.ExtensionInfo'."
-  [id #_callback]
-  (gen-call :function ::create-app-shortcut (meta &form) id))
+  ([id #_callback] (gen-call :function ::create-app-shortcut (meta &form) id)))
 
 (defmacro set-launch-type
   "Set the launch type of an app.
@@ -90,16 +82,14 @@
      |launchType| - The target launch type. Always check and make sure this launch type is in
                     'ExtensionInfo.availableLaunchTypes', because the available launch types vary on different
                     platforms and configurations."
-  [id launch-type #_callback]
-  (gen-call :function ::set-launch-type (meta &form) id launch-type))
+  ([id launch-type #_callback] (gen-call :function ::set-launch-type (meta &form) id launch-type)))
 
 (defmacro generate-app-for-link
   "Generate an app for a URL. Returns the generated bookmark app.
    
      |url| - The URL of a web page. The scheme of the URL can only be 'http' or 'https'.
      |title| - The title of the generated app."
-  [url title #_callback]
-  (gen-call :function ::generate-app-for-link (meta &form) url title))
+  ([url title #_callback] (gen-call :function ::generate-app-for-link (meta &form) url title)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

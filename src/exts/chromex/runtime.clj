@@ -32,8 +32,7 @@
   "Retrieves the JavaScript 'window' object for the background page running inside the current extension/app. If the
    background page is an event page, the system will ensure it is loaded before calling the callback. If there is no
    background page, an error is set."
-  [#_callback]
-  (gen-call :function ::get-background-page (meta &form)))
+  ([#_callback] (gen-call :function ::get-background-page (meta &form))))
 
 (defmacro open-options-page
   "Open your Extension's options page, if possible.The precise behavior may depend on your manifest's options_ui or
@@ -41,21 +40,18 @@
    within chrome://extensions, within an App, or it may just focus an open options page. It will never cause the
    caller page to reload.If your Extension does not declare an options page, or Chrome failed to create one for some
    other reason, the callback will set 'lastError'."
-  [#_callback]
-  (gen-call :function ::open-options-page (meta &form)))
+  ([#_callback] (gen-call :function ::open-options-page (meta &form))))
 
 (defmacro get-manifest
   "Returns details about the app or extension from the manifest. The object returned is a serialization of the full
    manifest file."
-  []
-  (gen-call :function ::get-manifest (meta &form)))
+  ([] (gen-call :function ::get-manifest (meta &form))))
 
 (defmacro get-url
   "Converts a relative path within an app/extension install directory to a fully-qualified URL.
    
      |path| - A path to a resource within an app/extension expressed relative to its install directory."
-  [path]
-  (gen-call :function ::get-url (meta &form) path))
+  ([path] (gen-call :function ::get-url (meta &form) path)))
 
 (defmacro set-uninstall-url
   "Sets the URL to be visited upon uninstallation. This may be used to clean up server-side data, do analytics, and
@@ -64,24 +60,20 @@
      |url| - URL to be opened after the extension is uninstalled. This URL must have an http: or https: scheme. Set
              an empty string to not open a new tab upon uninstallation.
      |callback| - Called when the uninstall URL is set. If the given URL is invalid, 'runtime.lastError' will be set."
-  [url #_callback]
-  (gen-call :function ::set-uninstall-url (meta &form) url))
+  ([url #_callback] (gen-call :function ::set-uninstall-url (meta &form) url)))
 
 (defmacro reload
   "Reloads the app or extension. This method is not supported in kiosk mode. For kiosk mode, use
    chrome.runtime.restart() method."
-  []
-  (gen-call :function ::reload (meta &form)))
+  ([] (gen-call :function ::reload (meta &form))))
 
 (defmacro request-update-check
   "Requests an update check for this app/extension."
-  [#_callback]
-  (gen-call :function ::request-update-check (meta &form)))
+  ([#_callback] (gen-call :function ::request-update-check (meta &form))))
 
 (defmacro restart
   "Restart the ChromeOS device when the app runs in kiosk mode. Otherwise, it's no-op."
-  []
-  (gen-call :function ::restart (meta &form)))
+  ([] (gen-call :function ::restart (meta &form))))
 
 (defmacro connect
   "Attempts to connect to connect listeners within an extension/app (such as the background page), or other
@@ -91,15 +83,15 @@
    
      |extensionId| - The ID of the extension or app to connect to. If omitted, a connection will be attempted with
                      your own extension. Required if sending messages from a web page for web messaging."
-  [extension-id connect-info]
-  (gen-call :function ::connect (meta &form) extension-id connect-info))
+  ([extension-id connect-info] (gen-call :function ::connect (meta &form) extension-id connect-info))
+  ([extension-id] `(connect ~extension-id :omit))
+  ([] `(connect :omit :omit)))
 
 (defmacro connect-native
   "Connects to a native application in the host machine.
    
      |application| - The name of the registered application to connect to."
-  [application]
-  (gen-call :function ::connect-native (meta &form) application))
+  ([application] (gen-call :function ::connect-native (meta &form) application)))
 
 (defmacro send-message
   "Sends a single message to event listeners within your extension/app or a different extension/app. Similar to
@@ -110,28 +102,25 @@
    
      |extensionId| - The ID of the extension/app to send the message to. If omitted, the message will be sent to
                      your own extension/app. Required if sending messages from a web page for web messaging."
-  [extension-id message options #_response-callback]
-  (gen-call :function ::send-message (meta &form) extension-id message options))
+  ([extension-id message options #_response-callback] (gen-call :function ::send-message (meta &form) extension-id message options))
+  ([extension-id message] `(send-message ~extension-id ~message :omit)))
 
 (defmacro send-native-message
   "Send a single message to a native application.
    
      |application| - The name of the native messaging host.
      |message| - The message that will be passed to the native messaging host."
-  [application message #_response-callback]
-  (gen-call :function ::send-native-message (meta &form) application message))
+  ([application message #_response-callback] (gen-call :function ::send-native-message (meta &form) application message)))
 
 (defmacro get-platform-info
   "Returns information about the current platform.
    
      |callback| - Called with results"
-  [#_callback]
-  (gen-call :function ::get-platform-info (meta &form)))
+  ([#_callback] (gen-call :function ::get-platform-info (meta &form))))
 
 (defmacro get-package-directory-entry
   "Returns a DirectoryEntry for the package directory."
-  [#_callback]
-  (gen-call :function ::get-package-directory-entry (meta &form)))
+  ([#_callback] (gen-call :function ::get-package-directory-entry (meta &form))))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

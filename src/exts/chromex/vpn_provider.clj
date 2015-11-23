@@ -20,16 +20,14 @@
    
      |name| - The name of the VPN configuration.
      |callback| - Called when the configuration is created or if there is an error."
-  [name #_callback]
-  (gen-call :function ::create-config (meta &form) name))
+  ([name #_callback] (gen-call :function ::create-config (meta &form) name)))
 
 (defmacro destroy-config
   "Destroys a VPN configuration created by the extension.
    
      |id| - ID of the VPN configuration to destroy.
      |callback| - Called when the configuration is destroyed or if there is an error."
-  [id #_callback]
-  (gen-call :function ::destroy-config (meta &form) id))
+  ([id #_callback] (gen-call :function ::destroy-config (meta &form) id)))
 
 (defmacro set-parameters
   "Sets the parameters for the VPN session. This should be called immediately after 'connected' is received from the
@@ -37,8 +35,7 @@
    
      |parameters| - The parameters for the VPN session.
      |callback| - Called when the parameters are set or if there is an error."
-  [parameters #_callback]
-  (gen-call :function ::set-parameters (meta &form) parameters))
+  ([parameters #_callback] (gen-call :function ::set-parameters (meta &form) parameters)))
 
 (defmacro send-packet
   "Sends an IP packet through the tunnel created for the VPN session. This will succeed only when the VPN session is
@@ -46,8 +43,7 @@
    
      |data| - The IP packet to be sent to the platform.
      |callback| - Called when the packet is sent or if there is an error."
-  [data #_callback]
-  (gen-call :function ::send-packet (meta &form) data))
+  ([data #_callback] (gen-call :function ::send-packet (meta &form) data)))
 
 (defmacro notify-connection-state-changed
   "Notifies the VPN session state to the platform. This will succeed only when the VPN session is owned by the
@@ -55,8 +51,7 @@
    
      |state| - The VPN session state of the VPN client.
      |callback| - Called when the notification is complete or if there is an error."
-  [state #_callback]
-  (gen-call :function ::notify-connection-state-changed (meta &form) state))
+  ([state #_callback] (gen-call :function ::notify-connection-state-changed (meta &form) state)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

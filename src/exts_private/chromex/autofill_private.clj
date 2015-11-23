@@ -20,8 +20,7 @@
    new entry.
    
      |address| - The address entry to save."
-  [address]
-  (gen-call :function ::save-address (meta &form) address))
+  ([address] (gen-call :function ::save-address (meta &form) address)))
 
 (defmacro get-address-components
   "Gets the address components for a given country code.
@@ -29,23 +28,20 @@
      |countryCode| - A two-character string representing the address' country     whose components should be
                      returned. See autofill_country.cc for a     list of valid codes.
      |callback| - Callback which will be called with components."
-  [country-code #_callback]
-  (gen-call :function ::get-address-components (meta &form) country-code))
+  ([country-code #_callback] (gen-call :function ::get-address-components (meta &form) country-code)))
 
 (defmacro save-credit-card
   "Saves the given credit card. If |card| has an empty string as its ID, it will be assigned a new one and added as a
    new entry.
    
      |card| - The card entry to save."
-  [card]
-  (gen-call :function ::save-credit-card (meta &form) card))
+  ([card] (gen-call :function ::save-credit-card (meta &form) card)))
 
 (defmacro remove-entry
   "Removes the entry (address or credit card) with the given ID.
    
      |guid| - ID of the entry to remove."
-  [guid]
-  (gen-call :function ::remove-entry (meta &form) guid))
+  ([guid] (gen-call :function ::remove-entry (meta &form) guid)))
 
 (defmacro validate-phone-numbers
   "Validates a newly-added phone number and invokes the callback with a list of validated numbers. Note that if the
@@ -53,16 +49,14 @@
    
      |params| - The parameters to this function.
      |callback| - Callback which will be called with validated phone numbers."
-  [params #_callback]
-  (gen-call :function ::validate-phone-numbers (meta &form) params))
+  ([params #_callback] (gen-call :function ::validate-phone-numbers (meta &form) params)))
 
 (defmacro mask-credit-card
   "Clears the data associated with a wallet card which was saved locally so that the saved copy is masked (e.g., 'Card
    ending in 1234').
    
      |guid| - GUID of the credit card to mask."
-  [guid]
-  (gen-call :function ::mask-credit-card (meta &form) guid))
+  ([guid] (gen-call :function ::mask-credit-card (meta &form) guid)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

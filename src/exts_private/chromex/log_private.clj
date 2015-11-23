@@ -17,26 +17,22 @@
 
 (defmacro get-historical
   "Get the existing logs from ChromeOS system."
-  [filter #_callback]
-  (gen-call :function ::get-historical (meta &form) filter))
+  ([filter #_callback] (gen-call :function ::get-historical (meta &form) filter)))
 
 (defmacro start-event-recorder
   "Start capturing events of specific type."
-  [event-type sink #_callback]
-  (gen-call :function ::start-event-recorder (meta &form) event-type sink))
+  ([event-type sink #_callback] (gen-call :function ::start-event-recorder (meta &form) event-type sink)))
 
 (defmacro stop-event-recorder
   "Stop  capturing events of specific type."
-  [event-type #_callback]
-  (gen-call :function ::stop-event-recorder (meta &form) event-type))
+  ([event-type #_callback] (gen-call :function ::stop-event-recorder (meta &form) event-type)))
 
 (defmacro dump-logs
   "Dump all system and captured events into a .tar.gz file. The archive file will contain following top level
    directories:   /var/log/       ChromeOS system logs.   /home/chronos/user/log/       Session specific logs (chrome
    app logs).   /home/chronos/user/log/apps/       Contains webapp specific logs including those collected with
    startEventRecorder(..., sink='file') call."
-  [#_callback]
-  (gen-call :function ::dump-logs (meta &form)))
+  ([#_callback] (gen-call :function ::dump-logs (meta &form))))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

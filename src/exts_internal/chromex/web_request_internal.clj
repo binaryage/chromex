@@ -17,13 +17,12 @@
    
      |filter| - A set of filters that restricts the events that will be sent to this listener.
      |extraInfoSpec| - Array of extra information that should be passed to the listener function."
-  [filter extra-info-spec event-name sub-event-name web-view-instance-id #_callback]
-  (gen-call :function ::add-event-listener (meta &form) filter extra-info-spec event-name sub-event-name web-view-instance-id))
+  ([filter extra-info-spec event-name sub-event-name web-view-instance-id #_callback] (gen-call :function ::add-event-listener (meta &form) filter extra-info-spec event-name sub-event-name web-view-instance-id)))
 
 (defmacro event-handled
   "Used internally to send a response for a blocked event."
-  [event-name sub-event-name request-id response]
-  (gen-call :function ::event-handled (meta &form) event-name sub-event-name request-id response))
+  ([event-name sub-event-name request-id response] (gen-call :function ::event-handled (meta &form) event-name sub-event-name request-id response))
+  ([event-name sub-event-name request-id] `(event-handled ~event-name ~sub-event-name ~request-id :omit)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

@@ -16,8 +16,7 @@
 
 (defmacro get-display-state
   "Gets the current display state."
-  [#_callback]
-  (gen-call :function ::get-display-state (meta &form)))
+  ([#_callback] (gen-call :function ::get-display-state (meta &form))))
 
 (defmacro write-dots
   "Write the given dot patterns to the display.  The buffer contains one byte for each braille cell on the display,
@@ -25,8 +24,7 @@
    corresponding cell with the low-order bit representing dot 1 and so on until bit 7 which corresponds to dot 8.  If
    the number of bytes in the buffer is not equal to the display size, the buffer will either be clipped or padded
    with blank cells on the right."
-  [cells]
-  (gen-call :function ::write-dots (meta &form) cells))
+  ([cells] (gen-call :function ::write-dots (meta &form) cells)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

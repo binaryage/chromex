@@ -25,8 +25,7 @@
      |options| - Contents of the notification.
      |callback| - Returns the notification id (either supplied or generated) that represents the created
                   notification.The callback is required before Chrome 42."
-  [notification-id options #_callback]
-  (gen-call :function ::create (meta &form) notification-id options))
+  ([notification-id options #_callback] (gen-call :function ::create (meta &form) notification-id options)))
 
 (defmacro update
   "Updates an existing notification.
@@ -35,8 +34,7 @@
      |options| - Contents of the notification to update to.
      |callback| - Called to indicate whether a matching notification existed.The callback is required before Chrome
                   42."
-  [notification-id options #_callback]
-  (gen-call :function ::update (meta &form) notification-id options))
+  ([notification-id options #_callback] (gen-call :function ::update (meta &form) notification-id options)))
 
 (defmacro clear
   "Clears the specified notification.
@@ -44,22 +42,19 @@
      |notificationId| - The id of the notification to be cleared. This is returned by 'notifications.create' method.
      |callback| - Called to indicate whether a matching notification existed.The callback is required before Chrome
                   42."
-  [notification-id #_callback]
-  (gen-call :function ::clear (meta &form) notification-id))
+  ([notification-id #_callback] (gen-call :function ::clear (meta &form) notification-id)))
 
 (defmacro get-all
   "Retrieves all the notifications.
    
      |callback| - Returns the set of notification_ids currently in the system."
-  [#_callback]
-  (gen-call :function ::get-all (meta &form)))
+  ([#_callback] (gen-call :function ::get-all (meta &form))))
 
 (defmacro get-permission-level
   "Retrieves whether the user has enabled notifications from this app or extension.
    
      |callback| - Returns the current permission level."
-  [#_callback]
-  (gen-call :function ::get-permission-level (meta &form)))
+  ([#_callback] (gen-call :function ::get-permission-level (meta &form))))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

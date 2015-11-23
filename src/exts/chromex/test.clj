@@ -14,127 +14,108 @@
 
 (defmacro get-config
   "Gives configuration options set by the test."
-  [#_callback]
-  (gen-call :function ::get-config (meta &form)))
+  ([#_callback] (gen-call :function ::get-config (meta &form))))
 
 (defmacro notify-fail
   "Notifies the browser process that test code running in the extension failed.  This is only used for internal unit
    testing."
-  [message]
-  (gen-call :function ::notify-fail (meta &form) message))
+  ([message] (gen-call :function ::notify-fail (meta &form) message)))
 
 (defmacro notify-pass
   "Notifies the browser process that test code running in the extension passed.  This is only used for internal unit
    testing."
-  [message]
-  (gen-call :function ::notify-pass (meta &form) message))
+  ([message] (gen-call :function ::notify-pass (meta &form) message))
+  ([] `(notify-pass :omit)))
 
 (defmacro log
   "Logs a message during internal unit testing."
-  [message]
-  (gen-call :function ::log (meta &form) message))
+  ([message] (gen-call :function ::log (meta &form) message)))
 
 (defmacro send-message
   "Sends a string message to the browser process, generating a Notification that C++ test code can wait for."
-  [message #_callback]
-  (gen-call :function ::send-message (meta &form) message))
+  ([message #_callback] (gen-call :function ::send-message (meta &form) message)))
 
-(defmacro callback-added []
-  (gen-call :function ::callback-added (meta &form)))
+(defmacro callback-added ([] (gen-call :function ::callback-added (meta &form))))
 
-(defmacro run-next-test []
-  (gen-call :function ::run-next-test (meta &form)))
+(defmacro run-next-test ([] (gen-call :function ::run-next-test (meta &form))))
 
-(defmacro fail [message]
-  (gen-call :function ::fail (meta &form) message))
+(defmacro fail ([message] (gen-call :function ::fail (meta &form) message))
+  ([] `(fail :omit)))
 
-(defmacro succeed [message]
-  (gen-call :function ::succeed (meta &form) message))
+(defmacro succeed ([message] (gen-call :function ::succeed (meta &form) message))
+  ([] `(succeed :omit)))
 
 (defmacro run-with-natives-enabled
   "Runs the given function with access to native methods enabled."
-  [#_callback]
-  (gen-call :function ::run-with-natives-enabled (meta &form)))
+  ([#_callback] (gen-call :function ::run-with-natives-enabled (meta &form))))
 
 (defmacro get-module-system
   "Returns an instance of the module system for the given context."
-  [context]
-  (gen-call :function ::get-module-system (meta &form) context))
+  ([context] (gen-call :function ::get-module-system (meta &form) context)))
 
-(defmacro assert-true [test message]
-  (gen-call :function ::assert-true (meta &form) test message))
+(defmacro assert-true ([test message] (gen-call :function ::assert-true (meta &form) test message))
+  ([test] `(assert-true ~test :omit)))
 
-(defmacro assert-false [test message]
-  (gen-call :function ::assert-false (meta &form) test message))
+(defmacro assert-false ([test message] (gen-call :function ::assert-false (meta &form) test message))
+  ([test] `(assert-false ~test :omit)))
 
-(defmacro assert-bool [test expected message]
-  (gen-call :function ::assert-bool (meta &form) test expected message))
+(defmacro assert-bool ([test expected message] (gen-call :function ::assert-bool (meta &form) test expected message))
+  ([test expected] `(assert-bool ~test ~expected :omit)))
 
-(defmacro check-deep-eq [expected actual]
-  (gen-call :function ::check-deep-eq (meta &form) expected actual))
+(defmacro check-deep-eq ([expected actual] (gen-call :function ::check-deep-eq (meta &form) expected actual))
+  ([expected] `(check-deep-eq ~expected :omit))
+  ([] `(check-deep-eq :omit :omit)))
 
-(defmacro assert-eq [expected actual message]
-  (gen-call :function ::assert-eq (meta &form) expected actual message))
+(defmacro assert-eq ([expected actual message] (gen-call :function ::assert-eq (meta &form) expected actual message))
+  ([expected actual] `(assert-eq ~expected ~actual :omit))
+  ([expected] `(assert-eq ~expected :omit :omit))
+  ([] `(assert-eq :omit :omit :omit)))
 
-(defmacro assert-no-last-error []
-  (gen-call :function ::assert-no-last-error (meta &form)))
+(defmacro assert-no-last-error ([] (gen-call :function ::assert-no-last-error (meta &form))))
 
-(defmacro assert-last-error [expected-error]
-  (gen-call :function ::assert-last-error (meta &form) expected-error))
+(defmacro assert-last-error ([expected-error] (gen-call :function ::assert-last-error (meta &form) expected-error)))
 
-(defmacro assert-throws [self args message #_fn]
-  (gen-call :function ::assert-throws (meta &form) self args message))
+(defmacro assert-throws ([self args message #_fn] (gen-call :function ::assert-throws (meta &form) self args message))
+  ([self args] `(assert-throws ~self ~args :omit)))
 
-(defmacro callback [expected-error #_func]
-  (gen-call :function ::callback (meta &form) expected-error))
+(defmacro callback ([expected-error #_func] (gen-call :function ::callback (meta &form) expected-error))
+  ([] `(callback :omit)))
 
-(defmacro listen-once [event #_func]
-  (gen-call :function ::listen-once (meta &form) event))
+(defmacro listen-once ([event #_func] (gen-call :function ::listen-once (meta &form) event)))
 
-(defmacro listen-forever [event #_func]
-  (gen-call :function ::listen-forever (meta &form) event))
+(defmacro listen-forever ([event #_func] (gen-call :function ::listen-forever (meta &form) event)))
 
-(defmacro callback-pass [#_func]
-  (gen-call :function ::callback-pass (meta &form)))
+(defmacro callback-pass ([#_func] (gen-call :function ::callback-pass (meta &form))))
 
-(defmacro callback-fail [expected-error #_func]
-  (gen-call :function ::callback-fail (meta &form) expected-error))
+(defmacro callback-fail ([expected-error #_func] (gen-call :function ::callback-fail (meta &form) expected-error)))
 
-(defmacro run-tests [tests]
-  (gen-call :function ::run-tests (meta &form) tests))
+(defmacro run-tests ([tests] (gen-call :function ::run-tests (meta &form) tests)))
 
-(defmacro get-api-features []
-  (gen-call :function ::get-api-features (meta &form)))
+(defmacro get-api-features ([] (gen-call :function ::get-api-features (meta &form))))
 
-(defmacro get-api-definitions [api-names]
-  (gen-call :function ::get-api-definitions (meta &form) api-names))
+(defmacro get-api-definitions ([api-names] (gen-call :function ::get-api-definitions (meta &form) api-names))
+  ([] `(get-api-definitions :omit)))
 
-(defmacro is-processing-user-gesture []
-  (gen-call :function ::is-processing-user-gesture (meta &form)))
+(defmacro is-processing-user-gesture ([] (gen-call :function ::is-processing-user-gesture (meta &form))))
 
 (defmacro run-with-user-gesture
   "Runs the callback in the context of a user gesture."
-  [#_callback]
-  (gen-call :function ::run-with-user-gesture (meta &form)))
+  ([#_callback] (gen-call :function ::run-with-user-gesture (meta &form))))
 
-(defmacro run-without-user-gesture [#_callback]
-  (gen-call :function ::run-without-user-gesture (meta &form)))
+(defmacro run-without-user-gesture ([#_callback] (gen-call :function ::run-without-user-gesture (meta &form))))
 
 (defmacro wait-for-round-trip
   "Sends a string message one round trip from the renderer to the browser process and back."
-  [message #_callback]
-  (gen-call :function ::wait-for-round-trip (meta &form) message))
+  ([message #_callback] (gen-call :function ::wait-for-round-trip (meta &form) message)))
 
 (defmacro set-exception-handler
   "Sets the function to be called when an exception occurs. By default this is a function which fails the test. This
    is reset for every test run through test.runTests."
-  [#_callback]
-  (gen-call :function ::set-exception-handler (meta &form)))
+  ([#_callback] (gen-call :function ::set-exception-handler (meta &form))))
 
 (defmacro get-wake-event-page
   "Returns the wake-event-page API function, which can be called to wake up the extension's event page."
-  []
-  (gen-call :function ::get-wake-event-page (meta &form)))
+  ([] (gen-call :function ::get-wake-event-page (meta &form))))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

@@ -16,8 +16,7 @@
   "Returns whether a switch is specified on the command line when launching Chrome.
    
      |name| - The name of a command line switch, without leading '--', such as 'enable-experimental-extension-apis'."
-  [name #_callback]
-  (gen-call :function ::has-switch (meta &form) name))
+  ([name #_callback] (gen-call :function ::has-switch (meta &form) name)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

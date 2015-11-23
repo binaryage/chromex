@@ -43,8 +43,7 @@
    
      |networkGuid| - The GUID of the network to get properties for.
      |callback| - Called with the network properties when received."
-  [network-guid #_callback]
-  (gen-call :function ::get-properties (meta &form) network-guid))
+  ([network-guid #_callback] (gen-call :function ::get-properties (meta &form) network-guid)))
 
 (defmacro get-managed-properties
   "Gets the merged properties of the network with id networkGuid from the sources: User settings, shared settings,
@@ -52,8 +51,7 @@
    
      |networkGuid| - The GUID of the network to get properties for.
      |callback| - Called with the managed network properties when received."
-  [network-guid #_callback]
-  (gen-call :function ::get-managed-properties (meta &form) network-guid))
+  ([network-guid #_callback] (gen-call :function ::get-managed-properties (meta &form) network-guid)))
 
 (defmacro get-state
   "Gets the cached read-only properties of the network with id networkGuid. This is meant to be a higher performance
@@ -64,8 +62,7 @@
    
      |networkGuid| - The GUID of the network to get properties for.
      |callback| - Called immediately with the network state properties."
-  [network-guid #_callback]
-  (gen-call :function ::get-state (meta &form) network-guid))
+  ([network-guid #_callback] (gen-call :function ::get-state (meta &form) network-guid)))
 
 (defmacro set-properties
   "Sets the properties of the network with id networkGuid.
@@ -73,8 +70,7 @@
      |networkGuid| - The GUID of the network to set properties for.
      |properties| - The properties to set.
      |callback| - Called when the operation has completed."
-  [network-guid properties #_callback]
-  (gen-call :function ::set-properties (meta &form) network-guid properties))
+  ([network-guid properties #_callback] (gen-call :function ::set-properties (meta &form) network-guid properties)))
 
 (defmacro create-network
   "Creates a new network configuration from properties. If a matching configured network already exists, this will
@@ -83,8 +79,7 @@
      |shared| - If true, share this network configuration with other users.
      |properties| - The properties to configure the new network with.
      |callback| - Called with the GUID for the new network configuration once     the network has been created."
-  [shared properties #_callback]
-  (gen-call :function ::create-network (meta &form) shared properties))
+  ([shared properties #_callback] (gen-call :function ::create-network (meta &form) shared properties)))
 
 (defmacro forget-network
   "Forgets a network configuration by clearing any configured properties for the network with GUID 'networkGuid'. This
@@ -93,8 +88,7 @@
    
      |networkGuid| - The GUID of the network to forget.
      |callback| - Called when the operation has completed."
-  [network-guid #_callback]
-  (gen-call :function ::forget-network (meta &form) network-guid))
+  ([network-guid #_callback] (gen-call :function ::forget-network (meta &form) network-guid)))
 
 (defmacro get-networks
   "Returns a list of network objects with the same properties provided by 'networkingPrivate.getState'. A filter is
@@ -103,47 +97,40 @@
    
      |filter| - Describes which networks to return.
      |callback| - Called with a dictionary of networks and their state     properties when received."
-  [filter #_callback]
-  (gen-call :function ::get-networks (meta &form) filter))
+  ([filter #_callback] (gen-call :function ::get-networks (meta &form) filter)))
 
 (defmacro get-visible-networks
   "Deprecated. Please use 'networkingPrivate.getNetworks' with filter.visible = true instead."
-  [network-type #_callback]
-  (gen-call :function ::get-visible-networks (meta &form) network-type))
+  ([network-type #_callback] (gen-call :function ::get-visible-networks (meta &form) network-type)))
 
 (defmacro get-enabled-network-types
   "Deprecated. Please use 'networkingPrivate.getDeviceStates' instead."
-  [#_callback]
-  (gen-call :function ::get-enabled-network-types (meta &form)))
+  ([#_callback] (gen-call :function ::get-enabled-network-types (meta &form))))
 
 (defmacro get-device-states
   "Returns a list of 'networkingPrivate.DeviceStateProperties' objects.
    
      |callback| - Called with a list of devices and their state."
-  [#_callback]
-  (gen-call :function ::get-device-states (meta &form)))
+  ([#_callback] (gen-call :function ::get-device-states (meta &form))))
 
 (defmacro enable-network-type
   "Enables any devices matching the specified network type. Note, the type might represent multiple network types
    (e.g. 'Wireless').
    
      |networkType| - The type of network to enable."
-  [network-type]
-  (gen-call :function ::enable-network-type (meta &form) network-type))
+  ([network-type] (gen-call :function ::enable-network-type (meta &form) network-type)))
 
 (defmacro disable-network-type
   "Disables any devices matching the specified network type. See note for 'networkingPrivate.enableNetworkType'.
    
      |networkType| - The type of network to disable."
-  [network-type]
-  (gen-call :function ::disable-network-type (meta &form) network-type))
+  ([network-type] (gen-call :function ::disable-network-type (meta &form) network-type)))
 
 (defmacro request-network-scan
   "Requests that the networking subsystem scan for new networks and update the list returned by 'getVisibleNetworks'.
    This is only a request: the network subsystem can choose to ignore it.  If the list is updated, then the
    'onNetworkListChanged' event will be fired."
-  []
-  (gen-call :function ::request-network-scan (meta &form)))
+  ([] (gen-call :function ::request-network-scan (meta &form))))
 
 (defmacro start-connect
   "Starts a connection to the network with networkGuid.
@@ -151,16 +138,14 @@
      |networkGuid| - The GUID of the network to connect to.
      |callback| - Called when the connect request has been sent. Note: the     connection may not have completed.
                   Observe 'onNetworksChanged'     to be notified when a network state changes."
-  [network-guid #_callback]
-  (gen-call :function ::start-connect (meta &form) network-guid))
+  ([network-guid #_callback] (gen-call :function ::start-connect (meta &form) network-guid)))
 
 (defmacro start-disconnect
   "Starts a disconnect from the network with networkGuid.
    
      |networkGuid| - The GUID of the network to disconnect from.
      |callback| - Called when the disconnect request has been sent. See note     for 'startConnect'."
-  [network-guid #_callback]
-  (gen-call :function ::start-disconnect (meta &form) network-guid))
+  ([network-guid #_callback] (gen-call :function ::start-disconnect (meta &form) network-guid)))
 
 (defmacro start-activate
   "Starts activation of the Cellular network with networkGuid. If called for a network that is already activated, or
@@ -170,16 +155,15 @@
      |networkGuid| - The GUID of the Cellular network to activate.
      |carrier| - Optional name of carrier to activate.
      |callback| - Called when the activation request has been sent. See note     for 'startConnect'."
-  [network-guid carrier #_callback]
-  (gen-call :function ::start-activate (meta &form) network-guid carrier))
+  ([network-guid carrier #_callback] (gen-call :function ::start-activate (meta &form) network-guid carrier))
+  ([network-guid] `(start-activate ~network-guid :omit)))
 
 (defmacro verify-destination
   "Verifies that the device is a trusted device.
    
      |properties| - Properties of the destination to use in verifying that it     is a trusted device.
      |callback| - A callback function that indicates whether or not the device     is a trusted device."
-  [properties #_callback]
-  (gen-call :function ::verify-destination (meta &form) properties))
+  ([properties #_callback] (gen-call :function ::verify-destination (meta &form) properties)))
 
 (defmacro verify-and-encrypt-credentials
   "Verifies that the device is a trusted device and retrieves encrypted network credentials.
@@ -188,8 +172,7 @@
      |networkGuid| - The GUID of the Cellular network to activate.
      |callback| - A callback function that receives base64-encoded encrypted     credential data to send to a
                   trusted device."
-  [properties network-guid #_callback]
-  (gen-call :function ::verify-and-encrypt-credentials (meta &form) properties network-guid))
+  ([properties network-guid #_callback] (gen-call :function ::verify-and-encrypt-credentials (meta &form) properties network-guid)))
 
 (defmacro verify-and-encrypt-data
   "Verifies that the device is a trusted device and encrypts supplied data with device public key.
@@ -197,8 +180,7 @@
      |properties| - Properties of the destination to use in verifying that it     is a trusted device.
      |data| - A string containing the base64-encoded data to encrypt.
      |callback| - A callback function that receives base64-encoded encrypted     data to send to a trusted device."
-  [properties data #_callback]
-  (gen-call :function ::verify-and-encrypt-data (meta &form) properties data))
+  ([properties data #_callback] (gen-call :function ::verify-and-encrypt-data (meta &form) properties data)))
 
 (defmacro set-wifi-tdls-enabled-state
   "Enables TDLS for WiFi traffic with a specified peer if available.
@@ -209,8 +191,7 @@
      |callback| - A callback function that receives a string with an error or     the current TDLS status. 'Failed'
                   indicates that the request failed     (e.g. MAC address lookup failed). 'Timeout' indicates that
                   the lookup     timed out. Otherwise a valid status is returned (see     'getWifiTDLSStatus')."
-  [ip-or-mac-address enabled #_callback]
-  (gen-call :function ::set-wifi-tdls-enabled-state (meta &form) ip-or-mac-address enabled))
+  ([ip-or-mac-address enabled #_callback] (gen-call :function ::set-wifi-tdls-enabled-state (meta &form) ip-or-mac-address enabled)))
 
 (defmacro get-wifi-tdls-status
   "Returns the current TDLS status for the specified peer.
@@ -218,16 +199,14 @@
      |ip_or_mac_address| - The IP or MAC address of the peer.
      |callback| - A callback function that receives a string with the current     TDLS status which can be
                   'Connected', 'Disabled', 'Disconnected',     'Nonexistent', or 'Unknown'."
-  [ip-or-mac-address #_callback]
-  (gen-call :function ::get-wifi-tdls-status (meta &form) ip-or-mac-address))
+  ([ip-or-mac-address #_callback] (gen-call :function ::get-wifi-tdls-status (meta &form) ip-or-mac-address)))
 
 (defmacro get-captive-portal-status
   "Returns captive portal status for the network matching 'networkGuid'.
    
      |networkGuid| - The GUID of the network to get captive portal status for.
      |callback| - A callback function that returns the results of the query for     network captive portal status."
-  [network-guid #_callback]
-  (gen-call :function ::get-captive-portal-status (meta &form) network-guid))
+  ([network-guid #_callback] (gen-call :function ::get-captive-portal-status (meta &form) network-guid)))
 
 (defmacro unlock-cellular-sim
   "Unlocks a Cellular SIM card. * If the SIM is PIN locked, |pin| will be used to unlock the SIM and   the |puk
@@ -240,8 +219,8 @@
      |pin| - The current SIM PIN, or the new PIN if PUK is provided.
      |puk| - The operator provided PUK for unblocking a blocked SIM.
      |callback| - Called when the operation has completed."
-  [network-guid pin puk #_callback]
-  (gen-call :function ::unlock-cellular-sim (meta &form) network-guid pin puk))
+  ([network-guid pin puk #_callback] (gen-call :function ::unlock-cellular-sim (meta &form) network-guid pin puk))
+  ([network-guid pin] `(unlock-cellular-sim ~network-guid ~pin :omit)))
 
 (defmacro set-cellular-sim-state
   "Sets whether or not SIM locking is enabled (i.e a PIN will be required when the device is powered) and changes the
@@ -253,8 +232,7 @@
      |networkGuid| - The GUID of the cellular network to set the SIM state of.
      |simState| - The SIM state to set.
      |callback| - Called when the operation has completed."
-  [network-guid sim-state #_callback]
-  (gen-call :function ::set-cellular-sim-state (meta &form) network-guid sim-state))
+  ([network-guid sim-state #_callback] (gen-call :function ::set-cellular-sim-state (meta &form) network-guid sim-state)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

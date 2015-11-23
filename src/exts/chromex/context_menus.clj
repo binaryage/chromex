@@ -29,8 +29,7 @@
    
      |callback| - Called when the item has been created in the browser. If there were any problems creating the
                   item, details will be available in chrome.runtime.lastError."
-  [create-properties #_callback]
-  (gen-call :function ::create (meta &form) create-properties))
+  ([create-properties #_callback] (gen-call :function ::create (meta &form) create-properties)))
 
 (defmacro update
   "Updates a previously created context menu item.
@@ -38,23 +37,20 @@
      |id| - The ID of the item to update.
      |updateProperties| - The properties to update. Accepts the same values as the create function.
      |callback| - Called when the context menu has been updated."
-  [id update-properties #_callback]
-  (gen-call :function ::update (meta &form) id update-properties))
+  ([id update-properties #_callback] (gen-call :function ::update (meta &form) id update-properties)))
 
 (defmacro remove
   "Removes a context menu item.
    
      |menuItemId| - The ID of the context menu item to remove.
      |callback| - Called when the context menu has been removed."
-  [menu-item-id #_callback]
-  (gen-call :function ::remove (meta &form) menu-item-id))
+  ([menu-item-id #_callback] (gen-call :function ::remove (meta &form) menu-item-id)))
 
 (defmacro remove-all
   "Removes all context menu items added by this extension.
    
      |callback| - Called when removal is complete."
-  [#_callback]
-  (gen-call :function ::remove-all (meta &form)))
+  ([#_callback] (gen-call :function ::remove-all (meta &form))))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

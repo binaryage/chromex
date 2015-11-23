@@ -17,8 +17,7 @@
    
      |challenge| - Challenge to be signed in base64.
      |callback| - Callback function."
-  [challenge #_callback]
-  (gen-call :function ::challenge-machine-key (meta &form) challenge))
+  ([challenge #_callback] (gen-call :function ::challenge-machine-key (meta &form) challenge)))
 
 (defmacro challenge-user-key
   "Challenge an user key.
@@ -26,8 +25,7 @@
      |challenge| - Challenge to be signed in base64.
      |registerKey| - If true, the key will be registered.
      |callback| - Callback function."
-  [challenge register-key #_callback]
-  (gen-call :function ::challenge-user-key (meta &form) challenge register-key))
+  ([challenge register-key #_callback] (gen-call :function ::challenge-user-key (meta &form) challenge register-key)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

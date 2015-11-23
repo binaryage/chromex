@@ -20,29 +20,25 @@
    stop.
    
      |callback| - A callback to report the status of a request."
-  [params token #_callback]
-  (gen-call :function ::transmit (meta &form) params token))
+  ([params token #_callback] (gen-call :function ::transmit (meta &form) params token)))
 
 (defmacro stop-transmit
   "Stop any active transmission on the specified band.
    
      |callback| - A callback to report the status of a request."
-  [band #_callback]
-  (gen-call :function ::stop-transmit (meta &form) band))
+  ([band #_callback] (gen-call :function ::stop-transmit (meta &form) band)))
 
 (defmacro receive
   "Start listening for audio tokens. For now, only one app will be able to listen at a time.
    
      |callback| - A callback to report the status of a request."
-  [params #_callback]
-  (gen-call :function ::receive (meta &form) params))
+  ([params #_callback] (gen-call :function ::receive (meta &form) params)))
 
 (defmacro stop-receive
   "Stop any active listening on the specified band.
    
      |callback| - A callback to report the status of a request."
-  [band #_callback]
-  (gen-call :function ::stop-receive (meta &form) band))
+  ([band #_callback] (gen-call :function ::stop-receive (meta &form) band)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

@@ -22,8 +22,7 @@
      |networks| - Network filters to set. Every NetworkInfo must             either have the SSID or HexSSID
                   set. Other fields will be ignored.
      |callback| - Called back when this operation is finished."
-  [networks #_callback]
-  (gen-call :function ::set-network-filter (meta &form) networks))
+  ([networks #_callback] (gen-call :function ::set-network-filter (meta &form) networks)))
 
 (defmacro finish-authentication
   "Called by the extension to notify the network config API that it finished a captive portal authentication attempt
@@ -33,8 +32,7 @@
      |GUID| - Unique network identifier obtained from         'onCaptivePortalDetected'.
      |result| - The result of the authentication attempt.
      |callback| - Called back when this operation is finished."
-  [guid result #_callback]
-  (gen-call :function ::finish-authentication (meta &form) guid result))
+  ([guid result #_callback] (gen-call :function ::finish-authentication (meta &form) guid result)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

@@ -19,8 +19,7 @@
 (defmacro get-browser-info
   "Retrives information about the current browser context (experimental variation information), passing a BrowserInfo
    object to the callback function."
-  [#_callback]
-  (gen-call :function ::get-browser-info (meta &form)))
+  ([#_callback] (gen-call :function ::get-browser-info (meta &form))))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

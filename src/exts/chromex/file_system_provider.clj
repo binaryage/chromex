@@ -23,8 +23,7 @@
    will be set with a corresponding error code.
    
      |callback| - A generic result callback to indicate success or failure."
-  [options #_callback]
-  (gen-call :function ::mount (meta &form) options))
+  ([options #_callback] (gen-call :function ::mount (meta &form) options)))
 
 (defmacro unmount
   "Unmounts a file system with the given fileSystemId. It must be called after 'onUnmountRequested' is invoked. Also,
@@ -32,22 +31,19 @@
    file error).In case of an error, 'runtime.lastError' will be set with a corresponding error code.
    
      |callback| - A generic result callback to indicate success or failure."
-  [options #_callback]
-  (gen-call :function ::unmount (meta &form) options))
+  ([options #_callback] (gen-call :function ::unmount (meta &form) options)))
 
 (defmacro get-all
   "Returns all file systems mounted by the extension.
    
      |callback| - Callback to receive the result of 'getAll' function."
-  [#_callback]
-  (gen-call :function ::get-all (meta &form)))
+  ([#_callback] (gen-call :function ::get-all (meta &form))))
 
 (defmacro get
   "Returns information about a file system with the passed fileSystemId.
    
      |callback| - Callback to receive the result of 'get' function."
-  [file-system-id #_callback]
-  (gen-call :function ::get (meta &form) file-system-id))
+  ([file-system-id #_callback] (gen-call :function ::get (meta &form) file-system-id)))
 
 (defmacro notify
   "Notifies about changes in the watched directory at observedPath in recursive mode. If the file system is mounted
@@ -64,8 +60,7 @@
    corresponding error code.
    
      |callback| - A generic result callback to indicate success or failure."
-  [options #_callback]
-  (gen-call :function ::notify (meta &form) options))
+  ([options #_callback] (gen-call :function ::notify (meta &form) options)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

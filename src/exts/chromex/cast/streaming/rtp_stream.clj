@@ -22,38 +22,33 @@
   "Destroys a Cast RTP stream.
    
      |streamId| - The RTP stream ID."
-  [stream-id]
-  (gen-call :function ::destroy (meta &form) stream-id))
+  ([stream-id] (gen-call :function ::destroy (meta &form) stream-id)))
 
 (defmacro get-supported-params
   "Returns an array of supported parameters with default values. This includes a list of supported codecs on this
    platform and corresponding encoding and RTP parameters.
    
      |streamId| - The RTP stream ID."
-  [stream-id]
-  (gen-call :function ::get-supported-params (meta &form) stream-id))
+  ([stream-id] (gen-call :function ::get-supported-params (meta &form) stream-id)))
 
 (defmacro start
   "Activates the RTP stream by providing the parameters.
    
      |streamId| - The RTP stream ID.
      |params| - Parameters set for this stream."
-  [stream-id params]
-  (gen-call :function ::start (meta &form) stream-id params))
+  ([stream-id params] (gen-call :function ::start (meta &form) stream-id params)))
 
 (defmacro stop
   "Stops activity on the specified stream.
    
      |streamId| - The RTP stream ID."
-  [stream-id]
-  (gen-call :function ::stop (meta &form) stream-id))
+  ([stream-id] (gen-call :function ::stop (meta &form) stream-id)))
 
 (defmacro toggle-logging
   "Enables / disables logging for a stream.
    
      |enable| - If true, enables logging. Otherwise disables logging."
-  [stream-id enable]
-  (gen-call :function ::toggle-logging (meta &form) stream-id enable))
+  ([stream-id enable] (gen-call :function ::toggle-logging (meta &form) stream-id enable)))
 
 (defmacro get-raw-events
   "Get raw events for a stream in the current session.
@@ -62,16 +57,15 @@
      |extraData| - Extra data to attach to the log, e.g. system info or              experiment tags, in key-value
                    JSON string format.
      |callback| - Called with the raw events."
-  [stream-id extra-data #_callback]
-  (gen-call :function ::get-raw-events (meta &form) stream-id extra-data))
+  ([stream-id extra-data #_callback] (gen-call :function ::get-raw-events (meta &form) stream-id extra-data))
+  ([stream-id] `(get-raw-events ~stream-id :omit)))
 
 (defmacro get-stats
   "Get stats for a stream in the current session.
    
      |streamId| - Stream to get stats for.
      |callback| - Called with the stats."
-  [stream-id #_callback]
-  (gen-call :function ::get-stats (meta &form) stream-id))
+  ([stream-id #_callback] (gen-call :function ::get-stats (meta &form) stream-id)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

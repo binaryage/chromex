@@ -20,8 +20,7 @@
    in the first suggestion row underneath the URL bar.
    
      |suggestion| - A partial SuggestResult object, without the 'content' parameter."
-  [suggestion]
-  (gen-call :function ::set-default-suggestion (meta &form) suggestion))
+  ([suggestion] (gen-call :function ::set-default-suggestion (meta &form) suggestion)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

@@ -16,18 +16,15 @@
   "Returns whether the incognito mode is enabled, disabled or forced
    
      |callback| - Called with the result."
-  [#_callback]
-  (gen-call :function ::get-incognito-mode-availability (meta &form)))
+  ([#_callback] (gen-call :function ::get-incognito-mode-availability (meta &form))))
 
 (defmacro get-update-status
   "Gets information about the system update."
-  [#_callback]
-  (gen-call :function ::get-update-status (meta &form)))
+  ([#_callback] (gen-call :function ::get-update-status (meta &form))))
 
 (defmacro get-api-key
   "Gets Chrome's API key to use for requests to Google services."
-  [#_callback]
-  (gen-call :function ::get-api-key (meta &form)))
+  ([#_callback] (gen-call :function ::get-api-key (meta &form))))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

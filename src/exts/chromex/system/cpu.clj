@@ -16,8 +16,7 @@
 
 (defmacro get-info
   "Queries basic CPU information of the system."
-  [#_callback]
-  (gen-call :function ::get-info (meta &form)))
+  ([#_callback] (gen-call :function ::get-info (meta &form))))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

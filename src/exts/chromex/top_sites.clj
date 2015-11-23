@@ -16,8 +16,7 @@
 
 (defmacro get
   "Gets a list of top sites."
-  [#_callback]
-  (gen-call :function ::get (meta &form)))
+  ([#_callback] (gen-call :function ::get (meta &form))))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

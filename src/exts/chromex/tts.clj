@@ -24,35 +24,30 @@
      |options| - The speech options.
      |callback| - Called right away, before speech finishes. Check chrome.runtime.lastError to make sure there were
                   no errors. Use options.onEvent to get more detailed feedback."
-  [utterance options #_callback]
-  (gen-call :function ::speak (meta &form) utterance options))
+  ([utterance options #_callback] (gen-call :function ::speak (meta &form) utterance options))
+  ([utterance] `(speak ~utterance :omit)))
 
 (defmacro stop
   "Stops any current speech and flushes the queue of any pending utterances. In addition, if speech was paused, it
    will now be un-paused for the next call to speak."
-  []
-  (gen-call :function ::stop (meta &form)))
+  ([] (gen-call :function ::stop (meta &form))))
 
 (defmacro pause
   "Pauses speech synthesis, potentially in the middle of an utterance. A call to resume or stop will un-pause speech."
-  []
-  (gen-call :function ::pause (meta &form)))
+  ([] (gen-call :function ::pause (meta &form))))
 
 (defmacro resume
   "If speech was paused, resumes speaking where it left off."
-  []
-  (gen-call :function ::resume (meta &form)))
+  ([] (gen-call :function ::resume (meta &form))))
 
 (defmacro is-speaking
   "Checks whether the engine is currently speaking. On Mac OS X, the result is true whenever the system speech engine
    is speaking, even if the speech wasn't initiated by Chrome."
-  [#_callback]
-  (gen-call :function ::is-speaking (meta &form)))
+  ([#_callback] (gen-call :function ::is-speaking (meta &form))))
 
 (defmacro get-voices
   "Gets an array of all available voices."
-  [#_callback]
-  (gen-call :function ::get-voices (meta &form)))
+  ([#_callback] (gen-call :function ::get-voices (meta &form))))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

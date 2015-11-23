@@ -27,8 +27,8 @@
      |maxFrameRate| - Max video frame rate.
      |mediaStreamURL| - URL of MediaStream to add the audio and video to.
      |transport_options| - Optional transport settings."
-  [audio-params video-params local-endpoint max-width max-height max-frame-rate media-stream-url transport-options #_error-callback]
-  (gen-call :function ::create-and-bind (meta &form) audio-params video-params local-endpoint max-width max-height max-frame-rate media-stream-url transport-options))
+  ([audio-params video-params local-endpoint max-width max-height max-frame-rate media-stream-url transport-options #_error-callback] (gen-call :function ::create-and-bind (meta &form) audio-params video-params local-endpoint max-width max-height max-frame-rate media-stream-url transport-options))
+  ([audio-params video-params local-endpoint max-width max-height max-frame-rate media-stream-url] `(create-and-bind ~audio-params ~video-params ~local-endpoint ~max-width ~max-height ~max-frame-rate ~media-stream-url :omit)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

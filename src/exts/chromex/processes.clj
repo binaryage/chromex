@@ -18,15 +18,13 @@
   "Terminates the specified renderer process. Equivalent to visiting about:crash, but without changing the tab's URL.
    
      |processId| - The ID of the process to be terminated."
-  [process-id #_callback]
-  (gen-call :function ::terminate (meta &form) process-id))
+  ([process-id #_callback] (gen-call :function ::terminate (meta &form) process-id)))
 
 (defmacro get-process-id-for-tab
   "Returns the ID of the renderer process for the specified tab.
    
      |tabId| - The ID of the tab for which the renderer process ID is to be returned."
-  [tab-id #_callback]
-  (gen-call :function ::get-process-id-for-tab (meta &form) tab-id))
+  ([tab-id #_callback] (gen-call :function ::get-process-id-for-tab (meta &form) tab-id)))
 
 (defmacro get-process-info
   "Retrieves the process information for each process ID specified.
@@ -36,8 +34,7 @@
      |includeMemory| - True if detailed memory usage is required. Note, collecting memory usage information incurs
                        extra CPU usage and should only be queried for when needed.
      |callback| - Called when the processes information is collected."
-  [process-ids include-memory #_callback]
-  (gen-call :function ::get-process-info (meta &form) process-ids include-memory))
+  ([process-ids include-memory #_callback] (gen-call :function ::get-process-info (meta &form) process-ids include-memory)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

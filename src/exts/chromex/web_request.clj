@@ -25,8 +25,7 @@
 (defmacro handler-behavior-changed
   "Needs to be called when the behavior of the webRequest handlers has changed to prevent incorrect handling due to
    caching. This function call is expensive. Don't call it often."
-  [#_callback]
-  (gen-call :function ::handler-behavior-changed (meta &form)))
+  ([#_callback] (gen-call :function ::handler-behavior-changed (meta &form))))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

@@ -16,22 +16,19 @@
   "Installs the extension corresponding to the given id
    
      |expected_id| - The id of the extension to install."
-  [expected-id #_callback]
-  (gen-call :function ::install (meta &form) expected-id))
+  ([expected-id #_callback] (gen-call :function ::install (meta &form) expected-id)))
 
 (defmacro begin-install-with-manifest3
   "Initiates the install process for the given extension.
    
      |callback| - Called when the user has either accepted/rejected the dialog, or some error occurred (such as
                   invalid manifest or icon image data)."
-  [details #_callback]
-  (gen-call :function ::begin-install-with-manifest3 (meta &form) details))
+  ([details #_callback] (gen-call :function ::begin-install-with-manifest3 (meta &form) details)))
 
 (defmacro complete-install
   "  |expected_id| - The id of the extension to be installed. This should match a previous call to
                      beginInstallWithManifest3."
-  [expected-id #_callback]
-  (gen-call :function ::complete-install (meta &form) expected-id))
+  ([expected-id #_callback] (gen-call :function ::complete-install (meta &form) expected-id)))
 
 (defmacro install-bundle
   "Initiates the install process for the given bundle of extensions.
@@ -40,54 +37,44 @@
      |callback| - Called when the install process completes. Upon failures, chrome.runtime.lastError will be set to
                   'Invalid bundle', 'Invalid icon url', 'This item is already installed', or 'User cancelled
                   install'."
-  [details contents #_callback]
-  (gen-call :function ::install-bundle (meta &form) details contents))
+  ([details contents #_callback] (gen-call :function ::install-bundle (meta &form) details contents)))
 
-(defmacro enable-app-launcher [#_callback]
-  (gen-call :function ::enable-app-launcher (meta &form)))
+(defmacro enable-app-launcher ([#_callback] (gen-call :function ::enable-app-launcher (meta &form))))
 
 (defmacro get-browser-login
   "Returns the logged-in sync user login if there is one, or the empty string otherwise."
-  [#_callback]
-  (gen-call :function ::get-browser-login (meta &form)))
+  ([#_callback] (gen-call :function ::get-browser-login (meta &form))))
 
 (defmacro get-store-login
   "Returns the previous value set by setStoreLogin, or the empty string if there is none."
-  [#_callback]
-  (gen-call :function ::get-store-login (meta &form)))
+  ([#_callback] (gen-call :function ::get-store-login (meta &form))))
 
 (defmacro set-store-login
   "Sets a preference value with the store login."
-  [login #_callback]
-  (gen-call :function ::set-store-login (meta &form) login))
+  ([login #_callback] (gen-call :function ::set-store-login (meta &form) login)))
 
 (defmacro get-web-gl-status
   "Invokes a callback that returns whether WebGL is blacklisted or not."
-  [#_callback]
-  (gen-call :function ::get-web-gl-status (meta &form)))
+  ([#_callback] (gen-call :function ::get-web-gl-status (meta &form))))
 
 (defmacro get-is-launcher-enabled
   "Returns whether the apps launcher is enabled or not."
-  [#_callback]
-  (gen-call :function ::get-is-launcher-enabled (meta &form)))
+  ([#_callback] (gen-call :function ::get-is-launcher-enabled (meta &form))))
 
 (defmacro is-in-incognito-mode
   "Returns whether the browser is in incognito mode or not."
-  [#_callback]
-  (gen-call :function ::is-in-incognito-mode (meta &form)))
+  ([#_callback] (gen-call :function ::is-in-incognito-mode (meta &form))))
 
 (defmacro get-ephemeral-apps-enabled
   "Returns whether the ephemeral apps feature is enabled."
-  [#_callback]
-  (gen-call :function ::get-ephemeral-apps-enabled (meta &form)))
+  ([#_callback] (gen-call :function ::get-ephemeral-apps-enabled (meta &form))))
 
 (defmacro launch-ephemeral-app
   "Installs an app ephemerally in Chrome (if not already fully installed) and launches the app. A user gesture is
    required.
    
      |id| - The extension id of the app to launch."
-  [id #_callback]
-  (gen-call :function ::launch-ephemeral-app (meta &form) id))
+  ([id #_callback] (gen-call :function ::launch-ephemeral-app (meta &form) id)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

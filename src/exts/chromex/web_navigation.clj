@@ -19,15 +19,13 @@
    and is identified by a tab ID and a frame ID.
    
      |details| - Information about the frame to retrieve information about."
-  [details #_callback]
-  (gen-call :function ::get-frame (meta &form) details))
+  ([details #_callback] (gen-call :function ::get-frame (meta &form) details)))
 
 (defmacro get-all-frames
   "Retrieves information about all frames of a given tab.
    
      |details| - Information about the tab to retrieve all frames from."
-  [details #_callback]
-  (gen-call :function ::get-all-frames (meta &form) details))
+  ([details #_callback] (gen-call :function ::get-all-frames (meta &form) details)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

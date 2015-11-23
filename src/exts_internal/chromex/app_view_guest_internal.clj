@@ -14,13 +14,11 @@
 
 (defmacro attach-frame
   "Attaches the specified url to the AppView with the provided instance ID."
-  [#_callback]
-  (gen-call :function ::attach-frame (meta &form)))
+  ([#_callback] (gen-call :function ::attach-frame (meta &form))))
 
 (defmacro deny-request
   "Denies the embedding request made by the AppView with the provided instance ID."
-  []
-  (gen-call :function ::deny-request (meta &form)))
+  ([] (gen-call :function ::deny-request (meta &form))))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

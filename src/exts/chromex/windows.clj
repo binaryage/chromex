@@ -29,39 +29,37 @@
 
 (defmacro get
   "Gets details about a window."
-  [window-id get-info #_callback]
-  (gen-call :function ::get (meta &form) window-id get-info))
+  ([window-id get-info #_callback] (gen-call :function ::get (meta &form) window-id get-info))
+  ([window-id] `(get ~window-id :omit)))
 
 (defmacro get-current
   "Gets the current window."
-  [get-info #_callback]
-  (gen-call :function ::get-current (meta &form) get-info))
+  ([get-info #_callback] (gen-call :function ::get-current (meta &form) get-info))
+  ([] `(get-current :omit)))
 
 (defmacro get-last-focused
   "Gets the window that was most recently focused &mdash; typically the window 'on top'."
-  [get-info #_callback]
-  (gen-call :function ::get-last-focused (meta &form) get-info))
+  ([get-info #_callback] (gen-call :function ::get-last-focused (meta &form) get-info))
+  ([] `(get-last-focused :omit)))
 
 (defmacro get-all
   "Gets all windows."
-  [get-info #_callback]
-  (gen-call :function ::get-all (meta &form) get-info))
+  ([get-info #_callback] (gen-call :function ::get-all (meta &form) get-info))
+  ([] `(get-all :omit)))
 
 (defmacro create
   "Creates (opens) a new browser with any optional sizing, position or default URL provided."
-  [create-data #_callback]
-  (gen-call :function ::create (meta &form) create-data))
+  ([create-data #_callback] (gen-call :function ::create (meta &form) create-data))
+  ([] `(create :omit)))
 
 (defmacro update
   "Updates the properties of a window. Specify only the properties that you want to change; unspecified properties
    will be left unchanged."
-  [window-id update-info #_callback]
-  (gen-call :function ::update (meta &form) window-id update-info))
+  ([window-id update-info #_callback] (gen-call :function ::update (meta &form) window-id update-info)))
 
 (defmacro remove
   "Removes (closes) a window, and all the tabs inside it."
-  [window-id #_callback]
-  (gen-call :function ::remove (meta &form) window-id))
+  ([window-id #_callback] (gen-call :function ::remove (meta &form) window-id)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

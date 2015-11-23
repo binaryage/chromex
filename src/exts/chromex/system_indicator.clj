@@ -21,18 +21,15 @@
   "Set the image to be used as an indicator icon, using a set of ImageData objects. These objects should have multiple
    resolutions so that an appropriate size can be selected for the given icon size and DPI scaling settings. Only
    square ImageData objects are accepted."
-  [details #_callback]
-  (gen-call :function ::set-icon (meta &form) details))
+  ([details #_callback] (gen-call :function ::set-icon (meta &form) details)))
 
 (defmacro enable
   "Show the icon in the status tray."
-  []
-  (gen-call :function ::enable (meta &form)))
+  ([] (gen-call :function ::enable (meta &form))))
 
 (defmacro disable
   "Hide the icon from the status tray."
-  []
-  (gen-call :function ::disable (meta &form)))
+  ([] (gen-call :function ::disable (meta &form))))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

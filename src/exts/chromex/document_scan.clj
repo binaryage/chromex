@@ -20,8 +20,7 @@
    
      |options| - Object containing scan parameters.
      |callback| - Called with the result and data from the scan."
-  [options #_callback]
-  (gen-call :function ::scan (meta &form) options))
+  ([options #_callback] (gen-call :function ::scan (meta &form) options)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

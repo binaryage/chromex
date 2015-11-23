@@ -17,8 +17,7 @@
 (defmacro get-accounts
   "Retrieves a list of AccountInfo objects describing the accounts present on the profile.getAccounts is only
    supported on dev channel."
-  [#_callback]
-  (gen-call :function ::get-accounts (meta &form)))
+  ([#_callback] (gen-call :function ::get-accounts (meta &form))))
 
 (defmacro get-auth-token
   "Gets an OAuth2 access token using the client ID and scopes specified in the oauth2 section of manifest.json.The
@@ -31,15 +30,14 @@
      |details| - Token options.
      |callback| - Called with an OAuth2 access token as specified by the manifest, or undefined if there was an
                   error."
-  [details #_callback]
-  (gen-call :function ::get-auth-token (meta &form) details))
+  ([details #_callback] (gen-call :function ::get-auth-token (meta &form) details))
+  ([] `(get-auth-token :omit)))
 
 (defmacro get-profile-user-info
   "Retrieves email address and obfuscated gaia id of the user signed into a profile.This API is different from
    identity.getAccounts in two ways. The information returned is available offline, and it only applies to the primary
    account for the profile."
-  [#_callback]
-  (gen-call :function ::get-profile-user-info (meta &form)))
+  ([#_callback] (gen-call :function ::get-profile-user-info (meta &form))))
 
 (defmacro remove-cached-auth-token
   "Removes an OAuth2 access token from the Identity API's token cache.If an access token is discovered to be invalid,
@@ -48,8 +46,7 @@
    
      |details| - Token information.
      |callback| - Called when the token has been removed from the cache."
-  [details #_callback]
-  (gen-call :function ::remove-cached-auth-token (meta &form) details))
+  ([details #_callback] (gen-call :function ::remove-cached-auth-token (meta &form) details)))
 
 (defmacro launch-web-auth-flow
   "Starts an auth flow at the specified URL.This method enables auth flows with non-Google identity providers by
@@ -62,16 +59,15 @@
    
      |details| - WebAuth flow options.
      |callback| - Called with the URL redirected back to your application."
-  [details #_callback]
-  (gen-call :function ::launch-web-auth-flow (meta &form) details))
+  ([details #_callback] (gen-call :function ::launch-web-auth-flow (meta &form) details)))
 
 (defmacro get-redirect-url
   "Generates a redirect URL to be used in |launchWebAuthFlow|.The generated URLs match the pattern
    https://&lt;app-id&gt;.chromiumapp.org/*.
    
      |path| - The path appended to the end of the generated URL."
-  [path]
-  (gen-call :function ::get-redirect-url (meta &form) path))
+  ([path] (gen-call :function ::get-redirect-url (meta &form) path))
+  ([] `(get-redirect-url :omit)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

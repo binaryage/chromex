@@ -34,8 +34,7 @@
      |iconPath| - Path of the panel's icon relative to the extension directory.
      |pagePath| - Path of the panel's HTML page relative to the extension directory.
      |callback| - A function that is called when the panel is created."
-  [title icon-path page-path #_callback]
-  (gen-call :function ::create (meta &form) title icon-path page-path))
+  ([title icon-path page-path #_callback] (gen-call :function ::create (meta &form) title icon-path page-path)))
 
 (defmacro set-open-resource-handler
   "Specifies the function to be called when the user clicks a resource link in the Developer Tools window. To unset
@@ -43,8 +42,7 @@
    
      |callback| - A function that is called when the user clicks on a valid resource link in Developer Tools window.
                   Note that if the user clicks an invalid URL or an XHR, this function is not called."
-  [#_callback]
-  (gen-call :function ::set-open-resource-handler (meta &form)))
+  ([#_callback] (gen-call :function ::set-open-resource-handler (meta &form))))
 
 (defmacro open-resource
   "Requests DevTools to open a URL in a Developer Tools panel.
@@ -52,8 +50,7 @@
      |url| - The URL of the resource to open.
      |lineNumber| - Specifies the line number to scroll to when the resource is loaded.
      |callback| - A function that is called when the resource has been successfully loaded."
-  [url line-number #_callback]
-  (gen-call :function ::open-resource (meta &form) url line-number))
+  ([url line-number #_callback] (gen-call :function ::open-resource (meta &form) url line-number)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

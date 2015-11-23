@@ -17,55 +17,45 @@
 
 (defmacro get-language-list
   "Gets languages available for translate, spell checking, input and locale."
-  [#_callback]
-  (gen-call :function ::get-language-list (meta &form)))
+  ([#_callback] (gen-call :function ::get-language-list (meta &form))))
 
 (defmacro set-language-list
   "Sets the accepted languages, used to decide which languages to translate, generate the Accept-Language header, etc."
-  [language-codes]
-  (gen-call :function ::set-language-list (meta &form) language-codes))
+  ([language-codes] (gen-call :function ::set-language-list (meta &form) language-codes)))
 
 (defmacro get-spellcheck-dictionary-statuses
   "Gets the current status of the chosen spell check dictionaries."
-  [#_callback]
-  (gen-call :function ::get-spellcheck-dictionary-statuses (meta &form)))
+  ([#_callback] (gen-call :function ::get-spellcheck-dictionary-statuses (meta &form))))
 
 (defmacro get-spellcheck-words
   "Gets the custom spell check words, in sorted order."
-  [#_callback]
-  (gen-call :function ::get-spellcheck-words (meta &form)))
+  ([#_callback] (gen-call :function ::get-spellcheck-words (meta &form))))
 
 (defmacro add-spellcheck-word
   "Adds a word to the custom dictionary."
-  [word]
-  (gen-call :function ::add-spellcheck-word (meta &form) word))
+  ([word] (gen-call :function ::add-spellcheck-word (meta &form) word)))
 
 (defmacro remove-spellcheck-word
   "Removes a word from the custom dictionary."
-  [word]
-  (gen-call :function ::remove-spellcheck-word (meta &form) word))
+  ([word] (gen-call :function ::remove-spellcheck-word (meta &form) word)))
 
 (defmacro get-translate-target-language
   "Gets the translate target language (in most cases, the display locale)."
-  [#_callback]
-  (gen-call :function ::get-translate-target-language (meta &form)))
+  ([#_callback] (gen-call :function ::get-translate-target-language (meta &form))))
 
 (defmacro get-input-method-lists
   "Gets all supported input methods, including third-party IMEs. Chrome OS only."
-  [#_callback]
-  (gen-call :function ::get-input-method-lists (meta &form)))
+  ([#_callback] (gen-call :function ::get-input-method-lists (meta &form))))
 
 (defmacro add-input-method
   "Adds the input method to the current user's list of enabled input methods, enabling the input method for the
    current user. Chrome OS only."
-  [input-method-id]
-  (gen-call :function ::add-input-method (meta &form) input-method-id))
+  ([input-method-id] (gen-call :function ::add-input-method (meta &form) input-method-id)))
 
 (defmacro remove-input-method
   "Removes the input method from the current user's list of enabled input methods, disabling the input method for the
    current user. Chrome OS only."
-  [input-method-id]
-  (gen-call :function ::remove-input-method (meta &form) input-method-id))
+  ([input-method-id] (gen-call :function ::remove-input-method (meta &form) input-method-id)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

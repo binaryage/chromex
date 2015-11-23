@@ -18,37 +18,30 @@
 
 (defmacro set-adapter-state
   "Changes the state of the Bluetooth adapter."
-  [adapter-state #_callback]
-  (gen-call :function ::set-adapter-state (meta &form) adapter-state))
+  ([adapter-state #_callback] (gen-call :function ::set-adapter-state (meta &form) adapter-state)))
 
-(defmacro set-pairing-response [options #_callback]
-  (gen-call :function ::set-pairing-response (meta &form) options))
+(defmacro set-pairing-response ([options #_callback] (gen-call :function ::set-pairing-response (meta &form) options)))
 
 (defmacro disconnect-all
   "Tears down all connections to the given device."
-  [device-address #_callback]
-  (gen-call :function ::disconnect-all (meta &form) device-address))
+  ([device-address #_callback] (gen-call :function ::disconnect-all (meta &form) device-address)))
 
 (defmacro forget-device
   "Forgets the given device."
-  [device-address #_callback]
-  (gen-call :function ::forget-device (meta &form) device-address))
+  ([device-address #_callback] (gen-call :function ::forget-device (meta &form) device-address)))
 
 (defmacro set-discovery-filter
   "Set or clear discovery filter."
-  [discovery-filter #_callback]
-  (gen-call :function ::set-discovery-filter (meta &form) discovery-filter))
+  ([discovery-filter #_callback] (gen-call :function ::set-discovery-filter (meta &form) discovery-filter)))
 
 (defmacro connect
   "Connects to the given device. This will only throw an error if the device address is invalid or the device is
    already connected. Otherwise this will succeed and invoke |callback| with ConnectResultType."
-  [device-address #_callback]
-  (gen-call :function ::connect (meta &form) device-address))
+  ([device-address #_callback] (gen-call :function ::connect (meta &form) device-address)))
 
 (defmacro pair
   "Pairs the given device."
-  [device-address #_callback]
-  (gen-call :function ::pair (meta &form) device-address))
+  ([device-address #_callback] (gen-call :function ::pair (meta &form) device-address)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

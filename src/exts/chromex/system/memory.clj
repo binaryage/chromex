@@ -16,8 +16,7 @@
 
 (defmacro get-info
   "Get physical memory information."
-  [#_callback]
-  (gen-call :function ::get-info (meta &form)))
+  ([#_callback] (gen-call :function ::get-info (meta &form))))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

@@ -12,18 +12,15 @@
 
 ; -- functions ------------------------------------------------------------------------------------------------------
 
-(defmacro create-guest [create-params #_callback]
-  (gen-call :function ::create-guest (meta &form) create-params))
+(defmacro create-guest ([create-params #_callback] (gen-call :function ::create-guest (meta &form) create-params)))
 
-(defmacro destroy-guest [instance-id #_callback]
-  (gen-call :function ::destroy-guest (meta &form) instance-id))
+(defmacro destroy-guest ([instance-id #_callback] (gen-call :function ::destroy-guest (meta &form) instance-id)))
 
 (defmacro set-size
   "  |instanceId| - The instance ID of the guest &lt;webview&gt; process. This not exposed to developers through the
                     API.
      |params| - Size parameters."
-  [instance-id params #_callback]
-  (gen-call :function ::set-size (meta &form) instance-id params))
+  ([instance-id params #_callback] (gen-call :function ::set-size (meta &form) instance-id params)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

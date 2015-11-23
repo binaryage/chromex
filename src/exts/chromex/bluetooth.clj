@@ -19,23 +19,20 @@
   "Get information about the Bluetooth adapter.
    
      |callback| - Called with an AdapterState object describing the adapter              state."
-  [#_callback]
-  (gen-call :function ::get-adapter-state (meta &form)))
+  ([#_callback] (gen-call :function ::get-adapter-state (meta &form))))
 
 (defmacro get-device
   "Get information about a Bluetooth device known to the system.
    
      |deviceAddress| - Address of device to get.
      |callback| - Called with the Device object describing the device."
-  [device-address #_callback]
-  (gen-call :function ::get-device (meta &form) device-address))
+  ([device-address #_callback] (gen-call :function ::get-device (meta &form) device-address)))
 
 (defmacro get-devices
   "Get a list of Bluetooth devices known to the system, including paired and recently discovered devices.
    
      |callback| - Called when the search is completed."
-  [#_callback]
-  (gen-call :function ::get-devices (meta &form)))
+  ([#_callback] (gen-call :function ::get-devices (meta &form))))
 
 (defmacro start-discovery
   "Start discovery. Newly discovered devices will be returned via the onDeviceAdded event. Previously discovered
@@ -45,15 +42,13 @@
    possible.
    
      |callback| - Called to indicate success or failure."
-  [#_callback]
-  (gen-call :function ::start-discovery (meta &form)))
+  ([#_callback] (gen-call :function ::start-discovery (meta &form))))
 
 (defmacro stop-discovery
   "Stop discovery.
    
      |callback| - Called to indicate success or failure."
-  [#_callback]
-  (gen-call :function ::stop-discovery (meta &form)))
+  ([#_callback] (gen-call :function ::stop-discovery (meta &form))))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

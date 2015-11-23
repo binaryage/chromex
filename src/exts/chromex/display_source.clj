@@ -19,8 +19,7 @@
   "Queries the list of the currently available Display sinks.
    
      |callback| - Called when the request is completed. The argument list is empty if no available sinks were found."
-  [#_callback]
-  (gen-call :function ::get-available-sinks (meta &form)))
+  ([#_callback] (gen-call :function ::get-available-sinks (meta &form))))
 
 (defmacro request-authentication
   "Queries authentication data from the sink device.
@@ -30,8 +29,7 @@
                   authentication method required by the sink for connection; the |data| field can be null or can
                   contain some supplementary data provided by the sink. If authentication info cannot be retrieved
                   from the sink the 'chrome.runtime.lastError' property is defined."
-  [sink-id #_callback]
-  (gen-call :function ::request-authentication (meta &form) sink-id))
+  ([sink-id #_callback] (gen-call :function ::request-authentication (meta &form) sink-id)))
 
 (defmacro start-session
   "Creates a Display session using the provided StartSessionInfo instance. The input argument fields must be
@@ -41,16 +39,14 @@
    additional authentication data are required by the sink; otherwise its |data| field must contain the required
    authentication data (e.g. PIN value) and its |method| field must be the same as one obtained from
    ‘requestAuthentication’."
-  [session-info]
-  (gen-call :function ::start-session (meta &form) session-info))
+  ([session-info] (gen-call :function ::start-session (meta &form) session-info)))
 
 (defmacro terminate-session
   "Terminates the active Display session.
    
      |sinkId| - Id of the connected sink.
      |callback| - Called when the session is terminated."
-  [sink-id #_callback]
-  (gen-call :function ::terminate-session (meta &form) sink-id))
+  ([sink-id #_callback] (gen-call :function ::terminate-session (meta &form) sink-id)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

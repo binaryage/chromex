@@ -16,49 +16,43 @@
   "Copies the given bookmarks into the clipboard.
    
      |idList| - An array of string-valued ids"
-  [id-list #_callback]
-  (gen-call :function ::copy (meta &form) id-list))
+  ([id-list #_callback] (gen-call :function ::copy (meta &form) id-list)))
 
 (defmacro cut
   "Cuts the given bookmarks into the clipboard.
    
      |idList| - An array of string-valued ids"
-  [id-list #_callback]
-  (gen-call :function ::cut (meta &form) id-list))
+  ([id-list #_callback] (gen-call :function ::cut (meta &form) id-list)))
 
 (defmacro paste
   "Pastes bookmarks from the clipboard into the parent folder after the last selected node.
    
      |selectedIdList| - An array of string-valued ids for selected bookmarks."
-  [parent-id selected-id-list #_callback]
-  (gen-call :function ::paste (meta &form) parent-id selected-id-list))
+  ([parent-id selected-id-list #_callback] (gen-call :function ::paste (meta &form) parent-id selected-id-list))
+  ([parent-id] `(paste ~parent-id :omit)))
 
 (defmacro can-paste
   "Whether there are any bookmarks that can be pasted.
    
      |parentId| - The ID of the folder to paste into."
-  [parent-id #_callback]
-  (gen-call :function ::can-paste (meta &form) parent-id))
+  ([parent-id #_callback] (gen-call :function ::can-paste (meta &form) parent-id)))
 
 (defmacro sort-children
   "Sorts the children of a given folder.
    
      |parentId| - The ID of the folder to sort the children of."
-  [parent-id]
-  (gen-call :function ::sort-children (meta &form) parent-id))
+  ([parent-id] (gen-call :function ::sort-children (meta &form) parent-id)))
 
 (defmacro get-strings
   "Gets the i18n strings for the bookmark manager."
-  [#_callback]
-  (gen-call :function ::get-strings (meta &form)))
+  ([#_callback] (gen-call :function ::get-strings (meta &form))))
 
 (defmacro start-drag
   "Begins dragging a set of bookmarks.
    
      |idList| - An array of string-valued ids.
      |isFromTouch| - True if the drag was initiated from touch."
-  [id-list is-from-touch]
-  (gen-call :function ::start-drag (meta &form) id-list is-from-touch))
+  ([id-list is-from-touch] (gen-call :function ::start-drag (meta &form) id-list is-from-touch)))
 
 (defmacro drop
   "Performs the drop action of the drag and drop session.
@@ -66,8 +60,8 @@
      |parentId| - The ID of the folder that the drop was made.
      |index| - The index of the position to drop at. If left out the dropped items will be placed at the end of the
                existing children."
-  [parent-id index]
-  (gen-call :function ::drop (meta &form) parent-id index))
+  ([parent-id index] (gen-call :function ::drop (meta &form) parent-id index))
+  ([parent-id] `(drop ~parent-id :omit)))
 
 (defmacro get-subtree
   "Retrieves a bookmark hierarchy from the given node.  If the node id is empty, it is the full tree.  If foldersOnly
@@ -75,41 +69,36 @@
    
      |id| - ID of the root of the tree to pull.  If empty, the entire tree will be returned.
      |foldersOnly| - Pass true to only return folders."
-  [id folders-only #_callback]
-  (gen-call :function ::get-subtree (meta &form) id folders-only))
+  ([id folders-only #_callback] (gen-call :function ::get-subtree (meta &form) id folders-only)))
 
 (defmacro can-edit
   "Whether bookmarks can be modified."
-  [#_callback]
-  (gen-call :function ::can-edit (meta &form)))
+  ([#_callback] (gen-call :function ::can-edit (meta &form))))
 
 (defmacro can-open-new-windows
   "Whether bookmarks can be opened in new windows."
-  [#_callback]
-  (gen-call :function ::can-open-new-windows (meta &form)))
+  ([#_callback] (gen-call :function ::can-open-new-windows (meta &form))))
 
 (defmacro remove-trees
   "Recursively removes list of bookmarks nodes.
    
      |idList| - An array of string-valued ids."
-  [id-list #_callback]
-  (gen-call :function ::remove-trees (meta &form) id-list))
+  ([id-list #_callback] (gen-call :function ::remove-trees (meta &form) id-list)))
 
-(defmacro record-launch []
-  (gen-call :function ::record-launch (meta &form)))
+(defmacro record-launch ([] (gen-call :function ::record-launch (meta &form))))
 
 (defmacro create-with-meta-info
   "Mimics the functionality of bookmarks.create, but will additionally set the given meta info fields."
-  [bookmark meta-info #_callback]
-  (gen-call :function ::create-with-meta-info (meta &form) bookmark meta-info))
+  ([bookmark meta-info #_callback] (gen-call :function ::create-with-meta-info (meta &form) bookmark meta-info)))
 
 (defmacro get-meta-info
   "Gets meta info from a bookmark node.
    
      |id| - The id of the bookmark to retrieve meta info from. If omitted meta info for all nodes is returned.
      |key| - The key for the meta info to retrieve. If omitted, all fields are returned."
-  [id key #_callback]
-  (gen-call :function ::get-meta-info (meta &form) id key))
+  ([id key #_callback] (gen-call :function ::get-meta-info (meta &form) id key))
+  ([id] `(get-meta-info ~id :omit))
+  ([] `(get-meta-info :omit :omit)))
 
 (defmacro set-meta-info
   "Sets a meta info value for a bookmark node.
@@ -117,43 +106,36 @@
      |id| - The id of the bookmark node to set the meta info on.
      |key| - The key of the meta info to set.
      |value| - The meta info to set."
-  [id key value #_callback]
-  (gen-call :function ::set-meta-info (meta &form) id key value))
+  ([id key value #_callback] (gen-call :function ::set-meta-info (meta &form) id key value)))
 
 (defmacro update-meta-info
   "Updates a set of meta info values for a bookmark node.
    
      |id| - The id of the bookmark node to update the meta info of.
      |metaInfoChanges| - A set of meta info key/value pairs to update."
-  [id meta-info-changes #_callback]
-  (gen-call :function ::update-meta-info (meta &form) id meta-info-changes))
+  ([id meta-info-changes #_callback] (gen-call :function ::update-meta-info (meta &form) id meta-info-changes)))
 
 (defmacro undo
   "Performs an undo of the last change to the bookmark model."
-  []
-  (gen-call :function ::undo (meta &form)))
+  ([] (gen-call :function ::undo (meta &form))))
 
 (defmacro redo
   "Performs a redo of last undone change to the bookmark model."
-  []
-  (gen-call :function ::redo (meta &form)))
+  ([] (gen-call :function ::redo (meta &form))))
 
 (defmacro get-undo-info
   "Gets the information for the undo if available."
-  [#_callback]
-  (gen-call :function ::get-undo-info (meta &form)))
+  ([#_callback] (gen-call :function ::get-undo-info (meta &form))))
 
 (defmacro get-redo-info
   "Gets the information for the redo if available."
-  [#_callback]
-  (gen-call :function ::get-redo-info (meta &form)))
+  ([#_callback] (gen-call :function ::get-redo-info (meta &form))))
 
 (defmacro set-version
   "Sets the version to use when updating enhanced bookmarks.
    
      |version| - The version to set."
-  [version #_callback]
-  (gen-call :function ::set-version (meta &form) version))
+  ([version #_callback] (gen-call :function ::set-version (meta &form) version)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

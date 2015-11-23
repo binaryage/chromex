@@ -21,8 +21,7 @@
    |securityOrigin| is the origin as seen by the extension, and |appIdUrl| is the appId being asserted by the origin.
    
      |callback| - Callback for appId check"
-  [security-origin app-id-url #_callback]
-  (gen-call :function ::can-origin-assert-app-id (meta &form) security-origin app-id-url))
+  ([security-origin app-id-url #_callback] (gen-call :function ::can-origin-assert-app-id (meta &form) security-origin app-id-url)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

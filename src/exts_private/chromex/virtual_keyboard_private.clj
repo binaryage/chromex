@@ -17,66 +17,56 @@
    
      |text| - The text that will be inserted.
      |callback| - Called when the insertion is completed."
-  [text #_callback]
-  (gen-call :function ::insert-text (meta &form) text))
+  ([text #_callback] (gen-call :function ::insert-text (meta &form) text)))
 
 (defmacro send-key-event
   "Sends a fabricated key event to the focused input field.
    
      |callback| - Called after processing the event."
-  [key-event #_callback]
-  (gen-call :function ::send-key-event (meta &form) key-event))
+  ([key-event #_callback] (gen-call :function ::send-key-event (meta &form) key-event)))
 
 (defmacro hide-keyboard
   "Hides the virtual keyboard.
    
      |callback| - Called when the keyboard is hidden."
-  [#_callback]
-  (gen-call :function ::hide-keyboard (meta &form)))
+  ([#_callback] (gen-call :function ::hide-keyboard (meta &form))))
 
 (defmacro set-hotrod-keyboard
   "Sets the state of the hotrod virtual keyboard. This API should only be used by hotrod."
-  [enable]
-  (gen-call :function ::set-hotrod-keyboard (meta &form) enable))
+  ([enable] (gen-call :function ::set-hotrod-keyboard (meta &form) enable)))
 
 (defmacro lock-keyboard
   "Sets the lock state of the virtual keyboard. A locked keyboard remains visible even after a text area loses input
    focus."
-  [lock]
-  (gen-call :function ::lock-keyboard (meta &form) lock))
+  ([lock] (gen-call :function ::lock-keyboard (meta &form) lock)))
 
 (defmacro keyboard-loaded
   "Inform the system that the keyboard has loaded.
    
      |callback| - Called when load acknowledgement is complete."
-  [#_callback]
-  (gen-call :function ::keyboard-loaded (meta &form)))
+  ([#_callback] (gen-call :function ::keyboard-loaded (meta &form))))
 
 (defmacro get-keyboard-config
   "Gets the virtual keyboard configuration.
    
      |callback| - Called when querying virtual keyboard configuration is complete."
-  [#_callback]
-  (gen-call :function ::get-keyboard-config (meta &form)))
+  ([#_callback] (gen-call :function ::get-keyboard-config (meta &form))))
 
 (defmacro open-settings
   "Opens chrome://settings/languages page."
-  []
-  (gen-call :function ::open-settings (meta &form)))
+  ([] (gen-call :function ::open-settings (meta &form))))
 
 (defmacro set-mode
   "Sets the virtual keyboard mode.
    
      |mode| - The value of the virtual keyboard mode to set to."
-  [mode]
-  (gen-call :function ::set-mode (meta &form) mode))
+  ([mode] (gen-call :function ::set-mode (meta &form) mode)))
 
 (defmacro set-keyboard-state
   "Requests the virtual keyboard to change state.
    
      |state| - The value of the virtual keyboard state to change to."
-  [state]
-  (gen-call :function ::set-keyboard-state (meta &form) state))
+  ([state] (gen-call :function ::set-keyboard-state (meta &form) state)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

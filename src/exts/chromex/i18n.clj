@@ -17,8 +17,7 @@
 (defmacro get-accept-languages
   "Gets the accept-languages of the browser. This is different from the locale used by the browser; to get the locale,
    use 'i18n.getUILanguage'."
-  [#_callback]
-  (gen-call :function ::get-accept-languages (meta &form)))
+  ([#_callback] (gen-call :function ::get-accept-languages (meta &form))))
 
 (defmacro get-message
   "Gets the localized string for the specified message. If the message is missing, this method returns an empty string
@@ -27,21 +26,19 @@
    
      |messageName| - The name of the message, as specified in the messages.json file.
      |substitutions| - Up to 9 substitution strings, if the message requires any."
-  [message-name substitutions]
-  (gen-call :function ::get-message (meta &form) message-name substitutions))
+  ([message-name substitutions] (gen-call :function ::get-message (meta &form) message-name substitutions))
+  ([message-name] `(get-message ~message-name :omit)))
 
 (defmacro get-ui-language
   "Gets the browser UI language of the browser. This is different from 'i18n.getAcceptLanguages' which returns the
    preferred user languages."
-  []
-  (gen-call :function ::get-ui-language (meta &form)))
+  ([] (gen-call :function ::get-ui-language (meta &form))))
 
 (defmacro detect-language
   "Detects the language of the provided text using CLD.
    
      |text| - User input string to be translated."
-  [text #_callback]
-  (gen-call :function ::detect-language (meta &form) text))
+  ([text #_callback] (gen-call :function ::detect-language (meta &form) text)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

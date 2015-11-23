@@ -29,32 +29,29 @@
                    delayInMinutes (but not both).  If periodInMinutes is set, the alarm will repeat every
                    periodInMinutes minutes after the initial event.  If neither when or delayInMinutes is set for a
                    repeating alarm, periodInMinutes is used as the default for delayInMinutes."
-  [name alarm-info]
-  (gen-call :function ::create (meta &form) name alarm-info))
+  ([name alarm-info] (gen-call :function ::create (meta &form) name alarm-info)))
 
 (defmacro get
   "Retrieves details about the specified alarm.
    
      |name| - The name of the alarm to get. Defaults to the empty string."
-  [name #_callback]
-  (gen-call :function ::get (meta &form) name))
+  ([name #_callback] (gen-call :function ::get (meta &form) name))
+  ([] `(get :omit)))
 
 (defmacro get-all
   "Gets an array of all the alarms."
-  [#_callback]
-  (gen-call :function ::get-all (meta &form)))
+  ([#_callback] (gen-call :function ::get-all (meta &form))))
 
 (defmacro clear
   "Clears the alarm with the given name.
    
      |name| - The name of the alarm to clear. Defaults to the empty string."
-  [name #_callback]
-  (gen-call :function ::clear (meta &form) name))
+  ([name #_callback] (gen-call :function ::clear (meta &form) name))
+  ([] `(clear :omit)))
 
 (defmacro clear-all
   "Clears all alarms."
-  [#_callback]
-  (gen-call :function ::clear-all (meta &form)))
+  ([#_callback] (gen-call :function ::clear-all (meta &form))))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

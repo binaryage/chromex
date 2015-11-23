@@ -20,16 +20,14 @@
    
      |detectionIntervalInSeconds| - The system is considered idle if detectionIntervalInSeconds seconds have elapsed
                                     since the last user input detected."
-  [detection-interval-in-seconds #_callback]
-  (gen-call :function ::query-state (meta &form) detection-interval-in-seconds))
+  ([detection-interval-in-seconds #_callback] (gen-call :function ::query-state (meta &form) detection-interval-in-seconds)))
 
 (defmacro set-detection-interval
   "Sets the interval, in seconds, used to determine when the system is in an idle state for onStateChanged events. The
    default interval is 60 seconds.
    
      |intervalInSeconds| - Threshold, in seconds, used to determine when the system is in an idle state."
-  [interval-in-seconds]
-  (gen-call :function ::set-detection-interval (meta &form) interval-in-seconds))
+  ([interval-in-seconds] (gen-call :function ::set-detection-interval (meta &form) interval-in-seconds)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

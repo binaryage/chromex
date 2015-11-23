@@ -25,8 +25,9 @@
      |failureCallback| - This function is invoked when inline installation does not successfully complete. Possible
                          reasons for this include the user canceling the dialog, the linked item not being found in
                          the store, or the install being initiated from a non-verified site."
-  [url success-callback #_failure-callback]
-  (gen-call :function ::install (meta &form) url success-callback))
+  ([url success-callback #_failure-callback] (gen-call :function ::install (meta &form) url success-callback))
+  ([url] `(install ~url :omit))
+  ([] `(install :omit :omit)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

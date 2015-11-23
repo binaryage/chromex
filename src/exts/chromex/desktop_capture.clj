@@ -21,15 +21,14 @@
      |targetTab| - Optional tab for which the stream is created. If not specified then the resulting stream can be
                    used only by the calling extension. The stream can only be used by frames in the given tab whose
                    security origin matches tab.url."
-  [sources target-tab #_callback]
-  (gen-call :function ::choose-desktop-media (meta &form) sources target-tab))
+  ([sources target-tab #_callback] (gen-call :function ::choose-desktop-media (meta &form) sources target-tab))
+  ([sources] `(choose-desktop-media ~sources :omit)))
 
 (defmacro cancel-choose-desktop-media
   "Hides desktop media picker dialog shown by chooseDesktopMedia().
    
      |desktopMediaRequestId| - Id returned by chooseDesktopMedia()"
-  [desktop-media-request-id]
-  (gen-call :function ::cancel-choose-desktop-media (meta &form) desktop-media-request-id))
+  ([desktop-media-request-id] (gen-call :function ::cancel-choose-desktop-media (meta &form) desktop-media-request-id)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

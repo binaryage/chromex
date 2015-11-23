@@ -21,8 +21,8 @@
      |isLocal| - If true only return the information for the local device. If false or omitted return the list of
                  all devices including the local device.
      |callback| - The callback to be invoked with the array of DeviceInfo objects."
-  [is-local #_callback]
-  (gen-call :function ::get (meta &form) is-local))
+  ([is-local #_callback] (gen-call :function ::get (meta &form) is-local))
+  ([] `(get :omit)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

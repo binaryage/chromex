@@ -16,8 +16,7 @@
 
 (defmacro set-wallpaper
   "Sets wallpaper to the image at url or wallpaperData with the specified layout"
-  [details #_callback]
-  (gen-call :function ::set-wallpaper (meta &form) details))
+  ([details #_callback] (gen-call :function ::set-wallpaper (meta &form) details)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

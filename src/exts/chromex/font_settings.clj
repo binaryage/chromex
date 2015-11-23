@@ -16,80 +16,73 @@
 
 (defmacro clear-font
   "Clears the font set by this extension, if any."
-  [details #_callback]
-  (gen-call :function ::clear-font (meta &form) details))
+  ([details #_callback] (gen-call :function ::clear-font (meta &form) details)))
 
 (defmacro get-font
   "Gets the font for a given script and generic font family."
-  [details #_callback]
-  (gen-call :function ::get-font (meta &form) details))
+  ([details #_callback] (gen-call :function ::get-font (meta &form) details)))
 
 (defmacro set-font
   "Sets the font for a given script and generic font family."
-  [details #_callback]
-  (gen-call :function ::set-font (meta &form) details))
+  ([details #_callback] (gen-call :function ::set-font (meta &form) details)))
 
 (defmacro get-font-list
   "Gets a list of fonts on the system."
-  [#_callback]
-  (gen-call :function ::get-font-list (meta &form)))
+  ([#_callback] (gen-call :function ::get-font-list (meta &form))))
 
 (defmacro clear-default-font-size
   "Clears the default font size set by this extension, if any.
    
      |details| - This parameter is currently unused."
-  [details #_callback]
-  (gen-call :function ::clear-default-font-size (meta &form) details))
+  ([details #_callback] (gen-call :function ::clear-default-font-size (meta &form) details))
+  ([] `(clear-default-font-size :omit)))
 
 (defmacro get-default-font-size
   "Gets the default font size.
    
      |details| - This parameter is currently unused."
-  [details #_callback]
-  (gen-call :function ::get-default-font-size (meta &form) details))
+  ([details #_callback] (gen-call :function ::get-default-font-size (meta &form) details))
+  ([] `(get-default-font-size :omit)))
 
 (defmacro set-default-font-size
   "Sets the default font size."
-  [details #_callback]
-  (gen-call :function ::set-default-font-size (meta &form) details))
+  ([details #_callback] (gen-call :function ::set-default-font-size (meta &form) details)))
 
 (defmacro clear-default-fixed-font-size
   "Clears the default fixed font size set by this extension, if any.
    
      |details| - This parameter is currently unused."
-  [details #_callback]
-  (gen-call :function ::clear-default-fixed-font-size (meta &form) details))
+  ([details #_callback] (gen-call :function ::clear-default-fixed-font-size (meta &form) details))
+  ([] `(clear-default-fixed-font-size :omit)))
 
 (defmacro get-default-fixed-font-size
   "Gets the default size for fixed width fonts.
    
      |details| - This parameter is currently unused."
-  [details #_callback]
-  (gen-call :function ::get-default-fixed-font-size (meta &form) details))
+  ([details #_callback] (gen-call :function ::get-default-fixed-font-size (meta &form) details))
+  ([] `(get-default-fixed-font-size :omit)))
 
 (defmacro set-default-fixed-font-size
   "Sets the default size for fixed width fonts."
-  [details #_callback]
-  (gen-call :function ::set-default-fixed-font-size (meta &form) details))
+  ([details #_callback] (gen-call :function ::set-default-fixed-font-size (meta &form) details)))
 
 (defmacro clear-minimum-font-size
   "Clears the minimum font size set by this extension, if any.
    
      |details| - This parameter is currently unused."
-  [details #_callback]
-  (gen-call :function ::clear-minimum-font-size (meta &form) details))
+  ([details #_callback] (gen-call :function ::clear-minimum-font-size (meta &form) details))
+  ([] `(clear-minimum-font-size :omit)))
 
 (defmacro get-minimum-font-size
   "Gets the minimum font size.
    
      |details| - This parameter is currently unused."
-  [details #_callback]
-  (gen-call :function ::get-minimum-font-size (meta &form) details))
+  ([details #_callback] (gen-call :function ::get-minimum-font-size (meta &form) details))
+  ([] `(get-minimum-font-size :omit)))
 
 (defmacro set-minimum-font-size
   "Sets the minimum font size."
-  [details #_callback]
-  (gen-call :function ::set-minimum-font-size (meta &form) details))
+  ([details #_callback] (gen-call :function ::set-minimum-font-size (meta &form) details)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

@@ -16,27 +16,24 @@
   "Retrieves activity from the ActivityLog that matches the specified filter.
    
      |filter| - Fill out the fields that you want to search for in the database."
-  [filter #_callback]
-  (gen-call :function ::get-extension-activities (meta &form) filter))
+  ([filter #_callback] (gen-call :function ::get-extension-activities (meta &form) filter)))
 
 (defmacro delete-activities
   "Deletes activities in the ActivityLog database specified in the array of activity IDs.
    
      |activityIds| - Erases only the activities which IDs are listed in the array."
-  [activity-ids]
-  (gen-call :function ::delete-activities (meta &form) activity-ids))
+  ([activity-ids] (gen-call :function ::delete-activities (meta &form) activity-ids)))
 
 (defmacro delete-database
   "Deletes the entire ActivityLog database."
-  []
-  (gen-call :function ::delete-database (meta &form)))
+  ([] (gen-call :function ::delete-database (meta &form))))
 
 (defmacro delete-urls
   "Delete URLs in the ActivityLog database.
    
      |urls| - Erases only the URLs listed; if empty, erases all URLs."
-  [urls]
-  (gen-call :function ::delete-urls (meta &form) urls))
+  ([urls] (gen-call :function ::delete-urls (meta &form) urls))
+  ([] `(delete-urls :omit)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

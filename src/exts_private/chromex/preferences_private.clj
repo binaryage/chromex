@@ -35,8 +35,7 @@
 (defmacro get-sync-categories-without-passphrase
   "Returns a list of sync categories the user has enabled without using a custom passphrase for encryption. The
    possible values are those that can be returned from syncer::ModelTypeToString in sync/syncable/model_type.cc."
-  [#_callback]
-  (gen-call :function ::get-sync-categories-without-passphrase (meta &form)))
+  ([#_callback] (gen-call :function ::get-sync-categories-without-passphrase (meta &form))))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

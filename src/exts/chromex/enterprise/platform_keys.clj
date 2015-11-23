@@ -25,8 +25,7 @@
    Chromebook).
    
      |callback| - Invoked by getTokens with the list of available Tokens."
-  [#_callback]
-  (gen-call :function ::get-tokens (meta &form)))
+  ([#_callback] (gen-call :function ::get-tokens (meta &form))))
 
 (defmacro get-certificates
   "Returns the list of all client certificates available from the given token. Can be used to check for the existence
@@ -34,8 +33,7 @@
    
      |tokenId| - The id of a Token returned by getTokens.
      |callback| - Called back with the list of the available certificates."
-  [token-id #_callback]
-  (gen-call :function ::get-certificates (meta &form) token-id))
+  ([token-id #_callback] (gen-call :function ::get-certificates (meta &form) token-id)))
 
 (defmacro import-certificate
   "Imports certificate to the given token if the certified key is already stored in this token. After a successful
@@ -45,8 +43,7 @@
      |tokenId| - The id of a Token returned by getTokens.
      |certificate| - The DER encoding of a X.509 certificate.
      |callback| - Called back when this operation is finished."
-  [token-id certificate #_callback]
-  (gen-call :function ::import-certificate (meta &form) token-id certificate))
+  ([token-id certificate #_callback] (gen-call :function ::import-certificate (meta &form) token-id certificate)))
 
 (defmacro remove-certificate
   "Removes certificate from the given token if present. Should be used to remove obsolete certificates so that they
@@ -56,8 +53,7 @@
      |tokenId| - The id of a Token returned by getTokens.
      |certificate| - The DER encoding of a X.509 certificate.
      |callback| - Called back when this operation is finished."
-  [token-id certificate #_callback]
-  (gen-call :function ::remove-certificate (meta &form) token-id certificate))
+  ([token-id certificate #_callback] (gen-call :function ::remove-certificate (meta &form) token-id certificate)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

@@ -22,28 +22,23 @@
      |value| - The new value of the pref.
      |pageId| - The user metrics identifier or null.
      |callback| - The callback for whether the pref was set or not."
-  [name value page-id #_callback]
-  (gen-call :function ::set-pref (meta &form) name value page-id))
+  ([name value page-id #_callback] (gen-call :function ::set-pref (meta &form) name value page-id)))
 
 (defmacro get-all-prefs
   "Gets an array of all the prefs."
-  [#_callback]
-  (gen-call :function ::get-all-prefs (meta &form)))
+  ([#_callback] (gen-call :function ::get-all-prefs (meta &form))))
 
 (defmacro get-pref
   "Gets the value of a specific pref."
-  [name #_callback]
-  (gen-call :function ::get-pref (meta &form) name))
+  ([name #_callback] (gen-call :function ::get-pref (meta &form) name)))
 
 (defmacro get-default-zoom-percent
   "Gets the page zoom factor as an integer percentage."
-  [#_callback]
-  (gen-call :function ::get-default-zoom-percent (meta &form)))
+  ([#_callback] (gen-call :function ::get-default-zoom-percent (meta &form))))
 
 (defmacro set-default-zoom-percent
   "Sets the page zoom factor from a zoom percentage."
-  [percent #_callback]
-  (gen-call :function ::set-default-zoom-percent (meta &form) percent))
+  ([percent #_callback] (gen-call :function ::set-default-zoom-percent (meta &form) percent)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

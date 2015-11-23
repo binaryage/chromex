@@ -22,8 +22,7 @@
    
      |component| - Internal chrome component to get strings for.
      |callback| - Called with a dictionary mapping names to strings."
-  [component #_callback]
-  (gen-call :function ::get-strings (meta &form) component))
+  ([component #_callback] (gen-call :function ::get-strings (meta &form) component)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

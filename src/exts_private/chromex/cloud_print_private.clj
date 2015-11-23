@@ -19,29 +19,25 @@
      |robotEmail| - The email address of the robot account.
      |credentials| - The login credentials(OAuth2 Auth code).
      |userSettings| - Options configured by user."
-  [user-email robot-email credentials user-settings]
-  (gen-call :function ::setup-connector (meta &form) user-email robot-email credentials user-settings))
+  ([user-email robot-email credentials user-settings] (gen-call :function ::setup-connector (meta &form) user-email robot-email credentials user-settings)))
 
 (defmacro get-host-name
   "Returns local hostname.
    
      |callback| - Called to return host name."
-  [#_callback]
-  (gen-call :function ::get-host-name (meta &form)))
+  ([#_callback] (gen-call :function ::get-host-name (meta &form))))
 
 (defmacro get-printers
   "Returns local printers.
    
      |callback| - Called to return printers."
-  [#_callback]
-  (gen-call :function ::get-printers (meta &form)))
+  ([#_callback] (gen-call :function ::get-printers (meta &form))))
 
 (defmacro get-client-id
   "Gets the Client ID used to access Google service APIs.
    
      |callback| - Called to return the client ID."
-  [#_callback]
-  (gen-call :function ::get-client-id (meta &form)))
+  ([#_callback] (gen-call :function ::get-client-id (meta &form))))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

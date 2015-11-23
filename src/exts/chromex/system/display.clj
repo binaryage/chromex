@@ -16,8 +16,7 @@
 
 (defmacro get-info
   "Get the information of all attached display devices."
-  [#_callback]
-  (gen-call :function ::get-info (meta &form)))
+  ([#_callback] (gen-call :function ::get-info (meta &form))))
 
 (defmacro set-display-properties
   "Updates the properties for the display specified by |id|, according to the information provided in |info|. On
@@ -28,14 +27,12 @@
               if a new value for it is specified in     |info|.
      |callback| - Empty function called when the function finishes. To find out     whether the function succeeded,
                   'runtime.lastError' should be     queried."
-  [id info #_callback]
-  (gen-call :function ::set-display-properties (meta &form) id info))
+  ([id info #_callback] (gen-call :function ::set-display-properties (meta &form) id info)))
 
 (defmacro enable-unified-desktop
   "Enables/disables the unified desktop feature. Note that this simply enables the feature, but will not change the
    actual desktop mode. (That is, if the desktop is in mirror mode, it will stay in mirror mode)"
-  [enabled]
-  (gen-call :function ::enable-unified-desktop (meta &form) enabled))
+  ([enabled] (gen-call :function ::enable-unified-desktop (meta &form) enabled)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

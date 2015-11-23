@@ -19,42 +19,35 @@
   "Shows the page action. The page action is shown whenever the tab is selected.
    
      |tabId| - The id of the tab for which you want to modify the page action."
-  [tab-id]
-  (gen-call :function ::show (meta &form) tab-id))
+  ([tab-id] (gen-call :function ::show (meta &form) tab-id)))
 
 (defmacro hide
   "Hides the page action.
    
      |tabId| - The id of the tab for which you want to modify the page action."
-  [tab-id]
-  (gen-call :function ::hide (meta &form) tab-id))
+  ([tab-id] (gen-call :function ::hide (meta &form) tab-id)))
 
 (defmacro set-title
   "Sets the title of the page action. This is displayed in a tooltip over the page action."
-  [details]
-  (gen-call :function ::set-title (meta &form) details))
+  ([details] (gen-call :function ::set-title (meta &form) details)))
 
 (defmacro get-title
   "Gets the title of the page action."
-  [details #_callback]
-  (gen-call :function ::get-title (meta &form) details))
+  ([details #_callback] (gen-call :function ::get-title (meta &form) details)))
 
 (defmacro set-icon
   "Sets the icon for the page action. The icon can be specified either as the path to an image file or as the pixel
    data from a canvas element, or as dictionary of either one of those. Either the path or the imageData property must
    be specified."
-  [details #_callback]
-  (gen-call :function ::set-icon (meta &form) details))
+  ([details #_callback] (gen-call :function ::set-icon (meta &form) details)))
 
 (defmacro set-popup
   "Sets the html document to be opened as a popup when the user clicks on the page action's icon."
-  [details]
-  (gen-call :function ::set-popup (meta &form) details))
+  ([details] (gen-call :function ::set-popup (meta &form) details)))
 
 (defmacro get-popup
   "Gets the html document set as the popup for this page action."
-  [details #_callback]
-  (gen-call :function ::get-popup (meta &form) details))
+  ([details #_callback] (gen-call :function ::get-popup (meta &form) details)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

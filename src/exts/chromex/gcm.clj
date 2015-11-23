@@ -30,16 +30,14 @@
                    least one and no more than 100 sender IDs.
      |callback| - Function called when registration completes. It should check 'runtime.lastError' for error when
                   registrationId is empty."
-  [sender-ids #_callback]
-  (gen-call :function ::register (meta &form) sender-ids))
+  ([sender-ids #_callback] (gen-call :function ::register (meta &form) sender-ids)))
 
 (defmacro unregister
   "Unregisters the application from GCM.
    
      |callback| - A function called after the unregistration completes. Unregistration was successful if
                   'runtime.lastError' is not set."
-  [#_callback]
-  (gen-call :function ::unregister (meta &form)))
+  ([#_callback] (gen-call :function ::unregister (meta &form))))
 
 (defmacro send
   "Sends a message according to its contents.
@@ -47,8 +45,7 @@
      |message| - A message to send to the other party via GCM.
      |callback| - A function called after the message is successfully queued for sending. 'runtime.lastError' should
                   be checked, to ensure a message was sent without problems."
-  [message #_callback]
-  (gen-call :function ::send (meta &form) message))
+  ([message #_callback] (gen-call :function ::send (meta &form) message)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

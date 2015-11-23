@@ -21,8 +21,7 @@
    the array. Unpublish and Unsubscribe are processsed at the end, again, in the order that they exist in the array.
    
      |callback| - Callback to return the status of a completed batchExecute() call."
-  [operations #_callback]
-  (gen-call :function ::execute (meta &form) operations))
+  ([operations #_callback] (gen-call :function ::execute (meta &form) operations)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

@@ -17,25 +17,21 @@
 
 (defmacro get-all
   "Gets the extension's current set of permissions."
-  [#_callback]
-  (gen-call :function ::get-all (meta &form)))
+  ([#_callback] (gen-call :function ::get-all (meta &form))))
 
 (defmacro contains
   "Checks if the extension has the specified permissions."
-  [permissions #_callback]
-  (gen-call :function ::contains (meta &form) permissions))
+  ([permissions #_callback] (gen-call :function ::contains (meta &form) permissions)))
 
 (defmacro request
   "Requests access to the specified permissions. These permissions must be defined in the optional_permissions field
    of the manifest. If there are any problems requesting the permissions, 'runtime.lastError' will be set."
-  [permissions #_callback]
-  (gen-call :function ::request (meta &form) permissions))
+  ([permissions #_callback] (gen-call :function ::request (meta &form) permissions)))
 
 (defmacro remove
   "Removes access to the specified permissions. If there are any problems removing the permissions,
    'runtime.lastError' will be set."
-  [permissions #_callback]
-  (gen-call :function ::remove (meta &form) permissions))
+  ([permissions #_callback] (gen-call :function ::remove (meta &form) permissions)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

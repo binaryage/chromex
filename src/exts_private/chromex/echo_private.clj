@@ -17,27 +17,23 @@
    
      |id| - The service id of the echo offer.
      |offerInfo| - The offer info."
-  [id offer-info]
-  (gen-call :function ::set-offer-info (meta &form) id offer-info))
+  ([id offer-info] (gen-call :function ::set-offer-info (meta &form) id offer-info)))
 
 (defmacro get-offer-info
   "Check in Local State for the offer info.
    
      |id| - The service id of the offer eligibility check."
-  [id #_callback]
-  (gen-call :function ::get-offer-info (meta &form) id))
+  ([id #_callback] (gen-call :function ::get-offer-info (meta &form) id)))
 
 (defmacro get-registration-code
   "Get the group or coupon code from underlying storage.
    
      |type| - Type of coupon code requested to be read (coupon or group)."
-  [type #_callback]
-  (gen-call :function ::get-registration-code (meta &form) type))
+  ([type #_callback] (gen-call :function ::get-registration-code (meta &form) type)))
 
 (defmacro get-oobe-timestamp
   "Get the OOBE timestamp."
-  [#_callback]
-  (gen-call :function ::get-oobe-timestamp (meta &form)))
+  ([#_callback] (gen-call :function ::get-oobe-timestamp (meta &form))))
 
 (defmacro get-user-consent
   "If device policy allows user to redeem offer, displays a native dialog asking user for a consent to verify device's
@@ -45,8 +41,7 @@
    user the offer redeeming is disabled.
    
      |consentRequester| - Information about the service requesting user consent."
-  [consent-requester #_callback]
-  (gen-call :function ::get-user-consent (meta &form) consent-requester))
+  ([consent-requester #_callback] (gen-call :function ::get-user-consent (meta &form) consent-requester)))
 
 ; -- convenience ----------------------------------------------------------------------------------------------------
 

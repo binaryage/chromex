@@ -22,15 +22,13 @@
    
      |name| - Optional name to identify this request. Defaults to the empty string.
      |requestInfo| - Optional parameters for this request."
-  [name request-info]
-  (gen-call :function ::watch-location (meta &form) name request-info))
+  ([name request-info] (gen-call :function ::watch-location (meta &form) name request-info)))
 
 (defmacro clear-watch
   "Ends a location watching request.
    
      |name| - Optional name to identify the request to remove. Defaults to the empty string."
-  [name]
-  (gen-call :function ::clear-watch (meta &form) name))
+  ([name] (gen-call :function ::clear-watch (meta &form) name)))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 

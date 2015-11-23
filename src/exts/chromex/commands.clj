@@ -19,8 +19,7 @@
   "Returns all the registered extension commands for this extension and their shortcut (if active).
    
      |callback| - Called to return the registered commands."
-  [#_callback]
-  (gen-call :function ::get-all (meta &form)))
+  ([#_callback] (gen-call :function ::get-all (meta &form))))
 
 ; -- events ---------------------------------------------------------------------------------------------------------
 
