@@ -64,6 +64,13 @@
                                            :cache-analysis        true
                                            :source-map            "resources/unpacked/compiled/content_script/chromex-sample.js.map"
                                            :source-map-timestamp  true}}}}}
+             :checkouts
+             {:cljsbuild {:builds
+                          {:background {:source-paths ["checkouts/chromex/src/lib"
+                                                       "checkouts/chromex/src/exts"]}
+                           :popup {:source-paths ["checkouts/chromex/src/lib"
+                                                  "checkouts/chromex/src/exts"]
+                           :content-script {:source-paths ["checkouts/chromex/src/lib"
              :release
              {:cljsbuild {:builds
                           {:background
