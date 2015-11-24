@@ -136,11 +136,11 @@ additional parameter types of your own interest. For example automatic calling o
 
 ##### Message loop
 
-It is worth noting that core.async channel [returns nil when closed](https://clojure.github.io/core.async/#clojure.core.async/<!).
-That is why we leave the message loop if received message was nil. If you wanted to terminate the message channel from popup side,
-you could call core.async's `close!` on the message-channel (it implements [`core-async/Channel`(https://github.com/binaryage/chromex/blob/master/src/lib/chromex_lib/chrome_port.cljs) and will properly disconnect `runtime.Port`).
+It is worth noting that core.async channel [returns `nil` when closed](https://clojure.github.io/core.async/#clojure.core.async/<!).
+That is why we leave the message loop after receiving a `nil` message. If you wanted to terminate the message channel from popup side,
+you could call core.async's `close!` on the message-channel (it implements [`core-async/Channel`](https://github.com/binaryage/chromex/blob/master/src/lib/chromex_lib/chrome_port.cljs) and will properly disconnect `runtime.Port`).
 
-As a consequence you cannot send a nil message through our channel.
+As a consequence you cannot send a `nil` message through our channel.
 
 #### Background page
 
@@ -222,7 +222,7 @@ but subscribing in bulk is more convenient in this case. As you can see we creat
 This is an optional step, but convenient. `make-chrome-event-channel` returns a channel which is aware of Chrome event subscriptions and is able to unsubscribe
 them when the channel is about to be closed (for whatever reason). This way we don't have to do any book keeping for future cleanup.
 
-Events delivered into the channel are in the form `[event-id event-args]` where event-args is a vector of parameters which were passed into event's callback function (after marshalling).
+Events delivered into the channel are in a form `[event-id event-args]` where event-args is a vector of parameters which were passed into event's callback function (after marshalling).
 So you can read Chrome documentation to figure out what to expect there. For example our `::chromex.runtime/on-connect` event-id is
 documented under [runtime/on-connect event](https://developer.chrome.com/extensions/runtime#event-onConnect) and claims that
 callback has a single parameter `port` of type `runtime.Port`. Se we get `IChromePort` wrapper, because marshalling converted native `runtime.Port` into ClojureScript-friendly `IChromePort` on the way out.
@@ -240,10 +240,10 @@ When Chrome notifies us about a new tab being created. We simply send a message 
 ##### More on cleanup
 
 You might be asking why there is no explicit cleanup code here? There should be some `.removeListener` calls when we are
-leaving message loops.
+leaving message loops, no?
 
 This cleanup is done under the hood because we are using Chromex wrappers here. Wrappers act as core.async channels but know
-how to gracefully disconnect on closing (or close channel when client disconnected). In case of client connections you
+how to gracefully disconnect on when channel is closed (or close channel when client disconnected). In case of client connections you
 get a `runtime.Port` wrapper automatically thanks to marshalling. In case of main event loop you created a wrapper explicitly by calling
 `make-chrome-event-channel`.
 
