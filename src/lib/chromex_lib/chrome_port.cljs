@@ -15,6 +15,7 @@
 (declare *on-disconnect-called-on-disconnected-port*)
 (declare *on-message-called-on-disconnected-port*)
 (declare *post-message-called-with-nil*)
+(declare *received-nil-message*)
 
 ; -- ChromePort -------------------------------------------------------------------------------------------------------------
 
@@ -82,8 +83,11 @@
 
 (defn ^:dynamic *on-message-fn-factory* [chrome-port]
   (fn [message]
-    (protocols/put-message! chrome-port message)
-    nil))
+    (if (nil? message)
+      (*received-nil-message* chrome-port)
+      (do
+        (protocols/put-message! chrome-port message)
+        nil))))
 
 (defn ^:dynamic *on-disconnect-fn-factory* [chrome-port]
   (fn []
@@ -111,4 +115,8 @@
 
 (defn ^:dynamic *post-message-called-with-nil* [_chrome-port]
   (assert false "ChromePort: post-message called with nil message. Nil cannot be delivered via a core.async channel.")
+  nil)
+
+(defn ^:dynamic *received-nil-message* [_chrome-port]
+  (assert false "ChromePort: received a nil message. Nil cannot be delivered via a core.async channel.")
   nil)
