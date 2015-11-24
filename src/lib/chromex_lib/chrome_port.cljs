@@ -14,6 +14,7 @@
 (declare *post-message-called-on-disconnected-port*)
 (declare *on-disconnect-called-on-disconnected-port*)
 (declare *on-message-called-on-disconnected-port*)
+(declare *post-message-called-with-nil*)
 
 ; -- ChromePort -------------------------------------------------------------------------------------------------------------
 
@@ -27,9 +28,11 @@
   (get-sender [_this]
     (oget native-chrome-port "sender"))
   (post-message! [this message]
-    (if connected?
-      (ocall native-chrome-port "postMessage" message)
-      (*post-message-called-on-disconnected-port* this)))
+    (if (nil? message)
+      (*post-message-called-with-nil* this)
+      (if connected?
+        (ocall native-chrome-port "postMessage" message)
+        (*post-message-called-on-disconnected-port* this))))
   (disconnect! [this]
     (if connected?
       (ocall native-chrome-port "disconnect")
@@ -104,4 +107,8 @@
 
 (defn ^:dynamic *on-message-called-on-disconnected-port* [_chrome-port]
   (assert false "ChromePort: on-message called on already disconnected port")
+  nil)
+
+(defn ^:dynamic *post-message-called-with-nil* [_chrome-port]
+  (assert false "ChromePort: post-message called with nil message. Nil cannot be delivered via a core.async channel.")
   nil)
