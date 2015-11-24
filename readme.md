@@ -243,7 +243,7 @@ You might be asking why there is no explicit cleanup code here? There should be 
 leaving message loops, no?
 
 This cleanup is done under the hood because we are using Chromex wrappers here. Wrappers act as core.async channels but know
-how to gracefully disconnect on when channel is closed (or close channel when client disconnected). In case of client connections you
+how to gracefully disconnect when channel is closed (or close channel when client disconnected). In case of client connections you
 get a `runtime.Port` wrapper automatically thanks to marshalling. In case of main event loop you created a wrapper explicitly by calling
 `make-chrome-event-channel`.
 
