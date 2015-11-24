@@ -1,4 +1,6 @@
-# chromex [![Build Status](https://travis-ci.org/binaryage/chromex.svg)](https://travis-ci.org/binaryage/chromex)[![Clojars Project](http://clojars.org/binaryage/chromex/latest-version.svg)](http://clojars.org/binaryage/chromex)
+# chromex [![Build Status](https://travis-ci.org/binaryage/chromex.svg)](https://travis-ci.org/binaryage/chromex)
+
+[![Clojars Project](http://clojars.org/binaryage/chromex/latest-version.svg)](http://clojars.org/binaryage/chromex)
 
 ### Chrome Extension APIs wrapper for ClojureScript.
 
