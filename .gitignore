@@ -1,4 +1,8 @@
 /resources/unpacked/compiled
+/resources/release.crx
+/resources/release.pem
+/resources/release/compiled
+/releases
 /.idea
 /target
 /checkouts

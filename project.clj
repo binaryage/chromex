@@ -19,50 +19,79 @@
   :source-paths ["src"]
 
   :clean-targets ^{:protect false} ["target"
-                                    "resources/unpacked/compiled"]
-  :cljsbuild {:builds
-              {:background
-               {:source-paths ["src/dev"
-                               "src/figwheel"
-                               "src/background"
-                               "checkouts/chromex/src/lib"]
-                :compiler     {:output-to             "resources/unpacked/compiled/background/chromex-sample.js"
-                               :output-dir            "resources/unpacked/compiled/background"
-                               :asset-path            "compiled/background"
-                               :optimizations         :none
-                               :anon-fn-naming-policy :unmapped
-                               :compiler-stats        true
-                               :cache-analysis        true
-                               :source-map            true
-                               :source-map-timestamp  true}}
-               :popup
-               {:source-paths ["src/dev"
-                               "src/figwheel"
-                               "src/popup"
-                               "checkouts/chromex/src/lib"]
-                :compiler     {:output-to             "resources/unpacked/compiled/popup/chromex-sample.js"
-                               :output-dir            "resources/unpacked/compiled/popup"
-                               :asset-path            "compiled/popup"
-                               :optimizations         :none
-                               :anon-fn-naming-policy :unmapped
-                               :compiler-stats        true
-                               :cache-analysis        true
-                               :source-map            true
-                               :source-map-timestamp  true}}
-               :content-script
-               {:source-paths ["src/dev"
-                               "src/content_script"]
-                :compiler     {:output-to             "resources/unpacked/compiled/content_script/chromex-sample.js"
-                               :output-dir            "resources/unpacked/compiled/content_script"
-                               :asset-path            "compiled/content_script"
-                               :optimizations         :whitespace                                                     ; content scripts cannot do eval / load script dynamically
-                               :anon-fn-naming-policy :unmapped
-                               :pretty-print          true
-                               :compiler-stats        true
-                               :cache-analysis        true
-                               :source-map            "resources/unpacked/compiled/content_script/chromex-sample.js.map"
-                               :source-map-timestamp  true}}}}
+                                    "resources/unpacked/compiled"
+                                    "resources/release/compiled"]
+  :profiles {:unpacked
+             {:cljsbuild {:builds
+                          {:background
+                           {:source-paths ["src/dev"
+                                           "src/figwheel"
+                                           "src/background"
+                                           "checkouts/chromex/src/lib"]
+                            :compiler     {:output-to             "resources/unpacked/compiled/background/chromex-sample.js"
+                                           :output-dir            "resources/unpacked/compiled/background"
+                                           :asset-path            "compiled/background"
+                                           :optimizations         :none
+                                           :anon-fn-naming-policy :unmapped
+                                           :compiler-stats        true
+                                           :cache-analysis        true
+                                           :source-map            true
+                                           :source-map-timestamp  true}}
+                           :popup
+                           {:source-paths ["src/dev"
+                                           "src/figwheel"
+                                           "src/popup"
+                                           "checkouts/chromex/src/lib"]
+                            :compiler     {:output-to             "resources/unpacked/compiled/popup/chromex-sample.js"
+                                           :output-dir            "resources/unpacked/compiled/popup"
+                                           :asset-path            "compiled/popup"
+                                           :optimizations         :none
+                                           :anon-fn-naming-policy :unmapped
+                                           :compiler-stats        true
+                                           :cache-analysis        true
+                                           :source-map            true
+                                           :source-map-timestamp  true}}
+                           :content-script
+                           {:source-paths ["src/dev"
+                                           "src/content_script"]
+                            :compiler     {:output-to             "resources/unpacked/compiled/content_script/chromex-sample.js"
+                                           :output-dir            "resources/unpacked/compiled/content_script"
+                                           :asset-path            "compiled/content_script"
+                                           :optimizations         :whitespace                                                 ; content scripts cannot do eval / load script dynamically
+                                           :anon-fn-naming-policy :unmapped
+                                           :pretty-print          true
+                                           :compiler-stats        true
+                                           :cache-analysis        true
+                                           :source-map            "resources/unpacked/compiled/content_script/chromex-sample.js.map"
+                                           :source-map-timestamp  true}}}}}
+             :release
+             {:cljsbuild {:builds
+                          {:background
+                           {:source-paths ["src/background"]
+                            :compiler     {:output-to      "resources/release/compiled/background.js"
+                                           :output-dir     "resources/release/compiled/background"
+                                           :asset-path     "compiled/background"
+                                           :optimizations  :advanced
+                                           :elide-asserts  true
+                                           :compiler-stats true}}
+                           :popup
+                           {:source-paths ["src/popup"]
+                            :compiler     {:output-to      "resources/release/compiled/popup.js"
+                                           :output-dir     "resources/release/compiled/popup"
+                                           :asset-path     "compiled/popup"
+                                           :optimizations  :advanced
+                                           :elide-asserts  true
+                                           :compiler-stats true}}
+                           :content-script
+                           {:source-paths ["src/content_script"]
+                            :compiler     {:output-to      "resources/release/compiled/content_script.js"
+                                           :output-dir     "resources/release/compiled/content_script"
+                                           :asset-path     "compiled/content_script"
+                                           :optimizations  :advanced
+                                           :elide-asserts  true
+                                           :compiler-stats true}}}}}}
 
-  :aliases {"build" ["cljsbuild" "once" "background" "popup" "content-script"]
-            "fig"   ["figwheel" "background" "popup"]
-            "content" ["cljsbuild" "auto" "content-script"]})
+  :aliases {"dev-build" ["with-profile" "+unpacked" "cljsbuild" "once" "background" "popup" "content-script"]
+            "fig"       ["with-profile" "+unpacked" "figwheel" "background" "popup"]
+            "content"   ["with-profile" "+unpacked" "cljsbuild" "auto" "content-script"]
+            "release"   ["with-profile" "+release" "do" "clean," "cljsbuild" "once" "background" "popup" "content-script"]})

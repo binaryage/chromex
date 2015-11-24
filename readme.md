@@ -74,7 +74,21 @@ java, maven, leiningen, etc.
 
 ##### Extension packaging
 
-TODO
+[Leiningen project](project.clj) has defined "release" profile for compilation in advanced mode. Run:
+
+    lein release
+
+This will build an optimized build into [resources/release](resources/release). You can add this folder via "Load unpacked extension..."
+to test it.
+
+When satisfied, you can run:
+
+    lein package (TODO)
+
+This will create a folder `releases/chromex-sample-0.1.0` where 0.1.0 will be current version from [project.clj](project.clj).
+This folder will contain only files meant to be packaged.
+
+Finally you can use Chrome's "Pack extension" tool to prepare the final package (release.crx and release.pem files).
 
 ### Code discussion
 
