@@ -12,8 +12,10 @@
 
 (defmacro oget
   ([o k1] `(goog.object/get ~o ~k1))
-  ([o k1 k2] `(when-let [o# (goog.object/get ~o ~k1)] (goog.object/get o# ~k2)))
-  ([o k1 k2 & ks] `(when-let [o# (goog.object/get ~o ~k1 ~k2)] (oget o# ~@ks))))
+  ([o k1 k2] `(when-let [o# (goog.object/get ~o ~k1)]
+                (goog.object/get o# ~k2)))
+  ([o k1 k2 & ks] `(when-let [o# (goog.object/get ~o ~k1)]
+                     (oget o# ~k2 ~@ks))))
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
