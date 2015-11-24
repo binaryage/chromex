@@ -17,7 +17,7 @@ Currently Chromex provides following wrappers:
 Note: Chromex generator uses the same data source as the [developer.chrome.com/extensions/api_index](https://developer.chrome.com/extensions/api_index) web site.
 
 This library is data-driven. Given API namespace, all API methods, properties and events are described in a Clojure map
-along with their parameters, callbacks, versions and additional metadata ([see a simple example here](src/exts/chromex/context_menus.clj#L71)).
+along with their parameters, callbacks, versions and additional metadata ([a simple example - look for `api-table` here](src/exts/chromex/context_menus.clj)).
 Chromex then provides a set of macros which consume this table and generate actual ClojureScript code wrapping native APIs.
 
 These macros can be further parametrized which allows for greater flexibility. Sane defaults
@@ -81,6 +81,17 @@ starting development of your own extension.
 
 Please refer to [readme in chromex-sample](https://github.com/binaryage/chromex-sample) for further explanation and code examples.
 
+
+### Advanced mode compilation
+
+Chromex does not rely on externs file. Instead it is rigorously [using string names](https://github.com/clojure/clojurescript/wiki/Dependencies#using-string-names)
+to access Javascript properties. There is a [chrome_extensions.js](https://github.com/google/closure-compiler/blob/master/contrib/externs/chrome_extensions.js) extern file available,
+but that has been updated ad-hoc manually by the community. It is definitely incomplete and maybe incorrect.
+
+I would recommend to do the same in your extension code. It is not that bad after all. You can use `oget`, `ocall` and `oapply`
+macros from [`chromex-lib.support`](https://github.com/binaryage/chromex/blob/master/src/lib/chromex_lib/support.clj) namespace.
+
+Of course you are free to include the externs file into your own project and rely on it with your code. Chromex does not need it tough.
 
 ### Similar projects
 
