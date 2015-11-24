@@ -146,11 +146,13 @@
         event-fn-sym (gensym "event-fn")
         handler-fn-sym (gensym "handler-fn")
         logging-fn-sym (gensym "logging-fn")
-        js-event (symbol (str "js/" api))]
+        event-sym (gensym "event-obj")
+        event-path (string/split api #"\.")]
     `(let [~event-fn-sym ~(make-event-fn config event-id chan)
            ~handler-fn-sym ~(marshall-callback static-config (str api ".handler") [event-fn-sym descriptor])
            ~logging-fn-sym ~(wrap-callback-with-logging static-config "event:" api config [handler-fn-sym descriptor])
-           result# (chromex-lib.chrome-event-subscription/make-chrome-event-subscription ~js-event ~logging-fn-sym ~chan)]
+           ~event-sym (chromex-lib.support/oget js/window ~@event-path)
+           result# (chromex-lib.chrome-event-subscription/make-chrome-event-subscription ~event-sym ~logging-fn-sym ~chan)]
        (chromex-lib.protocols/subscribe! result# ~@args)                                                                      ; additional args may specify filtered events, see https://developer.chrome.com/extensions/events#filtered
        result#)))
 
