@@ -139,10 +139,10 @@ At this point you might ask. How is it possible that we called API method `runti
 That is not documented behaviour described in [Chrome's extension APIs docs](https://developer.chrome.com/extensions/runtime#method-connect).
 We would expect a native javascript object of type `runtime.Port`.
 
-This transformation was done by marshalling subsystem implemented in Chromex library. Marshalling is responsible for converting
-parameter values crossing API boundary. This is automated way how to ease ClojureScript development and promote idiomatic ClojureScript
-patterns. Some parameter values can be automatically converted to ClojureScript values when returned from Javascript API calls and
-in the other direction some parameters can be converted to native Javascript values when passed into API calls.
+This transformation was done by [marshalling subsystem](https://github.com/binaryage/chromex/#flexible-marshalling) implemented in Chromex library. Marshalling is responsible for converting
+parameter values when crossing API boundary. Parameter values can be automatically converted to ClojureScript values when returned from native Javascript API calls and
+in the other direction parameters can be converted to native Javascript values when passed into API calls. This is a way how to ease
+extension development and promote idiomatic ClojureScript patterns.
 
 Chromex library does not try to do heavy marshalling. You should review marshalling logic in [marshalling.clj](https://github.com/binaryage/chromex/blob/master/src/lib/chromex_lib/marshalling.clj) and [marshalling.cljs](https://github.com/binaryage/chromex/blob/master/src/lib/chromex_lib/marshalling.cljs)
 files to understand which parameter types get converted and how. You can also later use this subsystem to marshall
