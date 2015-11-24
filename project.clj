@@ -8,7 +8,7 @@
                  [figwheel "0.5.0-1"]]
 
   :plugins [[lein-cljsbuild "1.1.1"]
-            [lein-figwheel "0.5.0-1"]]
+            [lein-figwheel "0.5.0-2"]]
 
   :figwheel
   {:server-port    7000
@@ -66,11 +66,12 @@
                                            :source-map-timestamp  true}}}}}
              :checkouts
              {:cljsbuild {:builds
-                          {:background {:source-paths ["checkouts/chromex/src/lib"
-                                                       "checkouts/chromex/src/exts"]}
-                           :popup {:source-paths ["checkouts/chromex/src/lib"
-                                                  "checkouts/chromex/src/exts"]
+                          {:background     {:source-paths ["checkouts/chromex/src/lib"
+                                                           "checkouts/chromex/src/exts"]}
+                           :popup          {:source-paths ["checkouts/chromex/src/lib"
+                                                           "checkouts/chromex/src/exts"]}
                            :content-script {:source-paths ["checkouts/chromex/src/lib"
+                                                           "checkouts/chromex/src/exts"]}}}}
              :release
              {:cljsbuild {:builds
                           {:background
