@@ -71,6 +71,15 @@ And then implement a single loop to sequentially process events as they appear o
 
 Again this mechanism is pluggable, so you can optionally implement a different mechanism for consuming event streams.
 
+### Usage examples
+
+We provide an example skeleton Chrome extension [chromex-sample](https://github.com/binaryage/chromex-sample). This project
+acts as code example but also as a skeleton with project configuration. We recommended to use it as a starting point when
+starting development of your own extension.
+
+Please refer to [readme in chromex-sample](https://github.com/binaryage/chromex-sample) for further explanation and code examples.
+
+
 ### Similar projects
 
   * [suprematic/khroma](https://github.com/suprematic/khroma)
