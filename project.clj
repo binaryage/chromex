@@ -1,4 +1,4 @@
-(defproject binaryage/chromex "0.0.1-SNAPSHOT"
+(defproject binaryage/chromex "0.1.0"
   :description "Chrome Extensions API wrapper for ClojureScript"
   :url "https://github.com/binaryage/chromex"
   :license {:name         "MIT License"
@@ -7,7 +7,7 @@
 
   :scm {:name "git" :url "https://github.com/binaryage/chromex"}
 
-  :dependencies [[org.clojure/clojure "1.8.0-RC1" :scope "provided"]
+  :dependencies [[org.clojure/clojure "1.7.0" :scope "provided"]
                  [org.clojure/clojurescript "1.7.170" :scope "provided"]
                  [org.clojure/core.async "0.2.374" :scope "provided"]]
 
