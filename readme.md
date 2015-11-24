@@ -76,22 +76,23 @@ Again this mechanism is pluggable, so you can optionally implement a different m
 ### Usage examples
 
 We provide an example skeleton Chrome extension [chromex-sample](https://github.com/binaryage/chromex-sample). This project
-acts as code example but also as a skeleton with project configuration. We recommended to use it as a starting point when
+acts as a code example but also as a skeleton with project configuration. We recommended to use it as starting point when
 starting development of your own extension.
 
 Please refer to [readme in chromex-sample](https://github.com/binaryage/chromex-sample) for further explanation and code examples.
 
-
 ### Advanced mode compilation
 
 Chromex does not rely on externs file. Instead it is rigorously [using string names](https://github.com/clojure/clojurescript/wiki/Dependencies#using-string-names)
-to access Javascript properties. There is a [chrome_extensions.js](https://github.com/google/closure-compiler/blob/master/contrib/externs/chrome_extensions.js) extern file available,
-but that has been updated ad-hoc manually by the community. It is definitely incomplete and maybe incorrect.
+to access Javascript properties.
 
-I would recommend to do the same in your extension code. It is not that bad after all. You can use `oget`, `ocall` and `oapply`
+There is a [chrome_extensions.js](https://github.com/google/closure-compiler/blob/master/contrib/externs/chrome_extensions.js) externs file available,
+but that has been updated ad-hoc by the community. It is definitely incomplete and maybe incorrect.
+
+I would recommend you to do the same in your own extension code. It is not that hard after all. You can use `oget`, `ocall` and `oapply`
 macros from [`chromex-lib.support`](https://github.com/binaryage/chromex/blob/master/src/lib/chromex_lib/support.clj) namespace.
 
-Of course you are free to include the externs file into your own project and rely on it with your code. Chromex does not need it tough.
+But of course you are free to include the externs file into your own project and rely on it with your code. Chromex does not need it tough.
 
 ### Similar projects
 
