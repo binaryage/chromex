@@ -2,7 +2,9 @@
 
 [![Clojars Project](http://clojars.org/binaryage/chromex/latest-version.svg)](http://clojars.org/binaryage/chromex)
 
-### Chrome Extension APIs wrapper for ClojureScript.
+### Chrome Extension APIs wrapper library for ClojureScript.
+
+[**An example project** demo-ing this library is here](https://github.com/binaryage/chromex-sample).
 
 This library is auto-generated from [chromium sources](https://www.chromium.org/developers).
 
