@@ -9,13 +9,13 @@
 
 (defmethod report [::test/default :summary] [m]
   (println "\nRan" (:test m) "tests containing"
-    (+ (:pass m) (:fail m) (:error m)) "assertions.")
+           (+ (:pass m) (:fail m) (:error m)) "assertions.")
   (println (:fail m) "failures," (:error m) "errors.")
   (aset js/window "test-failures" (+ (:fail m) (:error m)))
   (println "TESTS DONE"))
 
 (defn friendly-args [args]
-  (map #(if (fn? %) "<fn>" %)  args))
+  (map #(if (fn? %) "<fn>" %) args))
 
 (defn test-logger [& args]
   (apply console-log "[chromex (test)]" (friendly-args args)))
@@ -23,8 +23,8 @@
 ; -------------------------------------------------------------------------------------------------------------------
 
 (let [new-config (-> (get-active-config)
-                   (assoc :logger test-logger)
-                   (assoc :verbose-logging true))]
+                     (assoc :logger test-logger)
+                     (assoc :verbose-logging true))]
   (set-active-config! new-config))
 
 (test/run-tests

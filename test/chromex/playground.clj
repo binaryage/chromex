@@ -1,10 +1,10 @@
 (ns chromex.playground
-  (:refer-clojure :only [defmacro defn apply declare meta let macroexpand-1])
-  (:require
-    [chromex-lib.wrapgen :refer [gen-wrap-from-table]]
-    [chromex-lib.callgen :refer [gen-call-from-table gen-tap-all-call]]
-    [chromex-lib.config :refer [get-static-config gen-active-config]]
-    [chromex-lib.debug :refer [print-code]]))
+    (:refer-clojure :only [defmacro defn apply declare meta let macroexpand-1])
+    (:require
+      [chromex-lib.wrapgen :refer [gen-wrap-from-table]]
+      [chromex-lib.callgen :refer [gen-call-from-table gen-tap-all-call]]
+      [chromex-lib.config :refer [get-static-config gen-active-config]]
+      [chromex-lib.debug :refer [print-code]]))
 
 (declare api-table)
 (declare gen-call)

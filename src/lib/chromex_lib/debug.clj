@@ -10,7 +10,7 @@
             *print-right-margin* 200]
     (with-out-str
       (with-pprint-dispatch code-dispatch
-        (pprint code)))))
+                            (pprint code)))))
 
 (defn print-code [code]
   (print-to-err (pprint-code code)))

@@ -22,7 +22,7 @@
 
 (defn error-msg [errors]
   (str "The following errors occurred while parsing your command:\n\n"
-    (string/join \newline errors)))
+       (string/join \newline errors)))
 
 (defn exit [status msg]
   (println msg)
@@ -31,9 +31,9 @@
 (defn run-job! [options]
   (let [{:keys [input output]} options]
     (->> input
-      (read-json)
-      (transform)
-      (write-json output))))
+         (read-json)
+         (transform)
+         (write-json output))))
 
 (defn -main [& args]
   (let [{:keys [options arguments errors summary]} (parse-opts args cli-options)]

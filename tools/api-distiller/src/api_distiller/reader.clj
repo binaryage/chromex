@@ -4,5 +4,5 @@
 
 (defn read-json [file-name]
   (-> file-name
-    (slurp)
-    (json/read-str)))
+      (slurp)
+      (json/read-str)))

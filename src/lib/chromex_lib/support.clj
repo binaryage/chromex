@@ -54,7 +54,7 @@
        (if (:verbose-logging config#)
          (let [logger# (:logger config#)]
            (assert (and logger# (fn? logger#))
-             "invalid :logger in chromex config")
+                   "invalid :logger in chromex config")
            (logger# ~@args))))))
 
 ; -- api versioning ---------------------------------------------------------------------------------------------------------
@@ -90,12 +90,12 @@
 (defn emit-api-version-warning [static-config src-info api-name]
   (let [version (:target-api-version static-config)]
     (print-warning static-config src-info
-      (str "The API call to '" api-name "' is not available. "
-        "Target API version '" version "' is not within required range " (user-friendly-range-str range)))))
+                   (str "The API call to '" api-name "' is not available. "
+                        "Target API version '" version "' is not within required range " (user-friendly-range-str range)))))
 
 
 ; -- deprecation warnings ---------------------------------------------------------------------------------------------------
 
 (defn emit-deprecation-warning [static-config src-info api-name details]
   (print-warning static-config src-info
-    (str "The API call to '" api-name "' is deprecated. " details)))
+                 (str "The API call to '" api-name "' is deprecated. " details)))

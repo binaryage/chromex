@@ -30,8 +30,8 @@
     (conj wrapped-lines line)
     (let [index (compute-wrapping-index line max-columns)]
       (recur (conj wrapped-lines (wrap-line-at index line))
-        (rest-of-line index line)
-        max-columns))))
+             (rest-of-line index line)
+             max-columns))))
 
 (defn- wrap-line [line max-columns]
   (apply str (line->wrapped-lines [] line max-columns)))
@@ -43,6 +43,6 @@
 
 (defn wrap [text max-columns]
   (->> text
-    extract-lines
-    (map #(wrap-line % max-columns))
-    join-lines))
+       extract-lines
+       (map #(wrap-line % max-columns))
+       join-lines))

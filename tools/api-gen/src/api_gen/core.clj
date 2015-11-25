@@ -24,7 +24,7 @@
 
 (defn error-msg [errors]
   (str "The following errors occurred while parsing your command:\n\n"
-    (string/join \newline errors)))
+       (string/join \newline errors)))
 
 (defn exit [status msg]
   (println msg)
@@ -38,10 +38,10 @@
     (print-table [:namespace :properties :functions :events] namespaces)
     (println "------------------------------------------------------")
     (println "RESULT:"
-      namespaces-count "|"
-      total-properties "|"
-      total-functions "|"
-      total-events "|")))
+             namespaces-count "|"
+             total-properties "|"
+             total-functions "|"
+             total-events "|")))
 
 (defn run-job! [options]
   (let [{:keys [input outdir chromium-sha filter]} options
@@ -50,8 +50,8 @@
         ;data (filter #(contains? #{"extension"} (:name (second %))) data)
         api-tables (build-api-tables data filter)]
     (->> api-tables
-      (generate-files chromium-sha)
-      (write-sources outdir))
+         (generate-files chromium-sha)
+         (write-sources outdir))
     (print-stats (generate-stats api-tables))))
 
 (defn -main [& args]

@@ -3,7 +3,7 @@
 
 (defn safe-empty? [v]
   (try
-    (empty? v)                                                                                                        ; v might throw because it does not implement ISeq
+    (empty? v)                                                                                                                ; v might throw because it does not implement ISeq
     (catch Exception _
       false)))
 
@@ -40,6 +40,6 @@
 
 (defn transform [data]
   (->> data
-    ;(filter-extension-apis)
-    (remove-emptyish-values)
-    (remove-blacklisted-keys)))
+       ;(filter-extension-apis)
+       (remove-emptyish-values)
+       (remove-blacklisted-keys)))

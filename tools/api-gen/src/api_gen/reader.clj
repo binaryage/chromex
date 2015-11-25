@@ -5,10 +5,10 @@
 
 (defn keywordize-key [s]
   (-> s
-    kebab-case
-    keyword))
+      kebab-case
+      keyword))
 
 (defn read-json [file-name]
   (-> file-name
-    (slurp)
-    (json/read-str :key-fn keywordize-key)))
+      (slurp)
+      (json/read-str :key-fn keywordize-key)))

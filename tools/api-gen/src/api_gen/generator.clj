@@ -64,8 +64,8 @@
 
 (defn plain-doc [docstring]
   (-> docstring
-    (cuerdas/strip-tags)
-    (replace-refs)))
+      (cuerdas/strip-tags)
+      (replace-refs)))
 
 (defn build-param-doc [indent columns parameter]
   (if-let [description (:description parameter)]
@@ -175,7 +175,7 @@
   (let [* (fn [name]
             (let [function-data (get-in data [:by-name (keyword name)])]
               (assert function-data (str "unable to lookup function by name '" (keyword name)
-                                      "' in\n" (keys (get data :by-name))))
+                                         "' in\n" (keys (get data :by-name))))
               (build-api-table-function function-data)))]
     (vec (map * function-names))))
 
@@ -243,9 +243,9 @@
   (let [param-tokens (string/split param-list #" ")
         total-count (count param-tokens)]
     (string/join "\n"
-      (reverse
-        (for [cnt (range (- total-count opt-args-count) total-count)]
-          (build-optional-arity fn-name param-tokens cnt total-count))))))
+                 (reverse
+                   (for [cnt (range (- total-count opt-args-count) total-count)]
+                     (build-optional-arity fn-name param-tokens cnt total-count))))))
 
 (defn prepare-function-data [data]
   (let [{:keys [name params]} data
@@ -269,8 +269,8 @@
 (defn prepare-event-data [data]
   (let [{:keys [name supports-filters]} data
         {:keys [doc]} (meta data)]
-    {:event-name      (kebab-case name)
-     :event-docstring doc
+    {:event-name       (kebab-case name)
+     :event-docstring  doc
      :supports-filters supports-filters}))
 
 ; ---------------------------------------------------------------------------------------------------------------------------
@@ -337,10 +337,10 @@
         * (fn [stats table]
             (let [ts (table-stats table)]
               (-> stats
-                (update :namespaces conj ts)
-                (update :total-functions + (:functions ts))
-                (update :total-properties + (:properties ts))
-                (update :total-events + (:events ts)))))]
+                  (update :namespaces conj ts)
+                  (update :total-functions + (:functions ts))
+                  (update :total-properties + (:properties ts))
+                  (update :total-events + (:events ts)))))]
     (reduce * {:namespaces       []
                :total-functions  0
                :total-properties 0
@@ -398,7 +398,7 @@
                         shared-template-data
                         {:generation-date   (time-format/unparse generation-date-formatter (time/now))
                          :generation-source (str "[Chromium @ " (subs chromium-sha 0 7)
-                                              "](https://chromium.googlesource.com/chromium/src.git/+/" chromium-sha ")")
+                                                 "](https://chromium.googlesource.com/chromium/src.git/+/" chromium-sha ")")
                          :requires          (build-requires api-tables)
                          :files             (build-api-files api-tables)
                          :total-properties  total-properties
@@ -421,8 +421,8 @@
 (defn build-api-table [ns]
   (println (str "preparing '" (:name ns) "'"))
   (let [api-table (-> ns
-                    (build-namespace-api-table)
-                    (remove-emptyish-values))
+                      (build-namespace-api-table)
+                      (remove-emptyish-values))
         {:keys [functions properties events]} api-table
         cnt (+ (count functions) (count properties) (count events))]
     (if (pos? cnt)

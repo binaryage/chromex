@@ -26,8 +26,8 @@
 
 (defn replace-refs [s]
   (-> s
-    (string/replace #"\$\(ref\:(.*?)\)" "'$1'")
-    (string/replace #"\$ref\:" "")))
+      (string/replace #"\$\(ref\:(.*?)\)" "'$1'")
+      (string/replace #"\$ref\:" "")))
 
 (defn left-whitespace-count [line]
   (- (count line) (count (cuerdas/ltrim line))))
@@ -41,8 +41,8 @@
     (assert (not (neg? count)))
     (if (pos? count)
       (->> lines
-        (map #(if-not (empty-line? %) (subs % count) %))
-        (cuerdas/unlines))
+           (map #(if-not (empty-line? %) (subs % count) %))
+           (cuerdas/unlines))
       text)))
 
 (defn prefix-block [prefix lines]
@@ -50,9 +50,9 @@
 
 (defn prefix-text [prefix text]
   (->> text
-    (cuerdas/lines)
-    (prefix-block prefix)
-    (cuerdas/unlines)))
+       (cuerdas/lines)
+       (prefix-block prefix)
+       (cuerdas/unlines)))
 
 (defn wrap-text [indent columns text]
   (let [prefix (indent-str indent)]
@@ -92,9 +92,9 @@
 
 (defn post-process [content]
   (-> content
-    (fix-clostaches)
-    (reformat)
-    (remove-consecutive-blank-lines)))
+      (fix-clostaches)
+      (reformat)
+      (remove-consecutive-blank-lines)))
 
 (defn patch-snake-case [s]
   (string/replace s #"_([0-9])" "$1"))                                                                                        ; we don't want numbers to be treated as separate

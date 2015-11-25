@@ -19,6 +19,6 @@
 (defn gen-active-config [static-config]
   (let [gen-fn (:gen-active-config static-config)]
     (assert (and gen-fn (fn? gen-fn))
-      (str "invalid :gen-active-config in chromex static config\n"
-        "static-config: " static-config))
+            (str "invalid :gen-active-config in chromex static config\n"
+                 "static-config: " static-config))
     (gen-fn)))
