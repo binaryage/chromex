@@ -3,7 +3,6 @@
                  [org.clojure/clojurescript "1.7.170"]
                  [org.clojure/core.async "0.2.374"]
                  [binaryage/chromex "0.1.0"]
-                 [prismatic/dommy "1.1.0"]
                  [binaryage/devtools "0.4.1"]
                  [figwheel "0.5.0-1"]]
 
