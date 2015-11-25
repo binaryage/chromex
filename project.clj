@@ -13,7 +13,7 @@
   :figwheel
   {:server-port    7000
    :nrepl-port     7777
-   :server-logfile ".tmp/figwheel_server.log"
+   :server-logfile "figwheel_server.log"
    :css-dirs       []}
 
   :source-paths ["src"]
