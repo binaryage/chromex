@@ -114,4 +114,4 @@
 
 ; ---------------------------------------------------------------------------------------------------------------------------
 
-;(print-code (macroexpand-1 '(gen-wrap :function ::do-something config paramX)))
+;(print-code (macroexpand-1 '(gen-wrap :function ::get-something config p1)))

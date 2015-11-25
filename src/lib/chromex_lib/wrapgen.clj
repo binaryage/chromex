@@ -57,7 +57,7 @@
 
 (defn wrap-callback-with-logging [static-config label api config [callback-sym callback-info]]
   (let [{:keys [params]} callback-info
-        param-syms (map #(gensym (str "cb-param-" (:name %))) params)]
+        param-syms (map #(gensym (str "cb-param-" (:name %) "-")) params)]
     `(fn [~@param-syms]
        ~(apply gen-logging-if-verbose static-config config label api param-syms)
        (~callback-sym ~@param-syms))))
@@ -68,11 +68,10 @@
                "api: " api "\n"
                "params: " params "\n"
                "args: " args))
-  (let [pairs (partition 2 (interleave args (map :callback-info params)))]
-    (for [[callback-sym callback-info] pairs]
-      (if callback-info
-        (wrap-callback-with-logging static-config "callback:" api config [callback-sym callback-info])
-        callback-sym))))
+  (for [[callback-sym callback-info] (partition 2 (interleave args (map :callback-info params)))]
+    (if callback-info                                                                                                         ; only callback params have callback info,
+      (wrap-callback-with-logging static-config "callback:" api config [callback-sym callback-info])
+      callback-sym)))
 
 ; ---------------------------------------------------------------------------------------------------------------------------
 
@@ -80,18 +79,17 @@
   (let [{:keys [namespace]} api-table
         {:keys [name params property?]} descriptor
         api (get-api-id api-table descriptor)
-        namespace-elements (string/split namespace #"\.")
+        namespace-path (string/split namespace #"\.")
         wrapped-args (wrap-callback-args-with-logging static-config api config args params)
         param-names (map :name params)
         param-optionalities (map :optional? params)
         arg-descriptors (vec (map vec (partition 3 (interleave wrapped-args param-names param-optionalities))))
         operation (if property? "accessing:" "calling:")
-        final-args-sym (gensym "final-args")
-        ns-sym (gensym "ns")
-        target-sym (gensym "target")
-        call-info (str "to " api)]
-    `(let [~final-args-sym (chromex-lib.support/prepare-final-args ~arg-descriptors ~call-info)
-           ~ns-sym (chromex-lib.support/oget js/window ~@namespace-elements)
+        final-args-sym (gensym "final-args-")
+        ns-sym (gensym "ns-")
+        target-sym (gensym "target-")]
+    `(let [~final-args-sym (chromex-lib.support/prepare-final-args ~arg-descriptors ~api)
+           ~ns-sym (chromex-lib.support/oget js/window ~@namespace-path)
            ~target-sym (chromex-lib.support/oget ~ns-sym ~name)]
        ~(apply gen-logging-if-verbose static-config config operation api args)
        ~(if property?
@@ -115,7 +113,7 @@
 
 (defn marshall-callback [static-config api [callback-sym callback-info]]
   (let [{:keys [params]} callback-info
-        param-syms (map #(gensym (str "cb-" (:name %))) params)
+        param-syms (map #(gensym (str "cb-" (:name %) "-")) params)
         param-types (map :type params)
         sym+type-pairs (partition 2 (interleave param-syms param-types))
         marshalled-params (map (partial marshall-callback-param static-config api) sym+type-pairs)]
@@ -127,7 +125,7 @@
   (marshall static-config :from-chrome api type result-sym))
 
 (defn marshall-param [static-config api [param-sym type]]
-  (let [sym (gensym "omit-test")]
+  (let [sym (gensym "omit-test-")]
     `(let [~sym ~param-sym]
        (if (cljs.core/keyword-identical? ~sym :omit)
          :omit
@@ -155,8 +153,8 @@
   (let [api (get-api-id api-table descriptor)
         {:keys [params return-type]} descriptor
         marshalled-params (marshall-function-params static-config api args params)
-        marshalled-param-syms (map #(gensym (str "marshalled-" (:name %))) params)
-        result-sym (gensym "result")]
+        marshalled-param-syms (map #(gensym (str "marshalled-" (:name %) "-")) params)
+        result-sym (gensym "result-")]
     `(let [~@(interleave marshalled-param-syms marshalled-params)
            ~result-sym ~(apply gen-api-access-or-call static-config api-table descriptor config marshalled-param-syms)]
        ~(marshall-result static-config api [result-sym return-type]))))
@@ -166,8 +164,8 @@
 (defn gen-event [static-config api-table descriptor config chan & args]
   (let [api (get-api-id api-table descriptor)
         event-id (:id descriptor)
-        event-fn-sym (gensym "event-fn")
-        handler-fn-sym (gensym "handler-fn")
+        event-fn-sym (gensym "event-fn-")
+        handler-fn-sym (gensym "handler-fn-")
         event-path (string/split api #"\.")]
     `(let [~event-fn-sym ~(gen-event-fn config event-id chan)
            ~handler-fn-sym ~(marshall-callback static-config (str api ".handler") [event-fn-sym descriptor])
@@ -180,7 +178,7 @@
 ; ---------------------------------------------------------------------------------------------------------------------------
 
 (defn gen-callback-function-wrap [static-config api-table descriptor config & args]
-  (let [callback-chan-sym (gensym "chan")
+  (let [callback-chan-sym (gensym "callback-chan-")
         callback-fn (gen-callback-fn config callback-chan-sym)
         args+callback (concat args [callback-fn])
         marshalled-call-with-callback (apply gen-marshalling static-config api-table descriptor config args+callback)]
