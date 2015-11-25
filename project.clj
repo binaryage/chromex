@@ -26,8 +26,7 @@
                           {:background
                            {:source-paths ["src/dev"
                                            "src/figwheel"
-                                           "src/background"
-                                           "checkouts/chromex/src/lib"]
+                                           "src/background"]
                             :compiler     {:output-to             "resources/unpacked/compiled/background/chromex-sample.js"
                                            :output-dir            "resources/unpacked/compiled/background"
                                            :asset-path            "compiled/background"
@@ -40,8 +39,7 @@
                            :popup
                            {:source-paths ["src/dev"
                                            "src/figwheel"
-                                           "src/popup"
-                                           "checkouts/chromex/src/lib"]
+                                           "src/popup"]
                             :compiler     {:output-to             "resources/unpacked/compiled/popup/chromex-sample.js"
                                            :output-dir            "resources/unpacked/compiled/popup"
                                            :asset-path            "compiled/popup"
