@@ -19,17 +19,17 @@ of your own extension.
   * uses [leiningen](http://leiningen.org) + [lein-cljsbuild](https://github.com/emezeske/lein-cljsbuild)
   * integrates [cljs-devtools](https://github.com/binaryage/cljs-devtools)
   * integrates [figwheel](https://github.com/bhauman/lein-figwheel) (for background page and popup buttons)
-  * under dev profile
+  * under :unpacked profile (development)
     * background page and popup button
       * compiles with `optimizations :none`
       * namespaces are included as individual files and source maps work as expected
       * figwheel works
     * content script
-      * due to security restrictions, content script has to be provided as one file
+      * due to security restrictions, content script has to be provided as a single file
       * compiles with `:optimizations :whitespace` and `:pretty-print true`
-      * figwheel cannot be used in this context
-  * under release profile
-    * backgound page, popup button and content script compile with `optimizations :advanced`, each as a single javascript file
+      * figwheel cannot be used in this context (eval is not allowed)
+  * under :release profile
+    * background page, popup button and content script compile with `optimizations :advanced`
     * elides asserts
     * no figwheel support
     * no cljs-devtools support
@@ -88,7 +88,9 @@ When satisfied, you can run:
 This will create a folder `releases/chromex-sample-0.1.0` where 0.1.0 will be current version from [project.clj](project.clj).
 This folder will contain only files meant to be packaged.
 
-Finally you can use Chrome's "Pack extension" tool to prepare the final package (release.crx and release.pem files).
+Finally you can use Chrome's "Pack extension" tool to prepare the final package (.crx and .pem files).
+
+---
 
 ### Code discussion
 
