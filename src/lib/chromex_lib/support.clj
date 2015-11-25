@@ -48,14 +48,15 @@
 
 ; -- logging support --------------------------------------------------------------------------------------------------------
 
-(defn gen-logging-if-verbose [static-config config & args]
-  (if-not (:elide-verbose-logging static-config)
+(defn gen-logging-if-verbose [static-config config operation api args-array]
+  (if-not (:elide-verbose-logging static-config)                                                                              ; static compile-time switch
     `(let [config# ~config]
-       (if (:verbose-logging config#)
-         (let [logger# (:logger config#)]
+       (if (:verbose-logging config#)                                                                                         ; dynamic toggle for verbose logging
+         (let [logger# (:logger config#)
+               prefix# (cljs.core/array ~operation ~api)]
            (assert (and logger# (fn? logger#))
                    "invalid :logger in chromex config")
-           (logger# ~@args))))))
+           (.apply logger# nil (.concat prefix# ~args-array)))))))
 
 ; -- api versioning ---------------------------------------------------------------------------------------------------------
 

@@ -12,3 +12,5 @@
          (remove should-omit?)
          (map first)
          (into-array))))
+
+make-array

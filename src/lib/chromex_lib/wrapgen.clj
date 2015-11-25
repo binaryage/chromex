@@ -59,7 +59,7 @@
   (let [{:keys [params]} callback-info
         param-syms (map #(gensym (str "cb-param-" (:name %) "-")) params)]
     `(fn [~@param-syms]
-       ~(apply gen-logging-if-verbose static-config config label api param-syms)
+       ~(gen-logging-if-verbose static-config config label api `(into-array [~@param-syms]))
        (~callback-sym ~@param-syms))))
 
 (defn wrap-callback-args-with-logging [static-config api config args params]
@@ -91,7 +91,7 @@
     `(let [~final-args-sym (chromex-lib.support/prepare-final-args ~arg-descriptors ~api)
            ~ns-sym (chromex-lib.support/oget js/window ~@namespace-path)
            ~target-sym (chromex-lib.support/oget ~ns-sym ~name)]
-       ~(apply gen-logging-if-verbose static-config config operation api args)
+       ~(gen-logging-if-verbose static-config config operation api final-args-sym)
        ~(if property?
           target-sym
           `(.apply ~target-sym ~ns-sym ~final-args-sym)))))
