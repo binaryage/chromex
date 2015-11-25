@@ -29,7 +29,7 @@
 
   :aliases {"test" ["with-profile" "test" "test"]}
 
-  :profiles {:dev  {:cljsbuild {:builds {:dev
+  :profiles {:devel  {:cljsbuild {:builds {:dev
                                          {:source-paths ["src/lib"
                                                          "src/exts"
                                                          "src/exts_private"
