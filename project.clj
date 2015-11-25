@@ -12,7 +12,6 @@
                  [org.clojure/core.async "0.2.374" :scope "provided"]]
 
   :clean-targets ^{:protect false} ["target"
-                                    "out"
                                     "test/_generated"]
 
   :plugins [[lein-cljsbuild "1.1.1"]
@@ -35,8 +34,8 @@
                                                          "src/exts"
                                                          "src/exts_private"
                                                          "src/exts_internal"]
-                                          :compiler     {:output-to     "out/dev/chromex.js"
-                                                         :output-dir    "out/dev"
+                                          :compiler     {:output-to     "target/dev/chromex.js"
+                                                         :output-dir    "target/dev"
                                                          :optimizations :none
                                                          :source-map    true}}}}}
 
