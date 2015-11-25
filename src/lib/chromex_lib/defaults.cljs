@@ -31,4 +31,5 @@
    :callback-fn-factory      default-callback-fn-factory
    :event-fn-factory         default-event-fn-factory
    :logger                   default-logger
+   :root                     js/goog.global
    :verbose-logging          false})

@@ -89,7 +89,7 @@
         ns-sym (gensym "ns-")
         target-sym (gensym "target-")]
     `(let [~final-args-array-sym (chromex-lib.support/prepare-final-args-array ~arg-descriptors ~api)
-           ~ns-sym (chromex-lib.support/oget js/window ~@namespace-path)
+           ~ns-sym (chromex-lib.support/oget (:root ~config) ~@namespace-path)
            ~target-sym (chromex-lib.support/oget ~ns-sym ~name)]
        ~(gen-logging-if-verbose static-config config operation api final-args-array-sym)
        ~(if property?
@@ -170,7 +170,7 @@
     `(let [~event-fn-sym ~(gen-event-fn config event-id chan)
            ~handler-fn-sym ~(marshall-callback static-config (str api ".handler") [event-fn-sym descriptor])
            logging-fn# ~(wrap-callback-with-logging static-config "event:" api config [handler-fn-sym descriptor])
-           event-obj# (chromex-lib.support/oget js/window ~@event-path)
+           event-obj# (chromex-lib.support/oget (:root ~config) ~@event-path)
            result# (chromex-lib.chrome-event-subscription/make-chrome-event-subscription event-obj# logging-fn# ~chan)]
        (chromex-lib.protocols/subscribe! result# ~@args)                                                                      ; additional args may specify filtered events, see https://developer.chrome.com/extensions/events#filtered
        result#)))
