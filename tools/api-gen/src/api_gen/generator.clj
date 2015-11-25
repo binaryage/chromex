@@ -370,7 +370,8 @@
         function-names (map #(kebab-case (:name %)) functions)
         property-names (map #(str "get-" (kebab-case (:name %))) properties)
         event-names (map #(str "tap-" (kebab-case (:name %))) events)
-        names (string/join " " (concat property-names function-names event-names))
+        convenience-names ["tap-all-events"]
+        names (string/join " " (concat property-names function-names event-names convenience-names))
         wrapped-text (wrap-text prefix-length columns names)]
     (str prefix prefix2 wrapped-text postfix)))
 
