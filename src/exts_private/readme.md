@@ -2,7 +2,7 @@
 
 # This is generated API
 
-Generated on **2015-11-23** from **[Chromium @ 072e10c](https://chromium.googlesource.com/chromium/src.git/+/072e10ce1f1ee83f28c79bf5647b40738d772b23)**.
+Generated on **2015-11-25** from **[Chromium @ 072e10c](https://chromium.googlesource.com/chromium/src.git/+/072e10ce1f1ee83f28c79bf5647b40738d772b23)**.
 
 ### Files
 
@@ -114,51 +114,53 @@ Generated 45 namespaces containing 3 properties, 315 functions and 67 events:
 (ns your.project
   (:require
     [chromex.accessibility-private refer-macros:[
-      set-native-accessibility-enabled set-focus-ring tap-on-introduce-chrome-vox]]
+      set-native-accessibility-enabled set-focus-ring tap-on-introduce-chrome-vox tap-all-events]]
     
     [chromex.activity-log-private refer-macros:[
-      get-extension-activities delete-activities delete-database delete-urls tap-on-extension-activity]]
+      get-extension-activities delete-activities delete-database delete-urls tap-on-extension-activity
+      tap-all-events]]
     
     [chromex.autofill-private refer-macros:[
       save-address get-address-components save-credit-card remove-entry validate-phone-numbers
-      mask-credit-card tap-on-address-list-changed tap-on-credit-card-list-changed]]
+      mask-credit-card tap-on-address-list-changed tap-on-credit-card-list-changed tap-all-events]]
     
     [chromex.autotest-private refer-macros:[
       logout restart shutdown login-status lock-screen get-extensions-info simulate-asan-memory-bug
       set-touchpad-sensitivity set-tap-to-click set-three-finger-click set-tap-dragging
-      set-natural-scroll set-mouse-sensitivity set-primary-button-right]]
+      set-natural-scroll set-mouse-sensitivity set-primary-button-right tap-all-events]]
     
     [chromex.bluetooth-private refer-macros:[
       set-adapter-state set-pairing-response disconnect-all forget-device set-discovery-filter connect
-      pair tap-on-pairing]]
+      pair tap-on-pairing tap-all-events]]
     
     [chromex.bookmark-manager-private refer-macros:[
       copy cut paste can-paste sort-children get-strings start-drag drop get-subtree can-edit
       can-open-new-windows remove-trees record-launch create-with-meta-info get-meta-info set-meta-info
       update-meta-info undo redo get-undo-info get-redo-info set-version tap-on-drag-enter
-      tap-on-drag-leave tap-on-drop tap-on-meta-info-changed]]
+      tap-on-drag-leave tap-on-drop tap-on-meta-info-changed tap-all-events]]
     
     [chromex.braille-display-private refer-macros:[
-      get-display-state write-dots tap-on-display-state-changed tap-on-key-event]]
+      get-display-state write-dots tap-on-display-state-changed tap-on-key-event tap-all-events]]
     
     [chromex.chromeos-info-private refer-macros:[
-      get set]]
+      get set tap-all-events]]
     
     [chromex.cloud-print-private refer-macros:[
-      setup-connector get-host-name get-printers get-client-id]]
+      setup-connector get-host-name get-printers get-client-id tap-all-events]]
     
     [chromex.command-line-private refer-macros:[
-      has-switch]]
+      has-switch tap-all-events]]
     
     [chromex.copresence-private refer-macros:[
       send-initialized send-found send-samples tap-on-config-audio tap-on-encode-token-request
-      tap-on-decode-samples-request]]
+      tap-on-decode-samples-request tap-all-events]]
     
     [chromex.cryptotoken-private refer-macros:[
-      can-origin-assert-app-id]]
+      can-origin-assert-app-id tap-all-events]]
     
     [chromex.dashboard-private refer-macros:[
-      show-permission-prompt-for-delegated-install show-permission-prompt-for-delegated-bundle-install]]
+      show-permission-prompt-for-delegated-install show-permission-prompt-for-delegated-bundle-install
+      tap-all-events]]
     
     [chromex.developer-private refer-macros:[
       auto-update get-extensions-info get-extension-info get-items-info get-profile-configuration
@@ -166,19 +168,21 @@ Generated 45 namespaces containing 3 properties, 315 functions and 67 events:
       load-unpacked load-directory choose-path pack-directory is-profile-managed request-file-source
       open-dev-tools delete-extension-errors repair-extension show-options show-path
       set-shortcut-handling-suspended update-extension-command enable allow-incognito allow-file-access
-      inspect tap-on-item-state-changed tap-on-profile-state-changed]]
+      inspect tap-on-item-state-changed tap-on-profile-state-changed tap-all-events]]
     
     [chromex.echo-private refer-macros:[
-      set-offer-info get-offer-info get-registration-code get-oobe-timestamp get-user-consent]]
+      set-offer-info get-offer-info get-registration-code get-oobe-timestamp get-user-consent
+      tap-all-events]]
     
     [chromex.enterprise.platform-keys-private refer-macros:[
-      challenge-machine-key challenge-user-key]]
+      challenge-machine-key challenge-user-key tap-all-events]]
     
     [chromex.experience-sampling-private refer-macros:[
-      get-browser-info tap-on-displayed tap-on-decision]]
+      get-browser-info tap-on-displayed tap-on-decision tap-all-events]]
     
     [chromex.feedback-private refer-macros:[
-      get-user-email get-system-information send-feedback get-strings tap-on-feedback-requested]]
+      get-user-email get-system-information send-feedback get-strings tap-on-feedback-requested
+      tap-all-events]]
     
     [chromex.file-manager-private refer-macros:[
       logout-user-for-reauthentication cancel-dialog execute-task set-default-task get-file-tasks
@@ -193,13 +197,14 @@ Generated 45 namespaces containing 3 properties, 315 functions and 67 events:
       configure-volume get-custom-actions execute-custom-action tap-on-mount-completed
       tap-on-file-transfers-updated tap-on-copy-progress tap-on-directory-changed
       tap-on-preferences-changed tap-on-drive-connection-status-changed tap-on-device-changed
-      tap-on-drive-sync-error]]
+      tap-on-drive-sync-error tap-all-events]]
     
     [chromex.gcd-private refer-macros:[
-      get-device-info create-session start-pairing confirm-code send-message terminate-session]]
+      get-device-info create-session start-pairing confirm-code send-message terminate-session
+      tap-all-events]]
     
     [chromex.hangouts-private refer-macros:[
-      tap-on-hangout-requested]]
+      tap-on-hangout-requested tap-all-events]]
     
     [chromex.hotword-private refer-macros:[
       set-enabled get-status get-localized-strings set-audio-logging-enabled
@@ -208,32 +213,35 @@ Generated 45 namespaces containing 3 properties, 315 functions and 67 events:
       set-audio-history-enabled get-audio-history-enabled speaker-model-exists-result
       tap-on-enabled-changed tap-on-hotword-session-requested tap-on-hotword-session-stopped
       tap-on-finalize-speaker-model tap-on-speaker-model-saved tap-on-hotword-triggered
-      tap-on-delete-speaker-model tap-on-speaker-model-exists tap-on-microphone-state-changed]]
+      tap-on-delete-speaker-model tap-on-speaker-model-exists tap-on-microphone-state-changed
+      tap-all-events]]
     
     [chromex.input-method-private refer-macros:[
       get-input-method-config get-input-methods get-current-input-method set-current-input-method
       fetch-all-dictionary-words add-word-to-dictionary get-encrypt-sync-enabled tap-on-changed
-      tap-on-composition-bounds-changed tap-on-dictionary-loaded tap-on-dictionary-changed]]
+      tap-on-composition-bounds-changed tap-on-dictionary-loaded tap-on-dictionary-changed tap-all-events]]
     
     [chromex.language-settings-private refer-macros:[
       get-language-list set-language-list get-spellcheck-dictionary-statuses get-spellcheck-words
       add-spellcheck-word remove-spellcheck-word get-translate-target-language get-input-method-lists
       add-input-method remove-input-method tap-on-spellcheck-dictionaries-changed
-      tap-on-custom-dictionary-changed tap-on-input-method-added tap-on-input-method-removed]]
+      tap-on-custom-dictionary-changed tap-on-input-method-added tap-on-input-method-removed
+      tap-all-events]]
     
     [chromex.log-private refer-macros:[
-      get-historical start-event-recorder stop-event-recorder dump-logs tap-on-captured-events]]
+      get-historical start-event-recorder stop-event-recorder dump-logs tap-on-captured-events
+      tap-all-events]]
     
     [chromex.media-player-private refer-macros:[
-      tap-on-next-track tap-on-prev-track tap-on-toggle-play-state]]
+      tap-on-next-track tap-on-prev-track tap-on-toggle-play-state tap-all-events]]
     
     [chromex.metrics-private refer-macros:[
       get-is-crash-reporting-enabled get-field-trial get-variation-params record-user-action
       record-percentage record-count record-small-count record-medium-count record-time
-      record-medium-time record-long-time record-sparse-value record-value]]
+      record-medium-time record-long-time record-sparse-value record-value tap-all-events]]
     
     [chromex.mojo-private refer-macros:[
-      define require-async]]
+      define require-async tap-all-events]]
     
     [chromex.networking-private refer-macros:[
       get-properties get-managed-properties get-state set-properties create-network forget-network
@@ -242,65 +250,67 @@ Generated 45 namespaces containing 3 properties, 315 functions and 67 events:
       verify-destination verify-and-encrypt-credentials verify-and-encrypt-data
       set-wifi-tdls-enabled-state get-wifi-tdls-status get-captive-portal-status unlock-cellular-sim
       set-cellular-sim-state tap-on-networks-changed tap-on-network-list-changed
-      tap-on-device-state-list-changed tap-on-portal-detection-completed]]
+      tap-on-device-state-list-changed tap-on-portal-detection-completed tap-all-events]]
     
     [chromex.passwords-private refer-macros:[
       remove-saved-password remove-password-exception request-plaintext-password
       tap-on-saved-passwords-list-changed tap-on-password-exceptions-list-changed
-      tap-on-plaintext-password-retrieved]]
+      tap-on-plaintext-password-retrieved tap-all-events]]
     
     [chromex.preferences-private refer-macros:[
       get-easy-unlock-proximity-required get-google-geolocation-access-enabled
-      get-data-reduction-update-daily-lengths get-sync-categories-without-passphrase]]
+      get-data-reduction-update-daily-lengths get-sync-categories-without-passphrase tap-all-events]]
     
     [chromex.principals-private refer-macros:[
-      sign-out show-avatar-bubble]]
+      sign-out show-avatar-bubble tap-all-events]]
     
     [chromex.resources-private refer-macros:[
-      get-strings]]
+      get-strings tap-all-events]]
     
     [chromex.search-engines-private refer-macros:[
       get-search-engines set-selected-search-engine add-other-search-engine update-search-engine
-      remove-search-engine get-hotword-state opt-into-hotwording tap-on-search-engines-changed]]
+      remove-search-engine get-hotword-state opt-into-hotwording tap-on-search-engines-changed
+      tap-all-events]]
     
     [chromex.settings-private refer-macros:[
       set-pref get-all-prefs get-pref get-default-zoom-percent set-default-zoom-percent
-      tap-on-prefs-changed]]
+      tap-on-prefs-changed tap-all-events]]
     
     [chromex.streams-private refer-macros:[
-      abort tap-on-execute-mime-type-handler]]
+      abort tap-on-execute-mime-type-handler tap-all-events]]
     
     [chromex.system-private refer-macros:[
       get-incognito-mode-availability get-update-status get-api-key tap-on-volume-changed
-      tap-on-brightness-changed tap-on-screen-unlocked tap-on-woke-up]]
+      tap-on-brightness-changed tap-on-screen-unlocked tap-on-woke-up tap-all-events]]
     
     [chromex.terminal-private refer-macros:[
-      open-terminal-process close-terminal-process send-input on-terminal-resize tap-on-process-output]]
+      open-terminal-process close-terminal-process send-input on-terminal-resize tap-on-process-output
+      tap-all-events]]
     
     [chromex.users-private refer-macros:[
       get-whitelisted-users add-whitelisted-user remove-whitelisted-user is-current-user-owner
-      is-whitelist-managed]]
+      is-whitelist-managed tap-all-events]]
     
     [chromex.virtual-keyboard-private refer-macros:[
       insert-text send-key-event hide-keyboard set-hotrod-keyboard lock-keyboard keyboard-loaded
       get-keyboard-config open-settings set-mode set-keyboard-state tap-on-text-input-box-focused
-      tap-on-bounds-changed]]
+      tap-on-bounds-changed tap-all-events]]
     
     [chromex.webcam-private refer-macros:[
-      open-serial-webcam close-webcam get set reset]]
+      open-serial-webcam close-webcam get set reset tap-all-events]]
     
     [chromex.webrtc-audio-private refer-macros:[
-      get-sinks get-active-sink set-active-sink get-associated-sink tap-on-sinks-changed]]
+      get-sinks get-active-sink set-active-sink get-associated-sink tap-on-sinks-changed tap-all-events]]
     
     [chromex.webrtc-desktop-capture-private refer-macros:[
-      choose-desktop-media cancel-choose-desktop-media]]
+      choose-desktop-media cancel-choose-desktop-media tap-all-events]]
     
     [chromex.webrtc-logging-private refer-macros:[
       set-meta-data start set-upload-on-render-close stop store upload-stored upload discard
-      start-rtp-dump stop-rtp-dump]]
+      start-rtp-dump stop-rtp-dump tap-all-events]]
     
     [chromex.webstore-private refer-macros:[
       install begin-install-with-manifest3 complete-install install-bundle enable-app-launcher
       get-browser-login get-store-login set-store-login get-web-gl-status get-is-launcher-enabled
-      is-in-incognito-mode get-ephemeral-apps-enabled launch-ephemeral-app]]))
+      is-in-incognito-mode get-ephemeral-apps-enabled launch-ephemeral-app tap-all-events]]))
 ```

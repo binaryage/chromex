@@ -2,7 +2,7 @@
 
 # This is generated API
 
-Generated on **2015-11-23** from **[Chromium @ 072e10c](https://chromium.googlesource.com/chromium/src.git/+/072e10ce1f1ee83f28c79bf5647b40738d772b23)**.
+Generated on **2015-11-25** from **[Chromium @ 072e10c](https://chromium.googlesource.com/chromium/src.git/+/072e10ce1f1ee83f28c79bf5647b40738d772b23)**.
 
 ### Files
 
@@ -59,57 +59,59 @@ Generated 16 namespaces containing 0 properties, 89 functions and 15 events:
       focus fullscreen minimize maximize restore draw-attention clear-attention show hide set-bounds
       set-size-constraints set-icon set-shape set-always-on-top set-visible-on-all-workspaces
       tap-on-closed tap-on-bounds-changed tap-on-fullscreened tap-on-minimized tap-on-maximized
-      tap-on-restored tap-on-alpha-enabled-changed tap-on-window-shown-for-tests]]
+      tap-on-restored tap-on-alpha-enabled-changed tap-on-window-shown-for-tests tap-all-events]]
     
     [chromex.app-view-guest-internal refer-macros:[
-      attach-frame deny-request]]
+      attach-frame deny-request tap-all-events]]
     
     [chromex.automation-internal refer-macros:[
       enable-tab enable-frame enable-desktop perform-action query-selector tap-on-accessibility-event
-      tap-on-accessibility-tree-destroyed tap-on-tree-change]]
+      tap-on-accessibility-tree-destroyed tap-on-tree-change tap-all-events]]
     
     [chromex.certificate-provider-internal refer-macros:[
-      report-signature report-certificates]]
+      report-signature report-certificates tap-all-events]]
     
     [chromex.chrome-web-view-internal refer-macros:[
       context-menus-create context-menus-update context-menus-remove context-menus-remove-all
-      show-context-menu]]
+      show-context-menu tap-all-events]]
     
     [chromex.context-menus-internal refer-macros:[
-      tap-on-clicked]]
+      tap-on-clicked tap-all-events]]
     
     [chromex.enterprise.platform-keys-internal refer-macros:[
-      get-tokens generate-key]]
+      get-tokens generate-key tap-all-events]]
     
     [chromex.extension-options-internal refer-macros:[
-      tap-on-close tap-on-load tap-on-preferred-size-changed]]
+      tap-on-close tap-on-load tap-on-preferred-size-changed tap-all-events]]
     
     [chromex.extension-view-internal refer-macros:[
-      load-src parse-src]]
+      load-src parse-src tap-all-events]]
     
     [chromex.file-browser-handler-internal refer-macros:[
-      select-file]]
+      select-file tap-all-events]]
     
     [chromex.file-manager-private-internal refer-macros:[
       resolve-isolated-entries get-entry-properties add-file-watch remove-file-watch get-custom-actions
       execute-custom-action compute-checksum get-mime-type pin-drive-file execute-task set-default-task
       get-file-tasks get-share-url get-download-url request-drive-share set-entry-tag
-      cancel-file-transfers start-copy zip-selection validate-path-name-length]]
+      cancel-file-transfers start-copy zip-selection validate-path-name-length tap-all-events]]
     
     [chromex.guest-view-internal refer-macros:[
-      create-guest destroy-guest set-size]]
+      create-guest destroy-guest set-size tap-all-events]]
     
     [chromex.platform-keys-internal refer-macros:[
-      select-client-certificates sign get-public-key]]
+      select-client-certificates sign get-public-key tap-all-events]]
     
     [chromex.printer-provider-internal refer-macros:[
-      report-printers report-usb-printer-info report-printer-capability report-print-result get-print-data]]
+      report-printers report-usb-printer-info report-printer-capability report-print-result
+      get-print-data tap-all-events]]
     
     [chromex.web-request-internal refer-macros:[
-      add-event-listener event-handled]]
+      add-event-listener event-handled tap-all-events]]
     
     [chromex.web-view-internal refer-macros:[
       execute-script insert-css add-content-scripts remove-content-scripts set-zoom get-zoom
       set-zoom-mode get-zoom-mode find stop-finding load-data-with-base-url go override-user-agent reload
-      set-allow-transparency set-allow-scaling set-name set-permission navigate stop terminate clear-data]]))
+      set-allow-transparency set-allow-scaling set-name set-permission navigate stop terminate clear-data
+      tap-all-events]]))
 ```
