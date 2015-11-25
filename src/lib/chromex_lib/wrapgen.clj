@@ -29,7 +29,7 @@
 
 ; -- hooks in runtime config  -----------------------------------------------------------------------------------------------
 
-(defn make-callback-fn [config chan]
+(defn gen-callback-fn [config chan]
   `(let [config# ~config
          callback-fn-factory# (:callback-fn-factory config#)]
      (assert (and callback-fn-factory# (fn? callback-fn-factory#))
@@ -37,7 +37,7 @@
                   "config: " config#))
      (callback-fn-factory# config# ~chan)))
 
-(defn make-callback-channel [config]
+(defn gen-callback-channel [config]
   `(let [config# ~config
          callback-channel-factory# (:callback-channel-factory config#)]
      (assert (and callback-channel-factory# (fn? callback-channel-factory#))
@@ -45,7 +45,7 @@
                   "config: " config#))
      (callback-channel-factory# config#)))
 
-(defn make-event-fn [config event-id chan]
+(defn gen-event-fn [config event-id chan]
   `(let [config# ~config
          event-fn-factory# (:event-fn-factory config#)]
      (assert (and event-fn-factory# (fn? event-fn-factory#))
@@ -173,7 +173,7 @@
         logging-fn-sym (gensym "logging-fn")
         event-sym (gensym "event-obj")
         event-path (string/split api #"\.")]
-    `(let [~event-fn-sym ~(make-event-fn config event-id chan)
+    `(let [~event-fn-sym ~(gen-event-fn config event-id chan)
            ~handler-fn-sym ~(marshall-callback static-config (str api ".handler") [event-fn-sym descriptor])
            ~logging-fn-sym ~(wrap-callback-with-logging static-config "event:" api config [handler-fn-sym descriptor])
            ~event-sym (chromex-lib.support/oget js/window ~@event-path)
@@ -184,10 +184,13 @@
 ; ---------------------------------------------------------------------------------------------------------------------------
 
 (defn gen-callback-function-wrap [static-config api-table descriptor config & args]
-  (let [chan-sym (gensym "chan")]
-    `(let [~chan-sym ~(make-callback-channel config)]
-       ~(apply gen-marshalling static-config api-table descriptor config (concat args [(make-callback-fn config chan-sym)]))
-       ~chan-sym)))
+  (let [callback-chan-sym (gensym "chan")
+        callback-fn (gen-callback-fn config callback-chan-sym)
+        args+callback (concat args [callback-fn])
+        marshalled-call-with-callback (apply gen-marshalling static-config api-table descriptor config args+callback)]
+    `(let [~callback-chan-sym ~(gen-callback-channel config)]
+       ~marshalled-call-with-callback
+       ~callback-chan-sym)))
 
 (defn gen-plain-function-wrap [static-config api-table descriptor config & args]
   (apply gen-marshalling static-config api-table descriptor config args))
