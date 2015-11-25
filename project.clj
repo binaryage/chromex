@@ -14,9 +14,7 @@
   :clean-targets ^{:protect false} ["target"
                                     "test/_generated"]
 
-  :plugins [[lein-cljsbuild "1.1.1"]
-            [lein-cljfmt "0.1.7"]
-            [lein-pprint "1.1.1"]]
+  :plugins [[lein-cljsbuild "1.1.1"]]
 
   :hooks [leiningen.cljsbuild]
 
