@@ -2,6 +2,17 @@
   (:require [chromex-lib.support :refer [valid-api-version? emit-api-version-warning emit-deprecation-warning
                                          get-wrap-symbol get-api-id get-item-by-id get-src-info]]))
 
+; this file is responsible for generating code which will be expanded at library call sites in user's code
+; (gen-call-from-table and gen-tap-all-call are called from macros in some-library-namespace.clj)
+;
+; the code must be called at compile time from a macro, the generated code is quite simple,
+; see ultimate `gen-wrap-call` which does this work:
+;
+;   1) checks API version (no code generation)
+;   2) checks usage of deprecated API (no code generation)
+;   3) emits code for calling actual generated API stub - star method (see wrapgen.clj)
+;      generated code looks like this: `(some-method* config param1 param2 ...)
+;
 ; ---------------------------------------------------------------------------------------------------------------------------
 
 (defn gen-wrap-call [static-config src-info api-table descriptor config & args]

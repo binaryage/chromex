@@ -37,18 +37,18 @@
   (let [{:keys [file line column]} src-info]
     (str "(in '" file ":" line ":" column "')")))
 
-(defn print-compile-time-warning [static-config src-info msg]
+(defn print-warning [static-config src-info msg]
   (if-not (:silence-compilation-warnings static-config)
     (binding [*out* *err*]
       (println "WARNING:" msg (get-source-location src-info)))))
 
-(defn debug-print [msg]
+(defn print-debug [msg]
   (binding [*out* *err*]
     (println "DEBUG:" msg)))
 
 ; -- logging support --------------------------------------------------------------------------------------------------------
 
-(defn log-if-verbose [static-config config & args]
+(defn gen-logging-if-verbose [static-config config & args]
   (if-not (:elide-verbose-logging static-config)
     `(let [config# ~config]
        (if (:verbose-logging config#)
@@ -89,7 +89,7 @@
 
 (defn emit-api-version-warning [static-config src-info api-name]
   (let [version (:target-api-version static-config)]
-    (print-compile-time-warning static-config src-info
+    (print-warning static-config src-info
       (str "The API call to '" api-name "' is not available. "
         "Target API version '" version "' is not within required range " (user-friendly-range-str range)))))
 
@@ -97,5 +97,5 @@
 ; -- deprecation warnings ---------------------------------------------------------------------------------------------------
 
 (defn emit-deprecation-warning [static-config src-info api-name details]
-  (print-compile-time-warning static-config src-info
+  (print-warning static-config src-info
     (str "The API call to '" api-name "' is deprecated. " details)))

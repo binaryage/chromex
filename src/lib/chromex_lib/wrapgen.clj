@@ -1,6 +1,31 @@
 (ns chromex-lib.wrapgen
-  (:require [chromex-lib.support :refer [log-if-verbose print-compile-time-warning get-item-by-id get-api-id debug-print]]
+  (:require [chromex-lib.support :refer [gen-logging-if-verbose print-warning get-item-by-id get-api-id print-debug]]
             [clojure.string :as string]))
+
+; This file is responsible for generating code wrapping Chrome API calls.
+; Each Chrome API method will get generated one representing ClojureScript stub method (stubs have star postfix).
+;
+; The gen-wrap-from-table must be called at compile time from a macro and it generates code in 3 layers:
+;
+;   1) generates code converting callbacks to channels (gen-callback-function-wrap)
+;   2) generates code performing marshalling (gen-marshalling)
+;   3) generates code performing logging (gen-logging-if-verbose)
+;   4) generates code performing actual call/access of native Chrome API (gen-api-access-or-call)
+;
+; Some implementation notes:
+;
+; * Generated code slightly differs for different API method types (property, function, event).
+; * Marshalling has to deal not only with input parameters, return value, but also with callbacks by wrapping their arguments.
+; * Logging has to be performed not only before actual Chrome API call, but also in callbacks (wrap-callback-with-logging).
+; * Generated code must use string names when doing Javascript interop to be compatible with advanced compilation:
+;     https://github.com/binaryage/chromex/#advanced-mode-compilation
+; * Chrome API supports optional arguments, but we rely on argument postions for marshalling. That is why we introduced
+;   a special parameter value :omit, which marks arguments which should be omitted from final native API call.
+;   omiting arguments is done during runtime, see method `prepare-final-args`.
+;   Note: for convenience we generate arities of API methods with trailing optional arguments omitted,
+;         for exmaple see `connect` macro in https://github.com/binaryage/chromex/blob/master/src/exts/chromex/runtime.clj
+;
+; ---------------------------------------------------------------------------------------------------------------------------
 
 ; -- hooks in runtime config  -----------------------------------------------------------------------------------------------
 
@@ -8,24 +33,24 @@
   `(let [config# ~config
          callback-fn-factory# (:callback-fn-factory config#)]
      (assert (and callback-fn-factory# (fn? callback-fn-factory#))
-       (str "invalid :callback-fn-factory in chromex config\n"
-         "config: " config#))
+             (str "invalid :callback-fn-factory in chromex config\n"
+                  "config: " config#))
      (callback-fn-factory# config# ~chan)))
 
 (defn make-callback-channel [config]
   `(let [config# ~config
          callback-channel-factory# (:callback-channel-factory config#)]
      (assert (and callback-channel-factory# (fn? callback-channel-factory#))
-       (str "invalid :callback-channel-factory in chromex config\n"
-         "config: " config#))
+             (str "invalid :callback-channel-factory in chromex config\n"
+                  "config: " config#))
      (callback-channel-factory# config#)))
 
 (defn make-event-fn [config event-id chan]
   `(let [config# ~config
          event-fn-factory# (:event-fn-factory config#)]
      (assert (and event-fn-factory# (fn? event-fn-factory#))
-       (str "invalid :event-fn-factory in chromex config\n"
-         "config: " config#))
+             (str "invalid :event-fn-factory in chromex config\n"
+                  "config: " config#))
      (event-fn-factory# config# ~event-id ~chan)))
 
 ; ---------------------------------------------------------------------------------------------------------------------------
@@ -34,15 +59,15 @@
   (let [{:keys [params]} callback-info
         param-syms (map #(gensym (str "cb-param-" (:name %))) params)]
     `(fn [~@param-syms]
-       ~(apply log-if-verbose static-config config label api param-syms)
+       ~(apply gen-logging-if-verbose static-config config label api param-syms)
        (~callback-sym ~@param-syms))))
 
 (defn wrap-callback-args-with-logging [static-config api config args params]
   (assert (= (count params) (count args))
-    (str "a mismatch between parameters and arguments passed into wrap-callback-args-with-logging\n"
-      "api: " api "\n"
-      "params: " params "\n"
-      "args: " args))
+          (str "a mismatch between parameters and arguments passed into wrap-callback-args-with-logging\n"
+               "api: " api "\n"
+               "params: " params "\n"
+               "args: " args))
   (let [pairs (partition 2 (interleave args (map :callback-info params)))]
     (for [[callback-sym callback-info] pairs]
       (if callback-info
@@ -68,7 +93,7 @@
     `(let [~final-args-sym (chromex-lib.support/prepare-final-args ~arg-descriptors ~call-info)
            ~ns-sym (chromex-lib.support/oget js/window ~@namespace-elements)
            ~target-sym (chromex-lib.support/oget ~ns-sym ~name)]
-       ~(apply log-if-verbose static-config config operation api args)
+       ~(apply gen-logging-if-verbose static-config config operation api args)
        ~(if property?
           target-sym
           `(.apply ~target-sym ~ns-sym ~final-args-sym)))))
@@ -78,11 +103,11 @@
 (defn marshall [static-config & args]
   (let [{:keys [gen-marshalling debug-marshalling]} static-config]
     (assert (and gen-marshalling (fn? gen-marshalling))
-      (str "invalid ::gen-marshalling in static-config\n"
-        "static-config: " static-config))
+            (str "invalid ::gen-marshalling in static-config\n"
+                 "static-config: " static-config))
     (let [marshalled-code (apply gen-marshalling args)]
       (if debug-marshalling
-        (debug-print (str "marshalling request " args " => " marshalled-code)))
+        (print-debug (str "marshalling request " args " => " marshalled-code)))
       marshalled-code)))
 
 (defn marshall-callback-param [static-config api [callback-param-sym type]]
@@ -119,10 +144,10 @@
 
 (defn marshall-function-params [static-config api args params]
   (assert (= (count params) (count args))
-    (str "a mismatch between parameters and arguments passed into marshall-function-params\n"
-      "api: " api "\n"
-      "args: " args
-      "params:" params))
+          (str "a mismatch between parameters and arguments passed into marshall-function-params\n"
+               "api: " api "\n"
+               "args: " args
+               "params:" params))
   (let [pairs (partition 2 (interleave args params))]
     (for [pair pairs]
       (marshall-function-param static-config api pair))))
