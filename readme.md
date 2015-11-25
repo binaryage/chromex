@@ -83,7 +83,7 @@ to test it.
 
 When satisfied, you can run:
 
-    lein package (TODO)
+    lein package
 
 This will create a folder `releases/chromex-sample-0.1.0` where 0.1.0 will be current version from [project.clj](project.clj).
 This folder will contain only files meant to be packaged.
