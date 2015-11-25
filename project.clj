@@ -24,8 +24,7 @@
   :source-paths ["src/lib"
                  "src/exts"
                  "src/exts_private"
-                 "src/exts_internal"
-                 "test"]
+                 "src/exts_internal"]
 
   :test-paths ["test"]
 
