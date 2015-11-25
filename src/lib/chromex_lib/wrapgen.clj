@@ -21,7 +21,7 @@
 ;     https://github.com/binaryage/chromex/#advanced-mode-compilation
 ; * Chrome API supports optional arguments, but we rely on argument postions for marshalling. That is why we introduced
 ;   a special parameter value :omit, which marks arguments which should be omitted from final native API call.
-;   omiting arguments is done during runtime, see method `prepare-final-args`.
+;   omiting arguments is done during runtime, see method `prepare-final-args-array`.
 ;   Note: for convenience we generate arities of API methods with trailing optional arguments omitted,
 ;         for exmaple see `connect` macro in https://github.com/binaryage/chromex/blob/master/src/exts/chromex/runtime.clj
 ;
@@ -85,16 +85,16 @@
         param-optionalities (map :optional? params)
         arg-descriptors (vec (map vec (partition 3 (interleave wrapped-args param-names param-optionalities))))
         operation (if property? "accessing:" "calling:")
-        final-args-sym (gensym "final-args-")
+        final-args-array-sym (gensym "final-args-array-")
         ns-sym (gensym "ns-")
         target-sym (gensym "target-")]
-    `(let [~final-args-sym (chromex-lib.support/prepare-final-args ~arg-descriptors ~api)
+    `(let [~final-args-array-sym (chromex-lib.support/prepare-final-args-array ~arg-descriptors ~api)
            ~ns-sym (chromex-lib.support/oget js/window ~@namespace-path)
            ~target-sym (chromex-lib.support/oget ~ns-sym ~name)]
-       ~(gen-logging-if-verbose static-config config operation api final-args-sym)
+       ~(gen-logging-if-verbose static-config config operation api final-args-array-sym)
        ~(if property?
           target-sym
-          `(.apply ~target-sym ~ns-sym ~final-args-sym)))))
+          `(.apply ~target-sym ~ns-sym ~final-args-array-sym)))))
 
 ; ---------------------------------------------------------------------------------------------------------------------------
 
