@@ -1,3 +1,4 @@
+.lein*
 /resources/unpacked/compiled
 /resources/release.crx
 /resources/release.pem

@@ -4,11 +4,13 @@
                  [org.clojure/core.async "0.2.374"]
                  [binaryage/chromex "0.1.1"]
                  [binaryage/devtools "0.4.1"]
-                 [figwheel "0.5.0-1"]]
+                 [figwheel "0.5.0-1"]
+                 [environ "1.0.1"]]
 
   :plugins [[lein-cljsbuild "1.1.1"]
             [lein-figwheel "0.5.0-2"]
-            [lein-shell "0.4.2"]]
+            [lein-shell "0.4.2"]
+            [lein-environ "1.0.1"]]
 
   :figwheel
   {:server-port    7000
@@ -71,10 +73,10 @@
                            :content-script {:source-paths ["checkouts/chromex/src/lib"
                                                            "checkouts/chromex/src/exts"]}}}}
              :release
-             {:cljsbuild {:builds
+             {:env       {:chromex-elide-verbose-logging true}
+              :cljsbuild {:builds
                           {:background
-                           {:source-paths ["src/release"
-                                           "src/background"]
+                           {:source-paths ["src/background"]
                             :compiler     {:output-to      "resources/release/compiled/background.js"
                                            :output-dir     "resources/release/compiled/background"
                                            :asset-path     "compiled/background"
@@ -82,8 +84,7 @@
                                            :elide-asserts  true
                                            :compiler-stats true}}
                            :popup
-                           {:source-paths ["src/release"
-                                           "src/popup"]
+                           {:source-paths ["src/popup"]
                             :compiler     {:output-to      "resources/release/compiled/popup.js"
                                            :output-dir     "resources/release/compiled/popup"
                                            :asset-path     "compiled/popup"
@@ -91,8 +92,7 @@
                                            :elide-asserts  true
                                            :compiler-stats true}}
                            :content-script
-                           {:source-paths ["src/release"
-                                           "src/content_script"]
+                           {:source-paths ["src/content_script"]
                             :compiler     {:output-to      "resources/release/compiled/content_script.js"
                                            :output-dir     "resources/release/compiled/content_script"
                                            :asset-path     "compiled/content_script"
