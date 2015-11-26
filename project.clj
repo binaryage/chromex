@@ -9,12 +9,14 @@
 
   :dependencies [[org.clojure/clojure "1.7.0" :scope "provided"]
                  [org.clojure/clojurescript "1.7.170" :scope "provided"]
-                 [org.clojure/core.async "0.2.374" :scope "provided"]]
+                 [org.clojure/core.async "0.2.374" :scope "provided"]
+                 [environ "1.0.1" :scope "provided"]]
 
   :clean-targets ^{:protect false} ["target"
                                     "test/_generated"]
 
-  :plugins [[lein-cljsbuild "1.1.1"]]
+  :plugins [[lein-cljsbuild "1.1.1"]
+            [lein-environ "1.0.1"]]
 
   :hooks [leiningen.cljsbuild]
 

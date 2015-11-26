@@ -1,12 +1,13 @@
 (ns chromex-lib.config
-  (:require [chromex-lib.defaults :refer [default-gen-active-config default-gen-marshalling]]))
+  (:require [environ.core :refer [env]]
+            [chromex-lib.defaults :refer [default-gen-active-config default-gen-marshalling]]))
 
-(def ^:dynamic *target-api-version* "latest")
-(def ^:dynamic *silence-compilation-warnings* false)
+(def ^:dynamic *target-api-version* (or (env :chromex-target-api-version) "latest"))
+(def ^:dynamic *silence-compilation-warnings* (boolean (env :chromex-silence-compilation-warnings)))
+(def ^:dynamic *elide-verbose-logging* (boolean (env :chromex-elide-verbose-logging)))
+(def ^:dynamic *debug-marshalling* (boolean (env :chromex-debug-marshalling)))
 (def ^:dynamic *gen-marshalling* default-gen-marshalling)
 (def ^:dynamic *gen-active-config* default-gen-active-config)
-(def ^:dynamic *elide-verbose-logging* false)
-(def ^:dynamic *debug-marshalling* false)
 
 (defn get-static-config []
   {:target-api-version           *target-api-version*
@@ -23,9 +24,9 @@
                  "static-config: " static-config))
     (gen-fn)))
 
-; config has to be generated via macro, for advanced optimizations
-; in case of :elide-verbose-logging we must not mention chromex-lib.defaults/default-logger in any place
-; for it get removed as a dead code
+; config has to be generated via a macro:
+; in advanced optimizations in case of :elide-verbose-logging
+; we must not mention chromex-lib.defaults/default-logger at any place for it get removed as a dead code
 (defmacro gen-default-config []
   (let [static-config (get-static-config)]
     (merge
