@@ -16,7 +16,7 @@
    :server-logfile "figwheel_server.log"
    :css-dirs       []}
 
-  :source-paths ["src"]
+  :source-paths []
 
   :clean-targets ^{:protect false} ["target"
                                     "resources/unpacked/compiled"
@@ -73,7 +73,8 @@
              :release
              {:cljsbuild {:builds
                           {:background
-                           {:source-paths ["src/background"]
+                           {:source-paths ["src/release"
+                                           "src/background"]
                             :compiler     {:output-to      "resources/release/compiled/background.js"
                                            :output-dir     "resources/release/compiled/background"
                                            :asset-path     "compiled/background"
@@ -81,7 +82,8 @@
                                            :elide-asserts  true
                                            :compiler-stats true}}
                            :popup
-                           {:source-paths ["src/popup"]
+                           {:source-paths ["src/release"
+                                           "src/popup"]
                             :compiler     {:output-to      "resources/release/compiled/popup.js"
                                            :output-dir     "resources/release/compiled/popup"
                                            :asset-path     "compiled/popup"
@@ -89,7 +91,8 @@
                                            :elide-asserts  true
                                            :compiler-stats true}}
                            :content-script
-                           {:source-paths ["src/content_script"]
+                           {:source-paths ["src/release"
+                                           "src/content_script"]
                             :compiler     {:output-to      "resources/release/compiled/content_script.js"
                                            :output-dir     "resources/release/compiled/content_script"
                                            :asset-path     "compiled/content_script"
