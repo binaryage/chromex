@@ -2,7 +2,7 @@
 
 # This is generated API
 
-Generated on **2015-11-25** from **[Chromium @ 072e10c](https://chromium.googlesource.com/chromium/src.git/+/072e10ce1f1ee83f28c79bf5647b40738d772b23)**.
+Generated on **2015-11-26** from **[Chromium @ ca693a7](https://chromium.googlesource.com/chromium/src.git/+/ca693a7a494711954dfe430ea973e74e16f72a3c)**.
 
 ### Files
 

@@ -2,7 +2,7 @@
 
 # This is generated API
 
-Generated on **2015-11-25** from **[Chromium @ 072e10c](https://chromium.googlesource.com/chromium/src.git/+/072e10ce1f1ee83f28c79bf5647b40738d772b23)**.
+Generated on **2015-11-26** from **[Chromium @ ca693a7](https://chromium.googlesource.com/chromium/src.git/+/ca693a7a494711954dfe430ea973e74e16f72a3c)**.
 
 ### Files
 
@@ -27,7 +27,7 @@ Generated on **2015-11-25** from **[Chromium @ 072e10c](https://chromium.googles
 | [chrome.contextMenus](https://developer.chrome.com/extensions/contextMenus) | [chromex/context_menus.clj](chromex/context_menus.clj) |
 | [chrome.cookies](https://developer.chrome.com/extensions/cookies) | [chromex/cookies.clj](chromex/cookies.clj) |
 | [chrome.copresence](https://developer.chrome.com/extensions/copresence) | [chromex/copresence.clj](chromex/copresence.clj) |
-| [chrome.debugger](https://developer.chrome.com/extensions/debugger) | [chromex/debugger.clj](chromex/debugger.clj) |
+| [chrome.debugger](https://developer.chrome.com/extensions/debugger) | [chromex/debugger_api.clj](chromex/debugger_api.clj) |
 | [chrome.declarativeContent](https://developer.chrome.com/extensions/declarativeContent) | [chromex/declarative_content.clj](chromex/declarative_content.clj) |
 | [chrome.declarativeWebRequest](https://developer.chrome.com/extensions/declarativeWebRequest) | [chromex/declarative_web_request.clj](chromex/declarative_web_request.clj) |
 | [chrome.desktopCapture](https://developer.chrome.com/extensions/desktopCapture) | [chromex/desktop_capture.clj](chromex/desktop_capture.clj) |
@@ -257,7 +257,7 @@ Generated 82 namespaces containing 44 properties, 354 functions and 185 events:
     [chromex.copresence refer-macros:[
       execute tap-on-messages-received tap-on-status-updated tap-all-events]]
     
-    [chromex.debugger refer-macros:[
+    [chromex.debugger-api refer-macros:[
       attach detach send-command get-targets tap-on-event tap-on-detach tap-all-events]]
     
     [chromex.declarative-content refer-macros:[

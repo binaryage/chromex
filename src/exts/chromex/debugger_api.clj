@@ -1,4 +1,4 @@
-(ns chromex.debugger
+(ns chromex.debugger-api
   "The chrome.debugger API serves as an alternate transport for Chrome's remote debugging protocol. Use chrome.debugger to
    attach to one or more tabs to instrument network interaction, debug JavaScript, mutate the DOM and CSS, etc. Use the
    Debuggee tabId to target tabs with sendCommand and route events by tabId from onEvent callbacks.
