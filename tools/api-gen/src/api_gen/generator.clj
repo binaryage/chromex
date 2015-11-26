@@ -22,7 +22,7 @@
 
 (defn build-path [folder name ext]
   (let [parts (string/split (snake-case name) #"\.")
-        parts-ext (concat (drop-last parts) [(str (last parts) ext)])]
+        parts-ext (concat (drop-last parts) [(str (munge-if-reserved (last parts)) ext)])]
     (vec (concat folder parts-ext))))
 
 (defn build-cljs-ns-file-path [name]
@@ -32,7 +32,7 @@
   (build-path [chromex-folder] name ".clj"))
 
 (defn build-ns-name [name]
-  (str NS-PREFIX (kebab-case name)))
+  (str NS-PREFIX (kebab-case(munge-if-reserved name))))
 
 (defn build-intro-item [item]
   (let [{:keys [title content]} item
