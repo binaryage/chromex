@@ -22,3 +22,17 @@
             (str "invalid :gen-active-config in chromex static config\n"
                  "static-config: " static-config))
     (gen-fn)))
+
+; config has to be generated via macro, for advanced optimizations
+; in case of :elide-verbose-logging we must not mention chromex-lib.defaults/default-logger in any place
+; for it get removed as a dead code
+(defmacro gen-default-config []
+  (let [static-config (get-static-config)]
+    (merge
+      {:callback-channel-factory 'chromex-lib.defaults/default-callback-channel-factory
+       :callback-fn-factory      'chromex-lib.defaults/default-callback-fn-factory
+       :event-fn-factory         'chromex-lib.defaults/default-event-fn-factory
+       :root                     'js/goog.global}
+      (if-not (:elide-verbose-logging static-config)
+        {:verbose-logging false
+         :logger          'chromex-lib.defaults/default-logger}))))

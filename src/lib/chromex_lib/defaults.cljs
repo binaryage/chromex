@@ -1,4 +1,5 @@
 (ns chromex-lib.defaults
+  (:require-macros [chromex-lib.config :refer [gen-default-config]])
   (:require [cljs.core.async :refer [put! chan]]))
 
 ; -- callback support -------------------------------------------------------------------------------------------------------
@@ -26,10 +27,4 @@
 
 ; -- default config ---------------------------------------------------------------------------------------------------------
 
-(def default-config
-  {:callback-channel-factory default-callback-channel-factory
-   :callback-fn-factory      default-callback-fn-factory
-   :event-fn-factory         default-event-fn-factory
-   :logger                   default-logger
-   :root                     js/goog.global
-   :verbose-logging          false})
+(def default-config (gen-default-config))
