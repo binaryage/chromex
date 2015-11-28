@@ -60,19 +60,28 @@
   ([#_callback] (gen-call :function ::get-targets &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
+;
+; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-event-events
-  "Fired whenever debugging target issues instrumentation event."
-  ([channel] (gen-call :event ::on-event &form channel)))
-
+  "Fired whenever debugging target issues instrumentation event.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-event &form channel args)))
 (defmacro tap-on-detach-events
   "Fired when browser terminates debugging session for the tab. This happens when either the tab is being closed or Chrome
-   DevTools is being invoked for the attached tab."
-  ([channel] (gen-call :event ::on-detach &form channel)))
+   DevTools is being invoked for the attached tab.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-detach &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
-(defmacro tap-all-events [chan]
+(defmacro tap-all-events
+  "Taps all valid non-deprecated events in this namespace."
+  [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

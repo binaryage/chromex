@@ -23,9 +23,8 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-visited* [config channel]
-  (gen-wrap :event ::on-visited config channel))
-
-(defn on-visit-removed* [config channel]
-  (gen-wrap :event ::on-visit-removed config channel))
+(defn on-visited* [config channel & args]
+  (gen-wrap :event ::on-visited config channel args))
+(defn on-visit-removed* [config channel & args]
+  (gen-wrap :event ::on-visit-removed config channel args))
 

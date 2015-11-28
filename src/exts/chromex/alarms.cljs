@@ -20,6 +20,6 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-alarm* [config channel]
-  (gen-wrap :event ::on-alarm config channel))
+(defn on-alarm* [config channel & args]
+  (gen-wrap :event ::on-alarm config channel args))
 

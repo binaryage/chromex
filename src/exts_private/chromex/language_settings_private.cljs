@@ -35,15 +35,12 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-spellcheck-dictionaries-changed* [config channel]
-  (gen-wrap :event ::on-spellcheck-dictionaries-changed config channel))
-
-(defn on-custom-dictionary-changed* [config channel]
-  (gen-wrap :event ::on-custom-dictionary-changed config channel))
-
-(defn on-input-method-added* [config channel]
-  (gen-wrap :event ::on-input-method-added config channel))
-
-(defn on-input-method-removed* [config channel]
-  (gen-wrap :event ::on-input-method-removed config channel))
+(defn on-spellcheck-dictionaries-changed* [config channel & args]
+  (gen-wrap :event ::on-spellcheck-dictionaries-changed config channel args))
+(defn on-custom-dictionary-changed* [config channel & args]
+  (gen-wrap :event ::on-custom-dictionary-changed config channel args))
+(defn on-input-method-added* [config channel & args]
+  (gen-wrap :event ::on-input-method-added config channel args))
+(defn on-input-method-removed* [config channel & args]
+  (gen-wrap :event ::on-input-method-removed config channel args))
 

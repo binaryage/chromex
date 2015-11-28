@@ -19,9 +19,8 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-resource-added* [config channel]
-  (gen-wrap :event ::on-resource-added config channel))
-
-(defn on-resource-content-committed* [config channel]
-  (gen-wrap :event ::on-resource-content-committed config channel))
+(defn on-resource-added* [config channel & args]
+  (gen-wrap :event ::on-resource-added config channel args))
+(defn on-resource-content-committed* [config channel & args]
+  (gen-wrap :event ::on-resource-content-committed config channel args))
 

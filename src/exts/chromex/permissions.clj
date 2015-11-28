@@ -42,18 +42,27 @@
   ([permissions #_callback] (gen-call :function ::remove &form permissions)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
+;
+; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-added-events
-  "Fired when the extension acquires new permissions."
-  ([channel] (gen-call :event ::on-added &form channel)))
-
+  "Fired when the extension acquires new permissions.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-added &form channel args)))
 (defmacro tap-on-removed-events
-  "Fired when access to permissions has been removed from the extension."
-  ([channel] (gen-call :event ::on-removed &form channel)))
+  "Fired when access to permissions has been removed from the extension.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-removed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
-(defmacro tap-all-events [chan]
+(defmacro tap-all-events
+  "Taps all valid non-deprecated events in this namespace."
+  [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

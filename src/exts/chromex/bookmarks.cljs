@@ -46,24 +46,18 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-created* [config channel]
-  (gen-wrap :event ::on-created config channel))
-
-(defn on-removed* [config channel]
-  (gen-wrap :event ::on-removed config channel))
-
-(defn on-changed* [config channel]
-  (gen-wrap :event ::on-changed config channel))
-
-(defn on-moved* [config channel]
-  (gen-wrap :event ::on-moved config channel))
-
-(defn on-children-reordered* [config channel]
-  (gen-wrap :event ::on-children-reordered config channel))
-
-(defn on-import-began* [config channel]
-  (gen-wrap :event ::on-import-began config channel))
-
-(defn on-import-ended* [config channel]
-  (gen-wrap :event ::on-import-ended config channel))
+(defn on-created* [config channel & args]
+  (gen-wrap :event ::on-created config channel args))
+(defn on-removed* [config channel & args]
+  (gen-wrap :event ::on-removed config channel args))
+(defn on-changed* [config channel & args]
+  (gen-wrap :event ::on-changed config channel args))
+(defn on-moved* [config channel & args]
+  (gen-wrap :event ::on-moved config channel args))
+(defn on-children-reordered* [config channel & args]
+  (gen-wrap :event ::on-children-reordered config channel args))
+(defn on-import-began* [config channel & args]
+  (gen-wrap :event ::on-import-began config channel args))
+(defn on-import-ended* [config channel & args]
+  (gen-wrap :event ::on-import-ended config channel args))
 

@@ -50,30 +50,22 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-enabled-changed* [config channel]
-  (gen-wrap :event ::on-enabled-changed config channel))
-
-(defn on-hotword-session-requested* [config channel]
-  (gen-wrap :event ::on-hotword-session-requested config channel))
-
-(defn on-hotword-session-stopped* [config channel]
-  (gen-wrap :event ::on-hotword-session-stopped config channel))
-
-(defn on-finalize-speaker-model* [config channel]
-  (gen-wrap :event ::on-finalize-speaker-model config channel))
-
-(defn on-speaker-model-saved* [config channel]
-  (gen-wrap :event ::on-speaker-model-saved config channel))
-
-(defn on-hotword-triggered* [config channel]
-  (gen-wrap :event ::on-hotword-triggered config channel))
-
-(defn on-delete-speaker-model* [config channel]
-  (gen-wrap :event ::on-delete-speaker-model config channel))
-
-(defn on-speaker-model-exists* [config channel]
-  (gen-wrap :event ::on-speaker-model-exists config channel))
-
-(defn on-microphone-state-changed* [config channel]
-  (gen-wrap :event ::on-microphone-state-changed config channel))
+(defn on-enabled-changed* [config channel & args]
+  (gen-wrap :event ::on-enabled-changed config channel args))
+(defn on-hotword-session-requested* [config channel & args]
+  (gen-wrap :event ::on-hotword-session-requested config channel args))
+(defn on-hotword-session-stopped* [config channel & args]
+  (gen-wrap :event ::on-hotword-session-stopped config channel args))
+(defn on-finalize-speaker-model* [config channel & args]
+  (gen-wrap :event ::on-finalize-speaker-model config channel args))
+(defn on-speaker-model-saved* [config channel & args]
+  (gen-wrap :event ::on-speaker-model-saved config channel args))
+(defn on-hotword-triggered* [config channel & args]
+  (gen-wrap :event ::on-hotword-triggered config channel args))
+(defn on-delete-speaker-model* [config channel & args]
+  (gen-wrap :event ::on-delete-speaker-model config channel args))
+(defn on-speaker-model-exists* [config channel & args]
+  (gen-wrap :event ::on-speaker-model-exists config channel args))
+(defn on-microphone-state-changed* [config channel & args]
+  (gen-wrap :event ::on-microphone-state-changed config channel args))
 

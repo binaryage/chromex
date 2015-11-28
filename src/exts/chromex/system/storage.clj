@@ -35,18 +35,27 @@
   ([id #_callback] (gen-call :function ::get-available-capacity &form id)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
+;
+; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-attached-events
-  "Fired when a new removable storage is attached to the system."
-  ([channel] (gen-call :event ::on-attached &form channel)))
-
+  "Fired when a new removable storage is attached to the system.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-attached &form channel args)))
 (defmacro tap-on-detached-events
-  "Fired when a removable storage is detached from the system."
-  ([channel] (gen-call :event ::on-detached &form channel)))
+  "Fired when a removable storage is detached from the system.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-detached &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
-(defmacro tap-all-events [chan]
+(defmacro tap-all-events
+  "Taps all valid non-deprecated events in this namespace."
+  [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

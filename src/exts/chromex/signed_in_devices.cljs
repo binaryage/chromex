@@ -8,6 +8,6 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-device-info-change* [config channel]
-  (gen-wrap :event ::on-device-info-change config channel))
+(defn on-device-info-change* [config channel & args]
+  (gen-wrap :event ::on-device-info-change config channel args))
 

@@ -23,6 +23,6 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-sign-in-changed* [config channel]
-  (gen-wrap :event ::on-sign-in-changed config channel))
+(defn on-sign-in-changed* [config channel & args]
+  (gen-wrap :event ::on-sign-in-changed config channel args))
 

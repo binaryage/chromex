@@ -26,12 +26,10 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-started* [config channel]
-  (gen-wrap :event ::on-started config channel))
-
-(defn on-stopped* [config channel]
-  (gen-wrap :event ::on-stopped config channel))
-
-(defn on-error* [config channel]
-  (gen-wrap :event ::on-error config channel))
+(defn on-started* [config channel & args]
+  (gen-wrap :event ::on-started config channel args))
+(defn on-stopped* [config channel & args]
+  (gen-wrap :event ::on-stopped config channel args))
+(defn on-error* [config channel & args]
+  (gen-wrap :event ::on-error config channel args))
 

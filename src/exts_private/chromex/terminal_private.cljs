@@ -17,6 +17,6 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-process-output* [config channel]
-  (gen-wrap :event ::on-process-output config channel))
+(defn on-process-output* [config channel & args]
+  (gen-wrap :event ::on-process-output config channel args))
 

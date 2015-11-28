@@ -14,12 +14,10 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-saved-passwords-list-changed* [config channel]
-  (gen-wrap :event ::on-saved-passwords-list-changed config channel))
-
-(defn on-password-exceptions-list-changed* [config channel]
-  (gen-wrap :event ::on-password-exceptions-list-changed config channel))
-
-(defn on-plaintext-password-retrieved* [config channel]
-  (gen-wrap :event ::on-plaintext-password-retrieved config channel))
+(defn on-saved-passwords-list-changed* [config channel & args]
+  (gen-wrap :event ::on-saved-passwords-list-changed config channel args))
+(defn on-password-exceptions-list-changed* [config channel & args]
+  (gen-wrap :event ::on-password-exceptions-list-changed config channel args))
+(defn on-plaintext-password-retrieved* [config channel & args]
+  (gen-wrap :event ::on-plaintext-password-retrieved config channel args))
 

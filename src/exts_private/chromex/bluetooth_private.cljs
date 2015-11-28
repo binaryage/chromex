@@ -26,6 +26,6 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-pairing* [config channel]
-  (gen-wrap :event ::on-pairing config channel))
+(defn on-pairing* [config channel & args]
+  (gen-wrap :event ::on-pairing config channel args))
 

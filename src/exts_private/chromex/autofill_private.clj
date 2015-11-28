@@ -63,20 +63,29 @@
   ([guid] (gen-call :function ::mask-credit-card &form guid)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
+;
+; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-address-list-changed-events
   "Fired when the address list has changed, meaning that an entry has been added, removed, or changed.  |entries| The updated
-   list of entries."
-  ([channel] (gen-call :event ::on-address-list-changed &form channel)))
-
+   list of entries.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-address-list-changed &form channel args)))
 (defmacro tap-on-credit-card-list-changed-events
   "Fired when the credit card list has changed, meaning that an entry has been added, removed, or changed.  |entries| The
-   updated list of entries."
-  ([channel] (gen-call :event ::on-credit-card-list-changed &form channel)))
+   updated list of entries.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-credit-card-list-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
-(defmacro tap-all-events [chan]
+(defmacro tap-all-events
+  "Taps all valid non-deprecated events in this namespace."
+  [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

@@ -11,22 +11,33 @@
 (declare gen-call)
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
+;
+; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-next-track-events
-  "Notifies that the next track was requested."
-  ([channel] (gen-call :event ::on-next-track &form channel)))
-
+  "Notifies that the next track was requested.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-next-track &form channel args)))
 (defmacro tap-on-prev-track-events
-  "Notifies that the previous tack was requested."
-  ([channel] (gen-call :event ::on-prev-track &form channel)))
-
+  "Notifies that the previous tack was requested.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-prev-track &form channel args)))
 (defmacro tap-on-toggle-play-state-events
-  "Notifies that a play/pause toggle was requested."
-  ([channel] (gen-call :event ::on-toggle-play-state &form channel)))
+  "Notifies that a play/pause toggle was requested.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-toggle-play-state &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
-(defmacro tap-all-events [chan]
+(defmacro tap-all-events
+  "Taps all valid non-deprecated events in this namespace."
+  [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

@@ -28,18 +28,27 @@
   ([cells] (gen-call :function ::write-dots &form cells)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
+;
+; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-display-state-changed-events
-  "Fired when a braille display is connected or disconnected."
-  ([channel] (gen-call :event ::on-display-state-changed &form channel)))
-
+  "Fired when a braille display is connected or disconnected.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-display-state-changed &form channel args)))
 (defmacro tap-on-key-event-events
-  "Fired when an input event is received from the display."
-  ([channel] (gen-call :event ::on-key-event &form channel)))
+  "Fired when an input event is received from the display.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-key-event &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
-(defmacro tap-all-events [chan]
+(defmacro tap-all-events
+  "Taps all valid non-deprecated events in this namespace."
+  [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

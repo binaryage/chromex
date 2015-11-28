@@ -47,28 +47,63 @@
 (defmacro set-visible-on-all-workspaces ([always-visible] (gen-call :function ::set-visible-on-all-workspaces &form always-visible)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
+;
+; docs: https://github.com/binaryage/chromex/#tapping-events
 
-(defmacro tap-on-closed-events ([channel] (gen-call :event ::on-closed &form channel)))
-
-(defmacro tap-on-bounds-changed-events ([channel] (gen-call :event ::on-bounds-changed &form channel)))
-
-(defmacro tap-on-fullscreened-events ([channel] (gen-call :event ::on-fullscreened &form channel)))
-
-(defmacro tap-on-minimized-events ([channel] (gen-call :event ::on-minimized &form channel)))
-
-(defmacro tap-on-maximized-events ([channel] (gen-call :event ::on-maximized &form channel)))
-
-(defmacro tap-on-restored-events ([channel] (gen-call :event ::on-restored &form channel)))
-
-(defmacro tap-on-alpha-enabled-changed-events ([channel] (gen-call :event ::on-alpha-enabled-changed &form channel)))
-
+(defmacro tap-on-closed-events
+  "
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-closed &form channel args)))
+(defmacro tap-on-bounds-changed-events
+  "
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-bounds-changed &form channel args)))
+(defmacro tap-on-fullscreened-events
+  "
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-fullscreened &form channel args)))
+(defmacro tap-on-minimized-events
+  "
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-minimized &form channel args)))
+(defmacro tap-on-maximized-events
+  "
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-maximized &form channel args)))
+(defmacro tap-on-restored-events
+  "
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-restored &form channel args)))
+(defmacro tap-on-alpha-enabled-changed-events
+  "
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-alpha-enabled-changed &form channel args)))
 (defmacro tap-on-window-shown-for-tests-events
-  "Only sent in tests."
-  ([channel] (gen-call :event ::on-window-shown-for-tests &form channel)))
+  "Only sent in tests.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-window-shown-for-tests &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
-(defmacro tap-all-events [chan]
+(defmacro tap-all-events
+  "Taps all valid non-deprecated events in this namespace."
+  [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

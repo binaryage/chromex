@@ -14,18 +14,14 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-updated* [config channel]
-  (gen-wrap :event ::on-updated config channel))
-
-(defn on-updated-with-memory* [config channel]
-  (gen-wrap :event ::on-updated-with-memory config channel))
-
-(defn on-created* [config channel]
-  (gen-wrap :event ::on-created config channel))
-
-(defn on-unresponsive* [config channel]
-  (gen-wrap :event ::on-unresponsive config channel))
-
-(defn on-exited* [config channel]
-  (gen-wrap :event ::on-exited config channel))
+(defn on-updated* [config channel & args]
+  (gen-wrap :event ::on-updated config channel args))
+(defn on-updated-with-memory* [config channel & args]
+  (gen-wrap :event ::on-updated-with-memory config channel args))
+(defn on-created* [config channel & args]
+  (gen-wrap :event ::on-created config channel args))
+(defn on-unresponsive* [config channel & args]
+  (gen-wrap :event ::on-unresponsive config channel args))
+(defn on-exited* [config channel & args]
+  (gen-wrap :event ::on-exited config channel args))
 

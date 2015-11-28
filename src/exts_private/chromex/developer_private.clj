@@ -225,18 +225,27 @@
   ([options #_callback] (gen-call :function ::inspect &form options)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
+;
+; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-item-state-changed-events
-  "Fired when a item state is changed."
-  ([channel] (gen-call :event ::on-item-state-changed &form channel)))
-
+  "Fired when a item state is changed.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-item-state-changed &form channel args)))
 (defmacro tap-on-profile-state-changed-events
-  "Fired when the profile's state has changed."
-  ([channel] (gen-call :event ::on-profile-state-changed &form channel)))
+  "Fired when the profile's state has changed.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-profile-state-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
-(defmacro tap-all-events [chan]
+(defmacro tap-all-events
+  "Taps all valid non-deprecated events in this namespace."
+  [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

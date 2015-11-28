@@ -8,6 +8,6 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-proxy-error* [config channel]
-  (gen-wrap :event ::on-proxy-error config channel))
+(defn on-proxy-error* [config channel & args]
+  (gen-wrap :event ::on-proxy-error config channel args))
 

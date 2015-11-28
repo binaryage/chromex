@@ -19,12 +19,10 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-message* [config channel]
-  (gen-wrap :event ::on-message config channel))
-
-(defn on-messages-deleted* [config channel]
-  (gen-wrap :event ::on-messages-deleted config channel))
-
-(defn on-send-error* [config channel]
-  (gen-wrap :event ::on-send-error config channel))
+(defn on-message* [config channel & args]
+  (gen-wrap :event ::on-message config channel args))
+(defn on-messages-deleted* [config channel & args]
+  (gen-wrap :event ::on-messages-deleted config channel args))
+(defn on-send-error* [config channel & args]
+  (gen-wrap :event ::on-send-error config channel args))
 

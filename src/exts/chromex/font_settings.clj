@@ -111,26 +111,39 @@
   ([details #_callback] (gen-call :function ::set-minimum-font-size &form details)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
+;
+; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-font-changed-events
-  "Fired when a font setting changes."
-  ([channel] (gen-call :event ::on-font-changed &form channel)))
-
+  "Fired when a font setting changes.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-font-changed &form channel args)))
 (defmacro tap-on-default-font-size-changed-events
-  "Fired when the default font size setting changes."
-  ([channel] (gen-call :event ::on-default-font-size-changed &form channel)))
-
+  "Fired when the default font size setting changes.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-default-font-size-changed &form channel args)))
 (defmacro tap-on-default-fixed-font-size-changed-events
-  "Fired when the default fixed font size setting changes."
-  ([channel] (gen-call :event ::on-default-fixed-font-size-changed &form channel)))
-
+  "Fired when the default fixed font size setting changes.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-default-fixed-font-size-changed &form channel args)))
 (defmacro tap-on-minimum-font-size-changed-events
-  "Fired when the minimum font size setting changes."
-  ([channel] (gen-call :event ::on-minimum-font-size-changed &form channel)))
+  "Fired when the minimum font size setting changes.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-minimum-font-size-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
-(defmacro tap-all-events [chan]
+(defmacro tap-all-events
+  "Taps all valid non-deprecated events in this namespace."
+  [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

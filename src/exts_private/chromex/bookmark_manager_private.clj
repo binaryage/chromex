@@ -170,26 +170,39 @@
   ([version #_callback] (gen-call :function ::set-version &form version)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
+;
+; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-drag-enter-events
-  "Fired when dragging bookmarks over the document."
-  ([channel] (gen-call :event ::on-drag-enter &form channel)))
-
+  "Fired when dragging bookmarks over the document.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-drag-enter &form channel args)))
 (defmacro tap-on-drag-leave-events
-  "Fired when the drag and drop leaves the document."
-  ([channel] (gen-call :event ::on-drag-leave &form channel)))
-
+  "Fired when the drag and drop leaves the document.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-drag-leave &form channel args)))
 (defmacro tap-on-drop-events
-  "Fired when the user drops bookmarks on the document."
-  ([channel] (gen-call :event ::on-drop &form channel)))
-
+  "Fired when the user drops bookmarks on the document.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-drop &form channel args)))
 (defmacro tap-on-meta-info-changed-events
-  "Fired when the meta info of a node changes."
-  ([channel] (gen-call :event ::on-meta-info-changed &form channel)))
+  "Fired when the meta info of a node changes.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-meta-info-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
-(defmacro tap-all-events [chan]
+(defmacro tap-all-events
+  "Taps all valid non-deprecated events in this namespace."
+  [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

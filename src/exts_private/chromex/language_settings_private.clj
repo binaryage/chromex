@@ -68,27 +68,40 @@
   ([input-method-id] (gen-call :function ::remove-input-method &form input-method-id)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
+;
+; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-spellcheck-dictionaries-changed-events
   "Called when the pref for the dictionaries used for spell checking changes or the status of one of the spell check
-   dictionaries changes."
-  ([channel] (gen-call :event ::on-spellcheck-dictionaries-changed &form channel)))
-
+   dictionaries changes.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-spellcheck-dictionaries-changed &form channel args)))
 (defmacro tap-on-custom-dictionary-changed-events
-  "Called when words are added to and/or removed from the custom spell check dictionary."
-  ([channel] (gen-call :event ::on-custom-dictionary-changed &form channel)))
-
+  "Called when words are added to and/or removed from the custom spell check dictionary.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-custom-dictionary-changed &form channel args)))
 (defmacro tap-on-input-method-added-events
-  "Called when an input method is added."
-  ([channel] (gen-call :event ::on-input-method-added &form channel)))
-
+  "Called when an input method is added.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-input-method-added &form channel args)))
 (defmacro tap-on-input-method-removed-events
-  "Called when an input method is removed."
-  ([channel] (gen-call :event ::on-input-method-removed &form channel)))
+  "Called when an input method is removed.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-input-method-removed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
-(defmacro tap-all-events [chan]
+(defmacro tap-all-events
+  "Taps all valid non-deprecated events in this namespace."
+  [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

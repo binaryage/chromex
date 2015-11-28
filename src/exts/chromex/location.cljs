@@ -11,9 +11,8 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-location-update* [config channel]
-  (gen-wrap :event ::on-location-update config channel))
-
-(defn on-location-error* [config channel]
-  (gen-wrap :event ::on-location-error config channel))
+(defn on-location-update* [config channel & args]
+  (gen-wrap :event ::on-location-update config channel args))
+(defn on-location-error* [config channel & args]
+  (gen-wrap :event ::on-location-error config channel args))
 

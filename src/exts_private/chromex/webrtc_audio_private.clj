@@ -51,14 +51,21 @@
   ([security-origin source-id-in-origin #_cb] (gen-call :function ::get-associated-sink &form security-origin source-id-in-origin)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
+;
+; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-sinks-changed-events
-  "Fired when audio sink devices are added or removed."
-  ([channel] (gen-call :event ::on-sinks-changed &form channel)))
+  "Fired when audio sink devices are added or removed.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-sinks-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
-(defmacro tap-all-events [chan]
+(defmacro tap-all-events
+  "Taps all valid non-deprecated events in this namespace."
+  [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

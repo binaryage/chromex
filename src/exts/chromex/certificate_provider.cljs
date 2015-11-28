@@ -3,9 +3,8 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-certificates-requested* [config channel]
-  (gen-wrap :event ::on-certificates-requested config channel))
-
-(defn on-sign-digest-requested* [config channel]
-  (gen-wrap :event ::on-sign-digest-requested config channel))
+(defn on-certificates-requested* [config channel & args]
+  (gen-wrap :event ::on-certificates-requested config channel args))
+(defn on-sign-digest-requested* [config channel & args]
+  (gen-wrap :event ::on-sign-digest-requested config channel args))
 

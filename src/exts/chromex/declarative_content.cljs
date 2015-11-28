@@ -3,6 +3,6 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-page-changed* [config channel]
-  (gen-wrap :event ::on-page-changed config channel))
+(defn on-page-changed* [config channel & args]
+  (gen-wrap :event ::on-page-changed config channel args))
 

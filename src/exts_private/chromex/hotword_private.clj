@@ -117,47 +117,70 @@
   ([exists #_callback] (gen-call :function ::speaker-model-exists-result &form exists)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
+;
+; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-enabled-changed-events
   "Fired when the hotword detector enabled state should be changed. This can be from various sources, e.g. a pref change or
-   training a speaker model."
-  ([channel] (gen-call :event ::on-enabled-changed &form channel)))
-
+   training a speaker model.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-enabled-changed &form channel args)))
 (defmacro tap-on-hotword-session-requested-events
-  "Fired when the browser wants to start a hotword session."
-  ([channel] (gen-call :event ::on-hotword-session-requested &form channel)))
-
+  "Fired when the browser wants to start a hotword session.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-hotword-session-requested &form channel args)))
 (defmacro tap-on-hotword-session-stopped-events
-  "Fired when the browser wants to stop the requested hotword session."
-  ([channel] (gen-call :event ::on-hotword-session-stopped &form channel)))
-
+  "Fired when the browser wants to stop the requested hotword session.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-hotword-session-stopped &form channel args)))
 (defmacro tap-on-finalize-speaker-model-events
-  "Fired when the speaker model should be finalized."
-  ([channel] (gen-call :event ::on-finalize-speaker-model &form channel)))
-
+  "Fired when the speaker model should be finalized.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-finalize-speaker-model &form channel args)))
 (defmacro tap-on-speaker-model-saved-events
-  "Fired when the speaker model has been saved."
-  ([channel] (gen-call :event ::on-speaker-model-saved &form channel)))
-
+  "Fired when the speaker model has been saved.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-speaker-model-saved &form channel args)))
 (defmacro tap-on-hotword-triggered-events
-  "Fired when a hotword has triggered."
-  ([channel] (gen-call :event ::on-hotword-triggered &form channel)))
-
+  "Fired when a hotword has triggered.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-hotword-triggered &form channel args)))
 (defmacro tap-on-delete-speaker-model-events
-  "Fired when the speaker model should be deleted."
-  ([channel] (gen-call :event ::on-delete-speaker-model &form channel)))
-
+  "Fired when the speaker model should be deleted.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-delete-speaker-model &form channel args)))
 (defmacro tap-on-speaker-model-exists-events
-  "Fired when the browser wants to find out whether the speaker model exists."
-  ([channel] (gen-call :event ::on-speaker-model-exists &form channel)))
-
+  "Fired when the browser wants to find out whether the speaker model exists.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-speaker-model-exists &form channel args)))
 (defmacro tap-on-microphone-state-changed-events
-  "Fired when the microphone state changes."
-  ([channel] (gen-call :event ::on-microphone-state-changed &form channel)))
+  "Fired when the microphone state changes.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-microphone-state-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
-(defmacro tap-all-events [chan]
+(defmacro tap-all-events
+  "Taps all valid non-deprecated events in this namespace."
+  [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

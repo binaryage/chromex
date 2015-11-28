@@ -17,6 +17,6 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-feedback-requested* [config channel]
-  (gen-wrap :event ::on-feedback-requested config channel))
+(defn on-feedback-requested* [config channel & args]
+  (gen-wrap :event ::on-feedback-requested config channel args))
 

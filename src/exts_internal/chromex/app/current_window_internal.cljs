@@ -50,27 +50,20 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-closed* [config channel]
-  (gen-wrap :event ::on-closed config channel))
-
-(defn on-bounds-changed* [config channel]
-  (gen-wrap :event ::on-bounds-changed config channel))
-
-(defn on-fullscreened* [config channel]
-  (gen-wrap :event ::on-fullscreened config channel))
-
-(defn on-minimized* [config channel]
-  (gen-wrap :event ::on-minimized config channel))
-
-(defn on-maximized* [config channel]
-  (gen-wrap :event ::on-maximized config channel))
-
-(defn on-restored* [config channel]
-  (gen-wrap :event ::on-restored config channel))
-
-(defn on-alpha-enabled-changed* [config channel]
-  (gen-wrap :event ::on-alpha-enabled-changed config channel))
-
-(defn on-window-shown-for-tests* [config channel]
-  (gen-wrap :event ::on-window-shown-for-tests config channel))
+(defn on-closed* [config channel & args]
+  (gen-wrap :event ::on-closed config channel args))
+(defn on-bounds-changed* [config channel & args]
+  (gen-wrap :event ::on-bounds-changed config channel args))
+(defn on-fullscreened* [config channel & args]
+  (gen-wrap :event ::on-fullscreened config channel args))
+(defn on-minimized* [config channel & args]
+  (gen-wrap :event ::on-minimized config channel args))
+(defn on-maximized* [config channel & args]
+  (gen-wrap :event ::on-maximized config channel args))
+(defn on-restored* [config channel & args]
+  (gen-wrap :event ::on-restored config channel args))
+(defn on-alpha-enabled-changed* [config channel & args]
+  (gen-wrap :event ::on-alpha-enabled-changed config channel args))
+(defn on-window-shown-for-tests* [config channel & args]
+  (gen-wrap :event ::on-window-shown-for-tests config channel args))
 

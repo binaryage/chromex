@@ -41,33 +41,24 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-activate* [config channel]
-  (gen-wrap :event ::on-activate config channel))
-
-(defn on-deactivated* [config channel]
-  (gen-wrap :event ::on-deactivated config channel))
-
-(defn on-focus* [config channel]
-  (gen-wrap :event ::on-focus config channel))
-
-(defn on-blur* [config channel]
-  (gen-wrap :event ::on-blur config channel))
-
-(defn on-input-context-update* [config channel]
-  (gen-wrap :event ::on-input-context-update config channel))
-
-(defn on-key-event* [config channel]
-  (gen-wrap :event ::on-key-event config channel))
-
-(defn on-candidate-clicked* [config channel]
-  (gen-wrap :event ::on-candidate-clicked config channel))
-
-(defn on-menu-item-activated* [config channel]
-  (gen-wrap :event ::on-menu-item-activated config channel))
-
-(defn on-surrounding-text-changed* [config channel]
-  (gen-wrap :event ::on-surrounding-text-changed config channel))
-
-(defn on-reset* [config channel]
-  (gen-wrap :event ::on-reset config channel))
+(defn on-activate* [config channel & args]
+  (gen-wrap :event ::on-activate config channel args))
+(defn on-deactivated* [config channel & args]
+  (gen-wrap :event ::on-deactivated config channel args))
+(defn on-focus* [config channel & args]
+  (gen-wrap :event ::on-focus config channel args))
+(defn on-blur* [config channel & args]
+  (gen-wrap :event ::on-blur config channel args))
+(defn on-input-context-update* [config channel & args]
+  (gen-wrap :event ::on-input-context-update config channel args))
+(defn on-key-event* [config channel & args]
+  (gen-wrap :event ::on-key-event config channel args))
+(defn on-candidate-clicked* [config channel & args]
+  (gen-wrap :event ::on-candidate-clicked config channel args))
+(defn on-menu-item-activated* [config channel & args]
+  (gen-wrap :event ::on-menu-item-activated config channel args))
+(defn on-surrounding-text-changed* [config channel & args]
+  (gen-wrap :event ::on-surrounding-text-changed config channel args))
+(defn on-reset* [config channel & args]
+  (gen-wrap :event ::on-reset config channel args))
 

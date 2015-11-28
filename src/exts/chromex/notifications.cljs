@@ -20,18 +20,14 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-closed* [config channel]
-  (gen-wrap :event ::on-closed config channel))
-
-(defn on-clicked* [config channel]
-  (gen-wrap :event ::on-clicked config channel))
-
-(defn on-button-clicked* [config channel]
-  (gen-wrap :event ::on-button-clicked config channel))
-
-(defn on-permission-level-changed* [config channel]
-  (gen-wrap :event ::on-permission-level-changed config channel))
-
-(defn on-show-settings* [config channel]
-  (gen-wrap :event ::on-show-settings config channel))
+(defn on-closed* [config channel & args]
+  (gen-wrap :event ::on-closed config channel args))
+(defn on-clicked* [config channel & args]
+  (gen-wrap :event ::on-clicked config channel args))
+(defn on-button-clicked* [config channel & args]
+  (gen-wrap :event ::on-button-clicked config channel args))
+(defn on-permission-level-changed* [config channel & args]
+  (gen-wrap :event ::on-permission-level-changed config channel args))
+(defn on-show-settings* [config channel & args]
+  (gen-wrap :event ::on-show-settings config channel args))
 

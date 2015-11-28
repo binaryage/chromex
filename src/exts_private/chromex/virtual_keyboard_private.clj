@@ -78,18 +78,27 @@
   ([state] (gen-call :function ::set-keyboard-state &form state)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
+;
+; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-text-input-box-focused-events
-  "This event is sent when focus enters a text input box."
-  ([channel] (gen-call :event ::on-text-input-box-focused &form channel)))
-
+  "This event is sent when focus enters a text input box.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-text-input-box-focused &form channel args)))
 (defmacro tap-on-bounds-changed-events
-  "This event is sent when virtual keyboard bounds changed and overscroll/resize is enabled."
-  ([channel] (gen-call :event ::on-bounds-changed &form channel)))
+  "This event is sent when virtual keyboard bounds changed and overscroll/resize is enabled.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-bounds-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
-(defmacro tap-all-events [chan]
+(defmacro tap-all-events
+  "Taps all valid non-deprecated events in this namespace."
+  [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

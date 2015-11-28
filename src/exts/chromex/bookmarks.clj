@@ -100,41 +100,60 @@
   ([id #_callback] (gen-call :function ::remove-tree &form id)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
+;
+; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-created-events
-  "Fired when a bookmark or folder is created."
-  ([channel] (gen-call :event ::on-created &form channel)))
-
+  "Fired when a bookmark or folder is created.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-created &form channel args)))
 (defmacro tap-on-removed-events
   "Fired when a bookmark or folder is removed.  When a folder is removed recursively, a single notification is fired for the
-   folder, and none for its contents."
-  ([channel] (gen-call :event ::on-removed &form channel)))
-
+   folder, and none for its contents.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-removed &form channel args)))
 (defmacro tap-on-changed-events
-  "Fired when a bookmark or folder changes.  Note: Currently, only title and url changes trigger this."
-  ([channel] (gen-call :event ::on-changed &form channel)))
-
+  "Fired when a bookmark or folder changes.  Note: Currently, only title and url changes trigger this.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-changed &form channel args)))
 (defmacro tap-on-moved-events
-  "Fired when a bookmark or folder is moved to a different parent folder."
-  ([channel] (gen-call :event ::on-moved &form channel)))
-
+  "Fired when a bookmark or folder is moved to a different parent folder.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-moved &form channel args)))
 (defmacro tap-on-children-reordered-events
   "Fired when the children of a folder have changed their order due to the order being sorted in the UI.  This is not called
-   as a result of a move()."
-  ([channel] (gen-call :event ::on-children-reordered &form channel)))
-
+   as a result of a move().
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-children-reordered &form channel args)))
 (defmacro tap-on-import-began-events
   "Fired when a bookmark import session is begun.  Expensive observers should ignore onCreated updates until onImportEnded is
-   fired.  Observers should still handle other notifications immediately."
-  ([channel] (gen-call :event ::on-import-began &form channel)))
-
+   fired.  Observers should still handle other notifications immediately.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-import-began &form channel args)))
 (defmacro tap-on-import-ended-events
-  "Fired when a bookmark import session is ended."
-  ([channel] (gen-call :event ::on-import-ended &form channel)))
+  "Fired when a bookmark import session is ended.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-import-ended &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
-(defmacro tap-all-events [chan]
+(defmacro tap-all-events
+  "Taps all valid non-deprecated events in this namespace."
+  [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

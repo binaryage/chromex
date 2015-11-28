@@ -11,6 +11,6 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-state-changed* [config channel]
-  (gen-wrap :event ::on-state-changed config channel))
+(defn on-state-changed* [config channel & args]
+  (gen-wrap :event ::on-state-changed config channel args))
 

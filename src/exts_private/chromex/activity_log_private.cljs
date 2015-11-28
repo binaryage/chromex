@@ -17,6 +17,6 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-extension-activity* [config channel]
-  (gen-wrap :event ::on-extension-activity config channel))
+(defn on-extension-activity* [config channel & args]
+  (gen-wrap :event ::on-extension-activity config channel args))
 

@@ -8,6 +8,6 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-execute* [config channel]
-  (gen-wrap :event ::on-execute config channel))
+(defn on-execute* [config channel & args]
+  (gen-wrap :event ::on-execute config channel args))
 

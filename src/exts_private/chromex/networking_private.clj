@@ -273,27 +273,40 @@
   ([network-guid sim-state #_callback] (gen-call :function ::set-cellular-sim-state &form network-guid sim-state)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
+;
+; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-networks-changed-events
-  "Fired when the properties change on any of the networks.  Sends a list of GUIDs for networks whose properties have changed."
-  ([channel] (gen-call :event ::on-networks-changed &form channel)))
-
+  "Fired when the properties change on any of the networks.  Sends a list of GUIDs for networks whose properties have changed.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-networks-changed &form channel args)))
 (defmacro tap-on-network-list-changed-events
-  "Fired when the list of networks has changed.  Sends a complete list of GUIDs for all the current networks."
-  ([channel] (gen-call :event ::on-network-list-changed &form channel)))
-
+  "Fired when the list of networks has changed.  Sends a complete list of GUIDs for all the current networks.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-network-list-changed &form channel args)))
 (defmacro tap-on-device-state-list-changed-events
-  "Fired when the list of devices has changed or any device state properties have changed."
-  ([channel] (gen-call :event ::on-device-state-list-changed &form channel)))
-
+  "Fired when the list of devices has changed or any device state properties have changed.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-device-state-list-changed &form channel args)))
 (defmacro tap-on-portal-detection-completed-events
   "Fired when a portal detection for a network completes. Sends the guid of the network and the corresponding captive portal
-   status."
-  ([channel] (gen-call :event ::on-portal-detection-completed &form channel)))
+   status.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-portal-detection-completed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
-(defmacro tap-all-events [chan]
+(defmacro tap-all-events
+  "Taps all valid non-deprecated events in this namespace."
+  [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

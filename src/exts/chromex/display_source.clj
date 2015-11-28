@@ -54,27 +54,40 @@
   ([sink-id #_callback] (gen-call :function ::terminate-session &form sink-id)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
+;
+; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-sinks-updated-events
   "Event fired when the available sinks are modified (either their amount or properties) |sinks| the list of all currently
-   available sinks"
-  ([channel] (gen-call :event ::on-sinks-updated &form channel)))
-
+   available sinks
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-sinks-updated &form channel args)))
 (defmacro tap-on-session-started-events
-  "Event fired when the Display session is started. |sinkId| Id of the peer sink"
-  ([channel] (gen-call :event ::on-session-started &form channel)))
-
+  "Event fired when the Display session is started. |sinkId| Id of the peer sink
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-session-started &form channel args)))
 (defmacro tap-on-session-terminated-events
-  "Event fired when the Display session is terminated. |sinkId| Id of the peer sink"
-  ([channel] (gen-call :event ::on-session-terminated &form channel)))
-
+  "Event fired when the Display session is terminated. |sinkId| Id of the peer sink
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-session-terminated &form channel args)))
 (defmacro tap-on-session-error-occured-events
-  "Event fired when an error occurs. |sinkId| Id of the peer sink |errorInfo| error description"
-  ([channel] (gen-call :event ::on-session-error-occured &form channel)))
+  "Event fired when an error occurs. |sinkId| Id of the peer sink |errorInfo| error description
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-session-error-occured &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
-(defmacro tap-all-events [chan]
+(defmacro tap-all-events
+  "Taps all valid non-deprecated events in this namespace."
+  [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

@@ -34,15 +34,10 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-created*
-  ([config channel] (gen-wrap :event ::on-created config channel))
-  ([config channel filters] (gen-wrap :event ::on-created config channel filters)))
-
-(defn on-removed*
-  ([config channel] (gen-wrap :event ::on-removed config channel))
-  ([config channel filters] (gen-wrap :event ::on-removed config channel filters)))
-
-(defn on-focus-changed*
-  ([config channel] (gen-wrap :event ::on-focus-changed config channel))
-  ([config channel filters] (gen-wrap :event ::on-focus-changed config channel filters)))
+(defn on-created* [config channel & args]
+  (gen-wrap :event ::on-created config channel args))
+(defn on-removed* [config channel & args]
+  (gen-wrap :event ::on-removed config channel args))
+(defn on-focus-changed* [config channel & args]
+  (gen-wrap :event ::on-focus-changed config channel args))
 

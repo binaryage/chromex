@@ -20,12 +20,10 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-accessibility-event* [config channel]
-  (gen-wrap :event ::on-accessibility-event config channel))
-
-(defn on-accessibility-tree-destroyed* [config channel]
-  (gen-wrap :event ::on-accessibility-tree-destroyed config channel))
-
-(defn on-tree-change* [config channel]
-  (gen-wrap :event ::on-tree-change config channel))
+(defn on-accessibility-event* [config channel & args]
+  (gen-wrap :event ::on-accessibility-event config channel args))
+(defn on-accessibility-tree-destroyed* [config channel & args]
+  (gen-wrap :event ::on-accessibility-tree-destroyed config channel args))
+(defn on-tree-change* [config channel & args]
+  (gen-wrap :event ::on-tree-change config channel args))
 

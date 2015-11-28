@@ -8,6 +8,6 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-execute-mime-type-handler* [config channel]
-  (gen-wrap :event ::on-execute-mime-type-handler config channel))
+(defn on-execute-mime-type-handler* [config channel & args]
+  (gen-wrap :event ::on-execute-mime-type-handler config channel args))
 

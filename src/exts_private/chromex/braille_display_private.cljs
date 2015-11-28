@@ -11,9 +11,8 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-display-state-changed* [config channel]
-  (gen-wrap :event ::on-display-state-changed config channel))
-
-(defn on-key-event* [config channel]
-  (gen-wrap :event ::on-key-event config channel))
+(defn on-display-state-changed* [config channel & args]
+  (gen-wrap :event ::on-display-state-changed config channel args))
+(defn on-key-event* [config channel & args]
+  (gen-wrap :event ::on-key-event config channel args))
 

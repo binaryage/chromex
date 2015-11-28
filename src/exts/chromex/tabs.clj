@@ -222,67 +222,98 @@
   ([] `(get-zoom-settings :omit)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
+;
+; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-created-events
   "Fired when a tab is created. Note that the tab's URL may not be set at the time this event fired, but you can listen to
-   onUpdated events to be notified when a URL is set."
-  ([channel] (gen-call :event ::on-created &form channel)))
-
+   onUpdated events to be notified when a URL is set.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-created &form channel args)))
 (defmacro tap-on-updated-events
-  "Fired when a tab is updated."
-  ([channel] (gen-call :event ::on-updated &form channel)))
-
+  "Fired when a tab is updated.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-updated &form channel args)))
 (defmacro tap-on-moved-events
   "Fired when a tab is moved within a window. Only one move event is fired, representing the tab the user directly moved. Move
    events are not fired for the other tabs that must move in response. This event is not fired when a tab is moved between
-   windows. For that, see 'tabs.onDetached'."
-  ([channel] (gen-call :event ::on-moved &form channel)))
-
+   windows. For that, see 'tabs.onDetached'.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-moved &form channel args)))
 (defmacro tap-on-selection-changed-events
-  "Fires when the selected tab in a window changes."
-  ([channel] (gen-call :event ::on-selection-changed &form channel)))
-
+  "Fires when the selected tab in a window changes.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-selection-changed &form channel args)))
 (defmacro tap-on-active-changed-events
   "Fires when the selected tab in a window changes. Note that the tab's URL may not be set at the time this event fired, but
-   you can listen to 'tabs.onUpdated' events to be notified when a URL is set."
-  ([channel] (gen-call :event ::on-active-changed &form channel)))
-
+   you can listen to 'tabs.onUpdated' events to be notified when a URL is set.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-active-changed &form channel args)))
 (defmacro tap-on-activated-events
   "Fires when the active tab in a window changes. Note that the tab's URL may not be set at the time this event fired, but you
-   can listen to onUpdated events to be notified when a URL is set."
-  ([channel] (gen-call :event ::on-activated &form channel)))
-
+   can listen to onUpdated events to be notified when a URL is set.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-activated &form channel args)))
 (defmacro tap-on-highlight-changed-events
-  "Fired when the highlighted or selected tabs in a window changes."
-  ([channel] (gen-call :event ::on-highlight-changed &form channel)))
-
+  "Fired when the highlighted or selected tabs in a window changes.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-highlight-changed &form channel args)))
 (defmacro tap-on-highlighted-events
-  "Fired when the highlighted or selected tabs in a window changes."
-  ([channel] (gen-call :event ::on-highlighted &form channel)))
-
+  "Fired when the highlighted or selected tabs in a window changes.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-highlighted &form channel args)))
 (defmacro tap-on-detached-events
-  "Fired when a tab is detached from a window, for example because it is being moved between windows."
-  ([channel] (gen-call :event ::on-detached &form channel)))
-
+  "Fired when a tab is detached from a window, for example because it is being moved between windows.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-detached &form channel args)))
 (defmacro tap-on-attached-events
-  "Fired when a tab is attached to a window, for example because it was moved between windows."
-  ([channel] (gen-call :event ::on-attached &form channel)))
-
+  "Fired when a tab is attached to a window, for example because it was moved between windows.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-attached &form channel args)))
 (defmacro tap-on-removed-events
-  "Fired when a tab is closed."
-  ([channel] (gen-call :event ::on-removed &form channel)))
-
+  "Fired when a tab is closed.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-removed &form channel args)))
 (defmacro tap-on-replaced-events
-  "Fired when a tab is replaced with another tab due to prerendering or instant."
-  ([channel] (gen-call :event ::on-replaced &form channel)))
-
+  "Fired when a tab is replaced with another tab due to prerendering or instant.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-replaced &form channel args)))
 (defmacro tap-on-zoom-change-events
-  "Fired when a tab is zoomed."
-  ([channel] (gen-call :event ::on-zoom-change &form channel)))
+  "Fired when a tab is zoomed.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-zoom-change &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
-(defmacro tap-all-events [chan]
+(defmacro tap-all-events
+  "Taps all valid non-deprecated events in this namespace."
+  [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

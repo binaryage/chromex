@@ -20,6 +20,6 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-token-refresh* [config channel]
-  (gen-wrap :event ::on-token-refresh config channel))
+(defn on-token-refresh* [config channel & args]
+  (gen-wrap :event ::on-token-refresh config channel args))
 

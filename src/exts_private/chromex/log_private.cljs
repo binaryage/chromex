@@ -17,6 +17,6 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-captured-events* [config channel]
-  (gen-wrap :event ::on-captured-events config channel))
+(defn on-captured-events* [config channel & args]
+  (gen-wrap :event ::on-captured-events config channel args))
 

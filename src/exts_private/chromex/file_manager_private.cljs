@@ -155,27 +155,20 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-mount-completed* [config channel]
-  (gen-wrap :event ::on-mount-completed config channel))
-
-(defn on-file-transfers-updated* [config channel]
-  (gen-wrap :event ::on-file-transfers-updated config channel))
-
-(defn on-copy-progress* [config channel]
-  (gen-wrap :event ::on-copy-progress config channel))
-
-(defn on-directory-changed* [config channel]
-  (gen-wrap :event ::on-directory-changed config channel))
-
-(defn on-preferences-changed* [config channel]
-  (gen-wrap :event ::on-preferences-changed config channel))
-
-(defn on-drive-connection-status-changed* [config channel]
-  (gen-wrap :event ::on-drive-connection-status-changed config channel))
-
-(defn on-device-changed* [config channel]
-  (gen-wrap :event ::on-device-changed config channel))
-
-(defn on-drive-sync-error* [config channel]
-  (gen-wrap :event ::on-drive-sync-error config channel))
+(defn on-mount-completed* [config channel & args]
+  (gen-wrap :event ::on-mount-completed config channel args))
+(defn on-file-transfers-updated* [config channel & args]
+  (gen-wrap :event ::on-file-transfers-updated config channel args))
+(defn on-copy-progress* [config channel & args]
+  (gen-wrap :event ::on-copy-progress config channel args))
+(defn on-directory-changed* [config channel & args]
+  (gen-wrap :event ::on-directory-changed config channel args))
+(defn on-preferences-changed* [config channel & args]
+  (gen-wrap :event ::on-preferences-changed config channel args))
+(defn on-drive-connection-status-changed* [config channel & args]
+  (gen-wrap :event ::on-drive-connection-status-changed config channel args))
+(defn on-device-changed* [config channel & args]
+  (gen-wrap :event ::on-device-changed config channel args))
+(defn on-drive-sync-error* [config channel & args]
+  (gen-wrap :event ::on-drive-sync-error config channel args))
 

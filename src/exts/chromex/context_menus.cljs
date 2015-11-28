@@ -22,6 +22,6 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-clicked* [config channel]
-  (gen-wrap :event ::on-clicked config channel))
+(defn on-clicked* [config channel & args]
+  (gen-wrap :event ::on-clicked config channel args))
 

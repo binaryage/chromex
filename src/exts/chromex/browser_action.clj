@@ -78,14 +78,21 @@
   ([] `(disable :omit)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
+;
+; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-clicked-events
-  "Fired when a browser action icon is clicked.  This event will not fire if the browser action has a popup."
-  ([channel] (gen-call :event ::on-clicked &form channel)))
+  "Fired when a browser action icon is clicked.  This event will not fire if the browser action has a popup.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-clicked &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
-(defmacro tap-all-events [chan]
+(defmacro tap-all-events
+  "Taps all valid non-deprecated events in this namespace."
+  [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

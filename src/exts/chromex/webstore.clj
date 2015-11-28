@@ -31,20 +31,29 @@
   ([] `(install :omit :omit)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
+;
+; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-install-stage-changed-events
   "Fired when an inline installation enters a new InstallStage. In order to receive notifications about this event, listeners
-   must be registered before the inline installation begins."
-  ([channel] (gen-call :event ::on-install-stage-changed &form channel)))
-
+   must be registered before the inline installation begins.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-install-stage-changed &form channel args)))
 (defmacro tap-on-download-progress-events
   "Fired periodically with the download progress of an inline install. In order to receive notifications about this event,
-   listeners must be registered before the inline installation begins."
-  ([channel] (gen-call :event ::on-download-progress &form channel)))
+   listeners must be registered before the inline installation begins.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-download-progress &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
-(defmacro tap-all-events [chan]
+(defmacro tap-all-events
+  "Taps all valid non-deprecated events in this namespace."
+  [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

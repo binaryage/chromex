@@ -17,6 +17,6 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-sinks-changed* [config channel]
-  (gen-wrap :event ::on-sinks-changed config channel))
+(defn on-sinks-changed* [config channel & args]
+  (gen-wrap :event ::on-sinks-changed config channel args))
 

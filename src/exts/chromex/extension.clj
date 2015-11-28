@@ -78,18 +78,27 @@
   ([data] (gen-call :function ::set-update-url-data &form data)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
+;
+; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-request-events
-  "Fired when a request is sent from either an extension process or a content script."
-  ([channel] (gen-call :event ::on-request &form channel)))
-
+  "Fired when a request is sent from either an extension process or a content script.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-request &form channel args)))
 (defmacro tap-on-request-external-events
-  "Fired when a request is sent from another extension."
-  ([channel] (gen-call :event ::on-request-external &form channel)))
+  "Fired when a request is sent from another extension.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-request-external &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
-(defmacro tap-all-events [chan]
+(defmacro tap-all-events
+  "Taps all valid non-deprecated events in this namespace."
+  [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

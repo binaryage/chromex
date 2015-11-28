@@ -3,12 +3,10 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-next-track* [config channel]
-  (gen-wrap :event ::on-next-track config channel))
-
-(defn on-prev-track* [config channel]
-  (gen-wrap :event ::on-prev-track config channel))
-
-(defn on-toggle-play-state* [config channel]
-  (gen-wrap :event ::on-toggle-play-state config channel))
+(defn on-next-track* [config channel & args]
+  (gen-wrap :event ::on-next-track config channel args))
+(defn on-prev-track* [config channel & args]
+  (gen-wrap :event ::on-prev-track config channel args))
+(defn on-toggle-play-state* [config channel & args]
+  (gen-wrap :event ::on-toggle-play-state config channel args))
 

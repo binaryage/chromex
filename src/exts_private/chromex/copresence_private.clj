@@ -28,22 +28,33 @@
   ([client-id token samples] (gen-call :function ::send-samples &form client-id token samples)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
+;
+; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-config-audio-events
-  "Fired to request audio configuration of the whisper.net library."
-  ([channel] (gen-call :event ::on-config-audio &form channel)))
-
+  "Fired to request audio configuration of the whisper.net library.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-config-audio &form channel args)))
 (defmacro tap-on-encode-token-request-events
-  "Fired to request encoding of the given token."
-  ([channel] (gen-call :event ::on-encode-token-request &form channel)))
-
+  "Fired to request encoding of the given token.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-encode-token-request &form channel args)))
 (defmacro tap-on-decode-samples-request-events
-  "Fired when we have new samples to decode."
-  ([channel] (gen-call :event ::on-decode-samples-request &form channel)))
+  "Fired when we have new samples to decode.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-decode-samples-request &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
-(defmacro tap-all-events [chan]
+(defmacro tap-all-events
+  "Taps all valid non-deprecated events in this namespace."
+  [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

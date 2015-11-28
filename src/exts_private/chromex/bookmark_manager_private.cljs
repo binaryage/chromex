@@ -71,15 +71,12 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-drag-enter* [config channel]
-  (gen-wrap :event ::on-drag-enter config channel))
-
-(defn on-drag-leave* [config channel]
-  (gen-wrap :event ::on-drag-leave config channel))
-
-(defn on-drop* [config channel]
-  (gen-wrap :event ::on-drop config channel))
-
-(defn on-meta-info-changed* [config channel]
-  (gen-wrap :event ::on-meta-info-changed config channel))
+(defn on-drag-enter* [config channel & args]
+  (gen-wrap :event ::on-drag-enter config channel args))
+(defn on-drag-leave* [config channel & args]
+  (gen-wrap :event ::on-drag-leave config channel args))
+(defn on-drop* [config channel & args]
+  (gen-wrap :event ::on-drop config channel args))
+(defn on-meta-info-changed* [config channel & args]
+  (gen-wrap :event ::on-meta-info-changed config channel args))
 

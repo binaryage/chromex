@@ -23,18 +23,27 @@
   ([#_callback] (gen-call :function ::get-browser-info &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
+;
+; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-displayed-events
-  "Fired when an interesting piece of UI is shown to the user."
-  ([channel] (gen-call :event ::on-displayed &form channel)))
-
+  "Fired when an interesting piece of UI is shown to the user.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-displayed &form channel args)))
 (defmacro tap-on-decision-events
-  "Fired when a user makes a decision about an interesting piece of UI."
-  ([channel] (gen-call :event ::on-decision &form channel)))
+  "Fired when a user makes a decision about an interesting piece of UI.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-decision &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
-(defmacro tap-all-events [chan]
+(defmacro tap-all-events
+  "Taps all valid non-deprecated events in this namespace."
+  [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

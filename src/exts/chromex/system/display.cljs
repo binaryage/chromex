@@ -14,6 +14,6 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-display-changed* [config channel]
-  (gen-wrap :event ::on-display-changed config channel))
+(defn on-display-changed* [config channel & args]
+  (gen-wrap :event ::on-display-changed config channel args))
 

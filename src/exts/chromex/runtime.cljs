@@ -55,36 +55,26 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-startup* [config channel]
-  (gen-wrap :event ::on-startup config channel))
-
-(defn on-installed* [config channel]
-  (gen-wrap :event ::on-installed config channel))
-
-(defn on-suspend* [config channel]
-  (gen-wrap :event ::on-suspend config channel))
-
-(defn on-suspend-canceled* [config channel]
-  (gen-wrap :event ::on-suspend-canceled config channel))
-
-(defn on-update-available* [config channel]
-  (gen-wrap :event ::on-update-available config channel))
-
-(defn on-browser-update-available* [config channel]
-  (gen-wrap :event ::on-browser-update-available config channel))
-
-(defn on-connect* [config channel]
-  (gen-wrap :event ::on-connect config channel))
-
-(defn on-connect-external* [config channel]
-  (gen-wrap :event ::on-connect-external config channel))
-
-(defn on-message* [config channel]
-  (gen-wrap :event ::on-message config channel))
-
-(defn on-message-external* [config channel]
-  (gen-wrap :event ::on-message-external config channel))
-
-(defn on-restart-required* [config channel]
-  (gen-wrap :event ::on-restart-required config channel))
+(defn on-startup* [config channel & args]
+  (gen-wrap :event ::on-startup config channel args))
+(defn on-installed* [config channel & args]
+  (gen-wrap :event ::on-installed config channel args))
+(defn on-suspend* [config channel & args]
+  (gen-wrap :event ::on-suspend config channel args))
+(defn on-suspend-canceled* [config channel & args]
+  (gen-wrap :event ::on-suspend-canceled config channel args))
+(defn on-update-available* [config channel & args]
+  (gen-wrap :event ::on-update-available config channel args))
+(defn on-browser-update-available* [config channel & args]
+  (gen-wrap :event ::on-browser-update-available config channel args))
+(defn on-connect* [config channel & args]
+  (gen-wrap :event ::on-connect config channel args))
+(defn on-connect-external* [config channel & args]
+  (gen-wrap :event ::on-connect-external config channel args))
+(defn on-message* [config channel & args]
+  (gen-wrap :event ::on-message config channel args))
+(defn on-message-external* [config channel & args]
+  (gen-wrap :event ::on-message-external config channel args))
+(defn on-restart-required* [config channel & args]
+  (gen-wrap :event ::on-restart-required config channel args))
 

@@ -17,15 +17,12 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-sinks-updated* [config channel]
-  (gen-wrap :event ::on-sinks-updated config channel))
-
-(defn on-session-started* [config channel]
-  (gen-wrap :event ::on-session-started config channel))
-
-(defn on-session-terminated* [config channel]
-  (gen-wrap :event ::on-session-terminated config channel))
-
-(defn on-session-error-occured* [config channel]
-  (gen-wrap :event ::on-session-error-occured config channel))
+(defn on-sinks-updated* [config channel & args]
+  (gen-wrap :event ::on-sinks-updated config channel args))
+(defn on-session-started* [config channel & args]
+  (gen-wrap :event ::on-session-started config channel args))
+(defn on-session-terminated* [config channel & args]
+  (gen-wrap :event ::on-session-terminated config channel args))
+(defn on-session-error-occured* [config channel & args]
+  (gen-wrap :event ::on-session-error-occured config channel args))
 

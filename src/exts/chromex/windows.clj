@@ -74,27 +74,35 @@
   ([window-id #_callback] (gen-call :function ::remove &form window-id)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
+;
+; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-created-events
-  "Fired when a window is created."
-  ([channel] (gen-call :event ::on-created &form channel))
-  ([channel filters] (gen-call :event ::on-created &form channel filters)))
-
+  "Fired when a window is created.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-created &form channel args)))
 (defmacro tap-on-removed-events
-  "Fired when a window is removed (closed)."
-  ([channel] (gen-call :event ::on-removed &form channel))
-  ([channel filters] (gen-call :event ::on-removed &form channel filters)))
-
+  "Fired when a window is removed (closed).
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-removed &form channel args)))
 (defmacro tap-on-focus-changed-events
   "Fired when the currently focused window changes. Will be chrome.windows.WINDOW_ID_NONE if all chrome windows have lost
    focus. Note: On some Linux window managers, WINDOW_ID_NONE will always be sent immediately preceding a switch from one
-   chrome window to another."
-  ([channel] (gen-call :event ::on-focus-changed &form channel))
-  ([channel filters] (gen-call :event ::on-focus-changed &form channel filters)))
+   chrome window to another.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-focus-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
-(defmacro tap-all-events [chan]
+(defmacro tap-all-events
+  "Taps all valid non-deprecated events in this namespace."
+  [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))
@@ -161,12 +169,9 @@
      :callback? true,
      :params [{:name "window-id", :type "integer"} {:name "callback", :optional? true, :type :callback}]}],
    :events
-   [{:id ::on-created, :name "onCreated", :supports-filters true, :params [{:name "window", :type "windows.Window"}]}
-    {:id ::on-removed, :name "onRemoved", :supports-filters true, :params [{:name "window-id", :type "integer"}]}
-    {:id ::on-focus-changed,
-     :name "onFocusChanged",
-     :supports-filters true,
-     :params [{:name "window-id", :type "integer"}]}]})
+   [{:id ::on-created, :name "onCreated", :params [{:name "window", :type "windows.Window"}]}
+    {:id ::on-removed, :name "onRemoved", :params [{:name "window-id", :type "integer"}]}
+    {:id ::on-focus-changed, :name "onFocusChanged", :params [{:name "window-id", :type "integer"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

@@ -20,6 +20,6 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-prefs-changed* [config channel]
-  (gen-wrap :event ::on-prefs-changed config channel))
+(defn on-prefs-changed* [config channel & args]
+  (gen-wrap :event ::on-prefs-changed config channel args))
 

@@ -26,6 +26,6 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-search-engines-changed* [config channel]
-  (gen-wrap :event ::on-search-engines-changed config channel))
+(defn on-search-engines-changed* [config channel & args]
+  (gen-wrap :event ::on-search-engines-changed config channel args))
 

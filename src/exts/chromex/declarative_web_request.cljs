@@ -3,9 +3,8 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-request* [config channel]
-  (gen-wrap :event ::on-request config channel))
-
-(defn on-message* [config channel]
-  (gen-wrap :event ::on-message config channel))
+(defn on-request* [config channel & args]
+  (gen-wrap :event ::on-request config channel args))
+(defn on-message* [config channel & args]
+  (gen-wrap :event ::on-message config channel args))
 

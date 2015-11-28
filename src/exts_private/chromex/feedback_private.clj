@@ -41,15 +41,22 @@
   ([#_callback] (gen-call :function ::get-strings &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
+;
+; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-feedback-requested-events
   "Fired when the a user requests the launch of the feedback UI. We're using an event for this versus using the override API
-   since we want to be invoked, but not showing a UI, so the feedback extension can take a screenshot of the user's desktop."
-  ([channel] (gen-call :event ::on-feedback-requested &form channel)))
+   since we want to be invoked, but not showing a UI, so the feedback extension can take a screenshot of the user's desktop.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-feedback-requested &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
-(defmacro tap-all-events [chan]
+(defmacro tap-all-events
+  "Taps all valid non-deprecated events in this namespace."
+  [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

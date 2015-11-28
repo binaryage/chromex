@@ -77,15 +77,12 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-networks-changed* [config channel]
-  (gen-wrap :event ::on-networks-changed config channel))
-
-(defn on-network-list-changed* [config channel]
-  (gen-wrap :event ::on-network-list-changed config channel))
-
-(defn on-device-state-list-changed* [config channel]
-  (gen-wrap :event ::on-device-state-list-changed config channel))
-
-(defn on-portal-detection-completed* [config channel]
-  (gen-wrap :event ::on-portal-detection-completed config channel))
+(defn on-networks-changed* [config channel & args]
+  (gen-wrap :event ::on-networks-changed config channel args))
+(defn on-network-list-changed* [config channel & args]
+  (gen-wrap :event ::on-network-list-changed config channel args))
+(defn on-device-state-list-changed* [config channel & args]
+  (gen-wrap :event ::on-device-state-list-changed config channel args))
+(defn on-portal-detection-completed* [config channel & args]
+  (gen-wrap :event ::on-portal-detection-completed config channel args))
 

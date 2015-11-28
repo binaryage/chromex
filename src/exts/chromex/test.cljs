@@ -104,6 +104,6 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-message* [config channel]
-  (gen-wrap :event ::on-message config channel))
+(defn on-message* [config channel & args]
+  (gen-wrap :event ::on-message config channel args))
 

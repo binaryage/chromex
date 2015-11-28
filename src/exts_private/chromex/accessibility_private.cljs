@@ -11,6 +11,6 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-introduce-chrome-vox* [config channel]
-  (gen-wrap :event ::on-introduce-chrome-vox config channel))
+(defn on-introduce-chrome-vox* [config channel & args]
+  (gen-wrap :event ::on-introduce-chrome-vox config channel args))
 

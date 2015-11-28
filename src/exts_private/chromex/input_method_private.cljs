@@ -26,15 +26,12 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-changed* [config channel]
-  (gen-wrap :event ::on-changed config channel))
-
-(defn on-composition-bounds-changed* [config channel]
-  (gen-wrap :event ::on-composition-bounds-changed config channel))
-
-(defn on-dictionary-loaded* [config channel]
-  (gen-wrap :event ::on-dictionary-loaded config channel))
-
-(defn on-dictionary-changed* [config channel]
-  (gen-wrap :event ::on-dictionary-changed config channel))
+(defn on-changed* [config channel & args]
+  (gen-wrap :event ::on-changed config channel args))
+(defn on-composition-bounds-changed* [config channel & args]
+  (gen-wrap :event ::on-composition-bounds-changed config channel args))
+(defn on-dictionary-loaded* [config channel & args]
+  (gen-wrap :event ::on-dictionary-loaded config channel args))
+(defn on-dictionary-changed* [config channel & args]
+  (gen-wrap :event ::on-dictionary-changed config channel args))
 

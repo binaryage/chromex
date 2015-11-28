@@ -17,9 +17,8 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-added* [config channel]
-  (gen-wrap :event ::on-added config channel))
-
-(defn on-removed* [config channel]
-  (gen-wrap :event ::on-removed config channel))
+(defn on-added* [config channel & args]
+  (gen-wrap :event ::on-added config channel args))
+(defn on-removed* [config channel & args]
+  (gen-wrap :event ::on-removed config channel args))
 

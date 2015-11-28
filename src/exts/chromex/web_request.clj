@@ -29,51 +29,74 @@
   ([#_callback] (gen-call :function ::handler-behavior-changed &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
+;
+; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-before-request-events
-  "Fired when a request is about to occur."
-  ([channel] (gen-call :event ::on-before-request &form channel)))
-
+  "Fired when a request is about to occur.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-before-request &form channel args)))
 (defmacro tap-on-before-send-headers-events
   "Fired before sending an HTTP request, once the request headers are available. This may occur after a TCP connection is made
-   to the server, but before any HTTP data is sent."
-  ([channel] (gen-call :event ::on-before-send-headers &form channel)))
-
+   to the server, but before any HTTP data is sent.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-before-send-headers &form channel args)))
 (defmacro tap-on-send-headers-events
   "Fired just before a request is going to be sent to the server (modifications of previous onBeforeSendHeaders callbacks are
-   visible by the time onSendHeaders is fired)."
-  ([channel] (gen-call :event ::on-send-headers &form channel)))
-
+   visible by the time onSendHeaders is fired).
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-send-headers &form channel args)))
 (defmacro tap-on-headers-received-events
-  "Fired when HTTP response headers of a request have been received."
-  ([channel] (gen-call :event ::on-headers-received &form channel)))
-
+  "Fired when HTTP response headers of a request have been received.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-headers-received &form channel args)))
 (defmacro tap-on-auth-required-events
   "Fired when an authentication failure is received. The listener has three options: it can provide authentication
    credentials, it can cancel the request and display the error page, or it can take no action on the challenge. If bad user
-   credentials are provided, this may be called multiple times for the same request."
-  ([channel] (gen-call :event ::on-auth-required &form channel)))
-
+   credentials are provided, this may be called multiple times for the same request.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-auth-required &form channel args)))
 (defmacro tap-on-response-started-events
   "Fired when the first byte of the response body is received. For HTTP requests, this means that the status line and response
-   headers are available."
-  ([channel] (gen-call :event ::on-response-started &form channel)))
-
+   headers are available.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-response-started &form channel args)))
 (defmacro tap-on-before-redirect-events
-  "Fired when a server-initiated redirect is about to occur."
-  ([channel] (gen-call :event ::on-before-redirect &form channel)))
-
+  "Fired when a server-initiated redirect is about to occur.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-before-redirect &form channel args)))
 (defmacro tap-on-completed-events
-  "Fired when a request is completed."
-  ([channel] (gen-call :event ::on-completed &form channel)))
-
+  "Fired when a request is completed.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-completed &form channel args)))
 (defmacro tap-on-error-occurred-events
-  "Fired when an error occurs."
-  ([channel] (gen-call :event ::on-error-occurred &form channel)))
+  "Fired when an error occurs.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-error-occurred &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
-(defmacro tap-all-events [chan]
+(defmacro tap-all-events
+  "Taps all valid non-deprecated events in this namespace."
+  [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

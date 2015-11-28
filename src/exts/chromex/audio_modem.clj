@@ -48,18 +48,27 @@
   ([band #_callback] (gen-call :function ::stop-receive &form band)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
+;
+; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-received-events
-  "Audio tokens have been received."
-  ([channel] (gen-call :event ::on-received &form channel)))
-
+  "Audio tokens have been received.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-received &form channel args)))
 (defmacro tap-on-transmit-fail-events
-  "Transmit could not be confirmed. The speaker volume might be too low."
-  ([channel] (gen-call :event ::on-transmit-fail &form channel)))
+  "Transmit could not be confirmed. The speaker volume might be too low.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-transmit-fail &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
-(defmacro tap-all-events [chan]
+(defmacro tap-all-events
+  "Taps all valid non-deprecated events in this namespace."
+  [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

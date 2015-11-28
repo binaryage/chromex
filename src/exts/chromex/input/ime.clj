@@ -111,54 +111,79 @@
   ([request-id response] (gen-call :function ::key-event-handled &form request-id response)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
+;
+; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-activate-events
-  "This event is sent when an IME is activated. It signals that the IME will be receiving onKeyPress events."
-  ([channel] (gen-call :event ::on-activate &form channel)))
-
+  "This event is sent when an IME is activated. It signals that the IME will be receiving onKeyPress events.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-activate &form channel args)))
 (defmacro tap-on-deactivated-events
-  "This event is sent when an IME is deactivated. It signals that the IME will no longer be receiving onKeyPress events."
-  ([channel] (gen-call :event ::on-deactivated &form channel)))
-
+  "This event is sent when an IME is deactivated. It signals that the IME will no longer be receiving onKeyPress events.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-deactivated &form channel args)))
 (defmacro tap-on-focus-events
   "This event is sent when focus enters a text box. It is sent to all extensions that are listening to this event, and enabled
-   by the user."
-  ([channel] (gen-call :event ::on-focus &form channel)))
-
+   by the user.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-focus &form channel args)))
 (defmacro tap-on-blur-events
   "This event is sent when focus leaves a text box. It is sent to all extensions that are listening to this event, and enabled
-   by the user."
-  ([channel] (gen-call :event ::on-blur &form channel)))
-
+   by the user.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-blur &form channel args)))
 (defmacro tap-on-input-context-update-events
   "This event is sent when the properties of the current InputContext change, such as the the type. It is sent to all
-   extensions that are listening to this event, and enabled by the user."
-  ([channel] (gen-call :event ::on-input-context-update &form channel)))
-
+   extensions that are listening to this event, and enabled by the user.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-input-context-update &form channel args)))
 (defmacro tap-on-key-event-events
-  "This event is sent if this extension owns the active IME."
-  ([channel] (gen-call :event ::on-key-event &form channel)))
-
+  "This event is sent if this extension owns the active IME.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-key-event &form channel args)))
 (defmacro tap-on-candidate-clicked-events
-  "This event is sent if this extension owns the active IME."
-  ([channel] (gen-call :event ::on-candidate-clicked &form channel)))
-
+  "This event is sent if this extension owns the active IME.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-candidate-clicked &form channel args)))
 (defmacro tap-on-menu-item-activated-events
-  "Called when the user selects a menu item"
-  ([channel] (gen-call :event ::on-menu-item-activated &form channel)))
-
+  "Called when the user selects a menu item
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-menu-item-activated &form channel args)))
 (defmacro tap-on-surrounding-text-changed-events
   "Called when the editable string around caret is changed or when the caret position is moved. The text length is limited to
-   100 characters for each back and forth direction."
-  ([channel] (gen-call :event ::on-surrounding-text-changed &form channel)))
-
+   100 characters for each back and forth direction.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-surrounding-text-changed &form channel args)))
 (defmacro tap-on-reset-events
-  "This event is sent when chrome terminates ongoing text input session."
-  ([channel] (gen-call :event ::on-reset &form channel)))
+  "This event is sent when chrome terminates ongoing text input session.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-reset &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
-(defmacro tap-all-events [chan]
+(defmacro tap-all-events
+  "Taps all valid non-deprecated events in this namespace."
+  [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

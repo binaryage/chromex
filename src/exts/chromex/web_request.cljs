@@ -13,30 +13,22 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-before-request* [config channel]
-  (gen-wrap :event ::on-before-request config channel))
-
-(defn on-before-send-headers* [config channel]
-  (gen-wrap :event ::on-before-send-headers config channel))
-
-(defn on-send-headers* [config channel]
-  (gen-wrap :event ::on-send-headers config channel))
-
-(defn on-headers-received* [config channel]
-  (gen-wrap :event ::on-headers-received config channel))
-
-(defn on-auth-required* [config channel]
-  (gen-wrap :event ::on-auth-required config channel))
-
-(defn on-response-started* [config channel]
-  (gen-wrap :event ::on-response-started config channel))
-
-(defn on-before-redirect* [config channel]
-  (gen-wrap :event ::on-before-redirect config channel))
-
-(defn on-completed* [config channel]
-  (gen-wrap :event ::on-completed config channel))
-
-(defn on-error-occurred* [config channel]
-  (gen-wrap :event ::on-error-occurred config channel))
+(defn on-before-request* [config channel & args]
+  (gen-wrap :event ::on-before-request config channel args))
+(defn on-before-send-headers* [config channel & args]
+  (gen-wrap :event ::on-before-send-headers config channel args))
+(defn on-send-headers* [config channel & args]
+  (gen-wrap :event ::on-send-headers config channel args))
+(defn on-headers-received* [config channel & args]
+  (gen-wrap :event ::on-headers-received config channel args))
+(defn on-auth-required* [config channel & args]
+  (gen-wrap :event ::on-auth-required config channel args))
+(defn on-response-started* [config channel & args]
+  (gen-wrap :event ::on-response-started config channel args))
+(defn on-before-redirect* [config channel & args]
+  (gen-wrap :event ::on-before-redirect config channel args))
+(defn on-completed* [config channel & args]
+  (gen-wrap :event ::on-completed config channel args))
+(defn on-error-occurred* [config channel & args]
+  (gen-wrap :event ::on-error-occurred config channel args))
 

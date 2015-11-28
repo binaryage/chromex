@@ -43,33 +43,48 @@
   ([process-ids include-memory #_callback] (gen-call :function ::get-process-info &form process-ids include-memory)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
+;
+; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-updated-events
   "Fired each time the Task Manager updates its process statistics, providing the dictionary of updated Process objects,
-   indexed by process ID."
-  ([channel] (gen-call :event ::on-updated &form channel)))
-
+   indexed by process ID.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-updated &form channel args)))
 (defmacro tap-on-updated-with-memory-events
   "Fired each time the Task Manager updates its process statistics, providing the dictionary of updated Process objects,
    indexed by process ID. Identical to onUpdate, with the addition of memory usage details included in each Process object.
-   Note, collecting memory usage information incurs extra CPU usage and should only be listened for when needed."
-  ([channel] (gen-call :event ::on-updated-with-memory &form channel)))
-
+   Note, collecting memory usage information incurs extra CPU usage and should only be listened for when needed.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-updated-with-memory &form channel args)))
 (defmacro tap-on-created-events
-  "Fired each time a process is created, providing the corrseponding Process object."
-  ([channel] (gen-call :event ::on-created &form channel)))
-
+  "Fired each time a process is created, providing the corrseponding Process object.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-created &form channel args)))
 (defmacro tap-on-unresponsive-events
-  "Fired each time a process becomes unresponsive, providing the corrseponding Process object."
-  ([channel] (gen-call :event ::on-unresponsive &form channel)))
-
+  "Fired each time a process becomes unresponsive, providing the corrseponding Process object.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-unresponsive &form channel args)))
 (defmacro tap-on-exited-events
-  "Fired each time a process is terminated, providing the type of exit."
-  ([channel] (gen-call :event ::on-exited &form channel)))
+  "Fired each time a process is terminated, providing the type of exit.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-exited &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
-(defmacro tap-all-events [chan]
+(defmacro tap-all-events
+  "Taps all valid non-deprecated events in this namespace."
+  [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

@@ -52,23 +52,34 @@
   ([message #_callback] (gen-call :function ::send &form message)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
+;
+; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-message-events
-  "Fired when a message is received through GCM."
-  ([channel] (gen-call :event ::on-message &form channel)))
-
+  "Fired when a message is received through GCM.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-message &form channel args)))
 (defmacro tap-on-messages-deleted-events
   "Fired when a GCM server had to delete messages sent by an app server to the application. See Messages deleted event section
-   of Cloud Messaging documentation for details on handling this event."
-  ([channel] (gen-call :event ::on-messages-deleted &form channel)))
-
+   of Cloud Messaging documentation for details on handling this event.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-messages-deleted &form channel args)))
 (defmacro tap-on-send-error-events
-  "Fired when it was not possible to send a message to the GCM server."
-  ([channel] (gen-call :event ::on-send-error &form channel)))
+  "Fired when it was not possible to send a message to the GCM server.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-send-error &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
-(defmacro tap-all-events [chan]
+(defmacro tap-all-events
+  "Taps all valid non-deprecated events in this namespace."
+  [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

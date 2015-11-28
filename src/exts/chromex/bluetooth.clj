@@ -60,27 +60,40 @@
   ([#_callback] (gen-call :function ::stop-discovery &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
+;
+; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-adapter-state-changed-events
-  "Fired when the state of the Bluetooth adapter changes."
-  ([channel] (gen-call :event ::on-adapter-state-changed &form channel)))
-
+  "Fired when the state of the Bluetooth adapter changes.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-adapter-state-changed &form channel args)))
 (defmacro tap-on-device-added-events
-  "Fired when information about a new Bluetooth device is available."
-  ([channel] (gen-call :event ::on-device-added &form channel)))
-
+  "Fired when information about a new Bluetooth device is available.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-device-added &form channel args)))
 (defmacro tap-on-device-changed-events
-  "Fired when information about a known Bluetooth device has changed."
-  ([channel] (gen-call :event ::on-device-changed &form channel)))
-
+  "Fired when information about a known Bluetooth device has changed.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-device-changed &form channel args)))
 (defmacro tap-on-device-removed-events
   "Fired when a Bluetooth device that was previously discovered has been out of range for long enough to be considered
-   unavailable again, and when a paired device is removed."
-  ([channel] (gen-call :event ::on-device-removed &form channel)))
+   unavailable again, and when a paired device is removed.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-device-removed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
-(defmacro tap-all-events [chan]
+(defmacro tap-all-events
+  "Taps all valid non-deprecated events in this namespace."
+  [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

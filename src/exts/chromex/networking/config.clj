@@ -39,18 +39,25 @@
   ([guid result #_callback] (gen-call :function ::finish-authentication &form guid result)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
+;
+; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-captive-portal-detected-events
   "This event fires everytime a captive portal is detected on a network matching any of the currently registered network
    filters and the user consents to use the extension for authentication. Network filters may be set using the
    'setNetworkFilter'. Upon receiving this event the extension should start its authentication attempt with the captive
    portal. When the extension finishes its attempt, it must call 'finishAuthentication' with the GUID received with this event
-   and the appropriate authentication result."
-  ([channel] (gen-call :event ::on-captive-portal-detected &form channel)))
+   and the appropriate authentication result.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-captive-portal-detected &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
-(defmacro tap-all-events [chan]
+(defmacro tap-all-events
+  "Taps all valid non-deprecated events in this namespace."
+  [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

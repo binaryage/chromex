@@ -44,15 +44,12 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-font-changed* [config channel]
-  (gen-wrap :event ::on-font-changed config channel))
-
-(defn on-default-font-size-changed* [config channel]
-  (gen-wrap :event ::on-default-font-size-changed config channel))
-
-(defn on-default-fixed-font-size-changed* [config channel]
-  (gen-wrap :event ::on-default-fixed-font-size-changed config channel))
-
-(defn on-minimum-font-size-changed* [config channel]
-  (gen-wrap :event ::on-minimum-font-size-changed config channel))
+(defn on-font-changed* [config channel & args]
+  (gen-wrap :event ::on-font-changed config channel args))
+(defn on-default-font-size-changed* [config channel & args]
+  (gen-wrap :event ::on-default-font-size-changed config channel args))
+(defn on-default-fixed-font-size-changed* [config channel & args]
+  (gen-wrap :event ::on-default-fixed-font-size-changed config channel args))
+(defn on-minimum-font-size-changed* [config channel & args]
+  (gen-wrap :event ::on-minimum-font-size-changed config channel args))
 

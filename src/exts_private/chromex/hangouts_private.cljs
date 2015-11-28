@@ -3,6 +3,6 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-hangout-requested* [config channel]
-  (gen-wrap :event ::on-hangout-requested config channel))
+(defn on-hangout-requested* [config channel & args]
+  (gen-wrap :event ::on-hangout-requested config channel args))
 

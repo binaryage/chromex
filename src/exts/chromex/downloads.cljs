@@ -47,15 +47,12 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-created* [config channel]
-  (gen-wrap :event ::on-created config channel))
-
-(defn on-erased* [config channel]
-  (gen-wrap :event ::on-erased config channel))
-
-(defn on-changed* [config channel]
-  (gen-wrap :event ::on-changed config channel))
-
-(defn on-determining-filename* [config channel]
-  (gen-wrap :event ::on-determining-filename config channel))
+(defn on-created* [config channel & args]
+  (gen-wrap :event ::on-created config channel args))
+(defn on-erased* [config channel & args]
+  (gen-wrap :event ::on-erased config channel args))
+(defn on-changed* [config channel & args]
+  (gen-wrap :event ::on-changed config channel args))
+(defn on-determining-filename* [config channel & args]
+  (gen-wrap :event ::on-determining-filename config channel args))
 

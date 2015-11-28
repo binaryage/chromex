@@ -138,20 +138,28 @@
   ([enabled] (gen-call :function ::set-shelf-enabled &form enabled)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
+;
+; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-created-events
-  "This event fires with the 'DownloadItem' object when a download begins."
-  ([channel] (gen-call :event ::on-created &form channel)))
-
+  "This event fires with the 'DownloadItem' object when a download begins.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-created &form channel args)))
 (defmacro tap-on-erased-events
-  "Fires with the downloadId when a download is erased from history."
-  ([channel] (gen-call :event ::on-erased &form channel)))
-
+  "Fires with the downloadId when a download is erased from history.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-erased &form channel args)))
 (defmacro tap-on-changed-events
   "When any of a 'DownloadItem''s properties except bytesReceived and estimatedEndTime changes, this event fires with the
-   downloadId and an object containing the properties that changed."
-  ([channel] (gen-call :event ::on-changed &form channel)))
-
+   downloadId and an object containing the properties that changed.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-changed &form channel args)))
 (defmacro tap-on-determining-filename-events
   "During the filename determination process, extensions will be given the opportunity to override the target
    'DownloadItem.filename'. Each extension may not register more than one listener for this event. Each listener must call
@@ -163,12 +171,17 @@
    last extension installed whose listener passes a suggestion object to suggest wins. In order to avoid confusion regarding
    which extension will win, users should not install extensions that may conflict. If the download is initiated by 'download'
    and the target filename is known before the MIME type and tentative filename have been determined, pass filename to
-   'download' instead."
-  ([channel] (gen-call :event ::on-determining-filename &form channel)))
+   'download' instead.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-determining-filename &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
-(defmacro tap-all-events [chan]
+(defmacro tap-all-events
+  "Taps all valid non-deprecated events in this namespace."
+  [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

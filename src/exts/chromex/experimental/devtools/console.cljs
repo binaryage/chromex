@@ -11,6 +11,6 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-message-added* [config channel]
-  (gen-wrap :event ::on-message-added config channel))
+(defn on-message-added* [config channel & args]
+  (gen-wrap :event ::on-message-added config channel args))
 

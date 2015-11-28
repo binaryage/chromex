@@ -11,6 +11,6 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-captive-portal-detected* [config channel]
-  (gen-wrap :event ::on-captive-portal-detected config channel))
+(defn on-captive-portal-detected* [config channel & args]
+  (gen-wrap :event ::on-captive-portal-detected config channel args))
 

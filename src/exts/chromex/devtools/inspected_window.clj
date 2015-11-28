@@ -52,19 +52,28 @@
   ([#_callback] (gen-call :function ::get-resources &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
+;
+; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-resource-added-events
-  "Fired when a new resource is added to the inspected page."
-  ([channel] (gen-call :event ::on-resource-added &form channel)))
-
+  "Fired when a new resource is added to the inspected page.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-resource-added &form channel args)))
 (defmacro tap-on-resource-content-committed-events
   "Fired when a new revision of the resource is committed (e.g. user saves an edited version of the resource in the Developer
-   Tools)."
-  ([channel] (gen-call :event ::on-resource-content-committed &form channel)))
+   Tools).
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-resource-content-committed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
-(defmacro tap-all-events [chan]
+(defmacro tap-all-events
+  "Taps all valid non-deprecated events in this namespace."
+  [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

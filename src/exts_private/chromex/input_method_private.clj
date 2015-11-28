@@ -71,26 +71,39 @@
   ([#_callback] (gen-call :function ::get-encrypt-sync-enabled &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
+;
+; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-changed-events
-  "Fired when the input method is changed."
-  ([channel] (gen-call :event ::on-changed &form channel)))
-
+  "Fired when the input method is changed.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-changed &form channel args)))
 (defmacro tap-on-composition-bounds-changed-events
-  "Fired when the composition bounds or cursor bounds are changed."
-  ([channel] (gen-call :event ::on-composition-bounds-changed &form channel)))
-
+  "Fired when the composition bounds or cursor bounds are changed.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-composition-bounds-changed &form channel args)))
 (defmacro tap-on-dictionary-loaded-events
-  "Fired when the custom spelling dictionary is loaded."
-  ([channel] (gen-call :event ::on-dictionary-loaded &form channel)))
-
+  "Fired when the custom spelling dictionary is loaded.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-dictionary-loaded &form channel args)))
 (defmacro tap-on-dictionary-changed-events
-  "Fired when words are added or removed from the custom spelling dictionary."
-  ([channel] (gen-call :event ::on-dictionary-changed &form channel)))
+  "Fired when words are added or removed from the custom spelling dictionary.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-dictionary-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
-(defmacro tap-all-events [chan]
+(defmacro tap-all-events
+  "Taps all valid non-deprecated events in this namespace."
+  [chan]
   (let [static-config (get-static-config)
         config (gen-active-config static-config)]
     (gen-tap-all-call static-config api-table (meta &form) config chan)))

@@ -41,15 +41,12 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-installed* [config channel]
-  (gen-wrap :event ::on-installed config channel))
-
-(defn on-uninstalled* [config channel]
-  (gen-wrap :event ::on-uninstalled config channel))
-
-(defn on-enabled* [config channel]
-  (gen-wrap :event ::on-enabled config channel))
-
-(defn on-disabled* [config channel]
-  (gen-wrap :event ::on-disabled config channel))
+(defn on-installed* [config channel & args]
+  (gen-wrap :event ::on-installed config channel args))
+(defn on-uninstalled* [config channel & args]
+  (gen-wrap :event ::on-uninstalled config channel args))
+(defn on-enabled* [config channel & args]
+  (gen-wrap :event ::on-enabled config channel args))
+(defn on-disabled* [config channel & args]
+  (gen-wrap :event ::on-disabled config channel args))
 
