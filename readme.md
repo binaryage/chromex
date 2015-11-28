@@ -97,7 +97,7 @@ file into your own project and rely on it if it works for your code. It depends 
 ### Tapping events
 
 Let's say for example you want to subscribe to [tab creation events](https://developer.chrome.com/extensions/tabs#event-onCreated) and
-[web navigation "onCommited" events](https://developer.chrome.com/extensions/webNavigation#event-onCommitted).
+[web navigation's "committed" events](https://developer.chrome.com/extensions/webNavigation#event-onCommitted).
 
 ```clojure
 (ns your.project
@@ -183,7 +183,8 @@ is just a convenience macro to override this config setting temporarily.
 This way we get all benefits of chromex (marshalling, logging, API deprecation/version checking, etc.) but still we
 have a flexibility to hook our own custom listener code if needed. Please note that event listener has to return a native value.
 We don't have type information here to do the marshalling automatically. Also note that incoming parameters into
-event listener get marshalled to ClojureScript (as expected).
+event listener get marshalled to ClojureScript (as expected). And obviously this event won't appear on the channel unless you `put!`
+it there in your custom listener code.
 
 Also note how we passed extra arguments for .addListener call. This was discussed in the previous section.
 
