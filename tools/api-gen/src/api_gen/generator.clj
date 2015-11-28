@@ -133,6 +133,10 @@
   (let [callback-doc "\n\nNote: Instead of passing a callback function, you receive a core.async channel as return value."]
     (build-docstring 2 description parameters (if callback? callback-doc ""))))
 
+(defn build-event-docstring [description parameters]
+  (let [extra-args-doc "\nEvents will be put on the |channel|.\n\nNote: |args| will be passed as additional parameters into Chrome event's .addListener call."]
+    (build-docstring 2 description parameters extra-args-doc)))
+
 ; ---------------------------------------------------------------------------------------------------------------------------
 
 (declare build-api-table-param-info)
@@ -203,7 +207,7 @@
        :until      (extract-avail-until data)
        :deprecated (extract-deprecated data)
        :params     (:params (build-api-table-callback-info callback-data))}
-      {:doc (build-docstring 2 description parameters)})))
+      {:doc (build-event-docstring description parameters)})))
 
 (defn build-api-table-events [data]
   (vec (map build-api-table-event data)))

@@ -18,7 +18,7 @@
   (map #(if (fn? %) "<fn>" %) args))
 
 (defn test-logger [& args]
-  (apply console-log "[chromex (test)]" (friendly-args args)))
+  (apply console-log "[chromex-test]" (friendly-args args)))
 
 ; -------------------------------------------------------------------------------------------------------------------
 

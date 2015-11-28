@@ -13,16 +13,15 @@
   IChromeEventSubscription
   (subscribe! [this]
     (protocols/subscribe! this nil))
-  (subscribe! [this filters]
+  (subscribe! [this extra-args]
+    {:pre [(or (nil? extra-args) (seq? extra-args))]}
     (if-not (= subscribed-count 0)
       (*subscribe-called-while-subscribed* this)
       (do
         (if (satisfies? IChromeEventChannel chan)
           (protocols/register! chan this))
         (set! subscribed-count (inc subscribed-count))
-        (if (nil? filters)
-          (ocall chrome-event "addListener" listener)
-          (ocall chrome-event "addListener" listener filters)))))                                                             ; filtered events, see https://developer.chrome.com/extensions/events#filtered
+        (oapply chrome-event "addListener" (cons listener extra-args)))))                                                     ; see https://developer.chrome.com/extensions/events#filtered or 'Registering event listeners' at https://developer.chrome.com/extensions/webRequest
   (unsubscribe! [this]
     (if-not (= subscribed-count 1)
       (*unsubscribe-called-while-not-subscribed* this)
@@ -35,6 +34,7 @@
 ; -- constructor ------------------------------------------------------------------------------------------------------------
 
 (defn make-chrome-event-subscription [chrome-event listener chan]
+  {:pre [chrome-event listener chan]}
   (ChromeEventSubscription. chrome-event listener chan 0))
 
 ; -- default exception handlers ---------------------------------------------------------------------------------------------

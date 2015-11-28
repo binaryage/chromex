@@ -21,12 +21,11 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-something* [config chan]
-  (gen-wrap :event ::on-something config chan))
+(defn on-something* [config chan & args]
+  (gen-wrap :event ::on-something config chan args))
 
-(defn on-something-deprecated* [config chan]
-  (gen-wrap :event ::on-something-deprecated config chan))
+(defn on-something-deprecated* [config chan & args]
+  (gen-wrap :event ::on-something-deprecated config chan args))
 
-(defn on-something-supporting-filters*
-  ([config chan] (gen-wrap :event ::on-something-supporting-filters config chan))
-  ([config chan filters] (gen-wrap :event ::on-something-supporting-filters config chan filters)))
+(defn on-something-else* [config chan & args]
+  (gen-wrap :event ::on-something-else config chan args))

@@ -161,7 +161,7 @@
 
 ; ---------------------------------------------------------------------------------------------------------------------------
 
-(defn gen-event [static-config api-table descriptor config chan & args]
+(defn gen-event [static-config api-table descriptor config & [chan extra-args]]
   (let [api (get-api-id api-table descriptor)
         event-id (:id descriptor)
         event-fn-sym (gensym "event-fn-")
@@ -172,7 +172,7 @@
            logging-fn# ~(wrap-callback-with-logging static-config "event:" api config [handler-fn-sym descriptor])
            event-obj# (chromex-lib.support/oget (:root ~config) ~@event-path)
            result# (chromex-lib.chrome-event-subscription/make-chrome-event-subscription event-obj# logging-fn# ~chan)]
-       (chromex-lib.protocols/subscribe! result# ~@args)                                                                      ; additional args may specify filtered events, see https://developer.chrome.com/extensions/events#filtered
+       (chromex-lib.protocols/subscribe! result# ~extra-args)
        result#)))
 
 ; ---------------------------------------------------------------------------------------------------------------------------

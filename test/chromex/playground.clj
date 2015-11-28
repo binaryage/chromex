@@ -31,14 +31,13 @@
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-something-events
-  ([chan] (gen-call :event ::on-something &form chan)))
+  ([chan & args] (apply gen-call :event ::on-something &form chan args)))
 
 (defmacro tap-on-something-deprecated-events
-  ([chan] (gen-call :event ::on-something-deprecated &form chan)))
+  ([chan & args] (apply gen-call :event ::on-something-deprecated &form chan args)))
 
-(defmacro tap-on-event-supporting-filters
-  ([chan] (gen-call :event ::on-something-supporting-filters &form chan))
-  ([chan filters] (gen-call :event ::on-something-supporting-filters &form chan filters)))
+(defmacro tap-on-something-else-events
+  ([chan & args] (apply gen-call :event ::on-something-else &form chan args)))
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
@@ -57,23 +56,23 @@
    :properties [{:id          ::some-prop
                  :deprecated  "use someOtherProp instead"
                  :name        "someProp"
-                 :return-type "prop1-type"}]
+                 :return-type "marshalled-type"}]
    :functions  [{:id          ::do-something
                  :name        "doSomething"
                  :since       "24"
-                 :return-type "mock-return"
+                 :return-type "marshalled-type"
                  :params      [{:name "param1"
-                                :type "mock-param1"}]}
+                                :type "marshalled-type"}]}
                 {:id        ::get-something
                  :name      "getSomething"
                  :since     "10"
                  :callback? true
                  :params    [{:name "param1"
-                              :type "mock-param1"}
+                              :type "marshalled-type"}
                              {:name     "callback"
                               :type     :callback
                               :callback {:params [{:name "callback-param"
-                                                   :type "mock-callback-param1"}]}}]}
+                                                   :type "marshalled-type"}]}}]}
                 {:id          ::do-something-optional-args
                  :name        "doSomethingOptionalArgs"
                  :since       "10"
@@ -83,23 +82,25 @@
                                 :type      "some-type"}
                                {:name      "op2"
                                 :optional? true
-                                :type      "some-type"}
+                                :type      "marshalled-type"}
                                {:name      "op3"
                                 :optional? true
                                 :type      "some-type"}]}]
    :events     [{:id     ::on-something
                  :name   "onSomething"
                  :params [{:name "ep1"
-                           :type "event-param-type1"}]}
+                           :type "marshalled-type"}]}
                 {:id         ::on-something-deprecated
                  :name       "onSomethingDeprecated"
                  :deprecated "Use onSomething instead."
                  :params     [{:name "ep1"
-                               :type "event-param-type1"}]}
-                {:id     ::on-something-supporting-filters
-                 :name   "onSomethingSupportingFilters"
+                               :type "some-type"}]}
+                {:id     ::on-something-else
+                 :name   "onSomethingElse"
                  :params [{:name "ep1"
-                           :type "some-type"}]}]})
+                           :type "some-type"}
+                          {:name "ep2"
+                           :type "marshalled-type"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
@@ -115,3 +116,5 @@
 ; ---------------------------------------------------------------------------------------------------------------------------
 
 ;(print-code (macroexpand-1 '(gen-wrap :function ::get-something config p1)))
+;(print-code (gen-call :event ::on-something {} 'chan 1 2 3))
+;(print-code (macroexpand-1 '(gen-wrap :event ::on-something config chan (1 2 3))))

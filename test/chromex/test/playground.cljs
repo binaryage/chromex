@@ -3,7 +3,7 @@
   (:require [cljs.test :refer-macros [deftest testing is async]]
             [cljs.core.async :refer [<! >! timeout chan close!]]
             [chromex.playground :refer-macros [get-something do-something get-some-prop tap-on-something-events
-                                               tap-all-events do-something-optional-args tap-on-event-supporting-filters]]
+                                               tap-all-events do-something-optional-args tap-on-something-else-events]]
             [chromex-lib.chrome-event-channel :refer [make-chrome-event-channel]]))
 
 ; -- chrome API mocks -------------------------------------------------------------------------------------------------------
@@ -19,41 +19,29 @@
 (defn do-something-optional-args-mock [& args]
   (str "got " (vec args)))
 
-(def on-something-mock-active (volatile! false))
-(def on-something-mock
-  #js {"addListener"    (fn [f]
-                          (vreset! on-something-mock-active true)
-                          (go
-                            (dotimes [n 5]
-                              (if @on-something-mock-active
-                                (f n))
-                              (<! (timeout 100)))))
-       "removeListener" (fn [f]
-                          (vreset! on-something-mock-active false))})
+(defn build-event-object-mock [printer-fn]
+  (let [active (volatile! false)]
+    #js {"addListener"    (fn [listener-fn & extra-args]
+                            (vreset! active true)
+                            (go-loop [n 0]
+                              (when @active
+                                (listener-fn (apply printer-fn n extra-args))
+                                (<! (timeout 20))
+                                (recur (inc n)))))
+         "removeListener" (fn []
+                            (vreset! active false))}))
 
-(def on-something-supporting-filters-mock-active (volatile! false))
-(def on-something-supporting-filters-mock
-  #js {"addListener"    (fn [f filters]
-                          (vreset! on-something-supporting-filters-mock-active true)
-                          (go
-                            (dotimes [n 5]
-                              (if @on-something-supporting-filters-mock-active
-                                (f (str n " filters:" filters)))
-                              (<! (timeout 100)))))
-       "removeListener" (fn [f]
-                          (vreset! on-something-supporting-filters-mock-active false))})
+(def on-something-mock (build-event-object-mock
+                         (fn [n & args]
+                           (str "something fired! #" n (if (seq args) (str " extra args:" args))))))
+(def on-something-deprecated-mock (build-event-object-mock
+                                    (fn [n & args]
+                                      (str "deprecated fired! #" n (if (seq args) (str " extra args:" args))))))
+(def on-something-else-mock (build-event-object-mock
+                              (fn [n & args]
+                                (str "something else fired! #" n (if (seq args) (str " extra args:" args))))))
 
-(def on-something-deprecated-mock-active (volatile! false))
-(def on-something-deprecated-mock
-  #js {"addListener"    (fn [f]
-                          (vreset! on-something-deprecated-mock-active true)
-                          (go
-                            (dotimes [n 5]
-                              (if @on-something-deprecated-mock-active
-                                (f (str "deprecated-" n)))
-                              (<! (timeout 100)))))
-       "removeListener" (fn [f]
-                          (vreset! on-something-deprecated-mock-active false))})
+; -- init API mocks ---------------------------------------------------------------------------------------------------------
 
 (aset js/window "chrome" #js {})
 (aset js/window.chrome "playground" #js {})
@@ -63,30 +51,31 @@
 (aset js/window.chrome.playground "doSomethingOptionalArgs" do-something-optional-args-mock)
 (aset js/window.chrome.playground "someProp" "prop1val")
 (aset js/window.chrome.playground "onSomething" on-something-mock)
-(aset js/window.chrome.playground "onSomethingSupportingFilters" on-something-supporting-filters-mock)
 (aset js/window.chrome.playground "onSomethingDeprecated" on-something-deprecated-mock)
+(aset js/window.chrome.playground "onSomethingElse" on-something-else-mock)
 
-; ---------------------------------------------------------------------------------------------------------------------------
+; -- test against mocks -----------------------------------------------------------------------------------------------------
 
 (deftest test-plain-api-call
   (testing "do something"
-    (is (= (do-something "x1") "[got x1!!!]"))))
+    (is (= (do-something "param") "from-native[got to-native[param]]"))))
 
 (deftest test-api-call-with-callback
   (testing "get something"
     (async done
       (go
-        (let [[result] (<! (get-something "p1"))]
-          (is (= result "<answer is p1!!!>"))
+        (let [[result] (<! (get-something "param"))]
+          (is (= result "from-native[answer is to-native[param]]"))
           (done))))))
 
 (deftest test-optional-args
   (testing "do something with optional args"
-    (is (= (do-something-optional-args 1 2 3) "got [1 2 3]"))
-    (is (= (do-something-optional-args 1 2) "got [1 2]"))
+    (is (= (do-something-optional-args 1 2 3) "got [1 \"to-native[2]\" 3]"))
+    (is (= (do-something-optional-args 1 2) "got [1 \"to-native[2]\"]"))
     (is (= (do-something-optional-args 1) "got [1]"))
     (is (= (do-something-optional-args) "got []"))
     (is (= (do-something-optional-args 1 :omit 3) "got [1 3]"))
+    (is (= (do-something-optional-args :omit 2 :omit) "got [\"to-native[2]\"]"))
     (is (= (do-something-optional-args :omit :omit 3) "got [3]"))
     (is (= (do-something-optional-args :omit :omit :omit) "got []")))
   (testing "try to omit non-optional arg"
@@ -95,7 +84,7 @@
 (deftest test-property-access
   (testing "read prop"
     (let [result (get-some-prop)]
-      (is (= result "@(prop1val)")))))
+      (is (= result "from-native[prop1val]")))))
 
 (deftest test-events
   (testing "tap on-something events"
@@ -105,22 +94,22 @@
         (go
           (dotimes [n 3]
             (let [[event [item]] (<! chan)]
-              (is (keyword-identical? event :chromex.playground/on-something))
-              (is (= item (str "~" n)))))
+              (is (= event :chromex.playground/on-something))
+              (is (= item (str "from-native[something fired! #" n "]")))))
           (close! chan)
           (<! (timeout 100))
           (done))))))
 
-(deftest test-passing-filters-to-events
-  (testing "tap event with filters"
+(deftest test-passing-extra-args-to-events
+  (testing "tap event with extra args"
     (async done
       (let [chan (make-chrome-event-channel (chan))]
-        (tap-on-event-supporting-filters chan 42)
+        (tap-on-something-events chan 1 2 3)
         (go
           (dotimes [n 3]
             (let [[event [item]] (<! chan)]
-              (is (keyword-identical? event :chromex.playground/on-something-supporting-filters))
-              (is (= item (str n " filters:42")))))
+              (is (= event :chromex.playground/on-something))
+              (is (= item (str "from-native[something fired! #" n " extra args:(1 2 3)]")))))
           (close! chan)
           (<! (timeout 100))
           (done))))))
@@ -131,11 +120,9 @@
       (let [chan (make-chrome-event-channel (chan))]
         (tap-all-events chan)
         (go
-          (dotimes [n 3]
+          (dotimes [_ 3]
             (let [[event _] (<! chan)]
-              (is (or
-                    (keyword-identical? event :chromex.playground/on-something)
-                    (keyword-identical? event :chromex.playground/on-something-supporting-filters)))))
+              (is (not (= event :chromex.playground/on-something-deprecated)))))                                              ; we should be receiving only non-deprecated events
           (close! chan)
           (<! (timeout 100))
           (done))))))
