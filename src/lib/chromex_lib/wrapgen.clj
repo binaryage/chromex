@@ -45,13 +45,13 @@
                   "config: " config#))
      (callback-channel-factory# config#)))
 
-(defn gen-event-fn [config event-id chan]
+(defn gen-event-listener [config event-id chan]
   `(let [config# ~config
-         event-fn-factory# (:event-fn-factory config#)]
-     (assert (and event-fn-factory# (fn? event-fn-factory#))
-             (str "invalid :event-fn-factory in chromex config\n"
+         event-listener-factory# (:event-listener-factory config#)]
+     (assert (and event-listener-factory# (fn? event-listener-factory#))
+             (str "invalid :event-listener-factory in chromex config\n"
                   "config: " config#))
-     (event-fn-factory# config# ~event-id ~chan)))
+     (event-listener-factory# config# ~event-id ~chan)))
 
 ; ---------------------------------------------------------------------------------------------------------------------------
 
@@ -167,7 +167,7 @@
         event-fn-sym (gensym "event-fn-")
         handler-fn-sym (gensym "handler-fn-")
         event-path (string/split api #"\.")]
-    `(let [~event-fn-sym ~(gen-event-fn config event-id chan)
+    `(let [~event-fn-sym ~(gen-event-listener config event-id chan)
            ~handler-fn-sym ~(marshall-callback static-config (str api ".handler") [event-fn-sym descriptor])
            logging-fn# ~(wrap-callback-with-logging static-config "event:" api config [handler-fn-sym descriptor])
            event-obj# (chromex-lib.support/oget (:root ~config) ~@event-path)

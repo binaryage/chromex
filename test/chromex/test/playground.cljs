@@ -2,15 +2,18 @@
   (:require-macros [cljs.core.async.macros :refer [go go-loop]])
   (:require [cljs.test :refer-macros [deftest testing is async]]
             [cljs.core.async :refer [<! >! timeout chan close!]]
+            [chromex-lib.config :refer-macros [with-custom-event-listener-factory]]
             [chromex.playground :refer-macros [get-something do-something get-some-prop tap-on-something-events
                                                tap-all-events do-something-optional-args tap-on-something-else-events]]
             [chromex-lib.chrome-event-channel :refer [make-chrome-event-channel]]))
+
+(def last-event-result (volatile! nil))
 
 ; -- chrome API mocks -------------------------------------------------------------------------------------------------------
 
 (defn get-something-mock [param1 callback]
   (go
-    (<! (timeout 100))
+    (<! (timeout 20))
     (callback (str "answer is " param1))))
 
 (defn do-something-mock [param1]
@@ -19,13 +22,14 @@
 (defn do-something-optional-args-mock [& args]
   (str "got " (vec args)))
 
-(defn build-event-object-mock [printer-fn]
+(defn build-event-object-mock [args-fn]
   (let [active (volatile! false)]
     #js {"addListener"    (fn [listener-fn & extra-args]
                             (vreset! active true)
                             (go-loop [n 0]
                               (when @active
-                                (listener-fn (apply printer-fn n extra-args))
+                                (let [result (apply listener-fn (apply args-fn n extra-args))]
+                                  (vreset! last-event-result result))
                                 (<! (timeout 20))
                                 (recur (inc n)))))
          "removeListener" (fn []
@@ -33,13 +37,13 @@
 
 (def on-something-mock (build-event-object-mock
                          (fn [n & args]
-                           (str "something fired! #" n (if (seq args) (str " extra args:" args))))))
+                           [(str "something fired! #" n (if (seq args) (str " extra args:" args)))])))
 (def on-something-deprecated-mock (build-event-object-mock
                                     (fn [n & args]
-                                      (str "deprecated fired! #" n (if (seq args) (str " extra args:" args))))))
+                                      [(str "deprecated fired! #" n (if (seq args) (str " extra args:" args)))])))
 (def on-something-else-mock (build-event-object-mock
                               (fn [n & args]
-                                (str "something else fired! #" n (if (seq args) (str " extra args:" args))))))
+                                [(str "something else fired! #" n (if (seq args) (str " extra args:" args))) "second-arg"])))
 
 ; -- init API mocks ---------------------------------------------------------------------------------------------------------
 
@@ -125,4 +129,21 @@
               (is (not (= event :chromex.playground/on-something-deprecated)))))                                              ; we should be receiving only non-deprecated events
           (close! chan)
           (<! (timeout 100))
+          (done))))))
+
+(deftest test-sync-events
+  (testing "tap on-something events with-custom-event-listener-factory"
+    (async done
+      (let [chan (make-chrome-event-channel (chan))
+            storage (atom [])]
+        (with-custom-event-listener-factory (fn []
+                                        (fn [& args]
+                                          (swap! storage conj (str "sync:" args))
+                                          "return val"))
+          (tap-on-something-events chan))
+        (go
+          (<! (timeout 100))                                                                                                  ; give event source some time to fire at least one event
+          (is (= (first @storage) "sync:(\"from-native[something fired! #0]\")"))
+          (is (= @last-event-result "return val"))
+          (close! chan)
           (done))))))

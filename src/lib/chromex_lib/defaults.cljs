@@ -13,7 +13,7 @@
 (defn default-callback-channel-factory [_config]
   (chan))
 
-(defn default-event-fn-factory [_config event-id chan]
+(defn default-event-listener-factory [_config event-id chan]
   (fn [& args]
     (put! chan [event-id (vec args)])))
 

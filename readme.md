@@ -125,7 +125,7 @@ As we wrote in previous sections, by default you consume Chrome events via core.
 
  1. first, you have to create/provide a channel of your liking
  2. then optionally wrap it in `make-chrome-event-channel` call
- 3. then call one or more tap-<some>-events calls
+ 3. then call one or more tap-some-events calls
  4. then you can process events as they appear on the channel
 
 If you don't want to use the channel anymore, you should `close!` it.
@@ -134,7 +134,7 @@ Events coming from the channel are pairs `[event-id params]`, where params is a 
 callback function. See [chromex-sample](https://github.com/binaryage/chromex-sample/blob/master/src/background/chromex_sample/background/core.cljs)
 for example usage. Refer to [Chrome's API docs](https://developer.chrome.com/extensions/api_index) for specific event objects.
 
-Note: instead of calling tap-<some>-events you could call `tap-all-events`. This is a convenience function which will
+Note: instead of calling tap-some-events you could call `tap-all-events`. This is a convenience function which will
 tap events on all valid non-deprecated event objects in given namespace. For example `tabs/tap-all-events` will subscribe
 to all existing tabs events in latest API version.
 
@@ -151,7 +151,44 @@ Even more complex scenario is registering listeners on some [webRequest API even
 
 #### Synchronous event listeners
 
-TODO
+In some rare cases Chrome event listener has to be synchronous. For example [webRequest's onBeforeRequest event](https://developer.chrome.com/extensions/webRequest#examples)
+accepts "blocking" flag which instructs Chrome to wait for listener's answer in a blocking call.
+
+Here is an example how you would do this in chromex:
+
+```clojure
+(ns your.project
+  (:require ...
+            [chromex-lib.config :refer-macros [with-custom-event-listener-factory]]
+            [chromex-lib.chrome-event-channel :refer [make-chrome-event-channel]]
+            [chromex.web-request :as web-request]))
+
+(defn my-event-listener-factory []
+  (fn [& args]
+    ; do something useful with args...
+    #js ["return native answer"])) ; note: this value will be passed back to Chrome as-is, marshalling won't kick-in here
+
+...
+(with-custom-event-listener-factory my-event-listener-factory
+  (web-request/tap-on-before-request-events chan (clj->js {"urls" ["<all_urls>"]}) #js ["blocking"]))
+...
+```
+
+What happened here? We have specified our own event listener factory which is responsible for creating a new
+event callback function whenever chromex asks for it. The default [implementation is here](src/lib/chromex_lib/defaults.cljs).
+This function is part of our config object, so it can be redefined during runtime.
+[`with-custom-event-listener-factory`](https://github.com/binaryage/chromex/blob/master/src/lib/chromex_lib/config.clj)
+is just a convenience macro to override this config setting temporarily.
+
+This way we get all benefits of chromex (marshalling, logging, API deprecation/version checking, etc.) but still we
+have a flexibility to hook our own custom listener code if needed. Please note that event listener has to return a native value.
+We don't have type information here to do the marshalling automatically. Also note that incoming parameters into
+event listener get marshalled to ClojureScript (as expected).
+
+Also note how we passed extra arguments for .addListener call. This was discussed in the previous section.
+
+Advanced tip: similarly you can replace some other configurable functions in the config object. For example you can change the
+way how callbacks are turned into core.async channels. Theoretically you could replace it with some other mechanism.
 
 ### Similar projects
 

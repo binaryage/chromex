@@ -32,8 +32,13 @@
     (merge
       {:callback-channel-factory 'chromex-lib.defaults/default-callback-channel-factory
        :callback-fn-factory      'chromex-lib.defaults/default-callback-fn-factory
-       :event-fn-factory         'chromex-lib.defaults/default-event-fn-factory
+       :event-listener-factory   'chromex-lib.defaults/default-event-listener-factory
        :root                     'js/goog.global}
       (if-not (:elide-verbose-logging static-config)
         {:verbose-logging false
          :logger          'chromex-lib.defaults/default-logger}))))
+
+(defmacro with-custom-event-listener-factory [fn-factory & body]
+  `(binding [chromex-lib.config/*active-config* (-> (chromex-lib.config/get-active-config)
+                                                    (assoc :event-listener-factory ~fn-factory))]
+     ~@body))
