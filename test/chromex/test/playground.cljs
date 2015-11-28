@@ -102,7 +102,7 @@
               (is (= event :chromex.playground/on-something))
               (is (= item (str "from-native[something fired! #" n "]")))))
           (close! chan)
-          (<! (timeout 100))
+          (<! (timeout 30))
           (done))))))
 
 (deftest test-passing-extra-args-to-events
@@ -129,7 +129,7 @@
             (let [[event _] (<! chan)]
               (is (not (= event :chromex.playground/on-something-deprecated)))))                                              ; we should be receiving only non-deprecated events
           (close! chan)
-          (<! (timeout 100))
+          (<! (timeout 30))
           (done))))))
 
 (deftest test-sync-events
@@ -141,9 +141,9 @@
                                               (fn [& args]
                                                 (swap! storage conj (str "sync:" args))
                                                 "return val"))
-                                            (tap-on-something-events chan))
+          (tap-on-something-events chan))
         (go
-          (<! (timeout 100))                                                                                                  ; give event source some time to fire at least one event
+          (<! (timeout 30))                                                                                                  ; give event source some time to fire at least one event
           (is (= (first @storage) "sync:(\"from-native[something fired! #0]\")"))
           (is (= @last-event-result "return val"))
           (close! chan)
