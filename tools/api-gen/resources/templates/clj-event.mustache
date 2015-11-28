@@ -1,4 +1,1 @@
-{{^supports-filters}}(defmacro tap-{{{event-name}}}-events{{{event-docstring}}}([channel] (gen-call :event ::{{{event-name}}} &form channel))){{/supports-filters}}
-{{#supports-filters}}(defmacro tap-{{{event-name}}}-events{{{event-docstring}}}([channel] (gen-call :event ::{{{event-name}}} &form channel))
-([channel filters] (gen-call :event ::{{{event-name}}} &form channel filters))){{/supports-filters}}
-
+(defmacro tap-{{{event-name}}}-events{{{event-docstring}}}([channel] (gen-call :event ::{{{event-name}}} &form channel)))

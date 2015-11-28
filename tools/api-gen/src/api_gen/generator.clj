@@ -32,7 +32,7 @@
   (build-path [chromex-folder] name ".clj"))
 
 (defn build-ns-name [name]
-  (str NS-PREFIX (kebab-case(munge-if-reserved name))))
+  (str NS-PREFIX (kebab-case (munge-if-reserved name))))
 
 (defn build-intro-item [item]
   (let [{:keys [title content]} item
@@ -195,16 +195,14 @@
 
 (defn build-api-table-event [data]
   (let [{:keys [name description parameters]} data
-        callback-data (get-in data [:by-name :add-listener :callback])
-        filters (:filters data)]
+        callback-data (get-in data [:by-name :add-listener :callback])]
     (with-meta
-      {:id               (build-id name)
-       :name             name
-       :since            (extract-avail-since data)
-       :until            (extract-avail-until data)
-       :deprecated       (extract-deprecated data)
-       :supports-filters (not (empty? filters))
-       :params           (:params (build-api-table-callback-info callback-data))}
+      {:id         (build-id name)
+       :name       name
+       :since      (extract-avail-since data)
+       :until      (extract-avail-until data)
+       :deprecated (extract-deprecated data)
+       :params     (:params (build-api-table-callback-info callback-data))}
       {:doc (build-docstring 2 description parameters)})))
 
 (defn build-api-table-events [data]
@@ -267,11 +265,10 @@
      :prop-docstring doc}))
 
 (defn prepare-event-data [data]
-  (let [{:keys [name supports-filters]} data
+  (let [{:keys [name]} data
         {:keys [doc]} (meta data)]
-    {:event-name       (kebab-case name)
-     :event-docstring  doc
-     :supports-filters supports-filters}))
+    {:event-name      (kebab-case name)
+     :event-docstring doc}))
 
 ; ---------------------------------------------------------------------------------------------------------------------------
 
