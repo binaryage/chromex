@@ -9,6 +9,9 @@
     (:running-advanced-test env) "advanced"
     :else "unknown"))
 
+(defmacro test-mode []
+  (get-test-mode))
+
 (def compiler-out-file (str ".compiler-out.txt"))
 
 (defn output-path []

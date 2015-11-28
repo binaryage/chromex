@@ -53,8 +53,9 @@
                                                                          :source-map    false}}}
                                          :test-commands {"unit" ["phantomjs" "test/phantom.js" "test/runner_none.html"]}}}
 
-             :test-advanced {:env       {:running-advanced-test         true
-                                         :chromex-elide-verbose-logging true}
+             :test-advanced {:env       {:running-advanced-test            true
+                                         :chromex-elide-verbose-logging    true
+                                         :chromex-elide-missing-api-checks true}
                              :cljsbuild {:builds        {:test-advanced
                                                          {:source-paths ["src/lib"
                                                                          "test"]

@@ -3,6 +3,7 @@
             [chromex-lib.config :refer [get-active-config set-active-config!]]
             [chromex-lib.defaults :refer [console-log]]
             [chromex.test.compiler]
+            [chromex.test-utils]
             [chromex.test.playground]
             [chromex.playground]))
 

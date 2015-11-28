@@ -2,6 +2,7 @@
   (:require-macros [cljs.core.async.macros :refer [go go-loop]])
   (:require [cljs.test :refer-macros [deftest testing is async]]
             [cljs.core.async :refer [<! >! timeout chan close!]]
+            [chromex.test-utils :refer [advanced-mode?]]
             [chromex-lib.support :refer-macros [oset]]
             [chromex-lib.config :refer-macros [with-custom-event-listener-factory]]
             [chromex.playground :refer-macros [get-something do-something get-some-prop tap-on-something-events
@@ -84,8 +85,9 @@
     (is (= (do-something-optional-args :omit 2 :omit) "got [\"to-native[2]\"]"))
     (is (= (do-something-optional-args :omit :omit 3) "got [3]"))
     (is (= (do-something-optional-args :omit :omit :omit) "got []")))
-  (testing "try to omit non-optional arg"
-    (is (thrown-with-msg? js/Error #"cannot be omitted" (do-something :omit)))))
+  (if-not advanced-mode?
+    (testing "try to omit non-optional arg"
+      (is (thrown-with-msg? js/Error #"cannot be omitted" (do-something :omit))))))
 
 (deftest test-property-access
   (testing "read prop"
@@ -150,13 +152,14 @@
           (close! chan)
           (done))))))
 
-(deftest test-using-missing-apis
-  (testing "try access missing property"
-    (is (thrown-with-msg? js/Error #"library tried to access a missing Chrome API object" (get-some-missing-prop))))
-  (testing "try call missing function"
-    (is (thrown-with-msg? js/Error #"library tried to access a missing Chrome API object" (do-something-missing))))
-  (testing "try tap missing event"
-    (let [chan (make-chrome-event-channel (chan))]
-      (is (thrown-with-msg? js/Error
-                            #"library tried to access a missing Chrome API object"
-                            (tap-on-something-missing-events chan))))))
+(if-not advanced-mode?
+  (deftest test-using-missing-apis
+    (testing "try access missing property"
+      (is (thrown-with-msg? js/Error #"library tried to access a missing Chrome API object" (get-some-missing-prop))))
+    (testing "try call missing function"
+      (is (thrown-with-msg? js/Error #"library tried to access a missing Chrome API object" (do-something-missing))))
+    (testing "try tap missing event"
+      (let [chan (make-chrome-event-channel (chan))]
+        (is (thrown-with-msg? js/Error
+                              #"library tried to access a missing Chrome API object"
+                              (tap-on-something-missing-events chan)))))))
