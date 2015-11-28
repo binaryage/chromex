@@ -59,7 +59,8 @@ marshalling for particular APIs you care about, you [can do that consistently](s
 Many Chrome API calls are async in nature and require you to specify a callback (for receiving an answer later).
 You might want to watch this video explaining [API conventions](https://www.youtube.com/watch?v=bmxr75CV36A) in Chrome.
 
-We automatically turn all API functions with a callback parameter to a ClojureScript API function returning a new core.async channel instead.
+We automatically turn all API functions with a callback parameter to a ClojureScript function without the callback parameter
+but returning a new core.async channel instead.
 
 This mechanism is pluggable, so you can optionally implement your own mechanism of consuming callback calls.
 
@@ -92,6 +93,65 @@ macros from [`chromex-lib.support`](https://github.com/binaryage/chromex/blob/ma
 Note: There is a [chrome_extensions.js](https://github.com/google/closure-compiler/blob/master/contrib/externs/chrome_extensions.js) externs file available,
 but that's been updated ad-hoc by the community. It is definitely incomplete and may be incorrect. But of course you are free to include the externs
 file into your own project and rely on it if it works for your code. It depends on how recent/popular APIs are you going to use.
+
+### Tapping events
+
+Let's say for example you want to subscribe to [tab creation events](https://developer.chrome.com/extensions/tabs#event-onCreated) and
+[web navigation "onCommited" events](https://developer.chrome.com/extensions/webNavigation#event-onCommitted).
+
+```clojure
+(ns your.project
+  (:require [cljs.core.async :refer [chan close!]]
+            [chromex.tabs :as tabs]
+            [chromex.web-navigation :as web-navigation]
+            [chromex-lib.chrome-event-channel :refer [make-chrome-event-channel]]))
+
+(let [chrome-event-channel (make-chrome-event-channel (chan))]
+  (tabs/tap-on-created-events chrome-event-channel)
+  (web-navigation/tap-on-committed-events chrome-event-channel (clj->js {"url" [{"hostSuffix" "google.com"}]}))
+
+  ; do something with the channel...
+  (go-loop []
+    (when-let [[event-id event-params] (<! chrome-event-channel)]
+      (process-chrome-event event-id event-params)
+      (recur))
+    (println "leaving main event loop"))
+
+  ; alternatively
+  (close! chrome-event-channel)) ; this will unregister all chrome event listeners on the channel
+```
+
+As we wrote in previous sections, by default you consume Chrome events via core.async channels:
+
+ 1. first, you have to create/provide a channel of your liking
+ 2. then optionally wrap it in `make-chrome-event-channel` call
+ 3. then call one or more tap-<some>-events calls
+ 4. then you can process events as they appear on the channel
+
+If you don't want to use the channel anymore, you should `close!` it.
+
+Events coming from the channel are pairs `[event-id params]`, where params is a sequence of parameters passed into event's
+callback function. See [chromex-sample](https://github.com/binaryage/chromex-sample/blob/master/src/background/chromex_sample/background/core.cljs)
+for example usage. Refer to [Chrome's API docs](https://developer.chrome.com/extensions/api_index) for specific event objects.
+
+Note: instead of calling tap-<some>-events you could call `tap-all-events`. This is a convenience function which will
+tap events on all valid non-deprecated event objects in given namespace. For example `tabs/tap-all-events` will subscribe
+to all existing tabs events in latest API version.
+
+`make-chrome-event-channel` is a convenience wrapper for raw core.async channel. It is aware of event listeners and
+is able to unsubscribe them when channel gets closed. But you are free to remove listeners manually as well,
+tap calls return `ChromeEventSubscription` which gives you an interface to `unsubscribe!` given tap. This way you can
+dynamically add/remove subscriptions on the channel.
+
+Tap calls accept not only channel but also more optional arguments. These arguments will be passed into `.addListener` call
+when registering Chrome event listener. This is needed for scenarios when event objects accept filters or other additional parameters.
+`web-navigation/tap-on-committed-events` is [an example of such situation](https://developer.chrome.com/extensions/events#filtered).
+Even more complex scenario is registering listeners on some [webRequest API events](https://developer.chrome.com/extensions/webRequest)
+(see 'Registering event listeners' section).
+
+#### Synchronous event listeners
+
+TODO
 
 ### Similar projects
 
