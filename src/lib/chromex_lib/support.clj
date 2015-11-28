@@ -67,6 +67,15 @@
                    "invalid :logger in chromex config")
            (.apply logger# nil (.concat prefix# ~args-array)))))))
 
+; -- missing API checking ---------------------------------------------------------------------------------------------------
+
+(defn gen-missing-api-check [static-config _config api obj-sym key-sym]
+  (if-not (:elide-missing-api-checks static-config)
+    `(if-not (goog.object/containsKey ~obj-sym ~key-sym)
+       (throw (js/Error. (str "Chromex library tried to access a missing Chrome API object '" ~api "'.\n"
+                              "Your Chrome version might be too old or too recent for running this extension.\n"
+                              "This is a failure which probably requires a software update."))))))
+
 ; -- api versioning ---------------------------------------------------------------------------------------------------------
 
 ; http://stackoverflow.com/a/12503724/84283

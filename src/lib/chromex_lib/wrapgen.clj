@@ -1,5 +1,6 @@
 (ns chromex-lib.wrapgen
-  (:require [chromex-lib.support :refer [gen-logging-if-verbose print-warning get-item-by-id get-api-id print-debug]]
+  (:require [chromex-lib.support :refer [gen-logging-if-verbose print-warning get-item-by-id get-api-id print-debug
+                                         gen-missing-api-check]]
             [clojure.string :as string]))
 
 ; This file is responsible for generating code wrapping Chrome API calls.
@@ -15,7 +16,8 @@
 ; Some implementation notes:
 ;
 ; * Generated code slightly differs for different API method types (property, function, event).
-; * Marshalling has to deal not only with input parameters, return value, but also with callbacks by wrapping their arguments.
+; * Generated code also does some sanity checking (optional). See :elide* keys in static config.
+; * Marshalling has to deal not only with input parameters and return value, but also with callbacks' arguments.
 ; * Logging has to be performed not only before actual Chrome API call, but also in callbacks (wrap-callback-with-logging).
 ; * Generated code must use string names when doing Javascript interop to be compatible with advanced compilation:
 ;     https://github.com/binaryage/chromex/#advanced-mode-compilation
@@ -89,12 +91,13 @@
         ns-sym (gensym "ns-")
         target-sym (gensym "target-")]
     `(let [~final-args-array-sym (chromex-lib.support/prepare-final-args-array ~arg-descriptors ~api)
-           ~ns-sym (chromex-lib.support/oget (:root ~config) ~@namespace-path)
-           ~target-sym (chromex-lib.support/oget ~ns-sym ~name)]
+           ~ns-sym (chromex-lib.support/oget (:root ~config) ~@namespace-path)]
+       ~(gen-missing-api-check static-config config api ns-sym name)
        ~(gen-logging-if-verbose static-config config operation api final-args-array-sym)
-       ~(if property?
-          target-sym
-          `(.apply ~target-sym ~ns-sym ~final-args-array-sym)))))
+       (let [~target-sym (chromex-lib.support/oget ~ns-sym ~name)]
+         ~(if property?
+            target-sym
+            `(.apply ~target-sym ~ns-sym ~final-args-array-sym))))))
 
 ; ---------------------------------------------------------------------------------------------------------------------------
 
@@ -166,11 +169,16 @@
         event-id (:id descriptor)
         event-fn-sym (gensym "event-fn-")
         handler-fn-sym (gensym "handler-fn-")
-        event-path (string/split api #"\.")]
+        ns-obj-sym (gensym "ns-obj-")
+        event-path (string/split api #"\.")
+        ns-path (butlast event-path)
+        event-key (last event-path)]
     `(let [~event-fn-sym ~(gen-event-listener config event-id chan)
            ~handler-fn-sym ~(marshall-callback static-config (str api ".handler") [event-fn-sym descriptor])
            logging-fn# ~(wrap-callback-with-logging static-config "event:" api config [handler-fn-sym descriptor])
-           event-obj# (chromex-lib.support/oget (:root ~config) ~@event-path)
+           ~ns-obj-sym (chromex-lib.support/oget (:root ~config) ~@ns-path)
+           _# ~(gen-missing-api-check static-config config api ns-obj-sym event-key)
+           event-obj# (chromex-lib.support/oget ~ns-obj-sym ~event-key)
            result# (chromex-lib.chrome-event-subscription/make-chrome-event-subscription event-obj# logging-fn# ~chan)]
        (chromex-lib.protocols/subscribe! result# ~extra-args)
        result#)))

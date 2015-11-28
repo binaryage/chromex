@@ -7,6 +7,7 @@
 (def ^:dynamic *target-api-version* (or (env :chromex-target-api-version) "latest"))
 (def ^:dynamic *silence-compilation-warnings* (boolean (env :chromex-silence-compilation-warnings)))
 (def ^:dynamic *elide-verbose-logging* (boolean (env :chromex-elide-verbose-logging)))
+(def ^:dynamic *elide-missing-api-checks* (boolean (env :chromex-elide-missing-api-checks)))
 (def ^:dynamic *debug-marshalling* (boolean (env :chromex-debug-marshalling)))
 (def ^:dynamic *gen-marshalling* default-gen-marshalling)
 (def ^:dynamic *gen-active-config* default-gen-active-config)
@@ -19,7 +20,8 @@
    :gen-marshalling              *gen-marshalling*
    :gen-active-config            *gen-active-config*
    :elide-verbose-logging        *elide-verbose-logging*
-   :debug-marshalling            *debug-marshalling*})
+   :debug-marshalling            *debug-marshalling*
+   :elide-missing-api-checks     *elide-missing-api-checks*})
 
 (defn gen-active-config [static-config]
   (let [gen-fn (:gen-active-config static-config)]

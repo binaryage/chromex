@@ -5,7 +5,8 @@
             [chromex-lib.support :refer-macros [oset]]
             [chromex-lib.config :refer-macros [with-custom-event-listener-factory]]
             [chromex.playground :refer-macros [get-something do-something get-some-prop tap-on-something-events
-                                               tap-all-events do-something-optional-args tap-on-something-else-events]]
+                                               tap-all-events do-something-optional-args tap-on-something-else-events
+                                               get-some-missing-prop do-something-missing tap-on-something-missing-events]]
             [chromex-lib.chrome-event-channel :refer [make-chrome-event-channel]]))
 
 (def last-event-result (volatile! nil))
@@ -143,8 +144,19 @@
                                                 "return val"))
           (tap-on-something-events chan))
         (go
-          (<! (timeout 30))                                                                                                  ; give event source some time to fire at least one event
+          (<! (timeout 30))                                                                                                   ; give event source some time to fire at least one event
           (is (= (first @storage) "sync:(\"from-native[something fired! #0]\")"))
           (is (= @last-event-result "return val"))
           (close! chan)
           (done))))))
+
+(deftest test-using-missing-apis
+  (testing "try access missing property"
+    (is (thrown-with-msg? js/Error #"library tried to access a missing Chrome API object" (get-some-missing-prop))))
+  (testing "try call missing function"
+    (is (thrown-with-msg? js/Error #"library tried to access a missing Chrome API object" (do-something-missing))))
+  (testing "try tap missing event"
+    (let [chan (make-chrome-event-channel (chan))]
+      (is (thrown-with-msg? js/Error
+                            #"library tried to access a missing Chrome API object"
+                            (tap-on-something-missing-events chan))))))

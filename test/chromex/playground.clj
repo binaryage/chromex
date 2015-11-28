@@ -14,6 +14,9 @@
 (defmacro get-some-prop []
   (gen-call :property ::some-prop &form))
 
+(defmacro get-some-missing-prop []
+  (gen-call :property ::some-missing-prop &form))
+
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro get-something [param1]
@@ -28,6 +31,9 @@
   ([opt-p1] `(do-something-optional-args ~opt-p1 :omit :omit))
   ([] `(do-something-optional-args :omit :omit :omit)))
 
+(defmacro do-something-missing []
+  (gen-call :function ::do-something-missing &form))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-something-events
@@ -38,6 +44,9 @@
 
 (defmacro tap-on-something-else-events
   ([chan & args] (apply gen-call :event ::on-something-else &form chan args)))
+
+(defmacro tap-on-something-missing-events
+  ([chan & args] (apply gen-call :event ::on-something-missing &form chan args)))
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
@@ -56,7 +65,10 @@
    :properties [{:id          ::some-prop
                  :deprecated  "use someOtherProp instead"
                  :name        "someProp"
-                 :return-type "marshalled-type"}]
+                 :return-type "marshalled-type"}
+                {:id          ::some-missing-prop
+                 :name        "someMissingProp"
+                 :return-type "some-type"}]
    :functions  [{:id          ::do-something
                  :name        "doSomething"
                  :since       "24"
@@ -85,7 +97,11 @@
                                 :type      "marshalled-type"}
                                {:name      "op3"
                                 :optional? true
-                                :type      "some-type"}]}]
+                                :type      "some-type"}]}
+                {:id          ::do-something-missing
+                 :name        "doSomethingMissing"
+                 :return-type "some-type"
+                 :params      []}]
    :events     [{:id     ::on-something
                  :name   "onSomething"
                  :params [{:name "ep1"
@@ -100,7 +116,12 @@
                  :params [{:name "ep1"
                            :type "some-type"}
                           {:name "ep2"
-                           :type "marshalled-type"}]}]})
+                           :type "marshalled-type"}]}
+                {:id         ::on-something-missing
+                 :name       "onSomethingMissing"
+                 :deprecated "Use onSomethingElse instead."
+                 :params     [{:name "ep1"
+                               :type "some-type"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
