@@ -17,6 +17,14 @@
   ([o k1 k2 & ks] `(when-let [o# (goog.object/get ~o ~k1)]
                      (oget o# ~k2 ~@ks))))
 
+(defmacro oset [o ks val]
+  (let [keys (butlast ks)
+        obj-sym (gensym)]
+    `(let [~obj-sym ~o
+           target# ~(if (seq keys) `(chromex-lib.support/oget ~obj-sym ~@keys) obj-sym)]
+       (assert target# (str "unable to locate object path " ~keys " in " ~obj-sym))
+       (goog.object/set target# (last ~ks) ~val))))
+
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 (defn get-wrap-symbol [id]

@@ -2,6 +2,7 @@
   (:require-macros [cljs.core.async.macros :refer [go go-loop]])
   (:require [cljs.test :refer-macros [deftest testing is async]]
             [cljs.core.async :refer [<! >! timeout chan close!]]
+            [chromex-lib.support :refer-macros [oset]]
             [chromex-lib.config :refer-macros [with-custom-event-listener-factory]]
             [chromex.playground :refer-macros [get-something do-something get-some-prop tap-on-something-events
                                                tap-all-events do-something-optional-args tap-on-something-else-events]]
@@ -47,16 +48,16 @@
 
 ; -- init API mocks ---------------------------------------------------------------------------------------------------------
 
-(aset js/window "chrome" #js {})
-(aset js/window.chrome "playground" #js {})
+(oset js/window ["chrome"] #js {})
+(oset js/window ["chrome" "playground"] #js {})
 
-(aset js/window.chrome.playground "getSomething" get-something-mock)
-(aset js/window.chrome.playground "doSomething" do-something-mock)
-(aset js/window.chrome.playground "doSomethingOptionalArgs" do-something-optional-args-mock)
-(aset js/window.chrome.playground "someProp" "prop1val")
-(aset js/window.chrome.playground "onSomething" on-something-mock)
-(aset js/window.chrome.playground "onSomethingDeprecated" on-something-deprecated-mock)
-(aset js/window.chrome.playground "onSomethingElse" on-something-else-mock)
+(oset js/window ["chrome" "playground" "getSomething"] get-something-mock)
+(oset js/window ["chrome" "playground" "doSomething"] do-something-mock)
+(oset js/window ["chrome" "playground" "doSomethingOptionalArgs"] do-something-optional-args-mock)
+(oset js/window ["chrome" "playground" "someProp"] "prop1val")
+(oset js/window ["chrome" "playground" "onSomething"] on-something-mock)
+(oset js/window ["chrome" "playground" "onSomethingDeprecated"] on-something-deprecated-mock)
+(oset js/window ["chrome" "playground" "onSomethingElse"] on-something-else-mock)
 
 ; -- test against mocks -----------------------------------------------------------------------------------------------------
 
@@ -137,10 +138,10 @@
       (let [chan (make-chrome-event-channel (chan))
             storage (atom [])]
         (with-custom-event-listener-factory (fn []
-                                        (fn [& args]
-                                          (swap! storage conj (str "sync:" args))
-                                          "return val"))
-          (tap-on-something-events chan))
+                                              (fn [& args]
+                                                (swap! storage conj (str "sync:" args))
+                                                "return val"))
+                                            (tap-on-something-events chan))
         (go
           (<! (timeout 100))                                                                                                  ; give event source some time to fire at least one event
           (is (= (first @storage) "sync:(\"from-native[something fired! #0]\")"))

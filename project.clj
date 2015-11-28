@@ -27,26 +27,40 @@
 
   :test-paths ["test"]
 
-  :aliases {"test" ["with-profile" "test" "test"]}
+  :aliases {"test"          ["with-profile" "test" "cljsbuild" "test" "unit"]
+            "test-advanced" ["with-profile" "test-advanced" "cljsbuild" "test" "unit"]
+            "test-all" ["do" "test," "test-advanced"]}
 
-  :profiles {:devel  {:cljsbuild {:builds {:dev
-                                         {:source-paths ["src/lib"
-                                                         "src/exts"
-                                                         "src/exts_private"
-                                                         "src/exts_internal"]
-                                          :compiler     {:output-to     "target/dev/chromex.js"
-                                                         :output-dir    "target/dev"
-                                                         :optimizations :none
-                                                         :source-map    true}}}}}
+  :profiles {:devel         {:cljsbuild {:builds {:dev
+                                                  {:source-paths ["src/lib"
+                                                                  "src/exts"
+                                                                  "src/exts_private"
+                                                                  "src/exts_internal"]
+                                                   :compiler     {:output-to     "target/dev/chromex.js"
+                                                                  :output-dir    "target/dev"
+                                                                  :optimizations :none
+                                                                  :source-map    true}}}}}
 
-             :test {:injections [(require 'chromex.test.init-static-config)]
-                    :cljsbuild  {:builds        {:test
-                                                 {:source-paths ["src/lib"
-                                                                 "test"]
-                                                  :compiler     {:output-to     "test/_generated/chromex.test.js"
-                                                                 :output-dir    "test/_generated"
-                                                                 :main          chromex.runner
-                                                                 :asset-path    "_generated"
-                                                                 :optimizations :none
-                                                                 :source-map    false}}}
-                                 :test-commands {"unit" ["phantomjs" "test/phantom.js" "test/runner.html"]}}}})
+             :test          {:injections [(require 'chromex.test.init-static-config)]
+                             :cljsbuild  {:builds        {:test-dev
+                                                          {:source-paths ["src/lib"
+                                                                          "test"]
+                                                           :compiler     {:output-to     "test/_generated/optimizations_none/chromex.test.js"
+                                                                          :output-dir    "test/_generated/optimizations_none"
+                                                                          :asset-path    "_generated/optimizations_none"
+                                                                          :main          chromex.runner
+                                                                          :optimizations :none
+                                                                          :source-map    false}}}
+                                          :test-commands {"unit" ["phantomjs" "test/phantom.js" "test/runner_none.html"]}}}
+
+             :test-advanced {:injections [(require 'chromex.test.init-static-config)]
+                             :cljsbuild  {:builds        {:test-advanced
+                                                          {:source-paths ["src/lib"
+                                                                          "test"]
+                                                           :compiler     {:output-to     "test/_generated/optimizations_advanced/chromex.test.js"
+                                                                          :output-dir    "test/_generated/optimizations_advanced"
+                                                                          :asset-path    "_generated/optimizations_advanced"
+                                                                          :main          chromex.runner
+                                                                          :optimizations :advanced
+                                                                          :source-map    "test/_generated/optimizations_advanced/chromex.test.js.map"}}}
+                                          :test-commands {"unit" ["phantomjs" "test/phantom.js" "test/runner_advanced.html"]}}}})
