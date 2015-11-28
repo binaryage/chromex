@@ -47,8 +47,9 @@
 
 (defn print-warning [static-config src-info msg]
   (if-not (:silence-compilation-warnings static-config)
-    (binding [*out* *err*]
-      (println "WARNING:" msg (get-source-location src-info)))))
+    (let [println-fn (:compiler-println static-config)]
+      (assert println-fn (str ":compiler-println not specified in static-config: " static-config))
+      (println-fn "WARNING:" msg (get-source-location src-info)))))
 
 (defn print-debug [msg]
   (binding [*out* *err*]

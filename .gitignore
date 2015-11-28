@@ -6,3 +6,4 @@ tools/_workdir/
 pom.xml.*
 .idea
 test/_generated
+test/.compiler*.txt
