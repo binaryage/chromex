@@ -8,18 +8,21 @@
 
 This library is auto-generated from [chromium sources](https://www.chromium.org/developers).
 
-Currently Chromex provides following wrappers:
+Chromex provides idiomatic ClojureScript interface for Chrome Extensions and also for Chrome Apps:
 
 | API family | namespaces | properties | functions | events |
 | --- | --- | --- | --- | --- |
 | [Public Chrome Extension APIs](src/exts) | 82 | 44 | 354 | 185 |
-| [Private Chrome Extension APIs](src/exts_private) | 45 | 3 | 315 | 67 |
-| [Internal Chrome Extension APIs](src/exts_internal) | 16 | 0 | 89 | 15 |
 | [Public Chrome App APIs](src/apps) | 65 | 20 | 359 | 131 |
+| [Private Chrome Extension APIs](src/exts_private) | 45 | 3 | 315 | 67 |
 | [Private Chrome App APIs](src/apps_private) | 40 | 3 | 271 | 70 |
+| [Internal Chrome Extension APIs](src/exts_internal) | 16 | 0 | 89 | 15 |
 | [Internal Chrome App APIs](src/apps_internal) | 15 | 0 | 87 | 15 |
 
-Note: Chromex generator uses the same data source as the [developer.chrome.com/extensions/api_index](https://developer.chrome.com/extensions/api_index) web site.
+Note: Chromex generator uses the same data source as [developer.chrome.com/extensions/api_index](https://developer.chrome.com/extensions/api_index) and
+[developer.chrome.com/apps/api_index](https://developer.chrome.com/apps/api_index) docs.
+
+Following documentation is mostly speaking about Chrome Extension development but the same patterns generally apply to Chrome App development as well.
 
 This library is data-driven. Given API namespace, all API methods, properties and events are described in a Clojure map
 along with their parameters, callbacks, versions and additional metadata ([a simple example - look for `api-table` here](src/exts/chromex/context_menus.clj)).

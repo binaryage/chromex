@@ -107,13 +107,13 @@ STATS_TABLE="
 $STATS_HEADER1
 $STATS_HEADER2
 $EXTS_PUBLIC_APIS
-$EXTS_PRIVATE_APIS
-$EXTS_INTERNAL_APIS
 $APPS_PUBLIC_APIS
+$EXTS_PRIVATE_APIS
 $APPS_PRIVATE_APIS
+$EXTS_INTERNAL_APIS
 $APPS_INTERNAL_APIS"
 
-README_WITH_MARKER=`perl -pe 'BEGIN{undef $/;} s/provides following wrappers:\n.*?Note: Chromex generator uses/provides following wrappers:\nDYNAMICMARKER\n\nNote: Chromex generator uses/smg' "$ROOT_README"`
+README_WITH_MARKER=`perl -pe 'BEGIN{undef $/;} s/also for Chrome Apps:\n.*?Note: Chromex generator uses/also for Chrome Apps:\nDYNAMICMARKER\n\nNote: Chromex generator uses/smg' "$ROOT_README"`
 NEW_README="${README_WITH_MARKER/DYNAMICMARKER/$STATS_TABLE}"
 
 echo "$NEW_README" > "$ROOT_README"
