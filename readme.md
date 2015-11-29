@@ -15,6 +15,9 @@ Currently Chromex provides following wrappers:
 | [Public Chrome Extension APIs](src/exts) | 82 | 44 | 354 | 185 |
 | [Private Chrome Extension APIs](src/exts_private) | 45 | 3 | 315 | 67 |
 | [Internal Chrome Extension APIs](src/exts_internal) | 16 | 0 | 89 | 15 |
+| [Public Chrome App APIs](src/apps) | 65 | 20 | 359 | 131 |
+| [Private Chrome App APIs](src/apps_private) | 40 | 3 | 271 | 70 |
+| [Internal Chrome App APIs](src/apps_internal) | 15 | 0 | 87 | 15 |
 
 Note: Chromex generator uses the same data source as the [developer.chrome.com/extensions/api_index](https://developer.chrome.com/extensions/api_index) web site.
 
