@@ -13,11 +13,10 @@
 (defn run-message-loop! [message-channel]
   (log "CONTENT SCRIPT: starting message loop...")
   (go-loop []
-    (if-let [message (<! message-channel)]
-      (do
-        (process-message! message)
-        (recur))
-      (log "CONTENT SCRIPT: leaving message loop"))))
+    (when-let [message (<! message-channel)]
+      (process-message! message)
+      (recur))
+    (log "CONTENT SCRIPT: leaving message loop")))
 
 ; -- a simple page analysis  ------------------------------------------------------------------------------------------------
 

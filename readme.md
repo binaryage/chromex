@@ -109,11 +109,10 @@ Let's start with [popup button code](src/popup/chromex_sample/popup/core.cljs):
 (defn run-message-loop! [message-channel]
   (log "POPUP: starting message loop...")
   (go-loop []
-    (if-let [message (<! message-channel)]
-      (do
-        (process-message! message)
-        (recur))
-      (log "POPUP: leaving message loop"))))
+    (when-let [message (<! message-channel)]
+      (process-message! message)
+      (recur))
+    (log "POPUP: leaving message loop")))
 
 (defn connect-to-background-page! []
   (let [background-port (runtime/connect)]
@@ -212,11 +211,10 @@ reads quite well:
 (defn run-chrome-event-loop! [chrome-event-channel]
   (log "BACKGROUND: starting main event loop...")
   (go-loop [event-num 1]
-    (if-let [event (<! chrome-event-channel)]
-      (do
-        (process-chrome-event event-num event)
-        (recur (inc event-num)))
-      (log "BACKGROUND: leaving main event loop"))))
+    (when-let [event (<! chrome-event-channel)]
+      (process-chrome-event event-num event)
+      (recur (inc event-num)))
+    (log "BACKGROUND: leaving main event loop")))
 
 (defn boot-chrome-event-loop! []
   (let [chrome-event-channel (make-chrome-event-channel (chan))]
@@ -278,11 +276,10 @@ Our [content script](src/content_script/chromex_sample/content_script/core.cljs)
 (defn run-message-loop! [message-channel]
   (log "CONTENT SCRIPT: starting message loop...")
   (go-loop []
-    (if-let [message (<! message-channel)]
-      (do
-        (process-message! message)
-        (recur))
-      (log "CONTENT SCRIPT: leaving message loop"))))
+    (when-let [message (<! message-channel)]
+      (process-message! message)
+      (recur))
+    (log "CONTENT SCRIPT: leaving message loop")))
 
 ; -- a simple page analysis  ----------------------------------------------------------------------
 

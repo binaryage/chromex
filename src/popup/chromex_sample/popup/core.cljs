@@ -13,11 +13,10 @@
 (defn run-message-loop! [message-channel]
   (log "POPUP: starting message loop...")
   (go-loop []
-    (if-let [message (<! message-channel)]
-      (do
-        (process-message! message)
-        (recur))
-      (log "POPUP: leaving message loop"))))
+    (when-let [message (<! message-channel)]
+      (process-message! message)
+      (recur))
+    (log "POPUP: leaving message loop")))
 
 (defn connect-to-background-page! []
   (let [background-port (runtime/connect)]

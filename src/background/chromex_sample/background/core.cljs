@@ -26,11 +26,10 @@
 
 (defn run-client-message-loop! [client]
   (go-loop []
-    (if-let [message (<! client)]
-      (do
-        (log "BACKGROUND: got client message:" message "from" (get-sender client))
-        (recur))
-      (remove-client! client))))
+    (when-let [message (<! client)]
+      (log "BACKGROUND: got client message:" message "from" (get-sender client))
+      (recur))
+    (remove-client! client)))
 
 ; -- event handlers ---------------------------------------------------------------------------------------------------------
 
@@ -56,11 +55,10 @@
 (defn run-chrome-event-loop! [chrome-event-channel]
   (log "BACKGROUND: starting main event loop...")
   (go-loop [event-num 1]
-    (if-let [event (<! chrome-event-channel)]
-      (do
-        (process-chrome-event event-num event)
-        (recur (inc event-num)))
-      (log "BACKGROUND: leaving main event loop"))))
+    (when-let [event (<! chrome-event-channel)]
+      (process-chrome-event event-num event)
+      (recur (inc event-num)))
+    (log "BACKGROUND: leaving main event loop")))
 
 (defn boot-chrome-event-loop! []
   (let [chrome-event-channel (make-chrome-event-channel (chan))]
