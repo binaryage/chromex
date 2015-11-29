@@ -34,25 +34,19 @@
 (defn gen-callback-fn [config chan]
   `(let [config# ~config
          callback-fn-factory# (:callback-fn-factory config#)]
-     (assert (and callback-fn-factory# (fn? callback-fn-factory#))
-             (str "invalid :callback-fn-factory in chromex config\n"
-                  "config: " config#))
+     (assert (fn? callback-fn-factory#) (str "invalid :callback-fn-factory in chromex config\n" "config: " config#))
      (callback-fn-factory# config# ~chan)))
 
 (defn gen-callback-channel [config]
   `(let [config# ~config
          callback-channel-factory# (:callback-channel-factory config#)]
-     (assert (and callback-channel-factory# (fn? callback-channel-factory#))
-             (str "invalid :callback-channel-factory in chromex config\n"
-                  "config: " config#))
+     (assert (fn? callback-channel-factory#) (str "invalid :callback-channel-factory in chromex config\n" "config: " config#))
      (callback-channel-factory# config#)))
 
 (defn gen-event-listener [config event-id chan]
   `(let [config# ~config
          event-listener-factory# (:event-listener-factory config#)]
-     (assert (and event-listener-factory# (fn? event-listener-factory#))
-             (str "invalid :event-listener-factory in chromex config\n"
-                  "config: " config#))
+     (assert (fn? event-listener-factory#) (str "invalid :event-listener-factory in chromex config\n" "config: " config#))
      (event-listener-factory# config# ~event-id ~chan)))
 
 ; ---------------------------------------------------------------------------------------------------------------------------
@@ -176,12 +170,12 @@
     `(let [~event-fn-sym ~(gen-event-listener config event-id chan)
            ~handler-fn-sym ~(marshall-callback static-config (str api ".handler") [event-fn-sym descriptor])
            logging-fn# ~(wrap-callback-with-logging static-config "event:" api config [handler-fn-sym descriptor])
-           ~ns-obj-sym (chromex-lib.support/oget (:root ~config) ~@ns-path)
-           _# ~(gen-missing-api-check static-config config api ns-obj-sym event-key)
-           event-obj# (chromex-lib.support/oget ~ns-obj-sym ~event-key)
-           result# (chromex-lib.chrome-event-subscription/make-chrome-event-subscription event-obj# logging-fn# ~chan)]
-       (chromex-lib.protocols/subscribe! result# ~extra-args)
-       result#)))
+           ~ns-obj-sym (chromex-lib.support/oget (:root ~config) ~@ns-path)]
+       ~(gen-missing-api-check static-config config api ns-obj-sym event-key)
+       (let [event-obj# (chromex-lib.support/oget ~ns-obj-sym ~event-key)
+             result# (chromex-lib.chrome-event-subscription/make-chrome-event-subscription event-obj# logging-fn# ~chan)]
+         (chromex-lib.protocols/subscribe! result# ~extra-args)
+         result#))))
 
 ; ---------------------------------------------------------------------------------------------------------------------------
 

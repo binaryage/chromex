@@ -42,7 +42,9 @@
        :root                     'js/goog.global}
       (if-not (:elide-verbose-logging static-config)
         {:verbose-logging false
-         :logger          'chromex-lib.defaults/default-logger}))))
+         :logger          'chromex-lib.defaults/default-logger})
+      (if-not (:elide-missing-api-checks static-config)
+        {:missing-api-check-fn 'chromex-lib.defaults/default-missing-api-check}))))
 
 (defmacro with-custom-event-listener-factory [fn-factory & body]
   `(binding [chromex-lib.config/*active-config* (-> (chromex-lib.config/get-active-config)

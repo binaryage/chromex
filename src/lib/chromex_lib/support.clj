@@ -63,18 +63,17 @@
        (if (:verbose-logging config#)                                                                                         ; dynamic toggle for verbose logging
          (let [logger# (:logger config#)
                prefix# (cljs.core/array ~operation ~api)]
-           (assert (and logger# (fn? logger#))
-                   "invalid :logger in chromex config")
+           (assert (fn? logger#) (str "invalid :logger in chromex config\n" "config:" config#))
            (.apply logger# nil (.concat prefix# ~args-array)))))))
 
 ; -- missing API checking ---------------------------------------------------------------------------------------------------
 
-(defn gen-missing-api-check [static-config _config api obj-sym key-sym]
+(defn gen-missing-api-check [static-config config api obj-sym key-sym]
   (if-not (:elide-missing-api-checks static-config)
-    `(if-not (goog.object/containsKey ~obj-sym ~key-sym)
-       (throw (js/Error. (str "Chromex library tried to access a missing Chrome API object '" ~api "'.\n"
-                              "Your Chrome version might be too old or too recent for running this extension.\n"
-                              "This is a failure which probably requires a software update."))))))
+    `(let [config# ~config
+           api-check-fn# (:missing-api-check-fn config#)]
+       (assert (fn? api-check-fn#) (str "invalid :api-check-fn in chromex config\n" "config:" config#))
+       (api-check-fn# ~api ~obj-sym ~key-sym))))
 
 ; -- api versioning ---------------------------------------------------------------------------------------------------------
 
