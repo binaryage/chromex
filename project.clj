@@ -23,7 +23,10 @@
   :source-paths ["src/lib"
                  "src/exts"
                  "src/exts_private"
-                 "src/exts_internal"]
+                 "src/exts_internal"
+                 "src/apps"
+                 "src/apps_private"
+                 "src/apps_internal"]
 
   :test-paths ["test"]
 
@@ -31,16 +34,24 @@
             "test-advanced" ["with-profile" "test-advanced" "cljsbuild" "test" "unit"]
             "test-all"      ["do" "test," "test-advanced"]}
 
-  :profiles {:devel         {:cljsbuild {:builds {:dev
+  :profiles {:dev-ext       {:cljsbuild {:builds {:dev
                                                   {:source-paths ["src/lib"
                                                                   "src/exts"
                                                                   "src/exts_private"
                                                                   "src/exts_internal"]
-                                                   :compiler     {:output-to     "target/dev/chromex.js"
-                                                                  :output-dir    "target/dev"
+                                                   :compiler     {:output-to     "target/dev-ext/chromex.js"
+                                                                  :output-dir    "target/dev-ext"
                                                                   :optimizations :none
                                                                   :source-map    true}}}}}
-
+             :dev-app       {:cljsbuild {:builds {:dev
+                                                  {:source-paths ["src/lib"
+                                                                  "src/apps"
+                                                                  "src/apps_private"
+                                                                  "src/apps_internal"]
+                                                   :compiler     {:output-to     "target/dev-app/chromex.js"
+                                                                  :output-dir    "target/dev-app"
+                                                                  :optimizations :none
+                                                                  :source-map    true}}}}}
              :test          {:env       {:running-dev-test true}
                              :cljsbuild {:builds        {:test-dev
                                                          {:source-paths ["src/lib"
