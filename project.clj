@@ -1,4 +1,4 @@
-(defproject binaryage/chromex "0.1.2"
+(defproject binaryage/chromex "0.1.3-SNAPSHOT"
   :description "Chrome Extensions API wrapper for ClojureScript"
   :url "https://github.com/binaryage/chromex"
   :license {:name         "MIT License"
