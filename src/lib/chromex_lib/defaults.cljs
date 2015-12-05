@@ -10,7 +10,7 @@
 
 (defn default-callback-fn-factory [_config chan]
   (fn [& args]
-    (put! chan args)))
+    (put! chan (vec args))))
 
 (defn default-callback-channel-factory [_config]
   (chan))
