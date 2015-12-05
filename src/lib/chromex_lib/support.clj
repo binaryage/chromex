@@ -35,6 +35,16 @@
 (defmacro call-hook [config handler-key & args]
   (apply gen-call-hook config handler-key args))
 
+(defn gen-get-hook [config handler-key]
+  `(let [config# ~config
+         handler-key# ~handler-key
+         handler# (handler-key# config#)]
+     (assert (fn? handler#) (str "invalid " handler-key# " in chromex config\n" "config: " config#))
+     (partial handler# config#)))
+
+(defmacro get-hook [config handler-key]
+  (gen-get-hook config handler-key))
+
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 (defn get-wrap-symbol [id]
