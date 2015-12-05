@@ -1,5 +1,5 @@
 (ns chromex-lib.chrome-port
-  (:require [chromex-lib.support :refer-macros [oget ocall call-hook]]
+  (:require [chromex-lib.support :refer-macros [oget ocall call-hook get-hook]]
             [chromex-lib.protocols :as protocols :refer [IChromePort IChromePortState]]
             [cljs.core.async.impl.protocols :as core-async]
             [cljs.core.async :refer [put! chan]]))
@@ -62,14 +62,9 @@
 ; -- constructor ------------------------------------------------------------------------------------------------------------
 
 (defn make-chrome-port [native-chrome-port config]
-  {:pre [(fn? (:chrome-port-channel-factory config))
-         (fn? (:chrome-port-on-message-fn-factory config))
-         (fn? (:chrome-port-on-disconnect-fn-factory config))]}
-  (let [channel-factory (partial (:chrome-port-channel-factory config) config)
-        on-message-fn-factory (partial (:chrome-port-on-message-fn-factory config) config)
-        on-disconnect-fn-factory (partial (:chrome-port-on-disconnect-fn-factory config) config)
-        channel (channel-factory)
+  {:pre [native-chrome-port]}
+  (let [channel (call-hook config :chrome-port-channel-factory)
         chrome-port (ChromePort. config native-chrome-port channel true)]
-    (protocols/on-message! chrome-port (on-message-fn-factory chrome-port))
-    (protocols/on-disconnect! chrome-port (on-disconnect-fn-factory chrome-port))
+    (protocols/on-message! chrome-port (call-hook config :chrome-port-on-message-fn-factory chrome-port))
+    (protocols/on-disconnect! chrome-port (call-hook config :chrome-port-on-disconnect-fn-factory chrome-port))
     chrome-port))
