@@ -1,5 +1,5 @@
 (ns chromex-lib.chrome-storage-area
-  (:require [chromex-lib.support :refer-macros [ocall]]
+  (:require [chromex-lib.support :refer-macros [ocall call-hook get-hook]]
             [chromex-lib.protocols :as protocols :refer [IChromeStorageArea]]))
 
 ; -- ChromeStorageArea ------------------------------------------------------------------------------------------------------
@@ -38,11 +38,7 @@
 ; -- constructor ------------------------------------------------------------------------------------------------------------
 
 (defn make-chrome-storage-area [native-chrome-storage-area config]
-  {:pre [native-chrome-storage-area
-         (fn? (:chrome-storage-area-callback-channel-factory config))
-         (fn? (:chrome-storage-area-callback-fn-factory config))]}
-  (let [channel-factory (:chrome-storage-area-callback-channel-factory config)
-        callback-factory (:chrome-storage-area-callback-fn-factory config)]
-    (ChromeStorageArea. native-chrome-storage-area
-                        (partial channel-factory config)
-                        (partial callback-factory config))))
+  {:pre [native-chrome-storage-area]}
+  (ChromeStorageArea. native-chrome-storage-area
+                      (get-hook config :chrome-storage-area-callback-channel-factory)
+                      (get-hook config :chrome-storage-area-callback-fn-factory)))
