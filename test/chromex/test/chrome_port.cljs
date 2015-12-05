@@ -4,6 +4,7 @@
             [cljs.core.async :refer [<!]]
             [chromex-lib.protocols :as protocols :refer [IChromePort IChromePortState]]
             [chromex-lib.support :refer-macros [oset ocall oget]]
+            [chromex.test-utils :refer [advanced-mode?]]
             [chromex.playground :refer-macros [get-port]]))
 
 ; -- test against mocks -----------------------------------------------------------------------------------------------------
@@ -33,9 +34,10 @@
             ; --- CONNECTED -------------------------------------------------------------------------------------------------
             (is (= (protocols/get-name port) "I'm a ChromePort"))
             (is (= (protocols/get-sender port) "this port's sender"))
-            (is (thrown-with-msg? js/Error
-                                  #"post-message! called with nil message"
-                                  (protocols/post-message! port nil)))
+            (when-not advanced-mode?
+              (is (thrown-with-msg? js/Error
+                                    #"post-message! called with nil message"
+                                    (protocols/post-message! port nil))))
             (is (= (get-port-mock-state port) {:connected     true
                                                :sent-messages []}))
             (protocols/post-message! port "outgoing message 1")
@@ -50,9 +52,10 @@
                                                :sent-messages ["outgoing message 1"
                                                                "outgoing message 2"
                                                                "outgoing message 3"]}))
-            (is (thrown-with-msg? js/Error
-                                  #"received a nil message"
-                                  (fire-message-on-port port nil)))
+            (when-not advanced-mode?
+              (is (thrown-with-msg? js/Error
+                                    #"received a nil message"
+                                    (fire-message-on-port port nil))))
             (fire-message-on-port port "incoming message 1")
             (is (= @message-recorder ['("incoming message 1")]))
             (fire-message-on-port port "incoming message 2")
@@ -70,28 +73,30 @@
                                                                "outgoing message 2"
                                                                "outgoing message 3"]}))
             (is (= "incoming message 2" (<! port)))
-            (is (thrown-with-msg? js/Error
-                                  #"post-message! called on already disconnected port"
-                                  (protocols/post-message! port "some message")))
-            (is (thrown-with-msg? js/Error
-                                  #"disconnect! called on already disconnected port"
-                                  (protocols/disconnect! port)))
-            (is (thrown-with-msg? js/Error
-                                  #"on-message! called on already disconnected port"
-                                  (protocols/on-message! port identity)))
-            (is (thrown-with-msg? js/Error
-                                  #"on-disconnect! called on already disconnected port"
-                                  (protocols/on-disconnect! port identity)))
+            (when-not advanced-mode?
+              (is (thrown-with-msg? js/Error
+                                    #"post-message! called on already disconnected port"
+                                    (protocols/post-message! port "some message")))
+              (is (thrown-with-msg? js/Error
+                                    #"disconnect! called on already disconnected port"
+                                    (protocols/disconnect! port)))
+              (is (thrown-with-msg? js/Error
+                                    #"on-message! called on already disconnected port"
+                                    (protocols/on-message! port identity)))
+              (is (thrown-with-msg? js/Error
+                                    #"on-disconnect! called on already disconnected port"
+                                    (protocols/on-disconnect! port identity))))
             (is (= @disconnect-count 1))
-            (is (thrown-with-msg? js/Error
-                                  #"post-message! called with nil message"
-                                  (protocols/post-message! port nil)))
-            (is (thrown-with-msg? js/Error
-                                  #"received a nil message"
-                                  (fire-message-on-port port nil)))
-            (is (thrown-with-msg? js/Error
-                                  #"put-message! called on already disconnected port"
-                                  (fire-message-on-port port "some message")))
+            (when-not advanced-mode?
+              (is (thrown-with-msg? js/Error
+                                    #"post-message! called with nil message"
+                                    (protocols/post-message! port nil)))
+              (is (thrown-with-msg? js/Error
+                                    #"received a nil message"
+                                    (fire-message-on-port port nil)))
+              (is (thrown-with-msg? js/Error
+                                    #"put-message! called on already disconnected port"
+                                    (fire-message-on-port port "some message"))))
             (is (= (get-port-mock-state port) {:connected     false
                                                :sent-messages ["outgoing message 1"
                                                                "outgoing message 2"
