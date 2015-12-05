@@ -31,19 +31,19 @@
 
 ; -- hooks in runtime config  -----------------------------------------------------------------------------------------------
 
-(defn gen-callback-fn [config chan]
+(defn gen-callback-fn [config chan]                                                                                           ; TODO: replace with call-hook
   `(let [config# ~config
          callback-fn-factory# (:callback-fn-factory config#)]
      (assert (fn? callback-fn-factory#) (str "invalid :callback-fn-factory in chromex config\n" "config: " config#))
      (callback-fn-factory# config# ~chan)))
 
-(defn gen-callback-channel [config]
+(defn gen-callback-channel [config]                                                                                           ; TODO: replace with call-hook
   `(let [config# ~config
          callback-channel-factory# (:callback-channel-factory config#)]
      (assert (fn? callback-channel-factory#) (str "invalid :callback-channel-factory in chromex config\n" "config: " config#))
      (callback-channel-factory# config#)))
 
-(defn gen-event-listener [config event-id chan]
+(defn gen-event-listener [config event-id chan]                                                                               ; TODO: replace with call-hook
   `(let [config# ~config
          event-listener-factory# (:event-listener-factory config#)]
      (assert (fn? event-listener-factory#) (str "invalid :event-listener-factory in chromex config\n" "config: " config#))

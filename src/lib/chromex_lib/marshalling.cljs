@@ -5,7 +5,7 @@
             [chromex-lib.chrome-storage-area :refer [make-chrome-storage-area]]))
 
 (defn from-native-chrome-port [native-chrome-port]
-  (make-chrome-port native-chrome-port))
+  (make-chrome-port native-chrome-port (get-active-config)))                                                                  ; TODO: config should be provided by marshalling code
 
 (defn to-native-chrome-port [chrome-port]
   {:pre [(satisfies? protocols/IChromePort chrome-port)]}

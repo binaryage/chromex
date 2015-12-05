@@ -25,6 +25,13 @@
        (assert target# (str "unable to locate object path " ~keys " in " ~obj-sym))
        (goog.object/set target# (last ~ks) ~val))))
 
+(defmacro call-hook [config handler-key & args]
+  `(let [config# ~config
+         handler-key# ~handler-key
+         handler# (get config# handler-key#)]
+     (assert (fn? handler#) (str "invalid " handler-key# " in chromex config\n" "config: " config#))
+     (handler# ~@args)))
+
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
 (defn get-wrap-symbol [id]

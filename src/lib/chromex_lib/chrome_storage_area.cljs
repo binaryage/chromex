@@ -3,6 +3,7 @@
             [chromex-lib.protocols :as protocols :refer [IChromeStorageArea]]))
 
 ; -- ChromeStorageArea ------------------------------------------------------------------------------------------------------
+; wrapping https://developer.chrome.com/extensions/storage#type-StorageArea
 
 (deftype ChromeStorageArea [native-chrome-storage-area channel-factory callback-factory]
 
