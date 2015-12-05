@@ -37,7 +37,7 @@
 
 ; -- constructor ------------------------------------------------------------------------------------------------------------
 
-(defn make-chrome-storage-area [native-chrome-storage-area config]
+(defn make-chrome-storage-area [config native-chrome-storage-area]
   {:pre [native-chrome-storage-area]}
   (ChromeStorageArea. native-chrome-storage-area
                       (get-hook config :chrome-storage-area-callback-channel-factory)

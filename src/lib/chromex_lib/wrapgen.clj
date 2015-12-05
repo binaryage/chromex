@@ -73,66 +73,66 @@
 
 ; ---------------------------------------------------------------------------------------------------------------------------
 
-(defn marshall [static-config & args]
+(defn marshall [static-config config & args]
   (let [marshaller (:gen-marshalling static-config)]
     (assert (and marshaller (fn? marshaller))
             (str "invalid :gen-marshalling in static-config\n"
                  "static-config: " static-config))
-    (let [marshalled-code (apply marshaller args)]
+    (let [marshalled-code (apply marshaller config args)]
       (if (:debug-marshalling static-config)
         (print-debug (str "marshalling request " args " => " marshalled-code)))
       marshalled-code)))
 
-(defn marshall-callback-param [static-config api [callback-param-sym type]]
-  (marshall static-config :from-chrome api type callback-param-sym))
+(defn marshall-callback-param [static-config config api [callback-param-sym type]]
+  (marshall static-config config :from-chrome api type callback-param-sym))
 
-(defn marshall-callback [static-config api [callback-sym callback-info]]
+(defn marshall-callback [static-config config api [callback-sym callback-info]]
   (let [{:keys [params]} callback-info
         param-syms (map #(gensym (str "cb-" (:name %) "-")) params)
         param-types (map :type params)
         sym+type-pairs (partition 2 (interleave param-syms param-types))
-        marshalled-params (map (partial marshall-callback-param static-config api) sym+type-pairs)]
+        marshalled-params (map (partial marshall-callback-param static-config config api) sym+type-pairs)]
     (if (empty? param-syms)
       callback-sym                                                                                                            ; a special case of callback with no parameters, no marshalling needed
       `(fn [~@param-syms] (~callback-sym ~@marshalled-params)))))
 
-(defn marshall-result [static-config api [result-sym type]]
-  (marshall static-config :from-chrome api type result-sym))
+(defn marshall-result [static-config config api [result-sym type]]
+  (marshall static-config config :from-chrome api type result-sym))
 
-(defn marshall-param [static-config api [param-sym type]]
+(defn marshall-param [static-config config api [param-sym type]]
   (let [sym (gensym "omit-test-")]
     `(let [~sym ~param-sym]
        (if (cljs.core/keyword-identical? ~sym :omit)
          :omit
-         ~(marshall static-config :to-chrome api type sym)))))
+         ~(marshall static-config config :to-chrome api type sym)))))
 
-(defn marshall-function-param [static-config api [sym param]]
+(defn marshall-function-param [static-config config api [sym param]]
   (let [{:keys [name type]} param
         callback-api (str api ".callback")]
     (assert name (str "parameter has missing 'name': " api " " param))
     (assert type (str "parameter has missing 'type': " api " " param))
     (if (= type :callback)
-      (marshall-callback static-config callback-api [sym (:callback param)])
-      (marshall-param static-config api [sym type]))))
+      (marshall-callback static-config config callback-api [sym (:callback param)])
+      (marshall-param static-config config api [sym type]))))
 
-(defn marshall-function-params [static-config api args params]
+(defn marshall-function-params [static-config config api args params]
   (assert (= (count params) (count args))
           (str "a mismatch between parameters and arguments passed into marshall-function-params\n"
                "api: " api "\n"
                "args: " args
                "params:" params))
   (for [arg+param (partition 2 (interleave args params))]
-    (marshall-function-param static-config api arg+param)))
+    (marshall-function-param static-config config api arg+param)))
 
 (defn gen-marshalling [static-config api-table descriptor config & args]
   (let [api (get-api-id api-table descriptor)
         {:keys [params return-type]} descriptor
-        marshalled-params (marshall-function-params static-config api args params)
+        marshalled-params (marshall-function-params static-config config api args params)
         marshalled-param-syms (map #(gensym (str "marshalled-" (:name %) "-")) params)
         result-sym (gensym "result-")]
     `(let [~@(interleave marshalled-param-syms marshalled-params)
            ~result-sym ~(apply gen-api-access-or-call static-config api-table descriptor config marshalled-param-syms)]
-       ~(marshall-result static-config api [result-sym return-type]))))
+       ~(marshall-result static-config config api [result-sym return-type]))))
 
 ; ---------------------------------------------------------------------------------------------------------------------------
 
@@ -146,7 +146,7 @@
         ns-path (butlast event-path)
         event-key (last event-path)]
     `(let [~event-fn-sym ~(gen-call-hook config :event-listener-factory event-id chan)
-           ~handler-fn-sym ~(marshall-callback static-config (str api ".handler") [event-fn-sym descriptor])
+           ~handler-fn-sym ~(marshall-callback static-config config (str api ".handler") [event-fn-sym descriptor])
            logging-fn# ~(wrap-callback-with-logging static-config "event:" api config [handler-fn-sym descriptor])
            ~ns-obj-sym (chromex-lib.support/oget (:root ~config) ~@ns-path)]
        ~(gen-missing-api-check static-config config api ns-obj-sym event-key)

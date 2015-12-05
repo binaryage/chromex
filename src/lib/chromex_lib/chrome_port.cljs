@@ -61,7 +61,7 @@
 
 ; -- constructor ------------------------------------------------------------------------------------------------------------
 
-(defn make-chrome-port [native-chrome-port config]
+(defn make-chrome-port [config native-chrome-port]
   {:pre [native-chrome-port]}
   (let [channel (call-hook config :chrome-port-channel-factory)
         chrome-port (ChromePort. config native-chrome-port channel true)]
