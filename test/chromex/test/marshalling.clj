@@ -1,16 +1,15 @@
-(ns chromex.test.marshalling)
+(ns chromex.test.marshalling
+  (:require [chromex-lib.marshalling :as default-marshalling]))
 
-(defn marshall-to-chrome [_id type param]
+(defn marshall-to-chrome [id type param]
   (case type
     "marshalled-type" `(chromex.test.marshalling/to-native-marshalled-type ~param)
-    "storage.StorageArea" `(chromex-lib.marshalling/to-native-chrome-storage-area ~param)
-    param))
+    (default-marshalling/marshall-to-chrome id type param)))
 
-(defn marshall-from-chrome [_id type param]
+(defn marshall-from-chrome [id type param]
   (case type
     "marshalled-type" `(chromex.test.marshalling/from-native-marshalled-type ~param)
-    "storage.StorageArea" `(chromex-lib.marshalling/from-native-chrome-storage-area ~param)
-    param))
+    (default-marshalling/marshall-from-chrome id type param)))
 
 (defn custom-gen-marshalling [direction id type param]
   (case direction

@@ -28,6 +28,9 @@
 (defn get-storage-area* [config]
   (gen-wrap :function ::get-storage-area config))
 
+(defn get-port* [config]
+  (gen-wrap :function ::get-port config))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-something* [config chan & args]

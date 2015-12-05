@@ -6,7 +6,8 @@
             [chromex.test-utils]
             [chromex.playground]
             [chromex.test.playground]
-            [chromex.test.chrome-storage-area]))
+            [chromex.test.chrome-storage-area]
+            [chromex.test.chrome-port]))
 
 (enable-console-print!)
 
@@ -33,4 +34,5 @@
 (test/run-tests
   (cljs.test/empty-env ::test/default)
   'chromex.test.playground
-  'chromex.test.chrome-storage-area)
+  'chromex.test.chrome-storage-area
+  'chromex.test.chrome-port)

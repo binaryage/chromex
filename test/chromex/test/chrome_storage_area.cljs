@@ -1,11 +1,8 @@
 (ns chromex.test.chrome-storage-area
-  (:require-macros [cljs.core.async.macros :refer [go go-loop]])
+  (:require-macros [cljs.core.async.macros :refer [go]])
   (:require [cljs.test :refer-macros [deftest testing is async]]
-            [cljs.core.async :refer [<! >! timeout chan close!]]
-            [chromex.test-utils :refer [advanced-mode?]]
+            [cljs.core.async :refer [<!]]
             [chromex-lib.protocols :as protocols :refer [IChromeStorageArea]]
-            [chromex-lib.chrome-storage-area :refer []]
-            [chromex-lib.support :refer-macros [oset]]
             [chromex.playground :refer-macros [get-storage-area]]))
 
 ; -- test against mocks -----------------------------------------------------------------------------------------------------

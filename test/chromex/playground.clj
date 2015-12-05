@@ -37,6 +37,9 @@
 (defmacro get-storage-area []
   (gen-call :function ::get-storage-area &form))
 
+(defmacro get-port []
+  (gen-call :function ::get-port &form))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-something-events
@@ -108,6 +111,10 @@
                 {:id          ::get-storage-area
                  :name        "getStorageArea"
                  :return-type "storage.StorageArea"
+                 :params      []}
+                {:id          ::get-port
+                 :name        "getPort"
+                 :return-type "runtime.Port"
                  :params      []}]
    :events     [{:id     ::on-something
                  :name   "onSomething"
