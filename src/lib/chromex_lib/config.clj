@@ -30,16 +30,21 @@
                  "static-config: " static-config))
     (gen-fn)))
 
+(def fixed-config
+  {:callback-channel-factory                     'chromex-lib.defaults/default-callback-channel-factory
+   :callback-fn-factory                          'chromex-lib.defaults/default-callback-fn-factory
+   :event-listener-factory                       'chromex-lib.defaults/default-event-listener-factory
+   :chrome-storage-area-callback-channel-factory 'chromex-lib.defaults/default-chrome-storage-area-callback-channel-factory
+   :chrome-storage-area-callback-fn-factory      'chromex-lib.defaults/default-chrome-storage-area-callback-fn-factory
+   :root                                         'js/goog.global})
+
 ; config has to be generated via a macro:
 ; in advanced optimizations in case of :elide-verbose-logging
 ; we must not mention chromex-lib.defaults/default-logger at any place for it to get removed as a dead code
 (defmacro gen-default-config []
   (let [static-config (get-static-config)]
     (merge
-      {:callback-channel-factory 'chromex-lib.defaults/default-callback-channel-factory
-       :callback-fn-factory      'chromex-lib.defaults/default-callback-fn-factory
-       :event-listener-factory   'chromex-lib.defaults/default-event-listener-factory
-       :root                     'js/goog.global}
+      fixed-config
       (if-not (:elide-verbose-logging static-config)
         {:verbose-logging false
          :logger          'chromex-lib.defaults/default-logger})

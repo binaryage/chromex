@@ -25,6 +25,9 @@
 (defn do-something-missing* [config]
   (gen-wrap :function ::do-something-missing config))
 
+(defn get-storage-area* [config]
+  (gen-wrap :function ::get-storage-area config))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-something* [config chan & args]

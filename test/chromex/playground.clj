@@ -34,6 +34,9 @@
 (defmacro do-something-missing []
   (gen-call :function ::do-something-missing &form))
 
+(defmacro get-storage-area []
+  (gen-call :function ::get-storage-area &form))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-something-events
@@ -101,6 +104,10 @@
                 {:id          ::do-something-missing
                  :name        "doSomethingMissing"
                  :return-type "some-type"
+                 :params      []}
+                {:id          ::get-storage-area
+                 :name        "getStorageArea"
+                 :return-type "storage.StorageArea"
                  :params      []}]
    :events     [{:id     ::on-something
                  :name   "onSomething"

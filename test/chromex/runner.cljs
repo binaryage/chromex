@@ -4,8 +4,9 @@
             [chromex-lib.defaults :refer [console-log]]
             [chromex.test.compiler]
             [chromex.test-utils]
+            [chromex.playground]
             [chromex.test.playground]
-            [chromex.playground]))
+            [chromex.test.chrome-storage-area]))
 
 (enable-console-print!)
 
@@ -31,4 +32,5 @@
 
 (test/run-tests
   (cljs.test/empty-env ::test/default)
-  'chromex.test.playground)
+  'chromex.test.playground
+  'chromex.test.chrome-storage-area)
