@@ -1,6 +1,6 @@
 (ns chromex-lib.wrapgen
   (:require [chromex-lib.support :refer [gen-logging-if-verbose print-warning get-item-by-id get-api-id print-debug
-                                         gen-missing-api-check]]
+                                         gen-missing-api-check gen-call-hook]]
             [clojure.string :as string]))
 
 ; This file is responsible for generating code wrapping Chrome API calls.
@@ -27,28 +27,6 @@
 ;   Note: for convenience we generate arities of API methods with trailing optional arguments omitted,
 ;         for exmaple see `connect` macro in https://github.com/binaryage/chromex/blob/master/src/exts/chromex/runtime.clj
 ;
-; ---------------------------------------------------------------------------------------------------------------------------
-
-; -- hooks in runtime config  -----------------------------------------------------------------------------------------------
-
-(defn gen-callback-fn [config chan]                                                                                           ; TODO: replace with call-hook
-  `(let [config# ~config
-         callback-fn-factory# (:callback-fn-factory config#)]
-     (assert (fn? callback-fn-factory#) (str "invalid :callback-fn-factory in chromex config\n" "config: " config#))
-     (callback-fn-factory# config# ~chan)))
-
-(defn gen-callback-channel [config]                                                                                           ; TODO: replace with call-hook
-  `(let [config# ~config
-         callback-channel-factory# (:callback-channel-factory config#)]
-     (assert (fn? callback-channel-factory#) (str "invalid :callback-channel-factory in chromex config\n" "config: " config#))
-     (callback-channel-factory# config#)))
-
-(defn gen-event-listener [config event-id chan]                                                                               ; TODO: replace with call-hook
-  `(let [config# ~config
-         event-listener-factory# (:event-listener-factory config#)]
-     (assert (fn? event-listener-factory#) (str "invalid :event-listener-factory in chromex config\n" "config: " config#))
-     (event-listener-factory# config# ~event-id ~chan)))
-
 ; ---------------------------------------------------------------------------------------------------------------------------
 
 (defn wrap-callback-with-logging [static-config label api config [callback-sym callback-info]]
@@ -167,7 +145,7 @@
         event-path (string/split api #"\.")
         ns-path (butlast event-path)
         event-key (last event-path)]
-    `(let [~event-fn-sym ~(gen-event-listener config event-id chan)
+    `(let [~event-fn-sym ~(gen-call-hook config :event-listener-factory event-id chan)
            ~handler-fn-sym ~(marshall-callback static-config (str api ".handler") [event-fn-sym descriptor])
            logging-fn# ~(wrap-callback-with-logging static-config "event:" api config [handler-fn-sym descriptor])
            ~ns-obj-sym (chromex-lib.support/oget (:root ~config) ~@ns-path)]
@@ -181,10 +159,10 @@
 
 (defn gen-callback-function-wrap [static-config api-table descriptor config & args]
   (let [callback-chan-sym (gensym "callback-chan-")
-        callback-fn (gen-callback-fn config callback-chan-sym)
+        callback-fn (gen-call-hook config :callback-fn-factory callback-chan-sym)
         args+callback (concat args [callback-fn])
         marshalled-call-with-callback (apply gen-marshalling static-config api-table descriptor config args+callback)]
-    `(let [~callback-chan-sym ~(gen-callback-channel config)]
+    `(let [~callback-chan-sym ~(gen-call-hook config :callback-channel-factory)]
        ~marshalled-call-with-callback
        ~callback-chan-sym)))
 

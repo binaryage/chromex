@@ -65,31 +65,31 @@
     (protocols/set-connected! chrome-port false)
     nil))
 
-(defn default-chrome-port-disconnect-called-on-disconnected-port [_chrome-port]
+(defn default-chrome-port-disconnect-called-on-disconnected-port [_config _chrome-port]
   (assert false "ChromePort: disconnect! called on already disconnected port")
   nil)
 
-(defn default-chrome-port-post-message-called-on-disconnected-port [_chrome-port]
+(defn default-chrome-port-post-message-called-on-disconnected-port [_config _chrome-port]
   (assert false "ChromePort: post-message! called on already disconnected port")
   nil)
 
-(defn default-chrome-port-on-disconnect-called-on-disconnected-port [_chrome-port]
+(defn default-chrome-port-on-disconnect-called-on-disconnected-port [_config _chrome-port]
   (assert false "ChromePort: on-disconnect! called on already disconnected port")
   nil)
 
-(defn default-chrome-port-on-message-called-on-disconnected-port [_chrome-port]
+(defn default-chrome-port-on-message-called-on-disconnected-port [_config _chrome-port]
   (assert false "ChromePort: on-message! called on already disconnected port")
   nil)
 
-(defn default-chrome-port-post-message-called-with-nil [_chrome-port]
+(defn default-chrome-port-post-message-called-with-nil [_config _chrome-port]
   (assert false "ChromePort: post-message! called with nil message. Nil cannot be delivered via a core.async channel.")
   nil)
 
-(defn default-chrome-port-received-nil-message [_chrome-port]
+(defn default-chrome-port-received-nil-message [_config _chrome-port]
   (assert false "ChromePort: received a nil message. Nil cannot be delivered via a core.async channel.")
   nil)
 
-(defn default-chrome-port-put-message-called-on-disconnected-port [_chrome-port message]
+(defn default-chrome-port-put-message-called-on-disconnected-port [_config _chrome-port message]
   (assert false (str "ChromePort: put-message! called on already disconnected port.\n"
                      "message: " message))
   nil)
