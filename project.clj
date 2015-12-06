@@ -24,6 +24,9 @@
   :clean-targets ^{:protect false} ["target"
                                     "resources/unpacked/compiled"
                                     "resources/release/compiled"]
+
+  :cljsbuild {:builds {}}                                                                                                     ; prevent https://github.com/emezeske/lein-cljsbuild/issues/413
+
   :profiles {:unpacked
              {:cljsbuild {:builds
                           {:background
