@@ -1,9 +1,9 @@
 (ns chromex-sample.popup.core
   (:require-macros [cljs.core.async.macros :refer [go-loop]])
   (:require [cljs.core.async :refer [<!]]
-            [chromex-lib.logging :refer-macros [log info warn error group group-end]]
-            [chromex-lib.protocols :refer [post-message!]]
-            [chromex.runtime :as runtime :refer-macros [connect]]))
+            [chromex.logging :refer-macros [log info warn error group group-end]]
+            [chromex.protocols :refer [post-message!]]
+            [chromex.ext.runtime :as runtime :refer-macros [connect]]))
 
 ; -- a message loop ---------------------------------------------------------------------------------------------------------
 

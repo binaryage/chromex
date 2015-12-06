@@ -135,7 +135,7 @@ Let's start with [popup button code](src/popup/chromex_sample/popup/core.cljs):
 When a popup button is clicked, Chrome creates a new javascript context and runs our code by calling `init!`.
 At this point we call [`runtime/connect`](https://developer.chrome.com/extensions/runtime#method-connect) to connect to our background page.
 We get a `background-port` back which is a wrapper of [`runtime.Port`](https://developer.chrome.com/extensions/runtime#type-Port).
-`background-port` implements chromex protocol [`IChromePort`](https://github.com/binaryage/chromex/blob/master/src/lib/chromex_lib/chrome_port.cljs)
+`background-port` implements chromex protocol [`IChromePort`](https://github.com/binaryage/chromex/blob/master/src/lib/chromex/chrome_port.cljs)
 which we can use to `post-message!` to our background page. `background-port` also implements `core-async/ReadPort` so we can treat
 it as a core.async channel for reading incoming messages sent by our background page. You can see that implemented in `run-message-loop!`
 which takes messages off the channel and simply prints them into console (in `process-message!`).
@@ -151,7 +151,7 @@ parameter values when crossing API boundary. Parameter values can be automatical
 in the other direction parameters can be converted to native Javascript values when passed into API calls. This is a way how to ease
 extension development and promote idiomatic ClojureScript patterns.
 
-Chromex library does not try to do heavy marshalling. You should review marshalling logic in [marshalling.clj](https://github.com/binaryage/chromex/blob/master/src/lib/chromex_lib/marshalling.clj) and [marshalling.cljs](https://github.com/binaryage/chromex/blob/master/src/lib/chromex_lib/marshalling.cljs)
+Chromex library does not try to do heavy marshalling. You should review marshalling logic in [marshalling.clj](https://github.com/binaryage/chromex/blob/master/src/lib/chromex/marshalling.clj) and [marshalling.cljs](https://github.com/binaryage/chromex/blob/master/src/lib/chromex/marshalling.cljs)
 files to understand which parameter types get converted and how. You can also later use this subsystem to marshall
 additional parameter types of your own interest. For example automatic calling of `js->clj` and `clj->js` would come handy at many places.
 
@@ -159,7 +159,7 @@ additional parameter types of your own interest. For example automatic calling o
 
 It is worth noting that core.async channel [returns `nil` when closed](https://clojure.github.io/core.async/#clojure.core.async/<!).
 That is why we leave the message loop after receiving a `nil` message. If you wanted to terminate the message channel from popup side,
-you could call core.async's `close!` on the message-channel (it implements [`core-async/Channel`](https://github.com/binaryage/chromex/blob/master/src/lib/chromex_lib/chrome_port.cljs) and will properly disconnect `runtime.Port`).
+you could call core.async's `close!` on the message-channel (it implements [`core-async/Channel`](https://github.com/binaryage/chromex/blob/master/src/lib/chromex/chrome_port.cljs) and will properly disconnect `runtime.Port`).
 
 As a consequence you cannot send a `nil` message through our channel.
 
@@ -243,7 +243,7 @@ This is an optional step, but convenient. `make-chrome-event-channel` returns a 
 them when the channel is about to be closed (for whatever reason). This way we don't have to do any book keeping for future cleanup.
 
 Events delivered into the channel are in a form `[event-id event-args]` where event-args is a vector of parameters which were passed into event's callback function (after marshalling).
-So you can read Chrome documentation to figure out what to expect there. For example our `::chromex.runtime/on-connect` event-id is
+So you can read Chrome documentation to figure out what to expect there. For example our `:chromex.ext.runtime/on-connect` event-id is
 documented under [runtime/on-connect event](https://developer.chrome.com/extensions/runtime#event-onConnect) and claims that
 callback has a single parameter `port` of type `runtime.Port`. Se we get `IChromePort` wrapper, because marshalling converted native `runtime.Port` into ClojureScript-friendly `IChromePort` on the way out.
 

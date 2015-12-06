@@ -3,11 +3,11 @@
   (:require [goog.string :as gstring]
             [goog.string.format]
             [cljs.core.async :refer [<! chan]]
-            [chromex-lib.logging :refer-macros [log info warn error group group-end]]
-            [chromex-lib.chrome-event-channel :refer [make-chrome-event-channel]]
-            [chromex-lib.protocols :refer [post-message! get-sender]]
-            [chromex.tabs :as tabs]
-            [chromex.runtime :as runtime]))
+            [chromex.logging :refer-macros [log info warn error group group-end]]
+            [chromex.chrome-event-channel :refer [make-chrome-event-channel]]
+            [chromex.protocols :refer [post-message! get-sender]]
+            [chromex.ext.tabs :as tabs]
+            [chromex.ext.runtime :as runtime]))
 
 (def clients (atom []))
 

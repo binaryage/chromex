@@ -2,7 +2,7 @@
   :dependencies [[org.clojure/clojure "1.7.0"]
                  [org.clojure/clojurescript "1.7.170"]
                  [org.clojure/core.async "0.2.374"]
-                 [binaryage/chromex "0.1.2"]
+                 [binaryage/chromex "0.2.0"]
                  [binaryage/devtools "0.4.1"]
                  [figwheel "0.5.0-1"]
                  [environ "1.0.1"]]
@@ -107,6 +107,6 @@
   :aliases {"dev-build" ["with-profile" "+unpacked" "cljsbuild" "once" "background" "popup" "content-script"]
             "fig"       ["with-profile" "+unpacked,+checkouts" "figwheel" "background" "popup"]
             "content"   ["with-profile" "+unpacked,+checkouts" "cljsbuild" "auto" "content-script"]
-            "devel"     ["cooper"]
+            "devel"     ["do" "clean," "cooper"]
             "release"   ["with-profile" "+release" "do" "clean," "cljsbuild" "once" "background" "popup" "content-script"]
             "package"   ["shell" "scripts/package.sh"]})
