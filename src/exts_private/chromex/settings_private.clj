@@ -2,7 +2,7 @@
   "Use the chrome.settingsPrivate API to get or set preferences
    from the settings UI.
    
-     * available since Chrome 47
+     * available since Chrome 48
      * https://developer.chrome.com/extensions/settingsPrivate"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
@@ -76,7 +76,7 @@
 
 (def api-table
   {:namespace "chrome.settingsPrivate",
-   :since "47",
+   :since "48",
    :functions
    [{:id ::set-pref,
      :name "setPref",
@@ -101,12 +101,10 @@
       {:name "callback", :type :callback, :callback {:params [{:name "pref", :type "settingsPrivate.PrefObject"}]}}]}
     {:id ::get-default-zoom-percent,
      :name "getDefaultZoomPercent",
-     :since "48",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "percent", :type "integer"}]}}]}
     {:id ::set-default-zoom-percent,
      :name "setDefaultZoomPercent",
-     :since "48",
      :callback? true,
      :params
      [{:name "percent", :type "integer"}

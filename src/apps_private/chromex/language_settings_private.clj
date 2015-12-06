@@ -2,7 +2,7 @@
   "Use the chrome.languageSettingsPrivate API to get or change
    language and input method settings.
    
-     * available since Chrome 47
+     * available since Chrome 48
      * https://developer.chrome.com/extensions/languageSettingsPrivate"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
@@ -112,7 +112,7 @@
 
 (def api-table
   {:namespace "chrome.languageSettingsPrivate",
-   :since "47",
+   :since "48",
    :functions
    [{:id ::get-language-list,
      :name "getLanguageList",
@@ -132,8 +132,8 @@
      :name "getSpellcheckWords",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "words", :type "[array-of-strings]"}]}}]}
-    {:id ::add-spellcheck-word, :name "addSpellcheckWord", :since "48", :params [{:name "word", :type "string"}]}
-    {:id ::remove-spellcheck-word, :name "removeSpellcheckWord", :since "48", :params [{:name "word", :type "string"}]}
+    {:id ::add-spellcheck-word, :name "addSpellcheckWord", :params [{:name "word", :type "string"}]}
+    {:id ::remove-spellcheck-word, :name "removeSpellcheckWord", :params [{:name "word", :type "string"}]}
     {:id ::get-translate-target-language,
      :name "getTranslateTargetLanguage",
      :callback? true,

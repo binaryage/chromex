@@ -2,7 +2,7 @@
   "Use the chrome.searchEnginesPrivate API to get or set
    preferences from the settings UI.
    
-     * available since Chrome 47
+     * available since Chrome 48
      * https://developer.chrome.com/extensions/searchEnginesPrivate"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
@@ -75,7 +75,7 @@
 
 (def api-table
   {:namespace "chrome.searchEnginesPrivate",
-   :since "47",
+   :since "48",
    :functions
    [{:id ::get-search-engines,
      :name "getSearchEngines",
