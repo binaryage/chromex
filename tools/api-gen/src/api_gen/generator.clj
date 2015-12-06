@@ -10,10 +10,10 @@
             [clj-time.format :as time-format]
             [api-gen.helpers :refer :all]))
 
-(def ^:const NS-PREFIX "chromex.")
+(def ^:const NS-PREFIX "chromex")
+(def ^:const CHROMEX-FOLDER "chromex")
 (def ^:const MAX-COLUMNS 126)                                                                                                 ; for nice github look
 (def shared-template-data {:enter "\n"})
-(def chromex-folder "chromex")
 
 ; ---------------------------------------------------------------------------------------------------------------------------
 
@@ -25,14 +25,19 @@
         parts-ext (concat (drop-last parts) [(str (munge-if-reserved (last parts)) ext)])]
     (vec (concat folder parts-ext))))
 
-(defn build-cljs-ns-file-path [name]
-  (build-path [chromex-folder] name ".cljs"))
+(defn join-subns-and-name [subns name]
+  (if (empty? subns)
+    name
+    (str subns "." name)))
 
-(defn build-clj-ns-file-path [name]
-  (build-path [chromex-folder] name ".clj"))
+(defn build-cljs-ns-file-path [name subns]
+  (build-path [CHROMEX-FOLDER] (join-subns-and-name subns name) ".cljs"))
 
-(defn build-ns-name [name]
-  (str NS-PREFIX (kebab-case (munge-if-reserved name))))
+(defn build-clj-ns-file-path [name subns]
+  (build-path [CHROMEX-FOLDER] (join-subns-and-name subns name) ".clj"))
+
+(defn build-ns-name [name subns]
+  (string/join "." (remove empty? [NS-PREFIX subns (kebab-case (munge-if-reserved name))])))
 
 (defn build-intro-item [item]
   (let [{:keys [title content]} item
@@ -278,9 +283,9 @@
 
 (defn generate-cljs-ns [api-table]
   (let [{:keys [functions properties events]} api-table
-        {:keys [name doc]} (meta api-table)
-        file-path (build-cljs-ns-file-path name)
-        ns-name (build-ns-name name)
+        {:keys [name doc subns]} (meta api-table)
+        file-path (build-cljs-ns-file-path name subns)
+        ns-name (build-ns-name name subns)
         properties (map prepare-property-data properties)
         functions (map prepare-function-data functions)
         events (map prepare-event-data events)
@@ -304,9 +309,9 @@
 
 (defn generate-clj-ns [api-table]
   (let [{:keys [functions properties events]} api-table
-        {:keys [name doc]} (meta api-table)
-        file-path (build-clj-ns-file-path name)
-        ns-name (build-ns-name name)
+        {:keys [name doc subns]} (meta api-table)
+        file-path (build-clj-ns-file-path name subns)
+        ns-name (build-ns-name name subns)
         properties (map prepare-property-data properties)
         functions (map prepare-function-data functions)
         events (map prepare-event-data events)
@@ -354,16 +359,16 @@
 (defn build-api-files [api-tables]
   (for [api-table api-tables]
     (let [{:keys [namespace]} api-table
-          {:keys [name]} (meta api-table)]
+          {:keys [name subns]} (meta api-table)]
       {:js-namespace  namespace
-       :clj-namespace (build-ns-name name)
+       :clj-namespace (build-ns-name name subns)
        :doc-section   name
-       :file-name     (string/join "/" (build-clj-ns-file-path name))})))
+       :file-name     (string/join "/" (build-clj-ns-file-path name subns))})))
 
 (defn build-require [api-table columns]
   (let [{:keys [functions properties events]} api-table
-        {:keys [name]} (meta api-table)
-        clj-namespace (build-ns-name name)
+        {:keys [name subns]} (meta api-table)
+        clj-namespace (build-ns-name name subns)
         prefix (str "[" clj-namespace " refer-macros:[\n")
         prefix2 "  "
         prefix-length 2
@@ -419,10 +424,11 @@
 
 ; ---------------------------------------------------------------------------------------------------------------------------
 
-(defn build-api-table [ns]
+(defn build-api-table [subns ns]
   (println (str "preparing '" (:name ns) "'"))
   (let [api-table (-> ns
                       (build-namespace-api-table)
+                      (vary-meta assoc :subns subns)
                       (remove-emptyish-values))
         {:keys [functions properties events]} api-table
         cnt (+ (count functions) (count properties) (count events))]
@@ -444,9 +450,9 @@
           item-tag (build-tag k)]
       (= tag item-tag))))
 
-(defn build-api-tables [data tag]
+(defn build-api-tables [data tag subns]
   (let [filtered-data (filter #(matches-filter? % tag) data)]
-    (keep (comp build-api-table second) filtered-data)))
+    (keep (comp (partial build-api-table subns) second) filtered-data)))
 
 ; ---------------------------------------------------------------------------------------------------------------------------
 

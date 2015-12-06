@@ -66,12 +66,12 @@ rm -rf "$API_SOURCE_DIR"
 mkdir -p "$API_SOURCE_DIR"
 cd "$TOOLS/api-gen"
 SHA=`cat "$APIS_LAST_FILE"`
-EXTS_RESULT=`lein run -- --input="$APIS_FILTERED_JSON_FILE" --outdir="$API_SOURCE_DIR/exts" --chromium-sha="$SHA" --filter="exts" | grep "RESULT:"`
-EXTS_PRIVATE_RESULT=`lein run -- --input="$APIS_FILTERED_JSON_FILE" --outdir="$API_SOURCE_DIR/exts_private" --chromium-sha="$SHA" --filter="exts-private" | grep "RESULT:"`
-EXTS_INTERNAL_RESULT=`lein run -- --input="$APIS_FILTERED_JSON_FILE" --outdir="$API_SOURCE_DIR/exts_internal" --chromium-sha="$SHA" --filter="exts-internal" | grep "RESULT:"`
-APPS_RESULT=`lein run -- --input="$APIS_FILTERED_JSON_FILE" --outdir="$API_SOURCE_DIR/apps" --chromium-sha="$SHA" --filter="apps" | grep "RESULT:"`
-APPS_PRIVATE_RESULT=`lein run -- --input="$APIS_FILTERED_JSON_FILE" --outdir="$API_SOURCE_DIR/apps_private" --chromium-sha="$SHA" --filter="apps-private" | grep "RESULT:"`
-APPS_INTERNAL_RESULT=`lein run -- --input="$APIS_FILTERED_JSON_FILE" --outdir="$API_SOURCE_DIR/apps_internal" --chromium-sha="$SHA" --filter="apps-internal" | grep "RESULT:"`
+EXTS_RESULT=`lein run -- --input="$APIS_FILTERED_JSON_FILE" --outdir="$API_SOURCE_DIR/exts" --chromium-sha="$SHA" --filter="exts" --subns="ext" | grep "RESULT:"`
+EXTS_PRIVATE_RESULT=`lein run -- --input="$APIS_FILTERED_JSON_FILE" --outdir="$API_SOURCE_DIR/exts_private" --chromium-sha="$SHA" --filter="exts-private" --subns="ext" | grep "RESULT:"`
+EXTS_INTERNAL_RESULT=`lein run -- --input="$APIS_FILTERED_JSON_FILE" --outdir="$API_SOURCE_DIR/exts_internal" --chromium-sha="$SHA" --filter="exts-internal" --subns="ext" | grep "RESULT:"`
+APPS_RESULT=`lein run -- --input="$APIS_FILTERED_JSON_FILE" --outdir="$API_SOURCE_DIR/apps" --chromium-sha="$SHA" --filter="apps" --subns="app" | grep "RESULT:"`
+APPS_PRIVATE_RESULT=`lein run -- --input="$APIS_FILTERED_JSON_FILE" --outdir="$API_SOURCE_DIR/apps_private" --chromium-sha="$SHA" --filter="apps-private" --subns="app"| grep "RESULT:"`
+APPS_INTERNAL_RESULT=`lein run -- --input="$APIS_FILTERED_JSON_FILE" --outdir="$API_SOURCE_DIR/apps_internal" --chromium-sha="$SHA" --filter="apps-internal" --subns="app" | grep "RESULT:"`
 
 popd
 

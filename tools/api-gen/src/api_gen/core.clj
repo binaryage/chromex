@@ -12,6 +12,7 @@
    ["-o" "--outdir " "Output dir for generated sources" :default "api"]
    ["-s" "--chromium-sha " "Chromium source git SHA" :default "?"]
    ["-f" "--filter " "Filter items by type" :default ""]
+   ["-n" "--subns " "Relative namespace" :default ""]
    ["-h" "--help"]])
 
 (defn usage [options-summary]
@@ -44,11 +45,11 @@
              total-events "|")))
 
 (defn run-job! [options]
-  (let [{:keys [input outdir chromium-sha filter]} options
+  (let [{:keys [input outdir chromium-sha filter subns]} options
         data (read-json input)
         ;data (filter #(contains? #{"runtime" "commands" "events" "tabs"} (:name (second %))) data)
         ;data (filter #(contains? #{"extension"} (:name (second %))) data)
-        api-tables (build-api-tables data filter)]
+        api-tables (build-api-tables data filter subns)]
     (->> api-tables
          (generate-files chromium-sha)
          (write-sources outdir))
