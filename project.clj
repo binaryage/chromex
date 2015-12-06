@@ -28,6 +28,8 @@
                  "src/apps_private"
                  "src/apps_internal"]
 
+  :jar-exclusions [#"readme\.md"]
+
   :test-paths ["test"]
 
   :cljsbuild {:builds {}}                                                                                                     ; prevent https://github.com/emezeske/lein-cljsbuild/issues/413
