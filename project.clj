@@ -30,9 +30,7 @@
 
   :test-paths ["test"]
 
-  :aliases {"test"          ["with-profile" "test" "cljsbuild" "test" "unit"]
-            "test-advanced" ["with-profile" "test-advanced" "cljsbuild" "test" "unit"]
-            "test-all"      ["do" "test," "test-advanced"]}
+  :cljsbuild {:builds {}}                                                                                                     ; prevent https://github.com/emezeske/lein-cljsbuild/issues/413
 
   :profiles {:dev-ext       {:cljsbuild {:builds {:dev
                                                   {:source-paths ["src/lib"
@@ -77,4 +75,8 @@
                                                                          :optimizations :advanced
                                                                          :elide-asserts true
                                                                          :source-map    "test/_generated/optimizations_advanced/chromex.test.js.map"}}}
-                                         :test-commands {"unit" ["phantomjs" "test/phantom.js" "test/runner_advanced.html"]}}}})
+                                         :test-commands {"unit" ["phantomjs" "test/phantom.js" "test/runner_advanced.html"]}}}}
+
+  :aliases {"test"          ["with-profile" "test" "cljsbuild" "test" "unit"]
+            "test-advanced" ["with-profile" "test-advanced" "cljsbuild" "test" "unit"]
+            "test-all"      ["do" "test," "test-advanced"]})
