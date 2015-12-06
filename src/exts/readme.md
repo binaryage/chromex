@@ -8,88 +8,88 @@ Generated on **2015-12-06** from **[Chromium @ 1a87980](https://chromium.googles
 
 | JS namespace | CLJS wrapper |
 | --- | --- |
-| [chrome.accessibilityFeatures](https://developer.chrome.com/extensions/accessibilityFeatures) | [chromex/accessibility_features.clj](chromex/accessibility_features.clj) |
-| [chrome.alarms](https://developer.chrome.com/extensions/alarms) | [chromex/alarms.clj](chromex/alarms.clj) |
-| [chrome.app](https://developer.chrome.com/extensions/app) | [chromex/app.clj](chromex/app.clj) |
-| [chrome.audioModem](https://developer.chrome.com/extensions/audioModem) | [chromex/audio_modem.clj](chromex/audio_modem.clj) |
-| [chrome.automation](https://developer.chrome.com/extensions/automation) | [chromex/automation.clj](chromex/automation.clj) |
-| [chrome.bluetooth](https://developer.chrome.com/extensions/bluetooth) | [chromex/bluetooth.clj](chromex/bluetooth.clj) |
-| [chrome.bookmarks](https://developer.chrome.com/extensions/bookmarks) | [chromex/bookmarks.clj](chromex/bookmarks.clj) |
-| [chrome.browserAction](https://developer.chrome.com/extensions/browserAction) | [chromex/browser_action.clj](chromex/browser_action.clj) |
-| [chrome.browsingData](https://developer.chrome.com/extensions/browsingData) | [chromex/browsing_data.clj](chromex/browsing_data.clj) |
-| [chrome.cast.streaming.receiverSession](https://developer.chrome.com/extensions/cast.streaming.receiverSession) | [chromex/cast/streaming/receiver_session.clj](chromex/cast/streaming/receiver_session.clj) |
-| [chrome.cast.streaming.rtpStream](https://developer.chrome.com/extensions/cast.streaming.rtpStream) | [chromex/cast/streaming/rtp_stream.clj](chromex/cast/streaming/rtp_stream.clj) |
-| [chrome.cast.streaming.session](https://developer.chrome.com/extensions/cast.streaming.session) | [chromex/cast/streaming/session.clj](chromex/cast/streaming/session.clj) |
-| [chrome.cast.streaming.udpTransport](https://developer.chrome.com/extensions/cast.streaming.udpTransport) | [chromex/cast/streaming/udp_transport.clj](chromex/cast/streaming/udp_transport.clj) |
-| [chrome.certificateProvider](https://developer.chrome.com/extensions/certificateProvider) | [chromex/certificate_provider.clj](chromex/certificate_provider.clj) |
-| [chrome.commands](https://developer.chrome.com/extensions/commands) | [chromex/commands.clj](chromex/commands.clj) |
-| [chrome.contentSettings](https://developer.chrome.com/extensions/contentSettings) | [chromex/content_settings.clj](chromex/content_settings.clj) |
-| [chrome.contextMenus](https://developer.chrome.com/extensions/contextMenus) | [chromex/context_menus.clj](chromex/context_menus.clj) |
-| [chrome.cookies](https://developer.chrome.com/extensions/cookies) | [chromex/cookies.clj](chromex/cookies.clj) |
-| [chrome.copresence](https://developer.chrome.com/extensions/copresence) | [chromex/copresence.clj](chromex/copresence.clj) |
-| [chrome.debugger](https://developer.chrome.com/extensions/debugger) | [chromex/debugger_api.clj](chromex/debugger_api.clj) |
-| [chrome.declarativeContent](https://developer.chrome.com/extensions/declarativeContent) | [chromex/declarative_content.clj](chromex/declarative_content.clj) |
-| [chrome.declarativeWebRequest](https://developer.chrome.com/extensions/declarativeWebRequest) | [chromex/declarative_web_request.clj](chromex/declarative_web_request.clj) |
-| [chrome.desktopCapture](https://developer.chrome.com/extensions/desktopCapture) | [chromex/desktop_capture.clj](chromex/desktop_capture.clj) |
-| [chrome.devtools.inspectedWindow](https://developer.chrome.com/extensions/devtools.inspectedWindow) | [chromex/devtools/inspected_window.clj](chromex/devtools/inspected_window.clj) |
-| [chrome.devtools.network](https://developer.chrome.com/extensions/devtools.network) | [chromex/devtools/network.clj](chromex/devtools/network.clj) |
-| [chrome.devtools.panels](https://developer.chrome.com/extensions/devtools.panels) | [chromex/devtools/panels.clj](chromex/devtools/panels.clj) |
-| [chrome.displaySource](https://developer.chrome.com/extensions/displaySource) | [chromex/display_source.clj](chromex/display_source.clj) |
-| [chrome.dns](https://developer.chrome.com/extensions/dns) | [chromex/dns.clj](chromex/dns.clj) |
-| [chrome.documentScan](https://developer.chrome.com/extensions/documentScan) | [chromex/document_scan.clj](chromex/document_scan.clj) |
-| [chrome.downloads](https://developer.chrome.com/extensions/downloads) | [chromex/downloads.clj](chromex/downloads.clj) |
-| [chrome.enterprise.deviceAttributes](https://developer.chrome.com/extensions/enterprise.deviceAttributes) | [chromex/enterprise/device_attributes.clj](chromex/enterprise/device_attributes.clj) |
-| [chrome.enterprise.platformKeys](https://developer.chrome.com/extensions/enterprise.platformKeys) | [chromex/enterprise/platform_keys.clj](chromex/enterprise/platform_keys.clj) |
-| [chrome.experimental.devtools.audits](https://developer.chrome.com/extensions/experimental.devtools.audits) | [chromex/experimental/devtools/audits.clj](chromex/experimental/devtools/audits.clj) |
-| [chrome.experimental.devtools.console](https://developer.chrome.com/extensions/experimental.devtools.console) | [chromex/experimental/devtools/console.clj](chromex/experimental/devtools/console.clj) |
-| [chrome.extension](https://developer.chrome.com/extensions/extension) | [chromex/extension.clj](chromex/extension.clj) |
-| [chrome.fileBrowserHandler](https://developer.chrome.com/extensions/fileBrowserHandler) | [chromex/file_browser_handler.clj](chromex/file_browser_handler.clj) |
-| [chrome.fileSystemProvider](https://developer.chrome.com/extensions/fileSystemProvider) | [chromex/file_system_provider.clj](chromex/file_system_provider.clj) |
-| [chrome.fontSettings](https://developer.chrome.com/extensions/fontSettings) | [chromex/font_settings.clj](chromex/font_settings.clj) |
-| [chrome.gcm](https://developer.chrome.com/extensions/gcm) | [chromex/gcm.clj](chromex/gcm.clj) |
-| [chrome.history](https://developer.chrome.com/extensions/history) | [chromex/history.clj](chromex/history.clj) |
-| [chrome.i18n](https://developer.chrome.com/extensions/i18n) | [chromex/i18n.clj](chromex/i18n.clj) |
-| [chrome.identity](https://developer.chrome.com/extensions/identity) | [chromex/identity.clj](chromex/identity.clj) |
-| [chrome.idle](https://developer.chrome.com/extensions/idle) | [chromex/idle.clj](chromex/idle.clj) |
-| [chrome.idltest](https://developer.chrome.com/extensions/idltest) | [chromex/idltest.clj](chromex/idltest.clj) |
-| [chrome.input.ime](https://developer.chrome.com/extensions/input.ime) | [chromex/input/ime.clj](chromex/input/ime.clj) |
-| [chrome.instanceID](https://developer.chrome.com/extensions/instanceID) | [chromex/instance_id.clj](chromex/instance_id.clj) |
-| [chrome.location](https://developer.chrome.com/extensions/location) | [chromex/location.clj](chromex/location.clj) |
-| [chrome.management](https://developer.chrome.com/extensions/management) | [chromex/management.clj](chromex/management.clj) |
-| [chrome.networking.config](https://developer.chrome.com/extensions/networking.config) | [chromex/networking/config.clj](chromex/networking/config.clj) |
-| [chrome.notificationProvider](https://developer.chrome.com/extensions/notificationProvider) | [chromex/notification_provider.clj](chromex/notification_provider.clj) |
-| [chrome.notifications](https://developer.chrome.com/extensions/notifications) | [chromex/notifications.clj](chromex/notifications.clj) |
-| [chrome.omnibox](https://developer.chrome.com/extensions/omnibox) | [chromex/omnibox.clj](chromex/omnibox.clj) |
-| [chrome.pageAction](https://developer.chrome.com/extensions/pageAction) | [chromex/page_action.clj](chromex/page_action.clj) |
-| [chrome.pageCapture](https://developer.chrome.com/extensions/pageCapture) | [chromex/page_capture.clj](chromex/page_capture.clj) |
-| [chrome.permissions](https://developer.chrome.com/extensions/permissions) | [chromex/permissions.clj](chromex/permissions.clj) |
-| [chrome.platformKeys](https://developer.chrome.com/extensions/platformKeys) | [chromex/platform_keys.clj](chromex/platform_keys.clj) |
-| [chrome.power](https://developer.chrome.com/extensions/power) | [chromex/power.clj](chromex/power.clj) |
-| [chrome.printerProvider](https://developer.chrome.com/extensions/printerProvider) | [chromex/printer_provider.clj](chromex/printer_provider.clj) |
-| [chrome.privacy](https://developer.chrome.com/extensions/privacy) | [chromex/privacy.clj](chromex/privacy.clj) |
-| [chrome.processes](https://developer.chrome.com/extensions/processes) | [chromex/processes.clj](chromex/processes.clj) |
-| [chrome.proxy](https://developer.chrome.com/extensions/proxy) | [chromex/proxy.clj](chromex/proxy.clj) |
-| [chrome.runtime](https://developer.chrome.com/extensions/runtime) | [chromex/runtime.clj](chromex/runtime.clj) |
-| [chrome.sessions](https://developer.chrome.com/extensions/sessions) | [chromex/sessions.clj](chromex/sessions.clj) |
-| [chrome.signedInDevices](https://developer.chrome.com/extensions/signedInDevices) | [chromex/signed_in_devices.clj](chromex/signed_in_devices.clj) |
-| [chrome.storage](https://developer.chrome.com/extensions/storage) | [chromex/storage.clj](chromex/storage.clj) |
-| [chrome.system.cpu](https://developer.chrome.com/extensions/system.cpu) | [chromex/system/cpu.clj](chromex/system/cpu.clj) |
-| [chrome.system.display](https://developer.chrome.com/extensions/system.display) | [chromex/system/display.clj](chromex/system/display.clj) |
-| [chrome.system.memory](https://developer.chrome.com/extensions/system.memory) | [chromex/system/memory.clj](chromex/system/memory.clj) |
-| [chrome.system.storage](https://developer.chrome.com/extensions/system.storage) | [chromex/system/storage.clj](chromex/system/storage.clj) |
-| [chrome.systemIndicator](https://developer.chrome.com/extensions/systemIndicator) | [chromex/system_indicator.clj](chromex/system_indicator.clj) |
-| [chrome.tabCapture](https://developer.chrome.com/extensions/tabCapture) | [chromex/tab_capture.clj](chromex/tab_capture.clj) |
-| [chrome.tabs](https://developer.chrome.com/extensions/tabs) | [chromex/tabs.clj](chromex/tabs.clj) |
-| [chrome.test](https://developer.chrome.com/extensions/test) | [chromex/test.clj](chromex/test.clj) |
-| [chrome.topSites](https://developer.chrome.com/extensions/topSites) | [chromex/top_sites.clj](chromex/top_sites.clj) |
-| [chrome.tts](https://developer.chrome.com/extensions/tts) | [chromex/tts.clj](chromex/tts.clj) |
-| [chrome.ttsEngine](https://developer.chrome.com/extensions/ttsEngine) | [chromex/tts_engine.clj](chromex/tts_engine.clj) |
-| [chrome.vpnProvider](https://developer.chrome.com/extensions/vpnProvider) | [chromex/vpn_provider.clj](chromex/vpn_provider.clj) |
-| [chrome.wallpaper](https://developer.chrome.com/extensions/wallpaper) | [chromex/wallpaper.clj](chromex/wallpaper.clj) |
-| [chrome.webNavigation](https://developer.chrome.com/extensions/webNavigation) | [chromex/web_navigation.clj](chromex/web_navigation.clj) |
-| [chrome.webRequest](https://developer.chrome.com/extensions/webRequest) | [chromex/web_request.clj](chromex/web_request.clj) |
-| [chrome.webstore](https://developer.chrome.com/extensions/webstore) | [chromex/webstore.clj](chromex/webstore.clj) |
-| [chrome.windows](https://developer.chrome.com/extensions/windows) | [chromex/windows.clj](chromex/windows.clj) |
+| [chrome.accessibilityFeatures](https://developer.chrome.com/extensions/accessibilityFeatures) | [chromex/ext/accessibility_features.clj](chromex/ext/accessibility_features.clj) |
+| [chrome.alarms](https://developer.chrome.com/extensions/alarms) | [chromex/ext/alarms.clj](chromex/ext/alarms.clj) |
+| [chrome.app](https://developer.chrome.com/extensions/app) | [chromex/ext/app.clj](chromex/ext/app.clj) |
+| [chrome.audioModem](https://developer.chrome.com/extensions/audioModem) | [chromex/ext/audio_modem.clj](chromex/ext/audio_modem.clj) |
+| [chrome.automation](https://developer.chrome.com/extensions/automation) | [chromex/ext/automation.clj](chromex/ext/automation.clj) |
+| [chrome.bluetooth](https://developer.chrome.com/extensions/bluetooth) | [chromex/ext/bluetooth.clj](chromex/ext/bluetooth.clj) |
+| [chrome.bookmarks](https://developer.chrome.com/extensions/bookmarks) | [chromex/ext/bookmarks.clj](chromex/ext/bookmarks.clj) |
+| [chrome.browserAction](https://developer.chrome.com/extensions/browserAction) | [chromex/ext/browser_action.clj](chromex/ext/browser_action.clj) |
+| [chrome.browsingData](https://developer.chrome.com/extensions/browsingData) | [chromex/ext/browsing_data.clj](chromex/ext/browsing_data.clj) |
+| [chrome.cast.streaming.receiverSession](https://developer.chrome.com/extensions/cast.streaming.receiverSession) | [chromex/ext/cast/streaming/receiver_session.clj](chromex/ext/cast/streaming/receiver_session.clj) |
+| [chrome.cast.streaming.rtpStream](https://developer.chrome.com/extensions/cast.streaming.rtpStream) | [chromex/ext/cast/streaming/rtp_stream.clj](chromex/ext/cast/streaming/rtp_stream.clj) |
+| [chrome.cast.streaming.session](https://developer.chrome.com/extensions/cast.streaming.session) | [chromex/ext/cast/streaming/session.clj](chromex/ext/cast/streaming/session.clj) |
+| [chrome.cast.streaming.udpTransport](https://developer.chrome.com/extensions/cast.streaming.udpTransport) | [chromex/ext/cast/streaming/udp_transport.clj](chromex/ext/cast/streaming/udp_transport.clj) |
+| [chrome.certificateProvider](https://developer.chrome.com/extensions/certificateProvider) | [chromex/ext/certificate_provider.clj](chromex/ext/certificate_provider.clj) |
+| [chrome.commands](https://developer.chrome.com/extensions/commands) | [chromex/ext/commands.clj](chromex/ext/commands.clj) |
+| [chrome.contentSettings](https://developer.chrome.com/extensions/contentSettings) | [chromex/ext/content_settings.clj](chromex/ext/content_settings.clj) |
+| [chrome.contextMenus](https://developer.chrome.com/extensions/contextMenus) | [chromex/ext/context_menus.clj](chromex/ext/context_menus.clj) |
+| [chrome.cookies](https://developer.chrome.com/extensions/cookies) | [chromex/ext/cookies.clj](chromex/ext/cookies.clj) |
+| [chrome.copresence](https://developer.chrome.com/extensions/copresence) | [chromex/ext/copresence.clj](chromex/ext/copresence.clj) |
+| [chrome.debugger](https://developer.chrome.com/extensions/debugger) | [chromex/ext/debugger_api.clj](chromex/ext/debugger_api.clj) |
+| [chrome.declarativeContent](https://developer.chrome.com/extensions/declarativeContent) | [chromex/ext/declarative_content.clj](chromex/ext/declarative_content.clj) |
+| [chrome.declarativeWebRequest](https://developer.chrome.com/extensions/declarativeWebRequest) | [chromex/ext/declarative_web_request.clj](chromex/ext/declarative_web_request.clj) |
+| [chrome.desktopCapture](https://developer.chrome.com/extensions/desktopCapture) | [chromex/ext/desktop_capture.clj](chromex/ext/desktop_capture.clj) |
+| [chrome.devtools.inspectedWindow](https://developer.chrome.com/extensions/devtools.inspectedWindow) | [chromex/ext/devtools/inspected_window.clj](chromex/ext/devtools/inspected_window.clj) |
+| [chrome.devtools.network](https://developer.chrome.com/extensions/devtools.network) | [chromex/ext/devtools/network.clj](chromex/ext/devtools/network.clj) |
+| [chrome.devtools.panels](https://developer.chrome.com/extensions/devtools.panels) | [chromex/ext/devtools/panels.clj](chromex/ext/devtools/panels.clj) |
+| [chrome.displaySource](https://developer.chrome.com/extensions/displaySource) | [chromex/ext/display_source.clj](chromex/ext/display_source.clj) |
+| [chrome.dns](https://developer.chrome.com/extensions/dns) | [chromex/ext/dns.clj](chromex/ext/dns.clj) |
+| [chrome.documentScan](https://developer.chrome.com/extensions/documentScan) | [chromex/ext/document_scan.clj](chromex/ext/document_scan.clj) |
+| [chrome.downloads](https://developer.chrome.com/extensions/downloads) | [chromex/ext/downloads.clj](chromex/ext/downloads.clj) |
+| [chrome.enterprise.deviceAttributes](https://developer.chrome.com/extensions/enterprise.deviceAttributes) | [chromex/ext/enterprise/device_attributes.clj](chromex/ext/enterprise/device_attributes.clj) |
+| [chrome.enterprise.platformKeys](https://developer.chrome.com/extensions/enterprise.platformKeys) | [chromex/ext/enterprise/platform_keys.clj](chromex/ext/enterprise/platform_keys.clj) |
+| [chrome.experimental.devtools.audits](https://developer.chrome.com/extensions/experimental.devtools.audits) | [chromex/ext/experimental/devtools/audits.clj](chromex/ext/experimental/devtools/audits.clj) |
+| [chrome.experimental.devtools.console](https://developer.chrome.com/extensions/experimental.devtools.console) | [chromex/ext/experimental/devtools/console.clj](chromex/ext/experimental/devtools/console.clj) |
+| [chrome.extension](https://developer.chrome.com/extensions/extension) | [chromex/ext/extension.clj](chromex/ext/extension.clj) |
+| [chrome.fileBrowserHandler](https://developer.chrome.com/extensions/fileBrowserHandler) | [chromex/ext/file_browser_handler.clj](chromex/ext/file_browser_handler.clj) |
+| [chrome.fileSystemProvider](https://developer.chrome.com/extensions/fileSystemProvider) | [chromex/ext/file_system_provider.clj](chromex/ext/file_system_provider.clj) |
+| [chrome.fontSettings](https://developer.chrome.com/extensions/fontSettings) | [chromex/ext/font_settings.clj](chromex/ext/font_settings.clj) |
+| [chrome.gcm](https://developer.chrome.com/extensions/gcm) | [chromex/ext/gcm.clj](chromex/ext/gcm.clj) |
+| [chrome.history](https://developer.chrome.com/extensions/history) | [chromex/ext/history.clj](chromex/ext/history.clj) |
+| [chrome.i18n](https://developer.chrome.com/extensions/i18n) | [chromex/ext/i18n.clj](chromex/ext/i18n.clj) |
+| [chrome.identity](https://developer.chrome.com/extensions/identity) | [chromex/ext/identity.clj](chromex/ext/identity.clj) |
+| [chrome.idle](https://developer.chrome.com/extensions/idle) | [chromex/ext/idle.clj](chromex/ext/idle.clj) |
+| [chrome.idltest](https://developer.chrome.com/extensions/idltest) | [chromex/ext/idltest.clj](chromex/ext/idltest.clj) |
+| [chrome.input.ime](https://developer.chrome.com/extensions/input.ime) | [chromex/ext/input/ime.clj](chromex/ext/input/ime.clj) |
+| [chrome.instanceID](https://developer.chrome.com/extensions/instanceID) | [chromex/ext/instance_id.clj](chromex/ext/instance_id.clj) |
+| [chrome.location](https://developer.chrome.com/extensions/location) | [chromex/ext/location.clj](chromex/ext/location.clj) |
+| [chrome.management](https://developer.chrome.com/extensions/management) | [chromex/ext/management.clj](chromex/ext/management.clj) |
+| [chrome.networking.config](https://developer.chrome.com/extensions/networking.config) | [chromex/ext/networking/config.clj](chromex/ext/networking/config.clj) |
+| [chrome.notificationProvider](https://developer.chrome.com/extensions/notificationProvider) | [chromex/ext/notification_provider.clj](chromex/ext/notification_provider.clj) |
+| [chrome.notifications](https://developer.chrome.com/extensions/notifications) | [chromex/ext/notifications.clj](chromex/ext/notifications.clj) |
+| [chrome.omnibox](https://developer.chrome.com/extensions/omnibox) | [chromex/ext/omnibox.clj](chromex/ext/omnibox.clj) |
+| [chrome.pageAction](https://developer.chrome.com/extensions/pageAction) | [chromex/ext/page_action.clj](chromex/ext/page_action.clj) |
+| [chrome.pageCapture](https://developer.chrome.com/extensions/pageCapture) | [chromex/ext/page_capture.clj](chromex/ext/page_capture.clj) |
+| [chrome.permissions](https://developer.chrome.com/extensions/permissions) | [chromex/ext/permissions.clj](chromex/ext/permissions.clj) |
+| [chrome.platformKeys](https://developer.chrome.com/extensions/platformKeys) | [chromex/ext/platform_keys.clj](chromex/ext/platform_keys.clj) |
+| [chrome.power](https://developer.chrome.com/extensions/power) | [chromex/ext/power.clj](chromex/ext/power.clj) |
+| [chrome.printerProvider](https://developer.chrome.com/extensions/printerProvider) | [chromex/ext/printer_provider.clj](chromex/ext/printer_provider.clj) |
+| [chrome.privacy](https://developer.chrome.com/extensions/privacy) | [chromex/ext/privacy.clj](chromex/ext/privacy.clj) |
+| [chrome.processes](https://developer.chrome.com/extensions/processes) | [chromex/ext/processes.clj](chromex/ext/processes.clj) |
+| [chrome.proxy](https://developer.chrome.com/extensions/proxy) | [chromex/ext/proxy.clj](chromex/ext/proxy.clj) |
+| [chrome.runtime](https://developer.chrome.com/extensions/runtime) | [chromex/ext/runtime.clj](chromex/ext/runtime.clj) |
+| [chrome.sessions](https://developer.chrome.com/extensions/sessions) | [chromex/ext/sessions.clj](chromex/ext/sessions.clj) |
+| [chrome.signedInDevices](https://developer.chrome.com/extensions/signedInDevices) | [chromex/ext/signed_in_devices.clj](chromex/ext/signed_in_devices.clj) |
+| [chrome.storage](https://developer.chrome.com/extensions/storage) | [chromex/ext/storage.clj](chromex/ext/storage.clj) |
+| [chrome.system.cpu](https://developer.chrome.com/extensions/system.cpu) | [chromex/ext/system/cpu.clj](chromex/ext/system/cpu.clj) |
+| [chrome.system.display](https://developer.chrome.com/extensions/system.display) | [chromex/ext/system/display.clj](chromex/ext/system/display.clj) |
+| [chrome.system.memory](https://developer.chrome.com/extensions/system.memory) | [chromex/ext/system/memory.clj](chromex/ext/system/memory.clj) |
+| [chrome.system.storage](https://developer.chrome.com/extensions/system.storage) | [chromex/ext/system/storage.clj](chromex/ext/system/storage.clj) |
+| [chrome.systemIndicator](https://developer.chrome.com/extensions/systemIndicator) | [chromex/ext/system_indicator.clj](chromex/ext/system_indicator.clj) |
+| [chrome.tabCapture](https://developer.chrome.com/extensions/tabCapture) | [chromex/ext/tab_capture.clj](chromex/ext/tab_capture.clj) |
+| [chrome.tabs](https://developer.chrome.com/extensions/tabs) | [chromex/ext/tabs.clj](chromex/ext/tabs.clj) |
+| [chrome.test](https://developer.chrome.com/extensions/test) | [chromex/ext/test.clj](chromex/ext/test.clj) |
+| [chrome.topSites](https://developer.chrome.com/extensions/topSites) | [chromex/ext/top_sites.clj](chromex/ext/top_sites.clj) |
+| [chrome.tts](https://developer.chrome.com/extensions/tts) | [chromex/ext/tts.clj](chromex/ext/tts.clj) |
+| [chrome.ttsEngine](https://developer.chrome.com/extensions/ttsEngine) | [chromex/ext/tts_engine.clj](chromex/ext/tts_engine.clj) |
+| [chrome.vpnProvider](https://developer.chrome.com/extensions/vpnProvider) | [chromex/ext/vpn_provider.clj](chromex/ext/vpn_provider.clj) |
+| [chrome.wallpaper](https://developer.chrome.com/extensions/wallpaper) | [chromex/ext/wallpaper.clj](chromex/ext/wallpaper.clj) |
+| [chrome.webNavigation](https://developer.chrome.com/extensions/webNavigation) | [chromex/ext/web_navigation.clj](chromex/ext/web_navigation.clj) |
+| [chrome.webRequest](https://developer.chrome.com/extensions/webRequest) | [chromex/ext/web_request.clj](chromex/ext/web_request.clj) |
+| [chrome.webstore](https://developer.chrome.com/extensions/webstore) | [chromex/ext/webstore.clj](chromex/ext/webstore.clj) |
+| [chrome.windows](https://developer.chrome.com/extensions/windows) | [chromex/ext/windows.clj](chromex/ext/windows.clj) |
 
 
 ### API stats
@@ -187,134 +187,134 @@ Generated 82 namespaces containing 44 properties, 354 functions and 185 events:
 ```
 (ns your.project
   (:require
-    [chromex.accessibility-features refer-macros:[
+    [chromex.ext.accessibility-features refer-macros:[
       get-spoken-feedback get-large-cursor get-sticky-keys get-high-contrast get-screen-magnifier
       get-autoclick get-virtual-keyboard get-animation-policy tap-all-events]]
     
-    [chromex.alarms refer-macros:[
+    [chromex.ext.alarms refer-macros:[
       create get get-all clear clear-all tap-on-alarm tap-all-events]]
     
-    [chromex.app refer-macros:[
+    [chromex.ext.app refer-macros:[
       get-is-installed install-state running-state get-details tap-all-events]]
     
-    [chromex.audio-modem refer-macros:[
+    [chromex.ext.audio-modem refer-macros:[
       transmit stop-transmit receive stop-receive tap-on-received tap-on-transmit-fail tap-all-events]]
     
-    [chromex.automation refer-macros:[
+    [chromex.ext.automation refer-macros:[
       get-tree get-desktop add-tree-change-observer remove-tree-change-observer set-document-selection
       tap-all-events]]
     
-    [chromex.bluetooth refer-macros:[
+    [chromex.ext.bluetooth refer-macros:[
       get-adapter-state get-device get-devices start-discovery stop-discovery
       tap-on-adapter-state-changed tap-on-device-added tap-on-device-changed tap-on-device-removed
       tap-all-events]]
     
-    [chromex.bookmarks refer-macros:[
+    [chromex.ext.bookmarks refer-macros:[
       get-max-write-operations-per-hour get-max-sustained-write-operations-per-minute get get-children
       get-recent get-tree get-sub-tree search create move update remove remove-tree tap-on-created
       tap-on-removed tap-on-changed tap-on-moved tap-on-children-reordered tap-on-import-began
       tap-on-import-ended tap-all-events]]
     
-    [chromex.browser-action refer-macros:[
+    [chromex.ext.browser-action refer-macros:[
       set-title get-title set-icon set-popup get-popup set-badge-text get-badge-text
       set-badge-background-color get-badge-background-color enable disable tap-on-clicked tap-all-events]]
     
-    [chromex.browsing-data refer-macros:[
+    [chromex.ext.browsing-data refer-macros:[
       settings remove remove-appcache remove-cache remove-cookies remove-downloads remove-file-systems
       remove-form-data remove-history remove-indexed-db remove-local-storage remove-plugin-data
       remove-passwords remove-web-sql tap-all-events]]
     
-    [chromex.cast.streaming.receiver-session refer-macros:[
+    [chromex.ext.cast.streaming.receiver-session refer-macros:[
       create-and-bind tap-all-events]]
     
-    [chromex.cast.streaming.rtp-stream refer-macros:[
+    [chromex.ext.cast.streaming.rtp-stream refer-macros:[
       destroy get-supported-params start stop toggle-logging get-raw-events get-stats tap-on-started
       tap-on-stopped tap-on-error tap-all-events]]
     
-    [chromex.cast.streaming.session refer-macros:[
+    [chromex.ext.cast.streaming.session refer-macros:[
       create tap-all-events]]
     
-    [chromex.cast.streaming.udp-transport refer-macros:[
+    [chromex.ext.cast.streaming.udp-transport refer-macros:[
       destroy set-destination set-options tap-all-events]]
     
-    [chromex.certificate-provider refer-macros:[
+    [chromex.ext.certificate-provider refer-macros:[
       tap-on-certificates-requested tap-on-sign-digest-requested tap-all-events]]
     
-    [chromex.commands refer-macros:[
+    [chromex.ext.commands refer-macros:[
       get-all tap-on-command tap-all-events]]
     
-    [chromex.content-settings refer-macros:[
+    [chromex.ext.content-settings refer-macros:[
       get-cookies get-images get-javascript get-location get-plugins get-popups get-notifications
       get-fullscreen get-mouselock get-microphone get-camera get-unsandboxed-plugins
       get-automatic-downloads tap-all-events]]
     
-    [chromex.context-menus refer-macros:[
+    [chromex.ext.context-menus refer-macros:[
       get-action-menu-top-level-limit create update remove remove-all tap-on-clicked tap-all-events]]
     
-    [chromex.cookies refer-macros:[
+    [chromex.ext.cookies refer-macros:[
       get get-all set remove get-all-cookie-stores tap-on-changed tap-all-events]]
     
-    [chromex.copresence refer-macros:[
+    [chromex.ext.copresence refer-macros:[
       execute tap-on-messages-received tap-on-status-updated tap-all-events]]
     
-    [chromex.debugger-api refer-macros:[
+    [chromex.ext.debugger-api refer-macros:[
       attach detach send-command get-targets tap-on-event tap-on-detach tap-all-events]]
     
-    [chromex.declarative-content refer-macros:[
+    [chromex.ext.declarative-content refer-macros:[
       tap-on-page-changed tap-all-events]]
     
-    [chromex.declarative-web-request refer-macros:[
+    [chromex.ext.declarative-web-request refer-macros:[
       tap-on-request tap-on-message tap-all-events]]
     
-    [chromex.desktop-capture refer-macros:[
+    [chromex.ext.desktop-capture refer-macros:[
       choose-desktop-media cancel-choose-desktop-media tap-all-events]]
     
-    [chromex.devtools.inspected-window refer-macros:[
+    [chromex.ext.devtools.inspected-window refer-macros:[
       get-tab-id eval reload get-resources tap-on-resource-added tap-on-resource-content-committed
       tap-all-events]]
     
-    [chromex.devtools.network refer-macros:[
+    [chromex.ext.devtools.network refer-macros:[
       get-har tap-on-request-finished tap-on-navigated tap-all-events]]
     
-    [chromex.devtools.panels refer-macros:[
+    [chromex.ext.devtools.panels refer-macros:[
       get-elements get-sources create set-open-resource-handler open-resource tap-all-events]]
     
-    [chromex.display-source refer-macros:[
+    [chromex.ext.display-source refer-macros:[
       get-available-sinks request-authentication start-session terminate-session tap-on-sinks-updated
       tap-on-session-started tap-on-session-terminated tap-on-session-error-occured tap-all-events]]
     
-    [chromex.dns refer-macros:[
+    [chromex.ext.dns refer-macros:[
       resolve tap-all-events]]
     
-    [chromex.document-scan refer-macros:[
+    [chromex.ext.document-scan refer-macros:[
       scan tap-all-events]]
     
-    [chromex.downloads refer-macros:[
+    [chromex.ext.downloads refer-macros:[
       download search pause resume cancel get-file-icon open show show-default-folder erase remove-file
       accept-danger drag set-shelf-enabled tap-on-created tap-on-erased tap-on-changed
       tap-on-determining-filename tap-all-events]]
     
-    [chromex.enterprise.device-attributes refer-macros:[
+    [chromex.ext.enterprise.device-attributes refer-macros:[
       get-directory-device-id tap-all-events]]
     
-    [chromex.enterprise.platform-keys refer-macros:[
+    [chromex.ext.enterprise.platform-keys refer-macros:[
       get-tokens get-certificates import-certificate remove-certificate tap-all-events]]
     
-    [chromex.experimental.devtools.audits refer-macros:[
+    [chromex.ext.experimental.devtools.audits refer-macros:[
       add-category tap-all-events]]
     
-    [chromex.experimental.devtools.console refer-macros:[
+    [chromex.ext.experimental.devtools.console refer-macros:[
       add-message get-messages tap-on-message-added tap-all-events]]
     
-    [chromex.extension refer-macros:[
+    [chromex.ext.extension refer-macros:[
       get-last-error get-in-incognito-context send-request get-url get-views get-background-page
       get-extension-tabs is-allowed-incognito-access is-allowed-file-scheme-access set-update-url-data
       tap-on-request tap-on-request-external tap-all-events]]
     
-    [chromex.file-browser-handler refer-macros:[
+    [chromex.ext.file-browser-handler refer-macros:[
       select-file tap-on-execute tap-all-events]]
     
-    [chromex.file-system-provider refer-macros:[
+    [chromex.ext.file-system-provider refer-macros:[
       mount unmount get-all get notify tap-on-unmount-requested tap-on-get-metadata-requested
       tap-on-get-actions-requested tap-on-read-directory-requested tap-on-open-file-requested
       tap-on-close-file-requested tap-on-read-file-requested tap-on-create-directory-requested
@@ -324,98 +324,98 @@ Generated 82 namespaces containing 44 properties, 354 functions and 185 events:
       tap-on-add-watcher-requested tap-on-remove-watcher-requested tap-on-execute-action-requested
       tap-all-events]]
     
-    [chromex.font-settings refer-macros:[
+    [chromex.ext.font-settings refer-macros:[
       clear-font get-font set-font get-font-list clear-default-font-size get-default-font-size
       set-default-font-size clear-default-fixed-font-size get-default-fixed-font-size
       set-default-fixed-font-size clear-minimum-font-size get-minimum-font-size set-minimum-font-size
       tap-on-font-changed tap-on-default-font-size-changed tap-on-default-fixed-font-size-changed
       tap-on-minimum-font-size-changed tap-all-events]]
     
-    [chromex.gcm refer-macros:[
+    [chromex.ext.gcm refer-macros:[
       get-max-message-size register unregister send tap-on-message tap-on-messages-deleted
       tap-on-send-error tap-all-events]]
     
-    [chromex.history refer-macros:[
+    [chromex.ext.history refer-macros:[
       search get-visits add-url delete-url delete-range delete-all tap-on-visited tap-on-visit-removed
       tap-all-events]]
     
-    [chromex.i18n refer-macros:[
+    [chromex.ext.i18n refer-macros:[
       get-accept-languages get-message get-ui-language detect-language tap-all-events]]
     
-    [chromex.identity refer-macros:[
+    [chromex.ext.identity refer-macros:[
       get-accounts get-auth-token get-profile-user-info remove-cached-auth-token launch-web-auth-flow
       get-redirect-url tap-on-sign-in-changed tap-all-events]]
     
-    [chromex.idle refer-macros:[
+    [chromex.ext.idle refer-macros:[
       query-state set-detection-interval tap-on-state-changed tap-all-events]]
     
-    [chromex.idltest refer-macros:[
+    [chromex.ext.idltest refer-macros:[
       send-array-buffer send-array-buffer-view get-array-buffer nocompile-func tap-all-events]]
     
-    [chromex.input.ime refer-macros:[
+    [chromex.ext.input.ime refer-macros:[
       set-composition clear-composition commit-text send-key-events hide-input-view
       set-candidate-window-properties set-candidates set-cursor-position set-menu-items update-menu-items
       delete-surrounding-text key-event-handled tap-on-activate tap-on-deactivated tap-on-focus
       tap-on-blur tap-on-input-context-update tap-on-key-event tap-on-candidate-clicked
       tap-on-menu-item-activated tap-on-surrounding-text-changed tap-on-reset tap-all-events]]
     
-    [chromex.instance-id refer-macros:[
+    [chromex.ext.instance-id refer-macros:[
       get-id get-creation-time get-token delete-token delete-id tap-on-token-refresh tap-all-events]]
     
-    [chromex.location refer-macros:[
+    [chromex.ext.location refer-macros:[
       watch-location clear-watch tap-on-location-update tap-on-location-error tap-all-events]]
     
-    [chromex.management refer-macros:[
+    [chromex.ext.management refer-macros:[
       get-all get get-self get-permission-warnings-by-id get-permission-warnings-by-manifest set-enabled
       uninstall uninstall-self launch-app create-app-shortcut set-launch-type generate-app-for-link
       tap-on-installed tap-on-uninstalled tap-on-enabled tap-on-disabled tap-all-events]]
     
-    [chromex.networking.config refer-macros:[
+    [chromex.ext.networking.config refer-macros:[
       set-network-filter finish-authentication tap-on-captive-portal-detected tap-all-events]]
     
-    [chromex.notification-provider refer-macros:[
+    [chromex.ext.notification-provider refer-macros:[
       notify-on-cleared notify-on-clicked notify-on-button-clicked notify-on-permission-level-changed
       notify-on-show-settings get-notifier get-all-notifiers tap-on-created tap-on-updated tap-on-cleared
       tap-all-events]]
     
-    [chromex.notifications refer-macros:[
+    [chromex.ext.notifications refer-macros:[
       create update clear get-all get-permission-level tap-on-closed tap-on-clicked tap-on-button-clicked
       tap-on-permission-level-changed tap-on-show-settings tap-all-events]]
     
-    [chromex.omnibox refer-macros:[
+    [chromex.ext.omnibox refer-macros:[
       set-default-suggestion tap-on-input-started tap-on-input-changed tap-on-input-entered
       tap-on-input-cancelled tap-all-events]]
     
-    [chromex.page-action refer-macros:[
+    [chromex.ext.page-action refer-macros:[
       show hide set-title get-title set-icon set-popup get-popup tap-on-clicked tap-all-events]]
     
-    [chromex.page-capture refer-macros:[
+    [chromex.ext.page-capture refer-macros:[
       save-as-mhtml tap-all-events]]
     
-    [chromex.permissions refer-macros:[
+    [chromex.ext.permissions refer-macros:[
       get-all contains request remove tap-on-added tap-on-removed tap-all-events]]
     
-    [chromex.platform-keys refer-macros:[
+    [chromex.ext.platform-keys refer-macros:[
       select-client-certificates get-key-pair subtle-crypto verify-tls-server-certificate tap-all-events]]
     
-    [chromex.power refer-macros:[
+    [chromex.ext.power refer-macros:[
       request-keep-awake release-keep-awake tap-all-events]]
     
-    [chromex.printer-provider refer-macros:[
+    [chromex.ext.printer-provider refer-macros:[
       tap-on-get-printers-requested tap-on-get-usb-printer-info-requested tap-on-get-capability-requested
       tap-on-print-requested tap-all-events]]
     
-    [chromex.privacy refer-macros:[
+    [chromex.ext.privacy refer-macros:[
       get-network get-services get-websites tap-all-events]]
     
-    [chromex.processes refer-macros:[
+    [chromex.ext.processes refer-macros:[
       terminate get-process-id-for-tab get-process-info tap-on-updated tap-on-updated-with-memory
       tap-on-created tap-on-unresponsive tap-on-exited tap-all-events]]
     
-    [chromex.proxy refer-macros:[
+    [chromex.ext.proxy refer-macros:[
       get-settings tap-on-proxy-error tap-all-events]]
     
-    [chromex.runtime refer-macros:[
+    [chromex.ext.runtime refer-macros:[
       get-last-error get-id get-background-page open-options-page get-manifest get-url set-uninstall-url
       reload request-update-check restart connect connect-native send-message send-native-message
       get-platform-info get-package-directory-entry tap-on-startup tap-on-installed tap-on-suspend
@@ -423,34 +423,34 @@ Generated 82 namespaces containing 44 properties, 354 functions and 185 events:
       tap-on-connect-external tap-on-message tap-on-message-external tap-on-restart-required
       tap-all-events]]
     
-    [chromex.sessions refer-macros:[
+    [chromex.ext.sessions refer-macros:[
       get-max-session-results get-recently-closed get-devices restore tap-on-changed tap-all-events]]
     
-    [chromex.signed-in-devices refer-macros:[
+    [chromex.ext.signed-in-devices refer-macros:[
       get tap-on-device-info-change tap-all-events]]
     
-    [chromex.storage refer-macros:[
+    [chromex.ext.storage refer-macros:[
       get-sync get-local get-managed tap-on-changed tap-all-events]]
     
-    [chromex.system.cpu refer-macros:[
+    [chromex.ext.system.cpu refer-macros:[
       get-info tap-all-events]]
     
-    [chromex.system.display refer-macros:[
+    [chromex.ext.system.display refer-macros:[
       get-info set-display-properties enable-unified-desktop tap-on-display-changed tap-all-events]]
     
-    [chromex.system.memory refer-macros:[
+    [chromex.ext.system.memory refer-macros:[
       get-info tap-all-events]]
     
-    [chromex.system.storage refer-macros:[
+    [chromex.ext.system.storage refer-macros:[
       get-info eject-device get-available-capacity tap-on-attached tap-on-detached tap-all-events]]
     
-    [chromex.system-indicator refer-macros:[
+    [chromex.ext.system-indicator refer-macros:[
       set-icon enable disable tap-on-clicked tap-all-events]]
     
-    [chromex.tab-capture refer-macros:[
+    [chromex.ext.tab-capture refer-macros:[
       capture get-captured-tabs capture-offscreen-tab tap-on-status-changed tap-all-events]]
     
-    [chromex.tabs refer-macros:[
+    [chromex.ext.tabs refer-macros:[
       get-tab-id-none get get-current connect send-request send-message get-selected get-all-in-window
       create duplicate query highlight update move reload remove detect-language capture-visible-tab
       execute-script insert-css set-zoom get-zoom set-zoom-settings get-zoom-settings tap-on-created
@@ -458,7 +458,7 @@ Generated 82 namespaces containing 44 properties, 354 functions and 185 events:
       tap-on-highlight-changed tap-on-highlighted tap-on-detached tap-on-attached tap-on-removed
       tap-on-replaced tap-on-zoom-change tap-all-events]]
     
-    [chromex.test refer-macros:[
+    [chromex.ext.test refer-macros:[
       get-config notify-fail notify-pass log send-message callback-added run-next-test fail succeed
       run-with-natives-enabled get-module-system assert-true assert-false assert-bool check-deep-eq
       assert-eq assert-no-last-error assert-last-error assert-throws callback listen-once listen-forever
@@ -466,37 +466,37 @@ Generated 82 namespaces containing 44 properties, 354 functions and 185 events:
       is-processing-user-gesture run-with-user-gesture run-without-user-gesture wait-for-round-trip
       set-exception-handler get-wake-event-page tap-on-message tap-all-events]]
     
-    [chromex.top-sites refer-macros:[
+    [chromex.ext.top-sites refer-macros:[
       get tap-all-events]]
     
-    [chromex.tts refer-macros:[
+    [chromex.ext.tts refer-macros:[
       speak stop pause resume is-speaking get-voices tap-all-events]]
     
-    [chromex.tts-engine refer-macros:[
+    [chromex.ext.tts-engine refer-macros:[
       tap-on-speak tap-on-stop tap-on-pause tap-on-resume tap-all-events]]
     
-    [chromex.vpn-provider refer-macros:[
+    [chromex.ext.vpn-provider refer-macros:[
       create-config destroy-config set-parameters send-packet notify-connection-state-changed
       tap-on-platform-message tap-on-packet-received tap-on-config-removed tap-on-config-created
       tap-on-ui-event tap-all-events]]
     
-    [chromex.wallpaper refer-macros:[
+    [chromex.ext.wallpaper refer-macros:[
       set-wallpaper tap-all-events]]
     
-    [chromex.web-navigation refer-macros:[
+    [chromex.ext.web-navigation refer-macros:[
       get-frame get-all-frames tap-on-before-navigate tap-on-committed tap-on-dom-content-loaded
       tap-on-completed tap-on-error-occurred tap-on-created-navigation-target
       tap-on-reference-fragment-updated tap-on-tab-replaced tap-on-history-state-updated tap-all-events]]
     
-    [chromex.web-request refer-macros:[
+    [chromex.ext.web-request refer-macros:[
       get-max-handler-behavior-changed-calls-per10-minutes handler-behavior-changed tap-on-before-request
       tap-on-before-send-headers tap-on-send-headers tap-on-headers-received tap-on-auth-required
       tap-on-response-started tap-on-before-redirect tap-on-completed tap-on-error-occurred tap-all-events]]
     
-    [chromex.webstore refer-macros:[
+    [chromex.ext.webstore refer-macros:[
       install tap-on-install-stage-changed tap-on-download-progress tap-all-events]]
     
-    [chromex.windows refer-macros:[
+    [chromex.ext.windows refer-macros:[
       get-window-id-none get-window-id-current get get-current get-last-focused get-all create update
       remove tap-on-created tap-on-removed tap-on-focus-changed tap-all-events]]))
 ```
