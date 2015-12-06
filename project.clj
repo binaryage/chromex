@@ -10,7 +10,8 @@
   :plugins [[lein-cljsbuild "1.1.1"]
             [lein-figwheel "0.5.0-2"]
             [lein-shell "0.4.2"]
-            [lein-environ "1.0.1"]]
+            [lein-environ "1.0.1"]
+            [lein-cooper "1.1.2"]]
 
   :figwheel
   {:server-port    7000
@@ -103,5 +104,6 @@
   :aliases {"dev-build" ["with-profile" "+unpacked" "cljsbuild" "once" "background" "popup" "content-script"]
             "fig"       ["with-profile" "+unpacked" "figwheel" "background" "popup"]
             "content"   ["with-profile" "+unpacked" "cljsbuild" "auto" "content-script"]
+            "devel"     ["cooper"]
             "release"   ["with-profile" "+release" "do" "clean," "cljsbuild" "once" "background" "popup" "content-script"]
             "package"   ["shell" "scripts/package.sh"]})
