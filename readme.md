@@ -58,7 +58,7 @@ can optionally generate required marshalling code (during compilation).
 
 There is also a practical reason. This library is auto-generated and quite large - it would be too laborious to maintain
 hairy marshalling conventions up-to-date with evolving Chrome API index. If you want to provide richer set of
-marshalling for particular APIs you care about, you [can do that consistently](src/lib/chromex_lib/marshalling.clj).
+marshalling for particular APIs you care about, you [can do that consistently](src/lib/chromex/marshalling.clj).
 
 #### Callbacks as core.async channels
 
@@ -94,7 +94,7 @@ Please refer to [readme in chromex-sample](https://github.com/binaryage/chromex-
 
 Chromex does not rely on externs file. Instead it is rigorously [using string names](https://github.com/clojure/clojurescript/wiki/Dependencies#using-string-names)
 to access Javascript properties. I would recommend you to do the same in your own extension code. It is not that hard after all. You can use `oget`, `ocall` and `oapply`
-macros from [`chromex.support`](https://github.com/binaryage/chromex/blob/master/src/lib/chromex_lib/support.clj) namespace.
+macros from [`chromex.support`](https://github.com/binaryage/chromex/blob/master/src/lib/chromex/support.clj) namespace.
 
 Note: There is a [chrome_extensions.js](https://github.com/google/closure-compiler/blob/master/contrib/externs/chrome_extensions.js) externs file available,
 but that's been updated ad-hoc by the community. It is definitely incomplete and may be incorrect. But of course you are free to include the externs
@@ -108,8 +108,8 @@ Let's say for example you want to subscribe to [tab creation events](https://dev
 ```clojure
 (ns your.project
   (:require [cljs.core.async :refer [chan close!]]
-            [chromex.tabs :as tabs]
-            [chromex.web-navigation :as web-navigation]
+            [chromex.ext.tabs :as tabs]
+            [chromex.ext.web-navigation :as web-navigation]
             [chromex.chrome-event-channel :refer [make-chrome-event-channel]]))
 
 (let [chrome-event-channel (make-chrome-event-channel (chan))]
@@ -167,7 +167,7 @@ Here is an example how you would do this in chromex:
   (:require ...
             [chromex.config :refer-macros [with-custom-event-listener-factory]]
             [chromex.chrome-event-channel :refer [make-chrome-event-channel]]
-            [chromex.web-request :as web-request]))
+            [chromex.ext.web-request :as web-request]))
 
 (defn my-event-listener-factory []
   (fn [& args]
@@ -181,9 +181,9 @@ Here is an example how you would do this in chromex:
 ```
 
 What happened here? We have specified our own event listener factory which is responsible for creating a new
-event callback function whenever chromex asks for it. The default [implementation is here](src/lib/chromex_lib/defaults.cljs).
+event callback function whenever chromex asks for it. The default [implementation is here](src/lib/chromex/defaults.cljs).
 This function is part of our config object, so it can be redefined during runtime.
-[`with-custom-event-listener-factory`](https://github.com/binaryage/chromex/blob/master/src/lib/chromex_lib/config.clj)
+[`with-custom-event-listener-factory`](https://github.com/binaryage/chromex/blob/master/src/lib/chromex/config.clj)
 is just a convenience macro to override this config setting temporarily.
 
 This way we get all benefits of chromex (marshalling, logging, API deprecation/version checking, etc.) but still we
