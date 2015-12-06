@@ -1,5 +1,5 @@
 (ns chromex.app.hotword-private (:require-macros [chromex.app.hotword-private :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

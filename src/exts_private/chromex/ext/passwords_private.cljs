@@ -1,5 +1,5 @@
 (ns chromex.ext.passwords-private (:require-macros [chromex.ext.passwords-private :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

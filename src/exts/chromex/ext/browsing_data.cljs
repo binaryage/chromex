@@ -1,5 +1,5 @@
 (ns chromex.ext.browsing-data (:require-macros [chromex.ext.browsing-data :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

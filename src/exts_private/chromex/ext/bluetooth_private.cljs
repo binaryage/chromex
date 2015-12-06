@@ -1,5 +1,5 @@
 (ns chromex.ext.bluetooth-private (:require-macros [chromex.ext.bluetooth-private :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

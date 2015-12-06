@@ -1,7 +1,7 @@
 (ns chromex.runner
   (:require [cljs.test :as test :refer-macros [run-tests] :refer [report]]
-            [chromex-lib.config :refer [get-active-config set-active-config!]]
-            [chromex-lib.defaults :refer [console-log]]
+            [chromex.config :refer [get-active-config set-active-config!]]
+            [chromex.defaults :refer [console-log]]
             [chromex.test.compiler]
             [chromex.test-utils]
             [chromex.playground]

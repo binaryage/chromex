@@ -1,5 +1,5 @@
 (ns chromex.app.system.storage (:require-macros [chromex.app.system.storage :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

@@ -1,5 +1,5 @@
 (ns chromex.ext.system-indicator (:require-macros [chromex.ext.system-indicator :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

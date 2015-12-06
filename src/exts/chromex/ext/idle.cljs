@@ -1,5 +1,5 @@
 (ns chromex.ext.idle (:require-macros [chromex.ext.idle :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

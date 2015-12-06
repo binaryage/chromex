@@ -1,9 +1,9 @@
-(ns chromex-lib.defaults
-  (:require-macros [chromex-lib.config :refer [gen-default-config]]
-                   [chromex-lib.support :refer [oget ocall call-hook]])
+(ns chromex.defaults
+  (:require-macros [chromex.config :refer [gen-default-config]]
+                   [chromex.support :refer [oget ocall call-hook]])
   (:require [cljs.core.async :refer [put! chan]]
             [goog.object :as gobj]
-            [chromex-lib.protocols :as protocols]))
+            [chromex.protocols :as protocols]))
 
 ; -- callback support -------------------------------------------------------------------------------------------------------
 ;

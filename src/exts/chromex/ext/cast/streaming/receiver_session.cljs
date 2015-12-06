@@ -1,5 +1,5 @@
 (ns chromex.ext.cast.streaming.receiver-session (:require-macros [chromex.ext.cast.streaming.receiver-session :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

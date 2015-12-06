@@ -1,5 +1,5 @@
 (ns chromex.test.marshalling
-  (:require [chromex-lib.marshalling :as default-marshalling]))
+  (:require [chromex.marshalling :as default-marshalling]))
 
 (defn marshall-to-chrome [config id type param]
   (case type

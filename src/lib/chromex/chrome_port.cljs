@@ -1,6 +1,6 @@
-(ns chromex-lib.chrome-port
-  (:require [chromex-lib.support :refer-macros [oget ocall call-hook get-hook]]
-            [chromex-lib.protocols :as protocols :refer [IChromePort IChromePortState]]
+(ns chromex.chrome-port
+  (:require [chromex.support :refer-macros [oget ocall call-hook get-hook]]
+            [chromex.protocols :as protocols :refer [IChromePort IChromePortState]]
             [cljs.core.async.impl.protocols :as core-async]
             [cljs.core.async :refer [put! chan]]))
 

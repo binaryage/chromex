@@ -4,12 +4,12 @@
             [cljs.core.async :refer [<! >! timeout chan close!]]
             [chromex.test-utils :refer [advanced-mode?]]
             [chromex.playground-mocks :refer [last-event-result]]
-            [chromex-lib.support :refer-macros [oset]]
-            [chromex-lib.config :refer-macros [with-custom-event-listener-factory]]
+            [chromex.support :refer-macros [oset]]
+            [chromex.config :refer-macros [with-custom-event-listener-factory]]
             [chromex.playground :refer-macros [get-something do-something get-some-prop tap-on-something-events
                                                tap-all-events do-something-optional-args tap-on-something-else-events
                                                get-some-missing-prop do-something-missing tap-on-something-missing-events]]
-            [chromex-lib.chrome-event-channel :refer [make-chrome-event-channel]]))
+            [chromex.chrome-event-channel :refer [make-chrome-event-channel]]))
 
 ; -- test against mocks -----------------------------------------------------------------------------------------------------
 

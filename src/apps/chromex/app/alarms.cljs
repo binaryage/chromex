@@ -1,5 +1,5 @@
 (ns chromex.app.alarms (:require-macros [chromex.app.alarms :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

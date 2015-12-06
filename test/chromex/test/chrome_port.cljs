@@ -2,8 +2,8 @@
   (:require-macros [cljs.core.async.macros :refer [go]])
   (:require [cljs.test :refer-macros [deftest testing is async]]
             [cljs.core.async :refer [<!]]
-            [chromex-lib.protocols :as protocols :refer [IChromePort IChromePortState]]
-            [chromex-lib.support :refer-macros [oset ocall oget]]
+            [chromex.protocols :as protocols :refer [IChromePort IChromePortState]]
+            [chromex.support :refer-macros [oset ocall oget]]
             [chromex.test-utils :refer [advanced-mode?]]
             [chromex.playground :refer-macros [get-port]]))
 

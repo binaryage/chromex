@@ -1,5 +1,5 @@
 (ns chromex.app.hangouts-private (:require-macros [chromex.app.hangouts-private :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 

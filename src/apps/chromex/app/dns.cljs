@@ -1,5 +1,5 @@
 (ns chromex.app.dns (:require-macros [chromex.app.dns :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

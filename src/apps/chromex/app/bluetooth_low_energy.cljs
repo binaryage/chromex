@@ -1,5 +1,5 @@
 (ns chromex.app.bluetooth-low-energy (:require-macros [chromex.app.bluetooth-low-energy :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

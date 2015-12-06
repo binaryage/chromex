@@ -1,5 +1,5 @@
 (ns chromex.ext.devtools.inspected-window (:require-macros [chromex.ext.devtools.inspected-window :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- properties -------------------------------------------------------------------------------------------------------------
 

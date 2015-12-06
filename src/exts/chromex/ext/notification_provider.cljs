@@ -1,5 +1,5 @@
 (ns chromex.ext.notification-provider (:require-macros [chromex.ext.notification-provider :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

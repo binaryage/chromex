@@ -1,5 +1,5 @@
 (ns chromex.app.diagnostics (:require-macros [chromex.app.diagnostics :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

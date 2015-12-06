@@ -1,5 +1,5 @@
 (ns chromex.app.bluetooth-socket (:require-macros [chromex.app.bluetooth-socket :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

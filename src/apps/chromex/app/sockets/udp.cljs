@@ -1,5 +1,5 @@
 (ns chromex.app.sockets.udp (:require-macros [chromex.app.sockets.udp :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

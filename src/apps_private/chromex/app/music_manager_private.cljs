@@ -1,5 +1,5 @@
 (ns chromex.app.music-manager-private (:require-macros [chromex.app.music-manager-private :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

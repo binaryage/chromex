@@ -1,5 +1,5 @@
 (ns chromex.app.preferences-private (:require-macros [chromex.app.preferences-private :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- properties -------------------------------------------------------------------------------------------------------------
 

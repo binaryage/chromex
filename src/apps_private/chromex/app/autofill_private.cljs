@@ -1,5 +1,5 @@
 (ns chromex.app.autofill-private (:require-macros [chromex.app.autofill-private :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

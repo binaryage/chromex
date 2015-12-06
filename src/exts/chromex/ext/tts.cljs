@@ -1,5 +1,5 @@
 (ns chromex.ext.tts (:require-macros [chromex.ext.tts :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

@@ -1,5 +1,5 @@
 (ns chromex.ext.devtools.panels (:require-macros [chromex.ext.devtools.panels :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- properties -------------------------------------------------------------------------------------------------------------
 

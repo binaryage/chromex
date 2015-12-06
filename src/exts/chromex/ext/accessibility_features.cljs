@@ -1,5 +1,5 @@
 (ns chromex.ext.accessibility-features (:require-macros [chromex.ext.accessibility-features :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- properties -------------------------------------------------------------------------------------------------------------
 

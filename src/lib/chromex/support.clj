@@ -1,4 +1,4 @@
-(ns chromex-lib.support)
+(ns chromex.support)
 
 ; -- we don't want to rely on externs ---------------------------------------------------------------------------------------
 
@@ -21,7 +21,7 @@
   (let [keys (butlast ks)
         obj-sym (gensym)]
     `(let [~obj-sym ~o
-           target# ~(if (seq keys) `(chromex-lib.support/oget ~obj-sym ~@keys) obj-sym)]
+           target# ~(if (seq keys) `(chromex.support/oget ~obj-sym ~@keys) obj-sym)]
        (assert target# (str "unable to locate object path " ~keys " in " ~obj-sym))
        (goog.object/set target# (last ~ks) ~val))))
 

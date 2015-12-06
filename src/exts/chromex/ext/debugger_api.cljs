@@ -1,5 +1,5 @@
 (ns chromex.ext.debugger-api (:require-macros [chromex.ext.debugger-api :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

@@ -1,5 +1,5 @@
 (ns chromex.app.usb (:require-macros [chromex.app.usb :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

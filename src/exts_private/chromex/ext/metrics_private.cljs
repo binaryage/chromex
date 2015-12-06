@@ -1,5 +1,5 @@
 (ns chromex.ext.metrics-private (:require-macros [chromex.ext.metrics-private :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

@@ -1,5 +1,5 @@
 (ns chromex.test-config
-  (:require [chromex-lib.config :as config]
+  (:require [chromex.config :as config]
             [chromex.test.marshalling :as marshalling]
             [chromex.test-utils :as test-utils]))
 

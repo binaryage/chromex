@@ -1,5 +1,5 @@
 (ns chromex.app.serial (:require-macros [chromex.app.serial :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

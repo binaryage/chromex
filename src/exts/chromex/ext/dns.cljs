@@ -1,5 +1,5 @@
 (ns chromex.ext.dns (:require-macros [chromex.ext.dns :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

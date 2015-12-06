@@ -1,5 +1,5 @@
 (ns chromex.app.mojo-private (:require-macros [chromex.app.mojo-private :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

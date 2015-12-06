@@ -1,5 +1,5 @@
 (ns chromex.ext.declarative-content (:require-macros [chromex.ext.declarative-content :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 

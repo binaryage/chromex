@@ -1,4 +1,4 @@
-(ns chromex-lib.protocols
+(ns chromex.protocols
   (:refer-clojure :exclude [get set remove]))
 
 (defprotocol IChromeEventSubscription

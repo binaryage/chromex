@@ -1,5 +1,5 @@
 (ns chromex.ext.enterprise.device-attributes (:require-macros [chromex.ext.enterprise.device-attributes :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

@@ -1,5 +1,5 @@
 (ns chromex.ext.extension (:require-macros [chromex.ext.extension :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- properties -------------------------------------------------------------------------------------------------------------
 

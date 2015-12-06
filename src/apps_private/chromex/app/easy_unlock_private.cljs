@@ -1,5 +1,5 @@
 (ns chromex.app.easy-unlock-private (:require-macros [chromex.app.easy-unlock-private :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

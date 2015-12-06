@@ -1,5 +1,5 @@
 (ns chromex.ext.cast.streaming.udp-transport (:require-macros [chromex.ext.cast.streaming.udp-transport :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

@@ -1,5 +1,5 @@
 (ns chromex.ext.font-settings (:require-macros [chromex.ext.font-settings :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

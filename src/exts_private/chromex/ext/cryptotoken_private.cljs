@@ -1,5 +1,5 @@
 (ns chromex.ext.cryptotoken-private (:require-macros [chromex.ext.cryptotoken-private :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

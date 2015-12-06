@@ -1,5 +1,5 @@
 (ns chromex.ext.experimental.devtools.console (:require-macros [chromex.ext.experimental.devtools.console :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

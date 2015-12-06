@@ -1,5 +1,5 @@
 (ns chromex.ext.idltest (:require-macros [chromex.ext.idltest :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

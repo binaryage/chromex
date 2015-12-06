@@ -1,5 +1,5 @@
-(ns chromex-lib.callgen
-  (:require [chromex-lib.support :refer [valid-api-version? emit-api-version-warning emit-deprecation-warning
+(ns chromex.callgen
+  (:require [chromex.support :refer [valid-api-version? emit-api-version-warning emit-deprecation-warning
                                          get-wrap-symbol get-api-id get-item-by-id get-src-info]]))
 
 ; this file is responsible for generating code which will be expanded at library call sites in user's code

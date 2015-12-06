@@ -1,5 +1,5 @@
 (ns chromex.ext.vpn-provider (:require-macros [chromex.ext.vpn-provider :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

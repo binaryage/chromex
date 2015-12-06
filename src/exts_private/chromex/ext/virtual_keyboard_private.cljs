@@ -1,5 +1,5 @@
 (ns chromex.ext.virtual-keyboard-private (:require-macros [chromex.ext.virtual-keyboard-private :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

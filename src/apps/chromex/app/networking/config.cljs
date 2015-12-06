@@ -1,5 +1,5 @@
 (ns chromex.app.networking.config (:require-macros [chromex.app.networking.config :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

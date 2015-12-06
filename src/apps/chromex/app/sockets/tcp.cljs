@@ -1,5 +1,5 @@
 (ns chromex.app.sockets.tcp (:require-macros [chromex.app.sockets.tcp :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

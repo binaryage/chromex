@@ -1,5 +1,5 @@
 (ns chromex.app.identity (:require-macros [chromex.app.identity :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

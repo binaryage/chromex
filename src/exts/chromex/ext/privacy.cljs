@@ -1,5 +1,5 @@
 (ns chromex.ext.privacy (:require-macros [chromex.ext.privacy :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- properties -------------------------------------------------------------------------------------------------------------
 

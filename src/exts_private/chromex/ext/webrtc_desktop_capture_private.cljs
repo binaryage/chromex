@@ -1,5 +1,5 @@
 (ns chromex.ext.webrtc-desktop-capture-private (:require-macros [chromex.ext.webrtc-desktop-capture-private :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

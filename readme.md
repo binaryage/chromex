@@ -94,7 +94,7 @@ Please refer to [readme in chromex-sample](https://github.com/binaryage/chromex-
 
 Chromex does not rely on externs file. Instead it is rigorously [using string names](https://github.com/clojure/clojurescript/wiki/Dependencies#using-string-names)
 to access Javascript properties. I would recommend you to do the same in your own extension code. It is not that hard after all. You can use `oget`, `ocall` and `oapply`
-macros from [`chromex-lib.support`](https://github.com/binaryage/chromex/blob/master/src/lib/chromex_lib/support.clj) namespace.
+macros from [`chromex.support`](https://github.com/binaryage/chromex/blob/master/src/lib/chromex_lib/support.clj) namespace.
 
 Note: There is a [chrome_extensions.js](https://github.com/google/closure-compiler/blob/master/contrib/externs/chrome_extensions.js) externs file available,
 but that's been updated ad-hoc by the community. It is definitely incomplete and may be incorrect. But of course you are free to include the externs
@@ -110,7 +110,7 @@ Let's say for example you want to subscribe to [tab creation events](https://dev
   (:require [cljs.core.async :refer [chan close!]]
             [chromex.tabs :as tabs]
             [chromex.web-navigation :as web-navigation]
-            [chromex-lib.chrome-event-channel :refer [make-chrome-event-channel]]))
+            [chromex.chrome-event-channel :refer [make-chrome-event-channel]]))
 
 (let [chrome-event-channel (make-chrome-event-channel (chan))]
   (tabs/tap-on-created-events chrome-event-channel)
@@ -165,8 +165,8 @@ Here is an example how you would do this in chromex:
 ```clojure
 (ns your.project
   (:require ...
-            [chromex-lib.config :refer-macros [with-custom-event-listener-factory]]
-            [chromex-lib.chrome-event-channel :refer [make-chrome-event-channel]]
+            [chromex.config :refer-macros [with-custom-event-listener-factory]]
+            [chromex.chrome-event-channel :refer [make-chrome-event-channel]]
             [chromex.web-request :as web-request]))
 
 (defn my-event-listener-factory []

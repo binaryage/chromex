@@ -1,5 +1,5 @@
 (ns chromex.app.hid (:require-macros [chromex.app.hid :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

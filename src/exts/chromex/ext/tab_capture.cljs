@@ -1,5 +1,5 @@
 (ns chromex.ext.tab-capture (:require-macros [chromex.ext.tab-capture :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

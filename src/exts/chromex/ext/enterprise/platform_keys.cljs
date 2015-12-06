@@ -1,5 +1,5 @@
 (ns chromex.ext.enterprise.platform-keys (:require-macros [chromex.ext.enterprise.platform-keys :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

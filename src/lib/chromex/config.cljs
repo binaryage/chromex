@@ -1,5 +1,5 @@
-(ns chromex-lib.config
-  (:require [chromex-lib.defaults :refer [default-config]]))
+(ns chromex.config
+  (:require [chromex.defaults :refer [default-config]]))
 
 ; -- active config ----------------------------------------------------------------------------------------------------------
 

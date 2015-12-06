@@ -1,5 +1,5 @@
 (ns chromex.ext.language-settings-private (:require-macros [chromex.ext.language-settings-private :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

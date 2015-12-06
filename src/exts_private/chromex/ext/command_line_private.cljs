@@ -1,5 +1,5 @@
 (ns chromex.ext.command-line-private (:require-macros [chromex.ext.command-line-private :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

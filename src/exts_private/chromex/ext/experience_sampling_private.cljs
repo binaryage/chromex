@@ -1,5 +1,5 @@
 (ns chromex.ext.experience-sampling-private (:require-macros [chromex.ext.experience-sampling-private :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

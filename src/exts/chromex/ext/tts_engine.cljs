@@ -1,5 +1,5 @@
 (ns chromex.ext.tts-engine (:require-macros [chromex.ext.tts-engine :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 

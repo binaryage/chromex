@@ -1,5 +1,5 @@
 (ns chromex.ext.sessions (:require-macros [chromex.ext.sessions :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- properties -------------------------------------------------------------------------------------------------------------
 

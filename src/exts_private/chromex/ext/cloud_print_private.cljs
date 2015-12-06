@@ -1,5 +1,5 @@
 (ns chromex.ext.cloud-print-private (:require-macros [chromex.ext.cloud-print-private :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

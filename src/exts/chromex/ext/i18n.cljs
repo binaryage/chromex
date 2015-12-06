@@ -1,5 +1,5 @@
 (ns chromex.ext.i18n (:require-macros [chromex.ext.i18n :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

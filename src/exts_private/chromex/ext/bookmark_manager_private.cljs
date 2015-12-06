@@ -1,5 +1,5 @@
 (ns chromex.ext.bookmark-manager-private (:require-macros [chromex.ext.bookmark-manager-private :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

@@ -1,5 +1,5 @@
 (ns chromex.app.search-engines-private (:require-macros [chromex.app.search-engines-private :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

@@ -1,5 +1,5 @@
 (ns chromex.ext.media-player-private (:require-macros [chromex.ext.media-player-private :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 

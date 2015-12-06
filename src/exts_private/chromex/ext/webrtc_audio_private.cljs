@@ -1,5 +1,5 @@
 (ns chromex.ext.webrtc-audio-private (:require-macros [chromex.ext.webrtc-audio-private :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

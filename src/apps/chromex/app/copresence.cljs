@@ -1,5 +1,5 @@
 (ns chromex.app.copresence (:require-macros [chromex.app.copresence :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

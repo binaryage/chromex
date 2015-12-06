@@ -1,5 +1,5 @@
 (ns chromex.ext.wallpaper (:require-macros [chromex.ext.wallpaper :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

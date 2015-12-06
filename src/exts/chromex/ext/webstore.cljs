@@ -1,5 +1,5 @@
 (ns chromex.ext.webstore (:require-macros [chromex.ext.webstore :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

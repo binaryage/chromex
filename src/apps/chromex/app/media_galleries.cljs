@@ -1,5 +1,5 @@
 (ns chromex.app.media-galleries (:require-macros [chromex.app.media-galleries :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

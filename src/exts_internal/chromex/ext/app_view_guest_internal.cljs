@@ -1,5 +1,5 @@
 (ns chromex.ext.app-view-guest-internal (:require-macros [chromex.ext.app-view-guest-internal :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

@@ -1,5 +1,5 @@
 (ns chromex.ext.page-capture (:require-macros [chromex.ext.page-capture :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

@@ -1,5 +1,5 @@
 (ns chromex.app.input-method-private (:require-macros [chromex.app.input-method-private :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

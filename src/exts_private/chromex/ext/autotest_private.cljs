@@ -1,5 +1,5 @@
 (ns chromex.ext.autotest-private (:require-macros [chromex.ext.autotest-private :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

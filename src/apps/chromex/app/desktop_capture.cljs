@@ -1,5 +1,5 @@
 (ns chromex.app.desktop-capture (:require-macros [chromex.app.desktop-capture :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

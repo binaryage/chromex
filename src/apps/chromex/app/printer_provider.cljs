@@ -1,5 +1,5 @@
 (ns chromex.app.printer-provider (:require-macros [chromex.app.printer-provider :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 

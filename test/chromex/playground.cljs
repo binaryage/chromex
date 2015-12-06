@@ -1,6 +1,6 @@
 (ns chromex.playground
   (:require-macros [chromex.playground :refer [gen-wrap]])
-  (:require [chromex-lib.core]
+  (:require [chromex.core]
             [chromex.test.marshalling]))
 
 ; -- properties -------------------------------------------------------------------------------------------------------------

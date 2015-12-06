@@ -1,5 +1,5 @@
 (ns chromex.app.mdns (:require-macros [chromex.app.mdns :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- properties -------------------------------------------------------------------------------------------------------------
 

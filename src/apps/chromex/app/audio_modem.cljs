@@ -1,5 +1,5 @@
 (ns chromex.app.audio-modem (:require-macros [chromex.app.audio-modem :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

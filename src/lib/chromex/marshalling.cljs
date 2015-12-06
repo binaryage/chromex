@@ -1,8 +1,8 @@
-(ns chromex-lib.marshalling
-  (:require [chromex-lib.protocols :as protocols]
-            [chromex-lib.config :refer [get-active-config]]
-            [chromex-lib.chrome-port :refer [make-chrome-port]]
-            [chromex-lib.chrome-storage-area :refer [make-chrome-storage-area]]))
+(ns chromex.marshalling
+  (:require [chromex.protocols :as protocols]
+            [chromex.config :refer [get-active-config]]
+            [chromex.chrome-port :refer [make-chrome-port]]
+            [chromex.chrome-storage-area :refer [make-chrome-storage-area]]))
 
 (defn from-native-chrome-port [config native-chrome-port]
   (make-chrome-port config native-chrome-port))

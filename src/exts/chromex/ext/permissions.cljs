@@ -1,5 +1,5 @@
 (ns chromex.ext.permissions (:require-macros [chromex.ext.permissions :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

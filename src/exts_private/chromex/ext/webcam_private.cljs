@@ -1,5 +1,5 @@
 (ns chromex.ext.webcam-private (:require-macros [chromex.ext.webcam-private :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

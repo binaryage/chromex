@@ -2,7 +2,7 @@
   (:require-macros [cljs.core.async.macros :refer [go]])
   (:require [cljs.test :refer-macros [deftest testing is async]]
             [cljs.core.async :refer [<!]]
-            [chromex-lib.protocols :as protocols :refer [IChromeStorageArea]]
+            [chromex.protocols :as protocols :refer [IChromeStorageArea]]
             [chromex.playground :refer-macros [get-storage-area]]))
 
 ; -- test against mocks -----------------------------------------------------------------------------------------------------

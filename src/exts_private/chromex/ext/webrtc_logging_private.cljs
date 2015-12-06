@@ -1,5 +1,5 @@
 (ns chromex.ext.webrtc-logging-private (:require-macros [chromex.ext.webrtc-logging-private :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

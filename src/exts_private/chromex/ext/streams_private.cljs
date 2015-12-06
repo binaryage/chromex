@@ -1,5 +1,5 @@
 (ns chromex.ext.streams-private (:require-macros [chromex.ext.streams-private :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

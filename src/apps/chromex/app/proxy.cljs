@@ -1,5 +1,5 @@
 (ns chromex.app.proxy (:require-macros [chromex.app.proxy :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- properties -------------------------------------------------------------------------------------------------------------
 

@@ -1,5 +1,5 @@
 (ns chromex.app.location (:require-macros [chromex.app.location :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

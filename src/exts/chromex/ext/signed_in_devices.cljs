@@ -1,5 +1,5 @@
 (ns chromex.ext.signed-in-devices (:require-macros [chromex.ext.signed-in-devices :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

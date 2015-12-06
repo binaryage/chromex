@@ -1,5 +1,5 @@
 (ns chromex.app.inline-install-private (:require-macros [chromex.app.inline-install-private :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

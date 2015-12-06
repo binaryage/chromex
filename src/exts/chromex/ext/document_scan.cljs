@@ -1,5 +1,5 @@
 (ns chromex.ext.document-scan (:require-macros [chromex.ext.document-scan :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

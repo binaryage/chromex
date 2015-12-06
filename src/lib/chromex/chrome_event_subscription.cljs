@@ -1,6 +1,6 @@
-(ns chromex-lib.chrome-event-subscription
-  (:require [chromex-lib.protocols :as protocols :refer [IChromeEventSubscription IChromeEventChannel]]
-            [chromex-lib.support :refer-macros [oget ocall oapply]]))
+(ns chromex.chrome-event-subscription
+  (:require [chromex.protocols :as protocols :refer [IChromeEventSubscription IChromeEventChannel]]
+            [chromex.support :refer-macros [oget ocall oapply]]))
 
 ; exception handlers, see https://www.youtube.com/watch?v=zp0OEDcAro0
 (declare *subscribe-called-while-subscribed*)

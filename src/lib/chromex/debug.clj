@@ -1,4 +1,4 @@
-(ns chromex-lib.debug
+(ns chromex.debug
   (:require [clojure.pprint :refer :all]))
 
 (defn print-to-err [& args]

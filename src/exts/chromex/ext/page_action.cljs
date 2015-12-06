@@ -1,5 +1,5 @@
 (ns chromex.ext.page-action (:require-macros [chromex.ext.page-action :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

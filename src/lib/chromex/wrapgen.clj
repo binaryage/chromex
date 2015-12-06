@@ -1,5 +1,5 @@
-(ns chromex-lib.wrapgen
-  (:require [chromex-lib.support :refer [gen-logging-if-verbose print-warning get-item-by-id get-api-id print-debug
+(ns chromex.wrapgen
+  (:require [chromex.support :refer [gen-logging-if-verbose print-warning get-item-by-id get-api-id print-debug
                                          gen-missing-api-check gen-call-hook]]
             [clojure.string :as string]))
 
@@ -62,11 +62,11 @@
         final-args-array-sym (gensym "final-args-array-")
         ns-sym (gensym "ns-")
         target-sym (gensym "target-")]
-    `(let [~final-args-array-sym (chromex-lib.support/prepare-final-args-array ~arg-descriptors ~api)
-           ~ns-sym (chromex-lib.support/oget (:root ~config) ~@namespace-path)]
+    `(let [~final-args-array-sym (chromex.support/prepare-final-args-array ~arg-descriptors ~api)
+           ~ns-sym (chromex.support/oget (:root ~config) ~@namespace-path)]
        ~(gen-missing-api-check static-config config api ns-sym name)
        ~(gen-logging-if-verbose static-config config operation api final-args-array-sym)
-       (let [~target-sym (chromex-lib.support/oget ~ns-sym ~name)]
+       (let [~target-sym (chromex.support/oget ~ns-sym ~name)]
          ~(if property?
             target-sym
             `(.apply ~target-sym ~ns-sym ~final-args-array-sym))))))
@@ -148,11 +148,11 @@
     `(let [~event-fn-sym ~(gen-call-hook config :event-listener-factory event-id chan)
            ~handler-fn-sym ~(marshall-callback static-config config (str api ".handler") [event-fn-sym descriptor])
            logging-fn# ~(wrap-callback-with-logging static-config "event:" api config [handler-fn-sym descriptor])
-           ~ns-obj-sym (chromex-lib.support/oget (:root ~config) ~@ns-path)]
+           ~ns-obj-sym (chromex.support/oget (:root ~config) ~@ns-path)]
        ~(gen-missing-api-check static-config config api ns-obj-sym event-key)
-       (let [event-obj# (chromex-lib.support/oget ~ns-obj-sym ~event-key)
-             result# (chromex-lib.chrome-event-subscription/make-chrome-event-subscription event-obj# logging-fn# ~chan)]
-         (chromex-lib.protocols/subscribe! result# ~extra-args)
+       (let [event-obj# (chromex.support/oget ~ns-obj-sym ~event-key)
+             result# (chromex.chrome-event-subscription/make-chrome-event-subscription event-obj# logging-fn# ~chan)]
+         (chromex.protocols/subscribe! result# ~extra-args)
          result#))))
 
 ; ---------------------------------------------------------------------------------------------------------------------------

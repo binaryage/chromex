@@ -1,5 +1,5 @@
 (ns chromex.app.app.current-window-internal (:require-macros [chromex.app.app.current-window-internal :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

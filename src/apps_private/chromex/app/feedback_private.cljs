@@ -1,5 +1,5 @@
 (ns chromex.app.feedback-private (:require-macros [chromex.app.feedback-private :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

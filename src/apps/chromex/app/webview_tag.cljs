@@ -1,5 +1,5 @@
 (ns chromex.app.webview-tag (:require-macros [chromex.app.webview-tag :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- properties -------------------------------------------------------------------------------------------------------------
 

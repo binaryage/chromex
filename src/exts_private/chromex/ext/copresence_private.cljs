@@ -1,5 +1,5 @@
 (ns chromex.ext.copresence-private (:require-macros [chromex.ext.copresence-private :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

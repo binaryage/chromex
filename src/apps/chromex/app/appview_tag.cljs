@@ -1,5 +1,5 @@
 (ns chromex.app.appview-tag (:require-macros [chromex.app.appview-tag :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

@@ -1,5 +1,5 @@
 (ns chromex.ext.cookies (:require-macros [chromex.ext.cookies :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

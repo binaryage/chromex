@@ -1,5 +1,5 @@
 (ns chromex.app.wallpaper-private (:require-macros [chromex.app.wallpaper-private :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 

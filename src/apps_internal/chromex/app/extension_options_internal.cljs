@@ -1,5 +1,5 @@
 (ns chromex.app.extension-options-internal (:require-macros [chromex.app.extension-options-internal :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 

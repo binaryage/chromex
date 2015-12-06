@@ -1,5 +1,5 @@
 (ns chromex.app.image-writer-private (:require-macros [chromex.app.image-writer-private :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

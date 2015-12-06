@@ -1,5 +1,5 @@
 (ns chromex.ext.browser-action (:require-macros [chromex.ext.browser-action :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

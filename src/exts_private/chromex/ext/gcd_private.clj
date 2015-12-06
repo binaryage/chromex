@@ -6,9 +6,9 @@
      * https://developer.chrome.com/extensions/gcdPrivate"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
-  (:require [chromex-lib.wrapgen :refer [gen-wrap-from-table]]
-            [chromex-lib.callgen :refer [gen-call-from-table gen-tap-all-call]]
-            [chromex-lib.config :refer [get-static-config gen-active-config]]))
+  (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
+            [chromex.callgen :refer [gen-call-from-table gen-tap-all-call]]
+            [chromex.config :refer [get-static-config gen-active-config]]))
 
 (declare api-table)
 (declare gen-call)

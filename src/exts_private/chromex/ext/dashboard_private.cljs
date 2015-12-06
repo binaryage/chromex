@@ -1,5 +1,5 @@
 (ns chromex.ext.dashboard-private (:require-macros [chromex.ext.dashboard-private :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

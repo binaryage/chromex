@@ -1,5 +1,5 @@
 (ns chromex.ext.history (:require-macros [chromex.ext.history :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

@@ -1,5 +1,5 @@
 (ns chromex.ext.omnibox (:require-macros [chromex.ext.omnibox :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

@@ -1,5 +1,5 @@
 (ns chromex.ext.web-navigation (:require-macros [chromex.ext.web-navigation :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

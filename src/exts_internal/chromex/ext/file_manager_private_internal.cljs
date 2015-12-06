@@ -1,5 +1,5 @@
 (ns chromex.ext.file-manager-private-internal (:require-macros [chromex.ext.file-manager-private-internal :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

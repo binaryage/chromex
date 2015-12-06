@@ -1,5 +1,5 @@
 (ns chromex.ext.bookmarks (:require-macros [chromex.ext.bookmarks :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- properties -------------------------------------------------------------------------------------------------------------
 

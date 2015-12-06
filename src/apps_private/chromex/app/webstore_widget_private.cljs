@@ -1,5 +1,5 @@
 (ns chromex.app.webstore-widget-private (:require-macros [chromex.app.webstore-widget-private :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

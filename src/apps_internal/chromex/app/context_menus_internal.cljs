@@ -1,5 +1,5 @@
 (ns chromex.app.context-menus-internal (:require-macros [chromex.app.context-menus-internal :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 

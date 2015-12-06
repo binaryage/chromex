@@ -1,5 +1,5 @@
 (ns chromex.ext.file-system-provider (:require-macros [chromex.ext.file-system-provider :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

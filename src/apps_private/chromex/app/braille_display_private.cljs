@@ -1,5 +1,5 @@
 (ns chromex.app.braille-display-private (:require-macros [chromex.app.braille-display-private :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

@@ -1,4 +1,4 @@
-(ns chromex-lib.logging)
+(ns chromex.logging)
 
 ; ---------------------------------------------------------------------------------------------------------------------------
 ; logging - these need to be macros to preserve source location for devtools

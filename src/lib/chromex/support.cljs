@@ -1,4 +1,4 @@
-(ns chromex-lib.support
+(ns chromex.support
   (:require [goog.object]))
 
 (defn prepare-final-args-array [arg-descriptors api]

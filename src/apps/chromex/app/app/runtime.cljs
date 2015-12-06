@@ -1,5 +1,5 @@
 (ns chromex.app.app.runtime (:require-macros [chromex.app.app.runtime :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 

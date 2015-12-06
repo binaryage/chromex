@@ -1,5 +1,5 @@
 (ns chromex.ext.input.ime (:require-macros [chromex.ext.input.ime :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 

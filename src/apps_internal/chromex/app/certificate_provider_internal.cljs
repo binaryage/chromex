@@ -1,5 +1,5 @@
 (ns chromex.app.certificate-provider-internal (:require-macros [chromex.app.certificate-provider-internal :refer [gen-wrap]])
-    (:require [chromex-lib.core]))
+    (:require [chromex.core]))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
