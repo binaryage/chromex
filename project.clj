@@ -102,8 +102,8 @@
                                            :compiler-stats true}}}}}}
 
   :aliases {"dev-build" ["with-profile" "+unpacked" "cljsbuild" "once" "background" "popup" "content-script"]
-            "fig"       ["with-profile" "+unpacked" "figwheel" "background" "popup"]
-            "content"   ["with-profile" "+unpacked" "cljsbuild" "auto" "content-script"]
+            "fig"       ["with-profile" "+unpacked,+checkouts" "figwheel" "background" "popup"]
+            "content"   ["with-profile" "+unpacked,+checkouts" "cljsbuild" "auto" "content-script"]
             "devel"     ["cooper"]
             "release"   ["with-profile" "+release" "do" "clean," "cljsbuild" "once" "background" "popup" "content-script"]
             "package"   ["shell" "scripts/package.sh"]})
