@@ -5,7 +5,7 @@
             :url          "http://opensource.org/licenses/MIT"
             :distribution :repo}
 
-  :scm {:name "git" :url "https://github.com/binaryage/chromex"}
+  :scm {:name "git"}
 
   :dependencies [[org.clojure/clojure "1.7.0" :scope "provided"]
                  [org.clojure/clojurescript "1.7.170" :scope "provided"]
