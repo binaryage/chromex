@@ -236,7 +236,7 @@ reads quite well:
 ```
 
 Again, main entry point for background page is our `init!` function. We start by running main event loop by subscribing
-to some Chrome events. `tabs/tap-all-events` is a convenience method which subscribes to all events defined in [tabs namespace](https://github.com/binaryage/chromex/blob/master/src/exts/chromex/tabs.clj) to be delivered into provided channel.
+to some Chrome events. `tabs/tap-all-events` is a convenience method which subscribes to all events defined in [tabs namespace](https://github.com/binaryage/chromex/blob/master/src/exts/chromex/ext/tabs.clj) to be delivered into provided channel.
 Similarly `runtime/tap-all-events` subscribes all runtime events. We could as well subscribe individual events for example by calling `tabs/tap-on-created-events`,
 but subscribing in bulk is more convenient in this case. As you can see we create our own ordinary core.async channel and wrap it in `make-chrome-event-channel` call.
 This is an optional step, but convenient. `make-chrome-event-channel` returns a channel which is aware of Chrome event subscriptions and is able to unsubscribe
