@@ -17,7 +17,7 @@
 ;
 ; * Generated code slightly differs for different API method types (property, function, event).
 ; * Generated code also does some sanity checking (optional). See :elide* keys in static config.
-; * Marshalling has to deal not only with input parameters and return value, but also with callbacks' arguments.
+; * Marshalling has to deal not only with input parameters and return value, but also arguments passed into callbacks.
 ; * Logging has to be performed not only before actual Chrome API call, but also in callbacks (wrap-callback-with-logging).
 ; * Generated code must use string names when doing Javascript interop to be compatible with advanced compilation:
 ;     https://github.com/binaryage/chromex/#advanced-mode-compilation
@@ -25,7 +25,7 @@
 ;   a special parameter value :omit, which marks arguments which should be omitted from final native API call.
 ;   omiting arguments is done during runtime, see method `prepare-final-args-array`.
 ;   Note: for convenience we generate arities of API methods with trailing optional arguments omitted,
-;         for exmaple see `connect` macro in https://github.com/binaryage/chromex/blob/master/src/exts/chromex/runtime.clj
+;         for example see `connect` macro in https://github.com/binaryage/chromex/blob/master/src/exts/chromex/ext/runtime.clj
 ;
 ; ---------------------------------------------------------------------------------------------------------------------------
 

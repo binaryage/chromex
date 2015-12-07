@@ -25,7 +25,7 @@ Note: Chromex generator uses the same data source as [developer.chrome.com/exten
 Following documentation is mostly speaking about Chrome Extension development but the same patterns generally apply to Chrome App development as well.
 
 This library is data-driven. Given API namespace, all API methods, properties and events are described in a Clojure map
-along with their parameters, callbacks, versions and additional metadata ([a simple example - look for `api-table` here](src/exts/chromex/context_menus.clj)).
+along with their parameters, callbacks, versions and additional metadata ([a simple example - look for `api-table` here](src/exts/chromex/ext/context_menus.clj)).
 Chromex then provides a set of macros which consume this table and generate actual ClojureScript code wrapping native APIs.
 
 These macros can be further parametrized which allows for greater flexibility. Sane defaults
