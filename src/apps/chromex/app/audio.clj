@@ -3,7 +3,7 @@
    get information about and control the audio devices attached to the
    system. This API is currently only implemented for ChromeOS.
    
-     * available since Chrome 48
+     * available since Chrome 49
      * https://developer.chrome.com/extensions/audio"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
@@ -82,7 +82,7 @@
 
 (def api-table
   {:namespace "chrome.audio",
-   :since "48",
+   :since "49",
    :functions
    [{:id ::get-info,
      :name "getInfo",

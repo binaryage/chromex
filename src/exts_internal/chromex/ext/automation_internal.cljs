@@ -26,4 +26,8 @@
   (gen-wrap :event ::on-accessibility-tree-destroyed config channel args))
 (defn on-tree-change* [config channel & args]
   (gen-wrap :event ::on-tree-change config channel args))
+(defn on-child-tree-id* [config channel & args]
+  (gen-wrap :event ::on-child-tree-id config channel args))
+(defn on-nodes-removed* [config channel & args]
+  (gen-wrap :event ::on-nodes-removed config channel args))
 

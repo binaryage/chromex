@@ -3,7 +3,7 @@
    essentially a translation of the internal accessibility tree update system
    into an extension API.
    
-     * available since Chrome 48
+     * available since Chrome 49
      * https://developer.chrome.com/extensions/automationInternal"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
@@ -71,6 +71,18 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-tree-change &form channel args)))
+(defmacro tap-on-child-tree-id-events
+  "
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-child-tree-id &form channel args)))
+(defmacro tap-on-nodes-removed-events
+  "
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-nodes-removed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
@@ -87,7 +99,7 @@
 
 (def api-table
   {:namespace "chrome.automationInternal",
-   :since "48",
+   :since "49",
    :functions
    [{:id ::enable-tab,
      :name "enableTab",
@@ -119,7 +131,16 @@
     {:id ::on-tree-change,
      :name "onTreeChange",
      :params
-     [{:name "tree-id", :type "integer"} {:name "node-id", :type "integer"} {:name "change-type", :type "string"}]}]})
+     [{:name "observer-id", :type "integer"}
+      {:name "tree-id", :type "integer"}
+      {:name "node-id", :type "integer"}
+      {:name "change-type", :type "string"}]}
+    {:id ::on-child-tree-id,
+     :name "onChildTreeID",
+     :params [{:name "tree-id", :type "integer"} {:name "node-id", :type "integer"}]}
+    {:id ::on-nodes-removed,
+     :name "onNodesRemoved",
+     :params [{:name "tree-id", :type "integer"} {:name "node-i-ds", :type "[array-of-integers]"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

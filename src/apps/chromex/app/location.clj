@@ -3,7 +3,7 @@
    of the host machine. This API is a version of the HTML Geolocation API
    that is compatible with event pages.
    
-     * available since Chrome 48
+     * available since Chrome 49
      * https://developer.chrome.com/extensions/location"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
@@ -62,7 +62,7 @@
 
 (def api-table
   {:namespace "chrome.location",
-   :since "48",
+   :since "49",
    :functions
    [{:id ::watch-location,
      :name "watchLocation",

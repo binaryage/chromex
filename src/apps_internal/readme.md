@@ -2,7 +2,7 @@
 
 # This is generated API
 
-Generated on **2015-12-06** from **[Chromium @ 1a87980](https://chromium.googlesource.com/chromium/src.git/+/1a879804714354bfc3ea468a9489e6871913deb8)**.
+Generated on **2015-12-13** from **[Chromium @ 09fcb2e](https://chromium.googlesource.com/chromium/src.git/+/09fcb2eedde3eff959c69f0ef531d34ff663bf2a)**.
 
 ### Files
 
@@ -27,14 +27,14 @@ Generated on **2015-12-06** from **[Chromium @ 1a87980](https://chromium.googles
 
 ### API stats
 
-Generated 15 namespaces containing 0 properties, 87 functions and 15 events:
+Generated 15 namespaces containing 0 properties, 87 functions and 17 events:
 
 
     |                         :namespace | :properties | :functions | :events |
     |------------------------------------+-------------+------------+---------|
     |   chrome.app.currentWindowInternal |           0 |         15 |       8 |
     |        chrome.appViewGuestInternal |           0 |          2 |       0 |
-    |          chrome.automationInternal |           0 |          5 |       3 |
+    |          chrome.automationInternal |           0 |          5 |       5 |
     | chrome.certificateProviderInternal |           0 |          2 |       0 |
     |       chrome.chromeWebViewInternal |           0 |          5 |       0 |
     |        chrome.contextMenusInternal |           0 |          0 |       1 |
@@ -64,7 +64,8 @@ Generated 15 namespaces containing 0 properties, 87 functions and 15 events:
     
     [chromex.app.automation-internal refer-macros:[
       enable-tab enable-frame enable-desktop perform-action query-selector tap-on-accessibility-event
-      tap-on-accessibility-tree-destroyed tap-on-tree-change tap-all-events]]
+      tap-on-accessibility-tree-destroyed tap-on-tree-change tap-on-child-tree-id tap-on-nodes-removed
+      tap-all-events]]
     
     [chromex.app.certificate-provider-internal refer-macros:[
       report-signature report-certificates tap-all-events]]

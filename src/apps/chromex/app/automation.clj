@@ -5,7 +5,7 @@
    used to programmatically interact with a page by examining names, roles, and
    states, listening for events, and performing actions on nodes.
    
-     * available since Chrome 48
+     * available since Chrome 49
      * https://developer.chrome.com/extensions/automation"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
@@ -39,12 +39,13 @@
   ([#_callback] (gen-call :function ::get-desktop &form)))
 
 (defmacro add-tree-change-observer
-  "Add a tree change observer. Tree change observers are static/global, they listen to changes across all trees.
+  "Add a tree change observer. Tree change observers are static/global, they listen to changes across all trees. Pass a filter
+   to determine what specific tree changes to listen to, and note that listnening to all tree changes can be expensive.
    
      |observer| - A listener for changes on the AutomationNode tree.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
-  ([#_observer] (gen-call :function ::add-tree-change-observer &form)))
+  ([filter #_observer] (gen-call :function ::add-tree-change-observer &form filter)))
 
 (defmacro remove-tree-change-observer
   "Remove a tree change observer.
@@ -77,7 +78,7 @@
 
 (def api-table
   {:namespace "chrome.automation",
-   :since "48",
+   :since "49",
    :functions
    [{:id ::get-tree,
      :name "getTree",
@@ -98,7 +99,8 @@
      :name "addTreeChangeObserver",
      :callback? true,
      :params
-     [{:name "observer", :type :callback, :callback {:params [{:name "tree-change", :type "automation.TreeChange"}]}}]}
+     [{:name "filter", :type "unknown-type"}
+      {:name "observer", :type :callback, :callback {:params [{:name "tree-change", :type "automation.TreeChange"}]}}]}
     {:id ::remove-tree-change-observer,
      :name "removeTreeChangeObserver",
      :callback? true,

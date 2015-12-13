@@ -2,7 +2,7 @@
   "Use the chrome.audio_modem API
    to transmit and receive short tokens over audio.
    
-     * available since Chrome 48
+     * available since Chrome 49
      * https://developer.chrome.com/extensions/audioModem"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
@@ -79,7 +79,7 @@
 
 (def api-table
   {:namespace "chrome.audioModem",
-   :since "48",
+   :since "49",
    :functions
    [{:id ::transmit,
      :name "transmit",

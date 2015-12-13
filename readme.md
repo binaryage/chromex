@@ -16,8 +16,8 @@ Chromex provides idiomatic ClojureScript interface for Chrome Extensions and als
 | [Public Chrome App APIs](src/apps) | 65 | 20 | 359 | 131 |
 | [Private Chrome Extension APIs](src/exts_private) | 45 | 3 | 315 | 67 |
 | [Private Chrome App APIs](src/apps_private) | 40 | 3 | 271 | 70 |
-| [Internal Chrome Extension APIs](src/exts_internal) | 16 | 0 | 89 | 15 |
-| [Internal Chrome App APIs](src/apps_internal) | 15 | 0 | 87 | 15 |
+| [Internal Chrome Extension APIs](src/exts_internal) | 16 | 0 | 89 | 17 |
+| [Internal Chrome App APIs](src/apps_internal) | 15 | 0 | 87 | 17 |
 
 Note: Chromex generator uses the same data source as [developer.chrome.com/extensions/api_index](https://developer.chrome.com/extensions/api_index) and
 [developer.chrome.com/apps/api_index](https://developer.chrome.com/apps/api_index) docs.
