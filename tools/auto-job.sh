@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+echo "-----------------------------------------------------------------------------------------------------------------------"
+echo "running auto-job.sh on $(date)"
+
 # note: when running this under root via launchd, we cannot rely on $HOME
 
 export CHROMIUM_SRC=/Users/darwin/tasks/chromium/src/

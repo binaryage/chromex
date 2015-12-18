@@ -23,5 +23,12 @@
 	<string>/Users/darwin/tasks/logs/chromex_err.log</string>
 	<key>StandardOutPath</key>
 	<string>/Users/darwin/tasks/logs/chromex_out.log</string>
+  <key>EnvironmentVariables</key>
+  <dict>
+		<key>PATH</key>
+		<string>/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/darwin/bin:/Users/darwin/bin/depot_tools</string>
+		<key>PYTHONPATH</key>
+		<string>/usr/local/lib/python2.7/site-packages</string>
+	</dict>
 </dict>
 </plist>
