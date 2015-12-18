@@ -31,7 +31,7 @@ fi
 
 pushd .
 cd "${CHROMIUM_SRC}chrome/common/extensions/docs"
-python ./server2/update_cache.py --no-push --load-file="$APIS_CACHE_FILE" --save-file="$APIS_CACHE_FILE"
+python ./server2/update_cache.py --no-push --save-file="$APIS_CACHE_FILE"
 popd
 
 cd "${CHROMIUM_SRC}"

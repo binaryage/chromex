@@ -56,7 +56,7 @@ if [ "$CURRENT_SHA" == "$LAST_SHA" ] ; then
   exit 3
 fi
 
-python ./server2/update_cache.py --no-push --save-file="$APIS_CACHE_FILE" --commit="$LAST_SHA"
+python ./server2/update_cache.py --no-push --load-file="$APIS_CACHE_FILE" --save-file="$APIS_CACHE_FILE" --commit="$LAST_SHA"
 
 cd "${CHROMIUM_SRC}"
 SHA=`git rev-parse HEAD`
