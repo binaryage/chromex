@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-export CHROMIUM_SRC=~/tasks/chromium/src/
+# note: when running this under root via launchd, we cannot rely on $HOME
+
+export CHROMIUM_SRC=/Users/darwin/tasks/chromium/src/
 
 set -e
 
