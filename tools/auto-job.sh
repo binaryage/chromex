@@ -23,6 +23,8 @@ die_if_dirty_working_copy () {
   set -e
 }
 
+#############################################################################################################################
+
 pushd .
 
 # ensure we start in root folder
@@ -31,19 +33,25 @@ cd "$(dirname "${BASH_SOURCE[0]}")"; cd ../..
 ROOT=$(pwd)
 CHROMEX="$ROOT/chromex"
 
+#############################################################################################################################
 # pull latest chromium
+
 pushd "$CHROMIUM_SRC"
 
 die_if_dirty_working_copy
 
+git checkout master
 git pull --ff-only
 gclient sync --with_branch_heads
 
 CHROMIUM_SHA=$(git rev-parse HEAD)
 CHROMIUM_SHORT_SHA=$(git rev-parse --short HEAD)
+
 popd
 
+#############################################################################################################################
 # generate chromex APIs
+
 pushd "$CHROMEX"
 
 die_if_dirty_working_copy
