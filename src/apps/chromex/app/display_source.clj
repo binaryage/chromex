@@ -41,8 +41,12 @@
    |videoTrack| must be of type MediaStreamTrack. Either |audioTrack| or |videoTrack| can be null but not both. This means
    creating a session with only audio or video.The |authenticationInfo| can be null if no additional authentication data are
    required by the sink; otherwise its |data| field must contain the required authentication data (e.g. PIN value) and its
-   |method| field must be the same as one obtained from ‘requestAuthentication’."
-  ([session-info] (gen-call :function ::start-session &form session-info)))
+   |method| field must be the same as one obtained from ‘requestAuthentication’.
+   
+     |callback| - Called when the session is started.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([session-info #_callback] (gen-call :function ::start-session &form session-info)))
 
 (defmacro terminate-session
   "Terminates the active Display session.
@@ -115,7 +119,10 @@
       {:name "callback",
        :type :callback,
        :callback {:params [{:name "result", :type "displaySource.AuthenticationInfo"}]}}]}
-    {:id ::start-session, :name "startSession", :params [{:name "session-info", :type "object"}]}
+    {:id ::start-session,
+     :name "startSession",
+     :callback? true,
+     :params [{:name "session-info", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::terminate-session,
      :name "terminateSession",
      :callback? true,

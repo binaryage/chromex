@@ -18,7 +18,7 @@
 (defmacro get-adapter-state
   "Get information about the Bluetooth adapter.
    
-     |callback| - Called with an AdapterState object describing the adapter              state.
+     |callback| - Called with an AdapterState object describing the adapter state.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([#_callback] (gen-call :function ::get-adapter-state &form)))
