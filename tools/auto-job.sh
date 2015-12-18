@@ -44,7 +44,7 @@ die_if_dirty_working_copy
 
 git checkout master
 git pull --ff-only
-gclient sync --with_branch_heads
+/Users/darwin/bin/depot_tools/gclient sync --with_branch_heads
 
 CHROMIUM_SHA=$(git rev-parse HEAD)
 CHROMIUM_SHORT_SHA=$(git rev-parse --short HEAD)
