@@ -43,8 +43,10 @@ pushd "$CHROMIUM_SRC"
 
 die_if_dirty_working_copy
 
+git fetch origin
+
 git checkout master
-git pull --ff-only
+git reset --hard origin/master
 gclient sync --with_branch_heads
 
 CHROMIUM_SHA=$(git rev-parse HEAD)
@@ -59,11 +61,13 @@ pushd "$CHROMEX"
 
 die_if_dirty_working_copy
 
+git fetch origin
+
 git checkout master
-git pull --ff-only
+git reset --hard origin/master
 
 git checkout auto
-git pull --ff-only
+git reset --hard origin/auto
 git merge -m "merge changes from master" master
 
 ./tools/update-cache.sh
