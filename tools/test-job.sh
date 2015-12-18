@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-sudo launchctl start com.binaryage.chromex.plist
+launchctl start com.binaryage.chromex.plist
 
 # note: you may want to
 #

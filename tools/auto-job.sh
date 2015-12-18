@@ -3,9 +3,7 @@
 echo "-----------------------------------------------------------------------------------------------------------------------"
 echo "running auto-job.sh on $(date)"
 
-# note: when running this under root via launchd, we cannot rely on $HOME
-
-export CHROMIUM_SRC=/Users/darwin/tasks/chromium/src/
+export CHROMIUM_SRC=~/tasks/chromium/src/
 
 set -e
 
@@ -47,7 +45,7 @@ die_if_dirty_working_copy
 
 git checkout master
 git pull --ff-only
-/Users/darwin/bin/depot_tools/gclient sync --with_branch_heads
+gclient sync --with_branch_heads
 
 CHROMIUM_SHA=$(git rev-parse HEAD)
 CHROMIUM_SHORT_SHA=$(git rev-parse --short HEAD)
