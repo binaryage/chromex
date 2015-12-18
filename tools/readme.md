@@ -7,7 +7,7 @@ is particularly interesting, because is used for incremental updating database o
 about APIs and it saves its state into a cache file. We leverage this knowledge and generate our files from their cache.
 
 You should consult [their readme](https://code.google.com/p/chromium/codesearch#chromium/src/chrome/common/extensions/docs/server2/README)
-on how to setup your system for update_cache.py to work properly. Especially this
+on how to setup your system for `update_cache.py` to work properly. Especially this
 paragraph is important:
 
     You MUST have branch heads fetched in your local repo in order for your
@@ -19,14 +19,12 @@ paragraph is important:
 
 ##### We provide following scripts:
 
-  * **api-extractor.py** - takes cache file and produces JSON
-  * **api-distiller** - takes JSON from extractor and produces distilled version which has filtered out some keys and normalized values
-  * **api-gen** - actual work-horse script, which takes distilled JSON and generates API ClojureScript files
+  * **api-extractor.py** - takes a cache file and produces a JSON
+  * **api-distiller** - takes the JSON produced by extractor and outputs distilled version which has some keys filtered out
+  * **api-gen** - the actual work-horse script, which takes the distilled JSON and finally generates ClojureScript files
 
 ##### You can launch them using our wrapper shell scripts:
 
   * `./build-cache.sh` - builds cache from scratch (takes a long time)
   * `./update-cache.sh` - attempts to incrementally update the cache
   * `./build-api` - runs api-extractor, api-distiller and api-gen to generate Chromex files with standard settings. Produces new folders in `../src`.
-
-A side note: Our scripts support generating "apps" APIs for Chrome OS as well. But I didn't integrate them into Chromex yet.
