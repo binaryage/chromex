@@ -35,6 +35,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")"; cd ../..
 
 ROOT=$(pwd)
 CHROMEX="$ROOT/chromex"
+ROOT_README="$ROOT/readme.md"
 
 #############################################################################################################################
 # pull latest chromium
@@ -73,8 +74,31 @@ git merge -m "merge changes from master" master
 ./tools/update-cache.sh
 ./tools/build-api.sh
 
-git add -A .
-git commit -m "regenerate APIs from Chromium @ $CHROMIUM_SHORT_SHA" -m "https://chromium.googlesource.com/chromium/src.git/+/$CHROMIUM_SHA"
+git add -all
+
+set +e
+git diff-index --exit-code HEAD > /dev/null
+if [ $? -eq 0 ] ; then
+    echo "no changes from previous version in '$(pwd)'"
+    echo "nothing to commit => exit"
+    popd
+    popd
+    exit 42
+fi
+set -e
+
+# add information about last generation into readme
+GENERATION_DATE=$(date "+%Y-%m-%d")
+SOURCE_LINK="https://chromium.googlesource.com/chromium/src.git/+/$CHROMIUM_SHA"
+SOURCE_INFO="[Chromium @ $CHROMIUM_SHORT_SHA]($SOURCE_LINK)"
+DATE_SOURCE_INFO="Current version was generated on $GENERATION_DATE from $SOURCE_INFO."
+README_WITH_MARKER=`perl -pe 'BEGIN{undef $/;} s/Current version was generated.*?Looking for a nightly version/DATESOURCEMARKER\n\nLooking for a nightly version/smg' "$ROOT_README"`
+NEW_README="${README_WITH_MARKER/DATESOURCEMARKER/$DATE_SOURCE_INFO}"
+
+echo "$NEW_README" > "$ROOT_README"
+
+git add -all
+git commit -m "regenerate APIs from Chromium @ $CHROMIUM_SHORT_SHA" -m "$SOURCE_LINK"
 
 git push
 
