@@ -2,8 +2,6 @@
 
 # This is generated API
 
-Generated on **2015-12-19** from **[Chromium @ 154aed7](https://chromium.googlesource.com/chromium/src.git/+/154aed7d5c8ddcdee4b224f2f2b7c2fdfeb7ccf7)**.
-
 ### Files
 
 | JS namespace | CLJS wrapper |
