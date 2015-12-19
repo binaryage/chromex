@@ -4,11 +4,15 @@
 
 ### Chrome Extension APIs wrapper library for ClojureScript.
 
-[An **example project** demo-ing this library is here](https://github.com/binaryage/chromex-sample).
+[An example project documenting basic usage of the library is here](https://github.com/binaryage/chromex-sample).
 
-This library is auto-generated from [chromium sources](https://www.chromium.org/developers).
+This library is auto-generated. Current version was **generated on 2015-12-06** from [**Chromium @ XXX**](https://chromium.googlesource.com/chromium/src.git/+/XXX).
 
-Chromex provides idiomatic ClojureScript interface for Chrome Extensions and also for Chrome Apps:
+Looking for a nightly version? Check out [**auto branch**](https://github.com/binaryage/chromex/tree/auto) which gets updated daily if there were any new API changes.
+
+#### Chromex provides idiomatic ClojureScript interface
+
+For Chrome Extensions and also for Chrome Apps:
 
 | API family | namespaces | properties | functions | events |
 | --- | --- | --- | --- | --- |
@@ -29,7 +33,7 @@ along with their parameters, callbacks, versions and additional metadata ([a sim
 Chromex then provides a set of macros which consume this table and generate actual ClojureScript code wrapping native APIs.
 
 These macros can be further parametrized which allows for greater flexibility. Sane defaults
-are provided with following goals:
+are provided with goals:
 
   * API version checking and deprecation warnings at compile-time
   * flexible marshalling of Javascript values to ClojureScript and back
