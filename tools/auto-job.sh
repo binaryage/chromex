@@ -74,7 +74,7 @@ git merge -m "merge changes from master" master
 ./tools/update-cache.sh
 ./tools/build-api.sh
 
-git add -all
+git add --all
 
 set +e
 git diff-index --exit-code HEAD > /dev/null
@@ -97,7 +97,7 @@ NEW_README="${README_WITH_MARKER/DATESOURCEMARKER/$DATE_SOURCE_INFO}"
 
 echo "$NEW_README" > "$ROOT_README"
 
-git add -all
+git add --all
 git commit -m "regenerate APIs from Chromium @ $CHROMIUM_SHORT_SHA" -m "$SOURCE_LINK"
 
 git push

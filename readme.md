@@ -8,7 +8,7 @@
 
 This library is auto-generated. Current version was **generated on 2015-12-06** from [**Chromium @ XXX**](https://chromium.googlesource.com/chromium/src.git/+/XXX).
 
-Looking for a nightly version? Check out [auto branch](https://github.com/binaryage/chromex/tree/auto) which gets updated daily if there were any new API changes.
+Looking for a nightly version? Check out [**auto branch**](https://github.com/binaryage/chromex/tree/auto) which gets updated daily if there were any new API changes.
 
 #### Chromex provides idiomatic ClojureScript interface
 
