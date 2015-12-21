@@ -35,5 +35,8 @@
     "page": "background.html",
     "persistent": false
   },
+  "permissions": [
+    "storage"
+  ],
   "manifest_version": 2
 }

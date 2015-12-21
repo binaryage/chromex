@@ -7,7 +7,8 @@
             [chromex.chrome-event-channel :refer [make-chrome-event-channel]]
             [chromex.protocols :refer [post-message! get-sender]]
             [chromex.ext.tabs :as tabs]
-            [chromex.ext.runtime :as runtime]))
+            [chromex.ext.runtime :as runtime]
+            [chromex-sample.background.storage :refer [test-storage!]]))
 
 (def clients (atom []))
 
@@ -70,4 +71,5 @@
 
 (defn init! []
   (log "BACKGROUND: init")
+  (test-storage!)
   (boot-chrome-event-loop!))
