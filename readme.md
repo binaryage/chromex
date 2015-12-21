@@ -2,11 +2,11 @@
 
 ### An example extension using Chromex library
 
-This project acts as code example for [chromex library](https://github.com/binaryage/chromex) but also as a skeleton
-with project configuration following best practices. We recommended to use it as a starting point when starting development
+This project acts as a code example for [chromex library](https://github.com/binaryage/chromex) but also as a skeleton
+with project configuration following best practices. We recommend to use it as a starting point when starting development
 of your own extension.
 
-#### **chromex-sample** implements a minimalist **background page**, **popup button** and **content script**:
+#### **chromex-sample** has a minimalist **background page**, **popup button** and **content script**:
 
   * background page listens for connections from popup buttons and content scripts (there can be multiple of them)
   * popup button connects to the background page and sends a simple "HELLO" message after connection
@@ -320,6 +320,16 @@ number of script tags and sends a reporting message to the background page.
 As you can see, we don't have any interesting logic here for processing messages from background page. In `process-message!`
 we simply print the received message into console. It works! You can test it by creating new tabs. Background page should be
 sending notifications about new tabs being created.
+
+---
+
+#### Extensions built with Chromex
+
+You might want to look at some real-world extension implemented using Chromex:
+
+* [Dirac DevTools](https://github.com/binaryage/dirac) - a Chrome DevTools fork for ClojureScript developers
+
+Want to add an extensions here? [Send me a link](mailto:antonin@hildebrand.cz), thanks!
 
 ---
 
