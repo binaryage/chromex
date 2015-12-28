@@ -5,7 +5,7 @@ echo "running auto-job.sh on $(date)"
 
 export CHROMIUM_SRC=~/tasks/chromium/src/
 
-set -e
+set -ex
 
 pushd () {
     command pushd "$@" > /dev/null
@@ -71,8 +71,8 @@ git checkout auto
 git reset --hard origin/auto
 git merge -m "merge changes from master" master
 
-./tools/update-cache.sh
-./tools/build-api.sh
+time ./tools/update-cache.sh
+time ./tools/build-api.sh
 
 git add --all
 
