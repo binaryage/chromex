@@ -1,6 +1,6 @@
 (ns chromex.wrapgen
   (:require [chromex.support :refer [gen-logging-if-verbose print-warning get-item-by-id get-api-id print-debug
-                                         gen-missing-api-check gen-call-hook]]
+                                     gen-missing-api-check gen-call-hook]]
             [clojure.string :as string]))
 
 ; This file is responsible for generating code wrapping Chrome API calls.
@@ -64,7 +64,8 @@
         target-sym (gensym "target-")]
     `(let [~final-args-array-sym (chromex.support/prepare-final-args-array ~arg-descriptors ~api)
            ~ns-sym (chromex.support/oget (:root ~config) ~@namespace-path)]
-       ~(gen-missing-api-check static-config config api ns-sym name)
+       ~(if-not property?
+          (gen-missing-api-check static-config config api ns-sym name))
        ~(gen-logging-if-verbose static-config config operation api final-args-array-sym)
        (let [~target-sym (chromex.support/oget ~ns-sym ~name)]
          ~(if property?

@@ -105,7 +105,7 @@
 (if-not advanced-mode?
   (deftest test-using-missing-apis
     (testing "try access missing property"
-      (is (thrown-with-msg? js/Error #"library tried to access a missing Chrome API object" (get-some-missing-prop))))
+      (is (= nil (get-some-missing-prop))))
     (testing "try call missing function"
       (is (thrown-with-msg? js/Error #"library tried to access a missing Chrome API object" (do-something-missing))))
     (testing "try tap missing event"
