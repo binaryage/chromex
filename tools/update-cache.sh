@@ -29,21 +29,11 @@ if [ ! -d "$WORKDIR" ] ; then
   mkdir -p "$WORKDIR"
 fi
 
-if [ ! -r "$APIS_CACHE_FILE" ] ; then
-  echo "'$APIS_CACHE_FILE' does not exist, run ./build-cache.sh"
-  popd
-  exit 1
-fi
-
 pushd .
 cd "${CHROMIUM_SRC}chrome/common/extensions/docs"
 
-LAST_SHA=`cat "$APIS_LAST_FILE"`
-if [ ! "$LAST_SHA" ] ; then
-  echo "'$APIS_LAST_FILE' does not exist, run ./build-cache.sh for first run"
-  popd
-  popd
-  exit 2
+if [ -r "$APIS_LAST_FILE" ] ; then
+  LAST_SHA=`cat "$APIS_LAST_FILE"`
 fi
 
 CURRENT_SHA=`git rev-parse HEAD`
@@ -56,7 +46,14 @@ if [ "$CURRENT_SHA" == "$LAST_SHA" ] ; then
   exit 3
 fi
 
-python ./server2/update_cache.py --no-push --load-file="$APIS_CACHE_FILE" --save-file="$APIS_CACHE_FILE" --commit="$LAST_SHA"
+if [ ! -r "$APIS_CACHE_FILE" ] ; then
+  echo "'$APIS_CACHE_FILE' does not exist, will running full generation"
+  LOAD_ARGS=""
+else
+  LOAD_ARGS="--load-file=\"$APIS_CACHE_FILE\""
+fi
+
+python ./server2/update_cache.py --no-push "$LOAD_ARGS" --save-file="$APIS_CACHE_FILE"
 
 cd "${CHROMIUM_SRC}"
 SHA=`git rev-parse HEAD`
