@@ -63,9 +63,10 @@ git fetch origin
 git checkout master
 git reset --hard origin/master
 
-git checkout auto
-git reset --hard origin/auto
+git checkout nightly
+git reset --hard origin/nightly
 git merge -m "merge changes from master" master
+git push origin nightly
 
 time ./tools/update-cache.sh
 time ./tools/build-api.sh
