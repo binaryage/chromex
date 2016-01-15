@@ -50,10 +50,10 @@ if [ ! -r "$APIS_CACHE_FILE" ] ; then
   echo "'$APIS_CACHE_FILE' does not exist, will running full generation"
   LOAD_ARGS=""
 else
-  LOAD_ARGS="--load-file=\"$APIS_CACHE_FILE\""
+  LOAD_ARGS=--load-file="$APIS_CACHE_FILE"
 fi
 
-python ./server2/update_cache.py --no-push "$LOAD_ARGS" --save-file="$APIS_CACHE_FILE"
+python ./server2/update_cache.py --no-push $LOAD_ARGS --save-file="$APIS_CACHE_FILE"
 
 cd "${CHROMIUM_SRC}"
 SHA=`git rev-parse HEAD`
