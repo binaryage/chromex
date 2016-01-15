@@ -87,6 +87,7 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-text-input-box-focused &form channel args)))
+
 (defmacro tap-on-bounds-changed-events
   "This event is sent when virtual keyboard bounds changed and overscroll/resize is enabled.
    Events will be put on the |channel|.

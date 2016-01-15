@@ -48,6 +48,7 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-saved-passwords-list-changed &form channel args)))
+
 (defmacro tap-on-password-exceptions-list-changed-events
   "Fired when the password exceptions list has changed, meaning that an entry has been added or removed. Note that this event
    fires as soon as a listener is added.
@@ -55,6 +56,7 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-password-exceptions-list-changed &form channel args)))
+
 (defmacro tap-on-plaintext-password-retrieved-events
   "Fired when a plaintext password has been fetched in response to a call to
    chrome.passwordsPrivate.requestPlaintextPassword().

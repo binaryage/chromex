@@ -37,12 +37,14 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-config-audio &form channel args)))
+
 (defmacro tap-on-encode-token-request-events
   "Fired to request encoding of the given token.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-encode-token-request &form channel args)))
+
 (defmacro tap-on-decode-samples-request-events
   "Fired when we have new samples to decode.
    Events will be put on the |channel|.

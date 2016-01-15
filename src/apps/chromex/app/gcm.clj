@@ -61,6 +61,7 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-message &form channel args)))
+
 (defmacro tap-on-messages-deleted-events
   "Fired when a GCM server had to delete messages sent by an app server to the application. See Messages deleted event section
    of Cloud Messaging documentation for details on handling this event.
@@ -68,6 +69,7 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-messages-deleted &form channel args)))
+
 (defmacro tap-on-send-error-events
   "Fired when it was not possible to send a message to the GCM server.
    Events will be put on the |channel|.

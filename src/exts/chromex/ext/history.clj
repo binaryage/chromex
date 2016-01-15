@@ -62,6 +62,7 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-visited &form channel args)))
+
 (defmacro tap-on-visit-removed-events
   "Fired when one or more URLs are removed from the history service.  When all visits have been removed the URL is purged from
    history.

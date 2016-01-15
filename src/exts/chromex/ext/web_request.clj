@@ -38,6 +38,7 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-before-request &form channel args)))
+
 (defmacro tap-on-before-send-headers-events
   "Fired before sending an HTTP request, once the request headers are available. This may occur after a TCP connection is made
    to the server, but before any HTTP data is sent.
@@ -45,6 +46,7 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-before-send-headers &form channel args)))
+
 (defmacro tap-on-send-headers-events
   "Fired just before a request is going to be sent to the server (modifications of previous onBeforeSendHeaders callbacks are
    visible by the time onSendHeaders is fired).
@@ -52,12 +54,14 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-send-headers &form channel args)))
+
 (defmacro tap-on-headers-received-events
   "Fired when HTTP response headers of a request have been received.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-headers-received &form channel args)))
+
 (defmacro tap-on-auth-required-events
   "Fired when an authentication failure is received. The listener has three options: it can provide authentication
    credentials, it can cancel the request and display the error page, or it can take no action on the challenge. If bad user
@@ -66,6 +70,7 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-auth-required &form channel args)))
+
 (defmacro tap-on-response-started-events
   "Fired when the first byte of the response body is received. For HTTP requests, this means that the status line and response
    headers are available.
@@ -73,18 +78,21 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-response-started &form channel args)))
+
 (defmacro tap-on-before-redirect-events
   "Fired when a server-initiated redirect is about to occur.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-before-redirect &form channel args)))
+
 (defmacro tap-on-completed-events
   "Fired when a request is completed.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-completed &form channel args)))
+
 (defmacro tap-on-error-occurred-events
   "Fired when an error occurs.
    Events will be put on the |channel|.

@@ -50,7 +50,7 @@
 
 ### API stats
 
-Generated 40 namespaces containing 3 properties, 271 functions and 70 events:
+Generated 40 namespaces containing 3 properties, 272 functions and 70 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -89,7 +89,7 @@ Generated 40 namespaces containing 3 properties, 271 functions and 70 events:
     |         chrome.settingsPrivate |           0 |          5 |       1 |
     |          chrome.streamsPrivate |           0 |          1 |       1 |
     |           chrome.systemPrivate |           0 |          3 |       4 |
-    |         chrome.terminalPrivate |           0 |          4 |       1 |
+    |         chrome.terminalPrivate |           0 |          5 |       1 |
     |            chrome.usersPrivate |           0 |          5 |       0 |
     |  chrome.virtualKeyboardPrivate |           0 |         10 |       2 |
     |        chrome.wallpaperPrivate |           0 |          0 |       1 |
@@ -266,8 +266,8 @@ Generated 40 namespaces containing 3 properties, 271 functions and 70 events:
       tap-on-brightness-changed tap-on-screen-unlocked tap-on-woke-up tap-all-events]]
     
     [chromex.app.terminal-private refer-macros:[
-      open-terminal-process close-terminal-process send-input on-terminal-resize tap-on-process-output
-      tap-all-events]]
+      open-terminal-process close-terminal-process send-input on-terminal-resize ack-output
+      tap-on-process-output tap-all-events]]
     
     [chromex.app.users-private refer-macros:[
       get-whitelisted-users add-whitelisted-user remove-whitelisted-user is-current-user-owner

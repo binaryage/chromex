@@ -56,42 +56,49 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-closed &form channel args)))
+
 (defmacro tap-on-bounds-changed-events
   "
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-bounds-changed &form channel args)))
+
 (defmacro tap-on-fullscreened-events
   "
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-fullscreened &form channel args)))
+
 (defmacro tap-on-minimized-events
   "
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-minimized &form channel args)))
+
 (defmacro tap-on-maximized-events
   "
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-maximized &form channel args)))
+
 (defmacro tap-on-restored-events
   "
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-restored &form channel args)))
+
 (defmacro tap-on-alpha-enabled-changed-events
   "
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-alpha-enabled-changed &form channel args)))
+
 (defmacro tap-on-window-shown-for-tests-events
   "Only sent in tests.
    Events will be put on the |channel|.

@@ -81,6 +81,22 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([request security-origin incoming outgoing #_callback] (gen-call :function ::stop-rtp-dump &form request security-origin incoming outgoing)))
 
+(defmacro start-audio-debug-recordings
+  "Starts audio debug recordings. |seconds| indicates how many seconds of audio to record. |callback| is invoked once
+   recording stops. If |seconds| is zero, recording will continue until stopAudioDebugRecordings() is explicitly called. In
+   this case, |callback| is invoked once recording starts and will report that recording has not stopped. If |seconds| is
+   negative, startAudioDebugRecordings() fails.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([request security-origin seconds #_callback] (gen-call :function ::start-audio-debug-recordings &form request security-origin seconds)))
+
+(defmacro stop-audio-debug-recordings
+  "Stops audio debug recordings.  |callback| is invoked once recording stops. If there is no recording in progress,
+   stopAudioDebugRecordings() fails.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([request security-origin #_callback] (gen-call :function ::stop-audio-debug-recordings &form request security-origin)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -179,7 +195,28 @@
       {:name "security-origin", :type "string"}
       {:name "incoming", :type "boolean"}
       {:name "outgoing", :type "boolean"}
-      {:name "callback", :type :callback}]}]})
+      {:name "callback", :type :callback}]}
+    {:id ::start-audio-debug-recordings,
+     :name "startAudioDebugRecordings",
+     :since "49",
+     :callback? true,
+     :params
+     [{:name "request", :type "webrtcLoggingPrivate.RequestInfo"}
+      {:name "security-origin", :type "string"}
+      {:name "seconds", :type "integer"}
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "info", :type "webrtcLoggingPrivate.AudioDebugRecordingsInfo"}]}}]}
+    {:id ::stop-audio-debug-recordings,
+     :name "stopAudioDebugRecordings",
+     :since "49",
+     :callback? true,
+     :params
+     [{:name "request", :type "webrtcLoggingPrivate.RequestInfo"}
+      {:name "security-origin", :type "string"}
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "info", :type "webrtcLoggingPrivate.AudioDebugRecordingsInfo"}]}}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

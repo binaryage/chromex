@@ -102,6 +102,7 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-gallery-changed &form channel args)))
+
 (defmacro tap-on-scan-progress-events
   "The pending media scan has changed state. See details for more information.
    Events will be put on the |channel|.

@@ -17,7 +17,7 @@
    
      |processName| - Name of the process to open. Initially only 'crosh' is supported. Another processes may be added in
                      future.
-     |callback| - Returns pid of the launched process. If no process was launched returns -1.
+     |callback| - Returns id of the launched process. If no process was launched returns -1.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([process-name #_callback] (gen-call :function ::open-terminal-process &form process-name)))
@@ -32,9 +32,9 @@
   ([pid #_callback] (gen-call :function ::close-terminal-process &form pid)))
 
 (defmacro send-input
-  "Sends input that will be routed to stdin of the process with the specified pid.
+  "Sends input that will be routed to stdin of the process with the specified id.
    
-     |pid| - The pid of the process to which we want to send input.
+     |pid| - The id of the process to which we want to send input.
      |input| - Input we are sending to the process.
      |callback| - Callback that will be called when sendInput method ends. Returns success.
    
@@ -42,9 +42,9 @@
   ([pid input #_callback] (gen-call :function ::send-input &form pid input)))
 
 (defmacro on-terminal-resize
-  "Notify the process with the id pid that terminal window size has changed.
+  "Notify the process with the id id that terminal window size has changed.
    
-     |pid| - The pid of the process.
+     |pid| - The id of the process.
      |width| - New window width (as column count).
      |height| - New window height (as row count).
      |callback| - Callback that will be called when sendInput method ends. Returns success.
@@ -52,12 +52,22 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([pid width height #_callback] (gen-call :function ::on-terminal-resize &form pid width height)))
 
+(defmacro ack-output
+  "Called from |onProcessOutput| when the event is dispatched to terminal extension. Observing the terminal process output
+   will be paused after |onProcessOutput| is dispatched until this method is called.
+   
+     |tabId| - Tab ID from |onProcessOutput| event.
+     |pid| - The id of the process to which |onProcessOutput| was dispatched."
+  ([tab-id pid] (gen-call :function ::ack-output &form tab-id pid)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-process-output-events
-  "Fired when an opened process writes something to its output.
+  "Fired when an opened process writes something to its output. Observing further process output will be blocked until
+   |ackOutput| for the terminal is called. Internally, first event argument will be ID of the tab that contains terminal
+   instance for which this event is intended. This argument will be stripped before passing the event to the extension.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
@@ -107,10 +117,11 @@
      [{:name "pid", :type "integer"}
       {:name "width", :type "integer"}
       {:name "height", :type "integer"}
-      {:name "callback",
-       :optional? true,
-       :type :callback,
-       :callback {:params [{:name "success", :type "boolean"}]}}]}],
+      {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
+    {:id ::ack-output,
+     :name "ackOutput",
+     :since "49",
+     :params [{:name "tab-id", :type "integer"} {:name "pid", :type "integer"}]}],
    :events
    [{:id ::on-process-output,
      :name "onProcessOutput",

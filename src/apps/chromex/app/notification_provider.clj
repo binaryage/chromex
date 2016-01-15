@@ -95,12 +95,14 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-created &form channel args)))
+
 (defmacro tap-on-updated-events
   "A notification is updated by the notifier.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-updated &form channel args)))
+
 (defmacro tap-on-cleared-events
   "A notification is cleared by the notifier.
    Events will be put on the |channel|.

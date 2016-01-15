@@ -51,6 +51,7 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-added &form channel args)))
+
 (defmacro tap-on-removed-events
   "Fired when access to permissions has been removed from the extension.
    Events will be put on the |channel|.

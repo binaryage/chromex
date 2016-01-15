@@ -147,6 +147,7 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-startup &form channel args)))
+
 (defmacro tap-on-installed-events
   "Fired when the extension is first installed, when the extension is updated to a new version, and when Chrome is updated to
    a new version.
@@ -154,6 +155,7 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-installed &form channel args)))
+
 (defmacro tap-on-suspend-events
   "Sent to the event page just before it is unloaded. This gives the extension opportunity to do some clean up. Note that
    since the page is unloading, any asynchronous operations started while handling this event are not guaranteed to complete.
@@ -163,12 +165,14 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-suspend &form channel args)))
+
 (defmacro tap-on-suspend-canceled-events
   "Sent after onSuspend to indicate that the app won't be unloaded after all.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-suspend-canceled &form channel args)))
+
 (defmacro tap-on-update-available-events
   "Fired when an update is available, but isn't installed immediately because the app is currently running. If you do nothing,
    the update will be installed the next time the background page gets unloaded, if you want it to be installed sooner you can
@@ -180,36 +184,42 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-update-available &form channel args)))
+
 (defmacro tap-on-browser-update-available-events
   "Fired when a Chrome update is available, but isn't installed immediately because a browser restart is required.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-browser-update-available &form channel args)))
+
 (defmacro tap-on-connect-events
   "Fired when a connection is made from either an extension process or a content script.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-connect &form channel args)))
+
 (defmacro tap-on-connect-external-events
   "Fired when a connection is made from another extension.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-connect-external &form channel args)))
+
 (defmacro tap-on-message-events
   "Fired when a message is sent from either an extension process or a content script.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-message &form channel args)))
+
 (defmacro tap-on-message-external-events
   "Fired when a message is sent from another extension/app. Cannot be used in a content script.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-message-external &form channel args)))
+
 (defmacro tap-on-restart-required-events
   "Fired when an app or the device that it runs on needs to be restarted. The app should close all its windows at its earliest
    convenient time to let the restart to happen. If the app does nothing, a restart will be enforced after a 24-hour grace

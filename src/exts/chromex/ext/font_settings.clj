@@ -120,18 +120,21 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-font-changed &form channel args)))
+
 (defmacro tap-on-default-font-size-changed-events
   "Fired when the default font size setting changes.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-default-font-size-changed &form channel args)))
+
 (defmacro tap-on-default-fixed-font-size-changed-events
   "Fired when the default fixed font size setting changes.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-default-fixed-font-size-changed &form channel args)))
+
 (defmacro tap-on-minimum-font-size-changed-events
   "Fired when the minimum font size setting changes.
    Events will be put on the |channel|.

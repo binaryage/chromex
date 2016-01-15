@@ -25,12 +25,14 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-embed-requested &form channel args)))
+
 (defmacro tap-on-launched-events
   "Fired when an app is launched from the launcher.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-launched &form channel args)))
+
 (defmacro tap-on-restarted-events
   "Fired at Chrome startup to apps that were running when Chrome last shut down, or when apps have been requested to restart
    from their previous state for other reasons (e.g. when the user revokes access to an app's retained files the runtime will

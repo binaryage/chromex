@@ -205,6 +205,7 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-service-added &form channel args)))
+
 (defmacro tap-on-service-changed-events
   "Fired when the state of a remote GATT service changes. This involves any characteristics and/or descriptors that get added
    or removed from the service, as well as 'ServiceChanged' notifications from the remote device.
@@ -212,12 +213,14 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-service-changed &form channel args)))
+
 (defmacro tap-on-service-removed-events
   "Fired when a GATT service that was previously discovered on a remote device has been removed.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-service-removed &form channel args)))
+
 (defmacro tap-on-characteristic-value-changed-events
   "Fired when the value of a remote GATT characteristic changes, either as a result of a read request, or a value change
    notification/indication This event will only be sent if the app has enabled notifications by calling
@@ -226,6 +229,7 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-characteristic-value-changed &form channel args)))
+
 (defmacro tap-on-descriptor-value-changed-events
   "Fired when the value of a remote GATT characteristic descriptor changes, usually as a result of a read request. This event
    exists mostly for convenience and will always be sent after a successful call to 'readDescriptorValue'.

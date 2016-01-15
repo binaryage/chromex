@@ -59,24 +59,28 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-accessibility-event &form channel args)))
+
 (defmacro tap-on-accessibility-tree-destroyed-events
   "
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-accessibility-tree-destroyed &form channel args)))
+
 (defmacro tap-on-tree-change-events
   "
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-tree-change &form channel args)))
+
 (defmacro tap-on-child-tree-id-events
   "
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-child-tree-id &form channel args)))
+
 (defmacro tap-on-nodes-removed-events
   "
    Events will be put on the |channel|.

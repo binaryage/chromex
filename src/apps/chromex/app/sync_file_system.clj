@@ -93,6 +93,7 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-service-status-changed &form channel args)))
+
 (defmacro tap-on-file-status-changed-events
   "Fired when a file has been updated by the background sync service.
    Events will be put on the |channel|.

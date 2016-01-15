@@ -22,12 +22,14 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-close &form channel args)))
+
 (defmacro tap-on-load-events
   "
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-load &form channel args)))
+
 (defmacro tap-on-preferred-size-changed-events
   "
    Events will be put on the |channel|.

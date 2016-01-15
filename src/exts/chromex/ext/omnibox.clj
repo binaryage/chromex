@@ -32,18 +32,21 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-input-started &form channel args)))
+
 (defmacro tap-on-input-changed-events
   "User has changed what is typed into the omnibox.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-input-changed &form channel args)))
+
 (defmacro tap-on-input-entered-events
   "User has accepted what is typed into the omnibox.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-input-entered &form channel args)))
+
 (defmacro tap-on-input-cancelled-events
   "User has ended the keyword input session without accepting the input.
    Events will be put on the |channel|.

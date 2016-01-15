@@ -69,6 +69,7 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-event &form channel args)))
+
 (defmacro tap-on-detach-events
   "Fired when browser terminates debugging session for the tab. This happens when either the tab is being closed or Chrome
    DevTools is being invoked for the attached tab.

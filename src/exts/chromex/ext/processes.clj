@@ -53,6 +53,7 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-updated &form channel args)))
+
 (defmacro tap-on-updated-with-memory-events
   "Fired each time the Task Manager updates its process statistics, providing the dictionary of updated Process objects,
    indexed by process ID. Identical to onUpdate, with the addition of memory usage details included in each Process object.
@@ -61,18 +62,21 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-updated-with-memory &form channel args)))
+
 (defmacro tap-on-created-events
   "Fired each time a process is created, providing the corrseponding Process object.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-created &form channel args)))
+
 (defmacro tap-on-unresponsive-events
   "Fired each time a process becomes unresponsive, providing the corrseponding Process object.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-unresponsive &form channel args)))
+
 (defmacro tap-on-exited-events
   "Fired each time a process is terminated, providing the type of exit.
    Events will be put on the |channel|.

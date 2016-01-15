@@ -41,6 +41,7 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-install-stage-changed &form channel args)))
+
 (defmacro tap-on-download-progress-events
   "Fired periodically with the download progress of an inline install. In order to receive notifications about this event,
    listeners must be registered before the inline installation begins.

@@ -33,6 +33,7 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-request-finished &form channel args)))
+
 (defmacro tap-on-navigated-events
   "Fired when the inspected window navigates to a new page.
    Events will be put on the |channel|.

@@ -55,7 +55,7 @@
 
 ### API stats
 
-Generated 45 namespaces containing 3 properties, 315 functions and 67 events:
+Generated 45 namespaces containing 3 properties, 318 functions and 67 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -97,13 +97,13 @@ Generated 45 namespaces containing 3 properties, 315 functions and 67 events:
     |                chrome.settingsPrivate |           0 |          5 |       1 |
     |                 chrome.streamsPrivate |           0 |          1 |       1 |
     |                  chrome.systemPrivate |           0 |          3 |       4 |
-    |                chrome.terminalPrivate |           0 |          4 |       1 |
+    |                chrome.terminalPrivate |           0 |          5 |       1 |
     |                   chrome.usersPrivate |           0 |          5 |       0 |
     |         chrome.virtualKeyboardPrivate |           0 |         10 |       2 |
     |                  chrome.webcamPrivate |           0 |          5 |       0 |
     |             chrome.webrtcAudioPrivate |           0 |          4 |       1 |
     |    chrome.webrtcDesktopCapturePrivate |           0 |          2 |       0 |
-    |           chrome.webrtcLoggingPrivate |           0 |         10 |       0 |
+    |           chrome.webrtcLoggingPrivate |           0 |         12 |       0 |
     |                chrome.webstorePrivate |           0 |         13 |       0 |
 
 ### Requires
@@ -282,8 +282,8 @@ Generated 45 namespaces containing 3 properties, 315 functions and 67 events:
       tap-on-brightness-changed tap-on-screen-unlocked tap-on-woke-up tap-all-events]]
     
     [chromex.ext.terminal-private refer-macros:[
-      open-terminal-process close-terminal-process send-input on-terminal-resize tap-on-process-output
-      tap-all-events]]
+      open-terminal-process close-terminal-process send-input on-terminal-resize ack-output
+      tap-on-process-output tap-all-events]]
     
     [chromex.ext.users-private refer-macros:[
       get-whitelisted-users add-whitelisted-user remove-whitelisted-user is-current-user-owner
@@ -305,7 +305,7 @@ Generated 45 namespaces containing 3 properties, 315 functions and 67 events:
     
     [chromex.ext.webrtc-logging-private refer-macros:[
       set-meta-data start set-upload-on-render-close stop store upload-stored upload discard
-      start-rtp-dump stop-rtp-dump tap-all-events]]
+      start-rtp-dump stop-rtp-dump start-audio-debug-recordings stop-audio-debug-recordings tap-all-events]]
     
     [chromex.ext.webstore-private refer-macros:[
       install begin-install-with-manifest3 complete-install install-bundle enable-app-launcher

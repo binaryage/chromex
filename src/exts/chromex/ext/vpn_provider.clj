@@ -72,24 +72,28 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-platform-message &form channel args)))
+
 (defmacro tap-on-packet-received-events
   "Triggered when an IP packet is received via the tunnel for the VPN session owned by the extension.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-packet-received &form channel args)))
+
 (defmacro tap-on-config-removed-events
   "Triggered when a configuration created by the extension is removed by the platform.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-config-removed &form channel args)))
+
 (defmacro tap-on-config-created-events
   "Triggered when a configuration is created by the platform for the extension.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-config-created &form channel args)))
+
 (defmacro tap-on-ui-event-events
   "Triggered when there is a UI event for the extension. UI events are signals from the platform that indicate to the app that
    a UI dialog needs to be shown to the user.

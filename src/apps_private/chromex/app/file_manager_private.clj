@@ -435,42 +435,49 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-mount-completed &form channel args)))
+
 (defmacro tap-on-file-transfers-updated-events
   "
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-file-transfers-updated &form channel args)))
+
 (defmacro tap-on-copy-progress-events
   "
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-copy-progress &form channel args)))
+
 (defmacro tap-on-directory-changed-events
   "
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-directory-changed &form channel args)))
+
 (defmacro tap-on-preferences-changed-events
   "
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-preferences-changed &form channel args)))
+
 (defmacro tap-on-drive-connection-status-changed-events
   "
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-drive-connection-status-changed &form channel args)))
+
 (defmacro tap-on-device-changed-events
   "
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-device-changed &form channel args)))
+
 (defmacro tap-on-drive-sync-error-events
   "
    Events will be put on the |channel|.

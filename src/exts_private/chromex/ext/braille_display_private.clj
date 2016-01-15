@@ -37,6 +37,7 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-display-state-changed &form channel args)))
+
 (defmacro tap-on-key-event-events
   "Fired when an input event is received from the display.
    Events will be put on the |channel|.

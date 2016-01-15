@@ -42,18 +42,21 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-volume-changed &form channel args)))
+
 (defmacro tap-on-brightness-changed-events
   "Fired when the screen brightness is changed.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-brightness-changed &form channel args)))
+
 (defmacro tap-on-screen-unlocked-events
   "Fired when the screen is unlocked.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-screen-unlocked &form channel args)))
+
 (defmacro tap-on-woke-up-events
   "Fired when the device wakes up from sleep.
    Events will be put on the |channel|.

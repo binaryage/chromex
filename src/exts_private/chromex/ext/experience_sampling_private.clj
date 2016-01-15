@@ -32,6 +32,7 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-displayed &form channel args)))
+
 (defmacro tap-on-decision-events
   "Fired when a user makes a decision about an interesting piece of UI.
    Events will be put on the |channel|.

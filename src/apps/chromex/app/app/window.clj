@@ -66,6 +66,7 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-bounds-changed &form channel args)))
+
 (defmacro tap-on-closed-events
   "Fired when the window is closed. Note, this should be listened to from a window other than the window being closed, for
    example from the background page. This is because the window being closed will be in the process of being torn down when
@@ -74,24 +75,28 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-closed &form channel args)))
+
 (defmacro tap-on-fullscreened-events
   "Fired when the window is fullscreened (either via the AppWindow or HTML5 APIs).
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-fullscreened &form channel args)))
+
 (defmacro tap-on-maximized-events
   "Fired when the window is maximized.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-maximized &form channel args)))
+
 (defmacro tap-on-minimized-events
   "Fired when the window is minimized.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-minimized &form channel args)))
+
 (defmacro tap-on-restored-events
   "Fired when the window is restored from being minimized or maximized.
    Events will be put on the |channel|.

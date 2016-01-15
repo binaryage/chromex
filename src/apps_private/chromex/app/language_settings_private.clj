@@ -78,18 +78,21 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-spellcheck-dictionaries-changed &form channel args)))
+
 (defmacro tap-on-custom-dictionary-changed-events
   "Called when words are added to and/or removed from the custom spell check dictionary.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-custom-dictionary-changed &form channel args)))
+
 (defmacro tap-on-input-method-added-events
   "Called when an input method is added.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-input-method-added &form channel args)))
+
 (defmacro tap-on-input-method-removed-events
   "Called when an input method is removed.
    Events will be put on the |channel|.

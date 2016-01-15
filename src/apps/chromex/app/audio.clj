@@ -48,18 +48,21 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-device-changed &form channel args)))
+
 (defmacro tap-on-level-changed-events
   "Fired when sound level changes for an active audio device.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-level-changed &form channel args)))
+
 (defmacro tap-on-mute-changed-events
   "Fired when the mute state of the audio input or output changes.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-mute-changed &form channel args)))
+
 (defmacro tap-on-devices-changed-events
   "Fired when audio devices change, either new devices being added, or existing devices being removed.
    Events will be put on the |channel|.

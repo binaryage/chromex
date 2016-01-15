@@ -41,6 +41,7 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-before-navigate &form channel args)))
+
 (defmacro tap-on-committed-events
   "Fired when a navigation is committed. The document (and the resources it refers to, such as images and subframes) might
    still be downloading, but at least part of the document has been received from the server and the browser has decided to
@@ -49,18 +50,21 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-committed &form channel args)))
+
 (defmacro tap-on-dom-content-loaded-events
   "Fired when the page's DOM is fully constructed, but the referenced resources may not finish loading.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-dom-content-loaded &form channel args)))
+
 (defmacro tap-on-completed-events
   "Fired when a document, including the resources it refers to, is completely loaded and initialized.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-completed &form channel args)))
+
 (defmacro tap-on-error-occurred-events
   "Fired when an error occurs and the navigation is aborted. This can happen if either a network error occurred, or the user
    aborted the navigation.
@@ -68,24 +72,28 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-error-occurred &form channel args)))
+
 (defmacro tap-on-created-navigation-target-events
   "Fired when a new window, or a new tab in an existing window, is created to host a navigation.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-created-navigation-target &form channel args)))
+
 (defmacro tap-on-reference-fragment-updated-events
   "Fired when the reference fragment of a frame was updated. All future events for that frame will use the updated URL.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-reference-fragment-updated &form channel args)))
+
 (defmacro tap-on-tab-replaced-events
   "Fired when the contents of the tab is replaced by a different (usually previously pre-rendered) tab.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-tab-replaced &form channel args)))
+
 (defmacro tap-on-history-state-updated-events
   "Fired when the frame's history was updated to a new URL. All future events for that frame will use the updated URL.
    Events will be put on the |channel|.

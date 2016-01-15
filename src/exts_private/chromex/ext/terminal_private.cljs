@@ -15,6 +15,9 @@
 (defn on-terminal-resize* [config pid width height]
   (gen-wrap :function ::on-terminal-resize config pid width height))
 
+(defn ack-output* [config tab-id pid]
+  (gen-wrap :function ::ack-output config tab-id pid))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-process-output* [config channel & args]

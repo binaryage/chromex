@@ -83,24 +83,28 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-write-progress &form channel args)))
+
 (defmacro tap-on-write-complete-events
   "Fires when the write operation has completely finished, such as all devices being finalized and resources released.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-write-complete &form channel args)))
+
 (defmacro tap-on-write-error-events
   "Fires when an error occured during writing, passing the 'ProgressInfo' of the operation at the time the error occured.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-write-error &form channel args)))
+
 (defmacro tap-on-device-inserted-events
   "Fires when a removable storage device is inserted.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-device-inserted &form channel args)))
+
 (defmacro tap-on-device-removed-events
   "Fires when a removable storage device is removed.
    Events will be put on the |channel|.

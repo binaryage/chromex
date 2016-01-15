@@ -125,18 +125,21 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-installed &form channel args)))
+
 (defmacro tap-on-uninstalled-events
   "Fired when an app or extension has been uninstalled.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-uninstalled &form channel args)))
+
 (defmacro tap-on-enabled-events
   "Fired when an app or extension has been enabled.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-enabled &form channel args)))
+
 (defmacro tap-on-disabled-events
   "Fired when an app or extension has been disabled.
    Events will be put on the |channel|.

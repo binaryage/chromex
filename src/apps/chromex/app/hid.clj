@@ -105,6 +105,7 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-device-added &form channel args)))
+
 (defmacro tap-on-device-removed-events
   "Event generated when a device is removed from the system. See 'onDeviceAdded' for which events are delivered.
    Events will be put on the |channel|.

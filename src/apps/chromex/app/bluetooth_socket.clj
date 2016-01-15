@@ -142,6 +142,7 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-accept &form channel args)))
+
 (defmacro tap-on-accept-error-events
   "Event raised when a network error occurred while the runtime was waiting for new connections on the given socket. Once this
    event is raised, the socket is set to paused and no more onAccept events are raised for this socket.
@@ -149,12 +150,14 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-accept-error &form channel args)))
+
 (defmacro tap-on-receive-events
   "Event raised when data has been received for a given socket.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-receive &form channel args)))
+
 (defmacro tap-on-receive-error-events
   "Event raised when a network error occured while the runtime was waiting for data on the socket. Once this event is raised,
    the socket is set to paused and no more onReceive events are raised for this socket.

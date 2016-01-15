@@ -44,6 +44,7 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-attached &form channel args)))
+
 (defmacro tap-on-detached-events
   "Fired when a removable storage is detached from the system.
    Events will be put on the |channel|.

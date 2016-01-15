@@ -142,6 +142,7 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-receive &form channel args)))
+
 (defmacro tap-on-receive-error-events
   "Event raised when an error occurred while the runtime was waiting for data on the serial port. Once this event is raised,
    the connection may be set to paused. A 'timeout' error does not pause the connection.

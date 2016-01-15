@@ -149,6 +149,7 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-receive &form channel args)))
+
 (defmacro tap-on-receive-error-events
   "Event raised when a network error occured while the runtime was waiting for data on the socket address and port. Once this
    event is raised, the socket is set to paused and no more onReceive events are raised for this socket.

@@ -24,6 +24,7 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-certificates-requested &form channel args)))
+
 (defmacro tap-on-sign-digest-requested-events
   "This event fires every time the browser needs to sign a message using a certificate provided by this extension in reply to
    an 'onCertificatesRequested' event. The extension must sign the data in request using the appropriate algorithm and private

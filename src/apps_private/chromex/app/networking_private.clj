@@ -282,18 +282,21 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-networks-changed &form channel args)))
+
 (defmacro tap-on-network-list-changed-events
   "Fired when the list of networks has changed.  Sends a complete list of GUIDs for all the current networks.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-network-list-changed &form channel args)))
+
 (defmacro tap-on-device-state-list-changed-events
   "Fired when the list of devices has changed or any device state properties have changed.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-device-state-list-changed &form channel args)))
+
 (defmacro tap-on-portal-detection-completed-events
   "Fired when a portal detection for a network completes. Sends the guid of the network and the corresponding captive portal
    status.

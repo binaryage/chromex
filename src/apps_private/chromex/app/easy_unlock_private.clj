@@ -260,6 +260,7 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-user-info-updated &form channel args)))
+
 (defmacro tap-on-start-auto-pairing-events
   "Event fired at the end of Easy bootstrap to start auto pairing so that a proper cryptohome key could be generated for the
    user.
@@ -267,18 +268,21 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-start-auto-pairing &form channel args)))
+
 (defmacro tap-on-connection-status-changed-events
   "Event fired when |connectionId| change status.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-connection-status-changed &form channel args)))
+
 (defmacro tap-on-data-received-events
   "Event fired when |connectionId| receives |data|.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-data-received &form channel args)))
+
 (defmacro tap-on-send-completed-events
   "Event fired when |connectionId| sends |data|. |success| is true if the send operation was successful.
    Events will be put on the |channel|.

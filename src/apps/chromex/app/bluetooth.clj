@@ -69,18 +69,21 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-adapter-state-changed &form channel args)))
+
 (defmacro tap-on-device-added-events
   "Fired when information about a new Bluetooth device is available.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-device-added &form channel args)))
+
 (defmacro tap-on-device-changed-events
   "Fired when information about a known Bluetooth device has changed.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-device-changed &form channel args)))
+
 (defmacro tap-on-device-removed-events
   "Fired when a Bluetooth device that was previously discovered has been out of range for long enough to be considered
    unavailable again, and when a paired device is removed.

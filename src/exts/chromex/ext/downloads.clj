@@ -147,12 +147,14 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-created &form channel args)))
+
 (defmacro tap-on-erased-events
   "Fires with the downloadId when a download is erased from history.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-erased &form channel args)))
+
 (defmacro tap-on-changed-events
   "When any of a 'DownloadItem''s properties except bytesReceived and estimatedEndTime changes, this event fires with the
    downloadId and an object containing the properties that changed.
@@ -160,6 +162,7 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-changed &form channel args)))
+
 (defmacro tap-on-determining-filename-events
   "During the filename determination process, extensions will be given the opportunity to override the target
    'DownloadItem.filename'. Each extension may not register more than one listener for this event. Each listener must call

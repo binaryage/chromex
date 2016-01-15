@@ -83,12 +83,14 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-created &form channel args)))
+
 (defmacro tap-on-removed-events
   "Fired when a window is removed (closed).
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-removed &form channel args)))
+
 (defmacro tap-on-focus-changed-events
   "Fired when the currently focused window changes. Will be chrome.windows.WINDOW_ID_NONE if all chrome windows have lost
    focus. Note: On some Linux window managers, WINDOW_ID_NONE will always be sent immediately preceding a switch from one

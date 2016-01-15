@@ -179,18 +179,21 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-drag-enter &form channel args)))
+
 (defmacro tap-on-drag-leave-events
   "Fired when the drag and drop leaves the document.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-drag-leave &form channel args)))
+
 (defmacro tap-on-drop-events
   "Fired when the user drops bookmarks on the document.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-drop &form channel args)))
+
 (defmacro tap-on-meta-info-changed-events
   "Fired when the meta info of a node changes.
    Events will be put on the |channel|.

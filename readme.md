@@ -4,7 +4,7 @@
 
 [An example project documenting basic usage of the library is here](https://github.com/binaryage/chromex-sample).
 
-This library is auto-generated. Current version was **generated on 2015-12-19** from [**Chromium @ 0b4104d**](https://chromium.googlesource.com/chromium/src.git/+/0b4104dd8eb2cef435c6c99614970f906e30bc54).
+This library is auto-generated. Current version was **generated on 2016-01-15** from [**Chromium @ 6971c17**](https://chromium.googlesource.com/chromium/src.git/+/6971c17d82c972e7bd26eb2e463e89b1f4922047).
 
 Looking for a nightly version? Check out [**nightly branch**](https://github.com/binaryage/chromex/tree/nightly) which gets updated nightly if there were any new API changes.
 
@@ -16,8 +16,8 @@ For Chrome Extensions and also for Chrome Apps:
 | --- | --- | --- | --- | --- |
 | [Public Chrome Extension APIs](src/exts) | 82 | 44 | 354 | 185 |
 | [Public Chrome App APIs](src/apps) | 65 | 20 | 359 | 131 |
-| [Private Chrome Extension APIs](src/exts_private) | 45 | 3 | 315 | 67 |
-| [Private Chrome App APIs](src/apps_private) | 40 | 3 | 271 | 70 |
+| [Private Chrome Extension APIs](src/exts_private) | 45 | 3 | 318 | 67 |
+| [Private Chrome App APIs](src/apps_private) | 40 | 3 | 272 | 70 |
 | [Internal Chrome Extension APIs](src/exts_internal) | 16 | 0 | 89 | 17 |
 | [Internal Chrome App APIs](src/apps_internal) | 15 | 0 | 87 | 17 |
 

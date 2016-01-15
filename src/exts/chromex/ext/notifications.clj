@@ -73,24 +73,28 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-closed &form channel args)))
+
 (defmacro tap-on-clicked-events
   "The user clicked in a non-button area of the notification.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-clicked &form channel args)))
+
 (defmacro tap-on-button-clicked-events
   "The user pressed a button in the notification.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-button-clicked &form channel args)))
+
 (defmacro tap-on-permission-level-changed-events
   "The user changes the permission level.  As of Chrome 47, only ChromeOS has UI that dispatches this event.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-permission-level-changed &form channel args)))
+
 (defmacro tap-on-show-settings-events
   "The user clicked on a link for the app's notification settings.  As of Chrome 47, only ChromeOS has UI that dispatches this
    event.
