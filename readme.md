@@ -1,4 +1,4 @@
-# chromex [![Clojars Project](https://img.shields.io/clojars/v/binaryage/chromex.svg)](https://clojars.org/binaryage/chromex) [![Build Status](https://travis-ci.org/binaryage/chromex.svg)](https://travis-ci.org/binaryage/chromex)
+# chromex [![Clojars Project](https://img.shields.io/clojars/v/binaryage/chromex.svg)](https://clojars.org/binaryage/chromex) [![Build Status](https://travis-ci.org/binaryage/chromex.svg)](https://travis-ci.org/binaryage/chromex) [![MIT License](https://img.shields.io/badge/license-MIT-007EC7.svg?style=flat-square)](/license.txt)
 
 ### Chrome Extension APIs wrapper library for ClojureScript.
 
@@ -202,5 +202,3 @@ way how callbacks are turned into core.async channels. Theoretically you could r
 ### Similar projects
 
   * [suprematic/khroma](https://github.com/suprematic/khroma)
-
-#### License [MIT](license.txt)
