@@ -4,7 +4,7 @@
 
 [An example project documenting basic usage of the library is here](https://github.com/binaryage/chromex-sample).
 
-This library is auto-generated. Current version was **generated on 2016-01-15** from [**Chromium @ 6971c17**](https://chromium.googlesource.com/chromium/src.git/+/6971c17d82c972e7bd26eb2e463e89b1f4922047).
+This library is auto-generated. Current version was **generated on 2016-01-24** from [**Chromium @ ab34d70**](https://chromium.googlesource.com/chromium/src.git/+/ab34d708e66ae2b9d32d3536a48de5501e34e98c).
 
 Looking for a nightly version? Check out [**nightly branch**](https://github.com/binaryage/chromex/tree/nightly) which gets updated nightly if there were any new API changes.
 
