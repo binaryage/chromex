@@ -1,4 +1,4 @@
-# chromex-sample
+# chromex-sample [![GitHub license](https://img.shields.io/github/license/binaryage/chromex-sample.svg)](license.txt)
 
 ### An example extension using Chromex library
 
@@ -329,8 +329,4 @@ You might want to look at some real-world extension implemented using Chromex:
 
 * [Dirac DevTools](https://github.com/binaryage/dirac) - a Chrome DevTools fork for ClojureScript developers
 
-Want to add an extensions here? [Send me a link](mailto:antonin@hildebrand.cz), thanks!
-
----
-
-#### License [MIT](license.txt)
+Want to add an extension here? [Send me a link](mailto:antonin@hildebrand.cz), thanks!
