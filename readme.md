@@ -1,4 +1,4 @@
-# chromex [![Clojars Project](https://img.shields.io/clojars/v/binaryage/chromex.svg)](https://clojars.org/binaryage/chromex) [![Build Status](https://travis-ci.org/binaryage/chromex.svg)](https://travis-ci.org/binaryage/chromex) [![MIT License](https://img.shields.io/badge/license-MIT-007EC7.svg?style=flat-square)](/license.txt)
+# chromex [![GitHub license](https://img.shields.io/github/license/binaryage/chromex.svg)](license.txt) [![Clojars Project](https://img.shields.io/clojars/v/binaryage/chromex.svg)](https://clojars.org/binaryage/chromex) [![Travis](https://img.shields.io/travis/binaryage/chromex.svg)](https://travis-ci.org/binaryage/chromex)
 
 ### Chrome Extension APIs wrapper library for ClojureScript.
 
