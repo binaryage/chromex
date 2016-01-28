@@ -32,6 +32,8 @@ cd "$(dirname "${BASH_SOURCE[0]}")"; cd ../..
 ROOT=$(pwd)
 CHROMEX="$ROOT/chromex"
 CHROMEX_README="$CHROMEX/readme.md"
+TOOLS="$CHROMEX/tools"
+WORKDIR="$TOOLS/_workdir"
 
 #############################################################################################################################
 # pull latest chromium
@@ -68,7 +70,11 @@ git reset --hard origin/nightly
 git merge -m "merge changes from master" master
 git push -f origin nightly
 
-time ./tools/update-cache.sh
+# hack - update-cache.sh does not work reliably (or I'm not using it properly)
+# since we run this as a batch task on a server, we don't care about speed that much
+# time ./tools/update-cache.sh
+rm -rf "$WORKDIR"
+time ./tools/build-cache.sh
 time ./tools/build-api.sh
 
 git add --all
