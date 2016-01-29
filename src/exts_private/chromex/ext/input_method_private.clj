@@ -70,6 +70,15 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([#_callback] (gen-call :function ::get-encrypt-sync-enabled &form)))
 
+(defmacro set-xkb-layout
+  "Sets the XKB layout for the given input method.
+   
+     |xkb_name| - The XKB layout name.
+     |callback| - Callback which is called when the layout is set.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([xkb-name #_callback] (gen-call :function ::set-xkb-layout &form xkb-name)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -155,10 +164,12 @@
      :since "45",
      :callback? true,
      :params
-     [{:name "callback",
-       :optional? true,
-       :type :callback,
-       :callback {:params [{:name "enabled", :type "boolean"}]}}]}],
+     [{:name "callback", :optional? true, :type :callback, :callback {:params [{:name "enabled", :type "boolean"}]}}]}
+    {:id ::set-xkb-layout,
+     :name "setXkbLayout",
+     :since "master",
+     :callback? true,
+     :params [{:name "xkb-name", :type "string"} {:name "callback", :optional? true, :type :callback}]}],
    :events
    [{:id ::on-changed, :name "onChanged", :params [{:name "new-input-method-id", :type "string"}]}
     {:id ::on-composition-bounds-changed,

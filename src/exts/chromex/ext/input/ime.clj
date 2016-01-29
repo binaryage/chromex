@@ -110,6 +110,31 @@
      |response| - True if the keystroke was handled, false if not"
   ([request-id response] (gen-call :function ::key-event-handled &form request-id response)))
 
+(defmacro create-window
+  "Creates IME window.
+   
+     |options| - The options of the newly created IME window.
+     |callback| - Called when the operation completes.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([options #_callback] (gen-call :function ::create-window &form options)))
+
+(defmacro activate
+  "Activates the IME extension so that it can receive events.
+   
+     |callback| - Called when the operation completes.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::activate &form)))
+
+(defmacro deactivate
+  "Deactivates the IME extension so that it cannot receive events.
+   
+     |callback| - Called when the operation completes.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::deactivate &form)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -263,7 +288,24 @@
     {:id ::key-event-handled,
      :name "keyEventHandled",
      :since "25",
-     :params [{:name "request-id", :type "string"} {:name "response", :type "boolean"}]}],
+     :params [{:name "request-id", :type "string"} {:name "response", :type "boolean"}]}
+    {:id ::create-window,
+     :name "createWindow",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "options", :type "input.ime.CreateWindowOptions"}
+      {:name "callback", :type :callback, :callback {:params [{:name "window-object", :type "Window"}]}}]}
+    {:id ::activate,
+     :name "activate",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :optional? true, :type :callback}]}
+    {:id ::deactivate,
+     :name "deactivate",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :optional? true, :type :callback}]}],
    :events
    [{:id ::on-activate,
      :name "onActivate",

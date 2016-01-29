@@ -39,6 +39,15 @@
 (defn key-event-handled* [config request-id response]
   (gen-wrap :function ::key-event-handled config request-id response))
 
+(defn create-window* [config options]
+  (gen-wrap :function ::create-window config options))
+
+(defn activate* [config]
+  (gen-wrap :function ::activate config))
+
+(defn deactivate* [config]
+  (gen-wrap :function ::deactivate config))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-activate* [config channel & args]

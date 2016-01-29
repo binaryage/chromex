@@ -55,17 +55,17 @@
 
 ### API stats
 
-Generated 45 namespaces containing 3 properties, 318 functions and 67 events:
+Generated 45 namespaces containing 3 properties, 319 functions and 67 events:
 
 
     |                            :namespace | :properties | :functions | :events |
     |---------------------------------------+-------------+------------+---------|
-    |           chrome.accessibilityPrivate |           0 |          2 |       1 |
+    |           chrome.accessibilityPrivate |           0 |          3 |       1 |
     |             chrome.activityLogPrivate |           0 |          4 |       1 |
     |                chrome.autofillPrivate |           0 |          6 |       2 |
     |                chrome.autotestPrivate |           0 |         14 |       0 |
     |               chrome.bluetoothPrivate |           0 |          7 |       1 |
-    |         chrome.bookmarkManagerPrivate |           0 |         22 |       4 |
+    |         chrome.bookmarkManagerPrivate |           0 |         21 |       4 |
     |          chrome.brailleDisplayPrivate |           0 |          2 |       2 |
     |            chrome.chromeosInfoPrivate |           0 |          2 |       0 |
     |              chrome.cloudPrintPrivate |           0 |          4 |       0 |
@@ -82,7 +82,7 @@ Generated 45 namespaces containing 3 properties, 318 functions and 67 events:
     |                     chrome.gcdPrivate |           0 |          6 |       0 |
     |                chrome.hangoutsPrivate |           0 |          0 |       1 |
     |                 chrome.hotwordPrivate |           0 |         15 |       9 |
-    |             chrome.inputMethodPrivate |           0 |          7 |       4 |
+    |             chrome.inputMethodPrivate |           0 |          8 |       4 |
     |        chrome.languageSettingsPrivate |           0 |         10 |       4 |
     |                     chrome.logPrivate |           0 |          4 |       1 |
     |             chrome.mediaPlayerPrivate |           0 |          0 |       3 |
@@ -112,7 +112,8 @@ Generated 45 namespaces containing 3 properties, 318 functions and 67 events:
 (ns your.project
   (:require
     [chromex.ext.accessibility-private refer-macros:[
-      set-native-accessibility-enabled set-focus-ring tap-on-introduce-chrome-vox tap-all-events]]
+      set-native-accessibility-enabled set-focus-ring set-keyboard-listener tap-on-introduce-chrome-vox
+      tap-all-events]]
     
     [chromex.ext.activity-log-private refer-macros:[
       get-extension-activities delete-activities delete-database delete-urls tap-on-extension-activity
@@ -134,8 +135,8 @@ Generated 45 namespaces containing 3 properties, 318 functions and 67 events:
     [chromex.ext.bookmark-manager-private refer-macros:[
       copy cut paste can-paste sort-children get-strings start-drag drop get-subtree can-edit
       can-open-new-windows remove-trees record-launch create-with-meta-info get-meta-info set-meta-info
-      update-meta-info undo redo get-undo-info get-redo-info set-version tap-on-drag-enter
-      tap-on-drag-leave tap-on-drop tap-on-meta-info-changed tap-all-events]]
+      update-meta-info undo redo get-undo-info get-redo-info tap-on-drag-enter tap-on-drag-leave
+      tap-on-drop tap-on-meta-info-changed tap-all-events]]
     
     [chromex.ext.braille-display-private refer-macros:[
       get-display-state write-dots tap-on-display-state-changed tap-on-key-event tap-all-events]]
@@ -216,8 +217,9 @@ Generated 45 namespaces containing 3 properties, 318 functions and 67 events:
     
     [chromex.ext.input-method-private refer-macros:[
       get-input-method-config get-input-methods get-current-input-method set-current-input-method
-      fetch-all-dictionary-words add-word-to-dictionary get-encrypt-sync-enabled tap-on-changed
-      tap-on-composition-bounds-changed tap-on-dictionary-loaded tap-on-dictionary-changed tap-all-events]]
+      fetch-all-dictionary-words add-word-to-dictionary get-encrypt-sync-enabled set-xkb-layout
+      tap-on-changed tap-on-composition-bounds-changed tap-on-dictionary-loaded tap-on-dictionary-changed
+      tap-all-events]]
     
     [chromex.ext.language-settings-private refer-macros:[
       get-language-list set-language-list get-spellcheck-dictionary-statuses get-spellcheck-words

@@ -66,9 +66,6 @@
 (defn get-redo-info* [config]
   (gen-wrap :function ::get-redo-info config))
 
-(defn set-version* [config version]
-  (gen-wrap :function ::set-version config version))
-
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-drag-enter* [config channel & args]

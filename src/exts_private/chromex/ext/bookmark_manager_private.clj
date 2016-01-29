@@ -161,14 +161,6 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([#_callback] (gen-call :function ::get-redo-info &form)))
 
-(defmacro set-version
-  "Sets the version to use when updating enhanced bookmarks.
-   
-     |version| - The version to set.
-   
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
-  ([version #_callback] (gen-call :function ::set-version &form version)))
-
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -322,12 +314,7 @@
      :name "getRedoInfo",
      :since "34",
      :callback? true,
-     :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}
-    {:id ::set-version,
-     :name "setVersion",
-     :since "40",
-     :callback? true,
-     :params [{:name "version", :type "string"} {:name "callback", :optional? true, :type :callback}]}],
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}],
    :events
    [{:id ::on-drag-enter,
      :name "onDragEnter",

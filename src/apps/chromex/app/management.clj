@@ -54,7 +54,8 @@
   ([manifest-str #_callback] (gen-call :function ::get-permission-warnings-by-manifest &form manifest-str)))
 
 (defmacro set-enabled
-  "Enables or disables an app or extension.
+  "Enables or disables an app or extension. In most cases this function must be called in the context of a user gesture (e.g.
+   an onclick handler for a button), and may present the user with a native confirmation UI as a way of preventing abuse.
    
      |id| - This should be the id from an item of 'management.ExtensionInfo'.
      |enabled| - Whether this item should be enabled or disabled.

@@ -3,7 +3,7 @@
    essentially a translation of the internal accessibility tree update system
    into an extension API.
    
-     * available since Chrome 49
+     * available since Chrome 50
      * https://developer.chrome.com/extensions/automationInternal"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
@@ -103,7 +103,7 @@
 
 (def api-table
   {:namespace "chrome.automationInternal",
-   :since "49",
+   :since "50",
    :functions
    [{:id ::enable-tab,
      :name "enableTab",

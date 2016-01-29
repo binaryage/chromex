@@ -9,6 +9,9 @@
 (defn set-focus-ring* [config rects]
   (gen-wrap :function ::set-focus-ring config rects))
 
+(defn set-keyboard-listener* [config enabled capture]
+  (gen-wrap :function ::set-keyboard-listener config enabled capture))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-introduce-chrome-vox* [config channel & args]

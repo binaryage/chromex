@@ -92,7 +92,7 @@
 
 ### API stats
 
-Generated 82 namespaces containing 44 properties, 354 functions and 185 events:
+Generated 82 namespaces containing 44 properties, 357 functions and 185 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -141,7 +141,7 @@ Generated 82 namespaces containing 44 properties, 354 functions and 185 events:
     |                       chrome.identity |           0 |          6 |       1 |
     |                           chrome.idle |           0 |          2 |       1 |
     |                        chrome.idltest |           0 |          4 |       0 |
-    |                      chrome.input.ime |           0 |         12 |      10 |
+    |                      chrome.input.ime |           0 |         15 |      10 |
     |                     chrome.instanceID |           0 |          5 |       1 |
     |                       chrome.location |           0 |          2 |       2 |
     |                     chrome.management |           0 |         12 |       4 |
@@ -353,9 +353,10 @@ Generated 82 namespaces containing 44 properties, 354 functions and 185 events:
     [chromex.ext.input.ime refer-macros:[
       set-composition clear-composition commit-text send-key-events hide-input-view
       set-candidate-window-properties set-candidates set-cursor-position set-menu-items update-menu-items
-      delete-surrounding-text key-event-handled tap-on-activate tap-on-deactivated tap-on-focus
-      tap-on-blur tap-on-input-context-update tap-on-key-event tap-on-candidate-clicked
-      tap-on-menu-item-activated tap-on-surrounding-text-changed tap-on-reset tap-all-events]]
+      delete-surrounding-text key-event-handled create-window activate deactivate tap-on-activate
+      tap-on-deactivated tap-on-focus tap-on-blur tap-on-input-context-update tap-on-key-event
+      tap-on-candidate-clicked tap-on-menu-item-activated tap-on-surrounding-text-changed tap-on-reset
+      tap-all-events]]
     
     [chromex.ext.instance-id refer-macros:[
       get-id get-creation-time get-token delete-token delete-id tap-on-token-refresh tap-all-events]]

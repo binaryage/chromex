@@ -1,7 +1,7 @@
 (ns chromex.ext.processes
   "Use the chrome.processes API to interact with the browser's processes.
    
-     * available since Chrome 49
+     * available since Chrome 50
      * https://developer.chrome.com/extensions/processes"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
@@ -99,7 +99,7 @@
 
 (def api-table
   {:namespace "chrome.processes",
-   :since "49",
+   :since "50",
    :functions
    [{:id ::terminate,
      :name "terminate",

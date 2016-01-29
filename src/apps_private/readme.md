@@ -50,12 +50,12 @@
 
 ### API stats
 
-Generated 40 namespaces containing 3 properties, 272 functions and 70 events:
+Generated 40 namespaces containing 3 properties, 274 functions and 70 events:
 
 
     |                     :namespace | :properties | :functions | :events |
     |--------------------------------+-------------+------------+---------|
-    |    chrome.accessibilityPrivate |           0 |          2 |       1 |
+    |    chrome.accessibilityPrivate |           0 |          3 |       1 |
     |      chrome.activityLogPrivate |           0 |          4 |       1 |
     |         chrome.autofillPrivate |           0 |          6 |       2 |
     |        chrome.bluetoothPrivate |           0 |          7 |       1 |
@@ -74,7 +74,7 @@ Generated 40 namespaces containing 3 properties, 272 functions and 70 events:
     |         chrome.identityPrivate |           0 |          0 |       1 |
     |      chrome.imageWriterPrivate |           0 |          5 |       5 |
     |    chrome.inlineInstallPrivate |           0 |          1 |       0 |
-    |      chrome.inputMethodPrivate |           0 |          7 |       4 |
+    |      chrome.inputMethodPrivate |           0 |          8 |       4 |
     | chrome.languageSettingsPrivate |           0 |         10 |       4 |
     |              chrome.logPrivate |           0 |          4 |       1 |
     |      chrome.mediaPlayerPrivate |           0 |          0 |       3 |
@@ -102,7 +102,8 @@ Generated 40 namespaces containing 3 properties, 272 functions and 70 events:
 (ns your.project
   (:require
     [chromex.app.accessibility-private refer-macros:[
-      set-native-accessibility-enabled set-focus-ring tap-on-introduce-chrome-vox tap-all-events]]
+      set-native-accessibility-enabled set-focus-ring set-keyboard-listener tap-on-introduce-chrome-vox
+      tap-all-events]]
     
     [chromex.app.activity-log-private refer-macros:[
       get-extension-activities delete-activities delete-database delete-urls tap-on-extension-activity
@@ -200,8 +201,9 @@ Generated 40 namespaces containing 3 properties, 272 functions and 70 events:
     
     [chromex.app.input-method-private refer-macros:[
       get-input-method-config get-input-methods get-current-input-method set-current-input-method
-      fetch-all-dictionary-words add-word-to-dictionary get-encrypt-sync-enabled tap-on-changed
-      tap-on-composition-bounds-changed tap-on-dictionary-loaded tap-on-dictionary-changed tap-all-events]]
+      fetch-all-dictionary-words add-word-to-dictionary get-encrypt-sync-enabled set-xkb-layout
+      tap-on-changed tap-on-composition-bounds-changed tap-on-dictionary-loaded tap-on-dictionary-changed
+      tap-all-events]]
     
     [chromex.app.language-settings-private refer-macros:[
       get-language-list set-language-list get-spellcheck-dictionary-statuses get-spellcheck-words

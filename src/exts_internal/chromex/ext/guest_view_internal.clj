@@ -1,5 +1,5 @@
 (ns chromex.ext.guest-view-internal
-  "  * available since Chrome 48
+  "  * available since Chrome 49
      * https://developer.chrome.com/extensions/guestViewInternal"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
@@ -46,7 +46,7 @@
 
 (def api-table
   {:namespace "chrome.guestViewInternal",
-   :since "48",
+   :since "49",
    :functions
    [{:id ::create-guest,
      :name "createGuest",

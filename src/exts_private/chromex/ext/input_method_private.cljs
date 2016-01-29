@@ -24,6 +24,9 @@
 (defn get-encrypt-sync-enabled* [config]
   (gen-wrap :function ::get-encrypt-sync-enabled config))
 
+(defn set-xkb-layout* [config xkb-name]
+  (gen-wrap :function ::set-xkb-layout config xkb-name))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-changed* [config channel & args]

@@ -37,7 +37,14 @@
 (def api-table
   {:namespace "chrome.wallpaperPrivate",
    :since "22",
-   :events [{:id ::on-wallpaper-changed-by3rd-party, :name "onWallpaperChangedBy3rdParty", :since "43"}]})
+   :events
+   [{:id ::on-wallpaper-changed-by3rd-party,
+     :name "onWallpaperChangedBy3rdParty",
+     :since "43",
+     :params
+     [{:name "wallpaper", :type "binary"}
+      {:name "thumbnail", :type "binary"}
+      {:name "layout", :type "wallpaper.WallpaperLayout"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

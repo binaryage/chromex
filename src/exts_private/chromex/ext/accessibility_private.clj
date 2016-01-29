@@ -25,6 +25,16 @@
      |rects| - Array of rectangles to draw the accessibility focus ring around."
   ([rects] (gen-call :function ::set-focus-ring &form rects)))
 
+(defmacro set-keyboard-listener
+  "Sets the calling extension as a listener of all keyboard events optionally allowing the calling extension to
+   capture/swallow the key event via DOM apis. Returns false via callback when unable to set the listener.
+   
+     |enabled| - True if the caller wants to listen to key events; false to stop listening to events. Note that there is
+                 only ever one extension listening to key events.
+     |capture| - True if key events should be swallowed natively and not propagated if preventDefault() gets called by the
+                 extension's background page."
+  ([enabled capture] (gen-call :function ::set-keyboard-listener &form enabled capture)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -59,7 +69,11 @@
     {:id ::set-focus-ring,
      :name "setFocusRing",
      :since "39",
-     :params [{:name "rects", :type "[array-of-accessibilityPrivate.ScreenRects]"}]}],
+     :params [{:name "rects", :type "[array-of-accessibilityPrivate.ScreenRects]"}]}
+    {:id ::set-keyboard-listener,
+     :name "setKeyboardListener",
+     :since "49",
+     :params [{:name "enabled", :type "boolean"} {:name "capture", :type "boolean"}]}],
    :events [{:id ::on-introduce-chrome-vox, :name "onIntroduceChromeVox", :since "42"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
