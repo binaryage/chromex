@@ -14,6 +14,9 @@
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
+(defn capture-visible-region* [config options]
+  (gen-wrap :function ::capture-visible-region config options))
+
 (defn add-content-scripts* [config content-script-list]
   (gen-wrap :function ::add-content-scripts config content-script-list))
 

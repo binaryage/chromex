@@ -75,13 +75,13 @@
 
 ### API stats
 
-Generated 65 namespaces containing 20 properties, 359 functions and 131 events:
+Generated 65 namespaces containing 20 properties, 360 functions and 131 events:
 
 
     |                         :namespace | :properties | :functions | :events |
     |------------------------------------+-------------+------------+---------|
     |                          <appview> |           0 |          1 |       0 |
-    |                          <webview> |           3 |         25 |       0 |
+    |                          <webview> |           3 |         26 |       0 |
     |       chrome.accessibilityFeatures |           8 |          0 |       0 |
     |                      chrome.alarms |           0 |          5 |       1 |
     |                 chrome.app.runtime |           0 |          0 |       3 |
@@ -155,9 +155,9 @@ Generated 65 namespaces containing 20 properties, 359 functions and 131 events:
       connect tap-all-events]]
     
     [chromex.app.webview-tag refer-macros:[
-      get-content-window get-request get-context-menus add-content-scripts back can-go-back
-      can-go-forward clear-data execute-script find forward get-process-id get-user-agent get-zoom
-      get-zoom-mode go insert-css is-user-agent-overridden print reload remove-content-scripts
+      get-content-window get-request get-context-menus capture-visible-region add-content-scripts back
+      can-go-back can-go-forward clear-data execute-script find forward get-process-id get-user-agent
+      get-zoom get-zoom-mode go insert-css is-user-agent-overridden print reload remove-content-scripts
       set-user-agent-override set-zoom set-zoom-mode stop stop-finding load-data-with-base-url terminate
       tap-all-events]]
     

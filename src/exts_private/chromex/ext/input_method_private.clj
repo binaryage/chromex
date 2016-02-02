@@ -167,7 +167,7 @@
      [{:name "callback", :optional? true, :type :callback, :callback {:params [{:name "enabled", :type "boolean"}]}}]}
     {:id ::set-xkb-layout,
      :name "setXkbLayout",
-     :since "master",
+     :since "50",
      :callback? true,
      :params [{:name "xkb-name", :type "string"} {:name "callback", :optional? true, :type :callback}]}],
    :events

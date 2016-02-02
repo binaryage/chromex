@@ -151,6 +151,16 @@
 
 (defmacro terminate ([instance-id] (gen-call :function ::terminate &form instance-id)))
 
+(defmacro capture-visible-region
+  "foo
+   
+     |instanceId| - The instance ID of the guest  process.
+     |options| - Details about the format and quality of an image.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([instance-id options #_callback] (gen-call :function ::capture-visible-region &form instance-id options))
+  ([instance-id] `(capture-visible-region ~instance-id :omit)))
+
 (defmacro clear-data
   "Clears various types of browsing data stored in a storage partition of a .
    
@@ -286,6 +296,14 @@
     {:id ::navigate, :name "navigate", :params [{:name "instance-id", :type "integer"} {:name "src", :type "string"}]}
     {:id ::stop, :name "stop", :params [{:name "instance-id", :type "integer"}]}
     {:id ::terminate, :name "terminate", :params [{:name "instance-id", :type "integer"}]}
+    {:id ::capture-visible-region,
+     :name "captureVisibleRegion",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "instance-id", :type "integer"}
+      {:name "options", :optional? true, :type "object"}
+      {:name "callback", :type :callback, :callback {:params [{:name "data-url", :type "string"}]}}]}
     {:id ::clear-data,
      :name "clearData",
      :callback? true,

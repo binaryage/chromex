@@ -291,19 +291,19 @@
      :params [{:name "request-id", :type "string"} {:name "response", :type "boolean"}]}
     {:id ::create-window,
      :name "createWindow",
-     :since "master",
+     :since "50",
      :callback? true,
      :params
      [{:name "options", :type "input.ime.CreateWindowOptions"}
       {:name "callback", :type :callback, :callback {:params [{:name "window-object", :type "Window"}]}}]}
     {:id ::activate,
      :name "activate",
-     :since "master",
+     :since "50",
      :callback? true,
      :params [{:name "callback", :optional? true, :type :callback}]}
     {:id ::deactivate,
      :name "deactivate",
-     :since "master",
+     :since "50",
      :callback? true,
      :params [{:name "callback", :optional? true, :type :callback}]}],
    :events

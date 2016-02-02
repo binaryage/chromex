@@ -66,6 +66,9 @@
 (defn terminate* [config instance-id]
   (gen-wrap :function ::terminate config instance-id))
 
+(defn capture-visible-region* [config instance-id options]
+  (gen-wrap :function ::capture-visible-region config instance-id options))
+
 (defn clear-data* [config instance-id options data-to-remove]
   (gen-wrap :function ::clear-data config instance-id options data-to-remove))
 

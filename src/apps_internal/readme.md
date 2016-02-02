@@ -25,7 +25,7 @@
 
 ### API stats
 
-Generated 15 namespaces containing 0 properties, 87 functions and 17 events:
+Generated 15 namespaces containing 0 properties, 88 functions and 17 events:
 
 
     |                         :namespace | :properties | :functions | :events |
@@ -44,7 +44,7 @@ Generated 15 namespaces containing 0 properties, 87 functions and 17 events:
     |        chrome.platformKeysInternal |           0 |          3 |       0 |
     |     chrome.printerProviderInternal |           0 |          5 |       0 |
     |          chrome.webRequestInternal |           0 |          2 |       0 |
-    |             chrome.webViewInternal |           0 |         22 |       0 |
+    |             chrome.webViewInternal |           0 |         23 |       0 |
 
 ### Requires
 
@@ -106,6 +106,6 @@ Generated 15 namespaces containing 0 properties, 87 functions and 17 events:
     [chromex.app.web-view-internal refer-macros:[
       execute-script insert-css add-content-scripts remove-content-scripts set-zoom get-zoom
       set-zoom-mode get-zoom-mode find stop-finding load-data-with-base-url go override-user-agent reload
-      set-allow-transparency set-allow-scaling set-name set-permission navigate stop terminate clear-data
-      tap-all-events]]))
+      set-allow-transparency set-allow-scaling set-name set-permission navigate stop terminate
+      capture-visible-region clear-data tap-all-events]]))
 ```

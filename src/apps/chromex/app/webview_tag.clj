@@ -32,6 +32,15 @@
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
+(defmacro capture-visible-region
+  "Captures the visible region of the webview.
+   
+     |options| - Details about the format and quality of an image.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([options #_callback] (gen-call :function ::capture-visible-region &form options))
+  ([] `(capture-visible-region :omit)))
+
 (defmacro add-content-scripts
   "Adds content script injection rules to the webview. When the webview navigates to a page matching one or more rules, the
    associated scripts will be injected. You can programmatically add rules or update existing rules.The following example adds
@@ -279,7 +288,14 @@ webview.addContentScripts([{
     {:id ::request, :name "request", :since "33", :return-type "webviewTag.WebRequestEventInterface"}
     {:id ::context-menus, :name "contextMenus", :since "44", :return-type "webviewTag.ContextMenus"}],
    :functions
-   [{:id ::add-content-scripts,
+   [{:id ::capture-visible-region,
+     :name "captureVisibleRegion",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "options", :optional? true, :type "object"}
+      {:name "callback", :type :callback, :callback {:params [{:name "data-url", :type "string"}]}}]}
+    {:id ::add-content-scripts,
      :name "addContentScripts",
      :since "44",
      :params [{:name "content-script-list", :type "[array-of-webviewTag.ContentScriptDetailss]"}]}
