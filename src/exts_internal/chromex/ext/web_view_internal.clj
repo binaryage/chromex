@@ -298,7 +298,6 @@
     {:id ::terminate, :name "terminate", :params [{:name "instance-id", :type "integer"}]}
     {:id ::capture-visible-region,
      :name "captureVisibleRegion",
-     :since "master",
      :callback? true,
      :params
      [{:name "instance-id", :type "integer"}

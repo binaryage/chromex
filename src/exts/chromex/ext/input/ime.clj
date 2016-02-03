@@ -213,6 +213,14 @@
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-reset &form channel args)))
 
+(defmacro tap-on-composition-bounds-changed-events
+  "Triggered when the bounds of the IME composition text or cursor are changed. The IME composition text is the instance of
+   text produced in the input method editor.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-composition-bounds-changed &form channel args)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -332,7 +340,11 @@
      :name "onSurroundingTextChanged",
      :since "27",
      :params [{:name "engine-id", :type "string"} {:name "surrounding-info", :type "object"}]}
-    {:id ::on-reset, :name "onReset", :since "29", :params [{:name "engine-id", :type "string"}]}]})
+    {:id ::on-reset, :name "onReset", :since "29", :params [{:name "engine-id", :type "string"}]}
+    {:id ::on-composition-bounds-changed,
+     :name "onCompositionBoundsChanged",
+     :since "master",
+     :params [{:name "bounds-list", :type "[array-of-input.ime.Boundss]"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

@@ -290,7 +290,7 @@ webview.addContentScripts([{
    :functions
    [{:id ::capture-visible-region,
      :name "captureVisibleRegion",
-     :since "master",
+     :since "50",
      :callback? true,
      :params
      [{:name "options", :optional? true, :type "object"}

@@ -70,4 +70,6 @@
   (gen-wrap :event ::on-surrounding-text-changed config channel args))
 (defn on-reset* [config channel & args]
   (gen-wrap :event ::on-reset config channel args))
+(defn on-composition-bounds-changed* [config channel & args]
+  (gen-wrap :event ::on-composition-bounds-changed config channel args))
 
