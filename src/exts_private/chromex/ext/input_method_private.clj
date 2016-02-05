@@ -111,6 +111,13 @@
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-dictionary-changed &form channel args)))
 
+(defmacro tap-on-ime-menu-activation-changed-events
+  "Fired when the IME menu is activated or deactivated.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-ime-menu-activation-changed &form channel args)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -180,7 +187,11 @@
     {:id ::on-dictionary-changed,
      :name "onDictionaryChanged",
      :since "43",
-     :params [{:name "added", :type "[array-of-strings]"} {:name "removed", :type "[array-of-strings]"}]}]})
+     :params [{:name "added", :type "[array-of-strings]"} {:name "removed", :type "[array-of-strings]"}]}
+    {:id ::on-ime-menu-activation-changed,
+     :name "onImeMenuActivationChanged",
+     :since "master",
+     :params [{:name "activation", :type "boolean"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
