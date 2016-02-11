@@ -343,7 +343,7 @@
     {:id ::on-reset, :name "onReset", :since "29", :params [{:name "engine-id", :type "string"}]}
     {:id ::on-composition-bounds-changed,
      :name "onCompositionBoundsChanged",
-     :since "master",
+     :since "50",
      :params [{:name "bounds-list", :type "[array-of-input.ime.Boundss]"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

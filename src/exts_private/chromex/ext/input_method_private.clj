@@ -190,7 +190,7 @@
      :params [{:name "added", :type "[array-of-strings]"} {:name "removed", :type "[array-of-strings]"}]}
     {:id ::on-ime-menu-activation-changed,
      :name "onImeMenuActivationChanged",
-     :since "master",
+     :since "50",
      :params [{:name "activation", :type "boolean"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
