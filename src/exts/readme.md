@@ -92,7 +92,7 @@
 
 ### API stats
 
-Generated 82 namespaces containing 44 properties, 357 functions and 186 events:
+Generated 82 namespaces containing 44 properties, 357 functions and 185 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -123,7 +123,7 @@ Generated 82 namespaces containing 44 properties, 357 functions and 186 events:
     |       chrome.devtools.inspectedWindow |           1 |          3 |       2 |
     |               chrome.devtools.network |           0 |          1 |       2 |
     |                chrome.devtools.panels |           2 |          3 |       0 |
-    |                  chrome.displaySource |           0 |          4 |       4 |
+    |                  chrome.displaySource |           0 |          4 |       3 |
     |                            chrome.dns |           0 |          1 |       0 |
     |                   chrome.documentScan |           0 |          1 |       0 |
     |                      chrome.downloads |           0 |         14 |       4 |
@@ -279,7 +279,7 @@ Generated 82 namespaces containing 44 properties, 357 functions and 186 events:
     
     [chromex.ext.display-source refer-macros:[
       get-available-sinks request-authentication start-session terminate-session tap-on-sinks-updated
-      tap-on-session-started tap-on-session-terminated tap-on-session-error-occured tap-all-events]]
+      tap-on-session-terminated tap-on-session-error-occured tap-all-events]]
     
     [chromex.ext.dns refer-macros:[
       resolve tap-all-events]]

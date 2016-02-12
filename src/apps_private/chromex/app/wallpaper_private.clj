@@ -44,7 +44,8 @@
      :params
      [{:name "wallpaper", :type "binary"}
       {:name "thumbnail", :type "binary"}
-      {:name "layout", :type "wallpaper.WallpaperLayout"}]}]})
+      {:name "layout", :type "wallpaper.WallpaperLayout"}
+      {:name "app-name", :type "string"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

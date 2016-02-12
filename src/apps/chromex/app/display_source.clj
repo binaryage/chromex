@@ -69,13 +69,6 @@
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-sinks-updated &form channel args)))
 
-(defmacro tap-on-session-started-events
-  "Event fired when the Display session is started. |sinkId| Id of the peer sink
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
-  ([channel & args] (apply gen-call :event ::on-session-started &form channel args)))
-
 (defmacro tap-on-session-terminated-events
   "Event fired when the Display session is terminated. |sinkId| Id of the peer sink
    Events will be put on the |channel|.
@@ -134,7 +127,6 @@
    [{:id ::on-sinks-updated,
      :name "onSinksUpdated",
      :params [{:name "sinks", :type "[array-of-displaySource.SinkInfos]"}]}
-    {:id ::on-session-started, :name "onSessionStarted", :params [{:name "sink-id", :type "integer"}]}
     {:id ::on-session-terminated, :name "onSessionTerminated", :params [{:name "sink-id", :type "integer"}]}
     {:id ::on-session-error-occured,
      :name "onSessionErrorOccured",
