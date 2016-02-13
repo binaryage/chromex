@@ -72,7 +72,7 @@
      :params [{:name "rects", :type "[array-of-accessibilityPrivate.ScreenRects]"}]}
     {:id ::set-keyboard-listener,
      :name "setKeyboardListener",
-     :since "49",
+     :since "48",
      :params [{:name "enabled", :type "boolean"} {:name "capture", :type "boolean"}]}],
    :events [{:id ::on-introduce-chrome-vox, :name "onIntroduceChromeVox", :since "42"}]})
 
