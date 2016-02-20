@@ -9,6 +9,9 @@
 (defn get-desktop* [config]
   (gen-wrap :function ::get-desktop config))
 
+(defn get-focus* [config]
+  (gen-wrap :function ::get-focus config))
+
 (defn add-tree-change-observer* [config filter]
   (gen-wrap :function ::add-tree-change-observer config filter))
 

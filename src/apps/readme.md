@@ -75,7 +75,7 @@
 
 ### API stats
 
-Generated 65 namespaces containing 20 properties, 360 functions and 130 events:
+Generated 65 namespaces containing 20 properties, 361 functions and 130 events:
 
 
     |                         :namespace | :properties | :functions | :events |
@@ -88,7 +88,7 @@ Generated 65 namespaces containing 20 properties, 360 functions and 130 events:
     |                  chrome.app.window |           0 |          5 |       6 |
     |                       chrome.audio |           0 |          3 |       4 |
     |                  chrome.audioModem |           0 |          4 |       2 |
-    |                  chrome.automation |           0 |          5 |       0 |
+    |                  chrome.automation |           0 |          6 |       0 |
     |                   chrome.bluetooth |           0 |          5 |       4 |
     |          chrome.bluetoothLowEnergy |           0 |         17 |       5 |
     |             chrome.bluetoothSocket |           0 |         11 |       4 |
@@ -183,8 +183,8 @@ Generated 65 namespaces containing 20 properties, 360 functions and 130 events:
       transmit stop-transmit receive stop-receive tap-on-received tap-on-transmit-fail tap-all-events]]
     
     [chromex.app.automation refer-macros:[
-      get-tree get-desktop add-tree-change-observer remove-tree-change-observer set-document-selection
-      tap-all-events]]
+      get-tree get-desktop get-focus add-tree-change-observer remove-tree-change-observer
+      set-document-selection tap-all-events]]
     
     [chromex.app.bluetooth refer-macros:[
       get-adapter-state get-device get-devices start-discovery stop-discovery

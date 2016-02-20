@@ -38,6 +38,15 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([#_callback] (gen-call :function ::get-desktop &form)))
 
+(defmacro get-focus
+  "Get the automation node that currently has focus, globally. Will return null if none of the nodes in any loaded trees have
+   focus.
+   
+     |callback| - Called with the AutomationNode that currently has focus.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([#_callback] (gen-call :function ::get-focus &form)))
+
 (defmacro add-tree-change-observer
   "Add a tree change observer. Tree change observers are static/global, they listen to changes across all trees. Pass a filter
    to determine what specific tree changes to listen to, and note that listnening to all tree changes can be expensive.
@@ -95,6 +104,14 @@
      [{:name "callback",
        :type :callback,
        :callback {:params [{:name "root-node", :type "automation.AutomationNode"}]}}]}
+    {:id ::get-focus,
+     :name "getFocus",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "callback",
+       :type :callback,
+       :callback {:params [{:name "focused-node", :type "automation.AutomationNode"}]}}]}
     {:id ::add-tree-change-observer,
      :name "addTreeChangeObserver",
      :callback? true,
