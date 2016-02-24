@@ -106,7 +106,6 @@
        :callback {:params [{:name "root-node", :type "automation.AutomationNode"}]}}]}
     {:id ::get-focus,
      :name "getFocus",
-     :since "master",
      :callback? true,
      :params
      [{:name "callback",
