@@ -118,6 +118,13 @@
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-ime-menu-activation-changed &form channel args)))
 
+(defmacro tap-on-ime-menu-list-changed-events
+  "Fired when the input method or the list of active input method IDs is changed.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-ime-menu-list-changed &form channel args)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -191,7 +198,8 @@
     {:id ::on-ime-menu-activation-changed,
      :name "onImeMenuActivationChanged",
      :since "50",
-     :params [{:name "activation", :type "boolean"}]}]})
+     :params [{:name "activation", :type "boolean"}]}
+    {:id ::on-ime-menu-list-changed, :name "onImeMenuListChanged", :since "master"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

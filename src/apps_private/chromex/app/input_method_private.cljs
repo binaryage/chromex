@@ -39,4 +39,6 @@
   (gen-wrap :event ::on-dictionary-changed config channel args))
 (defn on-ime-menu-activation-changed* [config channel & args]
   (gen-wrap :event ::on-ime-menu-activation-changed config channel args))
+(defn on-ime-menu-list-changed* [config channel & args]
+  (gen-wrap :event ::on-ime-menu-list-changed config channel args))
 
