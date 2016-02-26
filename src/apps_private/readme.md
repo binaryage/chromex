@@ -36,7 +36,6 @@
 | [chrome.passwordsPrivate](https://developer.chrome.com/extensions/passwordsPrivate) | [chromex/app/passwords_private.clj](chromex/app/passwords_private.clj) |
 | [chrome.preferencesPrivate](https://developer.chrome.com/extensions/preferencesPrivate) | [chromex/app/preferences_private.clj](chromex/app/preferences_private.clj) |
 | [chrome.resourcesPrivate](https://developer.chrome.com/extensions/resourcesPrivate) | [chromex/app/resources_private.clj](chromex/app/resources_private.clj) |
-| [chrome.searchEnginesPrivate](https://developer.chrome.com/extensions/searchEnginesPrivate) | [chromex/app/search_engines_private.clj](chromex/app/search_engines_private.clj) |
 | [chrome.settingsPrivate](https://developer.chrome.com/extensions/settingsPrivate) | [chromex/app/settings_private.clj](chromex/app/settings_private.clj) |
 | [chrome.streamsPrivate](https://developer.chrome.com/extensions/streamsPrivate) | [chromex/app/streams_private.clj](chromex/app/streams_private.clj) |
 | [chrome.systemPrivate](https://developer.chrome.com/extensions/systemPrivate) | [chromex/app/system_private.clj](chromex/app/system_private.clj) |
@@ -50,7 +49,7 @@
 
 ### API stats
 
-Generated 40 namespaces containing 3 properties, 274 functions and 72 events:
+Generated 39 namespaces containing 3 properties, 267 functions and 71 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -85,7 +84,6 @@ Generated 40 namespaces containing 3 properties, 274 functions and 72 events:
     |        chrome.passwordsPrivate |           0 |          3 |       3 |
     |      chrome.preferencesPrivate |           3 |          1 |       0 |
     |        chrome.resourcesPrivate |           0 |          1 |       0 |
-    |    chrome.searchEnginesPrivate |           0 |          7 |       1 |
     |         chrome.settingsPrivate |           0 |          5 |       1 |
     |          chrome.streamsPrivate |           0 |          1 |       1 |
     |           chrome.systemPrivate |           0 |          3 |       4 |
@@ -250,11 +248,6 @@ Generated 40 namespaces containing 3 properties, 274 functions and 72 events:
     
     [chromex.app.resources-private refer-macros:[
       get-strings tap-all-events]]
-    
-    [chromex.app.search-engines-private refer-macros:[
-      get-search-engines set-selected-search-engine add-other-search-engine update-search-engine
-      remove-search-engine get-hotword-state opt-into-hotwording tap-on-search-engines-changed
-      tap-all-events]]
     
     [chromex.app.settings-private refer-macros:[
       set-pref get-all-prefs get-pref get-default-zoom-percent set-default-zoom-percent
