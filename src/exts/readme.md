@@ -92,7 +92,7 @@
 
 ### API stats
 
-Generated 82 namespaces containing 44 properties, 358 functions and 185 events:
+Generated 82 namespaces containing 44 properties, 360 functions and 185 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -128,7 +128,7 @@ Generated 82 namespaces containing 44 properties, 358 functions and 185 events:
     |                   chrome.documentScan |           0 |          1 |       0 |
     |                      chrome.downloads |           0 |         14 |       4 |
     |    chrome.enterprise.deviceAttributes |           0 |          1 |       0 |
-    |        chrome.enterprise.platformKeys |           0 |          4 |       0 |
+    |        chrome.enterprise.platformKeys |           0 |          6 |       0 |
     |   chrome.experimental.devtools.audits |           0 |          1 |       0 |
     |  chrome.experimental.devtools.console |           0 |          2 |       1 |
     |                      chrome.extension |           2 |          8 |       2 |
@@ -296,7 +296,8 @@ Generated 82 namespaces containing 44 properties, 358 functions and 185 events:
       get-directory-device-id tap-all-events]]
     
     [chromex.ext.enterprise.platform-keys refer-macros:[
-      get-tokens get-certificates import-certificate remove-certificate tap-all-events]]
+      get-tokens get-certificates import-certificate remove-certificate challenge-machine-key
+      challenge-user-key tap-all-events]]
     
     [chromex.ext.experimental.devtools.audits refer-macros:[
       add-category tap-all-events]]

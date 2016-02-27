@@ -62,6 +62,46 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([token-id certificate #_callback] (gen-call :function ::remove-certificate &form token-id certificate)))
 
+(defmacro challenge-machine-key
+  "Challenges a hardware-backed Enterprise Machine Key and emits the response as part of a remote attestation protocol. Only
+   useful on Chrome OS and in conjunction with the Verified Access Web API which both issues challenges and verifies
+   responses. A successful verification by the Verified Access Web API is a strong signal of all of the following: * The
+   current device is a legitimate Chrome OS device. * The current device is managed by the domain specified during
+   verification. * The current signed-in user is managed by the domain specified during   verification. * The current device
+   state complies with enterprise device policy. For   example, a policy may specify that the device must not be in developer
+   mode. * Any device identity emitted by the verification is tightly bound to the   hardware of the current device. This
+   function is highly restricted and will fail if the current device is not managed, the current user is not managed, or if
+   this operation has not explicitly been enabled for the caller by enterprise device policy. The Enterprise Machine Key does
+   not reside in the 'system' token and is not accessible by any other API.
+   
+     |challenge| - A challenge as emitted by the Verified Access Web API.
+     |callback| - Called back with the challenge response.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([challenge #_callback] (gen-call :function ::challenge-machine-key &form challenge)))
+
+(defmacro challenge-user-key
+  "Challenges a hardware-backed Enterprise User Key and emits the response as part of a remote attestation protocol. Only
+   useful on Chrome OS and in conjunction with the Verified Access Web API which both issues challenges and verifies
+   responses. A successful verification by the Verified Access Web API is a strong signal of all of the following: * The
+   current device is a legitimate Chrome OS device. * The current device is managed by the domain specified during
+   verification. * The current signed-in user is managed by the domain specified during   verification. * The current device
+   state complies with enterprise user policy. For   example, a policy may specify that the device must not be in developer
+   mode. * The public key emitted by the verification is tightly bound to the   hardware of the current device and to the
+   current signed-in user. This function is highly restricted and will fail if the current device is not managed, the current
+   user is not managed, or if this operation has not explicitly been enabled for the caller by enterprise user policy. The
+   Enterprise User Key does not reside in the 'user' token and is not accessible by any other API.
+   
+     |challenge| - A challenge as emitted by the Verified Access Web API.
+     |registerKey| - If set, the current Enterprise User Key is registered with                the 'user' token and
+                     relinquishes the                Enterprise User Key role. The key can then be associated
+                     with a certificate and used like any other signing key.                This key is 2048-bit RSA.
+                     Subsequent calls to this                function will then generate a new Enterprise User Key.
+     |callback| - Called back with the challenge response.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([challenge register-key #_callback] (gen-call :function ::challenge-user-key &form challenge register-key)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -107,7 +147,22 @@
      :params
      [{:name "token-id", :type "string"}
       {:name "certificate", :type "ArrayBuffer"}
-      {:name "callback", :optional? true, :type :callback}]}]})
+      {:name "callback", :optional? true, :type :callback}]}
+    {:id ::challenge-machine-key,
+     :name "challengeMachineKey",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "challenge", :type "ArrayBuffer"}
+      {:name "callback", :type :callback, :callback {:params [{:name "response", :type "ArrayBuffer"}]}}]}
+    {:id ::challenge-user-key,
+     :name "challengeUserKey",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "challenge", :type "ArrayBuffer"}
+      {:name "register-key", :type "boolean"}
+      {:name "callback", :type :callback, :callback {:params [{:name "response", :type "ArrayBuffer"}]}}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

@@ -15,3 +15,9 @@
 (defn remove-certificate* [config token-id certificate]
   (gen-wrap :function ::remove-certificate config token-id certificate))
 
+(defn challenge-machine-key* [config challenge]
+  (gen-wrap :function ::challenge-machine-key config challenge))
+
+(defn challenge-user-key* [config challenge register-key]
+  (gen-wrap :function ::challenge-user-key config challenge register-key))
+
