@@ -10,13 +10,13 @@
   :dependencies [[org.clojure/clojure "1.7.0" :scope "provided"]
                  [org.clojure/clojurescript "1.7.170" :scope "provided"]
                  [org.clojure/core.async "0.2.374" :scope "provided"]
-                 [environ "1.0.1" :scope "provided"]]
+                 [environ "1.0.2" :scope "provided"]]
 
   :clean-targets ^{:protect false} ["target"
                                     "test/_generated"]
 
   :plugins [[lein-cljsbuild "1.1.1"]
-            [lein-environ "1.0.1"]]
+            [lein-environ "1.0.2"]]
 
   :hooks [leiningen.cljsbuild]
 
@@ -52,7 +52,7 @@
                                                                   :output-dir    "target/dev-app"
                                                                   :optimizations :none
                                                                   :source-map    true}}}}}
-             :test          {:env       {:running-dev-test true}
+             :test          {:env       {:running-dev-test "true"}
                              :cljsbuild {:builds        {:test-dev
                                                          {:source-paths ["src/lib"
                                                                          "test"]
@@ -64,9 +64,9 @@
                                                                          :source-map    false}}}
                                          :test-commands {"unit" ["phantomjs" "test/phantom.js" "test/runner_none.html"]}}}
 
-             :test-advanced {:env       {:running-advanced-test            true
-                                         :chromex-elide-verbose-logging    true
-                                         :chromex-elide-missing-api-checks true}
+             :test-advanced {:env       {:running-advanced-test            "true"
+                                         :chromex-elide-verbose-logging    "true"
+                                         :chromex-elide-missing-api-checks "true"}
                              :cljsbuild {:builds        {:test-advanced
                                                          {:source-paths ["src/lib"
                                                                          "test"]
