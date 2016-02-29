@@ -3,21 +3,19 @@
                  [org.clojure/clojurescript "1.7.170"]
                  [org.clojure/core.async "0.2.374"]
                  [binaryage/chromex "0.2.0"]
-                 [binaryage/devtools "0.4.1"]
-                 [figwheel "0.5.0-1"]
-                 [environ "1.0.1"]]
+                 [binaryage/devtools "0.5.2"]
+                 [figwheel "0.5.0-6"]
+                 [environ "1.0.2"]]
 
   :plugins [[lein-cljsbuild "1.1.1"]
-            [lein-figwheel "0.5.0-2"]
+            [lein-figwheel "0.5.0-6"]
             [lein-shell "0.4.2"]
-            [lein-environ "1.0.1"]
+            [lein-environ "1.0.2"]
             [lein-cooper "1.1.2"]]
 
   :figwheel
   {:server-port    7000
-   :nrepl-port     7777
-   :server-logfile "figwheel_server.log"
-   :css-dirs       []}
+   :server-logfile ".figwheel_server.log"}
 
   :source-paths ["src"]
 
@@ -77,7 +75,7 @@
                            :content-script {:source-paths ["checkouts/chromex/src/lib"
                                                            "checkouts/chromex/src/exts"]}}}}
              :release
-             {:env       {:chromex-elide-verbose-logging true}
+             {:env       {:chromex-elide-verbose-logging "true"}
               :cljsbuild {:builds
                           {:background
                            {:source-paths ["src/background"]
