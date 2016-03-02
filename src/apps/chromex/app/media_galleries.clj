@@ -151,11 +151,18 @@
      :since "36",
      :callback? true,
      :params [{:name "gallery-id", :type "string"} {:name "callback", :optional? true, :type :callback}]}
-    {:id ::start-media-scan, :name "startMediaScan", :since "35"}
-    {:id ::cancel-media-scan, :name "cancelMediaScan", :since "35"}
+    {:id ::start-media-scan,
+     :name "startMediaScan",
+     :since "master",
+     :deprecated "The mediaGalleries API no longer supports scanning."}
+    {:id ::cancel-media-scan,
+     :name "cancelMediaScan",
+     :since "master",
+     :deprecated "The mediaGalleries API no longer supports scanning."}
     {:id ::add-scan-results,
      :name "addScanResults",
-     :since "35",
+     :since "master",
+     :deprecated "The mediaGalleries API no longer supports scanning.",
      :callback? true,
      :params
      [{:name "callback",
@@ -200,7 +207,11 @@
     {:id ::remove-all-gallery-watch, :name "removeAllGalleryWatch", :since "39"}],
    :events
    [{:id ::on-gallery-changed, :name "onGalleryChanged", :since "38", :params [{:name "details", :type "object"}]}
-    {:id ::on-scan-progress, :name "onScanProgress", :since "35", :params [{:name "details", :type "object"}]}]})
+    {:id ::on-scan-progress,
+     :name "onScanProgress",
+     :since "master",
+     :deprecated "The mediaGalleries API no longer supports scanning.",
+     :params [{:name "details", :type "object"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

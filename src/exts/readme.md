@@ -92,7 +92,7 @@
 
 ### API stats
 
-Generated 82 namespaces containing 44 properties, 360 functions and 185 events:
+Generated 82 namespaces containing 44 properties, 361 functions and 185 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -140,7 +140,7 @@ Generated 82 namespaces containing 44 properties, 360 functions and 185 events:
     |                           chrome.i18n |           0 |          4 |       0 |
     |                       chrome.identity |           0 |          6 |       1 |
     |                           chrome.idle |           0 |          2 |       1 |
-    |                        chrome.idltest |           0 |          4 |       0 |
+    |                        chrome.idltest |           0 |          5 |       0 |
     |                      chrome.input.ime |           0 |         15 |      11 |
     |                     chrome.instanceID |           0 |          5 |       1 |
     |                       chrome.location |           0 |          2 |       2 |
@@ -349,7 +349,8 @@ Generated 82 namespaces containing 44 properties, 360 functions and 185 events:
       query-state set-detection-interval tap-on-state-changed tap-all-events]]
     
     [chromex.ext.idltest refer-macros:[
-      send-array-buffer send-array-buffer-view get-array-buffer nocompile-func tap-all-events]]
+      send-array-buffer send-array-buffer-view get-array-buffer nocompile-func nodefine-func
+      tap-all-events]]
     
     [chromex.ext.input.ime refer-macros:[
       set-composition clear-composition commit-text send-key-events hide-input-view

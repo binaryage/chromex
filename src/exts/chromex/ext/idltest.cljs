@@ -15,3 +15,6 @@
 (defn nocompile-func* [config switch]
   (gen-wrap :function ::nocompile-func config switch))
 
+(defn nodefine-func* [config switch]
+  (gen-wrap :function ::nodefine-func config switch))
+
