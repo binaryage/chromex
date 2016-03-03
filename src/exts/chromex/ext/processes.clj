@@ -1,5 +1,6 @@
 (ns chromex.ext.processes
-  "Use the chrome.processes API to interact with the browser's processes.
+  "Use the chrome.processes API to interact with the browser's 
+   processes.
    
      * available since Chrome 50
      * https://developer.chrome.com/extensions/processes"
@@ -14,30 +15,32 @@
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
-(defmacro terminate
-  "Terminates the specified renderer process. Equivalent to visiting about:crash, but without changing the tab's URL.
-   
-     |processId| - The ID of the process to be terminated.
-   
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
-  ([process-id #_callback] (gen-call :function ::terminate &form process-id)))
-
 (defmacro get-process-id-for-tab
   "Returns the ID of the renderer process for the specified tab.
    
-     |tabId| - The ID of the tab for which the renderer process ID is to be returned.
+     |tabId| - The ID of the tab for which the renderer process ID is to be  returned.
+     |callback| - A callback to return the ID of the renderer process of a tab.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([tab-id #_callback] (gen-call :function ::get-process-id-for-tab &form tab-id)))
 
+(defmacro terminate
+  "Terminates the specified renderer process. Equivalent to visiting  about:crash, but without changing the tab's URL.
+   
+     |processId| - The ID of the process to be terminated.
+     |callback| - A callback to report the status of the termination.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([process-id #_callback] (gen-call :function ::terminate &form process-id)))
+
 (defmacro get-process-info
   "Retrieves the process information for each process ID specified.
    
-     |processIds| - The list of process IDs or single process ID for which to return the process information. An empty list
+     |processIds| - The list of process IDs or single process ID for which  to return the process information. An empty list
                     indicates all processes are requested.
-     |includeMemory| - True if detailed memory usage is required. Note, collecting memory usage information incurs extra CPU
-                       usage and should only be queried for when needed.
-     |callback| - Called when the processes information is collected.
+     |includeMemory| - True if detailed memory usage is required. Note,  collecting memory usage information incurs extra
+                       CPU usage and should  only be queried for when needed.
+     |callback| - A callback called when the processes information is collected.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([process-ids include-memory #_callback] (gen-call :function ::get-process-info &form process-ids include-memory)))
@@ -47,7 +50,7 @@
 ; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-updated-events
-  "Fired each time the Task Manager updates its process statistics, providing the dictionary of updated Process objects,
+  "Fired each time the Task Manager updates its process statistics,  providing the dictionary of updated Process objects,
    indexed by process ID.
    Events will be put on the |channel|.
    
@@ -55,9 +58,9 @@
   ([channel & args] (apply gen-call :event ::on-updated &form channel args)))
 
 (defmacro tap-on-updated-with-memory-events
-  "Fired each time the Task Manager updates its process statistics, providing the dictionary of updated Process objects,
-   indexed by process ID. Identical to onUpdate, with the addition of memory usage details included in each Process object.
-   Note, collecting memory usage information incurs extra CPU usage and should only be listened for when needed.
+  "Fired each time the Task Manager updates its process statistics,  providing the dictionary of updated Process objects,
+   indexed by process ID. Identical to onUpdate, with the addition of memory usage details  included in each Process object.
+   Note, collecting memory usage  information incurs extra CPU usage and should only be listened for when needed.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
@@ -71,7 +74,7 @@
   ([channel & args] (apply gen-call :event ::on-created &form channel args)))
 
 (defmacro tap-on-unresponsive-events
-  "Fired each time a process becomes unresponsive, providing the corrseponding Process object.
+  "Fired each time a process becomes unresponsive, providing the  corrseponding Process object.
    Events will be put on the |channel|.
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
@@ -101,7 +104,13 @@
   {:namespace "chrome.processes",
    :since "50",
    :functions
-   [{:id ::terminate,
+   [{:id ::get-process-id-for-tab,
+     :name "getProcessIdForTab",
+     :callback? true,
+     :params
+     [{:name "tab-id", :type "integer"}
+      {:name "callback", :type :callback, :callback {:params [{:name "process-id", :type "integer"}]}}]}
+    {:id ::terminate,
      :name "terminate",
      :callback? true,
      :params
@@ -110,12 +119,6 @@
        :optional? true,
        :type :callback,
        :callback {:params [{:name "did-terminate", :type "boolean"}]}}]}
-    {:id ::get-process-id-for-tab,
-     :name "getProcessIdForTab",
-     :callback? true,
-     :params
-     [{:name "tab-id", :type "integer"}
-      {:name "callback", :type :callback, :callback {:params [{:name "process-id", :type "integer"}]}}]}
     {:id ::get-process-info,
      :name "getProcessInfo",
      :callback? true,

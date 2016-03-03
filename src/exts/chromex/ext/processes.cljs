@@ -3,11 +3,11 @@
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
-(defn terminate* [config process-id]
-  (gen-wrap :function ::terminate config process-id))
-
 (defn get-process-id-for-tab* [config tab-id]
   (gen-wrap :function ::get-process-id-for-tab config tab-id))
+
+(defn terminate* [config process-id]
+  (gen-wrap :function ::terminate config process-id))
 
 (defn get-process-info* [config process-ids include-memory]
   (gen-wrap :function ::get-process-info config process-ids include-memory))

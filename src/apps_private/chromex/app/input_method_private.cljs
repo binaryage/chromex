@@ -27,6 +27,9 @@
 (defn set-xkb-layout* [config xkb-name]
   (gen-wrap :function ::set-xkb-layout config xkb-name))
 
+(defn notify-ime-menu-item-activated* [config engine-id name]
+  (gen-wrap :function ::notify-ime-menu-item-activated config engine-id name))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-changed* [config channel & args]
@@ -41,4 +44,6 @@
   (gen-wrap :event ::on-ime-menu-activation-changed config channel args))
 (defn on-ime-menu-list-changed* [config channel & args]
   (gen-wrap :event ::on-ime-menu-list-changed config channel args))
+(defn on-ime-menu-items-changed* [config channel & args]
+  (gen-wrap :event ::on-ime-menu-items-changed config channel args))
 

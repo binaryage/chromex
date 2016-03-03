@@ -79,6 +79,13 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([xkb-name #_callback] (gen-call :function ::set-xkb-layout &form xkb-name)))
 
+(defmacro notify-ime-menu-item-activated
+  "Fires the input.ime.onMenuItemActivated event.
+   
+     |engineID| - ID of the engine to use.
+     |name| - Name of the MenuItem which was activated"
+  ([engine-id name] (gen-call :function ::notify-ime-menu-item-activated &form engine-id name)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -124,6 +131,13 @@
    
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-ime-menu-list-changed &form channel args)))
+
+(defmacro tap-on-ime-menu-items-changed-events
+  "Fired when the input.ime.setMenuItems or input.ime.updateMenuItems API is called.
+   Events will be put on the |channel|.
+   
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-ime-menu-items-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
@@ -183,7 +197,11 @@
      :name "setXkbLayout",
      :since "49",
      :callback? true,
-     :params [{:name "xkb-name", :type "string"} {:name "callback", :optional? true, :type :callback}]}],
+     :params [{:name "xkb-name", :type "string"} {:name "callback", :optional? true, :type :callback}]}
+    {:id ::notify-ime-menu-item-activated,
+     :name "notifyImeMenuItemActivated",
+     :since "master",
+     :params [{:name "engine-id", :type "string"} {:name "name", :type "string"}]}],
    :events
    [{:id ::on-changed, :name "onChanged", :params [{:name "new-input-method-id", :type "string"}]}
     {:id ::on-composition-bounds-changed,
@@ -199,7 +217,11 @@
      :name "onImeMenuActivationChanged",
      :since "50",
      :params [{:name "activation", :type "boolean"}]}
-    {:id ::on-ime-menu-list-changed, :name "onImeMenuListChanged", :since "master"}]})
+    {:id ::on-ime-menu-list-changed, :name "onImeMenuListChanged", :since "master"}
+    {:id ::on-ime-menu-items-changed,
+     :name "onImeMenuItemsChanged",
+     :since "master",
+     :params [{:name "engine-id", :type "string"} {:name "items", :type "[array-of-inputMethodPrivate.MenuItems]"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

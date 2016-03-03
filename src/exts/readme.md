@@ -52,7 +52,6 @@
 | [chrome.idltest](https://developer.chrome.com/extensions/idltest) | [chromex/ext/idltest.clj](chromex/ext/idltest.clj) |
 | [chrome.input.ime](https://developer.chrome.com/extensions/input.ime) | [chromex/ext/input/ime.clj](chromex/ext/input/ime.clj) |
 | [chrome.instanceID](https://developer.chrome.com/extensions/instanceID) | [chromex/ext/instance_id.clj](chromex/ext/instance_id.clj) |
-| [chrome.location](https://developer.chrome.com/extensions/location) | [chromex/ext/location.clj](chromex/ext/location.clj) |
 | [chrome.management](https://developer.chrome.com/extensions/management) | [chromex/ext/management.clj](chromex/ext/management.clj) |
 | [chrome.networking.config](https://developer.chrome.com/extensions/networking.config) | [chromex/ext/networking/config.clj](chromex/ext/networking/config.clj) |
 | [chrome.notificationProvider](https://developer.chrome.com/extensions/notificationProvider) | [chromex/ext/notification_provider.clj](chromex/ext/notification_provider.clj) |
@@ -92,7 +91,7 @@
 
 ### API stats
 
-Generated 82 namespaces containing 44 properties, 361 functions and 185 events:
+Generated 81 namespaces containing 44 properties, 359 functions and 183 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -143,7 +142,6 @@ Generated 82 namespaces containing 44 properties, 361 functions and 185 events:
     |                        chrome.idltest |           0 |          5 |       0 |
     |                      chrome.input.ime |           0 |         15 |      11 |
     |                     chrome.instanceID |           0 |          5 |       1 |
-    |                       chrome.location |           0 |          2 |       2 |
     |                     chrome.management |           0 |         12 |       4 |
     |              chrome.networking.config |           0 |          2 |       1 |
     |           chrome.notificationProvider |           0 |          7 |       3 |
@@ -363,9 +361,6 @@ Generated 82 namespaces containing 44 properties, 361 functions and 185 events:
     [chromex.ext.instance-id refer-macros:[
       get-id get-creation-time get-token delete-token delete-id tap-on-token-refresh tap-all-events]]
     
-    [chromex.ext.location refer-macros:[
-      watch-location clear-watch tap-on-location-update tap-on-location-error tap-all-events]]
-    
     [chromex.ext.management refer-macros:[
       get-all get get-self get-permission-warnings-by-id get-permission-warnings-by-manifest set-enabled
       uninstall uninstall-self launch-app create-app-shortcut set-launch-type generate-app-for-link
@@ -410,7 +405,7 @@ Generated 82 namespaces containing 44 properties, 361 functions and 185 events:
       get-network get-services get-websites tap-all-events]]
     
     [chromex.ext.processes refer-macros:[
-      terminate get-process-id-for-tab get-process-info tap-on-updated tap-on-updated-with-memory
+      get-process-id-for-tab terminate get-process-info tap-on-updated tap-on-updated-with-memory
       tap-on-created tap-on-unresponsive tap-on-exited tap-all-events]]
     
     [chromex.ext.proxy refer-macros:[

@@ -1,5 +1,5 @@
 (ns chromex.ext.metrics-private
-  "  * available since Chrome 17
+  "  * available since Chrome 49
      * https://developer.chrome.com/extensions/metricsPrivate"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
@@ -85,23 +85,20 @@
 
 (def api-table
   {:namespace "chrome.metricsPrivate",
-   :since "17",
+   :since "49",
    :functions
    [{:id ::get-is-crash-reporting-enabled,
      :name "getIsCrashReportingEnabled",
-     :since "29",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "is-enabled", :type "boolean"}]}}]}
     {:id ::get-field-trial,
      :name "getFieldTrial",
-     :since "29",
      :callback? true,
      :params
      [{:name "name", :type "string"}
       {:name "callback", :type :callback, :callback {:params [{:name "group", :type "string"}]}}]}
     {:id ::get-variation-params,
      :name "getVariationParams",
-     :since "30",
      :callback? true,
      :params
      [{:name "name", :type "string"}
@@ -130,7 +127,6 @@
      :params [{:name "metric-name", :type "string"} {:name "value", :type "integer"}]}
     {:id ::record-sparse-value,
      :name "recordSparseValue",
-     :since "35",
      :params [{:name "metric-name", :type "string"} {:name "value", :type "integer"}]}
     {:id ::record-value,
      :name "recordValue",

@@ -38,7 +38,6 @@
 | [chrome.identity](https://developer.chrome.com/extensions/identity) | [chromex/app/identity.clj](chromex/app/identity.clj) |
 | [chrome.idle](https://developer.chrome.com/extensions/idle) | [chromex/app/idle.clj](chromex/app/idle.clj) |
 | [chrome.instanceID](https://developer.chrome.com/extensions/instanceID) | [chromex/app/instance_id.clj](chromex/app/instance_id.clj) |
-| [chrome.location](https://developer.chrome.com/extensions/location) | [chromex/app/location.clj](chromex/app/location.clj) |
 | [chrome.management](https://developer.chrome.com/extensions/management) | [chromex/app/management.clj](chromex/app/management.clj) |
 | [chrome.mdns](https://developer.chrome.com/extensions/mdns) | [chromex/app/mdns.clj](chromex/app/mdns.clj) |
 | [chrome.mediaGalleries](https://developer.chrome.com/extensions/mediaGalleries) | [chromex/app/media_galleries.clj](chromex/app/media_galleries.clj) |
@@ -75,7 +74,7 @@
 
 ### API stats
 
-Generated 65 namespaces containing 20 properties, 361 functions and 130 events:
+Generated 64 namespaces containing 20 properties, 359 functions and 128 events:
 
 
     |                         :namespace | :properties | :functions | :events |
@@ -112,7 +111,6 @@ Generated 65 namespaces containing 20 properties, 361 functions and 130 events:
     |                    chrome.identity |           0 |          6 |       1 |
     |                        chrome.idle |           0 |          2 |       1 |
     |                  chrome.instanceID |           0 |          5 |       1 |
-    |                    chrome.location |           0 |          2 |       2 |
     |                  chrome.management |           0 |         12 |       4 |
     |                        chrome.mdns |           1 |          1 |       1 |
     |              chrome.mediaGalleries |           0 |         13 |       2 |
@@ -275,9 +273,6 @@ Generated 65 namespaces containing 20 properties, 361 functions and 130 events:
     
     [chromex.app.instance-id refer-macros:[
       get-id get-creation-time get-token delete-token delete-id tap-on-token-refresh tap-all-events]]
-    
-    [chromex.app.location refer-macros:[
-      watch-location clear-watch tap-on-location-update tap-on-location-error tap-all-events]]
     
     [chromex.app.management refer-macros:[
       get-all get get-self get-permission-warnings-by-id get-permission-warnings-by-manifest set-enabled
