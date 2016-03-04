@@ -217,7 +217,7 @@
      :name "onImeMenuActivationChanged",
      :since "50",
      :params [{:name "activation", :type "boolean"}]}
-    {:id ::on-ime-menu-list-changed, :name "onImeMenuListChanged", :since "master"}
+    {:id ::on-ime-menu-list-changed, :name "onImeMenuListChanged", :since "50"}
     {:id ::on-ime-menu-items-changed,
      :name "onImeMenuItemsChanged",
      :since "master",

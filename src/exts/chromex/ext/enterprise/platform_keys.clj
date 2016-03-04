@@ -150,14 +150,14 @@
       {:name "callback", :optional? true, :type :callback}]}
     {:id ::challenge-machine-key,
      :name "challengeMachineKey",
-     :since "master",
+     :since "50",
      :callback? true,
      :params
      [{:name "challenge", :type "ArrayBuffer"}
       {:name "callback", :type :callback, :callback {:params [{:name "response", :type "ArrayBuffer"}]}}]}
     {:id ::challenge-user-key,
      :name "challengeUserKey",
-     :since "master",
+     :since "50",
      :callback? true,
      :params
      [{:name "challenge", :type "ArrayBuffer"}
