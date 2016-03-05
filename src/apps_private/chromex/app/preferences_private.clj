@@ -21,11 +21,6 @@
   "If enabled, Google services can access the user's location. This preference's value is a boolean, defaulting to false."
   ([] (gen-call :property ::google-geolocation-access-enabled &form)))
 
-(defmacro get-data-reduction-update-daily-lengths
-  "Flag to indicate that dataReductionDailyContentLength and dataReductionDailyReceivedLength must be updated with their
-   latest values. This preference's value is a boolean, defaulting to false."
-  ([] (gen-call :property ::data-reduction-update-daily-lengths &form)))
-
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro get-sync-categories-without-passphrase
@@ -58,10 +53,6 @@
      :return-type "types.private.ChromeDirectSetting"}
     {:id ::google-geolocation-access-enabled,
      :name "googleGeolocationAccessEnabled",
-     :return-type "types.private.ChromeDirectSetting"}
-    {:id ::data-reduction-update-daily-lengths,
-     :name "dataReductionUpdateDailyLengths",
-     :since "40",
      :return-type "types.private.ChromeDirectSetting"}],
    :functions
    [{:id ::get-sync-categories-without-passphrase,

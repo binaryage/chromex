@@ -148,7 +148,8 @@
          {:name "selected-file-system-name", :type "string"}]}}]}
     {:id ::drop-permission-for-media-file-system,
      :name "dropPermissionForMediaFileSystem",
-     :since "36",
+     :since "master",
+     :deprecated "The user can manually drop access to galleries\\n    via the permissions dialog.",
      :callback? true,
      :params [{:name "gallery-id", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::start-media-scan,
@@ -175,7 +176,8 @@
      :params [{:name "media-file-system", :type "DOMFileSystem"}]}
     {:id ::get-all-media-file-system-metadata,
      :name "getAllMediaFileSystemMetadata",
-     :since "33",
+     :since "master",
+     :deprecated "Use getMediaFileSystemMetadata instead.",
      :callback? true,
      :params
      [{:name "callback", :type :callback, :callback {:params [{:name "metadata", :type "[array-of-objects]"}]}}]}
@@ -200,11 +202,15 @@
      :params [{:name "gallery-id", :type "string"}]}
     {:id ::get-all-gallery-watch,
      :name "getAllGalleryWatch",
-     :since "39",
+     :since "master",
+     :deprecated "Applications should store their own gallery watches\\n    as they are added.",
      :callback? true,
      :params
      [{:name "callback", :type :callback, :callback {:params [{:name "gallery-ids", :type "[array-of-strings]"}]}}]}
-    {:id ::remove-all-gallery-watch, :name "removeAllGalleryWatch", :since "39"}],
+    {:id ::remove-all-gallery-watch,
+     :name "removeAllGalleryWatch",
+     :since "master",
+     :deprecated "Use removeGalleryWatch instead."}],
    :events
    [{:id ::on-gallery-changed, :name "onGalleryChanged", :since "38", :params [{:name "details", :type "object"}]}
     {:id ::on-scan-progress,

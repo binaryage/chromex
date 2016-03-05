@@ -9,9 +9,6 @@
 (defn google-geolocation-access-enabled* [config]
   (gen-wrap :property ::google-geolocation-access-enabled config))
 
-(defn data-reduction-update-daily-lengths* [config]
-  (gen-wrap :property ::data-reduction-update-daily-lengths config))
-
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn get-sync-categories-without-passphrase* [config]
