@@ -21,7 +21,8 @@
    closed, or the media stream is closed by the extension.
    
      |options| - Configures the returned media stream.
-     |callback| - Callback with either the tab capture stream or   null.
+     |callback| - Callback with either the tab capture MediaStream or   null.  null indicates an error has occurred   and
+                  the client may query chrome.runtime.lastError to access the error   details.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([options #_callback] (gen-call :function ::capture &form options)))
@@ -48,7 +49,8 @@
    available in Canary/Dev channel, and may change without notice.
    
      |options| - Constraints for the capture and returned MediaStream.
-     |callback| - null on error.
+     |callback| - Callback with either the tab capture MediaStream or   null.  null indicates an error has occurred   and
+                  the client may query chrome.runtime.lastError to access the error   details.
    
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([start-url options #_callback] (gen-call :function ::capture-offscreen-tab &form start-url options)))

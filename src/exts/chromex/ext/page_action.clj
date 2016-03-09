@@ -1,6 +1,7 @@
 (ns chromex.ext.page-action
-  "Use the chrome.pageAction API to put icons inside the address bar. Page actions represent actions that can be taken on the
-   current page, but that aren't applicable to all pages.
+  "Use the chrome.pageAction API to put icons in the main Google Chrome toolbar, to the right of the address bar. Page
+   actions represent actions that can be taken on the current page, but that aren't applicable to all pages. Page actions
+   appear grayed out when inactive.
    
      * available since Chrome 5
      * https://developer.chrome.com/extensions/pageAction"
@@ -22,7 +23,7 @@
   ([tab-id] (gen-call :function ::show &form tab-id)))
 
 (defmacro hide
-  "Hides the page action.
+  "Hides the page action. Hidden page actions still appear in the Chrome toolbar, but are grayed out.
    
      |tabId| - The id of the tab for which you want to modify the page action."
   ([tab-id] (gen-call :function ::hide &form tab-id)))

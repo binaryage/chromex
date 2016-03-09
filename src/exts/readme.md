@@ -91,7 +91,7 @@
 
 ### API stats
 
-Generated 81 namespaces containing 44 properties, 359 functions and 183 events:
+Generated 81 namespaces containing 44 properties, 361 functions and 183 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -140,7 +140,7 @@ Generated 81 namespaces containing 44 properties, 359 functions and 183 events:
     |                       chrome.identity |           0 |          6 |       1 |
     |                           chrome.idle |           0 |          2 |       1 |
     |                        chrome.idltest |           0 |          5 |       0 |
-    |                      chrome.input.ime |           0 |         15 |      11 |
+    |                      chrome.input.ime |           0 |         17 |      11 |
     |                     chrome.instanceID |           0 |          5 |       1 |
     |                     chrome.management |           0 |         12 |       4 |
     |              chrome.networking.config |           0 |          2 |       1 |
@@ -353,10 +353,10 @@ Generated 81 namespaces containing 44 properties, 359 functions and 183 events:
     [chromex.ext.input.ime refer-macros:[
       set-composition clear-composition commit-text send-key-events hide-input-view
       set-candidate-window-properties set-candidates set-cursor-position set-menu-items update-menu-items
-      delete-surrounding-text key-event-handled create-window activate deactivate tap-on-activate
-      tap-on-deactivated tap-on-focus tap-on-blur tap-on-input-context-update tap-on-key-event
-      tap-on-candidate-clicked tap-on-menu-item-activated tap-on-surrounding-text-changed tap-on-reset
-      tap-on-composition-bounds-changed tap-all-events]]
+      delete-surrounding-text key-event-handled create-window show-window hide-window activate deactivate
+      tap-on-activate tap-on-deactivated tap-on-focus tap-on-blur tap-on-input-context-update
+      tap-on-key-event tap-on-candidate-clicked tap-on-menu-item-activated
+      tap-on-surrounding-text-changed tap-on-reset tap-on-composition-bounds-changed tap-all-events]]
     
     [chromex.ext.instance-id refer-macros:[
       get-id get-creation-time get-token delete-token delete-id tap-on-token-refresh tap-all-events]]

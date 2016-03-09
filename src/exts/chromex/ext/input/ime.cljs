@@ -42,6 +42,12 @@
 (defn create-window* [config options]
   (gen-wrap :function ::create-window config options))
 
+(defn show-window* [config window-id]
+  (gen-wrap :function ::show-window config window-id))
+
+(defn hide-window* [config window-id]
+  (gen-wrap :function ::hide-window config window-id))
+
 (defn activate* [config]
   (gen-wrap :function ::activate config))
 

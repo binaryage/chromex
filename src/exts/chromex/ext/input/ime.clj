@@ -119,6 +119,25 @@
    Note: Instead of passing a callback function, you receive a core.async channel as return value."
   ([options #_callback] (gen-call :function ::create-window &form options)))
 
+(defmacro show-window
+  "Shows the IME window. This makes the hidden window visible.
+   
+     |windowId| - The ID of the IME window.
+     |callback| - Called when the operation completes.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([window-id #_callback] (gen-call :function ::show-window &form window-id)))
+
+(defmacro hide-window
+  "Hides the IME window. This doesn't close the window. Instead, it makes the window invisible. The extension can cache the
+   window and show/hide it for better performance.
+   
+     |windowId| - The ID of the IME window.
+     |callback| - Called when the operation completes.
+   
+   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+  ([window-id #_callback] (gen-call :function ::hide-window &form window-id)))
+
 (defmacro activate
   "Activates the IME extension so that it can receive events.
    
@@ -304,6 +323,16 @@
      :params
      [{:name "options", :type "input.ime.CreateWindowOptions"}
       {:name "callback", :type :callback, :callback {:params [{:name "window-object", :type "Window"}]}}]}
+    {:id ::show-window,
+     :name "showWindow",
+     :since "master",
+     :callback? true,
+     :params [{:name "window-id", :type "integer"} {:name "callback", :optional? true, :type :callback}]}
+    {:id ::hide-window,
+     :name "hideWindow",
+     :since "master",
+     :callback? true,
+     :params [{:name "window-id", :type "integer"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::activate,
      :name "activate",
      :since "50",
