@@ -1,5 +1,5 @@
 (ns chromex.ext.metrics-private
-  "  * available since Chrome 49
+  "  * available since Chrome 50
      * https://developer.chrome.com/extensions/metricsPrivate"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
@@ -85,7 +85,7 @@
 
 (def api-table
   {:namespace "chrome.metricsPrivate",
-   :since "49",
+   :since "50",
    :functions
    [{:id ::get-is-crash-reporting-enabled,
      :name "getIsCrashReportingEnabled",

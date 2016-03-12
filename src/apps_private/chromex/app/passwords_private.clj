@@ -2,7 +2,7 @@
   "Use the chrome.passwordsPrivate API to add or remove password
    data from the settings UI.
    
-     * available since Chrome 49
+     * available since Chrome 50
      * https://developer.chrome.com/extensions/passwordsPrivate"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
@@ -80,7 +80,7 @@
 
 (def api-table
   {:namespace "chrome.passwordsPrivate",
-   :since "49",
+   :since "50",
    :functions
    [{:id ::remove-saved-password,
      :name "removeSavedPassword",
