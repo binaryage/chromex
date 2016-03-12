@@ -39,6 +39,9 @@
 (defn build-ns-name [name subns]
   (string/join "." (remove empty? [NS-PREFIX subns (kebab-case (munge-if-reserved name))])))
 
+(defn build-ns-link [name]
+  (str "https://developer.chrome.com/extensions/" name))
+
 (defn build-intro-item [item]
   (let [{:keys [title content]} item
         {:keys [text version]} (first content)]
@@ -72,26 +75,49 @@
       (cuerdas/strip-tags)
       (replace-refs)))
 
-(defn build-param-doc [indent columns parameter]
-  (if-let [description (:description parameter)]
-    (let [{:keys [name]} parameter
+(defn safe-link [url hash]
+  (str url "#" (encode-url-param hash)))
+
+(defn build-context-link [context]
+  (let [{:keys [ns-name property-name function-name event-name param-name]} context
+        ns-link (build-ns-link ns-name)]
+    (cond
+      param-name (safe-link ns-link (str "property-"
+                                         (first (keep identity [property-name function-name event-name]))
+                                         "-"
+                                         param-name))
+      property-name (safe-link ns-link (str "property-" property-name))
+      function-name (safe-link ns-link (str "method-" function-name))
+      event-name (safe-link ns-link (str "event-" event-name))
+      :else ns-link)))
+
+(defn link-doc [context]
+  (str "See " (build-context-link context) "."))
+
+(defn build-param-doc [context indent columns parameter]
+  (if-not (:is-callback parameter)
+    (let [{:keys [name description]} parameter
+          context (assoc context :param-name name)
           prefix (str "  " (wrap-param-doc name) " - ")
-          plain-description (plain-doc description)
+          plain-description (if description (plain-doc description) (link-doc context))
           description-indent (count prefix)
           wrapped-description (wrap-text description-indent (- columns indent) plain-description)]
       [(str prefix wrapped-description)])))
 
-(defn build-docstring [indent description parameters & extras]
+(defn build-docstring [context indent description parameters & extras]
   (let [columns (- MAX-COLUMNS indent)
         desc (if description (wrap-text 0 columns (plain-doc description)) "")
-        params (string/join "\n" (mapcat (partial build-param-doc 2 columns) parameters))
+        params (string/join "\n" (mapcat (partial build-param-doc context 2 columns) parameters))
         parts (remove empty? [desc params])
         docstring (apply str (string/join "\n\n" parts) extras)]
     (wrap-docstring indent MAX-COLUMNS docstring)))
 
+(defn build-docstring-with-link [context & args]
+  (apply build-docstring context (concat args [(str "\n\n" (link-doc context))])))
+
 (defn build-ns-docstring [name intro-list]
   (if-let [intro (plain-doc (string/join "\n\n" (mapcat build-intro-item intro-list)))]
-    (let [intro-with-link (str intro "\n  * https://developer.chrome.com/extensions/" name)]
+    (let [intro-with-link (str intro "\n  * " (build-ns-link name))]
       (wrap-docstring 2 MAX-COLUMNS intro-with-link))))
 
 (declare extract-type)
@@ -139,26 +165,27 @@
         names (keep :name parameters)]
     (str "[" (apply str (interpose " " names)) "]")))
 
-(defn build-callback-param-docs [callback]
+(defn build-callback-param-docs [context callback]
   (let [{:keys [parameters]} callback]
-    (mapcat (partial build-param-doc 2 MAX-COLUMNS) parameters)))
+    (mapcat (partial build-param-doc context 2 MAX-COLUMNS) parameters)))
 
-(defn build-callback-docstring [callback]
+(defn build-callback-docstring [context callback]
   (let [intro "\n\nThis function returns a core.async channel which will eventually receive a result value and closes."
         signature (str "\nSignature of the result value put on the channel is " (build-callback-signature callback))
-        param-docs (build-callback-param-docs callback)
-        rest (if (empty? param-docs) "." (str " where:\n" (apply str (string/join "\n" param-docs))))]
+        context (assoc context :property-name (:name callback))                                                               ; generated IDs in official docs are not unique, they can shadow properties under some circumstances
+        param-docs (build-callback-param-docs context callback)
+        rest (if (empty? param-docs) "." (str " where:\n\n" (apply str (string/join "\n" param-docs))))]
     (str intro signature rest)))
 
-(defn build-function-docstring [description parameters callback]
-  (build-docstring 2 description parameters (if callback (build-callback-docstring callback) "")))
+(defn build-function-docstring [context description parameters callback]
+  (build-docstring-with-link context 2 description parameters (if callback (build-callback-docstring context callback) "")))
 
-(defn build-event-docstring [description parameters]
+(defn build-event-docstring [context description parameters]
   (let [extra-args-doc "\nEvents will be put on the |channel|.\n\nNote: |args| will be passed as additional parameters into Chrome event's .addListener call."]
-    (build-docstring 2 description parameters extra-args-doc)))
+    (build-docstring-with-link context 2 description parameters extra-args-doc)))
 
-(defn build-property-docstring [description parameters]
-  (build-docstring 2 description parameters))
+(defn build-property-docstring [context description parameters]
+  (build-docstring-with-link context 2 description parameters))
 
 ; ---------------------------------------------------------------------------------------------------------------------------
 
@@ -182,8 +209,9 @@
 (defn build-api-table-function-params [parameters callback-data]
   (vec (map (partial build-api-table-param-info callback-data) parameters)))
 
-(defn build-api-table-function [data]
-  (let [{:keys [name description parameters returns callback]} data]
+(defn build-api-table-function [context data]
+  (let [{:keys [name description parameters returns callback]} data
+        context (assoc context :function-name name)]
     (with-meta
       {:id          (build-id name)
        :name        name
@@ -193,20 +221,21 @@
        :callback?   (some? callback)
        :return-type (if returns (extract-type returns))
        :params      (build-api-table-function-params parameters callback)}
-      {:doc             (build-function-docstring description parameters callback)
+      {:doc             (build-function-docstring context description parameters callback)
        :user-param-list (build-param-list parameters build-param-comment-out-callback)
        :param-list      (build-param-list parameters build-param-no-callback)})))
 
-(defn build-api-table-functions [function-names data]
+(defn build-api-table-functions [context function-names data]
   (let [* (fn [name]
             (let [function-data (get-in data [:by-name (keyword name)])]
               (assert function-data (str "unable to lookup function by name '" (keyword name)
                                          "' in\n" (keys (get data :by-name))))
-              (build-api-table-function function-data)))]
+              (build-api-table-function context function-data)))]
     (vec (map * function-names))))
 
-(defn build-api-table-property [data]
-  (let [{:keys [name description parameters]} data]
+(defn build-api-table-property [context data]
+  (let [{:keys [name description parameters]} data
+        context (assoc context :property-name name)]
     (with-meta
       {:id          (build-id name)
        :name        name
@@ -214,14 +243,15 @@
        :until       (extract-avail-until data)
        :deprecated  (extract-deprecated data)
        :return-type (extract-type data)}
-      {:doc (build-property-docstring description parameters)})))
+      {:doc (build-property-docstring context description parameters)})))
 
-(defn build-api-table-properties [data]
-  (vec (map build-api-table-property data)))
+(defn build-api-table-properties [context data]
+  (vec (map (partial build-api-table-property context) data)))
 
-(defn build-api-table-event [data]
+(defn build-api-table-event [context data]
   (let [{:keys [name description parameters]} data
-        callback-data (get-in data [:by-name :add-listener :callback])]
+        callback-data (get-in data [:by-name :add-listener :callback])
+        context (assoc context :event-name name)]
     (with-meta
       {:id         (build-id name)
        :name       name
@@ -229,21 +259,22 @@
        :until      (extract-avail-until data)
        :deprecated (extract-deprecated data)
        :params     (:params (build-api-table-callback-info callback-data))}
-      {:doc (build-event-docstring description parameters)})))
+      {:doc (build-event-docstring context description parameters)})))
 
-(defn build-api-table-events [data]
-  (vec (map build-api-table-event data)))
+(defn build-api-table-events [context data]
+  (vec (map (partial build-api-table-event context) data)))
 
 (defn build-namespace-api-table [data]
   (let [{:keys [namespace functions properties events name intro-list]} data
-        function-names (map (comp kebab-case :name) functions)]
+        function-names (map (comp kebab-case :name) functions)
+        context {:ns-name name}]
     (with-meta
       {:namespace  namespace
        :since      (extract-namespace-since data)
        :deprecated (extract-deprecated data)
-       :properties (build-api-table-properties properties)
-       :functions  (build-api-table-functions function-names data)
-       :events     (build-api-table-events events)}
+       :properties (build-api-table-properties context properties)
+       :functions  (build-api-table-functions context function-names data)
+       :events     (build-api-table-events context events)}
       {:name name
        :doc  (build-ns-docstring name intro-list)})))
 
