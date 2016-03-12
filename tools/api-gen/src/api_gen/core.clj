@@ -47,8 +47,8 @@
 (defn run-job! [options]
   (let [{:keys [input outdir chromium-sha filter subns]} options
         data (read-json input)
-        ;data (filter #(contains? #{"runtime" "commands" "events" "tabs"} (:name (second %))) data)
-        ;data (filter #(contains? #{"extension"} (:name (second %))) data)
+        ;data (clojure.core/filter #(contains? #{"runtime" "commands" "events" "tabs"} (:name (second %))) data)
+        ;data (clojure.core/filter #(contains? #{"extension"} (:name (second %))) data)
         api-tables (build-api-tables data filter subns)]
     (->> api-tables
          (generate-files chromium-sha)
