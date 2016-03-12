@@ -134,9 +134,24 @@
 (defn build-id [name]
   (keyword (kebab-case name)))
 
-(defn build-function-docstring [description parameters callback?]
-  (let [callback-doc "\n\nNote: Instead of passing a callback function, you receive a core.async channel as return value."]
-    (build-docstring 2 description parameters (if callback? callback-doc ""))))
+(defn build-callback-signature [callback]
+  (let [{:keys [parameters]} callback
+        names (keep :name parameters)]
+    (str "[" (apply str (interpose " " names)) "]")))
+
+(defn build-callback-param-docs [callback]
+  (let [{:keys [parameters]} callback]
+    (mapcat (partial build-param-doc 2 MAX-COLUMNS) parameters)))
+
+(defn build-callback-docstring [callback]
+  (let [intro "\n\nThis function returns a core.async channel which will eventually receive a result value and closes."
+        signature (str "\nSignature of the result value put on the channel is " (build-callback-signature callback))
+        param-docs (build-callback-param-docs callback)
+        rest (if (empty? param-docs) "." (str " where:\n" (apply str (string/join "\n" param-docs))))]
+    (str intro signature rest)))
+
+(defn build-function-docstring [description parameters callback]
+  (build-docstring 2 description parameters (if callback (build-callback-docstring callback) "")))
 
 (defn build-event-docstring [description parameters]
   (let [extra-args-doc "\nEvents will be put on the |channel|.\n\nNote: |args| will be passed as additional parameters into Chrome event's .addListener call."]
@@ -168,18 +183,17 @@
   (vec (map (partial build-api-table-param-info callback-data) parameters)))
 
 (defn build-api-table-function [data]
-  (let [{:keys [name description parameters returns callback]} data
-        callback? (not (nil? callback))]
+  (let [{:keys [name description parameters returns callback]} data]
     (with-meta
       {:id          (build-id name)
        :name        name
        :since       (extract-avail-since data)
        :until       (extract-avail-until data)
        :deprecated  (extract-deprecated data)
-       :callback?   callback?
+       :callback?   (some? callback)
        :return-type (if returns (extract-type returns))
        :params      (build-api-table-function-params parameters callback)}
-      {:doc             (build-function-docstring description parameters callback?)
+      {:doc             (build-function-docstring description parameters callback)
        :user-param-list (build-param-list parameters build-param-comment-out-callback)
        :param-list      (build-param-list parameters build-param-no-callback)})))
 
