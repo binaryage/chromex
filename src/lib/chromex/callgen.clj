@@ -1,6 +1,6 @@
 (ns chromex.callgen
   (:require [chromex.support :refer [valid-api-version? emit-api-version-warning emit-deprecation-warning
-                                         get-wrap-symbol get-api-id get-item-by-id get-src-info]]))
+                                     get-wrap-symbol get-api-id get-item-by-id get-src-info]]))
 
 ; this file is responsible for generating code which will be expanded at library call sites in user's code
 ; (gen-call-from-table and gen-tap-all-call are called from macros in some-library-namespace.clj)
@@ -25,7 +25,7 @@
         deprecated? (not (nil? deprecation-info))
         wrap-sym (get-wrap-symbol id)
         wrap-call `(~wrap-sym ~config ~@args)]
-    (if-not valid? (emit-api-version-warning static-config src-info api))
+    (if-not valid? (emit-api-version-warning static-config src-info api [since until]))
     (if deprecated? (emit-deprecation-warning static-config src-info api deprecation-info))
     (with-meta wrap-call {:deprecated? deprecated? :valid? valid?})))
 

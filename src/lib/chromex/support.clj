@@ -125,12 +125,11 @@
   (let [version (:target-api-version static-config)]
     (version-in-range? version range)))
 
-(defn emit-api-version-warning [static-config src-info api-name]
+(defn emit-api-version-warning [static-config src-info api-name range]
   (let [version (:target-api-version static-config)]
     (print-warning static-config src-info
                    (str "The API call to '" api-name "' is not available. "
                         "Target API version '" version "' is not within required range " (user-friendly-range-str range)))))
-
 
 ; -- deprecation warnings ---------------------------------------------------------------------------------------------------
 
