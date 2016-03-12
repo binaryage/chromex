@@ -170,7 +170,7 @@
     (mapcat (partial build-param-doc context 2 MAX-COLUMNS) parameters)))
 
 (defn build-callback-docstring [context callback]
-  (let [intro "\n\nThis function returns a core.async channel which will eventually receive a result value and closes."
+  (let [intro "\n\nThis function returns a core.async channel which eventually receives a result value and closes."
         signature (str "\nSignature of the result value put on the channel is " (build-callback-signature callback))
         context (assoc context :property-name (:name callback))                                                               ; generated IDs in official docs are not unique, they can shadow properties under some circumstances
         param-docs (build-callback-param-docs context callback)
