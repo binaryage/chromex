@@ -7,7 +7,8 @@
             [cuerdas.core :as cuerdas]
             [api-gen.word-wrap :refer [wrap]]
             [cljfmt.core :as cljfmt]
-            [clojure.java.io :as io]))
+            [clojure.java.io :as io])
+  (import [java.net URLEncoder]))
 
 (def ^:const INDENT-CHAR " ")
 
@@ -155,3 +156,6 @@
 
 (defn has-any? [coll]
   (not (empty? coll)))
+
+(defn encode-url-param [param]
+  (URLEncoder/encode param))
