@@ -142,6 +142,9 @@
   (let [extra-args-doc "\nEvents will be put on the |channel|.\n\nNote: |args| will be passed as additional parameters into Chrome event's .addListener call."]
     (build-docstring 2 description parameters extra-args-doc)))
 
+(defn build-property-docstring [description parameters]
+  (build-docstring 2 description parameters))
+
 ; ---------------------------------------------------------------------------------------------------------------------------
 
 (declare build-api-table-param-info)
@@ -197,7 +200,7 @@
        :until       (extract-avail-until data)
        :deprecated  (extract-deprecated data)
        :return-type (extract-type data)}
-      {:doc (build-docstring 2 description parameters)})))
+      {:doc (build-property-docstring description parameters)})))
 
 (defn build-api-table-properties [data]
   (vec (map build-api-table-property data)))
