@@ -320,13 +320,3 @@ number of script tags and sends a reporting message to the background page.
 As you can see, we don't have any interesting logic here for processing messages from background page. In `process-message!`
 we simply print the received message into console. It works! You can test it by creating new tabs. Background page should be
 sending notifications about new tabs being created.
-
----
-
-#### Extensions built with Chromex
-
-You might want to look at some real-world extension implemented using Chromex:
-
-* [Dirac DevTools](https://github.com/binaryage/dirac) - a Chrome DevTools fork for ClojureScript developers
-
-Want to add an extension here? [Send me a link](mailto:antonin@hildebrand.cz), thanks!
