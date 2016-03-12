@@ -7,3 +7,4 @@
 
 (alter-var-root #'config/*gen-marshalling* (constantly marshalling/custom-gen-marshalling))
 (alter-var-root #'config/*compiler-println* (constantly test-utils/test-compiler-println))
+(alter-var-root #'config/*target-api-version* (constantly "50"))

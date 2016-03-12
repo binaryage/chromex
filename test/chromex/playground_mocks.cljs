@@ -118,5 +118,7 @@
 (oset js/window ["chrome" "playground" "onSomethingElse"] on-something-else-mock)
 (oset js/window ["chrome" "playground" "getStorageArea"] get-storage-area-mock)
 (oset js/window ["chrome" "playground" "getPort"] get-port-mock)
+(oset js/window ["chrome" "playground" "callFutureApi"] (constantly nil))
+(oset js/window ["chrome" "playground" "callMasterApi"] (constantly nil))
 
 (oset js/window ["chrome" "runtime" "lastError"] nil)

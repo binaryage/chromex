@@ -40,6 +40,12 @@
 (defmacro get-port []
   (gen-call :function ::get-port &form))
 
+(defmacro call-future-api []
+  (gen-call :function ::call-future-api &form))
+
+(defmacro call-master-api []
+  (gen-call :function ::call-master-api &form))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-on-something-events
@@ -115,6 +121,14 @@
                 {:id          ::get-port
                  :name        "getPort"
                  :return-type "runtime.Port"
+                 :params      []}
+                {:id          ::call-future-api
+                 :name        "callFutureApi"
+                 :since       "100"
+                 :params      []}
+                {:id          ::call-master-api
+                 :name        "callMasterApi"
+                 :since       "master"
                  :params      []}]
    :events     [{:id     ::on-something
                  :name   "onSomething"

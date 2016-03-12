@@ -2,13 +2,14 @@
   (:require-macros [cljs.core.async.macros :refer [go go-loop]])
   (:require [cljs.test :refer-macros [deftest testing is async]]
             [cljs.core.async :refer [<! >! timeout chan close!]]
-            [chromex.test-utils :refer [advanced-mode?]]
+            [chromex.test-utils :refer [advanced-mode?] :refer-macros [valid-api-version?]]
             [chromex.playground-mocks :refer [last-event-result]]
             [chromex.support :refer-macros [oset]]
             [chromex.config :refer-macros [with-custom-event-listener-factory]]
             [chromex.playground :refer-macros [get-something do-something get-some-prop tap-on-something-events
                                                tap-all-events do-something-optional-args tap-on-something-else-events
-                                               get-some-missing-prop do-something-missing tap-on-something-missing-events]]
+                                               get-some-missing-prop do-something-missing tap-on-something-missing-events
+                                               call-future-api call-master-api]]
             [chromex.chrome-event-channel :refer [make-chrome-event-channel]]))
 
 ; -- test against mocks -----------------------------------------------------------------------------------------------------
@@ -113,3 +114,29 @@
         (is (thrown-with-msg? js/Error
                               #"library tried to access a missing Chrome API object"
                               (tap-on-something-missing-events chan)))))))
+
+(deftest test-api-version-checking
+  (testing "valid-api-version?"
+    (is (= (valid-api-version? "latest" "master" "master") true))
+    (is (= (valid-api-version? "latest" "master" nil) true))
+    (is (= (valid-api-version? "latest" "100" "200") false))
+    (is (= (valid-api-version? "latest" "50" nil) true))
+    (is (= (valid-api-version? "latest" nil nil) true))
+    (is (= (valid-api-version? "latest" nil "10") false))
+    (is (= (valid-api-version? "master" "master" "master") true))
+    (is (= (valid-api-version? "master" "master" nil) true))
+    (is (= (valid-api-version? "master" "100" "200") false))
+    (is (= (valid-api-version? "master" "50" nil) true))
+    (is (= (valid-api-version? "master" nil nil) true))
+    (is (= (valid-api-version? "master" nil "10") false))
+    (is (= (valid-api-version? "50" nil nil) true))
+    (is (= (valid-api-version? "50" "50" nil) true))
+    (is (= (valid-api-version? "50" "51" nil) false))
+    (is (= (valid-api-version? "50" nil "49") false))
+    (is (= (valid-api-version? "50" nil "50") true))
+    (is (= (valid-api-version? "50" "50" "50") true))
+    (is (= (valid-api-version? "50" "49" "50") true)))
+  (testing "call future api"
+    (is (= (call-future-api) nil)))
+  (testing "call master api"
+    (is (= (call-master-api) nil))))

@@ -1,6 +1,7 @@
 (ns chromex.test-utils
   (:require [clojure.string :as string]
             [clojure.java.io :as io]
+            [chromex.support :as chromex-support]
             [environ.core :refer [env]]))
 
 (defn get-test-mode []
@@ -24,3 +25,6 @@
   (binding [*out* *err*]
     (spit (output-path) (string/join " " args) :append true)
     (apply println args)))
+
+(defmacro valid-api-version? [target since until]
+  (chromex-support/valid-api-version? {:target-api-version target} since until))

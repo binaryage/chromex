@@ -31,6 +31,12 @@
 (defn get-port* [config]
   (gen-wrap :function ::get-port config))
 
+(defn call-future-api* [config]
+  (gen-wrap :function ::call-future-api config))
+
+(defn call-master-api* [config]
+  (gen-wrap :function ::call-master-api config))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-something* [config chan & args]
