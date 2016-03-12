@@ -199,6 +199,12 @@ Also note how we passed extra arguments for .addListener call. This was discusse
 Advanced tip: similarly you can replace some other configurable functions in the config object. For example you can change the
 way how callbacks are turned into core.async channels. Theoretically you could replace it with some other mechanism.
 
-### Similar projects
+### Projects using Chromex
+
+  * [binaryage/dirac](https://github.com/binaryage/dirac) - a Chrome DevTools fork for ClojureScript developers
+  * [madvas/thai2english-chrome-extension](https://github.com/madvas/thai2english-chrome-extension) - a Chrome extension to translate Thai to English
+  * [binaryage/chromex-sample](https://github.com/binaryage/chromex-sample) - a demo project of Chromex usage
+
+### Similar libraries
 
   * [suprematic/khroma](https://github.com/suprematic/khroma)
