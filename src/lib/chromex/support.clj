@@ -113,10 +113,9 @@
     (compare n1 n2)))
 
 (defn version-in-range? [current [since until]]
-  (let [current (api-version-num current)]
-    (and
-      (or (nil? since) (not (neg? (api-version-compare current since))))
-      (or (nil? until) (not (pos? (api-version-compare current until)))))))
+  (and
+    (or (nil? since) (not (neg? (api-version-compare current since))))
+    (or (nil? until) (not (pos? (api-version-compare current until))))))
 
 (defn user-friendly-range-str [[left right]]
   (str "[" (or left "*") " - " (or right "*") "]"))
