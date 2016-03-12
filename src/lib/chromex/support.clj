@@ -25,6 +25,8 @@
        (assert target# (str "unable to locate object path " ~keys " in " ~obj-sym))
        (goog.object/set target# (last ~ks) ~val))))
 
+; -- hooks ------------------------------------------------------------------------------------------------------------------
+
 (defn gen-call-hook [config handler-key & args]
   `(let [config# ~config
          handler-key# ~handler-key
@@ -97,6 +99,8 @@
 
 ; -- api versioning ---------------------------------------------------------------------------------------------------------
 
+(def ^:dynamic max-api-version 1000000)
+
 ; http://stackoverflow.com/a/12503724/84283
 (defn parse-int [s]
   (Integer. (re-find #"\d+" s)))
@@ -104,7 +108,10 @@
 ; here we rely on sane version strings like "24" or "9"
 (defn api-version-num [v]
   (case v
-    "latest" 1000000
+    "latest" max-api-version
+    ; sometimes newly introduced apis temporarily specify :since "master" instead of specific Chrome version
+    ; e.g. https://github.com/binaryage/chromex/commit/5add1479ed0b1491b8c8b6ae5f00a690de4e5416#diff-a8df69996aa69518c645721ecd31a3bdR328
+    "master" max-api-version                                                                                                  ; only "latest" target-api-version will match "master"
     (num (parse-int (str v)))))
 
 (defn api-version-compare [v1 v2]
