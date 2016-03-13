@@ -84,8 +84,12 @@
 (defn wrap-param-doc [param]
   (str "|" param "|"))
 
+(defn replace-special-tags [text]
+  (string/replace text #"<(webview|appview)>" "$1"))
+
 (defn plain-doc [docstring]
   (-> docstring
+      (replace-special-tags)
       (cuerdas/strip-tags)
       (replace-refs)))
 
@@ -422,7 +426,7 @@
   (for [api-table api-tables]
     (let [{:keys [namespace]} api-table
           {:keys [name subns]} (meta api-table)]
-      {:js-namespace  namespace
+      {:js-namespace  (replace-special-tags namespace)
        :clj-namespace (build-ns-name name subns)
        :doc-section   name
        :file-name     (string/join "/" (build-clj-ns-file-path name subns))})))
