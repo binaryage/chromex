@@ -22,14 +22,24 @@
                    by the calling extension. The stream can only be used by frames in the given tab whose security origin
                    matches tab.url.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [streamId] where:
+   
+     |streamId| - An opaque string that can be passed to getUserMedia() API to generate media stream that corresponds to the
+                  source selected by the user. If user didn't select any source (i.e. canceled the prompt) then the callback
+                  is called with an empty streamId. The created streamId can be used only once and expires after a few seconds
+                  when it is not used.
+   
+   See https://developer.chrome.com/extensions/desktopCapture#method-chooseDesktopMedia."
   ([sources target-tab #_callback] (gen-call :function ::choose-desktop-media &form sources target-tab))
   ([sources] `(choose-desktop-media ~sources :omit)))
 
 (defmacro cancel-choose-desktop-media
   "Hides desktop media picker dialog shown by chooseDesktopMedia().
    
-     |desktopMediaRequestId| - Id returned by chooseDesktopMedia()"
+     |desktopMediaRequestId| - Id returned by chooseDesktopMedia()
+   
+   See https://developer.chrome.com/extensions/desktopCapture#method-cancelChooseDesktopMedia."
   ([desktop-media-request-id] (gen-call :function ::cancel-choose-desktop-media &form desktop-media-request-id)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

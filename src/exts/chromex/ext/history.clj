@@ -18,38 +18,70 @@
 (defmacro search
   "Searches the history for the last visit time of each page matching the query.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |query| - See https://developer.chrome.com/extensions/history#property-search-query.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [results] where:
+   
+     |results| - See https://developer.chrome.com/extensions/history#property-callback-results.
+   
+   See https://developer.chrome.com/extensions/history#method-search."
   ([query #_callback] (gen-call :function ::search &form query)))
 
 (defmacro get-visits
   "Retrieves information about visits to a URL.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |details| - See https://developer.chrome.com/extensions/history#property-getVisits-details.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [results] where:
+   
+     |results| - See https://developer.chrome.com/extensions/history#property-callback-results.
+   
+   See https://developer.chrome.com/extensions/history#method-getVisits."
   ([details #_callback] (gen-call :function ::get-visits &form details)))
 
 (defmacro add-url
   "Adds a URL to the history at the current time with a transition type of 'link'.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |details| - See https://developer.chrome.com/extensions/history#property-addUrl-details.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/history#method-addUrl."
   ([details #_callback] (gen-call :function ::add-url &form details)))
 
 (defmacro delete-url
   "Removes all occurrences of the given URL from the history.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |details| - See https://developer.chrome.com/extensions/history#property-deleteUrl-details.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/history#method-deleteUrl."
   ([details #_callback] (gen-call :function ::delete-url &form details)))
 
 (defmacro delete-range
   "Removes all items within the specified date range from the history.  Pages will not be removed from the history unless all
    visits fall within the range.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |range| - See https://developer.chrome.com/extensions/history#property-deleteRange-range.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/history#method-deleteRange."
   ([range #_callback] (gen-call :function ::delete-range &form range)))
 
 (defmacro delete-all
   "Deletes all items from the history.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/history#method-deleteAll."
   ([#_callback] (gen-call :function ::delete-all &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -60,7 +92,9 @@
   "Fired when a URL is visited, providing the HistoryItem data for that URL.  This event fires before the page has loaded.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/history#event-onVisited."
   ([channel & args] (apply gen-call :event ::on-visited &form channel args)))
 
 (defmacro tap-on-visit-removed-events
@@ -68,7 +102,9 @@
    history.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/history#event-onVisitRemoved."
   ([channel & args] (apply gen-call :event ::on-visit-removed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

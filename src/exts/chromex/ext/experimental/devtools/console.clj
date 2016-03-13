@@ -17,15 +17,20 @@
   "Adds a message to the console.
    
      |severity| - The severity of the message.
-     |text| - The text of the message."
+     |text| - The text of the message.
+   
+   See https://developer.chrome.com/extensions/experimental.devtools.console#method-addMessage."
   ([severity text] (gen-call :function ::add-message &form severity text)))
 
 (defmacro get-messages
   "Retrieves console messages.
    
-     |callback| - A function that receives console messages when the request completes.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [messages] where:
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |messages| - Console messages.
+   
+   See https://developer.chrome.com/extensions/experimental.devtools.console#method-getMessages."
   ([#_callback] (gen-call :function ::get-messages &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -36,7 +41,9 @@
   "Fired when a new message is added to the console.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/experimental.devtools.console#event-onMessageAdded."
   ([channel & args] (apply gen-call :event ::on-message-added &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

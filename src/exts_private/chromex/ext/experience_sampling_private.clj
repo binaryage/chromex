@@ -19,7 +19,12 @@
   "Retrives information about the current browser context (experimental variation information), passing a BrowserInfo object
    to the callback function.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [info] where:
+   
+     |info| - The current browser context.
+   
+   See https://developer.chrome.com/extensions/experienceSamplingPrivate#method-getBrowserInfo."
   ([#_callback] (gen-call :function ::get-browser-info &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -30,14 +35,18 @@
   "Fired when an interesting piece of UI is shown to the user.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/experienceSamplingPrivate#event-onDisplayed."
   ([channel & args] (apply gen-call :event ::on-displayed &form channel args)))
 
 (defmacro tap-on-decision-events
   "Fired when a user makes a decision about an interesting piece of UI.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/experienceSamplingPrivate#event-onDecision."
   ([channel & args] (apply gen-call :event ::on-decision &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

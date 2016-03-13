@@ -23,14 +23,18 @@
    --enable-app-view.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/app.runtime#event-onEmbedRequested."
   ([channel & args] (apply gen-call :event ::on-embed-requested &form channel args)))
 
 (defmacro tap-on-launched-events
   "Fired when an app is launched from the launcher.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/app.runtime#event-onLaunched."
   ([channel & args] (apply gen-call :event ::on-launched &form channel args)))
 
 (defmacro tap-on-restarted-events
@@ -40,7 +44,9 @@
    instead.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/app.runtime#event-onRestarted."
   ([channel & args] (apply gen-call :event ::on-restarted &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

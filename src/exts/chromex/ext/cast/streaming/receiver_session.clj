@@ -24,11 +24,19 @@
      |audioParams| - Audio stream parameters.
      |videoParams| - Video stream parameters.
      |localEndpoint| - Local IP and port to bind to.
+     |maxWidth| - See https://developer.chrome.com/extensions/cast.streaming.receiverSession#property-createAndBind-maxWidth.
+     |maxHeight| - See
+                   https://developer.chrome.com/extensions/cast.streaming.receiverSession#property-createAndBind-maxHeight.
      |maxFrameRate| - Max video frame rate.
      |mediaStreamURL| - URL of MediaStream to add the audio and video to.
      |transport_options| - Optional transport settings.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [error] where:
+   
+     |error| - See https://developer.chrome.com/extensions/cast.streaming.receiverSession#property-error_callback-error.
+   
+   See https://developer.chrome.com/extensions/cast.streaming.receiverSession#method-createAndBind."
   ([audio-params video-params local-endpoint max-width max-height max-frame-rate media-stream-url transport-options #_error-callback] (gen-call :function ::create-and-bind &form audio-params video-params local-endpoint max-width max-height max-frame-rate media-stream-url transport-options))
   ([audio-params video-params local-endpoint max-width max-height max-frame-rate media-stream-url] `(create-and-bind ~audio-params ~video-params ~local-endpoint ~max-width ~max-height ~max-frame-rate ~media-stream-url :omit)))
 

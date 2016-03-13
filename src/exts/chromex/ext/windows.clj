@@ -16,11 +16,15 @@
 ; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defmacro get-window-id-none
-  "The windowId value that represents the absence of a chrome browser window."
+  "The windowId value that represents the absence of a chrome browser window.
+   
+   See https://developer.chrome.com/extensions/windows#property-WINDOW_ID_NONE."
   ([] (gen-call :property ::window-id-none &form)))
 
 (defmacro get-window-id-current
-  "The windowId value that represents the current window."
+  "The windowId value that represents the current window.
+   
+   See https://developer.chrome.com/extensions/windows#property-WINDOW_ID_CURRENT."
   ([] (gen-call :property ::window-id-current &form)))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
@@ -28,35 +32,71 @@
 (defmacro get
   "Gets details about a window.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |windowId| - See https://developer.chrome.com/extensions/windows#property-get-windowId.
+     |getInfo| - See https://developer.chrome.com/extensions/windows#property-get-getInfo.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [window] where:
+   
+     |window| - See https://developer.chrome.com/extensions/windows#property-callback-window.
+   
+   See https://developer.chrome.com/extensions/windows#method-get."
   ([window-id get-info #_callback] (gen-call :function ::get &form window-id get-info))
   ([window-id] `(get ~window-id :omit)))
 
 (defmacro get-current
   "Gets the current window.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |getInfo| - See https://developer.chrome.com/extensions/windows#property-getCurrent-getInfo.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [window] where:
+   
+     |window| - See https://developer.chrome.com/extensions/windows#property-callback-window.
+   
+   See https://developer.chrome.com/extensions/windows#method-getCurrent."
   ([get-info #_callback] (gen-call :function ::get-current &form get-info))
   ([] `(get-current :omit)))
 
 (defmacro get-last-focused
   "Gets the window that was most recently focused &mdash; typically the window 'on top'.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |getInfo| - See https://developer.chrome.com/extensions/windows#property-getLastFocused-getInfo.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [window] where:
+   
+     |window| - See https://developer.chrome.com/extensions/windows#property-callback-window.
+   
+   See https://developer.chrome.com/extensions/windows#method-getLastFocused."
   ([get-info #_callback] (gen-call :function ::get-last-focused &form get-info))
   ([] `(get-last-focused :omit)))
 
 (defmacro get-all
   "Gets all windows.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |getInfo| - See https://developer.chrome.com/extensions/windows#property-getAll-getInfo.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [windows] where:
+   
+     |windows| - See https://developer.chrome.com/extensions/windows#property-callback-windows.
+   
+   See https://developer.chrome.com/extensions/windows#method-getAll."
   ([get-info #_callback] (gen-call :function ::get-all &form get-info))
   ([] `(get-all :omit)))
 
 (defmacro create
   "Creates (opens) a new browser with any optional sizing, position or default URL provided.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |createData| - See https://developer.chrome.com/extensions/windows#property-create-createData.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [window] where:
+   
+     |window| - Contains details about the created window.
+   
+   See https://developer.chrome.com/extensions/windows#method-create."
   ([create-data #_callback] (gen-call :function ::create &form create-data))
   ([] `(create :omit)))
 
@@ -64,13 +104,26 @@
   "Updates the properties of a window. Specify only the properties that you want to change; unspecified properties will be
    left unchanged.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |windowId| - See https://developer.chrome.com/extensions/windows#property-update-windowId.
+     |updateInfo| - See https://developer.chrome.com/extensions/windows#property-update-updateInfo.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [window] where:
+   
+     |window| - See https://developer.chrome.com/extensions/windows#property-callback-window.
+   
+   See https://developer.chrome.com/extensions/windows#method-update."
   ([window-id update-info #_callback] (gen-call :function ::update &form window-id update-info)))
 
 (defmacro remove
   "Removes (closes) a window, and all the tabs inside it.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |windowId| - See https://developer.chrome.com/extensions/windows#property-remove-windowId.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/windows#method-remove."
   ([window-id #_callback] (gen-call :function ::remove &form window-id)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -81,14 +134,18 @@
   "Fired when a window is created.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/windows#event-onCreated."
   ([channel & args] (apply gen-call :event ::on-created &form channel args)))
 
 (defmacro tap-on-removed-events
   "Fired when a window is removed (closed).
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/windows#event-onRemoved."
   ([channel & args] (apply gen-call :event ::on-removed &form channel args)))
 
 (defmacro tap-on-focus-changed-events
@@ -97,7 +154,9 @@
    chrome window to another.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/windows#event-onFocusChanged."
   ([channel & args] (apply gen-call :event ::on-focus-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

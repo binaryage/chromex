@@ -22,10 +22,13 @@
                         matches an existing notification, this method first clears that notification before proceeding with
                         the create operation.The notificationId parameter is required before Chrome 42.
      |options| - Contents of the notification.
-     |callback| - Returns the notification id (either supplied or generated) that represents the created notification.The
-                  callback is required before Chrome 42.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [notificationId] where:
+   
+     |notificationId| - See https://developer.chrome.com/extensions/notifications#property-callback-notificationId.
+   
+   See https://developer.chrome.com/extensions/notifications#method-create."
   ([notification-id options #_callback] (gen-call :function ::create &form notification-id options)))
 
 (defmacro update
@@ -33,34 +36,48 @@
    
      |notificationId| - The id of the notification to be updated. This is returned by 'notifications.create' method.
      |options| - Contents of the notification to update to.
-     |callback| - Called to indicate whether a matching notification existed.The callback is required before Chrome 42.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [wasUpdated] where:
+   
+     |wasUpdated| - See https://developer.chrome.com/extensions/notifications#property-callback-wasUpdated.
+   
+   See https://developer.chrome.com/extensions/notifications#method-update."
   ([notification-id options #_callback] (gen-call :function ::update &form notification-id options)))
 
 (defmacro clear
   "Clears the specified notification.
    
      |notificationId| - The id of the notification to be cleared. This is returned by 'notifications.create' method.
-     |callback| - Called to indicate whether a matching notification existed.The callback is required before Chrome 42.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [wasCleared] where:
+   
+     |wasCleared| - See https://developer.chrome.com/extensions/notifications#property-callback-wasCleared.
+   
+   See https://developer.chrome.com/extensions/notifications#method-clear."
   ([notification-id #_callback] (gen-call :function ::clear &form notification-id)))
 
 (defmacro get-all
   "Retrieves all the notifications.
    
-     |callback| - Returns the set of notification_ids currently in the system.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [notifications] where:
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |notifications| - See https://developer.chrome.com/extensions/notifications#property-callback-notifications.
+   
+   See https://developer.chrome.com/extensions/notifications#method-getAll."
   ([#_callback] (gen-call :function ::get-all &form)))
 
 (defmacro get-permission-level
   "Retrieves whether the user has enabled notifications from this app or extension.
    
-     |callback| - Returns the current permission level.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [level] where:
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |level| - See https://developer.chrome.com/extensions/notifications#property-callback-level.
+   
+   See https://developer.chrome.com/extensions/notifications#method-getPermissionLevel."
   ([#_callback] (gen-call :function ::get-permission-level &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -71,28 +88,36 @@
   "The notification closed, either by the system or by user action.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/notifications#event-onClosed."
   ([channel & args] (apply gen-call :event ::on-closed &form channel args)))
 
 (defmacro tap-on-clicked-events
   "The user clicked in a non-button area of the notification.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/notifications#event-onClicked."
   ([channel & args] (apply gen-call :event ::on-clicked &form channel args)))
 
 (defmacro tap-on-button-clicked-events
   "The user pressed a button in the notification.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/notifications#event-onButtonClicked."
   ([channel & args] (apply gen-call :event ::on-button-clicked &form channel args)))
 
 (defmacro tap-on-permission-level-changed-events
   "The user changes the permission level.  As of Chrome 47, only ChromeOS has UI that dispatches this event.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/notifications#event-onPermissionLevelChanged."
   ([channel & args] (apply gen-call :event ::on-permission-level-changed &form channel args)))
 
 (defmacro tap-on-show-settings-events
@@ -100,7 +125,9 @@
    event.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/notifications#event-onShowSettings."
   ([channel & args] (apply gen-call :event ::on-show-settings &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

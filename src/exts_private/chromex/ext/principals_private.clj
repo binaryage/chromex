@@ -16,11 +16,15 @@
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro sign-out
-  "Triggers Chrome sign out. Only enabled if the flag 'new-profile-management' is set."
+  "Triggers Chrome sign out. Only enabled if the flag 'new-profile-management' is set.
+   
+   See https://developer.chrome.com/extensions/principalsPrivate#method-signOut."
   ([] (gen-call :function ::sign-out &form)))
 
 (defmacro show-avatar-bubble
-  "Shows the avatar bubble. Only enabled if the flag 'new-profile-management' is set."
+  "Shows the avatar bubble. Only enabled if the flag 'new-profile-management' is set.
+   
+   See https://developer.chrome.com/extensions/principalsPrivate#method-showAvatarBubble."
   ([] (gen-call :function ::show-avatar-bubble &form)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

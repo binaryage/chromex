@@ -19,18 +19,25 @@
 (defmacro auto-update
   "Runs auto update for extensions and apps immediately.
    
-     |callback| - Called with the boolean result, true if autoUpdate is successful.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |result| - See https://developer.chrome.com/extensions/developerPrivate#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/developerPrivate#method-autoUpdate."
   ([#_callback] (gen-call :function ::auto-update &form)))
 
 (defmacro get-extensions-info
   "Returns information of all the extensions and apps installed.
    
      |options| - Options to restrict the items returned.
-     |callback| - Called with extensions info.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/developerPrivate#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/developerPrivate#method-getExtensionsInfo."
   ([options #_callback] (gen-call :function ::get-extensions-info &form options))
   ([] `(get-extensions-info :omit)))
 
@@ -38,9 +45,13 @@
   "Returns information of a particular extension.
    
      |id| - The id of the extension.
-     |callback| - Called with the result.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/developerPrivate#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/developerPrivate#method-getExtensionInfo."
   ([id #_callback] (gen-call :function ::get-extension-info &form id)))
 
 (defmacro get-items-info
@@ -48,15 +59,24 @@
    
      |includeDisabled| - include disabled items.
      |includeTerminated| - include terminated items.
-     |callback| - Called with items info.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/developerPrivate#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/developerPrivate#method-getItemsInfo."
   ([include-disabled include-terminated #_callback] (gen-call :function ::get-items-info &form include-disabled include-terminated)))
 
 (defmacro get-profile-configuration
   "Returns the current profile's configuration.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [info] where:
+   
+     |info| - See https://developer.chrome.com/extensions/developerPrivate#property-callback-info.
+   
+   See https://developer.chrome.com/extensions/developerPrivate#method-getProfileConfiguration."
   ([#_callback] (gen-call :function ::get-profile-configuration &form)))
 
 (defmacro update-profile-configuration
@@ -65,7 +85,10 @@
      |update| - The parameters for updating the profile's configuration.  Any     properties omitted from |update| will not
                 be changed.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/developerPrivate#method-updateProfileConfiguration."
   ([update #_callback] (gen-call :function ::update-profile-configuration &form update)))
 
 (defmacro show-permissions-dialog
@@ -73,7 +96,10 @@
    
      |extensionId| - The id of the extension to show permissions for.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/developerPrivate#method-showPermissionsDialog."
   ([extension-id #_callback] (gen-call :function ::show-permissions-dialog &form extension-id)))
 
 (defmacro reload
@@ -82,7 +108,10 @@
      |extensionId| - The id of the extension to reload.
      |options| - Additional configuration parameters.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/developerPrivate#method-reload."
   ([extension-id options #_callback] (gen-call :function ::reload &form extension-id options))
   ([extension-id] `(reload ~extension-id :omit)))
 
@@ -92,7 +121,10 @@
      |update| - The parameters for updating the extension's configuration.     Any properties omitted from |update| will not
                 be changed.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/developerPrivate#method-updateExtensionConfiguration."
   ([update #_callback] (gen-call :function ::update-extension-configuration &form update)))
 
 (defmacro load-unpacked
@@ -100,7 +132,10 @@
    
      |options| - Additional configuration parameters.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/developerPrivate#method-loadUnpacked."
   ([options #_callback] (gen-call :function ::load-unpacked &form options))
   ([] `(load-unpacked :omit)))
 
@@ -109,7 +144,12 @@
    
      |directory| - The directory to load the extension from.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [path] where:
+   
+     |path| - See https://developer.chrome.com/extensions/developerPrivate#property-callback-path.
+   
+   See https://developer.chrome.com/extensions/developerPrivate#method-loadDirectory."
   ([directory #_callback] (gen-call :function ::load-directory &form directory)))
 
 (defmacro choose-path
@@ -117,19 +157,28 @@
    
      |selectType| - Select a file or a folder.
      |fileType| - Required file type. For example, pem type is for private key and load type is for an unpacked item.
-     |callback| - called with selected item's path.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [path] where:
+   
+     |path| - See https://developer.chrome.com/extensions/developerPrivate#property-callback-path.
+   
+   See https://developer.chrome.com/extensions/developerPrivate#method-choosePath."
   ([select-type file-type #_callback] (gen-call :function ::choose-path &form select-type file-type)))
 
 (defmacro pack-directory
   "Pack an extension.
    
+     |path| - See https://developer.chrome.com/extensions/developerPrivate#property-packDirectory-path.
      |privateKeyPath| - The path of the private key, if one is given.
      |flags| - Special flags to apply to the loading process, if any.
-     |callback| - called with the success result string.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [response] where:
+   
+     |response| - See https://developer.chrome.com/extensions/developerPrivate#property-callback-response.
+   
+   See https://developer.chrome.com/extensions/developerPrivate#method-packDirectory."
   ([path private-key-path flags #_callback] (gen-call :function ::pack-directory &form path private-key-path flags))
   ([path private-key-path] `(pack-directory ~path ~private-key-path :omit))
   ([path] `(pack-directory ~path :omit :omit)))
@@ -137,19 +186,36 @@
 (defmacro is-profile-managed
   "Returns true if the profile is managed.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/developerPrivate#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/developerPrivate#method-isProfileManaged."
   ([#_callback] (gen-call :function ::is-profile-managed &form)))
 
 (defmacro request-file-source
   "Reads and returns the contents of a file related to an extension which caused an error.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |properties| - See https://developer.chrome.com/extensions/developerPrivate#property-requestFileSource-properties.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [response] where:
+   
+     |response| - See https://developer.chrome.com/extensions/developerPrivate#property-callback-response.
+   
+   See https://developer.chrome.com/extensions/developerPrivate#method-requestFileSource."
   ([properties #_callback] (gen-call :function ::request-file-source &form properties)))
 
 (defmacro open-dev-tools
   "Open the developer tools to focus on a particular error.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |properties| - See https://developer.chrome.com/extensions/developerPrivate#property-openDevTools-properties.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/developerPrivate#method-openDevTools."
   ([properties #_callback] (gen-call :function ::open-dev-tools &form properties)))
 
 (defmacro delete-extension-errors
@@ -157,7 +223,10 @@
    
      |properties| - The properties specifying the errors to remove.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/developerPrivate#method-deleteExtensionErrors."
   ([properties #_callback] (gen-call :function ::delete-extension-errors &form properties)))
 
 (defmacro repair-extension
@@ -165,7 +234,10 @@
    
      |extensionId| - The id of the extension to repair.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/developerPrivate#method-repairExtension."
   ([extension-id #_callback] (gen-call :function ::repair-extension &form extension-id)))
 
 (defmacro show-options
@@ -173,7 +245,10 @@
    
      |extensionId| - The id of the extension to show the options page for.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/developerPrivate#method-showOptions."
   ([extension-id #_callback] (gen-call :function ::show-options &form extension-id)))
 
 (defmacro show-path
@@ -181,7 +256,10 @@
    
      |extensionId| - The id of the extension to show the path for.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/developerPrivate#method-showPath."
   ([extension-id #_callback] (gen-call :function ::show-path &form extension-id)))
 
 (defmacro set-shortcut-handling-suspended
@@ -189,7 +267,10 @@
    
      |isSuspended| - Whether or not shortcut handling should be suspended.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/developerPrivate#method-setShortcutHandlingSuspended."
   ([is-suspended #_callback] (gen-call :function ::set-shortcut-handling-suspended &form is-suspended)))
 
 (defmacro update-extension-command
@@ -197,31 +278,49 @@
    
      |update| - The parameters for updating the extension command.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/developerPrivate#method-updateExtensionCommand."
   ([update #_callback] (gen-call :function ::update-extension-command &form update)))
 
 (defmacro enable
-  "
+  "  |id| - See https://developer.chrome.com/extensions/developerPrivate#property-enable-id.
+     |enabled| - See https://developer.chrome.com/extensions/developerPrivate#property-enable-enabled.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/developerPrivate#method-enable."
   ([id enabled #_callback] (gen-call :function ::enable &form id enabled)))
 
 (defmacro allow-incognito
-  "
+  "  |extensionId| - See https://developer.chrome.com/extensions/developerPrivate#property-allowIncognito-extensionId.
+     |allow| - See https://developer.chrome.com/extensions/developerPrivate#property-allowIncognito-allow.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/developerPrivate#method-allowIncognito."
   ([extension-id allow #_callback] (gen-call :function ::allow-incognito &form extension-id allow)))
 
 (defmacro allow-file-access
-  "
+  "  |extensionId| - See https://developer.chrome.com/extensions/developerPrivate#property-allowFileAccess-extensionId.
+     |allow| - See https://developer.chrome.com/extensions/developerPrivate#property-allowFileAccess-allow.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/developerPrivate#method-allowFileAccess."
   ([extension-id allow #_callback] (gen-call :function ::allow-file-access &form extension-id allow)))
 
 (defmacro inspect
-  "
+  "  |options| - See https://developer.chrome.com/extensions/developerPrivate#property-inspect-options.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/developerPrivate#method-inspect."
   ([options #_callback] (gen-call :function ::inspect &form options)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -232,14 +331,18 @@
   "Fired when a item state is changed.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/developerPrivate#event-onItemStateChanged."
   ([channel & args] (apply gen-call :event ::on-item-state-changed &form channel args)))
 
 (defmacro tap-on-profile-state-changed-events
   "Fired when the profile's state has changed.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/developerPrivate#event-onProfileStateChanged."
   ([channel & args] (apply gen-call :event ::on-profile-state-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

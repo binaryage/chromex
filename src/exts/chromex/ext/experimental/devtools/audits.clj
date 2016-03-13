@@ -16,7 +16,9 @@
   "Adds an audit category.
    
      |displayName| - A display name for the category.
-     |resultCount| - The expected number of audit results in the category."
+     |resultCount| - The expected number of audit results in the category.
+   
+   See https://developer.chrome.com/extensions/experimental.devtools.audits#method-addCategory."
   ([display-name result-count] (gen-call :function ::add-category &form display-name result-count)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

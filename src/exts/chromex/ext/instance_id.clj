@@ -18,48 +18,56 @@
   "Retrieves an identifier for the app instance. The instance ID will be returned by the callback. The same ID will be
    returned as long as the application identity has not been revoked or expired.
    
-     |callback| - Function called when the retrieval completes. It should check 'runtime.lastError' for error when
-                  instanceID is empty.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [instanceID] where:
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |instanceID| - An Instance ID assigned to the app instance.
+   
+   See https://developer.chrome.com/extensions/instanceID#method-getID."
   ([#_callback] (gen-call :function ::get-id &form)))
 
 (defmacro get-creation-time
   "Retrieves the time when the InstanceID has been generated. The creation time will be returned by the callback.
    
-     |callback| - Function called when the retrieval completes. It should check 'runtime.lastError' for error when
-                  creationTime is zero.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [creationTime] where:
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |creationTime| - The time when the Instance ID has been generated, represented in milliseconds since the epoch.
+   
+   See https://developer.chrome.com/extensions/instanceID#method-getCreationTime."
   ([#_callback] (gen-call :function ::get-creation-time &form)))
 
 (defmacro get-token
   "Return a token that allows the authorized entity to access the service defined by scope.
    
      |getTokenParams| - Parameters for getToken.
-     |callback| - Function called when the retrieval completes. It should check 'runtime.lastError' for error when token is
-                  empty.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [token] where:
+   
+     |token| - A token assigned by the requested service.
+   
+   See https://developer.chrome.com/extensions/instanceID#method-getToken."
   ([get-token-params #_callback] (gen-call :function ::get-token &form get-token-params)))
 
 (defmacro delete-token
   "Revokes a granted token.
    
      |deleteTokenParams| - Parameters for deleteToken.
-     |callback| - Function called when the token deletion completes. The token was revoked successfully if
-                  'runtime.lastError' is not set.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/instanceID#method-deleteToken."
   ([delete-token-params #_callback] (gen-call :function ::delete-token &form delete-token-params)))
 
 (defmacro delete-id
   "Resets the app instance identifier and revokes all tokens associated with it.
    
-     |callback| - Function called when the deletion completes. The instance identifier was revoked successfully if
-                  'runtime.lastError' is not set.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   See https://developer.chrome.com/extensions/instanceID#method-deleteID."
   ([#_callback] (gen-call :function ::delete-id &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -70,7 +78,9 @@
   "Fired when all the granted tokens need to be refreshed.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/instanceID#event-onTokenRefresh."
   ([channel & args] (apply gen-call :event ::on-token-refresh &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

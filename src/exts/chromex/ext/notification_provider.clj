@@ -22,9 +22,13 @@
    
      |notifierId| - The id of the notifier that sent the notification.
      |notificationId| - The id of the notification that was closed.
-     |callback| - Called to indicate whether a matching notification existed.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [wasCleared] where:
+   
+     |wasCleared| - See https://developer.chrome.com/extensions/notificationProvider#property-callback-wasCleared.
+   
+   See https://developer.chrome.com/extensions/notificationProvider#method-notifyOnCleared."
   ([notifier-id notification-id #_callback] (gen-call :function ::notify-on-cleared &form notifier-id notification-id)))
 
 (defmacro notify-on-clicked
@@ -32,9 +36,13 @@
    
      |notifierId| - The id of the notifier that sent the notification.
      |notificationId| - The id of the notification that was clicked on.
-     |callback| - Called to indicate whether a matching notification existed.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [matchExists] where:
+   
+     |matchExists| - See https://developer.chrome.com/extensions/notificationProvider#property-callback-matchExists.
+   
+   See https://developer.chrome.com/extensions/notificationProvider#method-notifyOnClicked."
   ([notifier-id notification-id #_callback] (gen-call :function ::notify-on-clicked &form notifier-id notification-id)))
 
 (defmacro notify-on-button-clicked
@@ -43,9 +51,13 @@
      |notifierId| - The id of the notifier that sent the notification.
      |notificationId| - The id of the notification that was clicked on its button.
      |buttonIndex| - The index of the button that was clicked.
-     |callback| - Called to indicate whether a matching notification existed.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [matchExists] where:
+   
+     |matchExists| - See https://developer.chrome.com/extensions/notificationProvider#property-callback-matchExists.
+   
+   See https://developer.chrome.com/extensions/notificationProvider#method-notifyOnButtonClicked."
   ([notifier-id notification-id button-index #_callback] (gen-call :function ::notify-on-button-clicked &form notifier-id notification-id button-index)))
 
 (defmacro notify-on-permission-level-changed
@@ -54,9 +66,13 @@
      |notifierId| - The id of the notifier that sent the notification.
      |notifierType| - The type of the notifier that sent the notification.
      |level| - The perission level of the notifier
-     |callback| - Called to indicate whether the permission level was changed.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [wasChanged] where:
+   
+     |wasChanged| - See https://developer.chrome.com/extensions/notificationProvider#property-callback-wasChanged.
+   
+   See https://developer.chrome.com/extensions/notificationProvider#method-notifyOnPermissionLevelChanged."
   ([notifier-id notifier-type level #_callback] (gen-call :function ::notify-on-permission-level-changed &form notifier-id notifier-type level)))
 
 (defmacro notify-on-show-settings
@@ -64,25 +80,35 @@
    
      |notifierId| - The id of the notifier that sent the notification.
      |notifierType| - The type of the notifier that sent the notification.
-     |callback| - Called to indicate whether the notifier has extra settings.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [hasSettings] where:
+   
+     |hasSettings| - See https://developer.chrome.com/extensions/notificationProvider#property-callback-hasSettings.
+   
+   See https://developer.chrome.com/extensions/notificationProvider#method-notifyOnShowSettings."
   ([notifier-id notifier-type #_callback] (gen-call :function ::notify-on-show-settings &form notifier-id notifier-type)))
 
 (defmacro get-notifier
   "To get a notifier from it's notifier ID.
    
-     |callback| - Returns the notifier object of the given ID.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [notifier] where:
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |notifier| - See https://developer.chrome.com/extensions/notificationProvider#property-callback-notifier.
+   
+   See https://developer.chrome.com/extensions/notificationProvider#method-getNotifier."
   ([#_callback] (gen-call :function ::get-notifier &form)))
 
 (defmacro get-all-notifiers
   "To get all the notifiers that could send notifications.
    
-     |callback| - Returns the set of notifiers currently in the system.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [notifiers] where:
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |notifiers| - See https://developer.chrome.com/extensions/notificationProvider#property-callback-notifiers.
+   
+   See https://developer.chrome.com/extensions/notificationProvider#method-getAllNotifiers."
   ([#_callback] (gen-call :function ::get-all-notifiers &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -93,21 +119,27 @@
   "A new notification is created.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/notificationProvider#event-onCreated."
   ([channel & args] (apply gen-call :event ::on-created &form channel args)))
 
 (defmacro tap-on-updated-events
   "A notification is updated by the notifier.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/notificationProvider#event-onUpdated."
   ([channel & args] (apply gen-call :event ::on-updated &form channel args)))
 
 (defmacro tap-on-cleared-events
   "A notification is cleared by the notifier.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/notificationProvider#event-onCleared."
   ([channel & args] (apply gen-call :event ::on-cleared &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

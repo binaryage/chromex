@@ -18,31 +18,42 @@
      |userEmail| - The email address of the user.
      |robotEmail| - The email address of the robot account.
      |credentials| - The login credentials(OAuth2 Auth code).
-     |userSettings| - Options configured by user."
+     |userSettings| - Options configured by user.
+   
+   See https://developer.chrome.com/extensions/cloudPrintPrivate#method-setupConnector."
   ([user-email robot-email credentials user-settings] (gen-call :function ::setup-connector &form user-email robot-email credentials user-settings)))
 
 (defmacro get-host-name
   "Returns local hostname.
    
-     |callback| - Called to return host name.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |result| - Host name.
+   
+   See https://developer.chrome.com/extensions/cloudPrintPrivate#method-getHostName."
   ([#_callback] (gen-call :function ::get-host-name &form)))
 
 (defmacro get-printers
   "Returns local printers.
    
-     |callback| - Called to return printers.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |result| - List of printer names.
+   
+   See https://developer.chrome.com/extensions/cloudPrintPrivate#method-getPrinters."
   ([#_callback] (gen-call :function ::get-printers &form)))
 
 (defmacro get-client-id
   "Gets the Client ID used to access Google service APIs.
    
-     |callback| - Called to return the client ID.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |result| - Client ID.
+   
+   See https://developer.chrome.com/extensions/cloudPrintPrivate#method-getClientId."
   ([#_callback] (gen-call :function ::get-client-id &form)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

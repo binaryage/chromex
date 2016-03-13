@@ -17,7 +17,9 @@
 
 (defmacro get-action-menu-top-level-limit
   "The maximum number of top level extension items that can be added to an extension action context menu. Any items beyond
-   this limit will be ignored."
+   this limit will be ignored.
+   
+   See https://developer.chrome.com/extensions/contextMenus#property-ACTION_MENU_TOP_LEVEL_LIMIT."
   ([] (gen-call :property ::action-menu-top-level-limit &form)))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
@@ -26,10 +28,12 @@
   "Creates a new context menu item. Note that if an error occurs during creation, you may not find out until the creation
    callback fires (the details will be in chrome.runtime.lastError).
    
-     |callback| - Called when the item has been created in the browser. If there were any problems creating the item,
-                  details will be available in chrome.runtime.lastError.
+     |createProperties| - See https://developer.chrome.com/extensions/contextMenus#property-create-createProperties.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/contextMenus#method-create."
   ([create-properties #_callback] (gen-call :function ::create &form create-properties)))
 
 (defmacro update
@@ -37,26 +41,31 @@
    
      |id| - The ID of the item to update.
      |updateProperties| - The properties to update. Accepts the same values as the create function.
-     |callback| - Called when the context menu has been updated.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/contextMenus#method-update."
   ([id update-properties #_callback] (gen-call :function ::update &form id update-properties)))
 
 (defmacro remove
   "Removes a context menu item.
    
      |menuItemId| - The ID of the context menu item to remove.
-     |callback| - Called when the context menu has been removed.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/contextMenus#method-remove."
   ([menu-item-id #_callback] (gen-call :function ::remove &form menu-item-id)))
 
 (defmacro remove-all
   "Removes all context menu items added by this extension.
    
-     |callback| - Called when removal is complete.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   See https://developer.chrome.com/extensions/contextMenus#method-removeAll."
   ([#_callback] (gen-call :function ::remove-all &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -67,7 +76,9 @@
   "Fired when a context menu item is clicked.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/contextMenus#event-onClicked."
   ([channel & args] (apply gen-call :event ::on-clicked &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

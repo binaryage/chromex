@@ -16,7 +16,9 @@
 ; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defmacro get-settings
-  "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example."
+  "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example.
+   
+   See https://developer.chrome.com/extensions/proxy#property-settings."
   ([] (gen-call :property ::settings &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -27,7 +29,9 @@
   "Notifies about proxy errors.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/proxy#event-onProxyError."
   ([channel & args] (apply gen-call :event ::on-proxy-error &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

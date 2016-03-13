@@ -16,15 +16,30 @@
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro send-initialized
-  "Send a boolean indicating whether our initialization was successful."
+  "Send a boolean indicating whether our initialization was successful.
+   
+     |success| - See https://developer.chrome.com/extensions/copresencePrivate#property-sendInitialized-success.
+   
+   See https://developer.chrome.com/extensions/copresencePrivate#method-sendInitialized."
   ([success] (gen-call :function ::send-initialized &form success)))
 
 (defmacro send-found
-  "Sends an array of found tokens to Chrome."
+  "Sends an array of found tokens to Chrome.
+   
+     |clientId| - See https://developer.chrome.com/extensions/copresencePrivate#property-sendFound-clientId.
+     |tokens| - See https://developer.chrome.com/extensions/copresencePrivate#property-sendFound-tokens.
+   
+   See https://developer.chrome.com/extensions/copresencePrivate#method-sendFound."
   ([client-id tokens] (gen-call :function ::send-found &form client-id tokens)))
 
 (defmacro send-samples
-  "Send an array buffer of samples encoded for the specified token."
+  "Send an array buffer of samples encoded for the specified token.
+   
+     |clientId| - See https://developer.chrome.com/extensions/copresencePrivate#property-sendSamples-clientId.
+     |token| - See https://developer.chrome.com/extensions/copresencePrivate#property-sendSamples-token.
+     |samples| - See https://developer.chrome.com/extensions/copresencePrivate#property-sendSamples-samples.
+   
+   See https://developer.chrome.com/extensions/copresencePrivate#method-sendSamples."
   ([client-id token samples] (gen-call :function ::send-samples &form client-id token samples)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -35,21 +50,27 @@
   "Fired to request audio configuration of the whisper.net library.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/copresencePrivate#event-onConfigAudio."
   ([channel & args] (apply gen-call :event ::on-config-audio &form channel args)))
 
 (defmacro tap-on-encode-token-request-events
   "Fired to request encoding of the given token.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/copresencePrivate#event-onEncodeTokenRequest."
   ([channel & args] (apply gen-call :event ::on-encode-token-request &form channel args)))
 
 (defmacro tap-on-decode-samples-request-events
   "Fired when we have new samples to decode.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/copresencePrivate#event-onDecodeSamplesRequest."
   ([channel & args] (apply gen-call :event ::on-decode-samples-request &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

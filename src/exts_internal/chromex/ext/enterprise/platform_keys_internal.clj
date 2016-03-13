@@ -17,9 +17,12 @@
 (defmacro get-tokens
   "Internal version of entrprise.platformKeys.getTokens. Returns a list of token IDs instead of token objects.
    
-     |callback| - Invoked by getTokens. |tokenIds| The list of IDs of the avialable Tokens.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [tokenIds] where:
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |tokenIds| - See https://developer.chrome.com/extensions/enterprise.platformKeysInternal#property-callback-tokenIds.
+   
+   See https://developer.chrome.com/extensions/enterprise.platformKeysInternal#method-getTokens."
   ([#_callback] (gen-call :function ::get-tokens &form)))
 
 (defmacro generate-key
@@ -27,10 +30,17 @@
    |getTokens|. |modulusLength| The length, in bits, of the RSA modulus. |callback| Called back with the Subject Public Key
    Info of the generated     key.
    
-     |callback| - Invoked by generateKey. |publicKey| The Subject Public Key Info (see X.509) of the generated key     in
-                  DER encoding.
+     |tokenId| - See https://developer.chrome.com/extensions/enterprise.platformKeysInternal#property-generateKey-tokenId.
+     |modulusLength| - See
+                       https://developer.chrome.com/extensions/enterprise.platformKeysInternal#property-generateKey-modulusLe
+                       ngth.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [publicKey] where:
+   
+     |publicKey| - See https://developer.chrome.com/extensions/enterprise.platformKeysInternal#property-callback-publicKey.
+   
+   See https://developer.chrome.com/extensions/enterprise.platformKeysInternal#method-generateKey."
   ([token-id modulus-length #_callback] (gen-call :function ::generate-key &form token-id modulus-length)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

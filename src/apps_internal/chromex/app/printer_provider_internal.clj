@@ -27,7 +27,9 @@
   "Runs callback to printerProvider.onGetPrintersRequested event.
    
      |requestId| - Parameter identifying the event instance for which the     callback is run.
-     |printers| - List of printers reported by the extension."
+     |printers| - List of printers reported by the extension.
+   
+   See https://developer.chrome.com/extensions/printerProviderInternal#method-reportPrinters."
   ([request-id printers] (gen-call :function ::report-printers &form request-id printers))
   ([request-id] `(report-printers ~request-id :omit)))
 
@@ -35,19 +37,34 @@
   "Runs callback to printerProvider.onUsbAccessGranted event.
    
      |requestId| - Parameter identifying the event instance for which the     callback is run.
-     |printerInfo| - Printer information reported by the extension."
+     |printerInfo| - Printer information reported by the extension.
+   
+   See https://developer.chrome.com/extensions/printerProviderInternal#method-reportUsbPrinterInfo."
   ([request-id printer-info] (gen-call :function ::report-usb-printer-info &form request-id printer-info))
   ([request-id] `(report-usb-printer-info ~request-id :omit)))
 
 (defmacro report-printer-capability
-  "Runs callback to printerProvider.onGetCapabilityRequested event."
+  "Runs callback to printerProvider.onGetCapabilityRequested event.
+   
+     |request_id| - See
+                    https://developer.chrome.com/extensions/printerProviderInternal#property-reportPrinterCapability-request_
+                    id.
+     |capability| - See
+                    https://developer.chrome.com/extensions/printerProviderInternal#property-reportPrinterCapability-capabili
+                    ty.
+   
+   See https://developer.chrome.com/extensions/printerProviderInternal#method-reportPrinterCapability."
   ([request-id capability] (gen-call :function ::report-printer-capability &form request-id capability))
   ([request-id] `(report-printer-capability ~request-id :omit)))
 
 (defmacro report-print-result
   "Runs callback to printerProvider.onPrintRequested event.
    
-     |error| - The requested print job result."
+     |request_id| - See
+                    https://developer.chrome.com/extensions/printerProviderInternal#property-reportPrintResult-request_id.
+     |error| - The requested print job result.
+   
+   See https://developer.chrome.com/extensions/printerProviderInternal#method-reportPrintResult."
   ([request-id error] (gen-call :function ::report-print-result &form request-id error))
   ([request-id] `(report-print-result ~request-id :omit)))
 
@@ -56,9 +73,13 @@
    printerProvider.onPrintRequested event.
    
      |requestId| - The request id for the print request for which data is     needed.
-     |callback| - Callback called with the information needed to create a blob     of print data.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [blobInfo] where:
+   
+     |blobInfo| - See https://developer.chrome.com/extensions/printerProviderInternal#property-callback-blobInfo.
+   
+   See https://developer.chrome.com/extensions/printerProviderInternal#method-getPrintData."
   ([request-id #_callback] (gen-call :function ::get-print-data &form request-id)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

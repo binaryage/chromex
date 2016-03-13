@@ -22,9 +22,13 @@
    gesture.
    
      |selectionParams| - Parameters that will be used while selecting the file.
-     |callback| - Function called upon completion.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - Result of the method.
+   
+   See https://developer.chrome.com/extensions/fileBrowserHandler#method-selectFile."
   ([selection-params #_callback] (gen-call :function ::select-file &form selection-params)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -35,7 +39,9 @@
   "Fired when file system action is executed from ChromeOS file browser.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/fileBrowserHandler#event-onExecute."
   ([channel & args] (apply gen-call :event ::on-execute &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

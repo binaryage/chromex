@@ -15,21 +15,34 @@
 (defmacro get-incognito-mode-availability
   "Returns whether the incognito mode is enabled, disabled or forced
    
-     |callback| - Called with the result.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [value] where:
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |value| - See https://developer.chrome.com/extensions/systemPrivate#property-callback-value.
+   
+   See https://developer.chrome.com/extensions/systemPrivate#method-getIncognitoModeAvailability."
   ([#_callback] (gen-call :function ::get-incognito-mode-availability &form)))
 
 (defmacro get-update-status
   "Gets information about the system update.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [status] where:
+   
+     |status| - Details of the system update
+   
+   See https://developer.chrome.com/extensions/systemPrivate#method-getUpdateStatus."
   ([#_callback] (gen-call :function ::get-update-status &form)))
 
 (defmacro get-api-key
   "Gets Chrome's API key to use for requests to Google services.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [key] where:
+   
+     |key| - The API key.
+   
+   See https://developer.chrome.com/extensions/systemPrivate#method-getApiKey."
   ([#_callback] (gen-call :function ::get-api-key &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -40,28 +53,36 @@
   "Fired when the volume is changed.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/systemPrivate#event-onVolumeChanged."
   ([channel & args] (apply gen-call :event ::on-volume-changed &form channel args)))
 
 (defmacro tap-on-brightness-changed-events
   "Fired when the screen brightness is changed.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/systemPrivate#event-onBrightnessChanged."
   ([channel & args] (apply gen-call :event ::on-brightness-changed &form channel args)))
 
 (defmacro tap-on-screen-unlocked-events
   "Fired when the screen is unlocked.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/systemPrivate#event-onScreenUnlocked."
   ([channel & args] (apply gen-call :event ::on-screen-unlocked &form channel args)))
 
 (defmacro tap-on-woke-up-events
   "Fired when the device wakes up from sleep.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/systemPrivate#event-onWokeUp."
   ([channel & args] (apply gen-call :event ::on-woke-up &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

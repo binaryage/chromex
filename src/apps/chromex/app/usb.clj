@@ -25,7 +25,12 @@
    
      |options| - The properties to search for on target devices.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [devices] where:
+   
+     |devices| - See https://developer.chrome.com/extensions/usb#property-callback-devices.
+   
+   See https://developer.chrome.com/extensions/usb#method-getDevices."
   ([options #_callback] (gen-call :function ::get-devices &form options)))
 
 (defmacro get-user-selected-devices
@@ -34,9 +39,13 @@
    user cancelled.
    
      |options| - Configuration of the device picker dialog box.
-     |callback| - Invoked with a list of chosen 'Device's.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [devices] where:
+   
+     |devices| - See https://developer.chrome.com/extensions/usb#property-callback-devices.
+   
+   See https://developer.chrome.com/extensions/usb#method-getUserSelectedDevices."
   ([options #_callback] (gen-call :function ::get-user-selected-devices &form options)))
 
 (defmacro get-configurations
@@ -44,7 +53,12 @@
    
      |device| - The 'Device' to fetch descriptors from.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [configs] where:
+   
+     |configs| - See https://developer.chrome.com/extensions/usb#property-callback-configs.
+   
+   See https://developer.chrome.com/extensions/usb#method-getConfigurations."
   ([device #_callback] (gen-call :function ::get-configurations &form device)))
 
 (defmacro request-access
@@ -54,7 +68,12 @@
      |device| - The 'Device' to request access to.
      |interfaceId| - The particular interface requested.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [success] where:
+   
+     |success| - See https://developer.chrome.com/extensions/usb#property-callback-success.
+   
+   See https://developer.chrome.com/extensions/usb#method-requestAccess."
   ([device interface-id #_callback] (gen-call :function ::request-access &form device interface-id)))
 
 (defmacro open-device
@@ -62,7 +81,12 @@
    
      |device| - The 'Device' to open.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [handle] where:
+   
+     |handle| - See https://developer.chrome.com/extensions/usb#property-callback-handle.
+   
+   See https://developer.chrome.com/extensions/usb#method-openDevice."
   ([device #_callback] (gen-call :function ::open-device &form device)))
 
 (defmacro find-devices
@@ -72,7 +96,12 @@
    
      |options| - The properties to search for on target devices.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [handles] where:
+   
+     |handles| - See https://developer.chrome.com/extensions/usb#property-callback-handles.
+   
+   See https://developer.chrome.com/extensions/usb#method-findDevices."
   ([options #_callback] (gen-call :function ::find-devices &form options)))
 
 (defmacro close-device
@@ -81,7 +110,10 @@
    
      |handle| - The 'ConnectionHandle' to close.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/usb#method-closeDevice."
   ([handle #_callback] (gen-call :function ::close-device &form handle)))
 
 (defmacro set-configuration
@@ -90,8 +122,12 @@
    0 and so this value is allowed.
    
      |handle| - An open connection to the device.
+     |configurationValue| - See https://developer.chrome.com/extensions/usb#property-setConfiguration-configurationValue.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/usb#method-setConfiguration."
   ([handle configuration-value #_callback] (gen-call :function ::set-configuration &form handle configuration-value)))
 
 (defmacro get-configuration
@@ -99,7 +135,12 @@
    
      |handle| - An open connection to the device.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [config] where:
+   
+     |config| - See https://developer.chrome.com/extensions/usb#property-callback-config.
+   
+   See https://developer.chrome.com/extensions/usb#method-getConfiguration."
   ([handle #_callback] (gen-call :function ::get-configuration &form handle)))
 
 (defmacro list-interfaces
@@ -107,7 +148,12 @@
    
      |handle| - An open connection to the device.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [descriptors] where:
+   
+     |descriptors| - See https://developer.chrome.com/extensions/usb#property-callback-descriptors.
+   
+   See https://developer.chrome.com/extensions/usb#method-listInterfaces."
   ([handle #_callback] (gen-call :function ::list-interfaces &form handle)))
 
 (defmacro claim-interface
@@ -118,7 +164,10 @@
      |handle| - An open connection to the device.
      |interfaceNumber| - The interface to be claimed.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/usb#method-claimInterface."
   ([handle interface-number #_callback] (gen-call :function ::claim-interface &form handle interface-number)))
 
 (defmacro release-interface
@@ -127,7 +176,10 @@
      |handle| - An open connection to the device.
      |interfaceNumber| - The interface to be released.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/usb#method-releaseInterface."
   ([handle interface-number #_callback] (gen-call :function ::release-interface &form handle interface-number)))
 
 (defmacro set-interface-alternate-setting
@@ -137,7 +189,10 @@
      |interfaceNumber| - The interface to configure.
      |alternateSetting| - The alternate setting to configure.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/usb#method-setInterfaceAlternateSetting."
   ([handle interface-number alternate-setting #_callback] (gen-call :function ::set-interface-alternate-setting &form handle interface-number alternate-setting)))
 
 (defmacro control-transfer
@@ -145,8 +200,14 @@
    endpoint. Transfers to an interface or endpoint require the interface to be claimed.
    
      |handle| - An open connection to the device.
+     |transferInfo| - See https://developer.chrome.com/extensions/usb#property-controlTransfer-transferInfo.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [info] where:
+   
+     |info| - See https://developer.chrome.com/extensions/usb#property-callback-info.
+   
+   See https://developer.chrome.com/extensions/usb#method-controlTransfer."
   ([handle transfer-info #_callback] (gen-call :function ::control-transfer &form handle transfer-info)))
 
 (defmacro bulk-transfer
@@ -155,7 +216,12 @@
      |handle| - An open connection to the device.
      |transferInfo| - The transfer parameters.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [info] where:
+   
+     |info| - See https://developer.chrome.com/extensions/usb#property-callback-info.
+   
+   See https://developer.chrome.com/extensions/usb#method-bulkTransfer."
   ([handle transfer-info #_callback] (gen-call :function ::bulk-transfer &form handle transfer-info)))
 
 (defmacro interrupt-transfer
@@ -164,15 +230,26 @@
      |handle| - An open connection to the device.
      |transferInfo| - The transfer parameters.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [info] where:
+   
+     |info| - See https://developer.chrome.com/extensions/usb#property-callback-info.
+   
+   See https://developer.chrome.com/extensions/usb#method-interruptTransfer."
   ([handle transfer-info #_callback] (gen-call :function ::interrupt-transfer &form handle transfer-info)))
 
 (defmacro isochronous-transfer
   "Performs an isochronous transfer on the specific device.
    
      |handle| - An open connection to the device.
+     |transferInfo| - See https://developer.chrome.com/extensions/usb#property-isochronousTransfer-transferInfo.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [info] where:
+   
+     |info| - See https://developer.chrome.com/extensions/usb#property-callback-info.
+   
+   See https://developer.chrome.com/extensions/usb#method-isochronousTransfer."
   ([handle transfer-info #_callback] (gen-call :function ::isochronous-transfer &form handle transfer-info)))
 
 (defmacro reset-device
@@ -182,7 +259,12 @@
    
      |handle| - A connection handle to reset.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [success] where:
+   
+     |success| - See https://developer.chrome.com/extensions/usb#property-callback-success.
+   
+   See https://developer.chrome.com/extensions/usb#method-resetDevice."
   ([handle #_callback] (gen-call :function ::reset-device &form handle)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -195,14 +277,18 @@
    'permissions.request'), or through 'getUserSelectedDevices'.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/usb#event-onDeviceAdded."
   ([channel & args] (apply gen-call :event ::on-device-added &form channel args)))
 
 (defmacro tap-on-device-removed-events
   "Event generated when a device is removed from the system. See 'onDeviceAdded' for which events are delivered.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/usb#event-onDeviceRemoved."
   ([channel & args] (apply gen-call :event ::on-device-removed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

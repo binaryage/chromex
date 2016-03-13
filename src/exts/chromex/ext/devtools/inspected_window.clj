@@ -17,7 +17,9 @@
 ; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defmacro get-tab-id
-  "The ID of the tab being inspected. This ID may be used with chrome.tabs.* API."
+  "The ID of the tab being inspected. This ID may be used with chrome.tabs.* API.
+   
+   See https://developer.chrome.com/extensions/devtools.inspectedWindow#property-tabId."
   ([] (gen-call :property ::tab-id &form)))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
@@ -32,23 +34,35 @@
    
      |expression| - An expression to evaluate.
      |options| - The options parameter can contain one or more options.
-     |callback| - A function called when evaluation completes.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result exceptionInfo] where:
+   
+     |result| - The result of evaluation.
+     |exceptionInfo| - An object providing details if an exception occurred while evaluating the expression.
+   
+   See https://developer.chrome.com/extensions/devtools.inspectedWindow#method-eval."
   ([expression options #_callback] (gen-call :function ::eval &form expression options))
   ([expression] `(eval ~expression :omit)))
 
 (defmacro reload
-  "Reloads the inspected page."
+  "Reloads the inspected page.
+   
+     |reloadOptions| - See https://developer.chrome.com/extensions/devtools.inspectedWindow#property-reload-reloadOptions.
+   
+   See https://developer.chrome.com/extensions/devtools.inspectedWindow#method-reload."
   ([reload-options] (gen-call :function ::reload &form reload-options))
   ([] `(reload :omit)))
 
 (defmacro get-resources
   "Retrieves the list of resources from the inspected page.
    
-     |callback| - A function that receives the list of resources when the request completes.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [resources] where:
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |resources| - The resources within the page.
+   
+   See https://developer.chrome.com/extensions/devtools.inspectedWindow#method-getResources."
   ([#_callback] (gen-call :function ::get-resources &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -59,7 +73,9 @@
   "Fired when a new resource is added to the inspected page.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/devtools.inspectedWindow#event-onResourceAdded."
   ([channel & args] (apply gen-call :event ::on-resource-added &form channel args)))
 
 (defmacro tap-on-resource-content-committed-events
@@ -67,7 +83,9 @@
    Tools).
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/devtools.inspectedWindow#event-onResourceContentCommitted."
   ([channel & args] (apply gen-call :event ::on-resource-content-committed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

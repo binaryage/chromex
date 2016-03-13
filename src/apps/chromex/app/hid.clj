@@ -25,7 +25,12 @@
    
      |options| - The properties to search for on target devices.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [devices] where:
+   
+     |devices| - See https://developer.chrome.com/extensions/hid#property-callback-devices.
+   
+   See https://developer.chrome.com/extensions/hid#method-getDevices."
   ([options #_callback] (gen-call :function ::get-devices &form options)))
 
 (defmacro get-user-selected-devices
@@ -34,9 +39,13 @@
    will run as though the user cancelled. If multiple filters are provided devices matching any filter will be displayed.
    
      |options| - Configuration of the device picker dialog box.
-     |callback| - Invoked with a list of chosen 'Device's.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [devices] where:
+   
+     |devices| - See https://developer.chrome.com/extensions/hid#property-callback-devices.
+   
+   See https://developer.chrome.com/extensions/hid#method-getUserSelectedDevices."
   ([options #_callback] (gen-call :function ::get-user-selected-devices &form options))
   ([] `(get-user-selected-devices :omit)))
 
@@ -45,7 +54,12 @@
    
      |deviceId| - The 'HidDeviceInfo.deviceId' of the device to open.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [connection] where:
+   
+     |connection| - See https://developer.chrome.com/extensions/hid#property-callback-connection.
+   
+   See https://developer.chrome.com/extensions/hid#method-connect."
   ([device-id #_callback] (gen-call :function ::connect &form device-id)))
 
 (defmacro disconnect
@@ -53,7 +67,10 @@
    
      |connectionId| - The connectionId returned by 'connect'.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/hid#method-disconnect."
   ([connection-id #_callback] (gen-call :function ::disconnect &form connection-id)))
 
 (defmacro receive
@@ -61,7 +78,13 @@
    
      |connectionId| - The connectionId returned by 'connect'.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [reportId data] where:
+   
+     |reportId| - The report ID or 0 if none.
+     |data| - The report data, the report ID prefix (if present) is removed.
+   
+   See https://developer.chrome.com/extensions/hid#method-receive."
   ([connection-id #_callback] (gen-call :function ::receive &form connection-id)))
 
 (defmacro send
@@ -71,7 +94,10 @@
      |reportId| - The report ID to use, or 0 if none.
      |data| - The report data.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/hid#method-send."
   ([connection-id report-id data #_callback] (gen-call :function ::send &form connection-id report-id data)))
 
 (defmacro receive-feature-report
@@ -80,7 +106,12 @@
      |connectionId| - The connectionId returned by 'connect'.
      |reportId| - The report ID, or 0 if none.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [data] where:
+   
+     |data| - The report data, including a report ID prefix if one is sent by the device.
+   
+   See https://developer.chrome.com/extensions/hid#method-receiveFeatureReport."
   ([connection-id report-id #_callback] (gen-call :function ::receive-feature-report &form connection-id report-id)))
 
 (defmacro send-feature-report
@@ -90,7 +121,10 @@
      |reportId| - The report ID to use, or 0 if none.
      |data| - The report data.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/hid#method-sendFeatureReport."
   ([connection-id report-id data #_callback] (gen-call :function ::send-feature-report &form connection-id report-id data)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -103,14 +137,18 @@
    (see 'permissions.request').
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/hid#event-onDeviceAdded."
   ([channel & args] (apply gen-call :event ::on-device-added &form channel args)))
 
 (defmacro tap-on-device-removed-events
   "Event generated when a device is removed from the system. See 'onDeviceAdded' for which events are delivered.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/hid#event-onDeviceRemoved."
   ([channel & args] (apply gen-call :event ::on-device-removed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

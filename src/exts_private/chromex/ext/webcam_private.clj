@@ -17,24 +17,51 @@
 (defmacro open-serial-webcam
   "Open a serial port that controls a webcam.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |path| - See https://developer.chrome.com/extensions/webcamPrivate#property-openSerialWebcam-path.
+     |protocol| - See https://developer.chrome.com/extensions/webcamPrivate#property-openSerialWebcam-protocol.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [webcamId] where:
+   
+     |webcamId| - See https://developer.chrome.com/extensions/webcamPrivate#property-callback-webcamId.
+   
+   See https://developer.chrome.com/extensions/webcamPrivate#method-openSerialWebcam."
   ([path protocol #_callback] (gen-call :function ::open-serial-webcam &form path protocol)))
 
 (defmacro close-webcam
-  "Close a serial port connection to a webcam."
+  "Close a serial port connection to a webcam.
+   
+     |webcamId| - See https://developer.chrome.com/extensions/webcamPrivate#property-closeWebcam-webcamId.
+   
+   See https://developer.chrome.com/extensions/webcamPrivate#method-closeWebcam."
   ([webcam-id] (gen-call :function ::close-webcam &form webcam-id)))
 
 (defmacro get
-  "
+  "  |webcamId| - See https://developer.chrome.com/extensions/webcamPrivate#property-get-webcamId.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [configuration] where:
+   
+     |configuration| - See https://developer.chrome.com/extensions/webcamPrivate#property-callback-configuration.
+   
+   See https://developer.chrome.com/extensions/webcamPrivate#method-get."
   ([webcam-id #_callback] (gen-call :function ::get &form webcam-id)))
 
-(defmacro set ([webcam-id config] (gen-call :function ::set &form webcam-id config)))
+(defmacro set
+  "  |webcamId| - See https://developer.chrome.com/extensions/webcamPrivate#property-set-webcamId.
+     |config| - See https://developer.chrome.com/extensions/webcamPrivate#property-set-config.
+   
+   See https://developer.chrome.com/extensions/webcamPrivate#method-set."
+  ([webcam-id config] (gen-call :function ::set &form webcam-id config)))
 
 (defmacro reset
   "Reset a webcam. Note: the value of the parameter have no effect, it's the presence of the parameter that matters. E.g.:
-   reset(webcamId, {pan: 0,  tilt: 1}); will reset pan & tilt, but not zoom."
+   reset(webcamId, {pan: 0,  tilt: 1}); will reset pan & tilt, but not zoom.
+   
+     |webcamId| - See https://developer.chrome.com/extensions/webcamPrivate#property-reset-webcamId.
+     |config| - See https://developer.chrome.com/extensions/webcamPrivate#property-reset-config.
+   
+   See https://developer.chrome.com/extensions/webcamPrivate#method-reset."
   ([webcam-id config] (gen-call :function ::reset &form webcam-id config)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

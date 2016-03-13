@@ -27,19 +27,37 @@
 (defmacro get-sinks
   "Retrieves a list of available audio sink devices.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [sinkInfo] where:
+   
+     |sinkInfo| - See https://developer.chrome.com/extensions/webrtcAudioPrivate#property-callback-sinkInfo.
+   
+   See https://developer.chrome.com/extensions/webrtcAudioPrivate#method-getSinks."
   ([#_callback] (gen-call :function ::get-sinks &form)))
 
 (defmacro get-active-sink
   "Retrieves the currently active audio sink for the given requesting process.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |request| - See https://developer.chrome.com/extensions/webrtcAudioPrivate#property-getActiveSink-request.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [sinkId] where:
+   
+     |sinkId| - See https://developer.chrome.com/extensions/webrtcAudioPrivate#property-callback-sinkId.
+   
+   See https://developer.chrome.com/extensions/webrtcAudioPrivate#method-getActiveSink."
   ([request #_callback] (gen-call :function ::get-active-sink &form request)))
 
 (defmacro set-active-sink
   "Sets the active audio sink device for the specified requesting process.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |request| - See https://developer.chrome.com/extensions/webrtcAudioPrivate#property-setActiveSink-request.
+     |sinkId| - See https://developer.chrome.com/extensions/webrtcAudioPrivate#property-setActiveSink-sinkId.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/webrtcAudioPrivate#method-setActiveSink."
   ([request sink-id #_callback] (gen-call :function ::set-active-sink &form request sink-id)))
 
 (defmacro get-associated-sink
@@ -47,7 +65,18 @@
    extension, or the empty string if there is no associated audio sink.The associated sink ID can be used as a sink ID for
    setActiveSink. It is valid irrespective of which process you are setting the active sink for.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |securityOrigin| - See
+                        https://developer.chrome.com/extensions/webrtcAudioPrivate#property-getAssociatedSink-securityOrigin.
+     |sourceIdInOrigin| - See
+                          https://developer.chrome.com/extensions/webrtcAudioPrivate#property-getAssociatedSink-sourceIdInOri
+                          gin.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [sinkId] where:
+   
+     |sinkId| - See https://developer.chrome.com/extensions/webrtcAudioPrivate#property-cb-sinkId.
+   
+   See https://developer.chrome.com/extensions/webrtcAudioPrivate#method-getAssociatedSink."
   ([security-origin source-id-in-origin #_cb] (gen-call :function ::get-associated-sink &form security-origin source-id-in-origin)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -58,7 +87,9 @@
   "Fired when audio sink devices are added or removed.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/webrtcAudioPrivate#event-onSinksChanged."
   ([channel & args] (apply gen-call :event ::on-sinks-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

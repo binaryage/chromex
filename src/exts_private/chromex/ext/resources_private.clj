@@ -21,9 +21,13 @@
    API.
    
      |component| - Internal chrome component to get strings for.
-     |callback| - Called with a dictionary mapping names to strings.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/resourcesPrivate#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/resourcesPrivate#method-getStrings."
   ([component #_callback] (gen-call :function ::get-strings &form component)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

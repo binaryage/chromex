@@ -24,9 +24,13 @@
    Extensions must not parse it.
    
      |options| - What to download and how.
-     |callback| - Called with the id of the new 'DownloadItem'.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [downloadId] where:
+   
+     |downloadId| - See https://developer.chrome.com/extensions/downloads#property-callback-downloadId.
+   
+   See https://developer.chrome.com/extensions/downloads#method-download."
   ([options #_callback] (gen-call :function ::download &form options)))
 
 (defmacro search
@@ -34,7 +38,14 @@
    the id field. To page through a large number of items, set orderBy: ['-startTime'], set limit to the number of items per
    page, and set startedAfter to the startTime of the last item from the last page.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |query| - See https://developer.chrome.com/extensions/downloads#property-search-query.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [results] where:
+   
+     |results| - See https://developer.chrome.com/extensions/downloads#property-callback-results.
+   
+   See https://developer.chrome.com/extensions/downloads#method-search."
   ([query #_callback] (gen-call :function ::search &form query)))
 
 (defmacro pause
@@ -42,9 +53,11 @@
    an error message. The request will fail if the download is not active.
    
      |downloadId| - The id of the download to pause.
-     |callback| - Called when the pause request is completed.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/downloads#method-pause."
   ([download-id #_callback] (gen-call :function ::pause &form download-id)))
 
 (defmacro resume
@@ -52,18 +65,22 @@
    'runtime.lastError' contains an error message. The request will fail if the download is not active.
    
      |downloadId| - The id of the download to resume.
-     |callback| - Called when the resume request is completed.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/downloads#method-resume."
   ([download-id #_callback] (gen-call :function ::resume &form download-id)))
 
 (defmacro cancel
   "Cancel a download. When callback is run, the download is cancelled, completed, interrupted or doesn't exist anymore.
    
      |downloadId| - The id of the download to cancel.
-     |callback| - Called when the cancel request is completed.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/downloads#method-cancel."
   ([download-id #_callback] (gen-call :function ::cancel &form download-id)))
 
 (defmacro get-file-icon
@@ -75,9 +92,14 @@
    error message.
    
      |downloadId| - The identifier for the download.
-     |callback| - A URL to an image that represents the download.
+     |options| - See https://developer.chrome.com/extensions/downloads#property-getFileIcon-options.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [iconURL] where:
+   
+     |iconURL| - See https://developer.chrome.com/extensions/downloads#property-callback-iconURL.
+   
+   See https://developer.chrome.com/extensions/downloads#method-getFileIcon."
   ([download-id options #_callback] (gen-call :function ::get-file-icon &form download-id options))
   ([download-id] `(get-file-icon ~download-id :omit)))
 
@@ -86,31 +108,49 @@
    Requires the 'downloads.open' permission in addition to the 'downloads' permission. An 'onChanged' event will fire when the
    item is opened for the first time.
    
-     |downloadId| - The identifier for the downloaded file."
+     |downloadId| - The identifier for the downloaded file.
+   
+   See https://developer.chrome.com/extensions/downloads#method-open."
   ([download-id] (gen-call :function ::open &form download-id)))
 
 (defmacro show
   "Show the downloaded file in its folder in a file manager.
    
-     |downloadId| - The identifier for the downloaded file."
+     |downloadId| - The identifier for the downloaded file.
+   
+   See https://developer.chrome.com/extensions/downloads#method-show."
   ([download-id] (gen-call :function ::show &form download-id)))
 
 (defmacro show-default-folder
-  "Show the default Downloads folder in a file manager."
+  "Show the default Downloads folder in a file manager.
+   
+   See https://developer.chrome.com/extensions/downloads#method-showDefaultFolder."
   ([] (gen-call :function ::show-default-folder &form)))
 
 (defmacro erase
   "Erase matching 'DownloadItem' from history without deleting the downloaded file. An 'onErased' event will fire for each
    'DownloadItem' that matches query, then callback will be called.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |query| - See https://developer.chrome.com/extensions/downloads#property-erase-query.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [erasedIds] where:
+   
+     |erasedIds| - See https://developer.chrome.com/extensions/downloads#property-callback-erasedIds.
+   
+   See https://developer.chrome.com/extensions/downloads#method-erase."
   ([query #_callback] (gen-call :function ::erase &form query)))
 
 (defmacro remove-file
   "Remove the downloaded file if it exists and the 'DownloadItem' is complete; otherwise return an error through
    'runtime.lastError'.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |downloadId| - See https://developer.chrome.com/extensions/downloads#property-removeFile-downloadId.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/downloads#method-removeFile."
   ([download-id #_callback] (gen-call :function ::remove-file &form download-id)))
 
 (defmacro accept-danger
@@ -121,20 +161,30 @@
    to 'complete', and 'onChanged' fires.
    
      |downloadId| - The identifier for the 'DownloadItem'.
-     |callback| - Called when the danger prompt dialog closes.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/downloads#method-acceptDanger."
   ([download-id #_callback] (gen-call :function ::accept-danger &form download-id)))
 
 (defmacro drag
-  "Initiate dragging the downloaded file to another application. Call in a javascript ondragstart handler."
+  "Initiate dragging the downloaded file to another application. Call in a javascript ondragstart handler.
+   
+     |downloadId| - See https://developer.chrome.com/extensions/downloads#property-drag-downloadId.
+   
+   See https://developer.chrome.com/extensions/downloads#method-drag."
   ([download-id] (gen-call :function ::drag &form download-id)))
 
 (defmacro set-shelf-enabled
   "Enable or disable the gray shelf at the bottom of every window associated with the current browser profile. The shelf will
    be disabled as long as at least one extension has disabled it. Enabling the shelf while at least one other extension has
    disabled it will return an error through 'runtime.lastError'. Requires the 'downloads.shelf' permission in addition to the
-   'downloads' permission."
+   'downloads' permission.
+   
+     |enabled| - See https://developer.chrome.com/extensions/downloads#property-setShelfEnabled-enabled.
+   
+   See https://developer.chrome.com/extensions/downloads#method-setShelfEnabled."
   ([enabled] (gen-call :function ::set-shelf-enabled &form enabled)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -145,14 +195,18 @@
   "This event fires with the 'DownloadItem' object when a download begins.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/downloads#event-onCreated."
   ([channel & args] (apply gen-call :event ::on-created &form channel args)))
 
 (defmacro tap-on-erased-events
   "Fires with the downloadId when a download is erased from history.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/downloads#event-onErased."
   ([channel & args] (apply gen-call :event ::on-erased &form channel args)))
 
 (defmacro tap-on-changed-events
@@ -160,7 +214,9 @@
    downloadId and an object containing the properties that changed.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/downloads#event-onChanged."
   ([channel & args] (apply gen-call :event ::on-changed &form channel args)))
 
 (defmacro tap-on-determining-filename-events
@@ -177,7 +233,9 @@
    'download' instead.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/downloads#event-onDeterminingFilename."
   ([channel & args] (apply gen-call :event ::on-determining-filename &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

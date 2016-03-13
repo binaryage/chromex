@@ -15,144 +15,283 @@
 (defmacro get-config
   "Gives configuration options set by the test.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [testConfig] where:
+   
+     |testConfig| - See https://developer.chrome.com/extensions/test#property-callback-testConfig.
+   
+   See https://developer.chrome.com/extensions/test#method-getConfig."
   ([#_callback] (gen-call :function ::get-config &form)))
 
 (defmacro notify-fail
-  "Notifies the browser process that test code running in the extension failed.  This is only used for internal unit testing."
+  "Notifies the browser process that test code running in the extension failed.  This is only used for internal unit testing.
+   
+     |message| - See https://developer.chrome.com/extensions/test#property-notifyFail-message.
+   
+   See https://developer.chrome.com/extensions/test#method-notifyFail."
   ([message] (gen-call :function ::notify-fail &form message)))
 
 (defmacro notify-pass
-  "Notifies the browser process that test code running in the extension passed.  This is only used for internal unit testing."
+  "Notifies the browser process that test code running in the extension passed.  This is only used for internal unit testing.
+   
+     |message| - See https://developer.chrome.com/extensions/test#property-notifyPass-message.
+   
+   See https://developer.chrome.com/extensions/test#method-notifyPass."
   ([message] (gen-call :function ::notify-pass &form message))
   ([] `(notify-pass :omit)))
 
 (defmacro log
-  "Logs a message during internal unit testing."
+  "Logs a message during internal unit testing.
+   
+     |message| - See https://developer.chrome.com/extensions/test#property-log-message.
+   
+   See https://developer.chrome.com/extensions/test#method-log."
   ([message] (gen-call :function ::log &form message)))
 
 (defmacro send-message
   "Sends a string message to the browser process, generating a Notification that C++ test code can wait for.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |message| - See https://developer.chrome.com/extensions/test#property-sendMessage-message.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [response] where:
+   
+     |response| - See https://developer.chrome.com/extensions/test#property-callback-response.
+   
+   See https://developer.chrome.com/extensions/test#method-sendMessage."
   ([message #_callback] (gen-call :function ::send-message &form message)))
 
-(defmacro callback-added ([] (gen-call :function ::callback-added &form)))
+(defmacro callback-added
+  "
+   
+   See https://developer.chrome.com/extensions/test#method-callbackAdded."
+  ([] (gen-call :function ::callback-added &form)))
 
-(defmacro run-next-test ([] (gen-call :function ::run-next-test &form)))
+(defmacro run-next-test
+  "
+   
+   See https://developer.chrome.com/extensions/test#method-runNextTest."
+  ([] (gen-call :function ::run-next-test &form)))
 
-(defmacro fail ([message] (gen-call :function ::fail &form message))
+(defmacro fail
+  "  |message| - See https://developer.chrome.com/extensions/test#property-fail-message.
+   
+   See https://developer.chrome.com/extensions/test#method-fail."
+  ([message] (gen-call :function ::fail &form message))
   ([] `(fail :omit)))
 
-(defmacro succeed ([message] (gen-call :function ::succeed &form message))
+(defmacro succeed
+  "  |message| - See https://developer.chrome.com/extensions/test#property-succeed-message.
+   
+   See https://developer.chrome.com/extensions/test#method-succeed."
+  ([message] (gen-call :function ::succeed &form message))
   ([] `(succeed :omit)))
 
 (defmacro run-with-natives-enabled
   "Runs the given function with access to native methods enabled.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/test#method-runWithNativesEnabled."
   ([#_callback] (gen-call :function ::run-with-natives-enabled &form)))
 
 (defmacro get-module-system
-  "Returns an instance of the module system for the given context."
+  "Returns an instance of the module system for the given context.
+   
+     |context| - See https://developer.chrome.com/extensions/test#property-getModuleSystem-context.
+   
+   See https://developer.chrome.com/extensions/test#method-getModuleSystem."
   ([context] (gen-call :function ::get-module-system &form context)))
 
-(defmacro assert-true ([test message] (gen-call :function ::assert-true &form test message))
+(defmacro assert-true
+  "  |test| - See https://developer.chrome.com/extensions/test#property-assertTrue-test.
+     |message| - See https://developer.chrome.com/extensions/test#property-assertTrue-message.
+   
+   See https://developer.chrome.com/extensions/test#method-assertTrue."
+  ([test message] (gen-call :function ::assert-true &form test message))
   ([test] `(assert-true ~test :omit)))
 
-(defmacro assert-false ([test message] (gen-call :function ::assert-false &form test message))
+(defmacro assert-false
+  "  |test| - See https://developer.chrome.com/extensions/test#property-assertFalse-test.
+     |message| - See https://developer.chrome.com/extensions/test#property-assertFalse-message.
+   
+   See https://developer.chrome.com/extensions/test#method-assertFalse."
+  ([test message] (gen-call :function ::assert-false &form test message))
   ([test] `(assert-false ~test :omit)))
 
-(defmacro assert-bool ([test expected message] (gen-call :function ::assert-bool &form test expected message))
+(defmacro assert-bool
+  "  |test| - See https://developer.chrome.com/extensions/test#property-assertBool-test.
+     |expected| - See https://developer.chrome.com/extensions/test#property-assertBool-expected.
+     |message| - See https://developer.chrome.com/extensions/test#property-assertBool-message.
+   
+   See https://developer.chrome.com/extensions/test#method-assertBool."
+  ([test expected message] (gen-call :function ::assert-bool &form test expected message))
   ([test expected] `(assert-bool ~test ~expected :omit)))
 
-(defmacro check-deep-eq ([expected actual] (gen-call :function ::check-deep-eq &form expected actual))
+(defmacro check-deep-eq
+  "  |expected| - See https://developer.chrome.com/extensions/test#property-checkDeepEq-expected.
+     |actual| - See https://developer.chrome.com/extensions/test#property-checkDeepEq-actual.
+   
+   See https://developer.chrome.com/extensions/test#method-checkDeepEq."
+  ([expected actual] (gen-call :function ::check-deep-eq &form expected actual))
   ([expected] `(check-deep-eq ~expected :omit))
   ([] `(check-deep-eq :omit :omit)))
 
-(defmacro assert-eq ([expected actual message] (gen-call :function ::assert-eq &form expected actual message))
+(defmacro assert-eq
+  "  |expected| - See https://developer.chrome.com/extensions/test#property-assertEq-expected.
+     |actual| - See https://developer.chrome.com/extensions/test#property-assertEq-actual.
+     |message| - See https://developer.chrome.com/extensions/test#property-assertEq-message.
+   
+   See https://developer.chrome.com/extensions/test#method-assertEq."
+  ([expected actual message] (gen-call :function ::assert-eq &form expected actual message))
   ([expected actual] `(assert-eq ~expected ~actual :omit))
   ([expected] `(assert-eq ~expected :omit :omit))
   ([] `(assert-eq :omit :omit :omit)))
 
-(defmacro assert-no-last-error ([] (gen-call :function ::assert-no-last-error &form)))
-
-(defmacro assert-last-error ([expected-error] (gen-call :function ::assert-last-error &form expected-error)))
-
-(defmacro assert-throws
+(defmacro assert-no-last-error
   "
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   See https://developer.chrome.com/extensions/test#method-assertNoLastError."
+  ([] (gen-call :function ::assert-no-last-error &form)))
+
+(defmacro assert-last-error
+  "  |expectedError| - See https://developer.chrome.com/extensions/test#property-assertLastError-expectedError.
+   
+   See https://developer.chrome.com/extensions/test#method-assertLastError."
+  ([expected-error] (gen-call :function ::assert-last-error &form expected-error)))
+
+(defmacro assert-throws
+  "  |self| - See https://developer.chrome.com/extensions/test#property-assertThrows-self.
+     |args| - See https://developer.chrome.com/extensions/test#property-assertThrows-args.
+     |message| - See https://developer.chrome.com/extensions/test#property-assertThrows-message.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/test#method-assertThrows."
   ([self args message #_fn] (gen-call :function ::assert-throws &form self args message))
   ([self args] `(assert-throws ~self ~args :omit)))
 
 (defmacro callback
-  "
+  "  |expectedError| - See https://developer.chrome.com/extensions/test#property-callback-expectedError.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/test#method-callback."
   ([expected-error #_func] (gen-call :function ::callback &form expected-error))
   ([] `(callback :omit)))
 
 (defmacro listen-once
-  "
+  "  |event| - See https://developer.chrome.com/extensions/test#property-listenOnce-event.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/test#method-listenOnce."
   ([event #_func] (gen-call :function ::listen-once &form event)))
 
 (defmacro listen-forever
-  "
+  "  |event| - See https://developer.chrome.com/extensions/test#property-listenForever-event.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/test#method-listenForever."
   ([event #_func] (gen-call :function ::listen-forever &form event)))
 
 (defmacro callback-pass
   "
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/test#method-callbackPass."
   ([#_func] (gen-call :function ::callback-pass &form)))
 
 (defmacro callback-fail
-  "
+  "  |expectedError| - See https://developer.chrome.com/extensions/test#property-callbackFail-expectedError.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/test#method-callbackFail."
   ([expected-error #_func] (gen-call :function ::callback-fail &form expected-error)))
 
-(defmacro run-tests ([tests] (gen-call :function ::run-tests &form tests)))
+(defmacro run-tests
+  "  |tests| - See https://developer.chrome.com/extensions/test#property-runTests-tests.
+   
+   See https://developer.chrome.com/extensions/test#method-runTests."
+  ([tests] (gen-call :function ::run-tests &form tests)))
 
-(defmacro get-api-features ([] (gen-call :function ::get-api-features &form)))
+(defmacro get-api-features
+  "
+   
+   See https://developer.chrome.com/extensions/test#method-getApiFeatures."
+  ([] (gen-call :function ::get-api-features &form)))
 
-(defmacro get-api-definitions ([api-names] (gen-call :function ::get-api-definitions &form api-names))
+(defmacro get-api-definitions
+  "  |apiNames| - See https://developer.chrome.com/extensions/test#property-getApiDefinitions-apiNames.
+   
+   See https://developer.chrome.com/extensions/test#method-getApiDefinitions."
+  ([api-names] (gen-call :function ::get-api-definitions &form api-names))
   ([] `(get-api-definitions :omit)))
 
-(defmacro is-processing-user-gesture ([] (gen-call :function ::is-processing-user-gesture &form)))
+(defmacro is-processing-user-gesture
+  "
+   
+   See https://developer.chrome.com/extensions/test#method-isProcessingUserGesture."
+  ([] (gen-call :function ::is-processing-user-gesture &form)))
 
 (defmacro run-with-user-gesture
   "Runs the callback in the context of a user gesture.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/test#method-runWithUserGesture."
   ([#_callback] (gen-call :function ::run-with-user-gesture &form)))
 
 (defmacro run-without-user-gesture
   "
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/test#method-runWithoutUserGesture."
   ([#_callback] (gen-call :function ::run-without-user-gesture &form)))
 
 (defmacro wait-for-round-trip
   "Sends a string message one round trip from the renderer to the browser process and back.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |message| - See https://developer.chrome.com/extensions/test#property-waitForRoundTrip-message.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [message] where:
+   
+     |message| - See https://developer.chrome.com/extensions/test#property-callback-message.
+   
+   See https://developer.chrome.com/extensions/test#method-waitForRoundTrip."
   ([message #_callback] (gen-call :function ::wait-for-round-trip &form message)))
 
 (defmacro set-exception-handler
   "Sets the function to be called when an exception occurs. By default this is a function which fails the test. This is reset
    for every test run through test.runTests.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [message exception] where:
+   
+     |message| - See https://developer.chrome.com/extensions/test#property-callback-message.
+     |exception| - See https://developer.chrome.com/extensions/test#property-callback-exception.
+   
+   See https://developer.chrome.com/extensions/test#method-setExceptionHandler."
   ([#_callback] (gen-call :function ::set-exception-handler &form)))
 
 (defmacro get-wake-event-page
-  "Returns the wake-event-page API function, which can be called to wake up the extension's event page."
+  "Returns the wake-event-page API function, which can be called to wake up the extension's event page.
+   
+   See https://developer.chrome.com/extensions/test#method-getWakeEventPage."
   ([] (gen-call :function ::get-wake-event-page &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -163,7 +302,9 @@
   "Used to test sending messages to extensions.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/test#event-onMessage."
   ([channel & args] (apply gen-call :event ::on-message &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

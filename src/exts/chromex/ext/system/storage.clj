@@ -19,19 +19,38 @@
 (defmacro get-info
   "Get the storage information from the system. The argument passed to the callback is an array of StorageUnitInfo objects.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [info] where:
+   
+     |info| - See https://developer.chrome.com/extensions/system.storage#property-callback-info.
+   
+   See https://developer.chrome.com/extensions/system.storage#method-getInfo."
   ([#_callback] (gen-call :function ::get-info &form)))
 
 (defmacro eject-device
   "Ejects a removable storage device.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |id| - See https://developer.chrome.com/extensions/system.storage#property-ejectDevice-id.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/system.storage#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/system.storage#method-ejectDevice."
   ([id #_callback] (gen-call :function ::eject-device &form id)))
 
 (defmacro get-available-capacity
   "Get the available capacity of a specified |id| storage device. The |id| is the transient device ID from StorageUnitInfo.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |id| - See https://developer.chrome.com/extensions/system.storage#property-getAvailableCapacity-id.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [info] where:
+   
+     |info| - See https://developer.chrome.com/extensions/system.storage#property-callback-info.
+   
+   See https://developer.chrome.com/extensions/system.storage#method-getAvailableCapacity."
   ([id #_callback] (gen-call :function ::get-available-capacity &form id)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -42,14 +61,18 @@
   "Fired when a new removable storage is attached to the system.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/system.storage#event-onAttached."
   ([channel & args] (apply gen-call :event ::on-attached &form channel args)))
 
 (defmacro tap-on-detached-events
   "Fired when a removable storage is detached from the system.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/system.storage#event-onDetached."
   ([channel & args] (apply gen-call :event ::on-detached &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

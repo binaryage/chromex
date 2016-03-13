@@ -22,7 +22,14 @@
   "Get the display path of an Entry object. The display path is based on the full path of the file or directory on the local
    file system, but may be made more readable for display purposes.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |entry| - See https://developer.chrome.com/extensions/fileSystem#property-getDisplayPath-entry.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [displayPath] where:
+   
+     |displayPath| - See https://developer.chrome.com/extensions/fileSystem#property-callback-displayPath.
+   
+   See https://developer.chrome.com/extensions/fileSystem#method-getDisplayPath."
   ([entry #_callback] (gen-call :function ::get-display-path &form entry)))
 
 (defmacro get-writable-entry
@@ -30,39 +37,79 @@
    'write' permission under 'fileSystem'. If entry is a DirectoryEntry, this call will fail if the application does not have
    the 'directory' permission under 'fileSystem'.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |entry| - See https://developer.chrome.com/extensions/fileSystem#property-getWritableEntry-entry.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [entry] where:
+   
+     |entry| - See https://developer.chrome.com/extensions/fileSystem#property-callback-entry.
+   
+   See https://developer.chrome.com/extensions/fileSystem#method-getWritableEntry."
   ([entry #_callback] (gen-call :function ::get-writable-entry &form entry)))
 
 (defmacro is-writable-entry
   "Gets whether this Entry is writable or not.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |entry| - See https://developer.chrome.com/extensions/fileSystem#property-isWritableEntry-entry.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [isWritable] where:
+   
+     |isWritable| - See https://developer.chrome.com/extensions/fileSystem#property-callback-isWritable.
+   
+   See https://developer.chrome.com/extensions/fileSystem#method-isWritableEntry."
   ([entry #_callback] (gen-call :function ::is-writable-entry &form entry)))
 
 (defmacro choose-entry
   "Ask the user to choose a file or directory.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |options| - See https://developer.chrome.com/extensions/fileSystem#property-chooseEntry-options.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [entry fileEntries] where:
+   
+     |entry| - See https://developer.chrome.com/extensions/fileSystem#property-callback-entry.
+     |fileEntries| - See https://developer.chrome.com/extensions/fileSystem#property-callback-fileEntries.
+   
+   See https://developer.chrome.com/extensions/fileSystem#method-chooseEntry."
   ([options #_callback] (gen-call :function ::choose-entry &form options))
   ([] `(choose-entry :omit)))
 
 (defmacro restore-entry
   "Returns the file entry with the given id if it can be restored. This call will fail with a runtime error otherwise.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |id| - See https://developer.chrome.com/extensions/fileSystem#property-restoreEntry-id.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [entry] where:
+   
+     |entry| - See https://developer.chrome.com/extensions/fileSystem#property-callback-entry.
+   
+   See https://developer.chrome.com/extensions/fileSystem#method-restoreEntry."
   ([id #_callback] (gen-call :function ::restore-entry &form id)))
 
 (defmacro is-restorable
   "Returns whether the app has permission to restore the entry with the given id.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |id| - See https://developer.chrome.com/extensions/fileSystem#property-isRestorable-id.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [isRestorable] where:
+   
+     |isRestorable| - See https://developer.chrome.com/extensions/fileSystem#property-callback-isRestorable.
+   
+   See https://developer.chrome.com/extensions/fileSystem#method-isRestorable."
   ([id #_callback] (gen-call :function ::is-restorable &form id)))
 
 (defmacro retain-entry
   "Returns an id that can be passed to restoreEntry to regain access to a given file entry. Only the 500 most recently used
    entries are retained, where calls to retainEntry and restoreEntry count as use. If the app has the 'retainEntries'
    permission under 'fileSystem', entries are retained indefinitely. Otherwise, entries are retained only while the app is
-   running and across restarts."
+   running and across restarts.
+   
+     |entry| - See https://developer.chrome.com/extensions/fileSystem#property-retainEntry-entry.
+   
+   See https://developer.chrome.com/extensions/fileSystem#method-retainEntry."
   ([entry] (gen-call :function ::retain-entry &form entry)))
 
 (defmacro request-file-system
@@ -72,7 +119,14 @@
    a confirmation dialog will be shown on top of the active app window. In case of an error, fileSystem will be undefined, and
    chrome.runtime.lastError will be set.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |options| - See https://developer.chrome.com/extensions/fileSystem#property-requestFileSystem-options.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [fileSystem] where:
+   
+     |fileSystem| - See https://developer.chrome.com/extensions/fileSystem#property-callback-fileSystem.
+   
+   See https://developer.chrome.com/extensions/fileSystem#method-requestFileSystem."
   ([options #_callback] (gen-call :function ::request-file-system &form options)))
 
 (defmacro get-volume-list
@@ -80,7 +134,12 @@
    required. Available to kiosk apps running in the kiosk session only. In case of an error, volumes will be undefined, and
    chrome.runtime.lastError will be set.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [volumes] where:
+   
+     |volumes| - See https://developer.chrome.com/extensions/fileSystem#property-callback-volumes.
+   
+   See https://developer.chrome.com/extensions/fileSystem#method-getVolumeList."
   ([#_callback] (gen-call :function ::get-volume-list &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -91,7 +150,9 @@
   "Called when a list of available volumes is changed.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/fileSystem#event-onVolumeListChanged."
   ([channel & args] (apply gen-call :event ::on-volume-list-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

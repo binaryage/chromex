@@ -17,7 +17,12 @@
 (defmacro get
   "Gets a list of top sites.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [data] where:
+   
+     |data| - See https://developer.chrome.com/extensions/topSites#property-callback-data.
+   
+   See https://developer.chrome.com/extensions/topSites#method-get."
   ([#_callback] (gen-call :function ::get &form)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

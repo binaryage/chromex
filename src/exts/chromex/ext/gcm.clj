@@ -15,7 +15,9 @@
 ; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defmacro get-max-message-size
-  "The maximum size (in bytes) of all key/value pairs in a message."
+  "The maximum size (in bytes) of all key/value pairs in a message.
+   
+   See https://developer.chrome.com/extensions/gcm#property-MAX_MESSAGE_SIZE."
   ([] (gen-call :property ::max-message-size &form)))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
@@ -26,29 +28,35 @@
    
      |senderIds| - A list of server IDs that are allowed to send messages to the application. It should contain at least one
                    and no more than 100 sender IDs.
-     |callback| - Function called when registration completes. It should check 'runtime.lastError' for error when
-                  registrationId is empty.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [registrationId] where:
+   
+     |registrationId| - A registration ID assigned to the application by the GCM.
+   
+   See https://developer.chrome.com/extensions/gcm#method-register."
   ([sender-ids #_callback] (gen-call :function ::register &form sender-ids)))
 
 (defmacro unregister
   "Unregisters the application from GCM.
    
-     |callback| - A function called after the unregistration completes. Unregistration was successful if 'runtime.lastError'
-                  is not set.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   See https://developer.chrome.com/extensions/gcm#method-unregister."
   ([#_callback] (gen-call :function ::unregister &form)))
 
 (defmacro send
   "Sends a message according to its contents.
    
      |message| - A message to send to the other party via GCM.
-     |callback| - A function called after the message is successfully queued for sending. 'runtime.lastError' should be
-                  checked, to ensure a message was sent without problems.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [messageId] where:
+   
+     |messageId| - The ID of the message that the callback was issued for.
+   
+   See https://developer.chrome.com/extensions/gcm#method-send."
   ([message #_callback] (gen-call :function ::send &form message)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -59,7 +67,9 @@
   "Fired when a message is received through GCM.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/gcm#event-onMessage."
   ([channel & args] (apply gen-call :event ::on-message &form channel args)))
 
 (defmacro tap-on-messages-deleted-events
@@ -67,14 +77,18 @@
    of Cloud Messaging documentation for details on handling this event.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/gcm#event-onMessagesDeleted."
   ([channel & args] (apply gen-call :event ::on-messages-deleted &form channel args)))
 
 (defmacro tap-on-send-error-events
   "Fired when it was not possible to send a message to the GCM server.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/gcm#event-onSendError."
   ([channel & args] (apply gen-call :event ::on-send-error &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

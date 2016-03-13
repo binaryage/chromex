@@ -17,80 +17,132 @@
    
      |expected_id| - The id of the extension to install.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/webstorePrivate#method-install."
   ([expected-id #_callback] (gen-call :function ::install &form expected-id)))
 
 (defmacro begin-install-with-manifest3
   "Initiates the install process for the given extension.
    
-     |callback| - Called when the user has either accepted/rejected the dialog, or some error occurred (such as invalid
-                  manifest or icon image data).
+     |details| - See https://developer.chrome.com/extensions/webstorePrivate#property-beginInstallWithManifest3-details.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - A string result code, which will be empty upon success. The possible values in the case of errors include
+                'unknown_error', 'user_cancelled', 'manifest_error', 'icon_error', 'invalid_id', 'permission_denied',
+                'invalid_icon_url' and 'already_installed'.
+   
+   See https://developer.chrome.com/extensions/webstorePrivate#method-beginInstallWithManifest3."
   ([details #_callback] (gen-call :function ::begin-install-with-manifest3 &form details)))
 
 (defmacro complete-install
   "  |expected_id| - The id of the extension to be installed. This should match a previous call to beginInstallWithManifest3.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/webstorePrivate#method-completeInstall."
   ([expected-id #_callback] (gen-call :function ::complete-install &form expected-id)))
 
 (defmacro install-bundle
   "Initiates the install process for the given bundle of extensions.
    
+     |details| - See https://developer.chrome.com/extensions/webstorePrivate#property-installBundle-details.
      |contents| - An array of extension details to be installed.
-     |callback| - Called when the install process completes. Upon failures, chrome.runtime.lastError will be set to 'Invalid
-                  bundle', 'Invalid icon url', 'This item is already installed', or 'User cancelled install'.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/webstorePrivate#method-installBundle."
   ([details contents #_callback] (gen-call :function ::install-bundle &form details contents)))
 
 (defmacro enable-app-launcher
   "
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/webstorePrivate#method-enableAppLauncher."
   ([#_callback] (gen-call :function ::enable-app-launcher &form)))
 
 (defmacro get-browser-login
   "Returns the logged-in sync user login if there is one, or the empty string otherwise.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [info] where:
+   
+     |info| - See https://developer.chrome.com/extensions/webstorePrivate#property-callback-info.
+   
+   See https://developer.chrome.com/extensions/webstorePrivate#method-getBrowserLogin."
   ([#_callback] (gen-call :function ::get-browser-login &form)))
 
 (defmacro get-store-login
   "Returns the previous value set by setStoreLogin, or the empty string if there is none.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [login] where:
+   
+     |login| - See https://developer.chrome.com/extensions/webstorePrivate#property-callback-login.
+   
+   See https://developer.chrome.com/extensions/webstorePrivate#method-getStoreLogin."
   ([#_callback] (gen-call :function ::get-store-login &form)))
 
 (defmacro set-store-login
   "Sets a preference value with the store login.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |login| - See https://developer.chrome.com/extensions/webstorePrivate#property-setStoreLogin-login.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/webstorePrivate#method-setStoreLogin."
   ([login #_callback] (gen-call :function ::set-store-login &form login)))
 
 (defmacro get-web-gl-status
   "Invokes a callback that returns whether WebGL is blacklisted or not.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [webgl_status] where:
+   
+     |webgl_status| - See https://developer.chrome.com/extensions/webstorePrivate#property-callback-webgl_status.
+   
+   See https://developer.chrome.com/extensions/webstorePrivate#method-getWebGLStatus."
   ([#_callback] (gen-call :function ::get-web-gl-status &form)))
 
 (defmacro get-is-launcher-enabled
   "Returns whether the apps launcher is enabled or not.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [is_enabled] where:
+   
+     |is_enabled| - See https://developer.chrome.com/extensions/webstorePrivate#property-callback-is_enabled.
+   
+   See https://developer.chrome.com/extensions/webstorePrivate#method-getIsLauncherEnabled."
   ([#_callback] (gen-call :function ::get-is-launcher-enabled &form)))
 
 (defmacro is-in-incognito-mode
   "Returns whether the browser is in incognito mode or not.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [is_incognito] where:
+   
+     |is_incognito| - See https://developer.chrome.com/extensions/webstorePrivate#property-callback-is_incognito.
+   
+   See https://developer.chrome.com/extensions/webstorePrivate#method-isInIncognitoMode."
   ([#_callback] (gen-call :function ::is-in-incognito-mode &form)))
 
 (defmacro get-ephemeral-apps-enabled
   "Returns whether the ephemeral apps feature is enabled.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [is_enabled] where:
+   
+     |is_enabled| - See https://developer.chrome.com/extensions/webstorePrivate#property-callback-is_enabled.
+   
+   See https://developer.chrome.com/extensions/webstorePrivate#method-getEphemeralAppsEnabled."
   ([#_callback] (gen-call :function ::get-ephemeral-apps-enabled &form)))
 
 (defmacro launch-ephemeral-app
@@ -98,7 +150,12 @@
    
      |id| - The extension id of the app to launch.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - Whether an attempt to launch an app succeeded, or the reason for failure.
+   
+   See https://developer.chrome.com/extensions/webstorePrivate#method-launchEphemeralApp."
   ([id #_callback] (gen-call :function ::launch-ephemeral-app &form id)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

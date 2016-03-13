@@ -18,88 +18,131 @@
 (defmacro set-composition
   "Set the current composition. If this extension does not own the active IME, this fails.
    
-     |callback| - Called when the operation completes with a boolean indicating if the text was accepted or not. On failure,
-                  chrome.runtime.lastError is set.
+     |parameters| - See https://developer.chrome.com/extensions/input.ime#property-setComposition-parameters.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [success] where:
+   
+     |success| - See https://developer.chrome.com/extensions/input.ime#property-callback-success.
+   
+   See https://developer.chrome.com/extensions/input.ime#method-setComposition."
   ([parameters #_callback] (gen-call :function ::set-composition &form parameters)))
 
 (defmacro clear-composition
   "Clear the current composition. If this extension does not own the active IME, this fails.
    
-     |callback| - Called when the operation completes with a boolean indicating if the text was accepted or not. On failure,
-                  chrome.runtime.lastError is set.
+     |parameters| - See https://developer.chrome.com/extensions/input.ime#property-clearComposition-parameters.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [success] where:
+   
+     |success| - See https://developer.chrome.com/extensions/input.ime#property-callback-success.
+   
+   See https://developer.chrome.com/extensions/input.ime#method-clearComposition."
   ([parameters #_callback] (gen-call :function ::clear-composition &form parameters)))
 
 (defmacro commit-text
   "Commits the provided text to the current input.
    
-     |callback| - Called when the operation completes with a boolean indicating if the text was accepted or not. On failure,
-                  chrome.runtime.lastError is set.
+     |parameters| - See https://developer.chrome.com/extensions/input.ime#property-commitText-parameters.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [success] where:
+   
+     |success| - See https://developer.chrome.com/extensions/input.ime#property-callback-success.
+   
+   See https://developer.chrome.com/extensions/input.ime#method-commitText."
   ([parameters #_callback] (gen-call :function ::commit-text &form parameters)))
 
 (defmacro send-key-events
   "Sends the key events.  This function is expected to be used by virtual keyboards.  When key(s) on a virtual keyboard is
    pressed by a user, this function is used to propagate that event to the system.
    
-     |callback| - Called when the operation completes.
+     |parameters| - See https://developer.chrome.com/extensions/input.ime#property-sendKeyEvents-parameters.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/input.ime#method-sendKeyEvents."
   ([parameters #_callback] (gen-call :function ::send-key-events &form parameters)))
 
 (defmacro hide-input-view
   "Hides the input view window, which is popped up automatically by system. If the input view window is already hidden, this
-   function will do nothing."
+   function will do nothing.
+   
+   See https://developer.chrome.com/extensions/input.ime#method-hideInputView."
   ([] (gen-call :function ::hide-input-view &form)))
 
 (defmacro set-candidate-window-properties
   "Sets the properties of the candidate window. This fails if the extension doesn't own the active IME
    
-     |callback| - Called when the operation completes.
+     |parameters| - See https://developer.chrome.com/extensions/input.ime#property-setCandidateWindowProperties-parameters.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [success] where:
+   
+     |success| - See https://developer.chrome.com/extensions/input.ime#property-callback-success.
+   
+   See https://developer.chrome.com/extensions/input.ime#method-setCandidateWindowProperties."
   ([parameters #_callback] (gen-call :function ::set-candidate-window-properties &form parameters)))
 
 (defmacro set-candidates
   "Sets the current candidate list. This fails if this extension doesn't own the active IME
    
-     |callback| - Called when the operation completes.
+     |parameters| - See https://developer.chrome.com/extensions/input.ime#property-setCandidates-parameters.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [success] where:
+   
+     |success| - See https://developer.chrome.com/extensions/input.ime#property-callback-success.
+   
+   See https://developer.chrome.com/extensions/input.ime#method-setCandidates."
   ([parameters #_callback] (gen-call :function ::set-candidates &form parameters)))
 
 (defmacro set-cursor-position
   "Set the position of the cursor in the candidate window. This is a no-op if this extension does not own the active IME.
    
-     |callback| - Called when the operation completes
+     |parameters| - See https://developer.chrome.com/extensions/input.ime#property-setCursorPosition-parameters.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [success] where:
+   
+     |success| - See https://developer.chrome.com/extensions/input.ime#property-callback-success.
+   
+   See https://developer.chrome.com/extensions/input.ime#method-setCursorPosition."
   ([parameters #_callback] (gen-call :function ::set-cursor-position &form parameters)))
 
 (defmacro set-menu-items
   "Adds the provided menu items to the language menu when this IME is active.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |parameters| - See https://developer.chrome.com/extensions/input.ime#property-setMenuItems-parameters.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/input.ime#method-setMenuItems."
   ([parameters #_callback] (gen-call :function ::set-menu-items &form parameters)))
 
 (defmacro update-menu-items
   "Updates the state of the MenuItems specified
    
-     |callback| - Called when the operation completes
+     |parameters| - See https://developer.chrome.com/extensions/input.ime#property-updateMenuItems-parameters.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/input.ime#method-updateMenuItems."
   ([parameters #_callback] (gen-call :function ::update-menu-items &form parameters)))
 
 (defmacro delete-surrounding-text
   "Deletes the text around the caret.
    
-     |callback| - Called when the operation completes.
+     |parameters| - See https://developer.chrome.com/extensions/input.ime#property-deleteSurroundingText-parameters.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/input.ime#method-deleteSurroundingText."
   ([parameters #_callback] (gen-call :function ::delete-surrounding-text &form parameters)))
 
 (defmacro key-event-handled
@@ -107,25 +150,34 @@
    asynchronous.
    
      |requestId| - Request id of the event that was handled.  This should come from keyEvent.requestId
-     |response| - True if the keystroke was handled, false if not"
+     |response| - True if the keystroke was handled, false if not
+   
+   See https://developer.chrome.com/extensions/input.ime#method-keyEventHandled."
   ([request-id response] (gen-call :function ::key-event-handled &form request-id response)))
 
 (defmacro create-window
   "Creates IME window.
    
      |options| - The options of the newly created IME window.
-     |callback| - Called when the operation completes.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [windowObject] where:
+   
+     |windowObject| - The JavaScript 'window' object of the newly created IME window. It contains the additional 'id' property
+                      for the parameters of the other functions like showWindow/hideWindow.
+   
+   See https://developer.chrome.com/extensions/input.ime#method-createWindow."
   ([options #_callback] (gen-call :function ::create-window &form options)))
 
 (defmacro show-window
   "Shows the IME window. This makes the hidden window visible.
    
      |windowId| - The ID of the IME window.
-     |callback| - Called when the operation completes.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/input.ime#method-showWindow."
   ([window-id #_callback] (gen-call :function ::show-window &form window-id)))
 
 (defmacro hide-window
@@ -133,25 +185,29 @@
    window and show/hide it for better performance.
    
      |windowId| - The ID of the IME window.
-     |callback| - Called when the operation completes.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/input.ime#method-hideWindow."
   ([window-id #_callback] (gen-call :function ::hide-window &form window-id)))
 
 (defmacro activate
   "Activates the IME extension so that it can receive events.
    
-     |callback| - Called when the operation completes.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   See https://developer.chrome.com/extensions/input.ime#method-activate."
   ([#_callback] (gen-call :function ::activate &form)))
 
 (defmacro deactivate
   "Deactivates the IME extension so that it cannot receive events.
    
-     |callback| - Called when the operation completes.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   See https://developer.chrome.com/extensions/input.ime#method-deactivate."
   ([#_callback] (gen-call :function ::deactivate &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -162,14 +218,18 @@
   "This event is sent when an IME is activated. It signals that the IME will be receiving onKeyPress events.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/input.ime#event-onActivate."
   ([channel & args] (apply gen-call :event ::on-activate &form channel args)))
 
 (defmacro tap-on-deactivated-events
   "This event is sent when an IME is deactivated. It signals that the IME will no longer be receiving onKeyPress events.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/input.ime#event-onDeactivated."
   ([channel & args] (apply gen-call :event ::on-deactivated &form channel args)))
 
 (defmacro tap-on-focus-events
@@ -177,7 +237,9 @@
    by the user.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/input.ime#event-onFocus."
   ([channel & args] (apply gen-call :event ::on-focus &form channel args)))
 
 (defmacro tap-on-blur-events
@@ -185,7 +247,9 @@
    by the user.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/input.ime#event-onBlur."
   ([channel & args] (apply gen-call :event ::on-blur &form channel args)))
 
 (defmacro tap-on-input-context-update-events
@@ -193,28 +257,36 @@
    extensions that are listening to this event, and enabled by the user.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/input.ime#event-onInputContextUpdate."
   ([channel & args] (apply gen-call :event ::on-input-context-update &form channel args)))
 
 (defmacro tap-on-key-event-events
   "This event is sent if this extension owns the active IME.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/input.ime#event-onKeyEvent."
   ([channel & args] (apply gen-call :event ::on-key-event &form channel args)))
 
 (defmacro tap-on-candidate-clicked-events
   "This event is sent if this extension owns the active IME.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/input.ime#event-onCandidateClicked."
   ([channel & args] (apply gen-call :event ::on-candidate-clicked &form channel args)))
 
 (defmacro tap-on-menu-item-activated-events
   "Called when the user selects a menu item
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/input.ime#event-onMenuItemActivated."
   ([channel & args] (apply gen-call :event ::on-menu-item-activated &form channel args)))
 
 (defmacro tap-on-surrounding-text-changed-events
@@ -222,14 +294,18 @@
    100 characters for each back and forth direction.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/input.ime#event-onSurroundingTextChanged."
   ([channel & args] (apply gen-call :event ::on-surrounding-text-changed &form channel args)))
 
 (defmacro tap-on-reset-events
   "This event is sent when chrome terminates ongoing text input session.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/input.ime#event-onReset."
   ([channel & args] (apply gen-call :event ::on-reset &form channel args)))
 
 (defmacro tap-on-composition-bounds-changed-events
@@ -237,7 +313,9 @@
    text produced in the input method editor.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/input.ime#event-onCompositionBoundsChanged."
   ([channel & args] (apply gen-call :event ::on-composition-bounds-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

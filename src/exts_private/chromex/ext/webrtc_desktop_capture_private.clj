@@ -18,11 +18,25 @@
 (defmacro choose-desktop-media
   "Shows desktop media picker UI with the specified set of sources.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |sources| - See https://developer.chrome.com/extensions/webrtcDesktopCapturePrivate#property-chooseDesktopMedia-sources.
+     |request| - See https://developer.chrome.com/extensions/webrtcDesktopCapturePrivate#property-chooseDesktopMedia-request.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [streamId] where:
+   
+     |streamId| - See https://developer.chrome.com/extensions/webrtcDesktopCapturePrivate#property-callback-streamId.
+   
+   See https://developer.chrome.com/extensions/webrtcDesktopCapturePrivate#method-chooseDesktopMedia."
   ([sources request #_callback] (gen-call :function ::choose-desktop-media &form sources request)))
 
 (defmacro cancel-choose-desktop-media
-  "Hides desktop media picker dialog shown by chooseDesktopMedia()."
+  "Hides desktop media picker dialog shown by chooseDesktopMedia().
+   
+     |desktopMediaRequestId| - See
+                               https://developer.chrome.com/extensions/webrtcDesktopCapturePrivate#property-cancelChooseDeskt
+                               opMedia-desktopMediaRequestId.
+   
+   See https://developer.chrome.com/extensions/webrtcDesktopCapturePrivate#method-cancelChooseDesktopMedia."
   ([desktop-media-request-id] (gen-call :function ::cancel-choose-desktop-media &form desktop-media-request-id)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

@@ -17,9 +17,14 @@
 (defmacro save-as-mhtml
   "Saves the content of the tab with given id as MHTML.
    
-     |callback| - Called when the MHTML has been generated.
+     |details| - See https://developer.chrome.com/extensions/pageCapture#property-saveAsMHTML-details.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [mhtmlData] where:
+   
+     |mhtmlData| - The MHTML data as a Blob.
+   
+   See https://developer.chrome.com/extensions/pageCapture#method-saveAsMHTML."
   ([details #_callback] (gen-call :function ::save-as-mhtml &form details)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

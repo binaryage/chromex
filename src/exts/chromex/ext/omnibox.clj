@@ -18,7 +18,9 @@
   "Sets the description and styling for the default suggestion. The default suggestion is the text that is displayed in the
    first suggestion row underneath the URL bar.
    
-     |suggestion| - A partial SuggestResult object, without the 'content' parameter."
+     |suggestion| - A partial SuggestResult object, without the 'content' parameter.
+   
+   See https://developer.chrome.com/extensions/omnibox#method-setDefaultSuggestion."
   ([suggestion] (gen-call :function ::set-default-suggestion &form suggestion)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -30,28 +32,36 @@
    input session, and before any onInputChanged events.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/omnibox#event-onInputStarted."
   ([channel & args] (apply gen-call :event ::on-input-started &form channel args)))
 
 (defmacro tap-on-input-changed-events
   "User has changed what is typed into the omnibox.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/omnibox#event-onInputChanged."
   ([channel & args] (apply gen-call :event ::on-input-changed &form channel args)))
 
 (defmacro tap-on-input-entered-events
   "User has accepted what is typed into the omnibox.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/omnibox#event-onInputEntered."
   ([channel & args] (apply gen-call :event ::on-input-entered &form channel args)))
 
 (defmacro tap-on-input-cancelled-events
   "User has ended the keyword input session without accepting the input.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/omnibox#event-onInputCancelled."
   ([channel & args] (apply gen-call :event ::on-input-cancelled &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

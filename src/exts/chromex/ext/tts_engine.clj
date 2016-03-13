@@ -24,7 +24,9 @@
    the options object.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/ttsEngine#event-onSpeak."
   ([channel & args] (apply gen-call :event ::on-speak &form channel args)))
 
 (defmacro tap-on-stop-events
@@ -33,7 +35,9 @@
    should cancel the paused state.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/ttsEngine#event-onStop."
   ([channel & args] (apply gen-call :event ::on-stop &form channel args)))
 
 (defmacro tap-on-pause-events
@@ -41,7 +45,9 @@
    receives a resume event or stop event. Note that a stop event should also clear the paused state.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/ttsEngine#event-onPause."
   ([channel & args] (apply gen-call :event ::on-pause &form channel args)))
 
 (defmacro tap-on-resume-events
@@ -49,7 +55,9 @@
    utterance, if any. Note that a stop event should also clear the paused state.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/ttsEngine#event-onResume."
   ([channel & args] (apply gen-call :event ::on-resume &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

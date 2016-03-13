@@ -18,9 +18,12 @@
 (defmacro get-har
   "Returns HAR log that contains all known network requests.
    
-     |callback| - A function that receives the HAR log when the request completes.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [harLog] where:
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |harLog| - A HAR log. See HAR specification for details.
+   
+   See https://developer.chrome.com/extensions/devtools.network#method-getHAR."
   ([#_callback] (gen-call :function ::get-har &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -31,14 +34,18 @@
   "Fired when a network request is finished and all request data are available.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/devtools.network#event-onRequestFinished."
   ([channel & args] (apply gen-call :event ::on-request-finished &form channel args)))
 
 (defmacro tap-on-navigated-events
   "Fired when the inspected window navigates to a new page.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/devtools.network#event-onNavigated."
   ([channel & args] (apply gen-call :event ::on-navigated &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

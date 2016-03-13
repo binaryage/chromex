@@ -16,79 +16,113 @@
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro logout
-  "Logout of a user session."
+  "Logout of a user session.
+   
+   See https://developer.chrome.com/extensions/autotestPrivate#method-logout."
   ([] (gen-call :function ::logout &form)))
 
 (defmacro restart
-  "Restart the browser."
+  "Restart the browser.
+   
+   See https://developer.chrome.com/extensions/autotestPrivate#method-restart."
   ([] (gen-call :function ::restart &form)))
 
 (defmacro shutdown
   "Shutdown the browser.
    
-     |force| - if set, ignore ongoing downloads and onunbeforeunload handlers."
+     |force| - if set, ignore ongoing downloads and onunbeforeunload handlers.
+   
+   See https://developer.chrome.com/extensions/autotestPrivate#method-shutdown."
   ([force] (gen-call :function ::shutdown &form force)))
 
 (defmacro login-status
   "Get login status.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [status] where:
+   
+     |status| - See https://developer.chrome.com/extensions/autotestPrivate#property-callback-status.
+   
+   See https://developer.chrome.com/extensions/autotestPrivate#method-loginStatus."
   ([#_callback] (gen-call :function ::login-status &form)))
 
 (defmacro lock-screen
-  "Locks the screen."
+  "Locks the screen.
+   
+   See https://developer.chrome.com/extensions/autotestPrivate#method-lockScreen."
   ([] (gen-call :function ::lock-screen &form)))
 
 (defmacro get-extensions-info
   "Get info about installed extensions.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [info] where:
+   
+     |info| - See https://developer.chrome.com/extensions/autotestPrivate#property-callback-info.
+   
+   See https://developer.chrome.com/extensions/autotestPrivate#method-getExtensionsInfo."
   ([#_callback] (gen-call :function ::get-extensions-info &form)))
 
 (defmacro simulate-asan-memory-bug
-  "Simulates a memory access bug for asan testing."
+  "Simulates a memory access bug for asan testing.
+   
+   See https://developer.chrome.com/extensions/autotestPrivate#method-simulateAsanMemoryBug."
   ([] (gen-call :function ::simulate-asan-memory-bug &form)))
 
 (defmacro set-touchpad-sensitivity
   "Set the touchpad pointer sensitivity setting.
    
-     |value| - the pointer sensitivity setting index."
+     |value| - the pointer sensitivity setting index.
+   
+   See https://developer.chrome.com/extensions/autotestPrivate#method-setTouchpadSensitivity."
   ([value] (gen-call :function ::set-touchpad-sensitivity &form value)))
 
 (defmacro set-tap-to-click
   "Turn on/off tap-to-click for the touchpad.
    
-     |enabled| - if set, enable tap-to-click."
+     |enabled| - if set, enable tap-to-click.
+   
+   See https://developer.chrome.com/extensions/autotestPrivate#method-setTapToClick."
   ([enabled] (gen-call :function ::set-tap-to-click &form enabled)))
 
 (defmacro set-three-finger-click
   "Turn on/off three finger click for the touchpad.
    
-     |enabled| - if set, enable three finger click."
+     |enabled| - if set, enable three finger click.
+   
+   See https://developer.chrome.com/extensions/autotestPrivate#method-setThreeFingerClick."
   ([enabled] (gen-call :function ::set-three-finger-click &form enabled)))
 
 (defmacro set-tap-dragging
   "Turn on/off tap dragging for the touchpad.
    
-     |enabled| - if set, enable tap dragging."
+     |enabled| - if set, enable tap dragging.
+   
+   See https://developer.chrome.com/extensions/autotestPrivate#method-setTapDragging."
   ([enabled] (gen-call :function ::set-tap-dragging &form enabled)))
 
 (defmacro set-natural-scroll
   "Turn on/off Australian scrolling for devices other than wheel mouse.
    
-     |enabled| - if set, enable Australian scrolling."
+     |enabled| - if set, enable Australian scrolling.
+   
+   See https://developer.chrome.com/extensions/autotestPrivate#method-setNaturalScroll."
   ([enabled] (gen-call :function ::set-natural-scroll &form enabled)))
 
 (defmacro set-mouse-sensitivity
   "Set the mouse pointer sensitivity setting.
    
-     |value| - the pointer sensitivity setting index."
+     |value| - the pointer sensitivity setting index.
+   
+   See https://developer.chrome.com/extensions/autotestPrivate#method-setMouseSensitivity."
   ([value] (gen-call :function ::set-mouse-sensitivity &form value)))
 
 (defmacro set-primary-button-right
   "Swap the primary mouse button for left click.
    
-     |right| - if set, swap the primary mouse button."
+     |right| - if set, swap the primary mouse button.
+   
+   See https://developer.chrome.com/extensions/autotestPrivate#method-setPrimaryButtonRight."
   ([right] (gen-call :function ::set-primary-button-right &form right)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

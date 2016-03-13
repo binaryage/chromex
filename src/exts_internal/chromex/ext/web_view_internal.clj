@@ -19,9 +19,13 @@
      |src| - The src of the guest  tag.
      |details| - Details of the script or CSS to inject. Either the code or the file property must be set, but both may not
                  be set at the same time.
-     |callback| - Called after all the JavaScript has been executed.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - The result of the script in every injected frame.
+   
+   See https://developer.chrome.com/extensions/webViewInternal#method-executeScript."
   ([instance-id src details #_callback] (gen-call :function ::execute-script &form instance-id src details)))
 
 (defmacro insert-css
@@ -31,16 +35,20 @@
      |src| - The src of the guest  tag.
      |details| - Details of the script or CSS to inject. Either the code or the file property must be set, but both may not
                  be set at the same time.
-     |callback| - Called when all the CSS has been inserted.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/webViewInternal#method-insertCSS."
   ([instance-id src details #_callback] (gen-call :function ::insert-css &form instance-id src details)))
 
 (defmacro add-content-scripts
   "Adds content scripts into a  page. For details, see the programmatic injection section of the content scripts doc.
    
      |instanceId| - The instance ID of the guest  process.
-     |contentScriptList| - Details of the content scripts to add."
+     |contentScriptList| - Details of the content scripts to add.
+   
+   See https://developer.chrome.com/extensions/webViewInternal#method-addContentScripts."
   ([instance-id content-script-list] (gen-call :function ::add-content-scripts &form instance-id content-script-list)))
 
 (defmacro remove-content-scripts
@@ -49,23 +57,31 @@
    
      |instanceId| - The instance ID of the guest  process.
      |scriptNameList| - A list of names of content scripts that will be removed. If the list is empty, all the content
-                        scripts added to the  page will be removed."
+                        scripts added to the  page will be removed.
+   
+   See https://developer.chrome.com/extensions/webViewInternal#method-removeContentScripts."
   ([instance-id script-name-list] (gen-call :function ::remove-content-scripts &form instance-id script-name-list))
   ([instance-id] `(remove-content-scripts ~instance-id :omit)))
 
 (defmacro set-zoom
   "  |instanceId| - The instance ID of the guest  process.
      |zoomFactor| - The new zoom factor.
-     |callback| - Called after the zoom message has been sent to the guest process.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/webViewInternal#method-setZoom."
   ([instance-id zoom-factor #_callback] (gen-call :function ::set-zoom &form instance-id zoom-factor)))
 
 (defmacro get-zoom
   "  |instanceId| - The instance ID of the guest  process.
-     |callback| - Called after the current zoom factor is retrieved.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [zoomFactor] where:
+   
+     |zoomFactor| - The current zoom factor.
+   
+   See https://developer.chrome.com/extensions/webViewInternal#method-getZoom."
   ([instance-id #_callback] (gen-call :function ::get-zoom &form instance-id)))
 
 (defmacro set-zoom-mode
@@ -73,18 +89,24 @@
    
      |instanceId| - The instance ID of the guest  process.
      |ZoomMode| - Defines the how zooming is handled in the webview.
-     |callback| - Called after the zoom mode has been changed.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/webViewInternal#method-setZoomMode."
   ([instance-id zoom-mode #_callback] (gen-call :function ::set-zoom-mode &form instance-id zoom-mode)))
 
 (defmacro get-zoom-mode
   "Gets the current zoom mode.
    
      |instanceId| - The instance ID of the guest  process.
-     |callback| - Called with the webview's current zoom mode.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [ZoomMode] where:
+   
+     |ZoomMode| - Defines the how zooming is handled in the webview.
+   
+   See https://developer.chrome.com/extensions/webViewInternal#method-getZoomMode."
   ([instance-id #_callback] (gen-call :function ::get-zoom-mode &form instance-id)))
 
 (defmacro find
@@ -92,9 +114,14 @@
    
      |instanceId| - The instance ID of the guest  process.
      |searchText| - The string to find in the page.
-     |callback| - Called after all find results have been returned for this find request.
+     |options| - See https://developer.chrome.com/extensions/webViewInternal#property-find-options.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [results] where:
+   
+     |results| - See https://developer.chrome.com/extensions/webViewInternal#property-callback-results.
+   
+   See https://developer.chrome.com/extensions/webViewInternal#method-find."
   ([instance-id search-text options #_callback] (gen-call :function ::find &form instance-id search-text options))
   ([instance-id search-text] `(find ~instance-id ~search-text :omit)))
 
@@ -104,7 +131,9 @@
      |instanceId| - The instance ID of the guest  process.
      |action| - Determines what to do with the active match after the find session has ended. 'clear' will clear the
                 highlighting over the active match; 'keep' will keep the active match highlighted; 'activate' will keep the
-                active match highlighted and simulate a user click on that match."
+                active match highlighted and simulate a user click on that match.
+   
+   See https://developer.chrome.com/extensions/webViewInternal#method-stopFinding."
   ([instance-id action] (gen-call :function ::stop-finding &form instance-id action))
   ([instance-id] `(stop-finding ~instance-id :omit)))
 
@@ -116,40 +145,95 @@
      |dataUrl| - The data URL to load.
      |baseUrl| - The base URL that will be used for relative links.
      |virtualUrl| - The URL that will be displayed to the user.
-     |callback| - Called internally for the purpose of reporting errors to console.error().
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/webViewInternal#method-loadDataWithBaseUrl."
   ([instance-id data-url base-url virtual-url #_callback] (gen-call :function ::load-data-with-base-url &form instance-id data-url base-url virtual-url))
   ([instance-id data-url base-url] `(load-data-with-base-url ~instance-id ~data-url ~base-url :omit)))
 
 (defmacro go
-  "
+  "  |instanceId| - See https://developer.chrome.com/extensions/webViewInternal#property-go-instanceId.
+     |relativeIndex| - See https://developer.chrome.com/extensions/webViewInternal#property-go-relativeIndex.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [success] where:
+   
+     |success| - Indicates whether the navigation was successful.
+   
+   See https://developer.chrome.com/extensions/webViewInternal#method-go."
   ([instance-id relative-index #_callback] (gen-call :function ::go &form instance-id relative-index)))
 
-(defmacro override-user-agent ([instance-id user-agent-override] (gen-call :function ::override-user-agent &form instance-id user-agent-override)))
+(defmacro override-user-agent
+  "  |instanceId| - See https://developer.chrome.com/extensions/webViewInternal#property-overrideUserAgent-instanceId.
+     |userAgentOverride| - See
+                           https://developer.chrome.com/extensions/webViewInternal#property-overrideUserAgent-userAgentOverri
+                           de.
+   
+   See https://developer.chrome.com/extensions/webViewInternal#method-overrideUserAgent."
+  ([instance-id user-agent-override] (gen-call :function ::override-user-agent &form instance-id user-agent-override)))
 
-(defmacro reload ([instance-id] (gen-call :function ::reload &form instance-id)))
+(defmacro reload
+  "  |instanceId| - See https://developer.chrome.com/extensions/webViewInternal#property-reload-instanceId.
+   
+   See https://developer.chrome.com/extensions/webViewInternal#method-reload."
+  ([instance-id] (gen-call :function ::reload &form instance-id)))
 
-(defmacro set-allow-transparency ([instance-id allow] (gen-call :function ::set-allow-transparency &form instance-id allow)))
+(defmacro set-allow-transparency
+  "  |instanceId| - See https://developer.chrome.com/extensions/webViewInternal#property-setAllowTransparency-instanceId.
+     |allow| - See https://developer.chrome.com/extensions/webViewInternal#property-setAllowTransparency-allow.
+   
+   See https://developer.chrome.com/extensions/webViewInternal#method-setAllowTransparency."
+  ([instance-id allow] (gen-call :function ::set-allow-transparency &form instance-id allow)))
 
-(defmacro set-allow-scaling ([instance-id allow] (gen-call :function ::set-allow-scaling &form instance-id allow)))
+(defmacro set-allow-scaling
+  "  |instanceId| - See https://developer.chrome.com/extensions/webViewInternal#property-setAllowScaling-instanceId.
+     |allow| - See https://developer.chrome.com/extensions/webViewInternal#property-setAllowScaling-allow.
+   
+   See https://developer.chrome.com/extensions/webViewInternal#method-setAllowScaling."
+  ([instance-id allow] (gen-call :function ::set-allow-scaling &form instance-id allow)))
 
-(defmacro set-name ([instance-id frame-name] (gen-call :function ::set-name &form instance-id frame-name)))
+(defmacro set-name
+  "  |instanceId| - See https://developer.chrome.com/extensions/webViewInternal#property-setName-instanceId.
+     |frameName| - See https://developer.chrome.com/extensions/webViewInternal#property-setName-frameName.
+   
+   See https://developer.chrome.com/extensions/webViewInternal#method-setName."
+  ([instance-id frame-name] (gen-call :function ::set-name &form instance-id frame-name)))
 
 (defmacro set-permission
-  "
+  "  |instanceId| - See https://developer.chrome.com/extensions/webViewInternal#property-setPermission-instanceId.
+     |requestId| - See https://developer.chrome.com/extensions/webViewInternal#property-setPermission-requestId.
+     |action| - See https://developer.chrome.com/extensions/webViewInternal#property-setPermission-action.
+     |userInput| - See https://developer.chrome.com/extensions/webViewInternal#property-setPermission-userInput.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [allowed] where:
+   
+     |allowed| - See https://developer.chrome.com/extensions/webViewInternal#property-callback-allowed.
+   
+   See https://developer.chrome.com/extensions/webViewInternal#method-setPermission."
   ([instance-id request-id action user-input #_callback] (gen-call :function ::set-permission &form instance-id request-id action user-input))
   ([instance-id request-id action] `(set-permission ~instance-id ~request-id ~action :omit)))
 
-(defmacro navigate ([instance-id src] (gen-call :function ::navigate &form instance-id src)))
+(defmacro navigate
+  "  |instanceId| - See https://developer.chrome.com/extensions/webViewInternal#property-navigate-instanceId.
+     |src| - See https://developer.chrome.com/extensions/webViewInternal#property-navigate-src.
+   
+   See https://developer.chrome.com/extensions/webViewInternal#method-navigate."
+  ([instance-id src] (gen-call :function ::navigate &form instance-id src)))
 
-(defmacro stop ([instance-id] (gen-call :function ::stop &form instance-id)))
+(defmacro stop
+  "  |instanceId| - See https://developer.chrome.com/extensions/webViewInternal#property-stop-instanceId.
+   
+   See https://developer.chrome.com/extensions/webViewInternal#method-stop."
+  ([instance-id] (gen-call :function ::stop &form instance-id)))
 
-(defmacro terminate ([instance-id] (gen-call :function ::terminate &form instance-id)))
+(defmacro terminate
+  "  |instanceId| - See https://developer.chrome.com/extensions/webViewInternal#property-terminate-instanceId.
+   
+   See https://developer.chrome.com/extensions/webViewInternal#method-terminate."
+  ([instance-id] (gen-call :function ::terminate &form instance-id)))
 
 (defmacro capture-visible-region
   "foo
@@ -157,7 +241,13 @@
      |instanceId| - The instance ID of the guest  process.
      |options| - Details about the format and quality of an image.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [dataUrl] where:
+   
+     |dataUrl| - A data URL which encodes an image of the visible area of the captured tab. May be assigned to the 'src'
+                 property of an HTML Image element for display.
+   
+   See https://developer.chrome.com/extensions/webViewInternal#method-captureVisibleRegion."
   ([instance-id options #_callback] (gen-call :function ::capture-visible-region &form instance-id options))
   ([instance-id] `(capture-visible-region ~instance-id :omit)))
 
@@ -167,9 +257,11 @@
      |instanceId| - The instance ID of the guest  process.
      |options| - Options that determine exactly what data will be removed.
      |dataToRemove| - A set of data types. Missing data types are interpreted as false.
-     |callback| - Called when deletion has completed.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/webViewInternal#method-clearData."
   ([instance-id options data-to-remove #_callback] (gen-call :function ::clear-data &form instance-id options data-to-remove)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

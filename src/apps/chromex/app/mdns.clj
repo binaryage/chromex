@@ -18,7 +18,9 @@
 
 (defmacro get-max-service-instances-per-event
   "The maximum number of service instances that will be included in onServiceList events.  If more instances are available,
-   they may be truncated from the onServiceList event."
+   they may be truncated from the onServiceList event.
+   
+   See https://developer.chrome.com/extensions/mdns#property-MAX_SERVICE_INSTANCES_PER_EVENT."
   ([] (gen-call :property ::max-service-instances-per-event &form)))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
@@ -27,9 +29,10 @@
   "Immediately issues a multicast DNS query for all service types. |callback| is invoked immediately. At a later time, queries
    will be sent, and any service events will be fired.
    
-     |callback| - Callback invoked after ForceDiscovery() has started.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   See https://developer.chrome.com/extensions/mdns#method-forceDiscovery."
   ([#_callback] (gen-call :function ::force-discovery &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -42,7 +45,9 @@
    as the event filter with the 'serviceType' key. Not specifying an event filter will not start any discovery listeners.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/mdns#event-onServiceList."
   ([channel & args] (apply gen-call :event ::on-service-list &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

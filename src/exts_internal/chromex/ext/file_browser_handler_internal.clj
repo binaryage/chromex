@@ -17,9 +17,13 @@
    or, if it already exists, truncated. The function has to be called with user gesture.
    
      |selectionParams| - Parameters that will be used to create new file.
-     |callback| - Function called upon completion.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - Result of the method.
+   
+   See https://developer.chrome.com/extensions/fileBrowserHandlerInternal#method-selectFile."
   ([selection-params #_callback] (gen-call :function ::select-file &form selection-params)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

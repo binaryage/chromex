@@ -27,10 +27,11 @@
 
      |options| - Optional parameters if comparing the download with a given hash or saving the download to the users
                  Downloads folder instead of a temporary directory is desired
-     |callback| - The callback which signifies that the write operation has been started by the system and provides a unique
-                  ID for this operation.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/imageWriterPrivate#method-writeFromUrl."
   ([storage-unit-id image-url options #_callback] (gen-call :function ::write-from-url &form storage-unit-id image-url options))
   ([storage-unit-id image-url] `(write-from-url ~storage-unit-id ~image-url :omit)))
 
@@ -40,19 +41,20 @@
    
      |storageUnitId| - The identifier for the storage unit
      |fileEntry| - The FileEntry object of the image to be burned.
-     |callback| - The callback which signifies that the write operation has been started by the system and provides a unique
-                  ID for this operation.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/imageWriterPrivate#method-writeFromFile."
   ([storage-unit-id file-entry #_callback] (gen-call :function ::write-from-file &form storage-unit-id file-entry)))
 
 (defmacro cancel-write
   "Cancel a current write operation.
    
-     |callback| - The callback which is triggered with the write is successfully cancelled, passing the 'ProgressInfo' of
-                  the operation at the time it was cancelled.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   See https://developer.chrome.com/extensions/imageWriterPrivate#method-cancelWrite."
   ([#_callback] (gen-call :function ::cancel-write &form)))
 
 (defmacro destroy-partitions
@@ -60,17 +62,22 @@
    complex stages or progress information, just a write phase.
    
      |storageUnitId| - The identifier of the storage unit to wipe
-     |callback| - A callback that triggers when the operation has been successfully started.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/imageWriterPrivate#method-destroyPartitions."
   ([storage-unit-id #_callback] (gen-call :function ::destroy-partitions &form storage-unit-id)))
 
 (defmacro list-removable-storage-devices
   "List all the removable block devices currently attached to the system.
    
-     |callback| - A callback called with a list of removable storage devices
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [devices] where:
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |devices| - See https://developer.chrome.com/extensions/imageWriterPrivate#property-callback-devices.
+   
+   See https://developer.chrome.com/extensions/imageWriterPrivate#method-listRemovableStorageDevices."
   ([#_callback] (gen-call :function ::list-removable-storage-devices &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -81,35 +88,45 @@
   "Fires periodically throughout the writing operation and at least once per stage.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/imageWriterPrivate#event-onWriteProgress."
   ([channel & args] (apply gen-call :event ::on-write-progress &form channel args)))
 
 (defmacro tap-on-write-complete-events
   "Fires when the write operation has completely finished, such as all devices being finalized and resources released.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/imageWriterPrivate#event-onWriteComplete."
   ([channel & args] (apply gen-call :event ::on-write-complete &form channel args)))
 
 (defmacro tap-on-write-error-events
   "Fires when an error occured during writing, passing the 'ProgressInfo' of the operation at the time the error occured.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/imageWriterPrivate#event-onWriteError."
   ([channel & args] (apply gen-call :event ::on-write-error &form channel args)))
 
 (defmacro tap-on-device-inserted-events
   "Fires when a removable storage device is inserted.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/imageWriterPrivate#event-onDeviceInserted."
   ([channel & args] (apply gen-call :event ::on-device-inserted &form channel args)))
 
 (defmacro tap-on-device-removed-events
   "Fires when a removable storage device is removed.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/imageWriterPrivate#event-onDeviceRemoved."
   ([channel & args] (apply gen-call :event ::on-device-removed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

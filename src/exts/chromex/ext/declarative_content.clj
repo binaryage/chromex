@@ -21,7 +21,9 @@
   "
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/declarativeContent#event-onPageChanged."
   ([channel & args] (apply gen-call :event ::on-page-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

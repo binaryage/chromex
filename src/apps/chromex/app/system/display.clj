@@ -17,7 +17,12 @@
 (defmacro get-info
   "Get the information of all attached display devices.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [displayInfo] where:
+   
+     |displayInfo| - See https://developer.chrome.com/extensions/system.display#property-callback-displayInfo.
+   
+   See https://developer.chrome.com/extensions/system.display#method-getInfo."
   ([#_callback] (gen-call :function ::get-info &form)))
 
 (defmacro set-display-properties
@@ -27,15 +32,20 @@
      |id| - The display's unique identifier.
      |info| - The information about display properties that should be changed.     A property will be changed only if a new
               value for it is specified in     |info|.
-     |callback| - Empty function called when the function finishes. To find out     whether the function succeeded,
-                  'runtime.lastError' should be     queried.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/system.display#method-setDisplayProperties."
   ([id info #_callback] (gen-call :function ::set-display-properties &form id info)))
 
 (defmacro enable-unified-desktop
   "Enables/disables the unified desktop feature. Note that this simply enables the feature, but will not change the actual
-   desktop mode. (That is, if the desktop is in mirror mode, it will stay in mirror mode)"
+   desktop mode. (That is, if the desktop is in mirror mode, it will stay in mirror mode)
+   
+     |enabled| - See https://developer.chrome.com/extensions/system.display#property-enableUnifiedDesktop-enabled.
+   
+   See https://developer.chrome.com/extensions/system.display#method-enableUnifiedDesktop."
   ([enabled] (gen-call :function ::enable-unified-desktop &form enabled)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -46,7 +56,9 @@
   "Fired when anything changes to the display configuration.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/system.display#event-onDisplayChanged."
   ([channel & args] (apply gen-call :event ::on-display-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

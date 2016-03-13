@@ -17,7 +17,12 @@
 (defmacro get-info
   "Queries basic CPU information of the system.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [info] where:
+   
+     |info| - See https://developer.chrome.com/extensions/system.cpu#property-callback-info.
+   
+   See https://developer.chrome.com/extensions/system.cpu#method-getInfo."
   ([#_callback] (gen-call :function ::get-info &form)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

@@ -17,9 +17,12 @@
 (defmacro get-device-id
   "Returns an identifier stable across users and reboots.
    
-     |callback| - Called with the stable identifier value.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [device_id] where:
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |device_id| - See https://developer.chrome.com/extensions/musicManagerPrivate#property-callback-device_id.
+   
+   See https://developer.chrome.com/extensions/musicManagerPrivate#method-getDeviceId."
   ([#_callback] (gen-call :function ::get-device-id &form)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

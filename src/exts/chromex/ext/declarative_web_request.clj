@@ -23,7 +23,9 @@
   "
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/declarativeWebRequest#event-onRequest."
   ([channel & args] (apply gen-call :event ::on-request &form channel args)))
 
 (defmacro tap-on-message-events
@@ -31,7 +33,9 @@
    request API.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/declarativeWebRequest#event-onMessage."
   ([channel & args] (apply gen-call :event ::on-message &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

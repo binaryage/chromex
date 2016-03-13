@@ -17,12 +17,27 @@
    
      |filter| - A set of filters that restricts the events that will be sent to this listener.
      |extraInfoSpec| - Array of extra information that should be passed to the listener function.
+     |eventName| - See https://developer.chrome.com/extensions/webRequestInternal#property-addEventListener-eventName.
+     |subEventName| - See https://developer.chrome.com/extensions/webRequestInternal#property-addEventListener-subEventName.
+     |webViewInstanceId| - See
+                           https://developer.chrome.com/extensions/webRequestInternal#property-addEventListener-webViewInstan
+                           ceId.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/webRequestInternal#method-addEventListener."
   ([filter extra-info-spec event-name sub-event-name web-view-instance-id #_callback] (gen-call :function ::add-event-listener &form filter extra-info-spec event-name sub-event-name web-view-instance-id)))
 
 (defmacro event-handled
-  "Used internally to send a response for a blocked event."
+  "Used internally to send a response for a blocked event.
+   
+     |eventName| - See https://developer.chrome.com/extensions/webRequestInternal#property-eventHandled-eventName.
+     |subEventName| - See https://developer.chrome.com/extensions/webRequestInternal#property-eventHandled-subEventName.
+     |requestId| - See https://developer.chrome.com/extensions/webRequestInternal#property-eventHandled-requestId.
+     |response| - See https://developer.chrome.com/extensions/webRequestInternal#property-eventHandled-response.
+   
+   See https://developer.chrome.com/extensions/webRequestInternal#method-eventHandled."
   ([event-name sub-event-name request-id response] (gen-call :function ::event-handled &form event-name sub-event-name request-id response))
   ([event-name sub-event-name request-id] `(event-handled ~event-name ~sub-event-name ~request-id :omit)))
 

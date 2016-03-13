@@ -15,59 +15,127 @@
 (defmacro get-is-crash-reporting-enabled
   "Returns true if the user opted in to sending crash reports.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [is_enabled] where:
+   
+     |is_enabled| - See https://developer.chrome.com/extensions/metricsPrivate#property-callback-is_enabled.
+   
+   See https://developer.chrome.com/extensions/metricsPrivate#method-getIsCrashReportingEnabled."
   ([#_callback] (gen-call :function ::get-is-crash-reporting-enabled &form)))
 
 (defmacro get-field-trial
   "Returns the group name chosen for the named trial, or the empty string if the trial does not exist or is not enabled.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |name| - See https://developer.chrome.com/extensions/metricsPrivate#property-getFieldTrial-name.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [group] where:
+   
+     |group| - See https://developer.chrome.com/extensions/metricsPrivate#property-callback-group.
+   
+   See https://developer.chrome.com/extensions/metricsPrivate#method-getFieldTrial."
   ([name #_callback] (gen-call :function ::get-field-trial &form name)))
 
 (defmacro get-variation-params
   "Returns variation parameters for the named trial if available, or undefined otherwise.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |name| - See https://developer.chrome.com/extensions/metricsPrivate#property-getVariationParams-name.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [params] where:
+   
+     |params| - See https://developer.chrome.com/extensions/metricsPrivate#property-callback-params.
+   
+   See https://developer.chrome.com/extensions/metricsPrivate#method-getVariationParams."
   ([name #_callback] (gen-call :function ::get-variation-params &form name)))
 
 (defmacro record-user-action
-  "Records an action performed by the user."
+  "Records an action performed by the user.
+   
+     |name| - See https://developer.chrome.com/extensions/metricsPrivate#property-recordUserAction-name.
+   
+   See https://developer.chrome.com/extensions/metricsPrivate#method-recordUserAction."
   ([name] (gen-call :function ::record-user-action &form name)))
 
 (defmacro record-percentage
-  "Records a percentage value from 1 to 100."
+  "Records a percentage value from 1 to 100.
+   
+     |metricName| - See https://developer.chrome.com/extensions/metricsPrivate#property-recordPercentage-metricName.
+     |value| - See https://developer.chrome.com/extensions/metricsPrivate#property-recordPercentage-value.
+   
+   See https://developer.chrome.com/extensions/metricsPrivate#method-recordPercentage."
   ([metric-name value] (gen-call :function ::record-percentage &form metric-name value)))
 
 (defmacro record-count
-  "Records a value than can range from 1 to 1,000,000."
+  "Records a value than can range from 1 to 1,000,000.
+   
+     |metricName| - See https://developer.chrome.com/extensions/metricsPrivate#property-recordCount-metricName.
+     |value| - See https://developer.chrome.com/extensions/metricsPrivate#property-recordCount-value.
+   
+   See https://developer.chrome.com/extensions/metricsPrivate#method-recordCount."
   ([metric-name value] (gen-call :function ::record-count &form metric-name value)))
 
 (defmacro record-small-count
-  "Records a value than can range from 1 to 100."
+  "Records a value than can range from 1 to 100.
+   
+     |metricName| - See https://developer.chrome.com/extensions/metricsPrivate#property-recordSmallCount-metricName.
+     |value| - See https://developer.chrome.com/extensions/metricsPrivate#property-recordSmallCount-value.
+   
+   See https://developer.chrome.com/extensions/metricsPrivate#method-recordSmallCount."
   ([metric-name value] (gen-call :function ::record-small-count &form metric-name value)))
 
 (defmacro record-medium-count
-  "Records a value than can range from 1 to 10,000."
+  "Records a value than can range from 1 to 10,000.
+   
+     |metricName| - See https://developer.chrome.com/extensions/metricsPrivate#property-recordMediumCount-metricName.
+     |value| - See https://developer.chrome.com/extensions/metricsPrivate#property-recordMediumCount-value.
+   
+   See https://developer.chrome.com/extensions/metricsPrivate#method-recordMediumCount."
   ([metric-name value] (gen-call :function ::record-medium-count &form metric-name value)))
 
 (defmacro record-time
-  "Records an elapsed time of no more than 10 seconds.  The sample value is specified in milliseconds."
+  "Records an elapsed time of no more than 10 seconds.  The sample value is specified in milliseconds.
+   
+     |metricName| - See https://developer.chrome.com/extensions/metricsPrivate#property-recordTime-metricName.
+     |value| - See https://developer.chrome.com/extensions/metricsPrivate#property-recordTime-value.
+   
+   See https://developer.chrome.com/extensions/metricsPrivate#method-recordTime."
   ([metric-name value] (gen-call :function ::record-time &form metric-name value)))
 
 (defmacro record-medium-time
-  "Records an elapsed time of no more than 3 minutes.  The sample value is specified in milliseconds."
+  "Records an elapsed time of no more than 3 minutes.  The sample value is specified in milliseconds.
+   
+     |metricName| - See https://developer.chrome.com/extensions/metricsPrivate#property-recordMediumTime-metricName.
+     |value| - See https://developer.chrome.com/extensions/metricsPrivate#property-recordMediumTime-value.
+   
+   See https://developer.chrome.com/extensions/metricsPrivate#method-recordMediumTime."
   ([metric-name value] (gen-call :function ::record-medium-time &form metric-name value)))
 
 (defmacro record-long-time
-  "Records an elapsed time of no more than 1 hour.  The sample value is specified in milliseconds."
+  "Records an elapsed time of no more than 1 hour.  The sample value is specified in milliseconds.
+   
+     |metricName| - See https://developer.chrome.com/extensions/metricsPrivate#property-recordLongTime-metricName.
+     |value| - See https://developer.chrome.com/extensions/metricsPrivate#property-recordLongTime-value.
+   
+   See https://developer.chrome.com/extensions/metricsPrivate#method-recordLongTime."
   ([metric-name value] (gen-call :function ::record-long-time &form metric-name value)))
 
 (defmacro record-sparse-value
-  "Increments the count associated with |value| in the sparse histogram defined by the |metricName|."
+  "Increments the count associated with |value| in the sparse histogram defined by the |metricName|.
+   
+     |metricName| - See https://developer.chrome.com/extensions/metricsPrivate#property-recordSparseValue-metricName.
+     |value| - See https://developer.chrome.com/extensions/metricsPrivate#property-recordSparseValue-value.
+   
+   See https://developer.chrome.com/extensions/metricsPrivate#method-recordSparseValue."
   ([metric-name value] (gen-call :function ::record-sparse-value &form metric-name value)))
 
 (defmacro record-value
-  "Adds a value to the given metric."
+  "Adds a value to the given metric.
+   
+     |metric| - See https://developer.chrome.com/extensions/metricsPrivate#property-recordValue-metric.
+     |value| - See https://developer.chrome.com/extensions/metricsPrivate#property-recordValue-value.
+   
+   See https://developer.chrome.com/extensions/metricsPrivate#method-recordValue."
   ([metric value] (gen-call :function ::record-value &form metric value)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

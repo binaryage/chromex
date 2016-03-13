@@ -18,9 +18,12 @@
 (defmacro get-all
   "Returns all the registered extension commands for this extension and their shortcut (if active).
    
-     |callback| - Called to return the registered commands.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [commands] where:
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |commands| - See https://developer.chrome.com/extensions/commands#property-callback-commands.
+   
+   See https://developer.chrome.com/extensions/commands#method-getAll."
   ([#_callback] (gen-call :function ::get-all &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -31,7 +34,9 @@
   "Fired when a registered command is activated using a keyboard shortcut.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/commands#event-onCommand."
   ([channel & args] (apply gen-call :event ::on-command &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

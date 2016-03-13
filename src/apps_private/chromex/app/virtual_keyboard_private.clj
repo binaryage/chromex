@@ -16,65 +16,89 @@
   "Inserts text into the currently focused text field.
    
      |text| - The text that will be inserted.
-     |callback| - Called when the insertion is completed.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/virtualKeyboardPrivate#method-insertText."
   ([text #_callback] (gen-call :function ::insert-text &form text)))
 
 (defmacro send-key-event
   "Sends a fabricated key event to the focused input field.
    
-     |callback| - Called after processing the event.
+     |keyEvent| - See https://developer.chrome.com/extensions/virtualKeyboardPrivate#property-sendKeyEvent-keyEvent.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/virtualKeyboardPrivate#method-sendKeyEvent."
   ([key-event #_callback] (gen-call :function ::send-key-event &form key-event)))
 
 (defmacro hide-keyboard
   "Hides the virtual keyboard.
    
-     |callback| - Called when the keyboard is hidden.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   See https://developer.chrome.com/extensions/virtualKeyboardPrivate#method-hideKeyboard."
   ([#_callback] (gen-call :function ::hide-keyboard &form)))
 
 (defmacro set-hotrod-keyboard
-  "Sets the state of the hotrod virtual keyboard. This API should only be used by hotrod."
+  "Sets the state of the hotrod virtual keyboard. This API should only be used by hotrod.
+   
+     |enable| - See https://developer.chrome.com/extensions/virtualKeyboardPrivate#property-setHotrodKeyboard-enable.
+   
+   See https://developer.chrome.com/extensions/virtualKeyboardPrivate#method-setHotrodKeyboard."
   ([enable] (gen-call :function ::set-hotrod-keyboard &form enable)))
 
 (defmacro lock-keyboard
-  "Sets the lock state of the virtual keyboard. A locked keyboard remains visible even after a text area loses input focus."
+  "Sets the lock state of the virtual keyboard. A locked keyboard remains visible even after a text area loses input focus.
+   
+     |lock| - See https://developer.chrome.com/extensions/virtualKeyboardPrivate#property-lockKeyboard-lock.
+   
+   See https://developer.chrome.com/extensions/virtualKeyboardPrivate#method-lockKeyboard."
   ([lock] (gen-call :function ::lock-keyboard &form lock)))
 
 (defmacro keyboard-loaded
   "Inform the system that the keyboard has loaded.
    
-     |callback| - Called when load acknowledgement is complete.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   See https://developer.chrome.com/extensions/virtualKeyboardPrivate#method-keyboardLoaded."
   ([#_callback] (gen-call :function ::keyboard-loaded &form)))
 
 (defmacro get-keyboard-config
   "Gets the virtual keyboard configuration.
    
-     |callback| - Called when querying virtual keyboard configuration is complete.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [config] where:
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |config| - See https://developer.chrome.com/extensions/virtualKeyboardPrivate#property-callback-config.
+   
+   See https://developer.chrome.com/extensions/virtualKeyboardPrivate#method-getKeyboardConfig."
   ([#_callback] (gen-call :function ::get-keyboard-config &form)))
 
 (defmacro open-settings
-  "Opens chrome://settings/languages page."
+  "Opens chrome://settings/languages page.
+   
+   See https://developer.chrome.com/extensions/virtualKeyboardPrivate#method-openSettings."
   ([] (gen-call :function ::open-settings &form)))
 
 (defmacro set-mode
   "Sets the virtual keyboard mode.
    
-     |mode| - The value of the virtual keyboard mode to set to."
+     |mode| - The value of the virtual keyboard mode to set to.
+   
+   See https://developer.chrome.com/extensions/virtualKeyboardPrivate#method-setMode."
   ([mode] (gen-call :function ::set-mode &form mode)))
 
 (defmacro set-keyboard-state
   "Requests the virtual keyboard to change state.
    
-     |state| - The value of the virtual keyboard state to change to."
+     |state| - The value of the virtual keyboard state to change to.
+   
+   See https://developer.chrome.com/extensions/virtualKeyboardPrivate#method-setKeyboardState."
   ([state] (gen-call :function ::set-keyboard-state &form state)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -85,14 +109,18 @@
   "This event is sent when focus enters a text input box.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/virtualKeyboardPrivate#event-onTextInputBoxFocused."
   ([channel & args] (apply gen-call :event ::on-text-input-box-focused &form channel args)))
 
 (defmacro tap-on-bounds-changed-events
   "This event is sent when virtual keyboard bounds changed and overscroll/resize is enabled.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/virtualKeyboardPrivate#event-onBoundsChanged."
   ([channel & args] (apply gen-call :event ::on-bounds-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

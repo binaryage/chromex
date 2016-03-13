@@ -15,16 +15,22 @@
 ; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defmacro get-sync
-  "Items in the sync storage area are synced using Chrome Sync."
+  "Items in the sync storage area are synced using Chrome Sync.
+   
+   See https://developer.chrome.com/extensions/storage#property-sync."
   ([] (gen-call :property ::sync &form)))
 
 (defmacro get-local
-  "Items in the local storage area are local to each machine."
+  "Items in the local storage area are local to each machine.
+   
+   See https://developer.chrome.com/extensions/storage#property-local."
   ([] (gen-call :property ::local &form)))
 
 (defmacro get-managed
   "Items in the managed storage area are set by the domain administrator, and are read-only for the extension; trying to
-   modify this namespace results in an error."
+   modify this namespace results in an error.
+   
+   See https://developer.chrome.com/extensions/storage#property-managed."
   ([] (gen-call :property ::managed &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -35,7 +41,9 @@
   "Fired when one or more items change.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/storage#event-onChanged."
   ([channel & args] (apply gen-call :event ::on-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

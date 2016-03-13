@@ -20,9 +20,13 @@
    
      |app| - The extension id of the app to be embedded.
      |data| - Optional developer specified data that the app to be embedded   can use when making an embedding decision.
-     |callback| - An optional function that's called after the embedding   request is completed.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [success] where:
+   
+     |success| - True if the embedding request succeded.
+   
+   See https://developer.chrome.com/extensions/appviewTag#method-connect."
   ([app data #_callback] (gen-call :function ::connect &form app data))
   ([app] `(connect ~app :omit)))
 

@@ -16,7 +16,9 @@
   "Sets the offer info in Local State.
    
      |id| - The service id of the echo offer.
-     |offerInfo| - The offer info."
+     |offerInfo| - The offer info.
+   
+   See https://developer.chrome.com/extensions/echoPrivate#method-setOfferInfo."
   ([id offer-info] (gen-call :function ::set-offer-info &form id offer-info)))
 
 (defmacro get-offer-info
@@ -24,7 +26,12 @@
    
      |id| - The service id of the offer eligibility check.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - The returned offer info. If the offer info is not available, api will raise error.
+   
+   See https://developer.chrome.com/extensions/echoPrivate#method-getOfferInfo."
   ([id #_callback] (gen-call :function ::get-offer-info &form id)))
 
 (defmacro get-registration-code
@@ -32,13 +39,23 @@
    
      |type| - Type of coupon code requested to be read (coupon or group).
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - The coupon code.
+   
+   See https://developer.chrome.com/extensions/echoPrivate#method-getRegistrationCode."
   ([type #_callback] (gen-call :function ::get-registration-code &form type)))
 
 (defmacro get-oobe-timestamp
   "Get the OOBE timestamp.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - The OOBE timestamp.
+   
+   See https://developer.chrome.com/extensions/echoPrivate#method-getOobeTimestamp."
   ([#_callback] (gen-call :function ::get-oobe-timestamp &form)))
 
 (defmacro get-user-consent
@@ -48,7 +65,12 @@
    
      |consentRequester| - Information about the service requesting user consent.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - Whether the user consent was given.
+   
+   See https://developer.chrome.com/extensions/echoPrivate#method-getUserConsent."
   ([consent-requester #_callback] (gen-call :function ::get-user-consent &form consent-requester)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

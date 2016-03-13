@@ -16,7 +16,9 @@
 ; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defmacro get-tab-id-none
-  "An ID which represents the absence of a browser tab."
+  "An ID which represents the absence of a browser tab.
+   
+   See https://developer.chrome.com/extensions/tabs#property-TAB_ID_NONE."
   ([] (gen-call :property ::tab-id-none &form)))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
@@ -24,19 +26,36 @@
 (defmacro get
   "Retrieves details about the specified tab.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |tabId| - See https://developer.chrome.com/extensions/tabs#property-get-tabId.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [tab] where:
+   
+     |tab| - See https://developer.chrome.com/extensions/tabs#property-callback-tab.
+   
+   See https://developer.chrome.com/extensions/tabs#method-get."
   ([tab-id #_callback] (gen-call :function ::get &form tab-id)))
 
 (defmacro get-current
   "Gets the tab that this script call is being made from. May be undefined if called from a non-tab context (for example: a
    background page or popup view).
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [tab] where:
+   
+     |tab| - See https://developer.chrome.com/extensions/tabs#property-callback-tab.
+   
+   See https://developer.chrome.com/extensions/tabs#method-getCurrent."
   ([#_callback] (gen-call :function ::get-current &form)))
 
 (defmacro connect
   "Connects to the content script(s) in the specified tab. The 'runtime.onConnect' event is fired in each content script
-   running in the specified tab for the current extension. For more details, see Content Script Messaging."
+   running in the specified tab for the current extension. For more details, see Content Script Messaging.
+   
+     |tabId| - See https://developer.chrome.com/extensions/tabs#property-connect-tabId.
+     |connectInfo| - See https://developer.chrome.com/extensions/tabs#property-connect-connectInfo.
+   
+   See https://developer.chrome.com/extensions/tabs#method-connect."
   ([tab-id connect-info] (gen-call :function ::connect &form tab-id connect-info))
   ([tab-id] `(connect ~tab-id :omit)))
 
@@ -45,7 +64,17 @@
    sent back.  The 'extension.onRequest' event is fired in each content script running in the specified tab for the current
    extension.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |tabId| - See https://developer.chrome.com/extensions/tabs#property-sendRequest-tabId.
+     |request| - See https://developer.chrome.com/extensions/tabs#property-sendRequest-request.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [response] where:
+   
+     |response| - The JSON response object sent by the handler of the request. If an error occurs while connecting to the
+                  specified tab, the callback will be called with no arguments and 'runtime.lastError' will be set to the
+                  error message.
+   
+   See https://developer.chrome.com/extensions/tabs#method-sendRequest."
   ([tab-id request #_response-callback] (gen-call :function ::send-request &form tab-id request)))
 
 (defmacro send-message
@@ -53,7 +82,18 @@
    sent back.  The 'runtime.onMessage' event is fired in each content script running in the specified tab for the current
    extension.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |tabId| - See https://developer.chrome.com/extensions/tabs#property-sendMessage-tabId.
+     |message| - See https://developer.chrome.com/extensions/tabs#property-sendMessage-message.
+     |options| - See https://developer.chrome.com/extensions/tabs#property-sendMessage-options.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [response] where:
+   
+     |response| - The JSON response object sent by the handler of the message. If an error occurs while connecting to the
+                  specified tab, the callback will be called with no arguments and 'runtime.lastError' will be set to the
+                  error message.
+   
+   See https://developer.chrome.com/extensions/tabs#method-sendMessage."
   ([tab-id message options #_response-callback] (gen-call :function ::send-message &form tab-id message options))
   ([tab-id message] `(send-message ~tab-id ~message :omit)))
 
@@ -62,7 +102,12 @@
    
      |windowId| - Defaults to the current window.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [tab] where:
+   
+     |tab| - See https://developer.chrome.com/extensions/tabs#property-callback-tab.
+   
+   See https://developer.chrome.com/extensions/tabs#method-getSelected."
   ([window-id #_callback] (gen-call :function ::get-selected &form window-id))
   ([] `(get-selected :omit)))
 
@@ -71,14 +116,26 @@
    
      |windowId| - Defaults to the current window.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [tabs] where:
+   
+     |tabs| - See https://developer.chrome.com/extensions/tabs#property-callback-tabs.
+   
+   See https://developer.chrome.com/extensions/tabs#method-getAllInWindow."
   ([window-id #_callback] (gen-call :function ::get-all-in-window &form window-id))
   ([] `(get-all-in-window :omit)))
 
 (defmacro create
   "Creates a new tab.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |createProperties| - See https://developer.chrome.com/extensions/tabs#property-create-createProperties.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [tab] where:
+   
+     |tab| - Details about the created tab. Will contain the ID of the new tab.
+   
+   See https://developer.chrome.com/extensions/tabs#method-create."
   ([create-properties #_callback] (gen-call :function ::create &form create-properties)))
 
 (defmacro duplicate
@@ -86,27 +143,54 @@
    
      |tabId| - The ID of the tab which is to be duplicated.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [tab] where:
+   
+     |tab| - Details about the duplicated tab. The 'tabs.Tab' object doesn't contain url, title and favIconUrl if the 'tabs'
+             permission has not been requested.
+   
+   See https://developer.chrome.com/extensions/tabs#method-duplicate."
   ([tab-id #_callback] (gen-call :function ::duplicate &form tab-id)))
 
 (defmacro query
   "Gets all tabs that have the specified properties, or all tabs if no properties are specified.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |queryInfo| - See https://developer.chrome.com/extensions/tabs#property-query-queryInfo.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/tabs#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/tabs#method-query."
   ([query-info #_callback] (gen-call :function ::query &form query-info)))
 
 (defmacro highlight
   "Highlights the given tabs.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |highlightInfo| - See https://developer.chrome.com/extensions/tabs#property-highlight-highlightInfo.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [window] where:
+   
+     |window| - Contains details about the window whose tabs were highlighted.
+   
+   See https://developer.chrome.com/extensions/tabs#method-highlight."
   ([highlight-info #_callback] (gen-call :function ::highlight &form highlight-info)))
 
 (defmacro update
   "Modifies the properties of a tab. Properties that are not specified in updateProperties are not modified.
    
      |tabId| - Defaults to the selected tab of the current window.
+     |updateProperties| - See https://developer.chrome.com/extensions/tabs#property-update-updateProperties.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [tab] where:
+   
+     |tab| - Details about the updated tab. The 'tabs.Tab' object doesn't contain url, title and favIconUrl if the 'tabs'
+             permission has not been requested.
+   
+   See https://developer.chrome.com/extensions/tabs#method-update."
   ([tab-id update-properties #_callback] (gen-call :function ::update &form tab-id update-properties)))
 
 (defmacro move
@@ -114,16 +198,26 @@
    from normal (window.type === 'normal') windows.
    
      |tabIds| - The tab or list of tabs to move.
+     |moveProperties| - See https://developer.chrome.com/extensions/tabs#property-move-moveProperties.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [tabs] where:
+   
+     |tabs| - Details about the moved tabs.
+   
+   See https://developer.chrome.com/extensions/tabs#method-move."
   ([tab-ids move-properties #_callback] (gen-call :function ::move &form tab-ids move-properties)))
 
 (defmacro reload
   "Reload a tab.
    
      |tabId| - The ID of the tab to reload; defaults to the selected tab of the current window.
+     |reloadProperties| - See https://developer.chrome.com/extensions/tabs#property-reload-reloadProperties.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/tabs#method-reload."
   ([tab-id reload-properties #_callback] (gen-call :function ::reload &form tab-id reload-properties))
   ([tab-id] `(reload ~tab-id :omit))
   ([] `(reload :omit :omit)))
@@ -133,7 +227,10 @@
    
      |tabIds| - The tab or list of tabs to close.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/tabs#method-remove."
   ([tab-ids #_callback] (gen-call :function ::remove &form tab-ids)))
 
 (defmacro detect-language
@@ -141,7 +238,15 @@
    
      |tabId| - Defaults to the active tab of the current window.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [language] where:
+   
+     |language| - An ISO language code such as en or fr. For a complete list of languages supported by this method, see
+                  kLanguageInfoTable. The 2nd to 4th columns will be checked and the first non-NULL value will be returned
+                  except for Simplified Chinese for which zh-CN will be returned. For an unknown language, und will be
+                  returned.
+   
+   See https://developer.chrome.com/extensions/tabs#method-detectLanguage."
   ([tab-id #_callback] (gen-call :function ::detect-language &form tab-id))
   ([] `(detect-language :omit)))
 
@@ -152,7 +257,13 @@
      |windowId| - The target window. Defaults to the current window.
      |options| - Details about the format and quality of an image.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [dataUrl] where:
+   
+     |dataUrl| - A data URL which encodes an image of the visible area of the captured tab. May be assigned to the 'src'
+                 property of an HTML Image element for display.
+   
+   See https://developer.chrome.com/extensions/tabs#method-captureVisibleTab."
   ([window-id options #_callback] (gen-call :function ::capture-visible-tab &form window-id options))
   ([window-id] `(capture-visible-tab ~window-id :omit))
   ([] `(capture-visible-tab :omit :omit)))
@@ -163,9 +274,13 @@
      |tabId| - The ID of the tab in which to run the script; defaults to the active tab of the current window.
      |details| - Details of the script or CSS to inject. Either the code or the file property must be set, but both may not
                  be set at the same time.
-     |callback| - Called after all the JavaScript has been executed.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - The result of the script in every injected frame.
+   
+   See https://developer.chrome.com/extensions/tabs#method-executeScript."
   ([tab-id details #_callback] (gen-call :function ::execute-script &form tab-id details)))
 
 (defmacro insert-css
@@ -174,9 +289,11 @@
      |tabId| - The ID of the tab in which to insert the CSS; defaults to the active tab of the current window.
      |details| - Details of the script or CSS to inject. Either the code or the file property must be set, but both may not
                  be set at the same time.
-     |callback| - Called when all the CSS has been inserted.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/tabs#method-insertCSS."
   ([tab-id details #_callback] (gen-call :function ::insert-css &form tab-id details)))
 
 (defmacro set-zoom
@@ -185,18 +302,24 @@
      |tabId| - The ID of the tab to zoom; defaults to the active tab of the current window.
      |zoomFactor| - The new zoom factor. Use a value of 0 here to set the tab to its current default zoom factor. Values
                     greater than zero specify a (possibly non-default) zoom factor for the tab.
-     |callback| - Called after the zoom factor has been changed.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/tabs#method-setZoom."
   ([tab-id zoom-factor #_callback] (gen-call :function ::set-zoom &form tab-id zoom-factor)))
 
 (defmacro get-zoom
   "Gets the current zoom factor of a specified tab.
    
      |tabId| - The ID of the tab to get the current zoom factor from; defaults to the active tab of the current window.
-     |callback| - Called with the tab's current zoom factor after it has been fetched.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [zoomFactor] where:
+   
+     |zoomFactor| - The tab's current zoom factor.
+   
+   See https://developer.chrome.com/extensions/tabs#method-getZoom."
   ([tab-id #_callback] (gen-call :function ::get-zoom &form tab-id))
   ([] `(get-zoom :omit)))
 
@@ -206,18 +329,24 @@
    
      |tabId| - The ID of the tab to change the zoom settings for; defaults to the active tab of the current window.
      |zoomSettings| - Defines how zoom changes are handled and at what scope.
-     |callback| - Called after the zoom settings have been changed.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/tabs#method-setZoomSettings."
   ([tab-id zoom-settings #_callback] (gen-call :function ::set-zoom-settings &form tab-id zoom-settings)))
 
 (defmacro get-zoom-settings
   "Gets the current zoom settings of a specified tab.
    
      |tabId| - The ID of the tab to get the current zoom settings from; defaults to the active tab of the current window.
-     |callback| - Called with the tab's current zoom settings.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [zoomSettings] where:
+   
+     |zoomSettings| - The tab's current zoom settings.
+   
+   See https://developer.chrome.com/extensions/tabs#method-getZoomSettings."
   ([tab-id #_callback] (gen-call :function ::get-zoom-settings &form tab-id))
   ([] `(get-zoom-settings :omit)))
 
@@ -230,14 +359,18 @@
    onUpdated events to be notified when a URL is set.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/tabs#event-onCreated."
   ([channel & args] (apply gen-call :event ::on-created &form channel args)))
 
 (defmacro tap-on-updated-events
   "Fired when a tab is updated.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/tabs#event-onUpdated."
   ([channel & args] (apply gen-call :event ::on-updated &form channel args)))
 
 (defmacro tap-on-moved-events
@@ -246,14 +379,18 @@
    windows. For that, see 'tabs.onDetached'.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/tabs#event-onMoved."
   ([channel & args] (apply gen-call :event ::on-moved &form channel args)))
 
 (defmacro tap-on-selection-changed-events
   "Fires when the selected tab in a window changes.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/tabs#event-onSelectionChanged."
   ([channel & args] (apply gen-call :event ::on-selection-changed &form channel args)))
 
 (defmacro tap-on-active-changed-events
@@ -261,7 +398,9 @@
    you can listen to 'tabs.onUpdated' events to be notified when a URL is set.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/tabs#event-onActiveChanged."
   ([channel & args] (apply gen-call :event ::on-active-changed &form channel args)))
 
 (defmacro tap-on-activated-events
@@ -269,56 +408,72 @@
    can listen to onUpdated events to be notified when a URL is set.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/tabs#event-onActivated."
   ([channel & args] (apply gen-call :event ::on-activated &form channel args)))
 
 (defmacro tap-on-highlight-changed-events
   "Fired when the highlighted or selected tabs in a window changes.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/tabs#event-onHighlightChanged."
   ([channel & args] (apply gen-call :event ::on-highlight-changed &form channel args)))
 
 (defmacro tap-on-highlighted-events
   "Fired when the highlighted or selected tabs in a window changes.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/tabs#event-onHighlighted."
   ([channel & args] (apply gen-call :event ::on-highlighted &form channel args)))
 
 (defmacro tap-on-detached-events
   "Fired when a tab is detached from a window, for example because it is being moved between windows.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/tabs#event-onDetached."
   ([channel & args] (apply gen-call :event ::on-detached &form channel args)))
 
 (defmacro tap-on-attached-events
   "Fired when a tab is attached to a window, for example because it was moved between windows.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/tabs#event-onAttached."
   ([channel & args] (apply gen-call :event ::on-attached &form channel args)))
 
 (defmacro tap-on-removed-events
   "Fired when a tab is closed.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/tabs#event-onRemoved."
   ([channel & args] (apply gen-call :event ::on-removed &form channel args)))
 
 (defmacro tap-on-replaced-events
   "Fired when a tab is replaced with another tab due to prerendering or instant.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/tabs#event-onReplaced."
   ([channel & args] (apply gen-call :event ::on-replaced &form channel args)))
 
 (defmacro tap-on-zoom-change-events
   "Fired when a tab is zoomed.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/tabs#event-onZoomChange."
   ([channel & args] (apply gen-call :event ::on-zoom-change &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

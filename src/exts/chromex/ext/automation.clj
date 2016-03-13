@@ -23,9 +23,14 @@
    necessary. Returns a tree with a placeholder root node; listen for the 'loadComplete' event to get a notification that the
    tree has fully loaded (the previous root node reference will stop working at or before this point).
    
-     |callback| - Called when the AutomationNode for the page is available.
+     |tabId| - See https://developer.chrome.com/extensions/automation#property-getTree-tabId.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [rootNode] where:
+   
+     |rootNode| - See https://developer.chrome.com/extensions/automation#property-callback-rootNode.
+   
+   See https://developer.chrome.com/extensions/automation#method-getTree."
   ([tab-id #_callback] (gen-call :function ::get-tree &form tab-id))
   ([] `(get-tree :omit)))
 
@@ -33,35 +38,49 @@
   "Get the automation tree for the whole desktop which consists of all on screen views. Note this API is currently only
    supported on Chrome OS.
    
-     |callback| - Called when the AutomationNode for the page is available.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [rootNode] where:
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |rootNode| - See https://developer.chrome.com/extensions/automation#property-callback-rootNode.
+   
+   See https://developer.chrome.com/extensions/automation#method-getDesktop."
   ([#_callback] (gen-call :function ::get-desktop &form)))
 
 (defmacro get-focus
   "Get the automation node that currently has focus, globally. Will return null if none of the nodes in any loaded trees have
    focus.
    
-     |callback| - Called with the AutomationNode that currently has focus.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [focusedNode] where:
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |focusedNode| - See https://developer.chrome.com/extensions/automation#property-callback-focusedNode.
+   
+   See https://developer.chrome.com/extensions/automation#method-getFocus."
   ([#_callback] (gen-call :function ::get-focus &form)))
 
 (defmacro add-tree-change-observer
   "Add a tree change observer. Tree change observers are static/global, they listen to changes across all trees. Pass a filter
    to determine what specific tree changes to listen to, and note that listnening to all tree changes can be expensive.
    
-     |observer| - A listener for changes on the AutomationNode tree.
+     |filter| - See https://developer.chrome.com/extensions/automation#property-addTreeChangeObserver-filter.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [treeChange] where:
+   
+     |treeChange| - See https://developer.chrome.com/extensions/automation#property-observer-treeChange.
+   
+   See https://developer.chrome.com/extensions/automation#method-addTreeChangeObserver."
   ([filter #_observer] (gen-call :function ::add-tree-change-observer &form filter)))
 
 (defmacro remove-tree-change-observer
   "Remove a tree change observer.
    
-     |observer| - A listener for changes on the AutomationNode tree.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [treeChange] where:
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |treeChange| - See https://developer.chrome.com/extensions/automation#property-observer-treeChange.
+   
+   See https://developer.chrome.com/extensions/automation#method-removeTreeChangeObserver."
   ([#_observer] (gen-call :function ::remove-tree-change-observer &form)))
 
 (defmacro set-document-selection
@@ -69,7 +88,11 @@
    root). Everything in the tree between the two node/offset pairs gets included in the selection. The anchor is where the
    user started the selection, while the focus is the point at which the selection gets extended e.g. when dragging with a
    mouse or using the keyboard. For nodes with the role staticText, the offset gives the character offset within the value
-   where the selection starts or ends, respectively."
+   where the selection starts or ends, respectively.
+   
+     |params| - See https://developer.chrome.com/extensions/automation#property-setDocumentSelection-params.
+   
+   See https://developer.chrome.com/extensions/automation#method-setDocumentSelection."
   ([params] (gen-call :function ::set-document-selection &form params)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

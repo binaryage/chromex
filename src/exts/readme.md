@@ -1,5 +1,3 @@
-#### DO NOT MODIFY THIS FOLDER
-
 # This is generated API
 
 ### Files

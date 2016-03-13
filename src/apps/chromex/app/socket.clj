@@ -22,16 +22,22 @@
    
      |type| - The type of socket to create. Must be tcp or udp.
      |options| - The socket options.
-     |callback| - Called when the socket has been created.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [createInfo] where:
+   
+     |createInfo| - See https://developer.chrome.com/extensions/socket#property-callback-createInfo.
+   
+   See https://developer.chrome.com/extensions/socket#method-create."
   ([type options #_callback] (gen-call :function ::create &form type options))
   ([type] `(create ~type :omit)))
 
 (defmacro destroy
   "Destroys the socket. Each socket created should be destroyed after use.
    
-     |socketId| - The socketId."
+     |socketId| - The socketId.
+   
+   See https://developer.chrome.com/extensions/socket#method-destroy."
   ([socket-id] (gen-call :function ::destroy &form socket-id)))
 
 (defmacro connect
@@ -41,9 +47,13 @@
      |socketId| - The socketId.
      |hostname| - The hostname or IP address of the remote machine.
      |port| - The port of the remote machine.
-     |callback| - Called when the connection attempt is complete.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/socket#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/socket#method-connect."
   ([socket-id hostname port #_callback] (gen-call :function ::connect &form socket-id hostname port)))
 
 (defmacro bind
@@ -52,15 +62,21 @@
      |socketId| - The socketId.
      |address| - The address of the local machine.
      |port| - The port of the local machine.
-     |callback| - Called when the bind attempt is complete.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/socket#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/socket#method-bind."
   ([socket-id address port #_callback] (gen-call :function ::bind &form socket-id address port)))
 
 (defmacro disconnect
   "Disconnects the socket. For UDP sockets, disconnect is a non-operation but is safe to call.
    
-     |socketId| - The socketId."
+     |socketId| - The socketId.
+   
+   See https://developer.chrome.com/extensions/socket#method-disconnect."
   ([socket-id] (gen-call :function ::disconnect &form socket-id)))
 
 (defmacro read
@@ -68,9 +84,13 @@
    
      |socketId| - The socketId.
      |bufferSize| - The read buffer size.
-     |callback| - Delivers data that was available to be read without blocking.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [readInfo] where:
+   
+     |readInfo| - See https://developer.chrome.com/extensions/socket#property-callback-readInfo.
+   
+   See https://developer.chrome.com/extensions/socket#method-read."
   ([socket-id buffer-size #_callback] (gen-call :function ::read &form socket-id buffer-size))
   ([socket-id] `(read ~socket-id :omit)))
 
@@ -79,9 +99,13 @@
    
      |socketId| - The socketId.
      |data| - The data to write.
-     |callback| - Called when the write operation completes without blocking or an error occurs.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [writeInfo] where:
+   
+     |writeInfo| - See https://developer.chrome.com/extensions/socket#property-callback-writeInfo.
+   
+   See https://developer.chrome.com/extensions/socket#method-write."
   ([socket-id data #_callback] (gen-call :function ::write &form socket-id data)))
 
 (defmacro recv-from
@@ -89,9 +113,13 @@
    
      |socketId| - The socketId.
      |bufferSize| - The receive buffer size.
-     |callback| - Returns result of the recvFrom operation.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [recvFromInfo] where:
+   
+     |recvFromInfo| - See https://developer.chrome.com/extensions/socket#property-callback-recvFromInfo.
+   
+   See https://developer.chrome.com/extensions/socket#method-recvFrom."
   ([socket-id buffer-size #_callback] (gen-call :function ::recv-from &form socket-id buffer-size))
   ([socket-id] `(recv-from ~socket-id :omit)))
 
@@ -102,9 +130,13 @@
      |data| - The data to write.
      |address| - The address of the remote machine.
      |port| - The port of the remote machine.
-     |callback| - Called when the send operation completes without blocking or an error occurs.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [writeInfo] where:
+   
+     |writeInfo| - See https://developer.chrome.com/extensions/socket#property-callback-writeInfo.
+   
+   See https://developer.chrome.com/extensions/socket#method-sendTo."
   ([socket-id data address port #_callback] (gen-call :function ::send-to &form socket-id data address port)))
 
 (defmacro listen
@@ -115,9 +147,13 @@
      |address| - The address of the local machine.
      |port| - The port of the local machine.
      |backlog| - Length of the socket's listen queue.
-     |callback| - Called when listen operation completes.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/socket#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/socket#method-listen."
   ([socket-id address port backlog #_callback] (gen-call :function ::listen &form socket-id address port backlog))
   ([socket-id address port] `(listen ~socket-id ~address ~port :omit)))
 
@@ -127,9 +163,13 @@
    invoked immediately with an error as the resultCode.
    
      |socketId| - The socketId.
-     |callback| - The callback is invoked when a new socket is accepted.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [acceptInfo] where:
+   
+     |acceptInfo| - See https://developer.chrome.com/extensions/socket#property-callback-acceptInfo.
+   
+   See https://developer.chrome.com/extensions/socket#method-accept."
   ([socket-id #_callback] (gen-call :function ::accept &form socket-id)))
 
 (defmacro set-keep-alive
@@ -138,9 +178,13 @@
      |socketId| - The socketId.
      |enable| - If true, enable keep-alive functionality.
      |delay| - Set the delay seconds between the last data packet received and the first keepalive probe. Default is 0.
-     |callback| - Called when the setKeepAlive attempt is complete.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/socket#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/socket#method-setKeepAlive."
   ([socket-id enable delay #_callback] (gen-call :function ::set-keep-alive &form socket-id enable delay))
   ([socket-id enable] `(set-keep-alive ~socket-id ~enable :omit)))
 
@@ -149,26 +193,37 @@
    
      |socketId| - The socketId.
      |noDelay| - If true, disables Nagle's algorithm.
-     |callback| - Called when the setNoDelay attempt is complete.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/socket#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/socket#method-setNoDelay."
   ([socket-id no-delay #_callback] (gen-call :function ::set-no-delay &form socket-id no-delay)))
 
 (defmacro get-info
   "Retrieves the state of the given socket.
    
      |socketId| - The socketId.
-     |callback| - Called when the state is available.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/socket#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/socket#method-getInfo."
   ([socket-id #_callback] (gen-call :function ::get-info &form socket-id)))
 
 (defmacro get-network-list
   "Retrieves information about local adapters on this system.
    
-     |callback| - Called when local adapter information is available.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |result| - See https://developer.chrome.com/extensions/socket#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/socket#method-getNetworkList."
   ([#_callback] (gen-call :function ::get-network-list &form)))
 
 (defmacro join-group
@@ -177,10 +232,13 @@
    
      |socketId| - The socketId.
      |address| - The group address to join. Domain names are not supported.
-     |callback| - Called when the join group operation is done with an integer parameter indicating the platform-independent
-                  error code.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/socket#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/socket#method-joinGroup."
   ([socket-id address #_callback] (gen-call :function ::join-group &form socket-id address)))
 
 (defmacro leave-group
@@ -190,10 +248,13 @@
    
      |socketId| - The socketId.
      |address| - The group address to leave. Domain names are not supported.
-     |callback| - Called when the leave group operation is done with an integer parameter indicating the
-                  platform-independent error code.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/socket#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/socket#method-leaveGroup."
   ([socket-id address #_callback] (gen-call :function ::leave-group &form socket-id address)))
 
 (defmacro set-multicast-time-to-live
@@ -202,9 +263,13 @@
    
      |socketId| - The socketId.
      |ttl| - The time-to-live value.
-     |callback| - Called when the configuration operation is done.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/socket#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/socket#method-setMulticastTimeToLive."
   ([socket-id ttl #_callback] (gen-call :function ::set-multicast-time-to-live &form socket-id ttl)))
 
 (defmacro set-multicast-loopback-mode
@@ -217,18 +282,26 @@
    
      |socketId| - The socketId.
      |enabled| - Indicate whether to enable loopback mode.
-     |callback| - Called when the configuration operation is done.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/socket#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/socket#method-setMulticastLoopbackMode."
   ([socket-id enabled #_callback] (gen-call :function ::set-multicast-loopback-mode &form socket-id enabled)))
 
 (defmacro get-joined-groups
   "Get the multicast group addresses the socket is currently joined to.
    
      |socketId| - The socketId.
-     |callback| - Called with an array of strings of the result.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [groups] where:
+   
+     |groups| - See https://developer.chrome.com/extensions/socket#property-callback-groups.
+   
+   See https://developer.chrome.com/extensions/socket#method-getJoinedGroups."
   ([socket-id #_callback] (gen-call :function ::get-joined-groups &form socket-id)))
 
 (defmacro secure
@@ -236,9 +309,13 @@
    
      |socketId| - The connected socket to use.
      |options| - Constraints and parameters for the TLS connection.
-     |callback| - Called when the TLS connection attempt is complete.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/socket#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/socket#method-secure."
   ([socket-id options #_callback] (gen-call :function ::secure &form socket-id options))
   ([socket-id] `(secure ~socket-id :omit)))
 

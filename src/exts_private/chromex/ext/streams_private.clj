@@ -18,10 +18,11 @@
   "Abort the URL request on the given stream.
    
      |streamUrl| - The URL of the stream to abort.
-     |callback| - Called when the stream URL is guaranteed to be invalid. The underlying URL request may not yet have been
-                  aborted when this is run.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/streamsPrivate#method-abort."
   ([stream-url #_callback] (gen-call :function ::abort &form stream-url)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -33,7 +34,9 @@
    and the extension is expected to handle the request. The event is restricted to a small number of white-listed extensions.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/streamsPrivate#event-onExecuteMimeTypeHandler."
   ([channel & args] (apply gen-call :event ::on-execute-mime-type-handler &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

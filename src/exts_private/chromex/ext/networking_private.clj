@@ -42,9 +42,13 @@
    read/write values).
    
      |networkGuid| - The GUID of the network to get properties for.
-     |callback| - Called with the network properties when received.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/networkingPrivate#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/networkingPrivate#method-getProperties."
   ([network-guid #_callback] (gen-call :function ::get-properties &form network-guid)))
 
 (defmacro get-managed-properties
@@ -52,9 +56,13 @@
    policy, device policy and the currently active settings.
    
      |networkGuid| - The GUID of the network to get properties for.
-     |callback| - Called with the managed network properties when received.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/networkingPrivate#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/networkingPrivate#method-getManagedProperties."
   ([network-guid #_callback] (gen-call :function ::get-managed-properties &form network-guid)))
 
 (defmacro get-state
@@ -65,9 +73,13 @@
    Cellular.RoamingState.
    
      |networkGuid| - The GUID of the network to get properties for.
-     |callback| - Called immediately with the network state properties.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/networkingPrivate#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/networkingPrivate#method-getState."
   ([network-guid #_callback] (gen-call :function ::get-state &form network-guid)))
 
 (defmacro set-properties
@@ -75,9 +87,11 @@
    
      |networkGuid| - The GUID of the network to set properties for.
      |properties| - The properties to set.
-     |callback| - Called when the operation has completed.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/networkingPrivate#method-setProperties."
   ([network-guid properties #_callback] (gen-call :function ::set-properties &form network-guid properties)))
 
 (defmacro create-network
@@ -86,9 +100,13 @@
    
      |shared| - If true, share this network configuration with other users.
      |properties| - The properties to configure the new network with.
-     |callback| - Called with the GUID for the new network configuration once     the network has been created.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/networkingPrivate#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/networkingPrivate#method-createNetwork."
   ([shared properties #_callback] (gen-call :function ::create-network &form shared properties)))
 
 (defmacro forget-network
@@ -97,9 +115,11 @@
    an error will be set and the operation will fail.
    
      |networkGuid| - The GUID of the network to forget.
-     |callback| - Called when the operation has completed.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/networkingPrivate#method-forgetNetwork."
   ([network-guid #_callback] (gen-call :function ::forget-network &form network-guid)))
 
 (defmacro get-networks
@@ -108,67 +128,95 @@
    their priority, with connected or connecting networks listed first.
    
      |filter| - Describes which networks to return.
-     |callback| - Called with a dictionary of networks and their state     properties when received.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/networkingPrivate#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/networkingPrivate#method-getNetworks."
   ([filter #_callback] (gen-call :function ::get-networks &form filter)))
 
 (defmacro get-visible-networks
   "Deprecated. Please use 'networkingPrivate.getNetworks' with filter.visible = true instead.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |networkType| - See https://developer.chrome.com/extensions/networkingPrivate#property-getVisibleNetworks-networkType.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/networkingPrivate#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/networkingPrivate#method-getVisibleNetworks."
   ([network-type #_callback] (gen-call :function ::get-visible-networks &form network-type)))
 
 (defmacro get-enabled-network-types
   "Deprecated. Please use 'networkingPrivate.getDeviceStates' instead.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/networkingPrivate#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/networkingPrivate#method-getEnabledNetworkTypes."
   ([#_callback] (gen-call :function ::get-enabled-network-types &form)))
 
 (defmacro get-device-states
   "Returns a list of 'networkingPrivate.DeviceStateProperties' objects.
    
-     |callback| - Called with a list of devices and their state.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |result| - See https://developer.chrome.com/extensions/networkingPrivate#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/networkingPrivate#method-getDeviceStates."
   ([#_callback] (gen-call :function ::get-device-states &form)))
 
 (defmacro enable-network-type
   "Enables any devices matching the specified network type. Note, the type might represent multiple network types (e.g.
    'Wireless').
    
-     |networkType| - The type of network to enable."
+     |networkType| - The type of network to enable.
+   
+   See https://developer.chrome.com/extensions/networkingPrivate#method-enableNetworkType."
   ([network-type] (gen-call :function ::enable-network-type &form network-type)))
 
 (defmacro disable-network-type
   "Disables any devices matching the specified network type. See note for 'networkingPrivate.enableNetworkType'.
    
-     |networkType| - The type of network to disable."
+     |networkType| - The type of network to disable.
+   
+   See https://developer.chrome.com/extensions/networkingPrivate#method-disableNetworkType."
   ([network-type] (gen-call :function ::disable-network-type &form network-type)))
 
 (defmacro request-network-scan
   "Requests that the networking subsystem scan for new networks and update the list returned by 'getVisibleNetworks'. This is
    only a request: the network subsystem can choose to ignore it.  If the list is updated, then the 'onNetworkListChanged'
-   event will be fired."
+   event will be fired.
+   
+   See https://developer.chrome.com/extensions/networkingPrivate#method-requestNetworkScan."
   ([] (gen-call :function ::request-network-scan &form)))
 
 (defmacro start-connect
   "Starts a connection to the network with networkGuid.
    
      |networkGuid| - The GUID of the network to connect to.
-     |callback| - Called when the connect request has been sent. Note: the     connection may not have completed. Observe
-                  'onNetworksChanged'     to be notified when a network state changes.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/networkingPrivate#method-startConnect."
   ([network-guid #_callback] (gen-call :function ::start-connect &form network-guid)))
 
 (defmacro start-disconnect
   "Starts a disconnect from the network with networkGuid.
    
      |networkGuid| - The GUID of the network to disconnect from.
-     |callback| - Called when the disconnect request has been sent. See note     for 'startConnect'.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/networkingPrivate#method-startDisconnect."
   ([network-guid #_callback] (gen-call :function ::start-disconnect &form network-guid)))
 
 (defmacro start-activate
@@ -178,9 +226,11 @@
    
      |networkGuid| - The GUID of the Cellular network to activate.
      |carrier| - Optional name of carrier to activate.
-     |callback| - Called when the activation request has been sent. See note     for 'startConnect'.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/networkingPrivate#method-startActivate."
   ([network-guid carrier #_callback] (gen-call :function ::start-activate &form network-guid carrier))
   ([network-guid] `(start-activate ~network-guid :omit)))
 
@@ -188,9 +238,13 @@
   "Verifies that the device is a trusted device.
    
      |properties| - Properties of the destination to use in verifying that it     is a trusted device.
-     |callback| - A callback function that indicates whether or not the device     is a trusted device.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/networkingPrivate#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/networkingPrivate#method-verifyDestination."
   ([properties #_callback] (gen-call :function ::verify-destination &form properties)))
 
 (defmacro verify-and-encrypt-credentials
@@ -198,9 +252,13 @@
    
      |properties| - Properties of the destination to use in verifying that it     is a trusted device.
      |networkGuid| - The GUID of the Cellular network to activate.
-     |callback| - A callback function that receives base64-encoded encrypted     credential data to send to a trusted device.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/networkingPrivate#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/networkingPrivate#method-verifyAndEncryptCredentials."
   ([properties network-guid #_callback] (gen-call :function ::verify-and-encrypt-credentials &form properties network-guid)))
 
 (defmacro verify-and-encrypt-data
@@ -208,9 +266,13 @@
    
      |properties| - Properties of the destination to use in verifying that it     is a trusted device.
      |data| - A string containing the base64-encoded data to encrypt.
-     |callback| - A callback function that receives base64-encoded encrypted     data to send to a trusted device.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/networkingPrivate#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/networkingPrivate#method-verifyAndEncryptData."
   ([properties data #_callback] (gen-call :function ::verify-and-encrypt-data &form properties data)))
 
 (defmacro set-wifi-tdls-enabled-state
@@ -218,30 +280,40 @@
    
      |ip_or_mac_address| - The IP or MAC address of the peer with which to     enable a TDLS connection. |enabled| If true,
                            enable TDLS, otherwise disable TDLS.
-     |callback| - A callback function that receives a string with an error or     the current TDLS status. 'Failed'
-                  indicates that the request failed     (e.g. MAC address lookup failed). 'Timeout' indicates that the
-                  lookup     timed out. Otherwise a valid status is returned (see     'getWifiTDLSStatus').
+     |enabled| - See https://developer.chrome.com/extensions/networkingPrivate#property-setWifiTDLSEnabledState-enabled.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/networkingPrivate#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/networkingPrivate#method-setWifiTDLSEnabledState."
   ([ip-or-mac-address enabled #_callback] (gen-call :function ::set-wifi-tdls-enabled-state &form ip-or-mac-address enabled)))
 
 (defmacro get-wifi-tdls-status
   "Returns the current TDLS status for the specified peer.
    
      |ip_or_mac_address| - The IP or MAC address of the peer.
-     |callback| - A callback function that receives a string with the current     TDLS status which can be 'Connected',
-                  'Disabled', 'Disconnected',     'Nonexistent', or 'Unknown'.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/networkingPrivate#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/networkingPrivate#method-getWifiTDLSStatus."
   ([ip-or-mac-address #_callback] (gen-call :function ::get-wifi-tdls-status &form ip-or-mac-address)))
 
 (defmacro get-captive-portal-status
   "Returns captive portal status for the network matching 'networkGuid'.
    
      |networkGuid| - The GUID of the network to get captive portal status for.
-     |callback| - A callback function that returns the results of the query for     network captive portal status.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/networkingPrivate#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/networkingPrivate#method-getCaptivePortalStatus."
   ([network-guid #_callback] (gen-call :function ::get-captive-portal-status &form network-guid)))
 
 (defmacro unlock-cellular-sim
@@ -252,9 +324,11 @@
      |networkGuid| - The GUID of the cellular network to unlock.
      |pin| - The current SIM PIN, or the new PIN if PUK is provided.
      |puk| - The operator provided PUK for unblocking a blocked SIM.
-     |callback| - Called when the operation has completed.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/networkingPrivate#method-unlockCellularSim."
   ([network-guid pin puk #_callback] (gen-call :function ::unlock-cellular-sim &form network-guid pin puk))
   ([network-guid pin] `(unlock-cellular-sim ~network-guid ~pin :omit)))
 
@@ -267,9 +341,11 @@
    
      |networkGuid| - The GUID of the cellular network to set the SIM state of.
      |simState| - The SIM state to set.
-     |callback| - Called when the operation has completed.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/networkingPrivate#method-setCellularSimState."
   ([network-guid sim-state #_callback] (gen-call :function ::set-cellular-sim-state &form network-guid sim-state)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -280,21 +356,27 @@
   "Fired when the properties change on any of the networks.  Sends a list of GUIDs for networks whose properties have changed.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/networkingPrivate#event-onNetworksChanged."
   ([channel & args] (apply gen-call :event ::on-networks-changed &form channel args)))
 
 (defmacro tap-on-network-list-changed-events
   "Fired when the list of networks has changed.  Sends a complete list of GUIDs for all the current networks.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/networkingPrivate#event-onNetworkListChanged."
   ([channel & args] (apply gen-call :event ::on-network-list-changed &form channel args)))
 
 (defmacro tap-on-device-state-list-changed-events
   "Fired when the list of devices has changed or any device state properties have changed.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/networkingPrivate#event-onDeviceStateListChanged."
   ([channel & args] (apply gen-call :event ::on-device-state-list-changed &form channel args)))
 
 (defmacro tap-on-portal-detection-completed-events
@@ -302,7 +384,9 @@
    status.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/networkingPrivate#event-onPortalDetectionCompleted."
   ([channel & args] (apply gen-call :event ::on-portal-detection-completed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

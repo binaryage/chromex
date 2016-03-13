@@ -19,44 +19,81 @@
 (defmacro set-adapter-state
   "Changes the state of the Bluetooth adapter.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |adapterState| - See https://developer.chrome.com/extensions/bluetoothPrivate#property-setAdapterState-adapterState.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/bluetoothPrivate#method-setAdapterState."
   ([adapter-state #_callback] (gen-call :function ::set-adapter-state &form adapter-state)))
 
 (defmacro set-pairing-response
-  "
+  "  |options| - See https://developer.chrome.com/extensions/bluetoothPrivate#property-setPairingResponse-options.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/bluetoothPrivate#method-setPairingResponse."
   ([options #_callback] (gen-call :function ::set-pairing-response &form options)))
 
 (defmacro disconnect-all
   "Tears down all connections to the given device.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |deviceAddress| - See https://developer.chrome.com/extensions/bluetoothPrivate#property-disconnectAll-deviceAddress.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/bluetoothPrivate#method-disconnectAll."
   ([device-address #_callback] (gen-call :function ::disconnect-all &form device-address)))
 
 (defmacro forget-device
   "Forgets the given device.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |deviceAddress| - See https://developer.chrome.com/extensions/bluetoothPrivate#property-forgetDevice-deviceAddress.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/bluetoothPrivate#method-forgetDevice."
   ([device-address #_callback] (gen-call :function ::forget-device &form device-address)))
 
 (defmacro set-discovery-filter
   "Set or clear discovery filter.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |discoveryFilter| - See
+                         https://developer.chrome.com/extensions/bluetoothPrivate#property-setDiscoveryFilter-discoveryFilter
+                         .
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/bluetoothPrivate#method-setDiscoveryFilter."
   ([discovery-filter #_callback] (gen-call :function ::set-discovery-filter &form discovery-filter)))
 
 (defmacro connect
   "Connects to the given device. This will only throw an error if the device address is invalid or the device is already
    connected. Otherwise this will succeed and invoke |callback| with ConnectResultType.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |deviceAddress| - See https://developer.chrome.com/extensions/bluetoothPrivate#property-connect-deviceAddress.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/bluetoothPrivate#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/bluetoothPrivate#method-connect."
   ([device-address #_callback] (gen-call :function ::connect &form device-address)))
 
 (defmacro pair
   "Pairs the given device.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |deviceAddress| - See https://developer.chrome.com/extensions/bluetoothPrivate#property-pair-deviceAddress.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/bluetoothPrivate#method-pair."
   ([device-address #_callback] (gen-call :function ::pair &form device-address)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -67,7 +104,9 @@
   "Fired when a pairing event occurs.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/bluetoothPrivate#event-onPairing."
   ([channel & args] (apply gen-call :event ::on-pairing &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

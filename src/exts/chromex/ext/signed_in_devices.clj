@@ -20,9 +20,13 @@
    
      |isLocal| - If true only return the information for the local device. If false or omitted return the list of all
                  devices including the local device.
-     |callback| - The callback to be invoked with the array of DeviceInfo objects.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [devices] where:
+   
+     |devices| - See https://developer.chrome.com/extensions/signedInDevices#property-callback-devices.
+   
+   See https://developer.chrome.com/extensions/signedInDevices#method-get."
   ([is-local #_callback] (gen-call :function ::get &form is-local))
   ([] `(get :omit)))
 
@@ -34,7 +38,9 @@
   "Fired if the DeviceInfo object of any of the signed in devices change or a new device is added or a device removed.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/signedInDevices#event-onDeviceInfoChange."
   ([channel & args] (apply gen-call :event ::on-device-info-change &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

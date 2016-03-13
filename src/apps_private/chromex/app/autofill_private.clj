@@ -19,7 +19,9 @@
   "Saves the given address. If |address| has an empty string as its ID, it will be assigned a new one and added as a new
    entry.
    
-     |address| - The address entry to save."
+     |address| - The address entry to save.
+   
+   See https://developer.chrome.com/extensions/autofillPrivate#method-saveAddress."
   ([address] (gen-call :function ::save-address &form address)))
 
 (defmacro get-address-components
@@ -27,22 +29,30 @@
    
      |countryCode| - A two-character string representing the address' country     whose components should be returned. See
                      autofill_country.cc for a     list of valid codes.
-     |callback| - Callback which will be called with components.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [components] where:
+   
+     |components| - See https://developer.chrome.com/extensions/autofillPrivate#property-callback-components.
+   
+   See https://developer.chrome.com/extensions/autofillPrivate#method-getAddressComponents."
   ([country-code #_callback] (gen-call :function ::get-address-components &form country-code)))
 
 (defmacro save-credit-card
   "Saves the given credit card. If |card| has an empty string as its ID, it will be assigned a new one and added as a new
    entry.
    
-     |card| - The card entry to save."
+     |card| - The card entry to save.
+   
+   See https://developer.chrome.com/extensions/autofillPrivate#method-saveCreditCard."
   ([card] (gen-call :function ::save-credit-card &form card)))
 
 (defmacro remove-entry
   "Removes the entry (address or credit card) with the given ID.
    
-     |guid| - ID of the entry to remove."
+     |guid| - ID of the entry to remove.
+   
+   See https://developer.chrome.com/extensions/autofillPrivate#method-removeEntry."
   ([guid] (gen-call :function ::remove-entry &form guid)))
 
 (defmacro validate-phone-numbers
@@ -50,16 +60,24 @@
    newly-added number was invalid, it will not be returned in the list of valid numbers.
    
      |params| - The parameters to this function.
-     |callback| - Callback which will be called with validated phone numbers.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [validatedPhoneNumbers] where:
+   
+     |validatedPhoneNumbers| - See
+   
+   https://developer.chrome.com/extensions/autofillPrivate#property-callback-validatedPhoneNumbers.
+   
+   See https://developer.chrome.com/extensions/autofillPrivate#method-validatePhoneNumbers."
   ([params #_callback] (gen-call :function ::validate-phone-numbers &form params)))
 
 (defmacro mask-credit-card
   "Clears the data associated with a wallet card which was saved locally so that the saved copy is masked (e.g., 'Card ending
    in 1234').
    
-     |guid| - GUID of the credit card to mask."
+     |guid| - GUID of the credit card to mask.
+   
+   See https://developer.chrome.com/extensions/autofillPrivate#method-maskCreditCard."
   ([guid] (gen-call :function ::mask-credit-card &form guid)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -71,7 +89,9 @@
    list of entries.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/autofillPrivate#event-onAddressListChanged."
   ([channel & args] (apply gen-call :event ::on-address-list-changed &form channel args)))
 
 (defmacro tap-on-credit-card-list-changed-events
@@ -79,7 +99,9 @@
    updated list of entries.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/autofillPrivate#event-onCreditCardListChanged."
   ([channel & args] (apply gen-call :event ::on-credit-card-list-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

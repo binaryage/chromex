@@ -15,11 +15,18 @@
 (defmacro attach-frame
   "Attaches the specified url to the AppView with the provided instance ID.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [instanceId] where:
+   
+     |instanceId| - See https://developer.chrome.com/extensions/appViewGuestInternal#property-callback-instanceId.
+   
+   See https://developer.chrome.com/extensions/appViewGuestInternal#method-attachFrame."
   ([#_callback] (gen-call :function ::attach-frame &form)))
 
 (defmacro deny-request
-  "Denies the embedding request made by the AppView with the provided instance ID."
+  "Denies the embedding request made by the AppView with the provided instance ID.
+   
+   See https://developer.chrome.com/extensions/appViewGuestInternal#method-denyRequest."
   ([] (gen-call :function ::deny-request &form)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

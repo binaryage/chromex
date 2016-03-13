@@ -18,9 +18,13 @@
   "Resolves the given hostname or IP address literal.
    
      |hostname| - The hostname to resolve.
-     |callback| - Called when the resolution operation completes.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [resolveInfo] where:
+   
+     |resolveInfo| - See https://developer.chrome.com/extensions/dns#property-callback-resolveInfo.
+   
+   See https://developer.chrome.com/extensions/dns#method-resolve."
   ([hostname #_callback] (gen-call :function ::resolve &form hostname)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

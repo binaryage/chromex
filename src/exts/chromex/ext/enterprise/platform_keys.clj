@@ -23,9 +23,12 @@
    a system-wide TPM token is available, the returned list will also contain the system-wide token with id 'system'. The
    system-wide token will be the same for all sessions on this device (device in the sense of e.g. a Chromebook).
    
-     |callback| - Invoked by getTokens with the list of available Tokens.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [tokens] where:
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |tokens| - The list of available tokens.
+   
+   See https://developer.chrome.com/extensions/enterprise.platformKeys#method-getTokens."
   ([#_callback] (gen-call :function ::get-tokens &form)))
 
 (defmacro get-certificates
@@ -33,9 +36,13 @@
    expiration of client certificates that are usable for a certain authentication.
    
      |tokenId| - The id of a Token returned by getTokens.
-     |callback| - Called back with the list of the available certificates.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [certificates] where:
+   
+     |certificates| - The list of certificates, each in DER encoding of a X.509     certificate.
+   
+   See https://developer.chrome.com/extensions/enterprise.platformKeys#method-getCertificates."
   ([token-id #_callback] (gen-call :function ::get-certificates &form token-id)))
 
 (defmacro import-certificate
@@ -45,9 +52,11 @@
    
      |tokenId| - The id of a Token returned by getTokens.
      |certificate| - The DER encoding of a X.509 certificate.
-     |callback| - Called back when this operation is finished.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/enterprise.platformKeys#method-importCertificate."
   ([token-id certificate #_callback] (gen-call :function ::import-certificate &form token-id certificate)))
 
 (defmacro remove-certificate
@@ -57,9 +66,11 @@
    
      |tokenId| - The id of a Token returned by getTokens.
      |certificate| - The DER encoding of a X.509 certificate.
-     |callback| - Called back when this operation is finished.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/enterprise.platformKeys#method-removeCertificate."
   ([token-id certificate #_callback] (gen-call :function ::remove-certificate &form token-id certificate)))
 
 (defmacro challenge-machine-key
@@ -75,9 +86,13 @@
    not reside in the 'system' token and is not accessible by any other API.
    
      |challenge| - A challenge as emitted by the Verified Access Web API.
-     |callback| - Called back with the challenge response.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [response] where:
+   
+     |response| - The challenge response.
+   
+   See https://developer.chrome.com/extensions/enterprise.platformKeys#method-challengeMachineKey."
   ([challenge #_callback] (gen-call :function ::challenge-machine-key &form challenge)))
 
 (defmacro challenge-user-key
@@ -97,9 +112,13 @@
                      relinquishes the                Enterprise User Key role. The key can then be associated
                      with a certificate and used like any other signing key.                This key is 2048-bit RSA.
                      Subsequent calls to this                function will then generate a new Enterprise User Key.
-     |callback| - Called back with the challenge response.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [response] where:
+   
+     |response| - The challenge response.
+   
+   See https://developer.chrome.com/extensions/enterprise.platformKeys#method-challengeUserKey."
   ([challenge register-key #_callback] (gen-call :function ::challenge-user-key &form challenge register-key)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

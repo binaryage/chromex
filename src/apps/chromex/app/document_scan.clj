@@ -19,9 +19,13 @@
   "Performs a document scan.  On success, the PNG data will be sent to the callback.
    
      |options| - Object containing scan parameters.
-     |callback| - Called with the result and data from the scan.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/documentScan#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/documentScan#method-scan."
   ([options #_callback] (gen-call :function ::scan &form options)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

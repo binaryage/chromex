@@ -17,25 +17,47 @@
 (defmacro clear-font
   "Clears the font set by this extension, if any.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |details| - See https://developer.chrome.com/extensions/fontSettings#property-clearFont-details.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/fontSettings#method-clearFont."
   ([details #_callback] (gen-call :function ::clear-font &form details)))
 
 (defmacro get-font
   "Gets the font for a given script and generic font family.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |details| - See https://developer.chrome.com/extensions/fontSettings#property-getFont-details.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [details] where:
+   
+     |details| - See https://developer.chrome.com/extensions/fontSettings#property-callback-details.
+   
+   See https://developer.chrome.com/extensions/fontSettings#method-getFont."
   ([details #_callback] (gen-call :function ::get-font &form details)))
 
 (defmacro set-font
   "Sets the font for a given script and generic font family.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |details| - See https://developer.chrome.com/extensions/fontSettings#property-setFont-details.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/fontSettings#method-setFont."
   ([details #_callback] (gen-call :function ::set-font &form details)))
 
 (defmacro get-font-list
   "Gets a list of fonts on the system.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [results] where:
+   
+     |results| - See https://developer.chrome.com/extensions/fontSettings#property-callback-results.
+   
+   See https://developer.chrome.com/extensions/fontSettings#method-getFontList."
   ([#_callback] (gen-call :function ::get-font-list &form)))
 
 (defmacro clear-default-font-size
@@ -43,7 +65,10 @@
    
      |details| - This parameter is currently unused.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/fontSettings#method-clearDefaultFontSize."
   ([details #_callback] (gen-call :function ::clear-default-font-size &form details))
   ([] `(clear-default-font-size :omit)))
 
@@ -52,14 +77,24 @@
    
      |details| - This parameter is currently unused.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [details] where:
+   
+     |details| - See https://developer.chrome.com/extensions/fontSettings#property-callback-details.
+   
+   See https://developer.chrome.com/extensions/fontSettings#method-getDefaultFontSize."
   ([details #_callback] (gen-call :function ::get-default-font-size &form details))
   ([] `(get-default-font-size :omit)))
 
 (defmacro set-default-font-size
   "Sets the default font size.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |details| - See https://developer.chrome.com/extensions/fontSettings#property-setDefaultFontSize-details.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/fontSettings#method-setDefaultFontSize."
   ([details #_callback] (gen-call :function ::set-default-font-size &form details)))
 
 (defmacro clear-default-fixed-font-size
@@ -67,7 +102,10 @@
    
      |details| - This parameter is currently unused.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/fontSettings#method-clearDefaultFixedFontSize."
   ([details #_callback] (gen-call :function ::clear-default-fixed-font-size &form details))
   ([] `(clear-default-fixed-font-size :omit)))
 
@@ -76,14 +114,24 @@
    
      |details| - This parameter is currently unused.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [details] where:
+   
+     |details| - See https://developer.chrome.com/extensions/fontSettings#property-callback-details.
+   
+   See https://developer.chrome.com/extensions/fontSettings#method-getDefaultFixedFontSize."
   ([details #_callback] (gen-call :function ::get-default-fixed-font-size &form details))
   ([] `(get-default-fixed-font-size :omit)))
 
 (defmacro set-default-fixed-font-size
   "Sets the default size for fixed width fonts.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |details| - See https://developer.chrome.com/extensions/fontSettings#property-setDefaultFixedFontSize-details.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/fontSettings#method-setDefaultFixedFontSize."
   ([details #_callback] (gen-call :function ::set-default-fixed-font-size &form details)))
 
 (defmacro clear-minimum-font-size
@@ -91,7 +139,10 @@
    
      |details| - This parameter is currently unused.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/fontSettings#method-clearMinimumFontSize."
   ([details #_callback] (gen-call :function ::clear-minimum-font-size &form details))
   ([] `(clear-minimum-font-size :omit)))
 
@@ -100,14 +151,24 @@
    
      |details| - This parameter is currently unused.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [details] where:
+   
+     |details| - See https://developer.chrome.com/extensions/fontSettings#property-callback-details.
+   
+   See https://developer.chrome.com/extensions/fontSettings#method-getMinimumFontSize."
   ([details #_callback] (gen-call :function ::get-minimum-font-size &form details))
   ([] `(get-minimum-font-size :omit)))
 
 (defmacro set-minimum-font-size
   "Sets the minimum font size.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |details| - See https://developer.chrome.com/extensions/fontSettings#property-setMinimumFontSize-details.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/fontSettings#method-setMinimumFontSize."
   ([details #_callback] (gen-call :function ::set-minimum-font-size &form details)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -118,28 +179,36 @@
   "Fired when a font setting changes.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/fontSettings#event-onFontChanged."
   ([channel & args] (apply gen-call :event ::on-font-changed &form channel args)))
 
 (defmacro tap-on-default-font-size-changed-events
   "Fired when the default font size setting changes.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/fontSettings#event-onDefaultFontSizeChanged."
   ([channel & args] (apply gen-call :event ::on-default-font-size-changed &form channel args)))
 
 (defmacro tap-on-default-fixed-font-size-changed-events
   "Fired when the default fixed font size setting changes.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/fontSettings#event-onDefaultFixedFontSizeChanged."
   ([channel & args] (apply gen-call :event ::on-default-fixed-font-size-changed &form channel args)))
 
 (defmacro tap-on-minimum-font-size-changed-events
   "Fired when the minimum font size setting changes.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/fontSettings#event-onMinimumFontSizeChanged."
   ([channel & args] (apply gen-call :event ::on-minimum-font-size-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

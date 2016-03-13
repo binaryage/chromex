@@ -19,18 +19,26 @@
   "Returns the ID of the renderer process for the specified tab.
    
      |tabId| - The ID of the tab for which the renderer process ID is to be  returned.
-     |callback| - A callback to return the ID of the renderer process of a tab.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [processId] where:
+   
+     |processId| - Process ID of the tab's renderer process.
+   
+   See https://developer.chrome.com/extensions/processes#method-getProcessIdForTab."
   ([tab-id #_callback] (gen-call :function ::get-process-id-for-tab &form tab-id)))
 
 (defmacro terminate
   "Terminates the specified renderer process. Equivalent to visiting  about:crash, but without changing the tab's URL.
    
      |processId| - The ID of the process to be terminated.
-     |callback| - A callback to report the status of the termination.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [didTerminate] where:
+   
+     |didTerminate| - True if terminating the process was successful, and false otherwise.
+   
+   See https://developer.chrome.com/extensions/processes#method-terminate."
   ([process-id #_callback] (gen-call :function ::terminate &form process-id)))
 
 (defmacro get-process-info
@@ -40,9 +48,15 @@
                     indicates all processes are requested.
      |includeMemory| - True if detailed memory usage is required. Note,  collecting memory usage information incurs extra
                        CPU usage and should  only be queried for when needed.
-     |callback| - A callback called when the processes information is collected.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [processes] where:
+   
+     |processes| - A dictionary of 'Process' objects for each requested  process that is a live child process of the current
+                   browser process,  indexed by process ID. Metrics requiring aggregation over time will not be populated in
+                   each Process object.
+   
+   See https://developer.chrome.com/extensions/processes#method-getProcessInfo."
   ([process-ids include-memory #_callback] (gen-call :function ::get-process-info &form process-ids include-memory)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -54,7 +68,9 @@
    indexed by process ID.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/processes#event-onUpdated."
   ([channel & args] (apply gen-call :event ::on-updated &form channel args)))
 
 (defmacro tap-on-updated-with-memory-events
@@ -63,28 +79,36 @@
    Note, collecting memory usage  information incurs extra CPU usage and should only be listened for when needed.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/processes#event-onUpdatedWithMemory."
   ([channel & args] (apply gen-call :event ::on-updated-with-memory &form channel args)))
 
 (defmacro tap-on-created-events
   "Fired each time a process is created, providing the corrseponding Process object.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/processes#event-onCreated."
   ([channel & args] (apply gen-call :event ::on-created &form channel args)))
 
 (defmacro tap-on-unresponsive-events
   "Fired each time a process becomes unresponsive, providing the  corrseponding Process object.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/processes#event-onUnresponsive."
   ([channel & args] (apply gen-call :event ::on-unresponsive &form channel args)))
 
 (defmacro tap-on-exited-events
   "Fired each time a process is terminated, providing the type of exit.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/processes#event-onExited."
   ([channel & args] (apply gen-call :event ::on-exited &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

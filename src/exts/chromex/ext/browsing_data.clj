@@ -19,112 +19,156 @@
    included in this API are not available in the settings UI, and some UI settings control more than one data type listed
    here.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/browsingData#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/browsingData#method-settings."
   ([#_callback] (gen-call :function ::settings &form)))
 
 (defmacro remove
   "Clears various types of browsing data stored in a user's profile.
    
+     |options| - See https://developer.chrome.com/extensions/browsingData#property-remove-options.
      |dataToRemove| - The set of data types to remove.
-     |callback| - Called when deletion has completed.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/browsingData#method-remove."
   ([options data-to-remove #_callback] (gen-call :function ::remove &form options data-to-remove)))
 
 (defmacro remove-appcache
   "Clears websites' appcache data.
    
-     |callback| - Called when websites' appcache data has been cleared.
+     |options| - See https://developer.chrome.com/extensions/browsingData#property-removeAppcache-options.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/browsingData#method-removeAppcache."
   ([options #_callback] (gen-call :function ::remove-appcache &form options)))
 
 (defmacro remove-cache
   "Clears the browser's cache.
    
-     |callback| - Called when the browser's cache has been cleared.
+     |options| - See https://developer.chrome.com/extensions/browsingData#property-removeCache-options.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/browsingData#method-removeCache."
   ([options #_callback] (gen-call :function ::remove-cache &form options)))
 
 (defmacro remove-cookies
   "Clears the browser's cookies and server-bound certificates modified within a particular timeframe.
    
-     |callback| - Called when the browser's cookies and server-bound certificates have been cleared.
+     |options| - See https://developer.chrome.com/extensions/browsingData#property-removeCookies-options.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/browsingData#method-removeCookies."
   ([options #_callback] (gen-call :function ::remove-cookies &form options)))
 
 (defmacro remove-downloads
   "Clears the browser's list of downloaded files (not the downloaded files themselves).
    
-     |callback| - Called when the browser's list of downloaded files has been cleared.
+     |options| - See https://developer.chrome.com/extensions/browsingData#property-removeDownloads-options.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/browsingData#method-removeDownloads."
   ([options #_callback] (gen-call :function ::remove-downloads &form options)))
 
 (defmacro remove-file-systems
   "Clears websites' file system data.
    
-     |callback| - Called when websites' file systems have been cleared.
+     |options| - See https://developer.chrome.com/extensions/browsingData#property-removeFileSystems-options.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/browsingData#method-removeFileSystems."
   ([options #_callback] (gen-call :function ::remove-file-systems &form options)))
 
 (defmacro remove-form-data
   "Clears the browser's stored form data (autofill).
    
-     |callback| - Called when the browser's form data has been cleared.
+     |options| - See https://developer.chrome.com/extensions/browsingData#property-removeFormData-options.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/browsingData#method-removeFormData."
   ([options #_callback] (gen-call :function ::remove-form-data &form options)))
 
 (defmacro remove-history
   "Clears the browser's history.
    
-     |callback| - Called when the browser's history has cleared.
+     |options| - See https://developer.chrome.com/extensions/browsingData#property-removeHistory-options.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/browsingData#method-removeHistory."
   ([options #_callback] (gen-call :function ::remove-history &form options)))
 
 (defmacro remove-indexed-db
   "Clears websites' IndexedDB data.
    
-     |callback| - Called when websites' IndexedDB data has been cleared.
+     |options| - See https://developer.chrome.com/extensions/browsingData#property-removeIndexedDB-options.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/browsingData#method-removeIndexedDB."
   ([options #_callback] (gen-call :function ::remove-indexed-db &form options)))
 
 (defmacro remove-local-storage
   "Clears websites' local storage data.
    
-     |callback| - Called when websites' local storage has been cleared.
+     |options| - See https://developer.chrome.com/extensions/browsingData#property-removeLocalStorage-options.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/browsingData#method-removeLocalStorage."
   ([options #_callback] (gen-call :function ::remove-local-storage &form options)))
 
 (defmacro remove-plugin-data
   "Clears plugins' data.
    
-     |callback| - Called when plugins' data has been cleared.
+     |options| - See https://developer.chrome.com/extensions/browsingData#property-removePluginData-options.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/browsingData#method-removePluginData."
   ([options #_callback] (gen-call :function ::remove-plugin-data &form options)))
 
 (defmacro remove-passwords
   "Clears the browser's stored passwords.
    
-     |callback| - Called when the browser's passwords have been cleared.
+     |options| - See https://developer.chrome.com/extensions/browsingData#property-removePasswords-options.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/browsingData#method-removePasswords."
   ([options #_callback] (gen-call :function ::remove-passwords &form options)))
 
 (defmacro remove-web-sql
   "Clears websites' WebSQL data.
    
-     |callback| - Called when websites' WebSQL databases have been cleared.
+     |options| - See https://developer.chrome.com/extensions/browsingData#property-removeWebSQL-options.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/browsingData#method-removeWebSQL."
   ([options #_callback] (gen-call :function ::remove-web-sql &form options)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

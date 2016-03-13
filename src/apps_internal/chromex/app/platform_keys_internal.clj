@@ -18,7 +18,14 @@
 (defmacro select-client-certificates
   "See documentation in platformKeys.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |details| - See https://developer.chrome.com/extensions/platformKeysInternal#property-selectClientCertificates-details.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [certs] where:
+   
+     |certs| - See https://developer.chrome.com/extensions/platformKeysInternal#property-callback-certs.
+   
+   See https://developer.chrome.com/extensions/platformKeysInternal#method-selectClientCertificates."
   ([details #_callback] (gen-call :function ::select-client-certificates &form details)))
 
 (defmacro sign
@@ -33,9 +40,17 @@
    Called back with the signature of |data|. TODO: Instead of ArrayBuffer should be (ArrayBuffer or ArrayBufferView), or at
    least (ArrayBuffer or Uint8Array).
    
-     |callback| - Invoked by sign. |signature| The signature, a octet string.
+     |tokenId| - See https://developer.chrome.com/extensions/platformKeysInternal#property-sign-tokenId.
+     |publicKey| - See https://developer.chrome.com/extensions/platformKeysInternal#property-sign-publicKey.
+     |hashAlgorithmName| - See https://developer.chrome.com/extensions/platformKeysInternal#property-sign-hashAlgorithmName.
+     |data| - See https://developer.chrome.com/extensions/platformKeysInternal#property-sign-data.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [signature] where:
+   
+     |signature| - See https://developer.chrome.com/extensions/platformKeysInternal#property-callback-signature.
+   
+   See https://developer.chrome.com/extensions/platformKeysInternal#method-sign."
   ([token-id public-key hash-algorithm-name data #_callback] (gen-call :function ::sign &form token-id public-key hash-algorithm-name data)))
 
 (defmacro get-public-key
@@ -43,11 +58,16 @@
    callback with the key info and a WebCrypto KeyAlgorithm dictionary describing the key's algorithm. The name property will
    equal algorithmName. Otherwise, calls back with an error.
    
-     |callback| - Called back by getPublicKey. |publicKey| The Subject Public Key Info (see X.509) of the requested
-                  certificate. |algorithm| A partial WebCrypto KeyAlgorithm containing all information   that is available
-                  from the Subject Public Key Info. It does not contain   signature/hash parameters.
+     |certificate| - See https://developer.chrome.com/extensions/platformKeysInternal#property-getPublicKey-certificate.
+     |algorithmName| - See https://developer.chrome.com/extensions/platformKeysInternal#property-getPublicKey-algorithmName.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [publicKey algorithm] where:
+   
+     |publicKey| - See https://developer.chrome.com/extensions/platformKeysInternal#property-callback-publicKey.
+     |algorithm| - See https://developer.chrome.com/extensions/platformKeysInternal#property-callback-algorithm.
+   
+   See https://developer.chrome.com/extensions/platformKeysInternal#method-getPublicKey."
   ([certificate algorithm-name #_callback] (gen-call :function ::get-public-key &form certificate algorithm-name)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

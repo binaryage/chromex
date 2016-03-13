@@ -18,7 +18,12 @@
   "Retrieves a list of AccountInfo objects describing the accounts present on the profile.getAccounts is only supported on dev
    channel.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [accounts] where:
+   
+     |accounts| - See https://developer.chrome.com/extensions/identity#property-callback-accounts.
+   
+   See https://developer.chrome.com/extensions/identity#method-getAccounts."
   ([#_callback] (gen-call :function ::get-accounts &form)))
 
 (defmacro get-auth-token
@@ -30,9 +35,13 @@
    use getAuthToken interactively when your app is first launched.
    
      |details| - Token options.
-     |callback| - Called with an OAuth2 access token as specified by the manifest, or undefined if there was an error.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [token] where:
+   
+     |token| - See https://developer.chrome.com/extensions/identity#property-callback-token.
+   
+   See https://developer.chrome.com/extensions/identity#method-getAuthToken."
   ([details #_callback] (gen-call :function ::get-auth-token &form details))
   ([] `(get-auth-token :omit)))
 
@@ -41,7 +50,12 @@
    identity.getAccounts in two ways. The information returned is available offline, and it only applies to the primary account
    for the profile.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [userInfo] where:
+   
+     |userInfo| - See https://developer.chrome.com/extensions/identity#property-callback-userInfo.
+   
+   See https://developer.chrome.com/extensions/identity#method-getProfileUserInfo."
   ([#_callback] (gen-call :function ::get-profile-user-info &form)))
 
 (defmacro remove-cached-auth-token
@@ -50,9 +64,11 @@
    getAuthToken.
    
      |details| - Token information.
-     |callback| - Called when the token has been removed from the cache.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/identity#method-removeCachedAuthToken."
   ([details #_callback] (gen-call :function ::remove-cached-auth-token &form details)))
 
 (defmacro launch-web-auth-flow
@@ -64,16 +80,22 @@
    context. In particular, do not launch an interactive auth flow when your app is first launched.
    
      |details| - WebAuth flow options.
-     |callback| - Called with the URL redirected back to your application.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [responseUrl] where:
+   
+     |responseUrl| - See https://developer.chrome.com/extensions/identity#property-callback-responseUrl.
+   
+   See https://developer.chrome.com/extensions/identity#method-launchWebAuthFlow."
   ([details #_callback] (gen-call :function ::launch-web-auth-flow &form details)))
 
 (defmacro get-redirect-url
   "Generates a redirect URL to be used in |launchWebAuthFlow|.The generated URLs match the pattern
    https://&lt;app-id&gt;.chromiumapp.org/*.
    
-     |path| - The path appended to the end of the generated URL."
+     |path| - The path appended to the end of the generated URL.
+   
+   See https://developer.chrome.com/extensions/identity#method-getRedirectURL."
   ([path] (gen-call :function ::get-redirect-url &form path))
   ([] `(get-redirect-url :omit)))
 
@@ -85,7 +107,9 @@
   "Fired when signin state changes for an account on the user's profile.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/identity#event-onSignInChanged."
   ([channel & args] (apply gen-call :event ::on-sign-in-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

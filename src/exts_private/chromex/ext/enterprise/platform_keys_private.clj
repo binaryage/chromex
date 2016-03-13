@@ -16,9 +16,13 @@
   "Challenge a machine key.
    
      |challenge| - Challenge to be signed in base64.
-     |callback| - Callback function.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [response] where:
+   
+     |response| - Response in base64.
+   
+   See https://developer.chrome.com/extensions/enterprise.platformKeysPrivate#method-challengeMachineKey."
   ([challenge #_callback] (gen-call :function ::challenge-machine-key &form challenge)))
 
 (defmacro challenge-user-key
@@ -26,9 +30,13 @@
    
      |challenge| - Challenge to be signed in base64.
      |registerKey| - If true, the key will be registered.
-     |callback| - Callback function.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [response] where:
+   
+     |response| - Response in base64.
+   
+   See https://developer.chrome.com/extensions/enterprise.platformKeysPrivate#method-challengeUserKey."
   ([challenge register-key #_callback] (gen-call :function ::challenge-user-key &form challenge register-key)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

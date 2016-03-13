@@ -19,66 +19,143 @@
   "Sets additional custom meta data that will be uploaded along with the log. |metaData| is a dictionary of the metadata (key,
    value).
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |request| - See https://developer.chrome.com/extensions/webrtcLoggingPrivate#property-setMetaData-request.
+     |securityOrigin| - See https://developer.chrome.com/extensions/webrtcLoggingPrivate#property-setMetaData-securityOrigin.
+     |metaData| - See https://developer.chrome.com/extensions/webrtcLoggingPrivate#property-setMetaData-metaData.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/webrtcLoggingPrivate#method-setMetaData."
   ([request security-origin meta-data #_callback] (gen-call :function ::set-meta-data &form request security-origin meta-data)))
 
 (defmacro start
   "Starts logging. If logging has already been started for this render process, the call will be ignored. |appSessionId| is
    the unique session ID which will be added to the log.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |request| - See https://developer.chrome.com/extensions/webrtcLoggingPrivate#property-start-request.
+     |securityOrigin| - See https://developer.chrome.com/extensions/webrtcLoggingPrivate#property-start-securityOrigin.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/webrtcLoggingPrivate#method-start."
   ([request security-origin #_callback] (gen-call :function ::start &form request security-origin)))
 
 (defmacro set-upload-on-render-close
   "Sets whether the log should be uploaded automatically for the case when the render process goes away (tab is closed or
    crashes) and stop has not been called before that. If |shouldUpload| is true it will be uploaded, otherwise it will be
-   discarded. The default setting is to discard it."
+   discarded. The default setting is to discard it.
+   
+     |request| - See https://developer.chrome.com/extensions/webrtcLoggingPrivate#property-setUploadOnRenderClose-request.
+     |securityOrigin| - See
+                        https://developer.chrome.com/extensions/webrtcLoggingPrivate#property-setUploadOnRenderClose-security
+                        Origin.
+     |shouldUpload| - See
+                      https://developer.chrome.com/extensions/webrtcLoggingPrivate#property-setUploadOnRenderClose-shouldUplo
+                      ad.
+   
+   See https://developer.chrome.com/extensions/webrtcLoggingPrivate#method-setUploadOnRenderClose."
   ([request security-origin should-upload] (gen-call :function ::set-upload-on-render-close &form request security-origin should-upload)))
 
 (defmacro stop
   "Stops logging. After stop has finished, either upload() or discard() should be called, otherwise the log will be kept in
    memory until the render process is closed or logging restarted.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |request| - See https://developer.chrome.com/extensions/webrtcLoggingPrivate#property-stop-request.
+     |securityOrigin| - See https://developer.chrome.com/extensions/webrtcLoggingPrivate#property-stop-securityOrigin.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/webrtcLoggingPrivate#method-stop."
   ([request security-origin #_callback] (gen-call :function ::stop &form request security-origin)))
 
 (defmacro store
   "Stores the current log without uploading. The log may stay around for as much as 5 days. The application has the option of
    supplying an id for uniquely identifying the log for later upload via a call to uploadStored().
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |request| - See https://developer.chrome.com/extensions/webrtcLoggingPrivate#property-store-request.
+     |securityOrigin| - See https://developer.chrome.com/extensions/webrtcLoggingPrivate#property-store-securityOrigin.
+     |logId| - See https://developer.chrome.com/extensions/webrtcLoggingPrivate#property-store-logId.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/webrtcLoggingPrivate#method-store."
   ([request security-origin log-id #_callback] (gen-call :function ::store &form request security-origin log-id)))
 
 (defmacro upload-stored
   "Uploads a previously kept log that was stored via a call to store(). The caller needs to know the logId as was originally
    provided in the call to store().
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |request| - See https://developer.chrome.com/extensions/webrtcLoggingPrivate#property-uploadStored-request.
+     |securityOrigin| - See
+                        https://developer.chrome.com/extensions/webrtcLoggingPrivate#property-uploadStored-securityOrigin.
+     |logId| - See https://developer.chrome.com/extensions/webrtcLoggingPrivate#property-uploadStored-logId.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/webrtcLoggingPrivate#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/webrtcLoggingPrivate#method-uploadStored."
   ([request security-origin log-id #_callback] (gen-call :function ::upload-stored &form request security-origin log-id)))
 
 (defmacro upload
   "Uploads the log and the RTP dumps, if they exist. Logging and RTP dumping must be stopped before this function is called.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |request| - See https://developer.chrome.com/extensions/webrtcLoggingPrivate#property-upload-request.
+     |securityOrigin| - See https://developer.chrome.com/extensions/webrtcLoggingPrivate#property-upload-securityOrigin.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/webrtcLoggingPrivate#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/webrtcLoggingPrivate#method-upload."
   ([request security-origin #_callback] (gen-call :function ::upload &form request security-origin)))
 
 (defmacro discard
   "Discards the log. Logging must be stopped before this function is called.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |request| - See https://developer.chrome.com/extensions/webrtcLoggingPrivate#property-discard-request.
+     |securityOrigin| - See https://developer.chrome.com/extensions/webrtcLoggingPrivate#property-discard-securityOrigin.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/webrtcLoggingPrivate#method-discard."
   ([request security-origin #_callback] (gen-call :function ::discard &form request security-origin)))
 
 (defmacro start-rtp-dump
   "Starts RTP dumping. If it has already been started for this render process, the call will be ignored.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |request| - See https://developer.chrome.com/extensions/webrtcLoggingPrivate#property-startRtpDump-request.
+     |securityOrigin| - See
+                        https://developer.chrome.com/extensions/webrtcLoggingPrivate#property-startRtpDump-securityOrigin.
+     |incoming| - See https://developer.chrome.com/extensions/webrtcLoggingPrivate#property-startRtpDump-incoming.
+     |outgoing| - See https://developer.chrome.com/extensions/webrtcLoggingPrivate#property-startRtpDump-outgoing.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/webrtcLoggingPrivate#method-startRtpDump."
   ([request security-origin incoming outgoing #_callback] (gen-call :function ::start-rtp-dump &form request security-origin incoming outgoing)))
 
 (defmacro stop-rtp-dump
   "Stops RTP dumping. After stop has finished, the dumps will be uploaded with the log if upload is called. Otherwise, the
    dumps will be discarded.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |request| - See https://developer.chrome.com/extensions/webrtcLoggingPrivate#property-stopRtpDump-request.
+     |securityOrigin| - See https://developer.chrome.com/extensions/webrtcLoggingPrivate#property-stopRtpDump-securityOrigin.
+     |incoming| - See https://developer.chrome.com/extensions/webrtcLoggingPrivate#property-stopRtpDump-incoming.
+     |outgoing| - See https://developer.chrome.com/extensions/webrtcLoggingPrivate#property-stopRtpDump-outgoing.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/webrtcLoggingPrivate#method-stopRtpDump."
   ([request security-origin incoming outgoing #_callback] (gen-call :function ::stop-rtp-dump &form request security-origin incoming outgoing)))
 
 (defmacro start-audio-debug-recordings
@@ -87,14 +164,35 @@
    this case, |callback| is invoked once recording starts and will report that recording has not stopped. If |seconds| is
    negative, startAudioDebugRecordings() fails.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |request| - See https://developer.chrome.com/extensions/webrtcLoggingPrivate#property-startAudioDebugRecordings-request.
+     |securityOrigin| - See
+                        https://developer.chrome.com/extensions/webrtcLoggingPrivate#property-startAudioDebugRecordings-secur
+                        ityOrigin.
+     |seconds| - See https://developer.chrome.com/extensions/webrtcLoggingPrivate#property-startAudioDebugRecordings-seconds.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [info] where:
+   
+     |info| - See https://developer.chrome.com/extensions/webrtcLoggingPrivate#property-callback-info.
+   
+   See https://developer.chrome.com/extensions/webrtcLoggingPrivate#method-startAudioDebugRecordings."
   ([request security-origin seconds #_callback] (gen-call :function ::start-audio-debug-recordings &form request security-origin seconds)))
 
 (defmacro stop-audio-debug-recordings
   "Stops audio debug recordings.  |callback| is invoked once recording stops. If there is no recording in progress,
    stopAudioDebugRecordings() fails.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |request| - See https://developer.chrome.com/extensions/webrtcLoggingPrivate#property-stopAudioDebugRecordings-request.
+     |securityOrigin| - See
+                        https://developer.chrome.com/extensions/webrtcLoggingPrivate#property-stopAudioDebugRecordings-securi
+                        tyOrigin.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [info] where:
+   
+     |info| - See https://developer.chrome.com/extensions/webrtcLoggingPrivate#property-callback-info.
+   
+   See https://developer.chrome.com/extensions/webrtcLoggingPrivate#method-stopAudioDebugRecordings."
   ([request security-origin #_callback] (gen-call :function ::stop-audio-debug-recordings &form request security-origin)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

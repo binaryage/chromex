@@ -17,18 +17,26 @@
    
      |processName| - Name of the process to open. Initially only 'crosh' is supported. Another processes may be added in
                      future.
-     |callback| - Returns id of the launched process. If no process was launched returns -1.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [pid] where:
+   
+     |pid| - Id of the launched process.
+   
+   See https://developer.chrome.com/extensions/terminalPrivate#method-openTerminalProcess."
   ([process-name #_callback] (gen-call :function ::open-terminal-process &form process-name)))
 
 (defmacro close-terminal-process
   "Closes previousy opened process.
    
      |pid| - Process id of the process we want to close.
-     |callback| - Function that gets called when close operation is started for the process. Returns success of the function.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [success] where:
+   
+     |success| - See https://developer.chrome.com/extensions/terminalPrivate#property-callback-success.
+   
+   See https://developer.chrome.com/extensions/terminalPrivate#method-closeTerminalProcess."
   ([pid #_callback] (gen-call :function ::close-terminal-process &form pid)))
 
 (defmacro send-input
@@ -36,9 +44,13 @@
    
      |pid| - The id of the process to which we want to send input.
      |input| - Input we are sending to the process.
-     |callback| - Callback that will be called when sendInput method ends. Returns success.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [success] where:
+   
+     |success| - See https://developer.chrome.com/extensions/terminalPrivate#property-callback-success.
+   
+   See https://developer.chrome.com/extensions/terminalPrivate#method-sendInput."
   ([pid input #_callback] (gen-call :function ::send-input &form pid input)))
 
 (defmacro on-terminal-resize
@@ -47,9 +59,13 @@
      |pid| - The id of the process.
      |width| - New window width (as column count).
      |height| - New window height (as row count).
-     |callback| - Callback that will be called when sendInput method ends. Returns success.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [success] where:
+   
+     |success| - See https://developer.chrome.com/extensions/terminalPrivate#property-callback-success.
+   
+   See https://developer.chrome.com/extensions/terminalPrivate#method-onTerminalResize."
   ([pid width height #_callback] (gen-call :function ::on-terminal-resize &form pid width height)))
 
 (defmacro ack-output
@@ -57,7 +73,9 @@
    will be paused after |onProcessOutput| is dispatched until this method is called.
    
      |tabId| - Tab ID from |onProcessOutput| event.
-     |pid| - The id of the process to which |onProcessOutput| was dispatched."
+     |pid| - The id of the process to which |onProcessOutput| was dispatched.
+   
+   See https://developer.chrome.com/extensions/terminalPrivate#method-ackOutput."
   ([tab-id pid] (gen-call :function ::ack-output &form tab-id pid)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -70,7 +88,9 @@
    instance for which this event is intended. This argument will be stripped before passing the event to the extension.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/terminalPrivate#event-onProcessOutput."
   ([channel & args] (apply gen-call :event ::on-process-output &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

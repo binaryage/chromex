@@ -17,17 +17,23 @@
 ; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defmacro get-content-window
-  "Object reference which can be used to post messages into the guest page."
+  "Object reference which can be used to post messages into the guest page.
+   
+   See https://developer.chrome.com/extensions/webviewTag#property-contentWindow."
   ([] (gen-call :property ::content-window &form)))
 
 (defmacro get-request
-  "Interface which provides access to webRequest events on the guest page."
+  "Interface which provides access to webRequest events on the guest page.
+   
+   See https://developer.chrome.com/extensions/webviewTag#property-request."
   ([] (gen-call :property ::request &form)))
 
 (defmacro get-context-menus
   "Similar to chrome's ContextMenus API, but applies to webview instead of browser. Use the webview.contextMenus API to add
    items to webview's context menu. You can choose what types of objects your context menu additions apply to, such as images,
-   hyperlinks, and pages."
+   hyperlinks, and pages.
+   
+   See https://developer.chrome.com/extensions/webviewTag#property-contextMenus."
   ([] (gen-call :property ::context-menus &form)))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
@@ -37,7 +43,13 @@
    
      |options| - Details about the format and quality of an image.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [dataUrl] where:
+   
+     |dataUrl| - A data URL which encodes an image of the visible area of the captured tab. May be assigned to the 'src'
+                 property of an HTML Image element for display.
+   
+   See https://developer.chrome.com/extensions/webviewTag#method-captureVisibleRegion."
   ([options #_callback] (gen-call :function ::capture-visible-region &form options))
   ([] `(capture-visible-region :omit)))
 
@@ -86,25 +98,34 @@ webview.addContentScripts([{
    if the guest process crashes or is killed or even if the webview is reparented.Refer to the content scripts documentation
    for more details.
    
-     |contentScriptList| - Details of the content scripts to add."
+     |contentScriptList| - Details of the content scripts to add.
+   
+   See https://developer.chrome.com/extensions/webviewTag#method-addContentScripts."
   ([content-script-list] (gen-call :function ::add-content-scripts &form content-script-list)))
 
 (defmacro back
   "Navigates backward one history entry if possible. Equivalent to go(-1).
    
-     |callback| - Called after the navigation has either failed or completed successfully.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [success] where:
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |success| - Indicates whether the navigation was successful.
+   
+   See https://developer.chrome.com/extensions/webviewTag#method-back."
   ([#_callback] (gen-call :function ::back &form)))
 
 (defmacro can-go-back
   "Indicates whether or not it is possible to navigate backward through history. The state of this function is cached, and
-   updated before each loadcommit, so the best place to call it is on loadcommit."
+   updated before each loadcommit, so the best place to call it is on loadcommit.
+   
+   See https://developer.chrome.com/extensions/webviewTag#method-canGoBack."
   ([] (gen-call :function ::can-go-back &form)))
 
 (defmacro can-go-forward
   "Indicates whether or not it is possible to navigate forward through history. The state of this function is cached, and
-   updated before each loadcommit, so the best place to call it is on loadcommit."
+   updated before each loadcommit, so the best place to call it is on loadcommit.
+   
+   See https://developer.chrome.com/extensions/webviewTag#method-canGoForward."
   ([] (gen-call :function ::can-go-forward &form)))
 
 (defmacro clear-data
@@ -112,9 +133,11 @@ webview.addContentScripts([{
    
      |options| - Options determining which data to clear.
      |types| - The types of data to be cleared.
-     |callback| - Called after the data has been successfully cleared.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/webviewTag#method-clearData."
   ([options types #_callback] (gen-call :function ::clear-data &form options types)))
 
 (defmacro execute-script
@@ -122,9 +145,13 @@ webview.addContentScripts([{
    background color to red:webview.executeScript({ code: 'document.body.style.backgroundColor = 'red'' });
    
      |details| - Details of the script to run.
-     |callback| - Called after all the JavaScript has been executed.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - The result of the script in every injected frame.
+   
+   See https://developer.chrome.com/extensions/webviewTag#method-executeScript."
   ([details #_callback] (gen-call :function ::execute-script &form details)))
 
 (defmacro find
@@ -132,45 +159,63 @@ webview.addContentScripts([{
    
      |searchText| - The string to find in the page.
      |options| - Options for the find request.
-     |callback| - Called after all find results have been returned for this find request.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [results] where:
+   
+     |results| - Contains all of the results of the find request. results can be omitted if it is not utilized in the callback
+                 function body; for example, if the callback is only used to discern when the find request has completed.
+   
+   See https://developer.chrome.com/extensions/webviewTag#method-find."
   ([search-text options #_callback] (gen-call :function ::find &form search-text options))
   ([search-text] `(find ~search-text :omit)))
 
 (defmacro forward
   "Navigates forward one history entry if possible. Equivalent to go(1).
    
-     |callback| - Called after the navigation has either failed or completed successfully.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [success] where:
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |success| - Indicates whether the navigation was successful.
+   
+   See https://developer.chrome.com/extensions/webviewTag#method-forward."
   ([#_callback] (gen-call :function ::forward &form)))
 
 (defmacro get-process-id
   "Returns Chrome's internal process ID for the guest web page's current process, allowing embedders to know how many guests
    would be affected by terminating the process. Two guests will share a process only if they belong to the same app and have
    the same storage partition ID. The call is synchronous and returns the embedder's cached notion of the current process ID.
-   The process ID isn't the same as the operating system's process ID."
+   The process ID isn't the same as the operating system's process ID.
+   
+   See https://developer.chrome.com/extensions/webviewTag#method-getProcessId."
   ([] (gen-call :function ::get-process-id &form)))
 
 (defmacro get-user-agent
-  "Returns the user agent string used by the webview for guest page requests."
+  "Returns the user agent string used by the webview for guest page requests.
+   
+   See https://developer.chrome.com/extensions/webviewTag#method-getUserAgent."
   ([] (gen-call :function ::get-user-agent &form)))
 
 (defmacro get-zoom
   "Gets the current zoom factor.
    
-     |callback| - Called after the current zoom factor is retrieved.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [zoomFactor] where:
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |zoomFactor| - The current zoom factor.
+   
+   See https://developer.chrome.com/extensions/webviewTag#method-getZoom."
   ([#_callback] (gen-call :function ::get-zoom &form)))
 
 (defmacro get-zoom-mode
   "Gets the current zoom mode.
    
-     |callback| - Called with the webview's current zoom mode.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [ZoomMode] where:
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |ZoomMode| - The webview's current zoom mode.
+   
+   See https://developer.chrome.com/extensions/webviewTag#method-getZoomMode."
   ([#_callback] (gen-call :function ::get-zoom-mode &form)))
 
 (defmacro go
@@ -179,30 +224,42 @@ webview.addContentScripts([{
    
      |relativeIndex| - Relative history index to which the webview should be navigated. For example, a value of 2 will
                        navigate forward 2 history entries if possible; a value of -3 will navigate backward 3 entries.
-     |callback| - Called after the navigation has either failed or completed successfully.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [success] where:
+   
+     |success| - Indicates whether the navigation was successful.
+   
+   See https://developer.chrome.com/extensions/webviewTag#method-go."
   ([relative-index #_callback] (gen-call :function ::go &form relative-index)))
 
 (defmacro insert-css
   "Injects CSS into the guest page.
    
      |details| - Details of the CSS to insert.
-     |callback| - Called after the CSS has been inserted.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/webviewTag#method-insertCSS."
   ([details #_callback] (gen-call :function ::insert-css &form details)))
 
 (defmacro is-user-agent-overridden
-  "Indicates whether or not the webview's user agent string has been overridden by 'webviewTag.setUserAgentOverride'."
+  "Indicates whether or not the webview's user agent string has been overridden by 'webviewTag.setUserAgentOverride'.
+   
+   See https://developer.chrome.com/extensions/webviewTag#method-isUserAgentOverridden."
   ([] (gen-call :function ::is-user-agent-overridden &form)))
 
 (defmacro print
-  "Prints the contents of the webview. This is equivalent to calling scripted print function from the webview itself."
+  "Prints the contents of the webview. This is equivalent to calling scripted print function from the webview itself.
+   
+   See https://developer.chrome.com/extensions/webviewTag#method-print."
   ([] (gen-call :function ::print &form)))
 
 (defmacro reload
-  "Reloads the current top-level page."
+  "Reloads the current top-level page.
+   
+   See https://developer.chrome.com/extensions/webviewTag#method-reload."
   ([] (gen-call :function ::reload &form)))
 
 (defmacro remove-content-scripts
@@ -210,14 +267,18 @@ webview.addContentScripts([{
    before.webview.removeContentScripts(['myRule']);You can remove all the rules by calling:webview.removeContentScripts();
    
      |scriptNameList| - A list of names of content scripts that will be removed. If the list is empty, all the content
-                        scripts added to the webview will be removed."
+                        scripts added to the webview will be removed.
+   
+   See https://developer.chrome.com/extensions/webviewTag#method-removeContentScripts."
   ([script-name-list] (gen-call :function ::remove-content-scripts &form script-name-list))
   ([] `(remove-content-scripts :omit)))
 
 (defmacro set-user-agent-override
   "Override the user agent string used by the webview for guest page requests.
    
-     |userAgent| - The user agent string to use."
+     |userAgent| - The user agent string to use.
+   
+   See https://developer.chrome.com/extensions/webviewTag#method-setUserAgentOverride."
   ([user-agent] (gen-call :function ::set-user-agent-override &form user-agent)))
 
 (defmacro set-zoom
@@ -225,22 +286,28 @@ webview.addContentScripts([{
    mode (see 'webviewTag.ZoomMode').
    
      |zoomFactor| - The new zoom factor.
-     |callback| - Called after the page has been zoomed.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/webviewTag#method-setZoom."
   ([zoom-factor #_callback] (gen-call :function ::set-zoom &form zoom-factor)))
 
 (defmacro set-zoom-mode
   "Sets the zoom mode of the webview.
    
      |ZoomMode| - Defines how zooming is handled in the webview.
-     |callback| - Called after the zoom mode has been changed.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/webviewTag#method-setZoomMode."
   ([zoom-mode #_callback] (gen-call :function ::set-zoom-mode &form zoom-mode)))
 
 (defmacro stop
-  "Stops loading the current webview navigation if in progress."
+  "Stops loading the current webview navigation if in progress.
+   
+   See https://developer.chrome.com/extensions/webviewTag#method-stop."
   ([] (gen-call :function ::stop &form)))
 
 (defmacro stop-finding
@@ -248,7 +315,9 @@ webview.addContentScripts([{
    
      |action| - Determines what to do with the active match after the find session has ended. clear will clear the
                 highlighting over the active match; keep will keep the active match highlighted; activate will keep the
-                active match highlighted and simulate a user click on that match. The default action is keep."
+                active match highlighted and simulate a user click on that match. The default action is keep.
+   
+   See https://developer.chrome.com/extensions/webviewTag#method-stopFinding."
   ([action] (gen-call :function ::stop-finding &form action))
   ([] `(stop-finding :omit)))
 
@@ -258,13 +327,17 @@ webview.addContentScripts([{
    
      |dataUrl| - The data URL to load.
      |baseUrl| - The base URL that will be used for relative links.
-     |virtualUrl| - The URL that will be displayed to the user (in the address bar)."
+     |virtualUrl| - The URL that will be displayed to the user (in the address bar).
+   
+   See https://developer.chrome.com/extensions/webviewTag#method-loadDataWithBaseUrl."
   ([data-url base-url virtual-url] (gen-call :function ::load-data-with-base-url &form data-url base-url virtual-url))
   ([data-url base-url] `(load-data-with-base-url ~data-url ~base-url :omit)))
 
 (defmacro terminate
   "Forcibly kills the guest web page's renderer process. This may affect multiple webview tags in the current app if they
-   share the same process, but it will not affect webview tags in other apps."
+   share the same process, but it will not affect webview tags in other apps.
+   
+   See https://developer.chrome.com/extensions/webviewTag#method-terminate."
   ([] (gen-call :function ::terminate &form)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

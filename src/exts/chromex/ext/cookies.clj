@@ -21,7 +21,12 @@
    
      |details| - Details to identify the cookie being retrieved.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [cookie] where:
+   
+     |cookie| - Contains details about the cookie. This parameter is null if no such cookie was found.
+   
+   See https://developer.chrome.com/extensions/cookies#method-get."
   ([details #_callback] (gen-call :function ::get &form details)))
 
 (defmacro get-all
@@ -31,7 +36,12 @@
    
      |details| - Information to filter the cookies being retrieved.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [cookies] where:
+   
+     |cookies| - All the existing, unexpired cookies that match the given cookie info.
+   
+   See https://developer.chrome.com/extensions/cookies#method-getAll."
   ([details #_callback] (gen-call :function ::get-all &form details)))
 
 (defmacro set
@@ -39,7 +49,13 @@
    
      |details| - Details about the cookie being set.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [cookie] where:
+   
+     |cookie| - Contains details about the cookie that's been set.  If setting failed for any reason, this will be 'null', and
+                'chrome.runtime.lastError' will be set.
+   
+   See https://developer.chrome.com/extensions/cookies#method-set."
   ([details #_callback] (gen-call :function ::set &form details)))
 
 (defmacro remove
@@ -47,13 +63,24 @@
    
      |details| - Information to identify the cookie to remove.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [details] where:
+   
+     |details| - Contains details about the cookie that's been removed.  If removal failed for any reason, this will be
+                 'null', and 'chrome.runtime.lastError' will be set.
+   
+   See https://developer.chrome.com/extensions/cookies#method-remove."
   ([details #_callback] (gen-call :function ::remove &form details)))
 
 (defmacro get-all-cookie-stores
   "Lists all existing cookie stores.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [cookieStores] where:
+   
+     |cookieStores| - All the existing cookie stores.
+   
+   See https://developer.chrome.com/extensions/cookies#method-getAllCookieStores."
   ([#_callback] (gen-call :function ::get-all-cookie-stores &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -66,7 +93,9 @@
    Afterwards, a new cookie is written with the updated values, generating a second notification with 'cause' 'explicit'.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/cookies#event-onChanged."
   ([channel & args] (apply gen-call :event ::on-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

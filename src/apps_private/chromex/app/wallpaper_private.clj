@@ -18,7 +18,9 @@
   "This event is sent when the current wallpaper was set by a third party application.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/wallpaperPrivate#event-onWallpaperChangedBy3rdParty."
   ([channel & args] (apply gen-call :event ::on-wallpaper-changed-by3rd-party &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

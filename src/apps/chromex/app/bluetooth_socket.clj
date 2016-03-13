@@ -19,9 +19,13 @@
   "Creates a Bluetooth socket.
    
      |properties| - The socket properties (optional).
-     |callback| - Called when the socket has been created.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [createInfo] where:
+   
+     |createInfo| - The result of the socket creation.
+   
+   See https://developer.chrome.com/extensions/bluetoothSocket#method-create."
   ([properties #_callback] (gen-call :function ::create &form properties))
   ([] `(create :omit)))
 
@@ -30,9 +34,11 @@
    
      |socketId| - The socket identifier.
      |properties| - The properties to update.
-     |callback| - Called when the properties are updated.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/bluetoothSocket#method-update."
   ([socket-id properties #_callback] (gen-call :function ::update &form socket-id properties)))
 
 (defmacro set-paused
@@ -43,9 +49,13 @@
    accepted until its backlog is full then additional connection requests are refused. onAccept events are raised only when
    the socket is un-paused.
    
-     |callback| - Callback from the setPaused method.
+     |socketId| - See https://developer.chrome.com/extensions/bluetoothSocket#property-setPaused-socketId.
+     |paused| - See https://developer.chrome.com/extensions/bluetoothSocket#property-setPaused-paused.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/bluetoothSocket#method-setPaused."
   ([socket-id paused #_callback] (gen-call :function ::set-paused &form socket-id paused)))
 
 (defmacro listen-using-rfcomm
@@ -54,9 +64,11 @@
      |socketId| - The socket identifier.
      |uuid| - Service UUID to listen on.
      |options| - Optional additional options for the service.
-     |callback| - Called when listen operation completes.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/bluetoothSocket#method-listenUsingRfcomm."
   ([socket-id uuid options #_callback] (gen-call :function ::listen-using-rfcomm &form socket-id uuid options))
   ([socket-id uuid] `(listen-using-rfcomm ~socket-id ~uuid :omit)))
 
@@ -66,9 +78,11 @@
      |socketId| - The socket identifier.
      |uuid| - Service UUID to listen on.
      |options| - Optional additional options for the service.
-     |callback| - Called when listen operation completes.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/bluetoothSocket#method-listenUsingL2cap."
   ([socket-id uuid options #_callback] (gen-call :function ::listen-using-l2cap &form socket-id uuid options))
   ([socket-id uuid] `(listen-using-l2cap ~socket-id ~uuid :omit)))
 
@@ -81,18 +95,22 @@
      |socketId| - The socket identifier.
      |address| - The address of the Bluetooth device.
      |uuid| - The UUID of the service to connect to.
-     |callback| - Called when the connect attempt is complete.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/bluetoothSocket#method-connect."
   ([socket-id address uuid #_callback] (gen-call :function ::connect &form socket-id address uuid)))
 
 (defmacro disconnect
   "Disconnects the socket. The socket identifier remains valid.
    
      |socketId| - The socket identifier.
-     |callback| - Called when the disconnect attempt is complete.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/bluetoothSocket#method-disconnect."
   ([socket-id #_callback] (gen-call :function ::disconnect &form socket-id)))
 
 (defmacro close
@@ -100,9 +118,11 @@
    soon at the function is called. However, the socket is guaranteed to be closed only when the callback is invoked.
    
      |socketId| - The socket identifier.
-     |callback| - Called when the close operation completes.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/bluetoothSocket#method-close."
   ([socket-id #_callback] (gen-call :function ::close &form socket-id)))
 
 (defmacro send
@@ -110,26 +130,37 @@
    
      |socketId| - The socket identifier.
      |data| - The data to send.
-     |callback| - Called with the number of bytes sent.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [bytesSent] where:
+   
+     |bytesSent| - The number of bytes sent.
+   
+   See https://developer.chrome.com/extensions/bluetoothSocket#method-send."
   ([socket-id data #_callback] (gen-call :function ::send &form socket-id data)))
 
 (defmacro get-info
   "Retrieves the state of the given socket.
    
      |socketId| - The socket identifier.
-     |callback| - Called when the socket state is available.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [socketInfo] where:
+   
+     |socketInfo| - Object containing the socket information.
+   
+   See https://developer.chrome.com/extensions/bluetoothSocket#method-getInfo."
   ([socket-id #_callback] (gen-call :function ::get-info &form socket-id)))
 
 (defmacro get-sockets
   "Retrieves the list of currently opened sockets owned by the application.
    
-     |callback| - Called when the list of sockets is available.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [sockets] where:
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |sockets| - See https://developer.chrome.com/extensions/bluetoothSocket#property-callback-sockets.
+   
+   See https://developer.chrome.com/extensions/bluetoothSocket#method-getSockets."
   ([#_callback] (gen-call :function ::get-sockets &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -140,7 +171,9 @@
   "Event raised when a connection has been established for a given socket.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/bluetoothSocket#event-onAccept."
   ([channel & args] (apply gen-call :event ::on-accept &form channel args)))
 
 (defmacro tap-on-accept-error-events
@@ -148,14 +181,18 @@
    event is raised, the socket is set to paused and no more onAccept events are raised for this socket.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/bluetoothSocket#event-onAcceptError."
   ([channel & args] (apply gen-call :event ::on-accept-error &form channel args)))
 
 (defmacro tap-on-receive-events
   "Event raised when data has been received for a given socket.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/bluetoothSocket#event-onReceive."
   ([channel & args] (apply gen-call :event ::on-receive &form channel args)))
 
 (defmacro tap-on-receive-error-events
@@ -163,7 +200,9 @@
    the socket is set to paused and no more onReceive events are raised for this socket.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/bluetoothSocket#event-onReceiveError."
   ([channel & args] (apply gen-call :event ::on-receive-error &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

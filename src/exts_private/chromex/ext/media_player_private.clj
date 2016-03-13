@@ -18,21 +18,27 @@
   "Notifies that the next track was requested.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/mediaPlayerPrivate#event-onNextTrack."
   ([channel & args] (apply gen-call :event ::on-next-track &form channel args)))
 
 (defmacro tap-on-prev-track-events
   "Notifies that the previous tack was requested.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/mediaPlayerPrivate#event-onPrevTrack."
   ([channel & args] (apply gen-call :event ::on-prev-track &form channel args)))
 
 (defmacro tap-on-toggle-play-state-events
   "Notifies that a play/pause toggle was requested.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/mediaPlayerPrivate#event-onTogglePlayState."
   ([channel & args] (apply gen-call :event ::on-toggle-play-state &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

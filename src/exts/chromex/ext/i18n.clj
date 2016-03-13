@@ -18,7 +18,12 @@
   "Gets the accept-languages of the browser. This is different from the locale used by the browser; to get the locale, use
    'i18n.getUILanguage'.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [languages] where:
+   
+     |languages| - Array of LanguageCode
+   
+   See https://developer.chrome.com/extensions/i18n#method-getAcceptLanguages."
   ([#_callback] (gen-call :function ::get-accept-languages &form)))
 
 (defmacro get-message
@@ -27,13 +32,17 @@
    has more than 9 elements &mdash; this method returns undefined.
    
      |messageName| - The name of the message, as specified in the messages.json file.
-     |substitutions| - Up to 9 substitution strings, if the message requires any."
+     |substitutions| - Up to 9 substitution strings, if the message requires any.
+   
+   See https://developer.chrome.com/extensions/i18n#method-getMessage."
   ([message-name substitutions] (gen-call :function ::get-message &form message-name substitutions))
   ([message-name] `(get-message ~message-name :omit)))
 
 (defmacro get-ui-language
   "Gets the browser UI language of the browser. This is different from 'i18n.getAcceptLanguages' which returns the preferred
-   user languages."
+   user languages.
+   
+   See https://developer.chrome.com/extensions/i18n#method-getUILanguage."
   ([] (gen-call :function ::get-ui-language &form)))
 
 (defmacro detect-language
@@ -41,7 +50,12 @@
    
      |text| - User input string to be translated.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - LanguageDetectionResult object that holds detected langugae reliability and array of DetectedLanguage
+   
+   See https://developer.chrome.com/extensions/i18n#method-detectLanguage."
   ([text #_callback] (gen-call :function ::detect-language &form text)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

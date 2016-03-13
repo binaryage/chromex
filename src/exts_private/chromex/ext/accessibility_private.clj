@@ -16,13 +16,17 @@
   "Enables or disables native accessibility support. Once disabled, it is up to the calling extension to provide accessibility
    for web contents.
    
-     |enabled| - True if native accessibility support should be enabled."
+     |enabled| - True if native accessibility support should be enabled.
+   
+   See https://developer.chrome.com/extensions/accessibilityPrivate#method-setNativeAccessibilityEnabled."
   ([enabled] (gen-call :function ::set-native-accessibility-enabled &form enabled)))
 
 (defmacro set-focus-ring
   "Set the bounds of the accessibility focus ring.
    
-     |rects| - Array of rectangles to draw the accessibility focus ring around."
+     |rects| - Array of rectangles to draw the accessibility focus ring around.
+   
+   See https://developer.chrome.com/extensions/accessibilityPrivate#method-setFocusRing."
   ([rects] (gen-call :function ::set-focus-ring &form rects)))
 
 (defmacro set-keyboard-listener
@@ -32,7 +36,9 @@
      |enabled| - True if the caller wants to listen to key events; false to stop listening to events. Note that there is
                  only ever one extension listening to key events.
      |capture| - True if key events should be swallowed natively and not propagated if preventDefault() gets called by the
-                 extension's background page."
+                 extension's background page.
+   
+   See https://developer.chrome.com/extensions/accessibilityPrivate#method-setKeyboardListener."
   ([enabled capture] (gen-call :function ::set-keyboard-listener &form enabled capture)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -43,7 +49,9 @@
   "Fired whenever ChromeVox should output introduction.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/accessibilityPrivate#event-onIntroduceChromeVox."
   ([channel & args] (apply gen-call :event ::on-introduce-chrome-vox &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

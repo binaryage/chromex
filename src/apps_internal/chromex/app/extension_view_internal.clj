@@ -13,15 +13,27 @@
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro load-src
-  "
+  "  |instanceId| - See https://developer.chrome.com/extensions/extensionViewInternal#property-loadSrc-instanceId.
+     |src| - See https://developer.chrome.com/extensions/extensionViewInternal#property-loadSrc-src.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [hasLoadSucceeded] where:
+   
+     |hasLoadSucceeded| - Whether or not loading the src has succeeded.
+   
+   See https://developer.chrome.com/extensions/extensionViewInternal#method-loadSrc."
   ([instance-id src #_callback] (gen-call :function ::load-src &form instance-id src)))
 
 (defmacro parse-src
-  "
+  "  |src| - See https://developer.chrome.com/extensions/extensionViewInternal#property-parseSrc-src.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [isSrcValid extensionId] where:
+   
+     |isSrcValid| - Whether or not the src is valid.
+     |extensionId| - The extension ID of the src.
+   
+   See https://developer.chrome.com/extensions/extensionViewInternal#method-parseSrc."
   ([src #_callback] (gen-call :function ::parse-src &form src)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

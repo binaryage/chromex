@@ -21,14 +21,21 @@
      |detectionIntervalInSeconds| - The system is considered idle if detectionIntervalInSeconds seconds have elapsed since
                                     the last user input detected.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [newState] where:
+   
+     |newState| - See https://developer.chrome.com/extensions/idle#property-callback-newState.
+   
+   See https://developer.chrome.com/extensions/idle#method-queryState."
   ([detection-interval-in-seconds #_callback] (gen-call :function ::query-state &form detection-interval-in-seconds)))
 
 (defmacro set-detection-interval
   "Sets the interval, in seconds, used to determine when the system is in an idle state for onStateChanged events. The default
    interval is 60 seconds.
    
-     |intervalInSeconds| - Threshold, in seconds, used to determine when the system is in an idle state."
+     |intervalInSeconds| - Threshold, in seconds, used to determine when the system is in an idle state.
+   
+   See https://developer.chrome.com/extensions/idle#method-setDetectionInterval."
   ([interval-in-seconds] (gen-call :function ::set-detection-interval &form interval-in-seconds)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -41,7 +48,9 @@
    of seconds, and 'active' when the user generates input on an idle system.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/idle#event-onStateChanged."
   ([channel & args] (apply gen-call :event ::on-state-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

@@ -22,7 +22,9 @@
    must call reportCallback exactly once with the current list of certificates.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/certificateProvider#event-onCertificatesRequested."
   ([channel & args] (apply gen-call :event ::on-certificates-requested &form channel args)))
 
 (defmacro tap-on-sign-digest-requested-events
@@ -31,7 +33,9 @@
    key and return it by calling reportCallback. reportCallback must be called exactly once.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/certificateProvider#event-onSignDigestRequested."
   ([channel & args] (apply gen-call :event ::on-sign-digest-requested &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

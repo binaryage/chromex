@@ -21,9 +21,11 @@
    
      |networks| - Network filters to set. Every NetworkInfo must             either have the SSID or HexSSID
                   set. Other fields will be ignored.
-     |callback| - Called back when this operation is finished.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/networking.config#method-setNetworkFilter."
   ([networks #_callback] (gen-call :function ::set-network-filter &form networks)))
 
 (defmacro finish-authentication
@@ -33,9 +35,11 @@
    
      |GUID| - Unique network identifier obtained from         'onCaptivePortalDetected'.
      |result| - The result of the authentication attempt.
-     |callback| - Called back when this operation is finished.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/networking.config#method-finishAuthentication."
   ([guid result #_callback] (gen-call :function ::finish-authentication &form guid result)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -50,7 +54,9 @@
    and the appropriate authentication result.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/networking.config#event-onCaptivePortalDetected."
   ([channel & args] (apply gen-call :event ::on-captive-portal-detected &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

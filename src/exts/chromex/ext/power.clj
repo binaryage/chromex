@@ -17,11 +17,17 @@
 
 (defmacro request-keep-awake
   "Requests that power management be temporarily disabled. |level| describes the degree to which power management should be
-   disabled. If a request previously made by the same app is still active, it will be replaced by the new request."
+   disabled. If a request previously made by the same app is still active, it will be replaced by the new request.
+   
+     |level| - See https://developer.chrome.com/extensions/power#property-requestKeepAwake-level.
+   
+   See https://developer.chrome.com/extensions/power#method-requestKeepAwake."
   ([level] (gen-call :function ::request-keep-awake &form level)))
 
 (defmacro release-keep-awake
-  "Releases a request previously made via requestKeepAwake()."
+  "Releases a request previously made via requestKeepAwake().
+   
+   See https://developer.chrome.com/extensions/power#method-releaseKeepAwake."
   ([] (gen-call :function ::release-keep-awake &form)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

@@ -15,9 +15,17 @@
 
 ; -- properties -------------------------------------------------------------------------------------------------------------
 
-(defmacro get-max-write-operations-per-hour ([] (gen-call :property ::max-write-operations-per-hour &form)))
+(defmacro get-max-write-operations-per-hour
+  "
+   
+   See https://developer.chrome.com/extensions/bookmarks#property-MAX_WRITE_OPERATIONS_PER_HOUR."
+  ([] (gen-call :property ::max-write-operations-per-hour &form)))
 
-(defmacro get-max-sustained-write-operations-per-minute ([] (gen-call :property ::max-sustained-write-operations-per-minute &form)))
+(defmacro get-max-sustained-write-operations-per-minute
+  "
+   
+   See https://developer.chrome.com/extensions/bookmarks#property-MAX_SUSTAINED_WRITE_OPERATIONS_PER_MINUTE."
+  ([] (gen-call :property ::max-sustained-write-operations-per-minute &form)))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
@@ -26,13 +34,25 @@
    
      |idOrIdList| - A single string-valued id, or an array of string-valued ids
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [results] where:
+   
+     |results| - See https://developer.chrome.com/extensions/bookmarks#property-callback-results.
+   
+   See https://developer.chrome.com/extensions/bookmarks#method-get."
   ([id-or-id-list #_callback] (gen-call :function ::get &form id-or-id-list)))
 
 (defmacro get-children
   "Retrieves the children of the specified BookmarkTreeNode id.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |id| - See https://developer.chrome.com/extensions/bookmarks#property-getChildren-id.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [results] where:
+   
+     |results| - See https://developer.chrome.com/extensions/bookmarks#property-callback-results.
+   
+   See https://developer.chrome.com/extensions/bookmarks#method-getChildren."
   ([id #_callback] (gen-call :function ::get-children &form id)))
 
 (defmacro get-recent
@@ -40,13 +60,23 @@
    
      |numberOfItems| - The maximum number of items to return.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [results] where:
+   
+     |results| - See https://developer.chrome.com/extensions/bookmarks#property-callback-results.
+   
+   See https://developer.chrome.com/extensions/bookmarks#method-getRecent."
   ([number-of-items #_callback] (gen-call :function ::get-recent &form number-of-items)))
 
 (defmacro get-tree
   "Retrieves the entire Bookmarks hierarchy.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [results] where:
+   
+     |results| - See https://developer.chrome.com/extensions/bookmarks#property-callback-results.
+   
+   See https://developer.chrome.com/extensions/bookmarks#method-getTree."
   ([#_callback] (gen-call :function ::get-tree &form)))
 
 (defmacro get-sub-tree
@@ -54,7 +84,12 @@
    
      |id| - The ID of the root of the subtree to retrieve.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [results] where:
+   
+     |results| - See https://developer.chrome.com/extensions/bookmarks#property-callback-results.
+   
+   See https://developer.chrome.com/extensions/bookmarks#method-getSubTree."
   ([id #_callback] (gen-call :function ::get-sub-tree &form id)))
 
 (defmacro search
@@ -65,38 +100,76 @@
                If an object, the properties query, url, and title may be specified and bookmarks matching all specified
                properties will be produced.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [results] where:
+   
+     |results| - See https://developer.chrome.com/extensions/bookmarks#property-callback-results.
+   
+   See https://developer.chrome.com/extensions/bookmarks#method-search."
   ([query #_callback] (gen-call :function ::search &form query)))
 
 (defmacro create
   "Creates a bookmark or folder under the specified parentId.  If url is NULL or missing, it will be a folder.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |bookmark| - See https://developer.chrome.com/extensions/bookmarks#property-create-bookmark.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/bookmarks#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/bookmarks#method-create."
   ([bookmark #_callback] (gen-call :function ::create &form bookmark)))
 
 (defmacro move
   "Moves the specified BookmarkTreeNode to the provided location.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |id| - See https://developer.chrome.com/extensions/bookmarks#property-move-id.
+     |destination| - See https://developer.chrome.com/extensions/bookmarks#property-move-destination.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/bookmarks#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/bookmarks#method-move."
   ([id destination #_callback] (gen-call :function ::move &form id destination)))
 
 (defmacro update
   "Updates the properties of a bookmark or folder. Specify only the properties that you want to change; unspecified properties
    will be left unchanged.  Note: Currently, only 'title' and 'url' are supported.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |id| - See https://developer.chrome.com/extensions/bookmarks#property-update-id.
+     |changes| - See https://developer.chrome.com/extensions/bookmarks#property-update-changes.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/bookmarks#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/bookmarks#method-update."
   ([id changes #_callback] (gen-call :function ::update &form id changes)))
 
 (defmacro remove
   "Removes a bookmark or an empty bookmark folder.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |id| - See https://developer.chrome.com/extensions/bookmarks#property-remove-id.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/bookmarks#method-remove."
   ([id #_callback] (gen-call :function ::remove &form id)))
 
 (defmacro remove-tree
   "Recursively removes a bookmark folder.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |id| - See https://developer.chrome.com/extensions/bookmarks#property-removeTree-id.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/bookmarks#method-removeTree."
   ([id #_callback] (gen-call :function ::remove-tree &form id)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -107,7 +180,9 @@
   "Fired when a bookmark or folder is created.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/bookmarks#event-onCreated."
   ([channel & args] (apply gen-call :event ::on-created &form channel args)))
 
 (defmacro tap-on-removed-events
@@ -115,21 +190,27 @@
    folder, and none for its contents.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/bookmarks#event-onRemoved."
   ([channel & args] (apply gen-call :event ::on-removed &form channel args)))
 
 (defmacro tap-on-changed-events
   "Fired when a bookmark or folder changes.  Note: Currently, only title and url changes trigger this.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/bookmarks#event-onChanged."
   ([channel & args] (apply gen-call :event ::on-changed &form channel args)))
 
 (defmacro tap-on-moved-events
   "Fired when a bookmark or folder is moved to a different parent folder.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/bookmarks#event-onMoved."
   ([channel & args] (apply gen-call :event ::on-moved &form channel args)))
 
 (defmacro tap-on-children-reordered-events
@@ -137,7 +218,9 @@
    as a result of a move().
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/bookmarks#event-onChildrenReordered."
   ([channel & args] (apply gen-call :event ::on-children-reordered &form channel args)))
 
 (defmacro tap-on-import-began-events
@@ -145,14 +228,18 @@
    fired.  Observers should still handle other notifications immediately.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/bookmarks#event-onImportBegan."
   ([channel & args] (apply gen-call :event ::on-import-began &form channel args)))
 
 (defmacro tap-on-import-ended-events
   "Fired when a bookmark import session is ended.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/bookmarks#event-onImportEnded."
   ([channel & args] (apply gen-call :event ::on-import-ended &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

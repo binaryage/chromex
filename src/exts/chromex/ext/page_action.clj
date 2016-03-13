@@ -19,40 +19,71 @@
 (defmacro show
   "Shows the page action. The page action is shown whenever the tab is selected.
    
-     |tabId| - The id of the tab for which you want to modify the page action."
+     |tabId| - The id of the tab for which you want to modify the page action.
+   
+   See https://developer.chrome.com/extensions/pageAction#method-show."
   ([tab-id] (gen-call :function ::show &form tab-id)))
 
 (defmacro hide
   "Hides the page action. Hidden page actions still appear in the Chrome toolbar, but are grayed out.
    
-     |tabId| - The id of the tab for which you want to modify the page action."
+     |tabId| - The id of the tab for which you want to modify the page action.
+   
+   See https://developer.chrome.com/extensions/pageAction#method-hide."
   ([tab-id] (gen-call :function ::hide &form tab-id)))
 
 (defmacro set-title
-  "Sets the title of the page action. This is displayed in a tooltip over the page action."
+  "Sets the title of the page action. This is displayed in a tooltip over the page action.
+   
+     |details| - See https://developer.chrome.com/extensions/pageAction#property-setTitle-details.
+   
+   See https://developer.chrome.com/extensions/pageAction#method-setTitle."
   ([details] (gen-call :function ::set-title &form details)))
 
 (defmacro get-title
   "Gets the title of the page action.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |details| - See https://developer.chrome.com/extensions/pageAction#property-getTitle-details.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/pageAction#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/pageAction#method-getTitle."
   ([details #_callback] (gen-call :function ::get-title &form details)))
 
 (defmacro set-icon
   "Sets the icon for the page action. The icon can be specified either as the path to an image file or as the pixel data from
    a canvas element, or as dictionary of either one of those. Either the path or the imageData property must be specified.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |details| - See https://developer.chrome.com/extensions/pageAction#property-setIcon-details.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/pageAction#method-setIcon."
   ([details #_callback] (gen-call :function ::set-icon &form details)))
 
 (defmacro set-popup
-  "Sets the html document to be opened as a popup when the user clicks on the page action's icon."
+  "Sets the html document to be opened as a popup when the user clicks on the page action's icon.
+   
+     |details| - See https://developer.chrome.com/extensions/pageAction#property-setPopup-details.
+   
+   See https://developer.chrome.com/extensions/pageAction#method-setPopup."
   ([details] (gen-call :function ::set-popup &form details)))
 
 (defmacro get-popup
   "Gets the html document set as the popup for this page action.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |details| - See https://developer.chrome.com/extensions/pageAction#property-getPopup-details.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/pageAction#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/pageAction#method-getPopup."
   ([details #_callback] (gen-call :function ::get-popup &form details)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -63,7 +94,9 @@
   "Fired when a page action icon is clicked.  This event will not fire if the page action has a popup.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/pageAction#event-onClicked."
   ([channel & args] (apply gen-call :event ::on-clicked &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

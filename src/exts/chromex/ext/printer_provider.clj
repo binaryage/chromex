@@ -22,7 +22,9 @@
   "Event fired when print manager requests printers provided by extensions.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/printerProvider#event-onGetPrintersRequested."
   ([channel & args] (apply gen-call :event ::on-get-printers-requested &form channel args)))
 
 (defmacro tap-on-get-usb-printer-info-requested-events
@@ -31,21 +33,27 @@
    the 'onGetPrintersRequested' event.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/printerProvider#event-onGetUsbPrinterInfoRequested."
   ([channel & args] (apply gen-call :event ::on-get-usb-printer-info-requested &form channel args)))
 
 (defmacro tap-on-get-capability-requested-events
   "Event fired when print manager requests printer capabilities.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/printerProvider#event-onGetCapabilityRequested."
   ([channel & args] (apply gen-call :event ::on-get-capability-requested &form channel args)))
 
 (defmacro tap-on-print-requested-events
   "Event fired when print manager requests printing.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/printerProvider#event-onPrintRequested."
   ([channel & args] (apply gen-call :event ::on-print-requested &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

@@ -17,10 +17,15 @@
 (defmacro install
   "This can currently only be used to install apps, but not extensions.
    
-     |callback| - This returns a developer-readable error message in error and a string error code in errorCode (see
-                  webstore.ErrorCode)
+     |id| - See https://developer.chrome.com/extensions/inlineInstallPrivate#property-install-id.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [error errorCode] where:
+   
+     |error| - See https://developer.chrome.com/extensions/inlineInstallPrivate#property-callback-error.
+     |errorCode| - See https://developer.chrome.com/extensions/inlineInstallPrivate#property-callback-errorCode.
+   
+   See https://developer.chrome.com/extensions/inlineInstallPrivate#method-install."
   ([id #_callback] (gen-call :function ::install &form id)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

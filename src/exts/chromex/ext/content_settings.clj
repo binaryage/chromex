@@ -19,81 +19,107 @@
 (defmacro get-cookies
   "Whether to allow cookies and other local data to be set by websites. One ofallow: Accept cookies,block: Block
    cookies,session_only: Accept cookies only for the current session. Default is allow.The primary URL is the URL representing
-   the cookie origin. The secondary URL is the URL of the top-level frame."
+   the cookie origin. The secondary URL is the URL of the top-level frame.
+   
+   See https://developer.chrome.com/extensions/contentSettings#property-cookies."
   ([] (gen-call :property ::cookies &form)))
 
 (defmacro get-images
   "Whether to show images. One ofallow: Show images,block: Don't show images. Default is allow.The primary URL is the URL of
-   the top-level frame. The secondary URL is the URL of the image."
+   the top-level frame. The secondary URL is the URL of the image.
+   
+   See https://developer.chrome.com/extensions/contentSettings#property-images."
   ([] (gen-call :property ::images &form)))
 
 (defmacro get-javascript
   "Whether to run JavaScript. One ofallow: Run JavaScript,block: Don't run JavaScript. Default is allow.The primary URL is the
-   URL of the top-level frame. The secondary URL is not used."
+   URL of the top-level frame. The secondary URL is not used.
+   
+   See https://developer.chrome.com/extensions/contentSettings#property-javascript."
   ([] (gen-call :property ::javascript &form)))
 
 (defmacro get-location
   "Whether to allow Geolocation. One of allow: Allow sites to track your physical location,block: Don't allow sites to track
    your physical location,ask: Ask before allowing sites to track your physical location. Default is ask.The primary URL is
    the URL of the document which requested location data. The secondary URL is the URL of the top-level frame (which may or
-   may not differ from the requesting URL)."
+   may not differ from the requesting URL).
+   
+   See https://developer.chrome.com/extensions/contentSettings#property-location."
   ([] (gen-call :property ::location &form)))
 
 (defmacro get-plugins
   "Whether to run plugins. One ofallow: Run plugins automatically,block: Don't run plugins
    automatically,detect_important_content: Only run automatically those plugins that are detected as the website's main
-   content.The primary URL is the URL of the top-level frame. The secondary URL is not used."
+   content.The primary URL is the URL of the top-level frame. The secondary URL is not used.
+   
+   See https://developer.chrome.com/extensions/contentSettings#property-plugins."
   ([] (gen-call :property ::plugins &form)))
 
 (defmacro get-popups
   "Whether to allow sites to show pop-ups. One ofallow: Allow sites to show pop-ups,block: Don't allow sites to show pop-ups.
-   Default is block.The primary URL is the URL of the top-level frame. The secondary URL is not used."
+   Default is block.The primary URL is the URL of the top-level frame. The secondary URL is not used.
+   
+   See https://developer.chrome.com/extensions/contentSettings#property-popups."
   ([] (gen-call :property ::popups &form)))
 
 (defmacro get-notifications
   "Whether to allow sites to show desktop notifications. One ofallow: Allow sites to show desktop notifications,block: Don't
    allow sites to show desktop notifications,ask: Ask when a site wants to show desktop notifications. Default is ask.The
-   primary URL is the URL of the document which wants to show the notification. The secondary URL is not used."
+   primary URL is the URL of the document which wants to show the notification. The secondary URL is not used.
+   
+   See https://developer.chrome.com/extensions/contentSettings#property-notifications."
   ([] (gen-call :property ::notifications &form)))
 
 (defmacro get-fullscreen
   "Whether to allow sites to toggle the fullscreen mode. One ofallow: Allow sites to toggle the fullscreen mode,ask: Ask when
    a site wants to toggle the fullscreen mode. Default is ask.The primary URL is the URL of the document which requested to
    toggle the fullscreen mode. The secondary URL is the URL of the top-level frame (which may or may not differ from the
-   requesting URL)."
+   requesting URL).
+   
+   See https://developer.chrome.com/extensions/contentSettings#property-fullscreen."
   ([] (gen-call :property ::fullscreen &form)))
 
 (defmacro get-mouselock
   "Whether to allow sites to disable the mouse cursor. One of allow: Allow sites to disable the mouse cursor,block: Don't
    allow sites to disable the mouse cursor,ask: Ask when a site wants to disable the mouse cursor. Default is ask.The primary
-   URL is the URL of the top-level frame. The secondary URL is not used."
+   URL is the URL of the top-level frame. The secondary URL is not used.
+   
+   See https://developer.chrome.com/extensions/contentSettings#property-mouselock."
   ([] (gen-call :property ::mouselock &form)))
 
 (defmacro get-microphone
   "Whether to allow sites to access the microphone. One of allow: Allow sites to access the microphone,block: Don't allow
    sites to access the microphone,ask: Ask when a site wants to access the microphone. Default is ask.The primary URL is the
    URL of the document which requested microphone access. The secondary URL is not used.NOTE: The 'allow' setting is not valid
-   if both patterns are ''."
+   if both patterns are ''.
+   
+   See https://developer.chrome.com/extensions/contentSettings#property-microphone."
   ([] (gen-call :property ::microphone &form)))
 
 (defmacro get-camera
   "Whether to allow sites to access the camera. One of allow: Allow sites to access the camera,block: Don't allow sites to
    access the camera,ask: Ask when a site wants to access the camera. Default is ask.The primary URL is the URL of the
    document which requested camera access. The secondary URL is not used.NOTE: The 'allow' setting is not valid if both
-   patterns are ''."
+   patterns are ''.
+   
+   See https://developer.chrome.com/extensions/contentSettings#property-camera."
   ([] (gen-call :property ::camera &form)))
 
 (defmacro get-unsandboxed-plugins
   "Whether to allow sites to run plugins unsandboxed. One of allow: Allow sites to run plugins unsandboxed,block: Don't allow
    sites to run plugins unsandboxed,ask: Ask when a site wants to run a plugin unsandboxed. Default is ask.The primary URL is
-   the URL of the top-level frame. The secondary URL is not used."
+   the URL of the top-level frame. The secondary URL is not used.
+   
+   See https://developer.chrome.com/extensions/contentSettings#property-unsandboxedPlugins."
   ([] (gen-call :property ::unsandboxed-plugins &form)))
 
 (defmacro get-automatic-downloads
   "Whether to allow sites to download multiple files automatically. One of allow: Allow sites to download multiple files
    automatically,block: Don't allow sites to download multiple files automatically,ask: Ask when a site wants to download
    files automatically after the first file. Default is ask.The primary URL is the URL of the top-level frame. The secondary
-   URL is not used."
+   URL is not used.
+   
+   See https://developer.chrome.com/extensions/contentSettings#property-automaticDownloads."
   ([] (gen-call :property ::automatic-downloads &form)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

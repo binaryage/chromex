@@ -15,7 +15,9 @@
 ; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defmacro get-max-session-results
-  "The maximum number of 'sessions.Session' that will be included in a requested list."
+  "The maximum number of 'sessions.Session' that will be included in a requested list.
+   
+   See https://developer.chrome.com/extensions/sessions#property-MAX_SESSION_RESULTS."
   ([] (gen-call :property ::max-session-results &form)))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
@@ -23,14 +25,31 @@
 (defmacro get-recently-closed
   "Gets the list of recently closed tabs and/or windows.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |filter| - See https://developer.chrome.com/extensions/sessions#property-getRecentlyClosed-filter.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [sessions] where:
+   
+     |sessions| - The list of closed entries in reverse order that they were closed (the most recently closed tab or window
+                  will be at index 0). The entries may contain either tabs or windows.
+   
+   See https://developer.chrome.com/extensions/sessions#method-getRecentlyClosed."
   ([filter #_callback] (gen-call :function ::get-recently-closed &form filter))
   ([] `(get-recently-closed :omit)))
 
 (defmacro get-devices
   "Retrieves all devices with synced sessions.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |filter| - See https://developer.chrome.com/extensions/sessions#property-getDevices-filter.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [devices] where:
+   
+     |devices| - The list of 'sessions.Device' objects for each synced session, sorted in order from device with most recently
+                 modified session to device with least recently modified session. 'tabs.Tab' objects are sorted by recency in
+                 the 'windows.Window' of the 'sessions.Session' objects.
+   
+   See https://developer.chrome.com/extensions/sessions#method-getDevices."
   ([filter #_callback] (gen-call :function ::get-devices &form filter))
   ([] `(get-devices :omit)))
 
@@ -40,7 +59,12 @@
      |sessionId| - The 'windows.Window.sessionId', or 'tabs.Tab.sessionId' to restore. If this parameter is not specified,
                    the most recently closed session is restored.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [restoredSession] where:
+   
+     |restoredSession| - A 'sessions.Session' containing the restored 'windows.Window' or 'tabs.Tab' object.
+   
+   See https://developer.chrome.com/extensions/sessions#method-restore."
   ([session-id #_callback] (gen-call :function ::restore &form session-id))
   ([] `(restore :omit)))
 
@@ -52,7 +76,9 @@
   "Fired when recently closed tabs and/or windows are changed. This event does not monitor synced sessions changes.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/sessions#event-onChanged."
   ([channel & args] (apply gen-call :event ::on-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

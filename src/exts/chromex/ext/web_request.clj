@@ -16,7 +16,9 @@
 
 (defmacro get-max-handler-behavior-changed-calls-per10-minutes
   "The maximum number of times that handlerBehaviorChanged can be called per 10 minute sustained interval.
-   handlerBehaviorChanged is an expensive function call that shouldn't be called often."
+   handlerBehaviorChanged is an expensive function call that shouldn't be called often.
+   
+   See https://developer.chrome.com/extensions/webRequest#property-MAX_HANDLER_BEHAVIOR_CHANGED_CALLS_PER_10_MINUTES."
   ([] (gen-call :property ::max-handler-behavior-changed-calls-per10-minutes &form)))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
@@ -25,7 +27,10 @@
   "Needs to be called when the behavior of the webRequest handlers has changed to prevent incorrect handling due to caching.
    This function call is expensive. Don't call it often.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/webRequest#method-handlerBehaviorChanged."
   ([#_callback] (gen-call :function ::handler-behavior-changed &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -36,7 +41,9 @@
   "Fired when a request is about to occur.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/webRequest#event-onBeforeRequest."
   ([channel & args] (apply gen-call :event ::on-before-request &form channel args)))
 
 (defmacro tap-on-before-send-headers-events
@@ -44,7 +51,9 @@
    to the server, but before any HTTP data is sent.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/webRequest#event-onBeforeSendHeaders."
   ([channel & args] (apply gen-call :event ::on-before-send-headers &form channel args)))
 
 (defmacro tap-on-send-headers-events
@@ -52,14 +61,18 @@
    visible by the time onSendHeaders is fired).
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/webRequest#event-onSendHeaders."
   ([channel & args] (apply gen-call :event ::on-send-headers &form channel args)))
 
 (defmacro tap-on-headers-received-events
   "Fired when HTTP response headers of a request have been received.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/webRequest#event-onHeadersReceived."
   ([channel & args] (apply gen-call :event ::on-headers-received &form channel args)))
 
 (defmacro tap-on-auth-required-events
@@ -68,7 +81,9 @@
    credentials are provided, this may be called multiple times for the same request.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/webRequest#event-onAuthRequired."
   ([channel & args] (apply gen-call :event ::on-auth-required &form channel args)))
 
 (defmacro tap-on-response-started-events
@@ -76,28 +91,36 @@
    headers are available.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/webRequest#event-onResponseStarted."
   ([channel & args] (apply gen-call :event ::on-response-started &form channel args)))
 
 (defmacro tap-on-before-redirect-events
   "Fired when a server-initiated redirect is about to occur.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/webRequest#event-onBeforeRedirect."
   ([channel & args] (apply gen-call :event ::on-before-redirect &form channel args)))
 
 (defmacro tap-on-completed-events
   "Fired when a request is completed.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/webRequest#event-onCompleted."
   ([channel & args] (apply gen-call :event ::on-completed &form channel args)))
 
 (defmacro tap-on-error-occurred-events
   "Fired when an error occurs.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/webRequest#event-onErrorOccurred."
   ([channel & args] (apply gen-call :event ::on-error-occurred &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

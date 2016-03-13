@@ -20,9 +20,13 @@
   "Creates a TCP socket.
    
      |properties| - The socket properties (optional).
-     |callback| - Called when the socket has been created.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [createInfo] where:
+   
+     |createInfo| - The result of the socket creation.
+   
+   See https://developer.chrome.com/extensions/sockets.tcp#method-create."
   ([properties #_callback] (gen-call :function ::create &form properties))
   ([] `(create :omit)))
 
@@ -31,9 +35,11 @@
    
      |socketId| - The socket identifier.
      |properties| - The properties to update.
-     |callback| - Called when the properties are updated.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/sockets.tcp#method-update."
   ([socket-id properties #_callback] (gen-call :function ::update &form socket-id properties)))
 
 (defmacro set-paused
@@ -41,9 +47,13 @@
    is typically used by an application to throttle data sent by its peer. When a socket is paused, no onReceive event is
    raised. When a socket is connected and un-paused, onReceive events are raised again when messages are received.
    
-     |callback| - Callback from the setPaused method.
+     |socketId| - See https://developer.chrome.com/extensions/sockets.tcp#property-setPaused-socketId.
+     |paused| - See https://developer.chrome.com/extensions/sockets.tcp#property-setPaused-paused.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/sockets.tcp#method-setPaused."
   ([socket-id paused #_callback] (gen-call :function ::set-paused &form socket-id paused)))
 
 (defmacro set-keep-alive
@@ -52,9 +62,13 @@
      |socketId| - The socket identifier.
      |enable| - If true, enable keep-alive functionality.
      |delay| - Set the delay seconds between the last data packet received and the first keepalive probe. Default is 0.
-     |callback| - Called when the setKeepAlive attempt is complete.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - The result code returned from the underlying network call. A negative value indicates an error.
+   
+   See https://developer.chrome.com/extensions/sockets.tcp#method-setKeepAlive."
   ([socket-id enable delay #_callback] (gen-call :function ::set-keep-alive &form socket-id enable delay))
   ([socket-id enable] `(set-keep-alive ~socket-id ~enable :omit)))
 
@@ -63,9 +77,13 @@
    
      |socketId| - The socket identifier.
      |noDelay| - If true, disables Nagle's algorithm.
-     |callback| - Called when the setNoDelay attempt is complete.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - The result code returned from the underlying network call. A negative value indicates an error.
+   
+   See https://developer.chrome.com/extensions/sockets.tcp#method-setNoDelay."
   ([socket-id no-delay #_callback] (gen-call :function ::set-no-delay &form socket-id no-delay)))
 
 (defmacro connect
@@ -76,18 +94,24 @@
      |socketId| - The socket identifier.
      |peerAddress| - The address of the remote machine. DNS name, IPv4 and  IPv6 formats are supported.
      |peerPort| - The port of the remote machine.
-     |callback| - Called when the connect attempt is complete.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - The result code returned from the underlying network call. A negative value indicates an error.
+   
+   See https://developer.chrome.com/extensions/sockets.tcp#method-connect."
   ([socket-id peer-address peer-port #_callback] (gen-call :function ::connect &form socket-id peer-address peer-port)))
 
 (defmacro disconnect
   "Disconnects the socket.
    
      |socketId| - The socket identifier.
-     |callback| - Called when the disconnect attempt is complete.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/sockets.tcp#method-disconnect."
   ([socket-id #_callback] (gen-call :function ::disconnect &form socket-id)))
 
 (defmacro secure
@@ -95,9 +119,13 @@
    
      |socketId| - The existing, connected socket to use.
      |options| - Constraints and parameters for the TLS connection.
-     |callback| - Called when the connection attempt is complete.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/sockets.tcp#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/sockets.tcp#method-secure."
   ([socket-id options #_callback] (gen-call :function ::secure &form socket-id options))
   ([socket-id] `(secure ~socket-id :omit)))
 
@@ -106,9 +134,13 @@
    
      |socketId| - The socket identifier.
      |data| - The data to send.
-     |callback| - Called when the send operation completes.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [sendInfo] where:
+   
+     |sendInfo| - Result of the send method.
+   
+   See https://developer.chrome.com/extensions/sockets.tcp#method-send."
   ([socket-id data #_callback] (gen-call :function ::send &form socket-id data)))
 
 (defmacro close
@@ -117,26 +149,35 @@
    the callback is invoked.
    
      |socketId| - The socket identifier.
-     |callback| - Called when the close operation completes.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/sockets.tcp#method-close."
   ([socket-id #_callback] (gen-call :function ::close &form socket-id)))
 
 (defmacro get-info
   "Retrieves the state of the given socket.
    
      |socketId| - The socket identifier.
-     |callback| - Called when the socket state is available.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [socketInfo] where:
+   
+     |socketInfo| - Object containing the socket information.
+   
+   See https://developer.chrome.com/extensions/sockets.tcp#method-getInfo."
   ([socket-id #_callback] (gen-call :function ::get-info &form socket-id)))
 
 (defmacro get-sockets
   "Retrieves the list of currently opened sockets owned by the application.
    
-     |callback| - Called when the list of sockets is available.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [socketInfos] where:
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |socketInfos| - Array of object containing socket information.
+   
+   See https://developer.chrome.com/extensions/sockets.tcp#method-getSockets."
   ([#_callback] (gen-call :function ::get-sockets &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -147,7 +188,9 @@
   "Event raised when data has been received for a given socket.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/sockets.tcp#event-onReceive."
   ([channel & args] (apply gen-call :event ::on-receive &form channel args)))
 
 (defmacro tap-on-receive-error-events
@@ -155,7 +198,9 @@
    event is raised, the socket is set to paused and no more onReceive events are raised for this socket.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/sockets.tcp#event-onReceiveError."
   ([channel & args] (apply gen-call :event ::on-receive-error &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

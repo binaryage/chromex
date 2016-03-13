@@ -21,10 +21,13 @@
    closed, or the media stream is closed by the extension.
    
      |options| - Configures the returned media stream.
-     |callback| - Callback with either the tab capture MediaStream or   null.  null indicates an error has occurred   and
-                  the client may query chrome.runtime.lastError to access the error   details.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [stream] where:
+   
+     |stream| - See https://developer.chrome.com/extensions/tabCapture#property-callback-stream.
+   
+   See https://developer.chrome.com/extensions/tabCapture#method-capture."
   ([options #_callback] (gen-call :function ::capture &form options)))
 
 (defmacro get-captured-tabs
@@ -32,9 +35,12 @@
    allows extensions to inform the user that there is an existing tab capture that would prevent a new tab capture from
    succeeding (or to prevent redundant requests for the same tab).
    
-     |callback| - Callback invoked with CaptureInfo[] for captured tabs.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |result| - See https://developer.chrome.com/extensions/tabCapture#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/tabCapture#method-getCapturedTabs."
   ([#_callback] (gen-call :function ::get-captured-tabs &form)))
 
 (defmacro capture-offscreen-tab
@@ -48,11 +54,15 @@
    recording devices (e.g., web cams), copy/paste to/from the system clipboard, etc.Note: This is a new API, currently only
    available in Canary/Dev channel, and may change without notice.
    
+     |startUrl| - See https://developer.chrome.com/extensions/tabCapture#property-captureOffscreenTab-startUrl.
      |options| - Constraints for the capture and returned MediaStream.
-     |callback| - Callback with either the tab capture MediaStream or   null.  null indicates an error has occurred   and
-                  the client may query chrome.runtime.lastError to access the error   details.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [stream] where:
+   
+     |stream| - See https://developer.chrome.com/extensions/tabCapture#property-callback-stream.
+   
+   See https://developer.chrome.com/extensions/tabCapture#method-captureOffscreenTab."
   ([start-url options #_callback] (gen-call :function ::capture-offscreen-tab &form start-url options)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -64,7 +74,9 @@
    tabs to keep UI elements like page actions in sync.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/tabCapture#event-onStatusChanged."
   ([channel & args] (apply gen-call :event ::on-status-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

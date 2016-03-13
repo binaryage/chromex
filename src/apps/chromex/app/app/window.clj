@@ -29,31 +29,44 @@
    same id. If you need to open a window with an id at a location other than the remembered default, you can create it hidden,
    move it to the desired location, then show it.
    
-     |callback| - Called in the creating window (parent) before the load event is called in the created window (child). The
-                  parent can set fields or functions on the child usable from onload. E.g.
-                  background.js:function(createdWindow) { createdWindow.contentWindow.foo = function () { };
-                  };window.js:window.onload = function () { foo(); }
+     |url| - See https://developer.chrome.com/extensions/app.window#property-create-url.
+     |options| - See https://developer.chrome.com/extensions/app.window#property-create-options.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [createdWindow] where:
+   
+     |createdWindow| - See https://developer.chrome.com/extensions/app.window#property-callback-createdWindow.
+   
+   See https://developer.chrome.com/extensions/app.window#method-create."
   ([url options #_callback] (gen-call :function ::create &form url options))
   ([url] `(create ~url :omit)))
 
 (defmacro current
   "Returns an 'AppWindow' object for the current script context (ie JavaScript 'window' object). This can also be called on a
-   handle to a script context for another page, for example: otherWindow.chrome.app.window.current()."
+   handle to a script context for another page, for example: otherWindow.chrome.app.window.current().
+   
+   See https://developer.chrome.com/extensions/app.window#method-current."
   ([] (gen-call :function ::current &form)))
 
 (defmacro get-all
-  "Gets an array of all currently created app windows. This method is new in Chrome 33."
+  "Gets an array of all currently created app windows. This method is new in Chrome 33.
+   
+   See https://developer.chrome.com/extensions/app.window#method-getAll."
   ([] (gen-call :function ::get-all &form)))
 
 (defmacro get
   "Gets an 'AppWindow' with the given id. If no window with the given id exists null is returned. This method is new in Chrome
-   33."
+   33.
+   
+     |id| - See https://developer.chrome.com/extensions/app.window#property-get-id.
+   
+   See https://developer.chrome.com/extensions/app.window#method-get."
   ([id] (gen-call :function ::get &form id)))
 
 (defmacro can-set-visible-on-all-workspaces
-  "Whether the current platform supports windows being visible on all workspaces."
+  "Whether the current platform supports windows being visible on all workspaces.
+   
+   See https://developer.chrome.com/extensions/app.window#method-canSetVisibleOnAllWorkspaces."
   ([] (gen-call :function ::can-set-visible-on-all-workspaces &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -64,7 +77,9 @@
   "Fired when the window is resized.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/app.window#event-onBoundsChanged."
   ([channel & args] (apply gen-call :event ::on-bounds-changed &form channel args)))
 
 (defmacro tap-on-closed-events
@@ -73,35 +88,45 @@
    the event is fired, which means not all APIs in the window's script context will be functional.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/app.window#event-onClosed."
   ([channel & args] (apply gen-call :event ::on-closed &form channel args)))
 
 (defmacro tap-on-fullscreened-events
   "Fired when the window is fullscreened (either via the AppWindow or HTML5 APIs).
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/app.window#event-onFullscreened."
   ([channel & args] (apply gen-call :event ::on-fullscreened &form channel args)))
 
 (defmacro tap-on-maximized-events
   "Fired when the window is maximized.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/app.window#event-onMaximized."
   ([channel & args] (apply gen-call :event ::on-maximized &form channel args)))
 
 (defmacro tap-on-minimized-events
   "Fired when the window is minimized.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/app.window#event-onMinimized."
   ([channel & args] (apply gen-call :event ::on-minimized &form channel args)))
 
 (defmacro tap-on-restored-events
   "Fired when the window is restored from being minimized or maximized.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/app.window#event-onRestored."
   ([channel & args] (apply gen-call :event ::on-restored &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

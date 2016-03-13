@@ -18,18 +18,27 @@
 (defmacro get-strings
   "Gets localized strings and initialization data.
    
-     |callback| - |result| Object containing the string assets.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |result| - See https://developer.chrome.com/extensions/webstoreWidgetPrivate#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/webstoreWidgetPrivate#method-getStrings."
   ([#_callback] (gen-call :function ::get-strings &form)))
 
 (defmacro install-webstore-item
   "Requests to install a webstore item. |item_id| The id of the item to install. |silentInstallation| False to show
    installation prompt. True not to show.     Can be set to true only for a subset of installation requests.
    
-     |callback| - Callback that does not take arguments.
+     |itemId| - See https://developer.chrome.com/extensions/webstoreWidgetPrivate#property-installWebstoreItem-itemId.
+     |silentInstallation| - See
+                            https://developer.chrome.com/extensions/webstoreWidgetPrivate#property-installWebstoreItem-silent
+                            Installation.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/webstoreWidgetPrivate#method-installWebstoreItem."
   ([item-id silent-installation #_callback] (gen-call :function ::install-webstore-item &form item-id silent-installation)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -40,7 +49,9 @@
   "Event dispatched when a Chrome Webstore widget is requested to be shown.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/webstoreWidgetPrivate#event-onShowWidget."
   ([channel & args] (apply gen-call :event ::on-show-widget &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

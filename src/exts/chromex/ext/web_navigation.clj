@@ -20,7 +20,12 @@
    
      |details| - Information about the frame to retrieve information about.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [details] where:
+   
+     |details| - Information about the requested frame, null if the specified frame ID and/or tab ID are invalid.
+   
+   See https://developer.chrome.com/extensions/webNavigation#method-getFrame."
   ([details #_callback] (gen-call :function ::get-frame &form details)))
 
 (defmacro get-all-frames
@@ -28,7 +33,12 @@
    
      |details| - Information about the tab to retrieve all frames from.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [details] where:
+   
+     |details| - A list of frames in the given tab, null if the specified tab ID is invalid.
+   
+   See https://developer.chrome.com/extensions/webNavigation#method-getAllFrames."
   ([details #_callback] (gen-call :function ::get-all-frames &form details)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -39,7 +49,9 @@
   "Fired when a navigation is about to occur.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/webNavigation#event-onBeforeNavigate."
   ([channel & args] (apply gen-call :event ::on-before-navigate &form channel args)))
 
 (defmacro tap-on-committed-events
@@ -48,21 +60,27 @@
    switch to the new document.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/webNavigation#event-onCommitted."
   ([channel & args] (apply gen-call :event ::on-committed &form channel args)))
 
 (defmacro tap-on-dom-content-loaded-events
   "Fired when the page's DOM is fully constructed, but the referenced resources may not finish loading.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/webNavigation#event-onDOMContentLoaded."
   ([channel & args] (apply gen-call :event ::on-dom-content-loaded &form channel args)))
 
 (defmacro tap-on-completed-events
   "Fired when a document, including the resources it refers to, is completely loaded and initialized.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/webNavigation#event-onCompleted."
   ([channel & args] (apply gen-call :event ::on-completed &form channel args)))
 
 (defmacro tap-on-error-occurred-events
@@ -70,35 +88,45 @@
    aborted the navigation.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/webNavigation#event-onErrorOccurred."
   ([channel & args] (apply gen-call :event ::on-error-occurred &form channel args)))
 
 (defmacro tap-on-created-navigation-target-events
   "Fired when a new window, or a new tab in an existing window, is created to host a navigation.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/webNavigation#event-onCreatedNavigationTarget."
   ([channel & args] (apply gen-call :event ::on-created-navigation-target &form channel args)))
 
 (defmacro tap-on-reference-fragment-updated-events
   "Fired when the reference fragment of a frame was updated. All future events for that frame will use the updated URL.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/webNavigation#event-onReferenceFragmentUpdated."
   ([channel & args] (apply gen-call :event ::on-reference-fragment-updated &form channel args)))
 
 (defmacro tap-on-tab-replaced-events
   "Fired when the contents of the tab is replaced by a different (usually previously pre-rendered) tab.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/webNavigation#event-onTabReplaced."
   ([channel & args] (apply gen-call :event ::on-tab-replaced &form channel args)))
 
 (defmacro tap-on-history-state-updated-events
   "Fired when the frame's history was updated to a new URL. All future events for that frame will use the updated URL.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/webNavigation#event-onHistoryStateUpdated."
   ([channel & args] (apply gen-call :event ::on-history-state-updated &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

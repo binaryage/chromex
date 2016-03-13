@@ -16,16 +16,22 @@
 ; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defmacro get-network
-  "Settings that influence Chrome's handling of network connections in general."
+  "Settings that influence Chrome's handling of network connections in general.
+   
+   See https://developer.chrome.com/extensions/privacy#property-network."
   ([] (gen-call :property ::network &form)))
 
 (defmacro get-services
   "Settings that enable or disable features that require third-party network services provided by Google and your default
-   search provider."
+   search provider.
+   
+   See https://developer.chrome.com/extensions/privacy#property-services."
   ([] (gen-call :property ::services &form)))
 
 (defmacro get-websites
-  "Settings that determine what information Chrome makes available to websites."
+  "Settings that determine what information Chrome makes available to websites.
+   
+   See https://developer.chrome.com/extensions/privacy#property-websites."
   ([] (gen-call :property ::websites &form)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

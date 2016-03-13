@@ -30,9 +30,15 @@
    
      |audioTrack| - the source audio track.
      |videoTrack| - the source video track.
-     |callback| - Called when the sesion has been created.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [audioStreamId videoStreamId udpTransportId] where:
+   
+     |audioStreamId| - The audio RTP stream ID.
+     |videoStreamId| - The video RTP stream ID.
+     |udpTransportId| - The UDP transport ID.
+   
+   See https://developer.chrome.com/extensions/cast.streaming.session#method-create."
   ([audio-track video-track #_callback] (gen-call :function ::create &form audio-track video-track))
   ([audio-track] `(create ~audio-track :omit))
   ([] `(create :omit :omit)))

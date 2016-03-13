@@ -22,9 +22,12 @@
    mounted, the source option must be set appropriately.In case of an error, 'runtime.lastError' will be set with a
    corresponding error code.
    
-     |callback| - A generic result callback to indicate success or failure.
+     |options| - See https://developer.chrome.com/extensions/fileSystemProvider#property-mount-options.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/fileSystemProvider#method-mount."
   ([options #_callback] (gen-call :function ::mount &form options)))
 
 (defmacro unmount
@@ -32,25 +35,36 @@
    providing extension can decide to perform unmounting if not requested (eg. in case of lost connection, or a file error).In
    case of an error, 'runtime.lastError' will be set with a corresponding error code.
    
-     |callback| - A generic result callback to indicate success or failure.
+     |options| - See https://developer.chrome.com/extensions/fileSystemProvider#property-unmount-options.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/fileSystemProvider#method-unmount."
   ([options #_callback] (gen-call :function ::unmount &form options)))
 
 (defmacro get-all
   "Returns all file systems mounted by the extension.
    
-     |callback| - Callback to receive the result of 'getAll' function.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [fileSystems] where:
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |fileSystems| - See https://developer.chrome.com/extensions/fileSystemProvider#property-callback-fileSystems.
+   
+   See https://developer.chrome.com/extensions/fileSystemProvider#method-getAll."
   ([#_callback] (gen-call :function ::get-all &form)))
 
 (defmacro get
   "Returns information about a file system with the passed fileSystemId.
    
-     |callback| - Callback to receive the result of 'get' function.
+     |fileSystemId| - See https://developer.chrome.com/extensions/fileSystemProvider#property-get-fileSystemId.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [fileSystem] where:
+   
+     |fileSystem| - See https://developer.chrome.com/extensions/fileSystemProvider#property-callback-fileSystem.
+   
+   See https://developer.chrome.com/extensions/fileSystemProvider#method-get."
   ([file-system-id #_callback] (gen-call :function ::get &form file-system-id)))
 
 (defmacro notify
@@ -66,9 +80,12 @@
    descendant entries are in fact removed, as there is no entry under their original paths anymore.In case of an error,
    'runtime.lastError' will be set will a corresponding error code.
    
-     |callback| - A generic result callback to indicate success or failure.
+     |options| - See https://developer.chrome.com/extensions/fileSystemProvider#property-notify-options.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/fileSystemProvider#method-notify."
   ([options #_callback] (gen-call :function ::notify &form options)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -81,7 +98,9 @@
    then errorCallback must be called.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/fileSystemProvider#event-onUnmountRequested."
   ([channel & args] (apply gen-call :event ::on-unmount-requested &form channel args)))
 
 (defmacro tap-on-get-metadata-requested-events
@@ -89,7 +108,9 @@
    successCallback call. In case of an error, errorCallback must be called.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/fileSystemProvider#event-onGetMetadataRequested."
   ([channel & args] (apply gen-call :event ::on-get-metadata-requested &form channel args)))
 
 (defmacro tap-on-get-actions-requested-events
@@ -98,7 +119,9 @@
    returned with the successCallback call. In case of an error, errorCallback must be called.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/fileSystemProvider#event-onGetActionsRequested."
   ([channel & args] (apply gen-call :event ::on-get-actions-requested &form channel args)))
 
 (defmacro tap-on-read-directory-requested-events
@@ -106,7 +129,9 @@
    successCallback several times. In case of an error, errorCallback must be called.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/fileSystemProvider#event-onReadDirectoryRequested."
   ([channel & args] (apply gen-call :event ::on-read-directory-requested &form channel args)))
 
 (defmacro tap-on-open-file-requested-events
@@ -114,14 +139,18 @@
    number of files opened at once can be specified with MountOptions.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/fileSystemProvider#event-onOpenFileRequested."
   ([channel & args] (apply gen-call :event ::on-open-file-requested &form channel args)))
 
 (defmacro tap-on-close-file-requested-events
   "Raised when opening a file previously opened with openRequestId is requested to be closed.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/fileSystemProvider#event-onCloseFileRequested."
   ([channel & args] (apply gen-call :event ::on-close-file-requested &form channel args)))
 
 (defmacro tap-on-read-file-requested-events
@@ -129,7 +158,9 @@
    chunks by calling successCallback several times. In case of an error, errorCallback must be called.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/fileSystemProvider#event-onReadFileRequested."
   ([channel & args] (apply gen-call :event ::on-read-file-requested &form channel args)))
 
 (defmacro tap-on-create-directory-requested-events
@@ -137,7 +168,9 @@
    already exists. If recursive is true, then all of the missing directories on the directory path must be created.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/fileSystemProvider#event-onCreateDirectoryRequested."
   ([channel & args] (apply gen-call :event ::on-create-directory-requested &form channel args)))
 
 (defmacro tap-on-delete-entry-requested-events
@@ -145,7 +178,9 @@
    inside must be recursively deleted as well.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/fileSystemProvider#event-onDeleteEntryRequested."
   ([channel & args] (apply gen-call :event ::on-delete-entry-requested &form channel args)))
 
 (defmacro tap-on-create-file-requested-events
@@ -153,7 +188,9 @@
    error code.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/fileSystemProvider#event-onCreateFileRequested."
   ([channel & args] (apply gen-call :event ::on-create-file-requested &form channel args)))
 
 (defmacro tap-on-copy-entry-requested-events
@@ -161,7 +198,9 @@
    called.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/fileSystemProvider#event-onCopyEntryRequested."
   ([channel & args] (apply gen-call :event ::on-copy-entry-requested &form channel args)))
 
 (defmacro tap-on-move-entry-requested-events
@@ -169,21 +208,27 @@
    called.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/fileSystemProvider#event-onMoveEntryRequested."
   ([channel & args] (apply gen-call :event ::on-move-entry-requested &form channel args)))
 
 (defmacro tap-on-truncate-requested-events
   "Raised when truncating a file to a desired length is requested. If an error occurs, then errorCallback must be called.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/fileSystemProvider#event-onTruncateRequested."
   ([channel & args] (apply gen-call :event ::on-truncate-requested &form channel args)))
 
 (defmacro tap-on-write-file-requested-events
   "Raised when writing contents to a file opened previously with openRequestId is requested.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/fileSystemProvider#event-onWriteFileRequested."
   ([channel & args] (apply gen-call :event ::on-write-file-requested &form channel args)))
 
 (defmacro tap-on-abort-requested-events
@@ -193,7 +238,9 @@
    errorCallback, the request may be forcibly aborted.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/fileSystemProvider#event-onAbortRequested."
   ([channel & args] (apply gen-call :event ::on-abort-requested &form channel args)))
 
 (defmacro tap-on-configure-requested-events
@@ -201,7 +248,9 @@
    file_system_provider.configurable manfiest option must be set to true.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/fileSystemProvider#event-onConfigureRequested."
   ([channel & args] (apply gen-call :event ::on-configure-requested &form channel args)))
 
 (defmacro tap-on-mount-requested-events
@@ -210,21 +259,27 @@
    is opened. For multiple mounts, the file_system_provider.multiple_mounts manifest option must be set to true.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/fileSystemProvider#event-onMountRequested."
   ([channel & args] (apply gen-call :event ::on-mount-requested &form channel args)))
 
 (defmacro tap-on-add-watcher-requested-events
   "Raised when setting a new directory watcher is requested. If an error occurs, then errorCallback must be called.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/fileSystemProvider#event-onAddWatcherRequested."
   ([channel & args] (apply gen-call :event ::on-add-watcher-requested &form channel args)))
 
 (defmacro tap-on-remove-watcher-requested-events
   "Raised when the watcher should be removed. If an error occurs, then errorCallback must be called.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/fileSystemProvider#event-onRemoveWatcherRequested."
   ([channel & args] (apply gen-call :event ::on-remove-watcher-requested &form channel args)))
 
 (defmacro tap-on-execute-action-requested-events
@@ -232,7 +287,9 @@
    successCallback must be called. On error, errorCallback must be called.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/fileSystemProvider#event-onExecuteActionRequested."
   ([channel & args] (apply gen-call :event ::on-execute-action-requested &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

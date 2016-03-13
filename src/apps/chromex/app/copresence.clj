@@ -20,9 +20,14 @@
    error in one or more of them). Publish/Subscribe operations are executed in the order that they exist in the array.
    Unpublish and Unsubscribe are processsed at the end, again, in the order that they exist in the array.
    
-     |callback| - Callback to return the status of a completed batchExecute() call.
+     |operations| - See https://developer.chrome.com/extensions/copresence#property-execute-operations.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [status] where:
+   
+     |status| - See https://developer.chrome.com/extensions/copresence#property-callback-status.
+   
+   See https://developer.chrome.com/extensions/copresence#method-execute."
   ([operations #_callback] (gen-call :function ::execute &form operations)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -33,14 +38,18 @@
   "Fired when new messages arrive.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/copresence#event-onMessagesReceived."
   ([channel & args] (apply gen-call :event ::on-messages-received &form channel args)))
 
 (defmacro tap-on-status-updated-events
   "Fired when a new copresence status update is available.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/copresence#event-onStatusUpdated."
   ([channel & args] (apply gen-call :event ::on-status-updated &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

@@ -18,19 +18,37 @@
 (defmacro get-historical
   "Get the existing logs from ChromeOS system.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |filter| - See https://developer.chrome.com/extensions/logPrivate#property-getHistorical-filter.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [res] where:
+   
+     |res| - See https://developer.chrome.com/extensions/logPrivate#property-callback-res.
+   
+   See https://developer.chrome.com/extensions/logPrivate#method-getHistorical."
   ([filter #_callback] (gen-call :function ::get-historical &form filter)))
 
 (defmacro start-event-recorder
   "Start capturing events of specific type.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |eventType| - See https://developer.chrome.com/extensions/logPrivate#property-startEventRecorder-eventType.
+     |sink| - See https://developer.chrome.com/extensions/logPrivate#property-startEventRecorder-sink.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/logPrivate#method-startEventRecorder."
   ([event-type sink #_callback] (gen-call :function ::start-event-recorder &form event-type sink)))
 
 (defmacro stop-event-recorder
   "Stop  capturing events of specific type.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |eventType| - See https://developer.chrome.com/extensions/logPrivate#property-stopEventRecorder-eventType.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/logPrivate#method-stopEventRecorder."
   ([event-type #_callback] (gen-call :function ::stop-event-recorder &form event-type)))
 
 (defmacro dump-logs
@@ -39,7 +57,12 @@
    /home/chronos/user/log/apps/       Contains webapp specific logs including those collected with
    startEventRecorder(..., sink='file') call.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [logs] where:
+   
+     |logs| - See https://developer.chrome.com/extensions/logPrivate#property-callback-logs.
+   
+   See https://developer.chrome.com/extensions/logPrivate#method-dumpLogs."
   ([#_callback] (gen-call :function ::dump-logs &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -50,7 +73,9 @@
   "Receives events of type which is currently being captured.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/logPrivate#event-onCapturedEvents."
   ([channel & args] (apply gen-call :event ::on-captured-events &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

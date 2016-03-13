@@ -13,21 +13,32 @@
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro get-is-installed
-  "TODO"
+  "TODO
+   
+   See https://developer.chrome.com/extensions/app#method-getIsInstalled."
   ([] (gen-call :function ::get-is-installed &form)))
 
 (defmacro install-state
   "TODO
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [state] where:
+   
+     |state| - See https://developer.chrome.com/extensions/app#property-callback-state.
+   
+   See https://developer.chrome.com/extensions/app#method-installState."
   ([#_callback] (gen-call :function ::install-state &form)))
 
 (defmacro running-state
-  "TODO"
+  "TODO
+   
+   See https://developer.chrome.com/extensions/app#method-runningState."
   ([] (gen-call :function ::running-state &form)))
 
 (defmacro get-details
-  "TODO"
+  "TODO
+   
+   See https://developer.chrome.com/extensions/app#method-getDetails."
   ([] (gen-call :function ::get-details &form)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

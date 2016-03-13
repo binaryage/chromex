@@ -21,7 +21,12 @@
    be opened. |callback| - Called when the tab was successfully created, or failed to be created. If failed,
    'runtime.lastError' will be set.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |options| - See https://developer.chrome.com/extensions/browser#property-openTab-options.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/browser#method-openTab."
   ([options #_callback] (gen-call :function ::open-tab &form options)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

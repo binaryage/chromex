@@ -19,35 +19,51 @@
 ; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defmacro get-spoken-feedback
-  "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example."
+  "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example.
+   
+   See https://developer.chrome.com/extensions/accessibilityFeatures#property-spokenFeedback."
   ([] (gen-call :property ::spoken-feedback &form)))
 
 (defmacro get-large-cursor
-  "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example."
+  "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example.
+   
+   See https://developer.chrome.com/extensions/accessibilityFeatures#property-largeCursor."
   ([] (gen-call :property ::large-cursor &form)))
 
 (defmacro get-sticky-keys
-  "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example."
+  "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example.
+   
+   See https://developer.chrome.com/extensions/accessibilityFeatures#property-stickyKeys."
   ([] (gen-call :property ::sticky-keys &form)))
 
 (defmacro get-high-contrast
-  "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example."
+  "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example.
+   
+   See https://developer.chrome.com/extensions/accessibilityFeatures#property-highContrast."
   ([] (gen-call :property ::high-contrast &form)))
 
 (defmacro get-screen-magnifier
-  "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example."
+  "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example.
+   
+   See https://developer.chrome.com/extensions/accessibilityFeatures#property-screenMagnifier."
   ([] (gen-call :property ::screen-magnifier &form)))
 
 (defmacro get-autoclick
-  "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example."
+  "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example.
+   
+   See https://developer.chrome.com/extensions/accessibilityFeatures#property-autoclick."
   ([] (gen-call :property ::autoclick &form)))
 
 (defmacro get-virtual-keyboard
-  "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example."
+  "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example.
+   
+   See https://developer.chrome.com/extensions/accessibilityFeatures#property-virtualKeyboard."
   ([] (gen-call :property ::virtual-keyboard &form)))
 
 (defmacro get-animation-policy
-  "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example."
+  "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example.
+   
+   See https://developer.chrome.com/extensions/accessibilityFeatures#property-animationPolicy."
   ([] (gen-call :property ::animation-policy &form)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

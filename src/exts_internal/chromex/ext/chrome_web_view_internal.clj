@@ -13,10 +13,14 @@
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro context-menus-create
-  "  |callback| - Called when the item has been created in the browser. If there were any problems creating the item,
-                  details will be available in chrome.runtime.lastError.
+  "  |createProperties| - See
+                          https://developer.chrome.com/extensions/chromeWebViewInternal#property-contextMenusCreate-createPro
+                          perties.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/chromeWebViewInternal#method-contextMenusCreate."
   ([create-properties #_callback] (gen-call :function ::context-menus-create &form create-properties)))
 
 (defmacro context-menus-update
@@ -24,33 +28,40 @@
    
      |id| - The ID of the item to update.
      |updateProperties| - The properties to update. Accepts the same values as the create function.
-     |callback| - Called when the context menu has been updated.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/chromeWebViewInternal#method-contextMenusUpdate."
   ([id update-properties #_callback] (gen-call :function ::context-menus-update &form id update-properties)))
 
 (defmacro context-menus-remove
   "Removes a context menu item.
    
      |menuItemId| - The ID of the context menu item to remove.
-     |callback| - Called when the context menu has been removed.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/chromeWebViewInternal#method-contextMenusRemove."
   ([menu-item-id #_callback] (gen-call :function ::context-menus-remove &form menu-item-id)))
 
 (defmacro context-menus-remove-all
   "Removes all context menu items added by this webview.
    
-     |callback| - Called when removal is complete.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   See https://developer.chrome.com/extensions/chromeWebViewInternal#method-contextMenusRemoveAll."
   ([#_callback] (gen-call :function ::context-menus-remove-all &form)))
 
 (defmacro show-context-menu
   "  |instanceId| - The instance ID of the guest &lt;webview&gt; process. This not exposed to developers through the API.
      |requestId| - The strictly increasing request counter that serves as ID for the context menu. This not exposed to
                    developers through the API.
-     |itemsToShow| - Items to be shown in the context menu. These are top level items as opposed to children items."
+     |itemsToShow| - Items to be shown in the context menu. These are top level items as opposed to children items.
+   
+   See https://developer.chrome.com/extensions/chromeWebViewInternal#method-showContextMenu."
   ([instance-id request-id items-to-show] (gen-call :function ::show-context-menu &form instance-id request-id items-to-show))
   ([instance-id request-id] `(show-context-menu ~instance-id ~request-id :omit)))
 

@@ -24,7 +24,15 @@
    presented a dialog where he can select from matching certificates and grant the extension access to the certificate. The
    selected/filtered client certificates will be passed to callback.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |details| - See https://developer.chrome.com/extensions/platformKeys#property-selectClientCertificates-details.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [matches] where:
+   
+     |matches| - The list of certificates that match the request, that the extension has permission for and, if interactive is
+                 true, that were selected by the user.
+   
+   See https://developer.chrome.com/extensions/platformKeys#method-selectClientCertificates."
   ([details #_callback] (gen-call :function ::select-client-certificates &form details)))
 
 (defmacro get-key-pair
@@ -37,14 +45,21 @@
                     'none' } } are supported. The sign function will then apply PKCS#1 v1.5 padding and but not hash the
                     given data. Currently, this function only supports the 'RSASSA-PKCS1-v1_5' algorithm with one of the
                     hashing algorithms 'none', 'SHA-1', 'SHA-256', 'SHA-384', and 'SHA-512'.
-     |callback| - The public and private CryptoKey of a certificate which can only be used with 'platformKeys.subtleCrypto'.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [publicKey privateKey] where:
+   
+     |publicKey| - See https://developer.chrome.com/extensions/platformKeys#property-callback-publicKey.
+     |privateKey| - Might be null if this extension does not have   access to it.
+   
+   See https://developer.chrome.com/extensions/platformKeys#method-getKeyPair."
   ([certificate parameters #_callback] (gen-call :function ::get-key-pair &form certificate parameters)))
 
 (defmacro subtle-crypto
   "An implementation of WebCrypto's  SubtleCrypto that allows crypto operations on keys of client certificates that are
-   available to this extension."
+   available to this extension.
+   
+   See https://developer.chrome.com/extensions/platformKeys#method-subtleCrypto."
   ([] (gen-call :function ::subtle-crypto &form)))
 
 (defmacro verify-tls-server-certificate
@@ -53,7 +68,14 @@
    API implementation verifies certificate expiration, validates the certification path and checks trust by a known CA. The
    implementation is supposed to respect the EKU serverAuth and to support subject alternative names.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |details| - See https://developer.chrome.com/extensions/platformKeys#property-verifyTLSServerCertificate-details.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/platformKeys#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/platformKeys#method-verifyTLSServerCertificate."
   ([details #_callback] (gen-call :function ::verify-tls-server-certificate &form details)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

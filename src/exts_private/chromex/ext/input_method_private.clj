@@ -15,75 +15,98 @@
 (defmacro get-input-method-config
   "Gets configurations for input methods.
    
-     |callback| - Callback which is called with the config object.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [config] where:
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |config| - The input method config object.
+   
+   See https://developer.chrome.com/extensions/inputMethodPrivate#method-getInputMethodConfig."
   ([#_callback] (gen-call :function ::get-input-method-config &form)))
 
 (defmacro get-input-methods
   "Gets all whitelisted input methods.
    
-     |callback| - Callback which is called with the input method objects.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [inputMethods] where:
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |inputMethods| - Whitelisted input method objects.
+   
+   See https://developer.chrome.com/extensions/inputMethodPrivate#method-getInputMethods."
   ([#_callback] (gen-call :function ::get-input-methods &form)))
 
 (defmacro get-current-input-method
   "Gets the current input method.
    
-     |callback| - Callback which is called with the current input method.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [inputMethodId] where:
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |inputMethodId| - Current input method.
+   
+   See https://developer.chrome.com/extensions/inputMethodPrivate#method-getCurrentInputMethod."
   ([#_callback] (gen-call :function ::get-current-input-method &form)))
 
 (defmacro set-current-input-method
   "Sets the current input method.
    
      |inputMethodId| - The input method ID to be set as current input method.
-     |callback| - Callback which is called once the current input method is set. If unsuccessful 'runtime.lastError' is set.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/inputMethodPrivate#method-setCurrentInputMethod."
   ([input-method-id #_callback] (gen-call :function ::set-current-input-method &form input-method-id)))
 
 (defmacro fetch-all-dictionary-words
   "Fetches a list of all the words currently in the dictionary.
    
-     |callback| - Callback which is called once the list of dictionary words are ready.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [words] where:
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |words| - List of dictionary words.
+   
+   See https://developer.chrome.com/extensions/inputMethodPrivate#method-fetchAllDictionaryWords."
   ([#_callback] (gen-call :function ::fetch-all-dictionary-words &form)))
 
 (defmacro add-word-to-dictionary
   "Adds a single word to be stored in the dictionary.
    
      |word| - A new word to add to the dictionary.
-     |callback| - Callback which is called once the word is added. If unsuccessful 'runtime.lastError' is set.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/inputMethodPrivate#method-addWordToDictionary."
   ([word #_callback] (gen-call :function ::add-word-to-dictionary &form word)))
 
 (defmacro get-encrypt-sync-enabled
   "Gets whether the encrypt sync is enabled.
    
-     |callback| - Callback which is called to provide the result.
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [enabled] where:
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |enabled| - The result of whether enabled.
+   
+   See https://developer.chrome.com/extensions/inputMethodPrivate#method-getEncryptSyncEnabled."
   ([#_callback] (gen-call :function ::get-encrypt-sync-enabled &form)))
 
 (defmacro set-xkb-layout
   "Sets the XKB layout for the given input method.
    
      |xkb_name| - The XKB layout name.
-     |callback| - Callback which is called when the layout is set.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/inputMethodPrivate#method-setXkbLayout."
   ([xkb-name #_callback] (gen-call :function ::set-xkb-layout &form xkb-name)))
 
 (defmacro notify-ime-menu-item-activated
   "Fires the input.ime.onMenuItemActivated event.
    
      |engineID| - ID of the engine to use.
-     |name| - Name of the MenuItem which was activated"
+     |name| - Name of the MenuItem which was activated
+   
+   See https://developer.chrome.com/extensions/inputMethodPrivate#method-notifyImeMenuItemActivated."
   ([engine-id name] (gen-call :function ::notify-ime-menu-item-activated &form engine-id name)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -94,49 +117,63 @@
   "Fired when the input method is changed.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/inputMethodPrivate#event-onChanged."
   ([channel & args] (apply gen-call :event ::on-changed &form channel args)))
 
 (defmacro tap-on-composition-bounds-changed-events
   "Fired when the composition bounds or cursor bounds are changed.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/inputMethodPrivate#event-onCompositionBoundsChanged."
   ([channel & args] (apply gen-call :event ::on-composition-bounds-changed &form channel args)))
 
 (defmacro tap-on-dictionary-loaded-events
   "Fired when the custom spelling dictionary is loaded.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/inputMethodPrivate#event-onDictionaryLoaded."
   ([channel & args] (apply gen-call :event ::on-dictionary-loaded &form channel args)))
 
 (defmacro tap-on-dictionary-changed-events
   "Fired when words are added or removed from the custom spelling dictionary.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/inputMethodPrivate#event-onDictionaryChanged."
   ([channel & args] (apply gen-call :event ::on-dictionary-changed &form channel args)))
 
 (defmacro tap-on-ime-menu-activation-changed-events
   "Fired when the IME menu is activated or deactivated.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/inputMethodPrivate#event-onImeMenuActivationChanged."
   ([channel & args] (apply gen-call :event ::on-ime-menu-activation-changed &form channel args)))
 
 (defmacro tap-on-ime-menu-list-changed-events
   "Fired when the input method or the list of active input method IDs is changed.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/inputMethodPrivate#event-onImeMenuListChanged."
   ([channel & args] (apply gen-call :event ::on-ime-menu-list-changed &form channel args)))
 
 (defmacro tap-on-ime-menu-items-changed-events
   "Fired when the input.ime.setMenuItems or input.ime.updateMenuItems API is called.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/inputMethodPrivate#event-onImeMenuItemsChanged."
   ([channel & args] (apply gen-call :event ::on-ime-menu-items-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

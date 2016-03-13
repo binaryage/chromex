@@ -18,14 +18,21 @@
    
      |propertyNames| - Chrome OS Property names
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [propertiesDictionary] where:
+   
+     |propertiesDictionary| - Dictionary which contains all requested properties
+   
+   See https://developer.chrome.com/extensions/chromeosInfoPrivate#method-get."
   ([property-names #_callback] (gen-call :function ::get &form property-names)))
 
 (defmacro set
   "Sets values for the given system property.
    
      |propertyName| - Chrome OS system property name
-     |propertyValue| - Chrome OS system property value"
+     |propertyValue| - Chrome OS system property value
+   
+   See https://developer.chrome.com/extensions/chromeosInfoPrivate#method-set."
   ([property-name property-value] (gen-call :function ::set &form property-name property-value)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

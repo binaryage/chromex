@@ -17,12 +17,16 @@
 
 (defmacro get-last-error
   "Set for the lifetime of a callback if an ansychronous extension api has resulted in an error. If no error has occured
-   lastError will be undefined."
+   lastError will be undefined.
+   
+   See https://developer.chrome.com/extensions/extension#property-lastError."
   ([] (gen-call :property ::last-error &form)))
 
 (defmacro get-in-incognito-context
   "True for content scripts running inside incognito tabs, and for extension pages running inside an incognito process. The
-   latter only applies to extensions with 'split' incognito_behavior."
+   latter only applies to extensions with 'split' incognito_behavior.
+   
+   See https://developer.chrome.com/extensions/extension#property-inIncognitoContext."
   ([] (gen-call :property ::in-incognito-context &form)))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
@@ -32,29 +36,49 @@
    request with an optional response. The 'extension.onRequest' event is fired in each page of the extension.
    
      |extensionId| - The extension ID of the extension you want to connect to. If omitted, default is your own extension.
+     |request| - See https://developer.chrome.com/extensions/extension#property-sendRequest-request.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [response] where:
+   
+     |response| - The JSON response object sent by the handler of the request. If an error occurs while connecting to the
+                  extension, the callback will be called with no arguments and 'runtime.lastError' will be set to the error
+                  message.
+   
+   See https://developer.chrome.com/extensions/extension#method-sendRequest."
   ([extension-id request #_response-callback] (gen-call :function ::send-request &form extension-id request)))
 
 (defmacro get-url
   "Converts a relative path within an extension install directory to a fully-qualified URL.
    
-     |path| - A path to a resource within an extension expressed relative to its install directory."
+     |path| - A path to a resource within an extension expressed relative to its install directory.
+   
+   See https://developer.chrome.com/extensions/extension#method-getURL."
   ([path] (gen-call :function ::get-url &form path)))
 
 (defmacro get-views
-  "Returns an array of the JavaScript 'window' objects for each of the pages running inside the current extension."
+  "Returns an array of the JavaScript 'window' objects for each of the pages running inside the current extension.
+   
+     |fetchProperties| - See https://developer.chrome.com/extensions/extension#property-getViews-fetchProperties.
+   
+   See https://developer.chrome.com/extensions/extension#method-getViews."
   ([fetch-properties] (gen-call :function ::get-views &form fetch-properties))
   ([] `(get-views :omit)))
 
 (defmacro get-background-page
   "Returns the JavaScript 'window' object for the background page running inside the current extension. Returns null if the
-   extension has no background page."
+   extension has no background page.
+   
+   See https://developer.chrome.com/extensions/extension#method-getBackgroundPage."
   ([] (gen-call :function ::get-background-page &form)))
 
 (defmacro get-extension-tabs
   "Returns an array of the JavaScript 'window' objects for each of the tabs running inside the current extension. If windowId
-   is specified, returns only the 'window' objects of tabs attached to the specified window."
+   is specified, returns only the 'window' objects of tabs attached to the specified window.
+   
+     |windowId| - See https://developer.chrome.com/extensions/extension#property-getExtensionTabs-windowId.
+   
+   See https://developer.chrome.com/extensions/extension#method-getExtensionTabs."
   ([window-id] (gen-call :function ::get-extension-tabs &form window-id))
   ([] `(get-extension-tabs :omit)))
 
@@ -62,19 +86,33 @@
   "Retrieves the state of the extension's access to Incognito-mode (as determined by the user-controlled 'Allowed in
    Incognito' checkbox.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [isAllowedAccess] where:
+   
+     |isAllowedAccess| - True if the extension has access to Incognito mode, false otherwise.
+   
+   See https://developer.chrome.com/extensions/extension#method-isAllowedIncognitoAccess."
   ([#_callback] (gen-call :function ::is-allowed-incognito-access &form)))
 
 (defmacro is-allowed-file-scheme-access
   "Retrieves the state of the extension's access to the 'file://' scheme (as determined by the user-controlled 'Allow access
    to File URLs' checkbox.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [isAllowedAccess] where:
+   
+     |isAllowedAccess| - True if the extension can access the 'file://' scheme, false otherwise.
+   
+   See https://developer.chrome.com/extensions/extension#method-isAllowedFileSchemeAccess."
   ([#_callback] (gen-call :function ::is-allowed-file-scheme-access &form)))
 
 (defmacro set-update-url-data
   "Sets the value of the ap CGI parameter used in the extension's update URL.  This value is ignored for extensions that are
-   hosted in the Chrome Extension Gallery."
+   hosted in the Chrome Extension Gallery.
+   
+     |data| - See https://developer.chrome.com/extensions/extension#property-setUpdateUrlData-data.
+   
+   See https://developer.chrome.com/extensions/extension#method-setUpdateUrlData."
   ([data] (gen-call :function ::set-update-url-data &form data)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -85,14 +123,18 @@
   "Fired when a request is sent from either an extension process or a content script.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/extension#event-onRequest."
   ([channel & args] (apply gen-call :event ::on-request &form channel args)))
 
 (defmacro tap-on-request-external-events
   "Fired when a request is sent from another extension.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/extension#event-onRequestExternal."
   ([channel & args] (apply gen-call :event ::on-request-external &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

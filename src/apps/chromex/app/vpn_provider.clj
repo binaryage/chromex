@@ -19,18 +19,24 @@
   "Creates a new VPN configuration that persists across multiple login sessions of the user.
    
      |name| - The name of the VPN configuration.
-     |callback| - Called when the configuration is created or if there is an error.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [id] where:
+   
+     |id| - A unique ID for the created configuration, or undefined on failure.
+   
+   See https://developer.chrome.com/extensions/vpnProvider#method-createConfig."
   ([name #_callback] (gen-call :function ::create-config &form name)))
 
 (defmacro destroy-config
   "Destroys a VPN configuration created by the extension.
    
      |id| - ID of the VPN configuration to destroy.
-     |callback| - Called when the configuration is destroyed or if there is an error.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/vpnProvider#method-destroyConfig."
   ([id #_callback] (gen-call :function ::destroy-config &form id)))
 
 (defmacro set-parameters
@@ -38,9 +44,11 @@
    This will succeed only when the VPN session is owned by the extension.
    
      |parameters| - The parameters for the VPN session.
-     |callback| - Called when the parameters are set or if there is an error.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/vpnProvider#method-setParameters."
   ([parameters #_callback] (gen-call :function ::set-parameters &form parameters)))
 
 (defmacro send-packet
@@ -48,18 +56,22 @@
    the extension.
    
      |data| - The IP packet to be sent to the platform.
-     |callback| - Called when the packet is sent or if there is an error.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/vpnProvider#method-sendPacket."
   ([data #_callback] (gen-call :function ::send-packet &form data)))
 
 (defmacro notify-connection-state-changed
   "Notifies the VPN session state to the platform. This will succeed only when the VPN session is owned by the extension.
    
      |state| - The VPN session state of the VPN client.
-     |callback| - Called when the notification is complete or if there is an error.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/vpnProvider#method-notifyConnectionStateChanged."
   ([state #_callback] (gen-call :function ::notify-connection-state-changed &form state)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -70,28 +82,36 @@
   "Triggered when a message is received from the platform for a VPN configuration owned by the extension.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/vpnProvider#event-onPlatformMessage."
   ([channel & args] (apply gen-call :event ::on-platform-message &form channel args)))
 
 (defmacro tap-on-packet-received-events
   "Triggered when an IP packet is received via the tunnel for the VPN session owned by the extension.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/vpnProvider#event-onPacketReceived."
   ([channel & args] (apply gen-call :event ::on-packet-received &form channel args)))
 
 (defmacro tap-on-config-removed-events
   "Triggered when a configuration created by the extension is removed by the platform.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/vpnProvider#event-onConfigRemoved."
   ([channel & args] (apply gen-call :event ::on-config-removed &form channel args)))
 
 (defmacro tap-on-config-created-events
   "Triggered when a configuration is created by the platform for the extension.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/vpnProvider#event-onConfigCreated."
   ([channel & args] (apply gen-call :event ::on-config-created &form channel args)))
 
 (defmacro tap-on-ui-event-events
@@ -99,7 +119,9 @@
    a UI dialog needs to be shown to the user.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/vpnProvider#event-onUIEvent."
   ([channel & args] (apply gen-call :event ::on-ui-event &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

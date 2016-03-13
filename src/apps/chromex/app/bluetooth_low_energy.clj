@@ -25,9 +25,11 @@
    
      |deviceAddress| - The Bluetooth address of the remote device to which a GATT connection should be opened.
      |properties| - Connection properties (optional).
-     |callback| - Called when the connect request has completed.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/bluetoothLowEnergy#method-connect."
   ([device-address properties #_callback] (gen-call :function ::connect &form device-address properties))
   ([device-address] `(connect ~device-address :omit)))
 
@@ -36,27 +38,37 @@
    itself, since there may be other apps with open connections.
    
      |deviceAddress| - The Bluetooth address of the remote device.
-     |callback| - Called when the disconnect request has completed.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/bluetoothLowEnergy#method-disconnect."
   ([device-address #_callback] (gen-call :function ::disconnect &form device-address)))
 
 (defmacro get-service
   "Get the GATT service with the given instance ID.
    
      |serviceId| - The instance ID of the requested GATT service.
-     |callback| - Called with the requested Service object.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/bluetoothLowEnergy#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/bluetoothLowEnergy#method-getService."
   ([service-id #_callback] (gen-call :function ::get-service &form service-id)))
 
 (defmacro get-services
   "Get all the GATT services that were discovered on the remote device with the given device address.
    
      |deviceAddress| - The Bluetooth address of the remote device whose GATT services should be returned.
-     |callback| - Called with the list of requested Service objects.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/bluetoothLowEnergy#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/bluetoothLowEnergy#method-getServices."
   ([device-address #_callback] (gen-call :function ::get-services &form device-address)))
 
 (defmacro get-characteristic
@@ -64,55 +76,78 @@
    exists.
    
      |characteristicId| - The instance ID of the requested GATT characteristic.
-     |callback| - Called with the requested Characteristic object.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/bluetoothLowEnergy#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/bluetoothLowEnergy#method-getCharacteristic."
   ([characteristic-id #_callback] (gen-call :function ::get-characteristic &form characteristic-id)))
 
 (defmacro get-characteristics
   "Get a list of all discovered GATT characteristics that belong to the given service.
    
      |serviceId| - The instance ID of the GATT service whose characteristics should be returned.
-     |callback| - Called with the list of characteristics that belong to the given service.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/bluetoothLowEnergy#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/bluetoothLowEnergy#method-getCharacteristics."
   ([service-id #_callback] (gen-call :function ::get-characteristics &form service-id)))
 
 (defmacro get-included-services
   "Get a list of GATT services that are included by the given service.
    
      |serviceId| - The instance ID of the GATT service whose included services should be returned.
-     |callback| - Called with the list of GATT services included from the given service.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/bluetoothLowEnergy#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/bluetoothLowEnergy#method-getIncludedServices."
   ([service-id #_callback] (gen-call :function ::get-included-services &form service-id)))
 
 (defmacro get-descriptor
   "Get the GATT characteristic descriptor with the given instance ID.
    
      |descriptorId| - The instance ID of the requested GATT characteristic descriptor.
-     |callback| - Called with the requested Descriptor object.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/bluetoothLowEnergy#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/bluetoothLowEnergy#method-getDescriptor."
   ([descriptor-id #_callback] (gen-call :function ::get-descriptor &form descriptor-id)))
 
 (defmacro get-descriptors
   "Get a list of GATT characteristic descriptors that belong to the given characteristic.
    
      |characteristicId| - The instance ID of the GATT characteristic whose descriptors should be returned.
-     |callback| - Called with the list of descriptors that belong to the given characteristic.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/bluetoothLowEnergy#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/bluetoothLowEnergy#method-getDescriptors."
   ([characteristic-id #_callback] (gen-call :function ::get-descriptors &form characteristic-id)))
 
 (defmacro read-characteristic-value
   "Retrieve the value of a specified characteristic from a remote peripheral.
    
      |characteristicId| - The instance ID of the GATT characteristic whose value should be read from the remote device.
-     |callback| - Called with the Characteristic object whose value was requested. The value field of the returned
-                  Characteristic object contains the result of the read request.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/bluetoothLowEnergy#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/bluetoothLowEnergy#method-readCharacteristicValue."
   ([characteristic-id #_callback] (gen-call :function ::read-characteristic-value &form characteristic-id)))
 
 (defmacro write-characteristic-value
@@ -120,9 +155,11 @@
    
      |characteristicId| - The instance ID of the GATT characteristic whose value should be written to.
      |value| - The value that should be sent to the remote characteristic as part of the write request.
-     |callback| - Called when the write request has completed.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/bluetoothLowEnergy#method-writeCharacteristicValue."
   ([characteristic-id value #_callback] (gen-call :function ::write-characteristic-value &form characteristic-id value)))
 
 (defmacro start-characteristic-notifications
@@ -131,9 +168,11 @@
    
      |characteristicId| - The instance ID of the GATT characteristic that notifications should be enabled on.
      |properties| - Notification session properties (optional).
-     |callback| - Called when the request has completed.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/bluetoothLowEnergy#method-startCharacteristicNotifications."
   ([characteristic-id properties #_callback] (gen-call :function ::start-characteristic-notifications &form characteristic-id properties))
   ([characteristic-id] `(start-characteristic-notifications ~characteristic-id :omit)))
 
@@ -143,9 +182,11 @@
    
      |characteristicId| - The instance ID of the GATT characteristic on which this app's notification session should be
                           stopped.
-     |callback| - Called when the request has completed (optional).
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/bluetoothLowEnergy#method-stopCharacteristicNotifications."
   ([characteristic-id #_callback] (gen-call :function ::stop-characteristic-notifications &form characteristic-id)))
 
 (defmacro read-descriptor-value
@@ -153,10 +194,13 @@
    
      |descriptorId| - The instance ID of the GATT characteristic descriptor whose value should be read from the remote
                       device.
-     |callback| - Called with the Descriptor object whose value was requested. The value field of the returned Descriptor
-                  object contains the result of the read request.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/bluetoothLowEnergy#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/bluetoothLowEnergy#method-readDescriptorValue."
   ([descriptor-id #_callback] (gen-call :function ::read-descriptor-value &form descriptor-id)))
 
 (defmacro write-descriptor-value
@@ -164,9 +208,11 @@
    
      |descriptorId| - The instance ID of the GATT characteristic descriptor whose value should be written to.
      |value| - The value that should be sent to the remote descriptor as part of the write request.
-     |callback| - Called when the write request has completed.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/bluetoothLowEnergy#method-writeDescriptorValue."
   ([descriptor-id value #_callback] (gen-call :function ::write-descriptor-value &form descriptor-id value)))
 
 (defmacro register-advertisement
@@ -179,10 +225,13 @@
    central-role applications from behaving correctly (including the discovery of Bluetooth Low Energy devices).
    
      |advertisement| - The advertisement to advertise.
-     |callback| - Called once the registeration is done and we've started advertising. Returns the id of the created
-                  advertisement.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [advertisementId] where:
+   
+     |advertisementId| - See https://developer.chrome.com/extensions/bluetoothLowEnergy#property-callback-advertisementId.
+   
+   See https://developer.chrome.com/extensions/bluetoothLowEnergy#method-registerAdvertisement."
   ([advertisement #_callback] (gen-call :function ::register-advertisement &form advertisement)))
 
 (defmacro unregister-advertisement
@@ -190,9 +239,11 @@
    advertising might be to restart the device.
    
      |advertisementId| - Id of the advertisement to unregister.
-     |callback| - Called once the advertisement is unregistered and is no longer being advertised.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/bluetoothLowEnergy#method-unregisterAdvertisement."
   ([advertisement-id #_callback] (gen-call :function ::unregister-advertisement &form advertisement-id)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -203,7 +254,9 @@
   "Fired whan a new GATT service has been discovered on a remote device.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/bluetoothLowEnergy#event-onServiceAdded."
   ([channel & args] (apply gen-call :event ::on-service-added &form channel args)))
 
 (defmacro tap-on-service-changed-events
@@ -211,14 +264,18 @@
    or removed from the service, as well as 'ServiceChanged' notifications from the remote device.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/bluetoothLowEnergy#event-onServiceChanged."
   ([channel & args] (apply gen-call :event ::on-service-changed &form channel args)))
 
 (defmacro tap-on-service-removed-events
   "Fired when a GATT service that was previously discovered on a remote device has been removed.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/bluetoothLowEnergy#event-onServiceRemoved."
   ([channel & args] (apply gen-call :event ::on-service-removed &form channel args)))
 
 (defmacro tap-on-characteristic-value-changed-events
@@ -227,7 +284,9 @@
    'startCharacteristicNotifications'.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/bluetoothLowEnergy#event-onCharacteristicValueChanged."
   ([channel & args] (apply gen-call :event ::on-characteristic-value-changed &form channel args)))
 
 (defmacro tap-on-descriptor-value-changed-events
@@ -235,7 +294,9 @@
    exists mostly for convenience and will always be sent after a successful call to 'readDescriptorValue'.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/bluetoothLowEnergy#event-onDescriptorValueChanged."
   ([channel & args] (apply gen-call :event ::on-descriptor-value-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

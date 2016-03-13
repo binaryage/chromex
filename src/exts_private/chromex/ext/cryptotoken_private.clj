@@ -20,9 +20,17 @@
    http://fidoalliance.org/specs/fido-u2f-v1.0-ps-20141009/     fido-appid-and-facets-ps-20141009.html |securityOrigin| is the
    origin as seen by the extension, and |appIdUrl| is the appId being asserted by the origin.
    
-     |callback| - Callback for appId check
+     |securityOrigin| - See
+                        https://developer.chrome.com/extensions/cryptotokenPrivate#property-canOriginAssertAppId-securityOrig
+                        in.
+     |appIdUrl| - See https://developer.chrome.com/extensions/cryptotokenPrivate#property-canOriginAssertAppId-appIdUrl.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/cryptotokenPrivate#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/cryptotokenPrivate#method-canOriginAssertAppId."
   ([security-origin app-id-url #_callback] (gen-call :function ::can-origin-assert-app-id &form security-origin app-id-url)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

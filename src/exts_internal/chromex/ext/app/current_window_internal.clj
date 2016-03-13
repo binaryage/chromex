@@ -15,36 +15,105 @@
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
-(defmacro focus ([] (gen-call :function ::focus &form)))
+(defmacro focus
+  "
+   
+   See https://developer.chrome.com/extensions/app.currentWindowInternal#method-focus."
+  ([] (gen-call :function ::focus &form)))
 
-(defmacro fullscreen ([] (gen-call :function ::fullscreen &form)))
+(defmacro fullscreen
+  "
+   
+   See https://developer.chrome.com/extensions/app.currentWindowInternal#method-fullscreen."
+  ([] (gen-call :function ::fullscreen &form)))
 
-(defmacro minimize ([] (gen-call :function ::minimize &form)))
+(defmacro minimize
+  "
+   
+   See https://developer.chrome.com/extensions/app.currentWindowInternal#method-minimize."
+  ([] (gen-call :function ::minimize &form)))
 
-(defmacro maximize ([] (gen-call :function ::maximize &form)))
+(defmacro maximize
+  "
+   
+   See https://developer.chrome.com/extensions/app.currentWindowInternal#method-maximize."
+  ([] (gen-call :function ::maximize &form)))
 
-(defmacro restore ([] (gen-call :function ::restore &form)))
+(defmacro restore
+  "
+   
+   See https://developer.chrome.com/extensions/app.currentWindowInternal#method-restore."
+  ([] (gen-call :function ::restore &form)))
 
-(defmacro draw-attention ([] (gen-call :function ::draw-attention &form)))
+(defmacro draw-attention
+  "
+   
+   See https://developer.chrome.com/extensions/app.currentWindowInternal#method-drawAttention."
+  ([] (gen-call :function ::draw-attention &form)))
 
-(defmacro clear-attention ([] (gen-call :function ::clear-attention &form)))
+(defmacro clear-attention
+  "
+   
+   See https://developer.chrome.com/extensions/app.currentWindowInternal#method-clearAttention."
+  ([] (gen-call :function ::clear-attention &form)))
 
-(defmacro show ([focused] (gen-call :function ::show &form focused))
+(defmacro show
+  "  |focused| - See https://developer.chrome.com/extensions/app.currentWindowInternal#property-show-focused.
+   
+   See https://developer.chrome.com/extensions/app.currentWindowInternal#method-show."
+  ([focused] (gen-call :function ::show &form focused))
   ([] `(show :omit)))
 
-(defmacro hide ([] (gen-call :function ::hide &form)))
+(defmacro hide
+  "
+   
+   See https://developer.chrome.com/extensions/app.currentWindowInternal#method-hide."
+  ([] (gen-call :function ::hide &form)))
 
-(defmacro set-bounds ([bounds-type bounds] (gen-call :function ::set-bounds &form bounds-type bounds)))
+(defmacro set-bounds
+  "  |boundsType| - See https://developer.chrome.com/extensions/app.currentWindowInternal#property-setBounds-boundsType.
+     |bounds| - See https://developer.chrome.com/extensions/app.currentWindowInternal#property-setBounds-bounds.
+   
+   See https://developer.chrome.com/extensions/app.currentWindowInternal#method-setBounds."
+  ([bounds-type bounds] (gen-call :function ::set-bounds &form bounds-type bounds)))
 
-(defmacro set-size-constraints ([bounds-type constraints] (gen-call :function ::set-size-constraints &form bounds-type constraints)))
+(defmacro set-size-constraints
+  "  |boundsType| - See
+                    https://developer.chrome.com/extensions/app.currentWindowInternal#property-setSizeConstraints-boundsType.
+     |constraints| - See
+                     https://developer.chrome.com/extensions/app.currentWindowInternal#property-setSizeConstraints-constraint
+                     s.
+   
+   See https://developer.chrome.com/extensions/app.currentWindowInternal#method-setSizeConstraints."
+  ([bounds-type constraints] (gen-call :function ::set-size-constraints &form bounds-type constraints)))
 
-(defmacro set-icon ([icon-url] (gen-call :function ::set-icon &form icon-url)))
+(defmacro set-icon
+  "  |icon_url| - See https://developer.chrome.com/extensions/app.currentWindowInternal#property-setIcon-icon_url.
+   
+   See https://developer.chrome.com/extensions/app.currentWindowInternal#method-setIcon."
+  ([icon-url] (gen-call :function ::set-icon &form icon-url)))
 
-(defmacro set-shape ([region] (gen-call :function ::set-shape &form region)))
+(defmacro set-shape
+  "  |region| - See https://developer.chrome.com/extensions/app.currentWindowInternal#property-setShape-region.
+   
+   See https://developer.chrome.com/extensions/app.currentWindowInternal#method-setShape."
+  ([region] (gen-call :function ::set-shape &form region)))
 
-(defmacro set-always-on-top ([always-on-top] (gen-call :function ::set-always-on-top &form always-on-top)))
+(defmacro set-always-on-top
+  "  |always_on_top| - See
+                       https://developer.chrome.com/extensions/app.currentWindowInternal#property-setAlwaysOnTop-always_on_to
+                       p.
+   
+   See https://developer.chrome.com/extensions/app.currentWindowInternal#method-setAlwaysOnTop."
+  ([always-on-top] (gen-call :function ::set-always-on-top &form always-on-top)))
 
-(defmacro set-visible-on-all-workspaces ([always-visible] (gen-call :function ::set-visible-on-all-workspaces &form always-visible)))
+(defmacro set-visible-on-all-workspaces
+  "  |always_visible| - See
+                        https://developer.chrome.com/extensions/app.currentWindowInternal#property-setVisibleOnAllWorkspaces-
+                        always_visible.
+   
+   See https://developer.chrome.com/extensions/app.currentWindowInternal#method-setVisibleOnAllWorkspaces."
+  ([always-visible] (gen-call :function ::set-visible-on-all-workspaces &form always-visible)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -54,56 +123,72 @@
   "
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/app.currentWindowInternal#event-onClosed."
   ([channel & args] (apply gen-call :event ::on-closed &form channel args)))
 
 (defmacro tap-on-bounds-changed-events
   "
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/app.currentWindowInternal#event-onBoundsChanged."
   ([channel & args] (apply gen-call :event ::on-bounds-changed &form channel args)))
 
 (defmacro tap-on-fullscreened-events
   "
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/app.currentWindowInternal#event-onFullscreened."
   ([channel & args] (apply gen-call :event ::on-fullscreened &form channel args)))
 
 (defmacro tap-on-minimized-events
   "
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/app.currentWindowInternal#event-onMinimized."
   ([channel & args] (apply gen-call :event ::on-minimized &form channel args)))
 
 (defmacro tap-on-maximized-events
   "
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/app.currentWindowInternal#event-onMaximized."
   ([channel & args] (apply gen-call :event ::on-maximized &form channel args)))
 
 (defmacro tap-on-restored-events
   "
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/app.currentWindowInternal#event-onRestored."
   ([channel & args] (apply gen-call :event ::on-restored &form channel args)))
 
 (defmacro tap-on-alpha-enabled-changed-events
   "
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/app.currentWindowInternal#event-onAlphaEnabledChanged."
   ([channel & args] (apply gen-call :event ::on-alpha-enabled-changed &form channel args)))
 
 (defmacro tap-on-window-shown-for-tests-events
   "Only sent in tests.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/app.currentWindowInternal#event-onWindowShownForTests."
   ([channel & args] (apply gen-call :event ::on-window-shown-for-tests &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

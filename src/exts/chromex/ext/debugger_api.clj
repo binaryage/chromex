@@ -23,20 +23,22 @@
      |requiredVersion| - Required debugging protocol version ('0.1'). One can only attach to the debuggee with matching
                          major version and greater or equal minor version. List of the protocol versions can be obtained
                          here.
-     |callback| - Called once the attach operation succeeds or fails. Callback receives no arguments. If the attach fails,
-                  'runtime.lastError' will be set to the error message.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/debugger#method-attach."
   ([target required-version #_callback] (gen-call :function ::attach &form target required-version)))
 
 (defmacro detach
   "Detaches debugger from the given target.
    
      |target| - Debugging target from which you want to detach.
-     |callback| - Called once the detach operation succeeds or fails. Callback receives no arguments. If the detach fails,
-                  'runtime.lastError' will be set to the error message.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/debugger#method-detach."
   ([target #_callback] (gen-call :function ::detach &form target)))
 
 (defmacro send-command
@@ -46,17 +48,26 @@
      |method| - Method name. Should be one of the methods defined by the remote debugging protocol.
      |commandParams| - JSON object with request parameters. This object must conform to the remote debugging params scheme
                        for given method.
-     |callback| - Response body. If an error occurs while posting the message, the callback will be called with no arguments
-                  and 'runtime.lastError' will be set to the error message.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - JSON object with the response. Structure of the response varies depending on the method name and is defined by
+                the 'returns' attribute of the command description in the remote debugging protocol.
+   
+   See https://developer.chrome.com/extensions/debugger#method-sendCommand."
   ([target method command-params #_callback] (gen-call :function ::send-command &form target method command-params))
   ([target method] `(send-command ~target ~method :omit)))
 
 (defmacro get-targets
   "Returns the list of available debug targets.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - Array of TargetInfo objects corresponding to the available debug targets.
+   
+   See https://developer.chrome.com/extensions/debugger#method-getTargets."
   ([#_callback] (gen-call :function ::get-targets &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -67,7 +78,9 @@
   "Fired whenever debugging target issues instrumentation event.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/debugger#event-onEvent."
   ([channel & args] (apply gen-call :event ::on-event &form channel args)))
 
 (defmacro tap-on-detach-events
@@ -75,7 +88,9 @@
    DevTools is being invoked for the attached tab.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/debugger#event-onDetach."
   ([channel & args] (apply gen-call :event ::on-detach &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

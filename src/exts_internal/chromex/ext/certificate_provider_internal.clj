@@ -24,14 +24,36 @@
 (defmacro report-signature
   "Matches certificateProvider.SignCallback. Must be called without the signature to report an error.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |requestId| - See
+                   https://developer.chrome.com/extensions/certificateProviderInternal#property-reportSignature-requestId.
+     |signature| - See
+                   https://developer.chrome.com/extensions/certificateProviderInternal#property-reportSignature-signature.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/certificateProviderInternal#method-reportSignature."
   ([request-id signature #_callback] (gen-call :function ::report-signature &form request-id signature))
   ([request-id] `(report-signature ~request-id :omit)))
 
 (defmacro report-certificates
   "Matches certificateProvider.CertificatesCallback. Must be called without the certificates argument to report an error.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |requestId| - See
+                   https://developer.chrome.com/extensions/certificateProviderInternal#property-reportCertificates-requestId.
+     |certificates| - See
+                      https://developer.chrome.com/extensions/certificateProviderInternal#property-reportCertificates-certifi
+                      cates.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [rejectedCertificates] where:
+   
+     |rejectedCertificates| - See
+   
+   https://developer.chrome.com/extensions/certificateProviderInternal#property-callback-rejectedCer
+                              tificates.
+   
+   See https://developer.chrome.com/extensions/certificateProviderInternal#method-reportCertificates."
   ([request-id certificates #_callback] (gen-call :function ::report-certificates &form request-id certificates))
   ([request-id] `(report-certificates ~request-id :omit)))
 

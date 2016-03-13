@@ -18,33 +18,54 @@
 (defmacro transmit
   "Transmit a token. Only one can be transmitted at a time. Transmission of any previous tokens (by this app) will stop.
    
-     |callback| - A callback to report the status of a request.
+     |params| - See https://developer.chrome.com/extensions/audioModem#property-transmit-params.
+     |token| - See https://developer.chrome.com/extensions/audioModem#property-transmit-token.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [status] where:
+   
+     |status| - See https://developer.chrome.com/extensions/audioModem#property-callback-status.
+   
+   See https://developer.chrome.com/extensions/audioModem#method-transmit."
   ([params token #_callback] (gen-call :function ::transmit &form params token)))
 
 (defmacro stop-transmit
   "Stop any active transmission on the specified band.
    
-     |callback| - A callback to report the status of a request.
+     |band| - See https://developer.chrome.com/extensions/audioModem#property-stopTransmit-band.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [status] where:
+   
+     |status| - See https://developer.chrome.com/extensions/audioModem#property-callback-status.
+   
+   See https://developer.chrome.com/extensions/audioModem#method-stopTransmit."
   ([band #_callback] (gen-call :function ::stop-transmit &form band)))
 
 (defmacro receive
   "Start listening for audio tokens. For now, only one app will be able to listen at a time.
    
-     |callback| - A callback to report the status of a request.
+     |params| - See https://developer.chrome.com/extensions/audioModem#property-receive-params.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [status] where:
+   
+     |status| - See https://developer.chrome.com/extensions/audioModem#property-callback-status.
+   
+   See https://developer.chrome.com/extensions/audioModem#method-receive."
   ([params #_callback] (gen-call :function ::receive &form params)))
 
 (defmacro stop-receive
   "Stop any active listening on the specified band.
    
-     |callback| - A callback to report the status of a request.
+     |band| - See https://developer.chrome.com/extensions/audioModem#property-stopReceive-band.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [status] where:
+   
+     |status| - See https://developer.chrome.com/extensions/audioModem#property-callback-status.
+   
+   See https://developer.chrome.com/extensions/audioModem#method-stopReceive."
   ([band #_callback] (gen-call :function ::stop-receive &form band)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -55,14 +76,18 @@
   "Audio tokens have been received.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/audioModem#event-onReceived."
   ([channel & args] (apply gen-call :event ::on-received &form channel args)))
 
 (defmacro tap-on-transmit-fail-events
   "Transmit could not be confirmed. The speaker volume might be too low.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/audioModem#event-onTransmitFail."
   ([channel & args] (apply gen-call :event ::on-transmit-fail &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

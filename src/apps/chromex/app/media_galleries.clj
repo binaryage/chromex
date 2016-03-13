@@ -19,7 +19,14 @@
   "Get the media galleries configured in this user agent. If none are configured or available, the callback will receive an
    empty array.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |details| - See https://developer.chrome.com/extensions/mediaGalleries#property-getMediaFileSystems-details.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [mediaFileSystems] where:
+   
+     |mediaFileSystems| - See https://developer.chrome.com/extensions/mediaGalleries#property-callback-mediaFileSystems.
+   
+   See https://developer.chrome.com/extensions/mediaGalleries#method-getMediaFileSystems."
   ([details #_callback] (gen-call :function ::get-media-file-systems &form details))
   ([] `(get-media-file-systems :omit)))
 
@@ -28,46 +35,90 @@
    selectedFileSystemName will be empty. A user gesture is required for the dialog to display. Without a user gesture, the
    callback will run as though the user canceled.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [mediaFileSystems selectedFileSystemName] where:
+   
+     |mediaFileSystems| - See https://developer.chrome.com/extensions/mediaGalleries#property-callback-mediaFileSystems.
+     |selectedFileSystemName| - See
+   
+   https://developer.chrome.com/extensions/mediaGalleries#property-callback-selectedFileSystemName
+                                .
+   
+   See https://developer.chrome.com/extensions/mediaGalleries#method-addUserSelectedFolder."
   ([#_callback] (gen-call :function ::add-user-selected-folder &form)))
 
 (defmacro drop-permission-for-media-file-system
   "Give up access to a given media gallery.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |galleryId| - See
+                   https://developer.chrome.com/extensions/mediaGalleries#property-dropPermissionForMediaFileSystem-galleryId
+                   .
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+   
+   See https://developer.chrome.com/extensions/mediaGalleries#method-dropPermissionForMediaFileSystem."
   ([gallery-id #_callback] (gen-call :function ::drop-permission-for-media-file-system &form gallery-id)))
 
 (defmacro start-media-scan
   "Start a scan of the user's hard disks for directories containing media. The scan may take a long time so progress and
-   completion is communicated by events. No permission is granted as a result of the scan, see addScanResults."
+   completion is communicated by events. No permission is granted as a result of the scan, see addScanResults.
+   
+   See https://developer.chrome.com/extensions/mediaGalleries#method-startMediaScan."
   ([] (gen-call :function ::start-media-scan &form)))
 
 (defmacro cancel-media-scan
-  "Cancel any pending media scan.  Well behaved apps should provide a way for the user to cancel scans they start."
+  "Cancel any pending media scan.  Well behaved apps should provide a way for the user to cancel scans they start.
+   
+   See https://developer.chrome.com/extensions/mediaGalleries#method-cancelMediaScan."
   ([] (gen-call :function ::cancel-media-scan &form)))
 
 (defmacro add-scan-results
   "Show the user the scan results and let them add any or all of them as galleries. This should be used after the 'finish'
    onScanProgress() event has happened. All galleries the app has access to are returned, not just the newly added galleries.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [mediaFileSystems] where:
+   
+     |mediaFileSystems| - See https://developer.chrome.com/extensions/mediaGalleries#property-callback-mediaFileSystems.
+   
+   See https://developer.chrome.com/extensions/mediaGalleries#method-addScanResults."
   ([#_callback] (gen-call :function ::add-scan-results &form)))
 
 (defmacro get-media-file-system-metadata
-  "Get metadata about a specific media file system."
+  "Get metadata about a specific media file system.
+   
+     |mediaFileSystem| - See
+                         https://developer.chrome.com/extensions/mediaGalleries#property-getMediaFileSystemMetadata-mediaFile
+                         System.
+   
+   See https://developer.chrome.com/extensions/mediaGalleries#method-getMediaFileSystemMetadata."
   ([media-file-system] (gen-call :function ::get-media-file-system-metadata &form media-file-system)))
 
 (defmacro get-all-media-file-system-metadata
   "Get metadata for all available media galleries.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [metadata] where:
+   
+     |metadata| - See https://developer.chrome.com/extensions/mediaGalleries#property-callback-metadata.
+   
+   See https://developer.chrome.com/extensions/mediaGalleries#method-getAllMediaFileSystemMetadata."
   ([#_callback] (gen-call :function ::get-all-media-file-system-metadata &form)))
 
 (defmacro get-metadata
   "Gets the media-specific metadata for a media file. This should work for files in media galleries as well as other DOM
    filesystems.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |mediaFile| - See https://developer.chrome.com/extensions/mediaGalleries#property-getMetadata-mediaFile.
+     |options| - See https://developer.chrome.com/extensions/mediaGalleries#property-getMetadata-options.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [metadata] where:
+   
+     |metadata| - See https://developer.chrome.com/extensions/mediaGalleries#property-callback-metadata.
+   
+   See https://developer.chrome.com/extensions/mediaGalleries#method-getMetadata."
   ([media-file options #_callback] (gen-call :function ::get-metadata &form media-file options))
   ([media-file] `(get-metadata ~media-file :omit)))
 
@@ -75,21 +126,39 @@
   "Adds a gallery watch for the gallery with the specified gallery ID. The given callback is then fired with a success or
    failure result.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |galleryId| - See https://developer.chrome.com/extensions/mediaGalleries#property-addGalleryWatch-galleryId.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/mediaGalleries#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/mediaGalleries#method-addGalleryWatch."
   ([gallery-id #_callback] (gen-call :function ::add-gallery-watch &form gallery-id)))
 
 (defmacro remove-gallery-watch
-  "Removes a gallery watch for the gallery with the specified gallery ID."
+  "Removes a gallery watch for the gallery with the specified gallery ID.
+   
+     |galleryId| - See https://developer.chrome.com/extensions/mediaGalleries#property-removeGalleryWatch-galleryId.
+   
+   See https://developer.chrome.com/extensions/mediaGalleries#method-removeGalleryWatch."
   ([gallery-id] (gen-call :function ::remove-gallery-watch &form gallery-id)))
 
 (defmacro get-all-gallery-watch
   "Notifies which galleries are being watched via the given callback.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [galleryIds] where:
+   
+     |galleryIds| - See https://developer.chrome.com/extensions/mediaGalleries#property-callback-galleryIds.
+   
+   See https://developer.chrome.com/extensions/mediaGalleries#method-getAllGalleryWatch."
   ([#_callback] (gen-call :function ::get-all-gallery-watch &form)))
 
 (defmacro remove-all-gallery-watch
-  "Removes all gallery watches."
+  "Removes all gallery watches.
+   
+   See https://developer.chrome.com/extensions/mediaGalleries#method-removeAllGalleryWatch."
   ([] (gen-call :function ::remove-all-gallery-watch &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -100,14 +169,18 @@
   "Fired when a media gallery is changed or a gallery watch is dropped.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/mediaGalleries#event-onGalleryChanged."
   ([channel & args] (apply gen-call :event ::on-gallery-changed &form channel args)))
 
 (defmacro tap-on-scan-progress-events
   "The pending media scan has changed state. See details for more information.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/mediaGalleries#event-onScanProgress."
   ([channel & args] (apply gen-call :event ::on-scan-progress &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

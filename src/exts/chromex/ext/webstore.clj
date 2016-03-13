@@ -21,11 +21,15 @@
      |successCallback| - This function is invoked when inline installation successfully completes (after the dialog is shown
                          and the user agrees to add the item to Chrome). You may wish to use this to hide the user interface
                          element that prompted the user to install the app or extension.
-     |failureCallback| - This function is invoked when inline installation does not successfully complete. Possible reasons
-                         for this include the user canceling the dialog, the linked item not being found in the store, or
-                         the install being initiated from a non-verified site.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [error errorCode] where:
+   
+     |error| - The failure detail. You may wish to inspect or log this for debugging purposes, but you should not rely on
+               specific strings being passed back.
+     |errorCode| - The error code from the stable set of possible errors.
+   
+   See https://developer.chrome.com/extensions/webstore#method-install."
   ([url success-callback #_failure-callback] (gen-call :function ::install &form url success-callback))
   ([url] `(install ~url :omit))
   ([] `(install :omit :omit)))
@@ -39,7 +43,9 @@
    must be registered before the inline installation begins.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/webstore#event-onInstallStageChanged."
   ([channel & args] (apply gen-call :event ::on-install-stage-changed &form channel args)))
 
 (defmacro tap-on-download-progress-events
@@ -47,7 +53,9 @@
    listeners must be registered before the inline installation begins.
    Events will be put on the |channel|.
    
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+   
+   See https://developer.chrome.com/extensions/webstore#event-onDownloadProgress."
   ([channel & args] (apply gen-call :event ::on-download-progress &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

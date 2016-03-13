@@ -18,7 +18,14 @@
 (defmacro send-packet
   "Send a packet of the given type with the given parameters.
    
-   Note: Instead of passing a callback function, you receive a core.async channel as return value."
+     |options| - See https://developer.chrome.com/extensions/diagnostics#property-sendPacket-options.
+   
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+   
+     |result| - See https://developer.chrome.com/extensions/diagnostics#property-callback-result.
+   
+   See https://developer.chrome.com/extensions/diagnostics#method-sendPacket."
   ([options #_callback] (gen-call :function ::send-packet &form options)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
