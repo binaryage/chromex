@@ -78,8 +78,10 @@
        (cuerdas/unlines)))
 
 (defn wrap-text [indent columns text]
-  (let [prefix (indent-str indent)]
-    (->> (wrap text (- columns indent)) (prefix-text prefix))))
+  (if text
+    (let [prefix (indent-str indent)]
+      (->> (wrap text (- columns indent))
+           (prefix-text prefix)))))
 
 (defn quote-text [text]
   (cuerdas/quote (fix-quotes text)))
