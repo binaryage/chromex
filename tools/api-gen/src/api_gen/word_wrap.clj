@@ -11,24 +11,33 @@
 (defn- wrap-line-at [index line]
   (str (to-trimmed-string (take index line)) \newline))
 
-(defn- index-of-last-fitting-space [max-columns line]
-  (.lastIndexOf (take max-columns line) \space))
+(defn- index-of-last-fitting-space [max-columns start-index line]
+  (let [res (.lastIndexOf (drop start-index (take max-columns line)) \space)]
+    (if (neg? res)
+      res
+      (+ start-index res))))
 
-(def ^:private valid-index? pos?)
-
-(defn- compute-wrapping-index [line max-columns]
-  (let [index (index-of-last-fitting-space max-columns line)]
-    (if (valid-index? index)
-      index
-      max-columns)))
+(defn- ^:private valid-index? [index]
+  (not (neg? index)))
 
 (defn- fits? [line max-columns]
   (<= (count line) max-columns))
 
-(defn- line->wrapped-lines [wrapped-lines line max-columns]
+(defn- compute-wrapping-index [line max-columns]
   (if (fits? line max-columns)
-    (conj wrapped-lines line)
-    (let [index (compute-wrapping-index line max-columns)]
+    -1
+    (let [index (index-of-last-fitting-space max-columns 0 line)
+          mid-index (int (/ max-columns 2))]
+      (if (valid-index? index)
+        (if (> index mid-index)
+          index
+          (index-of-last-fitting-space 100000000 mid-index line))
+        (index-of-last-fitting-space 100000000 0 line)))))
+
+(defn- line->wrapped-lines [wrapped-lines line max-columns]
+  (let [index (compute-wrapping-index line max-columns)]
+    (if-not (valid-index? index)
+      (conj wrapped-lines line)
       (recur (conj wrapped-lines (wrap-line-at index line))
              (rest-of-line index line)
              max-columns))))
