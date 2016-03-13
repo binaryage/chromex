@@ -74,7 +74,7 @@
   (let [{:keys [name is-callback]} parameter
         param-name (kebab-case name)]
     (if is-callback
-      [(str "#_" param-name)]
+      [#_(str "#_" param-name)]                                                                                               ; let's remove callback parameters to reduce noise
       [param-name])))
 
 (defn build-param-list [parameters f]
