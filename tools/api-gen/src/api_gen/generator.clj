@@ -82,7 +82,7 @@
     (or params "")))
 
 (defn wrap-param-doc [param]
-  (str "|" param "|"))
+  (str "|" (kebab-case param) "|"))
 
 (defn replace-special-tags [text]
   (string/replace text #"<(webview|appview)>" "$1"))
@@ -178,29 +178,33 @@
 (defn build-id [name]
   (keyword (kebab-case name)))
 
-(defn build-callback-signature [callback]
-  (let [{:keys [parameters]} callback
-        names (keep :name parameters)]
+(defn build-signature [parameters]
+  (let [names (map (comp kebab-case :name) parameters)]
     (str "[" (apply str (interpose " " names)) "]")))
 
-(defn build-callback-param-docs [context callback]
-  (let [{:keys [parameters]} callback]
-    (mapcat (partial build-param-doc context 2 MAX-COLUMNS) parameters)))
+(defn build-param-docs [context parameters]
+  (mapcat (partial build-param-doc context 2 MAX-COLUMNS) parameters))
 
 (defn build-callback-docstring [context callback]
-  (let [intro "This function returns a core.async channel which eventually receives a result value and closes."
-        signature (str "\nSignature of the result value put on the channel is " (build-callback-signature callback))
-        context (assoc context :property-name (:name callback))                                                               ; generated IDs in official docs are not unique, they can shadow properties under some circumstances
-        param-docs (build-callback-param-docs context callback)
+  (let [parameters (:parameters callback)
+        intro "This function returns a core.async channel which eventually receives a result value and closes."
+        signature (str "\nSignature of the result value put on the channel is " (build-signature parameters))
+        context (assoc context :property-name (:name callback))                                                               ; generated IDs in official docs are not unique, they can shadow properties and other callbacks
+        param-docs (build-param-docs context parameters)
         rest (if (empty? param-docs) "." (str " where:\n\n" (apply str (string/join "\n" param-docs))))]
     (str intro signature rest)))
 
 (defn build-function-docstring [context description parameters callback]
   (build-docstring-with-link context 2 description parameters (if callback (build-callback-docstring context callback) "")))
 
-(defn build-event-docstring [context description parameters]
-  (let [extra-args-doc "Events will be put on the |channel|.\n\nNote: |args| will be passed as additional parameters into Chrome event's .addListener call."]
-    (build-docstring-with-link context 2 description parameters extra-args-doc)))
+(defn build-event-docstring [context description callback]
+  (let [id (build-id (:event-name context))
+        parameters (:parameters callback)
+        signature (str "\nEvents will be put on the |channel| with signature [:" id " " (build-signature parameters) "]")
+        param-docs (build-param-docs context parameters)
+        rest (if (empty? param-docs) "." (str " where:\n\n" (apply str (string/join "\n" param-docs))))
+        args-note "Note: |args| will be passed as additional parameters into Chrome event's .addListener call."]
+    (build-docstring-with-link context 2 description nil (str signature rest) args-note)))
 
 (defn build-property-docstring [context description parameters]
   (build-docstring-with-link context 2 description parameters))
@@ -267,7 +271,7 @@
   (vec (map (partial build-api-table-property context) data)))
 
 (defn build-api-table-event [context data]
-  (let [{:keys [name description parameters]} data
+  (let [{:keys [name description]} data
         callback-data (get-in data [:by-name :add-listener :callback])
         context (assoc context :event-name name)]
     (with-meta
@@ -277,7 +281,7 @@
        :until      (extract-avail-until data)
        :deprecated (extract-deprecated data)
        :params     (:params (build-api-table-callback-info callback-data))}
-      {:doc (build-event-docstring context description parameters)})))
+      {:doc (build-event-docstring context description callback-data)})))
 
 (defn build-api-table-events [context data]
   (vec (map (partial build-api-table-event context) data)))
