@@ -116,10 +116,10 @@
   (if-not (:is-callback parameter)
     (let [{:keys [name description]} parameter
           context (assoc context :param-name name)
-          prefix (str "  " (wrap-param-doc name) " - ")]
-      (if-let [plain-description (if description (plain-doc description) (link-doc context))]
-        (let [wrapped-description (wrap-text (count prefix) (- columns indent) plain-description)]
-          [(str prefix wrapped-description)])))))
+          prefix (str "  " (wrap-param-doc name) " - ")
+          plain-description (or (if description (plain-doc description) (link-doc context)) "?")
+          wrapped-description (wrap-text (count prefix) (- columns indent) plain-description)]
+      [(str prefix wrapped-description)])))
 
 (defn build-docstring [context indent description parameters & extras]
   (let [columns (- MAX-COLUMNS indent)
