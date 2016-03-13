@@ -88,7 +88,7 @@
 
 (defn wrap-docstring [indent columns text]
   (if (empty? text)
-    " "
+    ""
     (let [prefix (indent-str indent)
           wrapped-text (wrap-text (inc indent) columns text)
           quoted-wrapped-text (quote-text wrapped-text)]
