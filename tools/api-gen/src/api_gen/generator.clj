@@ -39,8 +39,22 @@
 (defn build-ns-name [name subns]
   (string/join "." (remove empty? [NS-PREFIX subns (kebab-case (munge-if-reserved name))])))
 
-(defn build-ns-link [name]
-  (str "https://developer.chrome.com/extensions/" name))
+(defn has-public-link? [context]
+  (not (re-matches #"^.*(Private|Internal)$" (:ns-name context))))
+
+(defn is-tag-ns? [context]
+  (re-matches #"^(.*)Tag$" (:ns-name context)))
+
+(defn build-ns-link [context]
+  (if (has-public-link? context)
+    (let [{:keys [ns-name subns]} context
+          section (case subns
+                    "app" "apps"
+                    "ext" "extensions")
+          ns-part (if-let [match (re-matches #"^(.*)Tag$" ns-name)]
+                    (str "tags/" (second match))                                                                              ; handles special case of tags pages: e.g. appviewTag -> https://developer.chrome.com/apps/tags/appview
+                    ns-name)]
+      (str "https://developer.chrome.com/" section "/" ns-part))))
 
 (defn build-intro-item [item]
   (let [{:keys [title content]} item
@@ -76,48 +90,48 @@
       (replace-refs)))
 
 (defn safe-link [url hash]
-  (str url "#" (encode-url-param hash)))
+  (if url
+    (str url (if hash (str "#" (encode-url-param hash))))))
 
 (defn build-context-link [context]
-  (let [{:keys [ns-name property-name function-name event-name param-name]} context
-        ns-link (build-ns-link ns-name)]
+  (let [{:keys [property-name function-name event-name param-name]} context
+        ns-link (build-ns-link context)
+        param-hash #(str "property-" (first (keep identity [property-name function-name event-name])) "-" param-name)]        ; fuzzy because of online docs generator
     (cond
-      param-name (safe-link ns-link (str "property-"
-                                         (first (keep identity [property-name function-name event-name]))
-                                         "-"
-                                         param-name))
+      param-name (safe-link ns-link (param-hash))
       property-name (safe-link ns-link (str "property-" property-name))
       function-name (safe-link ns-link (str "method-" function-name))
       event-name (safe-link ns-link (str "event-" event-name))
       :else ns-link)))
 
 (defn link-doc [context]
-  (str "See " (build-context-link context) "."))
+  (if-let [link (build-context-link context)]
+    (str link ".")))
 
 (defn build-param-doc [context indent columns parameter]
   (if-not (:is-callback parameter)
     (let [{:keys [name description]} parameter
           context (assoc context :param-name name)
-          prefix (str "  " (wrap-param-doc name) " - ")
-          plain-description (if description (plain-doc description) (link-doc context))
-          description-indent (count prefix)
-          wrapped-description (wrap-text description-indent (- columns indent) plain-description)]
-      [(str prefix wrapped-description)])))
+          prefix (str "  " (wrap-param-doc name) " - ")]
+      (if-let [plain-description (if description (plain-doc description) (link-doc context))]
+        (let [wrapped-description (wrap-text (count prefix) (- columns indent) plain-description)]
+          [(str prefix wrapped-description)])))))
 
 (defn build-docstring [context indent description parameters & extras]
   (let [columns (- MAX-COLUMNS indent)
-        desc (if description (wrap-text 0 columns (plain-doc description)) "")
+        desc (string/trim (if description (wrap-text 0 columns (plain-doc description)) ""))
         params (string/join "\n" (mapcat (partial build-param-doc context 2 columns) parameters))
-        parts (remove empty? [desc params])
-        docstring (apply str (string/join "\n\n" parts) extras)]
+        parts (remove empty? (concat [desc params] extras))
+        docstring (string/join "\n\n" parts)]
     (wrap-docstring indent MAX-COLUMNS docstring)))
 
 (defn build-docstring-with-link [context & args]
-  (apply build-docstring context (concat args [(str "\n\n" (link-doc context))])))
+  (apply build-docstring context (concat args [(link-doc context)])))
 
-(defn build-ns-docstring [name intro-list]
+(defn build-ns-docstring [context intro-list]
   (if-let [intro (plain-doc (string/join "\n\n" (mapcat build-intro-item intro-list)))]
-    (let [intro-with-link (str intro "\n  * " (build-ns-link name))]
+    (let [link (build-ns-link context)
+          intro-with-link (str intro (if link (str "\n  * " link)))]
       (wrap-docstring 2 MAX-COLUMNS intro-with-link))))
 
 (declare extract-type)
@@ -170,7 +184,7 @@
     (mapcat (partial build-param-doc context 2 MAX-COLUMNS) parameters)))
 
 (defn build-callback-docstring [context callback]
-  (let [intro "\n\nThis function returns a core.async channel which eventually receives a result value and closes."
+  (let [intro "This function returns a core.async channel which eventually receives a result value and closes."
         signature (str "\nSignature of the result value put on the channel is " (build-callback-signature callback))
         context (assoc context :property-name (:name callback))                                                               ; generated IDs in official docs are not unique, they can shadow properties under some circumstances
         param-docs (build-callback-param-docs context callback)
@@ -181,7 +195,7 @@
   (build-docstring-with-link context 2 description parameters (if callback (build-callback-docstring context callback) "")))
 
 (defn build-event-docstring [context description parameters]
-  (let [extra-args-doc "\nEvents will be put on the |channel|.\n\nNote: |args| will be passed as additional parameters into Chrome event's .addListener call."]
+  (let [extra-args-doc "Events will be put on the |channel|.\n\nNote: |args| will be passed as additional parameters into Chrome event's .addListener call."]
     (build-docstring-with-link context 2 description parameters extra-args-doc)))
 
 (defn build-property-docstring [context description parameters]
@@ -264,10 +278,10 @@
 (defn build-api-table-events [context data]
   (vec (map (partial build-api-table-event context) data)))
 
-(defn build-namespace-api-table [data]
+(defn build-namespace-api-table [data context]
   (let [{:keys [namespace functions properties events name intro-list]} data
         function-names (map (comp kebab-case :name) functions)
-        context {:ns-name name}]
+        context (assoc context :ns-name name)]
     (with-meta
       {:namespace  namespace
        :since      (extract-namespace-since data)
@@ -276,7 +290,7 @@
        :functions  (build-api-table-functions context function-names data)
        :events     (build-api-table-events context events)}
       {:name name
-       :doc  (build-ns-docstring name intro-list)})))
+       :doc  (build-ns-docstring context intro-list)})))
 
 ; ---------------------------------------------------------------------------------------------------------------------------
 
@@ -474,8 +488,9 @@
 
 (defn build-api-table [subns ns]
   (println (str "preparing '" (:name ns) "'"))
-  (let [api-table (-> ns
-                      (build-namespace-api-table)
+  (let [context {:subns subns}
+        api-table (-> ns
+                      (build-namespace-api-table context)
                       (vary-meta assoc :subns subns)
                       (remove-emptyish-values))
         {:keys [functions properties events]} api-table
