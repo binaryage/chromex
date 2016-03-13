@@ -69,7 +69,7 @@
       text)))
 
 (defn prefix-block [prefix lines]
-  (concat [(first lines)] (map #(str prefix %) (rest lines))))
+  (concat [(first lines)] (map #(if (empty? %) "" (str prefix %)) (rest lines))))
 
 (defn prefix-text [prefix text]
   (->> text
