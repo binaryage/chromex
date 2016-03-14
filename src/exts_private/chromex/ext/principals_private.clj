@@ -1,9 +1,8 @@
 (ns chromex.ext.principals-private
   "Experimental APIs to trigger Chrome sign in actions.
    Only enabled if the flag 'new-profile-management' is set.
-   
-     * available since Chrome 32
-     * https://developer.chrome.com/extensions/principalsPrivate"
+
+     * available since Chrome 32"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -16,15 +15,11 @@
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro sign-out
-  "Triggers Chrome sign out. Only enabled if the flag 'new-profile-management' is set.
-   
-   See https://developer.chrome.com/extensions/principalsPrivate#method-signOut."
+  "Triggers Chrome sign out. Only enabled if the flag 'new-profile-management' is set."
   ([] (gen-call :function ::sign-out &form)))
 
 (defmacro show-avatar-bubble
-  "Shows the avatar bubble. Only enabled if the flag 'new-profile-management' is set.
-   
-   See https://developer.chrome.com/extensions/principalsPrivate#method-showAvatarBubble."
+  "Shows the avatar bubble. Only enabled if the flag 'new-profile-management' is set."
   ([] (gen-call :function ::show-avatar-bubble &form)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

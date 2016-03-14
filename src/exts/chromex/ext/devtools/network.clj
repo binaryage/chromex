@@ -1,7 +1,7 @@
 (ns chromex.ext.devtools.network
   "Use the chrome.devtools.network API to retrieve the information about network requests displayed by the Developer Tools in
    the Network panel.
-   
+
      * available since Chrome 18
      * https://developer.chrome.com/extensions/devtools.network"
 
@@ -17,14 +17,14 @@
 
 (defmacro get-har
   "Returns HAR log that contains all known network requests.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [harLog] where:
-   
-     |harLog| - A HAR log. See HAR specification for details.
-   
-   See https://developer.chrome.com/extensions/devtools.network#method-getHAR."
-  ([#_callback] (gen-call :function ::get-har &form)))
+   Signature of the result value put on the channel is [har-log] where:
+
+     |har-log| - A HAR log. See HAR specification for details.
+
+   https://developer.chrome.com/extensions/devtools.network#method-getHAR."
+  ([] (gen-call :function ::get-har &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -32,20 +32,26 @@
 
 (defmacro tap-on-request-finished-events
   "Fired when a network request is finished and all request data are available.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-request-finished [request]] where:
+
+     |request| - Description of a network request in the form of a HAR entry. See HAR specification for details.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/devtools.network#event-onRequestFinished."
+
+   https://developer.chrome.com/extensions/devtools.network#event-onRequestFinished."
   ([channel & args] (apply gen-call :event ::on-request-finished &form channel args)))
 
 (defmacro tap-on-navigated-events
   "Fired when the inspected window navigates to a new page.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-navigated [url]] where:
+
+     |url| - URL of the new page.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/devtools.network#event-onNavigated."
+
+   https://developer.chrome.com/extensions/devtools.network#event-onNavigated."
   ([channel & args] (apply gen-call :event ::on-navigated &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

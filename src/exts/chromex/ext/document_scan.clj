@@ -1,7 +1,7 @@
 (ns chromex.ext.document-scan
   "Use the chrome.documentScan API to discover and retrieve
    images from attached paper document scanners.
-   
+
      * available since Chrome 44
      * https://developer.chrome.com/extensions/documentScan"
 
@@ -17,16 +17,16 @@
 
 (defmacro scan
   "Performs a document scan.  On success, the PNG data will be sent to the callback.
-   
+
      |options| - Object containing scan parameters.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - See https://developer.chrome.com/extensions/documentScan#property-callback-result.
-   
-   See https://developer.chrome.com/extensions/documentScan#method-scan."
-  ([options #_callback] (gen-call :function ::scan &form options)))
+
+     |result| - https://developer.chrome.com/extensions/documentScan#property-callback-result.
+
+   https://developer.chrome.com/extensions/documentScan#method-scan."
+  ([options] (gen-call :function ::scan &form options)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 

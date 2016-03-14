@@ -2,9 +2,9 @@
   "Use the chrome.runtime API to retrieve the background page, return details about the manifest, and listen for and respond
    to events in the app or extension lifecycle. You can also use this API to convert the relative path of URLs to
    fully-qualified URLs.
-   
+
      * available since Chrome 22
-     * https://developer.chrome.com/extensions/runtime"
+     * https://developer.chrome.com/apps/runtime"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -18,14 +18,14 @@
 
 (defmacro get-last-error
   "This will be defined during an API method callback if there was an error
-   
-   See https://developer.chrome.com/extensions/runtime#property-lastError."
+
+   https://developer.chrome.com/apps/runtime#property-lastError."
   ([] (gen-call :property ::last-error &form)))
 
 (defmacro get-id
   "The ID of the extension/app.
-   
-   See https://developer.chrome.com/extensions/runtime#property-id."
+
+   https://developer.chrome.com/apps/runtime#property-id."
   ([] (gen-call :property ::id &form)))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
@@ -34,14 +34,14 @@
   "Retrieves the JavaScript 'window' object for the background page running inside the current extension/app. If the
    background page is an event page, the system will ensure it is loaded before calling the callback. If there is no
    background page, an error is set.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [backgroundPage] where:
-   
-     |backgroundPage| - The JavaScript 'window' object for the background page.
-   
-   See https://developer.chrome.com/extensions/runtime#method-getBackgroundPage."
-  ([#_callback] (gen-call :function ::get-background-page &form)))
+   Signature of the result value put on the channel is [background-page] where:
+
+     |background-page| - The JavaScript 'window' object for the background page.
+
+   https://developer.chrome.com/apps/runtime#method-getBackgroundPage."
+  ([] (gen-call :function ::get-background-page &form)))
 
 (defmacro open-options-page
   "Open your Extension's options page, if possible.The precise behavior may depend on your manifest's options_ui or
@@ -49,64 +49,64 @@
    chrome://extensions, within an App, or it may just focus an open options page. It will never cause the caller page to
    reload.If your Extension does not declare an options page, or Chrome failed to create one for some other reason, the
    callback will set 'lastError'.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/runtime#method-openOptionsPage."
-  ([#_callback] (gen-call :function ::open-options-page &form)))
+
+   https://developer.chrome.com/apps/runtime#method-openOptionsPage."
+  ([] (gen-call :function ::open-options-page &form)))
 
 (defmacro get-manifest
   "Returns details about the app or extension from the manifest. The object returned is a serialization of the full manifest
    file.
-   
-   See https://developer.chrome.com/extensions/runtime#method-getManifest."
+
+   https://developer.chrome.com/apps/runtime#method-getManifest."
   ([] (gen-call :function ::get-manifest &form)))
 
 (defmacro get-url
   "Converts a relative path within an app/extension install directory to a fully-qualified URL.
-   
+
      |path| - A path to a resource within an app/extension expressed relative to its install directory.
-   
-   See https://developer.chrome.com/extensions/runtime#method-getURL."
+
+   https://developer.chrome.com/apps/runtime#method-getURL."
   ([path] (gen-call :function ::get-url &form path)))
 
 (defmacro set-uninstall-url
   "Sets the URL to be visited upon uninstallation. This may be used to clean up server-side data, do analytics, and implement
    surveys. Maximum 255 characters.
-   
+
      |url| - URL to be opened after the extension is uninstalled. This URL must have an http: or https: scheme. Set an empty
              string to not open a new tab upon uninstallation.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/runtime#method-setUninstallURL."
-  ([url #_callback] (gen-call :function ::set-uninstall-url &form url)))
+
+   https://developer.chrome.com/apps/runtime#method-setUninstallURL."
+  ([url] (gen-call :function ::set-uninstall-url &form url)))
 
 (defmacro reload
   "Reloads the app or extension. This method is not supported in kiosk mode. For kiosk mode, use chrome.runtime.restart()
    method.
-   
-   See https://developer.chrome.com/extensions/runtime#method-reload."
+
+   https://developer.chrome.com/apps/runtime#method-reload."
   ([] (gen-call :function ::reload &form)))
 
 (defmacro request-update-check
   "Requests an update check for this app/extension.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [status details] where:
-   
+
      |status| - Result of the update check.
      |details| - If an update is available, this contains more information about the available update.
-   
-   See https://developer.chrome.com/extensions/runtime#method-requestUpdateCheck."
-  ([#_callback] (gen-call :function ::request-update-check &form)))
+
+   https://developer.chrome.com/apps/runtime#method-requestUpdateCheck."
+  ([] (gen-call :function ::request-update-check &form)))
 
 (defmacro restart
   "Restart the ChromeOS device when the app runs in kiosk mode. Otherwise, it's no-op.
-   
-   See https://developer.chrome.com/extensions/runtime#method-restart."
+
+   https://developer.chrome.com/apps/runtime#method-restart."
   ([] (gen-call :function ::restart &form)))
 
 (defmacro connect
@@ -114,22 +114,22 @@
    This is useful for content scripts connecting to their extension processes, inter-app/extension communication, and web
    messaging. Note that this does not connect to any listeners in a content script. Extensions may connect to content scripts
    embedded in tabs via tabs.connect.
-   
-     |extensionId| - The ID of the extension or app to connect to. If omitted, a connection will be attempted with your own
-                     extension. Required if sending messages from a web page for web messaging.
-     |connectInfo| - See https://developer.chrome.com/extensions/runtime#property-connect-connectInfo.
-   
-   See https://developer.chrome.com/extensions/runtime#method-connect."
+
+     |extension-id| - The ID of the extension or app to connect to. If omitted, a connection will be attempted with your own
+                      extension. Required if sending messages from a web page for web messaging.
+     |connect-info| - https://developer.chrome.com/apps/runtime#property-connect-connectInfo.
+
+   https://developer.chrome.com/apps/runtime#method-connect."
   ([extension-id connect-info] (gen-call :function ::connect &form extension-id connect-info))
   ([extension-id] `(connect ~extension-id :omit))
   ([] `(connect :omit :omit)))
 
 (defmacro connect-native
   "Connects to a native application in the host machine.
-   
+
      |application| - The name of the registered application to connect to.
-   
-   See https://developer.chrome.com/extensions/runtime#method-connectNative."
+
+   https://developer.chrome.com/apps/runtime#method-connectNative."
   ([application] (gen-call :function ::connect-native &form application)))
 
 (defmacro send-message
@@ -138,60 +138,60 @@
    'runtime.onMessage' event will be fired in each page, or 'runtime.onMessageExternal', if a different extension. Note that
    extensions cannot send messages to content scripts using this method. To send messages to content scripts, use
    tabs.sendMessage.
-   
-     |extensionId| - The ID of the extension/app to send the message to. If omitted, the message will be sent to your own
-                     extension/app. Required if sending messages from a web page for web messaging.
-     |message| - See https://developer.chrome.com/extensions/runtime#property-sendMessage-message.
-     |options| - See https://developer.chrome.com/extensions/runtime#property-sendMessage-options.
-   
+
+     |extension-id| - The ID of the extension/app to send the message to. If omitted, the message will be sent to your own
+                      extension/app. Required if sending messages from a web page for web messaging.
+     |message| - https://developer.chrome.com/apps/runtime#property-sendMessage-message.
+     |options| - https://developer.chrome.com/apps/runtime#property-sendMessage-options.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [response] where:
-   
+
      |response| - The JSON response object sent by the handler of the message. If an error occurs while connecting to the
                   extension, the callback will be called with no arguments and 'runtime.lastError' will be set to the error
                   message.
-   
-   See https://developer.chrome.com/extensions/runtime#method-sendMessage."
-  ([extension-id message options #_response-callback] (gen-call :function ::send-message &form extension-id message options))
+
+   https://developer.chrome.com/apps/runtime#method-sendMessage."
+  ([extension-id message options] (gen-call :function ::send-message &form extension-id message options))
   ([extension-id message] `(send-message ~extension-id ~message :omit)))
 
 (defmacro send-native-message
   "Send a single message to a native application.
-   
+
      |application| - The name of the native messaging host.
      |message| - The message that will be passed to the native messaging host.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [response] where:
-   
+
      |response| - The response message sent by the native messaging host. If an error occurs while connecting to the native
                   messaging host, the callback will be called with no arguments and 'runtime.lastError' will be set to the
                   error message.
-   
-   See https://developer.chrome.com/extensions/runtime#method-sendNativeMessage."
-  ([application message #_response-callback] (gen-call :function ::send-native-message &form application message)))
+
+   https://developer.chrome.com/apps/runtime#method-sendNativeMessage."
+  ([application message] (gen-call :function ::send-native-message &form application message)))
 
 (defmacro get-platform-info
   "Returns information about the current platform.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [platformInfo] where:
-   
-     |platformInfo| - See https://developer.chrome.com/extensions/runtime#property-callback-platformInfo.
-   
-   See https://developer.chrome.com/extensions/runtime#method-getPlatformInfo."
-  ([#_callback] (gen-call :function ::get-platform-info &form)))
+   Signature of the result value put on the channel is [platform-info] where:
+
+     |platform-info| - https://developer.chrome.com/apps/runtime#property-callback-platformInfo.
+
+   https://developer.chrome.com/apps/runtime#method-getPlatformInfo."
+  ([] (gen-call :function ::get-platform-info &form)))
 
 (defmacro get-package-directory-entry
   "Returns a DirectoryEntry for the package directory.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [directoryEntry] where:
-   
-     |directoryEntry| - See https://developer.chrome.com/extensions/runtime#property-callback-directoryEntry.
-   
-   See https://developer.chrome.com/extensions/runtime#method-getPackageDirectoryEntry."
-  ([#_callback] (gen-call :function ::get-package-directory-entry &form)))
+   Signature of the result value put on the channel is [directory-entry] where:
+
+     |directory-entry| - https://developer.chrome.com/apps/runtime#property-callback-directoryEntry.
+
+   https://developer.chrome.com/apps/runtime#method-getPackageDirectoryEntry."
+  ([] (gen-call :function ::get-package-directory-entry &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -200,21 +200,25 @@
 (defmacro tap-on-startup-events
   "Fired when a profile that has this extension installed first starts up. This event is not fired when an incognito profile
    is started, even if this extension is operating in 'split' incognito mode.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-startup []].
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/runtime#event-onStartup."
+
+   https://developer.chrome.com/apps/runtime#event-onStartup."
   ([channel & args] (apply gen-call :event ::on-startup &form channel args)))
 
 (defmacro tap-on-installed-events
   "Fired when the extension is first installed, when the extension is updated to a new version, and when Chrome is updated to
    a new version.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-installed [details]] where:
+
+     |details| - https://developer.chrome.com/apps/runtime#property-onInstalled-details.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/runtime#event-onInstalled."
+
+   https://developer.chrome.com/apps/runtime#event-onInstalled."
   ([channel & args] (apply gen-call :event ::on-installed &form channel args)))
 
 (defmacro tap-on-suspend-events
@@ -222,20 +226,22 @@
    since the page is unloading, any asynchronous operations started while handling this event are not guaranteed to complete.
    If more activity for the event page occurs before it gets unloaded the onSuspendCanceled event will be sent and the page
    won't be unloaded.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-suspend []].
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/runtime#event-onSuspend."
+
+   https://developer.chrome.com/apps/runtime#event-onSuspend."
   ([channel & args] (apply gen-call :event ::on-suspend &form channel args)))
 
 (defmacro tap-on-suspend-canceled-events
   "Sent after onSuspend to indicate that the app won't be unloaded after all.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-suspend-canceled []].
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/runtime#event-onSuspendCanceled."
+
+   https://developer.chrome.com/apps/runtime#event-onSuspendCanceled."
   ([channel & args] (apply gen-call :event ::on-suspend-canceled &form channel args)))
 
 (defmacro tap-on-update-available-events
@@ -245,67 +251,88 @@
    course never gets unloaded, so unless you call chrome.runtime.reload() manually in response to this event the update will
    not get installed until the next time chrome itself restarts. If no handlers are listening for this event, and your
    extension has a persistent background page, it behaves as if chrome.runtime.reload() is called in response to this event.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-update-available [details]] where:
+
+     |details| - The manifest details of the available update.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/runtime#event-onUpdateAvailable."
+
+   https://developer.chrome.com/apps/runtime#event-onUpdateAvailable."
   ([channel & args] (apply gen-call :event ::on-update-available &form channel args)))
 
 (defmacro tap-on-browser-update-available-events
   "Fired when a Chrome update is available, but isn't installed immediately because a browser restart is required.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-browser-update-available []].
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/runtime#event-onBrowserUpdateAvailable."
+
+   https://developer.chrome.com/apps/runtime#event-onBrowserUpdateAvailable."
   ([channel & args] (apply gen-call :event ::on-browser-update-available &form channel args)))
 
 (defmacro tap-on-connect-events
   "Fired when a connection is made from either an extension process or a content script.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-connect [port]] where:
+
+     |port| - https://developer.chrome.com/apps/runtime#property-onConnect-port.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/runtime#event-onConnect."
+
+   https://developer.chrome.com/apps/runtime#event-onConnect."
   ([channel & args] (apply gen-call :event ::on-connect &form channel args)))
 
 (defmacro tap-on-connect-external-events
   "Fired when a connection is made from another extension.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-connect-external [port]] where:
+
+     |port| - https://developer.chrome.com/apps/runtime#property-onConnectExternal-port.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/runtime#event-onConnectExternal."
+
+   https://developer.chrome.com/apps/runtime#event-onConnectExternal."
   ([channel & args] (apply gen-call :event ::on-connect-external &form channel args)))
 
 (defmacro tap-on-message-events
   "Fired when a message is sent from either an extension process or a content script.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-message [message sender send-response]] where:
+
+     |message| - The message sent by the calling script.
+     |sender| - https://developer.chrome.com/apps/runtime#property-onMessage-sender.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/runtime#event-onMessage."
+
+   https://developer.chrome.com/apps/runtime#event-onMessage."
   ([channel & args] (apply gen-call :event ::on-message &form channel args)))
 
 (defmacro tap-on-message-external-events
   "Fired when a message is sent from another extension/app. Cannot be used in a content script.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-message-external [message sender send-response]] where:
+
+     |message| - The message sent by the calling script.
+     |sender| - https://developer.chrome.com/apps/runtime#property-onMessageExternal-sender.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/runtime#event-onMessageExternal."
+
+   https://developer.chrome.com/apps/runtime#event-onMessageExternal."
   ([channel & args] (apply gen-call :event ::on-message-external &form channel args)))
 
 (defmacro tap-on-restart-required-events
   "Fired when an app or the device that it runs on needs to be restarted. The app should close all its windows at its earliest
    convenient time to let the restart to happen. If the app does nothing, a restart will be enforced after a 24-hour grace
    period has passed. Currently, this event is only fired for Chrome OS kiosk apps.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-restart-required [reason]] where:
+
+     |reason| - The reason that the event is being dispatched.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/runtime#event-onRestartRequired."
+
+   https://developer.chrome.com/apps/runtime#event-onRestartRequired."
   ([channel & args] (apply gen-call :event ::on-restart-required &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

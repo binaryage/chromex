@@ -1,8 +1,7 @@
 (ns chromex.app.braille-display-private
   "Braille display access private API.
-   
-     * available since Chrome 31
-     * https://developer.chrome.com/extensions/brailleDisplayPrivate"
+
+     * available since Chrome 31"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -16,24 +15,20 @@
 
 (defmacro get-display-state
   "Gets the current display state.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - See https://developer.chrome.com/extensions/brailleDisplayPrivate#property-callback-result.
-   
-   See https://developer.chrome.com/extensions/brailleDisplayPrivate#method-getDisplayState."
-  ([#_callback] (gen-call :function ::get-display-state &form)))
+
+     |result| - ?"
+  ([] (gen-call :function ::get-display-state &form)))
 
 (defmacro write-dots
   "Write the given dot patterns to the display.  The buffer contains one byte for each braille cell on the display, starting
    from the leftmost cell. Each byte contains a bit pattern indicating which dots should be raised in the corresponding cell
    with the low-order bit representing dot 1 and so on until bit 7 which corresponds to dot 8.  If the number of bytes in the
    buffer is not equal to the display size, the buffer will either be clipped or padded with blank cells on the right.
-   
-     |cells| - See https://developer.chrome.com/extensions/brailleDisplayPrivate#property-writeDots-cells.
-   
-   See https://developer.chrome.com/extensions/brailleDisplayPrivate#method-writeDots."
+
+     |cells| - ?"
   ([cells] (gen-call :function ::write-dots &form cells)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -42,20 +37,22 @@
 
 (defmacro tap-on-display-state-changed-events
   "Fired when a braille display is connected or disconnected.
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/brailleDisplayPrivate#event-onDisplayStateChanged."
+
+   Events will be put on the |channel| with signature [::on-display-state-changed [state]] where:
+
+     |state| - ?
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-display-state-changed &form channel args)))
 
 (defmacro tap-on-key-event-events
   "Fired when an input event is received from the display.
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/brailleDisplayPrivate#event-onKeyEvent."
+
+   Events will be put on the |channel| with signature [::on-key-event [event]] where:
+
+     |event| - ?
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-key-event &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

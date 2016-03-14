@@ -1,7 +1,7 @@
 (ns chromex.ext.privacy
   "Use the chrome.privacy API to control usage of the features in Chrome that can affect a user's privacy. This API relies on
    the ChromeSetting prototype of the type API for getting and setting Chrome's configuration.
-   
+
      * available since Chrome 18
      * https://developer.chrome.com/extensions/privacy"
 
@@ -17,21 +17,21 @@
 
 (defmacro get-network
   "Settings that influence Chrome's handling of network connections in general.
-   
-   See https://developer.chrome.com/extensions/privacy#property-network."
+
+   https://developer.chrome.com/extensions/privacy#property-network."
   ([] (gen-call :property ::network &form)))
 
 (defmacro get-services
   "Settings that enable or disable features that require third-party network services provided by Google and your default
    search provider.
-   
-   See https://developer.chrome.com/extensions/privacy#property-services."
+
+   https://developer.chrome.com/extensions/privacy#property-services."
   ([] (gen-call :property ::services &form)))
 
 (defmacro get-websites
   "Settings that determine what information Chrome makes available to websites.
-   
-   See https://developer.chrome.com/extensions/privacy#property-websites."
+
+   https://developer.chrome.com/extensions/privacy#property-websites."
   ([] (gen-call :property ::websites &form)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

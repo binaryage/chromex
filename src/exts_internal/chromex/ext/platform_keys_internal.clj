@@ -1,9 +1,8 @@
 (ns chromex.ext.platform-keys-internal
   "Internal API for to implement the platformKeys and enterprise.platformKeys
    APIs.
-   
-     * available since Chrome 42
-     * https://developer.chrome.com/extensions/platformKeysInternal"
+
+     * available since Chrome 42"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -17,16 +16,14 @@
 
 (defmacro select-client-certificates
   "See documentation in platformKeys.
-   
-     |details| - See https://developer.chrome.com/extensions/platformKeysInternal#property-selectClientCertificates-details.
-   
+
+     |details| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [certs] where:
-   
-     |certs| - See https://developer.chrome.com/extensions/platformKeysInternal#property-callback-certs.
-   
-   See https://developer.chrome.com/extensions/platformKeysInternal#method-selectClientCertificates."
-  ([details #_callback] (gen-call :function ::select-client-certificates &form details)))
+
+     |certs| - ?"
+  ([details] (gen-call :function ::select-client-certificates &form details)))
 
 (defmacro sign
   "Internal version of platformKeys.subtleCrypto.sign and enterprise.platformKeys.Token.subtleCrypto.sign. |tokenId| The id of
@@ -39,36 +36,32 @@
 
    Called back with the signature of |data|. TODO: Instead of ArrayBuffer should be (ArrayBuffer or ArrayBufferView), or at
    least (ArrayBuffer or Uint8Array).
-   
-     |tokenId| - See https://developer.chrome.com/extensions/platformKeysInternal#property-sign-tokenId.
-     |publicKey| - See https://developer.chrome.com/extensions/platformKeysInternal#property-sign-publicKey.
-     |hashAlgorithmName| - See https://developer.chrome.com/extensions/platformKeysInternal#property-sign-hashAlgorithmName.
-     |data| - See https://developer.chrome.com/extensions/platformKeysInternal#property-sign-data.
-   
+
+     |token-id| - ?
+     |public-key| - ?
+     |hash-algorithm-name| - ?
+     |data| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [signature] where:
-   
-     |signature| - See https://developer.chrome.com/extensions/platformKeysInternal#property-callback-signature.
-   
-   See https://developer.chrome.com/extensions/platformKeysInternal#method-sign."
-  ([token-id public-key hash-algorithm-name data #_callback] (gen-call :function ::sign &form token-id public-key hash-algorithm-name data)))
+
+     |signature| - ?"
+  ([token-id public-key hash-algorithm-name data] (gen-call :function ::sign &form token-id public-key hash-algorithm-name data)))
 
 (defmacro get-public-key
   "Checks whether certificate certifies a key that allows usage of the WebCrypto algorithm algorithmName. If so, calls back
    callback with the key info and a WebCrypto KeyAlgorithm dictionary describing the key's algorithm. The name property will
    equal algorithmName. Otherwise, calls back with an error.
-   
-     |certificate| - See https://developer.chrome.com/extensions/platformKeysInternal#property-getPublicKey-certificate.
-     |algorithmName| - See https://developer.chrome.com/extensions/platformKeysInternal#property-getPublicKey-algorithmName.
-   
+
+     |certificate| - ?
+     |algorithm-name| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [publicKey algorithm] where:
-   
-     |publicKey| - See https://developer.chrome.com/extensions/platformKeysInternal#property-callback-publicKey.
-     |algorithm| - See https://developer.chrome.com/extensions/platformKeysInternal#property-callback-algorithm.
-   
-   See https://developer.chrome.com/extensions/platformKeysInternal#method-getPublicKey."
-  ([certificate algorithm-name #_callback] (gen-call :function ::get-public-key &form certificate algorithm-name)))
+   Signature of the result value put on the channel is [public-key algorithm] where:
+
+     |public-key| - ?
+     |algorithm| - ?"
+  ([certificate algorithm-name] (gen-call :function ::get-public-key &form certificate algorithm-name)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 

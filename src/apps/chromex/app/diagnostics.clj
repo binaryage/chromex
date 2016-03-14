@@ -1,9 +1,9 @@
 (ns chromex.app.diagnostics
   "Use the chrome.diagnostics API to query various properties of
    the environment that may be useful for diagnostics.
-   
+
      * available since Chrome 50
-     * https://developer.chrome.com/extensions/diagnostics"
+     * https://developer.chrome.com/apps/diagnostics"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -17,16 +17,16 @@
 
 (defmacro send-packet
   "Send a packet of the given type with the given parameters.
-   
-     |options| - See https://developer.chrome.com/extensions/diagnostics#property-sendPacket-options.
-   
+
+     |options| - https://developer.chrome.com/apps/diagnostics#property-sendPacket-options.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - See https://developer.chrome.com/extensions/diagnostics#property-callback-result.
-   
-   See https://developer.chrome.com/extensions/diagnostics#method-sendPacket."
-  ([options #_callback] (gen-call :function ::send-packet &form options)))
+
+     |result| - https://developer.chrome.com/apps/diagnostics#property-callback-result.
+
+   https://developer.chrome.com/apps/diagnostics#method-sendPacket."
+  ([options] (gen-call :function ::send-packet &form options)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 

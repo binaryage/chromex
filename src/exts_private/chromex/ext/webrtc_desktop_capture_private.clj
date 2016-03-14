@@ -1,9 +1,8 @@
 (ns chromex.ext.webrtc-desktop-capture-private
   "Use the chrome.webrtcDesktopCapturePrivate API to capture
    desktop media requested from a WebView.
-   
-     * available since Chrome 44
-     * https://developer.chrome.com/extensions/webrtcDesktopCapturePrivate"
+
+     * available since Chrome 44"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -17,26 +16,20 @@
 
 (defmacro choose-desktop-media
   "Shows desktop media picker UI with the specified set of sources.
-   
-     |sources| - See https://developer.chrome.com/extensions/webrtcDesktopCapturePrivate#property-chooseDesktopMedia-sources.
-     |request| - See https://developer.chrome.com/extensions/webrtcDesktopCapturePrivate#property-chooseDesktopMedia-request.
-   
+
+     |sources| - ?
+     |request| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [streamId] where:
-   
-     |streamId| - See https://developer.chrome.com/extensions/webrtcDesktopCapturePrivate#property-callback-streamId.
-   
-   See https://developer.chrome.com/extensions/webrtcDesktopCapturePrivate#method-chooseDesktopMedia."
-  ([sources request #_callback] (gen-call :function ::choose-desktop-media &form sources request)))
+   Signature of the result value put on the channel is [stream-id] where:
+
+     |stream-id| - ?"
+  ([sources request] (gen-call :function ::choose-desktop-media &form sources request)))
 
 (defmacro cancel-choose-desktop-media
   "Hides desktop media picker dialog shown by chooseDesktopMedia().
-   
-     |desktopMediaRequestId| - See
-                               https://developer.chrome.com/extensions/webrtcDesktopCapturePrivate#property-cancelChooseDeskt
-                               opMedia-desktopMediaRequestId.
-   
-   See https://developer.chrome.com/extensions/webrtcDesktopCapturePrivate#method-cancelChooseDesktopMedia."
+
+     |desktop-media-request-id| - ?"
   ([desktop-media-request-id] (gen-call :function ::cancel-choose-desktop-media &form desktop-media-request-id)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

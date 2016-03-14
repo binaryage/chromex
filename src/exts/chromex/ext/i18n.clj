@@ -1,6 +1,6 @@
 (ns chromex.ext.i18n
   "Use the chrome.i18n infrastructure to implement internationalization across your whole app or extension.
-   
+
      * available since Chrome 5
      * https://developer.chrome.com/extensions/i18n"
 
@@ -17,46 +17,46 @@
 (defmacro get-accept-languages
   "Gets the accept-languages of the browser. This is different from the locale used by the browser; to get the locale, use
    'i18n.getUILanguage'.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [languages] where:
-   
+
      |languages| - Array of LanguageCode
-   
-   See https://developer.chrome.com/extensions/i18n#method-getAcceptLanguages."
-  ([#_callback] (gen-call :function ::get-accept-languages &form)))
+
+   https://developer.chrome.com/extensions/i18n#method-getAcceptLanguages."
+  ([] (gen-call :function ::get-accept-languages &form)))
 
 (defmacro get-message
   "Gets the localized string for the specified message. If the message is missing, this method returns an empty string ('').
    If the format of the getMessage() call is wrong &mdash; for example, messageName is not a string or the substitutions array
    has more than 9 elements &mdash; this method returns undefined.
-   
-     |messageName| - The name of the message, as specified in the messages.json file.
+
+     |message-name| - The name of the message, as specified in the messages.json file.
      |substitutions| - Up to 9 substitution strings, if the message requires any.
-   
-   See https://developer.chrome.com/extensions/i18n#method-getMessage."
+
+   https://developer.chrome.com/extensions/i18n#method-getMessage."
   ([message-name substitutions] (gen-call :function ::get-message &form message-name substitutions))
   ([message-name] `(get-message ~message-name :omit)))
 
 (defmacro get-ui-language
   "Gets the browser UI language of the browser. This is different from 'i18n.getAcceptLanguages' which returns the preferred
    user languages.
-   
-   See https://developer.chrome.com/extensions/i18n#method-getUILanguage."
+
+   https://developer.chrome.com/extensions/i18n#method-getUILanguage."
   ([] (gen-call :function ::get-ui-language &form)))
 
 (defmacro detect-language
   "Detects the language of the provided text using CLD.
-   
+
      |text| - User input string to be translated.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
+
      |result| - LanguageDetectionResult object that holds detected langugae reliability and array of DetectedLanguage
-   
-   See https://developer.chrome.com/extensions/i18n#method-detectLanguage."
-  ([text #_callback] (gen-call :function ::detect-language &form text)))
+
+   https://developer.chrome.com/extensions/i18n#method-detectLanguage."
+  ([text] (gen-call :function ::detect-language &form text)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 

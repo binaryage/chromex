@@ -2,9 +2,9 @@
   "Use the chrome.sockets.tcp API to send and receive data over the
    network using TCP connections. This API supersedes the TCP functionality
    previously found in the chrome.socket API.
-   
+
      * available since Chrome 33
-     * https://developer.chrome.com/extensions/sockets.tcp"
+     * https://developer.chrome.com/apps/sockets.tcp"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -18,167 +18,167 @@
 
 (defmacro create
   "Creates a TCP socket.
-   
+
      |properties| - The socket properties (optional).
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [createInfo] where:
-   
-     |createInfo| - The result of the socket creation.
-   
-   See https://developer.chrome.com/extensions/sockets.tcp#method-create."
-  ([properties #_callback] (gen-call :function ::create &form properties))
+   Signature of the result value put on the channel is [create-info] where:
+
+     |create-info| - The result of the socket creation.
+
+   https://developer.chrome.com/apps/sockets.tcp#method-create."
+  ([properties] (gen-call :function ::create &form properties))
   ([] `(create :omit)))
 
 (defmacro update
   "Updates the socket properties.
-   
-     |socketId| - The socket identifier.
+
+     |socket-id| - The socket identifier.
      |properties| - The properties to update.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/sockets.tcp#method-update."
-  ([socket-id properties #_callback] (gen-call :function ::update &form socket-id properties)))
+
+   https://developer.chrome.com/apps/sockets.tcp#method-update."
+  ([socket-id properties] (gen-call :function ::update &form socket-id properties)))
 
 (defmacro set-paused
   "Enables or disables the application from receiving messages from its peer. The default value is 'false'. Pausing a socket
    is typically used by an application to throttle data sent by its peer. When a socket is paused, no onReceive event is
    raised. When a socket is connected and un-paused, onReceive events are raised again when messages are received.
-   
-     |socketId| - See https://developer.chrome.com/extensions/sockets.tcp#property-setPaused-socketId.
-     |paused| - See https://developer.chrome.com/extensions/sockets.tcp#property-setPaused-paused.
-   
+
+     |socket-id| - https://developer.chrome.com/apps/sockets.tcp#property-setPaused-socketId.
+     |paused| - https://developer.chrome.com/apps/sockets.tcp#property-setPaused-paused.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/sockets.tcp#method-setPaused."
-  ([socket-id paused #_callback] (gen-call :function ::set-paused &form socket-id paused)))
+
+   https://developer.chrome.com/apps/sockets.tcp#method-setPaused."
+  ([socket-id paused] (gen-call :function ::set-paused &form socket-id paused)))
 
 (defmacro set-keep-alive
   "Enables or disables the keep-alive functionality for a TCP connection.
-   
-     |socketId| - The socket identifier.
+
+     |socket-id| - The socket identifier.
      |enable| - If true, enable keep-alive functionality.
      |delay| - Set the delay seconds between the last data packet received and the first keepalive probe. Default is 0.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
+
      |result| - The result code returned from the underlying network call. A negative value indicates an error.
-   
-   See https://developer.chrome.com/extensions/sockets.tcp#method-setKeepAlive."
-  ([socket-id enable delay #_callback] (gen-call :function ::set-keep-alive &form socket-id enable delay))
+
+   https://developer.chrome.com/apps/sockets.tcp#method-setKeepAlive."
+  ([socket-id enable delay] (gen-call :function ::set-keep-alive &form socket-id enable delay))
   ([socket-id enable] `(set-keep-alive ~socket-id ~enable :omit)))
 
 (defmacro set-no-delay
   "Sets or clears TCP_NODELAY for a TCP connection. Nagle's algorithm will be disabled when TCP_NODELAY is set.
-   
-     |socketId| - The socket identifier.
-     |noDelay| - If true, disables Nagle's algorithm.
-   
+
+     |socket-id| - The socket identifier.
+     |no-delay| - If true, disables Nagle's algorithm.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
+
      |result| - The result code returned from the underlying network call. A negative value indicates an error.
-   
-   See https://developer.chrome.com/extensions/sockets.tcp#method-setNoDelay."
-  ([socket-id no-delay #_callback] (gen-call :function ::set-no-delay &form socket-id no-delay)))
+
+   https://developer.chrome.com/apps/sockets.tcp#method-setNoDelay."
+  ([socket-id no-delay] (gen-call :function ::set-no-delay &form socket-id no-delay)))
 
 (defmacro connect
   "Connects the socket to a remote machine. When the connect operation completes successfully, onReceive events are raised
    when data is received from the peer. If a network error occurs while the runtime is receiving packets, a onReceiveError
    event is raised, at which point no more onReceive event will be raised for this socket until the resume method is called.
-   
-     |socketId| - The socket identifier.
-     |peerAddress| - The address of the remote machine. DNS name, IPv4 and  IPv6 formats are supported.
-     |peerPort| - The port of the remote machine.
-   
+
+     |socket-id| - The socket identifier.
+     |peer-address| - The address of the remote machine. DNS name, IPv4 and  IPv6 formats are supported.
+     |peer-port| - The port of the remote machine.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
+
      |result| - The result code returned from the underlying network call. A negative value indicates an error.
-   
-   See https://developer.chrome.com/extensions/sockets.tcp#method-connect."
-  ([socket-id peer-address peer-port #_callback] (gen-call :function ::connect &form socket-id peer-address peer-port)))
+
+   https://developer.chrome.com/apps/sockets.tcp#method-connect."
+  ([socket-id peer-address peer-port] (gen-call :function ::connect &form socket-id peer-address peer-port)))
 
 (defmacro disconnect
   "Disconnects the socket.
-   
-     |socketId| - The socket identifier.
-   
+
+     |socket-id| - The socket identifier.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/sockets.tcp#method-disconnect."
-  ([socket-id #_callback] (gen-call :function ::disconnect &form socket-id)))
+
+   https://developer.chrome.com/apps/sockets.tcp#method-disconnect."
+  ([socket-id] (gen-call :function ::disconnect &form socket-id)))
 
 (defmacro secure
   "Start a TLS client connection over the connected TCP client socket.
-   
-     |socketId| - The existing, connected socket to use.
+
+     |socket-id| - The existing, connected socket to use.
      |options| - Constraints and parameters for the TLS connection.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - See https://developer.chrome.com/extensions/sockets.tcp#property-callback-result.
-   
-   See https://developer.chrome.com/extensions/sockets.tcp#method-secure."
-  ([socket-id options #_callback] (gen-call :function ::secure &form socket-id options))
+
+     |result| - https://developer.chrome.com/apps/sockets.tcp#property-callback-result.
+
+   https://developer.chrome.com/apps/sockets.tcp#method-secure."
+  ([socket-id options] (gen-call :function ::secure &form socket-id options))
   ([socket-id] `(secure ~socket-id :omit)))
 
 (defmacro send
   "Sends data on the given TCP socket.
-   
-     |socketId| - The socket identifier.
+
+     |socket-id| - The socket identifier.
      |data| - The data to send.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [sendInfo] where:
-   
-     |sendInfo| - Result of the send method.
-   
-   See https://developer.chrome.com/extensions/sockets.tcp#method-send."
-  ([socket-id data #_callback] (gen-call :function ::send &form socket-id data)))
+   Signature of the result value put on the channel is [send-info] where:
+
+     |send-info| - Result of the send method.
+
+   https://developer.chrome.com/apps/sockets.tcp#method-send."
+  ([socket-id data] (gen-call :function ::send &form socket-id data)))
 
 (defmacro close
   "Closes the socket and releases the address/port the socket is bound to. Each socket created should be closed after use. The
    socket id is no no longer valid as soon at the function is called. However, the socket is guaranteed to be closed only when
    the callback is invoked.
-   
-     |socketId| - The socket identifier.
-   
+
+     |socket-id| - The socket identifier.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/sockets.tcp#method-close."
-  ([socket-id #_callback] (gen-call :function ::close &form socket-id)))
+
+   https://developer.chrome.com/apps/sockets.tcp#method-close."
+  ([socket-id] (gen-call :function ::close &form socket-id)))
 
 (defmacro get-info
   "Retrieves the state of the given socket.
-   
-     |socketId| - The socket identifier.
-   
+
+     |socket-id| - The socket identifier.
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [socketInfo] where:
-   
-     |socketInfo| - Object containing the socket information.
-   
-   See https://developer.chrome.com/extensions/sockets.tcp#method-getInfo."
-  ([socket-id #_callback] (gen-call :function ::get-info &form socket-id)))
+   Signature of the result value put on the channel is [socket-info] where:
+
+     |socket-info| - Object containing the socket information.
+
+   https://developer.chrome.com/apps/sockets.tcp#method-getInfo."
+  ([socket-id] (gen-call :function ::get-info &form socket-id)))
 
 (defmacro get-sockets
   "Retrieves the list of currently opened sockets owned by the application.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [socketInfos] where:
-   
-     |socketInfos| - Array of object containing socket information.
-   
-   See https://developer.chrome.com/extensions/sockets.tcp#method-getSockets."
-  ([#_callback] (gen-call :function ::get-sockets &form)))
+   Signature of the result value put on the channel is [socket-infos] where:
+
+     |socket-infos| - Array of object containing socket information.
+
+   https://developer.chrome.com/apps/sockets.tcp#method-getSockets."
+  ([] (gen-call :function ::get-sockets &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -186,21 +186,27 @@
 
 (defmacro tap-on-receive-events
   "Event raised when data has been received for a given socket.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-receive [info]] where:
+
+     |info| - The event data.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/sockets.tcp#event-onReceive."
+
+   https://developer.chrome.com/apps/sockets.tcp#event-onReceive."
   ([channel & args] (apply gen-call :event ::on-receive &form channel args)))
 
 (defmacro tap-on-receive-error-events
   "Event raised when a network error occured while the runtime was waiting for data on the socket address and port. Once this
    event is raised, the socket is set to paused and no more onReceive events are raised for this socket.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-receive-error [info]] where:
+
+     |info| - The event data.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/sockets.tcp#event-onReceiveError."
+
+   https://developer.chrome.com/apps/sockets.tcp#event-onReceiveError."
   ([channel & args] (apply gen-call :event ::on-receive-error &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

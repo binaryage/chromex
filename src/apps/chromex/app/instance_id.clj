@@ -1,8 +1,8 @@
 (ns chromex.app.instance-id
   "Use chrome.instanceID to access the Instance ID service.
-   
+
      * available since Chrome 46
-     * https://developer.chrome.com/extensions/instanceID"
+     * https://developer.chrome.com/apps/instanceID"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -17,58 +17,58 @@
 (defmacro get-id
   "Retrieves an identifier for the app instance. The instance ID will be returned by the callback. The same ID will be
    returned as long as the application identity has not been revoked or expired.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [instanceID] where:
-   
-     |instanceID| - An Instance ID assigned to the app instance.
-   
-   See https://developer.chrome.com/extensions/instanceID#method-getID."
-  ([#_callback] (gen-call :function ::get-id &form)))
+   Signature of the result value put on the channel is [instance-id] where:
+
+     |instance-id| - An Instance ID assigned to the app instance.
+
+   https://developer.chrome.com/apps/instanceID#method-getID."
+  ([] (gen-call :function ::get-id &form)))
 
 (defmacro get-creation-time
   "Retrieves the time when the InstanceID has been generated. The creation time will be returned by the callback.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [creationTime] where:
-   
-     |creationTime| - The time when the Instance ID has been generated, represented in milliseconds since the epoch.
-   
-   See https://developer.chrome.com/extensions/instanceID#method-getCreationTime."
-  ([#_callback] (gen-call :function ::get-creation-time &form)))
+   Signature of the result value put on the channel is [creation-time] where:
+
+     |creation-time| - The time when the Instance ID has been generated, represented in milliseconds since the epoch.
+
+   https://developer.chrome.com/apps/instanceID#method-getCreationTime."
+  ([] (gen-call :function ::get-creation-time &form)))
 
 (defmacro get-token
   "Return a token that allows the authorized entity to access the service defined by scope.
-   
-     |getTokenParams| - Parameters for getToken.
-   
+
+     |get-token-params| - Parameters for getToken.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [token] where:
-   
+
      |token| - A token assigned by the requested service.
-   
-   See https://developer.chrome.com/extensions/instanceID#method-getToken."
-  ([get-token-params #_callback] (gen-call :function ::get-token &form get-token-params)))
+
+   https://developer.chrome.com/apps/instanceID#method-getToken."
+  ([get-token-params] (gen-call :function ::get-token &form get-token-params)))
 
 (defmacro delete-token
   "Revokes a granted token.
-   
-     |deleteTokenParams| - Parameters for deleteToken.
-   
+
+     |delete-token-params| - Parameters for deleteToken.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/instanceID#method-deleteToken."
-  ([delete-token-params #_callback] (gen-call :function ::delete-token &form delete-token-params)))
+
+   https://developer.chrome.com/apps/instanceID#method-deleteToken."
+  ([delete-token-params] (gen-call :function ::delete-token &form delete-token-params)))
 
 (defmacro delete-id
   "Resets the app instance identifier and revokes all tokens associated with it.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/instanceID#method-deleteID."
-  ([#_callback] (gen-call :function ::delete-id &form)))
+
+   https://developer.chrome.com/apps/instanceID#method-deleteID."
+  ([] (gen-call :function ::delete-id &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -76,11 +76,12 @@
 
 (defmacro tap-on-token-refresh-events
   "Fired when all the granted tokens need to be refreshed.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-token-refresh []].
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/instanceID#event-onTokenRefresh."
+
+   https://developer.chrome.com/apps/instanceID#event-onTokenRefresh."
   ([channel & args] (apply gen-call :event ::on-token-refresh &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

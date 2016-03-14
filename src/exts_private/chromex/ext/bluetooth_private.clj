@@ -2,9 +2,8 @@
   "Use the chrome.bluetoothPrivate API to control the Bluetooth
    adapter state and handle device pairing.
    NOTE: This IDL is dependent on bluetooth.idl.
-   
-     * available since Chrome 36
-     * https://developer.chrome.com/extensions/bluetoothPrivate"
+
+     * available since Chrome 36"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -18,83 +17,67 @@
 
 (defmacro set-adapter-state
   "Changes the state of the Bluetooth adapter.
-   
-     |adapterState| - See https://developer.chrome.com/extensions/bluetoothPrivate#property-setAdapterState-adapterState.
-   
+
+     |adapter-state| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/bluetoothPrivate#method-setAdapterState."
-  ([adapter-state #_callback] (gen-call :function ::set-adapter-state &form adapter-state)))
+   Signature of the result value put on the channel is []."
+  ([adapter-state] (gen-call :function ::set-adapter-state &form adapter-state)))
 
 (defmacro set-pairing-response
-  "  |options| - See https://developer.chrome.com/extensions/bluetoothPrivate#property-setPairingResponse-options.
-   
+  "  |options| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/bluetoothPrivate#method-setPairingResponse."
-  ([options #_callback] (gen-call :function ::set-pairing-response &form options)))
+   Signature of the result value put on the channel is []."
+  ([options] (gen-call :function ::set-pairing-response &form options)))
 
 (defmacro disconnect-all
   "Tears down all connections to the given device.
-   
-     |deviceAddress| - See https://developer.chrome.com/extensions/bluetoothPrivate#property-disconnectAll-deviceAddress.
-   
+
+     |device-address| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/bluetoothPrivate#method-disconnectAll."
-  ([device-address #_callback] (gen-call :function ::disconnect-all &form device-address)))
+   Signature of the result value put on the channel is []."
+  ([device-address] (gen-call :function ::disconnect-all &form device-address)))
 
 (defmacro forget-device
   "Forgets the given device.
-   
-     |deviceAddress| - See https://developer.chrome.com/extensions/bluetoothPrivate#property-forgetDevice-deviceAddress.
-   
+
+     |device-address| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/bluetoothPrivate#method-forgetDevice."
-  ([device-address #_callback] (gen-call :function ::forget-device &form device-address)))
+   Signature of the result value put on the channel is []."
+  ([device-address] (gen-call :function ::forget-device &form device-address)))
 
 (defmacro set-discovery-filter
   "Set or clear discovery filter.
-   
-     |discoveryFilter| - See
-                         https://developer.chrome.com/extensions/bluetoothPrivate#property-setDiscoveryFilter-discoveryFilter
-                         .
-   
+
+     |discovery-filter| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/bluetoothPrivate#method-setDiscoveryFilter."
-  ([discovery-filter #_callback] (gen-call :function ::set-discovery-filter &form discovery-filter)))
+   Signature of the result value put on the channel is []."
+  ([discovery-filter] (gen-call :function ::set-discovery-filter &form discovery-filter)))
 
 (defmacro connect
   "Connects to the given device. This will only throw an error if the device address is invalid or the device is already
    connected. Otherwise this will succeed and invoke |callback| with ConnectResultType.
-   
-     |deviceAddress| - See https://developer.chrome.com/extensions/bluetoothPrivate#property-connect-deviceAddress.
-   
+
+     |device-address| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - See https://developer.chrome.com/extensions/bluetoothPrivate#property-callback-result.
-   
-   See https://developer.chrome.com/extensions/bluetoothPrivate#method-connect."
-  ([device-address #_callback] (gen-call :function ::connect &form device-address)))
+
+     |result| - ?"
+  ([device-address] (gen-call :function ::connect &form device-address)))
 
 (defmacro pair
   "Pairs the given device.
-   
-     |deviceAddress| - See https://developer.chrome.com/extensions/bluetoothPrivate#property-pair-deviceAddress.
-   
+
+     |device-address| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/bluetoothPrivate#method-pair."
-  ([device-address #_callback] (gen-call :function ::pair &form device-address)))
+   Signature of the result value put on the channel is []."
+  ([device-address] (gen-call :function ::pair &form device-address)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -102,11 +85,12 @@
 
 (defmacro tap-on-pairing-events
   "Fired when a pairing event occurs.
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/bluetoothPrivate#event-onPairing."
+
+   Events will be put on the |channel| with signature [::on-pairing [pairing-event]] where:
+
+     |pairing-event| - A pairing event.
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-pairing &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

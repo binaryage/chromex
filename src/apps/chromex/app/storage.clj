@@ -1,8 +1,8 @@
 (ns chromex.app.storage
   "Use the chrome.storage API to store, retrieve, and track changes to user data.
-   
+
      * available since Chrome 20
-     * https://developer.chrome.com/extensions/storage"
+     * https://developer.chrome.com/apps/storage"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -16,21 +16,21 @@
 
 (defmacro get-sync
   "Items in the sync storage area are synced using Chrome Sync.
-   
-   See https://developer.chrome.com/extensions/storage#property-sync."
+
+   https://developer.chrome.com/apps/storage#property-sync."
   ([] (gen-call :property ::sync &form)))
 
 (defmacro get-local
   "Items in the local storage area are local to each machine.
-   
-   See https://developer.chrome.com/extensions/storage#property-local."
+
+   https://developer.chrome.com/apps/storage#property-local."
   ([] (gen-call :property ::local &form)))
 
 (defmacro get-managed
   "Items in the managed storage area are set by the domain administrator, and are read-only for the extension; trying to
    modify this namespace results in an error.
-   
-   See https://developer.chrome.com/extensions/storage#property-managed."
+
+   https://developer.chrome.com/apps/storage#property-managed."
   ([] (gen-call :property ::managed &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -39,11 +39,15 @@
 
 (defmacro tap-on-changed-events
   "Fired when one or more items change.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-changed [changes area-name]] where:
+
+     |changes| - Object mapping each key that changed to its corresponding 'storage.StorageChange' for that item.
+     |area-name| - The name of the storage area ('sync', 'local' or 'managed') the changes are for.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/storage#event-onChanged."
+
+   https://developer.chrome.com/apps/storage#event-onChanged."
   ([channel & args] (apply gen-call :event ::on-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

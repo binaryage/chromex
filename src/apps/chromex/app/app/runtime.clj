@@ -2,9 +2,9 @@
   "Use the chrome.app.runtime API to manage the app lifecycle.
    The app runtime manages app installation, controls the event page, and can
    shut down the app at anytime.
-   
+
      * available since Chrome 23
-     * https://developer.chrome.com/extensions/app.runtime"
+     * https://developer.chrome.com/apps/app.runtime"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -21,20 +21,26 @@
 (defmacro tap-on-embed-requested-events
   "Fired when an embedding app requests to embed this app. This event is only available on dev channel with the flag
    --enable-app-view.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-embed-requested [request]] where:
+
+     |request| - https://developer.chrome.com/apps/app.runtime#property-onEmbedRequested-request.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/app.runtime#event-onEmbedRequested."
+
+   https://developer.chrome.com/apps/app.runtime#event-onEmbedRequested."
   ([channel & args] (apply gen-call :event ::on-embed-requested &form channel args)))
 
 (defmacro tap-on-launched-events
   "Fired when an app is launched from the launcher.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-launched [launch-data]] where:
+
+     |launch-data| - https://developer.chrome.com/apps/app.runtime#property-onLaunched-launchData.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/app.runtime#event-onLaunched."
+
+   https://developer.chrome.com/apps/app.runtime#event-onLaunched."
   ([channel & args] (apply gen-call :event ::on-launched &form channel args)))
 
 (defmacro tap-on-restarted-events
@@ -42,11 +48,12 @@
    from their previous state for other reasons (e.g. when the user revokes access to an app's retained files the runtime will
    restart the app). In these situations if apps do not have an onRestarted handler they will be sent an onLaunched  event
    instead.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-restarted []].
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/app.runtime#event-onRestarted."
+
+   https://developer.chrome.com/apps/app.runtime#event-onRestarted."
   ([channel & args] (apply gen-call :event ::on-restarted &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

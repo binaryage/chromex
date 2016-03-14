@@ -1,7 +1,7 @@
 (ns chromex.ext.declarative-content
   "Use the chrome.declarativeContent API to take actions depending on the content of a page, without requiring permission to
    read the page's content.
-   
+
      * available since Chrome 33
      * https://developer.chrome.com/extensions/declarativeContent"
 
@@ -19,11 +19,11 @@
 
 (defmacro tap-on-page-changed-events
   "
-   Events will be put on the |channel|.
-   
+   Events will be put on the |channel| with signature [::on-page-changed []].
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/declarativeContent#event-onPageChanged."
+
+   https://developer.chrome.com/extensions/declarativeContent#event-onPageChanged."
   ([channel & args] (apply gen-call :event ::on-page-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

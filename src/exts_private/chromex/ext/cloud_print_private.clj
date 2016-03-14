@@ -1,6 +1,5 @@
 (ns chromex.ext.cloud-print-private
-  "  * available since Chrome 22
-     * https://developer.chrome.com/extensions/cloudPrintPrivate"
+  "  * available since Chrome 22"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -14,47 +13,39 @@
 
 (defmacro setup-connector
   "Setup Cloud Print Connector.
-   
-     |userEmail| - The email address of the user.
-     |robotEmail| - The email address of the robot account.
+
+     |user-email| - The email address of the user.
+     |robot-email| - The email address of the robot account.
      |credentials| - The login credentials(OAuth2 Auth code).
-     |userSettings| - Options configured by user.
-   
-   See https://developer.chrome.com/extensions/cloudPrintPrivate#method-setupConnector."
+     |user-settings| - Options configured by user."
   ([user-email robot-email credentials user-settings] (gen-call :function ::setup-connector &form user-email robot-email credentials user-settings)))
 
 (defmacro get-host-name
   "Returns local hostname.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - Host name.
-   
-   See https://developer.chrome.com/extensions/cloudPrintPrivate#method-getHostName."
-  ([#_callback] (gen-call :function ::get-host-name &form)))
+
+     |result| - Host name."
+  ([] (gen-call :function ::get-host-name &form)))
 
 (defmacro get-printers
   "Returns local printers.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - List of printer names.
-   
-   See https://developer.chrome.com/extensions/cloudPrintPrivate#method-getPrinters."
-  ([#_callback] (gen-call :function ::get-printers &form)))
+
+     |result| - List of printer names."
+  ([] (gen-call :function ::get-printers &form)))
 
 (defmacro get-client-id
   "Gets the Client ID used to access Google service APIs.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - Client ID.
-   
-   See https://developer.chrome.com/extensions/cloudPrintPrivate#method-getClientId."
-  ([#_callback] (gen-call :function ::get-client-id &form)))
+
+     |result| - Client ID."
+  ([] (gen-call :function ::get-client-id &form)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 

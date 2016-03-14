@@ -1,6 +1,5 @@
 (ns chromex.app.activity-log-private
-  "  * available since Chrome 29
-     * https://developer.chrome.com/extensions/activityLogPrivate"
+  "  * available since Chrome 29"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -14,37 +13,29 @@
 
 (defmacro get-extension-activities
   "Retrieves activity from the ActivityLog that matches the specified filter.
-   
+
      |filter| - Fill out the fields that you want to search for in the database.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - See https://developer.chrome.com/extensions/activityLogPrivate#property-callback-result.
-   
-   See https://developer.chrome.com/extensions/activityLogPrivate#method-getExtensionActivities."
-  ([filter #_callback] (gen-call :function ::get-extension-activities &form filter)))
+
+     |result| - ?"
+  ([filter] (gen-call :function ::get-extension-activities &form filter)))
 
 (defmacro delete-activities
   "Deletes activities in the ActivityLog database specified in the array of activity IDs.
-   
-     |activityIds| - Erases only the activities which IDs are listed in the array.
-   
-   See https://developer.chrome.com/extensions/activityLogPrivate#method-deleteActivities."
+
+     |activity-ids| - Erases only the activities which IDs are listed in the array."
   ([activity-ids] (gen-call :function ::delete-activities &form activity-ids)))
 
 (defmacro delete-database
-  "Deletes the entire ActivityLog database.
-   
-   See https://developer.chrome.com/extensions/activityLogPrivate#method-deleteDatabase."
+  "Deletes the entire ActivityLog database."
   ([] (gen-call :function ::delete-database &form)))
 
 (defmacro delete-urls
   "Delete URLs in the ActivityLog database.
-   
-     |urls| - Erases only the URLs listed; if empty, erases all URLs.
-   
-   See https://developer.chrome.com/extensions/activityLogPrivate#method-deleteUrls."
+
+     |urls| - Erases only the URLs listed; if empty, erases all URLs."
   ([urls] (gen-call :function ::delete-urls &form urls))
   ([] `(delete-urls :omit)))
 
@@ -54,11 +45,12 @@
 
 (defmacro tap-on-extension-activity-events
   "Fired when a given extension performs another activity.
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/activityLogPrivate#event-onExtensionActivity."
+
+   Events will be put on the |channel| with signature [::on-extension-activity [activity]] where:
+
+     |activity| - ?
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-extension-activity &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

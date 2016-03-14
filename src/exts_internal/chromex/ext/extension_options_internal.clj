@@ -1,8 +1,7 @@
 (ns chromex.ext.extension-options-internal
   "Internal API for the &lt;extensiontoptions&gt; tag
-   
-     * available since Chrome 50
-     * https://developer.chrome.com/extensions/extensionOptionsInternal"
+
+     * available since Chrome 50"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -18,29 +17,25 @@
 
 (defmacro tap-on-close-events
   "
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/extensionOptionsInternal#event-onClose."
+   Events will be put on the |channel| with signature [::on-close []].
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-close &form channel args)))
 
 (defmacro tap-on-load-events
   "
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/extensionOptionsInternal#event-onLoad."
+   Events will be put on the |channel| with signature [::on-load []].
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-load &form channel args)))
 
 (defmacro tap-on-preferred-size-changed-events
   "
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/extensionOptionsInternal#event-onPreferredSizeChanged."
+   Events will be put on the |channel| with signature [::on-preferred-size-changed [options]] where:
+
+     |options| - ?
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-preferred-size-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

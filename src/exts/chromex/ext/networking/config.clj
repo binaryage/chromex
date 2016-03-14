@@ -1,7 +1,7 @@
 (ns chromex.ext.networking.config
   "Use the networking.config API to authenticate to captive
    portals.
-   
+
      * available since Chrome 43
      * https://developer.chrome.com/extensions/networking.config"
 
@@ -18,29 +18,29 @@
 (defmacro set-network-filter
   "Allows an extension to define network filters for the networks it can handle. A call to this function will remove all
    filters previously installed by the extension before setting the new list.
-   
+
      |networks| - Network filters to set. Every NetworkInfo must             either have the SSID or HexSSID
                   set. Other fields will be ignored.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/networking.config#method-setNetworkFilter."
-  ([networks #_callback] (gen-call :function ::set-network-filter &form networks)))
+
+   https://developer.chrome.com/extensions/networking.config#method-setNetworkFilter."
+  ([networks] (gen-call :function ::set-network-filter &form networks)))
 
 (defmacro finish-authentication
   "Called by the extension to notify the network config API that it finished a captive portal authentication attempt and hand
    over the result of the attempt. This function must only be called with the GUID of the latest 'onCaptivePortalDetected'
    event.
-   
-     |GUID| - Unique network identifier obtained from         'onCaptivePortalDetected'.
+
+     |guid| - Unique network identifier obtained from         'onCaptivePortalDetected'.
      |result| - The result of the authentication attempt.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/networking.config#method-finishAuthentication."
-  ([guid result #_callback] (gen-call :function ::finish-authentication &form guid result)))
+
+   https://developer.chrome.com/extensions/networking.config#method-finishAuthentication."
+  ([guid result] (gen-call :function ::finish-authentication &form guid result)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -52,11 +52,14 @@
    'setNetworkFilter'. Upon receiving this event the extension should start its authentication attempt with the captive
    portal. When the extension finishes its attempt, it must call 'finishAuthentication' with the GUID received with this event
    and the appropriate authentication result.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-captive-portal-detected [network-info]] where:
+
+     |network-info| - Information about the network on which a captive portal was detected.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/networking.config#event-onCaptivePortalDetected."
+
+   https://developer.chrome.com/extensions/networking.config#event-onCaptivePortalDetected."
   ([channel & args] (apply gen-call :event ::on-captive-portal-detected &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

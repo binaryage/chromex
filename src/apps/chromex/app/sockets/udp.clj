@@ -2,9 +2,9 @@
   "Use the chrome.sockets.udp API to send and receive data over the
    network using UDP connections. This API supersedes the UDP functionality
    previously found in the 'socket' API.
-   
+
      * available since Chrome 33
-     * https://developer.chrome.com/extensions/sockets.udp"
+     * https://developer.chrome.com/apps/sockets.udp"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -18,160 +18,160 @@
 
 (defmacro create
   "Creates a UDP socket with the given properties.
-   
+
      |properties| - The socket properties (optional).
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [createInfo] where:
-   
-     |createInfo| - The result of the socket creation.
-   
-   See https://developer.chrome.com/extensions/sockets.udp#method-create."
-  ([properties #_callback] (gen-call :function ::create &form properties))
+   Signature of the result value put on the channel is [create-info] where:
+
+     |create-info| - The result of the socket creation.
+
+   https://developer.chrome.com/apps/sockets.udp#method-create."
+  ([properties] (gen-call :function ::create &form properties))
   ([] `(create :omit)))
 
 (defmacro update
   "Updates the socket properties.
-   
-     |socketId| - The socket ID.
+
+     |socket-id| - The socket ID.
      |properties| - The properties to update.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/sockets.udp#method-update."
-  ([socket-id properties #_callback] (gen-call :function ::update &form socket-id properties)))
+
+   https://developer.chrome.com/apps/sockets.udp#method-update."
+  ([socket-id properties] (gen-call :function ::update &form socket-id properties)))
 
 (defmacro set-paused
   "Pauses or unpauses a socket. A paused socket is blocked from firing onReceive events.
-   
-     |socketId| - See https://developer.chrome.com/extensions/sockets.udp#property-setPaused-socketId.
+
+     |socket-id| - https://developer.chrome.com/apps/sockets.udp#property-setPaused-socketId.
      |paused| - Flag to indicate whether to pause or unpause.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/sockets.udp#method-setPaused."
-  ([socket-id paused #_callback] (gen-call :function ::set-paused &form socket-id paused)))
+
+   https://developer.chrome.com/apps/sockets.udp#method-setPaused."
+  ([socket-id paused] (gen-call :function ::set-paused &form socket-id paused)))
 
 (defmacro bind
   "Binds the local address and port for the socket. For a client socket, it is recommended to use port 0 to let the platform
    pick a free port.Once the bind operation completes successfully, onReceive events are raised when UDP packets arrive on the
    address/port specified -- unless the socket is paused.
-   
-     |socketId| - The socket ID.
+
+     |socket-id| - The socket ID.
      |address| - The address of the local machine. DNS name, IPv4 and IPv6 formats are supported. Use '0.0.0.0' to accept
                  packets from all local available network interfaces.
      |port| - The port of the local machine. Use '0' to bind to a free port.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
+
      |result| - The result code returned from the underlying network call. A negative value indicates an error.
-   
-   See https://developer.chrome.com/extensions/sockets.udp#method-bind."
-  ([socket-id address port #_callback] (gen-call :function ::bind &form socket-id address port)))
+
+   https://developer.chrome.com/apps/sockets.udp#method-bind."
+  ([socket-id address port] (gen-call :function ::bind &form socket-id address port)))
 
 (defmacro send
   "Sends data on the given socket to the given address and port. The socket must be bound to a local port before calling this
    method.
-   
-     |socketId| - The socket ID.
+
+     |socket-id| - The socket ID.
      |data| - The data to send.
      |address| - The address of the remote machine.
      |port| - The port of the remote machine.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [sendInfo] where:
-   
-     |sendInfo| - Result of the send method.
-   
-   See https://developer.chrome.com/extensions/sockets.udp#method-send."
-  ([socket-id data address port #_callback] (gen-call :function ::send &form socket-id data address port)))
+   Signature of the result value put on the channel is [send-info] where:
+
+     |send-info| - Result of the send method.
+
+   https://developer.chrome.com/apps/sockets.udp#method-send."
+  ([socket-id data address port] (gen-call :function ::send &form socket-id data address port)))
 
 (defmacro close
   "Closes the socket and releases the address/port the socket is bound to. Each socket created should be closed after use. The
    socket id is no longer valid as soon at the function is called. However, the socket is guaranteed to be closed only when
    the callback is invoked.
-   
-     |socketId| - The socket ID.
-   
+
+     |socket-id| - The socket ID.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/sockets.udp#method-close."
-  ([socket-id #_callback] (gen-call :function ::close &form socket-id)))
+
+   https://developer.chrome.com/apps/sockets.udp#method-close."
+  ([socket-id] (gen-call :function ::close &form socket-id)))
 
 (defmacro get-info
   "Retrieves the state of the given socket.
-   
-     |socketId| - The socket ID.
-   
+
+     |socket-id| - The socket ID.
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [socketInfo] where:
-   
-     |socketInfo| - Object containing the socket information.
-   
-   See https://developer.chrome.com/extensions/sockets.udp#method-getInfo."
-  ([socket-id #_callback] (gen-call :function ::get-info &form socket-id)))
+   Signature of the result value put on the channel is [socket-info] where:
+
+     |socket-info| - Object containing the socket information.
+
+   https://developer.chrome.com/apps/sockets.udp#method-getInfo."
+  ([socket-id] (gen-call :function ::get-info &form socket-id)))
 
 (defmacro get-sockets
   "Retrieves the list of currently opened sockets owned by the application.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [socketInfos] where:
-   
-     |socketInfos| - Array of object containing socket information.
-   
-   See https://developer.chrome.com/extensions/sockets.udp#method-getSockets."
-  ([#_callback] (gen-call :function ::get-sockets &form)))
+   Signature of the result value put on the channel is [socket-infos] where:
+
+     |socket-infos| - Array of object containing socket information.
+
+   https://developer.chrome.com/apps/sockets.udp#method-getSockets."
+  ([] (gen-call :function ::get-sockets &form)))
 
 (defmacro join-group
   "Joins the multicast group and starts to receive packets from that group. The socket must be bound to a local port before
    calling this method.
-   
-     |socketId| - The socket ID.
+
+     |socket-id| - The socket ID.
      |address| - The group address to join. Domain names are not supported.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
+
      |result| - The result code returned from the underlying network call. A negative value indicates an error.
-   
-   See https://developer.chrome.com/extensions/sockets.udp#method-joinGroup."
-  ([socket-id address #_callback] (gen-call :function ::join-group &form socket-id address)))
+
+   https://developer.chrome.com/apps/sockets.udp#method-joinGroup."
+  ([socket-id address] (gen-call :function ::join-group &form socket-id address)))
 
 (defmacro leave-group
   "Leaves the multicast group previously joined using joinGroup. This is only necessary to call if you plan to keep using the
    socketafterwards, since it will be done automatically by the OS when the socket is closed.Leaving the group will prevent
    the router from sending multicast datagrams to the local host, presuming no other process on the host is still joined to
    the group.
-   
-     |socketId| - The socket ID.
+
+     |socket-id| - The socket ID.
      |address| - The group address to leave. Domain names are not supported.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
+
      |result| - The result code returned from the underlying network call. A negative value indicates an error.
-   
-   See https://developer.chrome.com/extensions/sockets.udp#method-leaveGroup."
-  ([socket-id address #_callback] (gen-call :function ::leave-group &form socket-id address)))
+
+   https://developer.chrome.com/apps/sockets.udp#method-leaveGroup."
+  ([socket-id address] (gen-call :function ::leave-group &form socket-id address)))
 
 (defmacro set-multicast-time-to-live
   "Sets the time-to-live of multicast packets sent to the multicast group.Calling this method does not require multicast
    permissions.
-   
-     |socketId| - The socket ID.
+
+     |socket-id| - The socket ID.
      |ttl| - The time-to-live value.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
+
      |result| - The result code returned from the underlying network call. A negative value indicates an error.
-   
-   See https://developer.chrome.com/extensions/sockets.udp#method-setMulticastTimeToLive."
-  ([socket-id ttl #_callback] (gen-call :function ::set-multicast-time-to-live &form socket-id ttl)))
+
+   https://developer.chrome.com/apps/sockets.udp#method-setMulticastTimeToLive."
+  ([socket-id ttl] (gen-call :function ::set-multicast-time-to-live &form socket-id ttl)))
 
 (defmacro set-multicast-loopback-mode
   "Sets whether multicast packets sent from the host to the multicast group will be looped back to the host.Note: the behavior
@@ -180,44 +180,44 @@
    on multicast loopback mode. On Windows, the applications with loopback off will not RECEIVE the loopback packets; while on
    Unix-like systems, the applications with loopback off will not SEND the loopback packets to other applications on the same
    host. See MSDN: http://goo.gl/6vqbjCalling this method does not require multicast permissions.
-   
-     |socketId| - The socket ID.
+
+     |socket-id| - The socket ID.
      |enabled| - Indicate whether to enable loopback mode.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
+
      |result| - The result code returned from the underlying network call. A negative value indicates an error.
-   
-   See https://developer.chrome.com/extensions/sockets.udp#method-setMulticastLoopbackMode."
-  ([socket-id enabled #_callback] (gen-call :function ::set-multicast-loopback-mode &form socket-id enabled)))
+
+   https://developer.chrome.com/apps/sockets.udp#method-setMulticastLoopbackMode."
+  ([socket-id enabled] (gen-call :function ::set-multicast-loopback-mode &form socket-id enabled)))
 
 (defmacro get-joined-groups
   "Gets the multicast group addresses the socket is currently joined to.
-   
-     |socketId| - The socket ID.
-   
+
+     |socket-id| - The socket ID.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [groups] where:
-   
+
      |groups| - Array of groups the socket joined.
-   
-   See https://developer.chrome.com/extensions/sockets.udp#method-getJoinedGroups."
-  ([socket-id #_callback] (gen-call :function ::get-joined-groups &form socket-id)))
+
+   https://developer.chrome.com/apps/sockets.udp#method-getJoinedGroups."
+  ([socket-id] (gen-call :function ::get-joined-groups &form socket-id)))
 
 (defmacro set-broadcast
   "Enables or disables broadcast packets on this socket.
-   
-     |socketId| - The socket ID.
+
+     |socket-id| - The socket ID.
      |enabled| - true to enable broadcast packets, false to disable them.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
+
      |result| - The result code returned from the underlying network call.
-   
-   See https://developer.chrome.com/extensions/sockets.udp#method-setBroadcast."
-  ([socket-id enabled #_callback] (gen-call :function ::set-broadcast &form socket-id enabled)))
+
+   https://developer.chrome.com/apps/sockets.udp#method-setBroadcast."
+  ([socket-id enabled] (gen-call :function ::set-broadcast &form socket-id enabled)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -225,22 +225,28 @@
 
 (defmacro tap-on-receive-events
   "Event raised when a UDP packet has been received for the given socket.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-receive [info]] where:
+
+     |info| - The event data.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/sockets.udp#event-onReceive."
+
+   https://developer.chrome.com/apps/sockets.udp#event-onReceive."
   ([channel & args] (apply gen-call :event ::on-receive &form channel args)))
 
 (defmacro tap-on-receive-error-events
   "Event raised when a network error occured while the runtime was waiting for data on the socket address and port. Once this
    event is raised, the socket is paused and no more onReceive events will be raised for this socket until the socket is
    resumed.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-receive-error [info]] where:
+
+     |info| - The event data.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/sockets.udp#event-onReceiveError."
+
+   https://developer.chrome.com/apps/sockets.udp#event-onReceiveError."
   ([channel & args] (apply gen-call :event ::on-receive-error &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

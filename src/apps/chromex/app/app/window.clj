@@ -3,9 +3,9 @@
    have an optional frame with title bar and size controls. They are not
    associated with any Chrome browser windows. See the 
    Window State Sample for a demonstration of these options.
-   
+
      * available since Chrome 23
-     * https://developer.chrome.com/extensions/app.window"
+     * https://developer.chrome.com/apps/app.window"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -28,45 +28,45 @@
    or resized. This size and position is then used instead of the specified bounds on subsequent opening of a window with the
    same id. If you need to open a window with an id at a location other than the remembered default, you can create it hidden,
    move it to the desired location, then show it.
-   
-     |url| - See https://developer.chrome.com/extensions/app.window#property-create-url.
-     |options| - See https://developer.chrome.com/extensions/app.window#property-create-options.
-   
+
+     |url| - https://developer.chrome.com/apps/app.window#property-create-url.
+     |options| - https://developer.chrome.com/apps/app.window#property-create-options.
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [createdWindow] where:
-   
-     |createdWindow| - See https://developer.chrome.com/extensions/app.window#property-callback-createdWindow.
-   
-   See https://developer.chrome.com/extensions/app.window#method-create."
-  ([url options #_callback] (gen-call :function ::create &form url options))
+   Signature of the result value put on the channel is [created-window] where:
+
+     |created-window| - https://developer.chrome.com/apps/app.window#property-callback-createdWindow.
+
+   https://developer.chrome.com/apps/app.window#method-create."
+  ([url options] (gen-call :function ::create &form url options))
   ([url] `(create ~url :omit)))
 
 (defmacro current
   "Returns an 'AppWindow' object for the current script context (ie JavaScript 'window' object). This can also be called on a
    handle to a script context for another page, for example: otherWindow.chrome.app.window.current().
-   
-   See https://developer.chrome.com/extensions/app.window#method-current."
+
+   https://developer.chrome.com/apps/app.window#method-current."
   ([] (gen-call :function ::current &form)))
 
 (defmacro get-all
   "Gets an array of all currently created app windows. This method is new in Chrome 33.
-   
-   See https://developer.chrome.com/extensions/app.window#method-getAll."
+
+   https://developer.chrome.com/apps/app.window#method-getAll."
   ([] (gen-call :function ::get-all &form)))
 
 (defmacro get
   "Gets an 'AppWindow' with the given id. If no window with the given id exists null is returned. This method is new in Chrome
    33.
-   
-     |id| - See https://developer.chrome.com/extensions/app.window#property-get-id.
-   
-   See https://developer.chrome.com/extensions/app.window#method-get."
+
+     |id| - https://developer.chrome.com/apps/app.window#property-get-id.
+
+   https://developer.chrome.com/apps/app.window#method-get."
   ([id] (gen-call :function ::get &form id)))
 
 (defmacro can-set-visible-on-all-workspaces
   "Whether the current platform supports windows being visible on all workspaces.
-   
-   See https://developer.chrome.com/extensions/app.window#method-canSetVisibleOnAllWorkspaces."
+
+   https://developer.chrome.com/apps/app.window#method-canSetVisibleOnAllWorkspaces."
   ([] (gen-call :function ::can-set-visible-on-all-workspaces &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -75,58 +75,64 @@
 
 (defmacro tap-on-bounds-changed-events
   "Fired when the window is resized.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-bounds-changed []].
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/app.window#event-onBoundsChanged."
+
+   https://developer.chrome.com/apps/app.window#event-onBoundsChanged."
   ([channel & args] (apply gen-call :event ::on-bounds-changed &form channel args)))
 
 (defmacro tap-on-closed-events
   "Fired when the window is closed. Note, this should be listened to from a window other than the window being closed, for
    example from the background page. This is because the window being closed will be in the process of being torn down when
    the event is fired, which means not all APIs in the window's script context will be functional.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-closed []].
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/app.window#event-onClosed."
+
+   https://developer.chrome.com/apps/app.window#event-onClosed."
   ([channel & args] (apply gen-call :event ::on-closed &form channel args)))
 
 (defmacro tap-on-fullscreened-events
   "Fired when the window is fullscreened (either via the AppWindow or HTML5 APIs).
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-fullscreened []].
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/app.window#event-onFullscreened."
+
+   https://developer.chrome.com/apps/app.window#event-onFullscreened."
   ([channel & args] (apply gen-call :event ::on-fullscreened &form channel args)))
 
 (defmacro tap-on-maximized-events
   "Fired when the window is maximized.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-maximized []].
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/app.window#event-onMaximized."
+
+   https://developer.chrome.com/apps/app.window#event-onMaximized."
   ([channel & args] (apply gen-call :event ::on-maximized &form channel args)))
 
 (defmacro tap-on-minimized-events
   "Fired when the window is minimized.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-minimized []].
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/app.window#event-onMinimized."
+
+   https://developer.chrome.com/apps/app.window#event-onMinimized."
   ([channel & args] (apply gen-call :event ::on-minimized &form channel args)))
 
 (defmacro tap-on-restored-events
   "Fired when the window is restored from being minimized or maximized.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-restored []].
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/app.window#event-onRestored."
+
+   https://developer.chrome.com/apps/app.window#event-onRestored."
   ([channel & args] (apply gen-call :event ::on-restored &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

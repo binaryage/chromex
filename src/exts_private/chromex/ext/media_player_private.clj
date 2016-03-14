@@ -1,6 +1,5 @@
 (ns chromex.ext.media-player-private
-  "  * available since Chrome 13
-     * https://developer.chrome.com/extensions/mediaPlayerPrivate"
+  "  * available since Chrome 13"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -16,29 +15,26 @@
 
 (defmacro tap-on-next-track-events
   "Notifies that the next track was requested.
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/mediaPlayerPrivate#event-onNextTrack."
+
+   Events will be put on the |channel| with signature [::on-next-track []].
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-next-track &form channel args)))
 
 (defmacro tap-on-prev-track-events
   "Notifies that the previous tack was requested.
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/mediaPlayerPrivate#event-onPrevTrack."
+
+   Events will be put on the |channel| with signature [::on-prev-track []].
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-prev-track &form channel args)))
 
 (defmacro tap-on-toggle-play-state-events
   "Notifies that a play/pause toggle was requested.
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/mediaPlayerPrivate#event-onTogglePlayState."
+
+   Events will be put on the |channel| with signature [::on-toggle-play-state []].
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-toggle-play-state &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

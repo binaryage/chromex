@@ -1,9 +1,9 @@
 (ns chromex.app.serial
   "Use the chrome.serial API to read from and write to a device
    connected to a serial port.
-   
+
      * available since Chrome 23
-     * https://developer.chrome.com/extensions/serial"
+     * https://developer.chrome.com/apps/serial"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -17,173 +17,173 @@
 
 (defmacro get-devices
   "Returns information about available serial devices on the system. The list is regenerated each time this method is called.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [ports] where:
-   
-     |ports| - See https://developer.chrome.com/extensions/serial#property-callback-ports.
-   
-   See https://developer.chrome.com/extensions/serial#method-getDevices."
-  ([#_callback] (gen-call :function ::get-devices &form)))
+
+     |ports| - https://developer.chrome.com/apps/serial#property-callback-ports.
+
+   https://developer.chrome.com/apps/serial#method-getDevices."
+  ([] (gen-call :function ::get-devices &form)))
 
 (defmacro connect
   "Connects to a given serial port.
-   
+
      |path| - The system path of the serial port to open.
      |options| - Port configuration options.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [connectionInfo] where:
-   
-     |connectionInfo| - See https://developer.chrome.com/extensions/serial#property-callback-connectionInfo.
-   
-   See https://developer.chrome.com/extensions/serial#method-connect."
-  ([path options #_callback] (gen-call :function ::connect &form path options))
+   Signature of the result value put on the channel is [connection-info] where:
+
+     |connection-info| - https://developer.chrome.com/apps/serial#property-callback-connectionInfo.
+
+   https://developer.chrome.com/apps/serial#method-connect."
+  ([path options] (gen-call :function ::connect &form path options))
   ([path] `(connect ~path :omit)))
 
 (defmacro update
   "Update the option settings on an open serial port connection.
-   
-     |connectionId| - The id of the opened connection.
+
+     |connection-id| - The id of the opened connection.
      |options| - Port configuration options.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - See https://developer.chrome.com/extensions/serial#property-callback-result.
-   
-   See https://developer.chrome.com/extensions/serial#method-update."
-  ([connection-id options #_callback] (gen-call :function ::update &form connection-id options)))
+
+     |result| - https://developer.chrome.com/apps/serial#property-callback-result.
+
+   https://developer.chrome.com/apps/serial#method-update."
+  ([connection-id options] (gen-call :function ::update &form connection-id options)))
 
 (defmacro disconnect
   "Disconnects from a serial port.
-   
-     |connectionId| - The id of the opened connection.
-   
+
+     |connection-id| - The id of the opened connection.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - See https://developer.chrome.com/extensions/serial#property-callback-result.
-   
-   See https://developer.chrome.com/extensions/serial#method-disconnect."
-  ([connection-id #_callback] (gen-call :function ::disconnect &form connection-id)))
+
+     |result| - https://developer.chrome.com/apps/serial#property-callback-result.
+
+   https://developer.chrome.com/apps/serial#method-disconnect."
+  ([connection-id] (gen-call :function ::disconnect &form connection-id)))
 
 (defmacro set-paused
   "Pauses or unpauses an open connection.
-   
-     |connectionId| - The id of the opened connection.
+
+     |connection-id| - The id of the opened connection.
      |paused| - Flag to indicate whether to pause or unpause.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/serial#method-setPaused."
-  ([connection-id paused #_callback] (gen-call :function ::set-paused &form connection-id paused)))
+
+   https://developer.chrome.com/apps/serial#method-setPaused."
+  ([connection-id paused] (gen-call :function ::set-paused &form connection-id paused)))
 
 (defmacro get-info
   "Retrieves the state of a given connection.
-   
-     |connectionId| - The id of the opened connection.
-   
+
+     |connection-id| - The id of the opened connection.
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [connectionInfo] where:
-   
-     |connectionInfo| - See https://developer.chrome.com/extensions/serial#property-callback-connectionInfo.
-   
-   See https://developer.chrome.com/extensions/serial#method-getInfo."
-  ([connection-id #_callback] (gen-call :function ::get-info &form connection-id)))
+   Signature of the result value put on the channel is [connection-info] where:
+
+     |connection-info| - https://developer.chrome.com/apps/serial#property-callback-connectionInfo.
+
+   https://developer.chrome.com/apps/serial#method-getInfo."
+  ([connection-id] (gen-call :function ::get-info &form connection-id)))
 
 (defmacro get-connections
   "Retrieves the list of currently opened serial port connections owned by the application.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [connectionInfos] where:
-   
-     |connectionInfos| - See https://developer.chrome.com/extensions/serial#property-callback-connectionInfos.
-   
-   See https://developer.chrome.com/extensions/serial#method-getConnections."
-  ([#_callback] (gen-call :function ::get-connections &form)))
+   Signature of the result value put on the channel is [connection-infos] where:
+
+     |connection-infos| - https://developer.chrome.com/apps/serial#property-callback-connectionInfos.
+
+   https://developer.chrome.com/apps/serial#method-getConnections."
+  ([] (gen-call :function ::get-connections &form)))
 
 (defmacro send
   "Writes data to the given connection.
-   
-     |connectionId| - The id of the connection.
+
+     |connection-id| - The id of the connection.
      |data| - The data to send.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [sendInfo] where:
-   
-     |sendInfo| - See https://developer.chrome.com/extensions/serial#property-callback-sendInfo.
-   
-   See https://developer.chrome.com/extensions/serial#method-send."
-  ([connection-id data #_callback] (gen-call :function ::send &form connection-id data)))
+   Signature of the result value put on the channel is [send-info] where:
+
+     |send-info| - https://developer.chrome.com/apps/serial#property-callback-sendInfo.
+
+   https://developer.chrome.com/apps/serial#method-send."
+  ([connection-id data] (gen-call :function ::send &form connection-id data)))
 
 (defmacro flush
   "Flushes all bytes in the given connection's input and output buffers.
-   
-     |connectionId| - See https://developer.chrome.com/extensions/serial#property-flush-connectionId.
-   
+
+     |connection-id| - https://developer.chrome.com/apps/serial#property-flush-connectionId.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - See https://developer.chrome.com/extensions/serial#property-callback-result.
-   
-   See https://developer.chrome.com/extensions/serial#method-flush."
-  ([connection-id #_callback] (gen-call :function ::flush &form connection-id)))
+
+     |result| - https://developer.chrome.com/apps/serial#property-callback-result.
+
+   https://developer.chrome.com/apps/serial#method-flush."
+  ([connection-id] (gen-call :function ::flush &form connection-id)))
 
 (defmacro get-control-signals
   "Retrieves the state of control signals on a given connection.
-   
-     |connectionId| - The id of the connection.
-   
+
+     |connection-id| - The id of the connection.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [signals] where:
-   
-     |signals| - See https://developer.chrome.com/extensions/serial#property-callback-signals.
-   
-   See https://developer.chrome.com/extensions/serial#method-getControlSignals."
-  ([connection-id #_callback] (gen-call :function ::get-control-signals &form connection-id)))
+
+     |signals| - https://developer.chrome.com/apps/serial#property-callback-signals.
+
+   https://developer.chrome.com/apps/serial#method-getControlSignals."
+  ([connection-id] (gen-call :function ::get-control-signals &form connection-id)))
 
 (defmacro set-control-signals
   "Sets the state of control signals on a given connection.
-   
-     |connectionId| - The id of the connection.
+
+     |connection-id| - The id of the connection.
      |signals| - The set of signal changes to send to the device.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - See https://developer.chrome.com/extensions/serial#property-callback-result.
-   
-   See https://developer.chrome.com/extensions/serial#method-setControlSignals."
-  ([connection-id signals #_callback] (gen-call :function ::set-control-signals &form connection-id signals)))
+
+     |result| - https://developer.chrome.com/apps/serial#property-callback-result.
+
+   https://developer.chrome.com/apps/serial#method-setControlSignals."
+  ([connection-id signals] (gen-call :function ::set-control-signals &form connection-id signals)))
 
 (defmacro set-break
   "Suspends character transmission on a given connection and places the transmission line in a break state until the
    clearBreak is called.
-   
-     |connectionId| - The id of the connection.
-   
+
+     |connection-id| - The id of the connection.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - See https://developer.chrome.com/extensions/serial#property-callback-result.
-   
-   See https://developer.chrome.com/extensions/serial#method-setBreak."
-  ([connection-id #_callback] (gen-call :function ::set-break &form connection-id)))
+
+     |result| - https://developer.chrome.com/apps/serial#property-callback-result.
+
+   https://developer.chrome.com/apps/serial#method-setBreak."
+  ([connection-id] (gen-call :function ::set-break &form connection-id)))
 
 (defmacro clear-break
   "Restore character transmission on a given connection and place the transmission line in a nonbreak state.
-   
-     |connectionId| - The id of the connection.
-   
+
+     |connection-id| - The id of the connection.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - See https://developer.chrome.com/extensions/serial#property-callback-result.
-   
-   See https://developer.chrome.com/extensions/serial#method-clearBreak."
-  ([connection-id #_callback] (gen-call :function ::clear-break &form connection-id)))
+
+     |result| - https://developer.chrome.com/apps/serial#property-callback-result.
+
+   https://developer.chrome.com/apps/serial#method-clearBreak."
+  ([connection-id] (gen-call :function ::clear-break &form connection-id)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -191,21 +191,27 @@
 
 (defmacro tap-on-receive-events
   "Event raised when data has been read from the connection.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-receive [info]] where:
+
+     |info| - Event data.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/serial#event-onReceive."
+
+   https://developer.chrome.com/apps/serial#event-onReceive."
   ([channel & args] (apply gen-call :event ::on-receive &form channel args)))
 
 (defmacro tap-on-receive-error-events
   "Event raised when an error occurred while the runtime was waiting for data on the serial port. Once this event is raised,
    the connection may be set to paused. A 'timeout' error does not pause the connection.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-receive-error [info]] where:
+
+     |info| - https://developer.chrome.com/apps/serial#property-onReceiveError-info.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/serial#event-onReceiveError."
+
+   https://developer.chrome.com/apps/serial#event-onReceiveError."
   ([channel & args] (apply gen-call :event ::on-receive-error &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

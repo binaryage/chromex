@@ -2,9 +2,9 @@
   "The chrome.printerProvider API exposes events used by print
    manager to query printers controlled by extensions, to query their
    capabilities and to submit print jobs to these printers.
-   
+
      * available since Chrome 44
-     * https://developer.chrome.com/extensions/printerProvider"
+     * https://developer.chrome.com/apps/printerProvider"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -20,40 +20,50 @@
 
 (defmacro tap-on-get-printers-requested-events
   "Event fired when print manager requests printers provided by extensions.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-get-printers-requested [result-callback]].
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/printerProvider#event-onGetPrintersRequested."
+
+   https://developer.chrome.com/apps/printerProvider#event-onGetPrintersRequested."
   ([channel & args] (apply gen-call :event ::on-get-printers-requested &form channel args)))
 
 (defmacro tap-on-get-usb-printer-info-requested-events
   "Event fired when print manager requests information about a USB device that may be a printer. Note: An application should
    not rely on this event being fired more than once per device. If a connected device is supported it should be returned in
    the 'onGetPrintersRequested' event.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-get-usb-printer-info-requested [device result-callback]] where:
+
+     |device| - The USB device.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/printerProvider#event-onGetUsbPrinterInfoRequested."
+
+   https://developer.chrome.com/apps/printerProvider#event-onGetUsbPrinterInfoRequested."
   ([channel & args] (apply gen-call :event ::on-get-usb-printer-info-requested &form channel args)))
 
 (defmacro tap-on-get-capability-requested-events
   "Event fired when print manager requests printer capabilities.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-get-capability-requested [printer-id result-callback]] where:
+
+     |printer-id| - Unique ID of the printer whose capabilities are requested.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/printerProvider#event-onGetCapabilityRequested."
+
+   https://developer.chrome.com/apps/printerProvider#event-onGetCapabilityRequested."
   ([channel & args] (apply gen-call :event ::on-get-capability-requested &form channel args)))
 
 (defmacro tap-on-print-requested-events
   "Event fired when print manager requests printing.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-print-requested [print-job result-callback]] where:
+
+     |print-job| - The printing request parameters.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/printerProvider#event-onPrintRequested."
+
+   https://developer.chrome.com/apps/printerProvider#event-onPrintRequested."
   ([channel & args] (apply gen-call :event ::on-print-requested &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

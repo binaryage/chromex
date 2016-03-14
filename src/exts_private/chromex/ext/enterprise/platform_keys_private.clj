@@ -1,6 +1,5 @@
 (ns chromex.ext.enterprise.platform-keys-private
-  "  * available since Chrome 28
-     * https://developer.chrome.com/extensions/enterprise.platformKeysPrivate"
+  "  * available since Chrome 28"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -14,30 +13,26 @@
 
 (defmacro challenge-machine-key
   "Challenge a machine key.
-   
+
      |challenge| - Challenge to be signed in base64.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [response] where:
-   
-     |response| - Response in base64.
-   
-   See https://developer.chrome.com/extensions/enterprise.platformKeysPrivate#method-challengeMachineKey."
-  ([challenge #_callback] (gen-call :function ::challenge-machine-key &form challenge)))
+
+     |response| - Response in base64."
+  ([challenge] (gen-call :function ::challenge-machine-key &form challenge)))
 
 (defmacro challenge-user-key
   "Challenge an user key.
-   
+
      |challenge| - Challenge to be signed in base64.
-     |registerKey| - If true, the key will be registered.
-   
+     |register-key| - If true, the key will be registered.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [response] where:
-   
-     |response| - Response in base64.
-   
-   See https://developer.chrome.com/extensions/enterprise.platformKeysPrivate#method-challengeUserKey."
-  ([challenge register-key #_callback] (gen-call :function ::challenge-user-key &form challenge register-key)))
+
+     |response| - Response in base64."
+  ([challenge register-key] (gen-call :function ::challenge-user-key &form challenge register-key)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 

@@ -2,13 +2,13 @@
   "The chrome.cast.streaming.session API creates a Cast
    session using WebMediaStreamTrack as sources. The session is composed
    by RTP streams and a network transport.
-   
+
    Calling this API will generate corresponding resources for use with
    chrome.cast.streaming.rtpStream and chrome.cast.streaming.udpTransport
    APIs.
-   
+
    Valid resource IDs are positive and non-zero.
-   
+
      * available since Chrome 50
      * https://developer.chrome.com/extensions/cast.streaming.session"
 
@@ -27,19 +27,19 @@
    This will create two RTP streams and a UDP transport that builds the session. Either |audioTrack| or |videoTrack| can be
    null but not both. This means creating a session with only audio or video. If a given track is null then the created stream
    ID will be null.
-   
-     |audioTrack| - the source audio track.
-     |videoTrack| - the source video track.
-   
+
+     |audio-track| - the source audio track.
+     |video-track| - the source video track.
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [audioStreamId videoStreamId udpTransportId] where:
-   
-     |audioStreamId| - The audio RTP stream ID.
-     |videoStreamId| - The video RTP stream ID.
-     |udpTransportId| - The UDP transport ID.
-   
-   See https://developer.chrome.com/extensions/cast.streaming.session#method-create."
-  ([audio-track video-track #_callback] (gen-call :function ::create &form audio-track video-track))
+   Signature of the result value put on the channel is [audio-stream-id video-stream-id udp-transport-id] where:
+
+     |audio-stream-id| - The audio RTP stream ID.
+     |video-stream-id| - The video RTP stream ID.
+     |udp-transport-id| - The UDP transport ID.
+
+   https://developer.chrome.com/extensions/cast.streaming.session#method-create."
+  ([audio-track video-track] (gen-call :function ::create &form audio-track video-track))
   ([audio-track] `(create ~audio-track :omit))
   ([] `(create :omit :omit)))
 

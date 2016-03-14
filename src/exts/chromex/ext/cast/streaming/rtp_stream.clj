@@ -2,9 +2,9 @@
   "The chrome.cast.streaming.rtpStream API allows configuration
    of encoding parameters and RTP parameters used in a Cast streaming
    session.
-   
+
    Valid stream IDs are positive and non-zero.
-   
+
      * available since Chrome 50
      * https://developer.chrome.com/extensions/cast.streaming.rtpStream"
 
@@ -20,76 +20,76 @@
 
 (defmacro destroy
   "Destroys a Cast RTP stream.
-   
-     |streamId| - The RTP stream ID.
-   
-   See https://developer.chrome.com/extensions/cast.streaming.rtpStream#method-destroy."
+
+     |stream-id| - The RTP stream ID.
+
+   https://developer.chrome.com/extensions/cast.streaming.rtpStream#method-destroy."
   ([stream-id] (gen-call :function ::destroy &form stream-id)))
 
 (defmacro get-supported-params
   "Returns an array of supported parameters with default values. This includes a list of supported codecs on this platform and
    corresponding encoding and RTP parameters.
-   
-     |streamId| - The RTP stream ID.
-   
-   See https://developer.chrome.com/extensions/cast.streaming.rtpStream#method-getSupportedParams."
+
+     |stream-id| - The RTP stream ID.
+
+   https://developer.chrome.com/extensions/cast.streaming.rtpStream#method-getSupportedParams."
   ([stream-id] (gen-call :function ::get-supported-params &form stream-id)))
 
 (defmacro start
   "Activates the RTP stream by providing the parameters.
-   
-     |streamId| - The RTP stream ID.
+
+     |stream-id| - The RTP stream ID.
      |params| - Parameters set for this stream.
-   
-   See https://developer.chrome.com/extensions/cast.streaming.rtpStream#method-start."
+
+   https://developer.chrome.com/extensions/cast.streaming.rtpStream#method-start."
   ([stream-id params] (gen-call :function ::start &form stream-id params)))
 
 (defmacro stop
   "Stops activity on the specified stream.
-   
-     |streamId| - The RTP stream ID.
-   
-   See https://developer.chrome.com/extensions/cast.streaming.rtpStream#method-stop."
+
+     |stream-id| - The RTP stream ID.
+
+   https://developer.chrome.com/extensions/cast.streaming.rtpStream#method-stop."
   ([stream-id] (gen-call :function ::stop &form stream-id)))
 
 (defmacro toggle-logging
   "Enables / disables logging for a stream.
-   
-     |streamId| - See https://developer.chrome.com/extensions/cast.streaming.rtpStream#property-toggleLogging-streamId.
+
+     |stream-id| - https://developer.chrome.com/extensions/cast.streaming.rtpStream#property-toggleLogging-streamId.
      |enable| - If true, enables logging. Otherwise disables logging.
-   
-   See https://developer.chrome.com/extensions/cast.streaming.rtpStream#method-toggleLogging."
+
+   https://developer.chrome.com/extensions/cast.streaming.rtpStream#method-toggleLogging."
   ([stream-id enable] (gen-call :function ::toggle-logging &form stream-id enable)))
 
 (defmacro get-raw-events
   "Get raw events for a stream in the current session.
-   
-     |streamId| - Stream to get events for.
-     |extraData| - Extra data to attach to the log, e.g. system info or              experiment tags, in key-value JSON
-                   string format.
-   
+
+     |stream-id| - Stream to get events for.
+     |extra-data| - Extra data to attach to the log, e.g. system info or              experiment tags, in key-value JSON
+                    string format.
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [rawEvents] where:
-   
-     |rawEvents| - compressed serialized raw bytes containing raw events              recorded for a stream. The compression
-                   is in gzip format. The serialization format can be found at  media/cast/logging/log_serializer.cc.
-   
-   See https://developer.chrome.com/extensions/cast.streaming.rtpStream#method-getRawEvents."
-  ([stream-id extra-data #_callback] (gen-call :function ::get-raw-events &form stream-id extra-data))
+   Signature of the result value put on the channel is [raw-events] where:
+
+     |raw-events| - compressed serialized raw bytes containing raw events              recorded for a stream. The compression
+                    is in gzip format. The serialization format can be found at  media/cast/logging/log_serializer.cc.
+
+   https://developer.chrome.com/extensions/cast.streaming.rtpStream#method-getRawEvents."
+  ([stream-id extra-data] (gen-call :function ::get-raw-events &form stream-id extra-data))
   ([stream-id] `(get-raw-events ~stream-id :omit)))
 
 (defmacro get-stats
   "Get stats for a stream in the current session.
-   
-     |streamId| - Stream to get stats for.
-   
+
+     |stream-id| - Stream to get stats for.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [stats] where:
-   
-     |stats| - See https://developer.chrome.com/extensions/cast.streaming.rtpStream#property-callback-stats.
-   
-   See https://developer.chrome.com/extensions/cast.streaming.rtpStream#method-getStats."
-  ([stream-id #_callback] (gen-call :function ::get-stats &form stream-id)))
+
+     |stats| - https://developer.chrome.com/extensions/cast.streaming.rtpStream#property-callback-stats.
+
+   https://developer.chrome.com/extensions/cast.streaming.rtpStream#method-getStats."
+  ([stream-id] (gen-call :function ::get-stats &form stream-id)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -97,29 +97,39 @@
 
 (defmacro tap-on-started-events
   "Event fired when a Cast RTP stream has started.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-started [stream-id]] where:
+
+     |stream-id| - The ID of the RTP stream.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/cast.streaming.rtpStream#event-onStarted."
+
+   https://developer.chrome.com/extensions/cast.streaming.rtpStream#event-onStarted."
   ([channel & args] (apply gen-call :event ::on-started &form channel args)))
 
 (defmacro tap-on-stopped-events
   "Event fired when a Cast RTP stream has stopped.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-stopped [stream-id]] where:
+
+     |stream-id| - The ID of the RTP stream.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/cast.streaming.rtpStream#event-onStopped."
+
+   https://developer.chrome.com/extensions/cast.streaming.rtpStream#event-onStopped."
   ([channel & args] (apply gen-call :event ::on-stopped &form channel args)))
 
 (defmacro tap-on-error-events
   "Event fired when a Cast RTP stream has error.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-error [stream-id error-string]] where:
+
+     |stream-id| - The ID of the RTP stream.
+     |error-string| - The error info.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/cast.streaming.rtpStream#event-onError."
+
+   https://developer.chrome.com/extensions/cast.streaming.rtpStream#event-onError."
   ([channel & args] (apply gen-call :event ::on-error &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

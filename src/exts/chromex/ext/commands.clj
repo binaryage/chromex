@@ -1,7 +1,7 @@
 (ns chromex.ext.commands
   "Use the commands API to add keyboard shortcuts that trigger actions in your extension, for example, an action to open the
    browser action or send a command to the extension.
-   
+
      * available since Chrome 25
      * https://developer.chrome.com/extensions/commands"
 
@@ -17,14 +17,14 @@
 
 (defmacro get-all
   "Returns all the registered extension commands for this extension and their shortcut (if active).
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [commands] where:
-   
-     |commands| - See https://developer.chrome.com/extensions/commands#property-callback-commands.
-   
-   See https://developer.chrome.com/extensions/commands#method-getAll."
-  ([#_callback] (gen-call :function ::get-all &form)))
+
+     |commands| - https://developer.chrome.com/extensions/commands#property-callback-commands.
+
+   https://developer.chrome.com/extensions/commands#method-getAll."
+  ([] (gen-call :function ::get-all &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -32,11 +32,14 @@
 
 (defmacro tap-on-command-events
   "Fired when a registered command is activated using a keyboard shortcut.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-command [command]] where:
+
+     |command| - https://developer.chrome.com/extensions/commands#property-onCommand-command.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/commands#event-onCommand."
+
+   https://developer.chrome.com/extensions/commands#event-onCommand."
   ([channel & args] (apply gen-call :event ::on-command &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

@@ -9,9 +9,8 @@
    is internally dispatched having a requestId argument (which is removed from
    the argument list before the event actually reaches the event listeners). The
    requestId is forwarded to the chrome.printerProviderInternal API functions.
-   
-     * available since Chrome 44
-     * https://developer.chrome.com/extensions/printerProviderInternal"
+
+     * available since Chrome 44"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -25,62 +24,47 @@
 
 (defmacro report-printers
   "Runs callback to printerProvider.onGetPrintersRequested event.
-   
-     |requestId| - Parameter identifying the event instance for which the     callback is run.
-     |printers| - List of printers reported by the extension.
-   
-   See https://developer.chrome.com/extensions/printerProviderInternal#method-reportPrinters."
+
+     |request-id| - Parameter identifying the event instance for which the     callback is run.
+     |printers| - List of printers reported by the extension."
   ([request-id printers] (gen-call :function ::report-printers &form request-id printers))
   ([request-id] `(report-printers ~request-id :omit)))
 
 (defmacro report-usb-printer-info
   "Runs callback to printerProvider.onUsbAccessGranted event.
-   
-     |requestId| - Parameter identifying the event instance for which the     callback is run.
-     |printerInfo| - Printer information reported by the extension.
-   
-   See https://developer.chrome.com/extensions/printerProviderInternal#method-reportUsbPrinterInfo."
+
+     |request-id| - Parameter identifying the event instance for which the     callback is run.
+     |printer-info| - Printer information reported by the extension."
   ([request-id printer-info] (gen-call :function ::report-usb-printer-info &form request-id printer-info))
   ([request-id] `(report-usb-printer-info ~request-id :omit)))
 
 (defmacro report-printer-capability
   "Runs callback to printerProvider.onGetCapabilityRequested event.
-   
-     |request_id| - See
-                    https://developer.chrome.com/extensions/printerProviderInternal#property-reportPrinterCapability-request_
-                    id.
-     |capability| - See
-                    https://developer.chrome.com/extensions/printerProviderInternal#property-reportPrinterCapability-capabili
-                    ty.
-   
-   See https://developer.chrome.com/extensions/printerProviderInternal#method-reportPrinterCapability."
+
+     |request-id| - ?
+     |capability| - ?"
   ([request-id capability] (gen-call :function ::report-printer-capability &form request-id capability))
   ([request-id] `(report-printer-capability ~request-id :omit)))
 
 (defmacro report-print-result
   "Runs callback to printerProvider.onPrintRequested event.
-   
-     |request_id| - See
-                    https://developer.chrome.com/extensions/printerProviderInternal#property-reportPrintResult-request_id.
-     |error| - The requested print job result.
-   
-   See https://developer.chrome.com/extensions/printerProviderInternal#method-reportPrintResult."
+
+     |request-id| - ?
+     |error| - The requested print job result."
   ([request-id error] (gen-call :function ::report-print-result &form request-id error))
   ([request-id] `(report-print-result ~request-id :omit)))
 
 (defmacro get-print-data
   "Gets information needed to create a print data blob for a print request. The blob will be dispatched to the extension via
    printerProvider.onPrintRequested event.
-   
-     |requestId| - The request id for the print request for which data is     needed.
-   
+
+     |request-id| - The request id for the print request for which data is     needed.
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [blobInfo] where:
-   
-     |blobInfo| - See https://developer.chrome.com/extensions/printerProviderInternal#property-callback-blobInfo.
-   
-   See https://developer.chrome.com/extensions/printerProviderInternal#method-getPrintData."
-  ([request-id #_callback] (gen-call :function ::get-print-data &form request-id)))
+   Signature of the result value put on the channel is [blob-info] where:
+
+     |blob-info| - ?"
+  ([request-id] (gen-call :function ::get-print-data &form request-id)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 

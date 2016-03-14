@@ -1,6 +1,5 @@
 (ns chromex.ext.command-line-private
-  "  * available since Chrome 28
-     * https://developer.chrome.com/extensions/commandLinePrivate"
+  "  * available since Chrome 28"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -14,16 +13,14 @@
 
 (defmacro has-switch
   "Returns whether a switch is specified on the command line when launching Chrome.
-   
+
      |name| - The name of a command line switch, without leading '--', such as 'enable-experimental-extension-apis'.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - Whether the switch is specified on the command line.
-   
-   See https://developer.chrome.com/extensions/commandLinePrivate#method-hasSwitch."
-  ([name #_callback] (gen-call :function ::has-switch &form name)))
+
+     |result| - Whether the switch is specified on the command line."
+  ([name] (gen-call :function ::has-switch &form name)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 

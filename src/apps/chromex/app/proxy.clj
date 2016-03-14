@@ -1,9 +1,9 @@
 (ns chromex.app.proxy
   "Use the chrome.proxy API to manage Chrome's proxy settings. This API relies on the ChromeSetting prototype of the type API
    for getting and setting the proxy configuration.
-   
+
      * available since Chrome 13
-     * https://developer.chrome.com/extensions/proxy"
+     * https://developer.chrome.com/apps/proxy"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -17,8 +17,8 @@
 
 (defmacro get-settings
   "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example.
-   
-   See https://developer.chrome.com/extensions/proxy#property-settings."
+
+   https://developer.chrome.com/apps/proxy#property-settings."
   ([] (gen-call :property ::settings &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -27,11 +27,14 @@
 
 (defmacro tap-on-proxy-error-events
   "Notifies about proxy errors.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-proxy-error [details]] where:
+
+     |details| - https://developer.chrome.com/apps/proxy#property-onProxyError-details.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/proxy#event-onProxyError."
+
+   https://developer.chrome.com/apps/proxy#event-onProxyError."
   ([channel & args] (apply gen-call :event ::on-proxy-error &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

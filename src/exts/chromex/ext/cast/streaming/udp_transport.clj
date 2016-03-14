@@ -3,9 +3,9 @@
    transport for Cast RTP streams. This API is not useful when standalone
    since it does not have send and receive methods.
    It is used to configure the UDP transport used in Cast session.
-   
+
    Valid transport IDs are positive and non-zero.
-   
+
      * available since Chrome 50
      * https://developer.chrome.com/extensions/cast.streaming.udpTransport"
 
@@ -21,30 +21,30 @@
 
 (defmacro destroy
   "Destroys a UDP transport.
-   
-     |transportId| - The transport ID.
-   
-   See https://developer.chrome.com/extensions/cast.streaming.udpTransport#method-destroy."
+
+     |transport-id| - The transport ID.
+
+   https://developer.chrome.com/extensions/cast.streaming.udpTransport#method-destroy."
   ([transport-id] (gen-call :function ::destroy &form transport-id)))
 
 (defmacro set-destination
   "Sets parameters for this UDP transport. This can only be called once per transport.
-   
-     |transportId| - The transport ID.
+
+     |transport-id| - The transport ID.
      |destination| - The address and port to send packets to.
-   
-   See https://developer.chrome.com/extensions/cast.streaming.udpTransport#method-setDestination."
+
+   https://developer.chrome.com/extensions/cast.streaming.udpTransport#method-setDestination."
   ([transport-id destination] (gen-call :function ::set-destination &form transport-id destination)))
 
 (defmacro set-options
   "Sets the options. Attributes of this object will be used to activate optional behaviours in the transport. Normally this is
    only used for experimentation. Must be called before setDestination.
-   
-     |transportId| - The transport ID that is created by chrome.cast.streaming.session.create().
+
+     |transport-id| - The transport ID that is created by chrome.cast.streaming.session.create().
      |options| - A dictionary of key-value pairs of options. See media/cast/net/cast_transport_sender_impl.h for supported
                  options.
-   
-   See https://developer.chrome.com/extensions/cast.streaming.udpTransport#method-setOptions."
+
+   https://developer.chrome.com/extensions/cast.streaming.udpTransport#method-setOptions."
   ([transport-id options] (gen-call :function ::set-options &form transport-id options)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

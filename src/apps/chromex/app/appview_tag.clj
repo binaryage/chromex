@@ -1,9 +1,9 @@
 (ns chromex.app.appview-tag
   "Use the appview tag to embed other Chrome Apps within your
    Chrome App. (see Usage).
-   
+
      * available since Chrome 43
-     * https://developer.chrome.com/extensions/appviewTag"
+     * https://developer.chrome.com/apps/tags/appview"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -17,17 +17,17 @@
 
 (defmacro connect
   "Requests another app to be embedded.
-   
+
      |app| - The extension id of the app to be embedded.
      |data| - Optional developer specified data that the app to be embedded   can use when making an embedding decision.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [success] where:
-   
+
      |success| - True if the embedding request succeded.
-   
-   See https://developer.chrome.com/extensions/appviewTag#method-connect."
-  ([app data #_callback] (gen-call :function ::connect &form app data))
+
+   https://developer.chrome.com/apps/tags/appview#method-connect."
+  ([app data] (gen-call :function ::connect &form app data))
   ([app] `(connect ~app :omit)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

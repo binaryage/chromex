@@ -1,9 +1,9 @@
 (ns chromex.app.file-browser-handler
   "Use the chrome.fileBrowserHandler API to extend the Chrome OS file browser. For example, you can use this API to enable
    users to upload files to your website.
-   
+
      * available since Chrome 12
-     * https://developer.chrome.com/extensions/fileBrowserHandler"
+     * https://developer.chrome.com/apps/fileBrowserHandler"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -20,16 +20,16 @@
    required to use the file (read, write and create) are granted to the caller. The file will not actually get created during
    the function call, so function caller must ensure its existence before using it. The function has to be invoked with a user
    gesture.
-   
-     |selectionParams| - Parameters that will be used while selecting the file.
-   
+
+     |selection-params| - Parameters that will be used while selecting the file.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
+
      |result| - Result of the method.
-   
-   See https://developer.chrome.com/extensions/fileBrowserHandler#method-selectFile."
-  ([selection-params #_callback] (gen-call :function ::select-file &form selection-params)))
+
+   https://developer.chrome.com/apps/fileBrowserHandler#method-selectFile."
+  ([selection-params] (gen-call :function ::select-file &form selection-params)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -37,11 +37,15 @@
 
 (defmacro tap-on-execute-events
   "Fired when file system action is executed from ChromeOS file browser.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-execute [id details]] where:
+
+     |id| - File browser action id as specified in the listener component's manifest.
+     |details| - File handler execute event details.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/fileBrowserHandler#event-onExecute."
+
+   https://developer.chrome.com/apps/fileBrowserHandler#event-onExecute."
   ([channel & args] (apply gen-call :event ::on-execute &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

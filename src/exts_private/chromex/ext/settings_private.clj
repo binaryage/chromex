@@ -1,9 +1,8 @@
 (ns chromex.ext.settings-private
   "Use the chrome.settingsPrivate API to get or set preferences
    from the settings UI.
-   
-     * available since Chrome 50
-     * https://developer.chrome.com/extensions/settingsPrivate"
+
+     * available since Chrome 50"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -17,66 +16,56 @@
 
 (defmacro set-pref
   "Sets a settings value.
-   
+
      |name| - The name of the pref.
      |value| - The new value of the pref.
-     |pageId| - The user metrics identifier or null.
-   
+     |page-id| - The user metrics identifier or null.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [success] where:
-   
-     |success| - See https://developer.chrome.com/extensions/settingsPrivate#property-callback-success.
-   
-   See https://developer.chrome.com/extensions/settingsPrivate#method-setPref."
-  ([name value page-id #_callback] (gen-call :function ::set-pref &form name value page-id)))
+
+     |success| - ?"
+  ([name value page-id] (gen-call :function ::set-pref &form name value page-id)))
 
 (defmacro get-all-prefs
   "Gets an array of all the prefs.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [prefs] where:
-   
-     |prefs| - See https://developer.chrome.com/extensions/settingsPrivate#property-callback-prefs.
-   
-   See https://developer.chrome.com/extensions/settingsPrivate#method-getAllPrefs."
-  ([#_callback] (gen-call :function ::get-all-prefs &form)))
+
+     |prefs| - ?"
+  ([] (gen-call :function ::get-all-prefs &form)))
 
 (defmacro get-pref
   "Gets the value of a specific pref.
-   
-     |name| - See https://developer.chrome.com/extensions/settingsPrivate#property-getPref-name.
-   
+
+     |name| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [pref] where:
-   
-     |pref| - See https://developer.chrome.com/extensions/settingsPrivate#property-callback-pref.
-   
-   See https://developer.chrome.com/extensions/settingsPrivate#method-getPref."
-  ([name #_callback] (gen-call :function ::get-pref &form name)))
+
+     |pref| - ?"
+  ([name] (gen-call :function ::get-pref &form name)))
 
 (defmacro get-default-zoom-percent
   "Gets the page zoom factor as an integer percentage.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [percent] where:
-   
-     |percent| - See https://developer.chrome.com/extensions/settingsPrivate#property-callback-percent.
-   
-   See https://developer.chrome.com/extensions/settingsPrivate#method-getDefaultZoomPercent."
-  ([#_callback] (gen-call :function ::get-default-zoom-percent &form)))
+
+     |percent| - ?"
+  ([] (gen-call :function ::get-default-zoom-percent &form)))
 
 (defmacro set-default-zoom-percent
   "Sets the page zoom factor from a zoom percentage.
-   
-     |percent| - See https://developer.chrome.com/extensions/settingsPrivate#property-setDefaultZoomPercent-percent.
-   
+
+     |percent| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [success] where:
-   
-     |success| - See https://developer.chrome.com/extensions/settingsPrivate#property-callback-success.
-   
-   See https://developer.chrome.com/extensions/settingsPrivate#method-setDefaultZoomPercent."
-  ([percent #_callback] (gen-call :function ::set-default-zoom-percent &form percent)))
+
+     |success| - ?"
+  ([percent] (gen-call :function ::set-default-zoom-percent &form percent)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -84,11 +73,12 @@
 
 (defmacro tap-on-prefs-changed-events
   "Fired when a set of prefs has changed.|prefs| The prefs that changed.
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/settingsPrivate#event-onPrefsChanged."
+
+   Events will be put on the |channel| with signature [::on-prefs-changed [prefs]] where:
+
+     |prefs| - ?
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-prefs-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

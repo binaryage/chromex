@@ -1,9 +1,9 @@
 (ns chromex.app.signed-in-devices
   "Use the chrome.signedInDevices API to get a list of devices
    signed into chrome with the same account as the current profile.
-   
+
      * available since Chrome 50
-     * https://developer.chrome.com/extensions/signedInDevices"
+     * https://developer.chrome.com/apps/signedInDevices"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -17,17 +17,17 @@
 
 (defmacro get
   "Gets the array of signed in devices, signed into the same account as the current profile.
-   
-     |isLocal| - If true only return the information for the local device. If false or omitted return the list of all
-                 devices including the local device.
-   
+
+     |is-local| - If true only return the information for the local device. If false or omitted return the list of all
+                  devices including the local device.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [devices] where:
-   
-     |devices| - See https://developer.chrome.com/extensions/signedInDevices#property-callback-devices.
-   
-   See https://developer.chrome.com/extensions/signedInDevices#method-get."
-  ([is-local #_callback] (gen-call :function ::get &form is-local))
+
+     |devices| - https://developer.chrome.com/apps/signedInDevices#property-callback-devices.
+
+   https://developer.chrome.com/apps/signedInDevices#method-get."
+  ([is-local] (gen-call :function ::get &form is-local))
   ([] `(get :omit)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -36,11 +36,14 @@
 
 (defmacro tap-on-device-info-change-events
   "Fired if the DeviceInfo object of any of the signed in devices change or a new device is added or a device removed.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-device-info-change [devices]] where:
+
+     |devices| - https://developer.chrome.com/apps/signedInDevices#property-onDeviceInfoChange-devices.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/signedInDevices#event-onDeviceInfoChange."
+
+   https://developer.chrome.com/apps/signedInDevices#event-onDeviceInfoChange."
   ([channel & args] (apply gen-call :event ::on-device-info-change &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

@@ -1,8 +1,7 @@
 (ns chromex.app.identity-private
   "identityPrivate.
-   
-     * available since Chrome 29
-     * https://developer.chrome.com/extensions/identityPrivate"
+
+     * available since Chrome 29"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -18,11 +17,14 @@
 
 (defmacro tap-on-web-flow-request-events
   "Fired when a web flow dialog should be displayed.
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/identityPrivate#event-onWebFlowRequest."
+
+   Events will be put on the |channel| with signature [::on-web-flow-request [key url mode]] where:
+
+     |key| - ?
+     |url| - ?
+     |mode| - ?
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-web-flow-request &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

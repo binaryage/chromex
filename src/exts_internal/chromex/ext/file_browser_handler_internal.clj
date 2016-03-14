@@ -1,6 +1,5 @@
 (ns chromex.ext.file-browser-handler-internal
-  "  * available since Chrome 21
-     * https://developer.chrome.com/extensions/fileBrowserHandlerInternal"
+  "  * available since Chrome 21"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -15,16 +14,14 @@
 (defmacro select-file
   "Prompts user to select file path under which a new file will be created. If the user selects file, the file gets created
    or, if it already exists, truncated. The function has to be called with user gesture.
-   
-     |selectionParams| - Parameters that will be used to create new file.
-   
+
+     |selection-params| - Parameters that will be used to create new file.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - Result of the method.
-   
-   See https://developer.chrome.com/extensions/fileBrowserHandlerInternal#method-selectFile."
-  ([selection-params #_callback] (gen-call :function ::select-file &form selection-params)))
+
+     |result| - Result of the method."
+  ([selection-params] (gen-call :function ::select-file &form selection-params)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 

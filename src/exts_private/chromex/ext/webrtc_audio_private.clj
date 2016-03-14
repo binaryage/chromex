@@ -2,17 +2,16 @@
   "The chrome.webrtcAudioPrivate API allows enumeration
    of audio output (sink) devices as well as getting and setting the
    active device for a given requesting process.
-   
+
    Note that device IDs as used in this API are opaque (i.e. they are
    not the hardware identifier of the device) and while they are
    unique and persistent across sessions, they are valid only to the
    extension calling this API (i.e. they cannot be shared between
    extensions).
-   
+
    See http://goo.gl/8rOmgk for further documentation of this API.
-   
-     * available since Chrome 32
-     * https://developer.chrome.com/extensions/webrtcAudioPrivate"
+
+     * available since Chrome 32"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -26,58 +25,47 @@
 
 (defmacro get-sinks
   "Retrieves a list of available audio sink devices.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [sinkInfo] where:
-   
-     |sinkInfo| - See https://developer.chrome.com/extensions/webrtcAudioPrivate#property-callback-sinkInfo.
-   
-   See https://developer.chrome.com/extensions/webrtcAudioPrivate#method-getSinks."
-  ([#_callback] (gen-call :function ::get-sinks &form)))
+   Signature of the result value put on the channel is [sink-info] where:
+
+     |sink-info| - ?"
+  ([] (gen-call :function ::get-sinks &form)))
 
 (defmacro get-active-sink
   "Retrieves the currently active audio sink for the given requesting process.
-   
-     |request| - See https://developer.chrome.com/extensions/webrtcAudioPrivate#property-getActiveSink-request.
-   
+
+     |request| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [sinkId] where:
-   
-     |sinkId| - See https://developer.chrome.com/extensions/webrtcAudioPrivate#property-callback-sinkId.
-   
-   See https://developer.chrome.com/extensions/webrtcAudioPrivate#method-getActiveSink."
-  ([request #_callback] (gen-call :function ::get-active-sink &form request)))
+   Signature of the result value put on the channel is [sink-id] where:
+
+     |sink-id| - ?"
+  ([request] (gen-call :function ::get-active-sink &form request)))
 
 (defmacro set-active-sink
   "Sets the active audio sink device for the specified requesting process.
-   
-     |request| - See https://developer.chrome.com/extensions/webrtcAudioPrivate#property-setActiveSink-request.
-     |sinkId| - See https://developer.chrome.com/extensions/webrtcAudioPrivate#property-setActiveSink-sinkId.
-   
+
+     |request| - ?
+     |sink-id| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/webrtcAudioPrivate#method-setActiveSink."
-  ([request sink-id #_callback] (gen-call :function ::set-active-sink &form request sink-id)))
+   Signature of the result value put on the channel is []."
+  ([request sink-id] (gen-call :function ::set-active-sink &form request sink-id)))
 
 (defmacro get-associated-sink
   "Given a security origin and an input device ID valid for that security origin, retrieve an audio sink ID valid for the
    extension, or the empty string if there is no associated audio sink.The associated sink ID can be used as a sink ID for
    setActiveSink. It is valid irrespective of which process you are setting the active sink for.
-   
-     |securityOrigin| - See
-                        https://developer.chrome.com/extensions/webrtcAudioPrivate#property-getAssociatedSink-securityOrigin.
-     |sourceIdInOrigin| - See
-                          https://developer.chrome.com/extensions/webrtcAudioPrivate#property-getAssociatedSink-sourceIdInOri
-                          gin.
-   
+
+     |security-origin| - ?
+     |source-id-in-origin| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [sinkId] where:
-   
-     |sinkId| - See https://developer.chrome.com/extensions/webrtcAudioPrivate#property-cb-sinkId.
-   
-   See https://developer.chrome.com/extensions/webrtcAudioPrivate#method-getAssociatedSink."
-  ([security-origin source-id-in-origin #_cb] (gen-call :function ::get-associated-sink &form security-origin source-id-in-origin)))
+   Signature of the result value put on the channel is [sink-id] where:
+
+     |sink-id| - ?"
+  ([security-origin source-id-in-origin] (gen-call :function ::get-associated-sink &form security-origin source-id-in-origin)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -85,11 +73,10 @@
 
 (defmacro tap-on-sinks-changed-events
   "Fired when audio sink devices are added or removed.
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/webrtcAudioPrivate#event-onSinksChanged."
+
+   Events will be put on the |channel| with signature [::on-sinks-changed []].
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-sinks-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

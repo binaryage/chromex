@@ -5,9 +5,8 @@
    replacing this with a scheme based solution which might be implemented
    using registerProtocolHandler, but we are still finishing that design.
    See crbug.com/306672
-   
-     * available since Chrome 32
-     * https://developer.chrome.com/extensions/hangoutsPrivate"
+
+     * available since Chrome 32"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -23,11 +22,12 @@
 
 (defmacro tap-on-hangout-requested-events
   "Fired when Chrome wants to request a new hangout be opened up with a user (or set of users).
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/hangoutsPrivate#event-onHangoutRequested."
+
+   Events will be put on the |channel| with signature [::on-hangout-requested [request]] where:
+
+     |request| - ?
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-hangout-requested &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

@@ -2,9 +2,9 @@
   "The chrome.audio API is provided to allow users to
    get information about and control the audio devices attached to the
    system. This API is currently only implemented for ChromeOS.
-   
+
      * available since Chrome 50
-     * https://developer.chrome.com/extensions/audio"
+     * https://developer.chrome.com/apps/audio"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -18,15 +18,15 @@
 
 (defmacro get-info
   "Gets the information of all audio output and input devices.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [outputInfo inputInfo] where:
-   
-     |outputInfo| - See https://developer.chrome.com/extensions/audio#property-callback-outputInfo.
-     |inputInfo| - See https://developer.chrome.com/extensions/audio#property-callback-inputInfo.
-   
-   See https://developer.chrome.com/extensions/audio#method-getInfo."
-  ([#_callback] (gen-call :function ::get-info &form)))
+   Signature of the result value put on the channel is [output-info input-info] where:
+
+     |output-info| - https://developer.chrome.com/apps/audio#property-callback-outputInfo.
+     |input-info| - https://developer.chrome.com/apps/audio#property-callback-inputInfo.
+
+   https://developer.chrome.com/apps/audio#method-getInfo."
+  ([] (gen-call :function ::get-info &form)))
 
 (defmacro set-active-devices
   "Sets the active devices to the devices specified by |ids|. It can pass in the 'complete' active device id list of either
@@ -34,26 +34,26 @@
    active status, output devices will NOT be changed; similarly for the case if only output devices are passed. If the devices
    specified in |new_active_ids| are already active, they will remain active. Otherwise, the old active devices will be
    de-activated before we activate the new devices with the same type(input/output).
-   
-     |ids| - See https://developer.chrome.com/extensions/audio#property-setActiveDevices-ids.
-   
+
+     |ids| - https://developer.chrome.com/apps/audio#property-setActiveDevices-ids.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/audio#method-setActiveDevices."
-  ([ids #_callback] (gen-call :function ::set-active-devices &form ids)))
+
+   https://developer.chrome.com/apps/audio#method-setActiveDevices."
+  ([ids] (gen-call :function ::set-active-devices &form ids)))
 
 (defmacro set-properties
   "Sets the properties for the input or output device.
-   
-     |id| - See https://developer.chrome.com/extensions/audio#property-setProperties-id.
-     |properties| - See https://developer.chrome.com/extensions/audio#property-setProperties-properties.
-   
+
+     |id| - https://developer.chrome.com/apps/audio#property-setProperties-id.
+     |properties| - https://developer.chrome.com/apps/audio#property-setProperties-properties.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/audio#method-setProperties."
-  ([id properties #_callback] (gen-call :function ::set-properties &form id properties)))
+
+   https://developer.chrome.com/apps/audio#method-setProperties."
+  ([id properties] (gen-call :function ::set-properties &form id properties)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -61,38 +61,50 @@
 
 (defmacro tap-on-device-changed-events
   "Fired when anything changes to the audio device configuration.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-device-changed []].
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/audio#event-onDeviceChanged."
+
+   https://developer.chrome.com/apps/audio#event-onDeviceChanged."
   ([channel & args] (apply gen-call :event ::on-device-changed &form channel args)))
 
 (defmacro tap-on-level-changed-events
   "Fired when sound level changes for an active audio device.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-level-changed [id level]] where:
+
+     |id| - id of the audio device.
+     |level| - new sound level of device(volume for output, gain for input).
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/audio#event-OnLevelChanged."
+
+   https://developer.chrome.com/apps/audio#event-OnLevelChanged."
   ([channel & args] (apply gen-call :event ::on-level-changed &form channel args)))
 
 (defmacro tap-on-mute-changed-events
   "Fired when the mute state of the audio input or output changes.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-mute-changed [is-input is-muted]] where:
+
+     |is-input| - true indicating audio input; false indicating audio output.
+     |is-muted| - new value of mute state.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/audio#event-OnMuteChanged."
+
+   https://developer.chrome.com/apps/audio#event-OnMuteChanged."
   ([channel & args] (apply gen-call :event ::on-mute-changed &form channel args)))
 
 (defmacro tap-on-devices-changed-events
   "Fired when audio devices change, either new devices being added, or existing devices being removed.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-devices-changed [devices]] where:
+
+     |devices| - List of all present audio devices after the change.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/audio#event-OnDevicesChanged."
+
+   https://developer.chrome.com/apps/audio#event-OnDevicesChanged."
   ([channel & args] (apply gen-call :event ::on-devices-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

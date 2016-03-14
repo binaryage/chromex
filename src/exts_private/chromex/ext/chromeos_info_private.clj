@@ -1,6 +1,5 @@
 (ns chromex.ext.chromeos-info-private
-  "  * available since Chrome 12
-     * https://developer.chrome.com/extensions/chromeosInfoPrivate"
+  "  * available since Chrome 12"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -15,24 +14,20 @@
 (defmacro get
   "Fetches customization values for the given property names. See property names in the declaration of the returned
    dictionary.
-   
-     |propertyNames| - Chrome OS Property names
-   
+
+     |property-names| - Chrome OS Property names
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [propertiesDictionary] where:
-   
-     |propertiesDictionary| - Dictionary which contains all requested properties
-   
-   See https://developer.chrome.com/extensions/chromeosInfoPrivate#method-get."
-  ([property-names #_callback] (gen-call :function ::get &form property-names)))
+   Signature of the result value put on the channel is [properties-dictionary] where:
+
+     |properties-dictionary| - Dictionary which contains all requested properties"
+  ([property-names] (gen-call :function ::get &form property-names)))
 
 (defmacro set
   "Sets values for the given system property.
-   
-     |propertyName| - Chrome OS system property name
-     |propertyValue| - Chrome OS system property value
-   
-   See https://developer.chrome.com/extensions/chromeosInfoPrivate#method-set."
+
+     |property-name| - Chrome OS system property name
+     |property-value| - Chrome OS system property value"
   ([property-name property-value] (gen-call :function ::set &form property-name property-value)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

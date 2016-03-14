@@ -1,6 +1,6 @@
 (ns chromex.ext.idle
   "Use the chrome.idle API to detect when the machine's idle state changes.
-   
+
      * available since Chrome 6
      * https://developer.chrome.com/extensions/idle"
 
@@ -17,25 +17,25 @@
 (defmacro query-state
   "Returns 'locked' if the system is locked, 'idle' if the user has not generated any input for a specified number of seconds,
    or 'active' otherwise.
-   
-     |detectionIntervalInSeconds| - The system is considered idle if detectionIntervalInSeconds seconds have elapsed since
-                                    the last user input detected.
-   
+
+     |detection-interval-in-seconds| - The system is considered idle if detectionIntervalInSeconds seconds have elapsed
+                                       since the last user input detected.
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [newState] where:
-   
-     |newState| - See https://developer.chrome.com/extensions/idle#property-callback-newState.
-   
-   See https://developer.chrome.com/extensions/idle#method-queryState."
-  ([detection-interval-in-seconds #_callback] (gen-call :function ::query-state &form detection-interval-in-seconds)))
+   Signature of the result value put on the channel is [new-state] where:
+
+     |new-state| - https://developer.chrome.com/extensions/idle#property-callback-newState.
+
+   https://developer.chrome.com/extensions/idle#method-queryState."
+  ([detection-interval-in-seconds] (gen-call :function ::query-state &form detection-interval-in-seconds)))
 
 (defmacro set-detection-interval
   "Sets the interval, in seconds, used to determine when the system is in an idle state for onStateChanged events. The default
    interval is 60 seconds.
-   
-     |intervalInSeconds| - Threshold, in seconds, used to determine when the system is in an idle state.
-   
-   See https://developer.chrome.com/extensions/idle#method-setDetectionInterval."
+
+     |interval-in-seconds| - Threshold, in seconds, used to determine when the system is in an idle state.
+
+   https://developer.chrome.com/extensions/idle#method-setDetectionInterval."
   ([interval-in-seconds] (gen-call :function ::set-detection-interval &form interval-in-seconds)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -46,11 +46,14 @@
   "Fired when the system changes to an active, idle or locked state. The event fires with 'locked' if the screen is locked or
    the screensaver activates, 'idle' if the system is unlocked and the user has not generated any input for a specified number
    of seconds, and 'active' when the user generates input on an idle system.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-state-changed [new-state]] where:
+
+     |new-state| - https://developer.chrome.com/extensions/idle#property-onStateChanged-newState.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/idle#event-onStateChanged."
+
+   https://developer.chrome.com/extensions/idle#event-onStateChanged."
   ([channel & args] (apply gen-call :event ::on-state-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

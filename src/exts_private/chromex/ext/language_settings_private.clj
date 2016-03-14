@@ -1,9 +1,8 @@
 (ns chromex.ext.language-settings-private
   "Use the chrome.languageSettingsPrivate API to get or change
    language and input method settings.
-   
-     * available since Chrome 50
-     * https://developer.chrome.com/extensions/languageSettingsPrivate"
+
+     * available since Chrome 50"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -17,104 +16,79 @@
 
 (defmacro get-language-list
   "Gets languages available for translate, spell checking, input and locale.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [languages] where:
-   
-     |languages| - See https://developer.chrome.com/extensions/languageSettingsPrivate#property-callback-languages.
-   
-   See https://developer.chrome.com/extensions/languageSettingsPrivate#method-getLanguageList."
-  ([#_callback] (gen-call :function ::get-language-list &form)))
+
+     |languages| - ?"
+  ([] (gen-call :function ::get-language-list &form)))
 
 (defmacro set-language-list
   "Sets the accepted languages, used to decide which languages to translate, generate the Accept-Language header, etc.
-   
-     |languageCodes| - See
-                       https://developer.chrome.com/extensions/languageSettingsPrivate#property-setLanguageList-languageCodes
-                       .
-   
-   See https://developer.chrome.com/extensions/languageSettingsPrivate#method-setLanguageList."
+
+     |language-codes| - ?"
   ([language-codes] (gen-call :function ::set-language-list &form language-codes)))
 
 (defmacro get-spellcheck-dictionary-statuses
   "Gets the current status of the chosen spell check dictionaries.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [status] where:
-   
-     |status| - See https://developer.chrome.com/extensions/languageSettingsPrivate#property-callback-status.
-   
-   See https://developer.chrome.com/extensions/languageSettingsPrivate#method-getSpellcheckDictionaryStatuses."
-  ([#_callback] (gen-call :function ::get-spellcheck-dictionary-statuses &form)))
+
+     |status| - ?"
+  ([] (gen-call :function ::get-spellcheck-dictionary-statuses &form)))
 
 (defmacro get-spellcheck-words
   "Gets the custom spell check words, in sorted order.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [words] where:
-   
-     |words| - See https://developer.chrome.com/extensions/languageSettingsPrivate#property-callback-words.
-   
-   See https://developer.chrome.com/extensions/languageSettingsPrivate#method-getSpellcheckWords."
-  ([#_callback] (gen-call :function ::get-spellcheck-words &form)))
+
+     |words| - ?"
+  ([] (gen-call :function ::get-spellcheck-words &form)))
 
 (defmacro add-spellcheck-word
   "Adds a word to the custom dictionary.
-   
-     |word| - See https://developer.chrome.com/extensions/languageSettingsPrivate#property-addSpellcheckWord-word.
-   
-   See https://developer.chrome.com/extensions/languageSettingsPrivate#method-addSpellcheckWord."
+
+     |word| - ?"
   ([word] (gen-call :function ::add-spellcheck-word &form word)))
 
 (defmacro remove-spellcheck-word
   "Removes a word from the custom dictionary.
-   
-     |word| - See https://developer.chrome.com/extensions/languageSettingsPrivate#property-removeSpellcheckWord-word.
-   
-   See https://developer.chrome.com/extensions/languageSettingsPrivate#method-removeSpellcheckWord."
+
+     |word| - ?"
   ([word] (gen-call :function ::remove-spellcheck-word &form word)))
 
 (defmacro get-translate-target-language
   "Gets the translate target language (in most cases, the display locale).
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [languageCode] where:
-   
-     |languageCode| - See https://developer.chrome.com/extensions/languageSettingsPrivate#property-callback-languageCode.
-   
-   See https://developer.chrome.com/extensions/languageSettingsPrivate#method-getTranslateTargetLanguage."
-  ([#_callback] (gen-call :function ::get-translate-target-language &form)))
+   Signature of the result value put on the channel is [language-code] where:
+
+     |language-code| - ?"
+  ([] (gen-call :function ::get-translate-target-language &form)))
 
 (defmacro get-input-method-lists
   "Gets all supported input methods, including third-party IMEs. Chrome OS only.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [lists] where:
-   
-     |lists| - See https://developer.chrome.com/extensions/languageSettingsPrivate#property-callback-lists.
-   
-   See https://developer.chrome.com/extensions/languageSettingsPrivate#method-getInputMethodLists."
-  ([#_callback] (gen-call :function ::get-input-method-lists &form)))
+
+     |lists| - ?"
+  ([] (gen-call :function ::get-input-method-lists &form)))
 
 (defmacro add-input-method
   "Adds the input method to the current user's list of enabled input methods, enabling the input method for the current user.
    Chrome OS only.
-   
-     |inputMethodId| - See
-                       https://developer.chrome.com/extensions/languageSettingsPrivate#property-addInputMethod-inputMethodId.
-   
-   See https://developer.chrome.com/extensions/languageSettingsPrivate#method-addInputMethod."
+
+     |input-method-id| - ?"
   ([input-method-id] (gen-call :function ::add-input-method &form input-method-id)))
 
 (defmacro remove-input-method
   "Removes the input method from the current user's list of enabled input methods, disabling the input method for the current
    user. Chrome OS only.
-   
-     |inputMethodId| - See
-                       https://developer.chrome.com/extensions/languageSettingsPrivate#property-removeInputMethod-inputMethod
-                       Id.
-   
-   See https://developer.chrome.com/extensions/languageSettingsPrivate#method-removeInputMethod."
+
+     |input-method-id| - ?"
   ([input-method-id] (gen-call :function ::remove-input-method &form input-method-id)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -124,38 +98,43 @@
 (defmacro tap-on-spellcheck-dictionaries-changed-events
   "Called when the pref for the dictionaries used for spell checking changes or the status of one of the spell check
    dictionaries changes.
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/languageSettingsPrivate#event-onSpellcheckDictionariesChanged."
+
+   Events will be put on the |channel| with signature [::on-spellcheck-dictionaries-changed [statuses]] where:
+
+     |statuses| - ?
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-spellcheck-dictionaries-changed &form channel args)))
 
 (defmacro tap-on-custom-dictionary-changed-events
   "Called when words are added to and/or removed from the custom spell check dictionary.
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/languageSettingsPrivate#event-onCustomDictionaryChanged."
+
+   Events will be put on the |channel| with signature [::on-custom-dictionary-changed [words-added words-removed]] where:
+
+     |words-added| - ?
+     |words-removed| - ?
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-custom-dictionary-changed &form channel args)))
 
 (defmacro tap-on-input-method-added-events
   "Called when an input method is added.
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/languageSettingsPrivate#event-onInputMethodAdded."
+
+   Events will be put on the |channel| with signature [::on-input-method-added [input-method-id]] where:
+
+     |input-method-id| - ?
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-input-method-added &form channel args)))
 
 (defmacro tap-on-input-method-removed-events
   "Called when an input method is removed.
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/languageSettingsPrivate#event-onInputMethodRemoved."
+
+   Events will be put on the |channel| with signature [::on-input-method-removed [input-method-id]] where:
+
+     |input-method-id| - ?
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-input-method-removed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

@@ -1,6 +1,5 @@
 (ns chromex.app.terminal-private
-  "  * available since Chrome 18
-     * https://developer.chrome.com/extensions/terminalPrivate"
+  "  * available since Chrome 18"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -14,68 +13,58 @@
 
 (defmacro open-terminal-process
   "Starts new process.
-   
-     |processName| - Name of the process to open. Initially only 'crosh' is supported. Another processes may be added in
-                     future.
-   
+
+     |process-name| - Name of the process to open. Initially only 'crosh' is supported. Another processes may be added in
+                      future.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [pid] where:
-   
-     |pid| - Id of the launched process.
-   
-   See https://developer.chrome.com/extensions/terminalPrivate#method-openTerminalProcess."
-  ([process-name #_callback] (gen-call :function ::open-terminal-process &form process-name)))
+
+     |pid| - Id of the launched process."
+  ([process-name] (gen-call :function ::open-terminal-process &form process-name)))
 
 (defmacro close-terminal-process
   "Closes previousy opened process.
-   
+
      |pid| - Process id of the process we want to close.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [success] where:
-   
-     |success| - See https://developer.chrome.com/extensions/terminalPrivate#property-callback-success.
-   
-   See https://developer.chrome.com/extensions/terminalPrivate#method-closeTerminalProcess."
-  ([pid #_callback] (gen-call :function ::close-terminal-process &form pid)))
+
+     |success| - ?"
+  ([pid] (gen-call :function ::close-terminal-process &form pid)))
 
 (defmacro send-input
   "Sends input that will be routed to stdin of the process with the specified id.
-   
+
      |pid| - The id of the process to which we want to send input.
      |input| - Input we are sending to the process.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [success] where:
-   
-     |success| - See https://developer.chrome.com/extensions/terminalPrivate#property-callback-success.
-   
-   See https://developer.chrome.com/extensions/terminalPrivate#method-sendInput."
-  ([pid input #_callback] (gen-call :function ::send-input &form pid input)))
+
+     |success| - ?"
+  ([pid input] (gen-call :function ::send-input &form pid input)))
 
 (defmacro on-terminal-resize
   "Notify the process with the id id that terminal window size has changed.
-   
+
      |pid| - The id of the process.
      |width| - New window width (as column count).
      |height| - New window height (as row count).
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [success] where:
-   
-     |success| - See https://developer.chrome.com/extensions/terminalPrivate#property-callback-success.
-   
-   See https://developer.chrome.com/extensions/terminalPrivate#method-onTerminalResize."
-  ([pid width height #_callback] (gen-call :function ::on-terminal-resize &form pid width height)))
+
+     |success| - ?"
+  ([pid width height] (gen-call :function ::on-terminal-resize &form pid width height)))
 
 (defmacro ack-output
   "Called from |onProcessOutput| when the event is dispatched to terminal extension. Observing the terminal process output
    will be paused after |onProcessOutput| is dispatched until this method is called.
-   
-     |tabId| - Tab ID from |onProcessOutput| event.
-     |pid| - The id of the process to which |onProcessOutput| was dispatched.
-   
-   See https://developer.chrome.com/extensions/terminalPrivate#method-ackOutput."
+
+     |tab-id| - Tab ID from |onProcessOutput| event.
+     |pid| - The id of the process to which |onProcessOutput| was dispatched."
   ([tab-id pid] (gen-call :function ::ack-output &form tab-id pid)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -86,11 +75,14 @@
   "Fired when an opened process writes something to its output. Observing further process output will be blocked until
    |ackOutput| for the terminal is called. Internally, first event argument will be ID of the tab that contains terminal
    instance for which this event is intended. This argument will be stripped before passing the event to the extension.
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/terminalPrivate#event-onProcessOutput."
+
+   Events will be put on the |channel| with signature [::on-process-output [pid type text]] where:
+
+     |pid| - Id of the process from which the output came.
+     |type| - Type of the output stream from which output came. When process exits, output type will be set to exit
+     |text| - Text that was written to the output stream.
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-process-output &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

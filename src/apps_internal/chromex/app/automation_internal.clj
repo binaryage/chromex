@@ -2,9 +2,8 @@
   "This is the implementation layer of the chrome.automation API, and is
    essentially a translation of the internal accessibility tree update system
    into an extension API.
-   
-     * available since Chrome 50
-     * https://developer.chrome.com/extensions/automationInternal"
+
+     * available since Chrome 50"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -19,60 +18,47 @@
 (defmacro enable-tab
   "Enable automation of the tab with the given id, or the active tab if no tab id is given, and retrieves accessibility tree
    id for use in future updates.
-   
-     |args| - See https://developer.chrome.com/extensions/automationInternal#property-enableTab-args.
-   
+
+     |args| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [tree_id] where:
-   
-     |tree_id| - See https://developer.chrome.com/extensions/automationInternal#property-callback-tree_id.
-   
-   See https://developer.chrome.com/extensions/automationInternal#method-enableTab."
-  ([args #_callback] (gen-call :function ::enable-tab &form args)))
+   Signature of the result value put on the channel is [tree-id] where:
+
+     |tree-id| - ?"
+  ([args] (gen-call :function ::enable-tab &form args)))
 
 (defmacro enable-frame
   "Enable automation of the frame with the given tree id.
-   
-     |tree_id| - See https://developer.chrome.com/extensions/automationInternal#property-enableFrame-tree_id.
-   
-   See https://developer.chrome.com/extensions/automationInternal#method-enableFrame."
+
+     |tree-id| - ?"
   ([tree-id] (gen-call :function ::enable-frame &form tree-id)))
 
 (defmacro enable-desktop
   "Enables desktop automation.
-   
-     |routingID| - See https://developer.chrome.com/extensions/automationInternal#property-enableDesktop-routingID.
-   
+
+     |routing-id| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/automationInternal#method-enableDesktop."
-  ([routing-id #_callback] (gen-call :function ::enable-desktop &form routing-id)))
+   Signature of the result value put on the channel is []."
+  ([routing-id] (gen-call :function ::enable-desktop &form routing-id)))
 
 (defmacro perform-action
   "Performs an action on an automation node.
-   
-     |args| - See https://developer.chrome.com/extensions/automationInternal#property-performAction-args.
-     |opt_args| - See https://developer.chrome.com/extensions/automationInternal#property-performAction-opt_args.
-   
-   See https://developer.chrome.com/extensions/automationInternal#method-performAction."
+
+     |args| - ?
+     |opt-args| - ?"
   ([args opt-args] (gen-call :function ::perform-action &form args opt-args)))
 
 (defmacro query-selector
   "Performs a query selector query.
-   
-     |args| - See https://developer.chrome.com/extensions/automationInternal#property-querySelector-args.
-   
+
+     |args| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [resultAutomationNodeID] where:
-   
-     |resultAutomationNodeID| - See
-   
-   https://developer.chrome.com/extensions/automationInternal#property-callback-resultAutomationNo
-                                deID.
-   
-   See https://developer.chrome.com/extensions/automationInternal#method-querySelector."
-  ([args #_callback] (gen-call :function ::query-selector &form args)))
+   Signature of the result value put on the channel is [result-automation-node-id] where:
+
+     |result-automation-node-id| - ?"
+  ([args] (gen-call :function ::query-selector &form args)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -80,47 +66,53 @@
 
 (defmacro tap-on-accessibility-event-events
   "Fired when an accessibility event occurs
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/automationInternal#event-onAccessibilityEvent."
+
+   Events will be put on the |channel| with signature [::on-accessibility-event [update]] where:
+
+     |update| - ?
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-accessibility-event &form channel args)))
 
 (defmacro tap-on-accessibility-tree-destroyed-events
   "
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/automationInternal#event-onAccessibilityTreeDestroyed."
+   Events will be put on the |channel| with signature [::on-accessibility-tree-destroyed [tree-id]] where:
+
+     |tree-id| - ?
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-accessibility-tree-destroyed &form channel args)))
 
 (defmacro tap-on-tree-change-events
   "
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/automationInternal#event-onTreeChange."
+   Events will be put on the |channel| with signature [::on-tree-change [observer-id tree-id node-id change-type]] where:
+
+     |observer-id| - ?
+     |tree-id| - ?
+     |node-id| - ?
+     |change-type| - ?
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-tree-change &form channel args)))
 
 (defmacro tap-on-child-tree-id-events
   "
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/automationInternal#event-onChildTreeID."
+   Events will be put on the |channel| with signature [::on-child-tree-id [tree-id node-id]] where:
+
+     |tree-id| - ?
+     |node-id| - ?
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-child-tree-id &form channel args)))
 
 (defmacro tap-on-nodes-removed-events
   "
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/automationInternal#event-onNodesRemoved."
+   Events will be put on the |channel| with signature [::on-nodes-removed [tree-id node-i-ds]] where:
+
+     |tree-id| - ?
+     |node-i-ds| - ?
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-nodes-removed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

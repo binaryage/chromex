@@ -1,6 +1,5 @@
 (ns chromex.app.dashboard-private
-  "  * available since Chrome 46
-     * https://developer.chrome.com/extensions/dashboardPrivate"
+  "  * available since Chrome 46"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -14,33 +13,25 @@
 
 (defmacro show-permission-prompt-for-delegated-install
   "Shows a permission prompt for the given extension, for installing to a different account.
-   
-     |details| - See
-                 https://developer.chrome.com/extensions/dashboardPrivate#property-showPermissionPromptForDelegatedInstall-de
-                 tails.
-   
+
+     |details| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
+
      |result| - A string result code, which will be empty upon success. The possible values in the case of errors include
-                'unknown_error', 'user_cancelled', 'manifest_error', 'icon_error', 'invalid_id', and 'invalid_icon_url'.
-   
-   See https://developer.chrome.com/extensions/dashboardPrivate#method-showPermissionPromptForDelegatedInstall."
-  ([details #_callback] (gen-call :function ::show-permission-prompt-for-delegated-install &form details)))
+                'unknown_error', 'user_cancelled', 'manifest_error', 'icon_error', 'invalid_id', and 'invalid_icon_url'."
+  ([details] (gen-call :function ::show-permission-prompt-for-delegated-install &form details)))
 
 (defmacro show-permission-prompt-for-delegated-bundle-install
   "Shows a permission prompt for the given bundle, for installing to a different account.
-   
-     |details| - See
-                 https://developer.chrome.com/extensions/dashboardPrivate#property-showPermissionPromptForDelegatedBundleInst
-                 all-details.
+
+     |details| - ?
      |contents| - An array of extension details to be installed.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/dashboardPrivate#method-showPermissionPromptForDelegatedBundleInstall."
-  ([details contents #_callback] (gen-call :function ::show-permission-prompt-for-delegated-bundle-install &form details contents)))
+   Signature of the result value put on the channel is []."
+  ([details contents] (gen-call :function ::show-permission-prompt-for-delegated-bundle-install &form details contents)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 

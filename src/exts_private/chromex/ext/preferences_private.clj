@@ -1,6 +1,5 @@
 (ns chromex.ext.preferences-private
-  "  * available since Chrome 36
-     * https://developer.chrome.com/extensions/preferencesPrivate"
+  "  * available since Chrome 36"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -14,15 +13,11 @@
 
 (defmacro get-easy-unlock-proximity-required
   "If true, a remote Easy Unlock device can only unlock the local device if it is in very close proximity (roughly, within a
-   foot). This preference's value is a boolean, defaulting to false.
-   
-   See https://developer.chrome.com/extensions/preferencesPrivate#property-easyUnlockProximityRequired."
+   foot). This preference's value is a boolean, defaulting to false."
   ([] (gen-call :property ::easy-unlock-proximity-required &form)))
 
 (defmacro get-google-geolocation-access-enabled
-  "If enabled, Google services can access the user's location. This preference's value is a boolean, defaulting to false.
-   
-   See https://developer.chrome.com/extensions/preferencesPrivate#property-googleGeolocationAccessEnabled."
+  "If enabled, Google services can access the user's location. This preference's value is a boolean, defaulting to false."
   ([] (gen-call :property ::google-geolocation-access-enabled &form)))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
@@ -30,14 +25,12 @@
 (defmacro get-sync-categories-without-passphrase
   "Returns a list of sync categories the user has enabled without using a custom passphrase for encryption. The possible
    values are those that can be returned from syncer::ModelTypeToString in sync/syncable/model_type.cc.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [categories] where:
-   
-     |categories| - See https://developer.chrome.com/extensions/preferencesPrivate#property-callback-categories.
-   
-   See https://developer.chrome.com/extensions/preferencesPrivate#method-getSyncCategoriesWithoutPassphrase."
-  ([#_callback] (gen-call :function ::get-sync-categories-without-passphrase &form)))
+
+     |categories| - ?"
+  ([] (gen-call :function ::get-sync-categories-without-passphrase &form)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 

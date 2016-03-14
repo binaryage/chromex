@@ -1,8 +1,7 @@
 (ns chromex.ext.mojo-private
   "The chrome.mojoPrivate API provides access to the mojo modules.
-   
-     * available since Chrome 42
-     * https://developer.chrome.com/extensions/mojoPrivate"
+
+     * available since Chrome 42"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -16,25 +15,21 @@
 
 (defmacro define
   "Defines a AMD module.
-   
-     |moduleName| - See https://developer.chrome.com/extensions/mojoPrivate#property-define-moduleName.
-     |dependencies| - See https://developer.chrome.com/extensions/mojoPrivate#property-define-dependencies.
-   
+
+     |module-name| - ?
+     |dependencies| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [modules] where:
-   
-     |modules| - See https://developer.chrome.com/extensions/mojoPrivate#property-factory-modules.
-   
-   See https://developer.chrome.com/extensions/mojoPrivate#method-define."
-  ([module-name dependencies #_factory] (gen-call :function ::define &form module-name dependencies))
+
+     |modules| - ?"
+  ([module-name dependencies] (gen-call :function ::define &form module-name dependencies))
   ([module-name] `(define ~module-name :omit)))
 
 (defmacro require-async
   "Returns a promise that will resolve to an asynchronously loaded module.
-   
-     |name| - See https://developer.chrome.com/extensions/mojoPrivate#property-requireAsync-name.
-   
-   See https://developer.chrome.com/extensions/mojoPrivate#method-requireAsync."
+
+     |name| - ?"
   ([name] (gen-call :function ::require-async &form name)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

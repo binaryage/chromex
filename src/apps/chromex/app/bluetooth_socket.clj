@@ -1,9 +1,9 @@
 (ns chromex.app.bluetooth-socket
   "Use the chrome.bluetoothSocket API to send and receive data
    to Bluetooth devices using RFCOMM and L2CAP connections.
-   
+
      * available since Chrome 37
-     * https://developer.chrome.com/extensions/bluetoothSocket"
+     * https://developer.chrome.com/apps/bluetoothSocket"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -17,29 +17,29 @@
 
 (defmacro create
   "Creates a Bluetooth socket.
-   
+
      |properties| - The socket properties (optional).
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [createInfo] where:
-   
-     |createInfo| - The result of the socket creation.
-   
-   See https://developer.chrome.com/extensions/bluetoothSocket#method-create."
-  ([properties #_callback] (gen-call :function ::create &form properties))
+   Signature of the result value put on the channel is [create-info] where:
+
+     |create-info| - The result of the socket creation.
+
+   https://developer.chrome.com/apps/bluetoothSocket#method-create."
+  ([properties] (gen-call :function ::create &form properties))
   ([] `(create :omit)))
 
 (defmacro update
   "Updates the socket properties.
-   
-     |socketId| - The socket identifier.
+
+     |socket-id| - The socket identifier.
      |properties| - The properties to update.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/bluetoothSocket#method-update."
-  ([socket-id properties #_callback] (gen-call :function ::update &form socket-id properties)))
+
+   https://developer.chrome.com/apps/bluetoothSocket#method-update."
+  ([socket-id properties] (gen-call :function ::update &form socket-id properties)))
 
 (defmacro set-paused
   "Enables or disables a connected socket from receiving messages from its peer, or a listening socket from accepting new
@@ -48,42 +48,42 @@
    onReceive events are raised again when messages are received. When a listening socket is paused, new connections are
    accepted until its backlog is full then additional connection requests are refused. onAccept events are raised only when
    the socket is un-paused.
-   
-     |socketId| - See https://developer.chrome.com/extensions/bluetoothSocket#property-setPaused-socketId.
-     |paused| - See https://developer.chrome.com/extensions/bluetoothSocket#property-setPaused-paused.
-   
+
+     |socket-id| - https://developer.chrome.com/apps/bluetoothSocket#property-setPaused-socketId.
+     |paused| - https://developer.chrome.com/apps/bluetoothSocket#property-setPaused-paused.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/bluetoothSocket#method-setPaused."
-  ([socket-id paused #_callback] (gen-call :function ::set-paused &form socket-id paused)))
+
+   https://developer.chrome.com/apps/bluetoothSocket#method-setPaused."
+  ([socket-id paused] (gen-call :function ::set-paused &form socket-id paused)))
 
 (defmacro listen-using-rfcomm
   "Listen for connections using the RFCOMM protocol.
-   
-     |socketId| - The socket identifier.
+
+     |socket-id| - The socket identifier.
      |uuid| - Service UUID to listen on.
      |options| - Optional additional options for the service.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/bluetoothSocket#method-listenUsingRfcomm."
-  ([socket-id uuid options #_callback] (gen-call :function ::listen-using-rfcomm &form socket-id uuid options))
+
+   https://developer.chrome.com/apps/bluetoothSocket#method-listenUsingRfcomm."
+  ([socket-id uuid options] (gen-call :function ::listen-using-rfcomm &form socket-id uuid options))
   ([socket-id uuid] `(listen-using-rfcomm ~socket-id ~uuid :omit)))
 
 (defmacro listen-using-l2cap
   "Listen for connections using the L2CAP protocol.
-   
-     |socketId| - The socket identifier.
+
+     |socket-id| - The socket identifier.
      |uuid| - Service UUID to listen on.
      |options| - Optional additional options for the service.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/bluetoothSocket#method-listenUsingL2cap."
-  ([socket-id uuid options #_callback] (gen-call :function ::listen-using-l2cap &form socket-id uuid options))
+
+   https://developer.chrome.com/apps/bluetoothSocket#method-listenUsingL2cap."
+  ([socket-id uuid options] (gen-call :function ::listen-using-l2cap &form socket-id uuid options))
   ([socket-id uuid] `(listen-using-l2cap ~socket-id ~uuid :omit)))
 
 (defmacro connect
@@ -91,77 +91,77 @@
    raised when data is received from the peer. If a network error occur while the runtime is receiving packets, a
    onReceiveError event is raised, at which point no more onReceive event will be raised for this socket until the
    setPaused(false) method is called.
-   
-     |socketId| - The socket identifier.
+
+     |socket-id| - The socket identifier.
      |address| - The address of the Bluetooth device.
      |uuid| - The UUID of the service to connect to.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/bluetoothSocket#method-connect."
-  ([socket-id address uuid #_callback] (gen-call :function ::connect &form socket-id address uuid)))
+
+   https://developer.chrome.com/apps/bluetoothSocket#method-connect."
+  ([socket-id address uuid] (gen-call :function ::connect &form socket-id address uuid)))
 
 (defmacro disconnect
   "Disconnects the socket. The socket identifier remains valid.
-   
-     |socketId| - The socket identifier.
-   
+
+     |socket-id| - The socket identifier.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/bluetoothSocket#method-disconnect."
-  ([socket-id #_callback] (gen-call :function ::disconnect &form socket-id)))
+
+   https://developer.chrome.com/apps/bluetoothSocket#method-disconnect."
+  ([socket-id] (gen-call :function ::disconnect &form socket-id)))
 
 (defmacro close
   "Disconnects and destroys the socket. Each socket created should be closed after use. The socket id is no longer valid as
    soon at the function is called. However, the socket is guaranteed to be closed only when the callback is invoked.
-   
-     |socketId| - The socket identifier.
-   
+
+     |socket-id| - The socket identifier.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/bluetoothSocket#method-close."
-  ([socket-id #_callback] (gen-call :function ::close &form socket-id)))
+
+   https://developer.chrome.com/apps/bluetoothSocket#method-close."
+  ([socket-id] (gen-call :function ::close &form socket-id)))
 
 (defmacro send
   "Sends data on the given Bluetooth socket.
-   
-     |socketId| - The socket identifier.
+
+     |socket-id| - The socket identifier.
      |data| - The data to send.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [bytesSent] where:
-   
-     |bytesSent| - The number of bytes sent.
-   
-   See https://developer.chrome.com/extensions/bluetoothSocket#method-send."
-  ([socket-id data #_callback] (gen-call :function ::send &form socket-id data)))
+   Signature of the result value put on the channel is [bytes-sent] where:
+
+     |bytes-sent| - The number of bytes sent.
+
+   https://developer.chrome.com/apps/bluetoothSocket#method-send."
+  ([socket-id data] (gen-call :function ::send &form socket-id data)))
 
 (defmacro get-info
   "Retrieves the state of the given socket.
-   
-     |socketId| - The socket identifier.
-   
+
+     |socket-id| - The socket identifier.
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [socketInfo] where:
-   
-     |socketInfo| - Object containing the socket information.
-   
-   See https://developer.chrome.com/extensions/bluetoothSocket#method-getInfo."
-  ([socket-id #_callback] (gen-call :function ::get-info &form socket-id)))
+   Signature of the result value put on the channel is [socket-info] where:
+
+     |socket-info| - Object containing the socket information.
+
+   https://developer.chrome.com/apps/bluetoothSocket#method-getInfo."
+  ([socket-id] (gen-call :function ::get-info &form socket-id)))
 
 (defmacro get-sockets
   "Retrieves the list of currently opened sockets owned by the application.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [sockets] where:
-   
-     |sockets| - See https://developer.chrome.com/extensions/bluetoothSocket#property-callback-sockets.
-   
-   See https://developer.chrome.com/extensions/bluetoothSocket#method-getSockets."
-  ([#_callback] (gen-call :function ::get-sockets &form)))
+
+     |sockets| - https://developer.chrome.com/apps/bluetoothSocket#property-callback-sockets.
+
+   https://developer.chrome.com/apps/bluetoothSocket#method-getSockets."
+  ([] (gen-call :function ::get-sockets &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -169,40 +169,52 @@
 
 (defmacro tap-on-accept-events
   "Event raised when a connection has been established for a given socket.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-accept [info]] where:
+
+     |info| - The event data.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/bluetoothSocket#event-onAccept."
+
+   https://developer.chrome.com/apps/bluetoothSocket#event-onAccept."
   ([channel & args] (apply gen-call :event ::on-accept &form channel args)))
 
 (defmacro tap-on-accept-error-events
   "Event raised when a network error occurred while the runtime was waiting for new connections on the given socket. Once this
    event is raised, the socket is set to paused and no more onAccept events are raised for this socket.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-accept-error [info]] where:
+
+     |info| - The event data.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/bluetoothSocket#event-onAcceptError."
+
+   https://developer.chrome.com/apps/bluetoothSocket#event-onAcceptError."
   ([channel & args] (apply gen-call :event ::on-accept-error &form channel args)))
 
 (defmacro tap-on-receive-events
   "Event raised when data has been received for a given socket.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-receive [info]] where:
+
+     |info| - The event data.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/bluetoothSocket#event-onReceive."
+
+   https://developer.chrome.com/apps/bluetoothSocket#event-onReceive."
   ([channel & args] (apply gen-call :event ::on-receive &form channel args)))
 
 (defmacro tap-on-receive-error-events
   "Event raised when a network error occured while the runtime was waiting for data on the socket. Once this event is raised,
    the socket is set to paused and no more onReceive events are raised for this socket.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-receive-error [info]] where:
+
+     |info| - The event data.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/bluetoothSocket#event-onReceiveError."
+
+   https://developer.chrome.com/apps/bluetoothSocket#event-onReceiveError."
   ([channel & args] (apply gen-call :event ::on-receive-error &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

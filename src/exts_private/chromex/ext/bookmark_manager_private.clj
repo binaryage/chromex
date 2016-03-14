@@ -1,6 +1,5 @@
 (ns chromex.ext.bookmark-manager-private
-  "  * available since Chrome 24
-     * https://developer.chrome.com/extensions/bookmarkManagerPrivate"
+  "  * available since Chrome 24"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -14,234 +13,190 @@
 
 (defmacro copy
   "Copies the given bookmarks into the clipboard.
-   
-     |idList| - An array of string-valued ids
-   
+
+     |id-list| - An array of string-valued ids
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/bookmarkManagerPrivate#method-copy."
-  ([id-list #_callback] (gen-call :function ::copy &form id-list)))
+   Signature of the result value put on the channel is []."
+  ([id-list] (gen-call :function ::copy &form id-list)))
 
 (defmacro cut
   "Cuts the given bookmarks into the clipboard.
-   
-     |idList| - An array of string-valued ids
-   
+
+     |id-list| - An array of string-valued ids
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/bookmarkManagerPrivate#method-cut."
-  ([id-list #_callback] (gen-call :function ::cut &form id-list)))
+   Signature of the result value put on the channel is []."
+  ([id-list] (gen-call :function ::cut &form id-list)))
 
 (defmacro paste
   "Pastes bookmarks from the clipboard into the parent folder after the last selected node.
-   
-     |parentId| - See https://developer.chrome.com/extensions/bookmarkManagerPrivate#property-paste-parentId.
-     |selectedIdList| - An array of string-valued ids for selected bookmarks.
-   
+
+     |parent-id| - ?
+     |selected-id-list| - An array of string-valued ids for selected bookmarks.
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/bookmarkManagerPrivate#method-paste."
-  ([parent-id selected-id-list #_callback] (gen-call :function ::paste &form parent-id selected-id-list))
+   Signature of the result value put on the channel is []."
+  ([parent-id selected-id-list] (gen-call :function ::paste &form parent-id selected-id-list))
   ([parent-id] `(paste ~parent-id :omit)))
 
 (defmacro can-paste
   "Whether there are any bookmarks that can be pasted.
-   
-     |parentId| - The ID of the folder to paste into.
-   
+
+     |parent-id| - The ID of the folder to paste into.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - See https://developer.chrome.com/extensions/bookmarkManagerPrivate#property-callback-result.
-   
-   See https://developer.chrome.com/extensions/bookmarkManagerPrivate#method-canPaste."
-  ([parent-id #_callback] (gen-call :function ::can-paste &form parent-id)))
+
+     |result| - ?"
+  ([parent-id] (gen-call :function ::can-paste &form parent-id)))
 
 (defmacro sort-children
   "Sorts the children of a given folder.
-   
-     |parentId| - The ID of the folder to sort the children of.
-   
-   See https://developer.chrome.com/extensions/bookmarkManagerPrivate#method-sortChildren."
+
+     |parent-id| - The ID of the folder to sort the children of."
   ([parent-id] (gen-call :function ::sort-children &form parent-id)))
 
 (defmacro get-strings
   "Gets the i18n strings for the bookmark manager.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - See https://developer.chrome.com/extensions/bookmarkManagerPrivate#property-callback-result.
-   
-   See https://developer.chrome.com/extensions/bookmarkManagerPrivate#method-getStrings."
-  ([#_callback] (gen-call :function ::get-strings &form)))
+
+     |result| - ?"
+  ([] (gen-call :function ::get-strings &form)))
 
 (defmacro start-drag
   "Begins dragging a set of bookmarks.
-   
-     |idList| - An array of string-valued ids.
-     |isFromTouch| - True if the drag was initiated from touch.
-   
-   See https://developer.chrome.com/extensions/bookmarkManagerPrivate#method-startDrag."
+
+     |id-list| - An array of string-valued ids.
+     |is-from-touch| - True if the drag was initiated from touch."
   ([id-list is-from-touch] (gen-call :function ::start-drag &form id-list is-from-touch)))
 
 (defmacro drop
   "Performs the drop action of the drag and drop session.
-   
-     |parentId| - The ID of the folder that the drop was made.
+
+     |parent-id| - The ID of the folder that the drop was made.
      |index| - The index of the position to drop at. If left out the dropped items will be placed at the end of the existing
-               children.
-   
-   See https://developer.chrome.com/extensions/bookmarkManagerPrivate#method-drop."
+               children."
   ([parent-id index] (gen-call :function ::drop &form parent-id index))
   ([parent-id] `(drop ~parent-id :omit)))
 
 (defmacro get-subtree
   "Retrieves a bookmark hierarchy from the given node.  If the node id is empty, it is the full tree.  If foldersOnly is true,
    it will only return folders, not actual bookmarks.
-   
+
      |id| - ID of the root of the tree to pull.  If empty, the entire tree will be returned.
-     |foldersOnly| - Pass true to only return folders.
-   
+     |folders-only| - Pass true to only return folders.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [results] where:
-   
-     |results| - See https://developer.chrome.com/extensions/bookmarkManagerPrivate#property-callback-results.
-   
-   See https://developer.chrome.com/extensions/bookmarkManagerPrivate#method-getSubtree."
-  ([id folders-only #_callback] (gen-call :function ::get-subtree &form id folders-only)))
+
+     |results| - ?"
+  ([id folders-only] (gen-call :function ::get-subtree &form id folders-only)))
 
 (defmacro can-edit
   "Whether bookmarks can be modified.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - See https://developer.chrome.com/extensions/bookmarkManagerPrivate#property-callback-result.
-   
-   See https://developer.chrome.com/extensions/bookmarkManagerPrivate#method-canEdit."
-  ([#_callback] (gen-call :function ::can-edit &form)))
+
+     |result| - ?"
+  ([] (gen-call :function ::can-edit &form)))
 
 (defmacro can-open-new-windows
   "Whether bookmarks can be opened in new windows.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - See https://developer.chrome.com/extensions/bookmarkManagerPrivate#property-callback-result.
-   
-   See https://developer.chrome.com/extensions/bookmarkManagerPrivate#method-canOpenNewWindows."
-  ([#_callback] (gen-call :function ::can-open-new-windows &form)))
+
+     |result| - ?"
+  ([] (gen-call :function ::can-open-new-windows &form)))
 
 (defmacro remove-trees
   "Recursively removes list of bookmarks nodes.
-   
-     |idList| - An array of string-valued ids.
-   
-   This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/bookmarkManagerPrivate#method-removeTrees."
-  ([id-list #_callback] (gen-call :function ::remove-trees &form id-list)))
 
-(defmacro record-launch
-  "
-   
-   See https://developer.chrome.com/extensions/bookmarkManagerPrivate#method-recordLaunch."
-  ([] (gen-call :function ::record-launch &form)))
+     |id-list| - An array of string-valued ids.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is []."
+  ([id-list] (gen-call :function ::remove-trees &form id-list)))
+
+(defmacro record-launch ([] (gen-call :function ::record-launch &form)))
 
 (defmacro create-with-meta-info
   "Mimics the functionality of bookmarks.create, but will additionally set the given meta info fields.
-   
-     |bookmark| - See https://developer.chrome.com/extensions/bookmarkManagerPrivate#property-createWithMetaInfo-bookmark.
-     |metaInfo| - See https://developer.chrome.com/extensions/bookmarkManagerPrivate#property-createWithMetaInfo-metaInfo.
-   
+
+     |bookmark| - ?
+     |meta-info| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - See https://developer.chrome.com/extensions/bookmarkManagerPrivate#property-callback-result.
-   
-   See https://developer.chrome.com/extensions/bookmarkManagerPrivate#method-createWithMetaInfo."
-  ([bookmark meta-info #_callback] (gen-call :function ::create-with-meta-info &form bookmark meta-info)))
+
+     |result| - ?"
+  ([bookmark meta-info] (gen-call :function ::create-with-meta-info &form bookmark meta-info)))
 
 (defmacro get-meta-info
   "Gets meta info from a bookmark node.
-   
+
      |id| - The id of the bookmark to retrieve meta info from. If omitted meta info for all nodes is returned.
      |key| - The key for the meta info to retrieve. If omitted, all fields are returned.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [value] where:
-   
+
      |value| - If a key was given, the value of the specified field, if present. Otherwise an object containing all meta info
-               fields for the node. If id is not given then meta info for all nodes as an object with node id to meta info.
-   
-   See https://developer.chrome.com/extensions/bookmarkManagerPrivate#method-getMetaInfo."
-  ([id key #_callback] (gen-call :function ::get-meta-info &form id key))
+               fields for the node. If id is not given then meta info for all nodes as an object with node id to meta info."
+  ([id key] (gen-call :function ::get-meta-info &form id key))
   ([id] `(get-meta-info ~id :omit))
   ([] `(get-meta-info :omit :omit)))
 
 (defmacro set-meta-info
   "Sets a meta info value for a bookmark node.
-   
+
      |id| - The id of the bookmark node to set the meta info on.
      |key| - The key of the meta info to set.
      |value| - The meta info to set.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/bookmarkManagerPrivate#method-setMetaInfo."
-  ([id key value #_callback] (gen-call :function ::set-meta-info &form id key value)))
+   Signature of the result value put on the channel is []."
+  ([id key value] (gen-call :function ::set-meta-info &form id key value)))
 
 (defmacro update-meta-info
   "Updates a set of meta info values for a bookmark node.
-   
+
      |id| - The id of the bookmark node to update the meta info of.
-     |metaInfoChanges| - A set of meta info key/value pairs to update.
-   
+     |meta-info-changes| - A set of meta info key/value pairs to update.
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/bookmarkManagerPrivate#method-updateMetaInfo."
-  ([id meta-info-changes #_callback] (gen-call :function ::update-meta-info &form id meta-info-changes)))
+   Signature of the result value put on the channel is []."
+  ([id meta-info-changes] (gen-call :function ::update-meta-info &form id meta-info-changes)))
 
 (defmacro undo
-  "Performs an undo of the last change to the bookmark model.
-   
-   See https://developer.chrome.com/extensions/bookmarkManagerPrivate#method-undo."
+  "Performs an undo of the last change to the bookmark model."
   ([] (gen-call :function ::undo &form)))
 
 (defmacro redo
-  "Performs a redo of last undone change to the bookmark model.
-   
-   See https://developer.chrome.com/extensions/bookmarkManagerPrivate#method-redo."
+  "Performs a redo of last undone change to the bookmark model."
   ([] (gen-call :function ::redo &form)))
 
 (defmacro get-undo-info
   "Gets the information for the undo if available.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - See https://developer.chrome.com/extensions/bookmarkManagerPrivate#property-callback-result.
-   
-   See https://developer.chrome.com/extensions/bookmarkManagerPrivate#method-getUndoInfo."
-  ([#_callback] (gen-call :function ::get-undo-info &form)))
+
+     |result| - ?"
+  ([] (gen-call :function ::get-undo-info &form)))
 
 (defmacro get-redo-info
   "Gets the information for the redo if available.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - See https://developer.chrome.com/extensions/bookmarkManagerPrivate#property-callback-result.
-   
-   See https://developer.chrome.com/extensions/bookmarkManagerPrivate#method-getRedoInfo."
-  ([#_callback] (gen-call :function ::get-redo-info &form)))
+
+     |result| - ?"
+  ([] (gen-call :function ::get-redo-info &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -249,38 +204,43 @@
 
 (defmacro tap-on-drag-enter-events
   "Fired when dragging bookmarks over the document.
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/bookmarkManagerPrivate#event-onDragEnter."
+
+   Events will be put on the |channel| with signature [::on-drag-enter [bookmark-node-data]] where:
+
+     |bookmark-node-data| - ?
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-drag-enter &form channel args)))
 
 (defmacro tap-on-drag-leave-events
   "Fired when the drag and drop leaves the document.
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/bookmarkManagerPrivate#event-onDragLeave."
+
+   Events will be put on the |channel| with signature [::on-drag-leave [bookmark-node-data]] where:
+
+     |bookmark-node-data| - ?
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-drag-leave &form channel args)))
 
 (defmacro tap-on-drop-events
   "Fired when the user drops bookmarks on the document.
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/bookmarkManagerPrivate#event-onDrop."
+
+   Events will be put on the |channel| with signature [::on-drop [bookmark-node-data]] where:
+
+     |bookmark-node-data| - ?
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-drop &form channel args)))
 
 (defmacro tap-on-meta-info-changed-events
   "Fired when the meta info of a node changes.
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/bookmarkManagerPrivate#event-onMetaInfoChanged."
+
+   Events will be put on the |channel| with signature [::on-meta-info-changed [id meta-info-changes]] where:
+
+     |id| - ?
+     |meta-info-changes| - ?
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-meta-info-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

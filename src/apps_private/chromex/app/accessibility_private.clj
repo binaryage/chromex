@@ -1,6 +1,5 @@
 (ns chromex.app.accessibility-private
-  "  * available since Chrome 36
-     * https://developer.chrome.com/extensions/accessibilityPrivate"
+  "  * available since Chrome 36"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -15,30 +14,24 @@
 (defmacro set-native-accessibility-enabled
   "Enables or disables native accessibility support. Once disabled, it is up to the calling extension to provide accessibility
    for web contents.
-   
-     |enabled| - True if native accessibility support should be enabled.
-   
-   See https://developer.chrome.com/extensions/accessibilityPrivate#method-setNativeAccessibilityEnabled."
+
+     |enabled| - True if native accessibility support should be enabled."
   ([enabled] (gen-call :function ::set-native-accessibility-enabled &form enabled)))
 
 (defmacro set-focus-ring
   "Set the bounds of the accessibility focus ring.
-   
-     |rects| - Array of rectangles to draw the accessibility focus ring around.
-   
-   See https://developer.chrome.com/extensions/accessibilityPrivate#method-setFocusRing."
+
+     |rects| - Array of rectangles to draw the accessibility focus ring around."
   ([rects] (gen-call :function ::set-focus-ring &form rects)))
 
 (defmacro set-keyboard-listener
   "Sets the calling extension as a listener of all keyboard events optionally allowing the calling extension to
    capture/swallow the key event via DOM apis. Returns false via callback when unable to set the listener.
-   
+
      |enabled| - True if the caller wants to listen to key events; false to stop listening to events. Note that there is
                  only ever one extension listening to key events.
      |capture| - True if key events should be swallowed natively and not propagated if preventDefault() gets called by the
-                 extension's background page.
-   
-   See https://developer.chrome.com/extensions/accessibilityPrivate#method-setKeyboardListener."
+                 extension's background page."
   ([enabled capture] (gen-call :function ::set-keyboard-listener &form enabled capture)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -47,11 +40,10 @@
 
 (defmacro tap-on-introduce-chrome-vox-events
   "Fired whenever ChromeVox should output introduction.
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/accessibilityPrivate#event-onIntroduceChromeVox."
+
+   Events will be put on the |channel| with signature [::on-introduce-chrome-vox []].
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-introduce-chrome-vox &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

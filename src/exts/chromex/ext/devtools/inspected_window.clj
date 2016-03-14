@@ -2,7 +2,7 @@
   "Use the chrome.devtools.inspectedWindow API to interact with the inspected window: obtain the tab ID for the inspected
    page, evaluate the code in the context of the inspected window, reload the page, or obtain the list of resources within
    the page.
-   
+
      * available since Chrome 18
      * https://developer.chrome.com/extensions/devtools.inspectedWindow"
 
@@ -18,8 +18,8 @@
 
 (defmacro get-tab-id
   "The ID of the tab being inspected. This ID may be used with chrome.tabs.* API.
-   
-   See https://developer.chrome.com/extensions/devtools.inspectedWindow#property-tabId."
+
+   https://developer.chrome.com/extensions/devtools.inspectedWindow#property-tabId."
   ([] (gen-call :property ::tab-id &form)))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
@@ -31,39 +31,39 @@
    the case of a DevTools-side error, the isException parameter is non-null and has isError set to true and code set to an
    error code. In the case of a JavaScript error, isException is set to true and value is set to the string value of thrown
    object.
-   
+
      |expression| - An expression to evaluate.
      |options| - The options parameter can contain one or more options.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [result exceptionInfo] where:
-   
+   Signature of the result value put on the channel is [result exception-info] where:
+
      |result| - The result of evaluation.
-     |exceptionInfo| - An object providing details if an exception occurred while evaluating the expression.
-   
-   See https://developer.chrome.com/extensions/devtools.inspectedWindow#method-eval."
-  ([expression options #_callback] (gen-call :function ::eval &form expression options))
+     |exception-info| - An object providing details if an exception occurred while evaluating the expression.
+
+   https://developer.chrome.com/extensions/devtools.inspectedWindow#method-eval."
+  ([expression options] (gen-call :function ::eval &form expression options))
   ([expression] `(eval ~expression :omit)))
 
 (defmacro reload
   "Reloads the inspected page.
-   
-     |reloadOptions| - See https://developer.chrome.com/extensions/devtools.inspectedWindow#property-reload-reloadOptions.
-   
-   See https://developer.chrome.com/extensions/devtools.inspectedWindow#method-reload."
+
+     |reload-options| - https://developer.chrome.com/extensions/devtools.inspectedWindow#property-reload-reloadOptions.
+
+   https://developer.chrome.com/extensions/devtools.inspectedWindow#method-reload."
   ([reload-options] (gen-call :function ::reload &form reload-options))
   ([] `(reload :omit)))
 
 (defmacro get-resources
   "Retrieves the list of resources from the inspected page.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [resources] where:
-   
+
      |resources| - The resources within the page.
-   
-   See https://developer.chrome.com/extensions/devtools.inspectedWindow#method-getResources."
-  ([#_callback] (gen-call :function ::get-resources &form)))
+
+   https://developer.chrome.com/extensions/devtools.inspectedWindow#method-getResources."
+  ([] (gen-call :function ::get-resources &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -71,21 +71,28 @@
 
 (defmacro tap-on-resource-added-events
   "Fired when a new resource is added to the inspected page.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-resource-added [resource]] where:
+
+     |resource| - https://developer.chrome.com/extensions/devtools.inspectedWindow#property-onResourceAdded-resource.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/devtools.inspectedWindow#event-onResourceAdded."
+
+   https://developer.chrome.com/extensions/devtools.inspectedWindow#event-onResourceAdded."
   ([channel & args] (apply gen-call :event ::on-resource-added &form channel args)))
 
 (defmacro tap-on-resource-content-committed-events
   "Fired when a new revision of the resource is committed (e.g. user saves an edited version of the resource in the Developer
    Tools).
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-resource-content-committed [resource content]] where:
+
+     |resource| - https://developer.chrome.com/extensions/devtools.inspectedWindow#property-onResourceContentCommitted-resource.
+     |content| - New content of the resource.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/devtools.inspectedWindow#event-onResourceContentCommitted."
+
+   https://developer.chrome.com/extensions/devtools.inspectedWindow#event-onResourceContentCommitted."
   ([channel & args] (apply gen-call :event ::on-resource-content-committed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

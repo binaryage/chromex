@@ -1,8 +1,7 @@
 (ns chromex.app.users-private
   "Use the chrome.usersPrivate API to manage users.
-   
-     * available since Chrome 50
-     * https://developer.chrome.com/extensions/usersPrivate"
+
+     * available since Chrome 50"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -16,64 +15,54 @@
 
 (defmacro get-whitelisted-users
   "Gets a list of the currently whitelisted users.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [users] where:
-   
-     |users| - See https://developer.chrome.com/extensions/usersPrivate#property-callback-users.
-   
-   See https://developer.chrome.com/extensions/usersPrivate#method-getWhitelistedUsers."
-  ([#_callback] (gen-call :function ::get-whitelisted-users &form)))
+
+     |users| - ?"
+  ([] (gen-call :function ::get-whitelisted-users &form)))
 
 (defmacro add-whitelisted-user
   "Adds a new user with the given email to the whitelist. The callback is called with true if the user was added succesfully,
    or with false if not (e.g. because the user was already present, or the current user isn't the owner).
-   
-     |email| - See https://developer.chrome.com/extensions/usersPrivate#property-addWhitelistedUser-email.
-   
+
+     |email| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [success] where:
-   
-     |success| - See https://developer.chrome.com/extensions/usersPrivate#property-callback-success.
-   
-   See https://developer.chrome.com/extensions/usersPrivate#method-addWhitelistedUser."
-  ([email #_callback] (gen-call :function ::add-whitelisted-user &form email)))
+
+     |success| - ?"
+  ([email] (gen-call :function ::add-whitelisted-user &form email)))
 
 (defmacro remove-whitelisted-user
   "Removes the user with the given email from the whitelist. The callback is called with true if the user was removed
    succesfully, or with false if not (e.g. because the user was not already present, or the current user isn't the owner).
-   
-     |email| - See https://developer.chrome.com/extensions/usersPrivate#property-removeWhitelistedUser-email.
-   
+
+     |email| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [success] where:
-   
-     |success| - See https://developer.chrome.com/extensions/usersPrivate#property-callback-success.
-   
-   See https://developer.chrome.com/extensions/usersPrivate#method-removeWhitelistedUser."
-  ([email #_callback] (gen-call :function ::remove-whitelisted-user &form email)))
+
+     |success| - ?"
+  ([email] (gen-call :function ::remove-whitelisted-user &form email)))
 
 (defmacro is-current-user-owner
   "Whether the current user is the owner of the device.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [isOwner] where:
-   
-     |isOwner| - See https://developer.chrome.com/extensions/usersPrivate#property-callback-isOwner.
-   
-   See https://developer.chrome.com/extensions/usersPrivate#method-isCurrentUserOwner."
-  ([#_callback] (gen-call :function ::is-current-user-owner &form)))
+   Signature of the result value put on the channel is [is-owner] where:
+
+     |is-owner| - ?"
+  ([] (gen-call :function ::is-current-user-owner &form)))
 
 (defmacro is-whitelist-managed
   "Whether the whitelist is managed by enterprise.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [managed] where:
-   
-     |managed| - See https://developer.chrome.com/extensions/usersPrivate#property-callback-managed.
-   
-   See https://developer.chrome.com/extensions/usersPrivate#method-isWhitelistManaged."
-  ([#_callback] (gen-call :function ::is-whitelist-managed &form)))
+
+     |managed| - ?"
+  ([] (gen-call :function ::is-whitelist-managed &form)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 

@@ -3,7 +3,7 @@
    menubar, system tray, or other visible area provided by the OS.
    This is modelled after the other extension action APIs, such as
    chrome.browserAction and chrome.pageAction.
-   
+
      * available since Chrome 50
      * https://developer.chrome.com/extensions/systemIndicator"
 
@@ -21,25 +21,25 @@
   "Set the image to be used as an indicator icon, using a set of ImageData objects. These objects should have multiple
    resolutions so that an appropriate size can be selected for the given icon size and DPI scaling settings. Only square
    ImageData objects are accepted.
-   
-     |details| - See https://developer.chrome.com/extensions/systemIndicator#property-setIcon-details.
-   
+
+     |details| - https://developer.chrome.com/extensions/systemIndicator#property-setIcon-details.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/systemIndicator#method-setIcon."
-  ([details #_callback] (gen-call :function ::set-icon &form details)))
+
+   https://developer.chrome.com/extensions/systemIndicator#method-setIcon."
+  ([details] (gen-call :function ::set-icon &form details)))
 
 (defmacro enable
   "Show the icon in the status tray.
-   
-   See https://developer.chrome.com/extensions/systemIndicator#method-enable."
+
+   https://developer.chrome.com/extensions/systemIndicator#method-enable."
   ([] (gen-call :function ::enable &form)))
 
 (defmacro disable
   "Hide the icon from the status tray.
-   
-   See https://developer.chrome.com/extensions/systemIndicator#method-disable."
+
+   https://developer.chrome.com/extensions/systemIndicator#method-disable."
   ([] (gen-call :function ::disable &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -48,11 +48,12 @@
 
 (defmacro tap-on-clicked-events
   "Fired only when a click on the icon does not result in a menu being shown.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-clicked []].
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/systemIndicator#event-onClicked."
+
+   https://developer.chrome.com/extensions/systemIndicator#event-onClicked."
   ([channel & args] (apply gen-call :event ::on-clicked &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

@@ -1,7 +1,7 @@
 (ns chromex.ext.display-source
   "The chrome.displaySource API creates a Display
    session using WebMediaStreamTrack as sources.
-   
+
      * available since Chrome 50
      * https://developer.chrome.com/extensions/displaySource"
 
@@ -17,27 +17,27 @@
 
 (defmacro get-available-sinks
   "Queries the list of the currently available Display sinks.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - See https://developer.chrome.com/extensions/displaySource#property-callback-result.
-   
-   See https://developer.chrome.com/extensions/displaySource#method-getAvailableSinks."
-  ([#_callback] (gen-call :function ::get-available-sinks &form)))
+
+     |result| - https://developer.chrome.com/extensions/displaySource#property-callback-result.
+
+   https://developer.chrome.com/extensions/displaySource#method-getAvailableSinks."
+  ([] (gen-call :function ::get-available-sinks &form)))
 
 (defmacro request-authentication
   "Queries authentication data from the sink device.
-   
-     |sinkId| - Id of the sink
-   
+
+     |sink-id| - Id of the sink
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - See https://developer.chrome.com/extensions/displaySource#property-callback-result.
-   
-   See https://developer.chrome.com/extensions/displaySource#method-requestAuthentication."
-  ([sink-id #_callback] (gen-call :function ::request-authentication &form sink-id)))
+
+     |result| - https://developer.chrome.com/extensions/displaySource#property-callback-result.
+
+   https://developer.chrome.com/extensions/displaySource#method-requestAuthentication."
+  ([sink-id] (gen-call :function ::request-authentication &form sink-id)))
 
 (defmacro start-session
   "Creates a Display session using the provided StartSessionInfo instance. The input argument fields must be initialized as
@@ -46,25 +46,25 @@
    creating a session with only audio or video.The |authenticationInfo| can be null if no additional authentication data are
    required by the sink; otherwise its |data| field must contain the required authentication data (e.g. PIN value) and its
    |method| field must be the same as one obtained from ‘requestAuthentication’.
-   
-     |sessionInfo| - See https://developer.chrome.com/extensions/displaySource#property-startSession-sessionInfo.
-   
+
+     |session-info| - https://developer.chrome.com/extensions/displaySource#property-startSession-sessionInfo.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/displaySource#method-startSession."
-  ([session-info #_callback] (gen-call :function ::start-session &form session-info)))
+
+   https://developer.chrome.com/extensions/displaySource#method-startSession."
+  ([session-info] (gen-call :function ::start-session &form session-info)))
 
 (defmacro terminate-session
   "Terminates the active Display session.
-   
-     |sinkId| - Id of the connected sink.
-   
+
+     |sink-id| - Id of the connected sink.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/displaySource#method-terminateSession."
-  ([sink-id #_callback] (gen-call :function ::terminate-session &form sink-id)))
+
+   https://developer.chrome.com/extensions/displaySource#method-terminateSession."
+  ([sink-id] (gen-call :function ::terminate-session &form sink-id)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -73,29 +73,39 @@
 (defmacro tap-on-sinks-updated-events
   "Event fired when the available sinks are modified (either their amount or properties) |sinks| the list of all currently
    available sinks
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-sinks-updated [sinks]] where:
+
+     |sinks| - https://developer.chrome.com/extensions/displaySource#property-onSinksUpdated-sinks.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/displaySource#event-onSinksUpdated."
+
+   https://developer.chrome.com/extensions/displaySource#event-onSinksUpdated."
   ([channel & args] (apply gen-call :event ::on-sinks-updated &form channel args)))
 
 (defmacro tap-on-session-terminated-events
   "Event fired when the Display session is terminated. |sinkId| Id of the peer sink
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-session-terminated [sink-id]] where:
+
+     |sink-id| - https://developer.chrome.com/extensions/displaySource#property-onSessionTerminated-sinkId.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/displaySource#event-onSessionTerminated."
+
+   https://developer.chrome.com/extensions/displaySource#event-onSessionTerminated."
   ([channel & args] (apply gen-call :event ::on-session-terminated &form channel args)))
 
 (defmacro tap-on-session-error-occured-events
   "Event fired when an error occurs. |sinkId| Id of the peer sink |errorInfo| error description
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-session-error-occured [sink-id error-info]] where:
+
+     |sink-id| - https://developer.chrome.com/extensions/displaySource#property-onSessionErrorOccured-sinkId.
+     |error-info| - https://developer.chrome.com/extensions/displaySource#property-onSessionErrorOccured-errorInfo.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/displaySource#event-onSessionErrorOccured."
+
+   https://developer.chrome.com/extensions/displaySource#event-onSessionErrorOccured."
   ([channel & args] (apply gen-call :event ::on-session-error-occured &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

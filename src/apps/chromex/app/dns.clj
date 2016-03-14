@@ -1,8 +1,8 @@
 (ns chromex.app.dns
   "Use the chrome.dns API for dns resolution.
-   
+
      * available since Chrome 50
-     * https://developer.chrome.com/extensions/dns"
+     * https://developer.chrome.com/apps/dns"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -16,16 +16,16 @@
 
 (defmacro resolve
   "Resolves the given hostname or IP address literal.
-   
+
      |hostname| - The hostname to resolve.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [resolveInfo] where:
-   
-     |resolveInfo| - See https://developer.chrome.com/extensions/dns#property-callback-resolveInfo.
-   
-   See https://developer.chrome.com/extensions/dns#method-resolve."
-  ([hostname #_callback] (gen-call :function ::resolve &form hostname)))
+   Signature of the result value put on the channel is [resolve-info] where:
+
+     |resolve-info| - https://developer.chrome.com/apps/dns#property-callback-resolveInfo.
+
+   https://developer.chrome.com/apps/dns#method-resolve."
+  ([hostname] (gen-call :function ::resolve &form hostname)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 

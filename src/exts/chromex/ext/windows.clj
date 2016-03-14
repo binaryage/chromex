@@ -1,7 +1,7 @@
 (ns chromex.ext.windows
   "Use the chrome.windows API to interact with browser windows. You can use this API to create, modify, and rearrange windows
    in the browser.
-   
+
      * available since Chrome 5
      * https://developer.chrome.com/extensions/windows"
 
@@ -17,114 +17,114 @@
 
 (defmacro get-window-id-none
   "The windowId value that represents the absence of a chrome browser window.
-   
-   See https://developer.chrome.com/extensions/windows#property-WINDOW_ID_NONE."
+
+   https://developer.chrome.com/extensions/windows#property-WINDOW_ID_NONE."
   ([] (gen-call :property ::window-id-none &form)))
 
 (defmacro get-window-id-current
   "The windowId value that represents the current window.
-   
-   See https://developer.chrome.com/extensions/windows#property-WINDOW_ID_CURRENT."
+
+   https://developer.chrome.com/extensions/windows#property-WINDOW_ID_CURRENT."
   ([] (gen-call :property ::window-id-current &form)))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro get
   "Gets details about a window.
-   
-     |windowId| - See https://developer.chrome.com/extensions/windows#property-get-windowId.
-     |getInfo| - See https://developer.chrome.com/extensions/windows#property-get-getInfo.
-   
+
+     |window-id| - https://developer.chrome.com/extensions/windows#property-get-windowId.
+     |get-info| - https://developer.chrome.com/extensions/windows#property-get-getInfo.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [window] where:
-   
-     |window| - See https://developer.chrome.com/extensions/windows#property-callback-window.
-   
-   See https://developer.chrome.com/extensions/windows#method-get."
-  ([window-id get-info #_callback] (gen-call :function ::get &form window-id get-info))
+
+     |window| - https://developer.chrome.com/extensions/windows#property-callback-window.
+
+   https://developer.chrome.com/extensions/windows#method-get."
+  ([window-id get-info] (gen-call :function ::get &form window-id get-info))
   ([window-id] `(get ~window-id :omit)))
 
 (defmacro get-current
   "Gets the current window.
-   
-     |getInfo| - See https://developer.chrome.com/extensions/windows#property-getCurrent-getInfo.
-   
+
+     |get-info| - https://developer.chrome.com/extensions/windows#property-getCurrent-getInfo.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [window] where:
-   
-     |window| - See https://developer.chrome.com/extensions/windows#property-callback-window.
-   
-   See https://developer.chrome.com/extensions/windows#method-getCurrent."
-  ([get-info #_callback] (gen-call :function ::get-current &form get-info))
+
+     |window| - https://developer.chrome.com/extensions/windows#property-callback-window.
+
+   https://developer.chrome.com/extensions/windows#method-getCurrent."
+  ([get-info] (gen-call :function ::get-current &form get-info))
   ([] `(get-current :omit)))
 
 (defmacro get-last-focused
   "Gets the window that was most recently focused &mdash; typically the window 'on top'.
-   
-     |getInfo| - See https://developer.chrome.com/extensions/windows#property-getLastFocused-getInfo.
-   
+
+     |get-info| - https://developer.chrome.com/extensions/windows#property-getLastFocused-getInfo.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [window] where:
-   
-     |window| - See https://developer.chrome.com/extensions/windows#property-callback-window.
-   
-   See https://developer.chrome.com/extensions/windows#method-getLastFocused."
-  ([get-info #_callback] (gen-call :function ::get-last-focused &form get-info))
+
+     |window| - https://developer.chrome.com/extensions/windows#property-callback-window.
+
+   https://developer.chrome.com/extensions/windows#method-getLastFocused."
+  ([get-info] (gen-call :function ::get-last-focused &form get-info))
   ([] `(get-last-focused :omit)))
 
 (defmacro get-all
   "Gets all windows.
-   
-     |getInfo| - See https://developer.chrome.com/extensions/windows#property-getAll-getInfo.
-   
+
+     |get-info| - https://developer.chrome.com/extensions/windows#property-getAll-getInfo.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [windows] where:
-   
-     |windows| - See https://developer.chrome.com/extensions/windows#property-callback-windows.
-   
-   See https://developer.chrome.com/extensions/windows#method-getAll."
-  ([get-info #_callback] (gen-call :function ::get-all &form get-info))
+
+     |windows| - https://developer.chrome.com/extensions/windows#property-callback-windows.
+
+   https://developer.chrome.com/extensions/windows#method-getAll."
+  ([get-info] (gen-call :function ::get-all &form get-info))
   ([] `(get-all :omit)))
 
 (defmacro create
   "Creates (opens) a new browser with any optional sizing, position or default URL provided.
-   
-     |createData| - See https://developer.chrome.com/extensions/windows#property-create-createData.
-   
+
+     |create-data| - https://developer.chrome.com/extensions/windows#property-create-createData.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [window] where:
-   
+
      |window| - Contains details about the created window.
-   
-   See https://developer.chrome.com/extensions/windows#method-create."
-  ([create-data #_callback] (gen-call :function ::create &form create-data))
+
+   https://developer.chrome.com/extensions/windows#method-create."
+  ([create-data] (gen-call :function ::create &form create-data))
   ([] `(create :omit)))
 
 (defmacro update
   "Updates the properties of a window. Specify only the properties that you want to change; unspecified properties will be
    left unchanged.
-   
-     |windowId| - See https://developer.chrome.com/extensions/windows#property-update-windowId.
-     |updateInfo| - See https://developer.chrome.com/extensions/windows#property-update-updateInfo.
-   
+
+     |window-id| - https://developer.chrome.com/extensions/windows#property-update-windowId.
+     |update-info| - https://developer.chrome.com/extensions/windows#property-update-updateInfo.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [window] where:
-   
-     |window| - See https://developer.chrome.com/extensions/windows#property-callback-window.
-   
-   See https://developer.chrome.com/extensions/windows#method-update."
-  ([window-id update-info #_callback] (gen-call :function ::update &form window-id update-info)))
+
+     |window| - https://developer.chrome.com/extensions/windows#property-callback-window.
+
+   https://developer.chrome.com/extensions/windows#method-update."
+  ([window-id update-info] (gen-call :function ::update &form window-id update-info)))
 
 (defmacro remove
   "Removes (closes) a window, and all the tabs inside it.
-   
-     |windowId| - See https://developer.chrome.com/extensions/windows#property-remove-windowId.
-   
+
+     |window-id| - https://developer.chrome.com/extensions/windows#property-remove-windowId.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/windows#method-remove."
-  ([window-id #_callback] (gen-call :function ::remove &form window-id)))
+
+   https://developer.chrome.com/extensions/windows#method-remove."
+  ([window-id] (gen-call :function ::remove &form window-id)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -132,31 +132,40 @@
 
 (defmacro tap-on-created-events
   "Fired when a window is created.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-created [window]] where:
+
+     |window| - Details of the window that was created.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/windows#event-onCreated."
+
+   https://developer.chrome.com/extensions/windows#event-onCreated."
   ([channel & args] (apply gen-call :event ::on-created &form channel args)))
 
 (defmacro tap-on-removed-events
   "Fired when a window is removed (closed).
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-removed [window-id]] where:
+
+     |window-id| - ID of the removed window.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/windows#event-onRemoved."
+
+   https://developer.chrome.com/extensions/windows#event-onRemoved."
   ([channel & args] (apply gen-call :event ::on-removed &form channel args)))
 
 (defmacro tap-on-focus-changed-events
   "Fired when the currently focused window changes. Will be chrome.windows.WINDOW_ID_NONE if all chrome windows have lost
    focus. Note: On some Linux window managers, WINDOW_ID_NONE will always be sent immediately preceding a switch from one
    chrome window to another.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-focus-changed [window-id]] where:
+
+     |window-id| - ID of the newly focused window.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/windows#event-onFocusChanged."
+
+   https://developer.chrome.com/extensions/windows#event-onFocusChanged."
   ([channel & args] (apply gen-call :event ::on-focus-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

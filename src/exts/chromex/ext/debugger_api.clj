@@ -2,7 +2,7 @@
   "The chrome.debugger API serves as an alternate transport for Chrome's remote debugging protocol. Use chrome.debugger to
    attach to one or more tabs to instrument network interaction, debug JavaScript, mutate the DOM and CSS, etc. Use the
    Debuggee tabId to target tabs with sendCommand and route events by tabId from onEvent callbacks.
-   
+
      * available since Chrome 18
      * https://developer.chrome.com/extensions/debugger"
 
@@ -18,57 +18,57 @@
 
 (defmacro attach
   "Attaches debugger to the given target.
-   
+
      |target| - Debugging target to which you want to attach.
-     |requiredVersion| - Required debugging protocol version ('0.1'). One can only attach to the debuggee with matching
-                         major version and greater or equal minor version. List of the protocol versions can be obtained
-                         here.
-   
+     |required-version| - Required debugging protocol version ('0.1'). One can only attach to the debuggee with matching
+                          major version and greater or equal minor version. List of the protocol versions can be obtained
+                          here.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/debugger#method-attach."
-  ([target required-version #_callback] (gen-call :function ::attach &form target required-version)))
+
+   https://developer.chrome.com/extensions/debugger#method-attach."
+  ([target required-version] (gen-call :function ::attach &form target required-version)))
 
 (defmacro detach
   "Detaches debugger from the given target.
-   
+
      |target| - Debugging target from which you want to detach.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/debugger#method-detach."
-  ([target #_callback] (gen-call :function ::detach &form target)))
+
+   https://developer.chrome.com/extensions/debugger#method-detach."
+  ([target] (gen-call :function ::detach &form target)))
 
 (defmacro send-command
   "Sends given command to the debugging target.
-   
+
      |target| - Debugging target to which you want to send the command.
      |method| - Method name. Should be one of the methods defined by the remote debugging protocol.
-     |commandParams| - JSON object with request parameters. This object must conform to the remote debugging params scheme
-                       for given method.
-   
+     |command-params| - JSON object with request parameters. This object must conform to the remote debugging params scheme
+                        for given method.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
+
      |result| - JSON object with the response. Structure of the response varies depending on the method name and is defined by
                 the 'returns' attribute of the command description in the remote debugging protocol.
-   
-   See https://developer.chrome.com/extensions/debugger#method-sendCommand."
-  ([target method command-params #_callback] (gen-call :function ::send-command &form target method command-params))
+
+   https://developer.chrome.com/extensions/debugger#method-sendCommand."
+  ([target method command-params] (gen-call :function ::send-command &form target method command-params))
   ([target method] `(send-command ~target ~method :omit)))
 
 (defmacro get-targets
   "Returns the list of available debug targets.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
+
      |result| - Array of TargetInfo objects corresponding to the available debug targets.
-   
-   See https://developer.chrome.com/extensions/debugger#method-getTargets."
-  ([#_callback] (gen-call :function ::get-targets &form)))
+
+   https://developer.chrome.com/extensions/debugger#method-getTargets."
+  ([] (gen-call :function ::get-targets &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -76,21 +76,31 @@
 
 (defmacro tap-on-event-events
   "Fired whenever debugging target issues instrumentation event.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-event [source method params]] where:
+
+     |source| - The debuggee that generated this event.
+     |method| - Method name. Should be one of the notifications defined by the remote debugging protocol.
+     |params| - JSON object with the parameters. Structure of the parameters varies depending on the method name and is
+                defined by the 'parameters' attribute of the event description in the remote debugging protocol.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/debugger#event-onEvent."
+
+   https://developer.chrome.com/extensions/debugger#event-onEvent."
   ([channel & args] (apply gen-call :event ::on-event &form channel args)))
 
 (defmacro tap-on-detach-events
   "Fired when browser terminates debugging session for the tab. This happens when either the tab is being closed or Chrome
    DevTools is being invoked for the attached tab.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-detach [source reason]] where:
+
+     |source| - The debuggee that was detached.
+     |reason| - Connection termination reason.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/debugger#event-onDetach."
+
+   https://developer.chrome.com/extensions/debugger#event-onDetach."
   ([channel & args] (apply gen-call :event ::on-detach &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

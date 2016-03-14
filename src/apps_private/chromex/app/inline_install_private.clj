@@ -1,8 +1,7 @@
 (ns chromex.app.inline-install-private
   "Private API to initiate inline install flow of other apps.
-   
-     * available since Chrome 44
-     * https://developer.chrome.com/extensions/inlineInstallPrivate"
+
+     * available since Chrome 44"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -16,17 +15,15 @@
 
 (defmacro install
   "This can currently only be used to install apps, but not extensions.
-   
-     |id| - See https://developer.chrome.com/extensions/inlineInstallPrivate#property-install-id.
-   
+
+     |id| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [error errorCode] where:
-   
-     |error| - See https://developer.chrome.com/extensions/inlineInstallPrivate#property-callback-error.
-     |errorCode| - See https://developer.chrome.com/extensions/inlineInstallPrivate#property-callback-errorCode.
-   
-   See https://developer.chrome.com/extensions/inlineInstallPrivate#method-install."
-  ([id #_callback] (gen-call :function ::install &form id)))
+   Signature of the result value put on the channel is [error error-code] where:
+
+     |error| - ?
+     |error-code| - ?"
+  ([id] (gen-call :function ::install &form id)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 

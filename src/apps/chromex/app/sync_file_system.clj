@@ -5,9 +5,9 @@
    caching usage so that the same data can be available across different
    clients. Read Manage Data for more on using
    this API.
-   
+
      * available since Chrome 27
-     * https://developer.chrome.com/extensions/syncFileSystem"
+     * https://developer.chrome.com/apps/syncFileSystem"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -25,89 +25,89 @@
    this multiple times from the same app will return the same handle to the same file system.Note this call can fail. For
    example, if the user is not signed in to Chrome or if there is no network operation. To handle these errors it is important
    chrome.runtime.lastError is checked in the callback.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [fileSystem] where:
-   
-     |fileSystem| - See https://developer.chrome.com/extensions/syncFileSystem#property-callback-fileSystem.
-   
-   See https://developer.chrome.com/extensions/syncFileSystem#method-requestFileSystem."
-  ([#_callback] (gen-call :function ::request-file-system &form)))
+   Signature of the result value put on the channel is [file-system] where:
+
+     |file-system| - https://developer.chrome.com/apps/syncFileSystem#property-callback-fileSystem.
+
+   https://developer.chrome.com/apps/syncFileSystem#method-requestFileSystem."
+  ([] (gen-call :function ::request-file-system &form)))
 
 (defmacro set-conflict-resolution-policy
   "Sets the default conflict resolution policy for the 'syncable' file storage for the app. By default it is set to
    'last_write_win'. When conflict resolution policy is set to 'last_write_win' conflicts for existing files are automatically
    resolved next time the file is updated. |callback| can be optionally given to know if the request has succeeded or not.
-   
-     |policy| - See https://developer.chrome.com/extensions/syncFileSystem#property-setConflictResolutionPolicy-policy.
-   
+
+     |policy| - https://developer.chrome.com/apps/syncFileSystem#property-setConflictResolutionPolicy-policy.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/syncFileSystem#method-setConflictResolutionPolicy."
-  ([policy #_callback] (gen-call :function ::set-conflict-resolution-policy &form policy)))
+
+   https://developer.chrome.com/apps/syncFileSystem#method-setConflictResolutionPolicy."
+  ([policy] (gen-call :function ::set-conflict-resolution-policy &form policy)))
 
 (defmacro get-conflict-resolution-policy
   "Gets the current conflict resolution policy.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [policy] where:
-   
-     |policy| - See https://developer.chrome.com/extensions/syncFileSystem#property-callback-policy.
-   
-   See https://developer.chrome.com/extensions/syncFileSystem#method-getConflictResolutionPolicy."
-  ([#_callback] (gen-call :function ::get-conflict-resolution-policy &form)))
+
+     |policy| - https://developer.chrome.com/apps/syncFileSystem#property-callback-policy.
+
+   https://developer.chrome.com/apps/syncFileSystem#method-getConflictResolutionPolicy."
+  ([] (gen-call :function ::get-conflict-resolution-policy &form)))
 
 (defmacro get-usage-and-quota
   "Returns the current usage and quota in bytes for the 'syncable' file storage for the app.
-   
-     |fileSystem| - See https://developer.chrome.com/extensions/syncFileSystem#property-getUsageAndQuota-fileSystem.
-   
+
+     |file-system| - https://developer.chrome.com/apps/syncFileSystem#property-getUsageAndQuota-fileSystem.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [info] where:
-   
-     |info| - See https://developer.chrome.com/extensions/syncFileSystem#property-callback-info.
-   
-   See https://developer.chrome.com/extensions/syncFileSystem#method-getUsageAndQuota."
-  ([file-system #_callback] (gen-call :function ::get-usage-and-quota &form file-system)))
+
+     |info| - https://developer.chrome.com/apps/syncFileSystem#property-callback-info.
+
+   https://developer.chrome.com/apps/syncFileSystem#method-getUsageAndQuota."
+  ([file-system] (gen-call :function ::get-usage-and-quota &form file-system)))
 
 (defmacro get-file-status
   "Returns the 'FileStatus' for the given fileEntry. The status value can be 'synced', 'pending' or 'conflicting'. Note that
    'conflicting' state only happens when the service's conflict resolution policy is set to 'manual'.
-   
-     |fileEntry| - See https://developer.chrome.com/extensions/syncFileSystem#property-getFileStatus-fileEntry.
-   
+
+     |file-entry| - https://developer.chrome.com/apps/syncFileSystem#property-getFileStatus-fileEntry.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [status] where:
-   
-     |status| - See https://developer.chrome.com/extensions/syncFileSystem#property-callback-status.
-   
-   See https://developer.chrome.com/extensions/syncFileSystem#method-getFileStatus."
-  ([file-entry #_callback] (gen-call :function ::get-file-status &form file-entry)))
+
+     |status| - https://developer.chrome.com/apps/syncFileSystem#property-callback-status.
+
+   https://developer.chrome.com/apps/syncFileSystem#method-getFileStatus."
+  ([file-entry] (gen-call :function ::get-file-status &form file-entry)))
 
 (defmacro get-file-statuses
   "Returns each 'FileStatus' for the given fileEntry array. Typically called with the result from dirReader.readEntries().
-   
-     |fileEntries| - See https://developer.chrome.com/extensions/syncFileSystem#property-getFileStatuses-fileEntries.
-   
+
+     |file-entries| - https://developer.chrome.com/apps/syncFileSystem#property-getFileStatuses-fileEntries.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [status] where:
-   
-     |status| - See https://developer.chrome.com/extensions/syncFileSystem#property-callback-status.
-   
-   See https://developer.chrome.com/extensions/syncFileSystem#method-getFileStatuses."
-  ([file-entries #_callback] (gen-call :function ::get-file-statuses &form file-entries)))
+
+     |status| - https://developer.chrome.com/apps/syncFileSystem#property-callback-status.
+
+   https://developer.chrome.com/apps/syncFileSystem#method-getFileStatuses."
+  ([file-entries] (gen-call :function ::get-file-statuses &form file-entries)))
 
 (defmacro get-service-status
   "Returns the current sync backend status.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [status] where:
-   
-     |status| - See https://developer.chrome.com/extensions/syncFileSystem#property-callback-status.
-   
-   See https://developer.chrome.com/extensions/syncFileSystem#method-getServiceStatus."
-  ([#_callback] (gen-call :function ::get-service-status &form)))
+
+     |status| - https://developer.chrome.com/apps/syncFileSystem#property-callback-status.
+
+   https://developer.chrome.com/apps/syncFileSystem#method-getServiceStatus."
+  ([] (gen-call :function ::get-service-status &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -116,20 +116,26 @@
 (defmacro tap-on-service-status-changed-events
   "Fired when an error or other status change has happened in the sync backend (for example, when the sync is temporarily
    disabled due to network or authentication error).
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-service-status-changed [detail]] where:
+
+     |detail| - https://developer.chrome.com/apps/syncFileSystem#property-onServiceStatusChanged-detail.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/syncFileSystem#event-onServiceStatusChanged."
+
+   https://developer.chrome.com/apps/syncFileSystem#event-onServiceStatusChanged."
   ([channel & args] (apply gen-call :event ::on-service-status-changed &form channel args)))
 
 (defmacro tap-on-file-status-changed-events
   "Fired when a file has been updated by the background sync service.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-file-status-changed [detail]] where:
+
+     |detail| - https://developer.chrome.com/apps/syncFileSystem#property-onFileStatusChanged-detail.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/syncFileSystem#event-onFileStatusChanged."
+
+   https://developer.chrome.com/apps/syncFileSystem#event-onFileStatusChanged."
   ([channel & args] (apply gen-call :event ::on-file-status-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

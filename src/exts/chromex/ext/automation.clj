@@ -4,7 +4,7 @@
    tree, but only exposes the semantic structure of a page. It can be
    used to programmatically interact with a page by examining names, roles, and
    states, listening for events, and performing actions on nodes.
-   
+
      * available since Chrome 50
      * https://developer.chrome.com/extensions/automation"
 
@@ -22,66 +22,66 @@
   "Get the automation tree for the tab with the given tabId, or the current tab if no tabID is given, enabling automation if
    necessary. Returns a tree with a placeholder root node; listen for the 'loadComplete' event to get a notification that the
    tree has fully loaded (the previous root node reference will stop working at or before this point).
-   
-     |tabId| - See https://developer.chrome.com/extensions/automation#property-getTree-tabId.
-   
+
+     |tab-id| - https://developer.chrome.com/extensions/automation#property-getTree-tabId.
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [rootNode] where:
-   
-     |rootNode| - See https://developer.chrome.com/extensions/automation#property-callback-rootNode.
-   
-   See https://developer.chrome.com/extensions/automation#method-getTree."
-  ([tab-id #_callback] (gen-call :function ::get-tree &form tab-id))
+   Signature of the result value put on the channel is [root-node] where:
+
+     |root-node| - https://developer.chrome.com/extensions/automation#property-callback-rootNode.
+
+   https://developer.chrome.com/extensions/automation#method-getTree."
+  ([tab-id] (gen-call :function ::get-tree &form tab-id))
   ([] `(get-tree :omit)))
 
 (defmacro get-desktop
   "Get the automation tree for the whole desktop which consists of all on screen views. Note this API is currently only
    supported on Chrome OS.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [rootNode] where:
-   
-     |rootNode| - See https://developer.chrome.com/extensions/automation#property-callback-rootNode.
-   
-   See https://developer.chrome.com/extensions/automation#method-getDesktop."
-  ([#_callback] (gen-call :function ::get-desktop &form)))
+   Signature of the result value put on the channel is [root-node] where:
+
+     |root-node| - https://developer.chrome.com/extensions/automation#property-callback-rootNode.
+
+   https://developer.chrome.com/extensions/automation#method-getDesktop."
+  ([] (gen-call :function ::get-desktop &form)))
 
 (defmacro get-focus
   "Get the automation node that currently has focus, globally. Will return null if none of the nodes in any loaded trees have
    focus.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [focusedNode] where:
-   
-     |focusedNode| - See https://developer.chrome.com/extensions/automation#property-callback-focusedNode.
-   
-   See https://developer.chrome.com/extensions/automation#method-getFocus."
-  ([#_callback] (gen-call :function ::get-focus &form)))
+   Signature of the result value put on the channel is [focused-node] where:
+
+     |focused-node| - https://developer.chrome.com/extensions/automation#property-callback-focusedNode.
+
+   https://developer.chrome.com/extensions/automation#method-getFocus."
+  ([] (gen-call :function ::get-focus &form)))
 
 (defmacro add-tree-change-observer
   "Add a tree change observer. Tree change observers are static/global, they listen to changes across all trees. Pass a filter
    to determine what specific tree changes to listen to, and note that listnening to all tree changes can be expensive.
-   
-     |filter| - See https://developer.chrome.com/extensions/automation#property-addTreeChangeObserver-filter.
-   
+
+     |filter| - https://developer.chrome.com/extensions/automation#property-addTreeChangeObserver-filter.
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [treeChange] where:
-   
-     |treeChange| - See https://developer.chrome.com/extensions/automation#property-observer-treeChange.
-   
-   See https://developer.chrome.com/extensions/automation#method-addTreeChangeObserver."
-  ([filter #_observer] (gen-call :function ::add-tree-change-observer &form filter)))
+   Signature of the result value put on the channel is [tree-change] where:
+
+     |tree-change| - https://developer.chrome.com/extensions/automation#property-observer-treeChange.
+
+   https://developer.chrome.com/extensions/automation#method-addTreeChangeObserver."
+  ([filter] (gen-call :function ::add-tree-change-observer &form filter)))
 
 (defmacro remove-tree-change-observer
   "Remove a tree change observer.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [treeChange] where:
-   
-     |treeChange| - See https://developer.chrome.com/extensions/automation#property-observer-treeChange.
-   
-   See https://developer.chrome.com/extensions/automation#method-removeTreeChangeObserver."
-  ([#_observer] (gen-call :function ::remove-tree-change-observer &form)))
+   Signature of the result value put on the channel is [tree-change] where:
+
+     |tree-change| - https://developer.chrome.com/extensions/automation#property-observer-treeChange.
+
+   https://developer.chrome.com/extensions/automation#method-removeTreeChangeObserver."
+  ([] (gen-call :function ::remove-tree-change-observer &form)))
 
 (defmacro set-document-selection
   "Sets the selection in a tree. This creates a selection in a single tree (anchorObject and focusObject must have the same
@@ -89,10 +89,10 @@
    user started the selection, while the focus is the point at which the selection gets extended e.g. when dragging with a
    mouse or using the keyboard. For nodes with the role staticText, the offset gives the character offset within the value
    where the selection starts or ends, respectively.
-   
-     |params| - See https://developer.chrome.com/extensions/automation#property-setDocumentSelection-params.
-   
-   See https://developer.chrome.com/extensions/automation#method-setDocumentSelection."
+
+     |params| - https://developer.chrome.com/extensions/automation#property-setDocumentSelection-params.
+
+   https://developer.chrome.com/extensions/automation#method-setDocumentSelection."
   ([params] (gen-call :function ::set-document-selection &form params)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

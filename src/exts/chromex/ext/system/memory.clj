@@ -1,6 +1,6 @@
 (ns chromex.ext.system.memory
   "The chrome.system.memory API.
-   
+
      * available since Chrome 32
      * https://developer.chrome.com/extensions/system.memory"
 
@@ -16,14 +16,14 @@
 
 (defmacro get-info
   "Get physical memory information.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [info] where:
-   
-     |info| - See https://developer.chrome.com/extensions/system.memory#property-callback-info.
-   
-   See https://developer.chrome.com/extensions/system.memory#method-getInfo."
-  ([#_callback] (gen-call :function ::get-info &form)))
+
+     |info| - https://developer.chrome.com/extensions/system.memory#property-callback-info.
+
+   https://developer.chrome.com/extensions/system.memory#method-getInfo."
+  ([] (gen-call :function ::get-info &form)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 

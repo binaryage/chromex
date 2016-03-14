@@ -56,56 +56,56 @@ Generated 16 namespaces containing 0 properties, 90 functions and 17 events:
       set-size-constraints set-icon set-shape set-always-on-top set-visible-on-all-workspaces
       tap-on-closed tap-on-bounds-changed tap-on-fullscreened tap-on-minimized tap-on-maximized
       tap-on-restored tap-on-alpha-enabled-changed tap-on-window-shown-for-tests tap-all-events]]
-    
+
     [chromex.ext.app-view-guest-internal refer-macros:[
       attach-frame deny-request tap-all-events]]
-    
+
     [chromex.ext.automation-internal refer-macros:[
       enable-tab enable-frame enable-desktop perform-action query-selector tap-on-accessibility-event
       tap-on-accessibility-tree-destroyed tap-on-tree-change tap-on-child-tree-id tap-on-nodes-removed
       tap-all-events]]
-    
+
     [chromex.ext.certificate-provider-internal refer-macros:[
       report-signature report-certificates tap-all-events]]
-    
+
     [chromex.ext.chrome-web-view-internal refer-macros:[
       context-menus-create context-menus-update context-menus-remove context-menus-remove-all
       show-context-menu tap-all-events]]
-    
+
     [chromex.ext.context-menus-internal refer-macros:[
       tap-on-clicked tap-all-events]]
-    
+
     [chromex.ext.enterprise.platform-keys-internal refer-macros:[
       get-tokens generate-key tap-all-events]]
-    
+
     [chromex.ext.extension-options-internal refer-macros:[
       tap-on-close tap-on-load tap-on-preferred-size-changed tap-all-events]]
-    
+
     [chromex.ext.extension-view-internal refer-macros:[
       load-src parse-src tap-all-events]]
-    
+
     [chromex.ext.file-browser-handler-internal refer-macros:[
       select-file tap-all-events]]
-    
+
     [chromex.ext.file-manager-private-internal refer-macros:[
       resolve-isolated-entries get-entry-properties add-file-watch remove-file-watch get-custom-actions
       execute-custom-action compute-checksum get-mime-type pin-drive-file execute-task set-default-task
       get-file-tasks get-share-url get-download-url request-drive-share set-entry-tag
       cancel-file-transfers start-copy zip-selection validate-path-name-length tap-all-events]]
-    
+
     [chromex.ext.guest-view-internal refer-macros:[
       create-guest destroy-guest set-size tap-all-events]]
-    
+
     [chromex.ext.platform-keys-internal refer-macros:[
       select-client-certificates sign get-public-key tap-all-events]]
-    
+
     [chromex.ext.printer-provider-internal refer-macros:[
       report-printers report-usb-printer-info report-printer-capability report-print-result
       get-print-data tap-all-events]]
-    
+
     [chromex.ext.web-request-internal refer-macros:[
       add-event-listener event-handled tap-all-events]]
-    
+
     [chromex.ext.web-view-internal refer-macros:[
       execute-script insert-css add-content-scripts remove-content-scripts set-zoom get-zoom
       set-zoom-mode get-zoom-mode find stop-finding load-data-with-base-url go override-user-agent reload

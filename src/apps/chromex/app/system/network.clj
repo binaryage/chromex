@@ -1,8 +1,8 @@
 (ns chromex.app.system.network
   "Use the chrome.system.network API.
-   
+
      * available since Chrome 33
-     * https://developer.chrome.com/extensions/system.network"
+     * https://developer.chrome.com/apps/system.network"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -16,14 +16,14 @@
 
 (defmacro get-network-interfaces
   "Retrieves information about local adapters on this system.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [networkInterfaces] where:
-   
-     |networkInterfaces| - Array of object containing network interfaces information.
-   
-   See https://developer.chrome.com/extensions/system.network#method-getNetworkInterfaces."
-  ([#_callback] (gen-call :function ::get-network-interfaces &form)))
+   Signature of the result value put on the channel is [network-interfaces] where:
+
+     |network-interfaces| - Array of object containing network interfaces information.
+
+   https://developer.chrome.com/apps/system.network#method-getNetworkInterfaces."
+  ([] (gen-call :function ::get-network-interfaces &form)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 

@@ -1,6 +1,5 @@
 (ns chromex.app.chrome-web-view-internal
-  "  * available since Chrome 39
-     * https://developer.chrome.com/extensions/chromeWebViewInternal"
+  "  * available since Chrome 39"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -13,55 +12,43 @@
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro context-menus-create
-  "  |createProperties| - See
-                          https://developer.chrome.com/extensions/chromeWebViewInternal#property-contextMenusCreate-createPro
-                          perties.
-   
+  "  |create-properties| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/chromeWebViewInternal#method-contextMenusCreate."
-  ([create-properties #_callback] (gen-call :function ::context-menus-create &form create-properties)))
+   Signature of the result value put on the channel is []."
+  ([create-properties] (gen-call :function ::context-menus-create &form create-properties)))
 
 (defmacro context-menus-update
   "Updates a previously created context menu item.
-   
+
      |id| - The ID of the item to update.
-     |updateProperties| - The properties to update. Accepts the same values as the create function.
-   
+     |update-properties| - The properties to update. Accepts the same values as the create function.
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/chromeWebViewInternal#method-contextMenusUpdate."
-  ([id update-properties #_callback] (gen-call :function ::context-menus-update &form id update-properties)))
+   Signature of the result value put on the channel is []."
+  ([id update-properties] (gen-call :function ::context-menus-update &form id update-properties)))
 
 (defmacro context-menus-remove
   "Removes a context menu item.
-   
-     |menuItemId| - The ID of the context menu item to remove.
-   
+
+     |menu-item-id| - The ID of the context menu item to remove.
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/chromeWebViewInternal#method-contextMenusRemove."
-  ([menu-item-id #_callback] (gen-call :function ::context-menus-remove &form menu-item-id)))
+   Signature of the result value put on the channel is []."
+  ([menu-item-id] (gen-call :function ::context-menus-remove &form menu-item-id)))
 
 (defmacro context-menus-remove-all
   "Removes all context menu items added by this webview.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/chromeWebViewInternal#method-contextMenusRemoveAll."
-  ([#_callback] (gen-call :function ::context-menus-remove-all &form)))
+   Signature of the result value put on the channel is []."
+  ([] (gen-call :function ::context-menus-remove-all &form)))
 
 (defmacro show-context-menu
-  "  |instanceId| - The instance ID of the guest &lt;webview&gt; process. This not exposed to developers through the API.
-     |requestId| - The strictly increasing request counter that serves as ID for the context menu. This not exposed to
-                   developers through the API.
-     |itemsToShow| - Items to be shown in the context menu. These are top level items as opposed to children items.
-   
-   See https://developer.chrome.com/extensions/chromeWebViewInternal#method-showContextMenu."
+  "  |instance-id| - The instance ID of the guest &lt;webview&gt; process. This not exposed to developers through the API.
+     |request-id| - The strictly increasing request counter that serves as ID for the context menu. This not exposed to
+                    developers through the API.
+     |items-to-show| - Items to be shown in the context menu. These are top level items as opposed to children items."
   ([instance-id request-id items-to-show] (gen-call :function ::show-context-menu &form instance-id request-id items-to-show))
   ([instance-id request-id] `(show-context-menu ~instance-id ~request-id :omit)))
 

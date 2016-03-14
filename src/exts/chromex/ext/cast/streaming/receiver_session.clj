@@ -2,7 +2,7 @@
   "The chrome.cast.streaming.receiverSession API creates a Cast
    receiver session and adds the resulting audio and video tracks to a
    MediaStream.
-   
+
      * available since Chrome 50
      * https://developer.chrome.com/extensions/cast.streaming.receiverSession"
 
@@ -20,24 +20,23 @@
   "Creates a Cast receiver session which receives data from a UDP socket. The receiver will decode the incoming data into an
    audio and a video track which will be added to the provided media stream. The |audioParams| and |videoParams| are generally
    provided by the sender through some other messaging channel.
-   
-     |audioParams| - Audio stream parameters.
-     |videoParams| - Video stream parameters.
-     |localEndpoint| - Local IP and port to bind to.
-     |maxWidth| - See https://developer.chrome.com/extensions/cast.streaming.receiverSession#property-createAndBind-maxWidth.
-     |maxHeight| - See
-                   https://developer.chrome.com/extensions/cast.streaming.receiverSession#property-createAndBind-maxHeight.
-     |maxFrameRate| - Max video frame rate.
-     |mediaStreamURL| - URL of MediaStream to add the audio and video to.
-     |transport_options| - Optional transport settings.
-   
+
+     |audio-params| - Audio stream parameters.
+     |video-params| - Video stream parameters.
+     |local-endpoint| - Local IP and port to bind to.
+     |max-width| - https://developer.chrome.com/extensions/cast.streaming.receiverSession#property-createAndBind-maxWidth.
+     |max-height| - https://developer.chrome.com/extensions/cast.streaming.receiverSession#property-createAndBind-maxHeight.
+     |max-frame-rate| - Max video frame rate.
+     |media-stream-url| - URL of MediaStream to add the audio and video to.
+     |transport-options| - Optional transport settings.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [error] where:
-   
-     |error| - See https://developer.chrome.com/extensions/cast.streaming.receiverSession#property-error_callback-error.
-   
-   See https://developer.chrome.com/extensions/cast.streaming.receiverSession#method-createAndBind."
-  ([audio-params video-params local-endpoint max-width max-height max-frame-rate media-stream-url transport-options #_error-callback] (gen-call :function ::create-and-bind &form audio-params video-params local-endpoint max-width max-height max-frame-rate media-stream-url transport-options))
+
+     |error| - https://developer.chrome.com/extensions/cast.streaming.receiverSession#property-error_callback-error.
+
+   https://developer.chrome.com/extensions/cast.streaming.receiverSession#method-createAndBind."
+  ([audio-params video-params local-endpoint max-width max-height max-frame-rate media-stream-url transport-options] (gen-call :function ::create-and-bind &form audio-params video-params local-endpoint max-width max-height max-frame-rate media-stream-url transport-options))
   ([audio-params video-params local-endpoint max-width max-height max-frame-rate media-stream-url] `(create-and-bind ~audio-params ~video-params ~local-endpoint ~max-width ~max-height ~max-frame-rate ~media-stream-url :omit)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

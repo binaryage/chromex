@@ -1,7 +1,7 @@
 (ns chromex.ext.management
   "The chrome.management API provides ways to manage the list of extensions/apps that are installed and running. It is
    particularly useful for extensions that override the built-in New Tab page.
-   
+
      * available since Chrome 8
      * https://developer.chrome.com/extensions/management"
 
@@ -17,155 +17,155 @@
 
 (defmacro get-all
   "Returns a list of information about installed extensions and apps.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - See https://developer.chrome.com/extensions/management#property-callback-result.
-   
-   See https://developer.chrome.com/extensions/management#method-getAll."
-  ([#_callback] (gen-call :function ::get-all &form)))
+
+     |result| - https://developer.chrome.com/extensions/management#property-callback-result.
+
+   https://developer.chrome.com/extensions/management#method-getAll."
+  ([] (gen-call :function ::get-all &form)))
 
 (defmacro get
   "Returns information about the installed extension, app, or theme that has the given ID.
-   
+
      |id| - The ID from an item of 'management.ExtensionInfo'.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - See https://developer.chrome.com/extensions/management#property-callback-result.
-   
-   See https://developer.chrome.com/extensions/management#method-get."
-  ([id #_callback] (gen-call :function ::get &form id)))
+
+     |result| - https://developer.chrome.com/extensions/management#property-callback-result.
+
+   https://developer.chrome.com/extensions/management#method-get."
+  ([id] (gen-call :function ::get &form id)))
 
 (defmacro get-self
   "Returns information about the calling extension, app, or theme. Note: This function can be used without requesting the
    'management' permission in the manifest.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - See https://developer.chrome.com/extensions/management#property-callback-result.
-   
-   See https://developer.chrome.com/extensions/management#method-getSelf."
-  ([#_callback] (gen-call :function ::get-self &form)))
+
+     |result| - https://developer.chrome.com/extensions/management#property-callback-result.
+
+   https://developer.chrome.com/extensions/management#method-getSelf."
+  ([] (gen-call :function ::get-self &form)))
 
 (defmacro get-permission-warnings-by-id
   "Returns a list of permission warnings for the given extension id.
-   
+
      |id| - The ID of an already installed extension.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [permissionWarnings] where:
-   
-     |permissionWarnings| - See https://developer.chrome.com/extensions/management#property-callback-permissionWarnings.
-   
-   See https://developer.chrome.com/extensions/management#method-getPermissionWarningsById."
-  ([id #_callback] (gen-call :function ::get-permission-warnings-by-id &form id)))
+   Signature of the result value put on the channel is [permission-warnings] where:
+
+     |permission-warnings| - https://developer.chrome.com/extensions/management#property-callback-permissionWarnings.
+
+   https://developer.chrome.com/extensions/management#method-getPermissionWarningsById."
+  ([id] (gen-call :function ::get-permission-warnings-by-id &form id)))
 
 (defmacro get-permission-warnings-by-manifest
   "Returns a list of permission warnings for the given extension manifest string. Note: This function can be used without
    requesting the 'management' permission in the manifest.
-   
-     |manifestStr| - Extension manifest JSON string.
-   
+
+     |manifest-str| - Extension manifest JSON string.
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [permissionWarnings] where:
-   
-     |permissionWarnings| - See https://developer.chrome.com/extensions/management#property-callback-permissionWarnings.
-   
-   See https://developer.chrome.com/extensions/management#method-getPermissionWarningsByManifest."
-  ([manifest-str #_callback] (gen-call :function ::get-permission-warnings-by-manifest &form manifest-str)))
+   Signature of the result value put on the channel is [permission-warnings] where:
+
+     |permission-warnings| - https://developer.chrome.com/extensions/management#property-callback-permissionWarnings.
+
+   https://developer.chrome.com/extensions/management#method-getPermissionWarningsByManifest."
+  ([manifest-str] (gen-call :function ::get-permission-warnings-by-manifest &form manifest-str)))
 
 (defmacro set-enabled
   "Enables or disables an app or extension. In most cases this function must be called in the context of a user gesture (e.g.
    an onclick handler for a button), and may present the user with a native confirmation UI as a way of preventing abuse.
-   
+
      |id| - This should be the id from an item of 'management.ExtensionInfo'.
      |enabled| - Whether this item should be enabled or disabled.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/management#method-setEnabled."
-  ([id enabled #_callback] (gen-call :function ::set-enabled &form id enabled)))
+
+   https://developer.chrome.com/extensions/management#method-setEnabled."
+  ([id enabled] (gen-call :function ::set-enabled &form id enabled)))
 
 (defmacro uninstall
   "Uninstalls a currently installed app or extension.
-   
+
      |id| - This should be the id from an item of 'management.ExtensionInfo'.
-     |options| - See https://developer.chrome.com/extensions/management#property-uninstall-options.
-   
+     |options| - https://developer.chrome.com/extensions/management#property-uninstall-options.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/management#method-uninstall."
-  ([id options #_callback] (gen-call :function ::uninstall &form id options))
+
+   https://developer.chrome.com/extensions/management#method-uninstall."
+  ([id options] (gen-call :function ::uninstall &form id options))
   ([id] `(uninstall ~id :omit)))
 
 (defmacro uninstall-self
   "Uninstalls the calling extension. Note: This function can be used without requesting the 'management' permission in the
    manifest.
-   
-     |options| - See https://developer.chrome.com/extensions/management#property-uninstallSelf-options.
-   
+
+     |options| - https://developer.chrome.com/extensions/management#property-uninstallSelf-options.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/management#method-uninstallSelf."
-  ([options #_callback] (gen-call :function ::uninstall-self &form options))
+
+   https://developer.chrome.com/extensions/management#method-uninstallSelf."
+  ([options] (gen-call :function ::uninstall-self &form options))
   ([] `(uninstall-self :omit)))
 
 (defmacro launch-app
   "Launches an application.
-   
+
      |id| - The extension id of the application.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/management#method-launchApp."
-  ([id #_callback] (gen-call :function ::launch-app &form id)))
+
+   https://developer.chrome.com/extensions/management#method-launchApp."
+  ([id] (gen-call :function ::launch-app &form id)))
 
 (defmacro create-app-shortcut
   "Display options to create shortcuts for an app. On Mac, only packaged app shortcuts can be created.
-   
+
      |id| - This should be the id from an app item of 'management.ExtensionInfo'.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/management#method-createAppShortcut."
-  ([id #_callback] (gen-call :function ::create-app-shortcut &form id)))
+
+   https://developer.chrome.com/extensions/management#method-createAppShortcut."
+  ([id] (gen-call :function ::create-app-shortcut &form id)))
 
 (defmacro set-launch-type
   "Set the launch type of an app.
-   
+
      |id| - This should be the id from an app item of 'management.ExtensionInfo'.
-     |launchType| - The target launch type. Always check and make sure this launch type is in
-                    'ExtensionInfo.availableLaunchTypes', because the available launch types vary on different platforms and
-                    configurations.
-   
+     |launch-type| - The target launch type. Always check and make sure this launch type is in
+                     'ExtensionInfo.availableLaunchTypes', because the available launch types vary on different platforms
+                     and configurations.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/management#method-setLaunchType."
-  ([id launch-type #_callback] (gen-call :function ::set-launch-type &form id launch-type)))
+
+   https://developer.chrome.com/extensions/management#method-setLaunchType."
+  ([id launch-type] (gen-call :function ::set-launch-type &form id launch-type)))
 
 (defmacro generate-app-for-link
   "Generate an app for a URL. Returns the generated bookmark app.
-   
+
      |url| - The URL of a web page. The scheme of the URL can only be 'http' or 'https'.
      |title| - The title of the generated app.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - See https://developer.chrome.com/extensions/management#property-callback-result.
-   
-   See https://developer.chrome.com/extensions/management#method-generateAppForLink."
-  ([url title #_callback] (gen-call :function ::generate-app-for-link &form url title)))
+
+     |result| - https://developer.chrome.com/extensions/management#property-callback-result.
+
+   https://developer.chrome.com/extensions/management#method-generateAppForLink."
+  ([url title] (gen-call :function ::generate-app-for-link &form url title)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -173,38 +173,50 @@
 
 (defmacro tap-on-installed-events
   "Fired when an app or extension has been installed.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-installed [info]] where:
+
+     |info| - https://developer.chrome.com/extensions/management#property-onInstalled-info.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/management#event-onInstalled."
+
+   https://developer.chrome.com/extensions/management#event-onInstalled."
   ([channel & args] (apply gen-call :event ::on-installed &form channel args)))
 
 (defmacro tap-on-uninstalled-events
   "Fired when an app or extension has been uninstalled.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-uninstalled [id]] where:
+
+     |id| - The id of the extension, app, or theme that was uninstalled.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/management#event-onUninstalled."
+
+   https://developer.chrome.com/extensions/management#event-onUninstalled."
   ([channel & args] (apply gen-call :event ::on-uninstalled &form channel args)))
 
 (defmacro tap-on-enabled-events
   "Fired when an app or extension has been enabled.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-enabled [info]] where:
+
+     |info| - https://developer.chrome.com/extensions/management#property-onEnabled-info.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/management#event-onEnabled."
+
+   https://developer.chrome.com/extensions/management#event-onEnabled."
   ([channel & args] (apply gen-call :event ::on-enabled &form channel args)))
 
 (defmacro tap-on-disabled-events
   "Fired when an app or extension has been disabled.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-disabled [info]] where:
+
+     |info| - https://developer.chrome.com/extensions/management#property-onDisabled-info.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/management#event-onDisabled."
+
+   https://developer.chrome.com/extensions/management#event-onDisabled."
   ([channel & args] (apply gen-call :event ::on-disabled &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

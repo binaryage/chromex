@@ -1,7 +1,7 @@
 (ns chromex.ext.tab-capture
   "Use the chrome.tabCapture API to interact with tab media
    streams.
-   
+
      * available since Chrome 31
      * https://developer.chrome.com/extensions/tabCapture"
 
@@ -19,29 +19,29 @@
   "Captures the visible area of the currently active tab.  Capture can only be started on the currently active tab after the
    extension has been invoked.  Capture is maintained across page navigations within the tab, and stops when the tab is
    closed, or the media stream is closed by the extension.
-   
+
      |options| - Configures the returned media stream.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [stream] where:
-   
-     |stream| - See https://developer.chrome.com/extensions/tabCapture#property-callback-stream.
-   
-   See https://developer.chrome.com/extensions/tabCapture#method-capture."
-  ([options #_callback] (gen-call :function ::capture &form options)))
+
+     |stream| - https://developer.chrome.com/extensions/tabCapture#property-callback-stream.
+
+   https://developer.chrome.com/extensions/tabCapture#method-capture."
+  ([options] (gen-call :function ::capture &form options)))
 
 (defmacro get-captured-tabs
   "Returns a list of tabs that have requested capture or are being captured, i.e. status != stopped and status != error. This
    allows extensions to inform the user that there is an existing tab capture that would prevent a new tab capture from
    succeeding (or to prevent redundant requests for the same tab).
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - See https://developer.chrome.com/extensions/tabCapture#property-callback-result.
-   
-   See https://developer.chrome.com/extensions/tabCapture#method-getCapturedTabs."
-  ([#_callback] (gen-call :function ::get-captured-tabs &form)))
+
+     |result| - https://developer.chrome.com/extensions/tabCapture#property-callback-result.
+
+   https://developer.chrome.com/extensions/tabCapture#method-getCapturedTabs."
+  ([] (gen-call :function ::get-captured-tabs &form)))
 
 (defmacro capture-offscreen-tab
   "Creates an off-screen tab and navigates it to the given |startUrl|. Then, capture is started and a MediaStream is returned
@@ -53,17 +53,17 @@
    provided its own sandboxed profile.  Also, it cannot access any interactive resources such as keyboard/mouse input, media
    recording devices (e.g., web cams), copy/paste to/from the system clipboard, etc.Note: This is a new API, currently only
    available in Canary/Dev channel, and may change without notice.
-   
-     |startUrl| - See https://developer.chrome.com/extensions/tabCapture#property-captureOffscreenTab-startUrl.
+
+     |start-url| - https://developer.chrome.com/extensions/tabCapture#property-captureOffscreenTab-startUrl.
      |options| - Constraints for the capture and returned MediaStream.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [stream] where:
-   
-     |stream| - See https://developer.chrome.com/extensions/tabCapture#property-callback-stream.
-   
-   See https://developer.chrome.com/extensions/tabCapture#method-captureOffscreenTab."
-  ([start-url options #_callback] (gen-call :function ::capture-offscreen-tab &form start-url options)))
+
+     |stream| - https://developer.chrome.com/extensions/tabCapture#property-callback-stream.
+
+   https://developer.chrome.com/extensions/tabCapture#method-captureOffscreenTab."
+  ([start-url options] (gen-call :function ::capture-offscreen-tab &form start-url options)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -72,11 +72,14 @@
 (defmacro tap-on-status-changed-events
   "Event fired when the capture status of a tab changes. This allows extension authors to keep track of the capture status of
    tabs to keep UI elements like page actions in sync.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-status-changed [info]] where:
+
+     |info| - CaptureInfo with new capture status for the tab.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/tabCapture#event-onStatusChanged."
+
+   https://developer.chrome.com/extensions/tabCapture#event-onStatusChanged."
   ([channel & args] (apply gen-call :event ::on-status-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

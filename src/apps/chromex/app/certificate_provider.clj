@@ -1,9 +1,9 @@
 (ns chromex.app.certificate-provider
   "Use this API to expose certificates to the platform which can use these
    certificates for TLS authentications.
-   
+
      * available since Chrome 46
-     * https://developer.chrome.com/extensions/certificateProvider"
+     * https://developer.chrome.com/apps/certificateProvider"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -20,22 +20,26 @@
 (defmacro tap-on-certificates-requested-events
   "This event fires every time the browser requests the current list of certificates provided by this extension. The extension
    must call reportCallback exactly once with the current list of certificates.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-certificates-requested [report-callback]].
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/certificateProvider#event-onCertificatesRequested."
+
+   https://developer.chrome.com/apps/certificateProvider#event-onCertificatesRequested."
   ([channel & args] (apply gen-call :event ::on-certificates-requested &form channel args)))
 
 (defmacro tap-on-sign-digest-requested-events
   "This event fires every time the browser needs to sign a message using a certificate provided by this extension in reply to
    an 'onCertificatesRequested' event. The extension must sign the data in request using the appropriate algorithm and private
    key and return it by calling reportCallback. reportCallback must be called exactly once.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-sign-digest-requested [request report-callback]] where:
+
+     |request| - Contains the details about the sign request.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/certificateProvider#event-onSignDigestRequested."
+
+   https://developer.chrome.com/apps/certificateProvider#event-onSignDigestRequested."
   ([channel & args] (apply gen-call :event ::on-sign-digest-requested &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

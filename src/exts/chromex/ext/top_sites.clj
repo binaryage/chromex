@@ -1,6 +1,6 @@
 (ns chromex.ext.top-sites
   "Use the chrome.topSites API to access the top sites that are displayed on the new tab page.
-   
+
      * available since Chrome 19
      * https://developer.chrome.com/extensions/topSites"
 
@@ -16,14 +16,14 @@
 
 (defmacro get
   "Gets a list of top sites.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [data] where:
-   
-     |data| - See https://developer.chrome.com/extensions/topSites#property-callback-data.
-   
-   See https://developer.chrome.com/extensions/topSites#method-get."
-  ([#_callback] (gen-call :function ::get &form)))
+
+     |data| - https://developer.chrome.com/extensions/topSites#property-callback-data.
+
+   https://developer.chrome.com/extensions/topSites#method-get."
+  ([] (gen-call :function ::get &form)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 

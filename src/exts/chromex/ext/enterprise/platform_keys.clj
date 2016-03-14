@@ -4,7 +4,7 @@
    certificates will be managed by the platform and can be used for TLS
    authentication, network access or by other extension through
    'platformKeys chrome.platformKeys'.
-   
+
      * available since Chrome 37
      * https://developer.chrome.com/extensions/enterprise.platformKeys"
 
@@ -22,56 +22,56 @@
   "Returns the available Tokens. In a regular user's session the list will always contain the user's token with id 'user'. If
    a system-wide TPM token is available, the returned list will also contain the system-wide token with id 'system'. The
    system-wide token will be the same for all sessions on this device (device in the sense of e.g. a Chromebook).
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [tokens] where:
-   
+
      |tokens| - The list of available tokens.
-   
-   See https://developer.chrome.com/extensions/enterprise.platformKeys#method-getTokens."
-  ([#_callback] (gen-call :function ::get-tokens &form)))
+
+   https://developer.chrome.com/extensions/enterprise.platformKeys#method-getTokens."
+  ([] (gen-call :function ::get-tokens &form)))
 
 (defmacro get-certificates
   "Returns the list of all client certificates available from the given token. Can be used to check for the existence and
    expiration of client certificates that are usable for a certain authentication.
-   
-     |tokenId| - The id of a Token returned by getTokens.
-   
+
+     |token-id| - The id of a Token returned by getTokens.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [certificates] where:
-   
+
      |certificates| - The list of certificates, each in DER encoding of a X.509     certificate.
-   
-   See https://developer.chrome.com/extensions/enterprise.platformKeys#method-getCertificates."
-  ([token-id #_callback] (gen-call :function ::get-certificates &form token-id)))
+
+   https://developer.chrome.com/extensions/enterprise.platformKeys#method-getCertificates."
+  ([token-id] (gen-call :function ::get-certificates &form token-id)))
 
 (defmacro import-certificate
   "Imports certificate to the given token if the certified key is already stored in this token. After a successful
    certification request, this function should be used to store the obtained certificate and to make it available to the
    operating system and browser for authentication.
-   
-     |tokenId| - The id of a Token returned by getTokens.
+
+     |token-id| - The id of a Token returned by getTokens.
      |certificate| - The DER encoding of a X.509 certificate.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/enterprise.platformKeys#method-importCertificate."
-  ([token-id certificate #_callback] (gen-call :function ::import-certificate &form token-id certificate)))
+
+   https://developer.chrome.com/extensions/enterprise.platformKeys#method-importCertificate."
+  ([token-id certificate] (gen-call :function ::import-certificate &form token-id certificate)))
 
 (defmacro remove-certificate
   "Removes certificate from the given token if present. Should be used to remove obsolete certificates so that they are not
    considered during authentication and do not clutter the certificate choice. Should be used to free storage in the
    certificate store.
-   
-     |tokenId| - The id of a Token returned by getTokens.
+
+     |token-id| - The id of a Token returned by getTokens.
      |certificate| - The DER encoding of a X.509 certificate.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/enterprise.platformKeys#method-removeCertificate."
-  ([token-id certificate #_callback] (gen-call :function ::remove-certificate &form token-id certificate)))
+
+   https://developer.chrome.com/extensions/enterprise.platformKeys#method-removeCertificate."
+  ([token-id certificate] (gen-call :function ::remove-certificate &form token-id certificate)))
 
 (defmacro challenge-machine-key
   "Challenges a hardware-backed Enterprise Machine Key and emits the response as part of a remote attestation protocol. Only
@@ -84,16 +84,16 @@
    function is highly restricted and will fail if the current device is not managed, the current user is not managed, or if
    this operation has not explicitly been enabled for the caller by enterprise device policy. The Enterprise Machine Key does
    not reside in the 'system' token and is not accessible by any other API.
-   
+
      |challenge| - A challenge as emitted by the Verified Access Web API.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [response] where:
-   
+
      |response| - The challenge response.
-   
-   See https://developer.chrome.com/extensions/enterprise.platformKeys#method-challengeMachineKey."
-  ([challenge #_callback] (gen-call :function ::challenge-machine-key &form challenge)))
+
+   https://developer.chrome.com/extensions/enterprise.platformKeys#method-challengeMachineKey."
+  ([challenge] (gen-call :function ::challenge-machine-key &form challenge)))
 
 (defmacro challenge-user-key
   "Challenges a hardware-backed Enterprise User Key and emits the response as part of a remote attestation protocol. Only
@@ -106,20 +106,20 @@
    current signed-in user. This function is highly restricted and will fail if the current device is not managed, the current
    user is not managed, or if this operation has not explicitly been enabled for the caller by enterprise user policy. The
    Enterprise User Key does not reside in the 'user' token and is not accessible by any other API.
-   
+
      |challenge| - A challenge as emitted by the Verified Access Web API.
-     |registerKey| - If set, the current Enterprise User Key is registered with                the 'user' token and
-                     relinquishes the                Enterprise User Key role. The key can then be associated
-                     with a certificate and used like any other signing key.                This key is 2048-bit RSA.
-                     Subsequent calls to this                function will then generate a new Enterprise User Key.
-   
+     |register-key| - If set, the current Enterprise User Key is registered with                the 'user' token and
+                      relinquishes the                Enterprise User Key role. The key can then be associated
+                      with a certificate and used like any other signing key.                This key is 2048-bit RSA.
+                      Subsequent calls to this                function will then generate a new Enterprise User Key.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [response] where:
-   
+
      |response| - The challenge response.
-   
-   See https://developer.chrome.com/extensions/enterprise.platformKeys#method-challengeUserKey."
-  ([challenge register-key #_callback] (gen-call :function ::challenge-user-key &form challenge register-key)))
+
+   https://developer.chrome.com/extensions/enterprise.platformKeys#method-challengeUserKey."
+  ([challenge register-key] (gen-call :function ::challenge-user-key &form challenge register-key)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 

@@ -1,9 +1,9 @@
 (ns chromex.app.browser
   "Use the chrome.browser API to interact with the Chrome browser
    associated with the current application and Chrome profile.
-   
+
      * available since Chrome 42
-     * https://developer.chrome.com/extensions/browser"
+     * https://developer.chrome.com/apps/browser"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -20,14 +20,14 @@
    the Chrome profile is opened, a new one is opened prior to creating the new tab. |options| - Configures how the tab should
    be opened. |callback| - Called when the tab was successfully created, or failed to be created. If failed,
    'runtime.lastError' will be set.
-   
-     |options| - See https://developer.chrome.com/extensions/browser#property-openTab-options.
-   
+
+     |options| - https://developer.chrome.com/apps/browser#property-openTab-options.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/browser#method-openTab."
-  ([options #_callback] (gen-call :function ::open-tab &form options)))
+
+   https://developer.chrome.com/apps/browser#method-openTab."
+  ([options] (gen-call :function ::open-tab &form options)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 

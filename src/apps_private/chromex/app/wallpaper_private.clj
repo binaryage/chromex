@@ -1,6 +1,5 @@
 (ns chromex.app.wallpaper-private
-  "  * available since Chrome 22
-     * https://developer.chrome.com/extensions/wallpaperPrivate"
+  "  * available since Chrome 22"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -16,11 +15,16 @@
 
 (defmacro tap-on-wallpaper-changed-by3rd-party-events
   "This event is sent when the current wallpaper was set by a third party application.
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/wallpaperPrivate#event-onWallpaperChangedBy3rdParty."
+
+   Events will be put on the |channel| with signature [::on-wallpaper-changed-by3rd-party [wallpaper thumbnail layout
+   app-name]] where:
+
+     |wallpaper| - The third party custom wallpaper data.
+     |thumbnail| - The third party custom wallpaper thumbnail data.
+     |layout| - ?
+     |app-name| - The third party wallpaper app name.
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-wallpaper-changed-by3rd-party &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

@@ -1,8 +1,7 @@
 (ns chromex.ext.file-manager-private-internal
   "Internal, used by fileManagerPrivate's custom bindings.
-   
-     * available since Chrome 39
-     * https://developer.chrome.com/extensions/fileManagerPrivateInternal"
+
+     * available since Chrome 39"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -15,232 +14,187 @@
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro resolve-isolated-entries
-  "  |urls| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-resolveIsolatedEntries-urls.
-   
+  "  |urls| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [entries] where:
-   
-     |entries| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-callback-entries.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivateInternal#method-resolveIsolatedEntries."
-  ([urls #_callback] (gen-call :function ::resolve-isolated-entries &form urls)))
+
+     |entries| - ?"
+  ([urls] (gen-call :function ::resolve-isolated-entries &form urls)))
 
 (defmacro get-entry-properties
-  "  |urls| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-getEntryProperties-urls.
-     |names| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-getEntryProperties-names.
-   
+  "  |urls| - ?
+     |names| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [entryProperties] where:
-   
-     |entryProperties| - See
-                         https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-callback-entryProperties.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivateInternal#method-getEntryProperties."
-  ([urls names #_callback] (gen-call :function ::get-entry-properties &form urls names)))
+   Signature of the result value put on the channel is [entry-properties] where:
+
+     |entry-properties| - ?"
+  ([urls names] (gen-call :function ::get-entry-properties &form urls names)))
 
 (defmacro add-file-watch
-  "  |url| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-addFileWatch-url.
-   
+  "  |url| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [success] where:
-   
-     |success| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-callback-success.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivateInternal#method-addFileWatch."
-  ([url #_callback] (gen-call :function ::add-file-watch &form url)))
+
+     |success| - ?"
+  ([url] (gen-call :function ::add-file-watch &form url)))
 
 (defmacro remove-file-watch
-  "  |url| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-removeFileWatch-url.
-   
+  "  |url| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [success] where:
-   
-     |success| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-callback-success.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivateInternal#method-removeFileWatch."
-  ([url #_callback] (gen-call :function ::remove-file-watch &form url)))
+
+     |success| - ?"
+  ([url] (gen-call :function ::remove-file-watch &form url)))
 
 (defmacro get-custom-actions
-  "  |urls| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-getCustomActions-urls.
-   
+  "  |urls| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [actions] where:
-   
-     |actions| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-callback-actions.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivateInternal#method-getCustomActions."
-  ([urls #_callback] (gen-call :function ::get-custom-actions &form urls)))
+
+     |actions| - ?"
+  ([urls] (gen-call :function ::get-custom-actions &form urls)))
 
 (defmacro execute-custom-action
-  "  |urls| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-executeCustomAction-urls.
-     |actionId| - See
-                  https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-executeCustomAction-actionId.
-   
+  "  |urls| - ?
+     |action-id| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivateInternal#method-executeCustomAction."
-  ([urls action-id #_callback] (gen-call :function ::execute-custom-action &form urls action-id)))
+   Signature of the result value put on the channel is []."
+  ([urls action-id] (gen-call :function ::execute-custom-action &form urls action-id)))
 
 (defmacro compute-checksum
-  "  |url| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-computeChecksum-url.
-   
+  "  |url| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [checksum] where:
-   
-     |checksum| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-callback-checksum.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivateInternal#method-computeChecksum."
-  ([url #_callback] (gen-call :function ::compute-checksum &form url)))
+
+     |checksum| - ?"
+  ([url] (gen-call :function ::compute-checksum &form url)))
 
 (defmacro get-mime-type
-  "  |url| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-getMimeType-url.
-   
+  "  |url| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-callback-result.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivateInternal#method-getMimeType."
-  ([url #_callback] (gen-call :function ::get-mime-type &form url)))
+
+     |result| - ?"
+  ([url] (gen-call :function ::get-mime-type &form url)))
 
 (defmacro pin-drive-file
-  "  |url| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-pinDriveFile-url.
-     |pin| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-pinDriveFile-pin.
-   
+  "  |url| - ?
+     |pin| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivateInternal#method-pinDriveFile."
-  ([url pin #_callback] (gen-call :function ::pin-drive-file &form url pin)))
+   Signature of the result value put on the channel is []."
+  ([url pin] (gen-call :function ::pin-drive-file &form url pin)))
 
 (defmacro execute-task
-  "  |taskId| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-executeTask-taskId.
-     |urls| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-executeTask-urls.
-   
+  "  |task-id| - ?
+     |urls| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-callback-result.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivateInternal#method-executeTask."
-  ([task-id urls #_callback] (gen-call :function ::execute-task &form task-id urls)))
+
+     |result| - ?"
+  ([task-id urls] (gen-call :function ::execute-task &form task-id urls)))
 
 (defmacro set-default-task
-  "  |taskId| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-setDefaultTask-taskId.
-     |urls| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-setDefaultTask-urls.
-     |mimeTypes| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-setDefaultTask-mimeTypes.
-   
+  "  |task-id| - ?
+     |urls| - ?
+     |mime-types| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivateInternal#method-setDefaultTask."
-  ([task-id urls mime-types #_callback] (gen-call :function ::set-default-task &form task-id urls mime-types)))
+   Signature of the result value put on the channel is []."
+  ([task-id urls mime-types] (gen-call :function ::set-default-task &form task-id urls mime-types)))
 
 (defmacro get-file-tasks
-  "  |urls| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-getFileTasks-urls.
-   
+  "  |urls| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [tasks] where:
-   
-     |tasks| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-callback-tasks.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivateInternal#method-getFileTasks."
-  ([urls #_callback] (gen-call :function ::get-file-tasks &form urls)))
+
+     |tasks| - ?"
+  ([urls] (gen-call :function ::get-file-tasks &form urls)))
 
 (defmacro get-share-url
-  "  |url| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-getShareUrl-url.
-   
+  "  |url| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [url] where:
-   
-     |url| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-callback-url.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivateInternal#method-getShareUrl."
-  ([url #_callback] (gen-call :function ::get-share-url &form url)))
+
+     |url| - ?"
+  ([url] (gen-call :function ::get-share-url &form url)))
 
 (defmacro get-download-url
-  "  |url| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-getDownloadUrl-url.
-   
+  "  |url| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [url] where:
-   
-     |url| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-callback-url.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivateInternal#method-getDownloadUrl."
-  ([url #_callback] (gen-call :function ::get-download-url &form url)))
+
+     |url| - ?"
+  ([url] (gen-call :function ::get-download-url &form url)))
 
 (defmacro request-drive-share
-  "  |url| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-requestDriveShare-url.
-     |shareType| - See
-                   https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-requestDriveShare-shareType.
-   
+  "  |url| - ?
+     |share-type| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivateInternal#method-requestDriveShare."
-  ([url share-type #_callback] (gen-call :function ::request-drive-share &form url share-type)))
+   Signature of the result value put on the channel is []."
+  ([url share-type] (gen-call :function ::request-drive-share &form url share-type)))
 
 (defmacro set-entry-tag
-  "  |url| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-setEntryTag-url.
-     |visibility| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-setEntryTag-visibility.
-     |key| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-setEntryTag-key.
-     |value| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-setEntryTag-value.
-   
+  "  |url| - ?
+     |visibility| - ?
+     |key| - ?
+     |value| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivateInternal#method-setEntryTag."
-  ([url visibility key value #_callback] (gen-call :function ::set-entry-tag &form url visibility key value)))
+   Signature of the result value put on the channel is []."
+  ([url visibility key value] (gen-call :function ::set-entry-tag &form url visibility key value)))
 
 (defmacro cancel-file-transfers
-  "  |urls| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-cancelFileTransfers-urls.
-   
+  "  |urls| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivateInternal#method-cancelFileTransfers."
-  ([urls #_callback] (gen-call :function ::cancel-file-transfers &form urls)))
+   Signature of the result value put on the channel is []."
+  ([urls] (gen-call :function ::cancel-file-transfers &form urls)))
 
 (defmacro start-copy
-  "  |url| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-startCopy-url.
-     |parentUrl| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-startCopy-parentUrl.
-     |newName| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-startCopy-newName.
-   
+  "  |url| - ?
+     |parent-url| - ?
+     |new-name| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [copyId] where:
-   
-     |copyId| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-callback-copyId.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivateInternal#method-startCopy."
-  ([url parent-url new-name #_callback] (gen-call :function ::start-copy &form url parent-url new-name)))
+   Signature of the result value put on the channel is [copy-id] where:
+
+     |copy-id| - ?"
+  ([url parent-url new-name] (gen-call :function ::start-copy &form url parent-url new-name)))
 
 (defmacro zip-selection
-  "  |parentUrl| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-zipSelection-parentUrl.
-     |urls| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-zipSelection-urls.
-     |destName| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-zipSelection-destName.
-   
+  "  |parent-url| - ?
+     |urls| - ?
+     |dest-name| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [success] where:
-   
-     |success| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-callback-success.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivateInternal#method-zipSelection."
-  ([parent-url urls dest-name #_callback] (gen-call :function ::zip-selection &form parent-url urls dest-name)))
+
+     |success| - ?"
+  ([parent-url urls dest-name] (gen-call :function ::zip-selection &form parent-url urls dest-name)))
 
 (defmacro validate-path-name-length
-  "  |parentUrl| - See
-                   https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-validatePathNameLength-parentU
-                   rl.
-     |name| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-validatePathNameLength-name.
-   
+  "  |parent-url| - ?
+     |name| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - See https://developer.chrome.com/extensions/fileManagerPrivateInternal#property-callback-result.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivateInternal#method-validatePathNameLength."
-  ([parent-url name #_callback] (gen-call :function ::validate-path-name-length &form parent-url name)))
+
+     |result| - ?"
+  ([parent-url name] (gen-call :function ::validate-path-name-length &form parent-url name)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 

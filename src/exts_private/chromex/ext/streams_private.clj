@@ -1,8 +1,7 @@
 (ns chromex.ext.streams-private
   "Streams Private API.
-   
-     * available since Chrome 27
-     * https://developer.chrome.com/extensions/streamsPrivate"
+
+     * available since Chrome 27"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -16,14 +15,12 @@
 
 (defmacro abort
   "Abort the URL request on the given stream.
-   
-     |streamUrl| - The URL of the stream to abort.
-   
+
+     |stream-url| - The URL of the stream to abort.
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/streamsPrivate#method-abort."
-  ([stream-url #_callback] (gen-call :function ::abort &form stream-url)))
+   Signature of the result value put on the channel is []."
+  ([stream-url] (gen-call :function ::abort &form stream-url)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -32,11 +29,12 @@
 (defmacro tap-on-execute-mime-type-handler-events
   "Fired when a resource is fetched which matches a mime type handled by this extension. The resource request is cancelled,
    and the extension is expected to handle the request. The event is restricted to a small number of white-listed extensions.
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/streamsPrivate#event-onExecuteMimeTypeHandler."
+
+   Events will be put on the |channel| with signature [::on-execute-mime-type-handler [stream-info]] where:
+
+     |stream-info| - ?
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-execute-mime-type-handler &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

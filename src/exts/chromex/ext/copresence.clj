@@ -1,7 +1,7 @@
 (ns chromex.ext.copresence
   "Use the chrome.copresence API to communicate with other nearby
    devices using Google's copresence service.
-   
+
      * available since Chrome 50
      * https://developer.chrome.com/extensions/copresence"
 
@@ -19,16 +19,16 @@
   "Executes a set of copresence operations in one batch. They will either all be executed, or none will be executed (due to an
    error in one or more of them). Publish/Subscribe operations are executed in the order that they exist in the array.
    Unpublish and Unsubscribe are processsed at the end, again, in the order that they exist in the array.
-   
-     |operations| - See https://developer.chrome.com/extensions/copresence#property-execute-operations.
-   
+
+     |operations| - https://developer.chrome.com/extensions/copresence#property-execute-operations.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [status] where:
-   
-     |status| - See https://developer.chrome.com/extensions/copresence#property-callback-status.
-   
-   See https://developer.chrome.com/extensions/copresence#method-execute."
-  ([operations #_callback] (gen-call :function ::execute &form operations)))
+
+     |status| - https://developer.chrome.com/extensions/copresence#property-callback-status.
+
+   https://developer.chrome.com/extensions/copresence#method-execute."
+  ([operations] (gen-call :function ::execute &form operations)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -36,20 +36,27 @@
 
 (defmacro tap-on-messages-received-events
   "Fired when new messages arrive.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-messages-received [subscription-id messages]] where:
+
+     |subscription-id| - https://developer.chrome.com/extensions/copresence#property-onMessagesReceived-subscriptionId.
+     |messages| - https://developer.chrome.com/extensions/copresence#property-onMessagesReceived-messages.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/copresence#event-onMessagesReceived."
+
+   https://developer.chrome.com/extensions/copresence#event-onMessagesReceived."
   ([channel & args] (apply gen-call :event ::on-messages-received &form channel args)))
 
 (defmacro tap-on-status-updated-events
   "Fired when a new copresence status update is available.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-status-updated [status]] where:
+
+     |status| - https://developer.chrome.com/extensions/copresence#property-onStatusUpdated-status.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/copresence#event-onStatusUpdated."
+
+   https://developer.chrome.com/extensions/copresence#event-onStatusUpdated."
   ([channel & args] (apply gen-call :event ::on-status-updated &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

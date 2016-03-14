@@ -1,8 +1,7 @@
 (ns chromex.ext.resources-private
   "resourcesPrivate.
-   
-     * available since Chrome 47
-     * https://developer.chrome.com/extensions/resourcesPrivate"
+
+     * available since Chrome 47"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -16,19 +15,17 @@
 
 (defmacro get-strings
   "Gets localized strings for a component extension. Includes default WebUI loadTimeData values for text and language settings
-   (fontsize, fontfamily, language, textdirection). See
-   chrome/browser/extensions/api/resources_private/resources_private_api.cc for instructions on adding a new component to this
+   (fontsize, fontfamily, language, textdirection). See chrome/browser/extensions/api/resources_private/resources_private_api.cc for instructions on adding a new component to
+   this
    API.
-   
+
      |component| - Internal chrome component to get strings for.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - See https://developer.chrome.com/extensions/resourcesPrivate#property-callback-result.
-   
-   See https://developer.chrome.com/extensions/resourcesPrivate#method-getStrings."
-  ([component #_callback] (gen-call :function ::get-strings &form component)))
+
+     |result| - ?"
+  ([component] (gen-call :function ::get-strings &form component)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 

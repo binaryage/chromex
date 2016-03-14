@@ -1,8 +1,7 @@
 (ns chromex.app.music-manager-private
   "musicManagerPrivate.
-   
-     * available since Chrome 29
-     * https://developer.chrome.com/extensions/musicManagerPrivate"
+
+     * available since Chrome 29"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -16,14 +15,12 @@
 
 (defmacro get-device-id
   "Returns an identifier stable across users and reboots.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [device_id] where:
-   
-     |device_id| - See https://developer.chrome.com/extensions/musicManagerPrivate#property-callback-device_id.
-   
-   See https://developer.chrome.com/extensions/musicManagerPrivate#method-getDeviceId."
-  ([#_callback] (gen-call :function ::get-device-id &form)))
+   Signature of the result value put on the channel is [device-id] where:
+
+     |device-id| - ?"
+  ([] (gen-call :function ::get-device-id &form)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 

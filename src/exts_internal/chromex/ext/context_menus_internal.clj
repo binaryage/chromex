@@ -1,9 +1,8 @@
 (ns chromex.ext.context-menus-internal
   "Use the chrome.contextMenus API to add items to Google Chrome's context menu. You can choose what types of objects your
    context menu additions apply to, such as images, hyperlinks, and pages.
-   
-     * available since Chrome 35
-     * https://developer.chrome.com/extensions/contextMenusInternal"
+
+     * available since Chrome 35"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -19,11 +18,14 @@
 
 (defmacro tap-on-clicked-events
   "Fired when a context menu item is clicked.
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/contextMenusInternal#event-onClicked."
+
+   Events will be put on the |channel| with signature [::on-clicked [info tab]] where:
+
+     |info| - Information sent when a context menu item is clicked.
+     |tab| - The details of the tab where the click took place. If the click did not take place in a tab, this parameter will
+             be missing.
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-clicked &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

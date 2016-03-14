@@ -2,9 +2,9 @@
   "Use the chrome.mdns API to discover services over mDNS.
    This comprises a subset of the features of the NSD spec:
    http://www.w3.org/TR/discovery-api/
-   
+
      * available since Chrome 31
-     * https://developer.chrome.com/extensions/mdns"
+     * https://developer.chrome.com/apps/mdns"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -19,8 +19,8 @@
 (defmacro get-max-service-instances-per-event
   "The maximum number of service instances that will be included in onServiceList events.  If more instances are available,
    they may be truncated from the onServiceList event.
-   
-   See https://developer.chrome.com/extensions/mdns#property-MAX_SERVICE_INSTANCES_PER_EVENT."
+
+   https://developer.chrome.com/apps/mdns#property-MAX_SERVICE_INSTANCES_PER_EVENT."
   ([] (gen-call :property ::max-service-instances-per-event &form)))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
@@ -28,12 +28,12 @@
 (defmacro force-discovery
   "Immediately issues a multicast DNS query for all service types. |callback| is invoked immediately. At a later time, queries
    will be sent, and any service events will be fired.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/mdns#method-forceDiscovery."
-  ([#_callback] (gen-call :function ::force-discovery &form)))
+
+   https://developer.chrome.com/apps/mdns#method-forceDiscovery."
+  ([] (gen-call :function ::force-discovery &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -43,11 +43,14 @@
   "Event fired to inform clients of the current complete set of known available services. Clients should only need to store
    the list from the most recent event. The service type that the extension is interested in discovering should be specified
    as the event filter with the 'serviceType' key. Not specifying an event filter will not start any discovery listeners.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-service-list [services]] where:
+
+     |services| - https://developer.chrome.com/apps/mdns#property-onServiceList-services.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/mdns#event-onServiceList."
+
+   https://developer.chrome.com/apps/mdns#event-onServiceList."
   ([channel & args] (apply gen-call :event ::on-service-list &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

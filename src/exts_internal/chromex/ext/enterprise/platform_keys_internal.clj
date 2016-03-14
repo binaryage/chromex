@@ -1,8 +1,7 @@
 (ns chromex.ext.enterprise.platform-keys-internal
   "Internal API for platform keys and certificate management.
-   
-     * available since Chrome 37
-     * https://developer.chrome.com/extensions/enterprise.platformKeysInternal"
+
+     * available since Chrome 37"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -16,32 +15,26 @@
 
 (defmacro get-tokens
   "Internal version of entrprise.platformKeys.getTokens. Returns a list of token IDs instead of token objects.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [tokenIds] where:
-   
-     |tokenIds| - See https://developer.chrome.com/extensions/enterprise.platformKeysInternal#property-callback-tokenIds.
-   
-   See https://developer.chrome.com/extensions/enterprise.platformKeysInternal#method-getTokens."
-  ([#_callback] (gen-call :function ::get-tokens &form)))
+   Signature of the result value put on the channel is [token-ids] where:
+
+     |token-ids| - ?"
+  ([] (gen-call :function ::get-tokens &form)))
 
 (defmacro generate-key
   "Internal version of Token.generateKey, currently supporting only RSASSA-PKCS1-v1_5. |tokenId| The id of a Token returned by
    |getTokens|. |modulusLength| The length, in bits, of the RSA modulus. |callback| Called back with the Subject Public Key
    Info of the generated     key.
-   
-     |tokenId| - See https://developer.chrome.com/extensions/enterprise.platformKeysInternal#property-generateKey-tokenId.
-     |modulusLength| - See
-                       https://developer.chrome.com/extensions/enterprise.platformKeysInternal#property-generateKey-modulusLe
-                       ngth.
-   
+
+     |token-id| - ?
+     |modulus-length| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [publicKey] where:
-   
-     |publicKey| - See https://developer.chrome.com/extensions/enterprise.platformKeysInternal#property-callback-publicKey.
-   
-   See https://developer.chrome.com/extensions/enterprise.platformKeysInternal#method-generateKey."
-  ([token-id modulus-length #_callback] (gen-call :function ::generate-key &form token-id modulus-length)))
+   Signature of the result value put on the channel is [public-key] where:
+
+     |public-key| - ?"
+  ([token-id modulus-length] (gen-call :function ::generate-key &form token-id modulus-length)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 

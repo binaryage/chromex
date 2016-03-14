@@ -2,9 +2,9 @@
   "Use the chrome.system.storage API to query storage device
    information and be notified when a removable storage device is attached and
    detached.
-   
+
      * available since Chrome 30
-     * https://developer.chrome.com/extensions/system.storage"
+     * https://developer.chrome.com/apps/system.storage"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -18,40 +18,40 @@
 
 (defmacro get-info
   "Get the storage information from the system. The argument passed to the callback is an array of StorageUnitInfo objects.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [info] where:
-   
-     |info| - See https://developer.chrome.com/extensions/system.storage#property-callback-info.
-   
-   See https://developer.chrome.com/extensions/system.storage#method-getInfo."
-  ([#_callback] (gen-call :function ::get-info &form)))
+
+     |info| - https://developer.chrome.com/apps/system.storage#property-callback-info.
+
+   https://developer.chrome.com/apps/system.storage#method-getInfo."
+  ([] (gen-call :function ::get-info &form)))
 
 (defmacro eject-device
   "Ejects a removable storage device.
-   
-     |id| - See https://developer.chrome.com/extensions/system.storage#property-ejectDevice-id.
-   
+
+     |id| - https://developer.chrome.com/apps/system.storage#property-ejectDevice-id.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - See https://developer.chrome.com/extensions/system.storage#property-callback-result.
-   
-   See https://developer.chrome.com/extensions/system.storage#method-ejectDevice."
-  ([id #_callback] (gen-call :function ::eject-device &form id)))
+
+     |result| - https://developer.chrome.com/apps/system.storage#property-callback-result.
+
+   https://developer.chrome.com/apps/system.storage#method-ejectDevice."
+  ([id] (gen-call :function ::eject-device &form id)))
 
 (defmacro get-available-capacity
   "Get the available capacity of a specified |id| storage device. The |id| is the transient device ID from StorageUnitInfo.
-   
-     |id| - See https://developer.chrome.com/extensions/system.storage#property-getAvailableCapacity-id.
-   
+
+     |id| - https://developer.chrome.com/apps/system.storage#property-getAvailableCapacity-id.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [info] where:
-   
-     |info| - See https://developer.chrome.com/extensions/system.storage#property-callback-info.
-   
-   See https://developer.chrome.com/extensions/system.storage#method-getAvailableCapacity."
-  ([id #_callback] (gen-call :function ::get-available-capacity &form id)))
+
+     |info| - https://developer.chrome.com/apps/system.storage#property-callback-info.
+
+   https://developer.chrome.com/apps/system.storage#method-getAvailableCapacity."
+  ([id] (gen-call :function ::get-available-capacity &form id)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -59,20 +59,26 @@
 
 (defmacro tap-on-attached-events
   "Fired when a new removable storage is attached to the system.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-attached [info]] where:
+
+     |info| - https://developer.chrome.com/apps/system.storage#property-onAttached-info.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/system.storage#event-onAttached."
+
+   https://developer.chrome.com/apps/system.storage#event-onAttached."
   ([channel & args] (apply gen-call :event ::on-attached &form channel args)))
 
 (defmacro tap-on-detached-events
   "Fired when a removable storage is detached from the system.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-detached [id]] where:
+
+     |id| - https://developer.chrome.com/apps/system.storage#property-onDetached-id.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/system.storage#event-onDetached."
+
+   https://developer.chrome.com/apps/system.storage#event-onDetached."
   ([channel & args] (apply gen-call :event ::on-detached &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

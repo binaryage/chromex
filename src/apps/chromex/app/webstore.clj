@@ -1,8 +1,8 @@
 (ns chromex.app.webstore
   "Use the chrome.webstore API to initiate app and extension installations 'inline' from your site.
-   
+
      * available since Chrome 15
-     * https://developer.chrome.com/extensions/webstore"
+     * https://developer.chrome.com/apps/webstore"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -18,19 +18,19 @@
   "  |url| - If you have more than one &lt;link&gt; tag on your page with the chrome-webstore-item relation, you can choose
              which item you'd like to install by passing in its URL here. If it is omitted, then the first (or only) link
              will be used. An exception will be thrown if the passed in URL does not exist on the page.
-     |successCallback| - This function is invoked when inline installation successfully completes (after the dialog is shown
-                         and the user agrees to add the item to Chrome). You may wish to use this to hide the user interface
-                         element that prompted the user to install the app or extension.
-   
+     |success-callback| - This function is invoked when inline installation successfully completes (after the dialog is
+                          shown and the user agrees to add the item to Chrome). You may wish to use this to hide the user
+                          interface element that prompted the user to install the app or extension.
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [error errorCode] where:
-   
+   Signature of the result value put on the channel is [error error-code] where:
+
      |error| - The failure detail. You may wish to inspect or log this for debugging purposes, but you should not rely on
                specific strings being passed back.
-     |errorCode| - The error code from the stable set of possible errors.
-   
-   See https://developer.chrome.com/extensions/webstore#method-install."
-  ([url success-callback #_failure-callback] (gen-call :function ::install &form url success-callback))
+     |error-code| - The error code from the stable set of possible errors.
+
+   https://developer.chrome.com/apps/webstore#method-install."
+  ([url success-callback] (gen-call :function ::install &form url success-callback))
   ([url] `(install ~url :omit))
   ([] `(install :omit :omit)))
 
@@ -41,21 +41,27 @@
 (defmacro tap-on-install-stage-changed-events
   "Fired when an inline installation enters a new InstallStage. In order to receive notifications about this event, listeners
    must be registered before the inline installation begins.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-install-stage-changed [stage]] where:
+
+     |stage| - The InstallStage that just began.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/webstore#event-onInstallStageChanged."
+
+   https://developer.chrome.com/apps/webstore#event-onInstallStageChanged."
   ([channel & args] (apply gen-call :event ::on-install-stage-changed &form channel args)))
 
 (defmacro tap-on-download-progress-events
   "Fired periodically with the download progress of an inline install. In order to receive notifications about this event,
    listeners must be registered before the inline installation begins.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-download-progress [percent-downloaded]] where:
+
+     |percent-downloaded| - The progress of the download, between 0 and 1. 0 indicates no progress; 1.0 indicates complete.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/webstore#event-onDownloadProgress."
+
+   https://developer.chrome.com/apps/webstore#event-onDownloadProgress."
   ([channel & args] (apply gen-call :event ::on-download-progress &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

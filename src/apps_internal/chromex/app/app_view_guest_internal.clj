@@ -1,6 +1,5 @@
 (ns chromex.app.app-view-guest-internal
-  "  * available since Chrome 40
-     * https://developer.chrome.com/extensions/appViewGuestInternal"
+  "  * available since Chrome 40"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -14,19 +13,15 @@
 
 (defmacro attach-frame
   "Attaches the specified url to the AppView with the provided instance ID.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [instanceId] where:
-   
-     |instanceId| - See https://developer.chrome.com/extensions/appViewGuestInternal#property-callback-instanceId.
-   
-   See https://developer.chrome.com/extensions/appViewGuestInternal#method-attachFrame."
-  ([#_callback] (gen-call :function ::attach-frame &form)))
+   Signature of the result value put on the channel is [instance-id] where:
+
+     |instance-id| - ?"
+  ([] (gen-call :function ::attach-frame &form)))
 
 (defmacro deny-request
-  "Denies the embedding request made by the AppView with the provided instance ID.
-   
-   See https://developer.chrome.com/extensions/appViewGuestInternal#method-denyRequest."
+  "Denies the embedding request made by the AppView with the provided instance ID."
   ([] (gen-call :function ::deny-request &form)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

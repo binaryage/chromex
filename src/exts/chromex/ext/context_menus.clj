@@ -1,7 +1,7 @@
 (ns chromex.ext.context-menus
   "Use the chrome.contextMenus API to add items to Google Chrome's context menu. You can choose what types of objects your
    context menu additions apply to, such as images, hyperlinks, and pages.
-   
+
      * available since Chrome 6
      * https://developer.chrome.com/extensions/contextMenus"
 
@@ -18,8 +18,8 @@
 (defmacro get-action-menu-top-level-limit
   "The maximum number of top level extension items that can be added to an extension action context menu. Any items beyond
    this limit will be ignored.
-   
-   See https://developer.chrome.com/extensions/contextMenus#property-ACTION_MENU_TOP_LEVEL_LIMIT."
+
+   https://developer.chrome.com/extensions/contextMenus#property-ACTION_MENU_TOP_LEVEL_LIMIT."
   ([] (gen-call :property ::action-menu-top-level-limit &form)))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
@@ -27,46 +27,46 @@
 (defmacro create
   "Creates a new context menu item. Note that if an error occurs during creation, you may not find out until the creation
    callback fires (the details will be in chrome.runtime.lastError).
-   
-     |createProperties| - See https://developer.chrome.com/extensions/contextMenus#property-create-createProperties.
-   
+
+     |create-properties| - https://developer.chrome.com/extensions/contextMenus#property-create-createProperties.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/contextMenus#method-create."
-  ([create-properties #_callback] (gen-call :function ::create &form create-properties)))
+
+   https://developer.chrome.com/extensions/contextMenus#method-create."
+  ([create-properties] (gen-call :function ::create &form create-properties)))
 
 (defmacro update
   "Updates a previously created context menu item.
-   
+
      |id| - The ID of the item to update.
-     |updateProperties| - The properties to update. Accepts the same values as the create function.
-   
+     |update-properties| - The properties to update. Accepts the same values as the create function.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/contextMenus#method-update."
-  ([id update-properties #_callback] (gen-call :function ::update &form id update-properties)))
+
+   https://developer.chrome.com/extensions/contextMenus#method-update."
+  ([id update-properties] (gen-call :function ::update &form id update-properties)))
 
 (defmacro remove
   "Removes a context menu item.
-   
-     |menuItemId| - The ID of the context menu item to remove.
-   
+
+     |menu-item-id| - The ID of the context menu item to remove.
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/contextMenus#method-remove."
-  ([menu-item-id #_callback] (gen-call :function ::remove &form menu-item-id)))
+
+   https://developer.chrome.com/extensions/contextMenus#method-remove."
+  ([menu-item-id] (gen-call :function ::remove &form menu-item-id)))
 
 (defmacro remove-all
   "Removes all context menu items added by this extension.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/contextMenus#method-removeAll."
-  ([#_callback] (gen-call :function ::remove-all &form)))
+
+   https://developer.chrome.com/extensions/contextMenus#method-removeAll."
+  ([] (gen-call :function ::remove-all &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -74,11 +74,16 @@
 
 (defmacro tap-on-clicked-events
   "Fired when a context menu item is clicked.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-clicked [info tab]] where:
+
+     |info| - Information sent when a context menu item is clicked.
+     |tab| - The details of the tab where the click took place. If the click did not take place in a tab, this parameter will
+             be missing.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/contextMenus#event-onClicked."
+
+   https://developer.chrome.com/extensions/contextMenus#event-onClicked."
   ([channel & args] (apply gen-call :event ::on-clicked &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

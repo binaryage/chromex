@@ -1,9 +1,8 @@
 (ns chromex.ext.file-manager-private
   "fileManagerPrivate API.
    This is a private API used by the file browser of ChromeOS.
-   
-     * available since Chrome 39
-     * https://developer.chrome.com/extensions/fileManagerPrivate"
+
+     * available since Chrome 39"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -16,32 +15,25 @@
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro logout-user-for-reauthentication
-  "Logout the current user for navigating to the re-authentication screen for the Google account.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-logoutUserForReauthentication."
+  "Logout the current user for navigating to the re-authentication screen for the Google account."
   ([] (gen-call :function ::logout-user-for-reauthentication &form)))
 
 (defmacro cancel-dialog
-  "Cancels file selection.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-cancelDialog."
+  "Cancels file selection."
   ([] (gen-call :function ::cancel-dialog &form)))
 
 (defmacro execute-task
   "Executes file browser task over selected files. |taskId| The unique identifier of task to execute. |entries| Array of
    entries |callback
 
-   
-     |taskId| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-executeTask-taskId.
-     |entries| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-executeTask-entries.
-   
+     |task-id| - ?
+     |entries| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-callback-result.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-executeTask."
-  ([task-id entries #_callback] (gen-call :function ::execute-task &form task-id entries)))
+
+     |result| - ?"
+  ([task-id entries] (gen-call :function ::execute-task &form task-id entries)))
 
 (defmacro set-default-task
   "Sets the default task for the supplied MIME types and path extensions. Lists of MIME types and URLs may contain duplicates.
@@ -49,89 +41,69 @@
 
    Array of selected entries to extract path extensions from. |mimeTypes| Array of selected file MIME types. |callback
 
-   
-     |taskId| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-setDefaultTask-taskId.
-     |entries| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-setDefaultTask-entries.
-     |mimeTypes| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-setDefaultTask-mimeTypes.
-   
+     |task-id| - ?
+     |entries| - ?
+     |mime-types| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-setDefaultTask."
-  ([task-id entries mime-types #_callback] (gen-call :function ::set-default-task &form task-id entries mime-types)))
+   Signature of the result value put on the channel is []."
+  ([task-id entries mime-types] (gen-call :function ::set-default-task &form task-id entries mime-types)))
 
 (defmacro get-file-tasks
   "Gets the list of tasks that can be performed over selected files. |entries| Array of selected entries |callback
 
-   
-     |entries| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-getFileTasks-entries.
-   
+     |entries| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [tasks] where:
-   
-     |tasks| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-callback-tasks.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-getFileTasks."
-  ([entries #_callback] (gen-call :function ::get-file-tasks &form entries)))
+
+     |tasks| - ?"
+  ([entries] (gen-call :function ::get-file-tasks &form entries)))
 
 (defmacro get-mime-type
   "Gets the MIME type of a file. |entry| Entry to be checked. |callback
 
-   
-     |entry| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-getMimeType-entry.
-   
+     |entry| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-callback-result.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-getMimeType."
-  ([entry #_callback] (gen-call :function ::get-mime-type &form entry)))
+
+     |result| - ?"
+  ([entry] (gen-call :function ::get-mime-type &form entry)))
 
 (defmacro get-strings
   "Gets localized strings and initialization data. |callback
 
-   
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-callback-result.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-getStrings."
-  ([#_callback] (gen-call :function ::get-strings &form)))
+
+     |result| - ?"
+  ([] (gen-call :function ::get-strings &form)))
 
 (defmacro add-file-watch
   "Adds file watch. |entry| Entry to watch |callback
 
-   
-     |entry| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-addFileWatch-entry.
-   
+     |entry| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [success] where:
-   
-     |success| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-callback-success.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-addFileWatch."
-  ([entry #_callback] (gen-call :function ::add-file-watch &form entry)))
+
+     |success| - ?"
+  ([entry] (gen-call :function ::add-file-watch &form entry)))
 
 (defmacro remove-file-watch
   "Removes file watch. |entry| Watched entry |callback
 
-   
-     |entry| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-removeFileWatch-entry.
-   
+     |entry| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [success] where:
-   
-     |success| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-callback-success.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-removeFileWatch."
-  ([entry #_callback] (gen-call :function ::remove-file-watch &form entry)))
+
+     |success| - ?"
+  ([entry] (gen-call :function ::remove-file-watch &form entry)))
 
 (defmacro enable-external-file-scheme
-  "Enables the extenal file scheme necessary to initiate drags to the browser window for files on the external backend.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-enableExternalFileScheme."
+  "Enables the extenal file scheme necessary to initiate drags to the browser window for files on the external backend."
   ([] (gen-call :function ::enable-external-file-scheme &form)))
 
 (defmacro grant-access
@@ -139,264 +111,208 @@
    access if the url is invalid or not backed by the external file system. |entryUrls| Urls for the entries to be accessed.
    |callback
 
-   
-     |entryUrls| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-grantAccess-entryUrls.
-   
+     |entry-urls| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-grantAccess."
-  ([entry-urls #_callback] (gen-call :function ::grant-access &form entry-urls)))
+   Signature of the result value put on the channel is []."
+  ([entry-urls] (gen-call :function ::grant-access &form entry-urls)))
 
 (defmacro select-files
   "Selects multiple files. |selectedPaths| Array of selected paths |shouldReturnLocalPath| true if paths need to be resolved
    to local paths. |callback
 
-   
-     |selectedPaths| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-selectFiles-selectedPaths.
-     |shouldReturnLocalPath| - See
-                               https://developer.chrome.com/extensions/fileManagerPrivate#property-selectFiles-shouldReturnLo
-                               calPath.
-   
+     |selected-paths| - ?
+     |should-return-local-path| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-selectFiles."
-  ([selected-paths should-return-local-path #_callback] (gen-call :function ::select-files &form selected-paths should-return-local-path)))
+   Signature of the result value put on the channel is []."
+  ([selected-paths should-return-local-path] (gen-call :function ::select-files &form selected-paths should-return-local-path)))
 
 (defmacro select-file
   "Selects a file. |selectedPath| A selected path |index| Index of Filter |forOpening| true if paths are selected for opening.
    false if for saving. |shouldReturnLocalPath| true if paths need to be resolved to local paths. |callback
 
-   
-     |selectedPath| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-selectFile-selectedPath.
-     |index| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-selectFile-index.
-     |forOpening| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-selectFile-forOpening.
-     |shouldReturnLocalPath| - See
-                               https://developer.chrome.com/extensions/fileManagerPrivate#property-selectFile-shouldReturnLoc
-                               alPath.
-   
+     |selected-path| - ?
+     |index| - ?
+     |for-opening| - ?
+     |should-return-local-path| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-selectFile."
-  ([selected-path index for-opening should-return-local-path #_callback] (gen-call :function ::select-file &form selected-path index for-opening should-return-local-path)))
+   Signature of the result value put on the channel is []."
+  ([selected-path index for-opening should-return-local-path] (gen-call :function ::select-file &form selected-path index for-opening should-return-local-path)))
 
 (defmacro get-entry-properties
   "Requests additional properties for files. |entries| list of entries |names| list of requested properties by their names.
    |callback| Completion callback. May return less than requested properties     if some are not available. In the same time,
    it can return properties     which were not requested (if it's cheap to compute them).
-   
-     |entries| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-getEntryProperties-entries.
-     |names| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-getEntryProperties-names.
-   
+
+     |entries| - ?
+     |names| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [entryProperties] where:
-   
-     |entryProperties| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-callback-entryProperties.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-getEntryProperties."
-  ([entries names #_callback] (gen-call :function ::get-entry-properties &form entries names)))
+   Signature of the result value put on the channel is [entry-properties] where:
+
+     |entry-properties| - ?"
+  ([entries names] (gen-call :function ::get-entry-properties &form entries names)))
 
 (defmacro pin-drive-file
   "Pins/unpins a Drive file in the cache. |entry| Entry to pin/unpin. |pin| Pass true to pin the file. |callback| Completion
    callback. 'runtime.lastError' will be set if     there was an error.
-   
-     |entry| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-pinDriveFile-entry.
-     |pin| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-pinDriveFile-pin.
-   
+
+     |entry| - ?
+     |pin| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-pinDriveFile."
-  ([entry pin #_callback] (gen-call :function ::pin-drive-file &form entry pin)))
+   Signature of the result value put on the channel is []."
+  ([entry pin] (gen-call :function ::pin-drive-file &form entry pin)))
 
 (defmacro resolve-isolated-entries
   "Resolves entries in the isolated file system and returns corresponding entries in the external file system mounted to
    Chrome OS file manager backend. If resolving entry fails, the entry will be just ignored and the corresponding entry does
    not appear in the result.
-   
-     |entries| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-resolveIsolatedEntries-entries.
-   
+
+     |entries| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [entries] where:
-   
-     |entries| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-callback-entries.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-resolveIsolatedEntries."
-  ([entries #_callback] (gen-call :function ::resolve-isolated-entries &form entries)))
+
+     |entries| - ?"
+  ([entries] (gen-call :function ::resolve-isolated-entries &form entries)))
 
 (defmacro add-mount
   "Mount a resource or a file. |source| Mount point source. For compressed files it is relative file path     within external
    file system |callback
 
-   
-     |source| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-addMount-source.
-   
+     |source| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [sourcePath] where:
-   
-     |sourcePath| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-callback-sourcePath.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-addMount."
-  ([source #_callback] (gen-call :function ::add-mount &form source)))
+   Signature of the result value put on the channel is [source-path] where:
+
+     |source-path| - ?"
+  ([source] (gen-call :function ::add-mount &form source)))
 
 (defmacro remove-mount
   "Unmounts a mounted resource. |volumeId| An ID of the volume.
-   
-     |volumeId| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-removeMount-volumeId.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-removeMount."
+
+     |volume-id| - ?"
   ([volume-id] (gen-call :function ::remove-mount &form volume-id)))
 
 (defmacro get-volume-metadata-list
   "Get the list of mounted volumes. |callback
 
-   
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [volumeMetadataList] where:
-   
-     |volumeMetadataList| - See
-                            https://developer.chrome.com/extensions/fileManagerPrivate#property-callback-volumeMetadataList.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-getVolumeMetadataList."
-  ([#_callback] (gen-call :function ::get-volume-metadata-list &form)))
+   Signature of the result value put on the channel is [volume-metadata-list] where:
+
+     |volume-metadata-list| - ?"
+  ([] (gen-call :function ::get-volume-metadata-list &form)))
 
 (defmacro cancel-file-transfers
   "Cancels ongoing file transfers for selected files. |entries| Array of files for which ongoing transfer should be canceled.
    |callback| Completion callback of the cancel.
-   
-     |entries| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-cancelFileTransfers-entries.
-   
+
+     |entries| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-cancelFileTransfers."
-  ([entries #_callback] (gen-call :function ::cancel-file-transfers &form entries)))
+   Signature of the result value put on the channel is []."
+  ([entries] (gen-call :function ::cancel-file-transfers &form entries)))
 
 (defmacro cancel-all-file-transfers
   "Cancels all ongoing file transfers. |callback| Completion callback of the cancel.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-cancelAllFileTransfers."
-  ([#_callback] (gen-call :function ::cancel-all-file-transfers &form)))
+   Signature of the result value put on the channel is []."
+  ([] (gen-call :function ::cancel-all-file-transfers &form)))
 
 (defmacro start-copy
   "Starts to copy an entry. If the source is a directory, the copy is done recursively. |entry| Entry of the source entry to
    be copied. |parentEntry| Entry for the destination (parent) directory. |newName| Name of the new entry. It must not contain
    '/'. |callback| Completion callback.
-   
-     |entry| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-startCopy-entry.
-     |parentEntry| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-startCopy-parentEntry.
-     |newName| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-startCopy-newName.
-   
+
+     |entry| - ?
+     |parent-entry| - ?
+     |new-name| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [copyId] where:
-   
-     |copyId| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-callback-copyId.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-startCopy."
-  ([entry parent-entry new-name #_callback] (gen-call :function ::start-copy &form entry parent-entry new-name)))
+   Signature of the result value put on the channel is [copy-id] where:
+
+     |copy-id| - ?"
+  ([entry parent-entry new-name] (gen-call :function ::start-copy &form entry parent-entry new-name)))
 
 (defmacro cancel-copy
   "Cancels the running copy task. |copyId| ID of the copy task to be cancelled. |callback| Completion callback of the cancel.
-   
-     |copyId| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-cancelCopy-copyId.
-   
+
+     |copy-id| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-cancelCopy."
-  ([copy-id #_callback] (gen-call :function ::cancel-copy &form copy-id)))
+   Signature of the result value put on the channel is []."
+  ([copy-id] (gen-call :function ::cancel-copy &form copy-id)))
 
 (defmacro get-size-stats
   "Retrieves total and remaining size of a mount point. |volumeId| ID of the volume to be checked. |callback
 
-   
-     |volumeId| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-getSizeStats-volumeId.
-   
+     |volume-id| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [sizeStats] where:
-   
-     |sizeStats| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-callback-sizeStats.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-getSizeStats."
-  ([volume-id #_callback] (gen-call :function ::get-size-stats &form volume-id)))
+   Signature of the result value put on the channel is [size-stats] where:
+
+     |size-stats| - ?"
+  ([volume-id] (gen-call :function ::get-size-stats &form volume-id)))
 
 (defmacro format-volume
   "Formats a mounted volume. |volumeId| ID of the volume to be formatted.
-   
-     |volumeId| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-formatVolume-volumeId.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-formatVolume."
+
+     |volume-id| - ?"
   ([volume-id] (gen-call :function ::format-volume &form volume-id)))
 
 (defmacro get-preferences
   "Retrieves file manager preferences. |callback
 
-   
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-callback-result.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-getPreferences."
-  ([#_callback] (gen-call :function ::get-preferences &form)))
+
+     |result| - ?"
+  ([] (gen-call :function ::get-preferences &form)))
 
 (defmacro set-preferences
   "Sets file manager preferences. |changeInfo
 
-   
-     |changeInfo| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-setPreferences-changeInfo.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-setPreferences."
+     |change-info| - ?"
   ([change-info] (gen-call :function ::set-preferences &form change-info)))
 
 (defmacro search-drive
   "Performs drive content search. |searchParams| |callback
 
-   
-     |searchParams| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-searchDrive-searchParams.
-   
+     |search-params| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [entries nextFeed] where:
-   
-     |entries| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-callback-entries.
-     |nextFeed| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-callback-nextFeed.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-searchDrive."
-  ([search-params #_callback] (gen-call :function ::search-drive &form search-params)))
+   Signature of the result value put on the channel is [entries next-feed] where:
+
+     |entries| - ?
+     |next-feed| - ?"
+  ([search-params] (gen-call :function ::search-drive &form search-params)))
 
 (defmacro search-drive-metadata
   "Performs drive metadata search. |searchParams| |callback
 
-   
-     |searchParams| - See
-                      https://developer.chrome.com/extensions/fileManagerPrivate#property-searchDriveMetadata-searchParams.
-   
+     |search-params| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [results] where:
-   
-     |results| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-callback-results.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-searchDriveMetadata."
-  ([search-params #_callback] (gen-call :function ::search-drive-metadata &form search-params)))
+
+     |results| - ?"
+  ([search-params] (gen-call :function ::search-drive-metadata &form search-params)))
 
 (defmacro search-files-by-hashes
   "Search files in the volume having |volumeId| by using |hashList|. sub-directories) the given |targetDirectoryUrl|.
-   
-     |volumeId| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-searchFilesByHashes-volumeId.
-     |hashList| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-searchFilesByHashes-hashList.
-   
+
+     |volume-id| - ?
+     |hash-list| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [urls] where:
-   
-     |urls| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-callback-urls.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-searchFilesByHashes."
-  ([volume-id hash-list #_callback] (gen-call :function ::search-files-by-hashes &form volume-id hash-list)))
+
+     |urls| - ?"
+  ([volume-id hash-list] (gen-call :function ::search-files-by-hashes &form volume-id hash-list)))
 
 (defmacro zip-selection
   "Create a zip file for the selected files. |parentEntry| Entry of the directory containing the selected files. |entries
@@ -405,252 +321,204 @@
    destination zip file. The zip file will be created     under the directory specified by |parentEntry|. |callback
 
    TODO(mtomasz): Swap order of |entries| and |parentEntry|.
-   
-     |parentEntry| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-zipSelection-parentEntry.
-     |entries| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-zipSelection-entries.
-     |destName| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-zipSelection-destName.
-   
+
+     |parent-entry| - ?
+     |entries| - ?
+     |dest-name| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [success] where:
-   
-     |success| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-callback-success.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-zipSelection."
-  ([parent-entry entries dest-name #_callback] (gen-call :function ::zip-selection &form parent-entry entries dest-name)))
+
+     |success| - ?"
+  ([parent-entry entries dest-name] (gen-call :function ::zip-selection &form parent-entry entries dest-name)))
 
 (defmacro get-drive-connection-state
   "Retrieves the state of the current drive connection. |callback
 
-   
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-callback-result.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-getDriveConnectionState."
-  ([#_callback] (gen-call :function ::get-drive-connection-state &form)))
+
+     |result| - ?"
+  ([] (gen-call :function ::get-drive-connection-state &form)))
 
 (defmacro validate-path-name-length
   "Checks whether the path name length fits in the limit of the filesystem. |parentEntry| The entry of the parent directory
    entry. |name| The name of the file. |callback| Called back when the check is finished.
-   
-     |parentEntry| - See
-                     https://developer.chrome.com/extensions/fileManagerPrivate#property-validatePathNameLength-parentEntry.
-     |name| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-validatePathNameLength-name.
-   
+
+     |parent-entry| - ?
+     |name| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-callback-result.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-validatePathNameLength."
-  ([parent-entry name #_callback] (gen-call :function ::validate-path-name-length &form parent-entry name)))
+
+     |result| - ?"
+  ([parent-entry name] (gen-call :function ::validate-path-name-length &form parent-entry name)))
 
 (defmacro zoom
   "Changes the zoom factor of the Files.app. |operation| Zooming mode.
-   
-     |operation| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-zoom-operation.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-zoom."
+
+     |operation| - ?"
   ([operation] (gen-call :function ::zoom &form operation)))
 
 (defmacro request-access-token
   "Requests a Drive API OAuth2 access token. |refresh| Whether the token should be refetched instead of using the cached
    one. |callback
 
-   
-     |refresh| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-requestAccessToken-refresh.
-   
+     |refresh| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [accessToken] where:
-   
-     |accessToken| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-callback-accessToken.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-requestAccessToken."
-  ([refresh #_callback] (gen-call :function ::request-access-token &form refresh)))
+   Signature of the result value put on the channel is [access-token] where:
+
+     |access-token| - ?"
+  ([refresh] (gen-call :function ::request-access-token &form refresh)))
 
 (defmacro request-web-store-access-token
   "Requests a Webstore API OAuth2 access token. |callback
 
-   
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [accessToken] where:
-   
-     |accessToken| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-callback-accessToken.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-requestWebStoreAccessToken."
-  ([#_callback] (gen-call :function ::request-web-store-access-token &form)))
+   Signature of the result value put on the channel is [access-token] where:
+
+     |access-token| - ?"
+  ([] (gen-call :function ::request-web-store-access-token &form)))
 
 (defmacro get-share-url
   "Requests a share dialog url for the specified file. |entry| The entry to share. |callback
 
-   
-     |entry| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-getShareUrl-entry.
-   
+     |entry| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [url] where:
-   
-     |url| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-callback-url.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-getShareUrl."
-  ([entry #_callback] (gen-call :function ::get-share-url &form entry)))
+
+     |url| - ?"
+  ([entry] (gen-call :function ::get-share-url &form entry)))
 
 (defmacro get-download-url
   "Requests a download url to download the file contents. |entry| The entry to download. |callback
 
-   
-     |entry| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-getDownloadUrl-entry.
-   
+     |entry| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [url] where:
-   
-     |url| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-callback-url.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-getDownloadUrl."
-  ([entry #_callback] (gen-call :function ::get-download-url &form entry)))
+
+     |url| - ?"
+  ([entry] (gen-call :function ::get-download-url &form entry)))
 
 (defmacro request-drive-share
   "Requests to share drive files. |entry| Entry to be shared. |shareType| Type of access that is getting granted.
-   
-     |entry| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-requestDriveShare-entry.
-     |shareType| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-requestDriveShare-shareType.
-   
+
+     |entry| - ?
+     |share-type| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-requestDriveShare."
-  ([entry share-type #_callback] (gen-call :function ::request-drive-share &form entry share-type)))
+   Signature of the result value put on the channel is []."
+  ([entry share-type] (gen-call :function ::request-drive-share &form entry share-type)))
 
 (defmacro get-profiles
   "Obtains a list of profiles that are logged-in.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [profiles runningProfile displayProfile] where:
-   
-     |profiles| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-callback-profiles.
-     |runningProfile| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-callback-runningProfile.
-     |displayProfile| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-callback-displayProfile.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-getProfiles."
-  ([#_callback] (gen-call :function ::get-profiles &form)))
+   Signature of the result value put on the channel is [profiles running-profile display-profile] where:
+
+     |profiles| - ?
+     |running-profile| - ?
+     |display-profile| - ?"
+  ([] (gen-call :function ::get-profiles &form)))
 
 (defmacro open-inspector
   "Opens inspector window. |type| InspectionType which specifies how to open inspector.
-   
-     |type| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-openInspector-type.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-openInspector."
+
+     |type| - ?"
   ([type] (gen-call :function ::open-inspector &form type)))
 
 (defmacro compute-checksum
   "Computes an MD5 checksum for the given file. |entry| The entry of the file to checksum. |callback
 
-   
-     |entry| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-computeChecksum-entry.
-   
+     |entry| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [checksum] where:
-   
-     |checksum| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-callback-checksum.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-computeChecksum."
-  ([entry #_callback] (gen-call :function ::compute-checksum &form entry)))
+
+     |checksum| - ?"
+  ([entry] (gen-call :function ::compute-checksum &form entry)))
 
 (defmacro is-uma-enabled
   "Is UMA enabled?
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-callback-result.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-isUMAEnabled."
-  ([#_callback] (gen-call :function ::is-uma-enabled &form)))
+
+     |result| - ?"
+  ([] (gen-call :function ::is-uma-enabled &form)))
 
 (defmacro set-entry-tag
   "Sets a tag on a file or a directory. Only Drive files are supported.
-   
-     |entry| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-setEntryTag-entry.
-     |visibility| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-setEntryTag-visibility.
-     |key| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-setEntryTag-key.
-     |value| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-setEntryTag-value.
-   
+
+     |entry| - ?
+     |visibility| - ?
+     |key| - ?
+     |value| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-setEntryTag."
-  ([entry visibility key value #_callback] (gen-call :function ::set-entry-tag &form entry visibility key value)))
+   Signature of the result value put on the channel is []."
+  ([entry visibility key value] (gen-call :function ::set-entry-tag &form entry visibility key value)))
 
 (defmacro is-piex-loader-enabled
   "Returns if Piex loader is enabled.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
-   
-     |result| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-callback-result.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-isPiexLoaderEnabled."
-  ([#_callback] (gen-call :function ::is-piex-loader-enabled &form)))
+
+     |result| - ?"
+  ([] (gen-call :function ::is-piex-loader-enabled &form)))
 
 (defmacro get-providing-extensions
   "Returns list of available providing extensions.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [extensions] where:
-   
-     |extensions| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-callback-extensions.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-getProvidingExtensions."
-  ([#_callback] (gen-call :function ::get-providing-extensions &form)))
+
+     |extensions| - ?"
+  ([] (gen-call :function ::get-providing-extensions &form)))
 
 (defmacro add-provided-file-system
   "Requests adding a new provided file system. If not possible, then an error via chrome.runtime.lastError is returned.
-   
-     |extension_id| - See
-                      https://developer.chrome.com/extensions/fileManagerPrivate#property-addProvidedFileSystem-extension_id.
-   
+
+     |extension-id| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-addProvidedFileSystem."
-  ([extension-id #_callback] (gen-call :function ::add-provided-file-system &form extension-id)))
+   Signature of the result value put on the channel is []."
+  ([extension-id] (gen-call :function ::add-provided-file-system &form extension-id)))
 
 (defmacro configure-volume
   "Requests configuring an existing volume. If not possible, then returns an error via chrome.runtime.lastError.
-   
-     |volumeId| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-configureVolume-volumeId.
-   
+
+     |volume-id| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-configureVolume."
-  ([volume-id #_callback] (gen-call :function ::configure-volume &form volume-id)))
+   Signature of the result value put on the channel is []."
+  ([volume-id] (gen-call :function ::configure-volume &form volume-id)))
 
 (defmacro get-custom-actions
   "Requests list of custom actions for the specified entries. If not possible, then an error via chrome.runtime.lastError is
    returned.
-   
-     |entries| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-getCustomActions-entries.
-   
+
+     |entries| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [actions] where:
-   
-     |actions| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-callback-actions.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-getCustomActions."
-  ([entries #_callback] (gen-call :function ::get-custom-actions &form entries)))
+
+     |actions| - ?"
+  ([entries] (gen-call :function ::get-custom-actions &form entries)))
 
 (defmacro execute-custom-action
   "Executes a custom action for a set of entries. If not possible, then an error via chrome.runtime.lastError is returned.
-   
-     |entries| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-executeCustomAction-entries.
-     |actionId| - See https://developer.chrome.com/extensions/fileManagerPrivate#property-executeCustomAction-actionId.
-   
+
+     |entries| - ?
+     |action-id| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#method-executeCustomAction."
-  ([entries action-id #_callback] (gen-call :function ::execute-custom-action &form entries action-id)))
+   Signature of the result value put on the channel is []."
+  ([entries action-id] (gen-call :function ::execute-custom-action &form entries action-id)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -658,74 +526,71 @@
 
 (defmacro tap-on-mount-completed-events
   "
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#event-onMountCompleted."
+   Events will be put on the |channel| with signature [::on-mount-completed [event]] where:
+
+     |event| - ?
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-mount-completed &form channel args)))
 
 (defmacro tap-on-file-transfers-updated-events
   "
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#event-onFileTransfersUpdated."
+   Events will be put on the |channel| with signature [::on-file-transfers-updated [event]] where:
+
+     |event| - ?
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-file-transfers-updated &form channel args)))
 
 (defmacro tap-on-copy-progress-events
   "
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#event-onCopyProgress."
+   Events will be put on the |channel| with signature [::on-copy-progress [copy-id status]] where:
+
+     |copy-id| - ?
+     |status| - ?
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-copy-progress &form channel args)))
 
 (defmacro tap-on-directory-changed-events
   "
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#event-onDirectoryChanged."
+   Events will be put on the |channel| with signature [::on-directory-changed [event]] where:
+
+     |event| - ?
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-directory-changed &form channel args)))
 
 (defmacro tap-on-preferences-changed-events
   "
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#event-onPreferencesChanged."
+   Events will be put on the |channel| with signature [::on-preferences-changed []].
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-preferences-changed &form channel args)))
 
 (defmacro tap-on-drive-connection-status-changed-events
   "
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#event-onDriveConnectionStatusChanged."
+   Events will be put on the |channel| with signature [::on-drive-connection-status-changed []].
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-drive-connection-status-changed &form channel args)))
 
 (defmacro tap-on-device-changed-events
   "
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#event-onDeviceChanged."
+   Events will be put on the |channel| with signature [::on-device-changed [event]] where:
+
+     |event| - ?
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-device-changed &form channel args)))
 
 (defmacro tap-on-drive-sync-error-events
   "
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/fileManagerPrivate#event-onDriveSyncError."
+   Events will be put on the |channel| with signature [::on-drive-sync-error [event]] where:
+
+     |event| - ?
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-drive-sync-error &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

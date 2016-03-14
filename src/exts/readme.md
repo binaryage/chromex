@@ -184,131 +184,131 @@ Generated 81 namespaces containing 44 properties, 361 functions and 183 events:
     [chromex.ext.accessibility-features refer-macros:[
       get-spoken-feedback get-large-cursor get-sticky-keys get-high-contrast get-screen-magnifier
       get-autoclick get-virtual-keyboard get-animation-policy tap-all-events]]
-    
+
     [chromex.ext.alarms refer-macros:[
       create get get-all clear clear-all tap-on-alarm tap-all-events]]
-    
+
     [chromex.ext.app refer-macros:[
       get-is-installed install-state running-state get-details tap-all-events]]
-    
+
     [chromex.ext.audio-modem refer-macros:[
       transmit stop-transmit receive stop-receive tap-on-received tap-on-transmit-fail tap-all-events]]
-    
+
     [chromex.ext.automation refer-macros:[
       get-tree get-desktop get-focus add-tree-change-observer remove-tree-change-observer
       set-document-selection tap-all-events]]
-    
+
     [chromex.ext.bluetooth refer-macros:[
       get-adapter-state get-device get-devices start-discovery stop-discovery
       tap-on-adapter-state-changed tap-on-device-added tap-on-device-changed tap-on-device-removed
       tap-all-events]]
-    
+
     [chromex.ext.bookmarks refer-macros:[
       get-max-write-operations-per-hour get-max-sustained-write-operations-per-minute get get-children
       get-recent get-tree get-sub-tree search create move update remove remove-tree tap-on-created
       tap-on-removed tap-on-changed tap-on-moved tap-on-children-reordered tap-on-import-began
       tap-on-import-ended tap-all-events]]
-    
+
     [chromex.ext.browser-action refer-macros:[
       set-title get-title set-icon set-popup get-popup set-badge-text get-badge-text
       set-badge-background-color get-badge-background-color enable disable tap-on-clicked tap-all-events]]
-    
+
     [chromex.ext.browsing-data refer-macros:[
       settings remove remove-appcache remove-cache remove-cookies remove-downloads remove-file-systems
       remove-form-data remove-history remove-indexed-db remove-local-storage remove-plugin-data
       remove-passwords remove-web-sql tap-all-events]]
-    
+
     [chromex.ext.cast.streaming.receiver-session refer-macros:[
       create-and-bind tap-all-events]]
-    
+
     [chromex.ext.cast.streaming.rtp-stream refer-macros:[
       destroy get-supported-params start stop toggle-logging get-raw-events get-stats tap-on-started
       tap-on-stopped tap-on-error tap-all-events]]
-    
+
     [chromex.ext.cast.streaming.session refer-macros:[
       create tap-all-events]]
-    
+
     [chromex.ext.cast.streaming.udp-transport refer-macros:[
       destroy set-destination set-options tap-all-events]]
-    
+
     [chromex.ext.certificate-provider refer-macros:[
       tap-on-certificates-requested tap-on-sign-digest-requested tap-all-events]]
-    
+
     [chromex.ext.commands refer-macros:[
       get-all tap-on-command tap-all-events]]
-    
+
     [chromex.ext.content-settings refer-macros:[
       get-cookies get-images get-javascript get-location get-plugins get-popups get-notifications
       get-fullscreen get-mouselock get-microphone get-camera get-unsandboxed-plugins
       get-automatic-downloads tap-all-events]]
-    
+
     [chromex.ext.context-menus refer-macros:[
       get-action-menu-top-level-limit create update remove remove-all tap-on-clicked tap-all-events]]
-    
+
     [chromex.ext.cookies refer-macros:[
       get get-all set remove get-all-cookie-stores tap-on-changed tap-all-events]]
-    
+
     [chromex.ext.copresence refer-macros:[
       execute tap-on-messages-received tap-on-status-updated tap-all-events]]
-    
+
     [chromex.ext.debugger-api refer-macros:[
       attach detach send-command get-targets tap-on-event tap-on-detach tap-all-events]]
-    
+
     [chromex.ext.declarative-content refer-macros:[
       tap-on-page-changed tap-all-events]]
-    
+
     [chromex.ext.declarative-web-request refer-macros:[
       tap-on-request tap-on-message tap-all-events]]
-    
+
     [chromex.ext.desktop-capture refer-macros:[
       choose-desktop-media cancel-choose-desktop-media tap-all-events]]
-    
+
     [chromex.ext.devtools.inspected-window refer-macros:[
       get-tab-id eval reload get-resources tap-on-resource-added tap-on-resource-content-committed
       tap-all-events]]
-    
+
     [chromex.ext.devtools.network refer-macros:[
       get-har tap-on-request-finished tap-on-navigated tap-all-events]]
-    
+
     [chromex.ext.devtools.panels refer-macros:[
       get-elements get-sources create set-open-resource-handler open-resource tap-all-events]]
-    
+
     [chromex.ext.display-source refer-macros:[
       get-available-sinks request-authentication start-session terminate-session tap-on-sinks-updated
       tap-on-session-terminated tap-on-session-error-occured tap-all-events]]
-    
+
     [chromex.ext.dns refer-macros:[
       resolve tap-all-events]]
-    
+
     [chromex.ext.document-scan refer-macros:[
       scan tap-all-events]]
-    
+
     [chromex.ext.downloads refer-macros:[
       download search pause resume cancel get-file-icon open show show-default-folder erase remove-file
       accept-danger drag set-shelf-enabled tap-on-created tap-on-erased tap-on-changed
       tap-on-determining-filename tap-all-events]]
-    
+
     [chromex.ext.enterprise.device-attributes refer-macros:[
       get-directory-device-id tap-all-events]]
-    
+
     [chromex.ext.enterprise.platform-keys refer-macros:[
       get-tokens get-certificates import-certificate remove-certificate challenge-machine-key
       challenge-user-key tap-all-events]]
-    
+
     [chromex.ext.experimental.devtools.audits refer-macros:[
       add-category tap-all-events]]
-    
+
     [chromex.ext.experimental.devtools.console refer-macros:[
       add-message get-messages tap-on-message-added tap-all-events]]
-    
+
     [chromex.ext.extension refer-macros:[
       get-last-error get-in-incognito-context send-request get-url get-views get-background-page
       get-extension-tabs is-allowed-incognito-access is-allowed-file-scheme-access set-update-url-data
       tap-on-request tap-on-request-external tap-all-events]]
-    
+
     [chromex.ext.file-browser-handler refer-macros:[
       select-file tap-on-execute tap-all-events]]
-    
+
     [chromex.ext.file-system-provider refer-macros:[
       mount unmount get-all get notify tap-on-unmount-requested tap-on-get-metadata-requested
       tap-on-get-actions-requested tap-on-read-directory-requested tap-on-open-file-requested
@@ -318,36 +318,36 @@ Generated 81 namespaces containing 44 properties, 361 functions and 183 events:
       tap-on-abort-requested tap-on-configure-requested tap-on-mount-requested
       tap-on-add-watcher-requested tap-on-remove-watcher-requested tap-on-execute-action-requested
       tap-all-events]]
-    
+
     [chromex.ext.font-settings refer-macros:[
       clear-font get-font set-font get-font-list clear-default-font-size get-default-font-size
       set-default-font-size clear-default-fixed-font-size get-default-fixed-font-size
       set-default-fixed-font-size clear-minimum-font-size get-minimum-font-size set-minimum-font-size
       tap-on-font-changed tap-on-default-font-size-changed tap-on-default-fixed-font-size-changed
       tap-on-minimum-font-size-changed tap-all-events]]
-    
+
     [chromex.ext.gcm refer-macros:[
       get-max-message-size register unregister send tap-on-message tap-on-messages-deleted
       tap-on-send-error tap-all-events]]
-    
+
     [chromex.ext.history refer-macros:[
       search get-visits add-url delete-url delete-range delete-all tap-on-visited tap-on-visit-removed
       tap-all-events]]
-    
+
     [chromex.ext.i18n refer-macros:[
       get-accept-languages get-message get-ui-language detect-language tap-all-events]]
-    
+
     [chromex.ext.identity refer-macros:[
       get-accounts get-auth-token get-profile-user-info remove-cached-auth-token launch-web-auth-flow
       get-redirect-url tap-on-sign-in-changed tap-all-events]]
-    
+
     [chromex.ext.idle refer-macros:[
       query-state set-detection-interval tap-on-state-changed tap-all-events]]
-    
+
     [chromex.ext.idltest refer-macros:[
       send-array-buffer send-array-buffer-view get-array-buffer nocompile-func nodefine-func
       tap-all-events]]
-    
+
     [chromex.ext.input.ime refer-macros:[
       set-composition clear-composition commit-text send-key-events hide-input-view
       set-candidate-window-properties set-candidates set-cursor-position set-menu-items update-menu-items
@@ -355,60 +355,60 @@ Generated 81 namespaces containing 44 properties, 361 functions and 183 events:
       tap-on-activate tap-on-deactivated tap-on-focus tap-on-blur tap-on-input-context-update
       tap-on-key-event tap-on-candidate-clicked tap-on-menu-item-activated
       tap-on-surrounding-text-changed tap-on-reset tap-on-composition-bounds-changed tap-all-events]]
-    
+
     [chromex.ext.instance-id refer-macros:[
       get-id get-creation-time get-token delete-token delete-id tap-on-token-refresh tap-all-events]]
-    
+
     [chromex.ext.management refer-macros:[
       get-all get get-self get-permission-warnings-by-id get-permission-warnings-by-manifest set-enabled
       uninstall uninstall-self launch-app create-app-shortcut set-launch-type generate-app-for-link
       tap-on-installed tap-on-uninstalled tap-on-enabled tap-on-disabled tap-all-events]]
-    
+
     [chromex.ext.networking.config refer-macros:[
       set-network-filter finish-authentication tap-on-captive-portal-detected tap-all-events]]
-    
+
     [chromex.ext.notification-provider refer-macros:[
       notify-on-cleared notify-on-clicked notify-on-button-clicked notify-on-permission-level-changed
       notify-on-show-settings get-notifier get-all-notifiers tap-on-created tap-on-updated tap-on-cleared
       tap-all-events]]
-    
+
     [chromex.ext.notifications refer-macros:[
       create update clear get-all get-permission-level tap-on-closed tap-on-clicked tap-on-button-clicked
       tap-on-permission-level-changed tap-on-show-settings tap-all-events]]
-    
+
     [chromex.ext.omnibox refer-macros:[
       set-default-suggestion tap-on-input-started tap-on-input-changed tap-on-input-entered
       tap-on-input-cancelled tap-all-events]]
-    
+
     [chromex.ext.page-action refer-macros:[
       show hide set-title get-title set-icon set-popup get-popup tap-on-clicked tap-all-events]]
-    
+
     [chromex.ext.page-capture refer-macros:[
       save-as-mhtml tap-all-events]]
-    
+
     [chromex.ext.permissions refer-macros:[
       get-all contains request remove tap-on-added tap-on-removed tap-all-events]]
-    
+
     [chromex.ext.platform-keys refer-macros:[
       select-client-certificates get-key-pair subtle-crypto verify-tls-server-certificate tap-all-events]]
-    
+
     [chromex.ext.power refer-macros:[
       request-keep-awake release-keep-awake tap-all-events]]
-    
+
     [chromex.ext.printer-provider refer-macros:[
       tap-on-get-printers-requested tap-on-get-usb-printer-info-requested tap-on-get-capability-requested
       tap-on-print-requested tap-all-events]]
-    
+
     [chromex.ext.privacy refer-macros:[
       get-network get-services get-websites tap-all-events]]
-    
+
     [chromex.ext.processes refer-macros:[
       get-process-id-for-tab terminate get-process-info tap-on-updated tap-on-updated-with-memory
       tap-on-created tap-on-unresponsive tap-on-exited tap-all-events]]
-    
+
     [chromex.ext.proxy refer-macros:[
       get-settings tap-on-proxy-error tap-all-events]]
-    
+
     [chromex.ext.runtime refer-macros:[
       get-last-error get-id get-background-page open-options-page get-manifest get-url set-uninstall-url
       reload request-update-check restart connect connect-native send-message send-native-message
@@ -416,34 +416,34 @@ Generated 81 namespaces containing 44 properties, 361 functions and 183 events:
       tap-on-suspend-canceled tap-on-update-available tap-on-browser-update-available tap-on-connect
       tap-on-connect-external tap-on-message tap-on-message-external tap-on-restart-required
       tap-all-events]]
-    
+
     [chromex.ext.sessions refer-macros:[
       get-max-session-results get-recently-closed get-devices restore tap-on-changed tap-all-events]]
-    
+
     [chromex.ext.signed-in-devices refer-macros:[
       get tap-on-device-info-change tap-all-events]]
-    
+
     [chromex.ext.storage refer-macros:[
       get-sync get-local get-managed tap-on-changed tap-all-events]]
-    
+
     [chromex.ext.system.cpu refer-macros:[
       get-info tap-all-events]]
-    
+
     [chromex.ext.system.display refer-macros:[
       get-info set-display-properties enable-unified-desktop tap-on-display-changed tap-all-events]]
-    
+
     [chromex.ext.system.memory refer-macros:[
       get-info tap-all-events]]
-    
+
     [chromex.ext.system.storage refer-macros:[
       get-info eject-device get-available-capacity tap-on-attached tap-on-detached tap-all-events]]
-    
+
     [chromex.ext.system-indicator refer-macros:[
       set-icon enable disable tap-on-clicked tap-all-events]]
-    
+
     [chromex.ext.tab-capture refer-macros:[
       capture get-captured-tabs capture-offscreen-tab tap-on-status-changed tap-all-events]]
-    
+
     [chromex.ext.tabs refer-macros:[
       get-tab-id-none get get-current connect send-request send-message get-selected get-all-in-window
       create duplicate query highlight update move reload remove detect-language capture-visible-tab
@@ -451,7 +451,7 @@ Generated 81 namespaces containing 44 properties, 361 functions and 183 events:
       tap-on-updated tap-on-moved tap-on-selection-changed tap-on-active-changed tap-on-activated
       tap-on-highlight-changed tap-on-highlighted tap-on-detached tap-on-attached tap-on-removed
       tap-on-replaced tap-on-zoom-change tap-all-events]]
-    
+
     [chromex.ext.test refer-macros:[
       get-config notify-fail notify-pass log send-message callback-added run-next-test fail succeed
       run-with-natives-enabled get-module-system assert-true assert-false assert-bool check-deep-eq
@@ -459,37 +459,37 @@ Generated 81 namespaces containing 44 properties, 361 functions and 183 events:
       callback-pass callback-fail run-tests get-api-features get-api-definitions
       is-processing-user-gesture run-with-user-gesture run-without-user-gesture wait-for-round-trip
       set-exception-handler get-wake-event-page tap-on-message tap-all-events]]
-    
+
     [chromex.ext.top-sites refer-macros:[
       get tap-all-events]]
-    
+
     [chromex.ext.tts refer-macros:[
       speak stop pause resume is-speaking get-voices tap-all-events]]
-    
+
     [chromex.ext.tts-engine refer-macros:[
       tap-on-speak tap-on-stop tap-on-pause tap-on-resume tap-all-events]]
-    
+
     [chromex.ext.vpn-provider refer-macros:[
       create-config destroy-config set-parameters send-packet notify-connection-state-changed
       tap-on-platform-message tap-on-packet-received tap-on-config-removed tap-on-config-created
       tap-on-ui-event tap-all-events]]
-    
+
     [chromex.ext.wallpaper refer-macros:[
       set-wallpaper tap-all-events]]
-    
+
     [chromex.ext.web-navigation refer-macros:[
       get-frame get-all-frames tap-on-before-navigate tap-on-committed tap-on-dom-content-loaded
       tap-on-completed tap-on-error-occurred tap-on-created-navigation-target
       tap-on-reference-fragment-updated tap-on-tab-replaced tap-on-history-state-updated tap-all-events]]
-    
+
     [chromex.ext.web-request refer-macros:[
       get-max-handler-behavior-changed-calls-per10-minutes handler-behavior-changed tap-on-before-request
       tap-on-before-send-headers tap-on-send-headers tap-on-headers-received tap-on-auth-required
       tap-on-response-started tap-on-before-redirect tap-on-completed tap-on-error-occurred tap-all-events]]
-    
+
     [chromex.ext.webstore refer-macros:[
       install tap-on-install-stage-changed tap-on-download-progress tap-all-events]]
-    
+
     [chromex.ext.windows refer-macros:[
       get-window-id-none get-window-id-current get get-current get-last-focused get-all create update
       remove tap-on-created tap-on-removed tap-on-focus-changed tap-all-events]]))

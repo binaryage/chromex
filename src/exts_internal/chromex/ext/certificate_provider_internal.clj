@@ -7,9 +7,8 @@
    runs the callback to report its results, the callback magically prepends the
    request ID to the results and calls the respective internal report function
    (reportSignature or reportCertificates).
-   
-     * available since Chrome 47
-     * https://developer.chrome.com/extensions/certificateProviderInternal"
+
+     * available since Chrome 47"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -23,38 +22,26 @@
 
 (defmacro report-signature
   "Matches certificateProvider.SignCallback. Must be called without the signature to report an error.
-   
-     |requestId| - See
-                   https://developer.chrome.com/extensions/certificateProviderInternal#property-reportSignature-requestId.
-     |signature| - See
-                   https://developer.chrome.com/extensions/certificateProviderInternal#property-reportSignature-signature.
-   
+
+     |request-id| - ?
+     |signature| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/certificateProviderInternal#method-reportSignature."
-  ([request-id signature #_callback] (gen-call :function ::report-signature &form request-id signature))
+   Signature of the result value put on the channel is []."
+  ([request-id signature] (gen-call :function ::report-signature &form request-id signature))
   ([request-id] `(report-signature ~request-id :omit)))
 
 (defmacro report-certificates
   "Matches certificateProvider.CertificatesCallback. Must be called without the certificates argument to report an error.
-   
-     |requestId| - See
-                   https://developer.chrome.com/extensions/certificateProviderInternal#property-reportCertificates-requestId.
-     |certificates| - See
-                      https://developer.chrome.com/extensions/certificateProviderInternal#property-reportCertificates-certifi
-                      cates.
-   
+
+     |request-id| - ?
+     |certificates| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [rejectedCertificates] where:
-   
-     |rejectedCertificates| - See
-   
-   https://developer.chrome.com/extensions/certificateProviderInternal#property-callback-rejectedCer
-                              tificates.
-   
-   See https://developer.chrome.com/extensions/certificateProviderInternal#method-reportCertificates."
-  ([request-id certificates #_callback] (gen-call :function ::report-certificates &form request-id certificates))
+   Signature of the result value put on the channel is [rejected-certificates] where:
+
+     |rejected-certificates| - ?"
+  ([request-id certificates] (gen-call :function ::report-certificates &form request-id certificates))
   ([request-id] `(report-certificates ~request-id :omit)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

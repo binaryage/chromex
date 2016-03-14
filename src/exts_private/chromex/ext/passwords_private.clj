@@ -1,9 +1,8 @@
 (ns chromex.ext.passwords-private
   "Use the chrome.passwordsPrivate API to add or remove password
    data from the settings UI.
-   
-     * available since Chrome 50
-     * https://developer.chrome.com/extensions/passwordsPrivate"
+
+     * available since Chrome 50"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -18,29 +17,23 @@
 (defmacro remove-saved-password
   "Removes the saved password corresponding to |loginPair|. If no saved password for this pair exists, this function is a
    no-op.
-   
-     |loginPair| - The LoginPair corresponding to the entry to remove.
-   
-   See https://developer.chrome.com/extensions/passwordsPrivate#method-removeSavedPassword."
+
+     |login-pair| - The LoginPair corresponding to the entry to remove."
   ([login-pair] (gen-call :function ::remove-saved-password &form login-pair)))
 
 (defmacro remove-password-exception
   "Removes the saved password exception corresponding to |exceptionUrl|. If no exception with this URL exists, this function
    is a no-op.
-   
-     |exceptionUrl| - The URL corresponding to the exception to remove.
-   
-   See https://developer.chrome.com/extensions/passwordsPrivate#method-removePasswordException."
+
+     |exception-url| - The URL corresponding to the exception to remove."
   ([exception-url] (gen-call :function ::remove-password-exception &form exception-url)))
 
 (defmacro request-plaintext-password
   "Returns the plaintext password corresponding to |loginPair|. Note that on some operating systems, this call may result in
    an OS-level reauthentication. Once the password has been fetched, it will be returned via the onPlaintextPasswordRetrieved
    event.
-   
-     |loginPair| - The LoginPair corresponding to the entry whose password     is to be returned.
-   
-   See https://developer.chrome.com/extensions/passwordsPrivate#method-requestPlaintextPassword."
+
+     |login-pair| - The LoginPair corresponding to the entry whose password     is to be returned."
   ([login-pair] (gen-call :function ::request-plaintext-password &form login-pair)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -50,31 +43,34 @@
 (defmacro tap-on-saved-passwords-list-changed-events
   "Fired when the saved passwords list has changed, meaning that an entry has been added or removed. Note that this event
    fires as soon as a  listener is added.
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/passwordsPrivate#event-onSavedPasswordsListChanged."
+
+   Events will be put on the |channel| with signature [::on-saved-passwords-list-changed [entries]] where:
+
+     |entries| - The updated list of password entries.
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-saved-passwords-list-changed &form channel args)))
 
 (defmacro tap-on-password-exceptions-list-changed-events
   "Fired when the password exceptions list has changed, meaning that an entry has been added or removed. Note that this event
    fires as soon as a listener is added.
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/passwordsPrivate#event-onPasswordExceptionsListChanged."
+
+   Events will be put on the |channel| with signature [::on-password-exceptions-list-changed [exceptions]] where:
+
+     |exceptions| - The updated list of password exceptions.
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-password-exceptions-list-changed &form channel args)))
 
 (defmacro tap-on-plaintext-password-retrieved-events
   "Fired when a plaintext password has been fetched in response to a call to
    chrome.passwordsPrivate.requestPlaintextPassword().
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/passwordsPrivate#event-onPlaintextPasswordRetrieved."
+
+   Events will be put on the |channel| with signature [::on-plaintext-password-retrieved [dict]] where:
+
+     |dict| - ?
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-plaintext-password-retrieved &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

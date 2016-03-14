@@ -1,9 +1,8 @@
 (ns chromex.ext.log-private
   "Use chrome.logPrivate API to retrieve log information from multiple
    resources in a consistent format.
-   
-     * available since Chrome 38
-     * https://developer.chrome.com/extensions/logPrivate"
+
+     * available since Chrome 38"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -17,53 +16,45 @@
 
 (defmacro get-historical
   "Get the existing logs from ChromeOS system.
-   
-     |filter| - See https://developer.chrome.com/extensions/logPrivate#property-getHistorical-filter.
-   
+
+     |filter| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [res] where:
-   
-     |res| - See https://developer.chrome.com/extensions/logPrivate#property-callback-res.
-   
-   See https://developer.chrome.com/extensions/logPrivate#method-getHistorical."
-  ([filter #_callback] (gen-call :function ::get-historical &form filter)))
+
+     |res| - ?"
+  ([filter] (gen-call :function ::get-historical &form filter)))
 
 (defmacro start-event-recorder
   "Start capturing events of specific type.
-   
-     |eventType| - See https://developer.chrome.com/extensions/logPrivate#property-startEventRecorder-eventType.
-     |sink| - See https://developer.chrome.com/extensions/logPrivate#property-startEventRecorder-sink.
-   
+
+     |event-type| - ?
+     |sink| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/logPrivate#method-startEventRecorder."
-  ([event-type sink #_callback] (gen-call :function ::start-event-recorder &form event-type sink)))
+   Signature of the result value put on the channel is []."
+  ([event-type sink] (gen-call :function ::start-event-recorder &form event-type sink)))
 
 (defmacro stop-event-recorder
   "Stop  capturing events of specific type.
-   
-     |eventType| - See https://developer.chrome.com/extensions/logPrivate#property-stopEventRecorder-eventType.
-   
+
+     |event-type| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-   
-   See https://developer.chrome.com/extensions/logPrivate#method-stopEventRecorder."
-  ([event-type #_callback] (gen-call :function ::stop-event-recorder &form event-type)))
+   Signature of the result value put on the channel is []."
+  ([event-type] (gen-call :function ::stop-event-recorder &form event-type)))
 
 (defmacro dump-logs
   "Dump all system and captured events into a .tar.gz file. The archive file will contain following top level directories:
    /var/log/       ChromeOS system logs.   /home/chronos/user/log/       Session specific logs (chrome app logs).
    /home/chronos/user/log/apps/       Contains webapp specific logs including those collected with
    startEventRecorder(..., sink='file') call.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [logs] where:
-   
-     |logs| - See https://developer.chrome.com/extensions/logPrivate#property-callback-logs.
-   
-   See https://developer.chrome.com/extensions/logPrivate#method-dumpLogs."
-  ([#_callback] (gen-call :function ::dump-logs &form)))
+
+     |logs| - ?"
+  ([] (gen-call :function ::dump-logs &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -71,11 +62,12 @@
 
 (defmacro tap-on-captured-events-events
   "Receives events of type which is currently being captured.
-   Events will be put on the |channel|.
-   
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/logPrivate#event-onCapturedEvents."
+
+   Events will be put on the |channel| with signature [::on-captured-events [entries]] where:
+
+     |entries| - ?
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-captured-events &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

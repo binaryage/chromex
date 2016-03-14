@@ -1,7 +1,7 @@
 (ns chromex.ext.alarms
   "Use the chrome.alarms API to schedule code to run
    periodically or at a specified time in the future.
-   
+
      * available since Chrome 22
      * https://developer.chrome.com/extensions/alarms"
 
@@ -22,65 +22,65 @@
    is, setting delayInMinutes or periodInMinutes to less than 1 will not be honored and will cause a warning.  when can be set
    to less than 1 minute after 'now' without warning but won't actually cause the alarm to fire for at least 1 minute.To help
    you debug your app or extension, when you've loaded it unpacked, there's no limit to how often the alarm can fire.
-   
+
      |name| - Optional name to identify this alarm. Defaults to the empty string.
-     |alarmInfo| - Describes when the alarm should fire.  The initial time must be specified by either when or
-                   delayInMinutes (but not both).  If periodInMinutes is set, the alarm will repeat every periodInMinutes
-                   minutes after the initial event.  If neither when or delayInMinutes is set for a repeating alarm,
-                   periodInMinutes is used as the default for delayInMinutes.
-   
-   See https://developer.chrome.com/extensions/alarms#method-create."
+     |alarm-info| - Describes when the alarm should fire.  The initial time must be specified by either when or
+                    delayInMinutes (but not both).  If periodInMinutes is set, the alarm will repeat every periodInMinutes
+                    minutes after the initial event.  If neither when or delayInMinutes is set for a repeating alarm,
+                    periodInMinutes is used as the default for delayInMinutes.
+
+   https://developer.chrome.com/extensions/alarms#method-create."
   ([name alarm-info] (gen-call :function ::create &form name alarm-info)))
 
 (defmacro get
   "Retrieves details about the specified alarm.
-   
+
      |name| - The name of the alarm to get. Defaults to the empty string.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [alarm] where:
-   
-     |alarm| - See https://developer.chrome.com/extensions/alarms#property-callback-alarm.
-   
-   See https://developer.chrome.com/extensions/alarms#method-get."
-  ([name #_callback] (gen-call :function ::get &form name))
+
+     |alarm| - https://developer.chrome.com/extensions/alarms#property-callback-alarm.
+
+   https://developer.chrome.com/extensions/alarms#method-get."
+  ([name] (gen-call :function ::get &form name))
   ([] `(get :omit)))
 
 (defmacro get-all
   "Gets an array of all the alarms.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [alarms] where:
-   
-     |alarms| - See https://developer.chrome.com/extensions/alarms#property-callback-alarms.
-   
-   See https://developer.chrome.com/extensions/alarms#method-getAll."
-  ([#_callback] (gen-call :function ::get-all &form)))
+
+     |alarms| - https://developer.chrome.com/extensions/alarms#property-callback-alarms.
+
+   https://developer.chrome.com/extensions/alarms#method-getAll."
+  ([] (gen-call :function ::get-all &form)))
 
 (defmacro clear
   "Clears the alarm with the given name.
-   
+
      |name| - The name of the alarm to clear. Defaults to the empty string.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [wasCleared] where:
-   
-     |wasCleared| - See https://developer.chrome.com/extensions/alarms#property-callback-wasCleared.
-   
-   See https://developer.chrome.com/extensions/alarms#method-clear."
-  ([name #_callback] (gen-call :function ::clear &form name))
+   Signature of the result value put on the channel is [was-cleared] where:
+
+     |was-cleared| - https://developer.chrome.com/extensions/alarms#property-callback-wasCleared.
+
+   https://developer.chrome.com/extensions/alarms#method-clear."
+  ([name] (gen-call :function ::clear &form name))
   ([] `(clear :omit)))
 
 (defmacro clear-all
   "Clears all alarms.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [wasCleared] where:
-   
-     |wasCleared| - See https://developer.chrome.com/extensions/alarms#property-callback-wasCleared.
-   
-   See https://developer.chrome.com/extensions/alarms#method-clearAll."
-  ([#_callback] (gen-call :function ::clear-all &form)))
+   Signature of the result value put on the channel is [was-cleared] where:
+
+     |was-cleared| - https://developer.chrome.com/extensions/alarms#property-callback-wasCleared.
+
+   https://developer.chrome.com/extensions/alarms#method-clearAll."
+  ([] (gen-call :function ::clear-all &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -88,11 +88,14 @@
 
 (defmacro tap-on-alarm-events
   "Fired when an alarm has elapsed. Useful for event pages.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-alarm [alarm]] where:
+
+     |alarm| - The alarm that has elapsed.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/alarms#event-onAlarm."
+
+   https://developer.chrome.com/extensions/alarms#event-onAlarm."
   ([channel & args] (apply gen-call :event ::on-alarm &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

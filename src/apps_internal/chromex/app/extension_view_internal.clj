@@ -1,6 +1,5 @@
 (ns chromex.app.extension-view-internal
-  "  * available since Chrome 46
-     * https://developer.chrome.com/extensions/extensionViewInternal"
+  "  * available since Chrome 46"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -13,28 +12,24 @@
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro load-src
-  "  |instanceId| - See https://developer.chrome.com/extensions/extensionViewInternal#property-loadSrc-instanceId.
-     |src| - See https://developer.chrome.com/extensions/extensionViewInternal#property-loadSrc-src.
-   
+  "  |instance-id| - ?
+     |src| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [hasLoadSucceeded] where:
-   
-     |hasLoadSucceeded| - Whether or not loading the src has succeeded.
-   
-   See https://developer.chrome.com/extensions/extensionViewInternal#method-loadSrc."
-  ([instance-id src #_callback] (gen-call :function ::load-src &form instance-id src)))
+   Signature of the result value put on the channel is [has-load-succeeded] where:
+
+     |has-load-succeeded| - Whether or not loading the src has succeeded."
+  ([instance-id src] (gen-call :function ::load-src &form instance-id src)))
 
 (defmacro parse-src
-  "  |src| - See https://developer.chrome.com/extensions/extensionViewInternal#property-parseSrc-src.
-   
+  "  |src| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [isSrcValid extensionId] where:
-   
-     |isSrcValid| - Whether or not the src is valid.
-     |extensionId| - The extension ID of the src.
-   
-   See https://developer.chrome.com/extensions/extensionViewInternal#method-parseSrc."
-  ([src #_callback] (gen-call :function ::parse-src &form src)))
+   Signature of the result value put on the channel is [is-src-valid extension-id] where:
+
+     |is-src-valid| - Whether or not the src is valid.
+     |extension-id| - The extension ID of the src."
+  ([src] (gen-call :function ::parse-src &form src)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 

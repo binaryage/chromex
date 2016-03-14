@@ -1,6 +1,6 @@
 (ns chromex.ext.cookies
   "Use the chrome.cookies API to query and modify cookies, and to be notified when they change.
-   
+
      * available since Chrome 6
      * https://developer.chrome.com/extensions/cookies"
 
@@ -18,70 +18,70 @@
   "Retrieves information about a single cookie. If more than one cookie of the same name exists for the given URL, the one
    with the longest path will be returned. For cookies with the same path length, the cookie with the earliest creation time
    will be returned.
-   
+
      |details| - Details to identify the cookie being retrieved.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [cookie] where:
-   
+
      |cookie| - Contains details about the cookie. This parameter is null if no such cookie was found.
-   
-   See https://developer.chrome.com/extensions/cookies#method-get."
-  ([details #_callback] (gen-call :function ::get &form details)))
+
+   https://developer.chrome.com/extensions/cookies#method-get."
+  ([details] (gen-call :function ::get &form details)))
 
 (defmacro get-all
   "Retrieves all cookies from a single cookie store that match the given information.  The cookies returned will be sorted,
    with those with the longest path first.  If multiple cookies have the same path length, those with the earliest creation
    time will be first.
-   
+
      |details| - Information to filter the cookies being retrieved.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [cookies] where:
-   
+
      |cookies| - All the existing, unexpired cookies that match the given cookie info.
-   
-   See https://developer.chrome.com/extensions/cookies#method-getAll."
-  ([details #_callback] (gen-call :function ::get-all &form details)))
+
+   https://developer.chrome.com/extensions/cookies#method-getAll."
+  ([details] (gen-call :function ::get-all &form details)))
 
 (defmacro set
   "Sets a cookie with the given cookie data; may overwrite equivalent cookies if they exist.
-   
+
      |details| - Details about the cookie being set.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [cookie] where:
-   
+
      |cookie| - Contains details about the cookie that's been set.  If setting failed for any reason, this will be 'null', and
                 'chrome.runtime.lastError' will be set.
-   
-   See https://developer.chrome.com/extensions/cookies#method-set."
-  ([details #_callback] (gen-call :function ::set &form details)))
+
+   https://developer.chrome.com/extensions/cookies#method-set."
+  ([details] (gen-call :function ::set &form details)))
 
 (defmacro remove
   "Deletes a cookie by name.
-   
+
      |details| - Information to identify the cookie to remove.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [details] where:
-   
+
      |details| - Contains details about the cookie that's been removed.  If removal failed for any reason, this will be
                  'null', and 'chrome.runtime.lastError' will be set.
-   
-   See https://developer.chrome.com/extensions/cookies#method-remove."
-  ([details #_callback] (gen-call :function ::remove &form details)))
+
+   https://developer.chrome.com/extensions/cookies#method-remove."
+  ([details] (gen-call :function ::remove &form details)))
 
 (defmacro get-all-cookie-stores
   "Lists all existing cookie stores.
-   
+
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [cookieStores] where:
-   
-     |cookieStores| - All the existing cookie stores.
-   
-   See https://developer.chrome.com/extensions/cookies#method-getAllCookieStores."
-  ([#_callback] (gen-call :function ::get-all-cookie-stores &form)))
+   Signature of the result value put on the channel is [cookie-stores] where:
+
+     |cookie-stores| - All the existing cookie stores.
+
+   https://developer.chrome.com/extensions/cookies#method-getAllCookieStores."
+  ([] (gen-call :function ::get-all-cookie-stores &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -91,11 +91,14 @@
   "Fired when a cookie is set or removed. As a special case, note that updating a cookie's properties is implemented as a two
    step process: the cookie to be updated is first removed entirely, generating a notification with 'cause' of 'overwrite' .
    Afterwards, a new cookie is written with the updated values, generating a second notification with 'cause' 'explicit'.
-   Events will be put on the |channel|.
-   
+
+   Events will be put on the |channel| with signature [::on-changed [change-info]] where:
+
+     |change-info| - https://developer.chrome.com/extensions/cookies#property-onChanged-changeInfo.
+
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-   
-   See https://developer.chrome.com/extensions/cookies#event-onChanged."
+
+   https://developer.chrome.com/extensions/cookies#event-onChanged."
   ([channel & args] (apply gen-call :event ::on-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
