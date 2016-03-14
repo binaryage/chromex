@@ -2,7 +2,7 @@
   :dependencies [[org.clojure/clojure "1.7.0"]
                  [org.clojure/clojurescript "1.7.170"]
                  [org.clojure/core.async "0.2.374"]
-                 [binaryage/chromex "0.2.0"]
+                 [binaryage/chromex "0.3.0"]
                  [binaryage/devtools "0.5.2"]
                  [figwheel "0.5.0-6"]
                  [environ "1.0.2"]]
