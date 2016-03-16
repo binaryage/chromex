@@ -224,7 +224,7 @@
      :params [{:name "xkb-name", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::notify-ime-menu-item-activated,
      :name "notifyImeMenuItemActivated",
-     :since "master",
+     :since "51",
      :params [{:name "engine-id", :type "string"} {:name "name", :type "string"}]}],
    :events
    [{:id ::on-changed, :name "onChanged", :params [{:name "new-input-method-id", :type "string"}]}
@@ -244,7 +244,7 @@
     {:id ::on-ime-menu-list-changed, :name "onImeMenuListChanged", :since "50"}
     {:id ::on-ime-menu-items-changed,
      :name "onImeMenuItemsChanged",
-     :since "master",
+     :since "51",
      :params [{:name "engine-id", :type "string"} {:name "items", :type "[array-of-inputMethodPrivate.MenuItems]"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

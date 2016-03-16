@@ -52,7 +52,7 @@
 
 ### API stats
 
-Generated 44 namespaces containing 2 properties, 313 functions and 69 events:
+Generated 44 namespaces containing 1 properties, 312 functions and 69 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -87,7 +87,7 @@ Generated 44 namespaces containing 2 properties, 313 functions and 69 events:
     |                    chrome.mojoPrivate |           0 |          2 |       0 |
     |              chrome.networkingPrivate |           0 |         24 |       4 |
     |               chrome.passwordsPrivate |           0 |          3 |       3 |
-    |             chrome.preferencesPrivate |           2 |          1 |       0 |
+    |             chrome.preferencesPrivate |           1 |          0 |       0 |
     |              chrome.principalsPrivate |           0 |          2 |       0 |
     |               chrome.resourcesPrivate |           0 |          1 |       0 |
     |                chrome.settingsPrivate |           0 |          5 |       1 |
@@ -255,8 +255,7 @@ Generated 44 namespaces containing 2 properties, 313 functions and 69 events:
       tap-on-plaintext-password-retrieved tap-all-events]]
 
     [chromex.ext.preferences-private refer-macros:[
-      get-easy-unlock-proximity-required get-google-geolocation-access-enabled
-      get-sync-categories-without-passphrase tap-all-events]]
+      get-easy-unlock-proximity-required tap-all-events]]
 
     [chromex.ext.principals-private refer-macros:[
       sign-out show-avatar-bubble tap-all-events]]

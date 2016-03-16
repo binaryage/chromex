@@ -89,12 +89,12 @@
 
 ### API stats
 
-Generated 81 namespaces containing 44 properties, 361 functions and 183 events:
+Generated 81 namespaces containing 49 properties, 361 functions and 183 events:
 
 
     |                            :namespace | :properties | :functions | :events |
     |---------------------------------------+-------------+------------+---------|
-    |          chrome.accessibilityFeatures |           8 |          0 |       0 |
+    |          chrome.accessibilityFeatures |          13 |          0 |       0 |
     |                         chrome.alarms |           0 |          5 |       1 |
     |                            chrome.app |           0 |          4 |       0 |
     |                     chrome.audioModem |           0 |          4 |       2 |
@@ -183,7 +183,8 @@ Generated 81 namespaces containing 44 properties, 361 functions and 183 events:
   (:require
     [chromex.ext.accessibility-features refer-macros:[
       get-spoken-feedback get-large-cursor get-sticky-keys get-high-contrast get-screen-magnifier
-      get-autoclick get-virtual-keyboard get-animation-policy tap-all-events]]
+      get-autoclick get-virtual-keyboard get-caret-highlight get-cursor-highlight get-focus-highlight
+      get-select-to-speak get-switch-access get-animation-policy tap-all-events]]
 
     [chromex.ext.alarms refer-macros:[
       create get get-all clear clear-all tap-on-alarm tap-all-events]]

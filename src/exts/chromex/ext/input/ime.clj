@@ -279,7 +279,8 @@
   ([channel & args] (apply gen-call :event ::on-input-context-update &form channel args)))
 
 (defmacro tap-on-key-event-events
-  "This event is sent if this extension owns the active IME.
+  "Fired when a key event is sent from the operating system. The event will be sent to the extension if this extension owns
+   the active IME.
 
    Events will be put on the |channel| with signature [::on-key-event [engine-id key-data]] where:
 
@@ -443,12 +444,12 @@
       {:name "callback", :type :callback, :callback {:params [{:name "window-object", :type "Window"}]}}]}
     {:id ::show-window,
      :name "showWindow",
-     :since "master",
+     :since "51",
      :callback? true,
      :params [{:name "window-id", :type "integer"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::hide-window,
      :name "hideWindow",
-     :since "master",
+     :since "51",
      :callback? true,
      :params [{:name "window-id", :type "integer"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::activate,

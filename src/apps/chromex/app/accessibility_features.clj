@@ -60,6 +60,36 @@
    https://developer.chrome.com/apps/accessibilityFeatures#property-virtualKeyboard."
   ([] (gen-call :property ::virtual-keyboard &form)))
 
+(defmacro get-caret-highlight
+  "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example.
+
+   https://developer.chrome.com/apps/accessibilityFeatures#property-caretHighlight."
+  ([] (gen-call :property ::caret-highlight &form)))
+
+(defmacro get-cursor-highlight
+  "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example.
+
+   https://developer.chrome.com/apps/accessibilityFeatures#property-cursorHighlight."
+  ([] (gen-call :property ::cursor-highlight &form)))
+
+(defmacro get-focus-highlight
+  "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example.
+
+   https://developer.chrome.com/apps/accessibilityFeatures#property-focusHighlight."
+  ([] (gen-call :property ::focus-highlight &form)))
+
+(defmacro get-select-to-speak
+  "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example.
+
+   https://developer.chrome.com/apps/accessibilityFeatures#property-selectToSpeak."
+  ([] (gen-call :property ::select-to-speak &form)))
+
+(defmacro get-switch-access
+  "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example.
+
+   https://developer.chrome.com/apps/accessibilityFeatures#property-switchAccess."
+  ([] (gen-call :property ::switch-access &form)))
+
 (defmacro get-animation-policy
   "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example.
 
@@ -90,6 +120,11 @@
     {:id ::screen-magnifier, :name "screenMagnifier", :return-type "object"}
     {:id ::autoclick, :name "autoclick", :return-type "object"}
     {:id ::virtual-keyboard, :name "virtualKeyboard", :return-type "object"}
+    {:id ::caret-highlight, :name "caretHighlight", :since "master", :return-type "object"}
+    {:id ::cursor-highlight, :name "cursorHighlight", :since "master", :return-type "object"}
+    {:id ::focus-highlight, :name "focusHighlight", :since "master", :return-type "object"}
+    {:id ::select-to-speak, :name "selectToSpeak", :since "master", :return-type "object"}
+    {:id ::switch-access, :name "switchAccess", :since "master", :return-type "object"}
     {:id ::animation-policy, :name "animationPolicy", :since "42", :return-type "object"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

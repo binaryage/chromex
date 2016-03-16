@@ -24,6 +24,21 @@
 (defn virtual-keyboard* [config]
   (gen-wrap :property ::virtual-keyboard config))
 
+(defn caret-highlight* [config]
+  (gen-wrap :property ::caret-highlight config))
+
+(defn cursor-highlight* [config]
+  (gen-wrap :property ::cursor-highlight config))
+
+(defn focus-highlight* [config]
+  (gen-wrap :property ::focus-highlight config))
+
+(defn select-to-speak* [config]
+  (gen-wrap :property ::select-to-speak config))
+
+(defn switch-access* [config]
+  (gen-wrap :property ::switch-access config))
+
 (defn animation-policy* [config]
   (gen-wrap :property ::animation-policy config))
 

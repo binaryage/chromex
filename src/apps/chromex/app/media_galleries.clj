@@ -220,21 +220,21 @@
          {:name "selected-file-system-name", :type "string"}]}}]}
     {:id ::drop-permission-for-media-file-system,
      :name "dropPermissionForMediaFileSystem",
-     :since "master",
+     :since "51",
      :deprecated "The user can manually drop access to galleries\\n    via the permissions dialog.",
      :callback? true,
      :params [{:name "gallery-id", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::start-media-scan,
      :name "startMediaScan",
-     :since "master",
+     :since "51",
      :deprecated "The mediaGalleries API no longer supports scanning."}
     {:id ::cancel-media-scan,
      :name "cancelMediaScan",
-     :since "master",
+     :since "51",
      :deprecated "The mediaGalleries API no longer supports scanning."}
     {:id ::add-scan-results,
      :name "addScanResults",
-     :since "master",
+     :since "51",
      :deprecated "The mediaGalleries API no longer supports scanning.",
      :callback? true,
      :params
@@ -248,7 +248,7 @@
      :params [{:name "media-file-system", :type "DOMFileSystem"}]}
     {:id ::get-all-media-file-system-metadata,
      :name "getAllMediaFileSystemMetadata",
-     :since "master",
+     :since "51",
      :deprecated "Use getMediaFileSystemMetadata instead.",
      :callback? true,
      :params
@@ -274,20 +274,20 @@
      :params [{:name "gallery-id", :type "string"}]}
     {:id ::get-all-gallery-watch,
      :name "getAllGalleryWatch",
-     :since "master",
+     :since "51",
      :deprecated "Applications should store their own gallery watches\\n    as they are added.",
      :callback? true,
      :params
      [{:name "callback", :type :callback, :callback {:params [{:name "gallery-ids", :type "[array-of-strings]"}]}}]}
     {:id ::remove-all-gallery-watch,
      :name "removeAllGalleryWatch",
-     :since "master",
+     :since "51",
      :deprecated "Use removeGalleryWatch instead."}],
    :events
    [{:id ::on-gallery-changed, :name "onGalleryChanged", :since "38", :params [{:name "details", :type "object"}]}
     {:id ::on-scan-progress,
      :name "onScanProgress",
-     :since "master",
+     :since "51",
      :deprecated "The mediaGalleries API no longer supports scanning.",
      :params [{:name "details", :type "object"}]}]})
 

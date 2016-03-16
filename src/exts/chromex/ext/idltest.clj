@@ -104,7 +104,7 @@
      :callback? true,
      :params [{:name "cb", :type :callback, :callback {:params [{:name "buffer", :type "ArrayBuffer"}]}}]}
     {:id ::nocompile-func, :name "nocompileFunc", :params [{:name "switch", :type "integer"}]}
-    {:id ::nodefine-func, :name "nodefineFunc", :since "master", :params [{:name "switch", :type "integer"}]}]})
+    {:id ::nodefine-func, :name "nodefineFunc", :since "51", :params [{:name "switch", :type "integer"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

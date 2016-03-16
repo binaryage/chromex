@@ -16,22 +16,6 @@
    foot). This preference's value is a boolean, defaulting to false."
   ([] (gen-call :property ::easy-unlock-proximity-required &form)))
 
-(defmacro get-google-geolocation-access-enabled
-  "If enabled, Google services can access the user's location. This preference's value is a boolean, defaulting to false."
-  ([] (gen-call :property ::google-geolocation-access-enabled &form)))
-
-; -- functions --------------------------------------------------------------------------------------------------------------
-
-(defmacro get-sync-categories-without-passphrase
-  "Returns a list of sync categories the user has enabled without using a custom passphrase for encryption. The possible
-   values are those that can be returned from syncer::ModelTypeToString in sync/syncable/model_type.cc.
-
-   This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [categories] where:
-
-     |categories| - ?"
-  ([] (gen-call :function ::get-sync-categories-without-passphrase &form)))
-
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -52,17 +36,7 @@
    [{:id ::easy-unlock-proximity-required,
      :name "easyUnlockProximityRequired",
      :since "40",
-     :return-type "types.private.ChromeDirectSetting"}
-    {:id ::google-geolocation-access-enabled,
-     :name "googleGeolocationAccessEnabled",
-     :return-type "types.private.ChromeDirectSetting"}],
-   :functions
-   [{:id ::get-sync-categories-without-passphrase,
-     :name "getSyncCategoriesWithoutPassphrase",
-     :since "34",
-     :callback? true,
-     :params
-     [{:name "callback", :type :callback, :callback {:params [{:name "categories", :type "[array-of-strings]"}]}}]}]})
+     :return-type "types.private.ChromeDirectSetting"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

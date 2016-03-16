@@ -1,5 +1,5 @@
 (ns chromex.ext.chrome-web-view-internal
-  "  * available since Chrome 50"
+  "  * available since Chrome 51"
 
   (:refer-clojure :only [defmacro defn apply declare meta let])
   (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
@@ -67,7 +67,7 @@
 
 (def api-table
   {:namespace "chrome.chromeWebViewInternal",
-   :since "50",
+   :since "51",
    :functions
    [{:id ::context-menus-create,
      :name "contextMenusCreate",
