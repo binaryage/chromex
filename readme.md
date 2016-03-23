@@ -1,8 +1,6 @@
-# chromex [![GitHub license](https://img.shields.io/github/license/binaryage/chromex.svg)](license.txt) [![Clojars Project](https://img.shields.io/clojars/v/binaryage/chromex.svg)](https://clojars.org/binaryage/chromex) [![Travis](https://img.shields.io/travis/binaryage/chromex.svg)](https://travis-ci.org/binaryage/chromex)
+# chromex [![GitHub license](https://img.shields.io/github/license/binaryage/chromex.svg)](license.txt) [![Clojars Project](https://img.shields.io/clojars/v/binaryage/chromex.svg)](https://clojars.org/binaryage/chromex) [![Travis](https://img.shields.io/travis/binaryage/chromex.svg)](https://travis-ci.org/binaryage/chromex) [![Sample Project](https://img.shields.io/badge/project-example-ff69b4.svg)](https://github.com/binaryage/chromex-sample)
 
 ### Chrome Extension APIs wrapper library for ClojureScript.
-
-[An example project documenting basic usage of the library is here](https://github.com/binaryage/chromex-sample).
 
 This library is auto-generated. Current version was **generated on 2016-03-23** from [**Chromium @ 12bbca4**](https://chromium.googlesource.com/chromium/src.git/+/12bbca48cda56b2a10a68f8f69bb90906189c4bf).
 
@@ -201,9 +199,9 @@ way how callbacks are turned into core.async channels. Theoretically you could r
 
 ### Projects using Chromex
 
+  * [binaryage/chromex-sample](https://github.com/binaryage/chromex-sample) - a demo project of Chromex usage
   * [binaryage/dirac](https://github.com/binaryage/dirac) - a Chrome DevTools fork for ClojureScript developers
   * [madvas/thai2english-chrome-extension](https://github.com/madvas/thai2english-chrome-extension) - a Chrome extension to translate Thai to English
-  * [binaryage/chromex-sample](https://github.com/binaryage/chromex-sample) - a demo project of Chromex usage
 
 ### Similar libraries
 
