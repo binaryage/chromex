@@ -120,11 +120,11 @@
     {:id ::screen-magnifier, :name "screenMagnifier", :return-type "object"}
     {:id ::autoclick, :name "autoclick", :return-type "object"}
     {:id ::virtual-keyboard, :name "virtualKeyboard", :return-type "object"}
-    {:id ::caret-highlight, :name "caretHighlight", :since "master", :return-type "object"}
-    {:id ::cursor-highlight, :name "cursorHighlight", :since "master", :return-type "object"}
-    {:id ::focus-highlight, :name "focusHighlight", :since "master", :return-type "object"}
-    {:id ::select-to-speak, :name "selectToSpeak", :since "master", :return-type "object"}
-    {:id ::switch-access, :name "switchAccess", :since "master", :return-type "object"}
+    {:id ::caret-highlight, :name "caretHighlight", :since "51", :return-type "object"}
+    {:id ::cursor-highlight, :name "cursorHighlight", :since "51", :return-type "object"}
+    {:id ::focus-highlight, :name "focusHighlight", :since "51", :return-type "object"}
+    {:id ::select-to-speak, :name "selectToSpeak", :since "51", :return-type "object"}
+    {:id ::switch-access, :name "switchAccess", :since "51", :return-type "object"}
     {:id ::animation-policy, :name "animationPolicy", :since "42", :return-type "object"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
