@@ -90,6 +90,13 @@
      |name| - Name of the MenuItem which was activated"
   ([engine-id name] (gen-call :function ::notify-ime-menu-item-activated &form engine-id name)))
 
+(defmacro show-input-view
+  "Shows the input view window. If the input view window is already shown, this function will do nothing.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is []."
+  ([] (gen-call :function ::show-input-view &form)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -225,7 +232,12 @@
     {:id ::notify-ime-menu-item-activated,
      :name "notifyImeMenuItemActivated",
      :since "51",
-     :params [{:name "engine-id", :type "string"} {:name "name", :type "string"}]}],
+     :params [{:name "engine-id", :type "string"} {:name "name", :type "string"}]}
+    {:id ::show-input-view,
+     :name "showInputView",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :optional? true, :type :callback}]}],
    :events
    [{:id ::on-changed, :name "onChanged", :params [{:name "new-input-method-id", :type "string"}]}
     {:id ::on-composition-bounds-changed,

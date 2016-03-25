@@ -30,6 +30,9 @@
 (defn notify-ime-menu-item-activated* [config engine-id name]
   (gen-wrap :function ::notify-ime-menu-item-activated config engine-id name))
 
+(defn show-input-view* [config]
+  (gen-wrap :function ::show-input-view config))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-changed* [config channel & args]

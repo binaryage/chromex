@@ -51,7 +51,7 @@
 
 ### API stats
 
-Generated 43 namespaces containing 1 properties, 310 functions and 69 events:
+Generated 43 namespaces containing 1 properties, 311 functions and 69 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -78,7 +78,7 @@ Generated 43 namespaces containing 1 properties, 310 functions and 69 events:
     |                     chrome.gcdPrivate |           0 |          6 |       0 |
     |                chrome.hangoutsPrivate |           0 |          0 |       1 |
     |                 chrome.hotwordPrivate |           0 |         15 |       9 |
-    |             chrome.inputMethodPrivate |           0 |          9 |       7 |
+    |             chrome.inputMethodPrivate |           0 |         10 |       7 |
     |        chrome.languageSettingsPrivate |           0 |         10 |       4 |
     |                     chrome.logPrivate |           0 |          4 |       1 |
     |             chrome.mediaPlayerPrivate |           0 |          0 |       3 |
@@ -212,7 +212,7 @@ Generated 43 namespaces containing 1 properties, 310 functions and 69 events:
     [chromex.ext.input-method-private refer-macros:[
       get-input-method-config get-input-methods get-current-input-method set-current-input-method
       fetch-all-dictionary-words add-word-to-dictionary get-encrypt-sync-enabled set-xkb-layout
-      notify-ime-menu-item-activated tap-on-changed tap-on-composition-bounds-changed
+      notify-ime-menu-item-activated show-input-view tap-on-changed tap-on-composition-bounds-changed
       tap-on-dictionary-loaded tap-on-dictionary-changed tap-on-ime-menu-activation-changed
       tap-on-ime-menu-list-changed tap-on-ime-menu-items-changed tap-all-events]]
 

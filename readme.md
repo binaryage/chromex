@@ -2,7 +2,7 @@
 
 ### Chrome Extension APIs wrapper library for ClojureScript.
 
-This library is auto-generated. Current version was **generated on 2016-03-23** from [**Chromium @ 12bbca4**](https://chromium.googlesource.com/chromium/src.git/+/12bbca48cda56b2a10a68f8f69bb90906189c4bf).
+This library is auto-generated. Current version was **generated on 2016-03-25** from [**Chromium @ 2cb4041**](https://chromium.googlesource.com/chromium/src.git/+/2cb4041bc0c300f3b79171c4a43cf93cbcbfc290).
 
 Looking for a nightly version? Check out [**nightly branch**](https://github.com/binaryage/chromex/tree/nightly) which gets updated nightly if there were any new API changes.
 
@@ -14,8 +14,8 @@ For Chrome Extensions and also for Chrome Apps:
 | --- | --- | --- | --- | --- |
 | [Public Chrome Extension APIs](src/exts) | 81 | 49 | 361 | 183 |
 | [Public Chrome App APIs](src/apps) | 64 | 25 | 359 | 128 |
-| [Private Chrome Extension APIs](src/exts_private) | 43 | 1 | 310 | 69 |
-| [Private Chrome App APIs](src/apps_private) | 39 | 1 | 267 | 72 |
+| [Private Chrome Extension APIs](src/exts_private) | 43 | 1 | 311 | 69 |
+| [Private Chrome App APIs](src/apps_private) | 39 | 1 | 268 | 72 |
 | [Internal Chrome Extension APIs](src/exts_internal) | 16 | 0 | 90 | 17 |
 | [Internal Chrome App APIs](src/apps_internal) | 15 | 0 | 88 | 17 |
 

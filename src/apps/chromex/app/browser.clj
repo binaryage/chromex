@@ -17,11 +17,9 @@
 
 (defmacro open-tab
   "Opens a new tab in a browser window associated with the current application and Chrome profile. If no browser window for
-   the Chrome profile is opened, a new one is opened prior to creating the new tab. |options| - Configures how the tab should
-   be opened. |callback| - Called when the tab was successfully created, or failed to be created. If failed,
-   'runtime.lastError' will be set.
+   the Chrome profile is opened, a new one is opened prior to creating the new tab.
 
-     |options| - https://developer.chrome.com/apps/browser#property-openTab-options.
+     |options| - Configures how the tab should be opened.
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
