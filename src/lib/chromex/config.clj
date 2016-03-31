@@ -1,8 +1,8 @@
 (ns chromex.config
   (:require [environ.core :refer [env]]
             [chromex.defaults :refer [default-gen-active-config
-                                          default-gen-marshalling
-                                          default-compiler-println]]))
+                                      default-gen-marshalling
+                                      default-compiler-println]]))
 
 (def ^:dynamic *target-api-version* (or (env :chromex-target-api-version) "latest"))
 (def ^:dynamic *silence-compilation-warnings* (boolean (env :chromex-silence-compilation-warnings)))
@@ -34,6 +34,7 @@
   {:root                                                  'js/goog.global
    :callback-channel-factory                              'chromex.defaults/default-callback-channel-factory
    :callback-fn-factory                                   'chromex.defaults/default-callback-fn-factory
+   :callback-error-reporter                               'chromex.defaults/default-callback-error-reporter
    :event-listener-factory                                'chromex.defaults/default-event-listener-factory
    :chrome-storage-area-callback-channel-factory          'chromex.defaults/default-chrome-storage-area-callback-channel-factory
    :chrome-storage-area-callback-fn-factory               'chromex.defaults/default-chrome-storage-area-callback-fn-factory
@@ -64,5 +65,10 @@
 
 (defmacro with-custom-event-listener-factory [fn-factory & body]
   `(binding [chromex.config/*active-config* (-> (chromex.config/get-active-config)
-                                                    (assoc :event-listener-factory ~fn-factory))]
+                                                (assoc :event-listener-factory ~fn-factory))]
+     ~@body))
+
+(defmacro with-muted-error-reporting [& body]
+  `(binding [chromex.config/*active-config* (-> (chromex.config/get-active-config)
+                                                (dissoc :callback-error-reporter))]
      ~@body))

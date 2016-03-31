@@ -1,17 +1,45 @@
 (ns chromex.defaults
   (:require-macros [chromex.config :refer [gen-default-config]]
                    [chromex.support :refer [oget ocall call-hook]])
-  (:require [cljs.core.async :refer [put! chan]]
+  (:require [cljs.core.async :refer [put! chan close!]]
             [goog.object :as gobj]
+            [chromex.error :refer [set-last-error!]]
             [chromex.protocols :as protocols]))
+
+; -- logging support --------------------------------------------------------------------------------------------------------
+
+(defn console-log [& args]
+  (.apply (.-log js/console) js/console (into-array args)))
+
+(defn console-error [& args]
+  (.apply (.-error js/console) js/console (into-array args)))
+
+(defn default-logger [& args]
+  (apply console-log "[chromex]" args))
+
+(defn default-callback-error-reporter [& args]
+  (apply console-error "[chromex]" "an error occured" args))                                                    ; TODO: provide info about the call
 
 ; -- callback support -------------------------------------------------------------------------------------------------------
 ;
 ; async methods using core.async channels
 
-(defn default-callback-fn-factory [_config chan]
+(defn report-error-if-needed! [config error]
+  (when-let [error-reporter (:callback-error-reporter config)]
+    (assert (fn? error-reporter))
+    (error-reporter error)))
+
+(defn default-callback-fn-factory [config chan]
   (fn [& args]
-    (put! chan (vec args))))
+    (if-let [error (oget js/chrome "runtime" "lastError")]
+      (do
+        (set-last-error! error)
+        (report-error-if-needed! config error)
+        (close! chan))
+      (do
+        (set-last-error! nil)
+        (put! chan (vec args))
+        (close! chan)))))
 
 (defn default-callback-channel-factory [_config]
   (chan))
@@ -19,14 +47,6 @@
 (defn default-event-listener-factory [_config event-id chan]
   (fn [& args]
     (put! chan [event-id (vec args)])))
-
-; -- logging support --------------------------------------------------------------------------------------------------------
-
-(defn console-log [& args]
-  (.apply (.-log js/console) js/console (apply array args)))
-
-(defn default-logger [& args]
-  (apply console-log "[chromex]" args))
 
 ; -- missing API checks -----------------------------------------------------------------------------------------------------
 
