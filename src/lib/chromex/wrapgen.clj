@@ -160,7 +160,7 @@
 
 (defn gen-callback-function-wrap [static-config api-table descriptor config & args]
   (let [callback-chan-sym (gensym "callback-chan-")
-        callback-fn (gen-call-hook config :callback-fn-factory callback-chan-sym)
+        callback-fn (gen-call-hook config :callback-fn-factory descriptor callback-chan-sym)
         args+callback (concat args [callback-fn])
         marshalled-call-with-callback (apply gen-marshalling static-config api-table descriptor config args+callback)]
     `(let [~callback-chan-sym ~(gen-call-hook config :callback-channel-factory)]

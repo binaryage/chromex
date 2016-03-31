@@ -8,6 +8,8 @@
 
 ; -- logging support --------------------------------------------------------------------------------------------------------
 
+(def log-prefix "[chromex]")
+
 (defn console-log [& args]
   (.apply (.-log js/console) js/console (into-array args)))
 
@@ -15,26 +17,29 @@
   (.apply (.-error js/console) js/console (into-array args)))
 
 (defn default-logger [& args]
-  (apply console-log "[chromex]" args))
+  (apply console-log log-prefix args))
 
-(defn default-callback-error-reporter [& args]
-  (apply console-error "[chromex]" "an error occured" args))                                                    ; TODO: provide info about the call
+(defn default-callback-error-reporter [descriptor error]
+  (let [function (or (str (namespace (:id descriptor)) "/" (name (:id descriptor))) "an unknown function")
+        explanation (oget error "message")
+        message (str "an error occured during the call to " function (if explanation (str ": " explanation)))]
+    (console-error log-prefix message "Details:" error)))
 
 ; -- callback support -------------------------------------------------------------------------------------------------------
 ;
 ; async methods using core.async channels
 
-(defn report-error-if-needed! [config error]
+(defn report-error-if-needed! [config descriptor error]
   (when-let [error-reporter (:callback-error-reporter config)]
     (assert (fn? error-reporter))
-    (error-reporter error)))
+    (error-reporter descriptor error)))
 
-(defn default-callback-fn-factory [config chan]
+(defn default-callback-fn-factory [config descriptor chan]
   (fn [& args]
     (if-let [error (oget js/chrome "runtime" "lastError")]
       (do
         (set-last-error! error)
-        (report-error-if-needed! config error)
+        (report-error-if-needed! config descriptor error)
         (close! chan))
       (do
         (set-last-error! nil)
