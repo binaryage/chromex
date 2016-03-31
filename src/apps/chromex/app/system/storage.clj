@@ -24,6 +24,9 @@
 
      |info| - https://developer.chrome.com/apps/system.storage#property-callback-info.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/system.storage#method-getInfo."
   ([] (gen-call :function ::get-info &form)))
 
@@ -37,6 +40,9 @@
 
      |result| - https://developer.chrome.com/apps/system.storage#property-callback-result.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/system.storage#method-ejectDevice."
   ([id] (gen-call :function ::eject-device &form id)))
 
@@ -49,6 +55,9 @@
    Signature of the result value put on the channel is [info] where:
 
      |info| - https://developer.chrome.com/apps/system.storage#property-callback-info.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/system.storage#method-getAvailableCapacity."
   ([id] (gen-call :function ::get-available-capacity &form id)))

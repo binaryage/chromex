@@ -25,6 +25,9 @@
 
      |array| - https://developer.chrome.com/extensions/idltest#property-cb-array.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/idltest#method-sendArrayBuffer."
   ([input] (gen-call :function ::send-array-buffer &form input)))
 
@@ -40,6 +43,9 @@
 
      |array| - https://developer.chrome.com/extensions/idltest#property-cb-array.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/idltest#method-sendArrayBufferView."
   ([input] (gen-call :function ::send-array-buffer-view &form input)))
 
@@ -48,6 +54,9 @@
    Signature of the result value put on the channel is [buffer] where:
 
      |buffer| - https://developer.chrome.com/extensions/idltest#property-cb-buffer.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/idltest#method-getArrayBuffer."
   ([] (gen-call :function ::get-array-buffer &form)))

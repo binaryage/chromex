@@ -24,6 +24,9 @@
 
      |resolve-info| - https://developer.chrome.com/apps/dns#property-callback-resolveInfo.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/dns#method-resolve."
   ([hostname] (gen-call :function ::resolve &form hostname)))
 

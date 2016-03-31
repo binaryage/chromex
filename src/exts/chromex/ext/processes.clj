@@ -25,6 +25,9 @@
 
      |process-id| - Process ID of the tab's renderer process.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/processes#method-getProcessIdForTab."
   ([tab-id] (gen-call :function ::get-process-id-for-tab &form tab-id)))
 
@@ -37,6 +40,9 @@
    Signature of the result value put on the channel is [did-terminate] where:
 
      |did-terminate| - True if terminating the process was successful, and false otherwise.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/processes#method-terminate."
   ([process-id] (gen-call :function ::terminate &form process-id)))
@@ -55,6 +61,9 @@
      |processes| - A dictionary of 'Process' objects for each requested process that is a live child process of the current
                    browser process, indexed by process ID. Metrics requiring aggregation over time will not be populated in
                    each Process object.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/processes#method-getProcessInfo."
   ([process-ids include-memory] (gen-call :function ::get-process-info &form process-ids include-memory)))

@@ -25,6 +25,9 @@
 
      |details| - Information about the requested frame, null if the specified frame ID and/or tab ID are invalid.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/webNavigation#method-getFrame."
   ([details] (gen-call :function ::get-frame &form details)))
 
@@ -37,6 +40,9 @@
    Signature of the result value put on the channel is [details] where:
 
      |details| - A list of frames in the given tab, null if the specified tab ID is invalid.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/webNavigation#method-getAllFrames."
   ([details] (gen-call :function ::get-all-frames &form details)))

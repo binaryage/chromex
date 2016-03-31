@@ -23,6 +23,9 @@
 
      |result| - https://developer.chrome.com/extensions/displaySource#property-callback-result.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/displaySource#method-getAvailableSinks."
   ([] (gen-call :function ::get-available-sinks &form)))
 
@@ -35,6 +38,9 @@
    Signature of the result value put on the channel is [result] where:
 
      |result| - https://developer.chrome.com/extensions/displaySource#property-callback-result.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/displaySource#method-requestAuthentication."
   ([sink-id] (gen-call :function ::request-authentication &form sink-id)))
@@ -52,6 +58,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/displaySource#method-startSession."
   ([session-info] (gen-call :function ::start-session &form session-info)))
 
@@ -62,6 +71,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/displaySource#method-terminateSession."
   ([sink-id] (gen-call :function ::terminate-session &form sink-id)))

@@ -23,6 +23,9 @@
 
      |languages| - Array of LanguageCode
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/i18n#method-getAcceptLanguages."
   ([] (gen-call :function ::get-accept-languages &form)))
 
@@ -54,6 +57,9 @@
    Signature of the result value put on the channel is [result] where:
 
      |result| - LanguageDetectionResult object that holds detected langugae reliability and array of DetectedLanguage
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/i18n#method-detectLanguage."
   ([text] (gen-call :function ::detect-language &form text)))

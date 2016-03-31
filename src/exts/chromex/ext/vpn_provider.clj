@@ -25,6 +25,9 @@
 
      |id| - A unique ID for the created configuration, or undefined on failure.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/vpnProvider#method-createConfig."
   ([name] (gen-call :function ::create-config &form name)))
 
@@ -35,6 +38,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/vpnProvider#method-destroyConfig."
   ([id] (gen-call :function ::destroy-config &form id)))
@@ -48,6 +54,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/vpnProvider#method-setParameters."
   ([parameters] (gen-call :function ::set-parameters &form parameters)))
 
@@ -60,6 +69,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/vpnProvider#method-sendPacket."
   ([data] (gen-call :function ::send-packet &form data)))
 
@@ -70,6 +82,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/vpnProvider#method-notifyConnectionStateChanged."
   ([state] (gen-call :function ::notify-connection-state-changed &form state)))

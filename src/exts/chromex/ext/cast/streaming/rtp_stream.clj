@@ -74,6 +74,9 @@
      |raw-events| - compressed serialized raw bytes containing raw events              recorded for a stream. The compression
                     is in gzip format. The serialization format can be found at  media/cast/logging/log_serializer.cc.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/cast.streaming.rtpStream#method-getRawEvents."
   ([stream-id extra-data] (gen-call :function ::get-raw-events &form stream-id extra-data))
   ([stream-id] `(get-raw-events ~stream-id :omit)))
@@ -87,6 +90,9 @@
    Signature of the result value put on the channel is [stats] where:
 
      |stats| - https://developer.chrome.com/extensions/cast.streaming.rtpStream#property-callback-stats.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/cast.streaming.rtpStream#method-getStats."
   ([stream-id] (gen-call :function ::get-stats &form stream-id)))

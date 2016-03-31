@@ -49,6 +49,9 @@
      |data-url| - A data URL which encodes an image of the visible area of the captured tab. May be assigned to the 'src'
                   property of an HTML Image element for display.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/tags/webview#method-captureVisibleRegion."
   ([options] (gen-call :function ::capture-visible-region &form options))
   ([] `(capture-visible-region :omit)))
@@ -111,6 +114,9 @@ webview.addContentScripts([{
 
      |success| - Indicates whether the navigation was successful.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/tags/webview#method-back."
   ([] (gen-call :function ::back &form)))
 
@@ -137,6 +143,9 @@ webview.addContentScripts([{
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/tags/webview#method-clearData."
   ([options types] (gen-call :function ::clear-data &form options types)))
 
@@ -150,6 +159,9 @@ webview.addContentScripts([{
    Signature of the result value put on the channel is [result] where:
 
      |result| - The result of the script in every injected frame.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tags/webview#method-executeScript."
   ([details] (gen-call :function ::execute-script &form details)))
@@ -166,6 +178,9 @@ webview.addContentScripts([{
      |results| - Contains all of the results of the find request. results can be omitted if it is not utilized in the callback
                  function body; for example, if the callback is only used to discern when the find request has completed.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/tags/webview#method-find."
   ([search-text options] (gen-call :function ::find &form search-text options))
   ([search-text] `(find ~search-text :omit)))
@@ -177,6 +192,9 @@ webview.addContentScripts([{
    Signature of the result value put on the channel is [success] where:
 
      |success| - Indicates whether the navigation was successful.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tags/webview#method-forward."
   ([] (gen-call :function ::forward &form)))
@@ -204,6 +222,9 @@ webview.addContentScripts([{
 
      |zoom-factor| - The current zoom factor.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/tags/webview#method-getZoom."
   ([] (gen-call :function ::get-zoom &form)))
 
@@ -214,6 +235,9 @@ webview.addContentScripts([{
    Signature of the result value put on the channel is [zoom-mode] where:
 
      |zoom-mode| - The webview's current zoom mode.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tags/webview#method-getZoomMode."
   ([] (gen-call :function ::get-zoom-mode &form)))
@@ -230,6 +254,9 @@ webview.addContentScripts([{
 
      |success| - Indicates whether the navigation was successful.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/tags/webview#method-go."
   ([relative-index] (gen-call :function ::go &form relative-index)))
 
@@ -240,6 +267,9 @@ webview.addContentScripts([{
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tags/webview#method-insertCSS."
   ([details] (gen-call :function ::insert-css &form details)))
@@ -290,6 +320,9 @@ webview.addContentScripts([{
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/tags/webview#method-setZoom."
   ([zoom-factor] (gen-call :function ::set-zoom &form zoom-factor)))
 
@@ -300,6 +333,9 @@ webview.addContentScripts([{
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tags/webview#method-setZoomMode."
   ([zoom-mode] (gen-call :function ::set-zoom-mode &form zoom-mode)))

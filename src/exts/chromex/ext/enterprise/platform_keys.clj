@@ -28,6 +28,9 @@
 
      |tokens| - The list of available tokens.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/enterprise.platformKeys#method-getTokens."
   ([] (gen-call :function ::get-tokens &form)))
 
@@ -41,6 +44,9 @@
    Signature of the result value put on the channel is [certificates] where:
 
      |certificates| - The list of certificates, each in DER encoding of a X.509     certificate.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/enterprise.platformKeys#method-getCertificates."
   ([token-id] (gen-call :function ::get-certificates &form token-id)))
@@ -56,6 +62,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/enterprise.platformKeys#method-importCertificate."
   ([token-id certificate] (gen-call :function ::import-certificate &form token-id certificate)))
 
@@ -69,6 +78,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/enterprise.platformKeys#method-removeCertificate."
   ([token-id certificate] (gen-call :function ::remove-certificate &form token-id certificate)))
@@ -91,6 +103,9 @@
    Signature of the result value put on the channel is [response] where:
 
      |response| - The challenge response.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/enterprise.platformKeys#method-challengeMachineKey."
   ([challenge] (gen-call :function ::challenge-machine-key &form challenge)))
@@ -117,6 +132,9 @@
    Signature of the result value put on the channel is [response] where:
 
      |response| - The challenge response.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/enterprise.platformKeys#method-challengeUserKey."
   ([challenge register-key] (gen-call :function ::challenge-user-key &form challenge register-key)))

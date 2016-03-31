@@ -26,6 +26,9 @@
 
      |cookie| - Contains details about the cookie. This parameter is null if no such cookie was found.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/cookies#method-get."
   ([details] (gen-call :function ::get &form details)))
 
@@ -41,6 +44,9 @@
 
      |cookies| - All the existing, unexpired cookies that match the given cookie info.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/cookies#method-getAll."
   ([details] (gen-call :function ::get-all &form details)))
 
@@ -54,6 +60,9 @@
 
      |cookie| - Contains details about the cookie that's been set.  If setting failed for any reason, this will be 'null', and
                 'chrome.runtime.lastError' will be set.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/cookies#method-set."
   ([details] (gen-call :function ::set &form details)))
@@ -69,6 +78,9 @@
      |details| - Contains details about the cookie that's been removed.  If removal failed for any reason, this will be
                  'null', and 'chrome.runtime.lastError' will be set.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/cookies#method-remove."
   ([details] (gen-call :function ::remove &form details)))
 
@@ -79,6 +91,9 @@
    Signature of the result value put on the channel is [cookie-stores] where:
 
      |cookie-stores| - All the existing cookie stores.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/cookies#method-getAllCookieStores."
   ([] (gen-call :function ::get-all-cookie-stores &form)))

@@ -17,7 +17,10 @@
      |id-list| - An array of string-valued ids
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([id-list] (gen-call :function ::copy &form id-list)))
 
 (defmacro cut
@@ -26,7 +29,10 @@
      |id-list| - An array of string-valued ids
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([id-list] (gen-call :function ::cut &form id-list)))
 
 (defmacro paste
@@ -36,7 +42,10 @@
      |selected-id-list| - An array of string-valued ids for selected bookmarks.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([parent-id selected-id-list] (gen-call :function ::paste &form parent-id selected-id-list))
   ([parent-id] `(paste ~parent-id :omit)))
 
@@ -48,7 +57,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - ?"
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([parent-id] (gen-call :function ::can-paste &form parent-id)))
 
 (defmacro sort-children
@@ -63,7 +75,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - ?"
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::get-strings &form)))
 
 (defmacro start-drag
@@ -92,7 +107,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [results] where:
 
-     |results| - ?"
+     |results| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([id folders-only] (gen-call :function ::get-subtree &form id folders-only)))
 
 (defmacro can-edit
@@ -101,7 +119,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - ?"
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::can-edit &form)))
 
 (defmacro can-open-new-windows
@@ -110,7 +131,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - ?"
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::can-open-new-windows &form)))
 
 (defmacro remove-trees
@@ -119,7 +143,10 @@
      |id-list| - An array of string-valued ids.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([id-list] (gen-call :function ::remove-trees &form id-list)))
 
 (defmacro record-launch ([] (gen-call :function ::record-launch &form)))
@@ -133,7 +160,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - ?"
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([bookmark meta-info] (gen-call :function ::create-with-meta-info &form bookmark meta-info)))
 
 (defmacro get-meta-info
@@ -146,7 +176,10 @@
    Signature of the result value put on the channel is [value] where:
 
      |value| - If a key was given, the value of the specified field, if present. Otherwise an object containing all meta info
-               fields for the node. If id is not given then meta info for all nodes as an object with node id to meta info."
+               fields for the node. If id is not given then meta info for all nodes as an object with node id to meta info.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([id key] (gen-call :function ::get-meta-info &form id key))
   ([id] `(get-meta-info ~id :omit))
   ([] `(get-meta-info :omit :omit)))
@@ -159,7 +192,10 @@
      |value| - The meta info to set.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([id key value] (gen-call :function ::set-meta-info &form id key value)))
 
 (defmacro update-meta-info
@@ -169,7 +205,10 @@
      |meta-info-changes| - A set of meta info key/value pairs to update.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([id meta-info-changes] (gen-call :function ::update-meta-info &form id meta-info-changes)))
 
 (defmacro undo
@@ -186,7 +225,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - ?"
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::get-undo-info &form)))
 
 (defmacro get-redo-info
@@ -195,7 +237,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - ?"
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::get-redo-info &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------

@@ -28,6 +28,9 @@
 
      |result| - Result of the method.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/fileBrowserHandler#method-selectFile."
   ([selection-params] (gen-call :function ::select-file &form selection-params)))
 

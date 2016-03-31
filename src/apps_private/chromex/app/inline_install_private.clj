@@ -22,7 +22,10 @@
    Signature of the result value put on the channel is [error error-code] where:
 
      |error| - ?
-     |error-code| - ?"
+     |error-code| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([id] (gen-call :function ::install &form id)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

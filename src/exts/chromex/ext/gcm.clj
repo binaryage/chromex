@@ -34,6 +34,9 @@
 
      |registration-id| - A registration ID assigned to the application by the GCM.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/gcm#method-register."
   ([sender-ids] (gen-call :function ::register &form sender-ids)))
 
@@ -42,6 +45,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/gcm#method-unregister."
   ([] (gen-call :function ::unregister &form)))
@@ -55,6 +61,9 @@
    Signature of the result value put on the channel is [message-id] where:
 
      |message-id| - The ID of the message that the callback was issued for.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/gcm#method-send."
   ([message] (gen-call :function ::send &form message)))

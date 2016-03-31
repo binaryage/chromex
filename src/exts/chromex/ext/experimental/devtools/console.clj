@@ -30,6 +30,9 @@
 
      |messages| - Console messages.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/experimental.devtools.console#method-getMessages."
   ([] (gen-call :function ::get-messages &form)))
 

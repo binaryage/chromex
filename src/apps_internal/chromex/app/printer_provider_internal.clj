@@ -63,7 +63,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [blob-info] where:
 
-     |blob-info| - ?"
+     |blob-info| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([request-id] (gen-call :function ::get-print-data &form request-id)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

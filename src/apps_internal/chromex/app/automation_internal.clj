@@ -24,7 +24,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [tree-id] where:
 
-     |tree-id| - ?"
+     |tree-id| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([args] (gen-call :function ::enable-tab &form args)))
 
 (defmacro enable-frame
@@ -39,7 +42,10 @@
      |routing-id| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([routing-id] (gen-call :function ::enable-desktop &form routing-id)))
 
 (defmacro perform-action
@@ -57,7 +63,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result-automation-node-id] where:
 
-     |result-automation-node-id| - ?"
+     |result-automation-node-id| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([args] (gen-call :function ::query-selector &form args)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------

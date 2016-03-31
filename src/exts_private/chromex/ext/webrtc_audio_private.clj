@@ -29,7 +29,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [sink-info] where:
 
-     |sink-info| - ?"
+     |sink-info| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::get-sinks &form)))
 
 (defmacro get-active-sink
@@ -40,7 +43,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [sink-id] where:
 
-     |sink-id| - ?"
+     |sink-id| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([request] (gen-call :function ::get-active-sink &form request)))
 
 (defmacro set-active-sink
@@ -50,7 +56,10 @@
      |sink-id| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([request sink-id] (gen-call :function ::set-active-sink &form request sink-id)))
 
 (defmacro get-associated-sink
@@ -64,7 +73,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [sink-id] where:
 
-     |sink-id| - ?"
+     |sink-id| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([security-origin source-id-in-origin] (gen-call :function ::get-associated-sink &form security-origin source-id-in-origin)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------

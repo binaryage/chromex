@@ -25,6 +25,9 @@
      |output-info| - https://developer.chrome.com/apps/audio#property-callback-outputInfo.
      |input-info| - https://developer.chrome.com/apps/audio#property-callback-inputInfo.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/audio#method-getInfo."
   ([] (gen-call :function ::get-info &form)))
 
@@ -40,6 +43,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/audio#method-setActiveDevices."
   ([ids] (gen-call :function ::set-active-devices &form ids)))
 
@@ -51,6 +57,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/audio#method-setProperties."
   ([id properties] (gen-call :function ::set-properties &form id properties)))

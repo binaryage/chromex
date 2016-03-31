@@ -20,7 +20,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [pid] where:
 
-     |pid| - Id of the launched process."
+     |pid| - Id of the launched process.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([process-name] (gen-call :function ::open-terminal-process &form process-name)))
 
 (defmacro close-terminal-process
@@ -31,7 +34,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [success] where:
 
-     |success| - ?"
+     |success| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([pid] (gen-call :function ::close-terminal-process &form pid)))
 
 (defmacro send-input
@@ -43,7 +49,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [success] where:
 
-     |success| - ?"
+     |success| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([pid input] (gen-call :function ::send-input &form pid input)))
 
 (defmacro on-terminal-resize
@@ -56,7 +65,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [success] where:
 
-     |success| - ?"
+     |success| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([pid width height] (gen-call :function ::on-terminal-resize &form pid width height)))
 
 (defmacro ack-output

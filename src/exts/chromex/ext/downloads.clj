@@ -30,6 +30,9 @@
 
      |download-id| - https://developer.chrome.com/extensions/downloads#property-callback-downloadId.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/downloads#method-download."
   ([options] (gen-call :function ::download &form options)))
 
@@ -45,6 +48,9 @@
 
      |results| - https://developer.chrome.com/extensions/downloads#property-callback-results.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/downloads#method-search."
   ([query] (gen-call :function ::search &form query)))
 
@@ -56,6 +62,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/downloads#method-pause."
   ([download-id] (gen-call :function ::pause &form download-id)))
@@ -69,6 +78,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/downloads#method-resume."
   ([download-id] (gen-call :function ::resume &form download-id)))
 
@@ -79,6 +91,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/downloads#method-cancel."
   ([download-id] (gen-call :function ::cancel &form download-id)))
@@ -98,6 +113,9 @@
    Signature of the result value put on the channel is [icon-url] where:
 
      |icon-url| - https://developer.chrome.com/extensions/downloads#property-callback-iconURL.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/downloads#method-getFileIcon."
   ([download-id options] (gen-call :function ::get-file-icon &form download-id options))
@@ -138,6 +156,9 @@
 
      |erased-ids| - https://developer.chrome.com/extensions/downloads#property-callback-erasedIds.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/downloads#method-erase."
   ([query] (gen-call :function ::erase &form query)))
 
@@ -149,6 +170,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/downloads#method-removeFile."
   ([download-id] (gen-call :function ::remove-file &form download-id)))
@@ -164,6 +188,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/downloads#method-acceptDanger."
   ([download-id] (gen-call :function ::accept-danger &form download-id)))

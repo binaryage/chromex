@@ -41,6 +41,9 @@
 
      |panel| - An ExtensionPanel object representing the created panel.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/devtools.panels#method-create."
   ([title icon-path page-path] (gen-call :function ::create &form title icon-path page-path)))
 
@@ -53,6 +56,9 @@
 
      |resource| - A 'devtools.inspectedWindow.Resource' object for the resource that was clicked.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/devtools.panels#method-setOpenResourceHandler."
   ([] (gen-call :function ::set-open-resource-handler &form)))
 
@@ -64,6 +70,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/devtools.panels#method-openResource."
   ([url line-number] (gen-call :function ::open-resource &form url line-number)))

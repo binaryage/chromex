@@ -26,6 +26,9 @@
 
      |create-info| - The result of the socket creation.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/sockets.udp#method-create."
   ([properties] (gen-call :function ::create &form properties))
   ([] `(create :omit)))
@@ -39,6 +42,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/sockets.udp#method-update."
   ([socket-id properties] (gen-call :function ::update &form socket-id properties)))
 
@@ -50,6 +56,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.udp#method-setPaused."
   ([socket-id paused] (gen-call :function ::set-paused &form socket-id paused)))
@@ -69,6 +78,9 @@
 
      |result| - The result code returned from the underlying network call. A negative value indicates an error.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/sockets.udp#method-bind."
   ([socket-id address port] (gen-call :function ::bind &form socket-id address port)))
 
@@ -86,6 +98,9 @@
 
      |send-info| - Result of the send method.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/sockets.udp#method-send."
   ([socket-id data address port] (gen-call :function ::send &form socket-id data address port)))
 
@@ -98,6 +113,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.udp#method-close."
   ([socket-id] (gen-call :function ::close &form socket-id)))
@@ -112,6 +130,9 @@
 
      |socket-info| - Object containing the socket information.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/sockets.udp#method-getInfo."
   ([socket-id] (gen-call :function ::get-info &form socket-id)))
 
@@ -122,6 +143,9 @@
    Signature of the result value put on the channel is [socket-infos] where:
 
      |socket-infos| - Array of object containing socket information.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.udp#method-getSockets."
   ([] (gen-call :function ::get-sockets &form)))
@@ -137,6 +161,9 @@
    Signature of the result value put on the channel is [result] where:
 
      |result| - The result code returned from the underlying network call. A negative value indicates an error.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.udp#method-joinGroup."
   ([socket-id address] (gen-call :function ::join-group &form socket-id address)))
@@ -155,6 +182,9 @@
 
      |result| - The result code returned from the underlying network call. A negative value indicates an error.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/sockets.udp#method-leaveGroup."
   ([socket-id address] (gen-call :function ::leave-group &form socket-id address)))
 
@@ -169,6 +199,9 @@
    Signature of the result value put on the channel is [result] where:
 
      |result| - The result code returned from the underlying network call. A negative value indicates an error.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.udp#method-setMulticastTimeToLive."
   ([socket-id ttl] (gen-call :function ::set-multicast-time-to-live &form socket-id ttl)))
@@ -189,6 +222,9 @@
 
      |result| - The result code returned from the underlying network call. A negative value indicates an error.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/sockets.udp#method-setMulticastLoopbackMode."
   ([socket-id enabled] (gen-call :function ::set-multicast-loopback-mode &form socket-id enabled)))
 
@@ -201,6 +237,9 @@
    Signature of the result value put on the channel is [groups] where:
 
      |groups| - Array of groups the socket joined.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.udp#method-getJoinedGroups."
   ([socket-id] (gen-call :function ::get-joined-groups &form socket-id)))
@@ -215,6 +254,9 @@
    Signature of the result value put on the channel is [result] where:
 
      |result| - The result code returned from the underlying network call.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.udp#method-setBroadcast."
   ([socket-id enabled] (gen-call :function ::set-broadcast &form socket-id enabled)))

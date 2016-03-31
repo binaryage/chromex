@@ -24,7 +24,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [success] where:
 
-     |success| - ?"
+     |success| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([name value page-id] (gen-call :function ::set-pref &form name value page-id)))
 
 (defmacro get-all-prefs
@@ -33,7 +36,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [prefs] where:
 
-     |prefs| - ?"
+     |prefs| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::get-all-prefs &form)))
 
 (defmacro get-pref
@@ -44,7 +50,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [pref] where:
 
-     |pref| - ?"
+     |pref| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([name] (gen-call :function ::get-pref &form name)))
 
 (defmacro get-default-zoom-percent
@@ -53,7 +62,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [percent] where:
 
-     |percent| - ?"
+     |percent| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::get-default-zoom-percent &form)))
 
 (defmacro set-default-zoom-percent
@@ -64,7 +76,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [success] where:
 
-     |success| - ?"
+     |success| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([percent] (gen-call :function ::set-default-zoom-percent &form percent)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------

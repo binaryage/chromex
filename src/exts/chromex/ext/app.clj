@@ -26,6 +26,9 @@
 
      |state| - https://developer.chrome.com/extensions/app#property-callback-state.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/app#method-installState."
   ([] (gen-call :function ::install-state &form)))
 

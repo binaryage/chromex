@@ -26,6 +26,9 @@
 
      |success| - True if the embedding request succeded.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/tags/appview#method-connect."
   ([app data] (gen-call :function ::connect &form app data))
   ([app] `(connect ~app :omit)))

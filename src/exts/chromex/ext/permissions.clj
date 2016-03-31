@@ -23,6 +23,9 @@
 
      |permissions| - The extension's active permissions.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/permissions#method-getAll."
   ([] (gen-call :function ::get-all &form)))
 
@@ -35,6 +38,9 @@
    Signature of the result value put on the channel is [result] where:
 
      |result| - True if the extension has the specified permissions.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/permissions#method-contains."
   ([permissions] (gen-call :function ::contains &form permissions)))
@@ -50,6 +56,9 @@
 
      |granted| - True if the user granted the specified permissions.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/permissions#method-request."
   ([permissions] (gen-call :function ::request &form permissions)))
 
@@ -63,6 +72,9 @@
    Signature of the result value put on the channel is [removed] where:
 
      |removed| - True if the permissions were removed.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/permissions#method-remove."
   ([permissions] (gen-call :function ::remove &form permissions)))

@@ -23,6 +23,9 @@
 
      |ports| - https://developer.chrome.com/apps/serial#property-callback-ports.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/serial#method-getDevices."
   ([] (gen-call :function ::get-devices &form)))
 
@@ -36,6 +39,9 @@
    Signature of the result value put on the channel is [connection-info] where:
 
      |connection-info| - https://developer.chrome.com/apps/serial#property-callback-connectionInfo.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/serial#method-connect."
   ([path options] (gen-call :function ::connect &form path options))
@@ -52,6 +58,9 @@
 
      |result| - https://developer.chrome.com/apps/serial#property-callback-result.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/serial#method-update."
   ([connection-id options] (gen-call :function ::update &form connection-id options)))
 
@@ -65,6 +74,9 @@
 
      |result| - https://developer.chrome.com/apps/serial#property-callback-result.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/serial#method-disconnect."
   ([connection-id] (gen-call :function ::disconnect &form connection-id)))
 
@@ -76,6 +88,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/serial#method-setPaused."
   ([connection-id paused] (gen-call :function ::set-paused &form connection-id paused)))
@@ -90,6 +105,9 @@
 
      |connection-info| - https://developer.chrome.com/apps/serial#property-callback-connectionInfo.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/serial#method-getInfo."
   ([connection-id] (gen-call :function ::get-info &form connection-id)))
 
@@ -100,6 +118,9 @@
    Signature of the result value put on the channel is [connection-infos] where:
 
      |connection-infos| - https://developer.chrome.com/apps/serial#property-callback-connectionInfos.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/serial#method-getConnections."
   ([] (gen-call :function ::get-connections &form)))
@@ -115,6 +136,9 @@
 
      |send-info| - https://developer.chrome.com/apps/serial#property-callback-sendInfo.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/serial#method-send."
   ([connection-id data] (gen-call :function ::send &form connection-id data)))
 
@@ -128,6 +152,9 @@
 
      |result| - https://developer.chrome.com/apps/serial#property-callback-result.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/serial#method-flush."
   ([connection-id] (gen-call :function ::flush &form connection-id)))
 
@@ -140,6 +167,9 @@
    Signature of the result value put on the channel is [signals] where:
 
      |signals| - https://developer.chrome.com/apps/serial#property-callback-signals.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/serial#method-getControlSignals."
   ([connection-id] (gen-call :function ::get-control-signals &form connection-id)))
@@ -155,6 +185,9 @@
 
      |result| - https://developer.chrome.com/apps/serial#property-callback-result.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/serial#method-setControlSignals."
   ([connection-id signals] (gen-call :function ::set-control-signals &form connection-id signals)))
 
@@ -169,6 +202,9 @@
 
      |result| - https://developer.chrome.com/apps/serial#property-callback-result.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/serial#method-setBreak."
   ([connection-id] (gen-call :function ::set-break &form connection-id)))
 
@@ -181,6 +217,9 @@
    Signature of the result value put on the channel is [result] where:
 
      |result| - https://developer.chrome.com/apps/serial#property-callback-result.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/serial#method-clearBreak."
   ([connection-id] (gen-call :function ::clear-break &form connection-id)))

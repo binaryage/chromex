@@ -28,6 +28,9 @@
 
      |notification-id| - https://developer.chrome.com/extensions/notifications#property-callback-notificationId.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/notifications#method-create."
   ([notification-id options] (gen-call :function ::create &form notification-id options)))
 
@@ -42,6 +45,9 @@
 
      |was-updated| - https://developer.chrome.com/extensions/notifications#property-callback-wasUpdated.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/notifications#method-update."
   ([notification-id options] (gen-call :function ::update &form notification-id options)))
 
@@ -55,6 +61,9 @@
 
      |was-cleared| - https://developer.chrome.com/extensions/notifications#property-callback-wasCleared.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/notifications#method-clear."
   ([notification-id] (gen-call :function ::clear &form notification-id)))
 
@@ -66,6 +75,9 @@
 
      |notifications| - https://developer.chrome.com/extensions/notifications#property-callback-notifications.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/notifications#method-getAll."
   ([] (gen-call :function ::get-all &form)))
 
@@ -76,6 +88,9 @@
    Signature of the result value put on the channel is [level] where:
 
      |level| - https://developer.chrome.com/extensions/notifications#property-callback-level.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/notifications#method-getPermissionLevel."
   ([] (gen-call :function ::get-permission-level &form)))

@@ -25,6 +25,9 @@
 
      |create-info| - The result of the socket creation.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/bluetoothSocket#method-create."
   ([properties] (gen-call :function ::create &form properties))
   ([] `(create :omit)))
@@ -37,6 +40,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothSocket#method-update."
   ([socket-id properties] (gen-call :function ::update &form socket-id properties)))
@@ -55,6 +61,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/bluetoothSocket#method-setPaused."
   ([socket-id paused] (gen-call :function ::set-paused &form socket-id paused)))
 
@@ -67,6 +76,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothSocket#method-listenUsingRfcomm."
   ([socket-id uuid options] (gen-call :function ::listen-using-rfcomm &form socket-id uuid options))
@@ -81,6 +93,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothSocket#method-listenUsingL2cap."
   ([socket-id uuid options] (gen-call :function ::listen-using-l2cap &form socket-id uuid options))
@@ -99,6 +114,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/bluetoothSocket#method-connect."
   ([socket-id address uuid] (gen-call :function ::connect &form socket-id address uuid)))
 
@@ -109,6 +127,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothSocket#method-disconnect."
   ([socket-id] (gen-call :function ::disconnect &form socket-id)))
@@ -121,6 +142,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothSocket#method-close."
   ([socket-id] (gen-call :function ::close &form socket-id)))
@@ -136,6 +160,9 @@
 
      |bytes-sent| - The number of bytes sent.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/bluetoothSocket#method-send."
   ([socket-id data] (gen-call :function ::send &form socket-id data)))
 
@@ -149,6 +176,9 @@
 
      |socket-info| - Object containing the socket information.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/bluetoothSocket#method-getInfo."
   ([socket-id] (gen-call :function ::get-info &form socket-id)))
 
@@ -159,6 +189,9 @@
    Signature of the result value put on the channel is [sockets] where:
 
      |sockets| - https://developer.chrome.com/apps/bluetoothSocket#property-callback-sockets.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothSocket#method-getSockets."
   ([] (gen-call :function ::get-sockets &form)))

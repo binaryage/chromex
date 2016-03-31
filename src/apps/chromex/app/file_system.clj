@@ -29,6 +29,9 @@
 
      |display-path| - https://developer.chrome.com/apps/fileSystem#property-callback-displayPath.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/fileSystem#method-getDisplayPath."
   ([entry] (gen-call :function ::get-display-path &form entry)))
 
@@ -44,6 +47,9 @@
 
      |entry| - https://developer.chrome.com/apps/fileSystem#property-callback-entry.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/fileSystem#method-getWritableEntry."
   ([entry] (gen-call :function ::get-writable-entry &form entry)))
 
@@ -56,6 +62,9 @@
    Signature of the result value put on the channel is [is-writable] where:
 
      |is-writable| - https://developer.chrome.com/apps/fileSystem#property-callback-isWritable.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/fileSystem#method-isWritableEntry."
   ([entry] (gen-call :function ::is-writable-entry &form entry)))
@@ -71,6 +80,9 @@
      |entry| - https://developer.chrome.com/apps/fileSystem#property-callback-entry.
      |file-entries| - https://developer.chrome.com/apps/fileSystem#property-callback-fileEntries.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/fileSystem#method-chooseEntry."
   ([options] (gen-call :function ::choose-entry &form options))
   ([] `(choose-entry :omit)))
@@ -85,6 +97,9 @@
 
      |entry| - https://developer.chrome.com/apps/fileSystem#property-callback-entry.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/fileSystem#method-restoreEntry."
   ([id] (gen-call :function ::restore-entry &form id)))
 
@@ -97,6 +112,9 @@
    Signature of the result value put on the channel is [is-restorable] where:
 
      |is-restorable| - https://developer.chrome.com/apps/fileSystem#property-callback-isRestorable.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/fileSystem#method-isRestorable."
   ([id] (gen-call :function ::is-restorable &form id)))
@@ -126,6 +144,9 @@
 
      |file-system| - https://developer.chrome.com/apps/fileSystem#property-callback-fileSystem.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/fileSystem#method-requestFileSystem."
   ([options] (gen-call :function ::request-file-system &form options)))
 
@@ -138,6 +159,9 @@
    Signature of the result value put on the channel is [volumes] where:
 
      |volumes| - https://developer.chrome.com/apps/fileSystem#property-callback-volumes.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/fileSystem#method-getVolumeList."
   ([] (gen-call :function ::get-volume-list &form)))

@@ -17,7 +17,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [config] where:
 
-     |config| - The input method config object."
+     |config| - The input method config object.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::get-input-method-config &form)))
 
 (defmacro get-input-methods
@@ -26,7 +29,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [input-methods] where:
 
-     |input-methods| - Whitelisted input method objects."
+     |input-methods| - Whitelisted input method objects.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::get-input-methods &form)))
 
 (defmacro get-current-input-method
@@ -35,7 +41,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [input-method-id] where:
 
-     |input-method-id| - Current input method."
+     |input-method-id| - Current input method.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::get-current-input-method &form)))
 
 (defmacro set-current-input-method
@@ -44,7 +53,10 @@
      |input-method-id| - The input method ID to be set as current input method.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([input-method-id] (gen-call :function ::set-current-input-method &form input-method-id)))
 
 (defmacro fetch-all-dictionary-words
@@ -53,7 +65,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [words] where:
 
-     |words| - List of dictionary words."
+     |words| - List of dictionary words.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::fetch-all-dictionary-words &form)))
 
 (defmacro add-word-to-dictionary
@@ -62,7 +77,10 @@
      |word| - A new word to add to the dictionary.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([word] (gen-call :function ::add-word-to-dictionary &form word)))
 
 (defmacro get-encrypt-sync-enabled
@@ -71,7 +89,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [enabled] where:
 
-     |enabled| - The result of whether enabled."
+     |enabled| - The result of whether enabled.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::get-encrypt-sync-enabled &form)))
 
 (defmacro set-xkb-layout
@@ -80,7 +101,10 @@
      |xkb-name| - The XKB layout name.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([xkb-name] (gen-call :function ::set-xkb-layout &form xkb-name)))
 
 (defmacro notify-ime-menu-item-activated
@@ -94,7 +118,10 @@
   "Shows the input view window. If the input view window is already shown, this function will do nothing.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::show-input-view &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------

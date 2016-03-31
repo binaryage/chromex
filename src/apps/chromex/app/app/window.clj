@@ -37,6 +37,9 @@
 
      |created-window| - https://developer.chrome.com/apps/app.window#property-callback-createdWindow.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/app.window#method-create."
   ([url options] (gen-call :function ::create &form url options))
   ([url] `(create ~url :omit)))

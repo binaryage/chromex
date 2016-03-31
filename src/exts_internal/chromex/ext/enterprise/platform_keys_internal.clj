@@ -19,7 +19,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [token-ids] where:
 
-     |token-ids| - ?"
+     |token-ids| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::get-tokens &form)))
 
 (defmacro generate-key
@@ -33,7 +36,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [public-key] where:
 
-     |public-key| - ?"
+     |public-key| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([token-id modulus-length] (gen-call :function ::generate-key &form token-id modulus-length)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

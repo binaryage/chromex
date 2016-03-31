@@ -19,7 +19,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - Whether the switch is specified on the command line."
+     |result| - Whether the switch is specified on the command line.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([name] (gen-call :function ::has-switch &form name)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

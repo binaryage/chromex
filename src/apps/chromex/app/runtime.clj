@@ -40,6 +40,9 @@
 
      |background-page| - The JavaScript 'window' object for the background page.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/runtime#method-getBackgroundPage."
   ([] (gen-call :function ::get-background-page &form)))
 
@@ -52,6 +55,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/runtime#method-openOptionsPage."
   ([] (gen-call :function ::open-options-page &form)))
@@ -81,6 +87,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/runtime#method-setUninstallURL."
   ([url] (gen-call :function ::set-uninstall-url &form url)))
 
@@ -99,6 +108,9 @@
 
      |status| - Result of the update check.
      |details| - If an update is available, this contains more information about the available update.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/runtime#method-requestUpdateCheck."
   ([] (gen-call :function ::request-update-check &form)))
@@ -151,6 +163,9 @@
                   extension, the callback will be called with no arguments and 'runtime.lastError' will be set to the error
                   message.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/runtime#method-sendMessage."
   ([extension-id message options] (gen-call :function ::send-message &form extension-id message options))
   ([extension-id message] `(send-message ~extension-id ~message :omit)))
@@ -168,6 +183,9 @@
                   messaging host, the callback will be called with no arguments and 'runtime.lastError' will be set to the
                   error message.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/runtime#method-sendNativeMessage."
   ([application message] (gen-call :function ::send-native-message &form application message)))
 
@@ -179,6 +197,9 @@
 
      |platform-info| - https://developer.chrome.com/apps/runtime#property-callback-platformInfo.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/runtime#method-getPlatformInfo."
   ([] (gen-call :function ::get-platform-info &form)))
 
@@ -189,6 +210,9 @@
    Signature of the result value put on the channel is [directory-entry] where:
 
      |directory-entry| - https://developer.chrome.com/apps/runtime#property-callback-directoryEntry.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/runtime#method-getPackageDirectoryEntry."
   ([] (gen-call :function ::get-package-directory-entry &form)))

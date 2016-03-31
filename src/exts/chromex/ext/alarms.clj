@@ -42,6 +42,9 @@
 
      |alarm| - https://developer.chrome.com/extensions/alarms#property-callback-alarm.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/alarms#method-get."
   ([name] (gen-call :function ::get &form name))
   ([] `(get :omit)))
@@ -53,6 +56,9 @@
    Signature of the result value put on the channel is [alarms] where:
 
      |alarms| - https://developer.chrome.com/extensions/alarms#property-callback-alarms.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/alarms#method-getAll."
   ([] (gen-call :function ::get-all &form)))
@@ -67,6 +73,9 @@
 
      |was-cleared| - https://developer.chrome.com/extensions/alarms#property-callback-wasCleared.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/alarms#method-clear."
   ([name] (gen-call :function ::clear &form name))
   ([] `(clear :omit)))
@@ -78,6 +87,9 @@
    Signature of the result value put on the channel is [was-cleared] where:
 
      |was-cleared| - https://developer.chrome.com/extensions/alarms#property-callback-wasCleared.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/alarms#method-clearAll."
   ([] (gen-call :function ::clear-all &form)))

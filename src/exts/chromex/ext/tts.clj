@@ -26,6 +26,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/tts#method-speak."
   ([utterance options] (gen-call :function ::speak &form utterance options))
   ([utterance] `(speak ~utterance :omit)))
@@ -58,6 +61,9 @@
 
      |speaking| - True if speaking, false otherwise.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/tts#method-isSpeaking."
   ([] (gen-call :function ::is-speaking &form)))
 
@@ -68,6 +74,9 @@
    Signature of the result value put on the channel is [voices] where:
 
      |voices| - Array of 'tts.TtsVoice' objects representing the available voices for speech synthesis.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tts#method-getVoices."
   ([] (gen-call :function ::get-voices &form)))

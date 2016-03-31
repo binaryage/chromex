@@ -33,6 +33,9 @@
 
      |result| - https://developer.chrome.com/extensions/browserAction#property-callback-result.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/browserAction#method-getTitle."
   ([details] (gen-call :function ::get-title &form details)))
 
@@ -45,6 +48,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/browserAction#method-setIcon."
   ([details] (gen-call :function ::set-icon &form details)))
@@ -67,6 +73,9 @@
 
      |result| - https://developer.chrome.com/extensions/browserAction#property-callback-result.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/browserAction#method-getPopup."
   ([details] (gen-call :function ::get-popup &form details)))
 
@@ -88,6 +97,9 @@
 
      |result| - https://developer.chrome.com/extensions/browserAction#property-callback-result.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/browserAction#method-getBadgeText."
   ([details] (gen-call :function ::get-badge-text &form details)))
 
@@ -108,6 +120,9 @@
    Signature of the result value put on the channel is [result] where:
 
      |result| - https://developer.chrome.com/extensions/browserAction#property-callback-result.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/browserAction#method-getBadgeBackgroundColor."
   ([details] (gen-call :function ::get-badge-background-color &form details)))

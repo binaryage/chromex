@@ -27,6 +27,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/fileSystemProvider#method-mount."
   ([options] (gen-call :function ::mount &form options)))
 
@@ -40,6 +43,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/fileSystemProvider#method-unmount."
   ([options] (gen-call :function ::unmount &form options)))
 
@@ -50,6 +56,9 @@
    Signature of the result value put on the channel is [file-systems] where:
 
      |file-systems| - https://developer.chrome.com/extensions/fileSystemProvider#property-callback-fileSystems.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/fileSystemProvider#method-getAll."
   ([] (gen-call :function ::get-all &form)))
@@ -63,6 +72,9 @@
    Signature of the result value put on the channel is [file-system] where:
 
      |file-system| - https://developer.chrome.com/extensions/fileSystemProvider#property-callback-fileSystem.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/fileSystemProvider#method-get."
   ([file-system-id] (gen-call :function ::get &form file-system-id)))
@@ -84,6 +96,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/fileSystemProvider#method-notify."
   ([options] (gen-call :function ::notify &form options)))

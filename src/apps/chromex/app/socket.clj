@@ -28,6 +28,9 @@
 
      |create-info| - https://developer.chrome.com/apps/socket#property-callback-createInfo.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/socket#method-create."
   ([type options] (gen-call :function ::create &form type options))
   ([type] `(create ~type :omit)))
@@ -53,6 +56,9 @@
 
      |result| - https://developer.chrome.com/apps/socket#property-callback-result.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/socket#method-connect."
   ([socket-id hostname port] (gen-call :function ::connect &form socket-id hostname port)))
 
@@ -67,6 +73,9 @@
    Signature of the result value put on the channel is [result] where:
 
      |result| - https://developer.chrome.com/apps/socket#property-callback-result.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/socket#method-bind."
   ([socket-id address port] (gen-call :function ::bind &form socket-id address port)))
@@ -90,6 +99,9 @@
 
      |read-info| - https://developer.chrome.com/apps/socket#property-callback-readInfo.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/socket#method-read."
   ([socket-id buffer-size] (gen-call :function ::read &form socket-id buffer-size))
   ([socket-id] `(read ~socket-id :omit)))
@@ -105,6 +117,9 @@
 
      |write-info| - https://developer.chrome.com/apps/socket#property-callback-writeInfo.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/socket#method-write."
   ([socket-id data] (gen-call :function ::write &form socket-id data)))
 
@@ -118,6 +133,9 @@
    Signature of the result value put on the channel is [recv-from-info] where:
 
      |recv-from-info| - https://developer.chrome.com/apps/socket#property-callback-recvFromInfo.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/socket#method-recvFrom."
   ([socket-id buffer-size] (gen-call :function ::recv-from &form socket-id buffer-size))
@@ -136,6 +154,9 @@
 
      |write-info| - https://developer.chrome.com/apps/socket#property-callback-writeInfo.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/socket#method-sendTo."
   ([socket-id data address port] (gen-call :function ::send-to &form socket-id data address port)))
 
@@ -153,6 +174,9 @@
 
      |result| - https://developer.chrome.com/apps/socket#property-callback-result.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/socket#method-listen."
   ([socket-id address port backlog] (gen-call :function ::listen &form socket-id address port backlog))
   ([socket-id address port] `(listen ~socket-id ~address ~port :omit)))
@@ -169,6 +193,9 @@
 
      |accept-info| - https://developer.chrome.com/apps/socket#property-callback-acceptInfo.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/socket#method-accept."
   ([socket-id] (gen-call :function ::accept &form socket-id)))
 
@@ -183,6 +210,9 @@
    Signature of the result value put on the channel is [result] where:
 
      |result| - https://developer.chrome.com/apps/socket#property-callback-result.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/socket#method-setKeepAlive."
   ([socket-id enable delay] (gen-call :function ::set-keep-alive &form socket-id enable delay))
@@ -199,6 +229,9 @@
 
      |result| - https://developer.chrome.com/apps/socket#property-callback-result.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/socket#method-setNoDelay."
   ([socket-id no-delay] (gen-call :function ::set-no-delay &form socket-id no-delay)))
 
@@ -212,6 +245,9 @@
 
      |result| - https://developer.chrome.com/apps/socket#property-callback-result.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/socket#method-getInfo."
   ([socket-id] (gen-call :function ::get-info &form socket-id)))
 
@@ -222,6 +258,9 @@
    Signature of the result value put on the channel is [result] where:
 
      |result| - https://developer.chrome.com/apps/socket#property-callback-result.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/socket#method-getNetworkList."
   ([] (gen-call :function ::get-network-list &form)))
@@ -237,6 +276,9 @@
    Signature of the result value put on the channel is [result] where:
 
      |result| - https://developer.chrome.com/apps/socket#property-callback-result.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/socket#method-joinGroup."
   ([socket-id address] (gen-call :function ::join-group &form socket-id address)))
@@ -254,6 +296,9 @@
 
      |result| - https://developer.chrome.com/apps/socket#property-callback-result.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/socket#method-leaveGroup."
   ([socket-id address] (gen-call :function ::leave-group &form socket-id address)))
 
@@ -268,6 +313,9 @@
    Signature of the result value put on the channel is [result] where:
 
      |result| - https://developer.chrome.com/apps/socket#property-callback-result.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/socket#method-setMulticastTimeToLive."
   ([socket-id ttl] (gen-call :function ::set-multicast-time-to-live &form socket-id ttl)))
@@ -288,6 +336,9 @@
 
      |result| - https://developer.chrome.com/apps/socket#property-callback-result.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/socket#method-setMulticastLoopbackMode."
   ([socket-id enabled] (gen-call :function ::set-multicast-loopback-mode &form socket-id enabled)))
 
@@ -300,6 +351,9 @@
    Signature of the result value put on the channel is [groups] where:
 
      |groups| - https://developer.chrome.com/apps/socket#property-callback-groups.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/socket#method-getJoinedGroups."
   ([socket-id] (gen-call :function ::get-joined-groups &form socket-id)))
@@ -314,6 +368,9 @@
    Signature of the result value put on the channel is [result] where:
 
      |result| - https://developer.chrome.com/apps/socket#property-callback-result.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/socket#method-secure."
   ([socket-id options] (gen-call :function ::secure &form socket-id options))

@@ -30,6 +30,9 @@
 
      |devices| - https://developer.chrome.com/apps/usb#property-callback-devices.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/usb#method-getDevices."
   ([options] (gen-call :function ::get-devices &form options)))
 
@@ -45,6 +48,9 @@
 
      |devices| - https://developer.chrome.com/apps/usb#property-callback-devices.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/usb#method-getUserSelectedDevices."
   ([options] (gen-call :function ::get-user-selected-devices &form options)))
 
@@ -57,6 +63,9 @@
    Signature of the result value put on the channel is [configs] where:
 
      |configs| - https://developer.chrome.com/apps/usb#property-callback-configs.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-getConfigurations."
   ([device] (gen-call :function ::get-configurations &form device)))
@@ -73,6 +82,9 @@
 
      |success| - https://developer.chrome.com/apps/usb#property-callback-success.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/usb#method-requestAccess."
   ([device interface-id] (gen-call :function ::request-access &form device interface-id)))
 
@@ -85,6 +97,9 @@
    Signature of the result value put on the channel is [handle] where:
 
      |handle| - https://developer.chrome.com/apps/usb#property-callback-handle.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-openDevice."
   ([device] (gen-call :function ::open-device &form device)))
@@ -101,6 +116,9 @@
 
      |handles| - https://developer.chrome.com/apps/usb#property-callback-handles.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/usb#method-findDevices."
   ([options] (gen-call :function ::find-devices &form options)))
 
@@ -112,6 +130,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-closeDevice."
   ([handle] (gen-call :function ::close-device &form handle)))
@@ -127,6 +148,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/usb#method-setConfiguration."
   ([handle configuration-value] (gen-call :function ::set-configuration &form handle configuration-value)))
 
@@ -140,6 +164,9 @@
 
      |config| - https://developer.chrome.com/apps/usb#property-callback-config.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/usb#method-getConfiguration."
   ([handle] (gen-call :function ::get-configuration &form handle)))
 
@@ -152,6 +179,9 @@
    Signature of the result value put on the channel is [descriptors] where:
 
      |descriptors| - https://developer.chrome.com/apps/usb#property-callback-descriptors.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-listInterfaces."
   ([handle] (gen-call :function ::list-interfaces &form handle)))
@@ -167,6 +197,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/usb#method-claimInterface."
   ([handle interface-number] (gen-call :function ::claim-interface &form handle interface-number)))
 
@@ -178,6 +211,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-releaseInterface."
   ([handle interface-number] (gen-call :function ::release-interface &form handle interface-number)))
@@ -191,6 +227,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-setInterfaceAlternateSetting."
   ([handle interface-number alternate-setting] (gen-call :function ::set-interface-alternate-setting &form handle interface-number alternate-setting)))
@@ -207,6 +246,9 @@
 
      |info| - https://developer.chrome.com/apps/usb#property-callback-info.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/usb#method-controlTransfer."
   ([handle transfer-info] (gen-call :function ::control-transfer &form handle transfer-info)))
 
@@ -220,6 +262,9 @@
    Signature of the result value put on the channel is [info] where:
 
      |info| - https://developer.chrome.com/apps/usb#property-callback-info.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-bulkTransfer."
   ([handle transfer-info] (gen-call :function ::bulk-transfer &form handle transfer-info)))
@@ -235,6 +280,9 @@
 
      |info| - https://developer.chrome.com/apps/usb#property-callback-info.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/usb#method-interruptTransfer."
   ([handle transfer-info] (gen-call :function ::interrupt-transfer &form handle transfer-info)))
 
@@ -248,6 +296,9 @@
    Signature of the result value put on the channel is [info] where:
 
      |info| - https://developer.chrome.com/apps/usb#property-callback-info.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-isochronousTransfer."
   ([handle transfer-info] (gen-call :function ::isochronous-transfer &form handle transfer-info)))
@@ -263,6 +314,9 @@
    Signature of the result value put on the channel is [success] where:
 
      |success| - https://developer.chrome.com/apps/usb#property-callback-success.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-resetDevice."
   ([handle] (gen-call :function ::reset-device &form handle)))

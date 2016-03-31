@@ -40,6 +40,9 @@
 
      |window| - https://developer.chrome.com/extensions/windows#property-callback-window.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/windows#method-get."
   ([window-id get-info] (gen-call :function ::get &form window-id get-info))
   ([window-id] `(get ~window-id :omit)))
@@ -53,6 +56,9 @@
    Signature of the result value put on the channel is [window] where:
 
      |window| - https://developer.chrome.com/extensions/windows#property-callback-window.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/windows#method-getCurrent."
   ([get-info] (gen-call :function ::get-current &form get-info))
@@ -68,6 +74,9 @@
 
      |window| - https://developer.chrome.com/extensions/windows#property-callback-window.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/windows#method-getLastFocused."
   ([get-info] (gen-call :function ::get-last-focused &form get-info))
   ([] `(get-last-focused :omit)))
@@ -82,6 +91,9 @@
 
      |windows| - https://developer.chrome.com/extensions/windows#property-callback-windows.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/windows#method-getAll."
   ([get-info] (gen-call :function ::get-all &form get-info))
   ([] `(get-all :omit)))
@@ -95,6 +107,9 @@
    Signature of the result value put on the channel is [window] where:
 
      |window| - Contains details about the created window.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/windows#method-create."
   ([create-data] (gen-call :function ::create &form create-data))
@@ -112,6 +127,9 @@
 
      |window| - https://developer.chrome.com/extensions/windows#property-callback-window.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/windows#method-update."
   ([window-id update-info] (gen-call :function ::update &form window-id update-info)))
 
@@ -122,6 +140,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/windows#method-remove."
   ([window-id] (gen-call :function ::remove &form window-id)))

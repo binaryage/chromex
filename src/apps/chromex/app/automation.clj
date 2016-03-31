@@ -30,6 +30,9 @@
 
      |root-node| - https://developer.chrome.com/apps/automation#property-callback-rootNode.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/automation#method-getTree."
   ([tab-id] (gen-call :function ::get-tree &form tab-id))
   ([] `(get-tree :omit)))
@@ -43,6 +46,9 @@
 
      |root-node| - https://developer.chrome.com/apps/automation#property-callback-rootNode.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/automation#method-getDesktop."
   ([] (gen-call :function ::get-desktop &form)))
 
@@ -54,6 +60,9 @@
    Signature of the result value put on the channel is [focused-node] where:
 
      |focused-node| - https://developer.chrome.com/apps/automation#property-callback-focusedNode.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/automation#method-getFocus."
   ([] (gen-call :function ::get-focus &form)))
@@ -69,6 +78,9 @@
 
      |tree-change| - https://developer.chrome.com/apps/automation#property-observer-treeChange.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/automation#method-addTreeChangeObserver."
   ([filter] (gen-call :function ::add-tree-change-observer &form filter)))
 
@@ -79,6 +91,9 @@
    Signature of the result value put on the channel is [tree-change] where:
 
      |tree-change| - https://developer.chrome.com/apps/automation#property-observer-treeChange.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/automation#method-removeTreeChangeObserver."
   ([] (gen-call :function ::remove-tree-change-observer &form)))

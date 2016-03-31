@@ -25,7 +25,10 @@
      |state| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([state] (gen-call :function ::set-enabled &form state)))
 
 (defmacro get-status
@@ -37,7 +40,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - ?"
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([get-optional-fields] (gen-call :function ::get-status &form get-optional-fields))
   ([] `(get-status :omit)))
 
@@ -47,7 +53,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - ?"
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::get-localized-strings &form)))
 
 (defmacro set-audio-logging-enabled
@@ -56,7 +65,10 @@
      |state| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([state] (gen-call :function ::set-audio-logging-enabled &form state)))
 
 (defmacro set-hotword-always-on-search-enabled
@@ -66,7 +78,10 @@
      |state| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([state] (gen-call :function ::set-hotword-always-on-search-enabled &form state)))
 
 (defmacro set-hotword-session-state
@@ -75,7 +90,10 @@
      |started| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([started] (gen-call :function ::set-hotword-session-state &form started)))
 
 (defmacro notify-hotword-recognition
@@ -85,7 +103,10 @@
      |log| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([type log] (gen-call :function ::notify-hotword-recognition &form type log))
   ([type] `(notify-hotword-recognition ~type :omit)))
 
@@ -95,35 +116,50 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - ?"
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::get-launch-state &form)))
 
 (defmacro start-training
   "Starts the speaker model training.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::start-training &form)))
 
 (defmacro finalize-speaker-model
   "Finalizess the speaker model.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::finalize-speaker-model &form)))
 
 (defmacro notify-speaker-model-saved
   "Notifies that the speaker model has been saved.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::notify-speaker-model-saved &form)))
 
 (defmacro stop-training
   "Stops the speaker model training.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::stop-training &form)))
 
 (defmacro set-audio-history-enabled
@@ -134,7 +170,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - ?"
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([enabled] (gen-call :function ::set-audio-history-enabled &form enabled)))
 
 (defmacro get-audio-history-enabled
@@ -143,7 +182,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - ?"
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::get-audio-history-enabled &form)))
 
 (defmacro speaker-model-exists-result
@@ -152,7 +194,10 @@
      |exists| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([exists] (gen-call :function ::speaker-model-exists-result &form exists)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------

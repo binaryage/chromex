@@ -27,6 +27,9 @@
 
      |stream| - https://developer.chrome.com/extensions/tabCapture#property-callback-stream.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/tabCapture#method-capture."
   ([options] (gen-call :function ::capture &form options)))
 
@@ -39,6 +42,9 @@
    Signature of the result value put on the channel is [result] where:
 
      |result| - https://developer.chrome.com/extensions/tabCapture#property-callback-result.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tabCapture#method-getCapturedTabs."
   ([] (gen-call :function ::get-captured-tabs &form)))
@@ -61,6 +67,9 @@
    Signature of the result value put on the channel is [stream] where:
 
      |stream| - https://developer.chrome.com/extensions/tabCapture#property-callback-stream.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tabCapture#method-captureOffscreenTab."
   ([start-url options] (gen-call :function ::capture-offscreen-tab &form start-url options)))

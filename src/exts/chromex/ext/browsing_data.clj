@@ -24,6 +24,9 @@
 
      |result| - https://developer.chrome.com/extensions/browsingData#property-callback-result.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/browsingData#method-settings."
   ([] (gen-call :function ::settings &form)))
 
@@ -36,6 +39,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/browsingData#method-remove."
   ([options data-to-remove] (gen-call :function ::remove &form options data-to-remove)))
 
@@ -46,6 +52,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/browsingData#method-removeAppcache."
   ([options] (gen-call :function ::remove-appcache &form options)))
@@ -58,6 +67,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/browsingData#method-removeCache."
   ([options] (gen-call :function ::remove-cache &form options)))
 
@@ -68,6 +80,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/browsingData#method-removeCookies."
   ([options] (gen-call :function ::remove-cookies &form options)))
@@ -80,6 +95,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/browsingData#method-removeDownloads."
   ([options] (gen-call :function ::remove-downloads &form options)))
 
@@ -90,6 +108,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/browsingData#method-removeFileSystems."
   ([options] (gen-call :function ::remove-file-systems &form options)))
@@ -102,6 +123,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/browsingData#method-removeFormData."
   ([options] (gen-call :function ::remove-form-data &form options)))
 
@@ -112,6 +136,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/browsingData#method-removeHistory."
   ([options] (gen-call :function ::remove-history &form options)))
@@ -124,6 +151,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/browsingData#method-removeIndexedDB."
   ([options] (gen-call :function ::remove-indexed-db &form options)))
 
@@ -134,6 +164,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/browsingData#method-removeLocalStorage."
   ([options] (gen-call :function ::remove-local-storage &form options)))
@@ -146,6 +179,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/browsingData#method-removePluginData."
   ([options] (gen-call :function ::remove-plugin-data &form options)))
 
@@ -157,6 +193,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/browsingData#method-removePasswords."
   ([options] (gen-call :function ::remove-passwords &form options)))
 
@@ -167,6 +206,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/browsingData#method-removeWebSQL."
   ([options] (gen-call :function ::remove-web-sql &form options)))

@@ -33,6 +33,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/contextMenus#method-create."
   ([create-properties] (gen-call :function ::create &form create-properties)))
 
@@ -45,6 +48,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/contextMenus#method-update."
   ([id update-properties] (gen-call :function ::update &form id update-properties)))
 
@@ -56,6 +62,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/contextMenus#method-remove."
   ([menu-item-id] (gen-call :function ::remove &form menu-item-id)))
 
@@ -64,6 +73,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/contextMenus#method-removeAll."
   ([] (gen-call :function ::remove-all &form)))

@@ -38,6 +38,9 @@
      |video-stream-id| - The video RTP stream ID.
      |udp-transport-id| - The UDP transport ID.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/cast.streaming.session#method-create."
   ([audio-track video-track] (gen-call :function ::create &form audio-track video-track))
   ([audio-track] `(create ~audio-track :omit))

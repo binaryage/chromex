@@ -31,6 +31,9 @@
 
      |file-system| - https://developer.chrome.com/apps/syncFileSystem#property-callback-fileSystem.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/syncFileSystem#method-requestFileSystem."
   ([] (gen-call :function ::request-file-system &form)))
 
@@ -44,6 +47,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/syncFileSystem#method-setConflictResolutionPolicy."
   ([policy] (gen-call :function ::set-conflict-resolution-policy &form policy)))
 
@@ -54,6 +60,9 @@
    Signature of the result value put on the channel is [policy] where:
 
      |policy| - https://developer.chrome.com/apps/syncFileSystem#property-callback-policy.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/syncFileSystem#method-getConflictResolutionPolicy."
   ([] (gen-call :function ::get-conflict-resolution-policy &form)))
@@ -67,6 +76,9 @@
    Signature of the result value put on the channel is [info] where:
 
      |info| - https://developer.chrome.com/apps/syncFileSystem#property-callback-info.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/syncFileSystem#method-getUsageAndQuota."
   ([file-system] (gen-call :function ::get-usage-and-quota &form file-system)))
@@ -82,6 +94,9 @@
 
      |status| - https://developer.chrome.com/apps/syncFileSystem#property-callback-status.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/syncFileSystem#method-getFileStatus."
   ([file-entry] (gen-call :function ::get-file-status &form file-entry)))
 
@@ -95,6 +110,9 @@
 
      |status| - https://developer.chrome.com/apps/syncFileSystem#property-callback-status.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/syncFileSystem#method-getFileStatuses."
   ([file-entries] (gen-call :function ::get-file-statuses &form file-entries)))
 
@@ -105,6 +123,9 @@
    Signature of the result value put on the channel is [status] where:
 
      |status| - https://developer.chrome.com/apps/syncFileSystem#property-callback-status.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/syncFileSystem#method-getServiceStatus."
   ([] (gen-call :function ::get-service-status &form)))

@@ -20,6 +20,9 @@
 
      |test-config| - https://developer.chrome.com/extensions/test#property-callback-testConfig.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/test#method-getConfig."
   ([] (gen-call :function ::get-config &form)))
 
@@ -58,6 +61,9 @@
 
      |response| - https://developer.chrome.com/extensions/test#property-callback-response.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/test#method-sendMessage."
   ([message] (gen-call :function ::send-message &form message)))
 
@@ -88,6 +94,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/test#method-runWithNativesEnabled."
   ([] (gen-call :function ::run-with-natives-enabled &form)))
@@ -163,6 +172,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/test#method-assertThrows."
   ([self args message] (gen-call :function ::assert-throws &form self args message))
   ([self args] `(assert-throws ~self ~args :omit)))
@@ -172,6 +184,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/test#method-callback."
   ([expected-error] (gen-call :function ::callback &form expected-error))
@@ -183,6 +198,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/test#method-listenOnce."
   ([event] (gen-call :function ::listen-once &form event)))
 
@@ -192,12 +210,18 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/test#method-listenForever."
   ([event] (gen-call :function ::listen-forever &form event)))
 
 (defmacro callback-pass
   "This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/test#method-callbackPass."
   ([] (gen-call :function ::callback-pass &form)))
@@ -207,6 +231,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/test#method-callbackFail."
   ([expected-error] (gen-call :function ::callback-fail &form expected-error)))
@@ -238,12 +265,18 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/test#method-runWithUserGesture."
   ([] (gen-call :function ::run-with-user-gesture &form)))
 
 (defmacro run-without-user-gesture
   "This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/test#method-runWithoutUserGesture."
   ([] (gen-call :function ::run-without-user-gesture &form)))
@@ -258,6 +291,9 @@
 
      |message| - https://developer.chrome.com/extensions/test#property-callback-message.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/test#method-waitForRoundTrip."
   ([message] (gen-call :function ::wait-for-round-trip &form message)))
 
@@ -270,6 +306,9 @@
 
      |message| - https://developer.chrome.com/extensions/test#property-callback-message.
      |exception| - https://developer.chrome.com/extensions/test#property-callback-exception.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/test#method-setExceptionHandler."
   ([] (gen-call :function ::set-exception-handler &form)))

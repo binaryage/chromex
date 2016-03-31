@@ -45,7 +45,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - ?"
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([network-guid] (gen-call :function ::get-properties &form network-guid)))
 
 (defmacro get-managed-properties
@@ -57,7 +60,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - ?"
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([network-guid] (gen-call :function ::get-managed-properties &form network-guid)))
 
 (defmacro get-state
@@ -72,7 +78,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - ?"
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([network-guid] (gen-call :function ::get-state &form network-guid)))
 
 (defmacro set-properties
@@ -82,7 +91,10 @@
      |properties| - The properties to set.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([network-guid properties] (gen-call :function ::set-properties &form network-guid properties)))
 
 (defmacro create-network
@@ -95,7 +107,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - ?"
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([shared properties] (gen-call :function ::create-network &form shared properties)))
 
 (defmacro forget-network
@@ -106,7 +121,10 @@
      |network-guid| - The GUID of the network to forget.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([network-guid] (gen-call :function ::forget-network &form network-guid)))
 
 (defmacro get-networks
@@ -119,7 +137,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - ?"
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([filter] (gen-call :function ::get-networks &form filter)))
 
 (defmacro get-visible-networks
@@ -130,7 +151,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - ?"
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([network-type] (gen-call :function ::get-visible-networks &form network-type)))
 
 (defmacro get-enabled-network-types
@@ -139,7 +163,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - ?"
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::get-enabled-network-types &form)))
 
 (defmacro get-device-states
@@ -148,7 +175,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - ?"
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::get-device-states &form)))
 
 (defmacro enable-network-type
@@ -176,7 +206,10 @@
      |network-guid| - The GUID of the network to connect to.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([network-guid] (gen-call :function ::start-connect &form network-guid)))
 
 (defmacro start-disconnect
@@ -185,7 +218,10 @@
      |network-guid| - The GUID of the network to disconnect from.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([network-guid] (gen-call :function ::start-disconnect &form network-guid)))
 
 (defmacro start-activate
@@ -197,7 +233,10 @@
      |carrier| - Optional name of carrier to activate.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([network-guid carrier] (gen-call :function ::start-activate &form network-guid carrier))
   ([network-guid] `(start-activate ~network-guid :omit)))
 
@@ -209,7 +248,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - ?"
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([properties] (gen-call :function ::verify-destination &form properties)))
 
 (defmacro verify-and-encrypt-credentials
@@ -221,7 +263,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - ?"
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([properties network-guid] (gen-call :function ::verify-and-encrypt-credentials &form properties network-guid)))
 
 (defmacro verify-and-encrypt-data
@@ -233,7 +278,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - ?"
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([properties data] (gen-call :function ::verify-and-encrypt-data &form properties data)))
 
 (defmacro set-wifi-tdls-enabled-state
@@ -246,7 +294,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - ?"
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([ip-or-mac-address enabled] (gen-call :function ::set-wifi-tdls-enabled-state &form ip-or-mac-address enabled)))
 
 (defmacro get-wifi-tdls-status
@@ -257,7 +308,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - ?"
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([ip-or-mac-address] (gen-call :function ::get-wifi-tdls-status &form ip-or-mac-address)))
 
 (defmacro get-captive-portal-status
@@ -268,7 +322,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - ?"
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([network-guid] (gen-call :function ::get-captive-portal-status &form network-guid)))
 
 (defmacro unlock-cellular-sim
@@ -281,7 +338,10 @@
      |puk| - The operator provided PUK for unblocking a blocked SIM.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([network-guid pin puk] (gen-call :function ::unlock-cellular-sim &form network-guid pin puk))
   ([network-guid pin] `(unlock-cellular-sim ~network-guid ~pin :omit)))
 
@@ -296,7 +356,10 @@
      |sim-state| - The SIM state to set.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([network-guid sim-state] (gen-call :function ::set-cellular-sim-state &form network-guid sim-state)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------

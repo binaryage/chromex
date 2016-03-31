@@ -21,7 +21,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - ?"
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::auto-update &form)))
 
 (defmacro get-extensions-info
@@ -32,7 +35,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - ?"
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([options] (gen-call :function ::get-extensions-info &form options))
   ([] `(get-extensions-info :omit)))
 
@@ -44,7 +50,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - ?"
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([id] (gen-call :function ::get-extension-info &form id)))
 
 (defmacro get-items-info
@@ -56,7 +65,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - ?"
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([include-disabled include-terminated] (gen-call :function ::get-items-info &form include-disabled include-terminated)))
 
 (defmacro get-profile-configuration
@@ -65,7 +77,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [info] where:
 
-     |info| - ?"
+     |info| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::get-profile-configuration &form)))
 
 (defmacro update-profile-configuration
@@ -75,7 +90,10 @@
                 be changed.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([update] (gen-call :function ::update-profile-configuration &form update)))
 
 (defmacro show-permissions-dialog
@@ -84,7 +102,10 @@
      |extension-id| - The id of the extension to show permissions for.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([extension-id] (gen-call :function ::show-permissions-dialog &form extension-id)))
 
 (defmacro reload
@@ -94,7 +115,10 @@
      |options| - Additional configuration parameters.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([extension-id options] (gen-call :function ::reload &form extension-id options))
   ([extension-id] `(reload ~extension-id :omit)))
 
@@ -105,7 +129,10 @@
                 be changed.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([update] (gen-call :function ::update-extension-configuration &form update)))
 
 (defmacro load-unpacked
@@ -114,7 +141,10 @@
      |options| - Additional configuration parameters.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([options] (gen-call :function ::load-unpacked &form options))
   ([] `(load-unpacked :omit)))
 
@@ -126,7 +156,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [path] where:
 
-     |path| - ?"
+     |path| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([directory] (gen-call :function ::load-directory &form directory)))
 
 (defmacro choose-path
@@ -138,7 +171,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [path] where:
 
-     |path| - ?"
+     |path| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([select-type file-type] (gen-call :function ::choose-path &form select-type file-type)))
 
 (defmacro pack-directory
@@ -151,7 +187,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [response] where:
 
-     |response| - ?"
+     |response| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([path private-key-path flags] (gen-call :function ::pack-directory &form path private-key-path flags))
   ([path private-key-path] `(pack-directory ~path ~private-key-path :omit))
   ([path] `(pack-directory ~path :omit :omit)))
@@ -162,7 +201,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - ?"
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::is-profile-managed &form)))
 
 (defmacro request-file-source
@@ -173,7 +215,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [response] where:
 
-     |response| - ?"
+     |response| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([properties] (gen-call :function ::request-file-source &form properties)))
 
 (defmacro open-dev-tools
@@ -182,7 +227,10 @@
      |properties| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([properties] (gen-call :function ::open-dev-tools &form properties)))
 
 (defmacro delete-extension-errors
@@ -191,7 +239,10 @@
      |properties| - The properties specifying the errors to remove.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([properties] (gen-call :function ::delete-extension-errors &form properties)))
 
 (defmacro repair-extension
@@ -200,7 +251,10 @@
      |extension-id| - The id of the extension to repair.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([extension-id] (gen-call :function ::repair-extension &form extension-id)))
 
 (defmacro show-options
@@ -209,7 +263,10 @@
      |extension-id| - The id of the extension to show the options page for.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([extension-id] (gen-call :function ::show-options &form extension-id)))
 
 (defmacro show-path
@@ -218,7 +275,10 @@
      |extension-id| - The id of the extension to show the path for.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([extension-id] (gen-call :function ::show-path &form extension-id)))
 
 (defmacro set-shortcut-handling-suspended
@@ -227,7 +287,10 @@
      |is-suspended| - Whether or not shortcut handling should be suspended.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([is-suspended] (gen-call :function ::set-shortcut-handling-suspended &form is-suspended)))
 
 (defmacro update-extension-command
@@ -236,7 +299,10 @@
      |update| - The parameters for updating the extension command.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([update] (gen-call :function ::update-extension-command &form update)))
 
 (defmacro enable
@@ -244,7 +310,10 @@
      |enabled| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([id enabled] (gen-call :function ::enable &form id enabled)))
 
 (defmacro allow-incognito
@@ -252,7 +321,10 @@
      |allow| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([extension-id allow] (gen-call :function ::allow-incognito &form extension-id allow)))
 
 (defmacro allow-file-access
@@ -260,14 +332,20 @@
      |allow| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([extension-id allow] (gen-call :function ::allow-file-access &form extension-id allow)))
 
 (defmacro inspect
   "  |options| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([options] (gen-call :function ::inspect &form options)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------

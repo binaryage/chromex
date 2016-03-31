@@ -28,6 +28,9 @@
 
      |was-cleared| - https://developer.chrome.com/apps/notificationProvider#property-callback-wasCleared.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/notificationProvider#method-notifyOnCleared."
   ([notifier-id notification-id] (gen-call :function ::notify-on-cleared &form notifier-id notification-id)))
 
@@ -41,6 +44,9 @@
    Signature of the result value put on the channel is [match-exists] where:
 
      |match-exists| - https://developer.chrome.com/apps/notificationProvider#property-callback-matchExists.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/notificationProvider#method-notifyOnClicked."
   ([notifier-id notification-id] (gen-call :function ::notify-on-clicked &form notifier-id notification-id)))
@@ -57,6 +63,9 @@
 
      |match-exists| - https://developer.chrome.com/apps/notificationProvider#property-callback-matchExists.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/notificationProvider#method-notifyOnButtonClicked."
   ([notifier-id notification-id button-index] (gen-call :function ::notify-on-button-clicked &form notifier-id notification-id button-index)))
 
@@ -72,6 +81,9 @@
 
      |was-changed| - https://developer.chrome.com/apps/notificationProvider#property-callback-wasChanged.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/notificationProvider#method-notifyOnPermissionLevelChanged."
   ([notifier-id notifier-type level] (gen-call :function ::notify-on-permission-level-changed &form notifier-id notifier-type level)))
 
@@ -86,6 +98,9 @@
 
      |has-settings| - https://developer.chrome.com/apps/notificationProvider#property-callback-hasSettings.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/notificationProvider#method-notifyOnShowSettings."
   ([notifier-id notifier-type] (gen-call :function ::notify-on-show-settings &form notifier-id notifier-type)))
 
@@ -97,6 +112,9 @@
 
      |notifier| - https://developer.chrome.com/apps/notificationProvider#property-callback-notifier.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/notificationProvider#method-getNotifier."
   ([] (gen-call :function ::get-notifier &form)))
 
@@ -107,6 +125,9 @@
    Signature of the result value put on the channel is [notifiers] where:
 
      |notifiers| - https://developer.chrome.com/apps/notificationProvider#property-callback-notifiers.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/notificationProvider#method-getAllNotifiers."
   ([] (gen-call :function ::get-all-notifiers &form)))

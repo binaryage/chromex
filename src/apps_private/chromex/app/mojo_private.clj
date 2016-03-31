@@ -22,7 +22,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [modules] where:
 
-     |modules| - ?"
+     |modules| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([module-name dependencies] (gen-call :function ::define &form module-name dependencies))
   ([module-name] `(define ~module-name :omit)))
 

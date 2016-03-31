@@ -32,6 +32,9 @@
      |matches| - The list of certificates that match the request, that the extension has permission for and, if interactive is
                  true, that were selected by the user.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/platformKeys#method-selectClientCertificates."
   ([details] (gen-call :function ::select-client-certificates &form details)))
 
@@ -51,6 +54,9 @@
 
      |public-key| - https://developer.chrome.com/extensions/platformKeys#property-callback-publicKey.
      |private-key| - Might be null if this extension does not have   access to it.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/platformKeys#method-getKeyPair."
   ([certificate parameters] (gen-call :function ::get-key-pair &form certificate parameters)))
@@ -74,6 +80,9 @@
    Signature of the result value put on the channel is [result] where:
 
      |result| - https://developer.chrome.com/extensions/platformKeys#property-callback-result.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/platformKeys#method-verifyTLSServerCertificate."
   ([details] (gen-call :function ::verify-tls-server-certificate &form details)))

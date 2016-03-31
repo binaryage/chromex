@@ -50,6 +50,9 @@
 
      |result| - https://developer.chrome.com/extensions/pageAction#property-callback-result.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/pageAction#method-getTitle."
   ([details] (gen-call :function ::get-title &form details)))
 
@@ -61,6 +64,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/pageAction#method-setIcon."
   ([details] (gen-call :function ::set-icon &form details)))
@@ -82,6 +88,9 @@
    Signature of the result value put on the channel is [result] where:
 
      |result| - https://developer.chrome.com/extensions/pageAction#property-callback-result.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/pageAction#method-getPopup."
   ([details] (gen-call :function ::get-popup &form details)))

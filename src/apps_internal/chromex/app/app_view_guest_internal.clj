@@ -17,7 +17,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [instance-id] where:
 
-     |instance-id| - ?"
+     |instance-id| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::attach-frame &form)))
 
 (defmacro deny-request

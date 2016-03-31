@@ -25,6 +25,9 @@
 
      |result| - https://developer.chrome.com/apps/diagnostics#property-callback-result.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/diagnostics#method-sendPacket."
   ([options] (gen-call :function ::send-packet &form options)))
 

@@ -23,6 +23,9 @@
 
      |accounts| - https://developer.chrome.com/extensions/identity#property-callback-accounts.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/identity#method-getAccounts."
   ([] (gen-call :function ::get-accounts &form)))
 
@@ -41,6 +44,9 @@
 
      |token| - https://developer.chrome.com/extensions/identity#property-callback-token.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/identity#method-getAuthToken."
   ([details] (gen-call :function ::get-auth-token &form details))
   ([] `(get-auth-token :omit)))
@@ -55,6 +61,9 @@
 
      |user-info| - https://developer.chrome.com/extensions/identity#property-callback-userInfo.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/identity#method-getProfileUserInfo."
   ([] (gen-call :function ::get-profile-user-info &form)))
 
@@ -67,6 +76,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/identity#method-removeCachedAuthToken."
   ([details] (gen-call :function ::remove-cached-auth-token &form details)))
@@ -85,6 +97,9 @@
    Signature of the result value put on the channel is [response-url] where:
 
      |response-url| - https://developer.chrome.com/extensions/identity#property-callback-responseUrl.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/identity#method-launchWebAuthFlow."
   ([details] (gen-call :function ::launch-web-auth-flow &form details)))

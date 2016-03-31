@@ -26,6 +26,9 @@
 
      |devices| - https://developer.chrome.com/extensions/signedInDevices#property-callback-devices.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/signedInDevices#method-get."
   ([is-local] (gen-call :function ::get &form is-local))
   ([] `(get :omit)))

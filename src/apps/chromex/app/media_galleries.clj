@@ -26,6 +26,9 @@
 
      |media-file-systems| - https://developer.chrome.com/apps/mediaGalleries#property-callback-mediaFileSystems.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/mediaGalleries#method-getMediaFileSystems."
   ([details] (gen-call :function ::get-media-file-systems &form details))
   ([] `(get-media-file-systems :omit)))
@@ -41,6 +44,9 @@
      |media-file-systems| - https://developer.chrome.com/apps/mediaGalleries#property-callback-mediaFileSystems.
      |selected-file-system-name| - https://developer.chrome.com/apps/mediaGalleries#property-callback-selectedFileSystemName.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/mediaGalleries#method-addUserSelectedFolder."
   ([] (gen-call :function ::add-user-selected-folder &form)))
 
@@ -51,6 +57,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/mediaGalleries#method-dropPermissionForMediaFileSystem."
   ([gallery-id] (gen-call :function ::drop-permission-for-media-file-system &form gallery-id)))
@@ -77,6 +86,9 @@
 
      |media-file-systems| - https://developer.chrome.com/apps/mediaGalleries#property-callback-mediaFileSystems.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/mediaGalleries#method-addScanResults."
   ([] (gen-call :function ::add-scan-results &form)))
 
@@ -96,6 +108,9 @@
 
      |metadata| - https://developer.chrome.com/apps/mediaGalleries#property-callback-metadata.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/mediaGalleries#method-getAllMediaFileSystemMetadata."
   ([] (gen-call :function ::get-all-media-file-system-metadata &form)))
 
@@ -111,6 +126,9 @@
 
      |metadata| - https://developer.chrome.com/apps/mediaGalleries#property-callback-metadata.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/mediaGalleries#method-getMetadata."
   ([media-file options] (gen-call :function ::get-metadata &form media-file options))
   ([media-file] `(get-metadata ~media-file :omit)))
@@ -125,6 +143,9 @@
    Signature of the result value put on the channel is [result] where:
 
      |result| - https://developer.chrome.com/apps/mediaGalleries#property-callback-result.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/mediaGalleries#method-addGalleryWatch."
   ([gallery-id] (gen-call :function ::add-gallery-watch &form gallery-id)))
@@ -144,6 +165,9 @@
    Signature of the result value put on the channel is [gallery-ids] where:
 
      |gallery-ids| - https://developer.chrome.com/apps/mediaGalleries#property-callback-galleryIds.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/mediaGalleries#method-getAllGalleryWatch."
   ([] (gen-call :function ::get-all-gallery-watch &form)))

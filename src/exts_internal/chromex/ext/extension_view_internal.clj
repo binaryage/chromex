@@ -18,7 +18,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [has-load-succeeded] where:
 
-     |has-load-succeeded| - Whether or not loading the src has succeeded."
+     |has-load-succeeded| - Whether or not loading the src has succeeded.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([instance-id src] (gen-call :function ::load-src &form instance-id src)))
 
 (defmacro parse-src
@@ -28,7 +31,10 @@
    Signature of the result value put on the channel is [is-src-valid extension-id] where:
 
      |is-src-valid| - Whether or not the src is valid.
-     |extension-id| - The extension ID of the src."
+     |extension-id| - The extension ID of the src.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([src] (gen-call :function ::parse-src &form src)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

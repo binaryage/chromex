@@ -23,7 +23,10 @@
    Signature of the result value put on the channel is [status device-info] where:
 
      |status| - The status of operation (success or type of error).
-     |device-info| - Content of /privet/info response. https://developers.google.com/cloud-devices/v1/reference/local-api/info"
+     |device-info| - Content of /privet/info response. https://developers.google.com/cloud-devices/v1/reference/local-api/info
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([service-name] (gen-call :function ::get-device-info &form service-name)))
 
 (defmacro create-session
@@ -36,7 +39,10 @@
 
      |session-id| - The session ID (identifies the session for future calls).
      |status| - The status of operation (success or type of error). |pairingTypes| is the list of supported pairing types.
-     |pairing-types| - ?"
+     |pairing-types| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([service-name] (gen-call :function ::create-session &form service-name)))
 
 (defmacro start-pairing
@@ -48,7 +54,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [status] where:
 
-     |status| - ?"
+     |status| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([session-id pairing-type] (gen-call :function ::start-pairing &form session-id pairing-type)))
 
 (defmacro confirm-code
@@ -60,7 +69,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [status] where:
 
-     |status| - ?"
+     |status| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([session-id code] (gen-call :function ::confirm-code &form session-id code)))
 
 (defmacro send-message
@@ -76,7 +88,10 @@
    Signature of the result value put on the channel is [status response] where:
 
      |status| - The status of operation (success or type of error).
-     |response| - The response object with result or error description. May be empty for some errors."
+     |response| - The response object with result or error description. May be empty for some errors.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([session-id api input] (gen-call :function ::send-message &form session-id api input)))
 
 (defmacro terminate-session

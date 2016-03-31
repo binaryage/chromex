@@ -25,6 +25,9 @@
 
      |results| - https://developer.chrome.com/extensions/history#property-callback-results.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/history#method-search."
   ([query] (gen-call :function ::search &form query)))
 
@@ -38,6 +41,9 @@
 
      |results| - https://developer.chrome.com/extensions/history#property-callback-results.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/history#method-getVisits."
   ([details] (gen-call :function ::get-visits &form details)))
 
@@ -49,6 +55,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/history#method-addUrl."
   ([details] (gen-call :function ::add-url &form details)))
 
@@ -59,6 +68,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/history#method-deleteUrl."
   ([details] (gen-call :function ::delete-url &form details)))
@@ -72,6 +84,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/history#method-deleteRange."
   ([range] (gen-call :function ::delete-range &form range)))
 
@@ -80,6 +95,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/history#method-deleteAll."
   ([] (gen-call :function ::delete-all &form)))

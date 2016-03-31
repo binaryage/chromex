@@ -23,6 +23,9 @@
 
      |instance-id| - An Instance ID assigned to the app instance.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/instanceID#method-getID."
   ([] (gen-call :function ::get-id &form)))
 
@@ -33,6 +36,9 @@
    Signature of the result value put on the channel is [creation-time] where:
 
      |creation-time| - The time when the Instance ID has been generated, represented in milliseconds since the epoch.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/instanceID#method-getCreationTime."
   ([] (gen-call :function ::get-creation-time &form)))
@@ -47,6 +53,9 @@
 
      |token| - A token assigned by the requested service.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/instanceID#method-getToken."
   ([get-token-params] (gen-call :function ::get-token &form get-token-params)))
 
@@ -58,6 +67,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/instanceID#method-deleteToken."
   ([delete-token-params] (gen-call :function ::delete-token &form delete-token-params)))
 
@@ -66,6 +78,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/instanceID#method-deleteID."
   ([] (gen-call :function ::delete-id &form)))

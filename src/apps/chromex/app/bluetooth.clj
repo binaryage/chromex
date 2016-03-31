@@ -23,6 +23,9 @@
 
      |adapter-info| - Object containing the adapter information.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/bluetooth#method-getAdapterState."
   ([] (gen-call :function ::get-adapter-state &form)))
 
@@ -36,6 +39,9 @@
 
      |device-info| - Object containing the device information.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/bluetooth#method-getDevice."
   ([device-address] (gen-call :function ::get-device &form device-address)))
 
@@ -46,6 +52,9 @@
    Signature of the result value put on the channel is [device-infos] where:
 
      |device-infos| - Array of object containing device information.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetooth#method-getDevices."
   ([] (gen-call :function ::get-devices &form)))
@@ -59,6 +68,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/bluetooth#method-startDiscovery."
   ([] (gen-call :function ::start-discovery &form)))
 
@@ -67,6 +79,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetooth#method-stopDiscovery."
   ([] (gen-call :function ::stop-discovery &form)))

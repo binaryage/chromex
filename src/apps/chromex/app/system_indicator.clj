@@ -27,6 +27,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/systemIndicator#method-setIcon."
   ([details] (gen-call :function ::set-icon &form details)))
 

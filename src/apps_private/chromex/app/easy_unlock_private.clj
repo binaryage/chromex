@@ -20,7 +20,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [strings] where:
 
-     |strings| - ?"
+     |strings| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::get-strings &form)))
 
 (defmacro generate-ec-p256-key-pair
@@ -32,7 +35,10 @@
    Signature of the result value put on the channel is [public-key private-key] where:
 
      |public-key| - ?
-     |private-key| - ?"
+     |private-key| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::generate-ec-p256-key-pair &form)))
 
 (defmacro perform-ecdh-key-agreement
@@ -46,7 +52,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [data] where:
 
-     |data| - ?"
+     |data| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([private-key public-key] (gen-call :function ::perform-ecdh-key-agreement &form private-key public-key)))
 
 (defmacro create-secure-message
@@ -61,7 +70,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [data] where:
 
-     |data| - ?"
+     |data| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([payload key options] (gen-call :function ::create-secure-message &form payload key options)))
 
 (defmacro unwrap-secure-message
@@ -76,7 +88,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [data] where:
 
-     |data| - ?"
+     |data| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([secure-message key options] (gen-call :function ::unwrap-secure-message &form secure-message key options)))
 
 (defmacro seek-bluetooth-device-by-address
@@ -88,7 +103,10 @@
      |device-address| - The Bluetooth address of the device to connect to.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([device-address] (gen-call :function ::seek-bluetooth-device-by-address &form device-address)))
 
 (defmacro connect-to-bluetooth-service-insecurely
@@ -101,7 +119,10 @@
      |uuid| - The UUID of the service to connect to.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([socket-id device-address uuid] (gen-call :function ::connect-to-bluetooth-service-insecurely &form socket-id device-address uuid)))
 
 (defmacro update-screenlock-state
@@ -110,7 +131,10 @@
      |state| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([state] (gen-call :function ::update-screenlock-state &form state)))
 
 (defmacro set-permit-access
@@ -119,7 +143,10 @@
      |permit-access| - The permit record to be saved.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([permit-access] (gen-call :function ::set-permit-access &form permit-access)))
 
 (defmacro get-permit-access
@@ -128,14 +155,20 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [permit-access] where:
 
-     |permit-access| - ?"
+     |permit-access| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::get-permit-access &form)))
 
 (defmacro clear-permit-access
   "Clears the permit record for the local device.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::clear-permit-access &form)))
 
 (defmacro set-remote-devices
@@ -144,7 +177,10 @@
      |devices| - The list of remote devices to be saved.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([devices] (gen-call :function ::set-remote-devices &form devices)))
 
 (defmacro get-remote-devices
@@ -153,7 +189,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [devices] where:
 
-     |devices| - ?"
+     |devices| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::get-remote-devices &form)))
 
 (defmacro get-sign-in-challenge
@@ -167,7 +206,10 @@
      |challenge| - The sign in challenge to be used when signing in the user     currently associated with the Easy Unlock
                    service.
      |signed-nonce| - Nonce signed by Chrome OS TPM, provided as an argument to     the |getSignInChallenge()| function and
-                      signed by the TPM key     associated with the user."
+                      signed by the TPM key     associated with the user.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([nonce] (gen-call :function ::get-sign-in-challenge &form nonce)))
 
 (defmacro try-sign-in-secret
@@ -177,7 +219,10 @@
      |sign-in-secret| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([sign-in-secret] (gen-call :function ::try-sign-in-secret &form sign-in-secret)))
 
 (defmacro get-user-info
@@ -186,7 +231,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [users] where:
 
-     |users| - ?"
+     |users| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::get-user-info &form)))
 
 (defmacro get-connection-info
@@ -200,7 +248,10 @@
      |rssi| - The received signal strength from the remote device in dB. |transmit_power| The local transmission power to the
               remote device in dB. |max_transmit_power| The maximum transmission power that can be achieved.
      |transmit-power| - ?
-     |max-transmit-power| - ?"
+     |max-transmit-power| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([device-address] (gen-call :function ::get-connection-info &form device-address)))
 
 (defmacro show-error-bubble
@@ -227,7 +278,10 @@
      |result| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([result] (gen-call :function ::set-auto-pairing-result &form result)))
 
 (defmacro find-setup-connection
@@ -241,7 +295,10 @@
    Signature of the result value put on the channel is [connection-id device-address] where:
 
      |connection-id| - The identifier of the connection found. To be used in future calls refering to this connection.
-     |device-address| - The Bluetooth address of the remote device."
+     |device-address| - The Bluetooth address of the remote device.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([setup-service-uuid time-out] (gen-call :function ::find-setup-connection &form setup-service-uuid time-out)))
 
 (defmacro setup-connection-status
@@ -252,7 +309,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [status] where:
 
-     |status| - The status of the connection with |connection_id|."
+     |status| - The status of the connection with |connection_id|.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([connection-id] (gen-call :function ::setup-connection-status &form connection-id)))
 
 (defmacro setup-connection-disconnect
@@ -261,7 +321,10 @@
      |connection-id| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([connection-id] (gen-call :function ::setup-connection-disconnect &form connection-id)))
 
 (defmacro setup-connection-send
@@ -271,7 +334,10 @@
      |data| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([connection-id data] (gen-call :function ::setup-connection-send &form connection-id data)))
 
 (defmacro setup-connection-get-device-address
@@ -282,7 +348,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [device-address] where:
 
-     |device-address| - The bluetooth address of the connection with  |connectionId|."
+     |device-address| - The bluetooth address of the connection with  |connectionId|.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([connection-id] (gen-call :function ::setup-connection-get-device-address &form connection-id)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------

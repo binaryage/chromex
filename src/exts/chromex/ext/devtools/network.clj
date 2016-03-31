@@ -23,6 +23,9 @@
 
      |har-log| - A HAR log. See HAR specification for details.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/devtools.network#method-getHAR."
   ([] (gen-call :function ::get-har &form)))
 

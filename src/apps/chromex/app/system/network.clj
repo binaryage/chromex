@@ -22,6 +22,9 @@
 
      |network-interfaces| - Array of object containing network interfaces information.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/system.network#method-getNetworkInterfaces."
   ([] (gen-call :function ::get-network-interfaces &form)))
 

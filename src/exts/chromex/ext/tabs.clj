@@ -33,6 +33,9 @@
 
      |tab| - https://developer.chrome.com/extensions/tabs#property-callback-tab.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/tabs#method-get."
   ([tab-id] (gen-call :function ::get &form tab-id)))
 
@@ -44,6 +47,9 @@
    Signature of the result value put on the channel is [tab] where:
 
      |tab| - https://developer.chrome.com/extensions/tabs#property-callback-tab.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tabs#method-getCurrent."
   ([] (gen-call :function ::get-current &form)))
@@ -74,6 +80,9 @@
                   specified tab, the callback will be called with no arguments and 'runtime.lastError' will be set to the
                   error message.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/tabs#method-sendRequest."
   ([tab-id request] (gen-call :function ::send-request &form tab-id request)))
 
@@ -93,6 +102,9 @@
                   specified tab, the callback will be called with no arguments and 'runtime.lastError' will be set to the
                   error message.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/tabs#method-sendMessage."
   ([tab-id message options] (gen-call :function ::send-message &form tab-id message options))
   ([tab-id message] `(send-message ~tab-id ~message :omit)))
@@ -106,6 +118,9 @@
    Signature of the result value put on the channel is [tab] where:
 
      |tab| - https://developer.chrome.com/extensions/tabs#property-callback-tab.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tabs#method-getSelected."
   ([window-id] (gen-call :function ::get-selected &form window-id))
@@ -121,6 +136,9 @@
 
      |tabs| - https://developer.chrome.com/extensions/tabs#property-callback-tabs.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/tabs#method-getAllInWindow."
   ([window-id] (gen-call :function ::get-all-in-window &form window-id))
   ([] `(get-all-in-window :omit)))
@@ -134,6 +152,9 @@
    Signature of the result value put on the channel is [tab] where:
 
      |tab| - Details about the created tab. Will contain the ID of the new tab.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tabs#method-create."
   ([create-properties] (gen-call :function ::create &form create-properties)))
@@ -149,6 +170,9 @@
      |tab| - Details about the duplicated tab. The 'tabs.Tab' object doesn't contain url, title and favIconUrl if the 'tabs'
              permission has not been requested.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/tabs#method-duplicate."
   ([tab-id] (gen-call :function ::duplicate &form tab-id)))
 
@@ -162,6 +186,9 @@
 
      |result| - https://developer.chrome.com/extensions/tabs#property-callback-result.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/tabs#method-query."
   ([query-info] (gen-call :function ::query &form query-info)))
 
@@ -174,6 +201,9 @@
    Signature of the result value put on the channel is [window] where:
 
      |window| - Contains details about the window whose tabs were highlighted.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tabs#method-highlight."
   ([highlight-info] (gen-call :function ::highlight &form highlight-info)))
@@ -190,6 +220,9 @@
      |tab| - Details about the updated tab. The 'tabs.Tab' object doesn't contain url, title and favIconUrl if the 'tabs'
              permission has not been requested.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/tabs#method-update."
   ([tab-id update-properties] (gen-call :function ::update &form tab-id update-properties)))
 
@@ -205,6 +238,9 @@
 
      |tabs| - Details about the moved tabs.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/tabs#method-move."
   ([tab-ids move-properties] (gen-call :function ::move &form tab-ids move-properties)))
 
@@ -216,6 +252,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tabs#method-reload."
   ([tab-id reload-properties] (gen-call :function ::reload &form tab-id reload-properties))
@@ -229,6 +268,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tabs#method-remove."
   ([tab-ids] (gen-call :function ::remove &form tab-ids)))
@@ -245,6 +287,9 @@
                   kLanguageInfoTable. The 2nd to 4th columns will be checked and the first non-NULL value will be returned
                   except for Simplified Chinese for which zh-CN will be returned. For an unknown language, und will be
                   returned.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tabs#method-detectLanguage."
   ([tab-id] (gen-call :function ::detect-language &form tab-id))
@@ -263,6 +308,9 @@
      |data-url| - A data URL which encodes an image of the visible area of the captured tab. May be assigned to the 'src'
                   property of an HTML Image element for display.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/tabs#method-captureVisibleTab."
   ([window-id options] (gen-call :function ::capture-visible-tab &form window-id options))
   ([window-id] `(capture-visible-tab ~window-id :omit))
@@ -280,6 +328,9 @@
 
      |result| - The result of the script in every injected frame.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/tabs#method-executeScript."
   ([tab-id details] (gen-call :function ::execute-script &form tab-id details)))
 
@@ -292,6 +343,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tabs#method-insertCSS."
   ([tab-id details] (gen-call :function ::insert-css &form tab-id details)))
@@ -306,6 +360,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/tabs#method-setZoom."
   ([tab-id zoom-factor] (gen-call :function ::set-zoom &form tab-id zoom-factor)))
 
@@ -318,6 +375,9 @@
    Signature of the result value put on the channel is [zoom-factor] where:
 
      |zoom-factor| - The tab's current zoom factor.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tabs#method-getZoom."
   ([tab-id] (gen-call :function ::get-zoom &form tab-id))
@@ -333,6 +393,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/tabs#method-setZoomSettings."
   ([tab-id zoom-settings] (gen-call :function ::set-zoom-settings &form tab-id zoom-settings)))
 
@@ -345,6 +408,9 @@
    Signature of the result value put on the channel is [zoom-settings] where:
 
      |zoom-settings| - The tab's current zoom settings.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tabs#method-getZoomSettings."
   ([tab-id] (gen-call :function ::get-zoom-settings &form tab-id))

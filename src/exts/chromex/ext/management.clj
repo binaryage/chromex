@@ -23,6 +23,9 @@
 
      |result| - https://developer.chrome.com/extensions/management#property-callback-result.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/management#method-getAll."
   ([] (gen-call :function ::get-all &form)))
 
@@ -36,6 +39,9 @@
 
      |result| - https://developer.chrome.com/extensions/management#property-callback-result.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/management#method-get."
   ([id] (gen-call :function ::get &form id)))
 
@@ -47,6 +53,9 @@
    Signature of the result value put on the channel is [result] where:
 
      |result| - https://developer.chrome.com/extensions/management#property-callback-result.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/management#method-getSelf."
   ([] (gen-call :function ::get-self &form)))
@@ -60,6 +69,9 @@
    Signature of the result value put on the channel is [permission-warnings] where:
 
      |permission-warnings| - https://developer.chrome.com/extensions/management#property-callback-permissionWarnings.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/management#method-getPermissionWarningsById."
   ([id] (gen-call :function ::get-permission-warnings-by-id &form id)))
@@ -75,6 +87,9 @@
 
      |permission-warnings| - https://developer.chrome.com/extensions/management#property-callback-permissionWarnings.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/management#method-getPermissionWarningsByManifest."
   ([manifest-str] (gen-call :function ::get-permission-warnings-by-manifest &form manifest-str)))
 
@@ -88,6 +103,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/management#method-setEnabled."
   ([id enabled] (gen-call :function ::set-enabled &form id enabled)))
 
@@ -99,6 +117,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/management#method-uninstall."
   ([id options] (gen-call :function ::uninstall &form id options))
@@ -113,6 +134,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/management#method-uninstallSelf."
   ([options] (gen-call :function ::uninstall-self &form options))
   ([] `(uninstall-self :omit)))
@@ -125,6 +149,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/management#method-launchApp."
   ([id] (gen-call :function ::launch-app &form id)))
 
@@ -135,6 +162,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/management#method-createAppShortcut."
   ([id] (gen-call :function ::create-app-shortcut &form id)))
@@ -150,6 +180,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/management#method-setLaunchType."
   ([id launch-type] (gen-call :function ::set-launch-type &form id launch-type)))
 
@@ -163,6 +196,9 @@
    Signature of the result value put on the channel is [result] where:
 
      |result| - https://developer.chrome.com/extensions/management#property-callback-result.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/management#method-generateAppForLink."
   ([url title] (gen-call :function ::generate-app-for-link &form url title)))

@@ -20,7 +20,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [languages] where:
 
-     |languages| - ?"
+     |languages| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::get-language-list &form)))
 
 (defmacro set-language-list
@@ -35,7 +38,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [status] where:
 
-     |status| - ?"
+     |status| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::get-spellcheck-dictionary-statuses &form)))
 
 (defmacro get-spellcheck-words
@@ -44,7 +50,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [words] where:
 
-     |words| - ?"
+     |words| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::get-spellcheck-words &form)))
 
 (defmacro add-spellcheck-word
@@ -65,7 +74,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [language-code] where:
 
-     |language-code| - ?"
+     |language-code| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::get-translate-target-language &form)))
 
 (defmacro get-input-method-lists
@@ -74,7 +86,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [lists] where:
 
-     |lists| - ?"
+     |lists| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::get-input-method-lists &form)))
 
 (defmacro add-input-method

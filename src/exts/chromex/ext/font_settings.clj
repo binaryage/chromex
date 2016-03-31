@@ -22,6 +22,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/fontSettings#method-clearFont."
   ([details] (gen-call :function ::clear-font &form details)))
 
@@ -35,6 +38,9 @@
 
      |details| - https://developer.chrome.com/extensions/fontSettings#property-callback-details.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/fontSettings#method-getFont."
   ([details] (gen-call :function ::get-font &form details)))
 
@@ -45,6 +51,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/fontSettings#method-setFont."
   ([details] (gen-call :function ::set-font &form details)))
@@ -57,6 +66,9 @@
 
      |results| - https://developer.chrome.com/extensions/fontSettings#property-callback-results.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/fontSettings#method-getFontList."
   ([] (gen-call :function ::get-font-list &form)))
 
@@ -67,6 +79,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/fontSettings#method-clearDefaultFontSize."
   ([details] (gen-call :function ::clear-default-font-size &form details))
@@ -82,6 +97,9 @@
 
      |details| - https://developer.chrome.com/extensions/fontSettings#property-callback-details.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/fontSettings#method-getDefaultFontSize."
   ([details] (gen-call :function ::get-default-font-size &form details))
   ([] `(get-default-font-size :omit)))
@@ -94,6 +112,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/fontSettings#method-setDefaultFontSize."
   ([details] (gen-call :function ::set-default-font-size &form details)))
 
@@ -104,6 +125,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/fontSettings#method-clearDefaultFixedFontSize."
   ([details] (gen-call :function ::clear-default-fixed-font-size &form details))
@@ -119,6 +143,9 @@
 
      |details| - https://developer.chrome.com/extensions/fontSettings#property-callback-details.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/fontSettings#method-getDefaultFixedFontSize."
   ([details] (gen-call :function ::get-default-fixed-font-size &form details))
   ([] `(get-default-fixed-font-size :omit)))
@@ -131,6 +158,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/fontSettings#method-setDefaultFixedFontSize."
   ([details] (gen-call :function ::set-default-fixed-font-size &form details)))
 
@@ -141,6 +171,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/fontSettings#method-clearMinimumFontSize."
   ([details] (gen-call :function ::clear-minimum-font-size &form details))
@@ -156,6 +189,9 @@
 
      |details| - https://developer.chrome.com/extensions/fontSettings#property-callback-details.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/fontSettings#method-getMinimumFontSize."
   ([details] (gen-call :function ::get-minimum-font-size &form details))
   ([] `(get-minimum-font-size :omit)))
@@ -167,6 +203,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/fontSettings#method-setMinimumFontSize."
   ([details] (gen-call :function ::set-minimum-font-size &form details)))

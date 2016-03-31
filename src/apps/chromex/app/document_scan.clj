@@ -25,6 +25,9 @@
 
      |result| - https://developer.chrome.com/apps/documentScan#property-callback-result.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/documentScan#method-scan."
   ([options] (gen-call :function ::scan &form options)))
 

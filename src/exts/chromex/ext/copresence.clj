@@ -27,6 +27,9 @@
 
      |status| - https://developer.chrome.com/extensions/copresence#property-callback-status.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/copresence#method-execute."
   ([operations] (gen-call :function ::execute &form operations)))
 

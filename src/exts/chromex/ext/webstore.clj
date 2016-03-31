@@ -29,6 +29,9 @@
                specific strings being passed back.
      |error-code| - The error code from the stable set of possible errors.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/webstore#method-install."
   ([url success-callback] (gen-call :function ::install &form url success-callback))
   ([url] `(install ~url :omit))

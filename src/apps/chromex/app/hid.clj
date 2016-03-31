@@ -30,6 +30,9 @@
 
      |devices| - https://developer.chrome.com/apps/hid#property-callback-devices.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/hid#method-getDevices."
   ([options] (gen-call :function ::get-devices &form options)))
 
@@ -45,6 +48,9 @@
 
      |devices| - https://developer.chrome.com/apps/hid#property-callback-devices.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/hid#method-getUserSelectedDevices."
   ([options] (gen-call :function ::get-user-selected-devices &form options))
   ([] `(get-user-selected-devices :omit)))
@@ -59,6 +65,9 @@
 
      |connection| - https://developer.chrome.com/apps/hid#property-callback-connection.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/hid#method-connect."
   ([device-id] (gen-call :function ::connect &form device-id)))
 
@@ -69,6 +78,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/hid#method-disconnect."
   ([connection-id] (gen-call :function ::disconnect &form connection-id)))
@@ -84,6 +96,9 @@
      |report-id| - The report ID or 0 if none.
      |data| - The report data, the report ID prefix (if present) is removed.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/hid#method-receive."
   ([connection-id] (gen-call :function ::receive &form connection-id)))
 
@@ -96,6 +111,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/hid#method-send."
   ([connection-id report-id data] (gen-call :function ::send &form connection-id report-id data)))
@@ -111,6 +129,9 @@
 
      |data| - The report data, including a report ID prefix if one is sent by the device.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/hid#method-receiveFeatureReport."
   ([connection-id report-id] (gen-call :function ::receive-feature-report &form connection-id report-id)))
 
@@ -123,6 +144,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/hid#method-sendFeatureReport."
   ([connection-id report-id data] (gen-call :function ::send-feature-report &form connection-id report-id data)))

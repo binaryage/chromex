@@ -27,7 +27,10 @@
      |signature| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([request-id signature] (gen-call :function ::report-signature &form request-id signature))
   ([request-id] `(report-signature ~request-id :omit)))
 
@@ -40,7 +43,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [rejected-certificates] where:
 
-     |rejected-certificates| - ?"
+     |rejected-certificates| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([request-id certificates] (gen-call :function ::report-certificates &form request-id certificates))
   ([request-id] `(report-certificates ~request-id :omit)))
 

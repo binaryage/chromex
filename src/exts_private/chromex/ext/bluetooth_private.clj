@@ -21,14 +21,20 @@
      |adapter-state| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([adapter-state] (gen-call :function ::set-adapter-state &form adapter-state)))
 
 (defmacro set-pairing-response
   "  |options| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([options] (gen-call :function ::set-pairing-response &form options)))
 
 (defmacro disconnect-all
@@ -37,7 +43,10 @@
      |device-address| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([device-address] (gen-call :function ::disconnect-all &form device-address)))
 
 (defmacro forget-device
@@ -46,7 +55,10 @@
      |device-address| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([device-address] (gen-call :function ::forget-device &form device-address)))
 
 (defmacro set-discovery-filter
@@ -55,7 +67,10 @@
      |discovery-filter| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([discovery-filter] (gen-call :function ::set-discovery-filter &form discovery-filter)))
 
 (defmacro connect
@@ -67,7 +82,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - ?"
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([device-address] (gen-call :function ::connect &form device-address)))
 
 (defmacro pair
@@ -76,7 +94,10 @@
      |device-address| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([device-address] (gen-call :function ::pair &form device-address)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------

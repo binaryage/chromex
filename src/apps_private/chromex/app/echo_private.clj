@@ -26,7 +26,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - The returned offer info. If the offer info is not available, api will raise error."
+     |result| - The returned offer info. If the offer info is not available, api will raise error.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([id] (gen-call :function ::get-offer-info &form id)))
 
 (defmacro get-registration-code
@@ -37,7 +40,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - The coupon code."
+     |result| - The coupon code.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([type] (gen-call :function ::get-registration-code &form type)))
 
 (defmacro get-oobe-timestamp
@@ -46,7 +52,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - The OOBE timestamp."
+     |result| - The OOBE timestamp.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::get-oobe-timestamp &form)))
 
 (defmacro get-user-consent
@@ -59,7 +68,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - Whether the user consent was given."
+     |result| - Whether the user consent was given.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([consent-requester] (gen-call :function ::get-user-consent &form consent-requester)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

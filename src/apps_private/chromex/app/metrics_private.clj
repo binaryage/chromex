@@ -17,7 +17,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [is-enabled] where:
 
-     |is-enabled| - ?"
+     |is-enabled| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::get-is-crash-reporting-enabled &form)))
 
 (defmacro get-field-trial
@@ -28,7 +31,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [group] where:
 
-     |group| - ?"
+     |group| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([name] (gen-call :function ::get-field-trial &form name)))
 
 (defmacro get-variation-params
@@ -39,7 +45,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [params] where:
 
-     |params| - ?"
+     |params| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([name] (gen-call :function ::get-variation-params &form name)))
 
 (defmacro record-user-action

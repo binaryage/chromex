@@ -41,6 +41,9 @@
      |result| - The result of evaluation.
      |exception-info| - An object providing details if an exception occurred while evaluating the expression.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/devtools.inspectedWindow#method-eval."
   ([expression options] (gen-call :function ::eval &form expression options))
   ([expression] `(eval ~expression :omit)))
@@ -61,6 +64,9 @@
    Signature of the result value put on the channel is [resources] where:
 
      |resources| - The resources within the page.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/devtools.inspectedWindow#method-getResources."
   ([] (gen-call :function ::get-resources &form)))

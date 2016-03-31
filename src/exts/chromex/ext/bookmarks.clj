@@ -35,6 +35,9 @@
 
      |results| - https://developer.chrome.com/extensions/bookmarks#property-callback-results.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/bookmarks#method-get."
   ([id-or-id-list] (gen-call :function ::get &form id-or-id-list)))
 
@@ -47,6 +50,9 @@
    Signature of the result value put on the channel is [results] where:
 
      |results| - https://developer.chrome.com/extensions/bookmarks#property-callback-results.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/bookmarks#method-getChildren."
   ([id] (gen-call :function ::get-children &form id)))
@@ -61,6 +67,9 @@
 
      |results| - https://developer.chrome.com/extensions/bookmarks#property-callback-results.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/bookmarks#method-getRecent."
   ([number-of-items] (gen-call :function ::get-recent &form number-of-items)))
 
@@ -71,6 +80,9 @@
    Signature of the result value put on the channel is [results] where:
 
      |results| - https://developer.chrome.com/extensions/bookmarks#property-callback-results.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/bookmarks#method-getTree."
   ([] (gen-call :function ::get-tree &form)))
@@ -84,6 +96,9 @@
    Signature of the result value put on the channel is [results] where:
 
      |results| - https://developer.chrome.com/extensions/bookmarks#property-callback-results.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/bookmarks#method-getSubTree."
   ([id] (gen-call :function ::get-sub-tree &form id)))
@@ -101,6 +116,9 @@
 
      |results| - https://developer.chrome.com/extensions/bookmarks#property-callback-results.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/bookmarks#method-search."
   ([query] (gen-call :function ::search &form query)))
 
@@ -113,6 +131,9 @@
    Signature of the result value put on the channel is [result] where:
 
      |result| - https://developer.chrome.com/extensions/bookmarks#property-callback-result.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/bookmarks#method-create."
   ([bookmark] (gen-call :function ::create &form bookmark)))
@@ -127,6 +148,9 @@
    Signature of the result value put on the channel is [result] where:
 
      |result| - https://developer.chrome.com/extensions/bookmarks#property-callback-result.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/bookmarks#method-move."
   ([id destination] (gen-call :function ::move &form id destination)))
@@ -143,6 +167,9 @@
 
      |result| - https://developer.chrome.com/extensions/bookmarks#property-callback-result.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/bookmarks#method-update."
   ([id changes] (gen-call :function ::update &form id changes)))
 
@@ -154,6 +181,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/bookmarks#method-remove."
   ([id] (gen-call :function ::remove &form id)))
 
@@ -164,6 +194,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/bookmarks#method-removeTree."
   ([id] (gen-call :function ::remove-tree &form id)))

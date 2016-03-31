@@ -15,7 +15,10 @@
   "  |create-properties| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([create-properties] (gen-call :function ::context-menus-create &form create-properties)))
 
 (defmacro context-menus-update
@@ -25,7 +28,10 @@
      |update-properties| - The properties to update. Accepts the same values as the create function.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([id update-properties] (gen-call :function ::context-menus-update &form id update-properties)))
 
 (defmacro context-menus-remove
@@ -34,14 +40,20 @@
      |menu-item-id| - The ID of the context menu item to remove.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([menu-item-id] (gen-call :function ::context-menus-remove &form menu-item-id)))
 
 (defmacro context-menus-remove-all
   "Removes all context menu items added by this webview.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::context-menus-remove-all &form)))
 
 (defmacro show-context-menu

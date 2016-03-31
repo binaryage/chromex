@@ -29,6 +29,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-connect."
   ([device-address properties] (gen-call :function ::connect &form device-address properties))
   ([device-address] `(connect ~device-address :omit)))
@@ -41,6 +44,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-disconnect."
   ([device-address] (gen-call :function ::disconnect &form device-address)))
@@ -55,6 +61,9 @@
 
      |result| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-result.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-getService."
   ([service-id] (gen-call :function ::get-service &form service-id)))
 
@@ -67,6 +76,9 @@
    Signature of the result value put on the channel is [result] where:
 
      |result| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-result.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-getServices."
   ([device-address] (gen-call :function ::get-services &form device-address)))
@@ -82,6 +94,9 @@
 
      |result| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-result.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-getCharacteristic."
   ([characteristic-id] (gen-call :function ::get-characteristic &form characteristic-id)))
 
@@ -94,6 +109,9 @@
    Signature of the result value put on the channel is [result] where:
 
      |result| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-result.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-getCharacteristics."
   ([service-id] (gen-call :function ::get-characteristics &form service-id)))
@@ -108,6 +126,9 @@
 
      |result| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-result.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-getIncludedServices."
   ([service-id] (gen-call :function ::get-included-services &form service-id)))
 
@@ -120,6 +141,9 @@
    Signature of the result value put on the channel is [result] where:
 
      |result| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-result.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-getDescriptor."
   ([descriptor-id] (gen-call :function ::get-descriptor &form descriptor-id)))
@@ -134,6 +158,9 @@
 
      |result| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-result.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-getDescriptors."
   ([characteristic-id] (gen-call :function ::get-descriptors &form characteristic-id)))
 
@@ -147,6 +174,9 @@
 
      |result| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-result.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-readCharacteristicValue."
   ([characteristic-id] (gen-call :function ::read-characteristic-value &form characteristic-id)))
 
@@ -158,6 +188,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-writeCharacteristicValue."
   ([characteristic-id value] (gen-call :function ::write-characteristic-value &form characteristic-id value)))
@@ -171,6 +204,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-startCharacteristicNotifications."
   ([characteristic-id properties] (gen-call :function ::start-characteristic-notifications &form characteristic-id properties))
@@ -186,6 +222,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-stopCharacteristicNotifications."
   ([characteristic-id] (gen-call :function ::stop-characteristic-notifications &form characteristic-id)))
 
@@ -200,6 +239,9 @@
 
      |result| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-result.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-readDescriptorValue."
   ([descriptor-id] (gen-call :function ::read-descriptor-value &form descriptor-id)))
 
@@ -211,6 +253,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-writeDescriptorValue."
   ([descriptor-id value] (gen-call :function ::write-descriptor-value &form descriptor-id value)))
@@ -231,6 +276,9 @@
 
      |advertisement-id| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-advertisementId.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-registerAdvertisement."
   ([advertisement] (gen-call :function ::register-advertisement &form advertisement)))
 
@@ -242,6 +290,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-unregisterAdvertisement."
   ([advertisement-id] (gen-call :function ::unregister-advertisement &form advertisement-id)))

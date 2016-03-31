@@ -23,6 +23,9 @@
 
      |commands| - https://developer.chrome.com/apps/commands#property-callback-commands.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/commands#method-getAll."
   ([] (gen-call :function ::get-all &form)))
 

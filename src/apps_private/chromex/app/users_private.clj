@@ -19,7 +19,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [users] where:
 
-     |users| - ?"
+     |users| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::get-whitelisted-users &form)))
 
 (defmacro add-whitelisted-user
@@ -31,7 +34,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [success] where:
 
-     |success| - ?"
+     |success| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([email] (gen-call :function ::add-whitelisted-user &form email)))
 
 (defmacro remove-whitelisted-user
@@ -43,7 +49,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [success] where:
 
-     |success| - ?"
+     |success| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([email] (gen-call :function ::remove-whitelisted-user &form email)))
 
 (defmacro is-current-user-owner
@@ -52,7 +61,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [is-owner] where:
 
-     |is-owner| - ?"
+     |is-owner| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::is-current-user-owner &form)))
 
 (defmacro is-whitelist-managed
@@ -61,7 +73,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [managed] where:
 
-     |managed| - ?"
+     |managed| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::is-whitelist-managed &form)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

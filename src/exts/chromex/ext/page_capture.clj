@@ -24,6 +24,9 @@
 
      |mhtml-data| - The MHTML data as a Blob.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/pageCapture#method-saveAsMHTML."
   ([details] (gen-call :function ::save-as-mhtml &form details)))
 

@@ -20,7 +20,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [email] where:
 
-     |email| - ?"
+     |email| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::get-user-email &form)))
 
 (defmacro get-system-information
@@ -29,7 +32,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [system-information] where:
 
-     |system-information| - ?"
+     |system-information| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::get-system-information &form)))
 
 (defmacro send-feedback
@@ -40,7 +46,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [status] where:
 
-     |status| - ?"
+     |status| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([feedback] (gen-call :function ::send-feedback &form feedback)))
 
 (defmacro get-strings
@@ -50,7 +59,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - ?"
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::get-strings &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------

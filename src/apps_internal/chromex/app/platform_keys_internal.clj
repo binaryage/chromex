@@ -22,7 +22,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [certs] where:
 
-     |certs| - ?"
+     |certs| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([details] (gen-call :function ::select-client-certificates &form details)))
 
 (defmacro sign
@@ -45,7 +48,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [signature] where:
 
-     |signature| - ?"
+     |signature| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([token-id public-key hash-algorithm-name data] (gen-call :function ::sign &form token-id public-key hash-algorithm-name data)))
 
 (defmacro get-public-key
@@ -60,7 +66,10 @@
    Signature of the result value put on the channel is [public-key algorithm] where:
 
      |public-key| - ?
-     |algorithm| - ?"
+     |algorithm| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([certificate algorithm-name] (gen-call :function ::get-public-key &form certificate algorithm-name)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

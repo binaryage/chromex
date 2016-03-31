@@ -25,6 +25,9 @@
 
      |success| - https://developer.chrome.com/extensions/input.ime#property-callback-success.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/input.ime#method-setComposition."
   ([parameters] (gen-call :function ::set-composition &form parameters)))
 
@@ -37,6 +40,9 @@
    Signature of the result value put on the channel is [success] where:
 
      |success| - https://developer.chrome.com/extensions/input.ime#property-callback-success.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/input.ime#method-clearComposition."
   ([parameters] (gen-call :function ::clear-composition &form parameters)))
@@ -51,6 +57,9 @@
 
      |success| - https://developer.chrome.com/extensions/input.ime#property-callback-success.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/input.ime#method-commitText."
   ([parameters] (gen-call :function ::commit-text &form parameters)))
 
@@ -62,6 +71,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/input.ime#method-sendKeyEvents."
   ([parameters] (gen-call :function ::send-key-events &form parameters)))
@@ -83,6 +95,9 @@
 
      |success| - https://developer.chrome.com/extensions/input.ime#property-callback-success.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/input.ime#method-setCandidateWindowProperties."
   ([parameters] (gen-call :function ::set-candidate-window-properties &form parameters)))
 
@@ -95,6 +110,9 @@
    Signature of the result value put on the channel is [success] where:
 
      |success| - https://developer.chrome.com/extensions/input.ime#property-callback-success.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/input.ime#method-setCandidates."
   ([parameters] (gen-call :function ::set-candidates &form parameters)))
@@ -109,6 +127,9 @@
 
      |success| - https://developer.chrome.com/extensions/input.ime#property-callback-success.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/input.ime#method-setCursorPosition."
   ([parameters] (gen-call :function ::set-cursor-position &form parameters)))
 
@@ -119,6 +140,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/input.ime#method-setMenuItems."
   ([parameters] (gen-call :function ::set-menu-items &form parameters)))
@@ -131,6 +155,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/input.ime#method-updateMenuItems."
   ([parameters] (gen-call :function ::update-menu-items &form parameters)))
 
@@ -141,6 +168,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/input.ime#method-deleteSurroundingText."
   ([parameters] (gen-call :function ::delete-surrounding-text &form parameters)))
@@ -166,6 +196,9 @@
      |window-object| - The JavaScript 'window' object of the newly created IME window. It contains the additional 'id'
                        property for the parameters of the other functions like showWindow/hideWindow.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/input.ime#method-createWindow."
   ([options] (gen-call :function ::create-window &form options)))
 
@@ -176,6 +209,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/input.ime#method-showWindow."
   ([window-id] (gen-call :function ::show-window &form window-id)))
@@ -189,6 +225,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/input.ime#method-hideWindow."
   ([window-id] (gen-call :function ::hide-window &form window-id)))
 
@@ -198,6 +237,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/input.ime#method-activate."
   ([] (gen-call :function ::activate &form)))
 
@@ -206,6 +248,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/input.ime#method-deactivate."
   ([] (gen-call :function ::deactivate &form)))

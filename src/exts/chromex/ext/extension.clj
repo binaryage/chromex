@@ -45,6 +45,9 @@
                   extension, the callback will be called with no arguments and 'runtime.lastError' will be set to the error
                   message.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/extension#method-sendRequest."
   ([extension-id request] (gen-call :function ::send-request &form extension-id request)))
 
@@ -91,6 +94,9 @@
 
      |is-allowed-access| - True if the extension has access to Incognito mode, false otherwise.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/extension#method-isAllowedIncognitoAccess."
   ([] (gen-call :function ::is-allowed-incognito-access &form)))
 
@@ -102,6 +108,9 @@
    Signature of the result value put on the channel is [is-allowed-access] where:
 
      |is-allowed-access| - True if the extension can access the 'file://' scheme, false otherwise.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/extension#method-isAllowedFileSchemeAccess."
   ([] (gen-call :function ::is-allowed-file-scheme-access &form)))

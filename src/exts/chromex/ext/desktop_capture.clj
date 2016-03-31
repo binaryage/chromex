@@ -30,6 +30,9 @@
                    is called with an empty streamId. The created streamId can be used only once and expires after a few
                    seconds when it is not used.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/desktopCapture#method-chooseDesktopMedia."
   ([sources target-tab] (gen-call :function ::choose-desktop-media &form sources target-tab))
   ([sources] `(choose-desktop-media ~sources :omit)))

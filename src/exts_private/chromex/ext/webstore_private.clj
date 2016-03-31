@@ -17,7 +17,10 @@
      |expected-id| - The id of the extension to install.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([expected-id] (gen-call :function ::install &form expected-id)))
 
 (defmacro begin-install-with-manifest3
@@ -30,14 +33,20 @@
 
      |result| - A string result code, which will be empty upon success. The possible values in the case of errors include
                 'unknown_error', 'user_cancelled', 'manifest_error', 'icon_error', 'invalid_id', 'permission_denied',
-                'invalid_icon_url' and 'already_installed'."
+                'invalid_icon_url' and 'already_installed'.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([details] (gen-call :function ::begin-install-with-manifest3 &form details)))
 
 (defmacro complete-install
   "  |expected-id| - The id of the extension to be installed. This should match a previous call to beginInstallWithManifest3.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([expected-id] (gen-call :function ::complete-install &form expected-id)))
 
 (defmacro install-bundle
@@ -47,12 +56,18 @@
      |contents| - An array of extension details to be installed.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([details contents] (gen-call :function ::install-bundle &form details contents)))
 
 (defmacro enable-app-launcher
   "This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::enable-app-launcher &form)))
 
 (defmacro get-browser-login
@@ -61,7 +76,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [info] where:
 
-     |info| - ?"
+     |info| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::get-browser-login &form)))
 
 (defmacro get-store-login
@@ -70,7 +88,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [login] where:
 
-     |login| - ?"
+     |login| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::get-store-login &form)))
 
 (defmacro set-store-login
@@ -79,7 +100,10 @@
      |login| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([login] (gen-call :function ::set-store-login &form login)))
 
 (defmacro get-web-gl-status
@@ -88,7 +112,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [webgl-status] where:
 
-     |webgl-status| - ?"
+     |webgl-status| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::get-web-gl-status &form)))
 
 (defmacro get-is-launcher-enabled
@@ -97,7 +124,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [is-enabled] where:
 
-     |is-enabled| - ?"
+     |is-enabled| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::get-is-launcher-enabled &form)))
 
 (defmacro is-in-incognito-mode
@@ -106,7 +136,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [is-incognito] where:
 
-     |is-incognito| - ?"
+     |is-incognito| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::is-in-incognito-mode &form)))
 
 (defmacro get-ephemeral-apps-enabled
@@ -115,7 +148,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [is-enabled] where:
 
-     |is-enabled| - ?"
+     |is-enabled| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::get-ephemeral-apps-enabled &form)))
 
 (defmacro launch-ephemeral-app
@@ -126,7 +162,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - Whether an attempt to launch an app succeeded, or the reason for failure."
+     |result| - Whether an attempt to launch an app succeeded, or the reason for failure.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([id] (gen-call :function ::launch-ephemeral-app &form id)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

@@ -23,7 +23,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [stream-id] where:
 
-     |stream-id| - ?"
+     |stream-id| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([sources request] (gen-call :function ::choose-desktop-media &form sources request)))
 
 (defmacro cancel-choose-desktop-media

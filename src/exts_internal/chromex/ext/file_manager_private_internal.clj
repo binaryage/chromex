@@ -19,7 +19,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [entries] where:
 
-     |entries| - ?"
+     |entries| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([urls] (gen-call :function ::resolve-isolated-entries &form urls)))
 
 (defmacro get-entry-properties
@@ -29,7 +32,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [entry-properties] where:
 
-     |entry-properties| - ?"
+     |entry-properties| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([urls names] (gen-call :function ::get-entry-properties &form urls names)))
 
 (defmacro add-file-watch
@@ -38,7 +44,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [success] where:
 
-     |success| - ?"
+     |success| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([url] (gen-call :function ::add-file-watch &form url)))
 
 (defmacro remove-file-watch
@@ -47,7 +56,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [success] where:
 
-     |success| - ?"
+     |success| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([url] (gen-call :function ::remove-file-watch &form url)))
 
 (defmacro get-custom-actions
@@ -56,7 +68,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [actions] where:
 
-     |actions| - ?"
+     |actions| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([urls] (gen-call :function ::get-custom-actions &form urls)))
 
 (defmacro execute-custom-action
@@ -64,7 +79,10 @@
      |action-id| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([urls action-id] (gen-call :function ::execute-custom-action &form urls action-id)))
 
 (defmacro compute-checksum
@@ -73,7 +91,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [checksum] where:
 
-     |checksum| - ?"
+     |checksum| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([url] (gen-call :function ::compute-checksum &form url)))
 
 (defmacro get-mime-type
@@ -82,7 +103,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - ?"
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([url] (gen-call :function ::get-mime-type &form url)))
 
 (defmacro pin-drive-file
@@ -90,7 +114,10 @@
      |pin| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([url pin] (gen-call :function ::pin-drive-file &form url pin)))
 
 (defmacro execute-task
@@ -100,7 +127,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - ?"
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([task-id urls] (gen-call :function ::execute-task &form task-id urls)))
 
 (defmacro set-default-task
@@ -109,7 +139,10 @@
      |mime-types| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([task-id urls mime-types] (gen-call :function ::set-default-task &form task-id urls mime-types)))
 
 (defmacro get-file-tasks
@@ -118,7 +151,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [tasks] where:
 
-     |tasks| - ?"
+     |tasks| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([urls] (gen-call :function ::get-file-tasks &form urls)))
 
 (defmacro get-share-url
@@ -127,7 +163,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [url] where:
 
-     |url| - ?"
+     |url| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([url] (gen-call :function ::get-share-url &form url)))
 
 (defmacro get-download-url
@@ -136,7 +175,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [url] where:
 
-     |url| - ?"
+     |url| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([url] (gen-call :function ::get-download-url &form url)))
 
 (defmacro request-drive-share
@@ -144,7 +186,10 @@
      |share-type| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([url share-type] (gen-call :function ::request-drive-share &form url share-type)))
 
 (defmacro set-entry-tag
@@ -154,14 +199,20 @@
      |value| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([url visibility key value] (gen-call :function ::set-entry-tag &form url visibility key value)))
 
 (defmacro cancel-file-transfers
   "  |urls| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([urls] (gen-call :function ::cancel-file-transfers &form urls)))
 
 (defmacro start-copy
@@ -172,7 +223,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [copy-id] where:
 
-     |copy-id| - ?"
+     |copy-id| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([url parent-url new-name] (gen-call :function ::start-copy &form url parent-url new-name)))
 
 (defmacro zip-selection
@@ -183,7 +237,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [success] where:
 
-     |success| - ?"
+     |success| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([parent-url urls dest-name] (gen-call :function ::zip-selection &form parent-url urls dest-name)))
 
 (defmacro validate-path-name-length
@@ -193,7 +250,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - ?"
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([parent-url name] (gen-call :function ::validate-path-name-length &form parent-url name)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

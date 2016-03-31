@@ -20,7 +20,10 @@
    Signature of the result value put on the channel is [result] where:
 
      |result| - A string result code, which will be empty upon success. The possible values in the case of errors include
-                'unknown_error', 'user_cancelled', 'manifest_error', 'icon_error', 'invalid_id', and 'invalid_icon_url'."
+                'unknown_error', 'user_cancelled', 'manifest_error', 'icon_error', 'invalid_id', and 'invalid_icon_url'.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([details] (gen-call :function ::show-permission-prompt-for-delegated-install &form details)))
 
 (defmacro show-permission-prompt-for-delegated-bundle-install
@@ -30,7 +33,10 @@
      |contents| - An array of extension details to be installed.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([details contents] (gen-call :function ::show-permission-prompt-for-delegated-bundle-install &form details contents)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

@@ -24,6 +24,9 @@
 
      |device-id| - https://developer.chrome.com/apps/enterprise.deviceAttributes#property-callback-deviceId.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/enterprise.deviceAttributes#method-getDirectoryDeviceId."
   ([] (gen-call :function ::get-directory-device-id &form)))
 

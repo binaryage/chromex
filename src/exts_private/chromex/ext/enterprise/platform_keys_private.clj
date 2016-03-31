@@ -19,7 +19,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [response] where:
 
-     |response| - Response in base64."
+     |response| - Response in base64.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([challenge] (gen-call :function ::challenge-machine-key &form challenge)))
 
 (defmacro challenge-user-key
@@ -31,7 +34,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [response] where:
 
-     |response| - Response in base64."
+     |response| - Response in base64.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([challenge register-key] (gen-call :function ::challenge-user-key &form challenge register-key)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

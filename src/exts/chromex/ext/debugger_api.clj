@@ -27,6 +27,9 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/debugger#method-attach."
   ([target required-version] (gen-call :function ::attach &form target required-version)))
 
@@ -37,6 +40,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/debugger#method-detach."
   ([target] (gen-call :function ::detach &form target)))
@@ -55,6 +61,9 @@
      |result| - JSON object with the response. Structure of the response varies depending on the method name and is defined by
                 the 'returns' attribute of the command description in the remote debugging protocol.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/debugger#method-sendCommand."
   ([target method command-params] (gen-call :function ::send-command &form target method command-params))
   ([target method] `(send-command ~target ~method :omit)))
@@ -66,6 +75,9 @@
    Signature of the result value put on the channel is [result] where:
 
      |result| - Array of TargetInfo objects corresponding to the available debug targets.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/debugger#method-getTargets."
   ([] (gen-call :function ::get-targets &form)))

@@ -35,6 +35,9 @@
 
      |error| - https://developer.chrome.com/extensions/cast.streaming.receiverSession#property-error_callback-error.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/cast.streaming.receiverSession#method-createAndBind."
   ([audio-params video-params local-endpoint max-width max-height max-frame-rate media-stream-url transport-options] (gen-call :function ::create-and-bind &form audio-params video-params local-endpoint max-width max-height max-frame-rate media-stream-url transport-options))
   ([audio-params video-params local-endpoint max-width max-height max-frame-rate media-stream-url] `(create-and-bind ~audio-params ~video-params ~local-endpoint ~max-width ~max-height ~max-frame-rate ~media-stream-url :omit)))

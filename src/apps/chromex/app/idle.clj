@@ -26,6 +26,9 @@
 
      |new-state| - https://developer.chrome.com/apps/idle#property-callback-newState.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/idle#method-queryState."
   ([detection-interval-in-seconds] (gen-call :function ::query-state &form detection-interval-in-seconds)))
 

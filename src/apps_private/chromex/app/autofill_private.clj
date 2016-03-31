@@ -30,7 +30,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [components] where:
 
-     |components| - ?"
+     |components| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([country-code] (gen-call :function ::get-address-components &form country-code)))
 
 (defmacro save-credit-card
@@ -55,7 +58,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [validated-phone-numbers] where:
 
-     |validated-phone-numbers| - ?"
+     |validated-phone-numbers| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([params] (gen-call :function ::validate-phone-numbers &form params)))
 
 (defmacro mask-credit-card

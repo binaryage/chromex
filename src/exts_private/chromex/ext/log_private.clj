@@ -22,7 +22,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [res] where:
 
-     |res| - ?"
+     |res| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([filter] (gen-call :function ::get-historical &form filter)))
 
 (defmacro start-event-recorder
@@ -32,7 +35,10 @@
      |sink| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([event-type sink] (gen-call :function ::start-event-recorder &form event-type sink)))
 
 (defmacro stop-event-recorder
@@ -41,7 +47,10 @@
      |event-type| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([event-type] (gen-call :function ::stop-event-recorder &form event-type)))
 
 (defmacro dump-logs
@@ -53,7 +62,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [logs] where:
 
-     |logs| - ?"
+     |logs| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::dump-logs &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------

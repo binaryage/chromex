@@ -22,6 +22,9 @@
 
      |data| - https://developer.chrome.com/extensions/topSites#property-callback-data.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/topSites#method-get."
   ([] (gen-call :function ::get &form)))
 

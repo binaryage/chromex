@@ -22,7 +22,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - The result of the script in every injected frame."
+     |result| - The result of the script in every injected frame.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([instance-id src details] (gen-call :function ::execute-script &form instance-id src details)))
 
 (defmacro insert-css
@@ -34,7 +37,10 @@
                  be set at the same time.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([instance-id src details] (gen-call :function ::insert-css &form instance-id src details)))
 
 (defmacro add-content-scripts
@@ -59,7 +65,10 @@
      |zoom-factor| - The new zoom factor.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([instance-id zoom-factor] (gen-call :function ::set-zoom &form instance-id zoom-factor)))
 
 (defmacro get-zoom
@@ -68,7 +77,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [zoom-factor] where:
 
-     |zoom-factor| - The current zoom factor."
+     |zoom-factor| - The current zoom factor.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([instance-id] (gen-call :function ::get-zoom &form instance-id)))
 
 (defmacro set-zoom-mode
@@ -78,7 +90,10 @@
      |zoom-mode| - Defines the how zooming is handled in the webview.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([instance-id zoom-mode] (gen-call :function ::set-zoom-mode &form instance-id zoom-mode)))
 
 (defmacro get-zoom-mode
@@ -89,7 +104,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [zoom-mode] where:
 
-     |zoom-mode| - Defines the how zooming is handled in the webview."
+     |zoom-mode| - Defines the how zooming is handled in the webview.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([instance-id] (gen-call :function ::get-zoom-mode &form instance-id)))
 
 (defmacro find
@@ -102,7 +120,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [results] where:
 
-     |results| - ?"
+     |results| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([instance-id search-text options] (gen-call :function ::find &form instance-id search-text options))
   ([instance-id search-text] `(find ~instance-id ~search-text :omit)))
 
@@ -126,7 +147,10 @@
      |virtual-url| - The URL that will be displayed to the user.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([instance-id data-url base-url virtual-url] (gen-call :function ::load-data-with-base-url &form instance-id data-url base-url virtual-url))
   ([instance-id data-url base-url] `(load-data-with-base-url ~instance-id ~data-url ~base-url :omit)))
 
@@ -137,7 +161,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [success] where:
 
-     |success| - Indicates whether the navigation was successful."
+     |success| - Indicates whether the navigation was successful.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([instance-id relative-index] (gen-call :function ::go &form instance-id relative-index)))
 
 (defmacro override-user-agent
@@ -173,7 +200,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [allowed] where:
 
-     |allowed| - ?"
+     |allowed| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([instance-id request-id action user-input] (gen-call :function ::set-permission &form instance-id request-id action user-input))
   ([instance-id request-id action] `(set-permission ~instance-id ~request-id ~action :omit)))
 
@@ -200,7 +230,10 @@
    Signature of the result value put on the channel is [data-url] where:
 
      |data-url| - A data URL which encodes an image of the visible area of the captured tab. May be assigned to the 'src'
-                  property of an HTML Image element for display."
+                  property of an HTML Image element for display.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([instance-id options] (gen-call :function ::capture-visible-region &form instance-id options))
   ([instance-id] `(capture-visible-region ~instance-id :omit)))
 
@@ -212,7 +245,10 @@
      |data-to-remove| - A set of data types. Missing data types are interpreted as false.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([instance-id options data-to-remove] (gen-call :function ::clear-data &form instance-id options data-to-remove)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

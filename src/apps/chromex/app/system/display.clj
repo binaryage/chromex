@@ -22,6 +22,9 @@
 
      |display-info| - https://developer.chrome.com/apps/system.display#property-callback-displayInfo.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/system.display#method-getInfo."
   ([] (gen-call :function ::get-info &form)))
 
@@ -35,6 +38,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/system.display#method-setDisplayProperties."
   ([id info] (gen-call :function ::set-display-properties &form id info)))

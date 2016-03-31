@@ -26,6 +26,9 @@
 
      |status| - https://developer.chrome.com/apps/audioModem#property-callback-status.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/audioModem#method-transmit."
   ([params token] (gen-call :function ::transmit &form params token)))
 
@@ -38,6 +41,9 @@
    Signature of the result value put on the channel is [status] where:
 
      |status| - https://developer.chrome.com/apps/audioModem#property-callback-status.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/audioModem#method-stopTransmit."
   ([band] (gen-call :function ::stop-transmit &form band)))
@@ -52,6 +58,9 @@
 
      |status| - https://developer.chrome.com/apps/audioModem#property-callback-status.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/audioModem#method-receive."
   ([params] (gen-call :function ::receive &form params)))
 
@@ -64,6 +73,9 @@
    Signature of the result value put on the channel is [status] where:
 
      |status| - https://developer.chrome.com/apps/audioModem#property-callback-status.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/audioModem#method-stopReceive."
   ([band] (gen-call :function ::stop-receive &form band)))

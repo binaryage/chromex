@@ -17,14 +17,20 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [return-params] where:
 
-     |return-params| - ?"
+     |return-params| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([create-params] (gen-call :function ::create-guest &form create-params)))
 
 (defmacro destroy-guest
   "  |instance-id| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([instance-id] (gen-call :function ::destroy-guest &form instance-id)))
 
 (defmacro set-size
@@ -32,7 +38,10 @@
      |params| - Size parameters.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([instance-id params] (gen-call :function ::set-size &form instance-id params)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------

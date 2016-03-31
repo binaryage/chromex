@@ -26,6 +26,9 @@
 
      |create-info| - The result of the socket creation.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/sockets.tcp#method-create."
   ([properties] (gen-call :function ::create &form properties))
   ([] `(create :omit)))
@@ -38,6 +41,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.tcp#method-update."
   ([socket-id properties] (gen-call :function ::update &form socket-id properties)))
@@ -52,6 +58,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.tcp#method-setPaused."
   ([socket-id paused] (gen-call :function ::set-paused &form socket-id paused)))
@@ -68,6 +77,9 @@
 
      |result| - The result code returned from the underlying network call. A negative value indicates an error.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/sockets.tcp#method-setKeepAlive."
   ([socket-id enable delay] (gen-call :function ::set-keep-alive &form socket-id enable delay))
   ([socket-id enable] `(set-keep-alive ~socket-id ~enable :omit)))
@@ -82,6 +94,9 @@
    Signature of the result value put on the channel is [result] where:
 
      |result| - The result code returned from the underlying network call. A negative value indicates an error.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.tcp#method-setNoDelay."
   ([socket-id no-delay] (gen-call :function ::set-no-delay &form socket-id no-delay)))
@@ -100,6 +115,9 @@
 
      |result| - The result code returned from the underlying network call. A negative value indicates an error.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/sockets.tcp#method-connect."
   ([socket-id peer-address peer-port] (gen-call :function ::connect &form socket-id peer-address peer-port)))
 
@@ -110,6 +128,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.tcp#method-disconnect."
   ([socket-id] (gen-call :function ::disconnect &form socket-id)))
@@ -124,6 +145,9 @@
    Signature of the result value put on the channel is [result] where:
 
      |result| - https://developer.chrome.com/apps/sockets.tcp#property-callback-result.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.tcp#method-secure."
   ([socket-id options] (gen-call :function ::secure &form socket-id options))
@@ -140,6 +164,9 @@
 
      |send-info| - Result of the send method.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/sockets.tcp#method-send."
   ([socket-id data] (gen-call :function ::send &form socket-id data)))
 
@@ -152,6 +179,9 @@
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.tcp#method-close."
   ([socket-id] (gen-call :function ::close &form socket-id)))
@@ -166,6 +196,9 @@
 
      |socket-info| - Object containing the socket information.
 
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/apps/sockets.tcp#method-getInfo."
   ([socket-id] (gen-call :function ::get-info &form socket-id)))
 
@@ -176,6 +209,9 @@
    Signature of the result value put on the channel is [socket-infos] where:
 
      |socket-infos| - Array of object containing socket information.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.tcp#method-getSockets."
   ([] (gen-call :function ::get-sockets &form)))

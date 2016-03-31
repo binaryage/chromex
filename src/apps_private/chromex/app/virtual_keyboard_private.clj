@@ -17,7 +17,10 @@
      |text| - The text that will be inserted.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([text] (gen-call :function ::insert-text &form text)))
 
 (defmacro send-key-event
@@ -26,14 +29,20 @@
      |key-event| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([key-event] (gen-call :function ::send-key-event &form key-event)))
 
 (defmacro hide-keyboard
   "Hides the virtual keyboard.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::hide-keyboard &form)))
 
 (defmacro set-hotrod-keyboard
@@ -52,7 +61,10 @@
   "Inform the system that the keyboard has loaded.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is []."
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::keyboard-loaded &form)))
 
 (defmacro get-keyboard-config
@@ -61,7 +73,10 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [config] where:
 
-     |config| - ?"
+     |config| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::get-keyboard-config &form)))
 
 (defmacro open-settings
