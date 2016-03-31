@@ -65,8 +65,10 @@ marshalling for particular APIs you care about, you [can do that consistently](s
 Many Chrome API calls are async in nature and require you to specify a callback (for receiving an answer later).
 You might want to watch this video explaining [API conventions](https://www.youtube.com/watch?v=bmxr75CV36A) in Chrome.
 
-We automatically turn all API functions with a callback parameter to a ClojureScript function without the callback parameter
-but returning a new core.async channel instead.
+We automatically turn all API functions with a callback parameter to a ClojureScript function without that callback parameter
+but returning a new core.async channel instead. The channel eventually receives a vector of parameters passed into the callback.
+When error occurs, the channel closes without receiving any result (you get `nil`). In that case you can immediately
+call `chromex.error/get-last-error` to obtain relevant error object (which is what was found in `chrome.runtime.lastError` during the callback).
 
 This mechanism is pluggable, so you can optionally implement your own mechanism of consuming callback calls.
 
