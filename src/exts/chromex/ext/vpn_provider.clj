@@ -84,7 +84,8 @@
    Events will be put on the |channel| with signature [::on-platform-message [id message error]] where:
 
      |id| - ID of the configuration the message is intended for.
-     |message| - The message received from the platform.
+     |message| - The message received from the platform.  Note that new message types may be added in future Chrome versions
+                 to support new features.
      |error| - Error message when there is an error.
 
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.

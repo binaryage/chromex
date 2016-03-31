@@ -235,7 +235,7 @@
      :params [{:name "engine-id", :type "string"} {:name "name", :type "string"}]}
     {:id ::show-input-view,
      :name "showInputView",
-     :since "master",
+     :since "51",
      :callback? true,
      :params [{:name "callback", :optional? true, :type :callback}]}],
    :events

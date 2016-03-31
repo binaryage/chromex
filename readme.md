@@ -2,7 +2,7 @@
 
 ### Chrome Extension APIs wrapper library for ClojureScript.
 
-This library is auto-generated. Current version was **generated on 2016-03-25** from [**Chromium @ 2cb4041**](https://chromium.googlesource.com/chromium/src.git/+/2cb4041bc0c300f3b79171c4a43cf93cbcbfc290).
+This library is auto-generated. Current version was **generated on 2016-03-31** from [**Chromium @ 672a4cf**](https://chromium.googlesource.com/chromium/src.git/+/672a4cf2d22d8d5d2130687e7465dbce822a3425).
 
 Looking for a nightly version? Check out [**nightly branch**](https://github.com/binaryage/chromex/tree/nightly) which gets updated nightly if there were any new API changes.
 

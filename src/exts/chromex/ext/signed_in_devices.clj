@@ -35,11 +35,11 @@
 ; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-device-info-change-events
-  "Fired if the DeviceInfo object of any of the signed in devices change or a new device is added or a device removed.
+  "Fired when the DeviceInfo object of any of the signed in devices changes, or when a device is added or removed.
 
    Events will be put on the |channel| with signature [::on-device-info-change [devices]] where:
 
-     |devices| - https://developer.chrome.com/extensions/signedInDevices#property-onDeviceInfoChange-devices.
+     |devices| - The array of all signed in devices.
 
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
 
