@@ -1,5 +1,6 @@
 (ns chromex.callgen
-  (:require [chromex.support :refer [valid-api-version? emit-api-version-warning emit-deprecation-warning
+  (:require [chromex.config :refer [get-static-config gen-active-config]]
+            [chromex.support :refer [valid-api-version? emit-api-version-warning emit-deprecation-warning
                                      get-wrap-symbol get-api-id get-item-by-id get-src-info]]))
 
 ; this file is responsible for generating code which will be expanded at library call sites in user's code
@@ -50,9 +51,14 @@
       :property (apply gen-property-call static-config api-table item-id src-info config args)
       :event (apply gen-event-call static-config api-table item-id src-info config args))))
 
+(defn gen-call-helper [api-table kind item src-info & args]
+  (let [static-config (get-static-config)
+        config (gen-active-config static-config)]
+    (apply gen-call-from-table static-config api-table kind item src-info config args)))
+
 ; ---------------------------------------------------------------------------------------------------------------------------
 
-(defn gen-tap-all-call [static-config api-table form config chan]
+(defn gen-tap-all-events-call* [static-config api-table form config chan]
   (let [src-info (get-src-info form)
         chan-sym (gensym "chan")
         config-sym (gensym "config")
@@ -67,3 +73,8 @@
     `(let [~chan-sym ~chan
            ~config-sym ~config]
        ~@tap-events-calls)))
+
+(defn gen-tap-all-events-call [api-table form chan]
+  (let [static-config (get-static-config)
+        config (gen-active-config static-config)]
+    (gen-tap-all-events-call* static-config api-table form config chan)))

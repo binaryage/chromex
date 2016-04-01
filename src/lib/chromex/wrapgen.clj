@@ -1,5 +1,6 @@
 (ns chromex.wrapgen
-  (:require [chromex.support :refer [gen-logging-if-verbose print-warning get-item-by-id get-api-id print-debug
+  (:require [chromex.config :refer [get-static-config]]
+            [chromex.support :refer [gen-logging-if-verbose print-warning get-item-by-id get-api-id print-debug
                                      gen-missing-api-check gen-call-hook]]
             [clojure.string :as string]))
 
@@ -197,3 +198,7 @@
     :function (apply gen-function-wrap static-config api-table item-id config args)
     :property (apply gen-property-wrap static-config api-table item-id config args)
     :event (apply gen-event-wrap static-config api-table item-id config args)))
+
+(defn gen-wrap-helper [api-table kind item-id config & args]
+  (let [static-config (get-static-config)]
+    (apply gen-wrap-from-table static-config api-table kind item-id config args)))

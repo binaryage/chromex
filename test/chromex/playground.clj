@@ -1,9 +1,7 @@
 (ns chromex.playground
-    (:refer-clojure :only [defmacro defn apply declare meta let macroexpand-1])
-    (:require
-      [chromex.wrapgen :refer [gen-wrap-from-table]]
-      [chromex.callgen :refer [gen-call-from-table gen-tap-all-call]]
-      [chromex.config :refer [get-static-config gen-active-config]]
+    (:refer-clojure :only [defmacro defn apply declare meta let partial macroexpand-1])
+    (:require [chromex.wrapgen :refer [gen-wrap-helper gen-wrap-from-table]]
+      [chromex.callgen :refer [gen-call-helper gen-tap-all-events-call]]
       [chromex.debug :refer [print-code]]))
 
 (declare api-table)
@@ -62,105 +60,106 @@
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
-(defmacro tap-all-events [chan]
-  (let [static-config (get-static-config)
-        config (gen-active-config static-config)]
-    (gen-tap-all-call static-config api-table &form config chan)))
+(defmacro tap-all-events
+  "Taps all valid non-deprecated events in chromex.ext.tabs namespace."
+  [chan]
+  (gen-tap-all-events-call api-table (meta &form) chan))
 
 ; ---------------------------------------------------------------------------------------------------------------------------
 ; -- API-TABLE --------------------------------------------------------------------------------------------------------------
 ; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
-  {:namespace  "chrome.playground"
-   :since      "15"
-   :properties [{:id          ::some-prop
-                 :deprecated  "use someOtherProp instead"
-                 :name        "someProp"
-                 :return-type "marshalled-type"}
-                {:id          ::some-missing-prop
-                 :name        "someMissingProp"
-                 :return-type "some-type"}]
-   :functions  [{:id          ::do-something
-                 :name        "doSomething"
-                 :since       "24"
-                 :return-type "marshalled-type"
-                 :params      [{:name "param1"
-                                :type "marshalled-type"}]}
-                {:id        ::get-something
-                 :name      "getSomething"
-                 :since     "10"
-                 :callback? true
-                 :params    [{:name "param1"
-                              :type "marshalled-type"}
-                             {:name     "callback"
-                              :type     :callback
-                              :callback {:params [{:name "callback-param"
-                                                   :type "marshalled-type"}]}}]}
-                {:id          ::do-something-optional-args
-                 :name        "doSomethingOptionalArgs"
-                 :since       "10"
-                 :return-type "some-type"
-                 :params      [{:name      "op1"
-                                :optional? true
-                                :type      "some-type"}
-                               {:name      "op2"
-                                :optional? true
-                                :type      "marshalled-type"}
-                               {:name      "op3"
-                                :optional? true
-                                :type      "some-type"}]}
-                {:id          ::do-something-missing
-                 :name        "doSomethingMissing"
-                 :return-type "some-type"
-                 :params      []}
-                {:id          ::get-storage-area
-                 :name        "getStorageArea"
-                 :return-type "storage.StorageArea"
-                 :params      []}
-                {:id          ::get-port
-                 :name        "getPort"
-                 :return-type "runtime.Port"
-                 :params      []}
-                {:id          ::call-future-api
-                 :name        "callFutureApi"
-                 :since       "100"
-                 :params      []}
-                {:id          ::call-master-api
-                 :name        "callMasterApi"
-                 :since       "master"
-                 :params      []}]
-   :events     [{:id     ::on-something
-                 :name   "onSomething"
-                 :params [{:name "ep1"
-                           :type "marshalled-type"}]}
-                {:id         ::on-something-deprecated
-                 :name       "onSomethingDeprecated"
-                 :deprecated "Use onSomething instead."
-                 :params     [{:name "ep1"
-                               :type "some-type"}]}
-                {:id     ::on-something-else
-                 :name   "onSomethingElse"
-                 :params [{:name "ep1"
-                           :type "some-type"}
-                          {:name "ep2"
-                           :type "marshalled-type"}]}
-                {:id         ::on-something-missing
-                 :name       "onSomethingMissing"
-                 :deprecated "Use onSomethingElse instead."
-                 :params     [{:name "ep1"
-                               :type "some-type"}]}]})
+  {:namespace "chrome.playground"
+   :since     "15"
+   :properties
+              [{:id          ::some-prop
+                :deprecated  "use someOtherProp instead"
+                :name        "someProp"
+                :return-type "marshalled-type"}
+               {:id          ::some-missing-prop
+                :name        "someMissingProp"
+                :return-type "some-type"}]
+   :functions
+              [{:id          ::do-something
+                :name        "doSomething"
+                :since       "24"
+                :return-type "marshalled-type"
+                :params      [{:name "param1"
+                               :type "marshalled-type"}]}
+               {:id        ::get-something
+                :name      "getSomething"
+                :since     "10"
+                :callback? true
+                :params    [{:name "param1"
+                             :type "marshalled-type"}
+                            {:name     "callback"
+                             :type     :callback
+                             :callback {:params [{:name "callback-param"
+                                                  :type "marshalled-type"}]}}]}
+               {:id          ::do-something-optional-args
+                :name        "doSomethingOptionalArgs"
+                :since       "10"
+                :return-type "some-type"
+                :params      [{:name      "op1"
+                               :optional? true
+                               :type      "some-type"}
+                              {:name      "op2"
+                               :optional? true
+                               :type      "marshalled-type"}
+                              {:name      "op3"
+                               :optional? true
+                               :type      "some-type"}]}
+               {:id          ::do-something-missing
+                :name        "doSomethingMissing"
+                :return-type "some-type"
+                :params      []}
+               {:id          ::get-storage-area
+                :name        "getStorageArea"
+                :return-type "storage.StorageArea"
+                :params      []}
+               {:id          ::get-port
+                :name        "getPort"
+                :return-type "runtime.Port"
+                :params      []}
+               {:id     ::call-future-api
+                :name   "callFutureApi"
+                :since  "100"
+                :params []}
+               {:id     ::call-master-api
+                :name   "callMasterApi"
+                :since  "master"
+                :params []}]
+   :events
+              [{:id     ::on-something
+                :name   "onSomething"
+                :params [{:name "ep1"
+                          :type "marshalled-type"}]}
+               {:id         ::on-something-deprecated
+                :name       "onSomethingDeprecated"
+                :deprecated "Use onSomething instead."
+                :params     [{:name "ep1"
+                              :type "some-type"}]}
+               {:id     ::on-something-else
+                :name   "onSomethingElse"
+                :params [{:name "ep1"
+                          :type "some-type"}
+                         {:name "ep2"
+                          :type "marshalled-type"}]}
+               {:id         ::on-something-missing
+                :name       "onSomethingMissing"
+                :deprecated "Use onSomethingElse instead."
+                :params     [{:name "ep1"
+                              :type "some-type"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
+; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]
-  (let [static-config (get-static-config)]
-    (apply gen-wrap-from-table static-config api-table kind item-id config args)))
+  (apply gen-wrap-helper api-table kind item-id config args))
 
-(defn gen-call [kind item src-info & args]
-  (let [static-config (get-static-config)
-        config (gen-active-config static-config)]
-    (apply gen-call-from-table static-config api-table kind item src-info config args)))
+; code generation for API call-site
+(def gen-call (partial gen-call-helper api-table))
 
 ; ---------------------------------------------------------------------------------------------------------------------------
 
