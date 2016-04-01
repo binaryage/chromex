@@ -39,12 +39,11 @@
     (if-let [error (oget js/chrome "runtime" "lastError")]
       (do
         (set-last-error! error)
-        (report-error-if-needed! config descriptor error)
-        (close! chan))
+        (report-error-if-needed! config descriptor error))
       (do
         (set-last-error! nil)
-        (put! chan (vec args))
-        (close! chan)))))
+        (put! chan (vec args))))
+    (close! chan)))
 
 (defn default-callback-channel-factory [_config]
   (chan))
