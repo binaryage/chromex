@@ -63,12 +63,12 @@
       (if-not (:elide-missing-api-checks static-config)
         {:missing-api-check-fn 'chromex.defaults/default-missing-api-check}))))
 
-(defmacro with-custom-event-listener-factory [fn-factory & body]
-  `(binding [chromex.config/*active-config* (-> (chromex.config/get-active-config)
-                                                (assoc :event-listener-factory ~fn-factory))]
+(defmacro with-custom-config [f & body]
+  `(binding [chromex.config/*active-config* (~f (chromex.config/get-active-config))]
      ~@body))
 
+(defmacro with-custom-event-listener-factory [fn-factory & body]
+  `(chromex.config/with-custom-config #(assoc % :event-listener-factory ~fn-factory) ~@body))
+
 (defmacro with-muted-error-reporting [& body]
-  `(binding [chromex.config/*active-config* (-> (chromex.config/get-active-config)
-                                                (dissoc :callback-error-reporter))]
-     ~@body))
+  `(chromex.config/with-custom-config #(dissoc % :callback-error-reporter) ~@body))
