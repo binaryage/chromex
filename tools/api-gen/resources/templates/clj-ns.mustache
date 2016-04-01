@@ -21,7 +21,7 @@
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
-"Taps all valid non-deprecated events in this namespace."
+"Taps all valid non-deprecated events in {{{ns-name}}} namespace."
 [chan]
 (let [static-config (get-static-config)
       config (gen-active-config static-config)]
