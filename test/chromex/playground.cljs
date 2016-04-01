@@ -16,6 +16,9 @@
 (defn get-something* [config param1]
   (gen-wrap :function ::get-something config param1))
 
+(defn get-something-causing-error* [config param1]
+  (gen-wrap :function ::get-something-causing-error config param1))
+
 (defn do-something* [config param1]
   (gen-wrap :function ::do-something config param1))
 

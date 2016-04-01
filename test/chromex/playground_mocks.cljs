@@ -13,7 +13,15 @@
 (defn get-something-mock [param1 callback]
   (go
     (<! (timeout 20))
+    (set-last-error nil)
     (callback (str "answer is " param1))))
+
+(defn get-something-causing-error-mock [param1 callback]
+  (go
+    (<! (timeout 20))
+    (set-last-error #js {:message "get-something caused an error" :code 666})
+    (callback "errored on param" param1)
+    (set-last-error nil)))
 
 (defn do-something-mock [param1]
   (str "got " param1))
@@ -55,7 +63,8 @@
   (go
     (<! (timeout 20))
     (set-last-error error)
-    (callback)))
+    (callback)
+    (set-last-error nil)))
 
 (defn get-storage-area-mock []
   (js-obj
@@ -110,6 +119,7 @@
 (oset js/window ["chrome" "playground"] #js {})
 
 (oset js/window ["chrome" "playground" "getSomething"] get-something-mock)
+(oset js/window ["chrome" "playground" "getSomethingCausingError"] get-something-causing-error-mock)
 (oset js/window ["chrome" "playground" "doSomething"] do-something-mock)
 (oset js/window ["chrome" "playground" "doSomethingOptionalArgs"] do-something-optional-args-mock)
 (oset js/window ["chrome" "playground" "someProp"] "prop1val")

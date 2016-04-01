@@ -4,13 +4,15 @@
             [cljs.core.async :refer [<! >! timeout chan close!]]
             [chromex.test-utils :refer [advanced-mode?] :refer-macros [valid-api-version?]]
             [chromex.playground-mocks :refer [last-event-result]]
-            [chromex.support :refer-macros [oset]]
-            [chromex.config :refer-macros [with-custom-event-listener-factory]]
+            [chromex.support :refer-macros [oset oget ocall oapply]]
+            [chromex.error :refer [get-last-error set-last-error!]]
+            [chromex.config :refer-macros [with-custom-event-listener-factory with-muted-error-reporting with-custom-config]]
             [chromex.playground :refer-macros [get-something do-something get-some-prop tap-on-something-events
                                                tap-all-events do-something-optional-args tap-on-something-else-events
                                                get-some-missing-prop do-something-missing tap-on-something-missing-events
-                                               call-future-api call-master-api]]
-            [chromex.chrome-event-channel :refer [make-chrome-event-channel]]))
+                                               call-future-api call-master-api get-something-causing-error]]
+            [chromex.chrome-event-channel :refer [make-chrome-event-channel]]
+            [clojure.string :as string]))
 
 ; -- test against mocks -----------------------------------------------------------------------------------------------------
 
@@ -25,6 +27,54 @@
         (let [[result] (<! (get-something "param"))]
           (is (= result "from-native[answer is to-native[param]]"))
           (done))))))
+
+(deftest test-api-call-causing-error
+  (testing "get something causing error"
+    (async done
+      (go
+        (with-muted-error-reporting
+          (is (= (get-last-error) nil))
+          (let [result (<! (get-something-causing-error "param"))]
+            (is (= result nil) "result channel should close when errored")
+            (let [last-error (get-last-error)]
+              (is (= (oget last-error "message") "get-something caused an error"))
+              (is (= (oget last-error "code") 666))
+              (set-last-error! nil))
+            (done)))))))
+
+(deftest test-reset-last-error
+  (testing "non-error call should reset last error"
+    (async done
+      (go
+        (with-muted-error-reporting
+          (is (= (get-last-error) nil))
+          (let [result (<! (get-something-causing-error "param"))]
+            (is (= result nil) "result channel should close when errored")
+            (is (some? (get-last-error)))
+            (<! (get-something "param"))
+            (is (= (get-last-error) nil))                                                                                     ; last error got resetted to nil
+            (done)))))))
+
+(deftest test--custom-error-reporter
+  (testing "excercise custom error reporter"
+    (async done
+      (go
+        (let [expected-report (str "[{:id :chromex.playground/get-something-causing-error, "
+                                   ":name \"getSomethingCausingError\", "
+                                   ":callback? true, "
+                                   ":params [{:name \"param1\", :type \"some-type\"} "
+                                   "{:name \"callback\", :type :callback, :callback {:params []}}], "
+                                   ":function? true} "
+                                   "#js {:message \"get-something caused an error\", :code 666}]")
+              reported (volatile! [])
+              reporter (fn [descriptor error]
+                         (vswap! reported conj (pr-str [descriptor error])))]
+          (with-custom-config #(assoc % :callback-error-reporter reporter)
+            (is (= (get-last-error) nil))
+            (<! (get-something-causing-error "param"))
+            (is (= (string/join @reported) expected-report))
+            (set-last-error! nil)
+            (done)))))))
 
 (deftest test-optional-args
   (testing "do something with optional args"

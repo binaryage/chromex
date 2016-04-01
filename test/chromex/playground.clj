@@ -20,6 +20,9 @@
 (defmacro get-something [param1]
   (gen-call :function ::get-something &form param1 #_callback))
 
+(defmacro get-something-causing-error [param1]
+  (gen-call :function ::get-something-causing-error &form param1 #_callback))
+
 (defmacro do-something [param1]
   (gen-call :function ::do-something &form param1))
 
@@ -97,6 +100,14 @@
                              :type     :callback
                              :callback {:params [{:name "callback-param"
                                                   :type "marshalled-type"}]}}]}
+               {:id        ::get-something-causing-error
+                :name      "getSomethingCausingError"
+                :callback? true
+                :params    [{:name "param1"
+                             :type "some-type"}
+                            {:name     "callback"
+                             :type     :callback
+                             :callback {:params []}}]}
                {:id          ::do-something-optional-args
                 :name        "doSomethingOptionalArgs"
                 :since       "10"
