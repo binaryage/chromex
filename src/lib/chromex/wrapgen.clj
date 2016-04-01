@@ -173,7 +173,7 @@
 
 (defn gen-function-wrap [static-config api-table item-id config & args]
   (let [descriptor (get-item-by-id item-id (:functions api-table))
-        _ (assert descriptor (str "unable to find function with id " item-id "in:\n" api-table))
+        _ (assert descriptor (str "unable to find function with id " item-id " in:\n" api-table))
         tagged-descriptior (assoc descriptor :function? true)]
     (if (:callback? descriptor)
       (apply gen-callback-function-wrap static-config api-table tagged-descriptior config args)
@@ -181,13 +181,13 @@
 
 (defn gen-property-wrap [static-config api-table item-id config & args]
   (let [descriptor (get-item-by-id item-id (:properties api-table))
-        _ (assert descriptor (str "unable to find property with id " item-id "in:\n" api-table))
+        _ (assert descriptor (str "unable to find property with id " item-id " in:\n" api-table))
         tagged-descriptor (assoc descriptor :property? true)]
     (apply gen-marshalling static-config api-table tagged-descriptor config args)))
 
 (defn gen-event-wrap [static-config api-table item-id config & args]
   (let [descriptor (get-item-by-id item-id (:events api-table))
-        _ (assert descriptor (str "unable to find event with id " item-id "in:\n" api-table))
+        _ (assert descriptor (str "unable to find event with id " item-id " in:\n" api-table))
         tagged-descriptor (assoc descriptor :event? true)]
     (apply gen-event static-config api-table tagged-descriptor config args)))
 
