@@ -16,7 +16,8 @@
                                     "test/_generated"]
 
   :plugins [[lein-cljsbuild "1.1.1"]
-            [lein-environ "1.0.2"]]
+            [lein-environ "1.0.2"]
+            [lein-shell "0.5.0"]]
 
   :hooks [leiningen.cljsbuild]
 
@@ -81,4 +82,10 @@
 
   :aliases {"test"          ["with-profile" "test" "cljsbuild" "test" "unit"]
             "test-advanced" ["with-profile" "test-advanced" "cljsbuild" "test" "unit"]
-            "test-all"      ["do" "test," "test-advanced"]})
+            "test-all"      ["do" "test," "test-advanced"]
+            "release"       ["do"
+                             "clean,"
+                             "test-all,"
+                             "jar,"
+                             "shell" "scripts/check-release.sh,"
+                             "deploy" "clojars"]})
