@@ -82,12 +82,16 @@
 
 (defn on-user-info-updated* [config channel & args]
   (gen-wrap :event ::on-user-info-updated config channel args))
+
 (defn on-start-auto-pairing* [config channel & args]
   (gen-wrap :event ::on-start-auto-pairing config channel args))
+
 (defn on-connection-status-changed* [config channel & args]
   (gen-wrap :event ::on-connection-status-changed config channel args))
+
 (defn on-data-received* [config channel & args]
   (gen-wrap :event ::on-data-received config channel args))
+
 (defn on-send-completed* [config channel & args]
   (gen-wrap :event ::on-send-completed config channel args))
 

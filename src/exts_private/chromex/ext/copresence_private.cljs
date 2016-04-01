@@ -16,8 +16,10 @@
 
 (defn on-config-audio* [config channel & args]
   (gen-wrap :event ::on-config-audio config channel args))
+
 (defn on-encode-token-request* [config channel & args]
   (gen-wrap :event ::on-encode-token-request config channel args))
+
 (defn on-decode-samples-request* [config channel & args]
   (gen-wrap :event ::on-decode-samples-request config channel args))
 

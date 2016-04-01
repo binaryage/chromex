@@ -40,10 +40,13 @@
 
 (defn on-accept* [config channel & args]
   (gen-wrap :event ::on-accept config channel args))
+
 (defn on-accept-error* [config channel & args]
   (gen-wrap :event ::on-accept-error config channel args))
+
 (defn on-receive* [config channel & args]
   (gen-wrap :event ::on-receive config channel args))
+
 (defn on-receive-error* [config channel & args]
   (gen-wrap :event ::on-receive-error config channel args))
 

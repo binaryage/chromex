@@ -46,6 +46,7 @@
 
 (defn on-gallery-changed* [config channel & args]
   (gen-wrap :event ::on-gallery-changed config channel args))
+
 (defn on-scan-progress* [config channel & args]
   (gen-wrap :event ::on-scan-progress config channel args))
 

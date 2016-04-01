@@ -19,6 +19,7 @@
 
 (defn on-received* [config channel & args]
   (gen-wrap :event ::on-received config channel args))
+
 (defn on-transmit-fail* [config channel & args]
   (gen-wrap :event ::on-transmit-fail config channel args))
 

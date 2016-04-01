@@ -85,6 +85,7 @@
 
 (defn on-item-state-changed* [config channel & args]
   (gen-wrap :event ::on-item-state-changed config channel args))
+
 (defn on-profile-state-changed* [config channel & args]
   (gen-wrap :event ::on-profile-state-changed config channel args))
 

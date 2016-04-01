@@ -39,6 +39,7 @@
 
 (defn on-request* [config channel & args]
   (gen-wrap :event ::on-request config channel args))
+
 (defn on-request-external* [config channel & args]
   (gen-wrap :event ::on-request-external config channel args))
 

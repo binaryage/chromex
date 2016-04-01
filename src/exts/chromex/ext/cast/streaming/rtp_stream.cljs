@@ -28,8 +28,10 @@
 
 (defn on-started* [config channel & args]
   (gen-wrap :event ::on-started config channel args))
+
 (defn on-stopped* [config channel & args]
   (gen-wrap :event ::on-stopped config channel args))
+
 (defn on-error* [config channel & args]
   (gen-wrap :event ::on-error config channel args))
 

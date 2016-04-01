@@ -16,10 +16,13 @@
 
 (defn on-device-changed* [config channel & args]
   (gen-wrap :event ::on-device-changed config channel args))
+
 (defn on-level-changed* [config channel & args]
   (gen-wrap :event ::on-level-changed config channel args))
+
 (defn on-mute-changed* [config channel & args]
   (gen-wrap :event ::on-mute-changed config channel args))
+
 (defn on-devices-changed* [config channel & args]
   (gen-wrap :event ::on-devices-changed config channel args))
 

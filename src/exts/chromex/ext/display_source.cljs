@@ -19,8 +19,10 @@
 
 (defn on-sinks-updated* [config channel & args]
   (gen-wrap :event ::on-sinks-updated config channel args))
+
 (defn on-session-terminated* [config channel & args]
   (gen-wrap :event ::on-session-terminated config channel args))
+
 (defn on-session-error-occured* [config channel & args]
   (gen-wrap :event ::on-session-error-occured config channel args))
 

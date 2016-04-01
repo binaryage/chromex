@@ -5,8 +5,10 @@
 
 (defn on-embed-requested* [config channel & args]
   (gen-wrap :event ::on-embed-requested config channel args))
+
 (defn on-launched* [config channel & args]
   (gen-wrap :event ::on-launched config channel args))
+
 (defn on-restarted* [config channel & args]
   (gen-wrap :event ::on-restarted config channel args))
 

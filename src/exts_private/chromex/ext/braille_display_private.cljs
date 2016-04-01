@@ -13,6 +13,7 @@
 
 (defn on-display-state-changed* [config channel & args]
   (gen-wrap :event ::on-display-state-changed config channel args))
+
 (defn on-key-event* [config channel & args]
   (gen-wrap :event ::on-key-event config channel args))
 

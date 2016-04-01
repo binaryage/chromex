@@ -31,6 +31,7 @@
 
 (defn on-accept* [config channel & args]
   (gen-wrap :event ::on-accept config channel args))
+
 (defn on-accept-error* [config channel & args]
   (gen-wrap :event ::on-accept-error config channel args))
 

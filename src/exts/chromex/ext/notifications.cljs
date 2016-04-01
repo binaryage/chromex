@@ -22,12 +22,16 @@
 
 (defn on-closed* [config channel & args]
   (gen-wrap :event ::on-closed config channel args))
+
 (defn on-clicked* [config channel & args]
   (gen-wrap :event ::on-clicked config channel args))
+
 (defn on-button-clicked* [config channel & args]
   (gen-wrap :event ::on-button-clicked config channel args))
+
 (defn on-permission-level-changed* [config channel & args]
   (gen-wrap :event ::on-permission-level-changed config channel args))
+
 (defn on-show-settings* [config channel & args]
   (gen-wrap :event ::on-show-settings config channel args))
 

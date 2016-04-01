@@ -25,6 +25,7 @@
 
 (defn on-address-list-changed* [config channel & args]
   (gen-wrap :event ::on-address-list-changed config channel args))
+
 (defn on-credit-card-list-changed* [config channel & args]
   (gen-wrap :event ::on-credit-card-list-changed config channel args))
 

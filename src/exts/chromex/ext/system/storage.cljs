@@ -16,6 +16,7 @@
 
 (defn on-attached* [config channel & args]
   (gen-wrap :event ::on-attached config channel args))
+
 (defn on-detached* [config channel & args]
   (gen-wrap :event ::on-detached config channel args))
 

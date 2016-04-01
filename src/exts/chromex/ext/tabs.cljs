@@ -81,28 +81,40 @@
 
 (defn on-created* [config channel & args]
   (gen-wrap :event ::on-created config channel args))
+
 (defn on-updated* [config channel & args]
   (gen-wrap :event ::on-updated config channel args))
+
 (defn on-moved* [config channel & args]
   (gen-wrap :event ::on-moved config channel args))
+
 (defn on-selection-changed* [config channel & args]
   (gen-wrap :event ::on-selection-changed config channel args))
+
 (defn on-active-changed* [config channel & args]
   (gen-wrap :event ::on-active-changed config channel args))
+
 (defn on-activated* [config channel & args]
   (gen-wrap :event ::on-activated config channel args))
+
 (defn on-highlight-changed* [config channel & args]
   (gen-wrap :event ::on-highlight-changed config channel args))
+
 (defn on-highlighted* [config channel & args]
   (gen-wrap :event ::on-highlighted config channel args))
+
 (defn on-detached* [config channel & args]
   (gen-wrap :event ::on-detached config channel args))
+
 (defn on-attached* [config channel & args]
   (gen-wrap :event ::on-attached config channel args))
+
 (defn on-removed* [config channel & args]
   (gen-wrap :event ::on-removed config channel args))
+
 (defn on-replaced* [config channel & args]
   (gen-wrap :event ::on-replaced config channel args))
+
 (defn on-zoom-change* [config channel & args]
   (gen-wrap :event ::on-zoom-change config channel args))
 

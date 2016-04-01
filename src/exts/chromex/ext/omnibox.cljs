@@ -10,10 +10,13 @@
 
 (defn on-input-started* [config channel & args]
   (gen-wrap :event ::on-input-started config channel args))
+
 (defn on-input-changed* [config channel & args]
   (gen-wrap :event ::on-input-changed config channel args))
+
 (defn on-input-entered* [config channel & args]
   (gen-wrap :event ::on-input-entered config channel args))
+
 (defn on-input-cancelled* [config channel & args]
   (gen-wrap :event ::on-input-cancelled config channel args))
 

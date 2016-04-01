@@ -28,6 +28,7 @@
 
 (defn on-service-status-changed* [config channel & args]
   (gen-wrap :event ::on-service-status-changed config channel args))
+
 (defn on-file-status-changed* [config channel & args]
   (gen-wrap :event ::on-file-status-changed config channel args))
 

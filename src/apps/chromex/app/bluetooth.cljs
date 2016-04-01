@@ -22,10 +22,13 @@
 
 (defn on-adapter-state-changed* [config channel & args]
   (gen-wrap :event ::on-adapter-state-changed config channel args))
+
 (defn on-device-added* [config channel & args]
   (gen-wrap :event ::on-device-added config channel args))
+
 (defn on-device-changed* [config channel & args]
   (gen-wrap :event ::on-device-changed config channel args))
+
 (defn on-device-removed* [config channel & args]
   (gen-wrap :event ::on-device-removed config channel args))
 

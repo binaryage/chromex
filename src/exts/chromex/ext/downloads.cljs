@@ -49,10 +49,13 @@
 
 (defn on-created* [config channel & args]
   (gen-wrap :event ::on-created config channel args))
+
 (defn on-erased* [config channel & args]
   (gen-wrap :event ::on-erased config channel args))
+
 (defn on-changed* [config channel & args]
   (gen-wrap :event ::on-changed config channel args))
+
 (defn on-determining-filename* [config channel & args]
   (gen-wrap :event ::on-determining-filename config channel args))
 

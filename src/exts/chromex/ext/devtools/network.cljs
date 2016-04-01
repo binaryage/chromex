@@ -10,6 +10,7 @@
 
 (defn on-request-finished* [config channel & args]
   (gen-wrap :event ::on-request-finished config channel args))
+
 (defn on-navigated* [config channel & args]
   (gen-wrap :event ::on-navigated config channel args))
 

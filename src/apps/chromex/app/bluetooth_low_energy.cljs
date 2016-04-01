@@ -58,12 +58,16 @@
 
 (defn on-service-added* [config channel & args]
   (gen-wrap :event ::on-service-added config channel args))
+
 (defn on-service-changed* [config channel & args]
   (gen-wrap :event ::on-service-changed config channel args))
+
 (defn on-service-removed* [config channel & args]
   (gen-wrap :event ::on-service-removed config channel args))
+
 (defn on-characteristic-value-changed* [config channel & args]
   (gen-wrap :event ::on-characteristic-value-changed config channel args))
+
 (defn on-descriptor-value-changed* [config channel & args]
   (gen-wrap :event ::on-descriptor-value-changed config channel args))
 

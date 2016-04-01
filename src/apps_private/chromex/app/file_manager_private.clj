@@ -4,10 +4,9 @@
 
      * available since Chrome 39"
 
-  (:refer-clojure :only [defmacro defn apply declare meta let])
-  (:require [chromex.wrapgen :refer [gen-wrap-from-table]]
-            [chromex.callgen :refer [gen-call-from-table gen-tap-all-call]]
-            [chromex.config :refer [get-static-config gen-active-config]]))
+  (:refer-clojure :only [defmacro defn apply declare meta let partial])
+  (:require [chromex.wrapgen :refer [gen-wrap-helper]]
+            [chromex.callgen :refer [gen-call-helper gen-tap-all-events-call]]))
 
 (declare api-table)
 (declare gen-call)
@@ -722,11 +721,9 @@
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
-  "Taps all valid non-deprecated events in this namespace."
+  "Taps all valid non-deprecated events in chromex.app.file-manager-private namespace."
   [chan]
-  (let [static-config (get-static-config)
-        config (gen-active-config static-config)]
-    (gen-tap-all-call static-config api-table (meta &form) config chan)))
+  (gen-tap-all-events-call api-table (meta &form) chan))
 
 ; ---------------------------------------------------------------------------------------------------------------------------
 ; -- API TABLE --------------------------------------------------------------------------------------------------------------
@@ -1029,11 +1026,7 @@
 
 ; code generation for native API wrapper
 (defmacro gen-wrap [kind item-id config & args]
-  (let [static-config (get-static-config)]
-    (apply gen-wrap-from-table static-config api-table kind item-id config args)))
+  (apply gen-wrap-helper api-table kind item-id config args))
 
 ; code generation for API call-site
-(defn gen-call [kind item src-info & args]
-  (let [static-config (get-static-config)
-        config (gen-active-config static-config)]
-    (apply gen-call-from-table static-config api-table kind item src-info config args)))
+(def gen-call (partial gen-call-helper api-table))

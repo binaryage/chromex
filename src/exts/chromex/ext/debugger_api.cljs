@@ -19,6 +19,7 @@
 
 (defn on-event* [config channel & args]
   (gen-wrap :event ::on-event config channel args))
+
 (defn on-detach* [config channel & args]
   (gen-wrap :event ::on-detach config channel args))
 

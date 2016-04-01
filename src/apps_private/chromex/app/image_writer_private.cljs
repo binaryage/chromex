@@ -22,12 +22,16 @@
 
 (defn on-write-progress* [config channel & args]
   (gen-wrap :event ::on-write-progress config channel args))
+
 (defn on-write-complete* [config channel & args]
   (gen-wrap :event ::on-write-complete config channel args))
+
 (defn on-write-error* [config channel & args]
   (gen-wrap :event ::on-write-error config channel args))
+
 (defn on-device-inserted* [config channel & args]
   (gen-wrap :event ::on-device-inserted config channel args))
+
 (defn on-device-removed* [config channel & args]
   (gen-wrap :event ::on-device-removed config channel args))
 

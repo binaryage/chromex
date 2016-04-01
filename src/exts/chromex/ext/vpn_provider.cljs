@@ -22,12 +22,16 @@
 
 (defn on-platform-message* [config channel & args]
   (gen-wrap :event ::on-platform-message config channel args))
+
 (defn on-packet-received* [config channel & args]
   (gen-wrap :event ::on-packet-received config channel args))
+
 (defn on-config-removed* [config channel & args]
   (gen-wrap :event ::on-config-removed config channel args))
+
 (defn on-config-created* [config channel & args]
   (gen-wrap :event ::on-config-created config channel args))
+
 (defn on-ui-event* [config channel & args]
   (gen-wrap :event ::on-ui-event config channel args))
 

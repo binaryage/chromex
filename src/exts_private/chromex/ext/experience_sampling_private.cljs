@@ -10,6 +10,7 @@
 
 (defn on-displayed* [config channel & args]
   (gen-wrap :event ::on-displayed config channel args))
+
 (defn on-decision* [config channel & args]
   (gen-wrap :event ::on-decision config channel args))
 

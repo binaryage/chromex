@@ -48,16 +48,22 @@
 
 (defn on-created* [config channel & args]
   (gen-wrap :event ::on-created config channel args))
+
 (defn on-removed* [config channel & args]
   (gen-wrap :event ::on-removed config channel args))
+
 (defn on-changed* [config channel & args]
   (gen-wrap :event ::on-changed config channel args))
+
 (defn on-moved* [config channel & args]
   (gen-wrap :event ::on-moved config channel args))
+
 (defn on-children-reordered* [config channel & args]
   (gen-wrap :event ::on-children-reordered config channel args))
+
 (defn on-import-began* [config channel & args]
   (gen-wrap :event ::on-import-began config channel args))
+
 (defn on-import-ended* [config channel & args]
   (gen-wrap :event ::on-import-ended config channel args))
 

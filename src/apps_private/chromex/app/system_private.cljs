@@ -16,10 +16,13 @@
 
 (defn on-volume-changed* [config channel & args]
   (gen-wrap :event ::on-volume-changed config channel args))
+
 (defn on-brightness-changed* [config channel & args]
   (gen-wrap :event ::on-brightness-changed config channel args))
+
 (defn on-screen-unlocked* [config channel & args]
   (gen-wrap :event ::on-screen-unlocked config channel args))
+
 (defn on-woke-up* [config channel & args]
   (gen-wrap :event ::on-woke-up config channel args))
 

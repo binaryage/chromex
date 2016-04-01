@@ -22,14 +22,19 @@
 
 (defn on-bounds-changed* [config channel & args]
   (gen-wrap :event ::on-bounds-changed config channel args))
+
 (defn on-closed* [config channel & args]
   (gen-wrap :event ::on-closed config channel args))
+
 (defn on-fullscreened* [config channel & args]
   (gen-wrap :event ::on-fullscreened config channel args))
+
 (defn on-maximized* [config channel & args]
   (gen-wrap :event ::on-maximized config channel args))
+
 (defn on-minimized* [config channel & args]
   (gen-wrap :event ::on-minimized config channel args))
+
 (defn on-restored* [config channel & args]
   (gen-wrap :event ::on-restored config channel args))
 

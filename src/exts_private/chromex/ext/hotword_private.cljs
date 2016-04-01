@@ -52,20 +52,28 @@
 
 (defn on-enabled-changed* [config channel & args]
   (gen-wrap :event ::on-enabled-changed config channel args))
+
 (defn on-hotword-session-requested* [config channel & args]
   (gen-wrap :event ::on-hotword-session-requested config channel args))
+
 (defn on-hotword-session-stopped* [config channel & args]
   (gen-wrap :event ::on-hotword-session-stopped config channel args))
+
 (defn on-finalize-speaker-model* [config channel & args]
   (gen-wrap :event ::on-finalize-speaker-model config channel args))
+
 (defn on-speaker-model-saved* [config channel & args]
   (gen-wrap :event ::on-speaker-model-saved config channel args))
+
 (defn on-hotword-triggered* [config channel & args]
   (gen-wrap :event ::on-hotword-triggered config channel args))
+
 (defn on-delete-speaker-model* [config channel & args]
   (gen-wrap :event ::on-delete-speaker-model config channel args))
+
 (defn on-speaker-model-exists* [config channel & args]
   (gen-wrap :event ::on-speaker-model-exists config channel args))
+
 (defn on-microphone-state-changed* [config channel & args]
   (gen-wrap :event ::on-microphone-state-changed config channel args))
 
