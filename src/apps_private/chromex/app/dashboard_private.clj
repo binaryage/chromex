@@ -25,19 +25,6 @@
    chromex.error/get-last-error."
   ([details] (gen-call :function ::show-permission-prompt-for-delegated-install &form details)))
 
-(defmacro show-permission-prompt-for-delegated-bundle-install
-  "Shows a permission prompt for the given bundle, for installing to a different account.
-
-     |details| - ?
-     |contents| - An array of extension details to be installed.
-
-   This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([details contents] (gen-call :function ::show-permission-prompt-for-delegated-bundle-install &form details contents)))
-
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -61,14 +48,7 @@
       {:name "callback",
        :optional? true,
        :type :callback,
-       :callback {:params [{:name "result", :type "dashboardPrivate.Result"}]}}]}
-    {:id ::show-permission-prompt-for-delegated-bundle-install,
-     :name "showPermissionPromptForDelegatedBundleInstall",
-     :callback? true,
-     :params
-     [{:name "details", :type "object"}
-      {:name "contents", :type "[array-of-objects]"}
-      {:name "callback", :optional? true, :type :callback}]}]})
+       :callback {:params [{:name "result", :type "dashboardPrivate.Result"}]}}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

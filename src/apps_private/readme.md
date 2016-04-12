@@ -47,7 +47,7 @@
 
 ### API stats
 
-Generated 39 namespaces containing 1 properties, 268 functions and 72 events:
+Generated 39 namespaces containing 1 properties, 267 functions and 72 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -59,7 +59,7 @@ Generated 39 namespaces containing 1 properties, 268 functions and 72 events:
     |   chrome.brailleDisplayPrivate |           0 |          2 |       2 |
     |     chrome.chromeosInfoPrivate |           0 |          2 |       0 |
     |      chrome.commandLinePrivate |           0 |          1 |       0 |
-    |        chrome.dashboardPrivate |           0 |          2 |       0 |
+    |        chrome.dashboardPrivate |           0 |          1 |       0 |
     |        chrome.developerPrivate |           0 |         26 |       2 |
     |       chrome.easyUnlockPrivate |           0 |         25 |       5 |
     |             chrome.echoPrivate |           0 |          5 |       0 |
@@ -123,8 +123,7 @@ Generated 39 namespaces containing 1 properties, 268 functions and 72 events:
       has-switch tap-all-events]]
 
     [chromex.app.dashboard-private refer-macros:[
-      show-permission-prompt-for-delegated-install show-permission-prompt-for-delegated-bundle-install
-      tap-all-events]]
+      show-permission-prompt-for-delegated-install tap-all-events]]
 
     [chromex.app.developer-private refer-macros:[
       auto-update get-extensions-info get-extension-info get-items-info get-profile-configuration

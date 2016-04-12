@@ -18,79 +18,91 @@
 ; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defmacro get-spoken-feedback
-  "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example.
+  "ChromeOS only.Spoken feedback (text-to-speech). The value indicates whether the feature is enabled or not. get() requires
+   accessibilityFeatures.read permission. set() and clear() require accessibilityFeatures.modify permission.
 
    https://developer.chrome.com/apps/accessibilityFeatures#property-spokenFeedback."
   ([] (gen-call :property ::spoken-feedback &form)))
 
 (defmacro get-large-cursor
-  "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example.
+  "ChromeOS only.Enlarged cursor. The value indicates whether the feature is enabled or not. get() requires
+   accessibilityFeatures.read permission. set() and clear() require accessibilityFeatures.modify permission.
 
    https://developer.chrome.com/apps/accessibilityFeatures#property-largeCursor."
   ([] (gen-call :property ::large-cursor &form)))
 
 (defmacro get-sticky-keys
-  "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example.
+  "ChromeOS only.Sticky modifier keys (like shift or alt). The value indicates whether the feature is enabled or not. get()
+   requires accessibilityFeatures.read permission. set() and clear() require accessibilityFeatures.modify permission.
 
    https://developer.chrome.com/apps/accessibilityFeatures#property-stickyKeys."
   ([] (gen-call :property ::sticky-keys &form)))
 
 (defmacro get-high-contrast
-  "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example.
+  "ChromeOS only.High contrast rendering mode. The value indicates whether the feature is enabled or not. get() requires
+   accessibilityFeatures.read permission. set() and clear() require accessibilityFeatures.modify permission.
 
    https://developer.chrome.com/apps/accessibilityFeatures#property-highContrast."
   ([] (gen-call :property ::high-contrast &form)))
 
 (defmacro get-screen-magnifier
-  "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example.
+  "ChromeOS only.Full screen magnification. The value indicates whether the feature is enabled or not. get() requires
+   accessibilityFeatures.read permission. set() and clear() require accessibilityFeatures.modify permission.
 
    https://developer.chrome.com/apps/accessibilityFeatures#property-screenMagnifier."
   ([] (gen-call :property ::screen-magnifier &form)))
 
 (defmacro get-autoclick
-  "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example.
+  "ChromeOS only.Auto mouse click after mouse stops moving. The value indicates whether the feature is enabled or not. get()
+   requires accessibilityFeatures.read permission. set() and clear() require accessibilityFeatures.modify permission.
 
    https://developer.chrome.com/apps/accessibilityFeatures#property-autoclick."
   ([] (gen-call :property ::autoclick &form)))
 
 (defmacro get-virtual-keyboard
-  "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example.
+  "ChromeOS only.Virtual on-screen keyboard. The value indicates whether the feature is enabled or not. get() requires
+   accessibilityFeatures.read permission. set() and clear() require accessibilityFeatures.modify permission.
 
    https://developer.chrome.com/apps/accessibilityFeatures#property-virtualKeyboard."
   ([] (gen-call :property ::virtual-keyboard &form)))
 
 (defmacro get-caret-highlight
-  "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example.
+  "ChromeOS only.Caret highlighting. The value indicates whether the feature is enabled or not. get() requires
+   accessibilityFeatures.read permission. set() and clear() require accessibilityFeatures.modify permission.
 
    https://developer.chrome.com/apps/accessibilityFeatures#property-caretHighlight."
   ([] (gen-call :property ::caret-highlight &form)))
 
 (defmacro get-cursor-highlight
-  "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example.
+  "ChromeOS only.Cursor highlighting. The value indicates whether the feature is enabled or not. get() requires
+   accessibilityFeatures.read permission. set() and clear() require accessibilityFeatures.modify permission.
 
    https://developer.chrome.com/apps/accessibilityFeatures#property-cursorHighlight."
   ([] (gen-call :property ::cursor-highlight &form)))
 
 (defmacro get-focus-highlight
-  "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example.
+  "ChromeOS only.Focus highlighting. The value indicates whether the feature is enabled or not. get() requires
+   accessibilityFeatures.read permission. set() and clear() require accessibilityFeatures.modify permission.
 
    https://developer.chrome.com/apps/accessibilityFeatures#property-focusHighlight."
   ([] (gen-call :property ::focus-highlight &form)))
 
 (defmacro get-select-to-speak
-  "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example.
+  "ChromeOS only.Select-to-speak. The value indicates whether the feature is enabled or not. get() requires
+   accessibilityFeatures.read permission. set() and clear() require accessibilityFeatures.modify permission.
 
    https://developer.chrome.com/apps/accessibilityFeatures#property-selectToSpeak."
   ([] (gen-call :property ::select-to-speak &form)))
 
 (defmacro get-switch-access
-  "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example.
+  "ChromeOS only.Switch access. The value indicates whether the feature is enabled or not. get() requires
+   accessibilityFeatures.read permission. set() and clear() require accessibilityFeatures.modify permission.
 
    https://developer.chrome.com/apps/accessibilityFeatures#property-switchAccess."
   ([] (gen-call :property ::switch-access &form)))
 
 (defmacro get-animation-policy
-  "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example.
+  "get() requires accessibilityFeatures.read permission. set() and clear() require accessibilityFeatures.modify permission.
 
    https://developer.chrome.com/apps/accessibilityFeatures#property-animationPolicy."
   ([] (gen-call :property ::animation-policy &form)))

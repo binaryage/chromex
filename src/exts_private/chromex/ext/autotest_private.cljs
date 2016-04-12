@@ -45,3 +45,6 @@
 (defn set-primary-button-right* [config right]
   (gen-wrap :function ::set-primary-button-right config right))
 
+(defn get-visible-notifications* [config]
+  (gen-wrap :function ::get-visible-notifications config))
+

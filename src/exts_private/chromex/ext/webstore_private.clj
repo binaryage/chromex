@@ -48,19 +48,6 @@
    chromex.error/get-last-error."
   ([expected-id] (gen-call :function ::complete-install &form expected-id)))
 
-(defmacro install-bundle
-  "Initiates the install process for the given bundle of extensions.
-
-     |details| - ?
-     |contents| - An array of extension details to be installed.
-
-   This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([details contents] (gen-call :function ::install-bundle &form details contents)))
-
 (defmacro enable-app-launcher
   "This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
@@ -201,14 +188,6 @@
      :since "8",
      :callback? true,
      :params [{:name "expected-id", :type "string"} {:name "callback", :optional? true, :type :callback}]}
-    {:id ::install-bundle,
-     :name "installBundle",
-     :since "19",
-     :callback? true,
-     :params
-     [{:name "details", :type "object"}
-      {:name "contents", :type "[array-of-objects]"}
-      {:name "callback", :optional? true, :type :callback}]}
     {:id ::enable-app-launcher,
      :name "enableAppLauncher",
      :since "28",

@@ -15,8 +15,7 @@
 
      |instance-id| - The instance ID of the guest webview process.
      |src| - The src of the guest webview tag.
-     |details| - Details of the script or CSS to inject. Either the code or the file property must be set, but both may not
-                 be set at the same time.
+     |details| - Details of the script to run.
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
@@ -32,8 +31,7 @@
 
      |instance-id| - The instance ID of the guest webview process.
      |src| - The src of the guest webview tag.
-     |details| - Details of the script or CSS to inject. Either the code or the file property must be set, but both may not
-                 be set at the same time.
+     |details| - Details of the CSS text to insert.
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
@@ -86,7 +84,7 @@
   "Sets the zoom mode of the webview.
 
      |instance-id| - The instance ID of the guest webview process.
-     |zoom-mode| - Defines the how zooming is handled in the webview.
+     |zoom-mode| - Defines how zooming is handled in the webview.
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
@@ -103,7 +101,7 @@
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [zoom-mode] where:
 
-     |zoom-mode| - Defines the how zooming is handled in the webview.
+     |zoom-mode| - The webview's current zoom mode.
 
    In case of error the channel closes without receiving any result and relevant error object can be obtained via
    chromex.error/get-last-error."
@@ -130,9 +128,7 @@
   "Ends the current find session (clearing all highlighting) and cancels all find requests in progress.
 
      |instance-id| - The instance ID of the guest webview process.
-     |action| - Determines what to do with the active match after the find session has ended. 'clear' will clear the
-                highlighting over the active match; 'keep' will keep the active match highlighted; 'activate' will keep the
-                active match highlighted and simulate a user click on that match."
+     |action| - Determines what to do with the active match after the find session has ended."
   ([instance-id action] (gen-call :function ::stop-finding &form instance-id action))
   ([instance-id] `(stop-finding ~instance-id :omit)))
 
@@ -241,7 +237,7 @@
 
      |instance-id| - The instance ID of the guest webview process.
      |options| - Options that determine exactly what data will be removed.
-     |data-to-remove| - A set of data types. Missing data types are interpreted as false.
+     |data-to-remove| - The set of data types to remove.
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].

@@ -101,6 +101,18 @@
      |right| - if set, swap the primary mouse button."
   ([right] (gen-call :function ::set-primary-button-right &form right)))
 
+(defmacro get-visible-notifications
+  "Get visible notifications on the system.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [notifications] where:
+
+     |notifications| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::get-visible-notifications &form)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -135,7 +147,12 @@
     {:id ::set-tap-dragging, :name "setTapDragging", :params [{:name "enabled", :type "boolean"}]}
     {:id ::set-natural-scroll, :name "setNaturalScroll", :params [{:name "enabled", :type "boolean"}]}
     {:id ::set-mouse-sensitivity, :name "setMouseSensitivity", :params [{:name "value", :type "integer"}]}
-    {:id ::set-primary-button-right, :name "setPrimaryButtonRight", :params [{:name "right", :type "boolean"}]}]})
+    {:id ::set-primary-button-right, :name "setPrimaryButtonRight", :params [{:name "right", :type "boolean"}]}
+    {:id ::get-visible-notifications,
+     :name "getVisibleNotifications",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "notifications", :type "object"}]}}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

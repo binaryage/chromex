@@ -20,7 +20,7 @@
 
    Events will be put on the |channel| with signature [::on-clicked [info tab]] where:
 
-     |info| - Information sent when a context menu item is clicked.
+     |info| - Information about the item clicked and the context where the click happened.
      |tab| - The details of the tab where the click took place. If the click did not take place in a tab, this parameter will
              be missing.
 

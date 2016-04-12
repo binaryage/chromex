@@ -319,8 +319,8 @@
   "Injects JavaScript code into a page. For details, see the programmatic injection section of the content scripts doc.
 
      |tab-id| - The ID of the tab in which to run the script; defaults to the active tab of the current window.
-     |details| - Details of the script or CSS to inject. Either the code or the file property must be set, but both may not
-                 be set at the same time.
+     |details| - Details of the script to run. Either the code or the file property must be set, but both may not be set at
+                 the same time.
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
@@ -337,8 +337,8 @@
   "Injects CSS into a page. For details, see the programmatic injection section of the content scripts doc.
 
      |tab-id| - The ID of the tab in which to insert the CSS; defaults to the active tab of the current window.
-     |details| - Details of the script or CSS to inject. Either the code or the file property must be set, but both may not
-                 be set at the same time.
+     |details| - Details of the CSS text to insert. Either the code or the file property must be set, but both may not be
+                 set at the same time.
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].

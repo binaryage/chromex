@@ -15,7 +15,7 @@
 ; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defmacro get-settings
-  "An interface that allows access to a Chrome browser setting. See 'accessibilityFeatures' for an example.
+  "Proxy settings to be used. The value of this setting is a ProxyConfig object.
 
    https://developer.chrome.com/apps/proxy#property-settings."
   ([] (gen-call :property ::settings &form)))

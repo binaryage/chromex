@@ -12,9 +12,6 @@
 (defn complete-install* [config expected-id]
   (gen-wrap :function ::complete-install config expected-id))
 
-(defn install-bundle* [config details contents]
-  (gen-wrap :function ::install-bundle config details contents))
-
 (defn enable-app-launcher* [config]
   (gen-wrap :function ::enable-app-launcher config))
 

@@ -51,7 +51,7 @@
 
 ### API stats
 
-Generated 43 namespaces containing 1 properties, 311 functions and 69 events:
+Generated 43 namespaces containing 1 properties, 310 functions and 69 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -59,7 +59,7 @@ Generated 43 namespaces containing 1 properties, 311 functions and 69 events:
     |           chrome.accessibilityPrivate |           0 |          3 |       1 |
     |             chrome.activityLogPrivate |           0 |          4 |       1 |
     |                chrome.autofillPrivate |           0 |          6 |       2 |
-    |                chrome.autotestPrivate |           0 |         14 |       0 |
+    |                chrome.autotestPrivate |           0 |         15 |       0 |
     |               chrome.bluetoothPrivate |           0 |          7 |       1 |
     |         chrome.bookmarkManagerPrivate |           0 |         21 |       4 |
     |          chrome.brailleDisplayPrivate |           0 |          2 |       2 |
@@ -68,7 +68,7 @@ Generated 43 namespaces containing 1 properties, 311 functions and 69 events:
     |             chrome.commandLinePrivate |           0 |          1 |       0 |
     |              chrome.copresencePrivate |           0 |          3 |       3 |
     |             chrome.cryptotokenPrivate |           0 |          1 |       0 |
-    |               chrome.dashboardPrivate |           0 |          2 |       0 |
+    |               chrome.dashboardPrivate |           0 |          1 |       0 |
     |               chrome.developerPrivate |           0 |         26 |       2 |
     |                    chrome.echoPrivate |           0 |          5 |       0 |
     | chrome.enterprise.platformKeysPrivate |           0 |          2 |       0 |
@@ -98,7 +98,7 @@ Generated 43 namespaces containing 1 properties, 311 functions and 69 events:
     |             chrome.webrtcAudioPrivate |           0 |          4 |       1 |
     |    chrome.webrtcDesktopCapturePrivate |           0 |          2 |       0 |
     |           chrome.webrtcLoggingPrivate |           0 |         12 |       0 |
-    |                chrome.webstorePrivate |           0 |         13 |       0 |
+    |                chrome.webstorePrivate |           0 |         12 |       0 |
 
 ### Requires
 
@@ -120,7 +120,8 @@ Generated 43 namespaces containing 1 properties, 311 functions and 69 events:
     [chromex.ext.autotest-private refer-macros:[
       logout restart shutdown login-status lock-screen get-extensions-info simulate-asan-memory-bug
       set-touchpad-sensitivity set-tap-to-click set-three-finger-click set-tap-dragging
-      set-natural-scroll set-mouse-sensitivity set-primary-button-right tap-all-events]]
+      set-natural-scroll set-mouse-sensitivity set-primary-button-right get-visible-notifications
+      tap-all-events]]
 
     [chromex.ext.bluetooth-private refer-macros:[
       set-adapter-state set-pairing-response disconnect-all forget-device set-discovery-filter connect
@@ -152,8 +153,7 @@ Generated 43 namespaces containing 1 properties, 311 functions and 69 events:
       can-origin-assert-app-id tap-all-events]]
 
     [chromex.ext.dashboard-private refer-macros:[
-      show-permission-prompt-for-delegated-install show-permission-prompt-for-delegated-bundle-install
-      tap-all-events]]
+      show-permission-prompt-for-delegated-install tap-all-events]]
 
     [chromex.ext.developer-private refer-macros:[
       auto-update get-extensions-info get-extension-info get-items-info get-profile-configuration
@@ -296,7 +296,7 @@ Generated 43 namespaces containing 1 properties, 311 functions and 69 events:
       start-rtp-dump stop-rtp-dump start-audio-debug-recordings stop-audio-debug-recordings tap-all-events]]
 
     [chromex.ext.webstore-private refer-macros:[
-      install begin-install-with-manifest3 complete-install install-bundle enable-app-launcher
-      get-browser-login get-store-login set-store-login get-web-gl-status get-is-launcher-enabled
-      is-in-incognito-mode get-ephemeral-apps-enabled launch-ephemeral-app tap-all-events]]))
+      install begin-install-with-manifest3 complete-install enable-app-launcher get-browser-login
+      get-store-login set-store-login get-web-gl-status get-is-launcher-enabled is-in-incognito-mode
+      get-ephemeral-apps-enabled launch-ephemeral-app tap-all-events]]))
 ```
