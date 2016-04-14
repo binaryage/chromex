@@ -124,7 +124,7 @@
   "Attempts to connect to connect listeners within an extension/app (such as the background page), or other extensions/apps.
    This is useful for content scripts connecting to their extension processes, inter-app/extension communication, and web
    messaging. Note that this does not connect to any listeners in a content script. Extensions may connect to content scripts
-   embedded in tabs via tabs.connect.
+   embedded in tabs via 'tabs.connect'.
 
      |extension-id| - The ID of the extension or app to connect to. If omitted, a connection will be attempted with your own
                       extension. Required if sending messages from a web page for web messaging.
@@ -136,7 +136,7 @@
   ([] `(connect :omit :omit)))
 
 (defmacro connect-native
-  "Connects to a native application in the host machine.
+  "Connects to a native application in the host machine. See Native Messaging for more information.
 
      |application| - The name of the registered application to connect to.
 
@@ -148,11 +148,11 @@
    'runtime.connect' but only sends a single message, with an optional response. If sending to your extension, the
    'runtime.onMessage' event will be fired in each page, or 'runtime.onMessageExternal', if a different extension. Note that
    extensions cannot send messages to content scripts using this method. To send messages to content scripts, use
-   tabs.sendMessage.
+   'tabs.sendMessage'.
 
      |extension-id| - The ID of the extension/app to send the message to. If omitted, the message will be sent to your own
                       extension/app. Required if sending messages from a web page for web messaging.
-     |message| - https://developer.chrome.com/apps/runtime#property-sendMessage-message.
+     |message| - The message to send. This message should be a JSON-ifiable object.
      |options| - https://developer.chrome.com/apps/runtime#property-sendMessage-options.
 
    This function returns a core.async channel which eventually receives a result value and closes.
@@ -295,7 +295,7 @@
   ([channel & args] (apply gen-call :event ::on-browser-update-available &form channel args)))
 
 (defmacro tap-on-connect-events
-  "Fired when a connection is made from either an extension process or a content script.
+  "Fired when a connection is made from either an extension process or a content script (by 'runtime.connect').
 
    Events will be put on the |channel| with signature [::on-connect [port]] where:
 
@@ -307,7 +307,7 @@
   ([channel & args] (apply gen-call :event ::on-connect &form channel args)))
 
 (defmacro tap-on-connect-external-events
-  "Fired when a connection is made from another extension.
+  "Fired when a connection is made from another extension (by 'runtime.connect').
 
    Events will be put on the |channel| with signature [::on-connect-external [port]] where:
 
@@ -319,7 +319,8 @@
   ([channel & args] (apply gen-call :event ::on-connect-external &form channel args)))
 
 (defmacro tap-on-message-events
-  "Fired when a message is sent from either an extension process or a content script.
+  "Fired when a message is sent from either an extension process (by 'runtime.sendMessage') or a content script (by
+   'tabs.sendMessage').
 
    Events will be put on the |channel| with signature [::on-message [message sender send-response]] where:
 
@@ -332,7 +333,7 @@
   ([channel & args] (apply gen-call :event ::on-message &form channel args)))
 
 (defmacro tap-on-message-external-events
-  "Fired when a message is sent from another extension/app. Cannot be used in a content script.
+  "Fired when a message is sent from another extension/app (by 'runtime.sendMessage'). Cannot be used in a content script.
 
    Events will be put on the |channel| with signature [::on-message-external [message sender send-response]] where:
 

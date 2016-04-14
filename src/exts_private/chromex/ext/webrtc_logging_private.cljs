@@ -39,3 +39,9 @@
 (defn stop-audio-debug-recordings* [config request security-origin]
   (gen-wrap :function ::stop-audio-debug-recordings config request security-origin))
 
+(defn start-web-rtc-event-logging* [config request security-origin seconds]
+  (gen-wrap :function ::start-web-rtc-event-logging config request security-origin seconds))
+
+(defn stop-web-rtc-event-logging* [config request security-origin]
+  (gen-wrap :function ::stop-web-rtc-event-logging config request security-origin))
+

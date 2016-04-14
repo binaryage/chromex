@@ -91,7 +91,7 @@
    extension.
 
      |tab-id| - https://developer.chrome.com/extensions/tabs#property-sendMessage-tabId.
-     |message| - https://developer.chrome.com/extensions/tabs#property-sendMessage-message.
+     |message| - The message to send. This message should be a JSON-ifiable object.
      |options| - https://developer.chrome.com/extensions/tabs#property-sendMessage-options.
 
    This function returns a core.async channel which eventually receives a result value and closes.
