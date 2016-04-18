@@ -13,7 +13,11 @@
             [lein-environ "1.0.2"]
             [lein-cooper "1.2.2"]]
 
-  :source-paths ["src"]
+  :source-paths ["src/background"
+                 "src/content_script"
+                 "src/dev"
+                 "src/figwheel"
+                 "src/popup"]
 
   :clean-targets ^{:protect false} ["target"
                                     "resources/unpacked/compiled"
