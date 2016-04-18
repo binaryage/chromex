@@ -79,6 +79,12 @@
              {:figwheel {:server-port    6888
                          :server-logfile ".figwheel_dirac.log"
                          :repl           false}}
+
+             :dev-mode
+             {:cooper {"content"  ["lein" "content"]
+                       "figwheel" ["lein" "fig"]
+                       "browser"  ["scripts/launch-test-browser.sh"]}}
+
              :release
              {:env       {:chromex-elide-verbose-logging "true"}
               :cljsbuild {:builds
