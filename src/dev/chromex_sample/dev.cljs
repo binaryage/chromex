@@ -1,5 +1,7 @@
-(ns chromex-sample.dev
-  (:require [chromex-sample.dev.devtools]))
+(ns ^:figwheel-no-load chromex-sample.dev
+  (:require [devtools.core :as devtools]))
 
 ; -------------------------------------------------------------------------------------------------------------------
 ; has to be included before boot
+
+(devtools/install!)
