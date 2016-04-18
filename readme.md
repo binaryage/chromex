@@ -47,6 +47,7 @@ java, maven, leiningen, etc.
       ```
       git clone https://github.com/binaryage/chromex-sample.git
       cd chromex-sample
+      ./scripts/ensure-checkouts.sh
       ```
   * (optional) clone chromex library, install it into your local maven repo and then add it into checkouts here
 
