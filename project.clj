@@ -13,10 +13,6 @@
             [lein-environ "1.0.2"]
             [lein-cooper "1.2.2"]]
 
-  :figwheel
-  {:server-port    7000
-   :server-logfile ".figwheel_server.log"}
-
   :source-paths ["src"]
 
   :clean-targets ^{:protect false} ["target"
@@ -74,6 +70,11 @@
                                                            "checkouts/chromex/src/exts"]}
                            :content-script {:source-paths ["checkouts/chromex/src/lib"
                                                            "checkouts/chromex/src/exts"]}}}}
+
+             :figwheel
+             {:figwheel {:server-port    6888
+                         :server-logfile ".figwheel_dirac.log"
+                         :repl           false}}
              :release
              {:env       {:chromex-elide-verbose-logging "true"}
               :cljsbuild {:builds
