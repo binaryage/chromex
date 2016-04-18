@@ -19,7 +19,12 @@ if [ -n "$USE_CHROMIUM" ] ; then
 fi
 
 # we want wait to compilation of our extensions, so that --load-extension param does not fail
-# see cljsbuild-notify.sh usage in project.clj
+
+SECS_TO_WAIT=120
+echo "waiting $SECS_TO_WAIT seconds before launching Chrome to give cljs compiler time to build the extension"
+sleep "$SECS_TO_WAIT"
+
+echo "launching Chrome from $EXE"
 
 set -x
 "$EXE" \

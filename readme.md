@@ -46,7 +46,7 @@ java, maven, leiningen, etc.
 
       ```
       git clone https://github.com/binaryage/chromex-sample.git
-      cd some/path/chromex-sample
+      cd chromex-sample
       ```
   * (optional) clone chromex library, install it into your local maven repo and then add it into checkouts here
 
@@ -60,12 +60,6 @@ java, maven, leiningen, etc.
       ln -s ../relative/path/to/chromex chromex
       ```
   * chromex sample is gets built into `resources/unpacked/compiled` folder.
-
-    To start developing you can run:
-      ```
-      lein devel
-      ```
-    Alternatively, if you want to use figwheel's REPL, you can run two commands:
 
     In one terminal session run (will build background and popup pages using figwheel):
       ```

@@ -105,7 +105,7 @@
                          "figwheel" "background" "popup"]
             "content"   ["with-profile" "+unpacked,+checkouts"
                          "cljsbuild" "auto" "content-script"]
-            "devel"     ["with-profile" "+dev-mode" "do"
+            "devel"     ["with-profile" "+dev-mode" "do"                                                                      ; for mac only
                          "shell" "scripts/ensure-checkouts.sh,"
                          "cooper"]
             "release"   ["with-profile" "+release"
