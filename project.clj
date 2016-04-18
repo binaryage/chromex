@@ -31,41 +31,29 @@
                            {:source-paths ["src/dev"
                                            "src/figwheel"
                                            "src/background"]
-                            :compiler     {:output-to             "resources/unpacked/compiled/background/chromex-sample.js"
-                                           :output-dir            "resources/unpacked/compiled/background"
-                                           :asset-path            "compiled/background"
-                                           :optimizations         :none
-                                           :anon-fn-naming-policy :unmapped
-                                           :compiler-stats        true
-                                           :cache-analysis        true
-                                           :source-map            true
-                                           :source-map-timestamp  true}}
+                            :compiler     {:output-to     "resources/unpacked/compiled/background/chromex-sample.js"
+                                           :output-dir    "resources/unpacked/compiled/background"
+                                           :asset-path    "compiled/background"
+                                           :optimizations :none
+                                           :source-map    true}}
                            :popup
                            {:source-paths ["src/dev"
                                            "src/figwheel"
                                            "src/popup"]
-                            :compiler     {:output-to             "resources/unpacked/compiled/popup/chromex-sample.js"
-                                           :output-dir            "resources/unpacked/compiled/popup"
-                                           :asset-path            "compiled/popup"
-                                           :optimizations         :none
-                                           :anon-fn-naming-policy :unmapped
-                                           :compiler-stats        true
-                                           :cache-analysis        true
-                                           :source-map            true
-                                           :source-map-timestamp  true}}
+                            :compiler     {:output-to     "resources/unpacked/compiled/popup/chromex-sample.js"
+                                           :output-dir    "resources/unpacked/compiled/popup"
+                                           :asset-path    "compiled/popup"
+                                           :optimizations :none
+                                           :source-map    true}}
                            :content-script
                            {:source-paths ["src/dev"
                                            "src/content_script"]
-                            :compiler     {:output-to             "resources/unpacked/compiled/content_script/chromex-sample.js"
-                                           :output-dir            "resources/unpacked/compiled/content_script"
-                                           :asset-path            "compiled/content_script"
-                                           :optimizations         :whitespace                                                 ; content scripts cannot do eval / load script dynamically
-                                           :anon-fn-naming-policy :unmapped
-                                           :pretty-print          true
-                                           :compiler-stats        true
-                                           :cache-analysis        true
-                                           :source-map            "resources/unpacked/compiled/content_script/chromex-sample.js.map"
-                                           :source-map-timestamp  true}}}}}
+                            :compiler     {:output-to     "resources/unpacked/compiled/content_script/chromex-sample.js"
+                                           :output-dir    "resources/unpacked/compiled/content_script"
+                                           :asset-path    "compiled/content_script"
+                                           :optimizations :whitespace                                                         ; content scripts cannot do eval / load script dynamically
+                                           :pretty-print  true
+                                           :source-map    "resources/unpacked/compiled/content_script/chromex-sample.js.map"}}}}}
              :checkouts
              {:cljsbuild {:builds
                           {:background     {:source-paths ["checkouts/chromex/src/lib"
@@ -90,28 +78,25 @@
               :cljsbuild {:builds
                           {:background
                            {:source-paths ["src/background"]
-                            :compiler     {:output-to      "resources/release/compiled/background.js"
-                                           :output-dir     "resources/release/compiled/background"
-                                           :asset-path     "compiled/background"
-                                           :optimizations  :advanced
-                                           :elide-asserts  true
-                                           :compiler-stats true}}
+                            :compiler     {:output-to     "resources/release/compiled/background.js"
+                                           :output-dir    "resources/release/compiled/background"
+                                           :asset-path    "compiled/background"
+                                           :optimizations :advanced
+                                           :elide-asserts true}}
                            :popup
                            {:source-paths ["src/popup"]
-                            :compiler     {:output-to      "resources/release/compiled/popup.js"
-                                           :output-dir     "resources/release/compiled/popup"
-                                           :asset-path     "compiled/popup"
-                                           :optimizations  :advanced
-                                           :elide-asserts  true
-                                           :compiler-stats true}}
+                            :compiler     {:output-to     "resources/release/compiled/popup.js"
+                                           :output-dir    "resources/release/compiled/popup"
+                                           :asset-path    "compiled/popup"
+                                           :optimizations :advanced
+                                           :elide-asserts true}}
                            :content-script
                            {:source-paths ["src/content_script"]
-                            :compiler     {:output-to      "resources/release/compiled/content_script.js"
-                                           :output-dir     "resources/release/compiled/content_script"
-                                           :asset-path     "compiled/content_script"
-                                           :optimizations  :advanced
-                                           :elide-asserts  true
-                                           :compiler-stats true}}}}}}
+                            :compiler     {:output-to     "resources/release/compiled/content_script.js"
+                                           :output-dir    "resources/release/compiled/content_script"
+                                           :asset-path    "compiled/content_script"
+                                           :optimizations :advanced
+                                           :elide-asserts true}}}}}}
 
   :aliases {"dev-build" ["with-profile" "+unpacked,+checkouts"
                          "cljsbuild" "once" "background" "popup" "content-script"]
