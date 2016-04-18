@@ -55,6 +55,7 @@
                                            :pretty-print  true
                                            :source-map    "resources/unpacked/compiled/content_script/chromex-sample.js.map"}}}}}
              :checkouts
+             ; DON'T FORGET TO UPDATE scripts/ensure-checkouts.sh
              {:cljsbuild {:builds
                           {:background     {:source-paths ["checkouts/chromex/src/lib"
                                                            "checkouts/chromex/src/exts"]}
@@ -104,7 +105,8 @@
                          "figwheel" "background" "popup"]
             "content"   ["with-profile" "+unpacked,+checkouts"
                          "cljsbuild" "auto" "content-script"]
-            "devel"     ["with-profile" "+dev-mode"
+            "devel"     ["with-profile" "+dev-mode" "do"
+                         "shell" "scripts/ensure-checkouts.sh,"
                          "cooper"]
             "release"   ["with-profile" "+release"
                          "do" "clean,"
