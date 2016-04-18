@@ -1,17 +1,17 @@
 (defproject binaryage/chromex-sample "0.1.0-SNAPSHOT"
-  :dependencies [[org.clojure/clojure "1.7.0"]
-                 [org.clojure/clojurescript "1.7.170"]
+  :dependencies [[org.clojure/clojure "1.8.0"]
+                 [org.clojure/clojurescript "1.8.40"]
                  [org.clojure/core.async "0.2.374"]
-                 [binaryage/chromex "0.3.0"]
-                 [binaryage/devtools "0.5.2"]
-                 [figwheel "0.5.0-6"]
+                 [binaryage/chromex "0.4.0"]
+                 [binaryage/devtools "0.6.1"]
+                 [figwheel "0.5.2"]
                  [environ "1.0.2"]]
 
-  :plugins [[lein-cljsbuild "1.1.1"]
-            [lein-figwheel "0.5.0-6"]
-            [lein-shell "0.4.2"]
+  :plugins [[lein-cljsbuild "1.1.3"]
+            [lein-figwheel "0.5.2"]
+            [lein-shell "0.5.0"]
             [lein-environ "1.0.2"]
-            [lein-cooper "1.1.2"]]
+            [lein-cooper "1.2.2"]]
 
   :figwheel
   {:server-port    7000
