@@ -29,7 +29,7 @@
 
 (defmacro set-display-properties
   "Updates the properties for the display specified by |id|, according to the information provided in |info|. On failure,
-   'runtime.lastError' will be set.
+   'runtime.lastError' will be set. NOTE: This is only available to Chrome OS Kiosk apps and Web UI.
 
      |id| - The display's unique identifier.
      |info| - The information about display properties that should be changed.     A property will be changed only if a new
@@ -46,9 +46,10 @@
 
 (defmacro enable-unified-desktop
   "Enables/disables the unified desktop feature. Note that this simply enables the feature, but will not change the actual
-   desktop mode. (That is, if the desktop is in mirror mode, it will stay in mirror mode)
+   desktop mode. (That is, if the desktop is in mirror mode, it will stay in mirror mode) NOTE: This is only available to
+   Chrome OS Kiosk apps and Web UI.
 
-     |enabled| - https://developer.chrome.com/extensions/system.display#property-enableUnifiedDesktop-enabled.
+     |enabled| - True if unified desktop should be enabled.
 
    https://developer.chrome.com/extensions/system.display#method-enableUnifiedDesktop."
   ([enabled] (gen-call :function ::enable-unified-desktop &form enabled)))
