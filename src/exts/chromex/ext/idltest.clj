@@ -1,7 +1,7 @@
 (ns chromex.ext.idltest
   "An API to test IDL schema specifications.
 
-     * available since Chrome 50
+     * available since Chrome 51
      * https://developer.chrome.com/extensions/idltest"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -91,7 +91,7 @@
 
 (def api-table
   {:namespace "chrome.idltest",
-   :since "50",
+   :since "51",
    :functions
    [{:id ::send-array-buffer,
      :name "sendArrayBuffer",
@@ -110,7 +110,7 @@
      :callback? true,
      :params [{:name "cb", :type :callback, :callback {:params [{:name "buffer", :type "ArrayBuffer"}]}}]}
     {:id ::nocompile-func, :name "nocompileFunc", :params [{:name "switch", :type "integer"}]}
-    {:id ::nodefine-func, :name "nodefineFunc", :since "51", :params [{:name "switch", :type "integer"}]}]})
+    {:id ::nodefine-func, :name "nodefineFunc", :params [{:name "switch", :type "integer"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

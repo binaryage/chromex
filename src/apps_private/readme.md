@@ -47,7 +47,7 @@
 
 ### API stats
 
-Generated 39 namespaces containing 1 properties, 267 functions and 72 events:
+Generated 39 namespaces containing 1 properties, 269 functions and 72 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -79,7 +79,7 @@ Generated 39 namespaces containing 1 properties, 267 functions and 72 events:
     |             chrome.mojoPrivate |           0 |          2 |       0 |
     |     chrome.musicManagerPrivate |           0 |          1 |       0 |
     |       chrome.networkingPrivate |           0 |         24 |       4 |
-    |        chrome.passwordsPrivate |           0 |          3 |       3 |
+    |        chrome.passwordsPrivate |           0 |          5 |       3 |
     |      chrome.preferencesPrivate |           1 |          0 |       0 |
     |        chrome.resourcesPrivate |           0 |          1 |       0 |
     |         chrome.settingsPrivate |           0 |          5 |       1 |
@@ -236,9 +236,9 @@ Generated 39 namespaces containing 1 properties, 267 functions and 72 events:
       tap-on-device-state-list-changed tap-on-portal-detection-completed tap-all-events]]
 
     [chromex.app.passwords-private refer-macros:[
-      remove-saved-password remove-password-exception request-plaintext-password
-      tap-on-saved-passwords-list-changed tap-on-password-exceptions-list-changed
-      tap-on-plaintext-password-retrieved tap-all-events]]
+      remove-saved-password remove-password-exception request-plaintext-password get-saved-password-list
+      get-password-exception-list tap-on-saved-passwords-list-changed
+      tap-on-password-exceptions-list-changed tap-on-plaintext-password-retrieved tap-all-events]]
 
     [chromex.app.preferences-private refer-macros:[
       get-easy-unlock-proximity-required tap-all-events]]

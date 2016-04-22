@@ -1,5 +1,5 @@
 (ns chromex.app.guest-view-internal
-  "  * available since Chrome 50"
+  "  * available since Chrome 51"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -56,7 +56,7 @@
 
 (def api-table
   {:namespace "chrome.guestViewInternal",
-   :since "50",
+   :since "51",
    :functions
    [{:id ::create-guest,
      :name "createGuest",

@@ -2,7 +2,7 @@
   "Use the chrome.passwordsPrivate API to add or remove password
    data from the settings UI.
 
-     * available since Chrome 50"
+     * available since Chrome 51"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -30,18 +30,41 @@
 (defmacro request-plaintext-password
   "Returns the plaintext password corresponding to |loginPair|. Note that on some operating systems, this call may result in
    an OS-level reauthentication. Once the password has been fetched, it will be returned via the onPlaintextPasswordRetrieved
-   event.
+   event. TODO(hcarmona): Investigate using a callback for consistency.
 
      |login-pair| - The LoginPair corresponding to the entry whose password     is to be returned."
   ([login-pair] (gen-call :function ::request-plaintext-password &form login-pair)))
+
+(defmacro get-saved-password-list
+  "Returns the list of saved passwords.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [entries] where:
+
+     |entries| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::get-saved-password-list &form)))
+
+(defmacro get-password-exception-list
+  "Returns the list of password exceptions.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [exceptions] where:
+
+     |exceptions| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::get-password-exception-list &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-saved-passwords-list-changed-events
-  "Fired when the saved passwords list has changed, meaning that an entry has been added or removed. Note that this event
-   fires as soon as a  listener is added.
+  "Fired when the saved passwords list has changed, meaning that an entry has been added or removed.
 
    Events will be put on the |channel| with signature [::on-saved-passwords-list-changed [entries]] where:
 
@@ -51,8 +74,7 @@
   ([channel & args] (apply gen-call :event ::on-saved-passwords-list-changed &form channel args)))
 
 (defmacro tap-on-password-exceptions-list-changed-events
-  "Fired when the password exceptions list has changed, meaning that an entry has been added or removed. Note that this event
-   fires as soon as a listener is added.
+  "Fired when the password exceptions list has changed, meaning that an entry has been added or removed.
 
    Events will be put on the |channel| with signature [::on-password-exceptions-list-changed [exceptions]] where:
 
@@ -85,7 +107,7 @@
 
 (def api-table
   {:namespace "chrome.passwordsPrivate",
-   :since "50",
+   :since "51",
    :functions
    [{:id ::remove-saved-password,
      :name "removeSavedPassword",
@@ -95,11 +117,25 @@
      :params [{:name "exception-url", :type "string"}]}
     {:id ::request-plaintext-password,
      :name "requestPlaintextPassword",
-     :params [{:name "login-pair", :type "passwordsPrivate.LoginPair"}]}],
+     :params [{:name "login-pair", :type "passwordsPrivate.LoginPair"}]}
+    {:id ::get-saved-password-list,
+     :name "getSavedPasswordList",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "callback",
+       :type :callback,
+       :callback {:params [{:name "entries", :type "[array-of-passwordsPrivate.PasswordUiEntrys]"}]}}]}
+    {:id ::get-password-exception-list,
+     :name "getPasswordExceptionList",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "callback", :type :callback, :callback {:params [{:name "exceptions", :type "[array-of-strings]"}]}}]}],
    :events
    [{:id ::on-saved-passwords-list-changed,
      :name "onSavedPasswordsListChanged",
-     :params [{:name "entries", :type "[array-of-objects]"}]}
+     :params [{:name "entries", :type "[array-of-passwordsPrivate.PasswordUiEntrys]"}]}
     {:id ::on-password-exceptions-list-changed,
      :name "onPasswordExceptionsListChanged",
      :params [{:name "exceptions", :type "[array-of-strings]"}]}

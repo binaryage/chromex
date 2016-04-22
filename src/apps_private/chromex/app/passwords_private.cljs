@@ -12,6 +12,12 @@
 (defn request-plaintext-password* [config login-pair]
   (gen-wrap :function ::request-plaintext-password config login-pair))
 
+(defn get-saved-password-list* [config]
+  (gen-wrap :function ::get-saved-password-list config))
+
+(defn get-password-exception-list* [config]
+  (gen-wrap :function ::get-password-exception-list config))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-saved-passwords-list-changed* [config channel & args]
