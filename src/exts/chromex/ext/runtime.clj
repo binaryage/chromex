@@ -100,7 +100,13 @@
   ([] (gen-call :function ::reload &form)))
 
 (defmacro request-update-check
-  "Requests an update check for this app/extension.
+  "Requests an immediate update check be done for this app/extension. Important: Most extensions/apps should not use this
+   method, since chrome already does automatic checks every few hours, and you can listen for the 'runtime.onUpdateAvailable'
+   event without needing to call requestUpdateCheck.This method is only appropriate to call in very limited circumstances,
+   such as if your extension/app talks to a backend service, and the backend service has determined that the client
+   extension/app version is very far out of date and you'd like to prompt a user to update. Most other uses of
+   requestUpdateCheck, such as calling it unconditionally based on a repeating timer, probably only serve to waste client,
+   network, and server resources.
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [status details] where:
