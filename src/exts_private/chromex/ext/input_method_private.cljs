@@ -33,6 +33,9 @@
 (defn show-input-view* [config]
   (gen-wrap :function ::show-input-view config))
 
+(defn open-options-page* [config input-method-id]
+  (gen-wrap :function ::open-options-page config input-method-id))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-changed* [config channel & args]

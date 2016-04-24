@@ -123,6 +123,13 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::show-input-view &form)))
 
+(defmacro open-options-page
+  "Opens the options page for the input method extension. If the input method does not have options, this function will do
+   nothing.
+
+     |input-method-id| - ID of the input method to open options for."
+  ([input-method-id] (gen-call :function ::open-options-page &form input-method-id)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -261,7 +268,11 @@
      :name "showInputView",
      :since "51",
      :callback? true,
-     :params [{:name "callback", :optional? true, :type :callback}]}],
+     :params [{:name "callback", :optional? true, :type :callback}]}
+    {:id ::open-options-page,
+     :name "openOptionsPage",
+     :since "master",
+     :params [{:name "input-method-id", :type "string"}]}],
    :events
    [{:id ::on-changed, :name "onChanged", :params [{:name "new-input-method-id", :type "string"}]}
     {:id ::on-composition-bounds-changed,

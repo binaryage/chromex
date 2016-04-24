@@ -47,7 +47,7 @@
 
 ### API stats
 
-Generated 39 namespaces containing 1 properties, 269 functions and 72 events:
+Generated 39 namespaces containing 1 properties, 270 functions and 72 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -71,7 +71,7 @@ Generated 39 namespaces containing 1 properties, 269 functions and 72 events:
     |         chrome.identityPrivate |           0 |          0 |       1 |
     |      chrome.imageWriterPrivate |           0 |          5 |       5 |
     |    chrome.inlineInstallPrivate |           0 |          1 |       0 |
-    |      chrome.inputMethodPrivate |           0 |         10 |       7 |
+    |      chrome.inputMethodPrivate |           0 |         11 |       7 |
     | chrome.languageSettingsPrivate |           0 |         10 |       4 |
     |              chrome.logPrivate |           0 |          4 |       1 |
     |      chrome.mediaPlayerPrivate |           0 |          0 |       3 |
@@ -197,9 +197,10 @@ Generated 39 namespaces containing 1 properties, 269 functions and 72 events:
     [chromex.app.input-method-private refer-macros:[
       get-input-method-config get-input-methods get-current-input-method set-current-input-method
       fetch-all-dictionary-words add-word-to-dictionary get-encrypt-sync-enabled set-xkb-layout
-      notify-ime-menu-item-activated show-input-view tap-on-changed tap-on-composition-bounds-changed
-      tap-on-dictionary-loaded tap-on-dictionary-changed tap-on-ime-menu-activation-changed
-      tap-on-ime-menu-list-changed tap-on-ime-menu-items-changed tap-all-events]]
+      notify-ime-menu-item-activated show-input-view open-options-page tap-on-changed
+      tap-on-composition-bounds-changed tap-on-dictionary-loaded tap-on-dictionary-changed
+      tap-on-ime-menu-activation-changed tap-on-ime-menu-list-changed tap-on-ime-menu-items-changed
+      tap-all-events]]
 
     [chromex.app.language-settings-private refer-macros:[
       get-language-list set-language-list get-spellcheck-dictionary-statuses get-spellcheck-words
