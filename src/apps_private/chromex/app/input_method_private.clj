@@ -271,7 +271,7 @@
      :params [{:name "callback", :optional? true, :type :callback}]}
     {:id ::open-options-page,
      :name "openOptionsPage",
-     :since "master",
+     :since "52",
      :params [{:name "input-method-id", :type "string"}]}],
    :events
    [{:id ::on-changed, :name "onChanged", :params [{:name "new-input-method-id", :type "string"}]}

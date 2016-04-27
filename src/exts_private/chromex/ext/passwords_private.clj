@@ -120,7 +120,7 @@
      :params [{:name "login-pair", :type "passwordsPrivate.LoginPair"}]}
     {:id ::get-saved-password-list,
      :name "getSavedPasswordList",
-     :since "master",
+     :since "52",
      :callback? true,
      :params
      [{:name "callback",
@@ -128,7 +128,7 @@
        :callback {:params [{:name "entries", :type "[array-of-passwordsPrivate.PasswordUiEntrys]"}]}}]}
     {:id ::get-password-exception-list,
      :name "getPasswordExceptionList",
-     :since "master",
+     :since "52",
      :callback? true,
      :params
      [{:name "callback",

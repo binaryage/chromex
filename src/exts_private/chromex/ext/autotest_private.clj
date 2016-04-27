@@ -150,7 +150,7 @@
     {:id ::set-primary-button-right, :name "setPrimaryButtonRight", :params [{:name "right", :type "boolean"}]}
     {:id ::get-visible-notifications,
      :name "getVisibleNotifications",
-     :since "master",
+     :since "52",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "notifications", :type "object"}]}}]}]})
 
