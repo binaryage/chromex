@@ -15,6 +15,9 @@
 (defn get-strings* [config]
   (gen-wrap :function ::get-strings config))
 
+(defn log-srt-prompt-result* [config result]
+  (gen-wrap :function ::log-srt-prompt-result config result))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-feedback-requested* [config channel & args]

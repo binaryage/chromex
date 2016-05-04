@@ -47,7 +47,7 @@
 
 ### API stats
 
-Generated 39 namespaces containing 1 properties, 270 functions and 72 events:
+Generated 39 namespaces containing 1 properties, 271 functions and 72 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -63,7 +63,7 @@ Generated 39 namespaces containing 1 properties, 270 functions and 72 events:
     |        chrome.developerPrivate |           0 |         26 |       2 |
     |       chrome.easyUnlockPrivate |           0 |         25 |       5 |
     |             chrome.echoPrivate |           0 |          5 |       0 |
-    |         chrome.feedbackPrivate |           0 |          4 |       1 |
+    |         chrome.feedbackPrivate |           0 |          5 |       1 |
     |      chrome.fileManagerPrivate |           0 |         50 |       8 |
     |              chrome.gcdPrivate |           0 |          6 |       0 |
     |         chrome.hangoutsPrivate |           0 |          0 |       1 |
@@ -148,8 +148,8 @@ Generated 39 namespaces containing 1 properties, 270 functions and 72 events:
       tap-all-events]]
 
     [chromex.app.feedback-private refer-macros:[
-      get-user-email get-system-information send-feedback get-strings tap-on-feedback-requested
-      tap-all-events]]
+      get-user-email get-system-information send-feedback get-strings log-srt-prompt-result
+      tap-on-feedback-requested tap-all-events]]
 
     [chromex.app.file-manager-private refer-macros:[
       logout-user-for-reauthentication cancel-dialog execute-task set-default-task get-file-tasks

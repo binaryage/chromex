@@ -64,6 +64,12 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-strings &form)))
 
+(defmacro log-srt-prompt-result
+  "Logs whether the user accepted a prompt to try the Software Removal Tool.
+
+     |result| - ?"
+  ([result] (gen-call :function ::log-srt-prompt-result &form result)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -115,7 +121,11 @@
      :name "getStrings",
      :since "31",
      :callback? true,
-     :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}],
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}
+    {:id ::log-srt-prompt-result,
+     :name "logSrtPromptResult",
+     :since "master",
+     :params [{:name "result", :type "unknown-type"}]}],
    :events
    [{:id ::on-feedback-requested,
      :name "onFeedbackRequested",
