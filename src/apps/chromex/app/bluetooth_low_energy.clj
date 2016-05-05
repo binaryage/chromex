@@ -66,6 +66,24 @@
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-getService."
   ([service-id] (gen-call :function ::get-service &form service-id)))
 
+(defmacro create-service
+  "Create a locally hosted GATT service. This service can be registered to be available on a local GATT server. This function
+   is only available if the app has both the bluetooth:low_energy and the bluetooth:peripheral permissions set to true. The
+   peripheral permission may not be available to all apps.
+
+     |service| - The service to create.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [service-id] where:
+
+     |service-id| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-serviceId.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/apps/bluetoothLowEnergy#method-createService."
+  ([service] (gen-call :function ::create-service &form service)))
+
 (defmacro get-services
   "Get all the GATT services that were discovered on the remote device with the given device address.
 
@@ -98,6 +116,25 @@
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-getCharacteristic."
   ([characteristic-id] (gen-call :function ::get-characteristic &form characteristic-id)))
+
+(defmacro create-characteristic
+  "Create a locally hosted GATT characteristic. This characteristic must be hosted under a valid service. If the service ID is
+   not valid, the lastError will be set. This function is only available if the app has both the bluetooth:low_energy and the
+   bluetooth:peripheral permissions set to true. The peripheral permission may not be available to all apps.
+
+     |characteristic| - The characteristic to create.
+     |service-id| - ID of the service to create this characteristic for.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [characteristic-id] where:
+
+     |characteristic-id| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-characteristicId.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/apps/bluetoothLowEnergy#method-createCharacteristic."
+  ([characteristic service-id] (gen-call :function ::create-characteristic &form characteristic service-id)))
 
 (defmacro get-characteristics
   "Get a list of all discovered GATT characteristics that belong to the given service.
@@ -146,6 +183,25 @@
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-getDescriptor."
   ([descriptor-id] (gen-call :function ::get-descriptor &form descriptor-id)))
+
+(defmacro create-descriptor
+  "Create a locally hosted GATT descriptor. This descriptor must be hosted under a valid characteristic. If the characteristic
+   ID is not valid, the lastError will be set. This function is only available if the app has both the bluetooth:low_energy
+   and the bluetooth:peripheral permissions set to true. The peripheral permission may not be available to all apps.
+
+     |descriptor| - The descriptor to create.
+     |characteristic-id| - ID of the characteristic to create this descriptor for.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [descriptor-id] where:
+
+     |descriptor-id| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-descriptorId.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/apps/bluetoothLowEnergy#method-createDescriptor."
+  ([descriptor characteristic-id] (gen-call :function ::create-descriptor &form descriptor characteristic-id)))
 
 (defmacro get-descriptors
   "Get a list of GATT characteristic descriptors that belong to the given characteristic.
@@ -259,6 +315,42 @@
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-writeDescriptorValue."
   ([descriptor-id value] (gen-call :function ::write-descriptor-value &form descriptor-id value)))
 
+(defmacro register-service
+  "Register the given service with the local GATT server. If the service ID is invalid, the lastError will be set. This
+   function is only available if the app has both the bluetooth:low_energy and the bluetooth:peripheral permissions set to
+   true. The peripheral permission may not be available to all apps.
+
+     |service-id| - Unique ID of a created service.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+
+     |result| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-result.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/apps/bluetoothLowEnergy#method-registerService."
+  ([service-id] (gen-call :function ::register-service &form service-id)))
+
+(defmacro unregister-service
+  "Unregister the given service with the local GATT server. If the service ID is invalid, the lastError will be set. This
+   function is only available if the app has both the bluetooth:low_energy and the bluetooth:peripheral permissions set to
+   true. The peripheral permission may not be available to all apps.
+
+     |service-id| - Unique ID of a current registered service.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+
+     |result| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-result.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/apps/bluetoothLowEnergy#method-unregisterService."
+  ([service-id] (gen-call :function ::unregister-service &form service-id)))
+
 (defmacro register-advertisement
   "Create an advertisement and register it for advertising. To call this function, the app must have the bluetooth:low_energy
    and bluetooth:peripheral permissions set to true. Additionally this API is only available to auto launched apps in Kiosk
@@ -295,6 +387,16 @@
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-unregisterAdvertisement."
   ([advertisement-id] (gen-call :function ::unregister-advertisement &form advertisement-id)))
+
+(defmacro send-request-response
+  "Sends a response for a characteristic or descriptor read/write request. This function is only available if the app has both
+   the bluetooth:low_energy and the bluetooth:peripheral permissions set to true. The peripheral permission may not be
+   available to all apps.
+
+     |response| - The response to the request.
+
+   https://developer.chrome.com/apps/bluetoothLowEnergy#method-sendRequestResponse."
+  ([response] (gen-call :function ::send-request-response &form response)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -364,6 +466,70 @@
    https://developer.chrome.com/apps/bluetoothLowEnergy#event-onDescriptorValueChanged."
   ([channel & args] (apply gen-call :event ::on-descriptor-value-changed &form channel args)))
 
+(defmacro tap-on-characteristic-read-request-events
+  "Fired when a connected central device requests to read the value of a characteristic registered on the local GATT server.
+   Not responding to this request for a long time may lead to a disconnection. This event is only available if the app has
+   both the bluetooth:low_energy and the bluetooth:peripheral permissions set to true. The peripheral permission may not be
+   available to all apps.
+
+   Events will be put on the |channel| with signature [::on-characteristic-read-request [request characteristic-id]] where:
+
+     |request| - Request data for this request.
+     |characteristic-id| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-onCharacteristicReadRequest-characteristicId.
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+
+   https://developer.chrome.com/apps/bluetoothLowEnergy#event-onCharacteristicReadRequest."
+  ([channel & args] (apply gen-call :event ::on-characteristic-read-request &form channel args)))
+
+(defmacro tap-on-characteristic-write-request-events
+  "Fired when a connected central device requests to write the value of a characteristic registered on the local GATT server.
+   Not responding to this request for a long time may lead to a disconnection. This event is only available if the app has
+   both the bluetooth:low_energy and the bluetooth:peripheral permissions set to true. The peripheral permission may not be
+   available to all apps.
+
+   Events will be put on the |channel| with signature [::on-characteristic-write-request [request characteristic-id]] where:
+
+     |request| - Request data for this request.
+     |characteristic-id| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-onCharacteristicWriteRequest-characteristicId.
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+
+   https://developer.chrome.com/apps/bluetoothLowEnergy#event-onCharacteristicWriteRequest."
+  ([channel & args] (apply gen-call :event ::on-characteristic-write-request &form channel args)))
+
+(defmacro tap-on-descriptor-read-request-events
+  "Fired when a connected central device requests to read the value of a descriptor registered on the local GATT server. Not
+   responding to this request for a long time may lead to a disconnection. This event is only available if the app has both
+   the bluetooth:low_energy and the bluetooth:peripheral permissions set to true. The peripheral permission may not be
+   available to all apps.
+
+   Events will be put on the |channel| with signature [::on-descriptor-read-request [request descriptor-id]] where:
+
+     |request| - Request data for this request.
+     |descriptor-id| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-onDescriptorReadRequest-descriptorId.
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+
+   https://developer.chrome.com/apps/bluetoothLowEnergy#event-onDescriptorReadRequest."
+  ([channel & args] (apply gen-call :event ::on-descriptor-read-request &form channel args)))
+
+(defmacro tap-on-descriptor-write-request-events
+  "Fired when a connected central device requests to write the value of a descriptor registered on the local GATT server. Not
+   responding to this request for a long time may lead to a disconnection. This event is only available if the app has both
+   the bluetooth:low_energy and the bluetooth:peripheral permissions set to true. The peripheral permission may not be
+   available to all apps.
+
+   Events will be put on the |channel| with signature [::on-descriptor-write-request [request descriptor-id]] where:
+
+     |request| - Request data for this request.
+     |descriptor-id| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-onDescriptorWriteRequest-descriptorId.
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+
+   https://developer.chrome.com/apps/bluetoothLowEnergy#event-onDescriptorWriteRequest."
+  ([channel & args] (apply gen-call :event ::on-descriptor-write-request &form channel args)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -396,6 +562,13 @@
      :params
      [{:name "service-id", :type "string"}
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "bluetoothLowEnergy.Service"}]}}]}
+    {:id ::create-service,
+     :name "createService",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "service", :type "bluetoothLowEnergy.Service"}
+      {:name "callback", :type :callback, :callback {:params [{:name "service-id", :type "string"}]}}]}
     {:id ::get-services,
      :name "getServices",
      :callback? true,
@@ -412,6 +585,14 @@
       {:name "callback",
        :type :callback,
        :callback {:params [{:name "result", :type "bluetoothLowEnergy.Characteristic"}]}}]}
+    {:id ::create-characteristic,
+     :name "createCharacteristic",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "characteristic", :type "bluetoothLowEnergy.Characteristic"}
+      {:name "service-id", :type "string"}
+      {:name "callback", :type :callback, :callback {:params [{:name "characteristic-id", :type "string"}]}}]}
     {:id ::get-characteristics,
      :name "getCharacteristics",
      :callback? true,
@@ -436,6 +617,14 @@
       {:name "callback",
        :type :callback,
        :callback {:params [{:name "result", :type "bluetoothLowEnergy.Descriptor"}]}}]}
+    {:id ::create-descriptor,
+     :name "createDescriptor",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "descriptor", :type "bluetoothLowEnergy.Descriptor"}
+      {:name "characteristic-id", :type "string"}
+      {:name "callback", :type :callback, :callback {:params [{:name "descriptor-id", :type "string"}]}}]}
     {:id ::get-descriptors,
      :name "getDescriptors",
      :callback? true,
@@ -485,6 +674,24 @@
      [{:name "descriptor-id", :type "string"}
       {:name "value", :type "ArrayBuffer"}
       {:name "callback", :type :callback}]}
+    {:id ::register-service,
+     :name "registerService",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "service-id", :type "string"}
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "result", :type "bluetoothLowEnergy.ServiceResult"}]}}]}
+    {:id ::unregister-service,
+     :name "unregisterService",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "service-id", :type "string"}
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "result", :type "bluetoothLowEnergy.ServiceResult"}]}}]}
     {:id ::register-advertisement,
      :name "registerAdvertisement",
      :since "47",
@@ -496,7 +703,11 @@
      :name "unregisterAdvertisement",
      :since "47",
      :callback? true,
-     :params [{:name "advertisement-id", :type "integer"} {:name "callback", :type :callback}]}],
+     :params [{:name "advertisement-id", :type "integer"} {:name "callback", :type :callback}]}
+    {:id ::send-request-response,
+     :name "sendRequestResponse",
+     :since "master",
+     :params [{:name "response", :type "object"}]}],
    :events
    [{:id ::on-service-added, :name "onServiceAdded", :params [{:name "service", :type "bluetoothLowEnergy.Service"}]}
     {:id ::on-service-changed,
@@ -510,7 +721,23 @@
      :params [{:name "characteristic", :type "bluetoothLowEnergy.Characteristic"}]}
     {:id ::on-descriptor-value-changed,
      :name "onDescriptorValueChanged",
-     :params [{:name "descriptor", :type "bluetoothLowEnergy.Descriptor"}]}]})
+     :params [{:name "descriptor", :type "bluetoothLowEnergy.Descriptor"}]}
+    {:id ::on-characteristic-read-request,
+     :name "onCharacteristicReadRequest",
+     :since "master",
+     :params [{:name "request", :type "bluetoothLowEnergy.Request"} {:name "characteristic-id", :type "string"}]}
+    {:id ::on-characteristic-write-request,
+     :name "onCharacteristicWriteRequest",
+     :since "master",
+     :params [{:name "request", :type "bluetoothLowEnergy.Request"} {:name "characteristic-id", :type "string"}]}
+    {:id ::on-descriptor-read-request,
+     :name "onDescriptorReadRequest",
+     :since "master",
+     :params [{:name "request", :type "bluetoothLowEnergy.Request"} {:name "descriptor-id", :type "string"}]}
+    {:id ::on-descriptor-write-request,
+     :name "onDescriptorWriteRequest",
+     :since "master",
+     :params [{:name "request", :type "bluetoothLowEnergy.Request"} {:name "descriptor-id", :type "string"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

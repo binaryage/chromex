@@ -12,11 +12,17 @@
 (defn get-service* [config service-id]
   (gen-wrap :function ::get-service config service-id))
 
+(defn create-service* [config service]
+  (gen-wrap :function ::create-service config service))
+
 (defn get-services* [config device-address]
   (gen-wrap :function ::get-services config device-address))
 
 (defn get-characteristic* [config characteristic-id]
   (gen-wrap :function ::get-characteristic config characteristic-id))
+
+(defn create-characteristic* [config characteristic service-id]
+  (gen-wrap :function ::create-characteristic config characteristic service-id))
 
 (defn get-characteristics* [config service-id]
   (gen-wrap :function ::get-characteristics config service-id))
@@ -26,6 +32,9 @@
 
 (defn get-descriptor* [config descriptor-id]
   (gen-wrap :function ::get-descriptor config descriptor-id))
+
+(defn create-descriptor* [config descriptor characteristic-id]
+  (gen-wrap :function ::create-descriptor config descriptor characteristic-id))
 
 (defn get-descriptors* [config characteristic-id]
   (gen-wrap :function ::get-descriptors config characteristic-id))
@@ -48,11 +57,20 @@
 (defn write-descriptor-value* [config descriptor-id value]
   (gen-wrap :function ::write-descriptor-value config descriptor-id value))
 
+(defn register-service* [config service-id]
+  (gen-wrap :function ::register-service config service-id))
+
+(defn unregister-service* [config service-id]
+  (gen-wrap :function ::unregister-service config service-id))
+
 (defn register-advertisement* [config advertisement]
   (gen-wrap :function ::register-advertisement config advertisement))
 
 (defn unregister-advertisement* [config advertisement-id]
   (gen-wrap :function ::unregister-advertisement config advertisement-id))
+
+(defn send-request-response* [config response]
+  (gen-wrap :function ::send-request-response config response))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
@@ -70,4 +88,16 @@
 
 (defn on-descriptor-value-changed* [config channel & args]
   (gen-wrap :event ::on-descriptor-value-changed config channel args))
+
+(defn on-characteristic-read-request* [config channel & args]
+  (gen-wrap :event ::on-characteristic-read-request config channel args))
+
+(defn on-characteristic-write-request* [config channel & args]
+  (gen-wrap :event ::on-characteristic-write-request config channel args))
+
+(defn on-descriptor-read-request* [config channel & args]
+  (gen-wrap :event ::on-descriptor-read-request config channel args))
+
+(defn on-descriptor-write-request* [config channel & args]
+  (gen-wrap :event ::on-descriptor-write-request config channel args))
 
