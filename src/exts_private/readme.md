@@ -24,7 +24,6 @@
 | [chrome.feedbackPrivate](https://developer.chrome.com/extensions/feedbackPrivate) | [chromex/ext/feedback_private.clj](chromex/ext/feedback_private.clj) |
 | [chrome.fileManagerPrivate](https://developer.chrome.com/extensions/fileManagerPrivate) | [chromex/ext/file_manager_private.clj](chromex/ext/file_manager_private.clj) |
 | [chrome.gcdPrivate](https://developer.chrome.com/extensions/gcdPrivate) | [chromex/ext/gcd_private.clj](chromex/ext/gcd_private.clj) |
-| [chrome.hangoutsPrivate](https://developer.chrome.com/extensions/hangoutsPrivate) | [chromex/ext/hangouts_private.clj](chromex/ext/hangouts_private.clj) |
 | [chrome.hotwordPrivate](https://developer.chrome.com/extensions/hotwordPrivate) | [chromex/ext/hotword_private.clj](chromex/ext/hotword_private.clj) |
 | [chrome.inputMethodPrivate](https://developer.chrome.com/extensions/inputMethodPrivate) | [chromex/ext/input_method_private.clj](chromex/ext/input_method_private.clj) |
 | [chrome.languageSettingsPrivate](https://developer.chrome.com/extensions/languageSettingsPrivate) | [chromex/ext/language_settings_private.clj](chromex/ext/language_settings_private.clj) |
@@ -51,7 +50,7 @@
 
 ### API stats
 
-Generated 43 namespaces containing 1 properties, 316 functions and 69 events:
+Generated 42 namespaces containing 1 properties, 316 functions and 68 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -76,7 +75,6 @@ Generated 43 namespaces containing 1 properties, 316 functions and 69 events:
     |                chrome.feedbackPrivate |           0 |          5 |       1 |
     |             chrome.fileManagerPrivate |           0 |         50 |       8 |
     |                     chrome.gcdPrivate |           0 |          6 |       0 |
-    |                chrome.hangoutsPrivate |           0 |          0 |       1 |
     |                 chrome.hotwordPrivate |           0 |         15 |       9 |
     |             chrome.inputMethodPrivate |           0 |         11 |       7 |
     |        chrome.languageSettingsPrivate |           0 |         10 |       4 |
@@ -195,9 +193,6 @@ Generated 43 namespaces containing 1 properties, 316 functions and 69 events:
     [chromex.ext.gcd-private refer-macros:[
       get-device-info create-session start-pairing confirm-code send-message terminate-session
       tap-all-events]]
-
-    [chromex.ext.hangouts-private refer-macros:[
-      tap-on-hangout-requested tap-all-events]]
 
     [chromex.ext.hotword-private refer-macros:[
       set-enabled get-status get-localized-strings set-audio-logging-enabled
