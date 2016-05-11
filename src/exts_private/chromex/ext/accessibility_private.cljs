@@ -17,3 +17,6 @@
 (defn on-introduce-chrome-vox* [config channel & args]
   (gen-wrap :event ::on-introduce-chrome-vox config channel args))
 
+(defn on-accessibility-gesture* [config channel & args]
+  (gen-wrap :event ::on-accessibility-gesture config channel args))
+

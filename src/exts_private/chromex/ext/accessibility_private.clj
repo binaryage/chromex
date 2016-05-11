@@ -45,6 +45,16 @@
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-introduce-chrome-vox &form channel args)))
 
+(defmacro tap-on-accessibility-gesture-events
+  "Fired when an accessibility gesture is detected by the touch exploration controller.
+
+   Events will be put on the |channel| with signature [::on-accessibility-gesture [gesture]] where:
+
+     |gesture| - ?
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-accessibility-gesture &form channel args)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -71,7 +81,12 @@
      :name "setKeyboardListener",
      :since "48",
      :params [{:name "enabled", :type "boolean"} {:name "capture", :type "boolean"}]}],
-   :events [{:id ::on-introduce-chrome-vox, :name "onIntroduceChromeVox", :since "42"}]})
+   :events
+   [{:id ::on-introduce-chrome-vox, :name "onIntroduceChromeVox", :since "42"}
+    {:id ::on-accessibility-gesture,
+     :name "onAccessibilityGesture",
+     :since "master",
+     :params [{:name "gesture", :type "accessibilityPrivate.Gesture"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

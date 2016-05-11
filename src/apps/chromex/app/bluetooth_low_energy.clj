@@ -564,7 +564,7 @@
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "bluetoothLowEnergy.Service"}]}}]}
     {:id ::create-service,
      :name "createService",
-     :since "master",
+     :since "52",
      :callback? true,
      :params
      [{:name "service", :type "bluetoothLowEnergy.Service"}
@@ -587,7 +587,7 @@
        :callback {:params [{:name "result", :type "bluetoothLowEnergy.Characteristic"}]}}]}
     {:id ::create-characteristic,
      :name "createCharacteristic",
-     :since "master",
+     :since "52",
      :callback? true,
      :params
      [{:name "characteristic", :type "bluetoothLowEnergy.Characteristic"}
@@ -619,7 +619,7 @@
        :callback {:params [{:name "result", :type "bluetoothLowEnergy.Descriptor"}]}}]}
     {:id ::create-descriptor,
      :name "createDescriptor",
-     :since "master",
+     :since "52",
      :callback? true,
      :params
      [{:name "descriptor", :type "bluetoothLowEnergy.Descriptor"}
@@ -676,7 +676,7 @@
       {:name "callback", :type :callback}]}
     {:id ::register-service,
      :name "registerService",
-     :since "master",
+     :since "52",
      :callback? true,
      :params
      [{:name "service-id", :type "string"}
@@ -685,7 +685,7 @@
        :callback {:params [{:name "result", :type "bluetoothLowEnergy.ServiceResult"}]}}]}
     {:id ::unregister-service,
      :name "unregisterService",
-     :since "master",
+     :since "52",
      :callback? true,
      :params
      [{:name "service-id", :type "string"}
@@ -706,7 +706,7 @@
      :params [{:name "advertisement-id", :type "integer"} {:name "callback", :type :callback}]}
     {:id ::send-request-response,
      :name "sendRequestResponse",
-     :since "master",
+     :since "52",
      :params [{:name "response", :type "object"}]}],
    :events
    [{:id ::on-service-added, :name "onServiceAdded", :params [{:name "service", :type "bluetoothLowEnergy.Service"}]}
@@ -724,19 +724,19 @@
      :params [{:name "descriptor", :type "bluetoothLowEnergy.Descriptor"}]}
     {:id ::on-characteristic-read-request,
      :name "onCharacteristicReadRequest",
-     :since "master",
+     :since "52",
      :params [{:name "request", :type "bluetoothLowEnergy.Request"} {:name "characteristic-id", :type "string"}]}
     {:id ::on-characteristic-write-request,
      :name "onCharacteristicWriteRequest",
-     :since "master",
+     :since "52",
      :params [{:name "request", :type "bluetoothLowEnergy.Request"} {:name "characteristic-id", :type "string"}]}
     {:id ::on-descriptor-read-request,
      :name "onDescriptorReadRequest",
-     :since "master",
+     :since "52",
      :params [{:name "request", :type "bluetoothLowEnergy.Request"} {:name "descriptor-id", :type "string"}]}
     {:id ::on-descriptor-write-request,
      :name "onDescriptorWriteRequest",
-     :since "master",
+     :since "52",
      :params [{:name "request", :type "bluetoothLowEnergy.Request"} {:name "descriptor-id", :type "string"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

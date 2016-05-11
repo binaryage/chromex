@@ -124,7 +124,7 @@
      :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}
     {:id ::log-srt-prompt-result,
      :name "logSrtPromptResult",
-     :since "master",
+     :since "52",
      :params [{:name "result", :type "unknown-type"}]}],
    :events
    [{:id ::on-feedback-requested,
