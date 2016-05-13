@@ -51,6 +51,9 @@
 (defn stop-characteristic-notifications* [config characteristic-id]
   (gen-wrap :function ::stop-characteristic-notifications config characteristic-id))
 
+(defn notify-characteristic-value-changed* [config characteristic-id notification]
+  (gen-wrap :function ::notify-characteristic-value-changed config characteristic-id notification))
+
 (defn read-descriptor-value* [config descriptor-id]
   (gen-wrap :function ::read-descriptor-value config descriptor-id))
 
@@ -62,6 +65,9 @@
 
 (defn unregister-service* [config service-id]
   (gen-wrap :function ::unregister-service config service-id))
+
+(defn remove-service* [config service-id]
+  (gen-wrap :function ::remove-service config service-id))
 
 (defn register-advertisement* [config advertisement]
   (gen-wrap :function ::register-advertisement config advertisement))

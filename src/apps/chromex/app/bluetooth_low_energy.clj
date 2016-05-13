@@ -283,6 +283,25 @@
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-stopCharacteristicNotifications."
   ([characteristic-id] (gen-call :function ::stop-characteristic-notifications &form characteristic-id)))
 
+(defmacro notify-characteristic-value-changed
+  "Notify a remote device of a new value for a characteristic. If the shouldIndicate flag in the notification object is true,
+   an indication will be sent instead of a notification. Note, the characteristic needs to correctly set the 'notify' or
+   'indicate' property during creation for this call to succeed. This function is only available if the app has both the
+   bluetooth:low_energy and the bluetooth:peripheral permissions set to true. The peripheral permission may not be available
+   to all apps.
+
+     |characteristic-id| - The characteristic to send the notication for.
+     |notification| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-notifyCharacteristicValueChanged-notification.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/apps/bluetoothLowEnergy#method-notifyCharacteristicValueChanged."
+  ([characteristic-id notification] (gen-call :function ::notify-characteristic-value-changed &form characteristic-id notification)))
+
 (defmacro read-descriptor-value
   "Retrieve the value of a specified characteristic descriptor from a remote peripheral.
 
@@ -323,9 +342,7 @@
      |service-id| - Unique ID of a created service.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [result] where:
-
-     |result| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-result.
+   Signature of the result value put on the channel is [].
 
    In case of error the channel closes without receiving any result and relevant error object can be obtained via
    chromex.error/get-last-error.
@@ -341,15 +358,29 @@
      |service-id| - Unique ID of a current registered service.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [result] where:
-
-     |result| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-result.
+   Signature of the result value put on the channel is [].
 
    In case of error the channel closes without receiving any result and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-unregisterService."
   ([service-id] (gen-call :function ::unregister-service &form service-id)))
+
+(defmacro remove-service
+  "Remove the specified service, unregistering it if it was registered. If the service ID is invalid, the lastError will be
+   set. This function is only available if the app has both the bluetooth:low_energy and the bluetooth:peripheral permissions
+   set to true. The peripheral permission may not be available to all apps.
+
+     |service-id| - Unique ID of a current registered service.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/apps/bluetoothLowEnergy#method-removeService."
+  ([service-id] (gen-call :function ::remove-service &form service-id)))
 
 (defmacro register-advertisement
   "Create an advertisement and register it for advertising. To call this function, the app must have the bluetooth:low_energy
@@ -659,6 +690,14 @@
      :name "stopCharacteristicNotifications",
      :callback? true,
      :params [{:name "characteristic-id", :type "string"} {:name "callback", :optional? true, :type :callback}]}
+    {:id ::notify-characteristic-value-changed,
+     :name "notifyCharacteristicValueChanged",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "characteristic-id", :type "string"}
+      {:name "notification", :type "object"}
+      {:name "callback", :type :callback}]}
     {:id ::read-descriptor-value,
      :name "readDescriptorValue",
      :callback? true,
@@ -678,20 +717,17 @@
      :name "registerService",
      :since "52",
      :callback? true,
-     :params
-     [{:name "service-id", :type "string"}
-      {:name "callback",
-       :type :callback,
-       :callback {:params [{:name "result", :type "bluetoothLowEnergy.ServiceResult"}]}}]}
+     :params [{:name "service-id", :type "string"} {:name "callback", :type :callback}]}
     {:id ::unregister-service,
      :name "unregisterService",
      :since "52",
      :callback? true,
-     :params
-     [{:name "service-id", :type "string"}
-      {:name "callback",
-       :type :callback,
-       :callback {:params [{:name "result", :type "bluetoothLowEnergy.ServiceResult"}]}}]}
+     :params [{:name "service-id", :type "string"} {:name "callback", :type :callback}]}
+    {:id ::remove-service,
+     :name "removeService",
+     :since "master",
+     :callback? true,
+     :params [{:name "service-id", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::register-advertisement,
      :name "registerAdvertisement",
      :since "47",

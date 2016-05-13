@@ -72,7 +72,7 @@
 
 ### API stats
 
-Generated 64 namespaces containing 25 properties, 365 functions and 132 events:
+Generated 64 namespaces containing 25 properties, 367 functions and 132 events:
 
 
     |                         :namespace | :properties | :functions | :events |
@@ -87,7 +87,7 @@ Generated 64 namespaces containing 25 properties, 365 functions and 132 events:
     |                  chrome.audioModem |           0 |          4 |       2 |
     |                  chrome.automation |           0 |          6 |       0 |
     |                   chrome.bluetooth |           0 |          5 |       4 |
-    |          chrome.bluetoothLowEnergy |           0 |         23 |       9 |
+    |          chrome.bluetoothLowEnergy |           0 |         25 |       9 |
     |             chrome.bluetoothSocket |           0 |         11 |       4 |
     |                     chrome.browser |           0 |          1 |       0 |
     |         chrome.certificateProvider |           0 |          0 |       2 |
@@ -192,10 +192,10 @@ Generated 64 namespaces containing 25 properties, 365 functions and 132 events:
       connect disconnect get-service create-service get-services get-characteristic create-characteristic
       get-characteristics get-included-services get-descriptor create-descriptor get-descriptors
       read-characteristic-value write-characteristic-value start-characteristic-notifications
-      stop-characteristic-notifications read-descriptor-value write-descriptor-value register-service
-      unregister-service register-advertisement unregister-advertisement send-request-response
-      tap-on-service-added tap-on-service-changed tap-on-service-removed
-      tap-on-characteristic-value-changed tap-on-descriptor-value-changed
+      stop-characteristic-notifications notify-characteristic-value-changed read-descriptor-value
+      write-descriptor-value register-service unregister-service remove-service register-advertisement
+      unregister-advertisement send-request-response tap-on-service-added tap-on-service-changed
+      tap-on-service-removed tap-on-characteristic-value-changed tap-on-descriptor-value-changed
       tap-on-characteristic-read-request tap-on-characteristic-write-request
       tap-on-descriptor-read-request tap-on-descriptor-write-request tap-all-events]]
 
