@@ -85,7 +85,7 @@
    [{:id ::on-introduce-chrome-vox, :name "onIntroduceChromeVox", :since "42"}
     {:id ::on-accessibility-gesture,
      :name "onAccessibilityGesture",
-     :since "master",
+     :since "52",
      :params [{:name "gesture", :type "accessibilityPrivate.Gesture"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

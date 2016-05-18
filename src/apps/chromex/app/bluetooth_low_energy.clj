@@ -692,7 +692,7 @@
      :params [{:name "characteristic-id", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::notify-characteristic-value-changed,
      :name "notifyCharacteristicValueChanged",
-     :since "master",
+     :since "52",
      :callback? true,
      :params
      [{:name "characteristic-id", :type "string"}
@@ -725,7 +725,7 @@
      :params [{:name "service-id", :type "string"} {:name "callback", :type :callback}]}
     {:id ::remove-service,
      :name "removeService",
-     :since "master",
+     :since "52",
      :callback? true,
      :params [{:name "service-id", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::register-advertisement,
