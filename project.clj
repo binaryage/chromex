@@ -8,15 +8,15 @@
   :scm {:name "git" :url "https://github.com/binaryage/chromex"}
 
   :dependencies [[org.clojure/clojure "1.8.0" :scope "provided"]
-                 [org.clojure/clojurescript "1.8.40" :scope "provided"]
+                 [org.clojure/clojurescript "1.8.51" :scope "provided"]
                  [org.clojure/core.async "0.2.374" :scope "provided"]
-                 [environ "1.0.2" :scope "provided"]]
+                 [environ "1.0.3" :scope "provided"]]
 
   :clean-targets ^{:protect false} ["target"
                                     "test/_generated"]
 
-  :plugins [[lein-cljsbuild "1.1.1"]
-            [lein-environ "1.0.2"]
+  :plugins [[lein-cljsbuild "1.1.3"]
+            [lein-environ "1.0.3"]
             [lein-shell "0.5.0"]]
 
   :hooks [leiningen.cljsbuild]
