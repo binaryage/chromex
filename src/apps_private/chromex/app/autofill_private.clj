@@ -35,6 +35,18 @@
    chromex.error/get-last-error."
   ([country-code] (gen-call :function ::get-address-components &form country-code)))
 
+(defmacro get-address-list
+  "Gets the list of addresses.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [entries] where:
+
+     |entries| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::get-address-list &form)))
+
 (defmacro save-credit-card
   "Saves the given credit card. If |card| has an empty string as its ID, it will be assigned a new one and added as a new
    entry.
@@ -62,6 +74,18 @@
    In case of error the channel closes without receiving any result and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([params] (gen-call :function ::validate-phone-numbers &form params)))
+
+(defmacro get-credit-card-list
+  "Gets the list of credit cards.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [entries] where:
+
+     |entries| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::get-credit-card-list &form)))
 
 (defmacro mask-credit-card
   "Clears the data associated with a wallet card which was saved locally so that the saved copy is masked (e.g., 'Card ending
@@ -118,6 +142,14 @@
      :params
      [{:name "country-code", :type "string"}
       {:name "callback", :type :callback, :callback {:params [{:name "components", :type "object"}]}}]}
+    {:id ::get-address-list,
+     :name "getAddressList",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "callback",
+       :type :callback,
+       :callback {:params [{:name "entries", :type "[array-of-autofillPrivate.AddressEntrys]"}]}}]}
     {:id ::save-credit-card, :name "saveCreditCard", :params [{:name "card", :type "autofillPrivate.CreditCardEntry"}]}
     {:id ::remove-entry, :name "removeEntry", :params [{:name "guid", :type "string"}]}
     {:id ::validate-phone-numbers,
@@ -128,6 +160,14 @@
       {:name "callback",
        :type :callback,
        :callback {:params [{:name "validated-phone-numbers", :type "[array-of-strings]"}]}}]}
+    {:id ::get-credit-card-list,
+     :name "getCreditCardList",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "callback",
+       :type :callback,
+       :callback {:params [{:name "entries", :type "[array-of-autofillPrivate.CreditCardEntrys]"}]}}]}
     {:id ::mask-credit-card, :name "maskCreditCard", :params [{:name "guid", :type "string"}]}],
    :events
    [{:id ::on-address-list-changed,

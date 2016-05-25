@@ -12,6 +12,18 @@
 (defn enable-unified-desktop* [config enabled]
   (gen-wrap :function ::enable-unified-desktop config enabled))
 
+(defn overscan-calibration-start* [config id]
+  (gen-wrap :function ::overscan-calibration-start config id))
+
+(defn overscan-calibration-adjust* [config id delta]
+  (gen-wrap :function ::overscan-calibration-adjust config id delta))
+
+(defn overscan-calibration-reset* [config id]
+  (gen-wrap :function ::overscan-calibration-reset config id))
+
+(defn overscan-calibration-complete* [config id]
+  (gen-wrap :function ::overscan-calibration-complete config id))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-display-changed* [config channel & args]

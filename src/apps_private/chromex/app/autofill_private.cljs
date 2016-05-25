@@ -9,6 +9,9 @@
 (defn get-address-components* [config country-code]
   (gen-wrap :function ::get-address-components config country-code))
 
+(defn get-address-list* [config]
+  (gen-wrap :function ::get-address-list config))
+
 (defn save-credit-card* [config card]
   (gen-wrap :function ::save-credit-card config card))
 
@@ -17,6 +20,9 @@
 
 (defn validate-phone-numbers* [config params]
   (gen-wrap :function ::validate-phone-numbers config params))
+
+(defn get-credit-card-list* [config]
+  (gen-wrap :function ::get-credit-card-list config))
 
 (defn mask-credit-card* [config guid]
   (gen-wrap :function ::mask-credit-card config guid))

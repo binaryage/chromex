@@ -54,6 +54,42 @@
    https://developer.chrome.com/apps/system.display#method-enableUnifiedDesktop."
   ([enabled] (gen-call :function ::enable-unified-desktop &form enabled)))
 
+(defmacro overscan-calibration-start
+  "Starts overscan calibration for a display. This will show an overlay on the screen indicating the current overscan insets.
+   If overscan calibration for display |id| is in progress this will reset calibration.
+
+     |id| - The display's unique identifier.
+
+   https://developer.chrome.com/apps/system.display#method-overscanCalibrationStart."
+  ([id] (gen-call :function ::overscan-calibration-start &form id)))
+
+(defmacro overscan-calibration-adjust
+  "Adjusts the current overscan insets for a display. Typically this should etiher move the display along an axis (e.g.
+   left+right have the same value) or scale it along an axis (e.g. top+bottom have opposite values). Each Adjust call is
+   cumulative with previous calls since Start.
+
+     |id| - The display's unique identifier.
+     |delta| - The amount to change the overscan insets.
+
+   https://developer.chrome.com/apps/system.display#method-overscanCalibrationAdjust."
+  ([id delta] (gen-call :function ::overscan-calibration-adjust &form id delta)))
+
+(defmacro overscan-calibration-reset
+  "Resets the overscan insets for a display to the last saved value (i.e before Start was called).
+
+     |id| - The display's unique identifier.
+
+   https://developer.chrome.com/apps/system.display#method-overscanCalibrationReset."
+  ([id] (gen-call :function ::overscan-calibration-reset &form id)))
+
+(defmacro overscan-calibration-complete
+  "Complete overscan adjustments for a display  by saving the current values and hiding the overlay.
+
+     |id| - The display's unique identifier.
+
+   https://developer.chrome.com/apps/system.display#method-overscanCalibrationComplete."
+  ([id] (gen-call :function ::overscan-calibration-complete &form id)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -98,7 +134,23 @@
     {:id ::enable-unified-desktop,
      :name "enableUnifiedDesktop",
      :since "46",
-     :params [{:name "enabled", :type "boolean"}]}],
+     :params [{:name "enabled", :type "boolean"}]}
+    {:id ::overscan-calibration-start,
+     :name "overscanCalibrationStart",
+     :since "master",
+     :params [{:name "id", :type "string"}]}
+    {:id ::overscan-calibration-adjust,
+     :name "overscanCalibrationAdjust",
+     :since "master",
+     :params [{:name "id", :type "string"} {:name "delta", :type "system.display.Insets"}]}
+    {:id ::overscan-calibration-reset,
+     :name "overscanCalibrationReset",
+     :since "master",
+     :params [{:name "id", :type "string"}]}
+    {:id ::overscan-calibration-complete,
+     :name "overscanCalibrationComplete",
+     :since "master",
+     :params [{:name "id", :type "string"}]}],
    :events [{:id ::on-display-changed, :name "onDisplayChanged"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
