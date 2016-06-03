@@ -137,19 +137,19 @@
      :params [{:name "enabled", :type "boolean"}]}
     {:id ::overscan-calibration-start,
      :name "overscanCalibrationStart",
-     :since "master",
+     :since "53",
      :params [{:name "id", :type "string"}]}
     {:id ::overscan-calibration-adjust,
      :name "overscanCalibrationAdjust",
-     :since "master",
+     :since "53",
      :params [{:name "id", :type "string"} {:name "delta", :type "system.display.Insets"}]}
     {:id ::overscan-calibration-reset,
      :name "overscanCalibrationReset",
-     :since "master",
+     :since "53",
      :params [{:name "id", :type "string"}]}
     {:id ::overscan-calibration-complete,
      :name "overscanCalibrationComplete",
-     :since "master",
+     :since "53",
      :params [{:name "id", :type "string"}]}],
    :events [{:id ::on-display-changed, :name "onDisplayChanged"}]})
 

@@ -2,7 +2,7 @@
   "Use the chrome.copresence API to communicate with other nearby
    devices using Google's copresence service.
 
-     * available since Chrome 52
+     * available since Chrome 53
      * https://developer.chrome.com/apps/copresence"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -74,7 +74,7 @@
 
 (def api-table
   {:namespace "chrome.copresence",
-   :since "52",
+   :since "53",
    :functions
    [{:id ::execute,
      :name "execute",

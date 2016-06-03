@@ -2,7 +2,7 @@
   "Use the chrome.passwordsPrivate API to add or remove password
    data from the settings UI.
 
-     * available since Chrome 51"
+     * available since Chrome 52"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -107,7 +107,7 @@
 
 (def api-table
   {:namespace "chrome.passwordsPrivate",
-   :since "51",
+   :since "52",
    :functions
    [{:id ::remove-saved-password,
      :name "removeSavedPassword",
@@ -120,7 +120,6 @@
      :params [{:name "login-pair", :type "passwordsPrivate.LoginPair"}]}
     {:id ::get-saved-password-list,
      :name "getSavedPasswordList",
-     :since "52",
      :callback? true,
      :params
      [{:name "callback",
@@ -128,7 +127,6 @@
        :callback {:params [{:name "entries", :type "[array-of-passwordsPrivate.PasswordUiEntrys]"}]}}]}
     {:id ::get-password-exception-list,
      :name "getPasswordExceptionList",
-     :since "52",
      :callback? true,
      :params
      [{:name "callback",

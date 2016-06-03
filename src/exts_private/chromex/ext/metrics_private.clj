@@ -1,5 +1,5 @@
 (ns chromex.ext.metrics-private
-  "  * available since Chrome 51"
+  "  * available since Chrome 52"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -132,7 +132,7 @@
 
 (def api-table
   {:namespace "chrome.metricsPrivate",
-   :since "51",
+   :since "52",
    :functions
    [{:id ::get-is-crash-reporting-enabled,
      :name "getIsCrashReportingEnabled",

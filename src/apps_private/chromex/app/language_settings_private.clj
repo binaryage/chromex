@@ -2,7 +2,7 @@
   "Use the chrome.languageSettingsPrivate API to get or change
    language and input method settings.
 
-     * available since Chrome 51"
+     * available since Chrome 52"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -164,7 +164,7 @@
 
 (def api-table
   {:namespace "chrome.languageSettingsPrivate",
-   :since "51",
+   :since "52",
    :functions
    [{:id ::get-language-list,
      :name "getLanguageList",
