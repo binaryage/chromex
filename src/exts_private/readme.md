@@ -50,14 +50,14 @@
 
 ### API stats
 
-Generated 42 namespaces containing 1 properties, 318 functions and 69 events:
+Generated 42 namespaces containing 1 properties, 319 functions and 69 events:
 
 
     |                            :namespace | :properties | :functions | :events |
     |---------------------------------------+-------------+------------+---------|
     |           chrome.accessibilityPrivate |           0 |          3 |       2 |
     |             chrome.activityLogPrivate |           0 |          4 |       1 |
-    |                chrome.autofillPrivate |           0 |          8 |       2 |
+    |                chrome.autofillPrivate |           0 |          9 |       2 |
     |                chrome.autotestPrivate |           0 |         15 |       0 |
     |               chrome.bluetoothPrivate |           0 |          7 |       1 |
     |         chrome.bookmarkManagerPrivate |           0 |         21 |       4 |
@@ -112,7 +112,7 @@ Generated 42 namespaces containing 1 properties, 318 functions and 69 events:
       tap-all-events]]
 
     [chromex.ext.autofill-private refer-macros:[
-      save-address get-address-components get-address-list save-credit-card remove-entry
+      save-address get-country-list get-address-components get-address-list save-credit-card remove-entry
       validate-phone-numbers get-credit-card-list mask-credit-card tap-on-address-list-changed
       tap-on-credit-card-list-changed tap-all-events]]
 

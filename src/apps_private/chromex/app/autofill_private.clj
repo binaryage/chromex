@@ -20,6 +20,18 @@
      |address| - The address entry to save."
   ([address] (gen-call :function ::save-address &form address)))
 
+(defmacro get-country-list
+  "Gets the list of all countries.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [countries] where:
+
+     |countries| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::get-country-list &form)))
+
 (defmacro get-address-components
   "Gets the address components for a given country code.
 
@@ -99,7 +111,7 @@
 ; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-address-list-changed-events
-  "Fired when the address list has changed, meaning that an entry has been added, removed, or changed.  |entries| The updated
+  "Fired when the address list has changed, meaning that an entry has been added, removed, or changed. |entries| The updated
    list of entries.
 
    Events will be put on the |channel| with signature [::on-address-list-changed [entries]] where:
@@ -110,7 +122,7 @@
   ([channel & args] (apply gen-call :event ::on-address-list-changed &form channel args)))
 
 (defmacro tap-on-credit-card-list-changed-events
-  "Fired when the credit card list has changed, meaning that an entry has been added, removed, or changed.  |entries| The
+  "Fired when the credit card list has changed, meaning that an entry has been added, removed, or changed. |entries| The
    updated list of entries.
 
    Events will be put on the |channel| with signature [::on-credit-card-list-changed [entries]] where:
@@ -136,6 +148,12 @@
    :since "52",
    :functions
    [{:id ::save-address, :name "saveAddress", :params [{:name "address", :type "autofillPrivate.AddressEntry"}]}
+    {:id ::get-country-list,
+     :name "getCountryList",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "callback", :type :callback, :callback {:params [{:name "countries", :type "[array-of-objects]"}]}}]}
     {:id ::get-address-components,
      :name "getAddressComponents",
      :callback? true,

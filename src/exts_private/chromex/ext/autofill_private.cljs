@@ -6,6 +6,9 @@
 (defn save-address* [config address]
   (gen-wrap :function ::save-address config address))
 
+(defn get-country-list* [config]
+  (gen-wrap :function ::get-country-list config))
+
 (defn get-address-components* [config country-code]
   (gen-wrap :function ::get-address-components config country-code))
 
