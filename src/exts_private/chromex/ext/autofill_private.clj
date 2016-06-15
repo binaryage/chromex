@@ -150,7 +150,7 @@
    [{:id ::save-address, :name "saveAddress", :params [{:name "address", :type "autofillPrivate.AddressEntry"}]}
     {:id ::get-country-list,
      :name "getCountryList",
-     :since "master",
+     :since "53",
      :callback? true,
      :params
      [{:name "callback", :type :callback, :callback {:params [{:name "countries", :type "[array-of-objects]"}]}}]}
