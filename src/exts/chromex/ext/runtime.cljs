@@ -35,6 +35,9 @@
 (defn restart* [config]
   (gen-wrap :function ::restart config))
 
+(defn restart-after-delay* [config seconds]
+  (gen-wrap :function ::restart-after-delay config seconds))
+
 (defn connect* [config extension-id connect-info]
   (gen-wrap :function ::connect config extension-id connect-info))
 

@@ -126,6 +126,22 @@
    https://developer.chrome.com/extensions/runtime#method-restart."
   ([] (gen-call :function ::restart &form)))
 
+(defmacro restart-after-delay
+  "Restart the ChromeOS device when the app runs in kiosk mode after the given seconds. If called again before the time ends,
+   the reboot will be delayed. If called with a value of -1, the reboot will be cancelled. It's a no-op in non-kiosk mode.
+   It's only allowed to be called repeatedly by the first extension to invoke this API.
+
+     |seconds| - Time to wait in seconds before rebooting the device, or -1 to cancel a scheduled reboot.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/extensions/runtime#method-restartAfterDelay."
+  ([seconds] (gen-call :function ::restart-after-delay &form seconds)))
+
 (defmacro connect
   "Attempts to connect to connect listeners within an extension/app (such as the background page), or other extensions/apps.
    This is useful for content scripts connecting to their extension processes, inter-app/extension communication, and web
@@ -414,6 +430,11 @@
         [{:name "status", :type "runtime.RequestUpdateCheckStatus"}
          {:name "details", :optional? true, :type "object"}]}}]}
     {:id ::restart, :name "restart", :since "32"}
+    {:id ::restart-after-delay,
+     :name "restartAfterDelay",
+     :since "master",
+     :callback? true,
+     :params [{:name "seconds", :type "integer"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::connect,
      :name "connect",
      :since "26",

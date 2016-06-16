@@ -72,7 +72,7 @@
 
 ### API stats
 
-Generated 64 namespaces containing 25 properties, 371 functions and 132 events:
+Generated 64 namespaces containing 25 properties, 372 functions and 132 events:
 
 
     |                         :namespace | :properties | :functions | :events |
@@ -120,7 +120,7 @@ Generated 64 namespaces containing 25 properties, 371 functions and 132 events:
     |                       chrome.power |           0 |          2 |       0 |
     |             chrome.printerProvider |           0 |          0 |       4 |
     |                       chrome.proxy |           1 |          0 |       1 |
-    |                     chrome.runtime |           2 |         14 |      11 |
+    |                     chrome.runtime |           2 |         15 |      11 |
     |                      chrome.serial |           0 |         13 |       2 |
     |             chrome.signedInDevices |           0 |          1 |       1 |
     |                      chrome.socket |           0 |         21 |       0 |
@@ -321,11 +321,11 @@ Generated 64 namespaces containing 25 properties, 371 functions and 132 events:
 
     [chromex.app.runtime refer-macros:[
       get-last-error get-id get-background-page open-options-page get-manifest get-url set-uninstall-url
-      reload request-update-check restart connect connect-native send-message send-native-message
-      get-platform-info get-package-directory-entry tap-on-startup tap-on-installed tap-on-suspend
-      tap-on-suspend-canceled tap-on-update-available tap-on-browser-update-available tap-on-connect
-      tap-on-connect-external tap-on-message tap-on-message-external tap-on-restart-required
-      tap-all-events]]
+      reload request-update-check restart restart-after-delay connect connect-native send-message
+      send-native-message get-platform-info get-package-directory-entry tap-on-startup tap-on-installed
+      tap-on-suspend tap-on-suspend-canceled tap-on-update-available tap-on-browser-update-available
+      tap-on-connect tap-on-connect-external tap-on-message tap-on-message-external
+      tap-on-restart-required tap-all-events]]
 
     [chromex.app.serial refer-macros:[
       get-devices connect update disconnect set-paused get-info get-connections send flush
