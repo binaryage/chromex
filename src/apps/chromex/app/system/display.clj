@@ -27,6 +27,20 @@
    https://developer.chrome.com/apps/system.display#method-getInfo."
   ([] (gen-call :function ::get-info &form)))
 
+(defmacro get-display-layout
+  "Get the layout info for all displays. NOTE: This is only available to Chrome OS Kiosk apps and Web UI.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [layouts] where:
+
+     |layouts| - https://developer.chrome.com/apps/system.display#property-callback-layouts.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/apps/system.display#method-getDisplayLayout."
+  ([] (gen-call :function ::get-display-layout &form)))
+
 (defmacro set-display-properties
   "Updates the properties for the display specified by |id|, according to the information provided in |info|. On failure,
    'runtime.lastError' will be set. NOTE: This is only available to Chrome OS Kiosk apps and Web UI.
@@ -43,6 +57,22 @@
 
    https://developer.chrome.com/apps/system.display#method-setDisplayProperties."
   ([id info] (gen-call :function ::set-display-properties &form id info)))
+
+(defmacro set-display-layout
+  "Set the layout for all displays. Any display not included will use the default layout. If a layout would overlap or be
+   otherwise invalid it will be adjusted to a valid layout. After layout is resolved, an onDisplayChanged event will be
+   triggered. NOTE: This is only available to Chrome OS Kiosk apps and Web UI.
+
+     |layouts| - The layout information, required for all displays except     the primary display.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/apps/system.display#method-setDisplayLayout."
+  ([layouts] (gen-call :function ::set-display-layout &form layouts)))
 
 (defmacro enable-unified-desktop
   "Enables/disables the unified desktop feature. Note that this simply enables the feature, but will not change the actual
@@ -124,12 +154,27 @@
      :callback? true,
      :params
      [{:name "callback", :type :callback, :callback {:params [{:name "display-info", :type "[array-of-objects]"}]}}]}
+    {:id ::get-display-layout,
+     :name "getDisplayLayout",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "callback",
+       :type :callback,
+       :callback {:params [{:name "layouts", :type "[array-of-system.display.DisplayLayouts]"}]}}]}
     {:id ::set-display-properties,
      :name "setDisplayProperties",
      :callback? true,
      :params
      [{:name "id", :type "string"}
       {:name "info", :type "object"}
+      {:name "callback", :optional? true, :type :callback}]}
+    {:id ::set-display-layout,
+     :name "setDisplayLayout",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "layouts", :type "[array-of-system.display.DisplayLayouts]"}
       {:name "callback", :optional? true, :type :callback}]}
     {:id ::enable-unified-desktop,
      :name "enableUnifiedDesktop",

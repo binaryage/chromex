@@ -6,8 +6,14 @@
 (defn get-info* [config]
   (gen-wrap :function ::get-info config))
 
+(defn get-display-layout* [config]
+  (gen-wrap :function ::get-display-layout config))
+
 (defn set-display-properties* [config id info]
   (gen-wrap :function ::set-display-properties config id info))
+
+(defn set-display-layout* [config layouts]
+  (gen-wrap :function ::set-display-layout config layouts))
 
 (defn enable-unified-desktop* [config enabled]
   (gen-wrap :function ::enable-unified-desktop config enabled))
