@@ -432,7 +432,7 @@
     {:id ::restart, :name "restart", :since "32"}
     {:id ::restart-after-delay,
      :name "restartAfterDelay",
-     :since "master",
+     :since "53",
      :callback? true,
      :params [{:name "seconds", :type "integer"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::connect,
