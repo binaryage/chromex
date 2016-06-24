@@ -32,6 +32,7 @@
 | [chrome.networkingPrivate](https://developer.chrome.com/extensions/networkingPrivate) | [chromex/app/networking_private.clj](chromex/app/networking_private.clj) |
 | [chrome.passwordsPrivate](https://developer.chrome.com/extensions/passwordsPrivate) | [chromex/app/passwords_private.clj](chromex/app/passwords_private.clj) |
 | [chrome.preferencesPrivate](https://developer.chrome.com/extensions/preferencesPrivate) | [chromex/app/preferences_private.clj](chromex/app/preferences_private.clj) |
+| [chrome.quickUnlockPrivate](https://developer.chrome.com/extensions/quickUnlockPrivate) | [chromex/app/quick_unlock_private.clj](chromex/app/quick_unlock_private.clj) |
 | [chrome.resourcesPrivate](https://developer.chrome.com/extensions/resourcesPrivate) | [chromex/app/resources_private.clj](chromex/app/resources_private.clj) |
 | [chrome.settingsPrivate](https://developer.chrome.com/extensions/settingsPrivate) | [chromex/app/settings_private.clj](chromex/app/settings_private.clj) |
 | [chrome.streamsPrivate](https://developer.chrome.com/extensions/streamsPrivate) | [chromex/app/streams_private.clj](chromex/app/streams_private.clj) |
@@ -46,7 +47,7 @@
 
 ### API stats
 
-Generated 38 namespaces containing 1 properties, 274 functions and 72 events:
+Generated 39 namespaces containing 1 properties, 277 functions and 73 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -79,6 +80,7 @@ Generated 38 namespaces containing 1 properties, 274 functions and 72 events:
     |       chrome.networkingPrivate |           0 |         24 |       4 |
     |        chrome.passwordsPrivate |           0 |          5 |       3 |
     |      chrome.preferencesPrivate |           1 |          0 |       0 |
+    |      chrome.quickUnlockPrivate |           0 |          3 |       1 |
     |        chrome.resourcesPrivate |           0 |          1 |       0 |
     |         chrome.settingsPrivate |           0 |          5 |       1 |
     |          chrome.streamsPrivate |           0 |          1 |       1 |
@@ -239,6 +241,9 @@ Generated 38 namespaces containing 1 properties, 274 functions and 72 events:
 
     [chromex.app.preferences-private refer-macros:[
       get-easy-unlock-proximity-required tap-all-events]]
+
+    [chromex.app.quick-unlock-private refer-macros:[
+      get-available-modes get-active-modes set-modes tap-on-active-modes-changed tap-all-events]]
 
     [chromex.app.resources-private refer-macros:[
       get-strings tap-all-events]]

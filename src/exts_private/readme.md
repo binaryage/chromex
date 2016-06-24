@@ -34,6 +34,7 @@
 | [chrome.networkingPrivate](https://developer.chrome.com/extensions/networkingPrivate) | [chromex/ext/networking_private.clj](chromex/ext/networking_private.clj) |
 | [chrome.passwordsPrivate](https://developer.chrome.com/extensions/passwordsPrivate) | [chromex/ext/passwords_private.clj](chromex/ext/passwords_private.clj) |
 | [chrome.preferencesPrivate](https://developer.chrome.com/extensions/preferencesPrivate) | [chromex/ext/preferences_private.clj](chromex/ext/preferences_private.clj) |
+| [chrome.quickUnlockPrivate](https://developer.chrome.com/extensions/quickUnlockPrivate) | [chromex/ext/quick_unlock_private.clj](chromex/ext/quick_unlock_private.clj) |
 | [chrome.resourcesPrivate](https://developer.chrome.com/extensions/resourcesPrivate) | [chromex/ext/resources_private.clj](chromex/ext/resources_private.clj) |
 | [chrome.settingsPrivate](https://developer.chrome.com/extensions/settingsPrivate) | [chromex/ext/settings_private.clj](chromex/ext/settings_private.clj) |
 | [chrome.streamsPrivate](https://developer.chrome.com/extensions/streamsPrivate) | [chromex/ext/streams_private.clj](chromex/ext/streams_private.clj) |
@@ -50,7 +51,7 @@
 
 ### API stats
 
-Generated 42 namespaces containing 1 properties, 319 functions and 69 events:
+Generated 43 namespaces containing 1 properties, 322 functions and 70 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -85,6 +86,7 @@ Generated 42 namespaces containing 1 properties, 319 functions and 69 events:
     |              chrome.networkingPrivate |           0 |         24 |       4 |
     |               chrome.passwordsPrivate |           0 |          5 |       3 |
     |             chrome.preferencesPrivate |           1 |          0 |       0 |
+    |             chrome.quickUnlockPrivate |           0 |          3 |       1 |
     |               chrome.resourcesPrivate |           0 |          1 |       0 |
     |                chrome.settingsPrivate |           0 |          5 |       1 |
     |                 chrome.streamsPrivate |           0 |          1 |       1 |
@@ -251,6 +253,9 @@ Generated 42 namespaces containing 1 properties, 319 functions and 69 events:
 
     [chromex.ext.preferences-private refer-macros:[
       get-easy-unlock-proximity-required tap-all-events]]
+
+    [chromex.ext.quick-unlock-private refer-macros:[
+      get-available-modes get-active-modes set-modes tap-on-active-modes-changed tap-all-events]]
 
     [chromex.ext.resources-private refer-macros:[
       get-strings tap-all-events]]
