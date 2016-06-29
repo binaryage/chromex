@@ -152,7 +152,8 @@
      :name "getVisibleNotifications",
      :since "52",
      :callback? true,
-     :params [{:name "callback", :type :callback, :callback {:params [{:name "notifications", :type "object"}]}}]}]})
+     :params
+     [{:name "callback", :type :callback, :callback {:params [{:name "notifications", :type "[array-of-objects]"}]}}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
