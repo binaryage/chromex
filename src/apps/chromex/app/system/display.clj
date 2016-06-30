@@ -156,7 +156,7 @@
      [{:name "callback", :type :callback, :callback {:params [{:name "display-info", :type "[array-of-objects]"}]}}]}
     {:id ::get-display-layout,
      :name "getDisplayLayout",
-     :since "master",
+     :since "53",
      :callback? true,
      :params
      [{:name "callback",
@@ -171,7 +171,7 @@
       {:name "callback", :optional? true, :type :callback}]}
     {:id ::set-display-layout,
      :name "setDisplayLayout",
-     :since "master",
+     :since "53",
      :callback? true,
      :params
      [{:name "layouts", :type "[array-of-system.display.DisplayLayouts]"}

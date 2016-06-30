@@ -8,7 +8,7 @@
    The quick unlock authentication facilities are not available through this
    API; they are built directly into the lock screen.
 
-     * available since Chrome master"
+     * available since Chrome 53"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -89,7 +89,7 @@
 
 (def api-table
   {:namespace "chrome.quickUnlockPrivate",
-   :since "master",
+   :since "53",
    :functions
    [{:id ::get-available-modes,
      :name "getAvailableModes",
