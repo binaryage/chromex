@@ -154,6 +154,20 @@
    chromex.error/get-last-error."
   ([id] (gen-call :function ::launch-ephemeral-app &form id)))
 
+(defmacro is-pending-custodian-approval
+  "Checks if an extension installed on a Supervised User profile is pending custodian approval.
+
+     |id| - The extension id of the extension to be checked.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [is-pending-approval] where:
+
+     |is-pending-approval| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([id] (gen-call :function ::is-pending-custodian-approval &form id)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -238,7 +252,14 @@
       {:name "callback",
        :optional? true,
        :type :callback,
-       :callback {:params [{:name "result", :type "webstorePrivate.Result"}]}}]}]})
+       :callback {:params [{:name "result", :type "webstorePrivate.Result"}]}}]}
+    {:id ::is-pending-custodian-approval,
+     :name "isPendingCustodianApproval",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "id", :type "string"}
+      {:name "callback", :type :callback, :callback {:params [{:name "is-pending-approval", :type "boolean"}]}}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

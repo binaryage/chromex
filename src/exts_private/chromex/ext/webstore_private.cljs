@@ -39,3 +39,6 @@
 (defn launch-ephemeral-app* [config id]
   (gen-wrap :function ::launch-ephemeral-app config id))
 
+(defn is-pending-custodian-approval* [config id]
+  (gen-wrap :function ::is-pending-custodian-approval config id))
+
