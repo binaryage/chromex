@@ -22,7 +22,6 @@
 | [chrome.contentSettings](https://developer.chrome.com/extensions/contentSettings) | [chromex/ext/content_settings.clj](chromex/ext/content_settings.clj) |
 | [chrome.contextMenus](https://developer.chrome.com/extensions/contextMenus) | [chromex/ext/context_menus.clj](chromex/ext/context_menus.clj) |
 | [chrome.cookies](https://developer.chrome.com/extensions/cookies) | [chromex/ext/cookies.clj](chromex/ext/cookies.clj) |
-| [chrome.copresence](https://developer.chrome.com/extensions/copresence) | [chromex/ext/copresence.clj](chromex/ext/copresence.clj) |
 | [chrome.debugger](https://developer.chrome.com/extensions/debugger) | [chromex/ext/debugger_api.clj](chromex/ext/debugger_api.clj) |
 | [chrome.declarativeContent](https://developer.chrome.com/extensions/declarativeContent) | [chromex/ext/declarative_content.clj](chromex/ext/declarative_content.clj) |
 | [chrome.declarativeWebRequest](https://developer.chrome.com/extensions/declarativeWebRequest) | [chromex/ext/declarative_web_request.clj](chromex/ext/declarative_web_request.clj) |
@@ -89,7 +88,7 @@
 
 ### API stats
 
-Generated 81 namespaces containing 49 properties, 368 functions and 183 events:
+Generated 80 namespaces containing 49 properties, 367 functions and 181 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -112,7 +111,6 @@ Generated 81 namespaces containing 49 properties, 368 functions and 183 events:
     |                chrome.contentSettings |          13 |          0 |       0 |
     |                   chrome.contextMenus |           1 |          4 |       1 |
     |                        chrome.cookies |           0 |          5 |       1 |
-    |                     chrome.copresence |           0 |          1 |       2 |
     |                       chrome.debugger |           0 |          4 |       2 |
     |             chrome.declarativeContent |           0 |          0 |       1 |
     |          chrome.declarativeWebRequest |           0 |          0 |       2 |
@@ -248,9 +246,6 @@ Generated 81 namespaces containing 49 properties, 368 functions and 183 events:
 
     [chromex.ext.cookies refer-macros:[
       get get-all set remove get-all-cookie-stores tap-on-changed tap-all-events]]
-
-    [chromex.ext.copresence refer-macros:[
-      execute tap-on-messages-received tap-on-status-updated tap-all-events]]
 
     [chromex.ext.debugger-api refer-macros:[
       attach detach send-command get-targets tap-on-event tap-on-detach tap-all-events]]

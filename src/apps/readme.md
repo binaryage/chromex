@@ -20,7 +20,6 @@
 | [chrome.certificateProvider](https://developer.chrome.com/extensions/certificateProvider) | [chromex/app/certificate_provider.clj](chromex/app/certificate_provider.clj) |
 | [chrome.commands](https://developer.chrome.com/extensions/commands) | [chromex/app/commands.clj](chromex/app/commands.clj) |
 | [chrome.contextMenus](https://developer.chrome.com/extensions/contextMenus) | [chromex/app/context_menus.clj](chromex/app/context_menus.clj) |
-| [chrome.copresence](https://developer.chrome.com/extensions/copresence) | [chromex/app/copresence.clj](chromex/app/copresence.clj) |
 | [chrome.desktopCapture](https://developer.chrome.com/extensions/desktopCapture) | [chromex/app/desktop_capture.clj](chromex/app/desktop_capture.clj) |
 | [chrome.diagnostics](https://developer.chrome.com/extensions/diagnostics) | [chromex/app/diagnostics.clj](chromex/app/diagnostics.clj) |
 | [chrome.displaySource](https://developer.chrome.com/extensions/displaySource) | [chromex/app/display_source.clj](chromex/app/display_source.clj) |
@@ -72,7 +71,7 @@
 
 ### API stats
 
-Generated 64 namespaces containing 25 properties, 374 functions and 132 events:
+Generated 63 namespaces containing 25 properties, 373 functions and 130 events:
 
 
     |                         :namespace | :properties | :functions | :events |
@@ -93,7 +92,6 @@ Generated 64 namespaces containing 25 properties, 374 functions and 132 events:
     |         chrome.certificateProvider |           0 |          0 |       2 |
     |                    chrome.commands |           0 |          1 |       1 |
     |                chrome.contextMenus |           1 |          4 |       1 |
-    |                  chrome.copresence |           0 |          1 |       2 |
     |              chrome.desktopCapture |           0 |          2 |       0 |
     |                 chrome.diagnostics |           0 |          1 |       0 |
     |               chrome.displaySource |           0 |          4 |       3 |
@@ -215,9 +213,6 @@ Generated 64 namespaces containing 25 properties, 374 functions and 132 events:
 
     [chromex.app.context-menus refer-macros:[
       get-action-menu-top-level-limit create update remove remove-all tap-on-clicked tap-all-events]]
-
-    [chromex.app.copresence refer-macros:[
-      execute tap-on-messages-received tap-on-status-updated tap-all-events]]
 
     [chromex.app.desktop-capture refer-macros:[
       choose-desktop-media cancel-choose-desktop-media tap-all-events]]
