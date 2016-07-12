@@ -7,7 +7,6 @@
 | [chrome.accessibilityFeatures](https://developer.chrome.com/extensions/accessibilityFeatures) | [chromex/ext/accessibility_features.clj](chromex/ext/accessibility_features.clj) |
 | [chrome.alarms](https://developer.chrome.com/extensions/alarms) | [chromex/ext/alarms.clj](chromex/ext/alarms.clj) |
 | [chrome.app](https://developer.chrome.com/extensions/app) | [chromex/ext/app.clj](chromex/ext/app.clj) |
-| [chrome.audioModem](https://developer.chrome.com/extensions/audioModem) | [chromex/ext/audio_modem.clj](chromex/ext/audio_modem.clj) |
 | [chrome.automation](https://developer.chrome.com/extensions/automation) | [chromex/ext/automation.clj](chromex/ext/automation.clj) |
 | [chrome.bluetooth](https://developer.chrome.com/extensions/bluetooth) | [chromex/ext/bluetooth.clj](chromex/ext/bluetooth.clj) |
 | [chrome.bookmarks](https://developer.chrome.com/extensions/bookmarks) | [chromex/ext/bookmarks.clj](chromex/ext/bookmarks.clj) |
@@ -88,7 +87,7 @@
 
 ### API stats
 
-Generated 80 namespaces containing 49 properties, 367 functions and 181 events:
+Generated 79 namespaces containing 49 properties, 363 functions and 179 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -96,7 +95,6 @@ Generated 80 namespaces containing 49 properties, 367 functions and 181 events:
     |          chrome.accessibilityFeatures |          13 |          0 |       0 |
     |                         chrome.alarms |           0 |          5 |       1 |
     |                            chrome.app |           0 |          4 |       0 |
-    |                     chrome.audioModem |           0 |          4 |       2 |
     |                     chrome.automation |           0 |          6 |       0 |
     |                      chrome.bluetooth |           0 |          5 |       4 |
     |                      chrome.bookmarks |           2 |         11 |       7 |
@@ -189,9 +187,6 @@ Generated 80 namespaces containing 49 properties, 367 functions and 181 events:
 
     [chromex.ext.app refer-macros:[
       get-is-installed install-state running-state get-details tap-all-events]]
-
-    [chromex.ext.audio-modem refer-macros:[
-      transmit stop-transmit receive stop-receive tap-on-received tap-on-transmit-fail tap-all-events]]
 
     [chromex.ext.automation refer-macros:[
       get-tree get-desktop get-focus add-tree-change-observer remove-tree-change-observer

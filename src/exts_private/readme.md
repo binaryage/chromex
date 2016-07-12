@@ -14,7 +14,6 @@
 | [chrome.chromeosInfoPrivate](https://developer.chrome.com/extensions/chromeosInfoPrivate) | [chromex/ext/chromeos_info_private.clj](chromex/ext/chromeos_info_private.clj) |
 | [chrome.cloudPrintPrivate](https://developer.chrome.com/extensions/cloudPrintPrivate) | [chromex/ext/cloud_print_private.clj](chromex/ext/cloud_print_private.clj) |
 | [chrome.commandLinePrivate](https://developer.chrome.com/extensions/commandLinePrivate) | [chromex/ext/command_line_private.clj](chromex/ext/command_line_private.clj) |
-| [chrome.copresencePrivate](https://developer.chrome.com/extensions/copresencePrivate) | [chromex/ext/copresence_private.clj](chromex/ext/copresence_private.clj) |
 | [chrome.cryptotokenPrivate](https://developer.chrome.com/extensions/cryptotokenPrivate) | [chromex/ext/cryptotoken_private.clj](chromex/ext/cryptotoken_private.clj) |
 | [chrome.dashboardPrivate](https://developer.chrome.com/extensions/dashboardPrivate) | [chromex/ext/dashboard_private.clj](chromex/ext/dashboard_private.clj) |
 | [chrome.developerPrivate](https://developer.chrome.com/extensions/developerPrivate) | [chromex/ext/developer_private.clj](chromex/ext/developer_private.clj) |
@@ -51,7 +50,7 @@
 
 ### API stats
 
-Generated 43 namespaces containing 1 properties, 323 functions and 70 events:
+Generated 42 namespaces containing 1 properties, 320 functions and 67 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -66,7 +65,6 @@ Generated 43 namespaces containing 1 properties, 323 functions and 70 events:
     |            chrome.chromeosInfoPrivate |           0 |          2 |       0 |
     |              chrome.cloudPrintPrivate |           0 |          4 |       0 |
     |             chrome.commandLinePrivate |           0 |          1 |       0 |
-    |              chrome.copresencePrivate |           0 |          3 |       3 |
     |             chrome.cryptotokenPrivate |           0 |          1 |       0 |
     |               chrome.dashboardPrivate |           0 |          1 |       0 |
     |               chrome.developerPrivate |           0 |         26 |       2 |
@@ -145,10 +143,6 @@ Generated 43 namespaces containing 1 properties, 323 functions and 70 events:
 
     [chromex.ext.command-line-private refer-macros:[
       has-switch tap-all-events]]
-
-    [chromex.ext.copresence-private refer-macros:[
-      send-initialized send-found send-samples tap-on-config-audio tap-on-encode-token-request
-      tap-on-decode-samples-request tap-all-events]]
 
     [chromex.ext.cryptotoken-private refer-macros:[
       can-origin-assert-app-id tap-all-events]]

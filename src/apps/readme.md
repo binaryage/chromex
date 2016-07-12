@@ -11,7 +11,6 @@
 | [chrome.app.runtime](https://developer.chrome.com/extensions/app.runtime) | [chromex/app/app/runtime.clj](chromex/app/app/runtime.clj) |
 | [chrome.app.window](https://developer.chrome.com/extensions/app.window) | [chromex/app/app/window.clj](chromex/app/app/window.clj) |
 | [chrome.audio](https://developer.chrome.com/extensions/audio) | [chromex/app/audio.clj](chromex/app/audio.clj) |
-| [chrome.audioModem](https://developer.chrome.com/extensions/audioModem) | [chromex/app/audio_modem.clj](chromex/app/audio_modem.clj) |
 | [chrome.automation](https://developer.chrome.com/extensions/automation) | [chromex/app/automation.clj](chromex/app/automation.clj) |
 | [chrome.bluetooth](https://developer.chrome.com/extensions/bluetooth) | [chromex/app/bluetooth.clj](chromex/app/bluetooth.clj) |
 | [chrome.bluetoothLowEnergy](https://developer.chrome.com/extensions/bluetoothLowEnergy) | [chromex/app/bluetooth_low_energy.clj](chromex/app/bluetooth_low_energy.clj) |
@@ -71,7 +70,7 @@
 
 ### API stats
 
-Generated 63 namespaces containing 25 properties, 373 functions and 130 events:
+Generated 62 namespaces containing 25 properties, 369 functions and 128 events:
 
 
     |                         :namespace | :properties | :functions | :events |
@@ -83,7 +82,6 @@ Generated 63 namespaces containing 25 properties, 373 functions and 130 events:
     |                 chrome.app.runtime |           0 |          0 |       3 |
     |                  chrome.app.window |           0 |          5 |       6 |
     |                       chrome.audio |           0 |          3 |       4 |
-    |                  chrome.audioModem |           0 |          4 |       2 |
     |                  chrome.automation |           0 |          6 |       0 |
     |                   chrome.bluetooth |           0 |          5 |       4 |
     |          chrome.bluetoothLowEnergy |           0 |         25 |       9 |
@@ -173,9 +171,6 @@ Generated 63 namespaces containing 25 properties, 373 functions and 130 events:
     [chromex.app.audio refer-macros:[
       get-info set-active-devices set-properties tap-on-device-changed tap-on-level-changed
       tap-on-mute-changed tap-on-devices-changed tap-all-events]]
-
-    [chromex.app.audio-modem refer-macros:[
-      transmit stop-transmit receive stop-receive tap-on-received tap-on-transmit-fail tap-all-events]]
 
     [chromex.app.automation refer-macros:[
       get-tree get-desktop get-focus add-tree-change-observer remove-tree-change-observer
