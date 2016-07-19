@@ -17,6 +17,7 @@
 | [chrome.bluetoothSocket](https://developer.chrome.com/extensions/bluetoothSocket) | [chromex/app/bluetooth_socket.clj](chromex/app/bluetooth_socket.clj) |
 | [chrome.browser](https://developer.chrome.com/extensions/browser) | [chromex/app/browser.clj](chromex/app/browser.clj) |
 | [chrome.certificateProvider](https://developer.chrome.com/extensions/certificateProvider) | [chromex/app/certificate_provider.clj](chromex/app/certificate_provider.clj) |
+| [chrome.clipboard](https://developer.chrome.com/extensions/clipboard) | [chromex/app/clipboard.clj](chromex/app/clipboard.clj) |
 | [chrome.commands](https://developer.chrome.com/extensions/commands) | [chromex/app/commands.clj](chromex/app/commands.clj) |
 | [chrome.contextMenus](https://developer.chrome.com/extensions/contextMenus) | [chromex/app/context_menus.clj](chromex/app/context_menus.clj) |
 | [chrome.desktopCapture](https://developer.chrome.com/extensions/desktopCapture) | [chromex/app/desktop_capture.clj](chromex/app/desktop_capture.clj) |
@@ -70,7 +71,7 @@
 
 ### API stats
 
-Generated 62 namespaces containing 25 properties, 369 functions and 128 events:
+Generated 63 namespaces containing 25 properties, 369 functions and 129 events:
 
 
     |                         :namespace | :properties | :functions | :events |
@@ -88,6 +89,7 @@ Generated 62 namespaces containing 25 properties, 369 functions and 128 events:
     |             chrome.bluetoothSocket |           0 |         11 |       4 |
     |                     chrome.browser |           0 |          1 |       0 |
     |         chrome.certificateProvider |           0 |          0 |       2 |
+    |                   chrome.clipboard |           0 |          0 |       1 |
     |                    chrome.commands |           0 |          1 |       1 |
     |                chrome.contextMenus |           1 |          4 |       1 |
     |              chrome.desktopCapture |           0 |          2 |       0 |
@@ -202,6 +204,9 @@ Generated 62 namespaces containing 25 properties, 369 functions and 128 events:
 
     [chromex.app.certificate-provider refer-macros:[
       tap-on-certificates-requested tap-on-sign-digest-requested tap-all-events]]
+
+    [chromex.app.clipboard refer-macros:[
+      tap-on-clipboard-data-changed tap-all-events]]
 
     [chromex.app.commands refer-macros:[
       get-all tap-on-command tap-all-events]]
