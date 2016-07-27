@@ -77,6 +77,9 @@
 (defn get-zoom-settings* [config tab-id]
   (gen-wrap :function ::get-zoom-settings config tab-id))
 
+(defn discard* [config tab-id]
+  (gen-wrap :function ::discard config tab-id))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-created* [config channel & args]

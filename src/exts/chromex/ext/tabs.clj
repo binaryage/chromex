@@ -415,6 +415,25 @@
   ([tab-id] (gen-call :function ::get-zoom-settings &form tab-id))
   ([] `(get-zoom-settings :omit)))
 
+(defmacro discard
+  "Discards a tab from memory. Discarded tabs are still visible on the tab strip and are reloaded when activated.
+
+     |tab-id| - The ID of the tab to be discarded. If specified, the tab will be discarded unless it's active or already
+                discarded. If omitted, the browser will discard the least important tab. This can fail if no discardable
+                tabs exist.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [tab] where:
+
+     |tab| - Discarded tab if it was successfully discarded. Undefined otherwise.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/extensions/tabs#method-discard."
+  ([tab-id] (gen-call :function ::discard &form tab-id))
+  ([] `(discard :omit)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -785,7 +804,17 @@
      :callback? true,
      :params
      [{:name "tab-id", :optional? true, :type "integer"}
-      {:name "callback", :type :callback, :callback {:params [{:name "zoom-settings", :type "tabs.ZoomSettings"}]}}]}],
+      {:name "callback", :type :callback, :callback {:params [{:name "zoom-settings", :type "tabs.ZoomSettings"}]}}]}
+    {:id ::discard,
+     :name "discard",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "tab-id", :optional? true, :type "integer"}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "tab", :optional? true, :type "tabs.Tab"}]}}]}],
    :events
    [{:id ::on-created, :name "onCreated", :params [{:name "tab", :type "tabs.Tab"}]}
     {:id ::on-updated,

@@ -87,7 +87,7 @@
 
 ### API stats
 
-Generated 79 namespaces containing 49 properties, 363 functions and 179 events:
+Generated 79 namespaces containing 49 properties, 364 functions and 179 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -160,7 +160,7 @@ Generated 79 namespaces containing 49 properties, 363 functions and 179 events:
     |                 chrome.system.storage |           0 |          3 |       2 |
     |                chrome.systemIndicator |           0 |          3 |       1 |
     |                     chrome.tabCapture |           0 |          3 |       1 |
-    |                           chrome.tabs |           1 |         23 |      13 |
+    |                           chrome.tabs |           1 |         24 |      13 |
     |                           chrome.test |           0 |         33 |       1 |
     |                       chrome.topSites |           0 |          1 |       0 |
     |                            chrome.tts |           0 |          6 |       0 |
@@ -440,10 +440,10 @@ Generated 79 namespaces containing 49 properties, 363 functions and 179 events:
     [chromex.ext.tabs refer-macros:[
       get-tab-id-none get get-current connect send-request send-message get-selected get-all-in-window
       create duplicate query highlight update move reload remove detect-language capture-visible-tab
-      execute-script insert-css set-zoom get-zoom set-zoom-settings get-zoom-settings tap-on-created
-      tap-on-updated tap-on-moved tap-on-selection-changed tap-on-active-changed tap-on-activated
-      tap-on-highlight-changed tap-on-highlighted tap-on-detached tap-on-attached tap-on-removed
-      tap-on-replaced tap-on-zoom-change tap-all-events]]
+      execute-script insert-css set-zoom get-zoom set-zoom-settings get-zoom-settings discard
+      tap-on-created tap-on-updated tap-on-moved tap-on-selection-changed tap-on-active-changed
+      tap-on-activated tap-on-highlight-changed tap-on-highlighted tap-on-detached tap-on-attached
+      tap-on-removed tap-on-replaced tap-on-zoom-change tap-all-events]]
 
     [chromex.ext.test refer-macros:[
       get-config notify-fail notify-pass log send-message callback-added run-next-test fail succeed
