@@ -3,7 +3,7 @@
    access data of the clipboard. This API is currently only implemented for
    ChromeOS.
 
-     * available since Chrome master
+     * available since Chrome 54
      * https://developer.chrome.com/apps/clipboard"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -42,7 +42,7 @@
 
 (def api-table
   {:namespace "chrome.clipboard",
-   :since "master",
+   :since "54",
    :events [{:id ::on-clipboard-data-changed, :name "onClipboardDataChanged"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

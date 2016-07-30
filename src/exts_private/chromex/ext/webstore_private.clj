@@ -255,7 +255,7 @@
        :callback {:params [{:name "result", :type "webstorePrivate.Result"}]}}]}
     {:id ::is-pending-custodian-approval,
      :name "isPendingCustodianApproval",
-     :since "master",
+     :since "54",
      :callback? true,
      :params
      [{:name "id", :type "string"}

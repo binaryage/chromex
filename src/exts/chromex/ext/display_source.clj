@@ -2,7 +2,7 @@
   "The chrome.displaySource API creates a Display
    session using WebMediaStreamTrack as sources.
 
-     * available since Chrome 53
+     * available since Chrome 54
      * https://developer.chrome.com/extensions/displaySource"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -132,7 +132,7 @@
 
 (def api-table
   {:namespace "chrome.displaySource",
-   :since "53",
+   :since "54",
    :functions
    [{:id ::get-available-sinks,
      :name "getAvailableSinks",

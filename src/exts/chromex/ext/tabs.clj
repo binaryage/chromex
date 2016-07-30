@@ -807,7 +807,7 @@
       {:name "callback", :type :callback, :callback {:params [{:name "zoom-settings", :type "tabs.ZoomSettings"}]}}]}
     {:id ::discard,
      :name "discard",
-     :since "master",
+     :since "54",
      :callback? true,
      :params
      [{:name "tab-id", :optional? true, :type "integer"}

@@ -205,7 +205,7 @@
        :callback {:params [{:name "devices", :type "[array-of-hid.HidDeviceInfos]"}]}}]}
     {:id ::get-user-selected-devices,
      :name "getUserSelectedDevices",
-     :since "53",
+     :since "54",
      :callback? true,
      :params
      [{:name "options", :optional? true, :type "object"}
