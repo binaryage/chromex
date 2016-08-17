@@ -1,5 +1,5 @@
 (ns chromex.app.test
-  "  * available since Chrome 5
+  "  * available since Chrome 11
      * https://developer.chrome.com/apps/test"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -347,11 +347,10 @@
 
 (def api-table
   {:namespace "chrome.test",
-   :since "5",
+   :since "11",
    :functions
    [{:id ::get-config,
      :name "getConfig",
-     :since "9",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "test-config", :type "object"}]}}]}
     {:id ::notify-fail, :name "notifyFail", :params [{:name "message", :type "string"}]}
@@ -359,7 +358,6 @@
     {:id ::log, :name "log", :params [{:name "message", :type "string"}]}
     {:id ::send-message,
      :name "sendMessage",
-     :since "6",
      :callback? true,
      :params
      [{:name "message", :type "string"}

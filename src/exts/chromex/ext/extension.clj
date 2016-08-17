@@ -2,7 +2,7 @@
   "The chrome.extension API has utilities that can be used by any extension page. It includes support for exchanging messages
    between an extension and its content scripts or between extensions, as described in detail in Message Passing.
 
-     * available since Chrome 5
+     * available since Chrome 11
      * https://developer.chrome.com/extensions/extension"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -166,10 +166,10 @@
 
 (def api-table
   {:namespace "chrome.extension",
-   :since "5",
+   :since "11",
    :properties
    [{:id ::last-error, :name "lastError", :return-type "object"}
-    {:id ::in-incognito-context, :name "inIncognitoContext", :since "7", :return-type "boolean"}],
+    {:id ::in-incognito-context, :name "inIncognitoContext", :return-type "boolean"}],
    :functions
    [{:id ::send-request,
      :name "sendRequest",
@@ -205,7 +205,7 @@
      :since "12",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "is-allowed-access", :type "boolean"}]}}]}
-    {:id ::set-update-url-data, :name "setUpdateUrlData", :since "9", :params [{:name "data", :type "string"}]}],
+    {:id ::set-update-url-data, :name "setUpdateUrlData", :params [{:name "data", :type "string"}]}],
    :events
    [{:id ::on-request,
      :name "onRequest",

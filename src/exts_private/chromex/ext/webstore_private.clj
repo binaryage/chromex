@@ -1,5 +1,5 @@
 (ns chromex.ext.webstore-private
-  "  * available since Chrome 7"
+  "  * available since Chrome 11"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -181,7 +181,7 @@
 
 (def api-table
   {:namespace "chrome.webstorePrivate",
-   :since "7",
+   :since "11",
    :functions
    [{:id ::install,
      :name "install",
@@ -199,7 +199,6 @@
        :callback {:params [{:name "result", :type "webstorePrivate.Result"}]}}]}
     {:id ::complete-install,
      :name "completeInstall",
-     :since "8",
      :callback? true,
      :params [{:name "expected-id", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::enable-app-launcher,
@@ -209,7 +208,6 @@
      :params [{:name "callback", :optional? true, :type :callback}]}
     {:id ::get-browser-login,
      :name "getBrowserLogin",
-     :since "8",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "info", :type "object"}]}}]}
     {:id ::get-store-login,

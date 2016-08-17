@@ -1,6 +1,6 @@
 # chromex [![GitHub license](https://img.shields.io/github/license/binaryage/chromex.svg)](license.txt) [![Clojars Project](https://img.shields.io/clojars/v/binaryage/chromex.svg)](https://clojars.org/binaryage/chromex) [![Travis](https://img.shields.io/travis/binaryage/chromex.svg)](https://travis-ci.org/binaryage/chromex) [![Sample Project](https://img.shields.io/badge/project-example-ff69b4.svg)](https://github.com/binaryage/chromex-sample)
 
-This library is auto-generated. Current version was **generated on 2016-07-30** from [**Chromium @ a95aa08**](https://chromium.googlesource.com/chromium/src.git/+/a95aa0811a396f1e1cd0869161be1ad34b477b56).
+This library is auto-generated. Current version was **generated on 2016-08-18** from [**Chromium @ ab8e064**](https://chromium.googlesource.com/chromium/src.git/+/ab8e0644175ad9e5e3ecd7e9995e997e6f03b480).
 
 Looking for a nightly version? Check out [**nightly branch**](https://github.com/binaryage/chromex/tree/nightly) which gets updated nightly if there were any new API changes.
 

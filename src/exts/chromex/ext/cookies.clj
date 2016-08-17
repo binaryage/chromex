@@ -1,7 +1,7 @@
 (ns chromex.ext.cookies
   "Use the chrome.cookies API to query and modify cookies, and to be notified when they change.
 
-     * available since Chrome 6
+     * available since Chrome 11
      * https://developer.chrome.com/extensions/cookies"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -128,7 +128,7 @@
 
 (def api-table
   {:namespace "chrome.cookies",
-   :since "6",
+   :since "11",
    :functions
    [{:id ::get,
      :name "get",
