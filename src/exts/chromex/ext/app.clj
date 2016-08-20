@@ -63,8 +63,8 @@
      :name "installState",
      :since "20",
      :callback? true,
-     :params [{:name "callback", :type :callback, :callback {:params [{:name "state", :type "unknown-type"}]}}]}
-    {:id ::running-state, :name "runningState", :since "20", :return-type "unknown-type"}
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "state", :type "app.InstallState"}]}}]}
+    {:id ::running-state, :name "runningState", :since "20", :return-type "app.RunningState"}
     {:id ::get-details, :name "getDetails", :return-type "app.Details"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
