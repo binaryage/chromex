@@ -47,7 +47,7 @@
 
 ### API stats
 
-Generated 39 namespaces containing 1 properties, 277 functions and 73 events:
+Generated 39 namespaces containing 1 properties, 278 functions and 73 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -71,7 +71,7 @@ Generated 39 namespaces containing 1 properties, 277 functions and 73 events:
     |      chrome.imageWriterPrivate |           0 |          5 |       5 |
     |    chrome.inlineInstallPrivate |           0 |          1 |       0 |
     |      chrome.inputMethodPrivate |           0 |         11 |       7 |
-    | chrome.languageSettingsPrivate |           0 |         10 |       4 |
+    | chrome.languageSettingsPrivate |           0 |         11 |       4 |
     |              chrome.logPrivate |           0 |          4 |       1 |
     |      chrome.mediaPlayerPrivate |           0 |          0 |       3 |
     |          chrome.metricsPrivate |           0 |         13 |       0 |
@@ -201,9 +201,9 @@ Generated 39 namespaces containing 1 properties, 277 functions and 73 events:
       tap-all-events]]
 
     [chromex.app.language-settings-private refer-macros:[
-      get-language-list set-language-list get-spellcheck-dictionary-statuses get-spellcheck-words
-      add-spellcheck-word remove-spellcheck-word get-translate-target-language get-input-method-lists
-      add-input-method remove-input-method tap-on-spellcheck-dictionaries-changed
+      get-language-list enable-language disable-language get-spellcheck-dictionary-statuses
+      get-spellcheck-words add-spellcheck-word remove-spellcheck-word get-translate-target-language
+      get-input-method-lists add-input-method remove-input-method tap-on-spellcheck-dictionaries-changed
       tap-on-custom-dictionary-changed tap-on-input-method-added tap-on-input-method-removed
       tap-all-events]]
 

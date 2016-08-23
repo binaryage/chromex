@@ -25,11 +25,18 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-language-list &form)))
 
-(defmacro set-language-list
-  "Sets the accepted languages, used to decide which languages to translate, generate the Accept-Language header, etc.
+(defmacro enable-language
+  "Enables a language, adding it to the Accept-Language list (used to decide which languages to translate, generate the
+   Accept-Language header, etc.).
 
-     |language-codes| - ?"
-  ([language-codes] (gen-call :function ::set-language-list &form language-codes)))
+     |language-code| - ?"
+  ([language-code] (gen-call :function ::enable-language &form language-code)))
+
+(defmacro disable-language
+  "Disables a language, removing it from the Accept-Language list.
+
+     |language-code| - ?"
+  ([language-code] (gen-call :function ::disable-language &form language-code)))
 
 (defmacro get-spellcheck-dictionary-statuses
   "Gets the current status of the chosen spell check dictionaries.
@@ -171,7 +178,11 @@
      :callback? true,
      :params
      [{:name "callback", :type :callback, :callback {:params [{:name "languages", :type "[array-of-objects]"}]}}]}
-    {:id ::set-language-list, :name "setLanguageList", :params [{:name "language-codes", :type "[array-of-strings]"}]}
+    {:id ::enable-language, :name "enableLanguage", :since "master", :params [{:name "language-code", :type "string"}]}
+    {:id ::disable-language,
+     :name "disableLanguage",
+     :since "master",
+     :params [{:name "language-code", :type "string"}]}
     {:id ::get-spellcheck-dictionary-statuses,
      :name "getSpellcheckDictionaryStatuses",
      :callback? true,

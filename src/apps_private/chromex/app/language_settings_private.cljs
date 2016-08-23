@@ -6,8 +6,11 @@
 (defn get-language-list* [config]
   (gen-wrap :function ::get-language-list config))
 
-(defn set-language-list* [config language-codes]
-  (gen-wrap :function ::set-language-list config language-codes))
+(defn enable-language* [config language-code]
+  (gen-wrap :function ::enable-language config language-code))
+
+(defn disable-language* [config language-code]
+  (gen-wrap :function ::disable-language config language-code))
 
 (defn get-spellcheck-dictionary-statuses* [config]
   (gen-wrap :function ::get-spellcheck-dictionary-statuses config))
