@@ -16,8 +16,8 @@
 
 (defmacro capture
   "Captures the visible area of the currently active tab.  Capture can only be started on the currently active tab after the
-   extension has been invoked.  Capture is maintained across page navigations within the tab, and stops when the tab is
-   closed, or the media stream is closed by the extension.
+   extension has been invoked, similar to the way that activeTab works.  Capture is maintained across page navigations within
+   the tab, and stops when the tab is closed, or the media stream is closed by the extension.
 
      |options| - Configures the returned media stream.
 
