@@ -178,11 +178,8 @@
      :callback? true,
      :params
      [{:name "callback", :type :callback, :callback {:params [{:name "languages", :type "[array-of-objects]"}]}}]}
-    {:id ::enable-language, :name "enableLanguage", :since "master", :params [{:name "language-code", :type "string"}]}
-    {:id ::disable-language,
-     :name "disableLanguage",
-     :since "master",
-     :params [{:name "language-code", :type "string"}]}
+    {:id ::enable-language, :name "enableLanguage", :since "54", :params [{:name "language-code", :type "string"}]}
+    {:id ::disable-language, :name "disableLanguage", :since "54", :params [{:name "language-code", :type "string"}]}
     {:id ::get-spellcheck-dictionary-statuses,
      :name "getSpellcheckDictionaryStatuses",
      :callback? true,
