@@ -1,5 +1,5 @@
 (ns chromex.ext.webstore-private
-  "  * available since Chrome 12"
+  "  * available since Chrome 13"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -181,7 +181,7 @@
 
 (def api-table
   {:namespace "chrome.webstorePrivate",
-   :since "12",
+   :since "13",
    :functions
    [{:id ::install,
      :name "install",

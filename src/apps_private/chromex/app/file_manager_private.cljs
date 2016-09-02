@@ -153,6 +153,9 @@
 (defn execute-custom-action* [config entries action-id]
   (gen-wrap :function ::execute-custom-action config entries action-id))
 
+(defn get-directory-size* [config entry]
+  (gen-wrap :function ::get-directory-size config entry))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-mount-completed* [config channel & args]

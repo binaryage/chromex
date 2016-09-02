@@ -23,7 +23,7 @@
 
 ### API stats
 
-Generated 15 namespaces containing 0 properties, 88 functions and 17 events:
+Generated 15 namespaces containing 0 properties, 89 functions and 17 events:
 
 
     |                         :namespace | :properties | :functions | :events |
@@ -37,7 +37,7 @@ Generated 15 namespaces containing 0 properties, 88 functions and 17 events:
     |    chrome.extensionOptionsInternal |           0 |          0 |       3 |
     |       chrome.extensionViewInternal |           0 |          2 |       0 |
     |  chrome.fileBrowserHandlerInternal |           0 |          1 |       0 |
-    |  chrome.fileManagerPrivateInternal |           0 |         20 |       0 |
+    |  chrome.fileManagerPrivateInternal |           0 |         21 |       0 |
     |           chrome.guestViewInternal |           0 |          3 |       0 |
     |        chrome.platformKeysInternal |           0 |          3 |       0 |
     |     chrome.printerProviderInternal |           0 |          5 |       0 |
@@ -86,7 +86,8 @@ Generated 15 namespaces containing 0 properties, 88 functions and 17 events:
       resolve-isolated-entries get-entry-properties add-file-watch remove-file-watch get-custom-actions
       execute-custom-action compute-checksum get-mime-type pin-drive-file execute-task set-default-task
       get-file-tasks get-share-url get-download-url request-drive-share set-entry-tag
-      cancel-file-transfers start-copy zip-selection validate-path-name-length tap-all-events]]
+      cancel-file-transfers start-copy zip-selection validate-path-name-length get-directory-size
+      tap-all-events]]
 
     [chromex.app.guest-view-internal refer-macros:[
       create-guest destroy-guest set-size tap-all-events]]

@@ -1,6 +1,6 @@
 # chromex [![GitHub license](https://img.shields.io/github/license/binaryage/chromex.svg)](license.txt) [![Clojars Project](https://img.shields.io/clojars/v/binaryage/chromex.svg)](https://clojars.org/binaryage/chromex) [![Travis](https://img.shields.io/travis/binaryage/chromex.svg)](https://travis-ci.org/binaryage/chromex) [![Sample Project](https://img.shields.io/badge/project-example-ff69b4.svg)](https://github.com/binaryage/chromex-sample)
 
-This library is auto-generated. Current version was **generated on 2016-08-31** from [**Chromium @ da3fdd8**](https://chromium.googlesource.com/chromium/src.git/+/da3fdd8003c6032a0740e7b6108d4bc9f3440d88).
+This library is auto-generated. Current version was **generated on 2016-09-02** from [**Chromium @ 1714619e**](https://chromium.googlesource.com/chromium/src.git/+/1714619ebb3e94c7bd1e4be123f1be3bd1c1424c).
 
 Looking for a nightly version? Check out [**nightly branch**](https://github.com/binaryage/chromex/tree/nightly) which gets updated nightly if there were any new API changes.
 
@@ -12,10 +12,10 @@ For Chrome Extensions and also for Chrome Apps:
 | --- | --- | --- | --- | --- |
 | [Public Chrome Extension APIs](src/exts) | 78 | 49 | 362 | 178 |
 | [Public Chrome App APIs](src/apps) | 63 | 25 | 369 | 129 |
-| [Private Chrome Extension APIs](src/exts_private) | 42 | 1 | 321 | 67 |
-| [Private Chrome App APIs](src/apps_private) | 39 | 1 | 278 | 73 |
-| [Internal Chrome Extension APIs](src/exts_internal) | 16 | 0 | 90 | 17 |
-| [Internal Chrome App APIs](src/apps_internal) | 15 | 0 | 88 | 17 |
+| [Private Chrome Extension APIs](src/exts_private) | 42 | 1 | 322 | 67 |
+| [Private Chrome App APIs](src/apps_private) | 39 | 1 | 279 | 73 |
+| [Internal Chrome Extension APIs](src/exts_internal) | 16 | 0 | 91 | 17 |
+| [Internal Chrome App APIs](src/apps_internal) | 15 | 0 | 89 | 17 |
 
 Note: Chromex generator uses the same data source as [developer.chrome.com/extensions/api_index](https://developer.chrome.com/extensions/api_index) and
 [developer.chrome.com/apps/api_index](https://developer.chrome.com/apps/api_index) docs.

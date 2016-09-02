@@ -255,6 +255,18 @@
    chromex.error/get-last-error."
   ([parent-url name] (gen-call :function ::validate-path-name-length &form parent-url name)))
 
+(defmacro get-directory-size
+  "  |url| - ?
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [size] where:
+
+     |size| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([url] (gen-call :function ::get-directory-size &form url)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -426,7 +438,14 @@
      :params
      [{:name "parent-url", :type "string"}
       {:name "name", :type "string"}
-      {:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}]})
+      {:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
+    {:id ::get-directory-size,
+     :name "getDirectorySize",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "url", :type "string"}
+      {:name "callback", :type :callback, :callback {:params [{:name "size", :type "double"}]}}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

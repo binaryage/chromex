@@ -645,6 +645,20 @@
    chromex.error/get-last-error."
   ([entries action-id] (gen-call :function ::execute-custom-action &form entries action-id)))
 
+(defmacro get-directory-size
+  "Get the total size of a directory. |entry| Entry of the target directory. |callback
+
+     |entry| - ?
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [size] where:
+
+     |size| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([entry] (gen-call :function ::get-directory-size &form entry)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -1009,7 +1023,14 @@
      :params
      [{:name "entries", :type "[array-of-objects]"}
       {:name "action-id", :type "string"}
-      {:name "callback", :type :callback}]}],
+      {:name "callback", :type :callback}]}
+    {:id ::get-directory-size,
+     :name "getDirectorySize",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "entry", :type "object"}
+      {:name "callback", :type :callback, :callback {:params [{:name "size", :type "double"}]}}]}],
    :events
    [{:id ::on-mount-completed, :name "onMountCompleted", :params [{:name "event", :type "object"}]}
     {:id ::on-file-transfers-updated, :name "onFileTransfersUpdated", :params [{:name "event", :type "object"}]}

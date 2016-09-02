@@ -63,3 +63,6 @@
 (defn validate-path-name-length* [config parent-url name]
   (gen-wrap :function ::validate-path-name-length config parent-url name))
 
+(defn get-directory-size* [config url]
+  (gen-wrap :function ::get-directory-size config url))
+
