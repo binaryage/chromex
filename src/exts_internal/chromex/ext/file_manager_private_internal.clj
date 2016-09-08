@@ -441,7 +441,7 @@
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
     {:id ::get-directory-size,
      :name "getDirectorySize",
-     :since "master",
+     :since "55",
      :callback? true,
      :params
      [{:name "url", :type "string"}

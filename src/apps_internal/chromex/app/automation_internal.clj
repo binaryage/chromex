@@ -3,7 +3,7 @@
    essentially a translation of the internal accessibility tree update system
    into an extension API.
 
-     * available since Chrome 54"
+     * available since Chrome 55"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -136,7 +136,7 @@
 
 (def api-table
   {:namespace "chrome.automationInternal",
-   :since "54",
+   :since "55",
    :functions
    [{:id ::enable-tab,
      :name "enableTab",

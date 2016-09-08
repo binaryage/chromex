@@ -1026,7 +1026,7 @@
       {:name "callback", :type :callback}]}
     {:id ::get-directory-size,
      :name "getDirectorySize",
-     :since "master",
+     :since "55",
      :callback? true,
      :params
      [{:name "entry", :type "object"}

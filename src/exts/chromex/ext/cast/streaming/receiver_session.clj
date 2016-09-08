@@ -3,7 +3,7 @@
    receiver session and adds the resulting audio and video tracks to a
    MediaStream.
 
-     * available since Chrome 54
+     * available since Chrome 55
      * https://developer.chrome.com/extensions/cast.streaming.receiverSession"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -54,7 +54,7 @@
 
 (def api-table
   {:namespace "chrome.cast.streaming.receiverSession",
-   :since "54",
+   :since "55",
    :functions
    [{:id ::create-and-bind,
      :name "createAndBind",
