@@ -2,7 +2,7 @@
   "Use the chrome.settingsPrivate API to get or set preferences
    from the settings UI.
 
-     * available since Chrome 53"
+     * available since Chrome 54"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -108,7 +108,7 @@
 
 (def api-table
   {:namespace "chrome.settingsPrivate",
-   :since "53",
+   :since "54",
    :functions
    [{:id ::set-pref,
      :name "setPref",
