@@ -41,3 +41,6 @@
 (defn on-bounds-changed* [config channel & args]
   (gen-wrap :event ::on-bounds-changed config channel args))
 
+(defn on-keyboard-closed* [config channel & args]
+  (gen-wrap :event ::on-keyboard-closed config channel args))
+

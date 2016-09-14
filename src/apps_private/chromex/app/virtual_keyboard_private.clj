@@ -120,6 +120,15 @@
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-bounds-changed &form channel args)))
 
+(defmacro tap-on-keyboard-closed-events
+  "Fired when the virtual keyboard window has been closed. For example, this can happen when turning off on-screen keyboard or
+   exiting tablet mode.
+
+   Events will be put on the |channel| with signature [::on-keyboard-closed []].
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-keyboard-closed &form channel args)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -176,7 +185,8 @@
     {:id ::on-bounds-changed,
      :name "onBoundsChanged",
      :since "44",
-     :params [{:name "bounds", :type "virtualKeyboardPrivate.Bounds"}]}]})
+     :params [{:name "bounds", :type "virtualKeyboardPrivate.Bounds"}]}
+    {:id ::on-keyboard-closed, :name "onKeyboardClosed", :since "master"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
