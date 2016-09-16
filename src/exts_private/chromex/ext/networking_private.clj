@@ -332,7 +332,7 @@
    be ignored if provided. * If the SIM is PUK locked, |puk| and |pin| must be provided. If the   operation succeeds (|puk| is
    valid), the PIN will be set to |pin|.   (If |pin| is empty or invalid the operation will fail).
 
-     |network-guid| - The GUID of the cellular network to unlock.
+     |network-guid| - The GUID of the cellular network to unlock.     If empty, the default cellular device will be used.
      |pin| - The current SIM PIN, or the new PIN if PUK is provided.
      |puk| - The operator provided PUK for unblocking a blocked SIM.
 
@@ -351,7 +351,8 @@
    unlockCellularSim() before this can be called (otherwise it will fail and chrome.runtime.lastError will be set to
    Error.SimLocked).
 
-     |network-guid| - The GUID of the cellular network to set the SIM state of.
+     |network-guid| - The GUID of the cellular network to set the SIM state of.     If empty, the default cellular device
+                      will be used.
      |sim-state| - The SIM state to set.
 
    This function returns a core.async channel which eventually receives a result value and closes.
