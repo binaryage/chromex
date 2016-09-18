@@ -106,9 +106,9 @@
             "content"   ["with-profile" "+unpacked,+checkouts"
                          "cljsbuild" "auto" "content-script"]
             "devel"     ["with-profile" "+dev-mode" "do"                                                                      ; for mac only
-                         "shell" "scripts/ensure-checkouts.sh,"
-                         "cooper"]
-            "release"   ["with-profile" "+release"
-                         "do" "clean,"
-                         "cljsbuild" "once" "background" "popup" "content-script"]
+                         ["shell" "scripts/ensure-checkouts.sh"]
+                         ["cooper"]]
+            "release"   ["with-profile" "+release" "do"
+                         ["clean"]
+                         ["cljsbuild" "once" "background" "popup" "content-script"]]
             "package"   ["shell" "scripts/package.sh"]})
