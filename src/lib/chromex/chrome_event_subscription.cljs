@@ -40,9 +40,7 @@
 ; -- default exception handlers ---------------------------------------------------------------------------------------------
 
 (defn ^:dynamic *subscribe-called-while-subscribed* [_chrome-event-subscription]
-  (assert false "ChromeEventSubscription: subscribe called while already subscribed")
-  nil)
+  (assert false "ChromeEventSubscription: subscribe called while already subscribed"))
 
 (defn ^:dynamic *unsubscribe-called-while-not-subscribed* [_chrome-event-subscription]
-  (assert false "ChromeEventSubscription: unsubscribe called while not subscribed")
-  nil)
+  (assert false "ChromeEventSubscription: unsubscribe called while not subscribed"))
