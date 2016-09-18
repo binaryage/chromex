@@ -1,6 +1,7 @@
 (ns chromex.core
   (:require [chromex.config :as config]
             [chromex.marshalling]
+            [chromex.version]
             [chromex.chrome-event-subscription]
             [chromex.chrome-event-channel]
             [chromex.chrome-port]
