@@ -4,7 +4,8 @@
 
 set -e
 
-. "$(dirname "${BASH_SOURCE[0]}")/config.sh"
+pushd `dirname "${BASH_SOURCE[0]}"` > /dev/null
+source "./config.sh"
 
 pushd "$ROOT"
 
@@ -18,7 +19,7 @@ unzip -l "$JAR_FILE"
 echo "----------------------------"
 echo ""
 
-if [[ "$LEIN_VERSION" =~ "SNAPSHOT" ]]; then
+if [[ "$LEIN_VERSION" =~ " SNAPSHOT " ]]; then
   echo "Publishing SNAPSHOT versions is not allowed. Bump current version $LEIN_VERSION to a non-snapshot version."
   exit 2
 fi
@@ -26,7 +27,7 @@ fi
 # http://stackoverflow.com/a/1885534/84283
 echo "Are you sure to publish version ${LEIN_VERSION}? [Yy]"
 read -n 1 -r
-if [[ "$REPLY" =~ ^[Yy]$ ]]; then
+if [[ "$REPLY" =~ ^[Yy] $ ]]; then
   exit 0
 else
   exit 1
