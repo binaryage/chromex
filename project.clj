@@ -16,7 +16,6 @@
 
   :source-paths ["src/background"
                  "src/content_script"
-                 "src/dev"
                  "src/figwheel"
                  "src/popup"]
 
@@ -29,32 +28,36 @@
   :profiles {:unpacked
              {:cljsbuild {:builds
                           {:background
-                           {:source-paths ["src/dev"
-                                           "src/figwheel"
+                           {:source-paths ["src/figwheel"
                                            "src/background"]
-                            :compiler     {:output-to     "resources/unpacked/compiled/background/chromex-sample.js"
+                            :compiler     {:output-to     "resources/unpacked/compiled/background/main.js"
                                            :output-dir    "resources/unpacked/compiled/background"
                                            :asset-path    "compiled/background"
+                                           :preloads      [devtools.preload]
+                                           :main          chromex-sample.background
                                            :optimizations :none
                                            :source-map    true}}
                            :popup
-                           {:source-paths ["src/dev"
-                                           "src/figwheel"
+                           {:source-paths ["src/figwheel"
                                            "src/popup"]
-                            :compiler     {:output-to     "resources/unpacked/compiled/popup/chromex-sample.js"
+                            :compiler     {:output-to     "resources/unpacked/compiled/popup/main.js"
                                            :output-dir    "resources/unpacked/compiled/popup"
                                            :asset-path    "compiled/popup"
+                                           :preloads      [devtools.preload]
+                                           :main          chromex-sample.popup
                                            :optimizations :none
                                            :source-map    true}}
                            :content-script
-                           {:source-paths ["src/dev"
-                                           "src/content_script"]
-                            :compiler     {:output-to     "resources/unpacked/compiled/content_script/chromex-sample.js"
-                                           :output-dir    "resources/unpacked/compiled/content_script"
-                                           :asset-path    "compiled/content_script"
-                                           :optimizations :whitespace                                                         ; content scripts cannot do eval / load script dynamically
-                                           :pretty-print  true
-                                           :source-map    "resources/unpacked/compiled/content_script/chromex-sample.js.map"}}}}}
+                           {:source-paths ["src/content_script"]
+                            :compiler     {:output-to     "resources/unpacked/compiled/content-script/main.js"
+                                           :output-dir    "resources/unpacked/compiled/content-script"
+                                           :asset-path    "compiled/content-script"
+                                           :preloads      [devtools.preload]
+                                           :main          chromex-sample.content-script
+                                           ;:optimizations :whitespace                                                         ; content scripts cannot do eval / load script dynamically
+                                           :optimizations :advanced                                                           ; let's use advanced build with pseudo-names for now, there seems to be a bug in deps ordering under :whitespace mode
+                                           :pseudo-names  true
+                                           :pretty-print  true}}}}}
              :checkouts
              ; DON'T FORGET TO UPDATE scripts/ensure-checkouts.sh
              {:cljsbuild {:builds
@@ -83,6 +86,7 @@
                             :compiler     {:output-to     "resources/release/compiled/background.js"
                                            :output-dir    "resources/release/compiled/background"
                                            :asset-path    "compiled/background"
+                                           :main          chromex-sample.background
                                            :optimizations :advanced
                                            :elide-asserts true}}
                            :popup
@@ -90,13 +94,15 @@
                             :compiler     {:output-to     "resources/release/compiled/popup.js"
                                            :output-dir    "resources/release/compiled/popup"
                                            :asset-path    "compiled/popup"
+                                           :main          chromex-sample.popup
                                            :optimizations :advanced
                                            :elide-asserts true}}
                            :content-script
                            {:source-paths ["src/content_script"]
-                            :compiler     {:output-to     "resources/release/compiled/content_script.js"
-                                           :output-dir    "resources/release/compiled/content_script"
-                                           :asset-path    "compiled/content_script"
+                            :compiler     {:output-to     "resources/release/compiled/content-script.js"
+                                           :output-dir    "resources/release/compiled/content-script"
+                                           :asset-path    "compiled/content-script"
+                                           :main          chromex-sample.content-script
                                            :optimizations :advanced
                                            :elide-asserts true}}}}}}
 
