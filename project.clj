@@ -15,9 +15,8 @@
             [lein-cooper "1.2.2"]]
 
   :source-paths ["src/background"
-                 "src/content_script"
-                 "src/figwheel"
-                 "src/popup"]
+                 "src/popup"
+                 "src/content_script"]
 
   :clean-targets ^{:protect false} ["target"
                                     "resources/unpacked/compiled"
@@ -28,8 +27,8 @@
   :profiles {:unpacked
              {:cljsbuild {:builds
                           {:background
-                           {:source-paths ["src/figwheel"
-                                           "src/background"]
+                           {:source-paths ["src/background"]
+                            :figwheel     true
                             :compiler     {:output-to     "resources/unpacked/compiled/background/main.js"
                                            :output-dir    "resources/unpacked/compiled/background"
                                            :asset-path    "compiled/background"
@@ -38,16 +37,18 @@
                                            :optimizations :none
                                            :source-map    true}}
                            :popup
-                           {:source-paths ["src/figwheel"
-                                           "src/popup"]
+                           {:source-paths ["src/popup"]
+                            :figwheel     true
                             :compiler     {:output-to     "resources/unpacked/compiled/popup/main.js"
                                            :output-dir    "resources/unpacked/compiled/popup"
                                            :asset-path    "compiled/popup"
                                            :preloads      [devtools.preload]
                                            :main          chromex-sample.popup
                                            :optimizations :none
-                                           :source-map    true}}
-                           :content-script
+                                           :source-map    true}}}}}
+             :unpacked-content-script
+             {:cljsbuild {:builds
+                          {:content-script
                            {:source-paths ["src/content_script"]
                             :compiler     {:output-to     "resources/unpacked/compiled/content-script/main.js"
                                            :output-dir    "resources/unpacked/compiled/content-script"
@@ -61,11 +62,14 @@
              :checkouts
              ; DON'T FORGET TO UPDATE scripts/ensure-checkouts.sh
              {:cljsbuild {:builds
-                          {:background     {:source-paths ["checkouts/chromex/src/lib"
-                                                           "checkouts/chromex/src/exts"]}
-                           :popup          {:source-paths ["checkouts/chromex/src/lib"
-                                                           "checkouts/chromex/src/exts"]}
-                           :content-script {:source-paths ["checkouts/chromex/src/lib"
+                          {:background {:source-paths ["checkouts/chromex/src/lib"
+                                                       "checkouts/chromex/src/exts"]}
+                           :popup      {:source-paths ["checkouts/chromex/src/lib"
+                                                       "checkouts/chromex/src/exts"]}}}}
+             :checkouts-content-script
+             ; DON'T FORGET TO UPDATE scripts/ensure-checkouts.sh
+             {:cljsbuild {:builds
+                          {:content-script {:source-paths ["checkouts/chromex/src/lib"
                                                            "checkouts/chromex/src/exts"]}}}}
 
              :figwheel
@@ -106,11 +110,11 @@
                                            :optimizations :advanced
                                            :elide-asserts true}}}}}}
 
-  :aliases {"dev-build"   ["with-profile" "+unpacked,+checkouts" "cljsbuild" "once" "background" "popup" "content-script"]
+  :aliases {"dev-build"   ["with-profile" "+unpacked,+unpacked-content-script,+checkouts,+checkouts-content-script" "cljsbuild" "once"]
             "fig"         ["with-profile" "+unpacked,+figwheel" "figwheel" "background" "popup"]
-            "content"     ["with-profile" "+unpacked" "cljsbuild" "auto" "content-script"]
+            "content"     ["with-profile" "+unpacked-content-script" "cljsbuild" "auto" "content-script"]
             "fig-dev"     ["with-profile" "+unpacked,+figwheel,+checkouts" "figwheel" "background" "popup"]
-            "content-dev" ["with-profile" "+unpacked,+checkouts" "cljsbuild" "auto" "content-script"]
+            "content-dev" ["with-profile" "+unpacked-content-script,+checkouts-content-script" "cljsbuild" "auto"]
             "devel"       ["with-profile" "+cooper" "do"                                                                      ; for mac only
                            ["shell" "scripts/ensure-checkouts.sh"]
                            ["cooper"]]

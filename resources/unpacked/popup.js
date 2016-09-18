@@ -1,3 +1,3 @@
 goog.require("devtools.preload");
-goog.require("chromex_sample.figwheel");
+goog.require("figwheel.connect.popup");
 goog.require("chromex_sample.popup");
