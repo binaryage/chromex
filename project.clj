@@ -82,10 +82,12 @@
 
   :aliases {"test"          ["with-profile" "test" "cljsbuild" "test" "unit"]
             "test-advanced" ["with-profile" "test-advanced" "cljsbuild" "test" "unit"]
-            "test-all"      ["do" "test," "test-advanced"]
+            "test-all"      ["do"
+                             ["test"]
+                             ["test-advanced"]]
             "release"       ["do"
-                             "clean,"
-                             "test-all,"
-                             "jar,"
-                             "shell" "scripts/check-release.sh,"
-                             "deploy" "clojars"]})
+                             ["clean"]
+                             ["test-all"]
+                             ["jar"]
+                             ["shell" "scripts/check-release.sh"]
+                             ["deploy" "clojars"]]})
