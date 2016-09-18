@@ -70,10 +70,10 @@
                          :server-logfile ".figwheel_dirac.log"
                          :repl           false}}
 
-             :dev-mode
-             {:cooper {"content"  ["lein" "content"]
-                       "figwheel" ["lein" "fig"]
-                       "browser"  ["scripts/launch-test-browser.sh"]}}
+             :cooper
+             {:cooper {"content-dev" ["lein" "content-dev"]
+                       "fig-dev"     ["lein" "fig-dev"]
+                       "browser"     ["scripts/launch-test-browser.sh"]}}
 
              :release
              {:env       {:chromex-elide-verbose-logging "true"}
@@ -100,16 +100,15 @@
                                            :optimizations :advanced
                                            :elide-asserts true}}}}}}
 
-  :aliases {"dev-build" ["with-profile" "+unpacked,+checkouts"
-                         "cljsbuild" "once" "background" "popup" "content-script"]
-            "fig"       ["with-profile" "+unpacked,+figwheel,+checkouts"
-                         "figwheel" "background" "popup"]
-            "content"   ["with-profile" "+unpacked,+checkouts"
-                         "cljsbuild" "auto" "content-script"]
-            "devel"     ["with-profile" "+dev-mode" "do"                                                                      ; for mac only
-                         ["shell" "scripts/ensure-checkouts.sh"]
-                         ["cooper"]]
-            "release"   ["with-profile" "+release" "do"
-                         ["clean"]
-                         ["cljsbuild" "once" "background" "popup" "content-script"]]
-            "package"   ["shell" "scripts/package.sh"]})
+  :aliases {"dev-build"   ["with-profile" "+unpacked,+checkouts" "cljsbuild" "once" "background" "popup" "content-script"]
+            "fig"         ["with-profile" "+unpacked,+figwheel" "figwheel" "background" "popup"]
+            "content"     ["with-profile" "+unpacked" "cljsbuild" "auto" "content-script"]
+            "fig-dev"     ["with-profile" "+unpacked,+figwheel,+checkouts" "figwheel" "background" "popup"]
+            "content-dev" ["with-profile" "+unpacked,+checkouts" "cljsbuild" "auto" "content-script"]
+            "devel"       ["with-profile" "+cooper" "do"                                                                      ; for mac only
+                           ["shell" "scripts/ensure-checkouts.sh"]
+                           ["cooper"]]
+            "release"     ["with-profile" "+release" "do"
+                           ["clean"]
+                           ["cljsbuild" "once" "background" "popup" "content-script"]]
+            "package"     ["shell" "scripts/package.sh"]})
