@@ -37,7 +37,7 @@
 
 (defn default-callback-fn-factory [config descriptor chan]
   (fn [& args]
-    (if-let [error (oget js/chrome "runtime" "lastError")]
+    (if-let [error (oget js/chrome "runtime" "?lastError")]
       (do
         (set-last-error! error)
         (report-error-if-needed! config descriptor error))
@@ -65,7 +65,7 @@
 
 (defn default-chrome-storage-area-callback-fn-factory [config chan]
   (fn [& args]
-    (let [last-error (oget (:root config) "chrome" "runtime" "lastError")]
+    (let [last-error (oget (:root config) "chrome" "runtime" "?lastError")]
       (put! chan [(vec args) last-error]))))
 
 (defn default-chrome-storage-area-callback-channel-factory [_config]
