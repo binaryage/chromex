@@ -1,7 +1,8 @@
 (ns chromex.defaults
-  (:require-macros [chromex.config :refer [gen-default-config]]
-                   [chromex.support :refer [oget ocall call-hook]])
+  (:require-macros [chromex.config :refer [gen-default-config]])
   (:require [cljs.core.async :refer [put! chan close!]]
+            [chromex.support :refer [call-hook]]
+            [oops.core :refer [oget]]
             [goog.object :as gobj]
             [chromex.error :refer [set-last-error!]]
             [chromex.protocols :as protocols]))

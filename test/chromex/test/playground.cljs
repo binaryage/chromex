@@ -4,7 +4,7 @@
             [cljs.core.async :refer [<! >! timeout chan close!]]
             [chromex.test-utils :refer [advanced-mode?] :refer-macros [valid-api-version?]]
             [chromex.playground-mocks :refer [last-event-result]]
-            [chromex.support :refer-macros [oset oget ocall oapply]]
+            [oops.core :refer [oset! oget ocall oapply]]
             [chromex.error :refer [get-last-error set-last-error!]]
             [chromex.config :refer-macros [with-custom-event-listener-factory with-muted-error-reporting with-custom-config]]
             [chromex.playground :refer-macros [get-something do-something get-some-prop tap-on-something-events

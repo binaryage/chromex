@@ -1,4 +1,5 @@
 (ns chromex.support
+  (:require-macros [chromex.support])
   (:require [goog.object]))
 
 (defn prepare-final-args-array [arg-descriptors api]

@@ -1,12 +1,12 @@
 (ns chromex.playground-mocks
   (:require-macros [cljs.core.async.macros :refer [go go-loop]])
   (:require [cljs.core.async :refer [<! >! timeout chan close!]]
-            [chromex.support :refer-macros [oset ocall]]))
+            [oops.core :refer [oset! oget ocall]]))
 
 (def last-event-result (volatile! nil))
 
 (defn set-last-error [error]
-  (oset js/window ["chrome" "runtime" "lastError"] error))
+  (oset! js/window ["chrome" "runtime" "lastError"] error))
 
 ; -- chrome API mocks -------------------------------------------------------------------------------------------------------
 
@@ -114,21 +114,21 @@
 
 ; -- init API mocks ---------------------------------------------------------------------------------------------------------
 
-(oset js/window ["chrome"] #js {})
-(oset js/window ["chrome" "runtime"] #js {})
-(oset js/window ["chrome" "playground"] #js {})
+(oset! js/window ["!chrome"] #js {})
+(oset! js/window ["chrome" "!runtime"] #js {})
+(oset! js/window ["chrome" "!playground"] #js {})
 
-(oset js/window ["chrome" "playground" "getSomething"] get-something-mock)
-(oset js/window ["chrome" "playground" "getSomethingCausingError"] get-something-causing-error-mock)
-(oset js/window ["chrome" "playground" "doSomething"] do-something-mock)
-(oset js/window ["chrome" "playground" "doSomethingOptionalArgs"] do-something-optional-args-mock)
-(oset js/window ["chrome" "playground" "someProp"] "prop1val")
-(oset js/window ["chrome" "playground" "onSomething"] on-something-mock)
-(oset js/window ["chrome" "playground" "onSomethingDeprecated"] on-something-deprecated-mock)
-(oset js/window ["chrome" "playground" "onSomethingElse"] on-something-else-mock)
-(oset js/window ["chrome" "playground" "getStorageArea"] get-storage-area-mock)
-(oset js/window ["chrome" "playground" "getPort"] get-port-mock)
-(oset js/window ["chrome" "playground" "callFutureApi"] (constantly nil))
-(oset js/window ["chrome" "playground" "callMasterApi"] (constantly nil))
+(oset! js/window ["chrome" "playground" "!getSomething"] get-something-mock)
+(oset! js/window ["chrome" "playground" "!getSomethingCausingError"] get-something-causing-error-mock)
+(oset! js/window ["chrome" "playground" "!doSomething"] do-something-mock)
+(oset! js/window ["chrome" "playground" "!doSomethingOptionalArgs"] do-something-optional-args-mock)
+(oset! js/window ["chrome" "playground" "!someProp"] "prop1val")
+(oset! js/window ["chrome" "playground" "!onSomething"] on-something-mock)
+(oset! js/window ["chrome" "playground" "!onSomethingDeprecated"] on-something-deprecated-mock)
+(oset! js/window ["chrome" "playground" "!onSomethingElse"] on-something-else-mock)
+(oset! js/window ["chrome" "playground" "!getStorageArea"] get-storage-area-mock)
+(oset! js/window ["chrome" "playground" "!getPort"] get-port-mock)
+(oset! js/window ["chrome" "playground" "!callFutureApi"] (constantly nil))
+(oset! js/window ["chrome" "playground" "!callMasterApi"] (constantly nil))
 
-(oset js/window ["chrome" "runtime" "lastError"] nil)
+(oset! js/window ["chrome" "runtime" "!lastError"] nil)

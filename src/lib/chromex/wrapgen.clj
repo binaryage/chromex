@@ -64,11 +64,11 @@
         ns-sym (gensym "ns-")
         target-sym (gensym "target-")]
     `(let [~final-args-array-sym (chromex.support/prepare-final-args-array ~arg-descriptors ~api)
-           ~ns-sym (chromex.support/oget (:root ~config) ~@namespace-path)]
+           ~ns-sym (oops.core/oget (:root ~config) ~@namespace-path)]
        ~(if-not property?
           (gen-missing-api-check static-config config api ns-sym name))
        ~(gen-logging-if-verbose static-config config operation api final-args-array-sym)
-       (let [~target-sym (chromex.support/oget ~ns-sym ~name)]
+       (let [~target-sym (oops.core/oget ~ns-sym ~(str "?" name))]
          ~(if property?
             target-sym
             `(.apply ~target-sym ~ns-sym ~final-args-array-sym))))))
@@ -150,9 +150,9 @@
     `(let [~event-fn-sym ~(gen-call-hook config :event-listener-factory event-id chan)
            ~handler-fn-sym ~(marshall-callback static-config config (str api ".handler") [event-fn-sym descriptor])
            logging-fn# ~(wrap-callback-with-logging static-config "event:" api config [handler-fn-sym descriptor])
-           ~ns-obj-sym (chromex.support/oget (:root ~config) ~@ns-path)]
+           ~ns-obj-sym (oops.core/oget (:root ~config) ~@ns-path)]
        ~(gen-missing-api-check static-config config api ns-obj-sym event-key)
-       (let [event-obj# (chromex.support/oget ~ns-obj-sym ~event-key)
+       (let [event-obj# (oops.core/oget ~ns-obj-sym ~event-key)
              result# (chromex.chrome-event-subscription/make-chrome-event-subscription event-obj# logging-fn# ~chan)]
          (chromex.protocols/subscribe! result# ~extra-args)
          result#))))

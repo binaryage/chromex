@@ -1,5 +1,6 @@
 (ns chromex.chrome-storage-area
-  (:require [chromex.support :refer-macros [ocall call-hook get-hook]]
+  (:require [chromex.support :refer [call-hook get-hook]]
+            [oops.core :refer [ocall]]
             [chromex.protocols :as protocols :refer [IChromeStorageArea]]))
 
 ; -- ChromeStorageArea ------------------------------------------------------------------------------------------------------
