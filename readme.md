@@ -64,7 +64,7 @@ java, maven, leiningen, etc.
 
     In one terminal session run (will build background and popup pages using figwheel):
       ```
-      rlwrap lein fig
+      lein fig
       ```
     In a second terminal session run (will auto-build content-script):
       ```
