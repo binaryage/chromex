@@ -20,23 +20,41 @@
             [lein-environ "1.1.0"]
             [lein-shell "0.5.0"]]
 
-  :hooks [leiningen.cljsbuild]
-
+  ; this is just for IntelliJ + Cursive to play well, see :lib profile for real source paths
   :source-paths ["src/lib"
                  "src/exts"
                  "src/exts_private"
                  "src/exts_internal"
                  "src/apps"
                  "src/apps_private"
-                 "src/apps_internal"]
+                 "src/apps_internal"
+                 "scripts"]
+  :test-paths ["test"]
 
   :jar-exclusions [#"readme\.md"]
 
-  :test-paths ["test"]
-
   :cljsbuild {:builds {}}                                                                                                     ; prevent https://github.com/emezeske/lein-cljsbuild/issues/413
 
-  :profiles {:dev-ext       {:cljsbuild {:builds {:dev
+  :profiles {:nuke-aliases  {:aliases ^:replace {}}
+
+             :lib           ^{:pom-scope :provided}                                                                           ; ! to overcome default jar/pom behaviour, our :dependencies replacement would be ignored for some reason
+                            [:nuke-aliases
+                             {:dependencies   ~(let [project (->> "project.clj"
+                                                               slurp read-string (drop 3) (apply hash-map))
+                                                     test-dep? #(->> % (drop 2) (apply hash-map) :scope (= "test"))
+                                                     non-test-deps (remove test-dep? (:dependencies project))]
+                                                 (with-meta (vec non-test-deps) {:replace true}))                             ; so ugly!
+                              :source-paths   ^:replace ["src/lib"
+                                                         "src/exts"
+                                                         "src/exts_private"
+                                                         "src/exts_internal"
+                                                         "src/apps"
+                                                         "src/apps_private"
+                                                         "src/apps_internal"]
+                              :resource-paths ^:replace []
+                              :test-paths     ^:replace []}]
+
+             :dev-ext       {:cljsbuild {:builds {:dev
                                                   {:source-paths ["src/lib"
                                                                   "src/exts"
                                                                   "src/exts_private"
@@ -88,9 +106,14 @@
             "test-all"      ["do"
                              ["test"]
                              ["test-advanced"]]
+            "install"       ["do"
+                             ["shell" "scripts/prepare-jar.sh"]
+                             ["shell" "scripts/local-install.sh"]]
+            "jar"           ["shell" "scripts/prepare-jar.sh"]
             "release"       ["do"
                              ["clean"]
-                             ["test-all"]
-                             ["jar"]
+                             ["shell" "scripts/check-versions.sh"]
+                             ["shell" "scripts/prepare-jar.sh"]
                              ["shell" "scripts/check-release.sh"]
-                             ["deploy" "clojars"]]})
+                             ["shell" "scripts/deploy-clojars.sh"]]
+            "deploy"        ["shell" "scripts/deploy-clojars.sh"]})
