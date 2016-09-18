@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
-cd "$(dirname "${BASH_SOURCE[0]}")"; cd ..
+pushd `dirname "${BASH_SOURCE[0]}"` > /dev/null
+source "./config.sh"
 
-ROOT=`pwd`
+pushd "$ROOT"
+
 RELEASES="$ROOT/releases"
 RELEASE_BUILD="$ROOT/resources/release"
 RELEASE_BUILD_COMPILED="$RELEASE_BUILD/compiled"
@@ -40,3 +42,5 @@ rm -rf "$PACKAGE_DIR/compiled/popup"
 echo "'$PACKAGE_DIR' prepared for packing"
 echo "  use Chrome's Window -> Extensions -> 'Pack extension...' to package it"
 echo "  or => https://developer.chrome.com/extensions/packaging#packaging"
+
+popd
