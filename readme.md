@@ -47,18 +47,6 @@ java, maven, leiningen, etc.
       ```
       git clone https://github.com/binaryage/chromex-sample.git
       cd chromex-sample
-      ./scripts/ensure-checkouts.sh
-      ```
-  * (optional) clone chromex library, install it into your local maven repo and then add it into checkouts here
-
-      ```
-      git clone https://github.com/binaryage/chromex.git
-      cd chromex
-      lein install
-      cd some/path/chromex-sample
-      mkdir checkouts
-      cd checkouts
-      ln -s ../relative/path/to/chromex chromex
       ```
   * chromex sample is gets built into `resources/unpacked/compiled` folder.
 
@@ -90,8 +78,6 @@ This will create a folder `releases/chromex-sample-0.1.0` where 0.1.0 will be cu
 This folder will contain only files meant to be packaged.
 
 Finally you can use Chrome's "Pack extension" tool to prepare the final package (.crx and .pem files).
-
----
 
 ### Code discussion
 
