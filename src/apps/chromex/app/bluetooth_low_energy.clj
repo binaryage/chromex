@@ -419,6 +419,25 @@
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-unregisterAdvertisement."
   ([advertisement-id] (gen-call :function ::unregister-advertisement &form advertisement-id)))
 
+(defmacro set-advertising-interval
+  "Set's the interval betweeen two consecutive advertisements. Note: This is a best effort. The actual interval may vary
+   non-trivially from the requested intervals. On some hardware, there is a minimum interval of 100ms. The minimum and maximum
+   values cannot exceed the the range allowed by the Bluetooth 4.2 specification.
+
+     |min-interval| - Minimum interval between advertisments (in milliseconds). This cannot be lower than 20ms (as per the
+                      spec).
+     |max-interval| - Maximum interval between advertisments (in milliseconds). This cannot be more than 10240ms (as per the
+                      spec).
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/apps/bluetoothLowEnergy#method-setAdvertisingInterval."
+  ([min-interval max-interval] (gen-call :function ::set-advertising-interval &form min-interval max-interval)))
+
 (defmacro send-request-response
   "Sends a response for a characteristic or descriptor read/write request. This function is only available if the app has both
    the bluetooth:low_energy and the bluetooth:peripheral permissions set to true. The peripheral permission may not be
@@ -740,6 +759,14 @@
      :since "47",
      :callback? true,
      :params [{:name "advertisement-id", :type "integer"} {:name "callback", :type :callback}]}
+    {:id ::set-advertising-interval,
+     :name "setAdvertisingInterval",
+     :since "55",
+     :callback? true,
+     :params
+     [{:name "min-interval", :type "integer"}
+      {:name "max-interval", :type "integer"}
+      {:name "callback", :type :callback}]}
     {:id ::send-request-response,
      :name "sendRequestResponse",
      :since "52",

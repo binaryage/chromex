@@ -186,7 +186,7 @@
      :name "onBoundsChanged",
      :since "44",
      :params [{:name "bounds", :type "virtualKeyboardPrivate.Bounds"}]}
-    {:id ::on-keyboard-closed, :name "onKeyboardClosed", :since "master"}]})
+    {:id ::on-keyboard-closed, :name "onKeyboardClosed", :since "55"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

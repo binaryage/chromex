@@ -75,6 +75,9 @@
 (defn unregister-advertisement* [config advertisement-id]
   (gen-wrap :function ::unregister-advertisement config advertisement-id))
 
+(defn set-advertising-interval* [config min-interval max-interval]
+  (gen-wrap :function ::set-advertising-interval config min-interval max-interval))
+
 (defn send-request-response* [config response]
   (gen-wrap :function ::send-request-response config response))
 

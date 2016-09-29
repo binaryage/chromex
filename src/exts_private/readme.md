@@ -24,6 +24,7 @@
 | [chrome.fileManagerPrivate](https://developer.chrome.com/extensions/fileManagerPrivate) | [chromex/ext/file_manager_private.clj](chromex/ext/file_manager_private.clj) |
 | [chrome.gcdPrivate](https://developer.chrome.com/extensions/gcdPrivate) | [chromex/ext/gcd_private.clj](chromex/ext/gcd_private.clj) |
 | [chrome.hotwordPrivate](https://developer.chrome.com/extensions/hotwordPrivate) | [chromex/ext/hotword_private.clj](chromex/ext/hotword_private.clj) |
+| [chrome.imageWriterPrivate](https://developer.chrome.com/extensions/imageWriterPrivate) | [chromex/ext/image_writer_private.clj](chromex/ext/image_writer_private.clj) |
 | [chrome.inputMethodPrivate](https://developer.chrome.com/extensions/inputMethodPrivate) | [chromex/ext/input_method_private.clj](chromex/ext/input_method_private.clj) |
 | [chrome.languageSettingsPrivate](https://developer.chrome.com/extensions/languageSettingsPrivate) | [chromex/ext/language_settings_private.clj](chromex/ext/language_settings_private.clj) |
 | [chrome.logPrivate](https://developer.chrome.com/extensions/logPrivate) | [chromex/ext/log_private.clj](chromex/ext/log_private.clj) |
@@ -50,7 +51,7 @@
 
 ### API stats
 
-Generated 42 namespaces containing 1 properties, 322 functions and 68 events:
+Generated 43 namespaces containing 1 properties, 327 functions and 73 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -75,6 +76,7 @@ Generated 42 namespaces containing 1 properties, 322 functions and 68 events:
     |             chrome.fileManagerPrivate |           0 |         51 |       8 |
     |                     chrome.gcdPrivate |           0 |          6 |       0 |
     |                 chrome.hotwordPrivate |           0 |         15 |       9 |
+    |             chrome.imageWriterPrivate |           0 |          5 |       5 |
     |             chrome.inputMethodPrivate |           0 |         11 |       7 |
     |        chrome.languageSettingsPrivate |           0 |         11 |       4 |
     |                     chrome.logPrivate |           0 |          4 |       1 |
@@ -200,6 +202,11 @@ Generated 42 namespaces containing 1 properties, 322 functions and 68 events:
       tap-on-finalize-speaker-model tap-on-speaker-model-saved tap-on-hotword-triggered
       tap-on-delete-speaker-model tap-on-speaker-model-exists tap-on-microphone-state-changed
       tap-all-events]]
+
+    [chromex.ext.image-writer-private refer-macros:[
+      write-from-url write-from-file cancel-write destroy-partitions list-removable-storage-devices
+      tap-on-write-progress tap-on-write-complete tap-on-write-error tap-on-device-inserted
+      tap-on-device-removed tap-all-events]]
 
     [chromex.ext.input-method-private refer-macros:[
       get-input-method-config get-input-methods get-current-input-method set-current-input-method

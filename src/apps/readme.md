@@ -71,7 +71,7 @@
 
 ### API stats
 
-Generated 63 namespaces containing 25 properties, 369 functions and 129 events:
+Generated 63 namespaces containing 25 properties, 370 functions and 129 events:
 
 
     |                         :namespace | :properties | :functions | :events |
@@ -85,7 +85,7 @@ Generated 63 namespaces containing 25 properties, 369 functions and 129 events:
     |                       chrome.audio |           0 |          3 |       4 |
     |                  chrome.automation |           0 |          6 |       0 |
     |                   chrome.bluetooth |           0 |          5 |       4 |
-    |          chrome.bluetoothLowEnergy |           0 |         25 |       9 |
+    |          chrome.bluetoothLowEnergy |           0 |         26 |       9 |
     |             chrome.bluetoothSocket |           0 |         11 |       4 |
     |                     chrome.browser |           0 |          1 |       0 |
     |         chrome.certificateProvider |           0 |          0 |       2 |
@@ -189,10 +189,11 @@ Generated 63 namespaces containing 25 properties, 369 functions and 129 events:
       read-characteristic-value write-characteristic-value start-characteristic-notifications
       stop-characteristic-notifications notify-characteristic-value-changed read-descriptor-value
       write-descriptor-value register-service unregister-service remove-service register-advertisement
-      unregister-advertisement send-request-response tap-on-service-added tap-on-service-changed
-      tap-on-service-removed tap-on-characteristic-value-changed tap-on-descriptor-value-changed
-      tap-on-characteristic-read-request tap-on-characteristic-write-request
-      tap-on-descriptor-read-request tap-on-descriptor-write-request tap-all-events]]
+      unregister-advertisement set-advertising-interval send-request-response tap-on-service-added
+      tap-on-service-changed tap-on-service-removed tap-on-characteristic-value-changed
+      tap-on-descriptor-value-changed tap-on-characteristic-read-request
+      tap-on-characteristic-write-request tap-on-descriptor-read-request tap-on-descriptor-write-request
+      tap-all-events]]
 
     [chromex.app.bluetooth-socket refer-macros:[
       create update set-paused listen-using-rfcomm listen-using-l2cap connect disconnect close send
