@@ -70,18 +70,15 @@
   ([] (gen-call :property ::notifications &form)))
 
 (defmacro get-fullscreen
-  "Whether to allow sites to toggle the fullscreen mode. One ofallow: Allow sites to toggle the fullscreen mode,ask: Ask when
-   a site wants to toggle the fullscreen mode. Default is ask.The primary URL is the URL of the document which requested to
-   toggle the fullscreen mode. The secondary URL is the URL of the top-level frame (which may or may not differ from the
-   requesting URL).
+  "Deprecated. No longer has any effect. Fullscreen permission is now automatically granted for all sites. Value is always
+   allow.
 
    https://developer.chrome.com/extensions/contentSettings#property-fullscreen."
   ([] (gen-call :property ::fullscreen &form)))
 
 (defmacro get-mouselock
-  "Whether to allow sites to disable the mouse cursor. One of allow: Allow sites to disable the mouse cursor,block: Don't
-   allow sites to disable the mouse cursor,ask: Ask when a site wants to disable the mouse cursor. Default is ask.The primary
-   URL is the URL of the top-level frame. The secondary URL is not used.
+  "Deprecated. No longer has any effect. Mouse lock permission is now automatically granted for all sites. Value is always
+   allow.
 
    https://developer.chrome.com/extensions/contentSettings#property-mouselock."
   ([] (gen-call :property ::mouselock &form)))
