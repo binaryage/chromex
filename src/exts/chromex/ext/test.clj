@@ -88,18 +88,6 @@
   ([message] (gen-call :function ::succeed &form message))
   ([] `(succeed :omit)))
 
-(defmacro run-with-natives-enabled
-  "Runs the given function with access to native methods enabled.
-
-   This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
-   chromex.error/get-last-error.
-
-   https://developer.chrome.com/extensions/test#method-runWithNativesEnabled."
-  ([] (gen-call :function ::run-with-natives-enabled &form)))
-
 (defmacro get-module-system
   "Returns an instance of the module system for the given context.
 
@@ -366,11 +354,6 @@
     {:id ::run-next-test, :name "runNextTest", :since "27"}
     {:id ::fail, :name "fail", :since "27", :params [{:name "message", :optional? true, :type "any"}]}
     {:id ::succeed, :name "succeed", :since "27", :params [{:name "message", :optional? true, :type "any"}]}
-    {:id ::run-with-natives-enabled,
-     :name "runWithNativesEnabled",
-     :since "46",
-     :callback? true,
-     :params [{:name "callback", :type :callback}]}
     {:id ::get-module-system,
      :name "getModuleSystem",
      :since "46",

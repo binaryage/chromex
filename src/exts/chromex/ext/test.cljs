@@ -30,9 +30,6 @@
 (defn succeed* [config message]
   (gen-wrap :function ::succeed config message))
 
-(defn run-with-natives-enabled* [config]
-  (gen-wrap :function ::run-with-natives-enabled config))
-
 (defn get-module-system* [config context]
   (gen-wrap :function ::get-module-system config context))
 

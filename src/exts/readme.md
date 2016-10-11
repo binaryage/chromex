@@ -86,7 +86,7 @@
 
 ### API stats
 
-Generated 78 namespaces containing 49 properties, 362 functions and 178 events:
+Generated 78 namespaces containing 49 properties, 361 functions and 178 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -159,7 +159,7 @@ Generated 78 namespaces containing 49 properties, 362 functions and 178 events:
     |                chrome.systemIndicator |           0 |          3 |       1 |
     |                     chrome.tabCapture |           0 |          3 |       1 |
     |                           chrome.tabs |           1 |         24 |      13 |
-    |                           chrome.test |           0 |         33 |       1 |
+    |                           chrome.test |           0 |         32 |       1 |
     |                       chrome.topSites |           0 |          1 |       0 |
     |                            chrome.tts |           0 |          6 |       0 |
     |                      chrome.ttsEngine |           0 |          0 |       4 |
@@ -442,11 +442,11 @@ Generated 78 namespaces containing 49 properties, 362 functions and 178 events:
 
     [chromex.ext.test refer-macros:[
       get-config notify-fail notify-pass log send-message callback-added run-next-test fail succeed
-      run-with-natives-enabled get-module-system assert-true assert-false assert-bool check-deep-eq
-      assert-eq assert-no-last-error assert-last-error assert-throws callback listen-once listen-forever
-      callback-pass callback-fail run-tests get-api-features get-api-definitions
-      is-processing-user-gesture run-with-user-gesture run-without-user-gesture wait-for-round-trip
-      set-exception-handler get-wake-event-page tap-on-message tap-all-events]]
+      get-module-system assert-true assert-false assert-bool check-deep-eq assert-eq assert-no-last-error
+      assert-last-error assert-throws callback listen-once listen-forever callback-pass callback-fail
+      run-tests get-api-features get-api-definitions is-processing-user-gesture run-with-user-gesture
+      run-without-user-gesture wait-for-round-trip set-exception-handler get-wake-event-page
+      tap-on-message tap-all-events]]
 
     [chromex.ext.top-sites refer-macros:[
       get tap-all-events]]

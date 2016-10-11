@@ -71,7 +71,7 @@
 
 ### API stats
 
-Generated 63 namespaces containing 25 properties, 370 functions and 129 events:
+Generated 63 namespaces containing 25 properties, 369 functions and 129 events:
 
 
     |                         :namespace | :properties | :functions | :events |
@@ -133,7 +133,7 @@ Generated 63 namespaces containing 25 properties, 370 functions and 129 events:
     |              chrome.system.network |           0 |          1 |       0 |
     |              chrome.system.storage |           0 |          3 |       2 |
     |             chrome.systemIndicator |           0 |          3 |       1 |
-    |                        chrome.test |           0 |         33 |       1 |
+    |                        chrome.test |           0 |         32 |       1 |
     |                         chrome.tts |           0 |          6 |       0 |
     |                         chrome.usb |           0 |         18 |       2 |
     |                 chrome.vpnProvider |           0 |          5 |       5 |
@@ -379,11 +379,11 @@ Generated 63 namespaces containing 25 properties, 370 functions and 129 events:
 
     [chromex.app.test refer-macros:[
       get-config notify-fail notify-pass log send-message callback-added run-next-test fail succeed
-      run-with-natives-enabled get-module-system assert-true assert-false assert-bool check-deep-eq
-      assert-eq assert-no-last-error assert-last-error assert-throws callback listen-once listen-forever
-      callback-pass callback-fail run-tests get-api-features get-api-definitions
-      is-processing-user-gesture run-with-user-gesture run-without-user-gesture wait-for-round-trip
-      set-exception-handler get-wake-event-page tap-on-message tap-all-events]]
+      get-module-system assert-true assert-false assert-bool check-deep-eq assert-eq assert-no-last-error
+      assert-last-error assert-throws callback listen-once listen-forever callback-pass callback-fail
+      run-tests get-api-features get-api-definitions is-processing-user-gesture run-with-user-gesture
+      run-without-user-gesture wait-for-round-trip set-exception-handler get-wake-event-page
+      tap-on-message tap-all-events]]
 
     [chromex.app.tts refer-macros:[
       speak stop pause resume is-speaking get-voices tap-all-events]]
