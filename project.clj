@@ -21,6 +21,7 @@
             [lein-shell "0.5.0"]]
 
   ; this is just for IntelliJ + Cursive to play well, see :lib profile for real source paths
+  :resource-paths ^:replace []
   :source-paths ["src/lib"
                  "src/exts"
                  "src/exts_private"
