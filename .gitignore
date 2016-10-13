@@ -5,5 +5,5 @@ tools/_workdir/
 .lein*
 pom.xml.*
 .idea
-test/_generated
+test/.compiled
 test/.compiler*.txt

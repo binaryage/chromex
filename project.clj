@@ -14,7 +14,7 @@
                  [environ "1.1.0"]]
 
   :clean-targets ^{:protect false} ["target"
-                                    "test/_generated"]
+                                    "test/.compiled"]
 
   :plugins [[lein-cljsbuild "1.1.4"]
             [lein-environ "1.1.0"]
@@ -78,9 +78,9 @@
                              :cljsbuild {:builds {:test-dev
                                                   {:source-paths ["src/lib"
                                                                   "test"]
-                                                   :compiler     {:output-to     "test/_generated/optimizations_none/chromex.test.js"
-                                                                  :output-dir    "test/_generated/optimizations_none"
-                                                                  :asset-path    "_generated/optimizations_none"
+                                                   :compiler     {:output-to     "test/.compiled/optimizations_none/chromex.test.js"
+                                                                  :output-dir    "test/.compiled/optimizations_none"
+                                                                  :asset-path    ".compiled/optimizations_none"
                                                                   :main          chromex.runner
                                                                   :optimizations :none
                                                                   :source-map    false}}}}}
@@ -91,13 +91,13 @@
                              :cljsbuild {:builds {:test-advanced
                                                   {:source-paths ["src/lib"
                                                                   "test"]
-                                                   :compiler     {:output-to     "test/_generated/optimizations_advanced/chromex.test.js"
-                                                                  :output-dir    "test/_generated/optimizations_advanced"
-                                                                  :asset-path    "_generated/optimizations_advanced"
+                                                   :compiler     {:output-to     "test/.compiled/optimizations_advanced/chromex.test.js"
+                                                                  :output-dir    "test/.compiled/optimizations_advanced"
+                                                                  :asset-path    ".compiled/optimizations_advanced"
                                                                   :main          chromex.runner
                                                                   :optimizations :advanced
                                                                   :elide-asserts true
-                                                                  :source-map    "test/_generated/optimizations_advanced/chromex.test.js.map"}}}}}}
+                                                                  :source-map    "test/.compiled/optimizations_advanced/chromex.test.js.map"}}}}}}
 
   :aliases {"test"          ["with-profile" "test" "do"
                              ["cljsbuild" "test"]
