@@ -9,7 +9,7 @@
 
   :dependencies [[org.clojure/clojure "1.9.0-alpha12" :scope "provided"]
                  [org.clojure/clojurescript "1.9.229" :scope "provided"]
-                 [org.clojure/core.async "0.2.391"]
+                 [org.clojure/core.async "0.2.395"]
                  [binaryage/oops "0.5.0"]
                  [environ "1.1.0"]]
 
