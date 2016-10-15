@@ -20,7 +20,7 @@
 (defmacro select-client-certificates
   "This function filters from a list of client certificates the ones that are known to the platform, match request and for
    which the extension has permission to access the certificate and its private key. If interactive is true, the user is
-   presented a dialog where he can select from matching certificates and grant the extension access to the certificate. The
+   presented a dialog where they can select from matching certificates and grant the extension access to the certificate. The
    selected/filtered client certificates will be passed to callback.
 
      |details| - https://developer.chrome.com/extensions/platformKeys#property-selectClientCertificates-details.
