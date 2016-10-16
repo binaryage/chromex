@@ -134,12 +134,12 @@
     {:id ::get-default-zoom-percent,
      :name "getDefaultZoomPercent",
      :callback? true,
-     :params [{:name "callback", :type :callback, :callback {:params [{:name "percent", :type "integer"}]}}]}
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "percent", :type "double"}]}}]}
     {:id ::set-default-zoom-percent,
      :name "setDefaultZoomPercent",
      :callback? true,
      :params
-     [{:name "percent", :type "integer"}
+     [{:name "percent", :type "double"}
       {:name "callback",
        :optional? true,
        :type :callback,
