@@ -55,22 +55,23 @@
    chromex.error/get-last-error."
   ([name] (gen-call :function ::get-pref &form name)))
 
-(defmacro get-default-zoom-percent
-  "Gets the page zoom factor as an integer percentage.
+(defmacro get-default-zoom
+  "Gets the default page zoom factor. Possible values are currently between 0.25 and 5. For a full list, see
+   zoom::kPresetZoomFactors.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [percent] where:
+   Signature of the result value put on the channel is [zoom] where:
 
-     |percent| - ?
+     |zoom| - ?
 
    In case of error the channel closes without receiving any result and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([] (gen-call :function ::get-default-zoom-percent &form)))
+  ([] (gen-call :function ::get-default-zoom &form)))
 
-(defmacro set-default-zoom-percent
-  "Sets the page zoom factor from a zoom percentage.
+(defmacro set-default-zoom
+  "Sets the page zoom factor. Must be less than 0.001 different than a value in zoom::kPresetZoomFactors.
 
-     |percent| - ?
+     |zoom| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [success] where:
@@ -79,7 +80,7 @@
 
    In case of error the channel closes without receiving any result and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([percent] (gen-call :function ::set-default-zoom-percent &form percent)))
+  ([zoom] (gen-call :function ::set-default-zoom &form zoom)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -131,15 +132,17 @@
      :params
      [{:name "name", :type "string"}
       {:name "callback", :type :callback, :callback {:params [{:name "pref", :type "settingsPrivate.PrefObject"}]}}]}
-    {:id ::get-default-zoom-percent,
-     :name "getDefaultZoomPercent",
+    {:id ::get-default-zoom,
+     :name "getDefaultZoom",
+     :since "master",
      :callback? true,
-     :params [{:name "callback", :type :callback, :callback {:params [{:name "percent", :type "double"}]}}]}
-    {:id ::set-default-zoom-percent,
-     :name "setDefaultZoomPercent",
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "zoom", :type "double"}]}}]}
+    {:id ::set-default-zoom,
+     :name "setDefaultZoom",
+     :since "master",
      :callback? true,
      :params
-     [{:name "percent", :type "double"}
+     [{:name "zoom", :type "double"}
       {:name "callback",
        :optional? true,
        :type :callback,

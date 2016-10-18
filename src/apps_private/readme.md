@@ -249,8 +249,8 @@ Generated 39 namespaces containing 1 properties, 279 functions and 74 events:
       get-strings tap-all-events]]
 
     [chromex.app.settings-private refer-macros:[
-      set-pref get-all-prefs get-pref get-default-zoom-percent set-default-zoom-percent
-      tap-on-prefs-changed tap-all-events]]
+      set-pref get-all-prefs get-pref get-default-zoom set-default-zoom tap-on-prefs-changed
+      tap-all-events]]
 
     [chromex.app.streams-private refer-macros:[
       abort tap-on-execute-mime-type-handler tap-all-events]]

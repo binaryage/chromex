@@ -12,11 +12,11 @@
 (defn get-pref* [config name]
   (gen-wrap :function ::get-pref config name))
 
-(defn get-default-zoom-percent* [config]
-  (gen-wrap :function ::get-default-zoom-percent config))
+(defn get-default-zoom* [config]
+  (gen-wrap :function ::get-default-zoom config))
 
-(defn set-default-zoom-percent* [config percent]
-  (gen-wrap :function ::set-default-zoom-percent config percent))
+(defn set-default-zoom* [config zoom]
+  (gen-wrap :function ::set-default-zoom config zoom))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
