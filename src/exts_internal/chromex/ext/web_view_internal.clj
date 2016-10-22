@@ -1,5 +1,5 @@
 (ns chromex.ext.web-view-internal
-  "  * available since Chrome 55"
+  "  * available since Chrome 56"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -259,7 +259,7 @@
 
 (def api-table
   {:namespace "chrome.webViewInternal",
-   :since "55",
+   :since "56",
    :functions
    [{:id ::execute-script,
      :name "executeScript",

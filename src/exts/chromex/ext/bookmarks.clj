@@ -2,7 +2,7 @@
   "Use the chrome.bookmarks API to create, organize, and otherwise manipulate bookmarks. Also see Override Pages, which you
    can use to create a custom Bookmark Manager page.
 
-     * available since Chrome 13
+     * available since Chrome 14
      * https://developer.chrome.com/extensions/bookmarks"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -305,7 +305,7 @@
 
 (def api-table
   {:namespace "chrome.bookmarks",
-   :since "13",
+   :since "14",
    :properties
    [{:id ::max-write-operations-per-hour,
      :name "MAX_WRITE_OPERATIONS_PER_HOUR",
@@ -351,7 +351,6 @@
        :callback {:params [{:name "results", :type "[array-of-bookmarks.BookmarkTreeNodes]"}]}}]}
     {:id ::get-sub-tree,
      :name "getSubTree",
-     :since "14",
      :callback? true,
      :params
      [{:name "id", :type "string"}
