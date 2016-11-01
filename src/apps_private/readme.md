@@ -8,6 +8,7 @@
 | [chrome.activityLogPrivate](https://developer.chrome.com/extensions/activityLogPrivate) | [chromex/app/activity_log_private.clj](chromex/app/activity_log_private.clj) |
 | [chrome.autofillPrivate](https://developer.chrome.com/extensions/autofillPrivate) | [chromex/app/autofill_private.clj](chromex/app/autofill_private.clj) |
 | [chrome.bluetoothPrivate](https://developer.chrome.com/extensions/bluetoothPrivate) | [chromex/app/bluetooth_private.clj](chromex/app/bluetooth_private.clj) |
+| [chrome.bookmarkManagerPrivate](https://developer.chrome.com/extensions/bookmarkManagerPrivate) | [chromex/app/bookmark_manager_private.clj](chromex/app/bookmark_manager_private.clj) |
 | [chrome.brailleDisplayPrivate](https://developer.chrome.com/extensions/brailleDisplayPrivate) | [chromex/app/braille_display_private.clj](chromex/app/braille_display_private.clj) |
 | [chrome.chromeosInfoPrivate](https://developer.chrome.com/extensions/chromeosInfoPrivate) | [chromex/app/chromeos_info_private.clj](chromex/app/chromeos_info_private.clj) |
 | [chrome.commandLinePrivate](https://developer.chrome.com/extensions/commandLinePrivate) | [chromex/app/command_line_private.clj](chromex/app/command_line_private.clj) |
@@ -47,7 +48,7 @@
 
 ### API stats
 
-Generated 39 namespaces containing 1 properties, 279 functions and 74 events:
+Generated 40 namespaces containing 1 properties, 300 functions and 78 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -56,6 +57,7 @@ Generated 39 namespaces containing 1 properties, 279 functions and 74 events:
     |      chrome.activityLogPrivate |           0 |          4 |       1 |
     |         chrome.autofillPrivate |           0 |          9 |       2 |
     |        chrome.bluetoothPrivate |           0 |          7 |       1 |
+    |  chrome.bookmarkManagerPrivate |           0 |         21 |       4 |
     |   chrome.brailleDisplayPrivate |           0 |          2 |       2 |
     |     chrome.chromeosInfoPrivate |           0 |          2 |       0 |
     |      chrome.commandLinePrivate |           0 |          1 |       0 |
@@ -113,6 +115,12 @@ Generated 39 namespaces containing 1 properties, 279 functions and 74 events:
     [chromex.app.bluetooth-private refer-macros:[
       set-adapter-state set-pairing-response disconnect-all forget-device set-discovery-filter connect
       pair tap-on-pairing tap-all-events]]
+
+    [chromex.app.bookmark-manager-private refer-macros:[
+      copy cut paste can-paste sort-children get-strings start-drag drop get-subtree can-edit
+      can-open-new-windows remove-trees record-launch create-with-meta-info get-meta-info set-meta-info
+      update-meta-info undo redo get-undo-info get-redo-info tap-on-drag-enter tap-on-drag-leave
+      tap-on-drop tap-on-meta-info-changed tap-all-events]]
 
     [chromex.app.braille-display-private refer-macros:[
       get-display-state write-dots tap-on-display-state-changed tap-on-key-event tap-all-events]]
