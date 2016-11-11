@@ -6,8 +6,8 @@
 (defn get-display-state* [config]
   (gen-wrap :function ::get-display-state config))
 
-(defn write-dots* [config cells]
-  (gen-wrap :function ::write-dots config cells))
+(defn write-dots* [config cells columns rows]
+  (gen-wrap :function ::write-dots config cells columns rows))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 

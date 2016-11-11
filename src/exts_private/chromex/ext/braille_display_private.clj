@@ -28,10 +28,14 @@
   "Write the given dot patterns to the display.  The buffer contains one byte for each braille cell on the display, starting
    from the leftmost cell. Each byte contains a bit pattern indicating which dots should be raised in the corresponding cell
    with the low-order bit representing dot 1 and so on until bit 7 which corresponds to dot 8.  If the number of bytes in the
-   buffer is not equal to the display size, the buffer will either be clipped or padded with blank cells on the right.
+   buffer is not equal to the display size, the buffer will either be clipped or padded with blank cells on the right. The
+   buffer is a 2D array compressed into 1D. The |columns| and |rows| parameters give the original 2D dimensions of the buffer.
+   To access an element cells[r][c], simply access cells[r * columns + c].
 
-     |cells| - ?"
-  ([cells] (gen-call :function ::write-dots &form cells)))
+     |cells| - ?
+     |columns| - ?
+     |rows| - ?"
+  ([cells columns rows] (gen-call :function ::write-dots &form cells columns rows)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -79,7 +83,10 @@
      [{:name "callback",
        :type :callback,
        :callback {:params [{:name "result", :type "brailleDisplayPrivate.DisplayState"}]}}]}
-    {:id ::write-dots, :name "writeDots", :params [{:name "cells", :type "ArrayBuffer"}]}],
+    {:id ::write-dots,
+     :name "writeDots",
+     :params
+     [{:name "cells", :type "ArrayBuffer"} {:name "columns", :type "integer"} {:name "rows", :type "integer"}]}],
    :events
    [{:id ::on-display-state-changed,
      :name "onDisplayStateChanged",
