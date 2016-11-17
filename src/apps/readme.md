@@ -15,6 +15,7 @@
 | [chrome.bluetooth](https://developer.chrome.com/extensions/bluetooth) | [chromex/app/bluetooth.clj](chromex/app/bluetooth.clj) |
 | [chrome.bluetoothLowEnergy](https://developer.chrome.com/extensions/bluetoothLowEnergy) | [chromex/app/bluetooth_low_energy.clj](chromex/app/bluetooth_low_energy.clj) |
 | [chrome.bluetoothSocket](https://developer.chrome.com/extensions/bluetoothSocket) | [chromex/app/bluetooth_socket.clj](chromex/app/bluetooth_socket.clj) |
+| [chrome.bookmarks](https://developer.chrome.com/extensions/bookmarks) | [chromex/app/bookmarks.clj](chromex/app/bookmarks.clj) |
 | [chrome.browser](https://developer.chrome.com/extensions/browser) | [chromex/app/browser.clj](chromex/app/browser.clj) |
 | [chrome.certificateProvider](https://developer.chrome.com/extensions/certificateProvider) | [chromex/app/certificate_provider.clj](chromex/app/certificate_provider.clj) |
 | [chrome.clipboard](https://developer.chrome.com/extensions/clipboard) | [chromex/app/clipboard.clj](chromex/app/clipboard.clj) |
@@ -71,7 +72,7 @@
 
 ### API stats
 
-Generated 63 namespaces containing 25 properties, 369 functions and 129 events:
+Generated 64 namespaces containing 27 properties, 380 functions and 136 events:
 
 
     |                         :namespace | :properties | :functions | :events |
@@ -87,6 +88,7 @@ Generated 63 namespaces containing 25 properties, 369 functions and 129 events:
     |                   chrome.bluetooth |           0 |          5 |       4 |
     |          chrome.bluetoothLowEnergy |           0 |         26 |       9 |
     |             chrome.bluetoothSocket |           0 |         11 |       4 |
+    |                   chrome.bookmarks |           2 |         11 |       7 |
     |                     chrome.browser |           0 |          1 |       0 |
     |         chrome.certificateProvider |           0 |          0 |       2 |
     |                   chrome.clipboard |           0 |          0 |       1 |
@@ -199,6 +201,12 @@ Generated 63 namespaces containing 25 properties, 369 functions and 129 events:
       create update set-paused listen-using-rfcomm listen-using-l2cap connect disconnect close send
       get-info get-sockets tap-on-accept tap-on-accept-error tap-on-receive tap-on-receive-error
       tap-all-events]]
+
+    [chromex.app.bookmarks refer-macros:[
+      get-max-write-operations-per-hour get-max-sustained-write-operations-per-minute get get-children
+      get-recent get-tree get-sub-tree search create move update remove remove-tree tap-on-created
+      tap-on-removed tap-on-changed tap-on-moved tap-on-children-reordered tap-on-import-began
+      tap-on-import-ended tap-all-events]]
 
     [chromex.app.browser refer-macros:[
       open-tab tap-all-events]]
