@@ -35,3 +35,6 @@
 (defn on-nodes-removed* [config channel & args]
   (gen-wrap :event ::on-nodes-removed config channel args))
 
+(defn on-accessibility-tree-serialization-error* [config channel & args]
+  (gen-wrap :event ::on-accessibility-tree-serialization-error config channel args))
+

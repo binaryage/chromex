@@ -23,14 +23,14 @@
 
 ### API stats
 
-Generated 15 namespaces containing 0 properties, 89 functions and 17 events:
+Generated 15 namespaces containing 0 properties, 89 functions and 18 events:
 
 
     |                         :namespace | :properties | :functions | :events |
     |------------------------------------+-------------+------------+---------|
     |   chrome.app.currentWindowInternal |           0 |         15 |       8 |
     |        chrome.appViewGuestInternal |           0 |          2 |       0 |
-    |          chrome.automationInternal |           0 |          5 |       5 |
+    |          chrome.automationInternal |           0 |          5 |       6 |
     | chrome.certificateProviderInternal |           0 |          2 |       0 |
     |       chrome.chromeWebViewInternal |           0 |          5 |       0 |
     |        chrome.contextMenusInternal |           0 |          0 |       1 |
@@ -61,7 +61,7 @@ Generated 15 namespaces containing 0 properties, 89 functions and 17 events:
     [chromex.app.automation-internal refer-macros:[
       enable-tab enable-frame enable-desktop perform-action query-selector tap-on-accessibility-event
       tap-on-accessibility-tree-destroyed tap-on-tree-change tap-on-child-tree-id tap-on-nodes-removed
-      tap-all-events]]
+      tap-on-accessibility-tree-serialization-error tap-all-events]]
 
     [chromex.app.certificate-provider-internal refer-macros:[
       report-signature report-certificates tap-all-events]]

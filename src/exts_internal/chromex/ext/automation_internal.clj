@@ -123,6 +123,15 @@
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-nodes-removed &form channel args)))
 
+(defmacro tap-on-accessibility-tree-serialization-error-events
+  "
+   Events will be put on the |channel| with signature [::on-accessibility-tree-serialization-error [tree-id]] where:
+
+     |tree-id| - ?
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-accessibility-tree-serialization-error &form channel args)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -177,7 +186,11 @@
      :params [{:name "tree-id", :type "integer"} {:name "node-id", :type "integer"}]}
     {:id ::on-nodes-removed,
      :name "onNodesRemoved",
-     :params [{:name "tree-id", :type "integer"} {:name "node-i-ds", :type "[array-of-integers]"}]}]})
+     :params [{:name "tree-id", :type "integer"} {:name "node-i-ds", :type "[array-of-integers]"}]}
+    {:id ::on-accessibility-tree-serialization-error,
+     :name "onAccessibilityTreeSerializationError",
+     :since "master",
+     :params [{:name "tree-id", :type "integer"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
