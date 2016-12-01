@@ -30,6 +30,15 @@
 (defn overscan-calibration-complete* [config id]
   (gen-wrap :function ::overscan-calibration-complete config id))
 
+(defn touch-calibration-start* [config id]
+  (gen-wrap :function ::touch-calibration-start config id))
+
+(defn touch-calibration-set* [config id pairs bounds]
+  (gen-wrap :function ::touch-calibration-set config id pairs bounds))
+
+(defn touch-calibration-reset* [config id]
+  (gen-wrap :function ::touch-calibration-reset config id))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-display-changed* [config channel & args]

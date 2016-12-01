@@ -120,6 +120,35 @@
    https://developer.chrome.com/apps/system.display#method-overscanCalibrationComplete."
   ([id] (gen-call :function ::overscan-calibration-complete &form id)))
 
+(defmacro touch-calibration-start
+  "Starts touch calibration for a display. This will show an overlay on the screen and initialize the UX for touch
+   calibration. If touch calibration for display |id| is already in progress this will throw an error.
+
+     |id| - The display's unique identifier.
+
+   https://developer.chrome.com/apps/system.display#method-touchCalibrationStart."
+  ([id] (gen-call :function ::touch-calibration-start &form id)))
+
+(defmacro touch-calibration-set
+  "Sets the touch calibration pairs for a display. These |pairs| would be used to calibrate the touch screen for display |id|.
+   If touch calibration for display |id| is in progress this will do nothing.
+
+     |id| - The display's unique identifier.
+     |pairs| - The pairs of point used to calibrate the display.
+     |bounds| - Bounds of the display when the touch calibration was performed.     |bounds.left| and |bounds.top| values
+                are ignored.
+
+   https://developer.chrome.com/apps/system.display#method-touchCalibrationSet."
+  ([id pairs bounds] (gen-call :function ::touch-calibration-set &form id pairs bounds)))
+
+(defmacro touch-calibration-reset
+  "Resets the touch calibration for the display and removes the saved calibration data.
+
+     |id| - The display's unique identifier.
+
+   https://developer.chrome.com/apps/system.display#method-touchCalibrationReset."
+  ([id] (gen-call :function ::touch-calibration-reset &form id)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -195,6 +224,19 @@
     {:id ::overscan-calibration-complete,
      :name "overscanCalibrationComplete",
      :since "53",
+     :params [{:name "id", :type "string"}]}
+    {:id ::touch-calibration-start,
+     :name "touchCalibrationStart",
+     :since "master",
+     :params [{:name "id", :type "string"}]}
+    {:id ::touch-calibration-set,
+     :name "touchCalibrationSet",
+     :since "master",
+     :params
+     [{:name "id", :type "string"} {:name "pairs", :type "object"} {:name "bounds", :type "system.display.Bounds"}]}
+    {:id ::touch-calibration-reset,
+     :name "touchCalibrationReset",
+     :since "master",
      :params [{:name "id", :type "string"}]}],
    :events [{:id ::on-display-changed, :name "onDisplayChanged"}]})
 
