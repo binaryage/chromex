@@ -189,7 +189,6 @@
      :params [{:name "tree-id", :type "integer"} {:name "node-i-ds", :type "[array-of-integers]"}]}
     {:id ::on-accessibility-tree-serialization-error,
      :name "onAccessibilityTreeSerializationError",
-     :since "master",
      :params [{:name "tree-id", :type "integer"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

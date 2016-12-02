@@ -72,7 +72,7 @@
 
 ### API stats
 
-Generated 64 namespaces containing 27 properties, 383 functions and 136 events:
+Generated 64 namespaces containing 27 properties, 385 functions and 136 events:
 
 
     |                         :namespace | :properties | :functions | :events |
@@ -90,7 +90,7 @@ Generated 64 namespaces containing 27 properties, 383 functions and 136 events:
     |             chrome.bluetoothSocket |           0 |         11 |       4 |
     |                   chrome.bookmarks |           2 |         11 |       7 |
     |                     chrome.browser |           0 |          1 |       0 |
-    |         chrome.certificateProvider |           0 |          0 |       2 |
+    |         chrome.certificateProvider |           0 |          2 |       2 |
     |                   chrome.clipboard |           0 |          0 |       1 |
     |                    chrome.commands |           0 |          1 |       1 |
     |                chrome.contextMenus |           1 |          4 |       1 |
@@ -212,7 +212,8 @@ Generated 64 namespaces containing 27 properties, 383 functions and 136 events:
       open-tab tap-all-events]]
 
     [chromex.app.certificate-provider refer-macros:[
-      tap-on-certificates-requested tap-on-sign-digest-requested tap-all-events]]
+      request-pin stop-pin-request tap-on-certificates-requested tap-on-sign-digest-requested
+      tap-all-events]]
 
     [chromex.app.clipboard refer-macros:[
       tap-on-clipboard-data-changed tap-all-events]]

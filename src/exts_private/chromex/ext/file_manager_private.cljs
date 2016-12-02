@@ -182,3 +182,6 @@
 (defn on-drive-sync-error* [config channel & args]
   (gen-wrap :event ::on-drive-sync-error config channel args))
 
+(defn on-apps-updated* [config channel & args]
+  (gen-wrap :event ::on-apps-updated config channel args))
+

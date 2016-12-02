@@ -86,7 +86,7 @@
 
 ### API stats
 
-Generated 78 namespaces containing 49 properties, 364 functions and 178 events:
+Generated 78 namespaces containing 49 properties, 366 functions and 178 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -103,7 +103,7 @@ Generated 78 namespaces containing 49 properties, 364 functions and 178 events:
     |       chrome.cast.streaming.rtpStream |           0 |          7 |       3 |
     |         chrome.cast.streaming.session |           0 |          1 |       0 |
     |    chrome.cast.streaming.udpTransport |           0 |          3 |       0 |
-    |            chrome.certificateProvider |           0 |          0 |       2 |
+    |            chrome.certificateProvider |           0 |          2 |       2 |
     |                       chrome.commands |           0 |          1 |       1 |
     |                chrome.contentSettings |          13 |          0 |       0 |
     |                   chrome.contextMenus |           1 |          4 |       1 |
@@ -224,7 +224,8 @@ Generated 78 namespaces containing 49 properties, 364 functions and 178 events:
       destroy set-destination set-options tap-all-events]]
 
     [chromex.ext.certificate-provider refer-macros:[
-      tap-on-certificates-requested tap-on-sign-digest-requested tap-all-events]]
+      request-pin stop-pin-request tap-on-certificates-requested tap-on-sign-digest-requested
+      tap-all-events]]
 
     [chromex.ext.commands refer-macros:[
       get-all tap-on-command tap-all-events]]

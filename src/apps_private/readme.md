@@ -48,7 +48,7 @@
 
 ### API stats
 
-Generated 40 namespaces containing 1 properties, 300 functions and 78 events:
+Generated 40 namespaces containing 1 properties, 300 functions and 79 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -66,7 +66,7 @@ Generated 40 namespaces containing 1 properties, 300 functions and 78 events:
     |       chrome.easyUnlockPrivate |           0 |         25 |       5 |
     |             chrome.echoPrivate |           0 |          5 |       0 |
     |         chrome.feedbackPrivate |           0 |          5 |       1 |
-    |      chrome.fileManagerPrivate |           0 |         51 |       8 |
+    |      chrome.fileManagerPrivate |           0 |         51 |       9 |
     |              chrome.gcdPrivate |           0 |          6 |       0 |
     |          chrome.hotwordPrivate |           0 |         15 |       9 |
     |         chrome.identityPrivate |           0 |          0 |       1 |
@@ -173,7 +173,7 @@ Generated 40 namespaces containing 1 properties, 300 functions and 78 events:
       configure-volume get-custom-actions execute-custom-action get-directory-size tap-on-mount-completed
       tap-on-file-transfers-updated tap-on-copy-progress tap-on-directory-changed
       tap-on-preferences-changed tap-on-drive-connection-status-changed tap-on-device-changed
-      tap-on-drive-sync-error tap-all-events]]
+      tap-on-drive-sync-error tap-on-apps-updated tap-all-events]]
 
     [chromex.app.gcd-private refer-macros:[
       get-device-info create-session start-pairing confirm-code send-message terminate-session

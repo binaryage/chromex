@@ -732,6 +732,13 @@
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-drive-sync-error &form channel args)))
 
+(defmacro tap-on-apps-updated-events
+  "
+   Events will be put on the |channel| with signature [::on-apps-updated []].
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-apps-updated &form channel args)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -1041,7 +1048,8 @@
     {:id ::on-preferences-changed, :name "onPreferencesChanged"}
     {:id ::on-drive-connection-status-changed, :name "onDriveConnectionStatusChanged"}
     {:id ::on-device-changed, :name "onDeviceChanged", :params [{:name "event", :type "object"}]}
-    {:id ::on-drive-sync-error, :name "onDriveSyncError", :params [{:name "event", :type "object"}]}]})
+    {:id ::on-drive-sync-error, :name "onDriveSyncError", :params [{:name "event", :type "object"}]}
+    {:id ::on-apps-updated, :name "onAppsUpdated", :since "master"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

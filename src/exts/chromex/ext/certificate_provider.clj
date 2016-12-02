@@ -12,6 +12,39 @@
 (declare api-table)
 (declare gen-call)
 
+; -- functions --------------------------------------------------------------------------------------------------------------
+
+(defmacro request-pin
+  "Requests the PIN from the user. Only one ongoing request at a time is allowed. The requests issued while another flow is
+   ongoing are rejected. It's the extension's responsibility to try again later if another flow is in progress.
+
+     |details| - Contains the details about the requested dialog.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [details] where:
+
+     |details| - https://developer.chrome.com/extensions/certificateProvider#property-callback-details.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/extensions/certificateProvider#method-requestPin."
+  ([details] (gen-call :function ::request-pin &form details)))
+
+(defmacro stop-pin-request
+  "Stops the pin request started by the 'requestPin' function.
+
+     |details| - Contains the details about the reason for stopping the request flow.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/extensions/certificateProvider#method-stopPinRequest."
+  ([details] (gen-call :function ::stop-pin-request &form details)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -55,6 +88,19 @@
 (def api-table
   {:namespace "chrome.certificateProvider",
    :since "46",
+   :functions
+   [{:id ::request-pin,
+     :name "requestPin",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "details", :type "object"}
+      {:name "callback", :type :callback, :callback {:params [{:name "details", :optional? true, :type "object"}]}}]}
+    {:id ::stop-pin-request,
+     :name "stopPinRequest",
+     :since "master",
+     :callback? true,
+     :params [{:name "details", :type "object"} {:name "callback", :type :callback}]}],
    :events
    [{:id ::on-certificates-requested,
      :name "onCertificatesRequested",
