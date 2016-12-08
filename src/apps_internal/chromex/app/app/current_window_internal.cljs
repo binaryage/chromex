@@ -71,6 +71,3 @@
 (defn on-alpha-enabled-changed* [config channel & args]
   (gen-wrap :event ::on-alpha-enabled-changed config channel args))
 
-(defn on-window-shown-for-tests* [config channel & args]
-  (gen-wrap :event ::on-window-shown-for-tests config channel args))
-

@@ -113,14 +113,6 @@
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-alpha-enabled-changed &form channel args)))
 
-(defmacro tap-on-window-shown-for-tests-events
-  "Only sent in tests.
-
-   Events will be put on the |channel| with signature [::on-window-shown-for-tests []].
-
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
-  ([channel & args] (apply gen-call :event ::on-window-shown-for-tests &form channel args)))
-
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -164,8 +156,7 @@
     {:id ::on-minimized, :name "onMinimized"}
     {:id ::on-maximized, :name "onMaximized"}
     {:id ::on-restored, :name "onRestored"}
-    {:id ::on-alpha-enabled-changed, :name "onAlphaEnabledChanged"}
-    {:id ::on-window-shown-for-tests, :name "onWindowShownForTests"}]})
+    {:id ::on-alpha-enabled-changed, :name "onAlphaEnabledChanged"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

@@ -24,12 +24,12 @@
 
 ### API stats
 
-Generated 16 namespaces containing 0 properties, 91 functions and 18 events:
+Generated 16 namespaces containing 0 properties, 91 functions and 17 events:
 
 
     |                             :namespace | :properties | :functions | :events |
     |----------------------------------------+-------------+------------+---------|
-    |       chrome.app.currentWindowInternal |           0 |         15 |       8 |
+    |       chrome.app.currentWindowInternal |           0 |         15 |       7 |
     |            chrome.appViewGuestInternal |           0 |          2 |       0 |
     |              chrome.automationInternal |           0 |          5 |       6 |
     |     chrome.certificateProviderInternal |           0 |          2 |       0 |
@@ -55,7 +55,7 @@ Generated 16 namespaces containing 0 properties, 91 functions and 18 events:
       focus fullscreen minimize maximize restore draw-attention clear-attention show hide set-bounds
       set-size-constraints set-icon set-shape set-always-on-top set-visible-on-all-workspaces
       tap-on-closed tap-on-bounds-changed tap-on-fullscreened tap-on-minimized tap-on-maximized
-      tap-on-restored tap-on-alpha-enabled-changed tap-on-window-shown-for-tests tap-all-events]]
+      tap-on-restored tap-on-alpha-enabled-changed tap-all-events]]
 
     [chromex.ext.app-view-guest-internal refer-macros:[
       attach-frame deny-request tap-all-events]]
