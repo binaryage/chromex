@@ -2,7 +2,7 @@
   "Use the chrome.settingsPrivate API to get or set preferences
    from the settings UI.
 
-     * available since Chrome 55"
+     * available since Chrome 56"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -109,7 +109,7 @@
 
 (def api-table
   {:namespace "chrome.settingsPrivate",
-   :since "55",
+   :since "56",
    :functions
    [{:id ::set-pref,
      :name "setPref",
@@ -134,12 +134,10 @@
       {:name "callback", :type :callback, :callback {:params [{:name "pref", :type "settingsPrivate.PrefObject"}]}}]}
     {:id ::get-default-zoom,
      :name "getDefaultZoom",
-     :since "56",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "zoom", :type "double"}]}}]}
     {:id ::set-default-zoom,
      :name "setDefaultZoom",
-     :since "56",
      :callback? true,
      :params
      [{:name "zoom", :type "double"}

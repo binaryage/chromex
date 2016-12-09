@@ -4,7 +4,7 @@
    get notifiers' information, and inform notifiers about users' actions on the
    notifications.
 
-     * available since Chrome 55
+     * available since Chrome 56
      * https://developer.chrome.com/extensions/notificationProvider"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -189,7 +189,7 @@
 
 (def api-table
   {:namespace "chrome.notificationProvider",
-   :since "55",
+   :since "56",
    :functions
    [{:id ::notify-on-cleared,
      :name "notifyOnCleared",

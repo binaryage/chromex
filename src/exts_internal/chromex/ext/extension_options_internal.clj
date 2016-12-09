@@ -1,7 +1,7 @@
 (ns chromex.ext.extension-options-internal
   "Internal API for the &lt;extensiontoptions&gt; tag
 
-     * available since Chrome 55"
+     * available since Chrome 56"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -50,7 +50,7 @@
 
 (def api-table
   {:namespace "chrome.extensionOptionsInternal",
-   :since "55",
+   :since "56",
    :events
    [{:id ::on-close, :name "onClose"}
     {:id ::on-load, :name "onLoad"}
