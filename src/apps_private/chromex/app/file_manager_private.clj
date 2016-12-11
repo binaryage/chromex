@@ -1049,7 +1049,7 @@
     {:id ::on-drive-connection-status-changed, :name "onDriveConnectionStatusChanged"}
     {:id ::on-device-changed, :name "onDeviceChanged", :params [{:name "event", :type "object"}]}
     {:id ::on-drive-sync-error, :name "onDriveSyncError", :params [{:name "event", :type "object"}]}
-    {:id ::on-apps-updated, :name "onAppsUpdated", :since "master"}]})
+    {:id ::on-apps-updated, :name "onAppsUpdated", :since "57"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

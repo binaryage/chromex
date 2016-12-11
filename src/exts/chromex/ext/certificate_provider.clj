@@ -91,14 +91,14 @@
    :functions
    [{:id ::request-pin,
      :name "requestPin",
-     :since "master",
+     :since "57",
      :callback? true,
      :params
      [{:name "details", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "details", :optional? true, :type "object"}]}}]}
     {:id ::stop-pin-request,
      :name "stopPinRequest",
-     :since "master",
+     :since "57",
      :callback? true,
      :params [{:name "details", :type "object"} {:name "callback", :type :callback}]}],
    :events

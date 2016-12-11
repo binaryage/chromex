@@ -225,18 +225,15 @@
      :name "overscanCalibrationComplete",
      :since "53",
      :params [{:name "id", :type "string"}]}
-    {:id ::touch-calibration-start,
-     :name "touchCalibrationStart",
-     :since "master",
-     :params [{:name "id", :type "string"}]}
+    {:id ::touch-calibration-start, :name "touchCalibrationStart", :since "57", :params [{:name "id", :type "string"}]}
     {:id ::touch-calibration-set,
      :name "touchCalibrationSet",
-     :since "master",
+     :since "57",
      :params
      [{:name "id", :type "string"} {:name "pairs", :type "object"} {:name "bounds", :type "system.display.Bounds"}]}
     {:id ::touch-calibration-reset,
      :name "touchCalibrationReset",
-     :since "master",
+     :since "57",
      :params [{:name "id", :type "string"}]}],
    :events [{:id ::on-display-changed, :name "onDisplayChanged"}]})
 

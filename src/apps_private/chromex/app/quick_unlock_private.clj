@@ -44,6 +44,35 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-active-modes &form)))
 
+(defmacro check-credential
+  "Checks if the given credential can be used for the given unlock mode. Enterprise policy can change credential requirements.
+
+     |mode| - The quick unlock mode that is used.
+     |credential| - The given credential.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [check] where:
+
+     |check| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([mode credential] (gen-call :function ::check-credential &form mode credential)))
+
+(defmacro get-credential-requirements
+  "Gets the credential requirements for the given unlock mode.
+
+     |mode| - The quick unlock mode that is used.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [requirements] where:
+
+     |requirements| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([mode] (gen-call :function ::get-credential-requirements &form mode)))
+
 (defmacro set-modes
   "Update the set of quick unlock modes that are currently active/enabled.
 
@@ -105,6 +134,21 @@
      [{:name "on-complete",
        :type :callback,
        :callback {:params [{:name "modes", :type "[array-of-quickUnlockPrivate.QuickUnlockModes]"}]}}]}
+    {:id ::check-credential,
+     :name "checkCredential",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "mode", :type "quickUnlockPrivate.QuickUnlockMode"}
+      {:name "credential", :type "string"}
+      {:name "on-complete", :type :callback, :callback {:params [{:name "check", :type "object"}]}}]}
+    {:id ::get-credential-requirements,
+     :name "getCredentialRequirements",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "mode", :type "quickUnlockPrivate.QuickUnlockMode"}
+      {:name "on-complete", :type :callback, :callback {:params [{:name "requirements", :type "object"}]}}]}
     {:id ::set-modes,
      :name "setModes",
      :callback? true,
