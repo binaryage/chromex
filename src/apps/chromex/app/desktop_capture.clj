@@ -22,12 +22,13 @@
                     origin matches tab.url.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [stream-id] where:
+   Signature of the result value put on the channel is [stream-id options] where:
 
      |stream-id| - An opaque string that can be passed to getUserMedia() API to generate media stream that corresponds to the
                    source selected by the user. If user didn't select any source (i.e. canceled the prompt) then the callback
                    is called with an empty streamId. The created streamId can be used only once and expires after a few
                    seconds when it is not used.
+     |options| - Contains properties that describe the stream.
 
    In case of error the channel closes without receiving any result and relevant error object can be obtained via
    chromex.error/get-last-error.
@@ -66,7 +67,9 @@
      :params
      [{:name "sources", :type "[array-of-desktopCapture.DesktopCaptureSourceTypes]"}
       {:name "target-tab", :optional? true, :type "tabs.Tab"}
-      {:name "callback", :type :callback, :callback {:params [{:name "stream-id", :type "string"}]}}]}
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "stream-id", :type "string"} {:name "options", :type "object"}]}}]}
     {:id ::cancel-choose-desktop-media,
      :name "cancelChooseDesktopMedia",
      :params [{:name "desktop-media-request-id", :type "integer"}]}]})
