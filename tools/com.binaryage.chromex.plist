@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Label</key>
-	<string>com.binaryage.chromex.plist</string>
+	<string>com.binaryage.chromex</string>
 	<key>ProgramArguments</key>
 	<array>
 		<string>sh</string>
