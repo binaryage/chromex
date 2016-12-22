@@ -136,7 +136,7 @@
        :callback {:params [{:name "modes", :type "[array-of-quickUnlockPrivate.QuickUnlockModes]"}]}}]}
     {:id ::check-credential,
      :name "checkCredential",
-     :since "master",
+     :since "57",
      :callback? true,
      :params
      [{:name "mode", :type "quickUnlockPrivate.QuickUnlockMode"}
@@ -144,7 +144,7 @@
       {:name "on-complete", :type :callback, :callback {:params [{:name "check", :type "object"}]}}]}
     {:id ::get-credential-requirements,
      :name "getCredentialRequirements",
-     :since "master",
+     :since "57",
      :callback? true,
      :params
      [{:name "mode", :type "quickUnlockPrivate.QuickUnlockMode"}
