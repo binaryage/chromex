@@ -7,10 +7,10 @@
 
   :scm {:name "git" :url "https://github.com/binaryage/chromex"}
 
-  :dependencies [[org.clojure/clojure "1.9.0-alpha12" :scope "provided"]
-                 [org.clojure/clojurescript "1.9.229" :scope "provided"]
+  :dependencies [[org.clojure/clojure "1.9.0-alpha14" :scope "provided"]
+                 [org.clojure/clojurescript "1.9.293" :scope "provided"]
                  [org.clojure/core.async "0.2.395"]
-                 [binaryage/oops "0.5.0"]
+                 [binaryage/oops "0.5.2"]
                  [environ "1.1.0"]]
 
   :clean-targets ^{:protect false} ["target"
