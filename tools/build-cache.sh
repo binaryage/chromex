@@ -30,8 +30,17 @@ if [ ! -d "$WORKDIR" ] ; then
 fi
 
 pushd .
-cd "${CHROMIUM_SRC}chrome/common/extensions/docs"
-python ./server2/update_cache.py --no-push --save-file="$APIS_CACHE_FILE"
+cd "${CHROMIUM_SRC}chrome/common/extensions/docs/server2"
+
+# without this bootstrapping subsequent update_cache.py would fail
+# with 'ImportError: No module named third_party.json_schema_compiler.memoize'
+python << EOF
+import build_server
+build_server.main()
+EOF
+
+python update_cache.py --no-push --save-file="$APIS_CACHE_FILE"
+
 popd
 
 cd "${CHROMIUM_SRC}"
