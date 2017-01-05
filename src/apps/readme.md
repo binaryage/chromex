@@ -72,7 +72,7 @@
 
 ### API stats
 
-Generated 64 namespaces containing 27 properties, 385 functions and 136 events:
+Generated 64 namespaces containing 27 properties, 386 functions and 136 events:
 
 
     |                         :namespace | :properties | :functions | :events |
@@ -91,7 +91,7 @@ Generated 64 namespaces containing 27 properties, 385 functions and 136 events:
     |                   chrome.bookmarks |           2 |         11 |       7 |
     |                     chrome.browser |           0 |          1 |       0 |
     |         chrome.certificateProvider |           0 |          2 |       2 |
-    |                   chrome.clipboard |           0 |          0 |       1 |
+    |                   chrome.clipboard |           0 |          1 |       1 |
     |                    chrome.commands |           0 |          1 |       1 |
     |                chrome.contextMenus |           1 |          4 |       1 |
     |              chrome.desktopCapture |           0 |          2 |       0 |
@@ -216,7 +216,7 @@ Generated 64 namespaces containing 27 properties, 385 functions and 136 events:
       tap-all-events]]
 
     [chromex.app.clipboard refer-macros:[
-      tap-on-clipboard-data-changed tap-all-events]]
+      set-image-data tap-on-clipboard-data-changed tap-all-events]]
 
     [chromex.app.commands refer-macros:[
       get-all tap-on-command tap-all-events]]
