@@ -51,7 +51,7 @@
 
 ### API stats
 
-Generated 43 namespaces containing 1 properties, 329 functions and 74 events:
+Generated 43 namespaces containing 1 properties, 330 functions and 74 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -83,7 +83,7 @@ Generated 43 namespaces containing 1 properties, 329 functions and 74 events:
     |             chrome.mediaPlayerPrivate |           0 |          0 |       3 |
     |                 chrome.metricsPrivate |           0 |         13 |       0 |
     |                    chrome.mojoPrivate |           0 |          2 |       0 |
-    |              chrome.networkingPrivate |           0 |         24 |       4 |
+    |              chrome.networkingPrivate |           0 |         25 |       4 |
     |               chrome.passwordsPrivate |           0 |          5 |       3 |
     |             chrome.preferencesPrivate |           1 |          0 |       0 |
     |             chrome.quickUnlockPrivate |           0 |          5 |       1 |
@@ -244,7 +244,7 @@ Generated 43 namespaces containing 1 properties, 329 functions and 74 events:
       disable-network-type request-network-scan start-connect start-disconnect start-activate
       verify-destination verify-and-encrypt-credentials verify-and-encrypt-data
       set-wifi-tdls-enabled-state get-wifi-tdls-status get-captive-portal-status unlock-cellular-sim
-      set-cellular-sim-state tap-on-networks-changed tap-on-network-list-changed
+      set-cellular-sim-state get-global-policy tap-on-networks-changed tap-on-network-list-changed
       tap-on-device-state-list-changed tap-on-portal-detection-completed tap-all-events]]
 
     [chromex.ext.passwords-private refer-macros:[

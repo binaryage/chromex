@@ -75,6 +75,9 @@
 (defn set-cellular-sim-state* [config network-guid sim-state]
   (gen-wrap :function ::set-cellular-sim-state config network-guid sim-state))
 
+(defn get-global-policy* [config]
+  (gen-wrap :function ::get-global-policy config))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-networks-changed* [config channel & args]

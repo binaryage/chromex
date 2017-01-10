@@ -362,6 +362,18 @@
    chromex.error/get-last-error."
   ([network-guid sim-state] (gen-call :function ::set-cellular-sim-state &form network-guid sim-state)))
 
+(defmacro get-global-policy
+  "Gets the global policy properties. These properties are not expected to change during a session.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::get-global-policy &form)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -579,7 +591,12 @@
      :params
      [{:name "network-guid", :type "string"}
       {:name "sim-state", :type "object"}
-      {:name "callback", :optional? true, :type :callback}]}],
+      {:name "callback", :optional? true, :type :callback}]}
+    {:id ::get-global-policy,
+     :name "getGlobalPolicy",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}],
    :events
    [{:id ::on-networks-changed, :name "onNetworksChanged", :params [{:name "changes", :type "[array-of-strings]"}]}
     {:id ::on-network-list-changed,
