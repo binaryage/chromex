@@ -2,7 +2,7 @@
   "The chrome.management API provides ways to manage the list of extensions/apps that are installed and running. It is
    particularly useful for extensions that override the built-in New Tab page.
 
-     * available since Chrome 14
+     * available since Chrome 15
      * https://developer.chrome.com/apps/management"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -267,7 +267,7 @@
 
 (def api-table
   {:namespace "chrome.management",
-   :since "14",
+   :since "15",
    :functions
    [{:id ::get-all,
      :name "getAll",
@@ -297,7 +297,6 @@
        :callback {:params [{:name "result", :type "management.ExtensionInfo"}]}}]}
     {:id ::get-permission-warnings-by-id,
      :name "getPermissionWarningsById",
-     :since "15",
      :callback? true,
      :params
      [{:name "id", :type "string"}
@@ -307,7 +306,6 @@
        :callback {:params [{:name "permission-warnings", :type "[array-of-strings]"}]}}]}
     {:id ::get-permission-warnings-by-manifest,
      :name "getPermissionWarningsByManifest",
-     :since "15",
      :callback? true,
      :params
      [{:name "manifest-str", :type "string"}

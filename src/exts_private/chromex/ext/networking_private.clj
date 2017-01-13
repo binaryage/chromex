@@ -594,7 +594,7 @@
       {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-global-policy,
      :name "getGlobalPolicy",
-     :since "master",
+     :since "57",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}],
    :events

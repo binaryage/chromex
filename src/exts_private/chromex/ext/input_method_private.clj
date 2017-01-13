@@ -1,5 +1,5 @@
 (ns chromex.ext.input-method-private
-  "  * available since Chrome 14"
+  "  * available since Chrome 15"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -216,7 +216,7 @@
 
 (def api-table
   {:namespace "chrome.inputMethodPrivate",
-   :since "14",
+   :since "15",
    :functions
    [{:id ::get-input-method-config,
      :name "getInputMethodConfig",

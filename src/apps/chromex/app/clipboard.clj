@@ -65,13 +65,13 @@
    :functions
    [{:id ::set-image-data,
      :name "setImageData",
-     :since "master",
+     :since "57",
      :callback? true,
      :params
      [{:name "image-data", :type "ArrayBuffer"}
       {:name "type", :type "unknown-type"}
       {:name "callback", :type :callback}]}],
-   :events [{:id ::on-clipboard-data-changed, :name "onClipboardDataChanged"}]})
+   :events [{:id ::on-clipboard-data-changed, :name "onClipboardDataChanged", :since "56"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
