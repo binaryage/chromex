@@ -31,13 +31,12 @@
   ([] (gen-call :function ::get-info &form)))
 
 (defmacro set-active-devices
-  "Sets the active devices to the devices specified by |ids|. It can pass in the 'complete' active device id list of either
-   input devices, or output devices, or both. If only input device ids are passed in, it will only change the input devices'
-   active status, output devices will NOT be changed; similarly for the case if only output devices are passed. If the devices
-   specified in |new_active_ids| are already active, they will remain active. Otherwise, the old active devices will be
-   de-activated before we activate the new devices with the same type(input/output).
+  "Sets lists of active input and/or output devices.
 
-     |ids| - https://developer.chrome.com/apps/audio#property-setActiveDevices-ids.
+     |ids| - Specifies IDs of devices that should be active. If either the     input or output list is not set, devices in
+             that category are     unaffected.          It is an error to pass in a non-existent device ID.     NOTE: While
+             the method signature allows device IDs to be     passed as a list of strings, this method of setting active
+             devices     is deprecated and should not be relied upon to work. Please use     ' DeviceIdLists' instead.
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
@@ -142,7 +141,7 @@
     {:id ::set-active-devices,
      :name "setActiveDevices",
      :callback? true,
-     :params [{:name "ids", :type "[array-of-strings]"} {:name "callback", :type :callback}]}
+     :params [{:name "ids", :type "audio.DeviceIdLists-or-[array-of-strings]"} {:name "callback", :type :callback}]}
     {:id ::set-properties,
      :name "setProperties",
      :callback? true,
