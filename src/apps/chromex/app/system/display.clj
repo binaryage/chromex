@@ -120,34 +120,53 @@
    https://developer.chrome.com/apps/system.display#method-overscanCalibrationComplete."
   ([id] (gen-call :function ::overscan-calibration-complete &form id)))
 
-(defmacro touch-calibration-start
-  "Starts touch calibration for a display. This will show an overlay on the screen and initialize the UX for touch
-   calibration. If touch calibration for display |id| is already in progress this will throw an error.
+(defmacro show-native-touch-calibration
+  "Displays the native touch calibration UX for the display with |id| as display id. This will show an overlay on the screen
+   with required instructions on how to proceed. The callback will be invoked in case of successful calibraion only. If the
+   calibration fails, this will throw an error.
 
      |id| - The display's unique identifier.
 
-   https://developer.chrome.com/apps/system.display#method-touchCalibrationStart."
-  ([id] (gen-call :function ::touch-calibration-start &form id)))
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [success] where:
 
-(defmacro touch-calibration-set
-  "Sets the touch calibration pairs for a display. These |pairs| would be used to calibrate the touch screen for display |id|.
-   If touch calibration for display |id| is in progress this will do nothing.
+     |success| - https://developer.chrome.com/apps/system.display#property-callback-success.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/apps/system.display#method-showNativeTouchCalibration."
+  ([id] (gen-call :function ::show-native-touch-calibration &form id)))
+
+(defmacro start-custom-touch-calibration
+  "Starts custom touch calibration for a display. This should be called when using a custom UX for collecting calibration
+   data. If another touch calibration is already in progress this will throw an error.
 
      |id| - The display's unique identifier.
+
+   https://developer.chrome.com/apps/system.display#method-startCustomTouchCalibration."
+  ([id] (gen-call :function ::start-custom-touch-calibration &form id)))
+
+(defmacro complete-custom-touch-calibration
+  "Sets the touch calibration pairs for a display. These |pairs| would be used to calibrate the touch screen for display with
+   |id| called in startCustomTouchCalibration(). Always call |startCustomTouchCalibration| before calling this method. If
+   another touch calibration is already in progress this will throw an error.
+
      |pairs| - The pairs of point used to calibrate the display.
      |bounds| - Bounds of the display when the touch calibration was performed.     |bounds.left| and |bounds.top| values
                 are ignored.
 
-   https://developer.chrome.com/apps/system.display#method-touchCalibrationSet."
-  ([id pairs bounds] (gen-call :function ::touch-calibration-set &form id pairs bounds)))
+   https://developer.chrome.com/apps/system.display#method-completeCustomTouchCalibration."
+  ([pairs bounds] (gen-call :function ::complete-custom-touch-calibration &form pairs bounds)))
 
-(defmacro touch-calibration-reset
-  "Resets the touch calibration for the display and removes the saved calibration data.
+(defmacro clear-touch-calibration
+  "Resets the touch calibration for the display and brings it back to its default state by clearing any touch calibration data
+   associated with the display.
 
      |id| - The display's unique identifier.
 
-   https://developer.chrome.com/apps/system.display#method-touchCalibrationReset."
-  ([id] (gen-call :function ::touch-calibration-reset &form id)))
+   https://developer.chrome.com/apps/system.display#method-clearTouchCalibration."
+  ([id] (gen-call :function ::clear-touch-calibration &form id)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -225,15 +244,24 @@
      :name "overscanCalibrationComplete",
      :since "53",
      :params [{:name "id", :type "string"}]}
-    {:id ::touch-calibration-start, :name "touchCalibrationStart", :since "57", :params [{:name "id", :type "string"}]}
-    {:id ::touch-calibration-set,
-     :name "touchCalibrationSet",
-     :since "57",
+    {:id ::show-native-touch-calibration,
+     :name "showNativeTouchCalibration",
+     :since "master",
+     :callback? true,
      :params
-     [{:name "id", :type "string"} {:name "pairs", :type "object"} {:name "bounds", :type "system.display.Bounds"}]}
-    {:id ::touch-calibration-reset,
-     :name "touchCalibrationReset",
-     :since "57",
+     [{:name "id", :type "string"}
+      {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
+    {:id ::start-custom-touch-calibration,
+     :name "startCustomTouchCalibration",
+     :since "master",
+     :params [{:name "id", :type "string"}]}
+    {:id ::complete-custom-touch-calibration,
+     :name "completeCustomTouchCalibration",
+     :since "master",
+     :params [{:name "pairs", :type "object"} {:name "bounds", :type "system.display.Bounds"}]}
+    {:id ::clear-touch-calibration,
+     :name "clearTouchCalibration",
+     :since "master",
      :params [{:name "id", :type "string"}]}],
    :events [{:id ::on-display-changed, :name "onDisplayChanged"}]})
 

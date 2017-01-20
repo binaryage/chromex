@@ -72,7 +72,7 @@
 
 ### API stats
 
-Generated 64 namespaces containing 27 properties, 386 functions and 136 events:
+Generated 64 namespaces containing 27 properties, 387 functions and 136 events:
 
 
     |                         :namespace | :properties | :functions | :events |
@@ -130,7 +130,7 @@ Generated 64 namespaces containing 27 properties, 386 functions and 136 events:
     |                     chrome.storage |           3 |          0 |       1 |
     |              chrome.syncFileSystem |           0 |          7 |       2 |
     |                  chrome.system.cpu |           0 |          1 |       0 |
-    |              chrome.system.display |           0 |         12 |       1 |
+    |              chrome.system.display |           0 |         13 |       1 |
     |               chrome.system.memory |           0 |          1 |       0 |
     |              chrome.system.network |           0 |          1 |       0 |
     |              chrome.system.storage |           0 |          3 |       2 |
@@ -372,8 +372,8 @@ Generated 64 namespaces containing 27 properties, 386 functions and 136 events:
     [chromex.app.system.display refer-macros:[
       get-info get-display-layout set-display-properties set-display-layout enable-unified-desktop
       overscan-calibration-start overscan-calibration-adjust overscan-calibration-reset
-      overscan-calibration-complete touch-calibration-start touch-calibration-set touch-calibration-reset
-      tap-on-display-changed tap-all-events]]
+      overscan-calibration-complete show-native-touch-calibration start-custom-touch-calibration
+      complete-custom-touch-calibration clear-touch-calibration tap-on-display-changed tap-all-events]]
 
     [chromex.app.system.memory refer-macros:[
       get-info tap-all-events]]

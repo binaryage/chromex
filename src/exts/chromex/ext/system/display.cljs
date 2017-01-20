@@ -30,14 +30,17 @@
 (defn overscan-calibration-complete* [config id]
   (gen-wrap :function ::overscan-calibration-complete config id))
 
-(defn touch-calibration-start* [config id]
-  (gen-wrap :function ::touch-calibration-start config id))
+(defn show-native-touch-calibration* [config id]
+  (gen-wrap :function ::show-native-touch-calibration config id))
 
-(defn touch-calibration-set* [config id pairs bounds]
-  (gen-wrap :function ::touch-calibration-set config id pairs bounds))
+(defn start-custom-touch-calibration* [config id]
+  (gen-wrap :function ::start-custom-touch-calibration config id))
 
-(defn touch-calibration-reset* [config id]
-  (gen-wrap :function ::touch-calibration-reset config id))
+(defn complete-custom-touch-calibration* [config pairs bounds]
+  (gen-wrap :function ::complete-custom-touch-calibration config pairs bounds))
+
+(defn clear-touch-calibration* [config id]
+  (gen-wrap :function ::clear-touch-calibration config id))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
