@@ -246,22 +246,22 @@
      :params [{:name "id", :type "string"}]}
     {:id ::show-native-touch-calibration,
      :name "showNativeTouchCalibration",
-     :since "master",
+     :since "57",
      :callback? true,
      :params
      [{:name "id", :type "string"}
       {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::start-custom-touch-calibration,
      :name "startCustomTouchCalibration",
-     :since "master",
+     :since "57",
      :params [{:name "id", :type "string"}]}
     {:id ::complete-custom-touch-calibration,
      :name "completeCustomTouchCalibration",
-     :since "master",
+     :since "57",
      :params [{:name "pairs", :type "object"} {:name "bounds", :type "system.display.Bounds"}]}
     {:id ::clear-touch-calibration,
      :name "clearTouchCalibration",
-     :since "master",
+     :since "57",
      :params [{:name "id", :type "string"}]}],
    :events [{:id ::on-display-changed, :name "onDisplayChanged"}]})
 
