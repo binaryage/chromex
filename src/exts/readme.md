@@ -49,7 +49,6 @@
 | [chrome.instanceID](https://developer.chrome.com/extensions/instanceID) | [chromex/ext/instance_id.clj](chromex/ext/instance_id.clj) |
 | [chrome.management](https://developer.chrome.com/extensions/management) | [chromex/ext/management.clj](chromex/ext/management.clj) |
 | [chrome.networking.config](https://developer.chrome.com/extensions/networking.config) | [chromex/ext/networking/config.clj](chromex/ext/networking/config.clj) |
-| [chrome.notificationProvider](https://developer.chrome.com/extensions/notificationProvider) | [chromex/ext/notification_provider.clj](chromex/ext/notification_provider.clj) |
 | [chrome.notifications](https://developer.chrome.com/extensions/notifications) | [chromex/ext/notifications.clj](chromex/ext/notifications.clj) |
 | [chrome.omnibox](https://developer.chrome.com/extensions/omnibox) | [chromex/ext/omnibox.clj](chromex/ext/omnibox.clj) |
 | [chrome.pageAction](https://developer.chrome.com/extensions/pageAction) | [chromex/ext/page_action.clj](chromex/ext/page_action.clj) |
@@ -86,7 +85,7 @@
 
 ### API stats
 
-Generated 78 namespaces containing 49 properties, 367 functions and 178 events:
+Generated 77 namespaces containing 49 properties, 360 functions and 175 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -136,7 +135,6 @@ Generated 78 namespaces containing 49 properties, 367 functions and 178 events:
     |                     chrome.instanceID |           0 |          5 |       1 |
     |                     chrome.management |           0 |         12 |       4 |
     |              chrome.networking.config |           0 |          2 |       1 |
-    |           chrome.notificationProvider |           0 |          7 |       3 |
     |                  chrome.notifications |           0 |          5 |       5 |
     |                        chrome.omnibox |           0 |          1 |       4 |
     |                     chrome.pageAction |           0 |          7 |       1 |
@@ -353,11 +351,6 @@ Generated 78 namespaces containing 49 properties, 367 functions and 178 events:
 
     [chromex.ext.networking.config refer-macros:[
       set-network-filter finish-authentication tap-on-captive-portal-detected tap-all-events]]
-
-    [chromex.ext.notification-provider refer-macros:[
-      notify-on-cleared notify-on-clicked notify-on-button-clicked notify-on-permission-level-changed
-      notify-on-show-settings get-notifier get-all-notifiers tap-on-created tap-on-updated tap-on-cleared
-      tap-all-events]]
 
     [chromex.ext.notifications refer-macros:[
       create update clear get-all get-permission-level tap-on-closed tap-on-clicked tap-on-button-clicked

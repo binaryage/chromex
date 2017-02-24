@@ -3,7 +3,7 @@
    get information about and control the audio devices attached to the
    system. This API is currently only implemented for ChromeOS.
 
-     * available since Chrome 57
+     * available since Chrome 58
      * https://developer.chrome.com/apps/audio"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -15,20 +15,23 @@
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
-(defmacro get-info
-  "Gets the information of all audio output and input devices.
+(defmacro get-devices
+  "Gets a list of audio devices filtered based on |filter|.
+
+     |filter| - Device properties by which to filter the list of returned     audio devices. If the filter is not set or set
+                to {},     returned device list will contain all available audio devices.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [output-info input-info] where:
+   Signature of the result value put on the channel is [devices] where:
 
-     |output-info| - https://developer.chrome.com/apps/audio#property-callback-outputInfo.
-     |input-info| - https://developer.chrome.com/apps/audio#property-callback-inputInfo.
+     |devices| - https://developer.chrome.com/apps/audio#property-callback-devices.
 
    In case of error the channel closes without receiving any result and relevant error object can be obtained via
    chromex.error/get-last-error.
 
-   https://developer.chrome.com/apps/audio#method-getInfo."
-  ([] (gen-call :function ::get-info &form)))
+   https://developer.chrome.com/apps/audio#method-getDevices."
+  ([filter] (gen-call :function ::get-devices &form filter))
+  ([] `(get-devices :omit)))
 
 (defmacro set-active-devices
   "Sets lists of active input and/or output devices.
@@ -36,7 +39,7 @@
      |ids| - Specifies IDs of devices that should be active. If either the     input or output list is not set, devices in
              that category are     unaffected.          It is an error to pass in a non-existent device ID.     NOTE: While
              the method signature allows device IDs to be     passed as a list of strings, this method of setting active
-             devices     is deprecated and should not be relied upon to work. Please use     ' DeviceIdLists' instead.
+             devices     is deprecated and should not be relied upon to work. Please use     'DeviceIdLists' instead.
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
@@ -62,9 +65,92 @@
    https://developer.chrome.com/apps/audio#method-setProperties."
   ([id properties] (gen-call :function ::set-properties &form id properties)))
 
+(defmacro get-mute
+  "Gets the system-wide mute state for the specified stream type.
+
+     |stream-type| - Stream type for which mute state should be fetched.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [value] where:
+
+     |value| - https://developer.chrome.com/apps/audio#property-callback-value.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/apps/audio#method-getMute."
+  ([stream-type] (gen-call :function ::get-mute &form stream-type)))
+
+(defmacro set-mute
+  "Sets mute state for a stream type. The mute state will apply to all audio devices with the specified audio stream type.
+
+     |stream-type| - Stream type for which mute state should be set.
+     |is-muted| - New mute value.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/apps/audio#method-setMute."
+  ([stream-type is-muted] (gen-call :function ::set-mute &form stream-type is-muted)))
+
+(defmacro get-info
+  "Gets the information of all audio output and input devices.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [output-info input-info] where:
+
+     |output-info| - https://developer.chrome.com/apps/audio#property-callback-outputInfo.
+     |input-info| - https://developer.chrome.com/apps/audio#property-callback-inputInfo.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/apps/audio#method-getInfo."
+  ([] (gen-call :function ::get-info &form)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
+
+(defmacro tap-on-level-changed-events
+  "Fired when sound level changes for an active audio device.
+
+   Events will be put on the |channel| with signature [::on-level-changed [event]] where:
+
+     |event| - https://developer.chrome.com/apps/audio#property-onLevelChanged-event.
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+
+   https://developer.chrome.com/apps/audio#event-onLevelChanged."
+  ([channel & args] (apply gen-call :event ::on-level-changed &form channel args)))
+
+(defmacro tap-on-mute-changed-events
+  "Fired when the mute state of the audio input or output changes. Note that mute state is system-wide and the new value
+   applies to every audio device with specified stream type.
+
+   Events will be put on the |channel| with signature [::on-mute-changed [event]] where:
+
+     |event| - https://developer.chrome.com/apps/audio#property-onMuteChanged-event.
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+
+   https://developer.chrome.com/apps/audio#event-onMuteChanged."
+  ([channel & args] (apply gen-call :event ::on-mute-changed &form channel args)))
+
+(defmacro tap-on-device-list-changed-events
+  "Fired when audio devices change, either new devices being added, or existing devices being removed.
+
+   Events will be put on the |channel| with signature [::on-device-list-changed [devices]] where:
+
+     |devices| - List of all present audio devices after the change.
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+
+   https://developer.chrome.com/apps/audio#event-onDeviceListChanged."
+  ([channel & args] (apply gen-call :event ::on-device-list-changed &form channel args)))
 
 (defmacro tap-on-device-changed-events
   "Fired when anything changes to the audio device configuration.
@@ -75,44 +161,6 @@
 
    https://developer.chrome.com/apps/audio#event-onDeviceChanged."
   ([channel & args] (apply gen-call :event ::on-device-changed &form channel args)))
-
-(defmacro tap-on-level-changed-events
-  "Fired when sound level changes for an active audio device.
-
-   Events will be put on the |channel| with signature [::on-level-changed [id level]] where:
-
-     |id| - id of the audio device.
-     |level| - new sound level of device(volume for output, gain for input).
-
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-
-   https://developer.chrome.com/apps/audio#event-OnLevelChanged."
-  ([channel & args] (apply gen-call :event ::on-level-changed &form channel args)))
-
-(defmacro tap-on-mute-changed-events
-  "Fired when the mute state of the audio input or output changes.
-
-   Events will be put on the |channel| with signature [::on-mute-changed [is-input is-muted]] where:
-
-     |is-input| - true indicating audio input; false indicating audio output.
-     |is-muted| - new value of mute state.
-
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-
-   https://developer.chrome.com/apps/audio#event-OnMuteChanged."
-  ([channel & args] (apply gen-call :event ::on-mute-changed &form channel args)))
-
-(defmacro tap-on-devices-changed-events
-  "Fired when audio devices change, either new devices being added, or existing devices being removed.
-
-   Events will be put on the |channel| with signature [::on-devices-changed [devices]] where:
-
-     |devices| - List of all present audio devices after the change.
-
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-
-   https://developer.chrome.com/apps/audio#event-OnDevicesChanged."
-  ([channel & args] (apply gen-call :event ::on-devices-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
@@ -127,17 +175,16 @@
 
 (def api-table
   {:namespace "chrome.audio",
-   :since "57",
+   :since "58",
    :functions
-   [{:id ::get-info,
-     :name "getInfo",
+   [{:id ::get-devices,
+     :name "getDevices",
      :callback? true,
      :params
-     [{:name "callback",
+     [{:name "filter", :optional? true, :type "object"}
+      {:name "callback",
        :type :callback,
-       :callback
-       {:params
-        [{:name "output-info", :type "[array-of-objects]"} {:name "input-info", :type "[array-of-objects]"}]}}]}
+       :callback {:params [{:name "devices", :type "[array-of-audio.AudioDeviceInfos]"}]}}]}
     {:id ::set-active-devices,
      :name "setActiveDevices",
      :callback? true,
@@ -145,16 +192,42 @@
     {:id ::set-properties,
      :name "setProperties",
      :callback? true,
-     :params [{:name "id", :type "string"} {:name "properties", :type "object"} {:name "callback", :type :callback}]}],
+     :params [{:name "id", :type "string"} {:name "properties", :type "object"} {:name "callback", :type :callback}]}
+    {:id ::get-mute,
+     :name "getMute",
+     :callback? true,
+     :params
+     [{:name "stream-type", :type "audio.StreamType"}
+      {:name "callback", :type :callback, :callback {:params [{:name "value", :type "boolean"}]}}]}
+    {:id ::set-mute,
+     :name "setMute",
+     :callback? true,
+     :params
+     [{:name "stream-type", :type "audio.StreamType"}
+      {:name "is-muted", :type "boolean"}
+      {:name "callback", :optional? true, :type :callback}]}
+    {:id ::get-info,
+     :name "getInfo",
+     :since "58",
+     :deprecated "Use 'getDevices' instead.",
+     :callback? true,
+     :params
+     [{:name "callback",
+       :type :callback,
+       :callback
+       {:params
+        [{:name "output-info", :type "[array-of-objects]"} {:name "input-info", :type "[array-of-objects]"}]}}]}],
    :events
-   [{:id ::on-device-changed, :name "onDeviceChanged"}
-    {:id ::on-level-changed,
-     :name "OnLevelChanged",
-     :params [{:name "id", :type "string"} {:name "level", :type "integer"}]}
-    {:id ::on-mute-changed,
-     :name "OnMuteChanged",
-     :params [{:name "is-input", :type "boolean"} {:name "is-muted", :type "boolean"}]}
-    {:id ::on-devices-changed, :name "OnDevicesChanged", :params [{:name "devices", :type "[array-of-objects]"}]}]})
+   [{:id ::on-level-changed, :name "onLevelChanged", :params [{:name "event", :type "object"}]}
+    {:id ::on-mute-changed, :name "onMuteChanged", :params [{:name "event", :type "object"}]}
+    {:id ::on-device-list-changed,
+     :name "onDeviceListChanged",
+     :params [{:name "devices", :type "[array-of-audio.AudioDeviceInfos]"}]}
+    {:id ::on-device-changed,
+     :name "onDeviceChanged",
+     :since "58",
+     :deprecated
+     "Use more granular 'onLevelChanged',\\n                 'onMuteChanged' and 'onDeviceListChanged' instead."}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

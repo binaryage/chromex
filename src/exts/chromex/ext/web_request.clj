@@ -92,9 +92,10 @@
 (defmacro tap-on-auth-required-events
   "Fired when an authentication failure is received. The listener has three options: it can provide authentication
    credentials, it can cancel the request and display the error page, or it can take no action on the challenge. If bad user
-   credentials are provided, this may be called multiple times for the same request.
+   credentials are provided, this may be called multiple times for the same request. Note, only one of 'blocking' or
+   'asyncBlocking' modes must be specified in the extraInfoSpec parameter.
 
-   Events will be put on the |channel| with signature [::on-auth-required [details callback]] where:
+   Events will be put on the |channel| with signature [::on-auth-required [details async-callback]] where:
 
      |details| - https://developer.chrome.com/extensions/webRequest#property-onAuthRequired-details.
 
@@ -183,7 +184,7 @@
     {:id ::on-headers-received, :name "onHeadersReceived", :params [{:name "details", :type "object"}]}
     {:id ::on-auth-required,
      :name "onAuthRequired",
-     :params [{:name "details", :type "object"} {:name "callback", :optional? true, :type :callback}]}
+     :params [{:name "details", :type "object"} {:name "async-callback", :optional? true, :type :callback}]}
     {:id ::on-response-started, :name "onResponseStarted", :params [{:name "details", :type "object"}]}
     {:id ::on-before-redirect, :name "onBeforeRedirect", :params [{:name "details", :type "object"}]}
     {:id ::on-completed, :name "onCompleted", :params [{:name "details", :type "object"}]}

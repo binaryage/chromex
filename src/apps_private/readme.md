@@ -18,7 +18,6 @@
 | [chrome.echoPrivate](https://developer.chrome.com/extensions/echoPrivate) | [chromex/app/echo_private.clj](chromex/app/echo_private.clj) |
 | [chrome.feedbackPrivate](https://developer.chrome.com/extensions/feedbackPrivate) | [chromex/app/feedback_private.clj](chromex/app/feedback_private.clj) |
 | [chrome.fileManagerPrivate](https://developer.chrome.com/extensions/fileManagerPrivate) | [chromex/app/file_manager_private.clj](chromex/app/file_manager_private.clj) |
-| [chrome.gcdPrivate](https://developer.chrome.com/extensions/gcdPrivate) | [chromex/app/gcd_private.clj](chromex/app/gcd_private.clj) |
 | [chrome.hotwordPrivate](https://developer.chrome.com/extensions/hotwordPrivate) | [chromex/app/hotword_private.clj](chromex/app/hotword_private.clj) |
 | [chrome.identityPrivate](https://developer.chrome.com/extensions/identityPrivate) | [chromex/app/identity_private.clj](chromex/app/identity_private.clj) |
 | [chrome.imageWriterPrivate](https://developer.chrome.com/extensions/imageWriterPrivate) | [chromex/app/image_writer_private.clj](chromex/app/image_writer_private.clj) |
@@ -48,7 +47,7 @@
 
 ### API stats
 
-Generated 40 namespaces containing 1 properties, 303 functions and 79 events:
+Generated 39 namespaces containing 1 properties, 297 functions and 79 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -67,7 +66,6 @@ Generated 40 namespaces containing 1 properties, 303 functions and 79 events:
     |             chrome.echoPrivate |           0 |          5 |       0 |
     |         chrome.feedbackPrivate |           0 |          5 |       1 |
     |      chrome.fileManagerPrivate |           0 |         51 |       9 |
-    |              chrome.gcdPrivate |           0 |          6 |       0 |
     |          chrome.hotwordPrivate |           0 |         15 |       9 |
     |         chrome.identityPrivate |           0 |          0 |       1 |
     |      chrome.imageWriterPrivate |           0 |          5 |       5 |
@@ -174,10 +172,6 @@ Generated 40 namespaces containing 1 properties, 303 functions and 79 events:
       tap-on-file-transfers-updated tap-on-copy-progress tap-on-directory-changed
       tap-on-preferences-changed tap-on-drive-connection-status-changed tap-on-device-changed
       tap-on-drive-sync-error tap-on-apps-updated tap-all-events]]
-
-    [chromex.app.gcd-private refer-macros:[
-      get-device-info create-session start-pairing confirm-code send-message terminate-session
-      tap-all-events]]
 
     [chromex.app.hotword-private refer-macros:[
       set-enabled get-status get-localized-strings set-audio-logging-enabled

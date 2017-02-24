@@ -40,7 +40,6 @@
 | [chrome.mdns](https://developer.chrome.com/extensions/mdns) | [chromex/app/mdns.clj](chromex/app/mdns.clj) |
 | [chrome.mediaGalleries](https://developer.chrome.com/extensions/mediaGalleries) | [chromex/app/media_galleries.clj](chromex/app/media_galleries.clj) |
 | [chrome.networking.config](https://developer.chrome.com/extensions/networking.config) | [chromex/app/networking/config.clj](chromex/app/networking/config.clj) |
-| [chrome.notificationProvider](https://developer.chrome.com/extensions/notificationProvider) | [chromex/app/notification_provider.clj](chromex/app/notification_provider.clj) |
 | [chrome.notifications](https://developer.chrome.com/extensions/notifications) | [chromex/app/notifications.clj](chromex/app/notifications.clj) |
 | [chrome.permissions](https://developer.chrome.com/extensions/permissions) | [chromex/app/permissions.clj](chromex/app/permissions.clj) |
 | [chrome.platformKeys](https://developer.chrome.com/extensions/platformKeys) | [chromex/app/platform_keys.clj](chromex/app/platform_keys.clj) |
@@ -62,17 +61,19 @@
 | [chrome.system.network](https://developer.chrome.com/extensions/system.network) | [chromex/app/system/network.clj](chromex/app/system/network.clj) |
 | [chrome.system.storage](https://developer.chrome.com/extensions/system.storage) | [chromex/app/system/storage.clj](chromex/app/system/storage.clj) |
 | [chrome.systemIndicator](https://developer.chrome.com/extensions/systemIndicator) | [chromex/app/system_indicator.clj](chromex/app/system_indicator.clj) |
+| [chrome.tabs](https://developer.chrome.com/extensions/tabs) | [chromex/app/tabs.clj](chromex/app/tabs.clj) |
 | [chrome.test](https://developer.chrome.com/extensions/test) | [chromex/app/test.clj](chromex/app/test.clj) |
 | [chrome.tts](https://developer.chrome.com/extensions/tts) | [chromex/app/tts.clj](chromex/app/tts.clj) |
 | [chrome.usb](https://developer.chrome.com/extensions/usb) | [chromex/app/usb.clj](chromex/app/usb.clj) |
 | [chrome.vpnProvider](https://developer.chrome.com/extensions/vpnProvider) | [chromex/app/vpn_provider.clj](chromex/app/vpn_provider.clj) |
 | [chrome.wallpaper](https://developer.chrome.com/extensions/wallpaper) | [chromex/app/wallpaper.clj](chromex/app/wallpaper.clj) |
 | [chrome.webstore](https://developer.chrome.com/extensions/webstore) | [chromex/app/webstore.clj](chromex/app/webstore.clj) |
+| [chrome.windows](https://developer.chrome.com/extensions/windows) | [chromex/app/windows.clj](chromex/app/windows.clj) |
 
 
 ### API stats
 
-Generated 64 namespaces containing 27 properties, 387 functions and 136 events:
+Generated 65 namespaces containing 30 properties, 414 functions and 149 events:
 
 
     |                         :namespace | :properties | :functions | :events |
@@ -83,7 +84,7 @@ Generated 64 namespaces containing 27 properties, 387 functions and 136 events:
     |                      chrome.alarms |           0 |          5 |       1 |
     |                 chrome.app.runtime |           0 |          0 |       3 |
     |                  chrome.app.window |           0 |          5 |       6 |
-    |                       chrome.audio |           0 |          3 |       4 |
+    |                       chrome.audio |           0 |          6 |       4 |
     |                  chrome.automation |           0 |          6 |       0 |
     |                   chrome.bluetooth |           0 |          5 |       4 |
     |          chrome.bluetoothLowEnergy |           0 |         26 |       9 |
@@ -113,7 +114,6 @@ Generated 64 namespaces containing 27 properties, 387 functions and 136 events:
     |                        chrome.mdns |           1 |          1 |       1 |
     |              chrome.mediaGalleries |           0 |         13 |       2 |
     |           chrome.networking.config |           0 |          2 |       1 |
-    |        chrome.notificationProvider |           0 |          7 |       3 |
     |               chrome.notifications |           0 |          5 |       5 |
     |                 chrome.permissions |           0 |          4 |       2 |
     |                chrome.platformKeys |           0 |          4 |       0 |
@@ -135,12 +135,14 @@ Generated 64 namespaces containing 27 properties, 387 functions and 136 events:
     |              chrome.system.network |           0 |          1 |       0 |
     |              chrome.system.storage |           0 |          3 |       2 |
     |             chrome.systemIndicator |           0 |          3 |       1 |
+    |                        chrome.tabs |           1 |         24 |      13 |
     |                        chrome.test |           0 |         32 |       1 |
     |                         chrome.tts |           0 |          6 |       0 |
     |                         chrome.usb |           0 |         18 |       2 |
     |                 chrome.vpnProvider |           0 |          5 |       5 |
     |                   chrome.wallpaper |           0 |          1 |       0 |
     |                    chrome.webstore |           0 |          1 |       2 |
+    |                     chrome.windows |           2 |          7 |       3 |
 
 ### Requires
 
@@ -173,8 +175,8 @@ Generated 64 namespaces containing 27 properties, 387 functions and 136 events:
       tap-on-fullscreened tap-on-maximized tap-on-minimized tap-on-restored tap-all-events]]
 
     [chromex.app.audio refer-macros:[
-      get-info set-active-devices set-properties tap-on-device-changed tap-on-level-changed
-      tap-on-mute-changed tap-on-devices-changed tap-all-events]]
+      get-devices set-active-devices set-properties get-mute set-mute get-info tap-on-level-changed
+      tap-on-mute-changed tap-on-device-list-changed tap-on-device-changed tap-all-events]]
 
     [chromex.app.automation refer-macros:[
       get-tree get-desktop get-focus add-tree-change-observer remove-tree-change-observer
@@ -299,11 +301,6 @@ Generated 64 namespaces containing 27 properties, 387 functions and 136 events:
     [chromex.app.networking.config refer-macros:[
       set-network-filter finish-authentication tap-on-captive-portal-detected tap-all-events]]
 
-    [chromex.app.notification-provider refer-macros:[
-      notify-on-cleared notify-on-clicked notify-on-button-clicked notify-on-permission-level-changed
-      notify-on-show-settings get-notifier get-all-notifiers tap-on-created tap-on-updated tap-on-cleared
-      tap-all-events]]
-
     [chromex.app.notifications refer-macros:[
       create update clear get-all get-permission-level tap-on-closed tap-on-clicked tap-on-button-clicked
       tap-on-permission-level-changed tap-on-show-settings tap-all-events]]
@@ -387,6 +384,14 @@ Generated 64 namespaces containing 27 properties, 387 functions and 136 events:
     [chromex.app.system-indicator refer-macros:[
       set-icon enable disable tap-on-clicked tap-all-events]]
 
+    [chromex.app.tabs refer-macros:[
+      get-tab-id-none get get-current connect send-request send-message get-selected get-all-in-window
+      create duplicate query highlight update move reload remove detect-language capture-visible-tab
+      execute-script insert-css set-zoom get-zoom set-zoom-settings get-zoom-settings discard
+      tap-on-created tap-on-updated tap-on-moved tap-on-selection-changed tap-on-active-changed
+      tap-on-activated tap-on-highlight-changed tap-on-highlighted tap-on-detached tap-on-attached
+      tap-on-removed tap-on-replaced tap-on-zoom-change tap-all-events]]
+
     [chromex.app.test refer-macros:[
       get-config notify-fail notify-pass log send-message callback-added run-next-test fail succeed
       get-module-system assert-true assert-false assert-bool check-deep-eq assert-eq assert-no-last-error
@@ -413,5 +418,9 @@ Generated 64 namespaces containing 27 properties, 387 functions and 136 events:
       set-wallpaper tap-all-events]]
 
     [chromex.app.webstore refer-macros:[
-      install tap-on-install-stage-changed tap-on-download-progress tap-all-events]]))
+      install tap-on-install-stage-changed tap-on-download-progress tap-all-events]]
+
+    [chromex.app.windows refer-macros:[
+      get-window-id-none get-window-id-current get get-current get-last-focused get-all create update
+      remove tap-on-created tap-on-removed tap-on-focus-changed tap-all-events]]))
 ```

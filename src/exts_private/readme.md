@@ -22,7 +22,6 @@
 | [chrome.experienceSamplingPrivate](https://developer.chrome.com/extensions/experienceSamplingPrivate) | [chromex/ext/experience_sampling_private.clj](chromex/ext/experience_sampling_private.clj) |
 | [chrome.feedbackPrivate](https://developer.chrome.com/extensions/feedbackPrivate) | [chromex/ext/feedback_private.clj](chromex/ext/feedback_private.clj) |
 | [chrome.fileManagerPrivate](https://developer.chrome.com/extensions/fileManagerPrivate) | [chromex/ext/file_manager_private.clj](chromex/ext/file_manager_private.clj) |
-| [chrome.gcdPrivate](https://developer.chrome.com/extensions/gcdPrivate) | [chromex/ext/gcd_private.clj](chromex/ext/gcd_private.clj) |
 | [chrome.hotwordPrivate](https://developer.chrome.com/extensions/hotwordPrivate) | [chromex/ext/hotword_private.clj](chromex/ext/hotword_private.clj) |
 | [chrome.imageWriterPrivate](https://developer.chrome.com/extensions/imageWriterPrivate) | [chromex/ext/image_writer_private.clj](chromex/ext/image_writer_private.clj) |
 | [chrome.inputMethodPrivate](https://developer.chrome.com/extensions/inputMethodPrivate) | [chromex/ext/input_method_private.clj](chromex/ext/input_method_private.clj) |
@@ -51,7 +50,7 @@
 
 ### API stats
 
-Generated 43 namespaces containing 1 properties, 330 functions and 74 events:
+Generated 42 namespaces containing 1 properties, 324 functions and 74 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -74,7 +73,6 @@ Generated 43 namespaces containing 1 properties, 330 functions and 74 events:
     |      chrome.experienceSamplingPrivate |           0 |          1 |       2 |
     |                chrome.feedbackPrivate |           0 |          5 |       1 |
     |             chrome.fileManagerPrivate |           0 |         51 |       9 |
-    |                     chrome.gcdPrivate |           0 |          6 |       0 |
     |                 chrome.hotwordPrivate |           0 |         15 |       9 |
     |             chrome.imageWriterPrivate |           0 |          5 |       5 |
     |             chrome.inputMethodPrivate |           0 |         11 |       7 |
@@ -188,10 +186,6 @@ Generated 43 namespaces containing 1 properties, 330 functions and 74 events:
       tap-on-file-transfers-updated tap-on-copy-progress tap-on-directory-changed
       tap-on-preferences-changed tap-on-drive-connection-status-changed tap-on-device-changed
       tap-on-drive-sync-error tap-on-apps-updated tap-all-events]]
-
-    [chromex.ext.gcd-private refer-macros:[
-      get-device-info create-session start-pairing confirm-code send-message terminate-session
-      tap-all-events]]
 
     [chromex.ext.hotword-private refer-macros:[
       set-enabled get-status get-localized-strings set-audio-logging-enabled
