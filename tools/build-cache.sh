@@ -2,6 +2,8 @@
 
 CHROMIUM_SRC=${CHROMIUM_SRC:?"Please set CHROMIUM_SRC env var pointing to your chrome/src checkout directory"}
 
+echo "chromium src dir: ${CHROMIUM_SRC}"
+
 set -e
 
 pushd () {
@@ -29,8 +31,16 @@ if [ ! -d "$WORKDIR" ] ; then
   mkdir -p "$WORKDIR"
 fi
 
+# a hack around some asserts in update_cache.py, not sure what went wrong and why they don't fix it
 pushd .
-cd "${CHROMIUM_SRC}chrome/common/extensions/docs/server2"
+cd "${CHROMIUM_SRC}"
+git reset --hard HEAD
+git clean -fd
+git apply "${TOOLS}/chromium.patch"
+popd
+
+pushd .
+cd "${SERVER2_DIR}"
 
 # without this bootstrapping subsequent update_cache.py would fail
 # with 'ImportError: No module named third_party.json_schema_compiler.memoize'
@@ -46,5 +56,7 @@ popd
 cd "${CHROMIUM_SRC}"
 SHA=`git rev-parse HEAD`
 echo "$SHA" > "$APIS_LAST_FILE"
+
+git reset --hard HEAD
 
 popd
