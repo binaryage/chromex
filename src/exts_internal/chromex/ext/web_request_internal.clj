@@ -13,18 +13,13 @@
 (defmacro add-event-listener
   "Used internally to implement the special form of addListener for the webRequest events.
 
+     |callback| - ?
      |filter| - A set of filters that restricts the events that will be sent to this listener.
      |extra-info-spec| - Array of extra information that should be passed to the listener function.
      |event-name| - ?
      |sub-event-name| - ?
-     |web-view-instance-id| - ?
-
-   This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([filter extra-info-spec event-name sub-event-name web-view-instance-id] (gen-call :function ::add-event-listener &form filter extra-info-spec event-name sub-event-name web-view-instance-id)))
+     |web-view-instance-id| - ?"
+  ([callback filter extra-info-spec event-name sub-event-name web-view-instance-id] (gen-call :function ::add-event-listener &form callback filter extra-info-spec event-name sub-event-name web-view-instance-id)))
 
 (defmacro event-handled
   "Used internally to send a response for a blocked event.
@@ -53,14 +48,13 @@
    :functions
    [{:id ::add-event-listener,
      :name "addEventListener",
-     :callback? true,
      :params
-     [{:name "filter", :type "webRequest.RequestFilter"}
+     [{:name "callback", :type "function"}
+      {:name "filter", :type "webRequest.RequestFilter"}
       {:name "extra-info-spec", :optional? true, :type "[array-of-unknown-types]"}
       {:name "event-name", :type "string"}
       {:name "sub-event-name", :type "string"}
-      {:name "web-view-instance-id", :type "integer"}
-      {:name "callback", :type :callback}]}
+      {:name "web-view-instance-id", :type "integer"}]}
     {:id ::event-handled,
      :name "eventHandled",
      :params

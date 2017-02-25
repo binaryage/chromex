@@ -152,32 +152,23 @@
   ([expected-error] (gen-call :function ::assert-last-error &form expected-error)))
 
 (defmacro assert-throws
-  "  |self| - https://developer.chrome.com/extensions/test#property-assertThrows-self.
+  "  |fn| - https://developer.chrome.com/extensions/test#property-assertThrows-fn.
+     |self| - https://developer.chrome.com/extensions/test#property-assertThrows-self.
      |args| - https://developer.chrome.com/extensions/test#property-assertThrows-args.
      |message| - https://developer.chrome.com/extensions/test#property-assertThrows-message.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
-   chromex.error/get-last-error.
-
    https://developer.chrome.com/extensions/test#method-assertThrows."
-  ([self args message] (gen-call :function ::assert-throws &form self args message))
-  ([self args] `(assert-throws ~self ~args :omit)))
+  ([fn self args message] (gen-call :function ::assert-throws &form fn self args message))
+  ([fn self args] `(assert-throws ~fn ~self ~args :omit)))
 
 (defmacro callback
-  "  |expected-error| - https://developer.chrome.com/extensions/test#property-callback-expectedError.
-
-   This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
-   chromex.error/get-last-error.
+  "  |func| - https://developer.chrome.com/extensions/test#property-callback-func.
+     |expected-error| - https://developer.chrome.com/extensions/test#property-callback-expectedError.
 
    https://developer.chrome.com/extensions/test#method-callback."
-  ([expected-error] (gen-call :function ::callback &form expected-error))
-  ([] `(callback :omit)))
+  ([func expected-error] (gen-call :function ::callback &form func expected-error))
+  ([func] `(callback ~func :omit))
+  ([] `(callback :omit :omit)))
 
 (defmacro listen-once
   "  |event| - https://developer.chrome.com/extensions/test#property-listenOnce-event.
@@ -390,18 +381,16 @@
     {:id ::assert-throws,
      :name "assertThrows",
      :since "29",
-     :callback? true,
      :params
-     [{:name "self", :optional? true, :type "object"}
+     [{:name "fn", :type "function"}
+      {:name "self", :optional? true, :type "object"}
       {:name "args", :type "[array-of-anys]"}
-      {:name "message", :optional? true, :type "string-or-RegExp"}
-      {:name "fn", :type :callback}]}
+      {:name "message", :optional? true, :type "string-or-RegExp"}]}
     {:id ::callback,
      :name "callback",
      :since "27",
-     :callback? true,
      :params
-     [{:name "expected-error", :optional? true, :type "string"} {:name "func", :optional? true, :type :callback}]}
+     [{:name "func", :optional? true, :type "function"} {:name "expected-error", :optional? true, :type "string"}]}
     {:id ::listen-once,
      :name "listenOnce",
      :since "27",

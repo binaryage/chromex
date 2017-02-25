@@ -435,7 +435,7 @@
   ([parent-entry name] (gen-call :function ::validate-path-name-length &form parent-entry name)))
 
 (defmacro zoom
-  "Changes the zoom factor of the Files.app. |operation| Zooming mode.
+  "Changes the zoom factor of the Files app. |operation| Zooming mode.
 
      |operation| - ?"
   ([operation] (gen-call :function ::zoom &form operation)))

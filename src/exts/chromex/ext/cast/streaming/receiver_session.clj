@@ -3,7 +3,7 @@
    receiver session and adds the resulting audio and video tracks to a
    MediaStream.
 
-     * available since Chrome 57
+     * available since Chrome 58
      * https://developer.chrome.com/extensions/cast.streaming.receiverSession"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -27,19 +27,12 @@
      |max-height| - https://developer.chrome.com/extensions/cast.streaming.receiverSession#property-createAndBind-maxHeight.
      |max-frame-rate| - Max video frame rate.
      |media-stream-url| - URL of MediaStream to add the audio and video to.
+     |error-callback| - https://developer.chrome.com/extensions/cast.streaming.receiverSession#property-createAndBind-error_callback.
      |transport-options| - Optional transport settings.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [error] where:
-
-     |error| - https://developer.chrome.com/extensions/cast.streaming.receiverSession#property-error_callback-error.
-
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
-   chromex.error/get-last-error.
-
    https://developer.chrome.com/extensions/cast.streaming.receiverSession#method-createAndBind."
-  ([audio-params video-params local-endpoint max-width max-height max-frame-rate media-stream-url transport-options] (gen-call :function ::create-and-bind &form audio-params video-params local-endpoint max-width max-height max-frame-rate media-stream-url transport-options))
-  ([audio-params video-params local-endpoint max-width max-height max-frame-rate media-stream-url] `(create-and-bind ~audio-params ~video-params ~local-endpoint ~max-width ~max-height ~max-frame-rate ~media-stream-url :omit)))
+  ([audio-params video-params local-endpoint max-width max-height max-frame-rate media-stream-url error-callback transport-options] (gen-call :function ::create-and-bind &form audio-params video-params local-endpoint max-width max-height max-frame-rate media-stream-url error-callback transport-options))
+  ([audio-params video-params local-endpoint max-width max-height max-frame-rate media-stream-url error-callback] `(create-and-bind ~audio-params ~video-params ~local-endpoint ~max-width ~max-height ~max-frame-rate ~media-stream-url ~error-callback :omit)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
@@ -54,11 +47,10 @@
 
 (def api-table
   {:namespace "chrome.cast.streaming.receiverSession",
-   :since "57",
+   :since "58",
    :functions
    [{:id ::create-and-bind,
      :name "createAndBind",
-     :callback? true,
      :params
      [{:name "audio-params", :type "cast.streaming.receiverSession.RtpReceiverParams"}
       {:name "video-params", :type "cast.streaming.receiverSession.RtpReceiverParams"}
@@ -67,8 +59,8 @@
       {:name "max-height", :type "integer"}
       {:name "max-frame-rate", :type "double"}
       {:name "media-stream-url", :type "string"}
-      {:name "transport-options", :optional? true, :type "object"}
-      {:name "error-callback", :type :callback, :callback {:params [{:name "error", :type "string"}]}}]}]})
+      {:name "error-callback", :type "function"}
+      {:name "transport-options", :optional? true, :type "object"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

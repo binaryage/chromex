@@ -54,11 +54,11 @@
 (defn assert-last-error* [config expected-error]
   (gen-wrap :function ::assert-last-error config expected-error))
 
-(defn assert-throws* [config self args message]
-  (gen-wrap :function ::assert-throws config self args message))
+(defn assert-throws* [config fn self args message]
+  (gen-wrap :function ::assert-throws config fn self args message))
 
-(defn callback* [config expected-error]
-  (gen-wrap :function ::callback config expected-error))
+(defn callback* [config func expected-error]
+  (gen-wrap :function ::callback config func expected-error))
 
 (defn listen-once* [config event]
   (gen-wrap :function ::listen-once config event))

@@ -168,7 +168,11 @@
   {:namespace "chrome.extension",
    :since "15",
    :properties
-   [{:id ::last-error, :name "lastError", :return-type "object"}
+   [{:id ::last-error,
+     :name "lastError",
+     :since "master",
+     :deprecated "Please use 'runtime.lastError'.",
+     :return-type "object"}
     {:id ::in-incognito-context, :name "inIncognitoContext", :return-type "boolean"}],
    :functions
    [{:id ::send-request,
@@ -183,7 +187,12 @@
        :optional? true,
        :type :callback,
        :callback {:params [{:name "response", :type "any"}]}}]}
-    {:id ::get-url, :name "getURL", :return-type "string", :params [{:name "path", :type "string"}]}
+    {:id ::get-url,
+     :name "getURL",
+     :since "master",
+     :deprecated "Please use 'runtime.getURL'.",
+     :return-type "string",
+     :params [{:name "path", :type "string"}]}
     {:id ::get-views,
      :name "getViews",
      :return-type "[array-of-Windows]",
