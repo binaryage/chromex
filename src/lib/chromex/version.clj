@@ -13,7 +13,7 @@
 (defn broken-clojurescript? [version]
   (= version "1.9.494"))
 
-(defn do-check-env! []
+(defn detect-broken-clojurescript! []
   (let [clojurescript-version (get-full-clojurescript-version)]
     (if (broken-clojurescript? clojurescript-version)
       (binding [*out* *err*]
@@ -23,5 +23,5 @@
                "         A solution is to downgrade to ClojureScript 1.9.473"))))))
 
 (defmacro check-env! []
-  (do-check-env!)
+  (detect-broken-clojurescript!)
   nil)
