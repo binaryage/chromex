@@ -67,7 +67,7 @@ git reset --hard origin/master
 
 git checkout nightly
 git reset --hard origin/nightly
-git merge -m "merge changes from master" master
+git rebase master
 git push -f origin nightly
 
 # hack - update-cache.sh does not work reliably (or I'm not using it properly)
