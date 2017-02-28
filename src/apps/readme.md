@@ -65,6 +65,7 @@
 | [chrome.test](https://developer.chrome.com/extensions/test) | [chromex/app/test.clj](chromex/app/test.clj) |
 | [chrome.tts](https://developer.chrome.com/extensions/tts) | [chromex/app/tts.clj](chromex/app/tts.clj) |
 | [chrome.usb](https://developer.chrome.com/extensions/usb) | [chromex/app/usb.clj](chromex/app/usb.clj) |
+| [chrome.virtualKeyboard](https://developer.chrome.com/extensions/virtualKeyboard) | [chromex/app/virtual_keyboard.clj](chromex/app/virtual_keyboard.clj) |
 | [chrome.vpnProvider](https://developer.chrome.com/extensions/vpnProvider) | [chromex/app/vpn_provider.clj](chromex/app/vpn_provider.clj) |
 | [chrome.wallpaper](https://developer.chrome.com/extensions/wallpaper) | [chromex/app/wallpaper.clj](chromex/app/wallpaper.clj) |
 | [chrome.webstore](https://developer.chrome.com/extensions/webstore) | [chromex/app/webstore.clj](chromex/app/webstore.clj) |
@@ -73,7 +74,7 @@
 
 ### API stats
 
-Generated 65 namespaces containing 30 properties, 414 functions and 149 events:
+Generated 66 namespaces containing 30 properties, 415 functions and 149 events:
 
 
     |                         :namespace | :properties | :functions | :events |
@@ -139,6 +140,7 @@ Generated 65 namespaces containing 30 properties, 414 functions and 149 events:
     |                        chrome.test |           0 |         32 |       1 |
     |                         chrome.tts |           0 |          6 |       0 |
     |                         chrome.usb |           0 |         18 |       2 |
+    |             chrome.virtualKeyboard |           0 |          1 |       0 |
     |                 chrome.vpnProvider |           0 |          5 |       5 |
     |                   chrome.wallpaper |           0 |          1 |       0 |
     |                    chrome.webstore |           0 |          1 |       2 |
@@ -408,6 +410,9 @@ Generated 65 namespaces containing 30 properties, 414 functions and 149 events:
       close-device set-configuration get-configuration list-interfaces claim-interface release-interface
       set-interface-alternate-setting control-transfer bulk-transfer interrupt-transfer
       isochronous-transfer reset-device tap-on-device-added tap-on-device-removed tap-all-events]]
+
+    [chromex.app.virtual-keyboard refer-macros:[
+      restrict-features tap-all-events]]
 
     [chromex.app.vpn-provider refer-macros:[
       create-config destroy-config set-parameters send-packet notify-connection-state-changed
