@@ -96,21 +96,6 @@
    https://developer.chrome.com/apps/audio#method-setMute."
   ([stream-type is-muted] (gen-call :function ::set-mute &form stream-type is-muted)))
 
-(defmacro get-info
-  "Gets the information of all audio output and input devices.
-
-   This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [output-info input-info] where:
-
-     |output-info| - https://developer.chrome.com/apps/audio#property-callback-outputInfo.
-     |input-info| - https://developer.chrome.com/apps/audio#property-callback-inputInfo.
-
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
-   chromex.error/get-last-error.
-
-   https://developer.chrome.com/apps/audio#method-getInfo."
-  ([] (gen-call :function ::get-info &form)))
-
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -151,16 +136,6 @@
 
    https://developer.chrome.com/apps/audio#event-onDeviceListChanged."
   ([channel & args] (apply gen-call :event ::on-device-list-changed &form channel args)))
-
-(defmacro tap-on-device-changed-events
-  "Fired when anything changes to the audio device configuration.
-
-   Events will be put on the |channel| with signature [::on-device-changed []].
-
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-
-   https://developer.chrome.com/apps/audio#event-onDeviceChanged."
-  ([channel & args] (apply gen-call :event ::on-device-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
@@ -205,29 +180,13 @@
      :params
      [{:name "stream-type", :type "audio.StreamType"}
       {:name "is-muted", :type "boolean"}
-      {:name "callback", :optional? true, :type :callback}]}
-    {:id ::get-info,
-     :name "getInfo",
-     :since "58",
-     :deprecated "Use 'getDevices' instead.",
-     :callback? true,
-     :params
-     [{:name "callback",
-       :type :callback,
-       :callback
-       {:params
-        [{:name "output-info", :type "[array-of-objects]"} {:name "input-info", :type "[array-of-objects]"}]}}]}],
+      {:name "callback", :optional? true, :type :callback}]}],
    :events
    [{:id ::on-level-changed, :name "onLevelChanged", :params [{:name "event", :type "object"}]}
     {:id ::on-mute-changed, :name "onMuteChanged", :params [{:name "event", :type "object"}]}
     {:id ::on-device-list-changed,
      :name "onDeviceListChanged",
-     :params [{:name "devices", :type "[array-of-audio.AudioDeviceInfos]"}]}
-    {:id ::on-device-changed,
-     :name "onDeviceChanged",
-     :since "58",
-     :deprecated
-     "Use more granular 'onLevelChanged',\\n                 'onMuteChanged' and 'onDeviceListChanged' instead."}]})
+     :params [{:name "devices", :type "[array-of-audio.AudioDeviceInfos]"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

@@ -170,7 +170,7 @@
    :properties
    [{:id ::last-error,
      :name "lastError",
-     :since "master",
+     :since "58",
      :deprecated "Please use 'runtime.lastError'.",
      :return-type "object"}
     {:id ::in-incognito-context, :name "inIncognitoContext", :return-type "boolean"}],
@@ -189,7 +189,7 @@
        :callback {:params [{:name "response", :type "any"}]}}]}
     {:id ::get-url,
      :name "getURL",
-     :since "master",
+     :since "58",
      :deprecated "Please use 'runtime.getURL'.",
      :return-type "string",
      :params [{:name "path", :type "string"}]}

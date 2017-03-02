@@ -74,7 +74,7 @@
 
 ### API stats
 
-Generated 66 namespaces containing 30 properties, 415 functions and 149 events:
+Generated 66 namespaces containing 30 properties, 414 functions and 148 events:
 
 
     |                         :namespace | :properties | :functions | :events |
@@ -85,7 +85,7 @@ Generated 66 namespaces containing 30 properties, 415 functions and 149 events:
     |                      chrome.alarms |           0 |          5 |       1 |
     |                 chrome.app.runtime |           0 |          0 |       3 |
     |                  chrome.app.window |           0 |          5 |       6 |
-    |                       chrome.audio |           0 |          6 |       4 |
+    |                       chrome.audio |           0 |          5 |       3 |
     |                  chrome.automation |           0 |          6 |       0 |
     |                   chrome.bluetooth |           0 |          5 |       4 |
     |          chrome.bluetoothLowEnergy |           0 |         26 |       9 |
@@ -177,8 +177,8 @@ Generated 66 namespaces containing 30 properties, 415 functions and 149 events:
       tap-on-fullscreened tap-on-maximized tap-on-minimized tap-on-restored tap-all-events]]
 
     [chromex.app.audio refer-macros:[
-      get-devices set-active-devices set-properties get-mute set-mute get-info tap-on-level-changed
-      tap-on-mute-changed tap-on-device-list-changed tap-on-device-changed tap-all-events]]
+      get-devices set-active-devices set-properties get-mute set-mute tap-on-level-changed
+      tap-on-mute-changed tap-on-device-list-changed tap-all-events]]
 
     [chromex.app.automation refer-macros:[
       get-tree get-desktop get-focus add-tree-change-observer remove-tree-change-observer
