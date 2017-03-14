@@ -45,7 +45,6 @@ git reset --hard HEAD
 git clean -fd
 git checkout -f master
 trap clean_chromium_working_copy EXIT
-git apply "${TOOLS}/chromium.patch"
 popd
 
 pushd .
