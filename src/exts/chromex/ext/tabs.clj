@@ -2,7 +2,7 @@
   "Use the chrome.tabs API to interact with the browser's tab system. You can use this API to create, modify, and rearrange
    tabs in the browser.
 
-     * available since Chrome 15
+     * available since Chrome 16
      * https://developer.chrome.com/extensions/tabs"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -621,7 +621,7 @@
 
 (def api-table
   {:namespace "chrome.tabs",
-   :since "15",
+   :since "16",
    :properties [{:id ::tab-id-none, :name "TAB_ID_NONE", :since "46", :return-type "unknown-type"}],
    :functions
    [{:id ::get,
@@ -697,14 +697,12 @@
        :callback {:params [{:name "tab", :optional? true, :type "tabs.Tab"}]}}]}
     {:id ::query,
      :name "query",
-     :since "16",
      :callback? true,
      :params
      [{:name "query-info", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "[array-of-tabs.Tabs]"}]}}]}
     {:id ::highlight,
      :name "highlight",
-     :since "16",
      :callback? true,
      :params
      [{:name "highlight-info", :type "object"}
@@ -734,7 +732,6 @@
        :callback {:params [{:name "tabs", :type "tabs.Tab-or-[array-of-tabs.Tabs]"}]}}]}
     {:id ::reload,
      :name "reload",
-     :since "16",
      :callback? true,
      :params
      [{:name "tab-id", :optional? true, :type "integer"}

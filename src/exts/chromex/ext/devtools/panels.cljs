@@ -9,6 +9,9 @@
 (defn sources* [config]
   (gen-wrap :property ::sources config))
 
+(defn theme-name* [config]
+  (gen-wrap :property ::theme-name config))
+
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn create* [config title icon-path page-path]

@@ -1,7 +1,7 @@
 (ns chromex.ext.webstore
   "Use the chrome.webstore API to initiate app and extension installations 'inline' from your site.
 
-     * available since Chrome 15
+     * available since Chrome 19
      * https://developer.chrome.com/extensions/webstore"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -79,7 +79,7 @@
 
 (def api-table
   {:namespace "chrome.webstore",
-   :since "15",
+   :since "19",
    :functions
    [{:id ::install,
      :name "install",

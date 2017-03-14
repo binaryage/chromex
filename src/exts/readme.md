@@ -85,7 +85,7 @@
 
 ### API stats
 
-Generated 77 namespaces containing 49 properties, 360 functions and 175 events:
+Generated 77 namespaces containing 50 properties, 360 functions and 175 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -113,7 +113,7 @@ Generated 77 namespaces containing 49 properties, 360 functions and 175 events:
     |                 chrome.desktopCapture |           0 |          2 |       0 |
     |       chrome.devtools.inspectedWindow |           1 |          3 |       2 |
     |               chrome.devtools.network |           0 |          1 |       2 |
-    |                chrome.devtools.panels |           2 |          3 |       0 |
+    |                chrome.devtools.panels |           3 |          3 |       0 |
     |                  chrome.displaySource |           0 |          4 |       3 |
     |                            chrome.dns |           0 |          1 |       0 |
     |                   chrome.documentScan |           0 |          1 |       0 |
@@ -259,7 +259,8 @@ Generated 77 namespaces containing 49 properties, 360 functions and 175 events:
       get-har tap-on-request-finished tap-on-navigated tap-all-events]]
 
     [chromex.ext.devtools.panels refer-macros:[
-      get-elements get-sources create set-open-resource-handler open-resource tap-all-events]]
+      get-elements get-sources get-theme-name create set-open-resource-handler open-resource
+      tap-all-events]]
 
     [chromex.ext.display-source refer-macros:[
       get-available-sinks request-authentication start-session terminate-session tap-on-sinks-updated

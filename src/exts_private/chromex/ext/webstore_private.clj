@@ -1,5 +1,5 @@
 (ns chromex.ext.webstore-private
-  "  * available since Chrome 15"
+  "  * available since Chrome 16"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -181,7 +181,7 @@
 
 (def api-table
   {:namespace "chrome.webstorePrivate",
-   :since "15",
+   :since "16",
    :functions
    [{:id ::install,
      :name "install",
@@ -189,7 +189,6 @@
      :params [{:name "expected-id", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::begin-install-with-manifest3,
      :name "beginInstallWithManifest3",
-     :since "16",
      :callback? true,
      :params
      [{:name "details", :type "object"}

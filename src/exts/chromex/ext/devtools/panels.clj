@@ -26,6 +26,12 @@
    https://developer.chrome.com/extensions/devtools.panels#property-sources."
   ([] (gen-call :property ::sources &form)))
 
+(defmacro get-theme-name
+  "The name of the color theme set in user's DevTools settings. Possible values: default (the default) and dark.
+
+   https://developer.chrome.com/extensions/devtools.panels#property-themeName."
+  ([] (gen-call :property ::theme-name &form)))
+
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro create
@@ -92,7 +98,8 @@
    :since "18",
    :properties
    [{:id ::elements, :name "elements", :return-type "devtools.panels.ElementsPanel"}
-    {:id ::sources, :name "sources", :since "38", :return-type "devtools.panels.SourcesPanel"}],
+    {:id ::sources, :name "sources", :since "38", :return-type "devtools.panels.SourcesPanel"}
+    {:id ::theme-name, :name "themeName", :since "master", :return-type "string"}],
    :functions
    [{:id ::create,
      :name "create",

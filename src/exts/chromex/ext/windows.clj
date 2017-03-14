@@ -2,7 +2,7 @@
   "Use the chrome.windows API to interact with browser windows. You can use this API to create, modify, and rearrange windows
    in the browser.
 
-     * available since Chrome 15
+     * available since Chrome 16
      * https://developer.chrome.com/extensions/windows"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -201,7 +201,7 @@
 
 (def api-table
   {:namespace "chrome.windows",
-   :since "15",
+   :since "16",
    :properties
    [{:id ::window-id-none, :name "WINDOW_ID_NONE", :return-type "unknown-type"}
     {:id ::window-id-current, :name "WINDOW_ID_CURRENT", :since "18", :return-type "unknown-type"}],
