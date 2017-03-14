@@ -14,6 +14,13 @@ popd () {
     command popd "$@" > /dev/null
 }
 
+clean_chromium_working_copy() {
+  echo "cleaning chromium working copy at ${CHROMIUM_SRC}"
+  pushd "${CHROMIUM_SRC}"
+  git reset --hard HEAD
+  popd
+}
+
 pushd .
 
 # ensure we start in root folder
@@ -36,6 +43,8 @@ pushd .
 cd "${CHROMIUM_SRC}"
 git reset --hard HEAD
 git clean -fd
+git checkout -f master
+trap clean_chromium_working_copy EXIT
 git apply "${TOOLS}/chromium.patch"
 popd
 
@@ -56,7 +65,5 @@ popd
 cd "${CHROMIUM_SRC}"
 SHA=`git rev-parse HEAD`
 echo "$SHA" > "$APIS_LAST_FILE"
-
-git reset --hard HEAD
 
 popd
