@@ -47,7 +47,7 @@
 
 ### API stats
 
-Generated 39 namespaces containing 1 properties, 297 functions and 79 events:
+Generated 39 namespaces containing 1 properties, 292 functions and 79 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -77,7 +77,7 @@ Generated 39 namespaces containing 1 properties, 297 functions and 79 events:
     |          chrome.metricsPrivate |           0 |         13 |       0 |
     |             chrome.mojoPrivate |           0 |          2 |       0 |
     |     chrome.musicManagerPrivate |           0 |          1 |       0 |
-    |       chrome.networkingPrivate |           0 |         25 |       4 |
+    |       chrome.networkingPrivate |           0 |         20 |       4 |
     |        chrome.passwordsPrivate |           0 |          5 |       3 |
     |      chrome.preferencesPrivate |           1 |          0 |       0 |
     |      chrome.quickUnlockPrivate |           0 |          5 |       1 |
@@ -231,10 +231,9 @@ Generated 39 namespaces containing 1 properties, 297 functions and 79 events:
       get-properties get-managed-properties get-state set-properties create-network forget-network
       get-networks get-visible-networks get-enabled-network-types get-device-states enable-network-type
       disable-network-type request-network-scan start-connect start-disconnect start-activate
-      verify-destination verify-and-encrypt-credentials verify-and-encrypt-data
-      set-wifi-tdls-enabled-state get-wifi-tdls-status get-captive-portal-status unlock-cellular-sim
-      set-cellular-sim-state get-global-policy tap-on-networks-changed tap-on-network-list-changed
-      tap-on-device-state-list-changed tap-on-portal-detection-completed tap-all-events]]
+      get-captive-portal-status unlock-cellular-sim set-cellular-sim-state get-global-policy
+      tap-on-networks-changed tap-on-network-list-changed tap-on-device-state-list-changed
+      tap-on-portal-detection-completed tap-all-events]]
 
     [chromex.app.passwords-private refer-macros:[
       remove-saved-password remove-password-exception request-plaintext-password get-saved-password-list

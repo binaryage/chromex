@@ -51,21 +51,6 @@
 (defn start-activate* [config network-guid carrier]
   (gen-wrap :function ::start-activate config network-guid carrier))
 
-(defn verify-destination* [config properties]
-  (gen-wrap :function ::verify-destination config properties))
-
-(defn verify-and-encrypt-credentials* [config properties network-guid]
-  (gen-wrap :function ::verify-and-encrypt-credentials config properties network-guid))
-
-(defn verify-and-encrypt-data* [config properties data]
-  (gen-wrap :function ::verify-and-encrypt-data config properties data))
-
-(defn set-wifi-tdls-enabled-state* [config ip-or-mac-address enabled]
-  (gen-wrap :function ::set-wifi-tdls-enabled-state config ip-or-mac-address enabled))
-
-(defn get-wifi-tdls-status* [config ip-or-mac-address]
-  (gen-wrap :function ::get-wifi-tdls-status config ip-or-mac-address))
-
 (defn get-captive-portal-status* [config network-guid]
   (gen-wrap :function ::get-captive-portal-status config network-guid))
 

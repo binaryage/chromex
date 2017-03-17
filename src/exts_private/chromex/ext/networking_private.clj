@@ -239,80 +239,6 @@
   ([network-guid carrier] (gen-call :function ::start-activate &form network-guid carrier))
   ([network-guid] `(start-activate ~network-guid :omit)))
 
-(defmacro verify-destination
-  "Verifies that the device is a trusted device.
-
-     |properties| - Properties of the destination to use in verifying that it     is a trusted device.
-
-   This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [result] where:
-
-     |result| - ?
-
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([properties] (gen-call :function ::verify-destination &form properties)))
-
-(defmacro verify-and-encrypt-credentials
-  "Verifies that the device is a trusted device and retrieves encrypted network credentials.
-
-     |properties| - Properties of the destination to use in verifying that it     is a trusted device.
-     |network-guid| - The GUID of the Cellular network to activate.
-
-   This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [result] where:
-
-     |result| - ?
-
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([properties network-guid] (gen-call :function ::verify-and-encrypt-credentials &form properties network-guid)))
-
-(defmacro verify-and-encrypt-data
-  "Verifies that the device is a trusted device and encrypts supplied data with device public key.
-
-     |properties| - Properties of the destination to use in verifying that it     is a trusted device.
-     |data| - A string containing the base64-encoded data to encrypt.
-
-   This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [result] where:
-
-     |result| - ?
-
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([properties data] (gen-call :function ::verify-and-encrypt-data &form properties data)))
-
-(defmacro set-wifi-tdls-enabled-state
-  "Enables TDLS for WiFi traffic with a specified peer if available.
-
-     |ip-or-mac-address| - The IP or MAC address of the peer with which to     enable a TDLS connection. |enabled| If true,
-                           enable TDLS, otherwise disable TDLS.
-     |enabled| - ?
-
-   This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [result] where:
-
-     |result| - ?
-
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([ip-or-mac-address enabled] (gen-call :function ::set-wifi-tdls-enabled-state &form ip-or-mac-address enabled)))
-
-(defmacro get-wifi-tdls-status
-  "Returns the current TDLS status for the specified peer.
-
-     |ip-or-mac-address| - The IP or MAC address of the peer.
-
-   This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [result] where:
-
-     |result| - ?
-
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([ip-or-mac-address] (gen-call :function ::get-wifi-tdls-status &form ip-or-mac-address)))
-
 (defmacro get-captive-portal-status
   "Returns captive portal status for the network matching 'networkGuid'.
 
@@ -531,41 +457,6 @@
      [{:name "network-guid", :type "string"}
       {:name "carrier", :optional? true, :type "string"}
       {:name "callback", :optional? true, :type :callback}]}
-    {:id ::verify-destination,
-     :name "verifyDestination",
-     :callback? true,
-     :params
-     [{:name "properties", :type "networkingPrivate.VerificationProperties"}
-      {:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
-    {:id ::verify-and-encrypt-credentials,
-     :name "verifyAndEncryptCredentials",
-     :callback? true,
-     :params
-     [{:name "properties", :type "networkingPrivate.VerificationProperties"}
-      {:name "network-guid", :type "string"}
-      {:name "callback", :type :callback, :callback {:params [{:name "result", :type "string"}]}}]}
-    {:id ::verify-and-encrypt-data,
-     :name "verifyAndEncryptData",
-     :callback? true,
-     :params
-     [{:name "properties", :type "networkingPrivate.VerificationProperties"}
-      {:name "data", :type "string"}
-      {:name "callback", :type :callback, :callback {:params [{:name "result", :type "string"}]}}]}
-    {:id ::set-wifi-tdls-enabled-state,
-     :name "setWifiTDLSEnabledState",
-     :since "34",
-     :callback? true,
-     :params
-     [{:name "ip-or-mac-address", :type "string"}
-      {:name "enabled", :type "boolean"}
-      {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "result", :type "string"}]}}]}
-    {:id ::get-wifi-tdls-status,
-     :name "getWifiTDLSStatus",
-     :since "34",
-     :callback? true,
-     :params
-     [{:name "ip-or-mac-address", :type "string"}
-      {:name "callback", :type :callback, :callback {:params [{:name "result", :type "string"}]}}]}
     {:id ::get-captive-portal-status,
      :name "getCaptivePortalStatus",
      :since "36",
