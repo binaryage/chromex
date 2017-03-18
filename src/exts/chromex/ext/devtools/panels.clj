@@ -99,7 +99,7 @@
    :properties
    [{:id ::elements, :name "elements", :return-type "devtools.panels.ElementsPanel"}
     {:id ::sources, :name "sources", :since "38", :return-type "devtools.panels.SourcesPanel"}
-    {:id ::theme-name, :name "themeName", :since "master", :return-type "string"}],
+    {:id ::theme-name, :name "themeName", :since "59", :return-type "string"}],
    :functions
    [{:id ::create,
      :name "create",

@@ -2,7 +2,7 @@
   "The chrome.virtualKeybaord API is a kiosk only API used to
    configure virtual keyboard layout and behavior in kiosk sessions.
 
-     * available since Chrome 58
+     * available since Chrome 59
      * https://developer.chrome.com/apps/virtualKeyboard"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -41,7 +41,7 @@
 
 (def api-table
   {:namespace "chrome.virtualKeyboard",
-   :since "58",
+   :since "59",
    :functions
    [{:id ::restrict-features,
      :name "restrictFeatures",
