@@ -140,7 +140,9 @@
      |options| - Additional configuration parameters.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
+   Signature of the result value put on the channel is [error] where:
+
+     |error| - ?
 
    In case of error the channel closes without receiving any result and relevant error object can be obtained via
    chromex.error/get-last-error."
@@ -450,7 +452,12 @@
     {:id ::load-unpacked,
      :name "loadUnpacked",
      :callback? true,
-     :params [{:name "options", :optional? true, :type "object"} {:name "callback", :optional? true, :type :callback}]}
+     :params
+     [{:name "options", :optional? true, :type "object"}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "error", :optional? true, :type "object"}]}}]}
     {:id ::load-directory,
      :name "loadDirectory",
      :since "34",
