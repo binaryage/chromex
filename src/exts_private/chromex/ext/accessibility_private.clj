@@ -33,6 +33,12 @@
                  extension's background page."
   ([enabled capture] (gen-call :function ::set-keyboard-listener &form enabled capture)))
 
+(defmacro darken-screen
+  "Darkens or undarkens the screen.
+
+     |enabled| - True to darken screen; false to undarken screen."
+  ([enabled] (gen-call :function ::darken-screen &form enabled)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -80,7 +86,8 @@
     {:id ::set-keyboard-listener,
      :name "setKeyboardListener",
      :since "48",
-     :params [{:name "enabled", :type "boolean"} {:name "capture", :type "boolean"}]}],
+     :params [{:name "enabled", :type "boolean"} {:name "capture", :type "boolean"}]}
+    {:id ::darken-screen, :name "darkenScreen", :since "master", :params [{:name "enabled", :type "boolean"}]}],
    :events
    [{:id ::on-introduce-chrome-vox, :name "onIntroduceChromeVox", :since "42"}
     {:id ::on-accessibility-gesture,

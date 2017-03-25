@@ -12,6 +12,9 @@
 (defn set-keyboard-listener* [config enabled capture]
   (gen-wrap :function ::set-keyboard-listener config enabled capture))
 
+(defn darken-screen* [config enabled]
+  (gen-wrap :function ::darken-screen config enabled))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-introduce-chrome-vox* [config channel & args]
