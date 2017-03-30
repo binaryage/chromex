@@ -87,7 +87,7 @@
      :name "setKeyboardListener",
      :since "48",
      :params [{:name "enabled", :type "boolean"} {:name "capture", :type "boolean"}]}
-    {:id ::darken-screen, :name "darkenScreen", :since "master", :params [{:name "enabled", :type "boolean"}]}],
+    {:id ::darken-screen, :name "darkenScreen", :since "59", :params [{:name "enabled", :type "boolean"}]}],
    :events
    [{:id ::on-introduce-chrome-vox, :name "onIntroduceChromeVox", :since "42"}
     {:id ::on-accessibility-gesture,
