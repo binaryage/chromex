@@ -20,8 +20,10 @@
 (defmacro set-focus-ring
   "Set the bounds of the accessibility focus ring.
 
-     |rects| - Array of rectangles to draw the accessibility focus ring around."
-  ([rects] (gen-call :function ::set-focus-ring &form rects)))
+     |rects| - Array of rectangles to draw the accessibility focus ring around.
+     |color| - CSS-style hex color string beginning with # like #FF9982 or #EEE."
+  ([rects color] (gen-call :function ::set-focus-ring &form rects color))
+  ([rects] `(set-focus-ring ~rects :omit)))
 
 (defmacro set-keyboard-listener
   "Sets the calling extension as a listener of all keyboard events optionally allowing the calling extension to
@@ -82,7 +84,9 @@
     {:id ::set-focus-ring,
      :name "setFocusRing",
      :since "39",
-     :params [{:name "rects", :type "[array-of-accessibilityPrivate.ScreenRects]"}]}
+     :params
+     [{:name "rects", :type "[array-of-accessibilityPrivate.ScreenRects]"}
+      {:name "color", :optional? true, :type "string"}]}
     {:id ::set-keyboard-listener,
      :name "setKeyboardListener",
      :since "48",

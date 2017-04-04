@@ -6,8 +6,8 @@
 (defn set-native-accessibility-enabled* [config enabled]
   (gen-wrap :function ::set-native-accessibility-enabled config enabled))
 
-(defn set-focus-ring* [config rects]
-  (gen-wrap :function ::set-focus-ring config rects))
+(defn set-focus-ring* [config rects color]
+  (gen-wrap :function ::set-focus-ring config rects color))
 
 (defn set-keyboard-listener* [config enabled capture]
   (gen-wrap :function ::set-keyboard-listener config enabled capture))
