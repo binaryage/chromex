@@ -130,6 +130,7 @@
      :params
      [{:name "tab-id", :optional? true, :type "integer"}
       {:name "callback",
+       :optional? true,
        :type :callback,
        :callback {:params [{:name "root-node", :type "automation.AutomationNode"}]}}]}
     {:id ::get-desktop,

@@ -1,6 +1,7 @@
 (ns chromex.ext.settings-private
   "Use the chrome.settingsPrivate API to get or set preferences
-   from the settings UI.
+   from the settings UI. Access is restricted to a whitelisted set of user
+   facing preferences.
 
      * available since Chrome 58"
 
@@ -14,7 +15,7 @@
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro set-pref
-  "Sets a settings value.
+  "Sets a pref value.
 
      |name| - The name of the pref.
      |value| - The new value of the pref.
