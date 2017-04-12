@@ -3,8 +3,8 @@
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
-(defn get-info* [config]
-  (gen-wrap :function ::get-info config))
+(defn get-info* [config flags]
+  (gen-wrap :function ::get-info config flags))
 
 (defn get-display-layout* [config]
   (gen-wrap :function ::get-display-layout config))

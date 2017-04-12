@@ -78,6 +78,14 @@
    chromex.error/get-last-error."
   ([security-origin source-id-in-origin] (gen-call :function ::get-associated-sink &form security-origin source-id-in-origin)))
 
+(defmacro set-audio-experiments
+  "Sets the active audio experiments.
+
+     |request| - Information about the requesting process.
+     |security-origin| - The origin to restrict the settings to.
+     |audio-experiments| - The experiments to enable or disable."
+  ([request security-origin audio-experiments] (gen-call :function ::set-audio-experiments &form request security-origin audio-experiments)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -129,7 +137,14 @@
      :params
      [{:name "security-origin", :type "string"}
       {:name "source-id-in-origin", :type "string"}
-      {:name "cb", :type :callback, :callback {:params [{:name "sink-id", :type "string"}]}}]}],
+      {:name "cb", :type :callback, :callback {:params [{:name "sink-id", :type "string"}]}}]}
+    {:id ::set-audio-experiments,
+     :name "setAudioExperiments",
+     :since "master",
+     :params
+     [{:name "request", :type "webrtcAudioPrivate.RequestInfo"}
+      {:name "security-origin", :type "string"}
+      {:name "audio-experiments", :type "object"}]}],
    :events [{:id ::on-sinks-changed, :name "onSinksChanged"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

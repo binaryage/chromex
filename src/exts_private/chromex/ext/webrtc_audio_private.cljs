@@ -15,6 +15,9 @@
 (defn get-associated-sink* [config security-origin source-id-in-origin]
   (gen-wrap :function ::get-associated-sink config security-origin source-id-in-origin))
 
+(defn set-audio-experiments* [config request security-origin audio-experiments]
+  (gen-wrap :function ::set-audio-experiments config request security-origin audio-experiments))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-sinks-changed* [config channel & args]

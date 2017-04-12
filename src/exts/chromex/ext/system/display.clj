@@ -14,7 +14,9 @@
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro get-info
-  "Get the information of all attached display devices.
+  "Requests the information for all attached display devices.
+
+     |flags| - Options affecting how the information is returned.
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [display-info] where:
@@ -25,10 +27,11 @@
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/system.display#method-getInfo."
-  ([] (gen-call :function ::get-info &form)))
+  ([flags] (gen-call :function ::get-info &form flags))
+  ([] `(get-info :omit)))
 
 (defmacro get-display-layout
-  "Get the layout info for all displays. NOTE: This is only available to Chrome OS Kiosk apps and Web UI.
+  "Requests the layout info for all displays. NOTE: This is only available to Chrome OS Kiosk apps and Web UI.
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [layouts] where:
@@ -201,7 +204,8 @@
      :name "getInfo",
      :callback? true,
      :params
-     [{:name "callback", :type :callback, :callback {:params [{:name "display-info", :type "[array-of-objects]"}]}}]}
+     [{:name "flags", :optional? true, :type "object"}
+      {:name "callback", :type :callback, :callback {:params [{:name "display-info", :type "[array-of-objects]"}]}}]}
     {:id ::get-display-layout,
      :name "getDisplayLayout",
      :since "53",
