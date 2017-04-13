@@ -1,14 +1,14 @@
 (defproject binaryage/chromex-sample "0.1.0-SNAPSHOT"
-  :dependencies [[org.clojure/clojure "1.9.0-alpha14"]
-                 [org.clojure/clojurescript "1.9.473"]
-                 [org.clojure/core.async "0.3.441"]
-                 [binaryage/chromex "0.5.6"]
-                 [binaryage/devtools "0.9.1"]
-                 [figwheel "0.5.9"]
+  :dependencies [[org.clojure/clojure "1.9.0-alpha15"]
+                 [org.clojure/clojurescript "1.9.518"]
+                 [org.clojure/core.async "0.3.442"]
+                 [binaryage/chromex "0.5.7"]
+                 [binaryage/devtools "0.9.3"]
+                 [figwheel "0.5.10"]
                  [environ "1.1.0"]]
 
   :plugins [[lein-cljsbuild "1.1.5"]
-            [lein-figwheel "0.5.9"]
+            [lein-figwheel "0.5.10"]
             [lein-shell "0.5.0"]
             [lein-environ "1.1.0"]
             [lein-cooper "1.2.2"]]
@@ -60,19 +60,22 @@
              :checkouts
              ; DON'T FORGET TO UPDATE scripts/ensure-checkouts.sh
              {:cljsbuild {:builds
-                          {:background {:source-paths ["checkouts/chromex/src/lib"
+                          {:background {:source-paths ["checkouts/cljs-devtools/src/lib"
+                                                       "checkouts/chromex/src/lib"
                                                        "checkouts/chromex/src/exts"]}
-                           :popup      {:source-paths ["checkouts/chromex/src/lib"
+                           :popup      {:source-paths ["checkouts/cljs-devtools/src/lib"
+                                                       "checkouts/chromex/src/lib"
                                                        "checkouts/chromex/src/exts"]}}}}
              :checkouts-content-script
              ; DON'T FORGET TO UPDATE scripts/ensure-checkouts.sh
              {:cljsbuild {:builds
-                          {:content-script {:source-paths ["checkouts/chromex/src/lib"
+                          {:content-script {:source-paths ["checkouts/cljs-devtools/src/lib"
+                                                           "checkouts/chromex/src/lib"
                                                            "checkouts/chromex/src/exts"]}}}}
 
              :figwheel
              {:figwheel {:server-port    6888
-                         :server-logfile ".figwheel_dirac.log"
+                         :server-logfile ".figwheel.log"
                          :repl           false}}
 
              :cooper

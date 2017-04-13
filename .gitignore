@@ -8,5 +8,5 @@
 /target
 /checkouts
 /.tmp
-.figwheel_server.log
+.figwheel*.log
 .chrome-profile
