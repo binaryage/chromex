@@ -63,6 +63,23 @@
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-accessibility-gesture &form channel args)))
 
+(defmacro tap-on-two-finger-touch-start-events
+  "Fired when we first detect two fingers are held down, which can be used to toggle spoken feedback on some touch-only
+   devices.
+
+   Events will be put on the |channel| with signature [::on-two-finger-touch-start []].
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-two-finger-touch-start &form channel args)))
+
+(defmacro tap-on-two-finger-touch-stop-events
+  "Fired when  the user is no longer holding down two fingers (including releasing one, holding down three, or moving them).
+
+   Events will be put on the |channel| with signature [::on-two-finger-touch-stop []].
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-two-finger-touch-stop &form channel args)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -97,7 +114,9 @@
     {:id ::on-accessibility-gesture,
      :name "onAccessibilityGesture",
      :since "52",
-     :params [{:name "gesture", :type "accessibilityPrivate.Gesture"}]}]})
+     :params [{:name "gesture", :type "accessibilityPrivate.Gesture"}]}
+    {:id ::on-two-finger-touch-start, :name "onTwoFingerTouchStart", :since "master"}
+    {:id ::on-two-finger-touch-stop, :name "onTwoFingerTouchStop", :since "master"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

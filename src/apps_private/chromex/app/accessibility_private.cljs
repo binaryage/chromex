@@ -23,3 +23,9 @@
 (defn on-accessibility-gesture* [config channel & args]
   (gen-wrap :event ::on-accessibility-gesture config channel args))
 
+(defn on-two-finger-touch-start* [config channel & args]
+  (gen-wrap :event ::on-two-finger-touch-start config channel args))
+
+(defn on-two-finger-touch-stop* [config channel & args]
+  (gen-wrap :event ::on-two-finger-touch-stop config channel args))
+

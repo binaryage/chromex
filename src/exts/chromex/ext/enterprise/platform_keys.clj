@@ -97,6 +97,11 @@
    not reside in the 'system' token and is not accessible by any other API.
 
      |challenge| - A challenge as emitted by the Verified Access Web API.
+     |register-key| - If set, the current Enterprise Machine Key is registered                with the 'system' token and
+                      relinquishes the                Enterprise Machine Key role. The key can then be
+                      associated with a certificate and used like any other                signing key. This key is 2048-bit
+                      RSA. Subsequent calls                to this function will then generate a new Enterprise
+                      Machine Key.
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [response] where:
@@ -107,7 +112,8 @@
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/enterprise.platformKeys#method-challengeMachineKey."
-  ([challenge] (gen-call :function ::challenge-machine-key &form challenge)))
+  ([challenge register-key] (gen-call :function ::challenge-machine-key &form challenge register-key))
+  ([challenge] `(challenge-machine-key ~challenge :omit)))
 
 (defmacro challenge-user-key
   "Challenges a hardware-backed Enterprise User Key and emits the response as part of a remote attestation protocol. Only
@@ -188,6 +194,7 @@
      :callback? true,
      :params
      [{:name "challenge", :type "ArrayBuffer"}
+      {:name "register-key", :optional? true, :type "boolean"}
       {:name "callback", :type :callback, :callback {:params [{:name "response", :type "ArrayBuffer"}]}}]}
     {:id ::challenge-user-key,
      :name "challengeUserKey",

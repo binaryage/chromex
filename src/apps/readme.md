@@ -40,6 +40,7 @@
 | [chrome.mdns](https://developer.chrome.com/extensions/mdns) | [chromex/app/mdns.clj](chromex/app/mdns.clj) |
 | [chrome.mediaGalleries](https://developer.chrome.com/extensions/mediaGalleries) | [chromex/app/media_galleries.clj](chromex/app/media_galleries.clj) |
 | [chrome.networking.config](https://developer.chrome.com/extensions/networking.config) | [chromex/app/networking/config.clj](chromex/app/networking/config.clj) |
+| [chrome.networking.onc](https://developer.chrome.com/extensions/networking.onc) | [chromex/app/networking/onc.clj](chromex/app/networking/onc.clj) |
 | [chrome.notifications](https://developer.chrome.com/extensions/notifications) | [chromex/app/notifications.clj](chromex/app/notifications.clj) |
 | [chrome.permissions](https://developer.chrome.com/extensions/permissions) | [chromex/app/permissions.clj](chromex/app/permissions.clj) |
 | [chrome.platformKeys](https://developer.chrome.com/extensions/platformKeys) | [chromex/app/platform_keys.clj](chromex/app/platform_keys.clj) |
@@ -74,7 +75,7 @@
 
 ### API stats
 
-Generated 66 namespaces containing 30 properties, 414 functions and 148 events:
+Generated 67 namespaces containing 30 properties, 429 functions and 152 events:
 
 
     |                         :namespace | :properties | :functions | :events |
@@ -115,6 +116,7 @@ Generated 66 namespaces containing 30 properties, 414 functions and 148 events:
     |                        chrome.mdns |           1 |          1 |       1 |
     |              chrome.mediaGalleries |           0 |         13 |       2 |
     |           chrome.networking.config |           0 |          2 |       1 |
+    |              chrome.networking.onc |           0 |         15 |       4 |
     |               chrome.notifications |           0 |          5 |       5 |
     |                 chrome.permissions |           0 |          4 |       2 |
     |                chrome.platformKeys |           0 |          4 |       0 |
@@ -302,6 +304,13 @@ Generated 66 namespaces containing 30 properties, 414 functions and 148 events:
 
     [chromex.app.networking.config refer-macros:[
       set-network-filter finish-authentication tap-on-captive-portal-detected tap-all-events]]
+
+    [chromex.app.networking.onc refer-macros:[
+      get-properties get-managed-properties get-state set-properties create-network forget-network
+      get-networks get-device-states enable-network-type disable-network-type request-network-scan
+      start-connect start-disconnect get-captive-portal-status get-global-policy tap-on-networks-changed
+      tap-on-network-list-changed tap-on-device-state-list-changed tap-on-portal-detection-completed
+      tap-all-events]]
 
     [chromex.app.notifications refer-macros:[
       create update clear get-all get-permission-level tap-on-closed tap-on-clicked tap-on-button-clicked
