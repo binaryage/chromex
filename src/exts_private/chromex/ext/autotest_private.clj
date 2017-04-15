@@ -113,6 +113,30 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-visible-notifications &form)))
 
+(defmacro get-play-store-state
+  "Get state of the Play Store.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::get-play-store-state &form)))
+
+(defmacro set-play-store-enabled
+  "Enable/disable the Play Store.
+
+     |enabled| - if set, enable the Play Store.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([enabled] (gen-call :function ::set-play-store-enabled &form enabled)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -153,7 +177,17 @@
      :since "52",
      :callback? true,
      :params
-     [{:name "callback", :type :callback, :callback {:params [{:name "notifications", :type "[array-of-objects]"}]}}]}]})
+     [{:name "callback", :type :callback, :callback {:params [{:name "notifications", :type "[array-of-objects]"}]}}]}
+    {:id ::get-play-store-state,
+     :name "getPlayStoreState",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}
+    {:id ::set-play-store-enabled,
+     :name "setPlayStoreEnabled",
+     :since "master",
+     :callback? true,
+     :params [{:name "enabled", :type "boolean"} {:name "callback", :type :callback}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

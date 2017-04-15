@@ -48,3 +48,9 @@
 (defn get-visible-notifications* [config]
   (gen-wrap :function ::get-visible-notifications config))
 
+(defn get-play-store-state* [config]
+  (gen-wrap :function ::get-play-store-state config))
+
+(defn set-play-store-enabled* [config enabled]
+  (gen-wrap :function ::set-play-store-enabled config enabled))
+

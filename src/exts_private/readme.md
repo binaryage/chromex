@@ -50,7 +50,7 @@
 
 ### API stats
 
-Generated 42 namespaces containing 1 properties, 321 functions and 76 events:
+Generated 42 namespaces containing 1 properties, 323 functions and 76 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -58,7 +58,7 @@ Generated 42 namespaces containing 1 properties, 321 functions and 76 events:
     |           chrome.accessibilityPrivate |           0 |          4 |       4 |
     |             chrome.activityLogPrivate |           0 |          4 |       1 |
     |                chrome.autofillPrivate |           0 |          9 |       2 |
-    |                chrome.autotestPrivate |           0 |         15 |       0 |
+    |                chrome.autotestPrivate |           0 |         17 |       0 |
     |               chrome.bluetoothPrivate |           0 |          7 |       1 |
     |         chrome.bookmarkManagerPrivate |           0 |         21 |       4 |
     |          chrome.brailleDisplayPrivate |           0 |          2 |       2 |
@@ -121,7 +121,7 @@ Generated 42 namespaces containing 1 properties, 321 functions and 76 events:
       logout restart shutdown login-status lock-screen get-extensions-info simulate-asan-memory-bug
       set-touchpad-sensitivity set-tap-to-click set-three-finger-click set-tap-dragging
       set-natural-scroll set-mouse-sensitivity set-primary-button-right get-visible-notifications
-      tap-all-events]]
+      get-play-store-state set-play-store-enabled tap-all-events]]
 
     [chromex.ext.bluetooth-private refer-macros:[
       set-adapter-state set-pairing-response disconnect-all forget-device set-discovery-filter connect
