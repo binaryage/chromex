@@ -140,7 +140,7 @@
       {:name "cb", :type :callback, :callback {:params [{:name "sink-id", :type "string"}]}}]}
     {:id ::set-audio-experiments,
      :name "setAudioExperiments",
-     :since "master",
+     :since "59",
      :params
      [{:name "request", :type "webrtcAudioPrivate.RequestInfo"}
       {:name "security-origin", :type "string"}

@@ -115,8 +115,8 @@
      :name "onAccessibilityGesture",
      :since "52",
      :params [{:name "gesture", :type "accessibilityPrivate.Gesture"}]}
-    {:id ::on-two-finger-touch-start, :name "onTwoFingerTouchStart", :since "master"}
-    {:id ::on-two-finger-touch-stop, :name "onTwoFingerTouchStop", :since "master"}]})
+    {:id ::on-two-finger-touch-start, :name "onTwoFingerTouchStart", :since "59"}
+    {:id ::on-two-finger-touch-stop, :name "onTwoFingerTouchStop", :since "59"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

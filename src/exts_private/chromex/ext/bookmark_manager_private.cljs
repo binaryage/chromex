@@ -33,9 +33,6 @@
 (defn can-edit* [config]
   (gen-wrap :function ::can-edit config))
 
-(defn can-open-new-windows* [config]
-  (gen-wrap :function ::can-open-new-windows config))
-
 (defn remove-trees* [config id-list]
   (gen-wrap :function ::remove-trees config id-list))
 

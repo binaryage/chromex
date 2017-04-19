@@ -124,18 +124,6 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::can-edit &form)))
 
-(defmacro can-open-new-windows
-  "Whether bookmarks can be opened in new windows.
-
-   This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [result] where:
-
-     |result| - ?
-
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([] (gen-call :function ::can-open-new-windows &form)))
-
 (defmacro remove-trees
   "Recursively removes list of bookmarks nodes.
 
@@ -345,10 +333,6 @@
        :callback {:params [{:name "results", :type "[array-of-bookmarks.BookmarkTreeNodes]"}]}}]}
     {:id ::can-edit,
      :name "canEdit",
-     :callback? true,
-     :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
-    {:id ::can-open-new-windows,
-     :name "canOpenNewWindows",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
     {:id ::remove-trees,
