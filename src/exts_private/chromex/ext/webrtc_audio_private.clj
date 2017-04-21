@@ -1,7 +1,6 @@
 (ns chromex.ext.webrtc-audio-private
   "The chrome.webrtcAudioPrivate API allows enumeration
-   of audio output (sink) devices as well as getting and setting the
-   active device for a given requesting process.
+   of audio output (sink) devices.
 
    Note that device IDs as used in this API are opaque (i.e. they are
    not the hardware identifier of the device) and while they are
@@ -33,33 +32,6 @@
    In case of error the channel closes without receiving any result and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-sinks &form)))
-
-(defmacro get-active-sink
-  "Retrieves the currently active audio sink for the given requesting process.
-
-     |request| - ?
-
-   This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [sink-id] where:
-
-     |sink-id| - ?
-
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([request] (gen-call :function ::get-active-sink &form request)))
-
-(defmacro set-active-sink
-  "Sets the active audio sink device for the specified requesting process.
-
-     |request| - ?
-     |sink-id| - ?
-
-   This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
-
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([request sink-id] (gen-call :function ::set-active-sink &form request sink-id)))
 
 (defmacro get-associated-sink
   "Given a security origin and an input device ID valid for that security origin, retrieve an audio sink ID valid for the
@@ -118,19 +90,6 @@
      :callback? true,
      :params
      [{:name "callback", :type :callback, :callback {:params [{:name "sink-info", :type "[array-of-objects]"}]}}]}
-    {:id ::get-active-sink,
-     :name "getActiveSink",
-     :callback? true,
-     :params
-     [{:name "request", :type "webrtcAudioPrivate.RequestInfo"}
-      {:name "callback", :type :callback, :callback {:params [{:name "sink-id", :type "string"}]}}]}
-    {:id ::set-active-sink,
-     :name "setActiveSink",
-     :callback? true,
-     :params
-     [{:name "request", :type "webrtcAudioPrivate.RequestInfo"}
-      {:name "sink-id", :type "string"}
-      {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-associated-sink,
      :name "getAssociatedSink",
      :callback? true,
@@ -142,7 +101,7 @@
      :name "setAudioExperiments",
      :since "59",
      :params
-     [{:name "request", :type "webrtcAudioPrivate.RequestInfo"}
+     [{:name "request", :type "object"}
       {:name "security-origin", :type "string"}
       {:name "audio-experiments", :type "object"}]}],
    :events [{:id ::on-sinks-changed, :name "onSinksChanged"}]})

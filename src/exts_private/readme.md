@@ -50,7 +50,7 @@
 
 ### API stats
 
-Generated 42 namespaces containing 1 properties, 322 functions and 76 events:
+Generated 42 namespaces containing 1 properties, 320 functions and 76 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -93,7 +93,7 @@ Generated 42 namespaces containing 1 properties, 322 functions and 76 events:
     |                   chrome.usersPrivate |           0 |          5 |       0 |
     |         chrome.virtualKeyboardPrivate |           0 |         10 |       3 |
     |                  chrome.webcamPrivate |           0 |          5 |       0 |
-    |             chrome.webrtcAudioPrivate |           0 |          5 |       1 |
+    |             chrome.webrtcAudioPrivate |           0 |          3 |       1 |
     |    chrome.webrtcDesktopCapturePrivate |           0 |          2 |       0 |
     |           chrome.webrtcLoggingPrivate |           0 |         14 |       0 |
     |                chrome.webstorePrivate |           0 |         13 |       0 |
@@ -284,8 +284,7 @@ Generated 42 namespaces containing 1 properties, 322 functions and 76 events:
       open-serial-webcam close-webcam get set reset tap-all-events]]
 
     [chromex.ext.webrtc-audio-private refer-macros:[
-      get-sinks get-active-sink set-active-sink get-associated-sink set-audio-experiments
-      tap-on-sinks-changed tap-all-events]]
+      get-sinks get-associated-sink set-audio-experiments tap-on-sinks-changed tap-all-events]]
 
     [chromex.ext.webrtc-desktop-capture-private refer-macros:[
       choose-desktop-media cancel-choose-desktop-media tap-all-events]]
