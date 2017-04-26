@@ -131,14 +131,14 @@
      :params
      [{:name "callback",
        :type :callback,
-       :callback {:params [{:name "exceptions", :type "[array-of-passwordsPrivate.ExceptionPairs]"}]}}]}],
+       :callback {:params [{:name "exceptions", :type "[array-of-passwordsPrivate.ExceptionEntrys]"}]}}]}],
    :events
    [{:id ::on-saved-passwords-list-changed,
      :name "onSavedPasswordsListChanged",
      :params [{:name "entries", :type "[array-of-passwordsPrivate.PasswordUiEntrys]"}]}
     {:id ::on-password-exceptions-list-changed,
      :name "onPasswordExceptionsListChanged",
-     :params [{:name "exceptions", :type "[array-of-passwordsPrivate.ExceptionPairs]"}]}
+     :params [{:name "exceptions", :type "[array-of-passwordsPrivate.ExceptionEntrys]"}]}
     {:id ::on-plaintext-password-retrieved,
      :name "onPlaintextPasswordRetrieved",
      :params [{:name "dict", :type "object"}]}]})
