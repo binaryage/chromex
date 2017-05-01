@@ -180,12 +180,12 @@
      [{:name "callback", :type :callback, :callback {:params [{:name "notifications", :type "[array-of-objects]"}]}}]}
     {:id ::get-play-store-state,
      :name "getPlayStoreState",
-     :since "master",
+     :since "60",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}
     {:id ::set-play-store-enabled,
      :name "setPlayStoreEnabled",
-     :since "master",
+     :since "60",
      :callback? true,
      :params [{:name "enabled", :type "boolean"} {:name "callback", :type :callback}]}]})
 
