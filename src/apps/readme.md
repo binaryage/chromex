@@ -27,6 +27,7 @@
 | [chrome.dns](https://developer.chrome.com/extensions/dns) | [chromex/app/dns.clj](chromex/app/dns.clj) |
 | [chrome.documentScan](https://developer.chrome.com/extensions/documentScan) | [chromex/app/document_scan.clj](chromex/app/document_scan.clj) |
 | [chrome.enterprise.deviceAttributes](https://developer.chrome.com/extensions/enterprise.deviceAttributes) | [chromex/app/enterprise/device_attributes.clj](chromex/app/enterprise/device_attributes.clj) |
+| [chrome.enterprise.platformKeys](https://developer.chrome.com/extensions/enterprise.platformKeys) | [chromex/app/enterprise/platform_keys.clj](chromex/app/enterprise/platform_keys.clj) |
 | [chrome.fileBrowserHandler](https://developer.chrome.com/extensions/fileBrowserHandler) | [chromex/app/file_browser_handler.clj](chromex/app/file_browser_handler.clj) |
 | [chrome.fileSystem](https://developer.chrome.com/extensions/fileSystem) | [chromex/app/file_system.clj](chromex/app/file_system.clj) |
 | [chrome.fileSystemProvider](https://developer.chrome.com/extensions/fileSystemProvider) | [chromex/app/file_system_provider.clj](chromex/app/file_system_provider.clj) |
@@ -75,7 +76,7 @@
 
 ### API stats
 
-Generated 67 namespaces containing 30 properties, 429 functions and 152 events:
+Generated 68 namespaces containing 30 properties, 435 functions and 152 events:
 
 
     |                         :namespace | :properties | :functions | :events |
@@ -103,6 +104,7 @@ Generated 67 namespaces containing 30 properties, 429 functions and 152 events:
     |                         chrome.dns |           0 |          1 |       0 |
     |                chrome.documentScan |           0 |          1 |       0 |
     | chrome.enterprise.deviceAttributes |           0 |          1 |       0 |
+    |     chrome.enterprise.platformKeys |           0 |          6 |       0 |
     |          chrome.fileBrowserHandler |           0 |          1 |       1 |
     |                  chrome.fileSystem |           0 |          9 |       1 |
     |          chrome.fileSystemProvider |           0 |          5 |      20 |
@@ -248,6 +250,10 @@ Generated 67 namespaces containing 30 properties, 429 functions and 152 events:
 
     [chromex.app.enterprise.device-attributes refer-macros:[
       get-directory-device-id tap-all-events]]
+
+    [chromex.app.enterprise.platform-keys refer-macros:[
+      get-tokens get-certificates import-certificate remove-certificate challenge-machine-key
+      challenge-user-key tap-all-events]]
 
     [chromex.app.file-browser-handler refer-macros:[
       select-file tap-on-execute tap-all-events]]
