@@ -3,6 +3,13 @@
 echo "-----------------------------------------------------------------------------------------------------------------------"
 echo "running auto-job.sh on $(date)"
 
+finish () {
+  echo "finished auto-job.sh on $(date)"
+  echo
+  echo
+}
+trap finish EXIT
+
 export CHROMIUM_SRC=~/tasks/chromium/src/
 
 set -ex
