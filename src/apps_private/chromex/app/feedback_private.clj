@@ -55,6 +55,8 @@
   "Gets localized translated strings for feedback. It returns the strings as a dictionary mapping from string identifier to
    the translated string to use in the feedback app UI.
 
+     |flow| - ?
+
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [result] where:
 
@@ -62,7 +64,7 @@
 
    In case of error the channel closes without receiving any result and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([] (gen-call :function ::get-strings &form)))
+  ([flow] (gen-call :function ::get-strings &form flow)))
 
 (defmacro log-srt-prompt-result
   "Logs whether the user accepted a prompt to try the Software Removal Tool.
@@ -121,7 +123,9 @@
      :name "getStrings",
      :since "31",
      :callback? true,
-     :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}
+     :params
+     [{:name "flow", :type "feedbackPrivate.FeedbackFlow"}
+      {:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}
     {:id ::log-srt-prompt-result,
      :name "logSrtPromptResult",
      :since "52",

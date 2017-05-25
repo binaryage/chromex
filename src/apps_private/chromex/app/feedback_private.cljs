@@ -12,8 +12,8 @@
 (defn send-feedback* [config feedback]
   (gen-wrap :function ::send-feedback config feedback))
 
-(defn get-strings* [config]
-  (gen-wrap :function ::get-strings config))
+(defn get-strings* [config flow]
+  (gen-wrap :function ::get-strings config flow))
 
 (defn log-srt-prompt-result* [config result]
   (gen-wrap :function ::log-srt-prompt-result config result))
