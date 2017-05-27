@@ -300,6 +300,18 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-global-policy &form)))
 
+(defmacro get-certificate-lists
+  "Gets the lists of certificates available for network configuration.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::get-certificate-lists &form)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -343,6 +355,14 @@
 
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-portal-detection-completed &form channel args)))
+
+(defmacro tap-on-certificate-lists-changed-events
+  "Fired when any certificate list has changed.
+
+   Events will be put on the |channel| with signature [::on-certificate-lists-changed []].
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-certificate-lists-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
@@ -490,6 +510,11 @@
      :name "getGlobalPolicy",
      :since "57",
      :callback? true,
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}
+    {:id ::get-certificate-lists,
+     :name "getCertificateLists",
+     :since "master",
+     :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}],
    :events
    [{:id ::on-networks-changed, :name "onNetworksChanged", :params [{:name "changes", :type "[array-of-strings]"}]}
@@ -500,7 +525,8 @@
     {:id ::on-portal-detection-completed,
      :name "onPortalDetectionCompleted",
      :since "36",
-     :params [{:name "network-guid", :type "string"} {:name "status", :type "networkingPrivate.CaptivePortalStatus"}]}]})
+     :params [{:name "network-guid", :type "string"} {:name "status", :type "networkingPrivate.CaptivePortalStatus"}]}
+    {:id ::on-certificate-lists-changed, :name "onCertificateListsChanged", :since "master"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

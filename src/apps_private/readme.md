@@ -48,7 +48,7 @@
 
 ### API stats
 
-Generated 40 namespaces containing 1 properties, 295 functions and 82 events:
+Generated 40 namespaces containing 1 properties, 296 functions and 83 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -79,7 +79,7 @@ Generated 40 namespaces containing 1 properties, 295 functions and 82 events:
     |          chrome.metricsPrivate |           0 |         13 |       0 |
     |             chrome.mojoPrivate |           0 |          2 |       0 |
     |     chrome.musicManagerPrivate |           0 |          1 |       0 |
-    |       chrome.networkingPrivate |           0 |         20 |       4 |
+    |       chrome.networkingPrivate |           0 |         21 |       5 |
     |        chrome.passwordsPrivate |           0 |          5 |       3 |
     |      chrome.preferencesPrivate |           1 |          0 |       0 |
     |      chrome.quickUnlockPrivate |           0 |          5 |       1 |
@@ -238,8 +238,9 @@ Generated 40 namespaces containing 1 properties, 295 functions and 82 events:
       get-networks get-visible-networks get-enabled-network-types get-device-states enable-network-type
       disable-network-type request-network-scan start-connect start-disconnect start-activate
       get-captive-portal-status unlock-cellular-sim set-cellular-sim-state get-global-policy
-      tap-on-networks-changed tap-on-network-list-changed tap-on-device-state-list-changed
-      tap-on-portal-detection-completed tap-all-events]]
+      get-certificate-lists tap-on-networks-changed tap-on-network-list-changed
+      tap-on-device-state-list-changed tap-on-portal-detection-completed tap-on-certificate-lists-changed
+      tap-all-events]]
 
     [chromex.app.passwords-private refer-macros:[
       remove-saved-password remove-password-exception request-plaintext-password get-saved-password-list

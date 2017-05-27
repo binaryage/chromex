@@ -63,6 +63,9 @@
 (defn get-global-policy* [config]
   (gen-wrap :function ::get-global-policy config))
 
+(defn get-certificate-lists* [config]
+  (gen-wrap :function ::get-certificate-lists config))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-networks-changed* [config channel & args]
@@ -76,4 +79,7 @@
 
 (defn on-portal-detection-completed* [config channel & args]
   (gen-wrap :event ::on-portal-detection-completed config channel args))
+
+(defn on-certificate-lists-changed* [config channel & args]
+  (gen-wrap :event ::on-certificate-lists-changed config channel args))
 

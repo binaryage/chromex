@@ -3,8 +3,8 @@
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
-(defn set-image-data* [config image-data type]
-  (gen-wrap :function ::set-image-data config image-data type))
+(defn set-image-data* [config image-data type additional-items]
+  (gen-wrap :function ::set-image-data config image-data type additional-items))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 

@@ -2,7 +2,7 @@
   "The chrome.clipboard API is provided to allow users to
    access data of the clipboard. This is a temporary solution for
    chromeos platform apps until open-web alternative is available. It will be
-   deprecated once open-web solution is available, which could be in 2017 Q2.
+   deprecated once open-web solution is available, which could be in 2017 Q4.
 
      * available since Chrome 60
      * https://developer.chrome.com/apps/clipboard"
@@ -20,8 +20,10 @@
   "Sets image data to clipboard.
 
      |image-data| - The encoded image data.
-     |type| - The type of image being passed. The callback is called with chrome.runtime.lastError set to error code if
-              there is an error. Requires clipboard and clipboardWrite permissions.
+     |type| - The type of image being passed.
+     |additional-items| - Additional data items for describing image data. The callback is called with
+                          chrome.runtime.lastError set to error code if there is an error. Requires clipboard and
+                          clipboardWrite permissions.
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
@@ -30,7 +32,8 @@
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/clipboard#method-setImageData."
-  ([image-data type] (gen-call :function ::set-image-data &form image-data type)))
+  ([image-data type additional-items] (gen-call :function ::set-image-data &form image-data type additional-items))
+  ([image-data type] `(set-image-data ~image-data ~type :omit)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -70,6 +73,7 @@
      :params
      [{:name "image-data", :type "ArrayBuffer"}
       {:name "type", :type "unknown-type"}
+      {:name "additional-items", :optional? true, :type "[array-of-objects]"}
       {:name "callback", :type :callback}]}],
    :events [{:id ::on-clipboard-data-changed, :name "onClipboardDataChanged", :since "60"}]})
 
