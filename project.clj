@@ -10,7 +10,7 @@
   :dependencies [[org.clojure/clojure "1.9.0-alpha15" :scope "provided"]
                  [org.clojure/clojurescript "1.9.518" :scope "provided"]
                  [org.clojure/core.async "0.3.442"]
-                 [binaryage/oops "0.5.3"]
+                 [binaryage/oops "0.5.4"]
                  [environ "1.1.0"]]
 
   :clean-targets ^{:protect false} ["target"
