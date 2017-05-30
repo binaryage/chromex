@@ -7,16 +7,16 @@
 
   :scm {:name "git" :url "https://github.com/binaryage/chromex"}
 
-  :dependencies [[org.clojure/clojure "1.9.0-alpha15" :scope "provided"]
-                 [org.clojure/clojurescript "1.9.518" :scope "provided"]
-                 [org.clojure/core.async "0.3.442"]
-                 [binaryage/oops "0.5.3"]
+  :dependencies [[org.clojure/clojure "1.9.0-alpha17" :scope "provided"]
+                 [org.clojure/clojurescript "1.9.562" :scope "provided"]
+                 [org.clojure/core.async "0.3.443"]
+                 [binaryage/oops "0.5.5"]
                  [environ "1.1.0"]]
 
   :clean-targets ^{:protect false} ["target"
                                     "test/.compiled"]
 
-  :plugins [[lein-cljsbuild "1.1.5"]
+  :plugins [[lein-cljsbuild "1.1.6"]
             [lein-environ "1.1.0"]
             [lein-shell "0.5.0"]]
 
