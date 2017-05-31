@@ -513,7 +513,7 @@
      :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}
     {:id ::get-certificate-lists,
      :name "getCertificateLists",
-     :since "master",
+     :since "60",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}],
    :events
@@ -526,7 +526,7 @@
      :name "onPortalDetectionCompleted",
      :since "36",
      :params [{:name "network-guid", :type "string"} {:name "status", :type "networkingPrivate.CaptivePortalStatus"}]}
-    {:id ::on-certificate-lists-changed, :name "onCertificateListsChanged", :since "master"}]})
+    {:id ::on-certificate-lists-changed, :name "onCertificateListsChanged", :since "60"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
