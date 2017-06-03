@@ -15,6 +15,9 @@
 (defn darken-screen* [config enabled]
   (gen-wrap :function ::darken-screen config enabled))
 
+(defn set-switch-access-keys* [config key-codes]
+  (gen-wrap :function ::set-switch-access-keys config key-codes))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-introduce-chrome-vox* [config channel & args]

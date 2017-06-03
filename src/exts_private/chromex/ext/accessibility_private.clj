@@ -41,6 +41,12 @@
      |enabled| - True to darken screen; false to undarken screen."
   ([enabled] (gen-call :function ::darken-screen &form enabled)))
 
+(defmacro set-switch-access-keys
+  "Change the keyboard keys captured by Switch Access.
+
+     |key-codes| - The key codes for the keys that will be captured."
+  ([key-codes] (gen-call :function ::set-switch-access-keys &form key-codes)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -108,7 +114,11 @@
      :name "setKeyboardListener",
      :since "48",
      :params [{:name "enabled", :type "boolean"} {:name "capture", :type "boolean"}]}
-    {:id ::darken-screen, :name "darkenScreen", :since "59", :params [{:name "enabled", :type "boolean"}]}],
+    {:id ::darken-screen, :name "darkenScreen", :since "59", :params [{:name "enabled", :type "boolean"}]}
+    {:id ::set-switch-access-keys,
+     :name "setSwitchAccessKeys",
+     :since "master",
+     :params [{:name "key-codes", :type "[array-of-integers]"}]}],
    :events
    [{:id ::on-introduce-chrome-vox, :name "onIntroduceChromeVox", :since "42"}
     {:id ::on-accessibility-gesture,
