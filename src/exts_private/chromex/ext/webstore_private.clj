@@ -1,5 +1,5 @@
 (ns chromex.ext.webstore-private
-  "  * available since Chrome 17"
+  "  * available since Chrome 18"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -181,7 +181,7 @@
 
 (def api-table
   {:namespace "chrome.webstorePrivate",
-   :since "17",
+   :since "18",
    :functions
    [{:id ::install,
      :name "install",
@@ -219,7 +219,6 @@
      :params [{:name "login", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-web-gl-status,
      :name "getWebGLStatus",
-     :since "18",
      :callback? true,
      :params
      [{:name "callback",

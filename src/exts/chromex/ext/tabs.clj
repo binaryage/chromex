@@ -2,7 +2,7 @@
   "Use the chrome.tabs API to interact with the browser's tab system. You can use this API to create, modify, and rearrange
    tabs in the browser.
 
-     * available since Chrome 17
+     * available since Chrome 18
      * https://developer.chrome.com/extensions/tabs"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -621,7 +621,7 @@
 
 (def api-table
   {:namespace "chrome.tabs",
-   :since "17",
+   :since "18",
    :properties [{:id ::tab-id-none, :name "TAB_ID_NONE", :since "46", :return-type "unknown-type"}],
    :functions
    [{:id ::get,
@@ -828,13 +828,13 @@
      :since "33",
      :deprecated "Please use 'tabs.onActivated'.",
      :params [{:name "tab-id", :type "integer"} {:name "select-info", :type "object"}]}
-    {:id ::on-activated, :name "onActivated", :since "18", :params [{:name "active-info", :type "object"}]}
+    {:id ::on-activated, :name "onActivated", :params [{:name "active-info", :type "object"}]}
     {:id ::on-highlight-changed,
      :name "onHighlightChanged",
      :since "33",
      :deprecated "Please use 'tabs.onHighlighted'.",
      :params [{:name "select-info", :type "object"}]}
-    {:id ::on-highlighted, :name "onHighlighted", :since "18", :params [{:name "highlight-info", :type "object"}]}
+    {:id ::on-highlighted, :name "onHighlighted", :params [{:name "highlight-info", :type "object"}]}
     {:id ::on-detached,
      :name "onDetached",
      :params [{:name "tab-id", :type "integer"} {:name "detach-info", :type "object"}]}

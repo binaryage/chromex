@@ -4,7 +4,7 @@
    Chrome App uses the tts API to generate speech. Your extension can then use any available web technology to synthesize and
    output the speech, and send events back to the calling function to report the status.
 
-     * available since Chrome 17
+     * available since Chrome 18
      * https://developer.chrome.com/extensions/ttsEngine"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -83,7 +83,7 @@
 
 (def api-table
   {:namespace "chrome.ttsEngine",
-   :since "17",
+   :since "18",
    :events
    [{:id ::on-speak,
      :name "onSpeak",

@@ -1,7 +1,7 @@
 (ns chromex.ext.web-navigation
   "Use the chrome.webNavigation API to receive notifications about the status of navigation requests in-flight.
 
-     * available since Chrome 17
+     * available since Chrome 18
      * https://developer.chrome.com/extensions/webNavigation"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -174,7 +174,7 @@
 
 (def api-table
   {:namespace "chrome.webNavigation",
-   :since "17",
+   :since "18",
    :functions
    [{:id ::get-frame,
      :name "getFrame",
