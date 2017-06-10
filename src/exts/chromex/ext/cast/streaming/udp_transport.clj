@@ -6,7 +6,7 @@
 
    Valid transport IDs are positive and non-zero.
 
-     * available since Chrome 60
+     * available since Chrome 61
      * https://developer.chrome.com/extensions/cast.streaming.udpTransport"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -59,7 +59,7 @@
 
 (def api-table
   {:namespace "chrome.cast.streaming.udpTransport",
-   :since "60",
+   :since "61",
    :functions
    [{:id ::destroy, :name "destroy", :params [{:name "transport-id", :type "integer"}]}
     {:id ::set-destination,

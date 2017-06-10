@@ -117,7 +117,7 @@
     {:id ::darken-screen, :name "darkenScreen", :since "59", :params [{:name "enabled", :type "boolean"}]}
     {:id ::set-switch-access-keys,
      :name "setSwitchAccessKeys",
-     :since "master",
+     :since "61",
      :params [{:name "key-codes", :type "[array-of-integers]"}]}],
    :events
    [{:id ::on-introduce-chrome-vox, :name "onIntroduceChromeVox", :since "42"}
