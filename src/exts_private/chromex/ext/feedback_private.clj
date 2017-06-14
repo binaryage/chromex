@@ -72,6 +72,26 @@
      |result| - ?"
   ([result] (gen-call :function ::log-srt-prompt-result &form result)))
 
+(defmacro read-log-source
+  "Reads from a log source indicated by source. If incremental is false:    Returns the entire contents of the log file.
+   Returns readerId value of 0 to callback.  If incremental is true, and no readerId is provided:    Returns the entire
+   contents of the log file.   Starts tracking the file read handle, which is returned as a       nonzero readerId value in
+   the callback.          If can't create a new file handle, returns readerId       value of 0 in the callback.         If
+   incremental is true, and a valid non-zero readerId is provided:    Returns new lines written to the file since the last
+   time this       function was called for the same file and readerId.          Returns the same readerId value to the
+   callback.
+
+     |params| - ?
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([params] (gen-call :function ::read-log-source &form params)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -129,7 +149,14 @@
     {:id ::log-srt-prompt-result,
      :name "logSrtPromptResult",
      :since "52",
-     :params [{:name "result", :type "unknown-type"}]}],
+     :params [{:name "result", :type "unknown-type"}]}
+    {:id ::read-log-source,
+     :name "readLogSource",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "params", :type "object"}
+      {:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}],
    :events
    [{:id ::on-feedback-requested,
      :name "onFeedbackRequested",

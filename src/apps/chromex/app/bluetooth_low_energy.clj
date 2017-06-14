@@ -85,7 +85,9 @@
   ([service] (gen-call :function ::create-service &form service)))
 
 (defmacro get-services
-  "Get all the GATT services that were discovered on the remote device with the given device address.
+  "Get all the GATT services that were discovered on the remote device with the given device address.Note: If service
+   discovery is not yet complete on the device, this API will return a subset (possibly empty) of services. A work around is
+   to add a time based delay and/or call repeatedly until the expected number of services is returned.
 
      |device-address| - The Bluetooth address of the remote device whose GATT services should be returned.
 
