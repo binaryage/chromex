@@ -24,7 +24,6 @@
 | [chrome.inlineInstallPrivate](https://developer.chrome.com/extensions/inlineInstallPrivate) | [chromex/app/inline_install_private.clj](chromex/app/inline_install_private.clj) |
 | [chrome.inputMethodPrivate](https://developer.chrome.com/extensions/inputMethodPrivate) | [chromex/app/input_method_private.clj](chromex/app/input_method_private.clj) |
 | [chrome.languageSettingsPrivate](https://developer.chrome.com/extensions/languageSettingsPrivate) | [chromex/app/language_settings_private.clj](chromex/app/language_settings_private.clj) |
-| [chrome.logPrivate](https://developer.chrome.com/extensions/logPrivate) | [chromex/app/log_private.clj](chromex/app/log_private.clj) |
 | [chrome.mediaPerceptionPrivate](https://developer.chrome.com/extensions/mediaPerceptionPrivate) | [chromex/app/media_perception_private.clj](chromex/app/media_perception_private.clj) |
 | [chrome.mediaPlayerPrivate](https://developer.chrome.com/extensions/mediaPlayerPrivate) | [chromex/app/media_player_private.clj](chromex/app/media_player_private.clj) |
 | [chrome.metricsPrivate](https://developer.chrome.com/extensions/metricsPrivate) | [chromex/app/metrics_private.clj](chromex/app/metrics_private.clj) |
@@ -48,7 +47,7 @@
 
 ### API stats
 
-Generated 40 namespaces containing 1 properties, 298 functions and 83 events:
+Generated 39 namespaces containing 1 properties, 294 functions and 82 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -73,7 +72,6 @@ Generated 40 namespaces containing 1 properties, 298 functions and 83 events:
     |    chrome.inlineInstallPrivate |           0 |          1 |       0 |
     |      chrome.inputMethodPrivate |           0 |         11 |       7 |
     | chrome.languageSettingsPrivate |           0 |         11 |       4 |
-    |              chrome.logPrivate |           0 |          4 |       1 |
     |  chrome.mediaPerceptionPrivate |           0 |          3 |       1 |
     |      chrome.mediaPlayerPrivate |           0 |          0 |       3 |
     |          chrome.metricsPrivate |           0 |         13 |       0 |
@@ -210,10 +208,6 @@ Generated 40 namespaces containing 1 properties, 298 functions and 83 events:
       get-spellcheck-words add-spellcheck-word remove-spellcheck-word get-translate-target-language
       get-input-method-lists add-input-method remove-input-method tap-on-spellcheck-dictionaries-changed
       tap-on-custom-dictionary-changed tap-on-input-method-added tap-on-input-method-removed
-      tap-all-events]]
-
-    [chromex.app.log-private refer-macros:[
-      get-historical start-event-recorder stop-event-recorder dump-logs tap-on-captured-events
       tap-all-events]]
 
     [chromex.app.media-perception-private refer-macros:[

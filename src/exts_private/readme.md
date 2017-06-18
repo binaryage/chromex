@@ -26,7 +26,6 @@
 | [chrome.imageWriterPrivate](https://developer.chrome.com/extensions/imageWriterPrivate) | [chromex/ext/image_writer_private.clj](chromex/ext/image_writer_private.clj) |
 | [chrome.inputMethodPrivate](https://developer.chrome.com/extensions/inputMethodPrivate) | [chromex/ext/input_method_private.clj](chromex/ext/input_method_private.clj) |
 | [chrome.languageSettingsPrivate](https://developer.chrome.com/extensions/languageSettingsPrivate) | [chromex/ext/language_settings_private.clj](chromex/ext/language_settings_private.clj) |
-| [chrome.logPrivate](https://developer.chrome.com/extensions/logPrivate) | [chromex/ext/log_private.clj](chromex/ext/log_private.clj) |
 | [chrome.mediaPlayerPrivate](https://developer.chrome.com/extensions/mediaPlayerPrivate) | [chromex/ext/media_player_private.clj](chromex/ext/media_player_private.clj) |
 | [chrome.metricsPrivate](https://developer.chrome.com/extensions/metricsPrivate) | [chromex/ext/metrics_private.clj](chromex/ext/metrics_private.clj) |
 | [chrome.mojoPrivate](https://developer.chrome.com/extensions/mojoPrivate) | [chromex/ext/mojo_private.clj](chromex/ext/mojo_private.clj) |
@@ -50,7 +49,7 @@
 
 ### API stats
 
-Generated 42 namespaces containing 1 properties, 323 functions and 77 events:
+Generated 41 namespaces containing 1 properties, 319 functions and 76 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -77,7 +76,6 @@ Generated 42 namespaces containing 1 properties, 323 functions and 77 events:
     |             chrome.imageWriterPrivate |           0 |          5 |       5 |
     |             chrome.inputMethodPrivate |           0 |         11 |       7 |
     |        chrome.languageSettingsPrivate |           0 |         11 |       4 |
-    |                     chrome.logPrivate |           0 |          4 |       1 |
     |             chrome.mediaPlayerPrivate |           0 |          0 |       3 |
     |                 chrome.metricsPrivate |           0 |         13 |       0 |
     |                    chrome.mojoPrivate |           0 |          2 |       0 |
@@ -216,10 +214,6 @@ Generated 42 namespaces containing 1 properties, 323 functions and 77 events:
       get-spellcheck-words add-spellcheck-word remove-spellcheck-word get-translate-target-language
       get-input-method-lists add-input-method remove-input-method tap-on-spellcheck-dictionaries-changed
       tap-on-custom-dictionary-changed tap-on-input-method-added tap-on-input-method-removed
-      tap-all-events]]
-
-    [chromex.ext.log-private refer-macros:[
-      get-historical start-event-recorder stop-event-recorder dump-logs tap-on-captured-events
       tap-all-events]]
 
     [chromex.ext.media-player-private refer-macros:[
