@@ -1,7 +1,7 @@
 (ns chromex.app.media-perception-private
   "Private API for receiving real-time media perception information.
 
-     * available since Chrome 61"
+     * available since Chrome 60"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -78,7 +78,7 @@
 
 (def api-table
   {:namespace "chrome.mediaPerceptionPrivate",
-   :since "61",
+   :since "60",
    :functions
    [{:id ::get-state,
      :name "getState",

@@ -19,7 +19,7 @@
      |sources| - Set of sources that should be shown to the user.
      |target-tab| - Optional tab for which the stream is created. If not specified then the resulting stream can be used
                     only by the calling extension. The stream can only be used by frames in the given tab whose security
-                    origin matches tab.url.
+                    origin matches tab.url. The tab's origin must be a secure origin, e.g. HTTPS.
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [stream-id options] where:
