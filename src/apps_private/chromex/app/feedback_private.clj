@@ -152,7 +152,7 @@
      :params [{:name "result", :type "unknown-type"}]}
     {:id ::read-log-source,
      :name "readLogSource",
-     :since "master",
+     :since "61",
      :callback? true,
      :params
      [{:name "params", :type "object"}
