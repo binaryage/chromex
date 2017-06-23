@@ -16,7 +16,8 @@
 (defmacro choose-desktop-media
   "Shows desktop media picker UI with the specified set of sources.
 
-     |sources| - Set of sources that should be shown to the user.
+     |sources| - Set of sources that should be shown to the user. The sources order in the set decides the tab order in the
+                 picker.
      |target-tab| - Optional tab for which the stream is created. If not specified then the resulting stream can be used
                     only by the calling extension. The stream can only be used by frames in the given tab whose security
                     origin matches tab.url. The tab's origin must be a secure origin, e.g. HTTPS.
