@@ -52,7 +52,7 @@
 
 (defmacro reset
   "Reset a webcam. Note: the value of the parameter have no effect, it's the presence of the parameter that matters. E.g.:
-   reset(webcamId, {pan: 0,  tilt: 1}); will reset pan & tilt, but not zoom.
+   reset(webcamId, {pan: 0, tilt: 1}); will reset pan & tilt, but not zoom.
 
      |webcam-id| - ?
      |config| - ?"
@@ -87,9 +87,7 @@
      :callback? true,
      :params
      [{:name "webcam-id", :type "string"}
-      {:name "callback",
-       :type :callback,
-       :callback {:params [{:name "configuration", :type "webcamPrivate.WebcamConfiguration"}]}}]}
+      {:name "callback", :type :callback, :callback {:params [{:name "configuration", :type "object"}]}}]}
     {:id ::set,
      :name "set",
      :params [{:name "webcam-id", :type "string"} {:name "config", :type "webcamPrivate.WebcamConfiguration"}]}

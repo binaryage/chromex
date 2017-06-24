@@ -103,7 +103,7 @@
      :name "sendArrayBufferView",
      :callback? true,
      :params
-     [{:name "input", :type "Uint8Array"}
+     [{:name "input", :type "binary"}
       {:name "cb", :type :callback, :callback {:params [{:name "array", :type "[array-of-integers]"}]}}]}
     {:id ::get-array-buffer,
      :name "getArrayBuffer",
