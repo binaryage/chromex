@@ -96,7 +96,7 @@ Let's start with [popup button code](src/popup/chromex_sample/popup/core.cljs):
 (defn run-message-loop! [message-channel]
   (log "POPUP: starting message loop...")
   (go-loop []
-    (when-let [message (<! message-channel)]
+    (when-some [message (<! message-channel)]
       (process-message! message)
       (recur))
     (log "POPUP: leaving message loop")))
@@ -167,12 +167,13 @@ reads quite well:
 ; -- client event loop ----------------------------------------------------------------------------
 
 (defn run-client-message-loop! [client]
+  (log "BACKGROUND: starting event loop for client:" (get-sender client))
   (go-loop []
-    (if-let [message (<! client)]
-      (do
-        (log "BACKGROUND: got client message:" message "from" (get-sender client))
-        (recur))
-      (remove-client! client))))
+    (when-some [message (<! client)]
+      (log "BACKGROUND: got client message:" message "from" (get-sender client))
+      (recur))
+    (log "BACKGROUND: leaving event loop for client:" (get-sender client))
+    (remove-client! client)))
 
 ; -- event handlers -------------------------------------------------------------------------------
 
@@ -198,7 +199,7 @@ reads quite well:
 (defn run-chrome-event-loop! [chrome-event-channel]
   (log "BACKGROUND: starting main event loop...")
   (go-loop [event-num 1]
-    (when-let [event (<! chrome-event-channel)]
+    (when-some [event (<! chrome-event-channel)]
       (process-chrome-event event-num event)
       (recur (inc event-num)))
     (log "BACKGROUND: leaving main event loop")))
@@ -226,7 +227,7 @@ them when the channel is about to be closed (for whatever reason). This way we d
 Events delivered into the channel are in a form `[event-id event-args]` where event-args is a vector of parameters which were passed into event's callback function (after marshalling).
 So you can read Chrome documentation to figure out what to expect there. For example our `:chromex.ext.runtime/on-connect` event-id is
 documented under [runtime/on-connect event](https://developer.chrome.com/extensions/runtime#event-onConnect) and claims that
-callback has a single parameter `port` of type `runtime.Port`. Se we get `IChromePort` wrapper, because marshalling converted native `runtime.Port` into ClojureScript-friendly `IChromePort` on the way out.
+the callback has a single parameter `port` of type `runtime.Port`. Se we get `IChromePort` wrapper, because marshalling converted native `runtime.Port` into ClojureScript-friendly `IChromePort` on the way out.
 
 Ok, when anything connects to our background page, we receive an event with `::runtime/on-connect` id. We call `handle-client-connection!` with event-args.
 Here we have to do some client-specific work. First, add this new client into a collection of active clients. Second, send a hello message to the client and
@@ -263,7 +264,7 @@ Our [content script](src/content_script/chromex_sample/content_script/core.cljs)
 (defn run-message-loop! [message-channel]
   (log "CONTENT SCRIPT: starting message loop...")
   (go-loop []
-    (when-let [message (<! message-channel)]
+    (when-some [message (<! message-channel)]
       (process-message! message)
       (recur))
     (log "CONTENT SCRIPT: leaving message loop")))
