@@ -33,7 +33,7 @@ of your own extension.
     * elides asserts
     * no figwheel support
     * no cljs-devtools support
-    * `lein package` task is provided for building release extension package
+    * `lein package` task is provided for building an extension package for release
 
 ### Local setup
 
@@ -43,36 +43,37 @@ We assume you are familiar with ClojureScript tooling and you have your machine 
 java, maven, leiningen, etc.
 
   * clone this repo somewhere:
-
-      ```
-      git clone https://github.com/binaryage/chromex-sample.git
-      cd chromex-sample
-      ```
+    ```bash
+    git clone https://github.com/binaryage/chromex-sample.git
+    cd chromex-sample
+    ```
   * chromex sample is gets built into `resources/unpacked/compiled` folder.
 
     In one terminal session run (will build background and popup pages using figwheel):
-      ```
-      lein fig
-      ```
+    ```bash
+    lein fig
+    ```
     In a second terminal session run (will auto-build content-script):
-      ```
-      lein content
-      ```
+    ```bash
+    lein content
+    ```
   * use latest Chrome Canary with [Custom Formatters](https://github.com/binaryage/cljs-devtools#enable-custom-formatters-in-your-chrome-canary) enabled
   * open Chrome Canary and add `resources/unpacked` via "Load unpacked extension..."
 
 ##### Extension packaging
 
 [Leiningen project](project.clj) has defined "release" profile for compilation in advanced mode. Run:
-
-    lein release
+```bash
+lein release
+```
 
 This will build an optimized build into [resources/release](resources/release). You can add this folder via "Load unpacked extension..."
 to test it.
 
 When satisfied, you can run:
-
-    lein package
+```bash
+lein package
+```
 
 This will create a folder `releases/chromex-sample-0.1.0` where 0.1.0 will be current version from [project.clj](project.clj).
 This folder will contain only files meant to be packaged.
