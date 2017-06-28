@@ -25,7 +25,7 @@ of your own extension.
       * namespaces are included as individual files and source maps work as expected
       * figwheel works
     * content script
-      * due to security restrictions, content script has to be provided as a single file
+      * due to [security restrictions](https://github.com/binaryage/chromex-sample/issues/2), content script has to be provided as a single file
       * compiles with `:optimizations :whitespace` and `:pretty-print true`
       * figwheel cannot be used in this context (eval is not allowed)
   * under :release profile
