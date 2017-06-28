@@ -19,7 +19,7 @@ of your own extension.
   * uses [leiningen](http://leiningen.org) + [lein-cljsbuild](https://github.com/emezeske/lein-cljsbuild)
   * integrates [cljs-devtools](https://github.com/binaryage/cljs-devtools)
   * integrates [figwheel](https://github.com/bhauman/lein-figwheel) (for background page and popup buttons)
-  * under :unpacked profile (development)
+  * under `:unpacked` profile (development)
     * background page and popup button
       * compiles with `optimizations :none`
       * namespaces are included as individual files and source maps work as expected
@@ -28,7 +28,7 @@ of your own extension.
       * due to [security restrictions](https://github.com/binaryage/chromex-sample/issues/2), content script has to be provided as a single file
       * compiles with `:optimizations :whitespace` and `:pretty-print true`
       * figwheel cannot be used in this context (eval is not allowed)
-  * under :release profile
+  * under `:release` profile
     * background page, popup button and content script compile with `optimizations :advanced`
     * elides asserts
     * no figwheel support
