@@ -421,6 +421,18 @@
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-unregisterAdvertisement."
   ([advertisement-id] (gen-call :function ::unregister-advertisement &form advertisement-id)))
 
+(defmacro reset-advertising
+  "Resets advertising on the current device. It will unregister and stop all existing advertisements.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/apps/bluetoothLowEnergy#method-resetAdvertising."
+  ([] (gen-call :function ::reset-advertising &form)))
+
 (defmacro set-advertising-interval
   "Set's the interval betweeen two consecutive advertisements. Note: This is a best effort. The actual interval may vary
    non-trivially from the requested intervals. On some hardware, there is a minimum interval of 100ms. The minimum and maximum
@@ -761,6 +773,11 @@
      :since "47",
      :callback? true,
      :params [{:name "advertisement-id", :type "integer"} {:name "callback", :type :callback}]}
+    {:id ::reset-advertising,
+     :name "resetAdvertising",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback}]}
     {:id ::set-advertising-interval,
      :name "setAdvertisingInterval",
      :since "55",
