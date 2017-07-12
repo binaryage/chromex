@@ -775,7 +775,7 @@
      :params [{:name "advertisement-id", :type "integer"} {:name "callback", :type :callback}]}
     {:id ::reset-advertising,
      :name "resetAdvertising",
-     :since "master",
+     :since "61",
      :callback? true,
      :params [{:name "callback", :type :callback}]}
     {:id ::set-advertising-interval,
