@@ -98,18 +98,6 @@
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
 
-(defmacro tap-on-text-input-box-focused-events
-  "This event is sent when focus enters a text input box.
-
-   Events will be put on the |channel| with signature [::on-text-input-box-focused [context]] where:
-
-     |context| - Describes the text input box that has acquired focus. Note only the type of text input box is passed. This
-                 API is intended to be used by non-ime virtual keyboard only. Normal ime virtual keyboard should use
-                 chrome.input.ime.onFocus to get the more detailed InputContext.
-
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
-  ([channel & args] (apply gen-call :event ::on-text-input-box-focused &form channel args)))
-
 (defmacro tap-on-bounds-changed-events
   "This event is sent when virtual keyboard bounds changed and overscroll/resize is enabled.
 
@@ -181,8 +169,7 @@
      :since "46",
      :params [{:name "state", :type "virtualKeyboardPrivate.KeyboardState"}]}],
    :events
-   [{:id ::on-text-input-box-focused, :name "onTextInputBoxFocused", :params [{:name "context", :type "object"}]}
-    {:id ::on-bounds-changed,
+   [{:id ::on-bounds-changed,
      :name "onBoundsChanged",
      :since "44",
      :params [{:name "bounds", :type "virtualKeyboardPrivate.Bounds"}]}

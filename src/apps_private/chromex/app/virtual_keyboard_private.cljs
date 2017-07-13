@@ -35,9 +35,6 @@
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
-(defn on-text-input-box-focused* [config channel & args]
-  (gen-wrap :event ::on-text-input-box-focused config channel args))
-
 (defn on-bounds-changed* [config channel & args]
   (gen-wrap :event ::on-bounds-changed config channel args))
 

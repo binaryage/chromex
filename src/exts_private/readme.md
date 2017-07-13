@@ -49,7 +49,7 @@
 
 ### API stats
 
-Generated 41 namespaces containing 1 properties, 319 functions and 76 events:
+Generated 41 namespaces containing 1 properties, 319 functions and 75 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -89,7 +89,7 @@ Generated 41 namespaces containing 1 properties, 319 functions and 76 events:
     |                  chrome.systemPrivate |           0 |          3 |       4 |
     |                chrome.terminalPrivate |           0 |          5 |       1 |
     |                   chrome.usersPrivate |           0 |          5 |       0 |
-    |         chrome.virtualKeyboardPrivate |           0 |         10 |       3 |
+    |         chrome.virtualKeyboardPrivate |           0 |         10 |       2 |
     |                  chrome.webcamPrivate |           0 |          5 |       0 |
     |             chrome.webrtcAudioPrivate |           0 |          3 |       1 |
     |    chrome.webrtcDesktopCapturePrivate |           0 |          2 |       0 |
@@ -272,8 +272,8 @@ Generated 41 namespaces containing 1 properties, 319 functions and 76 events:
 
     [chromex.ext.virtual-keyboard-private refer-macros:[
       insert-text send-key-event hide-keyboard set-hotrod-keyboard lock-keyboard keyboard-loaded
-      get-keyboard-config open-settings set-mode set-keyboard-state tap-on-text-input-box-focused
-      tap-on-bounds-changed tap-on-keyboard-closed tap-all-events]]
+      get-keyboard-config open-settings set-mode set-keyboard-state tap-on-bounds-changed
+      tap-on-keyboard-closed tap-all-events]]
 
     [chromex.ext.webcam-private refer-macros:[
       open-serial-webcam close-webcam get set reset tap-all-events]]
