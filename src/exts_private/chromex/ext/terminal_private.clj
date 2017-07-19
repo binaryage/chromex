@@ -1,5 +1,5 @@
 (ns chromex.ext.terminal-private
-  "  * available since Chrome 18"
+  "  * available since Chrome 19"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -109,7 +109,7 @@
 
 (def api-table
   {:namespace "chrome.terminalPrivate",
-   :since "18",
+   :since "19",
    :functions
    [{:id ::open-terminal-process,
      :name "openTerminalProcess",
@@ -132,7 +132,6 @@
       {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::on-terminal-resize,
      :name "onTerminalResize",
-     :since "19",
      :callback? true,
      :params
      [{:name "pid", :type "integer"}

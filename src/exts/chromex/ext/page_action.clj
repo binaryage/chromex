@@ -3,7 +3,7 @@
    actions represent actions that can be taken on the current page, but that aren't applicable to all pages. Page actions
    appear grayed out when inactive.
 
-     * available since Chrome 18
+     * available since Chrome 19
      * https://developer.chrome.com/extensions/pageAction"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -123,14 +123,13 @@
 
 (def api-table
   {:namespace "chrome.pageAction",
-   :since "18",
+   :since "19",
    :functions
    [{:id ::show, :name "show", :params [{:name "tab-id", :type "integer"}]}
     {:id ::hide, :name "hide", :params [{:name "tab-id", :type "integer"}]}
     {:id ::set-title, :name "setTitle", :params [{:name "details", :type "object"}]}
     {:id ::get-title,
      :name "getTitle",
-     :since "19",
      :callback? true,
      :params
      [{:name "details", :type "object"}
@@ -142,7 +141,6 @@
     {:id ::set-popup, :name "setPopup", :params [{:name "details", :type "object"}]}
     {:id ::get-popup,
      :name "getPopup",
-     :since "19",
      :callback? true,
      :params
      [{:name "details", :type "object"}

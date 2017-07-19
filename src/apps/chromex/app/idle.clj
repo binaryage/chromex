@@ -1,7 +1,7 @@
 (ns chromex.app.idle
   "Use the chrome.idle API to detect when the machine's idle state changes.
 
-     * available since Chrome 18
+     * available since Chrome 19
      * https://developer.chrome.com/apps/idle"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -71,7 +71,7 @@
 
 (def api-table
   {:namespace "chrome.idle",
-   :since "18",
+   :since "19",
    :functions
    [{:id ::query-state,
      :name "queryState",

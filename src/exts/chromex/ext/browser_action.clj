@@ -2,7 +2,7 @@
   "Use browser actions to put icons in the main Google Chrome toolbar, to the right of the address bar. In addition to its
    icon, a browser action can also have a tooltip, a badge, and a popup.
 
-     * available since Chrome 18
+     * available since Chrome 19
      * https://developer.chrome.com/extensions/browserAction"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -173,12 +173,11 @@
 
 (def api-table
   {:namespace "chrome.browserAction",
-   :since "18",
+   :since "19",
    :functions
    [{:id ::set-title, :name "setTitle", :params [{:name "details", :type "object"}]}
     {:id ::get-title,
      :name "getTitle",
-     :since "19",
      :callback? true,
      :params
      [{:name "details", :type "object"}
@@ -190,7 +189,6 @@
     {:id ::set-popup, :name "setPopup", :params [{:name "details", :type "object"}]}
     {:id ::get-popup,
      :name "getPopup",
-     :since "19",
      :callback? true,
      :params
      [{:name "details", :type "object"}
@@ -198,7 +196,6 @@
     {:id ::set-badge-text, :name "setBadgeText", :params [{:name "details", :type "object"}]}
     {:id ::get-badge-text,
      :name "getBadgeText",
-     :since "19",
      :callback? true,
      :params
      [{:name "details", :type "object"}
@@ -206,7 +203,6 @@
     {:id ::set-badge-background-color, :name "setBadgeBackgroundColor", :params [{:name "details", :type "object"}]}
     {:id ::get-badge-background-color,
      :name "getBadgeBackgroundColor",
-     :since "19",
      :callback? true,
      :params
      [{:name "details", :type "object"}
