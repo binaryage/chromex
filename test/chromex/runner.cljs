@@ -10,6 +10,7 @@
             [chromex.test.chrome-port]))
 
 (enable-console-print!)
+(println "ClojureScript version:" *clojurescript-version*)
 
 (defmethod report [::test/default :summary] [m]
   (println "\nRan" (:test m) "tests containing"
