@@ -27,7 +27,7 @@
 (defmacro set-state
   "Sets the desired state of the system.
 
-     |state| - A dictionary with the desired new state. The only settable states are RUNNING and SUSPENDED.
+     |state| - A dictionary with the desired new state. The only settable states are RUNNING, SUSPENDED, and RESTARTING.
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [state] where:

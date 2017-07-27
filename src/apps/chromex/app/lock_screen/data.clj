@@ -139,6 +139,7 @@
    :functions
    [{:id ::create,
      :name "create",
+     :since "61",
      :callback? true,
      :params
      [{:name "callback", :type :callback, :callback {:params [{:name "item", :type "lockScreen.data.DataItemInfo"}]}}]}
