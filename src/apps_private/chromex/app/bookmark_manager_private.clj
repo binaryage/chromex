@@ -92,7 +92,13 @@
 
      |parent-id| - The ID of the folder that the drop was made.
      |index| - The index of the position to drop at. If left out the dropped items will be placed at the end of the existing
-               children."
+               children.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([parent-id index] (gen-call :function ::drop &form parent-id index))
   ([parent-id] `(drop ~parent-id :omit)))
 
@@ -321,7 +327,11 @@
      :params [{:name "id-list", :type "[array-of-strings]"} {:name "is-from-touch", :type "boolean"}]}
     {:id ::drop,
      :name "drop",
-     :params [{:name "parent-id", :type "string"} {:name "index", :optional? true, :type "integer"}]}
+     :callback? true,
+     :params
+     [{:name "parent-id", :type "string"}
+      {:name "index", :optional? true, :type "integer"}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-subtree,
      :name "getSubtree",
      :callback? true,
