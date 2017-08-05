@@ -5,7 +5,7 @@
 
    Valid stream IDs are positive and non-zero.
 
-     * available since Chrome 61
+     * available since Chrome 62
      * https://developer.chrome.com/extensions/cast.streaming.rtpStream"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -150,7 +150,7 @@
 
 (def api-table
   {:namespace "chrome.cast.streaming.rtpStream",
-   :since "61",
+   :since "62",
    :functions
    [{:id ::destroy, :name "destroy", :params [{:name "stream-id", :type "integer"}]}
     {:id ::get-supported-params,
