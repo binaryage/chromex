@@ -37,6 +37,42 @@
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
+(defmacro get-audio-state
+  "Queries audio state.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [audible] where:
+
+     |audible| - https://developer.chrome.com/apps/tags/webview#property-callback-audible.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/apps/tags/webview#method-getAudioState."
+  ([] (gen-call :function ::get-audio-state &form)))
+
+(defmacro set-audio-muted
+  "Sets audio mute state of the webview.
+
+     |mute| - Mute audio value
+
+   https://developer.chrome.com/apps/tags/webview#method-setAudioMuted."
+  ([mute] (gen-call :function ::set-audio-muted &form mute)))
+
+(defmacro is-audio-muted
+  "Queries whether audio is muted.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [muted] where:
+
+     |muted| - https://developer.chrome.com/apps/tags/webview#property-callback-muted.
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/apps/tags/webview#method-isAudioMuted."
+  ([] (gen-call :function ::is-audio-muted &form)))
+
 (defmacro capture-visible-region
   "Captures the visible region of the webview.
 
@@ -394,7 +430,18 @@ webview.addContentScripts([{
     {:id ::request, :name "request", :since "33", :return-type "webviewTag.WebRequestEventInterface"}
     {:id ::context-menus, :name "contextMenus", :since "44", :return-type "webviewTag.ContextMenus"}],
    :functions
-   [{:id ::capture-visible-region,
+   [{:id ::get-audio-state,
+     :name "getAudioState",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "audible", :type "boolean"}]}}]}
+    {:id ::set-audio-muted, :name "setAudioMuted", :since "master", :params [{:name "mute", :type "boolean"}]}
+    {:id ::is-audio-muted,
+     :name "isAudioMuted",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "muted", :type "boolean"}]}}]}
+    {:id ::capture-visible-region,
      :name "captureVisibleRegion",
      :since "50",
      :callback? true,

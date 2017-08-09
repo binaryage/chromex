@@ -77,13 +77,13 @@
 
 ### API stats
 
-Generated 69 namespaces containing 30 properties, 441 functions and 153 events:
+Generated 69 namespaces containing 30 properties, 444 functions and 153 events:
 
 
     |                         :namespace | :properties | :functions | :events |
     |------------------------------------+-------------+------------+---------|
     |                          <appview> |           0 |          1 |       0 |
-    |                          <webview> |           3 |         26 |       0 |
+    |                          <webview> |           3 |         29 |       0 |
     |       chrome.accessibilityFeatures |          13 |          0 |       0 |
     |                      chrome.alarms |           0 |          5 |       1 |
     |                 chrome.app.runtime |           0 |          0 |       3 |
@@ -161,11 +161,11 @@ Generated 69 namespaces containing 30 properties, 441 functions and 153 events:
       connect tap-all-events]]
 
     [chromex.app.webview-tag refer-macros:[
-      get-content-window get-request get-context-menus capture-visible-region add-content-scripts back
-      can-go-back can-go-forward clear-data execute-script find forward get-process-id get-user-agent
-      get-zoom get-zoom-mode go insert-css is-user-agent-overridden print reload remove-content-scripts
-      set-user-agent-override set-zoom set-zoom-mode stop stop-finding load-data-with-base-url terminate
-      tap-all-events]]
+      get-content-window get-request get-context-menus get-audio-state set-audio-muted is-audio-muted
+      capture-visible-region add-content-scripts back can-go-back can-go-forward clear-data
+      execute-script find forward get-process-id get-user-agent get-zoom get-zoom-mode go insert-css
+      is-user-agent-overridden print reload remove-content-scripts set-user-agent-override set-zoom
+      set-zoom-mode stop stop-finding load-data-with-base-url terminate tap-all-events]]
 
     [chromex.app.accessibility-features refer-macros:[
       get-spoken-feedback get-large-cursor get-sticky-keys get-high-contrast get-screen-magnifier

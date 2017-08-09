@@ -14,6 +14,15 @@
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
+(defn get-audio-state* [config]
+  (gen-wrap :function ::get-audio-state config))
+
+(defn set-audio-muted* [config mute]
+  (gen-wrap :function ::set-audio-muted config mute))
+
+(defn is-audio-muted* [config]
+  (gen-wrap :function ::is-audio-muted config))
+
 (defn capture-visible-region* [config options]
   (gen-wrap :function ::capture-visible-region config options))
 
