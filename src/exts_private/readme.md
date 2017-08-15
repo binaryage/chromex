@@ -49,7 +49,7 @@
 
 ### API stats
 
-Generated 41 namespaces containing 1 properties, 319 functions and 75 events:
+Generated 41 namespaces containing 1 properties, 320 functions and 75 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -71,7 +71,7 @@ Generated 41 namespaces containing 1 properties, 319 functions and 75 events:
     | chrome.enterprise.platformKeysPrivate |           0 |          2 |       0 |
     |      chrome.experienceSamplingPrivate |           0 |          1 |       2 |
     |                chrome.feedbackPrivate |           0 |          6 |       1 |
-    |             chrome.fileManagerPrivate |           0 |         51 |       9 |
+    |             chrome.fileManagerPrivate |           0 |         52 |       9 |
     |                 chrome.hotwordPrivate |           0 |         15 |       9 |
     |             chrome.imageWriterPrivate |           0 |          5 |       5 |
     |             chrome.inputMethodPrivate |           0 |         11 |       7 |
@@ -181,8 +181,8 @@ Generated 41 namespaces containing 1 properties, 319 functions and 75 events:
       validate-path-name-length zoom request-access-token request-web-store-access-token get-share-url
       get-download-url request-drive-share get-profiles open-inspector compute-checksum is-uma-enabled
       set-entry-tag is-piex-loader-enabled get-providing-extensions add-provided-file-system
-      configure-volume get-custom-actions execute-custom-action get-directory-size tap-on-mount-completed
-      tap-on-file-transfers-updated tap-on-copy-progress tap-on-directory-changed
+      configure-volume get-custom-actions execute-custom-action get-directory-size get-recent-files
+      tap-on-mount-completed tap-on-file-transfers-updated tap-on-copy-progress tap-on-directory-changed
       tap-on-preferences-changed tap-on-drive-connection-status-changed tap-on-device-changed
       tap-on-drive-sync-error tap-on-apps-updated tap-all-events]]
 

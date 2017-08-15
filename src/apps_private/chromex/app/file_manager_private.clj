@@ -659,6 +659,18 @@
    chromex.error/get-last-error."
   ([entry] (gen-call :function ::get-directory-size &form entry)))
 
+(defmacro get-recent-files
+  "Gets recently modified files across file systems.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [entries] where:
+
+     |entries| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::get-recent-files &form)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -1037,7 +1049,13 @@
      :callback? true,
      :params
      [{:name "entry", :type "object"}
-      {:name "callback", :type :callback, :callback {:params [{:name "size", :type "double"}]}}]}],
+      {:name "callback", :type :callback, :callback {:params [{:name "size", :type "double"}]}}]}
+    {:id ::get-recent-files,
+     :name "getRecentFiles",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "callback", :type :callback, :callback {:params [{:name "entries", :type "[array-of-Entrys]"}]}}]}],
    :events
    [{:id ::on-mount-completed, :name "onMountCompleted", :params [{:name "event", :type "object"}]}
     {:id ::on-file-transfers-updated, :name "onFileTransfersUpdated", :params [{:name "event", :type "object"}]}

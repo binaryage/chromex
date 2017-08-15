@@ -156,6 +156,9 @@
 (defn get-directory-size* [config entry]
   (gen-wrap :function ::get-directory-size config entry))
 
+(defn get-recent-files* [config]
+  (gen-wrap :function ::get-recent-files config))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-mount-completed* [config channel & args]
