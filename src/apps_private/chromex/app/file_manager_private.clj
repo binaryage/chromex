@@ -1052,7 +1052,7 @@
       {:name "callback", :type :callback, :callback {:params [{:name "size", :type "double"}]}}]}
     {:id ::get-recent-files,
      :name "getRecentFiles",
-     :since "master",
+     :since "62",
      :callback? true,
      :params
      [{:name "callback", :type :callback, :callback {:params [{:name "entries", :type "[array-of-Entrys]"}]}}]}],

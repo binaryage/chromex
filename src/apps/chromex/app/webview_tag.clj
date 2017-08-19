@@ -432,13 +432,13 @@ webview.addContentScripts([{
    :functions
    [{:id ::get-audio-state,
      :name "getAudioState",
-     :since "master",
+     :since "62",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "audible", :type "boolean"}]}}]}
-    {:id ::set-audio-muted, :name "setAudioMuted", :since "master", :params [{:name "mute", :type "boolean"}]}
+    {:id ::set-audio-muted, :name "setAudioMuted", :since "62", :params [{:name "mute", :type "boolean"}]}
     {:id ::is-audio-muted,
      :name "isAudioMuted",
-     :since "master",
+     :since "62",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "muted", :type "boolean"}]}}]}
     {:id ::capture-visible-region,
