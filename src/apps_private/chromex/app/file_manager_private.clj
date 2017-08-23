@@ -323,6 +323,13 @@
      |volume-id| - ?"
   ([volume-id] (gen-call :function ::format-volume &form volume-id)))
 
+(defmacro rename-volume
+  "Renames a mounted volume. |volumeId| ID of the volume to be renamed. |newName| New name of the target volume.
+
+     |volume-id| - ?
+     |new-name| - ?"
+  ([volume-id new-name] (gen-call :function ::rename-volume &form volume-id new-name)))
+
 (defmacro get-preferences
   "Retrieves file manager preferences. |callback
 
@@ -660,7 +667,9 @@
   ([entry] (gen-call :function ::get-directory-size &form entry)))
 
 (defmacro get-recent-files
-  "Gets recently modified files across file systems.
+  "Gets recently modified files across file systems. |restriction| Flag to restrict sources of recent files. |callback
+
+     |restriction| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [entries] where:
@@ -669,7 +678,7 @@
 
    In case of error the channel closes without receiving any result and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([] (gen-call :function ::get-recent-files &form)))
+  ([restriction] (gen-call :function ::get-recent-files &form restriction)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -897,6 +906,10 @@
        :type :callback,
        :callback {:params [{:name "size-stats", :optional? true, :type "object"}]}}]}
     {:id ::format-volume, :name "formatVolume", :params [{:name "volume-id", :type "string"}]}
+    {:id ::rename-volume,
+     :name "renameVolume",
+     :since "master",
+     :params [{:name "volume-id", :type "string"} {:name "new-name", :type "string"}]}
     {:id ::get-preferences,
      :name "getPreferences",
      :callback? true,
@@ -1052,10 +1065,11 @@
       {:name "callback", :type :callback, :callback {:params [{:name "size", :type "double"}]}}]}
     {:id ::get-recent-files,
      :name "getRecentFiles",
-     :since "62",
+     :since "61",
      :callback? true,
      :params
-     [{:name "callback", :type :callback, :callback {:params [{:name "entries", :type "[array-of-Entrys]"}]}}]}],
+     [{:name "restriction", :type "unknown-type"}
+      {:name "callback", :type :callback, :callback {:params [{:name "entries", :type "[array-of-Entrys]"}]}}]}],
    :events
    [{:id ::on-mount-completed, :name "onMountCompleted", :params [{:name "event", :type "object"}]}
     {:id ::on-file-transfers-updated, :name "onFileTransfersUpdated", :params [{:name "event", :type "object"}]}

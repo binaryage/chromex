@@ -78,6 +78,9 @@
 (defn format-volume* [config volume-id]
   (gen-wrap :function ::format-volume config volume-id))
 
+(defn rename-volume* [config volume-id new-name]
+  (gen-wrap :function ::rename-volume config volume-id new-name))
+
 (defn get-preferences* [config]
   (gen-wrap :function ::get-preferences config))
 
@@ -156,8 +159,8 @@
 (defn get-directory-size* [config entry]
   (gen-wrap :function ::get-directory-size config entry))
 
-(defn get-recent-files* [config]
-  (gen-wrap :function ::get-recent-files config))
+(defn get-recent-files* [config restriction]
+  (gen-wrap :function ::get-recent-files config restriction))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 

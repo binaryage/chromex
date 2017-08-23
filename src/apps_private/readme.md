@@ -47,7 +47,7 @@
 
 ### API stats
 
-Generated 39 namespaces containing 1 properties, 295 functions and 81 events:
+Generated 39 namespaces containing 1 properties, 296 functions and 81 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -65,7 +65,7 @@ Generated 39 namespaces containing 1 properties, 295 functions and 81 events:
     |       chrome.easyUnlockPrivate |           0 |         25 |       5 |
     |             chrome.echoPrivate |           0 |          5 |       0 |
     |         chrome.feedbackPrivate |           0 |          6 |       1 |
-    |      chrome.fileManagerPrivate |           0 |         52 |       9 |
+    |      chrome.fileManagerPrivate |           0 |         53 |       9 |
     |          chrome.hotwordPrivate |           0 |         15 |       9 |
     |         chrome.identityPrivate |           0 |          0 |       1 |
     |      chrome.imageWriterPrivate |           0 |          5 |       5 |
@@ -164,7 +164,7 @@ Generated 39 namespaces containing 1 properties, 295 functions and 81 events:
       get-mime-type get-strings add-file-watch remove-file-watch enable-external-file-scheme grant-access
       select-files select-file get-entry-properties pin-drive-file resolve-isolated-entries add-mount
       remove-mount get-volume-metadata-list cancel-file-transfers cancel-all-file-transfers start-copy
-      cancel-copy get-size-stats format-volume get-preferences set-preferences search-drive
+      cancel-copy get-size-stats format-volume rename-volume get-preferences set-preferences search-drive
       search-drive-metadata search-files-by-hashes zip-selection get-drive-connection-state
       validate-path-name-length zoom request-access-token request-web-store-access-token get-share-url
       get-download-url request-drive-share get-profiles open-inspector compute-checksum is-uma-enabled
