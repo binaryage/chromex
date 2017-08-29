@@ -101,6 +101,12 @@
      |right| - if set, swap the primary mouse button."
   ([right] (gen-call :function ::set-primary-button-right &form right)))
 
+(defmacro set-mouse-reverse-scroll
+  "Turn on/off reverse scrolling for mice.
+
+     |enabled| - if set, enable reverse scrolling."
+  ([enabled] (gen-call :function ::set-mouse-reverse-scroll &form enabled)))
+
 (defmacro get-visible-notifications
   "Get visible notifications on the system.
 
@@ -172,6 +178,10 @@
     {:id ::set-natural-scroll, :name "setNaturalScroll", :params [{:name "enabled", :type "boolean"}]}
     {:id ::set-mouse-sensitivity, :name "setMouseSensitivity", :params [{:name "value", :type "integer"}]}
     {:id ::set-primary-button-right, :name "setPrimaryButtonRight", :params [{:name "right", :type "boolean"}]}
+    {:id ::set-mouse-reverse-scroll,
+     :name "setMouseReverseScroll",
+     :since "master",
+     :params [{:name "enabled", :type "boolean"}]}
     {:id ::get-visible-notifications,
      :name "getVisibleNotifications",
      :since "52",

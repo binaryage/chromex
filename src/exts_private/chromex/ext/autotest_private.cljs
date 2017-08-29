@@ -45,6 +45,9 @@
 (defn set-primary-button-right* [config right]
   (gen-wrap :function ::set-primary-button-right config right))
 
+(defn set-mouse-reverse-scroll* [config enabled]
+  (gen-wrap :function ::set-mouse-reverse-scroll config enabled))
+
 (defn get-visible-notifications* [config]
   (gen-wrap :function ::get-visible-notifications config))
 
