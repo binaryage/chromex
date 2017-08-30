@@ -1,4 +1,4 @@
-(def clojurescript-version (or (System/getenv "CANARY_CLOJURESCRIPT_VERSION") "1.9.671"))
+(def clojurescript-version (or (System/getenv "CANARY_CLOJURESCRIPT_VERSION") "1.9.908"))
 (defproject binaryage/chromex "0.5.9"
   :description "A ClojureScript wrapper for writing Chrome Extensions and Apps."
   :url "https://github.com/binaryage/chromex"
@@ -8,10 +8,10 @@
 
   :scm {:name "git" :url "https://github.com/binaryage/chromex"}
 
-  :dependencies [[org.clojure/clojure "1.9.0-alpha17" :scope "provided"]
+  :dependencies [[org.clojure/clojure "1.9.0-alpha19" :scope "provided"]
                  [org.clojure/clojurescript ~clojurescript-version :scope "provided"]
                  [org.clojure/core.async "0.3.443"]
-                 [binaryage/oops "0.5.5"]
+                 [binaryage/oops "0.5.6"]
                  [environ "1.1.0"]]
 
   :clean-targets ^{:protect false} ["target"
