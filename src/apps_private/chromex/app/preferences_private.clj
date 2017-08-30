@@ -10,10 +10,7 @@
 
 ; -- properties -------------------------------------------------------------------------------------------------------------
 
-(defmacro get-easy-unlock-proximity-required
-  "If true, a remote Easy Unlock device can only unlock the local device if it is in very close proximity (roughly, within a
-   foot). This preference's value is a boolean, defaulting to false."
-  ([] (gen-call :property ::easy-unlock-proximity-required &form)))
+(defmacro get-easy-unlock-proximity-required ([] (gen-call :property ::easy-unlock-proximity-required &form)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
@@ -33,7 +30,7 @@
    [{:id ::easy-unlock-proximity-required,
      :name "easyUnlockProximityRequired",
      :since "40",
-     :return-type "types.private.ChromeDirectSetting"}]})
+     :return-type "preferencesPrivate.EasyUnlockProximityRequired"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
