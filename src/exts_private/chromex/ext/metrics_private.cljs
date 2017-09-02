@@ -36,6 +36,9 @@
 (defn record-long-time* [config metric-name value]
   (gen-wrap :function ::record-long-time config metric-name value))
 
+(defn record-sparse-hashable* [config metric-name value]
+  (gen-wrap :function ::record-sparse-hashable config metric-name value))
+
 (defn record-sparse-value* [config metric-name value]
   (gen-wrap :function ::record-sparse-value config metric-name value))
 

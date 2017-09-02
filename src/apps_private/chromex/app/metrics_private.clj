@@ -105,6 +105,13 @@
      |value| - ?"
   ([metric-name value] (gen-call :function ::record-long-time &form metric-name value)))
 
+(defmacro record-sparse-hashable
+  "Increments the count associated with the hash of |value| in the sparse histogram defined by the |metricName|.
+
+     |metric-name| - ?
+     |value| - ?"
+  ([metric-name value] (gen-call :function ::record-sparse-hashable &form metric-name value)))
+
 (defmacro record-sparse-value
   "Increments the count associated with |value| in the sparse histogram defined by the |metricName|.
 
@@ -172,6 +179,10 @@
     {:id ::record-long-time,
      :name "recordLongTime",
      :params [{:name "metric-name", :type "string"} {:name "value", :type "integer"}]}
+    {:id ::record-sparse-hashable,
+     :name "recordSparseHashable",
+     :since "master",
+     :params [{:name "metric-name", :type "string"} {:name "value", :type "string"}]}
     {:id ::record-sparse-value,
      :name "recordSparseValue",
      :params [{:name "metric-name", :type "string"} {:name "value", :type "integer"}]}

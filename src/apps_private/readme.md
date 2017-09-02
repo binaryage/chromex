@@ -47,7 +47,7 @@
 
 ### API stats
 
-Generated 39 namespaces containing 1 properties, 296 functions and 81 events:
+Generated 39 namespaces containing 1 properties, 297 functions and 81 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -74,7 +74,7 @@ Generated 39 namespaces containing 1 properties, 296 functions and 81 events:
     | chrome.languageSettingsPrivate |           0 |         11 |       4 |
     |  chrome.mediaPerceptionPrivate |           0 |          3 |       1 |
     |      chrome.mediaPlayerPrivate |           0 |          0 |       3 |
-    |          chrome.metricsPrivate |           0 |         13 |       0 |
+    |          chrome.metricsPrivate |           0 |         14 |       0 |
     |             chrome.mojoPrivate |           0 |          2 |       0 |
     |     chrome.musicManagerPrivate |           0 |          1 |       0 |
     |       chrome.networkingPrivate |           0 |         21 |       5 |
@@ -219,7 +219,8 @@ Generated 39 namespaces containing 1 properties, 296 functions and 81 events:
     [chromex.app.metrics-private refer-macros:[
       get-is-crash-reporting-enabled get-field-trial get-variation-params record-user-action
       record-percentage record-count record-small-count record-medium-count record-time
-      record-medium-time record-long-time record-sparse-value record-value tap-all-events]]
+      record-medium-time record-long-time record-sparse-hashable record-sparse-value record-value
+      tap-all-events]]
 
     [chromex.app.mojo-private refer-macros:[
       define require-async tap-all-events]]
