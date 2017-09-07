@@ -180,7 +180,7 @@
     {:id ::set-primary-button-right, :name "setPrimaryButtonRight", :params [{:name "right", :type "boolean"}]}
     {:id ::set-mouse-reverse-scroll,
      :name "setMouseReverseScroll",
-     :since "master",
+     :since "62",
      :params [{:name "enabled", :type "boolean"}]}
     {:id ::get-visible-notifications,
      :name "getVisibleNotifications",

@@ -181,7 +181,7 @@
      :params [{:name "metric-name", :type "string"} {:name "value", :type "integer"}]}
     {:id ::record-sparse-hashable,
      :name "recordSparseHashable",
-     :since "master",
+     :since "62",
      :params [{:name "metric-name", :type "string"} {:name "value", :type "string"}]}
     {:id ::record-sparse-value,
      :name "recordSparseValue",

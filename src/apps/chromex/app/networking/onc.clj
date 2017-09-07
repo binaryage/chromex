@@ -180,12 +180,16 @@
   ([network-type] (gen-call :function ::disable-network-type &form network-type)))
 
 (defmacro request-network-scan
-  "Requests that the networking subsystem scan for new networks and update the list returned by 'getNetworks'. This is only a
-   request: the network subsystem can choose to ignore it.  If the list is updated, then the 'onNetworkListChanged' event will
-   be fired.
+  "Requests that the networking subsystem scan for new networks and update the list returned by 'getVisibleNetworks'. This is
+   only a request: the network subsystem can choose to ignore it.  If the list is updated, then the 'onNetworkListChanged'
+   event will be fired.
+
+     |network-type| - If provided, requests a scan specific to the type.     For Cellular a mobile network scan will be
+                      requested if supported.
 
    https://developer.chrome.com/apps/networking.onc#method-requestNetworkScan."
-  ([] (gen-call :function ::request-network-scan &form)))
+  ([network-type] (gen-call :function ::request-network-scan &form network-type))
+  ([] `(request-network-scan :omit)))
 
 (defmacro start-connect
   "Starts a connection to the network with networkGuid.
@@ -372,7 +376,9 @@
     {:id ::disable-network-type,
      :name "disableNetworkType",
      :params [{:name "network-type", :type "networking.onc.NetworkType"}]}
-    {:id ::request-network-scan, :name "requestNetworkScan"}
+    {:id ::request-network-scan,
+     :name "requestNetworkScan",
+     :params [{:name "network-type", :optional? true, :type "networking.onc.NetworkType"}]}
     {:id ::start-connect,
      :name "startConnect",
      :callback? true,

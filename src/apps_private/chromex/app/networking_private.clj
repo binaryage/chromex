@@ -196,8 +196,12 @@
 (defmacro request-network-scan
   "Requests that the networking subsystem scan for new networks and update the list returned by 'getVisibleNetworks'. This is
    only a request: the network subsystem can choose to ignore it.  If the list is updated, then the 'onNetworkListChanged'
-   event will be fired."
-  ([] (gen-call :function ::request-network-scan &form)))
+   event will be fired.
+
+     |network-type| - If provided, requests a scan specific to the type.     For Cellular a mobile network scan will be
+                      requested if supported."
+  ([network-type] (gen-call :function ::request-network-scan &form network-type))
+  ([] `(request-network-scan :omit)))
 
 (defmacro start-connect
   "Starts a connection to the network with networkGuid.
@@ -463,7 +467,10 @@
      :name "disableNetworkType",
      :since "32",
      :params [{:name "network-type", :type "networkingPrivate.NetworkType"}]}
-    {:id ::request-network-scan, :name "requestNetworkScan", :since "28"}
+    {:id ::request-network-scan,
+     :name "requestNetworkScan",
+     :since "28",
+     :params [{:name "network-type", :optional? true, :type "networkingPrivate.NetworkType"}]}
     {:id ::start-connect,
      :name "startConnect",
      :callback? true,

@@ -33,8 +33,8 @@
 (defn disable-network-type* [config network-type]
   (gen-wrap :function ::disable-network-type config network-type))
 
-(defn request-network-scan* [config]
-  (gen-wrap :function ::request-network-scan config))
+(defn request-network-scan* [config network-type]
+  (gen-wrap :function ::request-network-scan config network-type))
 
 (defn start-connect* [config network-guid]
   (gen-wrap :function ::start-connect config network-guid))
