@@ -292,6 +292,21 @@
    chromex.error/get-last-error."
   ([network-guid sim-state] (gen-call :function ::set-cellular-sim-state &form network-guid sim-state)))
 
+(defmacro select-cellular-mobile-network
+  "Selects which Cellular Mobile Network to use. |networkId| must be the NetworkId property of a member of
+   Cellular.FoundNetworks from the network properties for the specified Cellular network.
+
+     |network-guid| - The GUID of the cellular network to select the network     for. If empty, the default cellular device
+                      will be used.
+     |network-id| - The networkId to select.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([network-guid network-id] (gen-call :function ::select-cellular-mobile-network &form network-guid network-id)))
+
 (defmacro get-global-policy
   "Gets the global policy properties. These properties are not expected to change during a session.
 
@@ -508,6 +523,14 @@
      :params
      [{:name "network-guid", :type "string"}
       {:name "sim-state", :type "object"}
+      {:name "callback", :optional? true, :type :callback}]}
+    {:id ::select-cellular-mobile-network,
+     :name "selectCellularMobileNetwork",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "network-guid", :type "string"}
+      {:name "network-id", :type "string"}
       {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-global-policy,
      :name "getGlobalPolicy",

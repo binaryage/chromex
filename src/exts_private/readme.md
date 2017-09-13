@@ -49,7 +49,7 @@
 
 ### API stats
 
-Generated 41 namespaces containing 1 properties, 323 functions and 75 events:
+Generated 41 namespaces containing 1 properties, 324 functions and 75 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -79,7 +79,7 @@ Generated 41 namespaces containing 1 properties, 323 functions and 75 events:
     |             chrome.mediaPlayerPrivate |           0 |          0 |       3 |
     |                 chrome.metricsPrivate |           0 |         14 |       0 |
     |                    chrome.mojoPrivate |           0 |          2 |       0 |
-    |              chrome.networkingPrivate |           0 |         21 |       5 |
+    |              chrome.networkingPrivate |           0 |         22 |       5 |
     |               chrome.passwordsPrivate |           0 |          5 |       3 |
     |             chrome.preferencesPrivate |           1 |          0 |       0 |
     |             chrome.quickUnlockPrivate |           0 |          5 |       1 |
@@ -232,8 +232,8 @@ Generated 41 namespaces containing 1 properties, 323 functions and 75 events:
       get-properties get-managed-properties get-state set-properties create-network forget-network
       get-networks get-visible-networks get-enabled-network-types get-device-states enable-network-type
       disable-network-type request-network-scan start-connect start-disconnect start-activate
-      get-captive-portal-status unlock-cellular-sim set-cellular-sim-state get-global-policy
-      get-certificate-lists tap-on-networks-changed tap-on-network-list-changed
+      get-captive-portal-status unlock-cellular-sim set-cellular-sim-state select-cellular-mobile-network
+      get-global-policy get-certificate-lists tap-on-networks-changed tap-on-network-list-changed
       tap-on-device-state-list-changed tap-on-portal-detection-completed tap-on-certificate-lists-changed
       tap-all-events]]
 

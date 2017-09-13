@@ -60,6 +60,9 @@
 (defn set-cellular-sim-state* [config network-guid sim-state]
   (gen-wrap :function ::set-cellular-sim-state config network-guid sim-state))
 
+(defn select-cellular-mobile-network* [config network-guid network-id]
+  (gen-wrap :function ::select-cellular-mobile-network config network-guid network-id))
+
 (defn get-global-policy* [config]
   (gen-wrap :function ::get-global-policy config))
 
