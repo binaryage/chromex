@@ -908,7 +908,7 @@
     {:id ::format-volume, :name "formatVolume", :params [{:name "volume-id", :type "string"}]}
     {:id ::rename-volume,
      :name "renameVolume",
-     :since "62",
+     :since "63",
      :params [{:name "volume-id", :type "string"} {:name "new-name", :type "string"}]}
     {:id ::get-preferences,
      :name "getPreferences",
