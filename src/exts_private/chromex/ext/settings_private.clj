@@ -3,7 +3,7 @@
    from the settings UI. Access is restricted to a whitelisted set of user
    facing preferences.
 
-     * available since Chrome 61"
+     * available since Chrome 62"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -110,7 +110,7 @@
 
 (def api-table
   {:namespace "chrome.settingsPrivate",
-   :since "61",
+   :since "62",
    :functions
    [{:id ::set-pref,
      :name "setPref",
