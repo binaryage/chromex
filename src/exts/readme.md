@@ -85,7 +85,7 @@
 
 ### API stats
 
-Generated 77 namespaces containing 50 properties, 360 functions and 175 events:
+Generated 77 namespaces containing 50 properties, 360 functions and 176 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -136,7 +136,7 @@ Generated 77 namespaces containing 50 properties, 360 functions and 175 events:
     |                     chrome.management |           0 |         12 |       4 |
     |              chrome.networking.config |           0 |          2 |       1 |
     |                  chrome.notifications |           0 |          5 |       5 |
-    |                        chrome.omnibox |           0 |          1 |       4 |
+    |                        chrome.omnibox |           0 |          1 |       5 |
     |                     chrome.pageAction |           0 |          7 |       1 |
     |                    chrome.pageCapture |           0 |          1 |       0 |
     |                    chrome.permissions |           0 |          4 |       2 |
@@ -359,7 +359,7 @@ Generated 77 namespaces containing 50 properties, 360 functions and 175 events:
 
     [chromex.ext.omnibox refer-macros:[
       set-default-suggestion tap-on-input-started tap-on-input-changed tap-on-input-entered
-      tap-on-input-cancelled tap-all-events]]
+      tap-on-input-cancelled tap-on-delete-suggestion tap-all-events]]
 
     [chromex.ext.page-action refer-macros:[
       show hide set-title get-title set-icon set-popup get-popup tap-on-clicked tap-all-events]]

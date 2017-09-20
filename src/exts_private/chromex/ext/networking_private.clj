@@ -526,7 +526,7 @@
       {:name "callback", :optional? true, :type :callback}]}
     {:id ::select-cellular-mobile-network,
      :name "selectCellularMobileNetwork",
-     :since "master",
+     :since "63",
      :callback? true,
      :params
      [{:name "network-guid", :type "string"}

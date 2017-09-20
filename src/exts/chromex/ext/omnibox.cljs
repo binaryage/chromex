@@ -20,3 +20,6 @@
 (defn on-input-cancelled* [config channel & args]
   (gen-wrap :event ::on-input-cancelled config channel args))
 
+(defn on-delete-suggestion* [config channel & args]
+  (gen-wrap :event ::on-delete-suggestion config channel args))
+

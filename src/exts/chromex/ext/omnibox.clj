@@ -72,6 +72,18 @@
    https://developer.chrome.com/extensions/omnibox#event-onInputCancelled."
   ([channel & args] (apply gen-call :event ::on-input-cancelled &form channel args)))
 
+(defmacro tap-on-delete-suggestion-events
+  "User has deleted a suggested result.
+
+   Events will be put on the |channel| with signature [::on-delete-suggestion [text]] where:
+
+     |text| - Text of the deleted suggestion.
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+
+   https://developer.chrome.com/extensions/omnibox#event-onDeleteSuggestion."
+  ([channel & args] (apply gen-call :event ::on-delete-suggestion &form channel args)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -96,7 +108,8 @@
     {:id ::on-input-entered,
      :name "onInputEntered",
      :params [{:name "text", :type "string"} {:name "disposition", :type "omnibox.OnInputEnteredDisposition"}]}
-    {:id ::on-input-cancelled, :name "onInputCancelled"}]})
+    {:id ::on-input-cancelled, :name "onInputCancelled"}
+    {:id ::on-delete-suggestion, :name "onDeleteSuggestion", :since "master", :params [{:name "text", :type "string"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
