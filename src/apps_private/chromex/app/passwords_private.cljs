@@ -3,14 +3,14 @@
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
-(defn remove-saved-password* [config login-pair]
-  (gen-wrap :function ::remove-saved-password config login-pair))
+(defn remove-saved-password* [config index]
+  (gen-wrap :function ::remove-saved-password config index))
 
-(defn remove-password-exception* [config exception-url]
-  (gen-wrap :function ::remove-password-exception config exception-url))
+(defn remove-password-exception* [config index]
+  (gen-wrap :function ::remove-password-exception config index))
 
-(defn request-plaintext-password* [config login-pair]
-  (gen-wrap :function ::request-plaintext-password config login-pair))
+(defn request-plaintext-password* [config index]
+  (gen-wrap :function ::request-plaintext-password config index))
 
 (defn get-saved-password-list* [config]
   (gen-wrap :function ::get-saved-password-list config))

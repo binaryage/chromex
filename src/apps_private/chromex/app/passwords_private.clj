@@ -17,23 +17,23 @@
   "Removes the saved password corresponding to |loginPair|. If no saved password for this pair exists, this function is a
    no-op.
 
-     |login-pair| - The LoginPair corresponding to the entry to remove."
-  ([login-pair] (gen-call :function ::remove-saved-password &form login-pair)))
+     |index| - The index for the password entry being removed."
+  ([index] (gen-call :function ::remove-saved-password &form index)))
 
 (defmacro remove-password-exception
   "Removes the saved password exception corresponding to |exceptionUrl|. If no exception with this URL exists, this function
    is a no-op.
 
-     |exception-url| - The URL corresponding to the exception to remove."
-  ([exception-url] (gen-call :function ::remove-password-exception &form exception-url)))
+     |index| - The index for the exception url entry being removed."
+  ([index] (gen-call :function ::remove-password-exception &form index)))
 
 (defmacro request-plaintext-password
-  "Returns the plaintext password corresponding to |loginPair|. Note that on some operating systems, this call may result in
-   an OS-level reauthentication. Once the password has been fetched, it will be returned via the onPlaintextPasswordRetrieved
+  "Returns the plaintext password corresponding to |index|. Note that on some operating systems, this call may result in an
+   OS-level reauthentication. Once the password has been fetched, it will be returned via the onPlaintextPasswordRetrieved
    event. TODO(hcarmona): Investigate using a callback for consistency.
 
-     |login-pair| - The LoginPair corresponding to the entry whose password     is to be returned."
-  ([login-pair] (gen-call :function ::request-plaintext-password &form login-pair)))
+     |index| - The index for the password entry being being retrieved."
+  ([index] (gen-call :function ::request-plaintext-password &form index)))
 
 (defmacro get-saved-password-list
   "Returns the list of saved passwords.
@@ -109,15 +109,9 @@
   {:namespace "chrome.passwordsPrivate",
    :since "62",
    :functions
-   [{:id ::remove-saved-password,
-     :name "removeSavedPassword",
-     :params [{:name "login-pair", :type "passwordsPrivate.LoginPair"}]}
-    {:id ::remove-password-exception,
-     :name "removePasswordException",
-     :params [{:name "exception-url", :type "string"}]}
-    {:id ::request-plaintext-password,
-     :name "requestPlaintextPassword",
-     :params [{:name "login-pair", :type "passwordsPrivate.LoginPair"}]}
+   [{:id ::remove-saved-password, :name "removeSavedPassword", :params [{:name "index", :type "integer"}]}
+    {:id ::remove-password-exception, :name "removePasswordException", :params [{:name "index", :type "integer"}]}
+    {:id ::request-plaintext-password, :name "requestPlaintextPassword", :params [{:name "index", :type "integer"}]}
     {:id ::get-saved-password-list,
      :name "getSavedPasswordList",
      :callback? true,
