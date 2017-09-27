@@ -1,5 +1,5 @@
 (ns chromex.ext.app
-  "  * available since Chrome 19
+  "  * available since Chrome 20
      * https://developer.chrome.com/extensions/app"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -56,15 +56,14 @@
 
 (def api-table
   {:namespace "chrome.app",
-   :since "19",
+   :since "20",
    :functions
    [{:id ::get-is-installed, :name "getIsInstalled", :return-type "boolean"}
     {:id ::install-state,
      :name "installState",
-     :since "20",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "state", :type "app.InstallState"}]}}]}
-    {:id ::running-state, :name "runningState", :since "20", :return-type "app.RunningState"}
+    {:id ::running-state, :name "runningState", :return-type "app.RunningState"}
     {:id ::get-details, :name "getDetails", :return-type "app.Details"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

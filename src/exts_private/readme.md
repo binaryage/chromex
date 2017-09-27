@@ -49,7 +49,7 @@
 
 ### API stats
 
-Generated 41 namespaces containing 1 properties, 324 functions and 75 events:
+Generated 41 namespaces containing 1 properties, 326 functions and 75 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -80,7 +80,7 @@ Generated 41 namespaces containing 1 properties, 324 functions and 75 events:
     |                 chrome.metricsPrivate |           0 |         14 |       0 |
     |                    chrome.mojoPrivate |           0 |          2 |       0 |
     |              chrome.networkingPrivate |           0 |         22 |       5 |
-    |               chrome.passwordsPrivate |           0 |          5 |       3 |
+    |               chrome.passwordsPrivate |           0 |          7 |       3 |
     |             chrome.preferencesPrivate |           1 |          0 |       0 |
     |             chrome.quickUnlockPrivate |           0 |          5 |       1 |
     |               chrome.resourcesPrivate |           0 |          1 |       0 |
@@ -239,7 +239,7 @@ Generated 41 namespaces containing 1 properties, 324 functions and 75 events:
 
     [chromex.ext.passwords-private refer-macros:[
       remove-saved-password remove-password-exception request-plaintext-password get-saved-password-list
-      get-password-exception-list tap-on-saved-passwords-list-changed
+      get-password-exception-list import-passwords export-passwords tap-on-saved-passwords-list-changed
       tap-on-password-exceptions-list-changed tap-on-plaintext-password-retrieved tap-all-events]]
 
     [chromex.ext.preferences-private refer-macros:[

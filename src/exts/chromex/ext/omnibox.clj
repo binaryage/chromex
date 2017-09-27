@@ -1,7 +1,7 @@
 (ns chromex.ext.omnibox
   "The omnibox API allows you to register a keyword with Google Chrome's address bar, which is also known as the omnibox.
 
-     * available since Chrome 19
+     * available since Chrome 20
      * https://developer.chrome.com/extensions/omnibox"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -97,7 +97,7 @@
 
 (def api-table
   {:namespace "chrome.omnibox",
-   :since "19",
+   :since "20",
    :functions
    [{:id ::set-default-suggestion, :name "setDefaultSuggestion", :params [{:name "suggestion", :type "object"}]}],
    :events
@@ -109,7 +109,7 @@
      :name "onInputEntered",
      :params [{:name "text", :type "string"} {:name "disposition", :type "omnibox.OnInputEnteredDisposition"}]}
     {:id ::on-input-cancelled, :name "onInputCancelled"}
-    {:id ::on-delete-suggestion, :name "onDeleteSuggestion", :since "master", :params [{:name "text", :type "string"}]}]})
+    {:id ::on-delete-suggestion, :name "onDeleteSuggestion", :since "63", :params [{:name "text", :type "string"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

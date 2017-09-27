@@ -1,5 +1,5 @@
 (ns chromex.app.media-player-private
-  "  * available since Chrome 19"
+  "  * available since Chrome 20"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -49,7 +49,7 @@
 
 (def api-table
   {:namespace "chrome.mediaPlayerPrivate",
-   :since "19",
+   :since "20",
    :events
    [{:id ::on-next-track, :name "onNextTrack", :since "23"}
     {:id ::on-prev-track, :name "onPrevTrack", :since "23"}

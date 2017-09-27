@@ -1,5 +1,5 @@
 (ns chromex.app.system-private
-  "  * available since Chrome 19"
+  "  * available since Chrome 20"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -99,7 +99,7 @@
 
 (def api-table
   {:namespace "chrome.systemPrivate",
-   :since "19",
+   :since "20",
    :functions
    [{:id ::get-incognito-mode-availability,
      :name "getIncognitoModeAvailability",

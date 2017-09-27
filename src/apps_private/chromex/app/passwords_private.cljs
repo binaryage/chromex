@@ -18,6 +18,12 @@
 (defn get-password-exception-list* [config]
   (gen-wrap :function ::get-password-exception-list config))
 
+(defn import-passwords* [config]
+  (gen-wrap :function ::import-passwords config))
+
+(defn export-passwords* [config]
+  (gen-wrap :function ::export-passwords config))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-saved-passwords-list-changed* [config channel & args]

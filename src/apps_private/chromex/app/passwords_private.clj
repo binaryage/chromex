@@ -59,6 +59,14 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-password-exception-list &form)))
 
+(defmacro import-passwords
+  "Triggers the Password Manager password import functionality."
+  ([] (gen-call :function ::import-passwords &form)))
+
+(defmacro export-passwords
+  "Triggers the Password Manager password export functionality."
+  ([] (gen-call :function ::export-passwords &form)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -125,7 +133,9 @@
      :params
      [{:name "callback",
        :type :callback,
-       :callback {:params [{:name "exceptions", :type "[array-of-passwordsPrivate.ExceptionEntrys]"}]}}]}],
+       :callback {:params [{:name "exceptions", :type "[array-of-passwordsPrivate.ExceptionEntrys]"}]}}]}
+    {:id ::import-passwords, :name "importPasswords", :since "master"}
+    {:id ::export-passwords, :name "exportPasswords", :since "master"}],
    :events
    [{:id ::on-saved-passwords-list-changed,
      :name "onSavedPasswordsListChanged",
