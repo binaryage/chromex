@@ -53,7 +53,8 @@ git fetch origin
 
 git checkout master
 git reset --hard origin/master
-gclient sync --with_branch_heads --force --reset -vv
+git clean -fd
+gclient sync --with_branch_heads --reset --delete_unversioned_trees
 
 CHROMIUM_SHA=$(git rev-parse HEAD)
 CHROMIUM_SHORT_SHA=$(git rev-parse --short HEAD)
