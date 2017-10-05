@@ -47,12 +47,12 @@
 
 ### API stats
 
-Generated 39 namespaces containing 1 properties, 300 functions and 81 events:
+Generated 39 namespaces containing 1 properties, 302 functions and 82 events:
 
 
     |                     :namespace | :properties | :functions | :events |
     |--------------------------------+-------------+------------+---------|
-    |    chrome.accessibilityPrivate |           0 |          5 |       4 |
+    |    chrome.accessibilityPrivate |           0 |          6 |       4 |
     |      chrome.activityLogPrivate |           0 |          4 |       1 |
     |         chrome.autofillPrivate |           0 |          9 |       2 |
     |        chrome.bluetoothPrivate |           0 |          7 |       1 |
@@ -78,7 +78,7 @@ Generated 39 namespaces containing 1 properties, 300 functions and 81 events:
     |             chrome.mojoPrivate |           0 |          2 |       0 |
     |     chrome.musicManagerPrivate |           0 |          1 |       0 |
     |       chrome.networkingPrivate |           0 |         22 |       5 |
-    |        chrome.passwordsPrivate |           0 |          7 |       3 |
+    |        chrome.passwordsPrivate |           0 |          8 |       3 |
     |      chrome.preferencesPrivate |           1 |          0 |       0 |
     |      chrome.quickUnlockPrivate |           0 |          5 |       1 |
     |        chrome.resourcesPrivate |           0 |          1 |       0 |
@@ -87,7 +87,7 @@ Generated 39 namespaces containing 1 properties, 300 functions and 81 events:
     |           chrome.systemPrivate |           0 |          3 |       4 |
     |         chrome.terminalPrivate |           0 |          5 |       1 |
     |            chrome.usersPrivate |           0 |          5 |       0 |
-    |  chrome.virtualKeyboardPrivate |           0 |         10 |       2 |
+    |  chrome.virtualKeyboardPrivate |           0 |         10 |       3 |
     |        chrome.wallpaperPrivate |           0 |          0 |       1 |
     |           chrome.webcamPrivate |           0 |          5 |       0 |
     |   chrome.webstoreWidgetPrivate |           0 |          2 |       1 |
@@ -99,8 +99,9 @@ Generated 39 namespaces containing 1 properties, 300 functions and 81 events:
   (:require
     [chromex.app.accessibility-private refer-macros:[
       set-native-accessibility-enabled set-focus-ring set-keyboard-listener darken-screen
-      set-switch-access-keys tap-on-introduce-chrome-vox tap-on-accessibility-gesture
-      tap-on-two-finger-touch-start tap-on-two-finger-touch-stop tap-all-events]]
+      set-switch-access-keys set-native-chrome-vox-arc-support-for-current-app
+      tap-on-introduce-chrome-vox tap-on-accessibility-gesture tap-on-two-finger-touch-start
+      tap-on-two-finger-touch-stop tap-all-events]]
 
     [chromex.app.activity-log-private refer-macros:[
       get-extension-activities delete-activities delete-database delete-urls tap-on-extension-activity
@@ -238,9 +239,10 @@ Generated 39 namespaces containing 1 properties, 300 functions and 81 events:
       tap-all-events]]
 
     [chromex.app.passwords-private refer-macros:[
-      remove-saved-password remove-password-exception request-plaintext-password get-saved-password-list
-      get-password-exception-list import-passwords export-passwords tap-on-saved-passwords-list-changed
-      tap-on-password-exceptions-list-changed tap-on-plaintext-password-retrieved tap-all-events]]
+      remove-saved-password remove-password-exception undo-remove-saved-password-or-exception
+      request-plaintext-password get-saved-password-list get-password-exception-list import-passwords
+      export-passwords tap-on-saved-passwords-list-changed tap-on-password-exceptions-list-changed
+      tap-on-plaintext-password-retrieved tap-all-events]]
 
     [chromex.app.preferences-private refer-macros:[
       get-easy-unlock-proximity-required tap-all-events]]
@@ -274,7 +276,7 @@ Generated 39 namespaces containing 1 properties, 300 functions and 81 events:
     [chromex.app.virtual-keyboard-private refer-macros:[
       insert-text send-key-event hide-keyboard set-hotrod-keyboard lock-keyboard keyboard-loaded
       get-keyboard-config open-settings set-mode set-keyboard-state tap-on-bounds-changed
-      tap-on-keyboard-closed tap-all-events]]
+      tap-on-keyboard-closed tap-on-keyboard-config-changed tap-all-events]]
 
     [chromex.app.wallpaper-private refer-macros:[
       tap-on-wallpaper-changed-by3rd-party tap-all-events]]

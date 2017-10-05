@@ -18,6 +18,9 @@
 (defn set-switch-access-keys* [config key-codes]
   (gen-wrap :function ::set-switch-access-keys config key-codes))
 
+(defn set-native-chrome-vox-arc-support-for-current-app* [config enabled]
+  (gen-wrap :function ::set-native-chrome-vox-arc-support-for-current-app config enabled))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-introduce-chrome-vox* [config channel & args]

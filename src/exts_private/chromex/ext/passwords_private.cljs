@@ -9,6 +9,9 @@
 (defn remove-password-exception* [config index]
   (gen-wrap :function ::remove-password-exception config index))
 
+(defn undo-remove-saved-password-or-exception* [config]
+  (gen-wrap :function ::undo-remove-saved-password-or-exception config))
+
 (defn request-plaintext-password* [config index]
   (gen-wrap :function ::request-plaintext-password config index))
 

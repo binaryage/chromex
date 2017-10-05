@@ -49,12 +49,12 @@
 
 ### API stats
 
-Generated 41 namespaces containing 1 properties, 326 functions and 75 events:
+Generated 41 namespaces containing 1 properties, 328 functions and 76 events:
 
 
     |                            :namespace | :properties | :functions | :events |
     |---------------------------------------+-------------+------------+---------|
-    |           chrome.accessibilityPrivate |           0 |          5 |       4 |
+    |           chrome.accessibilityPrivate |           0 |          6 |       4 |
     |             chrome.activityLogPrivate |           0 |          4 |       1 |
     |                chrome.autofillPrivate |           0 |          9 |       2 |
     |                chrome.autotestPrivate |           0 |         18 |       0 |
@@ -80,7 +80,7 @@ Generated 41 namespaces containing 1 properties, 326 functions and 75 events:
     |                 chrome.metricsPrivate |           0 |         14 |       0 |
     |                    chrome.mojoPrivate |           0 |          2 |       0 |
     |              chrome.networkingPrivate |           0 |         22 |       5 |
-    |               chrome.passwordsPrivate |           0 |          7 |       3 |
+    |               chrome.passwordsPrivate |           0 |          8 |       3 |
     |             chrome.preferencesPrivate |           1 |          0 |       0 |
     |             chrome.quickUnlockPrivate |           0 |          5 |       1 |
     |               chrome.resourcesPrivate |           0 |          1 |       0 |
@@ -89,7 +89,7 @@ Generated 41 namespaces containing 1 properties, 326 functions and 75 events:
     |                  chrome.systemPrivate |           0 |          3 |       4 |
     |                chrome.terminalPrivate |           0 |          5 |       1 |
     |                   chrome.usersPrivate |           0 |          5 |       0 |
-    |         chrome.virtualKeyboardPrivate |           0 |         10 |       2 |
+    |         chrome.virtualKeyboardPrivate |           0 |         10 |       3 |
     |                  chrome.webcamPrivate |           0 |          5 |       0 |
     |             chrome.webrtcAudioPrivate |           0 |          3 |       1 |
     |    chrome.webrtcDesktopCapturePrivate |           0 |          2 |       0 |
@@ -103,8 +103,9 @@ Generated 41 namespaces containing 1 properties, 326 functions and 75 events:
   (:require
     [chromex.ext.accessibility-private refer-macros:[
       set-native-accessibility-enabled set-focus-ring set-keyboard-listener darken-screen
-      set-switch-access-keys tap-on-introduce-chrome-vox tap-on-accessibility-gesture
-      tap-on-two-finger-touch-start tap-on-two-finger-touch-stop tap-all-events]]
+      set-switch-access-keys set-native-chrome-vox-arc-support-for-current-app
+      tap-on-introduce-chrome-vox tap-on-accessibility-gesture tap-on-two-finger-touch-start
+      tap-on-two-finger-touch-stop tap-all-events]]
 
     [chromex.ext.activity-log-private refer-macros:[
       get-extension-activities delete-activities delete-database delete-urls tap-on-extension-activity
@@ -238,9 +239,10 @@ Generated 41 namespaces containing 1 properties, 326 functions and 75 events:
       tap-all-events]]
 
     [chromex.ext.passwords-private refer-macros:[
-      remove-saved-password remove-password-exception request-plaintext-password get-saved-password-list
-      get-password-exception-list import-passwords export-passwords tap-on-saved-passwords-list-changed
-      tap-on-password-exceptions-list-changed tap-on-plaintext-password-retrieved tap-all-events]]
+      remove-saved-password remove-password-exception undo-remove-saved-password-or-exception
+      request-plaintext-password get-saved-password-list get-password-exception-list import-passwords
+      export-passwords tap-on-saved-passwords-list-changed tap-on-password-exceptions-list-changed
+      tap-on-plaintext-password-retrieved tap-all-events]]
 
     [chromex.ext.preferences-private refer-macros:[
       get-easy-unlock-proximity-required tap-all-events]]
@@ -274,7 +276,7 @@ Generated 41 namespaces containing 1 properties, 326 functions and 75 events:
     [chromex.ext.virtual-keyboard-private refer-macros:[
       insert-text send-key-event hide-keyboard set-hotrod-keyboard lock-keyboard keyboard-loaded
       get-keyboard-config open-settings set-mode set-keyboard-state tap-on-bounds-changed
-      tap-on-keyboard-closed tap-all-events]]
+      tap-on-keyboard-closed tap-on-keyboard-config-changed tap-all-events]]
 
     [chromex.ext.webcam-private refer-macros:[
       open-serial-webcam close-webcam get set reset tap-all-events]]

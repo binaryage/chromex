@@ -117,6 +117,16 @@
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-keyboard-closed &form channel args)))
 
+(defmacro tap-on-keyboard-config-changed-events
+  "Fired when a configuration for virtual keyboard IME has changed, e.g. auto complete disabled.
+
+   Events will be put on the |channel| with signature [::on-keyboard-config-changed [config]] where:
+
+     |config| - The virtual keyboard config
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-keyboard-config-changed &form channel args)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -158,7 +168,9 @@
      :since "34",
      :callback? true,
      :params
-     [{:name "callback", :optional? true, :type :callback, :callback {:params [{:name "config", :type "object"}]}}]}
+     [{:name "callback",
+       :type :callback,
+       :callback {:params [{:name "config", :type "virtualKeyboardPrivate.KeyboardConfig"}]}}]}
     {:id ::open-settings, :name "openSettings", :since "37"}
     {:id ::set-mode,
      :name "setMode",
@@ -173,7 +185,11 @@
      :name "onBoundsChanged",
      :since "44",
      :params [{:name "bounds", :type "virtualKeyboardPrivate.Bounds"}]}
-    {:id ::on-keyboard-closed, :name "onKeyboardClosed", :since "55"}]})
+    {:id ::on-keyboard-closed, :name "onKeyboardClosed", :since "55"}
+    {:id ::on-keyboard-config-changed,
+     :name "onKeyboardConfigChanged",
+     :since "63",
+     :params [{:name "config", :type "virtualKeyboardPrivate.KeyboardConfig"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

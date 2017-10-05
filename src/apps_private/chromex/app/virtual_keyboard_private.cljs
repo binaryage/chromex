@@ -41,3 +41,6 @@
 (defn on-keyboard-closed* [config channel & args]
   (gen-wrap :event ::on-keyboard-closed config channel args))
 
+(defn on-keyboard-config-changed* [config channel & args]
+  (gen-wrap :event ::on-keyboard-config-changed config channel args))
+

@@ -47,6 +47,12 @@
      |key-codes| - The key codes for the keys that will be captured."
   ([key-codes] (gen-call :function ::set-switch-access-keys &form key-codes)))
 
+(defmacro set-native-chrome-vox-arc-support-for-current-app
+  "Sets current ARC app to use native ARC support.
+
+     |enabled| - True for ChromeVox (native), false for TalkBack."
+  ([enabled] (gen-call :function ::set-native-chrome-vox-arc-support-for-current-app &form enabled)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -118,7 +124,11 @@
     {:id ::set-switch-access-keys,
      :name "setSwitchAccessKeys",
      :since "61",
-     :params [{:name "key-codes", :type "[array-of-integers]"}]}],
+     :params [{:name "key-codes", :type "[array-of-integers]"}]}
+    {:id ::set-native-chrome-vox-arc-support-for-current-app,
+     :name "setNativeChromeVoxArcSupportForCurrentApp",
+     :since "master",
+     :params [{:name "enabled", :type "boolean"}]}],
    :events
    [{:id ::on-introduce-chrome-vox, :name "onIntroduceChromeVox", :since "42"}
     {:id ::on-accessibility-gesture,

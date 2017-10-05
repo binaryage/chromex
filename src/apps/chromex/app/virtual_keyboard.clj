@@ -17,10 +17,12 @@
 (defmacro restrict-features
   "Sets restrictions on features provided by the virtual keyboard.
 
-     |restrictions| - Defines the set of enabled/disabled virtual keyboard     features.
+     |restrictions| - the preferences to enabled/disabled virtual keyboard features.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [].
+   Signature of the result value put on the channel is [update] where:
+
+     |update| - https://developer.chrome.com/apps/virtualKeyboard#property-callback-update.
 
    In case of error the channel closes without receiving any result and relevant error object can be obtained via
    chromex.error/get-last-error.
@@ -46,7 +48,12 @@
    [{:id ::restrict-features,
      :name "restrictFeatures",
      :callback? true,
-     :params [{:name "restrictions", :type "object"} {:name "callback", :optional? true, :type :callback}]}]})
+     :params
+     [{:name "restrictions", :type "virtualKeyboard.FeatureRestrictions"}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "update", :type "virtualKeyboard.FeatureRestrictions"}]}}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

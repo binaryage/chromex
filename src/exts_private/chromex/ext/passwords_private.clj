@@ -27,6 +27,10 @@
      |index| - The index for the exception url entry being removed."
   ([index] (gen-call :function ::remove-password-exception &form index)))
 
+(defmacro undo-remove-saved-password-or-exception
+  "Undoes the last removal of a saved password or exception."
+  ([] (gen-call :function ::undo-remove-saved-password-or-exception &form)))
+
 (defmacro request-plaintext-password
   "Returns the plaintext password corresponding to |index|. Note that on some operating systems, this call may result in an
    OS-level reauthentication. Once the password has been fetched, it will be returned via the onPlaintextPasswordRetrieved
@@ -119,6 +123,7 @@
    :functions
    [{:id ::remove-saved-password, :name "removeSavedPassword", :params [{:name "index", :type "integer"}]}
     {:id ::remove-password-exception, :name "removePasswordException", :params [{:name "index", :type "integer"}]}
+    {:id ::undo-remove-saved-password-or-exception, :name "undoRemoveSavedPasswordOrException", :since "63"}
     {:id ::request-plaintext-password, :name "requestPlaintextPassword", :params [{:name "index", :type "integer"}]}
     {:id ::get-saved-password-list,
      :name "getSavedPasswordList",
@@ -134,8 +139,8 @@
      [{:name "callback",
        :type :callback,
        :callback {:params [{:name "exceptions", :type "[array-of-passwordsPrivate.ExceptionEntrys]"}]}}]}
-    {:id ::import-passwords, :name "importPasswords", :since "master"}
-    {:id ::export-passwords, :name "exportPasswords", :since "master"}],
+    {:id ::import-passwords, :name "importPasswords", :since "63"}
+    {:id ::export-passwords, :name "exportPasswords", :since "63"}],
    :events
    [{:id ::on-saved-passwords-list-changed,
      :name "onSavedPasswordsListChanged",
