@@ -19,7 +19,8 @@
 
      |notification-id| - Identifier of the notification. If not set or empty, an ID will automatically be generated. If it
                          matches an existing notification, this method first clears that notification before proceeding with
-                         the create operation.The notificationId parameter is required before Chrome 42.
+                         the create operation. The identifier may not be longer than 500 characters.The notificationId
+                         parameter is required before Chrome 42.
      |options| - Contents of the notification.
 
    This function returns a core.async channel which eventually receives a result value and closes.
