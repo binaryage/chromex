@@ -8,7 +8,7 @@
 
   :scm {:name "git" :url "https://github.com/binaryage/chromex"}
 
-  :dependencies [[org.clojure/clojure "1.9.0-beta1" :scope "provided"]
+  :dependencies [[org.clojure/clojure "1.9.0-beta2" :scope "provided"]
                  [org.clojure/clojurescript ~clojurescript-version :scope "provided"]
                  [org.clojure/core.async "0.3.443"]
                  [binaryage/oops "0.5.6"]
