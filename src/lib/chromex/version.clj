@@ -2,7 +2,7 @@
   (:require [clojure.string :as string]
             [cljs.util]))
 
-(def current-version "0.5.11")                                                                                        ; this should match our project.clj
+(def current-version "0.5.12")                                                                                        ; this should match our project.clj
 
 (defmacro get-current-version []
   current-version)
