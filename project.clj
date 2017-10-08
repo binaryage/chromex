@@ -1,5 +1,5 @@
 (def clojurescript-version (or (System/getenv "CANARY_CLOJURESCRIPT_VERSION") "1.9.946"))
-(defproject binaryage/chromex "0.5.10"
+(defproject binaryage/chromex "0.5.11"
   :description "A ClojureScript wrapper for writing Chrome Extensions and Apps."
   :url "https://github.com/binaryage/chromex"
   :license {:name         "MIT License"
