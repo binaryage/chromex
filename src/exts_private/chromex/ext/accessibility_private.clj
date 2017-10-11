@@ -127,7 +127,7 @@
      :params [{:name "key-codes", :type "[array-of-integers]"}]}
     {:id ::set-native-chrome-vox-arc-support-for-current-app,
      :name "setNativeChromeVoxArcSupportForCurrentApp",
-     :since "master",
+     :since "63",
      :params [{:name "enabled", :type "boolean"}]}],
    :events
    [{:id ::on-introduce-chrome-vox, :name "onIntroduceChromeVox", :since "42"}
