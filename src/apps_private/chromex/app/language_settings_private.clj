@@ -38,6 +38,13 @@
      |language-code| - ?"
   ([language-code] (gen-call :function ::disable-language &form language-code)))
 
+(defmacro set-enable-translation-for-language
+  "Enables or disables translation for a given language.
+
+     |language-code| - ?
+     |enable| - ?"
+  ([language-code enable] (gen-call :function ::set-enable-translation-for-language &form language-code enable)))
+
 (defmacro get-spellcheck-dictionary-statuses
   "Gets the current status of the chosen spell check dictionaries.
 
@@ -180,6 +187,10 @@
      [{:name "callback", :type :callback, :callback {:params [{:name "languages", :type "[array-of-objects]"}]}}]}
     {:id ::enable-language, :name "enableLanguage", :params [{:name "language-code", :type "string"}]}
     {:id ::disable-language, :name "disableLanguage", :params [{:name "language-code", :type "string"}]}
+    {:id ::set-enable-translation-for-language,
+     :name "setEnableTranslationForLanguage",
+     :since "master",
+     :params [{:name "language-code", :type "string"} {:name "enable", :type "boolean"}]}
     {:id ::get-spellcheck-dictionary-statuses,
      :name "getSpellcheckDictionaryStatuses",
      :callback? true,

@@ -49,7 +49,7 @@
 
 ### API stats
 
-Generated 41 namespaces containing 1 properties, 328 functions and 76 events:
+Generated 41 namespaces containing 1 properties, 329 functions and 76 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -75,7 +75,7 @@ Generated 41 namespaces containing 1 properties, 328 functions and 76 events:
     |                 chrome.hotwordPrivate |           0 |         15 |       9 |
     |             chrome.imageWriterPrivate |           0 |          5 |       5 |
     |             chrome.inputMethodPrivate |           0 |         11 |       7 |
-    |        chrome.languageSettingsPrivate |           0 |         11 |       4 |
+    |        chrome.languageSettingsPrivate |           0 |         12 |       4 |
     |             chrome.mediaPlayerPrivate |           0 |          0 |       3 |
     |                 chrome.metricsPrivate |           0 |         14 |       0 |
     |                    chrome.mojoPrivate |           0 |          2 |       0 |
@@ -211,11 +211,11 @@ Generated 41 namespaces containing 1 properties, 328 functions and 76 events:
       tap-all-events]]
 
     [chromex.ext.language-settings-private refer-macros:[
-      get-language-list enable-language disable-language get-spellcheck-dictionary-statuses
-      get-spellcheck-words add-spellcheck-word remove-spellcheck-word get-translate-target-language
-      get-input-method-lists add-input-method remove-input-method tap-on-spellcheck-dictionaries-changed
-      tap-on-custom-dictionary-changed tap-on-input-method-added tap-on-input-method-removed
-      tap-all-events]]
+      get-language-list enable-language disable-language set-enable-translation-for-language
+      get-spellcheck-dictionary-statuses get-spellcheck-words add-spellcheck-word remove-spellcheck-word
+      get-translate-target-language get-input-method-lists add-input-method remove-input-method
+      tap-on-spellcheck-dictionaries-changed tap-on-custom-dictionary-changed tap-on-input-method-added
+      tap-on-input-method-removed tap-all-events]]
 
     [chromex.ext.media-player-private refer-macros:[
       tap-on-next-track tap-on-prev-track tap-on-toggle-play-state tap-all-events]]
