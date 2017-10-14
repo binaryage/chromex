@@ -79,8 +79,9 @@
   ([network-guid] (gen-call :function ::get-state &form network-guid)))
 
 (defmacro set-properties
-  "Sets the properties of the network with id networkGuid.    In kiosk sessions, calling this method on a shared network will
-   fail.
+  "Sets the properties of the network with id |networkGuid|. This is only valid for configured networks (Source != None).
+   Unconfigured visible networks should use 'createNetwork' instead.    In kiosk sessions, calling this method on a shared
+   network will fail.
 
      |network-guid| - The GUID of the network to set properties for.
      |properties| - The properties to set.
