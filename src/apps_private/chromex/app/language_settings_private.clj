@@ -189,7 +189,7 @@
     {:id ::disable-language, :name "disableLanguage", :params [{:name "language-code", :type "string"}]}
     {:id ::set-enable-translation-for-language,
      :name "setEnableTranslationForLanguage",
-     :since "master",
+     :since "63",
      :params [{:name "language-code", :type "string"} {:name "enable", :type "boolean"}]}
     {:id ::get-spellcheck-dictionary-statuses,
      :name "getSpellcheckDictionaryStatuses",
