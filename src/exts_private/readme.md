@@ -49,7 +49,7 @@
 
 ### API stats
 
-Generated 41 namespaces containing 1 properties, 329 functions and 76 events:
+Generated 41 namespaces containing 1 properties, 328 functions and 76 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -78,7 +78,7 @@ Generated 41 namespaces containing 1 properties, 329 functions and 76 events:
     |        chrome.languageSettingsPrivate |           0 |         12 |       4 |
     |             chrome.mediaPlayerPrivate |           0 |          0 |       3 |
     |                 chrome.metricsPrivate |           0 |         14 |       0 |
-    |                    chrome.mojoPrivate |           0 |          2 |       0 |
+    |                    chrome.mojoPrivate |           0 |          1 |       0 |
     |              chrome.networkingPrivate |           0 |         22 |       5 |
     |               chrome.passwordsPrivate |           0 |          8 |       3 |
     |             chrome.preferencesPrivate |           1 |          0 |       0 |
@@ -227,7 +227,7 @@ Generated 41 namespaces containing 1 properties, 329 functions and 76 events:
       tap-all-events]]
 
     [chromex.ext.mojo-private refer-macros:[
-      define require-async tap-all-events]]
+      require-async tap-all-events]]
 
     [chromex.ext.networking-private refer-macros:[
       get-properties get-managed-properties get-state set-properties create-network forget-network

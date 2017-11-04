@@ -12,22 +12,6 @@
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
-(defmacro define
-  "Defines a AMD module.
-
-     |module-name| - ?
-     |dependencies| - ?
-
-   This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [modules] where:
-
-     |modules| - ?
-
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([module-name dependencies] (gen-call :function ::define &form module-name dependencies))
-  ([module-name] `(define ~module-name :omit)))
-
 (defmacro require-async
   "Returns a promise that will resolve to an asynchronously loaded module.
 
@@ -49,14 +33,7 @@
   {:namespace "chrome.mojoPrivate",
    :since "42",
    :functions
-   [{:id ::define,
-     :name "define",
-     :callback? true,
-     :params
-     [{:name "module-name", :type "string"}
-      {:name "dependencies", :optional? true, :type "[array-of-strings]"}
-      {:name "factory", :type :callback, :callback {:params [{:name "modules", :type "[array-of-anys]"}]}}]}
-    {:id ::require-async, :name "requireAsync", :return-type "any", :params [{:name "name", :type "string"}]}]})
+   [{:id ::require-async, :name "requireAsync", :return-type "any", :params [{:name "name", :type "string"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

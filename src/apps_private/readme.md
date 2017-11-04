@@ -42,12 +42,13 @@
 | [chrome.virtualKeyboardPrivate](https://developer.chrome.com/extensions/virtualKeyboardPrivate) | [chromex/app/virtual_keyboard_private.clj](chromex/app/virtual_keyboard_private.clj) |
 | [chrome.wallpaperPrivate](https://developer.chrome.com/extensions/wallpaperPrivate) | [chromex/app/wallpaper_private.clj](chromex/app/wallpaper_private.clj) |
 | [chrome.webcamPrivate](https://developer.chrome.com/extensions/webcamPrivate) | [chromex/app/webcam_private.clj](chromex/app/webcam_private.clj) |
+| [chrome.webrtcLoggingPrivate](https://developer.chrome.com/extensions/webrtcLoggingPrivate) | [chromex/app/webrtc_logging_private.clj](chromex/app/webrtc_logging_private.clj) |
 | [chrome.webstoreWidgetPrivate](https://developer.chrome.com/extensions/webstoreWidgetPrivate) | [chromex/app/webstore_widget_private.clj](chromex/app/webstore_widget_private.clj) |
 
 
 ### API stats
 
-Generated 39 namespaces containing 1 properties, 303 functions and 82 events:
+Generated 40 namespaces containing 1 properties, 316 functions and 82 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -75,7 +76,7 @@ Generated 39 namespaces containing 1 properties, 303 functions and 82 events:
     |  chrome.mediaPerceptionPrivate |           0 |          3 |       1 |
     |      chrome.mediaPlayerPrivate |           0 |          0 |       3 |
     |          chrome.metricsPrivate |           0 |         14 |       0 |
-    |             chrome.mojoPrivate |           0 |          2 |       0 |
+    |             chrome.mojoPrivate |           0 |          1 |       0 |
     |     chrome.musicManagerPrivate |           0 |          1 |       0 |
     |       chrome.networkingPrivate |           0 |         22 |       5 |
     |        chrome.passwordsPrivate |           0 |          8 |       3 |
@@ -90,6 +91,7 @@ Generated 39 namespaces containing 1 properties, 303 functions and 82 events:
     |  chrome.virtualKeyboardPrivate |           0 |         10 |       3 |
     |        chrome.wallpaperPrivate |           0 |          0 |       1 |
     |           chrome.webcamPrivate |           0 |          5 |       0 |
+    |    chrome.webrtcLoggingPrivate |           0 |         14 |       0 |
     |   chrome.webstoreWidgetPrivate |           0 |          2 |       1 |
 
 ### Requires
@@ -224,7 +226,7 @@ Generated 39 namespaces containing 1 properties, 303 functions and 82 events:
       tap-all-events]]
 
     [chromex.app.mojo-private refer-macros:[
-      define require-async tap-all-events]]
+      require-async tap-all-events]]
 
     [chromex.app.music-manager-private refer-macros:[
       get-device-id tap-all-events]]
@@ -283,6 +285,11 @@ Generated 39 namespaces containing 1 properties, 303 functions and 82 events:
 
     [chromex.app.webcam-private refer-macros:[
       open-serial-webcam close-webcam get set reset tap-all-events]]
+
+    [chromex.app.webrtc-logging-private refer-macros:[
+      set-meta-data start set-upload-on-render-close stop store upload-stored upload discard
+      start-rtp-dump stop-rtp-dump start-audio-debug-recordings stop-audio-debug-recordings
+      start-web-rtc-event-logging stop-web-rtc-event-logging tap-all-events]]
 
     [chromex.app.webstore-widget-private refer-macros:[
       get-strings install-webstore-item tap-on-show-widget tap-all-events]]))

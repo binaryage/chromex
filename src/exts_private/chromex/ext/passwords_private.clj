@@ -2,7 +2,7 @@
   "Use the chrome.passwordsPrivate API to add or remove password
    data from the settings UI.
 
-     * available since Chrome 62"
+     * available since Chrome 63"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -119,11 +119,11 @@
 
 (def api-table
   {:namespace "chrome.passwordsPrivate",
-   :since "62",
+   :since "63",
    :functions
    [{:id ::remove-saved-password, :name "removeSavedPassword", :params [{:name "index", :type "integer"}]}
     {:id ::remove-password-exception, :name "removePasswordException", :params [{:name "index", :type "integer"}]}
-    {:id ::undo-remove-saved-password-or-exception, :name "undoRemoveSavedPasswordOrException", :since "63"}
+    {:id ::undo-remove-saved-password-or-exception, :name "undoRemoveSavedPasswordOrException"}
     {:id ::request-plaintext-password, :name "requestPlaintextPassword", :params [{:name "index", :type "integer"}]}
     {:id ::get-saved-password-list,
      :name "getSavedPasswordList",
@@ -139,8 +139,8 @@
      [{:name "callback",
        :type :callback,
        :callback {:params [{:name "exceptions", :type "[array-of-passwordsPrivate.ExceptionEntrys]"}]}}]}
-    {:id ::import-passwords, :name "importPasswords", :since "63"}
-    {:id ::export-passwords, :name "exportPasswords", :since "63"}],
+    {:id ::import-passwords, :name "importPasswords"}
+    {:id ::export-passwords, :name "exportPasswords"}],
    :events
    [{:id ::on-saved-passwords-list-changed,
      :name "onSavedPasswordsListChanged",
