@@ -15,6 +15,9 @@
 (defn set-enable-translation-for-language* [config language-code enable]
   (gen-wrap :function ::set-enable-translation-for-language config language-code enable))
 
+(defn move-language* [config language-code move-type]
+  (gen-wrap :function ::move-language config language-code move-type))
+
 (defn get-spellcheck-dictionary-statuses* [config]
   (gen-wrap :function ::get-spellcheck-dictionary-statuses config))
 

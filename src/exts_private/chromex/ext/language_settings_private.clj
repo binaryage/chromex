@@ -45,6 +45,13 @@
      |enable| - ?"
   ([language-code enable] (gen-call :function ::set-enable-translation-for-language &form language-code enable)))
 
+(defmacro move-language
+  "Moves a language inside the language list.
+
+     |language-code| - ?
+     |move-type| - ?"
+  ([language-code move-type] (gen-call :function ::move-language &form language-code move-type)))
+
 (defmacro get-spellcheck-dictionary-statuses
   "Gets the current status of the chosen spell check dictionaries.
 
@@ -190,6 +197,10 @@
     {:id ::set-enable-translation-for-language,
      :name "setEnableTranslationForLanguage",
      :params [{:name "language-code", :type "string"} {:name "enable", :type "boolean"}]}
+    {:id ::move-language,
+     :name "moveLanguage",
+     :since "master",
+     :params [{:name "language-code", :type "string"} {:name "move-type", :type "unknown-type"}]}
     {:id ::get-spellcheck-dictionary-statuses,
      :name "getSpellcheckDictionaryStatuses",
      :callback? true,
