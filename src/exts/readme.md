@@ -5,6 +5,7 @@
 | JS namespace | CLJS wrapper |
 | --- | --- |
 | [chrome.accessibilityFeatures](https://developer.chrome.com/extensions/accessibilityFeatures) | [chromex/ext/accessibility_features.clj](chromex/ext/accessibility_features.clj) |
+| [chrome.action](https://developer.chrome.com/extensions/action) | [chromex/ext/action.clj](chromex/ext/action.clj) |
 | [chrome.alarms](https://developer.chrome.com/extensions/alarms) | [chromex/ext/alarms.clj](chromex/ext/alarms.clj) |
 | [chrome.app](https://developer.chrome.com/extensions/app) | [chromex/ext/app.clj](chromex/ext/app.clj) |
 | [chrome.automation](https://developer.chrome.com/extensions/automation) | [chromex/ext/automation.clj](chromex/ext/automation.clj) |
@@ -85,12 +86,13 @@
 
 ### API stats
 
-Generated 77 namespaces containing 50 properties, 360 functions and 176 events:
+Generated 78 namespaces containing 50 properties, 371 functions and 177 events:
 
 
     |                            :namespace | :properties | :functions | :events |
     |---------------------------------------+-------------+------------+---------|
     |          chrome.accessibilityFeatures |          13 |          0 |       0 |
+    |                         chrome.action |           0 |         11 |       1 |
     |                         chrome.alarms |           0 |          5 |       1 |
     |                            chrome.app |           0 |          4 |       0 |
     |                     chrome.automation |           0 |          6 |       0 |
@@ -177,6 +179,10 @@ Generated 77 namespaces containing 50 properties, 360 functions and 176 events:
       get-spoken-feedback get-large-cursor get-sticky-keys get-high-contrast get-screen-magnifier
       get-autoclick get-virtual-keyboard get-caret-highlight get-cursor-highlight get-focus-highlight
       get-select-to-speak get-switch-access get-animation-policy tap-all-events]]
+
+    [chromex.ext.action refer-macros:[
+      set-title get-title set-icon set-popup get-popup set-badge-text get-badge-text
+      set-badge-background-color get-badge-background-color enable disable tap-on-clicked tap-all-events]]
 
     [chromex.ext.alarms refer-macros:[
       create get get-all clear clear-all tap-on-alarm tap-all-events]]
