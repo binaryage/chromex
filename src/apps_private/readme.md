@@ -48,7 +48,7 @@
 
 ### API stats
 
-Generated 40 namespaces containing 1 properties, 317 functions and 82 events:
+Generated 40 namespaces containing 1 properties, 318 functions and 82 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -73,7 +73,7 @@ Generated 40 namespaces containing 1 properties, 317 functions and 82 events:
     |    chrome.inlineInstallPrivate |           0 |          1 |       0 |
     |      chrome.inputMethodPrivate |           0 |         11 |       7 |
     | chrome.languageSettingsPrivate |           0 |         13 |       4 |
-    |  chrome.mediaPerceptionPrivate |           0 |          3 |       1 |
+    |  chrome.mediaPerceptionPrivate |           0 |          4 |       1 |
     |      chrome.mediaPlayerPrivate |           0 |          0 |       3 |
     |          chrome.metricsPrivate |           0 |         14 |       0 |
     |             chrome.mojoPrivate |           0 |          1 |       0 |
@@ -214,7 +214,7 @@ Generated 40 namespaces containing 1 properties, 317 functions and 82 events:
       tap-on-input-method-added tap-on-input-method-removed tap-all-events]]
 
     [chromex.app.media-perception-private refer-macros:[
-      get-state set-state get-diagnostics tap-on-media-perception tap-all-events]]
+      get-state set-state get-diagnostics set-analytics-component tap-on-media-perception tap-all-events]]
 
     [chromex.app.media-player-private refer-macros:[
       tap-on-next-track tap-on-prev-track tap-on-toggle-play-state tap-all-events]]

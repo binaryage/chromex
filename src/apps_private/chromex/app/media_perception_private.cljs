@@ -12,6 +12,9 @@
 (defn get-diagnostics* [config]
   (gen-wrap :function ::get-diagnostics config))
 
+(defn set-analytics-component* [config component]
+  (gen-wrap :function ::set-analytics-component config component))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-media-perception* [config channel & args]

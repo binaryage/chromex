@@ -50,6 +50,23 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-diagnostics &form)))
 
+(defmacro set-analytics-component
+  "Attempts to download and load the media analytics component. This function should be called every time a client starts
+   using this API. If the component is already loaded, the callback will simply return that information. The process must be
+   STOPPED for this function to succeed. Note: If a different component type is desired, this function can be called with the
+   new desired type and the new component will be downloaded and installed.
+
+     |component| - The desired component to install and load.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [component-state] where:
+
+     |component-state| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([component] (gen-call :function ::set-analytics-component &form component)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -98,7 +115,14 @@
     {:id ::get-diagnostics,
      :name "getDiagnostics",
      :callback? true,
-     :params [{:name "callback", :type :callback, :callback {:params [{:name "diagnostics", :type "object"}]}}]}],
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "diagnostics", :type "object"}]}}]}
+    {:id ::set-analytics-component,
+     :name "setAnalyticsComponent",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "component", :type "object"}
+      {:name "callback", :type :callback, :callback {:params [{:name "component-state", :type "object"}]}}]}],
    :events
    [{:id ::on-media-perception, :name "onMediaPerception", :params [{:name "media-perception", :type "object"}]}]})
 
