@@ -9,6 +9,9 @@
 (defn set-focus-ring* [config rects color]
   (gen-wrap :function ::set-focus-ring config rects color))
 
+(defn set-highlights* [config rects color]
+  (gen-wrap :function ::set-highlights config rects color))
+
 (defn set-keyboard-listener* [config enabled capture]
   (gen-wrap :function ::set-keyboard-listener config enabled capture))
 

@@ -49,12 +49,12 @@
 
 ### API stats
 
-Generated 41 namespaces containing 1 properties, 329 functions and 76 events:
+Generated 41 namespaces containing 1 properties, 330 functions and 76 events:
 
 
     |                            :namespace | :properties | :functions | :events |
     |---------------------------------------+-------------+------------+---------|
-    |           chrome.accessibilityPrivate |           0 |          6 |       4 |
+    |           chrome.accessibilityPrivate |           0 |          7 |       4 |
     |             chrome.activityLogPrivate |           0 |          4 |       1 |
     |                chrome.autofillPrivate |           0 |          9 |       2 |
     |                chrome.autotestPrivate |           0 |         18 |       0 |
@@ -102,7 +102,7 @@ Generated 41 namespaces containing 1 properties, 329 functions and 76 events:
 (ns your.project
   (:require
     [chromex.ext.accessibility-private refer-macros:[
-      set-native-accessibility-enabled set-focus-ring set-keyboard-listener darken-screen
+      set-native-accessibility-enabled set-focus-ring set-highlights set-keyboard-listener darken-screen
       set-switch-access-keys set-native-chrome-vox-arc-support-for-current-app
       tap-on-introduce-chrome-vox tap-on-accessibility-gesture tap-on-two-finger-touch-start
       tap-on-two-finger-touch-stop tap-all-events]]

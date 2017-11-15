@@ -18,12 +18,19 @@
   ([enabled] (gen-call :function ::set-native-accessibility-enabled &form enabled)))
 
 (defmacro set-focus-ring
-  "Set the bounds of the accessibility focus ring.
+  "Sets the bounds of the accessibility focus ring.
 
      |rects| - Array of rectangles to draw the accessibility focus ring around.
      |color| - CSS-style hex color string beginning with # like #FF9982 or #EEE."
   ([rects color] (gen-call :function ::set-focus-ring &form rects color))
   ([rects] `(set-focus-ring ~rects :omit)))
+
+(defmacro set-highlights
+  "Sets the bounds of the accessibility highlight.
+
+     |rects| - Array of rectangles to draw the highlight around.
+     |color| - CSS-style hex color string beginning with # like #FF9982 or #EEE."
+  ([rects color] (gen-call :function ::set-highlights &form rects color)))
 
 (defmacro set-keyboard-listener
   "Sets the calling extension as a listener of all keyboard events optionally allowing the calling extension to
@@ -116,6 +123,10 @@
      :params
      [{:name "rects", :type "[array-of-accessibilityPrivate.ScreenRects]"}
       {:name "color", :optional? true, :type "string"}]}
+    {:id ::set-highlights,
+     :name "setHighlights",
+     :since "master",
+     :params [{:name "rects", :type "[array-of-accessibilityPrivate.ScreenRects]"} {:name "color", :type "string"}]}
     {:id ::set-keyboard-listener,
      :name "setKeyboardListener",
      :since "48",
