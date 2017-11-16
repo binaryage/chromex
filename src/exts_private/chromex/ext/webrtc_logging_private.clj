@@ -227,6 +227,19 @@
    chromex.error/get-last-error."
   ([request security-origin] (gen-call :function ::stop-web-rtc-event-logging &form request security-origin)))
 
+(defmacro get-logs-directory
+  "Returns the directory entry for the 'WebRTC Logs' directory. If the directory doesn't exist yet, this will create it. If
+   the directory cannot be created, this call will fail with a runtime error.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [entry] where:
+
+     |entry| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::get-logs-directory &form)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -365,7 +378,12 @@
       {:name "security-origin", :type "string"}
       {:name "callback",
        :type :callback,
-       :callback {:params [{:name "info", :type "webrtcLoggingPrivate.RecordingInfo"}]}}]}]})
+       :callback {:params [{:name "info", :type "webrtcLoggingPrivate.RecordingInfo"}]}}]}
+    {:id ::get-logs-directory,
+     :name "getLogsDirectory",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "entry", :type "DirectoryEntry"}]}}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

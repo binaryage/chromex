@@ -48,7 +48,7 @@
 
 ### API stats
 
-Generated 40 namespaces containing 1 properties, 319 functions and 82 events:
+Generated 40 namespaces containing 1 properties, 320 functions and 82 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -91,7 +91,7 @@ Generated 40 namespaces containing 1 properties, 319 functions and 82 events:
     |  chrome.virtualKeyboardPrivate |           0 |         10 |       3 |
     |        chrome.wallpaperPrivate |           0 |          0 |       1 |
     |           chrome.webcamPrivate |           0 |          5 |       0 |
-    |    chrome.webrtcLoggingPrivate |           0 |         14 |       0 |
+    |    chrome.webrtcLoggingPrivate |           0 |         15 |       0 |
     |   chrome.webstoreWidgetPrivate |           0 |          2 |       1 |
 
 ### Requires
@@ -289,7 +289,7 @@ Generated 40 namespaces containing 1 properties, 319 functions and 82 events:
     [chromex.app.webrtc-logging-private refer-macros:[
       set-meta-data start set-upload-on-render-close stop store upload-stored upload discard
       start-rtp-dump stop-rtp-dump start-audio-debug-recordings stop-audio-debug-recordings
-      start-web-rtc-event-logging stop-web-rtc-event-logging tap-all-events]]
+      start-web-rtc-event-logging stop-web-rtc-event-logging get-logs-directory tap-all-events]]
 
     [chromex.app.webstore-widget-private refer-macros:[
       get-strings install-webstore-item tap-on-show-widget tap-all-events]]))

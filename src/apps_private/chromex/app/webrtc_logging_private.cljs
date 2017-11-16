@@ -45,3 +45,6 @@
 (defn stop-web-rtc-event-logging* [config request security-origin]
   (gen-wrap :function ::stop-web-rtc-event-logging config request security-origin))
 
+(defn get-logs-directory* [config]
+  (gen-wrap :function ::get-logs-directory config))
+
