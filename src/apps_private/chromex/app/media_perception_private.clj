@@ -118,7 +118,7 @@
      :params [{:name "callback", :type :callback, :callback {:params [{:name "diagnostics", :type "object"}]}}]}
     {:id ::set-analytics-component,
      :name "setAnalyticsComponent",
-     :since "master",
+     :since "64",
      :callback? true,
      :params
      [{:name "component", :type "object"}

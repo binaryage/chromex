@@ -199,7 +199,7 @@
      :params [{:name "language-code", :type "string"} {:name "enable", :type "boolean"}]}
     {:id ::move-language,
      :name "moveLanguage",
-     :since "master",
+     :since "64",
      :params [{:name "language-code", :type "string"} {:name "move-type", :type "unknown-type"}]}
     {:id ::get-spellcheck-dictionary-statuses,
      :name "getSpellcheckDictionaryStatuses",

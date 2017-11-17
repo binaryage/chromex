@@ -125,7 +125,7 @@
       {:name "color", :optional? true, :type "string"}]}
     {:id ::set-highlights,
      :name "setHighlights",
-     :since "master",
+     :since "64",
      :params [{:name "rects", :type "[array-of-accessibilityPrivate.ScreenRects]"} {:name "color", :type "string"}]}
     {:id ::set-keyboard-listener,
      :name "setKeyboardListener",
