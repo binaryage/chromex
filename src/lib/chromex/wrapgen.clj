@@ -22,9 +22,9 @@
 ; * Logging has to be performed not only before actual Chrome API call, but also in callbacks (wrap-callback-with-logging).
 ; * Generated code must use string names when doing Javascript interop to be compatible with advanced compilation:
 ;     https://github.com/binaryage/chromex/#advanced-mode-compilation
-; * Chrome API supports optional arguments, but we rely on argument postions for marshalling. That is why we introduced
+; * Chrome API supports optional arguments, but we rely on argument positions for marshalling. That is why we introduced
 ;   a special parameter value :omit, which marks arguments which should be omitted from final native API call.
-;   omiting arguments is done during runtime, see method `prepare-final-args-array`.
+;   omitting arguments is done during runtime, see method `prepare-final-args-array`.
 ;   Note: for convenience we generate arities of API methods with trailing optional arguments omitted,
 ;         for example see `connect` macro in https://github.com/binaryage/chromex/blob/master/src/exts/chromex/ext/runtime.clj
 ;
@@ -174,10 +174,10 @@
 (defn gen-function-wrap [static-config api-table item-id config & args]
   (let [descriptor (get-item-by-id item-id (:functions api-table))
         _ (assert descriptor (str "unable to find function with id " item-id " in:\n" api-table))
-        tagged-descriptior (assoc descriptor :function? true)]
+        tagged-descriptor (assoc descriptor :function? true)]
     (if (:callback? descriptor)
-      (apply gen-callback-function-wrap static-config api-table tagged-descriptior config args)
-      (apply gen-plain-function-wrap static-config api-table tagged-descriptior config args))))
+      (apply gen-callback-function-wrap static-config api-table tagged-descriptor config args)
+      (apply gen-plain-function-wrap static-config api-table tagged-descriptor config args))))
 
 (defn gen-property-wrap [static-config api-table item-id config & args]
   (let [descriptor (get-item-by-id item-id (:properties api-table))

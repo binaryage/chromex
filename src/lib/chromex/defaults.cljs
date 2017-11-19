@@ -23,7 +23,7 @@
 (defn default-callback-error-reporter [descriptor error]
   (let [function (or (str (namespace (:id descriptor)) "/" (name (:id descriptor))) "an unknown function")
         explanation (oget error "message")
-        message (str "an error occured during the call to " function (if explanation (str ": " explanation)))]
+        message (str "an error occurred during the call to " function (if explanation (str ": " explanation)))]
     (console-error log-prefix message "Details:" error)))
 
 ; -- callback support -------------------------------------------------------------------------------------------------------
