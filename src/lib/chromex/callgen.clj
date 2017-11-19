@@ -56,6 +56,10 @@
         config (gen-active-config static-config)]
     (apply gen-call-from-table static-config api-table kind item src-info config args)))
 
+(defn valid-and-non-deprecated-call? [call]
+  (let [{:keys [valid? deprecated?]} (meta call)]
+    (and valid? (not deprecated?))))
+
 ; ---------------------------------------------------------------------------------------------------------------------------
 
 (defn gen-tap-all-events-call* [static-config api-table form config chan]
@@ -66,10 +70,7 @@
         static-config-no-warnings (assoc static-config :silence-compilation-warnings true)
         gen-event-call-for-id #(gen-event-call static-config-no-warnings api-table % src-info config-sym chan-sym)
         all-tap-events-calls (map gen-event-call-for-id event-ids)
-        valid-and-non-deprecated? (fn [call]
-                                    (let [{:keys [valid? deprecated?]} (meta call)]
-                                      (and valid? (not deprecated?))))
-        tap-events-calls (filter valid-and-non-deprecated? all-tap-events-calls)]
+        tap-events-calls (filter valid-and-non-deprecated-call? all-tap-events-calls)]
     `(let [~chan-sym ~chan
            ~config-sym ~config]
        ~@tap-events-calls)))
