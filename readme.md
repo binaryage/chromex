@@ -58,7 +58,7 @@ java, maven, leiningen, etc.
     lein content
     ```
   * use latest Chrome Canary with [Custom Formatters](https://github.com/binaryage/cljs-devtools#enable-custom-formatters-in-your-chrome-canary) enabled
-  * open Chrome Canary and add `resources/unpacked` via "Load unpacked extension..."
+  * In Chrome Canary, open `chrome://extensions` and add `resources/unpacked` via "Load unpacked extension..."
 
 ##### Extension packaging
 
