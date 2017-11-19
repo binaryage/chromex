@@ -143,19 +143,22 @@
         event-id (:id descriptor)
         event-fn-sym (gensym "event-fn-")
         handler-fn-sym (gensym "handler-fn-")
+        logging-fn-sym (gensym "logging-fn-")
+        event-obj-sym (gensym "event-obj-")
+        result-sym (gensym "result-")
         ns-obj-sym (gensym "ns-obj-")
         event-path (string/split api #"\.")
         ns-path (butlast event-path)
         event-key (last event-path)]
     `(let [~event-fn-sym ~(gen-call-hook config :event-listener-factory event-id chan)
            ~handler-fn-sym ~(marshall-callback static-config config (str api ".handler") [event-fn-sym descriptor])
-           logging-fn# ~(wrap-callback-with-logging static-config "event:" api config [handler-fn-sym descriptor])
+           ~logging-fn-sym ~(wrap-callback-with-logging static-config "event:" api config [handler-fn-sym descriptor])
            ~ns-obj-sym (oops.core/oget (:root ~config) ~@ns-path)]
        ~(gen-missing-api-check static-config config api ns-obj-sym event-key)
-       (let [event-obj# (oops.core/oget ~ns-obj-sym ~event-key)
-             result# (chromex.chrome-event-subscription/make-chrome-event-subscription event-obj# logging-fn# ~chan)]
-         (chromex.protocols/subscribe! result# ~extra-args)
-         result#))))
+       (let [~event-obj-sym (oops.core/oget ~ns-obj-sym ~event-key)
+             ~result-sym (chromex.chrome-event-subscription/make-chrome-event-subscription ~event-obj-sym ~logging-fn-sym ~chan)]
+         (chromex.protocols/subscribe! ~result-sym ~extra-args)
+         ~result-sym))))
 
 ; ---------------------------------------------------------------------------------------------------------------------------
 
