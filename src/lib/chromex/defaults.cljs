@@ -37,7 +37,7 @@
 
 (defn default-callback-fn-factory [config descriptor chan]
   (fn [& args]
-    (if-let [error (oget js/chrome "runtime" "?lastError")]
+    (if-let [error (oget (:root config) "chrome" "runtime" "?lastError")]
       (do
         (set-last-error! error)
         (report-error-if-needed! config descriptor error))
