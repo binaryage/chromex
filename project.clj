@@ -3,7 +3,7 @@
                  [org.clojure/clojurescript "1.9.946"]
                  [org.clojure/core.async "0.3.465"]
                  [binaryage/chromex "0.5.13"]
-                 [binaryage/devtools "0.9.5"]
+                 [binaryage/devtools "0.9.7"]
                  [figwheel "0.5.14"]
                  [environ "1.1.0"]]
 
