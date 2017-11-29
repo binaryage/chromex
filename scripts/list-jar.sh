@@ -11,16 +11,21 @@ pushd "$ROOT"
 
 LEIN_VERSION=`cat "$PROJECT_FILE" | grep "defproject" | cut -d' ' -f3 | cut -d\" -f2`
 
-JAR_FILE="target/chromex-$LEIN_VERSION.jar"
+BASE_FILE="chromex-$LEIN_VERSION"
+POM_PATH="META-INF/maven/binaryage/chromex/pom.xml"
+INSPECT_DIR="inspect"
 
-echo "listing content of $JAR_FILE"
-echo ""
+cd "target"
+unzip -l "$BASE_FILE.jar"
+unzip -o "$BASE_FILE.jar" "$POM_PATH" -d "$INSPECT_DIR"
 
-unzip -l "$JAR_FILE"
+echo
+echo "approx. pom.xml dependencies:"
+cat "$INSPECT_DIR/$POM_PATH" | grep -E -i "artifactId|version"
 
-echo ""
+echo
 echo "----------------------------"
-echo ""
+echo
 
 popd
 
