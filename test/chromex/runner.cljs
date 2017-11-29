@@ -7,7 +7,8 @@
             [chromex.playground]
             [chromex.test.playground]
             [chromex.test.chrome-storage-area]
-            [chromex.test.chrome-port]))
+            [chromex.test.chrome-port]
+            [goog.object :as gobj]))
 
 (enable-console-print!)
 (println "ClojureScript version:" *clojurescript-version*)
@@ -16,7 +17,7 @@
   (println "\nRan" (:test m) "tests containing"
            (+ (:pass m) (:fail m) (:error m)) "assertions.")
   (println (:fail m) "failures," (:error m) "errors.")
-  (aset js/window "test-failures" (+ (:fail m) (:error m)))
+  (gobj/set js/window "test-failures" (+ (:fail m) (:error m)))
   (println "TESTS DONE"))
 
 (defn friendly-args [args]

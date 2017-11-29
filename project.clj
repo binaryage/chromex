@@ -59,6 +59,7 @@
                                                    :compiler     {:output-to     "target/dev-ext/chromex.js"
                                                                   :output-dir    "target/dev-ext"
                                                                   :optimizations :none
+                                                                  :checked-arrays :warn
                                                                   :source-map    true}}}}}
              :dev-app       {:cljsbuild {:builds {:dev
                                                   {:source-paths ["src/lib"
@@ -68,6 +69,7 @@
                                                    :compiler     {:output-to     "target/dev-app/chromex.js"
                                                                   :output-dir    "target/dev-app"
                                                                   :optimizations :none
+                                                                  :checked-arrays :warn
                                                                   :source-map    true}}}}}
              :test          {:env       {:running-dev-test "true"}
                              :cljsbuild {:builds {:test-dev
@@ -91,6 +93,7 @@
                                                                   :asset-path    ".compiled/optimizations_advanced"
                                                                   :main          chromex.runner
                                                                   :optimizations :advanced
+                                                                  :checked-arrays :warn
                                                                   :elide-asserts true
                                                                   :source-map    "test/.compiled/optimizations_advanced/chromex.test.js.map"}}}}}}
 
