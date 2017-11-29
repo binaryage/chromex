@@ -8,10 +8,10 @@
 
   :scm {:name "git" :url "https://github.com/binaryage/chromex"}
 
-  :dependencies [[org.clojure/clojure "1.9.0-beta2" :scope "provided"]
+  :dependencies [[org.clojure/clojure "1.9.0-RC2" :scope "provided"]
                  [org.clojure/clojurescript ~clojurescript-version :scope "provided"]
                  [org.clojure/core.async "0.3.465"]
-                 [binaryage/oops "0.5.6"]
+                 [binaryage/oops "0.5.8"]
                  [environ "1.1.0"]]
 
   :clean-targets ^{:protect false} ["target"
