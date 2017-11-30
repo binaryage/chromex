@@ -37,7 +37,7 @@ of your own extension.
 
 ### Local setup
 
-##### Extension development
+#### Extension development
 
 We assume you are familiar with ClojureScript tooling and you have your machine in a good shape running recent versions of
 java, maven, leiningen, etc.
@@ -60,7 +60,47 @@ java, maven, leiningen, etc.
   * use latest Chrome Canary with [Custom Formatters](https://github.com/binaryage/cljs-devtools#enable-custom-formatters-in-your-chrome-canary) enabled
   * In Chrome Canary, open `chrome://extensions` and add `resources/unpacked` via "Load unpacked extension..."
 
-##### Extension packaging
+##### Debugging
+
+Chrome extension development is more complex than regular ClojureScript front-end
+work. You are writing (and debugging) multiple parallel communicating processes: your
+background page, your popup, and all the browser pages running your content script.
+
+Amazingly, the ClojureScript tooling and Figwheel live coding remain very usable in this
+environment. But, you need to be aware of a few things, particularly in regard to
+compiler warnings:
+
+Most warnings do not appear in the repls. Figwheel intercepts them for display in the
+browser. Warning will appear in the Chrome console and, when possible, as an overlay in
+the browser window. But, the exact behavior depends upon which part of your code has the
+error:
+
+_Content script_: Warnings and errors will appear in the repl running `lein content`.
+
+_popup_: Chrome normally closes the popup anytime focus leaves Chrome. So, if you are
+working in your editor, the popup is closed and you will not see any error messages
+anywhere. This can be very frustrating but is easy to fix. When you first open the
+popup, right click on its icon and select `Inspect popup`. This opens the Chrome
+inspector/console and keeps the popup open while the inspector remains open. Any errrors
+will appear in both the console and as the Figwheel overlay in your popup window. Also,
+of course, this gives you niceties of Figwheel live coding. Your changes will appear
+immediately, with no need to close and reopen the popup.
+
+_background_: The background code is running under Figwheel, so no messages will appear
+in the repl. It also has no visibile window, so no Figwheel overlay can appear. You will
+only see warnings in the Chrome console. You can open the inspector/console from
+`chrome://extensions`. Under your extension, click on the `Inspect Views` line.
+
+In summary, effective live debugging requires up to five open windows on your screen:
+- Your editor;
+- The shell running `lein content`, if you are making changes to content script code;
+- The web browser, with open popup and/or content page;
+- A Chrome inspector console, watching the background page; and
+- A Chrome inspector console, watching the popup page.
+
+
+
+#### Extension packaging
 
 [Leiningen project](project.clj) has defined "release" profile for compilation in advanced mode. Run:
 ```bash
