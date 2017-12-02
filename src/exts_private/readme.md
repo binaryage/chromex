@@ -22,7 +22,6 @@
 | [chrome.experienceSamplingPrivate](https://developer.chrome.com/extensions/experienceSamplingPrivate) | [chromex/ext/experience_sampling_private.clj](chromex/ext/experience_sampling_private.clj) |
 | [chrome.feedbackPrivate](https://developer.chrome.com/extensions/feedbackPrivate) | [chromex/ext/feedback_private.clj](chromex/ext/feedback_private.clj) |
 | [chrome.fileManagerPrivate](https://developer.chrome.com/extensions/fileManagerPrivate) | [chromex/ext/file_manager_private.clj](chromex/ext/file_manager_private.clj) |
-| [chrome.hotwordPrivate](https://developer.chrome.com/extensions/hotwordPrivate) | [chromex/ext/hotword_private.clj](chromex/ext/hotword_private.clj) |
 | [chrome.imageWriterPrivate](https://developer.chrome.com/extensions/imageWriterPrivate) | [chromex/ext/image_writer_private.clj](chromex/ext/image_writer_private.clj) |
 | [chrome.inputMethodPrivate](https://developer.chrome.com/extensions/inputMethodPrivate) | [chromex/ext/input_method_private.clj](chromex/ext/input_method_private.clj) |
 | [chrome.languageSettingsPrivate](https://developer.chrome.com/extensions/languageSettingsPrivate) | [chromex/ext/language_settings_private.clj](chromex/ext/language_settings_private.clj) |
@@ -49,7 +48,7 @@
 
 ### API stats
 
-Generated 41 namespaces containing 1 properties, 331 functions and 76 events:
+Generated 40 namespaces containing 1 properties, 315 functions and 67 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -72,7 +71,6 @@ Generated 41 namespaces containing 1 properties, 331 functions and 76 events:
     |      chrome.experienceSamplingPrivate |           0 |          1 |       2 |
     |                chrome.feedbackPrivate |           0 |          6 |       1 |
     |             chrome.fileManagerPrivate |           0 |         53 |       9 |
-    |                 chrome.hotwordPrivate |           0 |         15 |       9 |
     |             chrome.imageWriterPrivate |           0 |          5 |       5 |
     |             chrome.inputMethodPrivate |           0 |         11 |       7 |
     |        chrome.languageSettingsPrivate |           0 |         13 |       4 |
@@ -89,11 +87,11 @@ Generated 41 namespaces containing 1 properties, 331 functions and 76 events:
     |                  chrome.systemPrivate |           0 |          3 |       4 |
     |                chrome.terminalPrivate |           0 |          5 |       1 |
     |                   chrome.usersPrivate |           0 |          5 |       0 |
-    |         chrome.virtualKeyboardPrivate |           0 |         10 |       3 |
+    |         chrome.virtualKeyboardPrivate |           0 |         11 |       3 |
     |                  chrome.webcamPrivate |           0 |          5 |       0 |
     |             chrome.webrtcAudioPrivate |           0 |          3 |       1 |
     |    chrome.webrtcDesktopCapturePrivate |           0 |          2 |       0 |
-    |           chrome.webrtcLoggingPrivate |           0 |         15 |       0 |
+    |           chrome.webrtcLoggingPrivate |           0 |         13 |       0 |
     |                chrome.webstorePrivate |           0 |         13 |       0 |
 
 ### Requires
@@ -187,16 +185,6 @@ Generated 41 namespaces containing 1 properties, 331 functions and 76 events:
       tap-on-preferences-changed tap-on-drive-connection-status-changed tap-on-device-changed
       tap-on-drive-sync-error tap-on-apps-updated tap-all-events]]
 
-    [chromex.ext.hotword-private refer-macros:[
-      set-enabled get-status get-localized-strings set-audio-logging-enabled
-      set-hotword-always-on-search-enabled set-hotword-session-state notify-hotword-recognition
-      get-launch-state start-training finalize-speaker-model notify-speaker-model-saved stop-training
-      set-audio-history-enabled get-audio-history-enabled speaker-model-exists-result
-      tap-on-enabled-changed tap-on-hotword-session-requested tap-on-hotword-session-stopped
-      tap-on-finalize-speaker-model tap-on-speaker-model-saved tap-on-hotword-triggered
-      tap-on-delete-speaker-model tap-on-speaker-model-exists tap-on-microphone-state-changed
-      tap-all-events]]
-
     [chromex.ext.image-writer-private refer-macros:[
       write-from-url write-from-file cancel-write destroy-partitions list-removable-storage-devices
       tap-on-write-progress tap-on-write-complete tap-on-write-error tap-on-device-inserted
@@ -275,8 +263,8 @@ Generated 41 namespaces containing 1 properties, 331 functions and 76 events:
 
     [chromex.ext.virtual-keyboard-private refer-macros:[
       insert-text send-key-event hide-keyboard set-hotrod-keyboard lock-keyboard keyboard-loaded
-      get-keyboard-config open-settings set-mode set-keyboard-state tap-on-bounds-changed
-      tap-on-keyboard-closed tap-on-keyboard-config-changed tap-all-events]]
+      get-keyboard-config open-settings set-mode set-draggable-area set-keyboard-state
+      tap-on-bounds-changed tap-on-keyboard-closed tap-on-keyboard-config-changed tap-all-events]]
 
     [chromex.ext.webcam-private refer-macros:[
       open-serial-webcam close-webcam get set reset tap-all-events]]
@@ -290,7 +278,7 @@ Generated 41 namespaces containing 1 properties, 331 functions and 76 events:
     [chromex.ext.webrtc-logging-private refer-macros:[
       set-meta-data start set-upload-on-render-close stop store upload-stored upload discard
       start-rtp-dump stop-rtp-dump start-audio-debug-recordings stop-audio-debug-recordings
-      start-web-rtc-event-logging stop-web-rtc-event-logging get-logs-directory tap-all-events]]
+      get-logs-directory tap-all-events]]
 
     [chromex.ext.webstore-private refer-macros:[
       install begin-install-with-manifest3 complete-install enable-app-launcher get-browser-login

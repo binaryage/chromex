@@ -192,41 +192,6 @@
    chromex.error/get-last-error."
   ([request security-origin] (gen-call :function ::stop-audio-debug-recordings &form request security-origin)))
 
-(defmacro start-web-rtc-event-logging
-  "Starts WebRTC event logging. startWebRtcEventLogging() logs the most recent events that happened before the call, and then
-   keep logging for |seconds| seconds into the future. |callback| is invoked once the logging stops. If |seconds| is zero, the
-   logging will continue until stopWebRtcEventLogging() is explicitly called. In this case, |callback| is invoked once
-   recording starts and will report that recording has not stopped. If |seconds| is negative, startWebRtcEventLogging() fails.
-
-     |request| - ?
-     |security-origin| - ?
-     |seconds| - ?
-
-   This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [info] where:
-
-     |info| - ?
-
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([request security-origin seconds] (gen-call :function ::start-web-rtc-event-logging &form request security-origin seconds)))
-
-(defmacro stop-web-rtc-event-logging
-  "Stops RTC event logging. |callback| is invoked once the logging stops. If there is no recording in progress,
-   stopWebRtcEventLogging() fails.
-
-     |request| - ?
-     |security-origin| - ?
-
-   This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [info] where:
-
-     |info| - ?
-
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([request security-origin] (gen-call :function ::stop-web-rtc-event-logging &form request security-origin)))
-
 (defmacro get-logs-directory
   "Returns the directory entry for the 'WebRTC Logs' directory. If the directory doesn't exist yet, this will create it. If
    the directory cannot be created, this call will fail with a runtime error.
@@ -358,30 +323,9 @@
       {:name "callback",
        :type :callback,
        :callback {:params [{:name "info", :type "webrtcLoggingPrivate.RecordingInfo"}]}}]}
-    {:id ::start-web-rtc-event-logging,
-     :name "startWebRtcEventLogging",
-     :since "52",
-     :callback? true,
-     :params
-     [{:name "request", :type "webrtcLoggingPrivate.RequestInfo"}
-      {:name "security-origin", :type "string"}
-      {:name "seconds", :type "integer"}
-      {:name "callback",
-       :type :callback,
-       :callback {:params [{:name "info", :type "webrtcLoggingPrivate.RecordingInfo"}]}}]}
-    {:id ::stop-web-rtc-event-logging,
-     :name "stopWebRtcEventLogging",
-     :since "52",
-     :callback? true,
-     :params
-     [{:name "request", :type "webrtcLoggingPrivate.RequestInfo"}
-      {:name "security-origin", :type "string"}
-      {:name "callback",
-       :type :callback,
-       :callback {:params [{:name "info", :type "webrtcLoggingPrivate.RecordingInfo"}]}}]}
     {:id ::get-logs-directory,
      :name "getLogsDirectory",
-     :since "master",
+     :since "64",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "entry", :type "DirectoryEntry"}]}}]}]})
 

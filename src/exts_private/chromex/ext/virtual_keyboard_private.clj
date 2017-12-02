@@ -94,6 +94,12 @@
    chromex.error/get-last-error."
   ([mode] (gen-call :function ::set-mode &form mode)))
 
+(defmacro set-draggable-area
+  "Sets the virtual keyboard draggable area bounds.
+
+     |bounds| - The value of draggable rect area of floating keyboard."
+  ([bounds] (gen-call :function ::set-draggable-area &form bounds)))
+
 (defmacro set-keyboard-state
   "Requests the virtual keyboard to change state.
 
@@ -185,6 +191,10 @@
      :params
      [{:name "mode", :type "virtualKeyboardPrivate.KeyboardMode"}
       {:name "callback", :optional? true, :type :callback}]}
+    {:id ::set-draggable-area,
+     :name "setDraggableArea",
+     :since "master",
+     :params [{:name "bounds", :type "virtualKeyboardPrivate.Bounds"}]}
     {:id ::set-keyboard-state,
      :name "setKeyboardState",
      :since "46",

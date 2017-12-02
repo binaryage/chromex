@@ -55,7 +55,13 @@
 
      |request| - Information about the requesting process.
      |security-origin| - The origin to restrict the settings to.
-     |audio-experiments| - The experiments to enable or disable."
+     |audio-experiments| - The experiments to enable or disable.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([request security-origin audio-experiments] (gen-call :function ::set-audio-experiments &form request security-origin audio-experiments)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -100,10 +106,12 @@
     {:id ::set-audio-experiments,
      :name "setAudioExperiments",
      :since "59",
+     :callback? true,
      :params
      [{:name "request", :type "object"}
       {:name "security-origin", :type "string"}
-      {:name "audio-experiments", :type "object"}]}],
+      {:name "audio-experiments", :type "object"}
+      {:name "callback", :type :callback}]}],
    :events [{:id ::on-sinks-changed, :name "onSinksChanged"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

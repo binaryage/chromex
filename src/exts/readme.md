@@ -35,7 +35,6 @@
 | [chrome.downloads](https://developer.chrome.com/extensions/downloads) | [chromex/ext/downloads.clj](chromex/ext/downloads.clj) |
 | [chrome.enterprise.deviceAttributes](https://developer.chrome.com/extensions/enterprise.deviceAttributes) | [chromex/ext/enterprise/device_attributes.clj](chromex/ext/enterprise/device_attributes.clj) |
 | [chrome.enterprise.platformKeys](https://developer.chrome.com/extensions/enterprise.platformKeys) | [chromex/ext/enterprise/platform_keys.clj](chromex/ext/enterprise/platform_keys.clj) |
-| [chrome.experimental.devtools.audits](https://developer.chrome.com/extensions/experimental.devtools.audits) | [chromex/ext/experimental/devtools/audits.clj](chromex/ext/experimental/devtools/audits.clj) |
 | [chrome.extension](https://developer.chrome.com/extensions/extension) | [chromex/ext/extension.clj](chromex/ext/extension.clj) |
 | [chrome.fileBrowserHandler](https://developer.chrome.com/extensions/fileBrowserHandler) | [chromex/ext/file_browser_handler.clj](chromex/ext/file_browser_handler.clj) |
 | [chrome.fileSystemProvider](https://developer.chrome.com/extensions/fileSystemProvider) | [chromex/ext/file_system_provider.clj](chromex/ext/file_system_provider.clj) |
@@ -86,7 +85,7 @@
 
 ### API stats
 
-Generated 78 namespaces containing 50 properties, 371 functions and 177 events:
+Generated 77 namespaces containing 50 properties, 370 functions and 177 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -122,7 +121,6 @@ Generated 78 namespaces containing 50 properties, 371 functions and 177 events:
     |                      chrome.downloads |           0 |         14 |       4 |
     |    chrome.enterprise.deviceAttributes |           0 |          1 |       0 |
     |        chrome.enterprise.platformKeys |           0 |          6 |       0 |
-    |   chrome.experimental.devtools.audits |           0 |          1 |       0 |
     |                      chrome.extension |           2 |          8 |       2 |
     |             chrome.fileBrowserHandler |           0 |          1 |       1 |
     |             chrome.fileSystemProvider |           0 |          5 |      20 |
@@ -289,9 +287,6 @@ Generated 78 namespaces containing 50 properties, 371 functions and 177 events:
     [chromex.ext.enterprise.platform-keys refer-macros:[
       get-tokens get-certificates import-certificate remove-certificate challenge-machine-key
       challenge-user-key tap-all-events]]
-
-    [chromex.ext.experimental.devtools.audits refer-macros:[
-      add-category tap-all-events]]
 
     [chromex.ext.extension refer-macros:[
       get-last-error get-in-incognito-context send-request get-url get-views get-background-page

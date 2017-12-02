@@ -30,6 +30,9 @@
 (defn set-mode* [config mode]
   (gen-wrap :function ::set-mode config mode))
 
+(defn set-draggable-area* [config bounds]
+  (gen-wrap :function ::set-draggable-area config bounds))
+
 (defn set-keyboard-state* [config state]
   (gen-wrap :function ::set-keyboard-state config state))
 
