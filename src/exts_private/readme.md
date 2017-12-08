@@ -179,9 +179,9 @@ Generated 40 namespaces containing 1 properties, 315 functions and 67 events:
       search-drive-metadata search-files-by-hashes zip-selection get-drive-connection-state
       validate-path-name-length zoom request-access-token request-web-store-access-token get-share-url
       get-download-url request-drive-share get-profiles open-inspector compute-checksum is-uma-enabled
-      set-entry-tag is-piex-loader-enabled get-providing-extensions add-provided-file-system
-      configure-volume get-custom-actions execute-custom-action get-directory-size get-recent-files
-      tap-on-mount-completed tap-on-file-transfers-updated tap-on-copy-progress tap-on-directory-changed
+      set-entry-tag is-piex-loader-enabled get-providers add-provided-file-system configure-volume
+      get-custom-actions execute-custom-action get-directory-size get-recent-files tap-on-mount-completed
+      tap-on-file-transfers-updated tap-on-copy-progress tap-on-directory-changed
       tap-on-preferences-changed tap-on-drive-connection-status-changed tap-on-device-changed
       tap-on-drive-sync-error tap-on-apps-updated tap-all-events]]
 

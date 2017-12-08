@@ -588,8 +588,8 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::is-piex-loader-enabled &form)))
 
-(defmacro get-providing-extensions
-  "Returns list of available providing extensions.
+(defmacro get-providers
+  "Returns list of available providers.
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [extensions] where:
@@ -598,19 +598,19 @@
 
    In case of error the channel closes without receiving any result and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([] (gen-call :function ::get-providing-extensions &form)))
+  ([] (gen-call :function ::get-providers &form)))
 
 (defmacro add-provided-file-system
   "Requests adding a new provided file system. If not possible, then an error via chrome.runtime.lastError is returned.
 
-     |extension-id| - ?
+     |provider-id| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
 
    In case of error the channel closes without receiving any result and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([extension-id] (gen-call :function ::add-provided-file-system &form extension-id)))
+  ([provider-id] (gen-call :function ::add-provided-file-system &form provider-id)))
 
 (defmacro configure-volume
   "Requests configuring an existing volume. If not possible, then returns an error via chrome.runtime.lastError.
@@ -1023,9 +1023,9 @@
      :since "43",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
-    {:id ::get-providing-extensions,
-     :name "getProvidingExtensions",
-     :since "44",
+    {:id ::get-providers,
+     :name "getProviders",
+     :since "master",
      :callback? true,
      :params
      [{:name "callback", :type :callback, :callback {:params [{:name "extensions", :type "[array-of-objects]"}]}}]}
@@ -1033,7 +1033,7 @@
      :name "addProvidedFileSystem",
      :since "44",
      :callback? true,
-     :params [{:name "extension-id", :type "string"} {:name "callback", :type :callback}]}
+     :params [{:name "provider-id", :type "string"} {:name "callback", :type :callback}]}
     {:id ::configure-volume,
      :name "configureVolume",
      :since "44",

@@ -141,11 +141,11 @@
 (defn is-piex-loader-enabled* [config]
   (gen-wrap :function ::is-piex-loader-enabled config))
 
-(defn get-providing-extensions* [config]
-  (gen-wrap :function ::get-providing-extensions config))
+(defn get-providers* [config]
+  (gen-wrap :function ::get-providers config))
 
-(defn add-provided-file-system* [config extension-id]
-  (gen-wrap :function ::add-provided-file-system config extension-id))
+(defn add-provided-file-system* [config provider-id]
+  (gen-wrap :function ::add-provided-file-system config provider-id))
 
 (defn configure-volume* [config volume-id]
   (gen-wrap :function ::configure-volume config volume-id))
