@@ -1,7 +1,7 @@
 (ns chromex.ext.storage
   "Use the chrome.storage API to store, retrieve, and track changes to user data.
 
-     * available since Chrome 20
+     * available since Chrome 27
      * https://developer.chrome.com/extensions/storage"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -62,7 +62,7 @@
 
 (def api-table
   {:namespace "chrome.storage",
-   :since "20",
+   :since "27",
    :properties
    [{:id ::sync, :name "sync", :return-type "storage.StorageArea"}
     {:id ::local, :name "local", :return-type "storage.StorageArea"}

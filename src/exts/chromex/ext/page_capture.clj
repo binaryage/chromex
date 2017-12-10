@@ -1,7 +1,7 @@
 (ns chromex.ext.page-capture
   "Use the chrome.pageCapture API to save a tab as MHTML.
 
-     * available since Chrome 20
+     * available since Chrome 27
      * https://developer.chrome.com/extensions/pageCapture"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -42,7 +42,7 @@
 
 (def api-table
   {:namespace "chrome.pageCapture",
-   :since "20",
+   :since "27",
    :functions
    [{:id ::save-as-mhtml,
      :name "saveAsMHTML",

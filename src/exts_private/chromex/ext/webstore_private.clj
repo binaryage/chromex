@@ -1,5 +1,5 @@
 (ns chromex.ext.webstore-private
-  "  * available since Chrome 20"
+  "  * available since Chrome 27"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -181,7 +181,7 @@
 
 (def api-table
   {:namespace "chrome.webstorePrivate",
-   :since "20",
+   :since "27",
    :functions
    [{:id ::install,
      :name "install",
@@ -226,7 +226,6 @@
        :callback {:params [{:name "webgl-status", :type "webstorePrivate.WebGlStatus"}]}}]}
     {:id ::get-is-launcher-enabled,
      :name "getIsLauncherEnabled",
-     :since "26",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "is-enabled", :type "boolean"}]}}]}
     {:id ::is-in-incognito-mode,

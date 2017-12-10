@@ -1,5 +1,5 @@
 (ns chromex.ext.cloud-print-private
-  "  * available since Chrome 22"
+  "  * available since Chrome 27"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -68,11 +68,10 @@
 
 (def api-table
   {:namespace "chrome.cloudPrintPrivate",
-   :since "22",
+   :since "27",
    :functions
    [{:id ::setup-connector,
      :name "setupConnector",
-     :since "24",
      :params
      [{:name "user-email", :type "string"}
       {:name "robot-email", :type "string"}
@@ -80,17 +79,14 @@
       {:name "user-settings", :type "cloudPrintPrivate.UserSettings"}]}
     {:id ::get-host-name,
      :name "getHostName",
-     :since "24",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "string"}]}}]}
     {:id ::get-printers,
      :name "getPrinters",
-     :since "24",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "[array-of-strings]"}]}}]}
     {:id ::get-client-id,
      :name "getClientId",
-     :since "27",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "string"}]}}]}]})
 

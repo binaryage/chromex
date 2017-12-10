@@ -2,7 +2,7 @@
   "Use the chrome.devtools.network API to retrieve the information about network requests displayed by the Developer Tools in
    the Network panel.
 
-     * available since Chrome 21
+     * available since Chrome 27
      * https://developer.chrome.com/extensions/devtools.network"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -69,7 +69,7 @@
 
 (def api-table
   {:namespace "chrome.devtools.network",
-   :since "21",
+   :since "27",
    :functions
    [{:id ::get-har,
      :name "getHAR",

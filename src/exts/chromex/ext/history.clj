@@ -2,7 +2,7 @@
   "Use the chrome.history API to interact with the browser's record of visited pages. You can add, remove, and query for URLs
    in the browser's history. To override the history page with your own version, see Override Pages.
 
-     * available since Chrome 20
+     * available since Chrome 27
      * https://developer.chrome.com/extensions/history"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -143,7 +143,7 @@
 
 (def api-table
   {:namespace "chrome.history",
-   :since "20",
+   :since "27",
    :functions
    [{:id ::search,
      :name "search",

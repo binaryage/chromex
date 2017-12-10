@@ -4,7 +4,7 @@
    associated with any Chrome browser windows. See the 
    Window State Sample for a demonstration of these options.
 
-     * available since Chrome 23
+     * available since Chrome 27
      * https://developer.chrome.com/apps/app.window"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -150,7 +150,7 @@
 
 (def api-table
   {:namespace "chrome.app.window",
-   :since "23",
+   :since "27",
    :functions
    [{:id ::create,
      :name "create",
@@ -170,12 +170,12 @@
      :since "42",
      :return-type "boolean"}],
    :events
-   [{:id ::on-bounds-changed, :name "onBoundsChanged", :since "26"}
-    {:id ::on-closed, :name "onClosed", :since "26"}
-    {:id ::on-fullscreened, :name "onFullscreened", :since "27"}
-    {:id ::on-maximized, :name "onMaximized", :since "26"}
-    {:id ::on-minimized, :name "onMinimized", :since "26"}
-    {:id ::on-restored, :name "onRestored", :since "26"}]})
+   [{:id ::on-bounds-changed, :name "onBoundsChanged"}
+    {:id ::on-closed, :name "onClosed"}
+    {:id ::on-fullscreened, :name "onFullscreened"}
+    {:id ::on-maximized, :name "onMaximized"}
+    {:id ::on-minimized, :name "onMinimized"}
+    {:id ::on-restored, :name "onRestored"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

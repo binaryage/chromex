@@ -193,7 +193,7 @@
       {:name "callback", :optional? true, :type :callback}]}
     {:id ::set-draggable-area,
      :name "setDraggableArea",
-     :since "master",
+     :since "64",
      :params [{:name "bounds", :type "virtualKeyboardPrivate.Bounds"}]}
     {:id ::set-keyboard-state,
      :name "setKeyboardState",

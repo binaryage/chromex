@@ -2,7 +2,7 @@
   "Use the chrome.input.ime API to implement a custom IME for Chrome OS. This allows your extension to handle keystrokes, set
    the composition, and manage the candidate window.
 
-     * available since Chrome 21
+     * available since Chrome 27
      * https://developer.chrome.com/extensions/input.ime"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -416,7 +416,7 @@
 
 (def api-table
   {:namespace "chrome.input.ime",
-   :since "21",
+   :since "27",
    :functions
    [{:id ::set-composition,
      :name "setComposition",
@@ -470,12 +470,10 @@
      :params [{:name "parameters", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::delete-surrounding-text,
      :name "deleteSurroundingText",
-     :since "27",
      :callback? true,
      :params [{:name "parameters", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::key-event-handled,
      :name "keyEventHandled",
-     :since "25",
      :params [{:name "request-id", :type "string"} {:name "response", :type "boolean"}]}
     {:id ::create-window,
      :name "createWindow",
@@ -528,7 +526,6 @@
      :params [{:name "engine-id", :type "string"} {:name "name", :type "string"}]}
     {:id ::on-surrounding-text-changed,
      :name "onSurroundingTextChanged",
-     :since "27",
      :params [{:name "engine-id", :type "string"} {:name "surrounding-info", :type "object"}]}
     {:id ::on-reset, :name "onReset", :since "29", :params [{:name "engine-id", :type "string"}]}
     {:id ::on-composition-bounds-changed,
