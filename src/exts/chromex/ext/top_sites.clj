@@ -1,7 +1,7 @@
 (ns chromex.ext.top-sites
   "Use the chrome.topSites API to access the top sites that are displayed on the new tab page.
 
-     * available since Chrome 27
+     * available since Chrome 21
      * https://developer.chrome.com/extensions/topSites"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -40,7 +40,7 @@
 
 (def api-table
   {:namespace "chrome.topSites",
-   :since "27",
+   :since "21",
    :functions
    [{:id ::get,
      :name "get",

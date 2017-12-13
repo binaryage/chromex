@@ -1,7 +1,7 @@
 (ns chromex.ext.browsing-data
   "Use the chrome.browsingData API to remove browsing data from a user's local profile.
 
-     * available since Chrome 27
+     * available since Chrome 21
      * https://developer.chrome.com/extensions/browsingData"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -225,10 +225,11 @@
 
 (def api-table
   {:namespace "chrome.browsingData",
-   :since "27",
+   :since "21",
    :functions
    [{:id ::settings,
      :name "settings",
+     :since "26",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}
     {:id ::remove,

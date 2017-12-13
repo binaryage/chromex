@@ -126,6 +126,22 @@
      |value| - ?"
   ([metric value] (gen-call :function ::record-value &form metric value)))
 
+(defmacro record-boolean
+  "Records a boolean value to the given metric. Analogous to base::UmaHistogramBoolean().
+
+     |metric-name| - ?
+     |value| - ?"
+  ([metric-name value] (gen-call :function ::record-boolean &form metric-name value)))
+
+(defmacro record-enumeration-value
+  "Records an enumeration value to the given metric. Analogous to base::UmaHistogramEnumeration(). Use recordSparseValue for
+   sparse enums or enums not starting at 0.
+
+     |metric-name| - ?
+     |value| - ?
+     |enum-size| - ?"
+  ([metric-name value enum-size] (gen-call :function ::record-enumeration-value &form metric-name value enum-size)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -188,7 +204,16 @@
      :params [{:name "metric-name", :type "string"} {:name "value", :type "integer"}]}
     {:id ::record-value,
      :name "recordValue",
-     :params [{:name "metric", :type "metricsPrivate.MetricType"} {:name "value", :type "integer"}]}]})
+     :params [{:name "metric", :type "metricsPrivate.MetricType"} {:name "value", :type "integer"}]}
+    {:id ::record-boolean,
+     :name "recordBoolean",
+     :since "master",
+     :params [{:name "metric-name", :type "string"} {:name "value", :type "boolean"}]}
+    {:id ::record-enumeration-value,
+     :name "recordEnumerationValue",
+     :since "master",
+     :params
+     [{:name "metric-name", :type "string"} {:name "value", :type "integer"} {:name "enum-size", :type "integer"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

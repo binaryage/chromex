@@ -2,7 +2,7 @@
   "Use the chrome.permissions API to request declared optional permissions at run time rather than install time, so users
    understand why the permissions are needed and grant only those that are necessary.
 
-     * available since Chrome 27
+     * available since Chrome 21
      * https://developer.chrome.com/apps/permissions"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -119,7 +119,7 @@
 
 (def api-table
   {:namespace "chrome.permissions",
-   :since "27",
+   :since "21",
    :functions
    [{:id ::get-all,
      :name "getAll",

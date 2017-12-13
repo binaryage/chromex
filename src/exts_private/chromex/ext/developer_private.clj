@@ -3,7 +3,7 @@
    This is a private API exposing developing and debugging functionalities for
    apps and extensions.
 
-     * available since Chrome 27"
+     * available since Chrome 26"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -388,7 +388,7 @@
 
 (def api-table
   {:namespace "chrome.developerPrivate",
-   :since "27",
+   :since "26",
    :functions
    [{:id ::auto-update,
      :name "autoUpdate",
@@ -473,6 +473,7 @@
       {:name "callback", :type :callback, :callback {:params [{:name "path", :type "string"}]}}]}
     {:id ::choose-path,
      :name "choosePath",
+     :since "27",
      :callback? true,
      :params
      [{:name "select-type", :type "unknown-type"}
@@ -480,6 +481,7 @@
       {:name "callback", :type :callback, :callback {:params [{:name "path", :type "string"}]}}]}
     {:id ::pack-directory,
      :name "packDirectory",
+     :since "27",
      :callback? true,
      :params
      [{:name "path", :type "string"}

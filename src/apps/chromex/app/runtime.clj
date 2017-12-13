@@ -3,7 +3,7 @@
    to events in the app or extension lifecycle. You can also use this API to convert the relative path of URLs to
    fully-qualified URLs.
 
-     * available since Chrome 27
+     * available since Chrome 22
      * https://developer.chrome.com/apps/runtime"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -394,7 +394,7 @@
 
 (def api-table
   {:namespace "chrome.runtime",
-   :since "27",
+   :since "22",
    :properties
    [{:id ::last-error, :name "lastError", :return-type "object"} {:id ::id, :name "id", :return-type "string"}],
    :functions
@@ -417,9 +417,10 @@
      :since "41",
      :callback? true,
      :params [{:name "url", :type "string"} {:name "callback", :optional? true, :type :callback}]}
-    {:id ::reload, :name "reload"}
+    {:id ::reload, :name "reload", :since "25"}
     {:id ::request-update-check,
      :name "requestUpdateCheck",
+     :since "25",
      :callback? true,
      :params
      [{:name "callback",
@@ -436,6 +437,7 @@
      :params [{:name "seconds", :type "integer"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::connect,
      :name "connect",
+     :since "26",
      :return-type "runtime.Port",
      :params
      [{:name "extension-id", :optional? true, :type "string"} {:name "connect-info", :optional? true, :type "object"}]}
@@ -446,6 +448,7 @@
      :params [{:name "application", :type "string"}]}
     {:id ::send-message,
      :name "sendMessage",
+     :since "26",
      :callback? true,
      :params
      [{:name "extension-id", :optional? true, :type "string"}
@@ -481,25 +484,27 @@
      :params
      [{:name "callback", :type :callback, :callback {:params [{:name "directory-entry", :type "DirectoryEntry"}]}}]}],
    :events
-   [{:id ::on-startup, :name "onStartup"}
+   [{:id ::on-startup, :name "onStartup", :since "23"}
     {:id ::on-installed, :name "onInstalled", :params [{:name "details", :type "object"}]}
     {:id ::on-suspend, :name "onSuspend"}
     {:id ::on-suspend-canceled, :name "onSuspendCanceled"}
-    {:id ::on-update-available, :name "onUpdateAvailable", :params [{:name "details", :type "object"}]}
+    {:id ::on-update-available, :name "onUpdateAvailable", :since "25", :params [{:name "details", :type "object"}]}
     {:id ::on-browser-update-available,
      :name "onBrowserUpdateAvailable",
      :since "33",
      :deprecated "Please use 'runtime.onRestartRequired'."}
-    {:id ::on-connect, :name "onConnect", :params [{:name "port", :type "runtime.Port"}]}
-    {:id ::on-connect-external, :name "onConnectExternal", :params [{:name "port", :type "runtime.Port"}]}
+    {:id ::on-connect, :name "onConnect", :since "26", :params [{:name "port", :type "runtime.Port"}]}
+    {:id ::on-connect-external, :name "onConnectExternal", :since "26", :params [{:name "port", :type "runtime.Port"}]}
     {:id ::on-message,
      :name "onMessage",
+     :since "26",
      :params
      [{:name "message", :optional? true, :type "any"}
       {:name "sender", :type "runtime.MessageSender"}
       {:name "send-response", :type :callback}]}
     {:id ::on-message-external,
      :name "onMessageExternal",
+     :since "26",
      :params
      [{:name "message", :optional? true, :type "any"}
       {:name "sender", :type "runtime.MessageSender"}

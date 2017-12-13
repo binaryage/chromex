@@ -1,5 +1,5 @@
 (ns chromex.ext.terminal-private
-  "  * available since Chrome 27"
+  "  * available since Chrome 21"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -109,7 +109,7 @@
 
 (def api-table
   {:namespace "chrome.terminalPrivate",
-   :since "27",
+   :since "21",
    :functions
    [{:id ::open-terminal-process,
      :name "openTerminalProcess",

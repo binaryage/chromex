@@ -1,5 +1,5 @@
 (ns chromex.ext.test
-  "  * available since Chrome 27
+  "  * available since Chrome 21
      * https://developer.chrome.com/extensions/test"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -326,7 +326,7 @@
 
 (def api-table
   {:namespace "chrome.test",
-   :since "27",
+   :since "21",
    :functions
    [{:id ::get-config,
      :name "getConfig",
@@ -341,10 +341,10 @@
      :params
      [{:name "message", :type "string"}
       {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "response", :type "string"}]}}]}
-    {:id ::callback-added, :name "callbackAdded"}
-    {:id ::run-next-test, :name "runNextTest"}
-    {:id ::fail, :name "fail", :params [{:name "message", :optional? true, :type "any"}]}
-    {:id ::succeed, :name "succeed", :params [{:name "message", :optional? true, :type "any"}]}
+    {:id ::callback-added, :name "callbackAdded", :since "27"}
+    {:id ::run-next-test, :name "runNextTest", :since "27"}
+    {:id ::fail, :name "fail", :since "27", :params [{:name "message", :optional? true, :type "any"}]}
+    {:id ::succeed, :name "succeed", :since "27", :params [{:name "message", :optional? true, :type "any"}]}
     {:id ::get-module-system,
      :name "getModuleSystem",
      :since "46",
@@ -352,27 +352,32 @@
      :params [{:name "context", :type "any"}]}
     {:id ::assert-true,
      :name "assertTrue",
+     :since "27",
      :params [{:name "test", :type "string-or-boolean"} {:name "message", :optional? true, :type "string"}]}
     {:id ::assert-false,
      :name "assertFalse",
+     :since "27",
      :params [{:name "test", :type "string-or-boolean"} {:name "message", :optional? true, :type "string"}]}
     {:id ::assert-bool,
      :name "assertBool",
+     :since "27",
      :params
      [{:name "test", :type "string-or-boolean"}
       {:name "expected", :type "boolean"}
       {:name "message", :optional? true, :type "string"}]}
     {:id ::check-deep-eq,
      :name "checkDeepEq",
+     :since "27",
      :params [{:name "expected", :optional? true, :type "any"} {:name "actual", :optional? true, :type "any"}]}
     {:id ::assert-eq,
      :name "assertEq",
+     :since "27",
      :params
      [{:name "expected", :optional? true, :type "any"}
       {:name "actual", :optional? true, :type "any"}
       {:name "message", :optional? true, :type "string"}]}
-    {:id ::assert-no-last-error, :name "assertNoLastError"}
-    {:id ::assert-last-error, :name "assertLastError", :params [{:name "expected-error", :type "string"}]}
+    {:id ::assert-no-last-error, :name "assertNoLastError", :since "27"}
+    {:id ::assert-last-error, :name "assertLastError", :since "27", :params [{:name "expected-error", :type "string"}]}
     {:id ::assert-throws,
      :name "assertThrows",
      :since "29",
@@ -383,28 +388,34 @@
       {:name "message", :optional? true, :type "string-or-RegExp"}]}
     {:id ::callback,
      :name "callback",
+     :since "27",
      :params
      [{:name "func", :optional? true, :type "function"} {:name "expected-error", :optional? true, :type "string"}]}
     {:id ::listen-once,
      :name "listenOnce",
+     :since "27",
      :callback? true,
      :params [{:name "event", :type "any"} {:name "func", :type :callback}]}
     {:id ::listen-forever,
      :name "listenForever",
+     :since "27",
      :callback? true,
      :params [{:name "event", :type "any"} {:name "func", :type :callback}]}
     {:id ::callback-pass,
      :name "callbackPass",
+     :since "27",
      :callback? true,
      :params [{:name "func", :optional? true, :type :callback}]}
     {:id ::callback-fail,
      :name "callbackFail",
+     :since "27",
      :callback? true,
      :params [{:name "expected-error", :type "string"} {:name "func", :optional? true, :type :callback}]}
-    {:id ::run-tests, :name "runTests", :params [{:name "tests", :type "[array-of-functions]"}]}
+    {:id ::run-tests, :name "runTests", :since "27", :params [{:name "tests", :type "[array-of-functions]"}]}
     {:id ::get-api-features, :name "getApiFeatures", :since "29"}
     {:id ::get-api-definitions,
      :name "getApiDefinitions",
+     :since "27",
      :params [{:name "api-names", :optional? true, :type "[array-of-strings]"}]}
     {:id ::is-processing-user-gesture, :name "isProcessingUserGesture", :since "32"}
     {:id ::run-with-user-gesture,

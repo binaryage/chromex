@@ -1,5 +1,5 @@
 (ns chromex.app.bookmark-manager-private
-  "  * available since Chrome 27"
+  "  * available since Chrome 24"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -294,7 +294,7 @@
 
 (def api-table
   {:namespace "chrome.bookmarkManagerPrivate",
-   :since "27",
+   :since "24",
    :functions
    [{:id ::copy,
      :name "copy",
@@ -350,7 +350,7 @@
      :since "30",
      :callback? true,
      :params [{:name "id-list", :type "[array-of-strings]"} {:name "callback", :optional? true, :type :callback}]}
-    {:id ::record-launch, :name "recordLaunch"}
+    {:id ::record-launch, :name "recordLaunch", :since "27"}
     {:id ::create-with-meta-info,
      :name "createWithMetaInfo",
      :since "36",

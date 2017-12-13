@@ -2,7 +2,7 @@
   "Use browser actions to put icons in the main Google Chrome toolbar, to the right of the address bar. In addition to its
    icon, a browser action can also have a tooltip, a badge, and a popup.
 
-     * available since Chrome 27
+     * available since Chrome 21
      * https://developer.chrome.com/extensions/browserAction"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -173,7 +173,7 @@
 
 (def api-table
   {:namespace "chrome.browserAction",
-   :since "27",
+   :since "21",
    :functions
    [{:id ::set-title, :name "setTitle", :params [{:name "details", :type "object"}]}
     {:id ::get-title,
@@ -207,8 +207,8 @@
      :params
      [{:name "details", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "browserAction.ColorArray"}]}}]}
-    {:id ::enable, :name "enable", :params [{:name "tab-id", :optional? true, :type "integer"}]}
-    {:id ::disable, :name "disable", :params [{:name "tab-id", :optional? true, :type "integer"}]}],
+    {:id ::enable, :name "enable", :since "22", :params [{:name "tab-id", :optional? true, :type "integer"}]}
+    {:id ::disable, :name "disable", :since "22", :params [{:name "tab-id", :optional? true, :type "integer"}]}],
    :events [{:id ::on-clicked, :name "onClicked", :params [{:name "tab", :type "tabs.Tab"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

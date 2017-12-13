@@ -45,3 +45,9 @@
 (defn record-value* [config metric value]
   (gen-wrap :function ::record-value config metric value))
 
+(defn record-boolean* [config metric-name value]
+  (gen-wrap :function ::record-boolean config metric-name value))
+
+(defn record-enumeration-value* [config metric-name value enum-size]
+  (gen-wrap :function ::record-enumeration-value config metric-name value enum-size))
+

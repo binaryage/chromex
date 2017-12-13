@@ -1,5 +1,5 @@
 (ns chromex.app.echo-private
-  "  * available since Chrome 27"
+  "  * available since Chrome 21"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -86,7 +86,7 @@
 
 (def api-table
   {:namespace "chrome.echoPrivate",
-   :since "27",
+   :since "21",
    :functions
    [{:id ::set-offer-info,
      :name "setOfferInfo",
@@ -107,10 +107,12 @@
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "string"}]}}]}
     {:id ::get-oobe-timestamp,
      :name "getOobeTimestamp",
+     :since "26",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "string"}]}}]}
     {:id ::get-user-consent,
      :name "getUserConsent",
+     :since "27",
      :callback? true,
      :params
      [{:name "consent-requester", :type "object"}
