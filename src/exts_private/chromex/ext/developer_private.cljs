@@ -12,6 +12,9 @@
 (defn get-extension-info* [config id]
   (gen-wrap :function ::get-extension-info config id))
 
+(defn get-extension-size* [config id]
+  (gen-wrap :function ::get-extension-size config id))
+
 (defn get-items-info* [config include-disabled include-terminated]
   (gen-wrap :function ::get-items-info config include-disabled include-terminated))
 
@@ -32,6 +35,9 @@
 
 (defn load-unpacked* [config options]
   (gen-wrap :function ::load-unpacked config options))
+
+(defn notify-drag-install-in-progress* [config]
+  (gen-wrap :function ::notify-drag-install-in-progress config))
 
 (defn load-directory* [config directory]
   (gen-wrap :function ::load-directory config directory))

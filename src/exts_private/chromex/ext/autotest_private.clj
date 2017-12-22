@@ -131,6 +131,18 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-play-store-state &form)))
 
+(defmacro get-printer-list
+  "Get list of available printers
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [printers] where:
+
+     |printers| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::get-printer-list &form)))
+
 (defmacro set-play-store-enabled
   "Enable/disable the Play Store.
 
@@ -193,6 +205,12 @@
      :since "60",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}
+    {:id ::get-printer-list,
+     :name "getPrinterList",
+     :since "65",
+     :callback? true,
+     :params
+     [{:name "callback", :type :callback, :callback {:params [{:name "printers", :type "[array-of-objects]"}]}}]}
     {:id ::set-play-store-enabled,
      :name "setPlayStoreEnabled",
      :since "60",

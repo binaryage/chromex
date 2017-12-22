@@ -47,7 +47,7 @@
 
 ### API stats
 
-Generated 39 namespaces containing 1 properties, 306 functions and 73 events:
+Generated 39 namespaces containing 1 properties, 308 functions and 73 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -61,7 +61,7 @@ Generated 39 namespaces containing 1 properties, 306 functions and 73 events:
     |     chrome.chromeosInfoPrivate |           0 |          2 |       0 |
     |      chrome.commandLinePrivate |           0 |          1 |       0 |
     |        chrome.dashboardPrivate |           0 |          1 |       0 |
-    |        chrome.developerPrivate |           0 |         26 |       2 |
+    |        chrome.developerPrivate |           0 |         28 |       2 |
     |       chrome.easyUnlockPrivate |           0 |         25 |       5 |
     |             chrome.echoPrivate |           0 |          5 |       0 |
     |         chrome.feedbackPrivate |           0 |          6 |       1 |
@@ -135,12 +135,13 @@ Generated 39 namespaces containing 1 properties, 306 functions and 73 events:
       show-permission-prompt-for-delegated-install tap-all-events]]
 
     [chromex.app.developer-private refer-macros:[
-      auto-update get-extensions-info get-extension-info get-items-info get-profile-configuration
-      update-profile-configuration show-permissions-dialog reload update-extension-configuration
-      load-unpacked load-directory choose-path pack-directory is-profile-managed request-file-source
-      open-dev-tools delete-extension-errors repair-extension show-options show-path
-      set-shortcut-handling-suspended update-extension-command enable allow-incognito allow-file-access
-      inspect tap-on-item-state-changed tap-on-profile-state-changed tap-all-events]]
+      auto-update get-extensions-info get-extension-info get-extension-size get-items-info
+      get-profile-configuration update-profile-configuration show-permissions-dialog reload
+      update-extension-configuration load-unpacked notify-drag-install-in-progress load-directory
+      choose-path pack-directory is-profile-managed request-file-source open-dev-tools
+      delete-extension-errors repair-extension show-options show-path set-shortcut-handling-suspended
+      update-extension-command enable allow-incognito allow-file-access inspect tap-on-item-state-changed
+      tap-on-profile-state-changed tap-all-events]]
 
     [chromex.app.easy-unlock-private refer-macros:[
       get-strings generate-ec-p256-key-pair perform-ecdh-key-agreement create-secure-message

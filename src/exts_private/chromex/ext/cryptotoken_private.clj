@@ -30,6 +30,22 @@
    chromex.error/get-last-error."
   ([security-origin app-id-url] (gen-call :function ::can-origin-assert-app-id &form security-origin app-id-url)))
 
+(defmacro is-app-id-hash-in-enterprise-context
+  "Checks whether the given appId is specified in the SecurityKeyPermitAttestation policy. This causes a signal to be sent to
+   the token that informs it that an individually-identifying attestation certificate may be used. Without that signal, the
+   token is required to use its batch attestation certificate.
+
+     |app-id-hash| - ?
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([app-id-hash] (gen-call :function ::is-app-id-hash-in-enterprise-context &form app-id-hash)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -52,6 +68,13 @@
      :params
      [{:name "security-origin", :type "string"}
       {:name "app-id-url", :type "string"}
+      {:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
+    {:id ::is-app-id-hash-in-enterprise-context,
+     :name "isAppIdHashInEnterpriseContext",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "app-id-hash", :type "ArrayBuffer"}
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

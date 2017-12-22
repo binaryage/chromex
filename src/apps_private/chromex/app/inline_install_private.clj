@@ -1,7 +1,7 @@
 (ns chromex.app.inline-install-private
   "Private API to initiate inline install flow of other apps.
 
-     * available since Chrome 64"
+     * available since Chrome 65"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -40,7 +40,7 @@
 
 (def api-table
   {:namespace "chrome.inlineInstallPrivate",
-   :since "64",
+   :since "65",
    :functions
    [{:id ::install,
      :name "install",

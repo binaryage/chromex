@@ -54,6 +54,9 @@
 (defn get-play-store-state* [config]
   (gen-wrap :function ::get-play-store-state config))
 
+(defn get-printer-list* [config]
+  (gen-wrap :function ::get-printer-list config))
+
 (defn set-play-store-enabled* [config enabled]
   (gen-wrap :function ::set-play-store-enabled config enabled))
 

@@ -19,7 +19,7 @@
      Note that apps have reduced access to Chrome apps APIs from the lock screen
      context.
 
-     * available since Chrome 64
+     * available since Chrome 65
      * https://developer.chrome.com/apps/lockScreen.data"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -135,11 +135,11 @@
 
 (def api-table
   {:namespace "chrome.lockScreen.data",
-   :since "64",
+   :since "65",
    :functions
    [{:id ::create,
      :name "create",
-     :since "64",
+     :since "65",
      :callback? true,
      :params
      [{:name "callback", :type :callback, :callback {:params [{:name "item", :type "lockScreen.data.DataItemInfo"}]}}]}

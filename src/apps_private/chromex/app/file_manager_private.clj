@@ -1025,7 +1025,7 @@
      :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
     {:id ::get-providers,
      :name "getProviders",
-     :since "master",
+     :since "65",
      :callback? true,
      :params
      [{:name "callback", :type :callback, :callback {:params [{:name "extensions", :type "[array-of-objects]"}]}}]}

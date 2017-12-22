@@ -207,11 +207,11 @@
      :params [{:name "metric", :type "metricsPrivate.MetricType"} {:name "value", :type "integer"}]}
     {:id ::record-boolean,
      :name "recordBoolean",
-     :since "master",
+     :since "65",
      :params [{:name "metric-name", :type "string"} {:name "value", :type "boolean"}]}
     {:id ::record-enumeration-value,
      :name "recordEnumerationValue",
-     :since "master",
+     :since "65",
      :params
      [{:name "metric-name", :type "string"} {:name "value", :type "integer"} {:name "enum-size", :type "integer"}]}]})
 

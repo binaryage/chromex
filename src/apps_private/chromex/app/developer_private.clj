@@ -55,6 +55,20 @@
    chromex.error/get-last-error."
   ([id] (gen-call :function ::get-extension-info &form id)))
 
+(defmacro get-extension-size
+  "Returns the size of a particular extension on disk (already formatted).
+
+     |id| - The id of the extension.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [string] where:
+
+     |string| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([id] (gen-call :function ::get-extension-size &form id)))
+
 (defmacro get-items-info
   "Returns information of all the extensions and apps installed.
 
@@ -151,15 +165,19 @@
   ([options] (gen-call :function ::load-unpacked &form options))
   ([] `(load-unpacked :omit)))
 
+(defmacro notify-drag-install-in-progress
+  "Notifies the browser that a user began a drag in order to install an extension."
+  ([] (gen-call :function ::notify-drag-install-in-progress &form)))
+
 (defmacro load-directory
   "Loads an extension / app.
 
      |directory| - The directory to load the extension from.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [path] where:
+   Signature of the result value put on the channel is [string] where:
 
-     |path| - ?
+     |string| - ?
 
    In case of error the channel closes without receiving any result and relevant error object can be obtained via
    chromex.error/get-last-error."
@@ -172,9 +190,9 @@
      |file-type| - Required file type. For example, pem type is for private key and load type is for an unpacked item.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [path] where:
+   Signature of the result value put on the channel is [string] where:
 
-     |path| - ?
+     |string| - ?
 
    In case of error the channel closes without receiving any result and relevant error object can be obtained via
    chromex.error/get-last-error."
@@ -237,7 +255,7 @@
   ([properties] (gen-call :function ::open-dev-tools &form properties)))
 
 (defmacro delete-extension-errors
-  "Delete reported extension erors.
+  "Delete reported extension errors.
 
      |properties| - The properties specifying the errors to remove.
 
@@ -415,6 +433,13 @@
        :optional? true,
        :type :callback,
        :callback {:params [{:name "result", :type "developerPrivate.ExtensionInfo"}]}}]}
+    {:id ::get-extension-size,
+     :name "getExtensionSize",
+     :since "64",
+     :callback? true,
+     :params
+     [{:name "id", :type "string"}
+      {:name "callback", :type :callback, :callback {:params [{:name "string", :type "string"}]}}]}
     {:id ::get-items-info,
      :name "getItemsInfo",
      :since "43",
@@ -463,20 +488,21 @@
        :optional? true,
        :type :callback,
        :callback {:params [{:name "error", :optional? true, :type "developerPrivate.LoadError"}]}}]}
+    {:id ::notify-drag-install-in-progress, :name "notifyDragInstallInProgress", :since "64"}
     {:id ::load-directory,
      :name "loadDirectory",
      :since "34",
      :callback? true,
      :params
      [{:name "directory", :type "DirectoryEntry"}
-      {:name "callback", :type :callback, :callback {:params [{:name "path", :type "string"}]}}]}
+      {:name "callback", :type :callback, :callback {:params [{:name "string", :type "string"}]}}]}
     {:id ::choose-path,
      :name "choosePath",
      :callback? true,
      :params
      [{:name "select-type", :type "unknown-type"}
       {:name "file-type", :type "unknown-type"}
-      {:name "callback", :type :callback, :callback {:params [{:name "path", :type "string"}]}}]}
+      {:name "callback", :type :callback, :callback {:params [{:name "string", :type "string"}]}}]}
     {:id ::pack-directory,
      :name "packDirectory",
      :callback? true,

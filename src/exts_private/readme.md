@@ -48,7 +48,7 @@
 
 ### API stats
 
-Generated 40 namespaces containing 1 properties, 317 functions and 67 events:
+Generated 40 namespaces containing 1 properties, 321 functions and 67 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -56,16 +56,16 @@ Generated 40 namespaces containing 1 properties, 317 functions and 67 events:
     |           chrome.accessibilityPrivate |           0 |          7 |       4 |
     |             chrome.activityLogPrivate |           0 |          4 |       1 |
     |                chrome.autofillPrivate |           0 |          9 |       2 |
-    |                chrome.autotestPrivate |           0 |         18 |       0 |
+    |                chrome.autotestPrivate |           0 |         19 |       0 |
     |               chrome.bluetoothPrivate |           0 |          7 |       1 |
     |         chrome.bookmarkManagerPrivate |           0 |         20 |       4 |
     |          chrome.brailleDisplayPrivate |           0 |          2 |       2 |
     |            chrome.chromeosInfoPrivate |           0 |          2 |       0 |
     |              chrome.cloudPrintPrivate |           0 |          4 |       0 |
     |             chrome.commandLinePrivate |           0 |          1 |       0 |
-    |             chrome.cryptotokenPrivate |           0 |          1 |       0 |
+    |             chrome.cryptotokenPrivate |           0 |          2 |       0 |
     |               chrome.dashboardPrivate |           0 |          1 |       0 |
-    |               chrome.developerPrivate |           0 |         26 |       2 |
+    |               chrome.developerPrivate |           0 |         28 |       2 |
     |                    chrome.echoPrivate |           0 |          5 |       0 |
     | chrome.enterprise.platformKeysPrivate |           0 |          2 |       0 |
     |      chrome.experienceSamplingPrivate |           0 |          1 |       2 |
@@ -118,7 +118,8 @@ Generated 40 namespaces containing 1 properties, 317 functions and 67 events:
       logout restart shutdown login-status lock-screen get-extensions-info simulate-asan-memory-bug
       set-touchpad-sensitivity set-tap-to-click set-three-finger-click set-tap-dragging
       set-natural-scroll set-mouse-sensitivity set-primary-button-right set-mouse-reverse-scroll
-      get-visible-notifications get-play-store-state set-play-store-enabled tap-all-events]]
+      get-visible-notifications get-play-store-state get-printer-list set-play-store-enabled
+      tap-all-events]]
 
     [chromex.ext.bluetooth-private refer-macros:[
       set-adapter-state set-pairing-response disconnect-all forget-device set-discovery-filter connect
@@ -143,18 +144,19 @@ Generated 40 namespaces containing 1 properties, 317 functions and 67 events:
       has-switch tap-all-events]]
 
     [chromex.ext.cryptotoken-private refer-macros:[
-      can-origin-assert-app-id tap-all-events]]
+      can-origin-assert-app-id is-app-id-hash-in-enterprise-context tap-all-events]]
 
     [chromex.ext.dashboard-private refer-macros:[
       show-permission-prompt-for-delegated-install tap-all-events]]
 
     [chromex.ext.developer-private refer-macros:[
-      auto-update get-extensions-info get-extension-info get-items-info get-profile-configuration
-      update-profile-configuration show-permissions-dialog reload update-extension-configuration
-      load-unpacked load-directory choose-path pack-directory is-profile-managed request-file-source
-      open-dev-tools delete-extension-errors repair-extension show-options show-path
-      set-shortcut-handling-suspended update-extension-command enable allow-incognito allow-file-access
-      inspect tap-on-item-state-changed tap-on-profile-state-changed tap-all-events]]
+      auto-update get-extensions-info get-extension-info get-extension-size get-items-info
+      get-profile-configuration update-profile-configuration show-permissions-dialog reload
+      update-extension-configuration load-unpacked notify-drag-install-in-progress load-directory
+      choose-path pack-directory is-profile-managed request-file-source open-dev-tools
+      delete-extension-errors repair-extension show-options show-path set-shortcut-handling-suspended
+      update-extension-command enable allow-incognito allow-file-access inspect tap-on-item-state-changed
+      tap-on-profile-state-changed tap-all-events]]
 
     [chromex.ext.echo-private refer-macros:[
       set-offer-info get-offer-info get-registration-code get-oobe-timestamp get-user-consent
