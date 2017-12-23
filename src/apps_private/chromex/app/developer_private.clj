@@ -18,9 +18,7 @@
   "Runs auto update for extensions and apps immediately.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [result] where:
-
-     |result| - ?
+   Signature of the result value put on the channel is [].
 
    In case of error the channel closes without receiving any result and relevant error object can be obtained via
    chromex.error/get-last-error."
@@ -411,8 +409,7 @@
    [{:id ::auto-update,
      :name "autoUpdate",
      :callback? true,
-     :params
-     [{:name "callback", :optional? true, :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
+     :params [{:name "callback", :optional? true, :type :callback}]}
     {:id ::get-extensions-info,
      :name "getExtensionsInfo",
      :since "43",
