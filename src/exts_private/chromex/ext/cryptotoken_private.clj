@@ -71,7 +71,7 @@
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
     {:id ::is-app-id-hash-in-enterprise-context,
      :name "isAppIdHashInEnterpriseContext",
-     :since "master",
+     :since "65",
      :callback? true,
      :params
      [{:name "app-id-hash", :type "ArrayBuffer"}
