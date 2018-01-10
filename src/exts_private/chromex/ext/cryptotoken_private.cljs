@@ -9,3 +9,6 @@
 (defn is-app-id-hash-in-enterprise-context* [config app-id-hash]
   (gen-wrap :function ::is-app-id-hash-in-enterprise-context config app-id-hash))
 
+(defn can-app-id-get-attestation* [config options]
+  (gen-wrap :function ::can-app-id-get-attestation config options))
+

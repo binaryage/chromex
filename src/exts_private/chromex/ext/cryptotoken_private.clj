@@ -1,6 +1,10 @@
 (ns chromex.ext.cryptotoken-private
   "chrome.cryptotokenPrivate API that provides hooks to Chrome to
    be used by cryptotoken component extension.
+   In the context of this API, an AppId is roughly an origin and is formally
+   defined in
+
+   the FIDO spec
 
      * available since Chrome 41"
 
@@ -46,6 +50,22 @@
    chromex.error/get-last-error."
   ([app-id-hash] (gen-call :function ::is-app-id-hash-in-enterprise-context &form app-id-hash)))
 
+(defmacro can-app-id-get-attestation
+  "Checks whether the given appId may receive attestation data that identifies the token. If not, the attestation from the
+   token must be substituted with a randomly generated certificate since webauthn and U2F require that some attestation be
+   provided.
+
+     |options| - ?
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([options] (gen-call :function ::can-app-id-get-attestation &form options)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -75,6 +95,13 @@
      :callback? true,
      :params
      [{:name "app-id-hash", :type "ArrayBuffer"}
+      {:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
+    {:id ::can-app-id-get-attestation,
+     :name "canAppIdGetAttestation",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "options", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
