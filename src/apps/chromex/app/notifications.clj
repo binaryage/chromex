@@ -151,7 +151,7 @@
 
 (defmacro tap-on-show-settings-events
   "The user clicked on a link for the app's notification settings.  As of Chrome 47, only ChromeOS has UI that dispatches this
-   event.
+   event. As of Chrome 65, that UI has been removed from ChromeOS, too.
 
    Events will be put on the |channel| with signature [::on-show-settings []].
 
@@ -229,7 +229,10 @@
      :name "onPermissionLevelChanged",
      :since "32",
      :params [{:name "level", :type "notifications.PermissionLevel"}]}
-    {:id ::on-show-settings, :name "onShowSettings", :since "32"}]})
+    {:id ::on-show-settings,
+     :name "onShowSettings",
+     :since "master",
+     :deprecated "Custom notification settings button is no longer supported."}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
