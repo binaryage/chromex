@@ -1,4 +1,6 @@
-(ns ^:figwheel-no-load chromex-sample.background
+(ns chromex-sample.background
+  (:require-macros [chromex.support :refer [runonce]])
   (:require [chromex-sample.background.core :as core]))
 
-(core/init!)
+(runonce
+  (core/init!))
