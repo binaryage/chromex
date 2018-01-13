@@ -171,6 +171,22 @@
    https://developer.chrome.com/extensions/system.display#method-clearTouchCalibration."
   ([id] (gen-call :function ::clear-touch-calibration &form id)))
 
+(defmacro set-mirror-mode
+  "Sets the display mode to the specified mirror mode. Each call resets the state from previous calls. Calling
+   setDisplayProperties() will fail for the mirroring destination displays. NOTE: This is only available to Chrome OS Kiosk
+   apps and Web UI.
+
+     |info| - The information of the mirror mode that should be applied to the     display mode.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/extensions/system.display#method-setMirrorMode."
+  ([info] (gen-call :function ::set-mirror-mode &form info)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -263,10 +279,12 @@
      :name "completeCustomTouchCalibration",
      :since "57",
      :params [{:name "pairs", :type "object"} {:name "bounds", :type "system.display.Bounds"}]}
-    {:id ::clear-touch-calibration,
-     :name "clearTouchCalibration",
-     :since "57",
-     :params [{:name "id", :type "string"}]}],
+    {:id ::clear-touch-calibration, :name "clearTouchCalibration", :since "57", :params [{:name "id", :type "string"}]}
+    {:id ::set-mirror-mode,
+     :name "setMirrorMode",
+     :since "master",
+     :callback? true,
+     :params [{:name "info", :type "object"} {:name "callback", :optional? true, :type :callback}]}],
    :events [{:id ::on-display-changed, :name "onDisplayChanged"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

@@ -42,6 +42,9 @@
 (defn clear-touch-calibration* [config id]
   (gen-wrap :function ::clear-touch-calibration config id))
 
+(defn set-mirror-mode* [config info]
+  (gen-wrap :function ::set-mirror-mode config info))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-display-changed* [config channel & args]
