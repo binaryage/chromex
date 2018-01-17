@@ -98,7 +98,7 @@
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
     {:id ::can-app-id-get-attestation,
      :name "canAppIdGetAttestation",
-     :since "master",
+     :since "65",
      :callback? true,
      :params
      [{:name "options", :type "object"}

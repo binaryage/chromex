@@ -282,7 +282,7 @@
     {:id ::clear-touch-calibration, :name "clearTouchCalibration", :since "57", :params [{:name "id", :type "string"}]}
     {:id ::set-mirror-mode,
      :name "setMirrorMode",
-     :since "master",
+     :since "65",
      :callback? true,
      :params [{:name "info", :type "object"} {:name "callback", :optional? true, :type :callback}]}],
    :events [{:id ::on-display-changed, :name "onDisplayChanged"}]})

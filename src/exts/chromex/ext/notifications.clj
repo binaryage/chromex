@@ -231,7 +231,7 @@
      :params [{:name "level", :type "notifications.PermissionLevel"}]}
     {:id ::on-show-settings,
      :name "onShowSettings",
-     :since "master",
+     :since "65",
      :deprecated "Custom notification settings button is no longer supported."}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
