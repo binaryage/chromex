@@ -279,7 +279,7 @@
   "Sets whether or not SIM locking is enabled (i.e a PIN will be required when the device is powered) and changes the PIN if a
    new PIN is specified. If the new PIN is provided but not valid (e.g. too short) the operation will fail. This will not lock
    the SIM; that is handled automatically by the device. NOTE: If the SIM is locked, it must first be unlocked with
-   unlockCellularSim() before this can be called (otherwise it will fail and chrome.runtime.lastError will be set to
+   unlockCellularSim() before this can be called (otherwise it will fail and 'runtime.lastError' will be set to
    Error.SimLocked).
 
      |network-guid| - The GUID of the cellular network to set the SIM state of.     If empty, the default cellular device

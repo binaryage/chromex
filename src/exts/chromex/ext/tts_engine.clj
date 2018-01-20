@@ -14,6 +14,16 @@
 (declare api-table)
 (declare gen-call)
 
+; -- functions --------------------------------------------------------------------------------------------------------------
+
+(defmacro update-voices
+  "Called by an engine to update its list of voices. This list overrides any voices declared in this extension's manifest.
+
+     |voices| - Array of 'tts.TtsVoice' objects representing the available voices for speech synthesis.
+
+   https://developer.chrome.com/extensions/ttsEngine#method-updateVoices."
+  ([voices] (gen-call :function ::update-voices &form voices)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -84,6 +94,11 @@
 (def api-table
   {:namespace "chrome.ttsEngine",
    :since "21",
+   :functions
+   [{:id ::update-voices,
+     :name "updateVoices",
+     :since "master",
+     :params [{:name "voices", :type "[array-of-tts.TtsVoices]"}]}],
    :events
    [{:id ::on-speak,
      :name "onSpeak",

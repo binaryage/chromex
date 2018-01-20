@@ -85,7 +85,7 @@
 
 ### API stats
 
-Generated 77 namespaces containing 50 properties, 371 functions and 177 events:
+Generated 77 namespaces containing 50 properties, 372 functions and 177 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -160,7 +160,7 @@ Generated 77 namespaces containing 50 properties, 371 functions and 177 events:
     |                           chrome.test |           0 |         32 |       1 |
     |                       chrome.topSites |           0 |          1 |       0 |
     |                            chrome.tts |           0 |          6 |       0 |
-    |                      chrome.ttsEngine |           0 |          0 |       4 |
+    |                      chrome.ttsEngine |           0 |          1 |       4 |
     |                    chrome.vpnProvider |           0 |          5 |       5 |
     |                      chrome.wallpaper |           0 |          1 |       0 |
     |                  chrome.webNavigation |           0 |          2 |       9 |
@@ -453,7 +453,7 @@ Generated 77 namespaces containing 50 properties, 371 functions and 177 events:
       speak stop pause resume is-speaking get-voices tap-all-events]]
 
     [chromex.ext.tts-engine refer-macros:[
-      tap-on-speak tap-on-stop tap-on-pause tap-on-resume tap-all-events]]
+      update-voices tap-on-speak tap-on-stop tap-on-pause tap-on-resume tap-all-events]]
 
     [chromex.ext.vpn-provider refer-macros:[
       create-config destroy-config set-parameters send-packet notify-connection-state-changed
