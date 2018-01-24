@@ -17,7 +17,7 @@
 (defmacro set-adapter-state
   "Changes the state of the Bluetooth adapter.
 
-     |adapter-state| - ?
+     |adapter-state| - The new state of the adapter.
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [].
