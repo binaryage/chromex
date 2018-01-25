@@ -68,8 +68,30 @@
   ([] (gen-call :function ::import-passwords &form)))
 
 (defmacro export-passwords
-  "Triggers the Password Manager password export functionality."
+  "Triggers the Password Manager password export functionality. Completion Will be signaled by the
+   onPasswordsFileExportProgress event.|callback| will be called when the request is started or rejected. If rejected
+   chrome.runtime.lastError will be set to 'in-progress' or 'reauth-failed'.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::export-passwords &form)))
+
+(defmacro request-export-progress-status
+  "Requests the export progress status. This is the same as the last value seen on the onPasswordsFileExportProgress event.
+   This function is useful for checking if an export has already been initiated from an older tab, where we might have missed
+   the original event.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [status] where:
+
+     |status| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::request-export-progress-status &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -106,6 +128,16 @@
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-plaintext-password-retrieved &form channel args)))
 
+(defmacro tap-on-passwords-file-export-progress-events
+  "Fired when the status of the export has changed.
+
+   Events will be put on the |channel| with signature [::on-passwords-file-export-progress [status]] where:
+
+     |status| - The progress status and an optional UI message.
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-passwords-file-export-progress &form channel args)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -140,7 +172,15 @@
        :type :callback,
        :callback {:params [{:name "exceptions", :type "[array-of-passwordsPrivate.ExceptionEntrys]"}]}}]}
     {:id ::import-passwords, :name "importPasswords"}
-    {:id ::export-passwords, :name "exportPasswords"}],
+    {:id ::export-passwords, :name "exportPasswords", :callback? true, :params [{:name "callback", :type :callback}]}
+    {:id ::request-export-progress-status,
+     :name "requestExportProgressStatus",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "callback",
+       :type :callback,
+       :callback {:params [{:name "status", :type "passwordsPrivate.ExportProgressStatus"}]}}]}],
    :events
    [{:id ::on-saved-passwords-list-changed,
      :name "onSavedPasswordsListChanged",
@@ -150,7 +190,11 @@
      :params [{:name "exceptions", :type "[array-of-passwordsPrivate.ExceptionEntrys]"}]}
     {:id ::on-plaintext-password-retrieved,
      :name "onPlaintextPasswordRetrieved",
-     :params [{:name "dict", :type "object"}]}]})
+     :params [{:name "dict", :type "object"}]}
+    {:id ::on-passwords-file-export-progress,
+     :name "onPasswordsFileExportProgress",
+     :since "master",
+     :params [{:name "status", :type "object"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
