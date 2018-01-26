@@ -1,7 +1,7 @@
 (ns chromex.ext.web-navigation
   "Use the chrome.webNavigation API to receive notifications about the status of navigation requests in-flight.
 
-     * available since Chrome 21
+     * available since Chrome 22
      * https://developer.chrome.com/extensions/webNavigation"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -174,7 +174,7 @@
 
 (def api-table
   {:namespace "chrome.webNavigation",
-   :since "21",
+   :since "22",
    :functions
    [{:id ::get-frame,
      :name "getFrame",
@@ -200,11 +200,8 @@
     {:id ::on-reference-fragment-updated,
      :name "onReferenceFragmentUpdated",
      :params [{:name "details", :type "object"}]}
-    {:id ::on-tab-replaced, :name "onTabReplaced", :since "22", :params [{:name "details", :type "object"}]}
-    {:id ::on-history-state-updated,
-     :name "onHistoryStateUpdated",
-     :since "22",
-     :params [{:name "details", :type "object"}]}]})
+    {:id ::on-tab-replaced, :name "onTabReplaced", :params [{:name "details", :type "object"}]}
+    {:id ::on-history-state-updated, :name "onHistoryStateUpdated", :params [{:name "details", :type "object"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
