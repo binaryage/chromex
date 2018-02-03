@@ -60,6 +60,12 @@
      |enabled| - True for ChromeVox (native), false for TalkBack."
   ([enabled] (gen-call :function ::set-native-chrome-vox-arc-support-for-current-app &form enabled)))
 
+(defmacro send-synthetic-key-event
+  "Sends a fabricated key event.
+
+     |key-event| - The event to send."
+  ([key-event] (gen-call :function ::send-synthetic-key-event &form key-event)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -139,7 +145,11 @@
     {:id ::set-native-chrome-vox-arc-support-for-current-app,
      :name "setNativeChromeVoxArcSupportForCurrentApp",
      :since "63",
-     :params [{:name "enabled", :type "boolean"}]}],
+     :params [{:name "enabled", :type "boolean"}]}
+    {:id ::send-synthetic-key-event,
+     :name "sendSyntheticKeyEvent",
+     :since "master",
+     :params [{:name "key-event", :type "accessibilityPrivate.SyntheticKeyboardEvent"}]}],
    :events
    [{:id ::on-introduce-chrome-vox, :name "onIntroduceChromeVox", :since "42"}
     {:id ::on-accessibility-gesture,

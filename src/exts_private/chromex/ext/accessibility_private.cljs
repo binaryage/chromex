@@ -24,6 +24,9 @@
 (defn set-native-chrome-vox-arc-support-for-current-app* [config enabled]
   (gen-wrap :function ::set-native-chrome-vox-arc-support-for-current-app config enabled))
 
+(defn send-synthetic-key-event* [config key-event]
+  (gen-wrap :function ::send-synthetic-key-event config key-event))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-introduce-chrome-vox* [config channel & args]
