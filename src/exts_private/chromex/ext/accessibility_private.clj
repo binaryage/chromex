@@ -148,7 +148,7 @@
      :params [{:name "enabled", :type "boolean"}]}
     {:id ::send-synthetic-key-event,
      :name "sendSyntheticKeyEvent",
-     :since "master",
+     :since "65",
      :params [{:name "key-event", :type "accessibilityPrivate.SyntheticKeyboardEvent"}]}],
    :events
    [{:id ::on-introduce-chrome-vox, :name "onIntroduceChromeVox", :since "42"}
