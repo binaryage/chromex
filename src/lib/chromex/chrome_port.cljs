@@ -1,5 +1,5 @@
 (ns chromex.chrome-port
-  (:require [oops.core :refer [oget ocall]]
+  (:require [oops.core :refer [oget ocall!]]
             [chromex.support :refer [call-hook get-hook]]
             [chromex.protocols :as protocols :refer [IChromePort IChromePortState]]
             [cljs.core.async.impl.protocols :as core-async]
@@ -21,23 +21,19 @@
     (if (nil? message)
       (call-hook config :chrome-port-post-message-called-with-nil this)
       (if connected?
-        (ocall native-chrome-port "postMessage" message)
+        (ocall! native-chrome-port "postMessage" message)
         (call-hook config :chrome-port-post-message-called-on-disconnected-port this))))
   (disconnect! [this]
     (if connected?
-      (ocall native-chrome-port "disconnect")
+      (ocall! native-chrome-port "disconnect")
       (call-hook config :chrome-port-disconnect-called-on-disconnected-port this)))
   (on-disconnect! [this callback]
     (if connected?
-      (let [on-disconnect-event (oget native-chrome-port "onDisconnect")]
-        (assert on-disconnect-event)
-        (ocall on-disconnect-event "addListener" callback))
+      (ocall! native-chrome-port "onDisconnect.addListener" callback)
       (call-hook config :chrome-port-on-disconnect-called-on-disconnected-port this)))
   (on-message! [this callback]
     (if connected?
-      (let [on-message-event (oget native-chrome-port "onMessage")]
-        (assert on-message-event)
-        (ocall on-message-event "addListener" callback))
+      (ocall! native-chrome-port "onMessage.addListener" callback)
       (call-hook config :chrome-port-on-message-called-on-disconnected-port this)))
 
   IChromePortState

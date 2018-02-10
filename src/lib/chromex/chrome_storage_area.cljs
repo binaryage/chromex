@@ -1,6 +1,6 @@
 (ns chromex.chrome-storage-area
   (:require [chromex.support :refer [call-hook get-hook]]
-            [oops.core :refer [ocall]]
+            [oops.core :refer [ocall ocall!]]
             [chromex.protocols :as protocols :refer [IChromeStorageArea]]))
 
 ; -- ChromeStorageArea ------------------------------------------------------------------------------------------------------
@@ -25,15 +25,15 @@
       channel))
   (set [_this items]
     (let [channel (channel-factory)]
-      (ocall native-chrome-storage-area "set" items (callback-factory channel))
+      (ocall! native-chrome-storage-area "set" items (callback-factory channel))
       channel))
   (remove [_this keys]
     (let [channel (channel-factory)]
-      (ocall native-chrome-storage-area "remove" keys (callback-factory channel))
+      (ocall! native-chrome-storage-area "remove" keys (callback-factory channel))
       channel))
   (clear [_this]
     (let [channel (channel-factory)]
-      (ocall native-chrome-storage-area "clear" (callback-factory channel))
+      (ocall! native-chrome-storage-area "clear" (callback-factory channel))
       channel)))
 
 ; -- constructor ------------------------------------------------------------------------------------------------------------
