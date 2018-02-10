@@ -97,7 +97,7 @@
    :functions
    [{:id ::update-voices,
      :name "updateVoices",
-     :since "master",
+     :since "66",
      :params [{:name "voices", :type "[array-of-tts.TtsVoices]"}]}],
    :events
    [{:id ::on-speak,

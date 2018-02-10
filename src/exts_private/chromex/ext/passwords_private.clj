@@ -175,7 +175,7 @@
     {:id ::export-passwords, :name "exportPasswords", :callback? true, :params [{:name "callback", :type :callback}]}
     {:id ::request-export-progress-status,
      :name "requestExportProgressStatus",
-     :since "master",
+     :since "66",
      :callback? true,
      :params
      [{:name "callback",
@@ -193,7 +193,7 @@
      :params [{:name "dict", :type "object"}]}
     {:id ::on-passwords-file-export-progress,
      :name "onPasswordsFileExportProgress",
-     :since "master",
+     :since "66",
      :params [{:name "status", :type "object"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

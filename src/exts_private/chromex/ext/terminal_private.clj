@@ -13,8 +13,8 @@
 (defmacro open-terminal-process
   "Starts new process.
 
-     |process-name| - Name of the process to open. Initially only 'crosh' is supported. Another processes may be added in
-                      future.
+     |process-name| - Name of the process to open. May be 'crosh' or 'vmshell'.
+     |args| - Command line arguments to pass to the process.
 
    This function returns a core.async channel which eventually receives a result value and closes.
    Signature of the result value put on the channel is [pid] where:
@@ -23,10 +23,11 @@
 
    In case of error the channel closes without receiving any result and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([process-name] (gen-call :function ::open-terminal-process &form process-name)))
+  ([process-name args] (gen-call :function ::open-terminal-process &form process-name args))
+  ([process-name] `(open-terminal-process ~process-name :omit)))
 
 (defmacro close-terminal-process
-  "Closes previousy opened process.
+  "Closes previously opened process.
 
      |pid| - Process id of the process we want to close.
 
@@ -116,6 +117,7 @@
      :callback? true,
      :params
      [{:name "process-name", :type "string"}
+      {:name "args", :optional? true, :type "[array-of-strings]"}
       {:name "callback", :type :callback, :callback {:params [{:name "pid", :type "integer"}]}}]}
     {:id ::close-terminal-process,
      :name "closeTerminalProcess",

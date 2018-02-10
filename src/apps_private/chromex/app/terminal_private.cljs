@@ -3,8 +3,8 @@
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
-(defn open-terminal-process* [config process-name]
-  (gen-wrap :function ::open-terminal-process config process-name))
+(defn open-terminal-process* [config process-name args]
+  (gen-wrap :function ::open-terminal-process config process-name args))
 
 (defn close-terminal-process* [config pid]
   (gen-wrap :function ::close-terminal-process config pid))
