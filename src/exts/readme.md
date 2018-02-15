@@ -85,7 +85,7 @@
 
 ### API stats
 
-Generated 77 namespaces containing 50 properties, 372 functions and 177 events:
+Generated 77 namespaces containing 50 properties, 375 functions and 177 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -119,7 +119,7 @@ Generated 77 namespaces containing 50 properties, 372 functions and 177 events:
     |                            chrome.dns |           0 |          1 |       0 |
     |                   chrome.documentScan |           0 |          1 |       0 |
     |                      chrome.downloads |           0 |         14 |       4 |
-    |    chrome.enterprise.deviceAttributes |           0 |          1 |       0 |
+    |    chrome.enterprise.deviceAttributes |           0 |          4 |       0 |
     |        chrome.enterprise.platformKeys |           0 |          6 |       0 |
     |                      chrome.extension |           2 |          8 |       2 |
     |             chrome.fileBrowserHandler |           0 |          1 |       1 |
@@ -282,7 +282,8 @@ Generated 77 namespaces containing 50 properties, 372 functions and 177 events:
       tap-on-determining-filename tap-all-events]]
 
     [chromex.ext.enterprise.device-attributes refer-macros:[
-      get-directory-device-id tap-all-events]]
+      get-directory-device-id get-device-serial-number get-device-asset-id get-device-annotated-location
+      tap-all-events]]
 
     [chromex.ext.enterprise.platform-keys refer-macros:[
       get-tokens get-certificates import-certificate remove-certificate challenge-machine-key
