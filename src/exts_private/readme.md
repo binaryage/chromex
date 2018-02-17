@@ -19,7 +19,6 @@
 | [chrome.developerPrivate](https://developer.chrome.com/extensions/developerPrivate) | [chromex/ext/developer_private.clj](chromex/ext/developer_private.clj) |
 | [chrome.echoPrivate](https://developer.chrome.com/extensions/echoPrivate) | [chromex/ext/echo_private.clj](chromex/ext/echo_private.clj) |
 | [chrome.enterprise.platformKeysPrivate](https://developer.chrome.com/extensions/enterprise.platformKeysPrivate) | [chromex/ext/enterprise/platform_keys_private.clj](chromex/ext/enterprise/platform_keys_private.clj) |
-| [chrome.experienceSamplingPrivate](https://developer.chrome.com/extensions/experienceSamplingPrivate) | [chromex/ext/experience_sampling_private.clj](chromex/ext/experience_sampling_private.clj) |
 | [chrome.feedbackPrivate](https://developer.chrome.com/extensions/feedbackPrivate) | [chromex/ext/feedback_private.clj](chromex/ext/feedback_private.clj) |
 | [chrome.fileManagerPrivate](https://developer.chrome.com/extensions/fileManagerPrivate) | [chromex/ext/file_manager_private.clj](chromex/ext/file_manager_private.clj) |
 | [chrome.imageWriterPrivate](https://developer.chrome.com/extensions/imageWriterPrivate) | [chromex/ext/image_writer_private.clj](chromex/ext/image_writer_private.clj) |
@@ -48,7 +47,7 @@
 
 ### API stats
 
-Generated 40 namespaces containing 1 properties, 324 functions and 68 events:
+Generated 39 namespaces containing 1 properties, 323 functions and 66 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -68,7 +67,6 @@ Generated 40 namespaces containing 1 properties, 324 functions and 68 events:
     |               chrome.developerPrivate |           0 |         28 |       2 |
     |                    chrome.echoPrivate |           0 |          5 |       0 |
     | chrome.enterprise.platformKeysPrivate |           0 |          2 |       0 |
-    |      chrome.experienceSamplingPrivate |           0 |          1 |       2 |
     |                chrome.feedbackPrivate |           0 |          6 |       1 |
     |             chrome.fileManagerPrivate |           0 |         53 |       9 |
     |             chrome.imageWriterPrivate |           0 |          5 |       5 |
@@ -165,9 +163,6 @@ Generated 40 namespaces containing 1 properties, 324 functions and 68 events:
 
     [chromex.ext.enterprise.platform-keys-private refer-macros:[
       challenge-machine-key challenge-user-key tap-all-events]]
-
-    [chromex.ext.experience-sampling-private refer-macros:[
-      get-browser-info tap-on-displayed tap-on-decision tap-all-events]]
 
     [chromex.ext.feedback-private refer-macros:[
       get-user-email get-system-information send-feedback get-strings log-srt-prompt-result
