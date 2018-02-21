@@ -74,7 +74,7 @@
      [{:name "image-data", :type "ArrayBuffer"}
       {:name "type", :type "unknown-type"}
       {:name "additional-items", :optional? true, :type "[array-of-objects]"}
-      {:name "callback", :type :callback}]}],
+      {:name "callback", :optional? true, :type :callback}]}],
    :events [{:id ::on-clipboard-data-changed, :name "onClipboardDataChanged", :since "66"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
