@@ -98,17 +98,17 @@
      :params [{:name "callback", :type :callback, :callback {:params [{:name "device-id", :type "string"}]}}]}
     {:id ::get-device-serial-number,
      :name "getDeviceSerialNumber",
-     :since "master",
+     :since "66",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "serial-number", :type "string"}]}}]}
     {:id ::get-device-asset-id,
      :name "getDeviceAssetId",
-     :since "master",
+     :since "66",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "asset-id", :type "string"}]}}]}
     {:id ::get-device-annotated-location,
      :name "getDeviceAnnotatedLocation",
-     :since "master",
+     :since "66",
      :callback? true,
      :params
      [{:name "callback", :type :callback, :callback {:params [{:name "annotated-location", :type "string"}]}}]}]})
