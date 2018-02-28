@@ -30,6 +30,9 @@
 (defn request-export-progress-status* [config]
   (gen-wrap :function ::request-export-progress-status config))
 
+(defn cancel-export-passwords* [config]
+  (gen-wrap :function ::cancel-export-passwords config))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-saved-passwords-list-changed* [config channel & args]

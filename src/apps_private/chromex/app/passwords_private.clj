@@ -93,6 +93,10 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::request-export-progress-status &form)))
 
+(defmacro cancel-export-passwords
+  "Stops exporting passwords and cleans up any passwords, which were already written to the filesystem."
+  ([] (gen-call :function ::cancel-export-passwords &form)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -180,7 +184,8 @@
      :params
      [{:name "callback",
        :type :callback,
-       :callback {:params [{:name "status", :type "passwordsPrivate.ExportProgressStatus"}]}}]}],
+       :callback {:params [{:name "status", :type "passwordsPrivate.ExportProgressStatus"}]}}]}
+    {:id ::cancel-export-passwords, :name "cancelExportPasswords", :since "master"}],
    :events
    [{:id ::on-saved-passwords-list-changed,
      :name "onSavedPasswordsListChanged",
