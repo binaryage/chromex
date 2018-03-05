@@ -47,7 +47,7 @@
 
 ### API stats
 
-Generated 39 namespaces containing 1 properties, 324 functions and 66 events:
+Generated 39 namespaces containing 1 properties, 325 functions and 66 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -68,7 +68,7 @@ Generated 39 namespaces containing 1 properties, 324 functions and 66 events:
     |                    chrome.echoPrivate |           0 |          5 |       0 |
     | chrome.enterprise.platformKeysPrivate |           0 |          2 |       0 |
     |                chrome.feedbackPrivate |           0 |          6 |       1 |
-    |             chrome.fileManagerPrivate |           0 |         53 |       9 |
+    |             chrome.fileManagerPrivate |           0 |         54 |       9 |
     |             chrome.imageWriterPrivate |           0 |          5 |       5 |
     |             chrome.inputMethodPrivate |           0 |         11 |       7 |
     |        chrome.languageSettingsPrivate |           0 |         13 |       4 |
@@ -172,16 +172,17 @@ Generated 39 namespaces containing 1 properties, 324 functions and 66 events:
       logout-user-for-reauthentication cancel-dialog execute-task set-default-task get-file-tasks
       get-mime-type get-strings add-file-watch remove-file-watch enable-external-file-scheme grant-access
       select-files select-file get-entry-properties pin-drive-file resolve-isolated-entries add-mount
-      remove-mount get-volume-metadata-list cancel-file-transfers cancel-all-file-transfers start-copy
-      cancel-copy get-size-stats format-volume rename-volume get-preferences set-preferences search-drive
-      search-drive-metadata search-files-by-hashes zip-selection get-drive-connection-state
-      validate-path-name-length zoom request-access-token request-web-store-access-token get-share-url
-      get-download-url request-drive-share get-profiles open-inspector compute-checksum is-uma-enabled
-      set-entry-tag is-piex-loader-enabled get-providers add-provided-file-system configure-volume
-      get-custom-actions execute-custom-action get-directory-size get-recent-files tap-on-mount-completed
-      tap-on-file-transfers-updated tap-on-copy-progress tap-on-directory-changed
-      tap-on-preferences-changed tap-on-drive-connection-status-changed tap-on-device-changed
-      tap-on-drive-sync-error tap-on-apps-updated tap-all-events]]
+      remove-mount mark-cache-as-mounted get-volume-metadata-list cancel-file-transfers
+      cancel-all-file-transfers start-copy cancel-copy get-size-stats format-volume rename-volume
+      get-preferences set-preferences search-drive search-drive-metadata search-files-by-hashes
+      zip-selection get-drive-connection-state validate-path-name-length zoom request-access-token
+      request-web-store-access-token get-share-url get-download-url request-drive-share get-profiles
+      open-inspector compute-checksum is-uma-enabled set-entry-tag is-piex-loader-enabled get-providers
+      add-provided-file-system configure-volume get-custom-actions execute-custom-action
+      get-directory-size get-recent-files tap-on-mount-completed tap-on-file-transfers-updated
+      tap-on-copy-progress tap-on-directory-changed tap-on-preferences-changed
+      tap-on-drive-connection-status-changed tap-on-device-changed tap-on-drive-sync-error
+      tap-on-apps-updated tap-all-events]]
 
     [chromex.ext.image-writer-private refer-macros:[
       write-from-url write-from-file cancel-write destroy-partitions list-removable-storage-devices
