@@ -185,7 +185,7 @@
      [{:name "callback",
        :type :callback,
        :callback {:params [{:name "status", :type "passwordsPrivate.ExportProgressStatus"}]}}]}
-    {:id ::cancel-export-passwords, :name "cancelExportPasswords", :since "master"}],
+    {:id ::cancel-export-passwords, :name "cancelExportPasswords", :since "66"}],
    :events
    [{:id ::on-saved-passwords-list-changed,
      :name "onSavedPasswordsListChanged",
