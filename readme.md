@@ -201,6 +201,7 @@ way how callbacks are turned into core.async channels. Theoretically you could r
   * [binaryage/dirac](https://github.com/binaryage/dirac) - a Chrome DevTools fork for ClojureScript developers
   * [madvas/thai2english-chrome-extension](https://github.com/madvas/thai2english-chrome-extension) - a Chrome extension to translate Thai to English
   * [jazzytomato/hnlookup](https://github.com/jazzytomato/hnlookup) - a Chrome popup extension to look up pages on Hacker News
+  * [Scout, by Room Key](https://www.roomkey.com/scout) - Chrome extension that finds lower hotel rates as you browse major travel search sites
 
 ### Similar libraries
 
