@@ -47,7 +47,7 @@
 
 ### API stats
 
-Generated 39 namespaces containing 1 properties, 325 functions and 66 events:
+Generated 39 namespaces containing 1 properties, 326 functions and 66 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -89,7 +89,7 @@ Generated 39 namespaces containing 1 properties, 325 functions and 66 events:
     |                  chrome.webcamPrivate |           0 |          5 |       0 |
     |             chrome.webrtcAudioPrivate |           0 |          3 |       1 |
     |    chrome.webrtcDesktopCapturePrivate |           0 |          2 |       0 |
-    |           chrome.webrtcLoggingPrivate |           0 |         13 |       0 |
+    |           chrome.webrtcLoggingPrivate |           0 |         14 |       0 |
     |                chrome.webstorePrivate |           0 |         13 |       0 |
 
 ### Requires
@@ -278,7 +278,7 @@ Generated 39 namespaces containing 1 properties, 325 functions and 66 events:
     [chromex.ext.webrtc-logging-private refer-macros:[
       set-meta-data start set-upload-on-render-close stop store upload-stored upload discard
       start-rtp-dump stop-rtp-dump start-audio-debug-recordings stop-audio-debug-recordings
-      get-logs-directory tap-all-events]]
+      start-event-logging get-logs-directory tap-all-events]]
 
     [chromex.ext.webstore-private refer-macros:[
       install begin-install-with-manifest3 complete-install enable-app-launcher get-browser-login

@@ -192,6 +192,24 @@
    chromex.error/get-last-error."
   ([request security-origin] (gen-call :function ::stop-audio-debug-recordings &form request security-origin)))
 
+(defmacro start-event-logging
+  "Start remote-bound event logging for a specific peer connection, indicated by its ID, for which remote-bound event logging
+   was not active. The callback will be posted back, indicating |true| if and only if an event log was successfully started.
+   |metadata| is an arbitrary string, to be prepended to the event log.
+
+     |request| - ?
+     |security-origin| - ?
+     |peer-connection-id| - ?
+     |max-log-size-bytes| - ?
+     |metadata| - ?
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([request security-origin peer-connection-id max-log-size-bytes metadata] (gen-call :function ::start-event-logging &form request security-origin peer-connection-id max-log-size-bytes metadata)))
+
 (defmacro get-logs-directory
   "Returns the directory entry for the 'WebRTC Logs' directory. If the directory doesn't exist yet, this will create it. If
    the directory cannot be created, this call will fail with a runtime error.
@@ -323,6 +341,17 @@
       {:name "callback",
        :type :callback,
        :callback {:params [{:name "info", :type "webrtcLoggingPrivate.RecordingInfo"}]}}]}
+    {:id ::start-event-logging,
+     :name "startEventLogging",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "request", :type "webrtcLoggingPrivate.RequestInfo"}
+      {:name "security-origin", :type "string"}
+      {:name "peer-connection-id", :type "string"}
+      {:name "max-log-size-bytes", :type "integer"}
+      {:name "metadata", :type "string"}
+      {:name "callback", :type :callback}]}
     {:id ::get-logs-directory,
      :name "getLogsDirectory",
      :since "64",
