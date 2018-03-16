@@ -2,7 +2,7 @@
   "Use the chrome.passwordsPrivate API to add or remove password
    data from the settings UI.
 
-     * available since Chrome 65"
+     * available since Chrome 66"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -155,7 +155,7 @@
 
 (def api-table
   {:namespace "chrome.passwordsPrivate",
-   :since "65",
+   :since "66",
    :functions
    [{:id ::remove-saved-password, :name "removeSavedPassword", :params [{:name "index", :type "integer"}]}
     {:id ::remove-password-exception, :name "removePasswordException", :params [{:name "index", :type "integer"}]}
@@ -179,13 +179,12 @@
     {:id ::export-passwords, :name "exportPasswords", :callback? true, :params [{:name "callback", :type :callback}]}
     {:id ::request-export-progress-status,
      :name "requestExportProgressStatus",
-     :since "66",
      :callback? true,
      :params
      [{:name "callback",
        :type :callback,
        :callback {:params [{:name "status", :type "passwordsPrivate.ExportProgressStatus"}]}}]}
-    {:id ::cancel-export-passwords, :name "cancelExportPasswords", :since "66"}],
+    {:id ::cancel-export-passwords, :name "cancelExportPasswords"}],
    :events
    [{:id ::on-saved-passwords-list-changed,
      :name "onSavedPasswordsListChanged",
@@ -198,7 +197,6 @@
      :params [{:name "dict", :type "object"}]}
     {:id ::on-passwords-file-export-progress,
      :name "onPasswordsFileExportProgress",
-     :since "66",
      :params [{:name "status", :type "object"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
