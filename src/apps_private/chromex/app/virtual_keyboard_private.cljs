@@ -30,6 +30,9 @@
 (defn set-mode* [config mode]
   (gen-wrap :function ::set-mode config mode))
 
+(defn set-container-behavior* [config options]
+  (gen-wrap :function ::set-container-behavior config options))
+
 (defn set-draggable-area* [config bounds]
   (gen-wrap :function ::set-draggable-area config bounds))
 

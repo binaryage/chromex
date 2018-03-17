@@ -192,7 +192,8 @@
   ([query-info] (gen-call :function ::query &form query-info)))
 
 (defmacro highlight
-  "Highlights the given tabs.
+  "Highlights the given tabs and focuses on the first of group. Will appear to do nothing if specified tab is currently
+   active.
 
      |highlight-info| - https://developer.chrome.com/extensions/tabs#property-highlight-highlightInfo.
 

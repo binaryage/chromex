@@ -94,6 +94,18 @@
    chromex.error/get-last-error."
   ([mode] (gen-call :function ::set-mode &form mode)))
 
+(defmacro set-container-behavior
+  "Sets the virtual keyboard container behavior
+
+     |options| - Optional parameters for new container behavior.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([options] (gen-call :function ::set-container-behavior &form options)))
+
 (defmacro set-draggable-area
   "Sets the virtual keyboard draggable area bounds.
 
@@ -186,10 +198,18 @@
     {:id ::open-settings, :name "openSettings", :since "37"}
     {:id ::set-mode,
      :name "setMode",
-     :since "43",
+     :since "master",
+     :deprecated "Please use 'setContainerBehavior'",
      :callback? true,
      :params
      [{:name "mode", :type "virtualKeyboardPrivate.KeyboardMode"}
+      {:name "callback", :optional? true, :type :callback}]}
+    {:id ::set-container-behavior,
+     :name "setContainerBehavior",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "options", :type "virtualKeyboardPrivate.ContainerBehaviorOptions"}
       {:name "callback", :optional? true, :type :callback}]}
     {:id ::set-draggable-area,
      :name "setDraggableArea",

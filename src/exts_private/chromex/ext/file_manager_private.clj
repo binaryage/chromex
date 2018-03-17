@@ -887,7 +887,7 @@
     {:id ::remove-mount, :name "removeMount", :params [{:name "volume-id", :type "string"}]}
     {:id ::mark-cache-as-mounted,
      :name "markCacheAsMounted",
-     :since "master",
+     :since "67",
      :callback? true,
      :params
      [{:name "source-path", :type "string"} {:name "is-mounted", :type "boolean"} {:name "callback", :type :callback}]}

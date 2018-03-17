@@ -343,7 +343,7 @@
        :callback {:params [{:name "info", :type "webrtcLoggingPrivate.RecordingInfo"}]}}]}
     {:id ::start-event-logging,
      :name "startEventLogging",
-     :since "master",
+     :since "67",
      :callback? true,
      :params
      [{:name "request", :type "webrtcLoggingPrivate.RequestInfo"}
