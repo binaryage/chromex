@@ -43,9 +43,10 @@
      |feedback| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [status] where:
+   Signature of the result value put on the channel is [status type] where:
 
      |status| - ?
+     |type| - ?
 
    In case of error the channel closes without receiving any result and relevant error object can be obtained via
    chromex.error/get-last-error."
@@ -138,7 +139,9 @@
      :callback? true,
      :params
      [{:name "feedback", :type "feedbackPrivate.FeedbackInfo"}
-      {:name "callback", :type :callback, :callback {:params [{:name "status", :type "unknown-type"}]}}]}
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "status", :type "unknown-type"} {:name "type", :type "unknown-type"}]}}]}
     {:id ::get-strings,
      :name "getStrings",
      :since "31",
