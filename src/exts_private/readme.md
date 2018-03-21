@@ -47,7 +47,7 @@
 
 ### API stats
 
-Generated 39 namespaces containing 1 properties, 327 functions and 66 events:
+Generated 39 namespaces containing 1 properties, 329 functions and 66 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -78,7 +78,7 @@ Generated 39 namespaces containing 1 properties, 327 functions and 66 events:
     |              chrome.networkingPrivate |           0 |         22 |       5 |
     |               chrome.passwordsPrivate |           0 |         10 |       4 |
     |             chrome.preferencesPrivate |           1 |          0 |       0 |
-    |             chrome.quickUnlockPrivate |           0 |          5 |       1 |
+    |             chrome.quickUnlockPrivate |           0 |          7 |       1 |
     |               chrome.resourcesPrivate |           0 |          1 |       0 |
     |                chrome.settingsPrivate |           0 |          5 |       1 |
     |                 chrome.streamsPrivate |           0 |          1 |       1 |
@@ -236,8 +236,8 @@ Generated 39 namespaces containing 1 properties, 327 functions and 66 events:
       get-easy-unlock-proximity-required tap-all-events]]
 
     [chromex.ext.quick-unlock-private refer-macros:[
-      get-available-modes get-active-modes check-credential get-credential-requirements set-modes
-      tap-on-active-modes-changed tap-all-events]]
+      get-auth-token set-lock-screen-enabled get-available-modes get-active-modes check-credential
+      get-credential-requirements set-modes tap-on-active-modes-changed tap-all-events]]
 
     [chromex.ext.resources-private refer-macros:[
       get-strings tap-all-events]]

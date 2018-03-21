@@ -1,12 +1,11 @@
 (ns chromex.app.quick-unlock-private
-  "Use the chrome.quickUnlockPrivate API to change the active quick
-   unlock modes and to change their respective credentials.
-
-   Quick unlock only supports unlocking an account that has already been signed
-   in.
-
-   The quick unlock authentication facilities are not available through this
-   API; they are built directly into the lock screen.
+  "Use the chrome.quickUnlockPrivate API to change whether the
+   lock screen is enabled and which modes are allowed (active) for unlocking a
+   Chrome OS device from the lock screen. The API is also used to set quick
+   unlock credentials.
+   Note: The API is named 'quickUnlock' for historical reasons but it should be
+   used for all lock screen settings.
+   Note: This API can not be used to actually unlock the device.
 
      * available since Chrome 53"
 
@@ -18,6 +17,35 @@
 (declare gen-call)
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
+
+(defmacro get-auth-token
+  "Returns a token that can be used for future operations and the number of seconds until the token expires.
+
+     |account-password| - The account password for the logged in user.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [result] where:
+
+     |result| - ?
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([account-password] (gen-call :function ::get-auth-token &form account-password)))
+
+(defmacro set-lock-screen-enabled
+  "Sets the lock screen enabled state. NOTE: The lock enabled state is reflected in the settings.enable_screen_lock pref,
+   which can be read but not written using the settings_private API (which also provides policy information). This API must be
+   used to change the pref.
+
+     |token| - The token returned by 'getAuthToken'.
+     |enabled| - Whether to enable the lock screen.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([token enabled] (gen-call :function ::set-lock-screen-enabled &form token enabled)))
 
 (defmacro get-available-modes
   "Returns the set of quick unlock modes that are available for the user to use. Some quick unlock modes may be disabled by
@@ -76,20 +104,17 @@
 (defmacro set-modes
   "Update the set of quick unlock modes that are currently active/enabled.
 
-     |account-password| - The password associated with the account (e.g. the GAIA password). This is required to change the
-                          quick unlock credentials.
+     |token| - The token returned by 'getAuthToken'.
      |modes| - The quick unlock modes that should be active.
-     |credentials| - The associated credential for each mode. To keep the credential the same for the associated mode, pass
-                     an empty string.
+     |credentials| - The associated credential for each mode. To keep the     credential the same for the associated mode,
+                     pass an empty string.
 
    This function returns a core.async channel which eventually receives a result value and closes.
-   Signature of the result value put on the channel is [value] where:
-
-     |value| - ?
+   Signature of the result value put on the channel is [].
 
    In case of error the channel closes without receiving any result and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([account-password modes credentials] (gen-call :function ::set-modes &form account-password modes credentials)))
+  ([token modes credentials] (gen-call :function ::set-modes &form token modes credentials)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -120,7 +145,22 @@
   {:namespace "chrome.quickUnlockPrivate",
    :since "53",
    :functions
-   [{:id ::get-available-modes,
+   [{:id ::get-auth-token,
+     :name "getAuthToken",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "account-password", :type "string"}
+      {:name "on-complete", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}
+    {:id ::set-lock-screen-enabled,
+     :name "setLockScreenEnabled",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "token", :type "string"}
+      {:name "enabled", :type "boolean"}
+      {:name "on-complete", :optional? true, :type :callback}]}
+    {:id ::get-available-modes,
      :name "getAvailableModes",
      :callback? true,
      :params
@@ -153,10 +193,10 @@
      :name "setModes",
      :callback? true,
      :params
-     [{:name "account-password", :type "string"}
+     [{:name "token", :type "string"}
       {:name "modes", :type "[array-of-quickUnlockPrivate.QuickUnlockModes]"}
       {:name "credentials", :type "[array-of-strings]"}
-      {:name "on-complete", :type :callback, :callback {:params [{:name "value", :type "boolean"}]}}]}],
+      {:name "on-complete", :type :callback}]}],
    :events
    [{:id ::on-active-modes-changed,
      :name "onActiveModesChanged",
