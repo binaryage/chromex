@@ -147,14 +147,14 @@
    :functions
    [{:id ::get-auth-token,
      :name "getAuthToken",
-     :since "master",
+     :since "67",
      :callback? true,
      :params
      [{:name "account-password", :type "string"}
       {:name "on-complete", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}
     {:id ::set-lock-screen-enabled,
      :name "setLockScreenEnabled",
-     :since "master",
+     :since "67",
      :callback? true,
      :params
      [{:name "token", :type "string"}

@@ -198,7 +198,7 @@
     {:id ::open-settings, :name "openSettings", :since "37"}
     {:id ::set-mode,
      :name "setMode",
-     :since "master",
+     :since "67",
      :deprecated "Please use 'setContainerBehavior'",
      :callback? true,
      :params
@@ -206,7 +206,7 @@
       {:name "callback", :optional? true, :type :callback}]}
     {:id ::set-container-behavior,
      :name "setContainerBehavior",
-     :since "master",
+     :since "67",
      :callback? true,
      :params
      [{:name "options", :type "virtualKeyboardPrivate.ContainerBehaviorOptions"}
