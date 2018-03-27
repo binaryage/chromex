@@ -10,6 +10,7 @@
 
 (defn to-native-chrome-port [_config chrome-port]
   (when (some? chrome-port)
+    (assert (satisfies? protocols/IChromePort chrome-port))
     (protocols/get-native-port chrome-port)))
 
 (defn from-native-chrome-storage-area [config native-chrome-storage-area]
@@ -18,4 +19,5 @@
 
 (defn to-native-chrome-storage-area [_config chrome-storage-area]
   (when (some? chrome-storage-area)
+    (satisfies? protocols/IChromeStorageArea chrome-storage-area)
     (protocols/get-native-storage-area chrome-storage-area)))
