@@ -42,6 +42,9 @@
 (defn remove-input-method* [config input-method-id]
   (gen-wrap :function ::remove-input-method config input-method-id))
 
+(defn retry-download-dictionary* [config language-code]
+  (gen-wrap :function ::retry-download-dictionary config language-code))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-spellcheck-dictionaries-changed* [config channel & args]

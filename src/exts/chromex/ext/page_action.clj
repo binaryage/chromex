@@ -20,6 +20,12 @@
 
      |tab-id| - The id of the tab for which you want to modify the page action.
 
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/pageAction#method-show."
   ([tab-id] (gen-call :function ::show &form tab-id)))
 
@@ -28,6 +34,12 @@
 
      |tab-id| - The id of the tab for which you want to modify the page action.
 
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/pageAction#method-hide."
   ([tab-id] (gen-call :function ::hide &form tab-id)))
 
@@ -35,6 +47,12 @@
   "Sets the title of the page action. This is displayed in a tooltip over the page action.
 
      |details| - https://developer.chrome.com/extensions/pageAction#property-setTitle-details.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/pageAction#method-setTitle."
   ([details] (gen-call :function ::set-title &form details)))
@@ -74,6 +92,12 @@
   "Sets the html document to be opened as a popup when the user clicks on the page action's icon.
 
      |details| - https://developer.chrome.com/extensions/pageAction#property-setPopup-details.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/pageAction#method-setPopup."
   ([details] (gen-call :function ::set-popup &form details)))
@@ -125,9 +149,18 @@
   {:namespace "chrome.pageAction",
    :since "22",
    :functions
-   [{:id ::show, :name "show", :params [{:name "tab-id", :type "integer"}]}
-    {:id ::hide, :name "hide", :params [{:name "tab-id", :type "integer"}]}
-    {:id ::set-title, :name "setTitle", :params [{:name "details", :type "object"}]}
+   [{:id ::show,
+     :name "show",
+     :callback? true,
+     :params [{:name "tab-id", :type "integer"} {:name "callback", :optional? true, :type :callback}]}
+    {:id ::hide,
+     :name "hide",
+     :callback? true,
+     :params [{:name "tab-id", :type "integer"} {:name "callback", :optional? true, :type :callback}]}
+    {:id ::set-title,
+     :name "setTitle",
+     :callback? true,
+     :params [{:name "details", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-title,
      :name "getTitle",
      :callback? true,
@@ -138,7 +171,10 @@
      :name "setIcon",
      :callback? true,
      :params [{:name "details", :type "object"} {:name "callback", :optional? true, :type :callback}]}
-    {:id ::set-popup, :name "setPopup", :params [{:name "details", :type "object"}]}
+    {:id ::set-popup,
+     :name "setPopup",
+     :callback? true,
+     :params [{:name "details", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-popup,
      :name "getPopup",
      :callback? true,

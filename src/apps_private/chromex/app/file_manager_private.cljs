@@ -99,8 +99,8 @@
 (defn search-files-by-hashes* [config volume-id hash-list]
   (gen-wrap :function ::search-files-by-hashes config volume-id hash-list))
 
-(defn zip-selection* [config parent-entry entries dest-name]
-  (gen-wrap :function ::zip-selection config parent-entry entries dest-name))
+(defn zip-selection* [config entries parent-entry dest-name]
+  (gen-wrap :function ::zip-selection config entries parent-entry dest-name))
 
 (defn get-drive-connection-state* [config]
   (gen-wrap :function ::get-drive-connection-state config))

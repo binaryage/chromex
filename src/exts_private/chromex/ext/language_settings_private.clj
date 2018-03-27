@@ -126,6 +126,12 @@
      |input-method-id| - ?"
   ([input-method-id] (gen-call :function ::remove-input-method &form input-method-id)))
 
+(defmacro retry-download-dictionary
+  "Tries to download the dictionary after a failed download.
+
+     |language-code| - ?"
+  ([language-code] (gen-call :function ::retry-download-dictionary &form language-code)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -223,7 +229,11 @@
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "lists", :type "object"}]}}]}
     {:id ::add-input-method, :name "addInputMethod", :params [{:name "input-method-id", :type "string"}]}
-    {:id ::remove-input-method, :name "removeInputMethod", :params [{:name "input-method-id", :type "string"}]}],
+    {:id ::remove-input-method, :name "removeInputMethod", :params [{:name "input-method-id", :type "string"}]}
+    {:id ::retry-download-dictionary,
+     :name "retryDownloadDictionary",
+     :since "master",
+     :params [{:name "language-code", :type "string"}]}],
    :events
    [{:id ::on-spellcheck-dictionaries-changed,
      :name "onSpellcheckDictionariesChanged",

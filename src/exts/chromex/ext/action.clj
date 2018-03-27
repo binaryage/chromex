@@ -21,6 +21,12 @@
 
      |details| - https://developer.chrome.com/extensions/action#property-setTitle-details.
 
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/action#method-setTitle."
   ([details] (gen-call :function ::set-title &form details)))
 
@@ -60,6 +66,12 @@
 
      |details| - https://developer.chrome.com/extensions/action#property-setPopup-details.
 
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/action#method-setPopup."
   ([details] (gen-call :function ::set-popup &form details)))
 
@@ -83,6 +95,12 @@
   "Sets the badge text for the action. The badge is displayed on top of the icon.
 
      |details| - https://developer.chrome.com/extensions/action#property-setBadgeText-details.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/action#method-setBadgeText."
   ([details] (gen-call :function ::set-badge-text &form details)))
@@ -108,6 +126,12 @@
 
      |details| - https://developer.chrome.com/extensions/action#property-setBadgeBackgroundColor-details.
 
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/action#method-setBadgeBackgroundColor."
   ([details] (gen-call :function ::set-badge-background-color &form details)))
 
@@ -132,6 +156,12 @@
 
      |tab-id| - The id of the tab for which you want to modify the action.
 
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
    https://developer.chrome.com/extensions/action#method-enable."
   ([tab-id] (gen-call :function ::enable &form tab-id))
   ([] `(enable :omit)))
@@ -140,6 +170,12 @@
   "Disables the action for a tab.
 
      |tab-id| - The id of the tab for which you want to modify the action.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/action#method-disable."
   ([tab-id] (gen-call :function ::disable &form tab-id))
@@ -176,7 +212,10 @@
   {:namespace "chrome.action",
    :since "66",
    :functions
-   [{:id ::set-title, :name "setTitle", :params [{:name "details", :type "object"}]}
+   [{:id ::set-title,
+     :name "setTitle",
+     :callback? true,
+     :params [{:name "details", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-title,
      :name "getTitle",
      :callback? true,
@@ -187,29 +226,45 @@
      :name "setIcon",
      :callback? true,
      :params [{:name "details", :type "object"} {:name "callback", :optional? true, :type :callback}]}
-    {:id ::set-popup, :name "setPopup", :params [{:name "details", :type "object"}]}
+    {:id ::set-popup,
+     :name "setPopup",
+     :callback? true,
+     :params [{:name "details", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-popup,
      :name "getPopup",
      :callback? true,
      :params
      [{:name "details", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "string"}]}}]}
-    {:id ::set-badge-text, :name "setBadgeText", :params [{:name "details", :type "object"}]}
+    {:id ::set-badge-text,
+     :name "setBadgeText",
+     :callback? true,
+     :params [{:name "details", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-badge-text,
      :name "getBadgeText",
      :callback? true,
      :params
      [{:name "details", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "string"}]}}]}
-    {:id ::set-badge-background-color, :name "setBadgeBackgroundColor", :params [{:name "details", :type "object"}]}
+    {:id ::set-badge-background-color,
+     :name "setBadgeBackgroundColor",
+     :callback? true,
+     :params [{:name "details", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-badge-background-color,
      :name "getBadgeBackgroundColor",
      :callback? true,
      :params
      [{:name "details", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "browserAction.ColorArray"}]}}]}
-    {:id ::enable, :name "enable", :params [{:name "tab-id", :optional? true, :type "integer"}]}
-    {:id ::disable, :name "disable", :params [{:name "tab-id", :optional? true, :type "integer"}]}],
+    {:id ::enable,
+     :name "enable",
+     :callback? true,
+     :params [{:name "tab-id", :optional? true, :type "integer"} {:name "callback", :optional? true, :type :callback}]}
+    {:id ::disable,
+     :name "disable",
+     :callback? true,
+     :params
+     [{:name "tab-id", :optional? true, :type "integer"} {:name "callback", :optional? true, :type :callback}]}],
    :events [{:id ::on-clicked, :name "onClicked", :params [{:name "tab", :type "tabs.Tab"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

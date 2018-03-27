@@ -414,10 +414,8 @@
    Entries of the selected files. The files must be under the     directory specified by |parentEntry|. |destName| Name of the
    destination zip file. The zip file will be created     under the directory specified by |parentEntry|. |callback
 
-   TODO(mtomasz): Swap order of |entries| and |parentEntry|.
-
-     |parent-entry| - ?
      |entries| - ?
+     |parent-entry| - ?
      |dest-name| - ?
 
    This function returns a core.async channel which eventually receives a result value and closes.
@@ -427,7 +425,7 @@
 
    In case of error the channel closes without receiving any result and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([parent-entry entries dest-name] (gen-call :function ::zip-selection &form parent-entry entries dest-name)))
+  ([entries parent-entry dest-name] (gen-call :function ::zip-selection &form entries parent-entry dest-name)))
 
 (defmacro get-drive-connection-state
   "Retrieves the state of the current drive connection. |callback
@@ -963,8 +961,8 @@
      :name "zipSelection",
      :callback? true,
      :params
-     [{:name "parent-entry", :type "object"}
-      {:name "entries", :type "[array-of-objects]"}
+     [{:name "entries", :type "[array-of-objects]"}
+      {:name "parent-entry", :type "object"}
       {:name "dest-name", :type "string"}
       {:name "callback", :type :callback, :callback {:params [{:name "success", :optional? true, :type "boolean"}]}}]}
     {:id ::get-drive-connection-state,
