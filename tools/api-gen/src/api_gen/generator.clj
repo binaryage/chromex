@@ -441,7 +441,7 @@
   (let [{:keys [functions properties events]} api-table
         {:keys [name subns]} (meta api-table)
         clj-namespace (build-ns-name name subns)
-        prefix (str "[" clj-namespace " refer-macros:[\n")
+        prefix (str "[" clj-namespace " refer:[\n")
         prefix2 "  "
         prefix-length 2
         postfix (str "]]")
