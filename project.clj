@@ -17,7 +17,7 @@
   :clean-targets ^{:protect false} ["target"
                                     "test/.compiled"]
 
-  :plugins [[lein-cljsbuild "1.1.6"]
+  :plugins [[lein-cljsbuild "1.1.7"]
             [lein-environ "1.1.0"]
             [lein-shell "0.5.0"]]
 
