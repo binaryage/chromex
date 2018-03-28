@@ -3,7 +3,7 @@
    to events in the app or extension lifecycle. You can also use this API to convert the relative path of URLs to
    fully-qualified URLs.
 
-     * available since Chrome 22
+     * available since Chrome 23
      * https://developer.chrome.com/extensions/runtime"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -394,7 +394,7 @@
 
 (def api-table
   {:namespace "chrome.runtime",
-   :since "22",
+   :since "23",
    :properties
    [{:id ::last-error, :name "lastError", :return-type "object"} {:id ::id, :name "id", :return-type "string"}],
    :functions
@@ -484,7 +484,7 @@
      :params
      [{:name "callback", :type :callback, :callback {:params [{:name "directory-entry", :type "DirectoryEntry"}]}}]}],
    :events
-   [{:id ::on-startup, :name "onStartup", :since "23"}
+   [{:id ::on-startup, :name "onStartup"}
     {:id ::on-installed, :name "onInstalled", :params [{:name "details", :type "object"}]}
     {:id ::on-suspend, :name "onSuspend"}
     {:id ::on-suspend-canceled, :name "onSuspendCanceled"}

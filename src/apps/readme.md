@@ -154,48 +154,48 @@ Generated 69 namespaces containing 30 properties, 448 functions and 153 events:
 
 ### Requires
 
-```
+```clojure
 (ns your.project
   (:require
-    [chromex.app.appview-tag refer-macros:[
+    [chromex.app.appview-tag refer:[
       connect tap-all-events]]
 
-    [chromex.app.webview-tag refer-macros:[
+    [chromex.app.webview-tag refer:[
       get-content-window get-request get-context-menus get-audio-state set-audio-muted is-audio-muted
       capture-visible-region add-content-scripts back can-go-back can-go-forward clear-data
       execute-script find forward get-process-id get-user-agent get-zoom get-zoom-mode go insert-css
       is-user-agent-overridden print reload remove-content-scripts set-user-agent-override set-zoom
       set-zoom-mode stop stop-finding load-data-with-base-url terminate tap-all-events]]
 
-    [chromex.app.accessibility-features refer-macros:[
+    [chromex.app.accessibility-features refer:[
       get-spoken-feedback get-large-cursor get-sticky-keys get-high-contrast get-screen-magnifier
       get-autoclick get-virtual-keyboard get-caret-highlight get-cursor-highlight get-focus-highlight
       get-select-to-speak get-switch-access get-animation-policy tap-all-events]]
 
-    [chromex.app.alarms refer-macros:[
+    [chromex.app.alarms refer:[
       create get get-all clear clear-all tap-on-alarm tap-all-events]]
 
-    [chromex.app.app.runtime refer-macros:[
+    [chromex.app.app.runtime refer:[
       tap-on-embed-requested tap-on-launched tap-on-restarted tap-all-events]]
 
-    [chromex.app.app.window refer-macros:[
+    [chromex.app.app.window refer:[
       create current get-all get can-set-visible-on-all-workspaces tap-on-bounds-changed tap-on-closed
       tap-on-fullscreened tap-on-maximized tap-on-minimized tap-on-restored tap-all-events]]
 
-    [chromex.app.audio refer-macros:[
+    [chromex.app.audio refer:[
       get-devices set-active-devices set-properties get-mute set-mute tap-on-level-changed
       tap-on-mute-changed tap-on-device-list-changed tap-all-events]]
 
-    [chromex.app.automation refer-macros:[
+    [chromex.app.automation refer:[
       get-tree get-desktop get-focus add-tree-change-observer remove-tree-change-observer
       set-document-selection tap-all-events]]
 
-    [chromex.app.bluetooth refer-macros:[
+    [chromex.app.bluetooth refer:[
       get-adapter-state get-device get-devices start-discovery stop-discovery
       tap-on-adapter-state-changed tap-on-device-added tap-on-device-changed tap-on-device-removed
       tap-all-events]]
 
-    [chromex.app.bluetooth-low-energy refer-macros:[
+    [chromex.app.bluetooth-low-energy refer:[
       connect disconnect get-service create-service get-services get-characteristic create-characteristic
       get-characteristics get-included-services get-descriptor create-descriptor get-descriptors
       read-characteristic-value write-characteristic-value start-characteristic-notifications
@@ -207,65 +207,65 @@ Generated 69 namespaces containing 30 properties, 448 functions and 153 events:
       tap-on-characteristic-read-request tap-on-characteristic-write-request
       tap-on-descriptor-read-request tap-on-descriptor-write-request tap-all-events]]
 
-    [chromex.app.bluetooth-socket refer-macros:[
+    [chromex.app.bluetooth-socket refer:[
       create update set-paused listen-using-rfcomm listen-using-l2cap connect disconnect close send
       get-info get-sockets tap-on-accept tap-on-accept-error tap-on-receive tap-on-receive-error
       tap-all-events]]
 
-    [chromex.app.bookmarks refer-macros:[
+    [chromex.app.bookmarks refer:[
       get-max-write-operations-per-hour get-max-sustained-write-operations-per-minute get get-children
       get-recent get-tree get-sub-tree search create move update remove remove-tree tap-on-created
       tap-on-removed tap-on-changed tap-on-moved tap-on-children-reordered tap-on-import-began
       tap-on-import-ended tap-all-events]]
 
-    [chromex.app.browser refer-macros:[
+    [chromex.app.browser refer:[
       open-tab tap-all-events]]
 
-    [chromex.app.certificate-provider refer-macros:[
+    [chromex.app.certificate-provider refer:[
       request-pin stop-pin-request tap-on-certificates-requested tap-on-sign-digest-requested
       tap-all-events]]
 
-    [chromex.app.clipboard refer-macros:[
+    [chromex.app.clipboard refer:[
       set-image-data tap-on-clipboard-data-changed tap-all-events]]
 
-    [chromex.app.commands refer-macros:[
+    [chromex.app.commands refer:[
       get-all tap-on-command tap-all-events]]
 
-    [chromex.app.context-menus refer-macros:[
+    [chromex.app.context-menus refer:[
       get-action-menu-top-level-limit create update remove remove-all tap-on-clicked tap-all-events]]
 
-    [chromex.app.desktop-capture refer-macros:[
+    [chromex.app.desktop-capture refer:[
       choose-desktop-media cancel-choose-desktop-media tap-all-events]]
 
-    [chromex.app.diagnostics refer-macros:[
+    [chromex.app.diagnostics refer:[
       send-packet tap-all-events]]
 
-    [chromex.app.display-source refer-macros:[
+    [chromex.app.display-source refer:[
       get-available-sinks request-authentication start-session terminate-session tap-on-sinks-updated
       tap-on-session-terminated tap-on-session-error-occured tap-all-events]]
 
-    [chromex.app.dns refer-macros:[
+    [chromex.app.dns refer:[
       resolve tap-all-events]]
 
-    [chromex.app.document-scan refer-macros:[
+    [chromex.app.document-scan refer:[
       scan tap-all-events]]
 
-    [chromex.app.enterprise.device-attributes refer-macros:[
+    [chromex.app.enterprise.device-attributes refer:[
       get-directory-device-id get-device-serial-number get-device-asset-id get-device-annotated-location
       tap-all-events]]
 
-    [chromex.app.enterprise.platform-keys refer-macros:[
+    [chromex.app.enterprise.platform-keys refer:[
       get-tokens get-certificates import-certificate remove-certificate challenge-machine-key
       challenge-user-key tap-all-events]]
 
-    [chromex.app.file-browser-handler refer-macros:[
+    [chromex.app.file-browser-handler refer:[
       select-file tap-on-execute tap-all-events]]
 
-    [chromex.app.file-system refer-macros:[
+    [chromex.app.file-system refer:[
       get-display-path get-writable-entry is-writable-entry choose-entry restore-entry is-restorable
       retain-entry request-file-system get-volume-list tap-on-volume-list-changed tap-all-events]]
 
-    [chromex.app.file-system-provider refer-macros:[
+    [chromex.app.file-system-provider refer:[
       mount unmount get-all get notify tap-on-unmount-requested tap-on-get-metadata-requested
       tap-on-get-actions-requested tap-on-read-directory-requested tap-on-open-file-requested
       tap-on-close-file-requested tap-on-read-file-requested tap-on-create-directory-requested
@@ -275,76 +275,76 @@ Generated 69 namespaces containing 30 properties, 448 functions and 153 events:
       tap-on-add-watcher-requested tap-on-remove-watcher-requested tap-on-execute-action-requested
       tap-all-events]]
 
-    [chromex.app.gcm refer-macros:[
+    [chromex.app.gcm refer:[
       get-max-message-size register unregister send tap-on-message tap-on-messages-deleted
       tap-on-send-error tap-all-events]]
 
-    [chromex.app.hid refer-macros:[
+    [chromex.app.hid refer:[
       get-devices get-user-selected-devices connect disconnect receive send receive-feature-report
       send-feature-report tap-on-device-added tap-on-device-removed tap-all-events]]
 
-    [chromex.app.i18n refer-macros:[
+    [chromex.app.i18n refer:[
       get-accept-languages get-message get-ui-language detect-language tap-all-events]]
 
-    [chromex.app.identity refer-macros:[
+    [chromex.app.identity refer:[
       get-accounts get-auth-token get-profile-user-info remove-cached-auth-token launch-web-auth-flow
       get-redirect-url tap-on-sign-in-changed tap-all-events]]
 
-    [chromex.app.idle refer-macros:[
+    [chromex.app.idle refer:[
       query-state set-detection-interval tap-on-state-changed tap-all-events]]
 
-    [chromex.app.instance-id refer-macros:[
+    [chromex.app.instance-id refer:[
       get-id get-creation-time get-token delete-token delete-id tap-on-token-refresh tap-all-events]]
 
-    [chromex.app.lock-screen.data refer-macros:[
+    [chromex.app.lock-screen.data refer:[
       create get-all get-content set-content delete tap-on-data-items-available tap-all-events]]
 
-    [chromex.app.management refer-macros:[
+    [chromex.app.management refer:[
       get-all get get-self get-permission-warnings-by-id get-permission-warnings-by-manifest set-enabled
       uninstall uninstall-self launch-app create-app-shortcut set-launch-type generate-app-for-link
       tap-on-installed tap-on-uninstalled tap-on-enabled tap-on-disabled tap-all-events]]
 
-    [chromex.app.mdns refer-macros:[
+    [chromex.app.mdns refer:[
       get-max-service-instances-per-event force-discovery tap-on-service-list tap-all-events]]
 
-    [chromex.app.media-galleries refer-macros:[
+    [chromex.app.media-galleries refer:[
       get-media-file-systems add-user-selected-folder drop-permission-for-media-file-system
       start-media-scan cancel-media-scan add-scan-results get-media-file-system-metadata
       get-all-media-file-system-metadata get-metadata add-gallery-watch remove-gallery-watch
       get-all-gallery-watch remove-all-gallery-watch tap-on-gallery-changed tap-on-scan-progress
       tap-all-events]]
 
-    [chromex.app.networking.config refer-macros:[
+    [chromex.app.networking.config refer:[
       set-network-filter finish-authentication tap-on-captive-portal-detected tap-all-events]]
 
-    [chromex.app.networking.onc refer-macros:[
+    [chromex.app.networking.onc refer:[
       get-properties get-managed-properties get-state set-properties create-network forget-network
       get-networks get-device-states enable-network-type disable-network-type request-network-scan
       start-connect start-disconnect get-captive-portal-status get-global-policy tap-on-networks-changed
       tap-on-network-list-changed tap-on-device-state-list-changed tap-on-portal-detection-completed
       tap-all-events]]
 
-    [chromex.app.notifications refer-macros:[
+    [chromex.app.notifications refer:[
       create update clear get-all get-permission-level tap-on-closed tap-on-clicked tap-on-button-clicked
       tap-on-permission-level-changed tap-on-show-settings tap-all-events]]
 
-    [chromex.app.permissions refer-macros:[
+    [chromex.app.permissions refer:[
       get-all contains request remove tap-on-added tap-on-removed tap-all-events]]
 
-    [chromex.app.platform-keys refer-macros:[
+    [chromex.app.platform-keys refer:[
       select-client-certificates get-key-pair subtle-crypto verify-tls-server-certificate tap-all-events]]
 
-    [chromex.app.power refer-macros:[
+    [chromex.app.power refer:[
       request-keep-awake release-keep-awake tap-all-events]]
 
-    [chromex.app.printer-provider refer-macros:[
+    [chromex.app.printer-provider refer:[
       tap-on-get-printers-requested tap-on-get-usb-printer-info-requested tap-on-get-capability-requested
       tap-on-print-requested tap-all-events]]
 
-    [chromex.app.proxy refer-macros:[
+    [chromex.app.proxy refer:[
       get-settings tap-on-proxy-error tap-all-events]]
 
-    [chromex.app.runtime refer-macros:[
+    [chromex.app.runtime refer:[
       get-last-error get-id get-background-page open-options-page get-manifest get-url set-uninstall-url
       reload request-update-check restart restart-after-delay connect connect-native send-message
       send-native-message get-platform-info get-package-directory-entry tap-on-startup tap-on-installed
@@ -352,63 +352,63 @@ Generated 69 namespaces containing 30 properties, 448 functions and 153 events:
       tap-on-connect tap-on-connect-external tap-on-message tap-on-message-external
       tap-on-restart-required tap-all-events]]
 
-    [chromex.app.serial refer-macros:[
+    [chromex.app.serial refer:[
       get-devices connect update disconnect set-paused get-info get-connections send flush
       get-control-signals set-control-signals set-break clear-break tap-on-receive tap-on-receive-error
       tap-all-events]]
 
-    [chromex.app.signed-in-devices refer-macros:[
+    [chromex.app.signed-in-devices refer:[
       get tap-on-device-info-change tap-all-events]]
 
-    [chromex.app.socket refer-macros:[
+    [chromex.app.socket refer:[
       create destroy connect bind disconnect read write recv-from send-to listen accept set-keep-alive
       set-no-delay get-info get-network-list join-group leave-group set-multicast-time-to-live
       set-multicast-loopback-mode get-joined-groups secure tap-all-events]]
 
-    [chromex.app.sockets.tcp refer-macros:[
+    [chromex.app.sockets.tcp refer:[
       create update set-paused set-keep-alive set-no-delay connect disconnect secure send close get-info
       get-sockets tap-on-receive tap-on-receive-error tap-all-events]]
 
-    [chromex.app.sockets.tcp-server refer-macros:[
+    [chromex.app.sockets.tcp-server refer:[
       create update set-paused listen disconnect close get-info get-sockets tap-on-accept
       tap-on-accept-error tap-all-events]]
 
-    [chromex.app.sockets.udp refer-macros:[
+    [chromex.app.sockets.udp refer:[
       create update set-paused bind send close get-info get-sockets join-group leave-group
       set-multicast-time-to-live set-multicast-loopback-mode get-joined-groups set-broadcast
       tap-on-receive tap-on-receive-error tap-all-events]]
 
-    [chromex.app.storage refer-macros:[
+    [chromex.app.storage refer:[
       get-sync get-local get-managed tap-on-changed tap-all-events]]
 
-    [chromex.app.sync-file-system refer-macros:[
+    [chromex.app.sync-file-system refer:[
       request-file-system set-conflict-resolution-policy get-conflict-resolution-policy
       get-usage-and-quota get-file-status get-file-statuses get-service-status
       tap-on-service-status-changed tap-on-file-status-changed tap-all-events]]
 
-    [chromex.app.system.cpu refer-macros:[
+    [chromex.app.system.cpu refer:[
       get-info tap-all-events]]
 
-    [chromex.app.system.display refer-macros:[
+    [chromex.app.system.display refer:[
       get-info get-display-layout set-display-properties set-display-layout enable-unified-desktop
       overscan-calibration-start overscan-calibration-adjust overscan-calibration-reset
       overscan-calibration-complete show-native-touch-calibration start-custom-touch-calibration
       complete-custom-touch-calibration clear-touch-calibration set-mirror-mode tap-on-display-changed
       tap-all-events]]
 
-    [chromex.app.system.memory refer-macros:[
+    [chromex.app.system.memory refer:[
       get-info tap-all-events]]
 
-    [chromex.app.system.network refer-macros:[
+    [chromex.app.system.network refer:[
       get-network-interfaces tap-all-events]]
 
-    [chromex.app.system.storage refer-macros:[
+    [chromex.app.system.storage refer:[
       get-info eject-device get-available-capacity tap-on-attached tap-on-detached tap-all-events]]
 
-    [chromex.app.system-indicator refer-macros:[
+    [chromex.app.system-indicator refer:[
       set-icon enable disable tap-on-clicked tap-all-events]]
 
-    [chromex.app.tabs refer-macros:[
+    [chromex.app.tabs refer:[
       get-tab-id-none get get-current connect send-request send-message get-selected get-all-in-window
       create duplicate query highlight update move reload remove detect-language capture-visible-tab
       execute-script insert-css set-zoom get-zoom set-zoom-settings get-zoom-settings discard
@@ -416,7 +416,7 @@ Generated 69 namespaces containing 30 properties, 448 functions and 153 events:
       tap-on-activated tap-on-highlight-changed tap-on-highlighted tap-on-detached tap-on-attached
       tap-on-removed tap-on-replaced tap-on-zoom-change tap-all-events]]
 
-    [chromex.app.test refer-macros:[
+    [chromex.app.test refer:[
       get-config notify-fail notify-pass log send-message callback-added run-next-test fail succeed
       get-module-system assert-true assert-false assert-bool check-deep-eq assert-eq assert-no-last-error
       assert-last-error assert-throws callback listen-once listen-forever callback-pass callback-fail
@@ -424,30 +424,30 @@ Generated 69 namespaces containing 30 properties, 448 functions and 153 events:
       run-without-user-gesture wait-for-round-trip set-exception-handler get-wake-event-page
       tap-on-message tap-all-events]]
 
-    [chromex.app.tts refer-macros:[
+    [chromex.app.tts refer:[
       speak stop pause resume is-speaking get-voices tap-all-events]]
 
-    [chromex.app.usb refer-macros:[
+    [chromex.app.usb refer:[
       get-devices get-user-selected-devices get-configurations request-access open-device find-devices
       close-device set-configuration get-configuration list-interfaces claim-interface release-interface
       set-interface-alternate-setting control-transfer bulk-transfer interrupt-transfer
       isochronous-transfer reset-device tap-on-device-added tap-on-device-removed tap-all-events]]
 
-    [chromex.app.virtual-keyboard refer-macros:[
+    [chromex.app.virtual-keyboard refer:[
       restrict-features tap-all-events]]
 
-    [chromex.app.vpn-provider refer-macros:[
+    [chromex.app.vpn-provider refer:[
       create-config destroy-config set-parameters send-packet notify-connection-state-changed
       tap-on-platform-message tap-on-packet-received tap-on-config-removed tap-on-config-created
       tap-on-ui-event tap-all-events]]
 
-    [chromex.app.wallpaper refer-macros:[
+    [chromex.app.wallpaper refer:[
       set-wallpaper tap-all-events]]
 
-    [chromex.app.webstore refer-macros:[
+    [chromex.app.webstore refer:[
       install tap-on-install-stage-changed tap-on-download-progress tap-all-events]]
 
-    [chromex.app.windows refer-macros:[
+    [chromex.app.windows refer:[
       get-window-id-none get-window-id-current get get-current get-last-focused get-all create update
       remove tap-on-created tap-on-removed tap-on-focus-changed tap-all-events]]))
 ```

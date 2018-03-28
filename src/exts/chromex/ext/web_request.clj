@@ -1,7 +1,7 @@
 (ns chromex.ext.web-request
   "Use the chrome.webRequest API to observe and analyze traffic and to intercept, block, or modify requests in-flight.
 
-     * available since Chrome 22
+     * available since Chrome 23
      * https://developer.chrome.com/extensions/webRequest"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -166,11 +166,10 @@
 
 (def api-table
   {:namespace "chrome.webRequest",
-   :since "22",
+   :since "23",
    :properties
    [{:id ::max-handler-behavior-changed-calls-per10-minutes,
      :name "MAX_HANDLER_BEHAVIOR_CHANGED_CALLS_PER_10_MINUTES",
-     :since "23",
      :return-type "unknown-type"}],
    :functions
    [{:id ::handler-behavior-changed,
