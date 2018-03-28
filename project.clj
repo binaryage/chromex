@@ -37,65 +37,71 @@
 
   :cljsbuild {:builds {}}                                                                                                     ; prevent https://github.com/emezeske/lein-cljsbuild/issues/413
 
-  :profiles {:nuke-aliases  {:aliases ^:replace {}}
+  :profiles {:nuke-aliases
+             {:aliases ^:replace {}}
 
-             :lib           ^{:pom-scope :provided}                                                                           ; ! to overcome default jar/pom behaviour, our :dependencies replacement would be ignored for some reason
-                            [:nuke-aliases
-                             {:source-paths   ^:replace ["src/lib"
-                                                         "src/exts"
-                                                         "src/exts_private"
-                                                         "src/exts_internal"
-                                                         "src/apps"
-                                                         "src/apps_private"
-                                                         "src/apps_internal"]
-                              :resource-paths ^:replace []
-                              :test-paths     ^:replace []}]
+             :lib
+             ^{:pom-scope :provided}                                                                                          ; ! to overcome default jar/pom behaviour, our :dependencies replacement would be ignored for some reason
+             [:nuke-aliases
+              {:source-paths   ^:replace ["src/lib"
+                                          "src/exts"
+                                          "src/exts_private"
+                                          "src/exts_internal"
+                                          "src/apps"
+                                          "src/apps_private"
+                                          "src/apps_internal"]
+               :resource-paths ^:replace []
+               :test-paths     ^:replace []}]
 
-             :dev-ext       {:cljsbuild {:builds {:dev
-                                                  {:source-paths ["src/lib"
-                                                                  "src/exts"
-                                                                  "src/exts_private"
-                                                                  "src/exts_internal"]
-                                                   :compiler     {:output-to     "target/dev-ext/chromex.js"
-                                                                  :output-dir    "target/dev-ext"
-                                                                  :optimizations :none
-                                                                  :checked-arrays :warn
-                                                                  :source-map    true}}}}}
-             :dev-app       {:cljsbuild {:builds {:dev
-                                                  {:source-paths ["src/lib"
-                                                                  "src/apps"
-                                                                  "src/apps_private"
-                                                                  "src/apps_internal"]
-                                                   :compiler     {:output-to     "target/dev-app/chromex.js"
-                                                                  :output-dir    "target/dev-app"
-                                                                  :optimizations :none
-                                                                  :checked-arrays :warn
-                                                                  :source-map    true}}}}}
-             :test          {:env       {:running-dev-test "true"}
-                             :cljsbuild {:builds {:test-dev
-                                                  {:source-paths ["src/lib"
-                                                                  "test"]
-                                                   :compiler     {:output-to     "test/.compiled/optimizations_none/chromex.test.js"
-                                                                  :output-dir    "test/.compiled/optimizations_none"
-                                                                  :asset-path    ".compiled/optimizations_none"
-                                                                  :main          chromex.runner
-                                                                  :optimizations :none
-                                                                  :source-map    false}}}}}
+             :dev-ext
+             {:cljsbuild {:builds {:dev
+                                   {:source-paths ["src/lib"
+                                                   "src/exts"
+                                                   "src/exts_private"
+                                                   "src/exts_internal"]
+                                    :compiler     {:output-to      "target/dev-ext/chromex.js"
+                                                   :output-dir     "target/dev-ext"
+                                                   :optimizations  :none
+                                                   :checked-arrays :warn
+                                                   :source-map     true}}}}}
+             :dev-app
+             {:cljsbuild {:builds {:dev
+                                   {:source-paths ["src/lib"
+                                                   "src/apps"
+                                                   "src/apps_private"
+                                                   "src/apps_internal"]
+                                    :compiler     {:output-to      "target/dev-app/chromex.js"
+                                                   :output-dir     "target/dev-app"
+                                                   :optimizations  :none
+                                                   :checked-arrays :warn
+                                                   :source-map     true}}}}}
+             :test
+             {:env       {:running-dev-test "true"}
+              :cljsbuild {:builds {:test-dev
+                                   {:source-paths ["src/lib"
+                                                   "test"]
+                                    :compiler     {:output-to     "test/.compiled/optimizations_none/chromex.test.js"
+                                                   :output-dir    "test/.compiled/optimizations_none"
+                                                   :asset-path    ".compiled/optimizations_none"
+                                                   :main          chromex.runner
+                                                   :optimizations :none
+                                                   :source-map    false}}}}}
 
-             :test-advanced {:env       {:running-advanced-test            "true"
-                                         :chromex-elide-verbose-logging    "true"
-                                         :chromex-elide-missing-api-checks "true"}
-                             :cljsbuild {:builds {:test-advanced
-                                                  {:source-paths ["src/lib"
-                                                                  "test"]
-                                                   :compiler     {:output-to     "test/.compiled/optimizations_advanced/chromex.test.js"
-                                                                  :output-dir    "test/.compiled/optimizations_advanced"
-                                                                  :asset-path    ".compiled/optimizations_advanced"
-                                                                  :main          chromex.runner
-                                                                  :optimizations :advanced
-                                                                  :checked-arrays :warn
-                                                                  :elide-asserts true
-                                                                  :source-map    "test/.compiled/optimizations_advanced/chromex.test.js.map"}}}}}}
+             :test-advanced
+             {:env       {:running-advanced-test            "true"
+                          :chromex-elide-verbose-logging    "true"
+                          :chromex-elide-missing-api-checks "true"}
+              :cljsbuild {:builds {:test-advanced
+                                   {:source-paths ["src/lib"
+                                                   "test"]
+                                    :compiler     {:output-to      "test/.compiled/optimizations_advanced/chromex.test.js"
+                                                   :output-dir     "test/.compiled/optimizations_advanced"
+                                                   :asset-path     ".compiled/optimizations_advanced"
+                                                   :main           chromex.runner
+                                                   :optimizations  :advanced
+                                                   :checked-arrays :warn
+                                                   :elide-asserts  true
+                                                   :source-map     "test/.compiled/optimizations_advanced/chromex.test.js.map"}}}}}}
 
   :aliases {"test"          ["with-profile" "test" "do"
                              ["cljsbuild" "test"]
