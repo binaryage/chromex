@@ -2,10 +2,14 @@
   (:require [clojure.string :as string]
             [cljs.util]))
 
-(def current-version "0.5.15")                                                                                        ; this should match our project.clj
+; -- project version --------------------------------------------------------------------------------------------------------
+
+(def current-version "0.5.15")                                                                                                ; this should match our project.clj
 
 (defmacro get-current-version []
   current-version)
+
+; -- check environment ------------------------------------------------------------------------------------------------------
 
 (defn get-full-clojurescript-version []
   (string/join "." ((juxt :major :minor :qualifier) cljs.util/*clojurescript-version*)))

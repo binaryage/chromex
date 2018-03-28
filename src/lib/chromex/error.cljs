@@ -1,6 +1,6 @@
 (ns chromex.error)
 
-; Chrome sets chrome.runtime.lastError when error occured.
+; Chrome sets chrome.runtime.lastError when an error occurred.
 ;   Read https://developer.chrome.com/apps/runtime#property-lastError
 ;   * this value is available only during callbacks
 ;   * chrome checks its access and reports unchecked errors to javascript console
