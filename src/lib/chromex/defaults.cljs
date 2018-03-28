@@ -1,5 +1,6 @@
 (ns chromex.defaults
-  (:require-macros [chromex.config :refer [gen-default-config]])
+  (:require-macros [chromex.defaults]
+                   [chromex.config :refer [gen-default-config]])
   (:require [cljs.core.async :refer [put! chan close!]]
             [chromex.support :refer [call-hook]]
             [oops.core :refer [oget]]

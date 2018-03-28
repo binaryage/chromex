@@ -1,4 +1,5 @@
 (ns chromex.marshalling
+  (:require-macros [chromex.marshalling])
   (:require [chromex.protocols :as protocols]
             [chromex.config :refer [get-active-config]]
             [chromex.chrome-port :refer [make-chrome-port]]

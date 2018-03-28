@@ -1,4 +1,5 @@
 (ns chromex.config
+  (:require-macros [chromex.config])
   (:require [chromex.defaults :refer [default-config]]))
 
 ; -- active config ----------------------------------------------------------------------------------------------------------
