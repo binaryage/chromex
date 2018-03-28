@@ -94,61 +94,61 @@ Generated 39 namespaces containing 1 properties, 330 functions and 66 events:
 
 ### Requires
 
-```
+```clojure
 (ns your.project
   (:require
-    [chromex.ext.accessibility-private refer-macros:[
+    [chromex.ext.accessibility-private refer:[
       set-native-accessibility-enabled set-focus-ring set-highlights set-keyboard-listener darken-screen
       set-switch-access-keys set-native-chrome-vox-arc-support-for-current-app send-synthetic-key-event
       tap-on-introduce-chrome-vox tap-on-accessibility-gesture tap-on-two-finger-touch-start
       tap-on-two-finger-touch-stop tap-all-events]]
 
-    [chromex.ext.activity-log-private refer-macros:[
+    [chromex.ext.activity-log-private refer:[
       get-extension-activities delete-activities delete-database delete-urls tap-on-extension-activity
       tap-all-events]]
 
-    [chromex.ext.autofill-private refer-macros:[
+    [chromex.ext.autofill-private refer:[
       save-address get-country-list get-address-components get-address-list save-credit-card remove-entry
       validate-phone-numbers get-credit-card-list mask-credit-card tap-on-address-list-changed
       tap-on-credit-card-list-changed tap-all-events]]
 
-    [chromex.ext.autotest-private refer-macros:[
+    [chromex.ext.autotest-private refer:[
       logout restart shutdown login-status lock-screen get-extensions-info simulate-asan-memory-bug
       set-touchpad-sensitivity set-tap-to-click set-three-finger-click set-tap-dragging
       set-natural-scroll set-mouse-sensitivity set-primary-button-right set-mouse-reverse-scroll
       get-visible-notifications get-play-store-state get-printer-list set-play-store-enabled
       tap-all-events]]
 
-    [chromex.ext.bluetooth-private refer-macros:[
+    [chromex.ext.bluetooth-private refer:[
       set-adapter-state set-pairing-response disconnect-all forget-device set-discovery-filter connect
       pair tap-on-pairing tap-all-events]]
 
-    [chromex.ext.bookmark-manager-private refer-macros:[
+    [chromex.ext.bookmark-manager-private refer:[
       copy cut paste can-paste sort-children get-strings start-drag drop get-subtree can-edit
       remove-trees record-launch create-with-meta-info get-meta-info set-meta-info update-meta-info undo
       redo get-undo-info get-redo-info tap-on-drag-enter tap-on-drag-leave tap-on-drop
       tap-on-meta-info-changed tap-all-events]]
 
-    [chromex.ext.braille-display-private refer-macros:[
+    [chromex.ext.braille-display-private refer:[
       get-display-state write-dots tap-on-display-state-changed tap-on-key-event tap-all-events]]
 
-    [chromex.ext.chromeos-info-private refer-macros:[
+    [chromex.ext.chromeos-info-private refer:[
       get set tap-all-events]]
 
-    [chromex.ext.cloud-print-private refer-macros:[
+    [chromex.ext.cloud-print-private refer:[
       setup-connector get-host-name get-printers get-client-id tap-all-events]]
 
-    [chromex.ext.command-line-private refer-macros:[
+    [chromex.ext.command-line-private refer:[
       has-switch tap-all-events]]
 
-    [chromex.ext.cryptotoken-private refer-macros:[
+    [chromex.ext.cryptotoken-private refer:[
       can-origin-assert-app-id is-app-id-hash-in-enterprise-context can-app-id-get-attestation
       tap-all-events]]
 
-    [chromex.ext.dashboard-private refer-macros:[
+    [chromex.ext.dashboard-private refer:[
       show-permission-prompt-for-delegated-install tap-all-events]]
 
-    [chromex.ext.developer-private refer-macros:[
+    [chromex.ext.developer-private refer:[
       auto-update get-extensions-info get-extension-info get-extension-size get-items-info
       get-profile-configuration update-profile-configuration show-permissions-dialog reload
       update-extension-configuration load-unpacked notify-drag-install-in-progress load-directory
@@ -157,18 +157,18 @@ Generated 39 namespaces containing 1 properties, 330 functions and 66 events:
       update-extension-command enable allow-incognito allow-file-access inspect tap-on-item-state-changed
       tap-on-profile-state-changed tap-all-events]]
 
-    [chromex.ext.echo-private refer-macros:[
+    [chromex.ext.echo-private refer:[
       set-offer-info get-offer-info get-registration-code get-oobe-timestamp get-user-consent
       tap-all-events]]
 
-    [chromex.ext.enterprise.platform-keys-private refer-macros:[
+    [chromex.ext.enterprise.platform-keys-private refer:[
       challenge-machine-key challenge-user-key tap-all-events]]
 
-    [chromex.ext.feedback-private refer-macros:[
+    [chromex.ext.feedback-private refer:[
       get-user-email get-system-information send-feedback get-strings log-srt-prompt-result
       read-log-source tap-on-feedback-requested tap-all-events]]
 
-    [chromex.ext.file-manager-private refer-macros:[
+    [chromex.ext.file-manager-private refer:[
       logout-user-for-reauthentication cancel-dialog execute-task set-default-task get-file-tasks
       get-mime-type get-strings add-file-watch remove-file-watch enable-external-file-scheme grant-access
       select-files select-file get-entry-properties pin-drive-file resolve-isolated-entries add-mount
@@ -184,12 +184,12 @@ Generated 39 namespaces containing 1 properties, 330 functions and 66 events:
       tap-on-drive-connection-status-changed tap-on-device-changed tap-on-drive-sync-error
       tap-on-apps-updated tap-all-events]]
 
-    [chromex.ext.image-writer-private refer-macros:[
+    [chromex.ext.image-writer-private refer:[
       write-from-url write-from-file cancel-write destroy-partitions list-removable-storage-devices
       tap-on-write-progress tap-on-write-complete tap-on-write-error tap-on-device-inserted
       tap-on-device-removed tap-all-events]]
 
-    [chromex.ext.input-method-private refer-macros:[
+    [chromex.ext.input-method-private refer:[
       get-input-method-config get-input-methods get-current-input-method set-current-input-method
       fetch-all-dictionary-words add-word-to-dictionary get-encrypt-sync-enabled set-xkb-layout
       notify-ime-menu-item-activated show-input-view open-options-page tap-on-changed
@@ -197,7 +197,7 @@ Generated 39 namespaces containing 1 properties, 330 functions and 66 events:
       tap-on-ime-menu-activation-changed tap-on-ime-menu-list-changed tap-on-ime-menu-items-changed
       tap-all-events]]
 
-    [chromex.ext.language-settings-private refer-macros:[
+    [chromex.ext.language-settings-private refer:[
       get-language-list enable-language disable-language set-enable-translation-for-language
       move-language get-spellcheck-dictionary-statuses get-spellcheck-words add-spellcheck-word
       remove-spellcheck-word get-translate-target-language get-input-method-lists add-input-method
@@ -205,19 +205,19 @@ Generated 39 namespaces containing 1 properties, 330 functions and 66 events:
       tap-on-custom-dictionary-changed tap-on-input-method-added tap-on-input-method-removed
       tap-all-events]]
 
-    [chromex.ext.media-player-private refer-macros:[
+    [chromex.ext.media-player-private refer:[
       tap-on-next-track tap-on-prev-track tap-on-toggle-play-state tap-all-events]]
 
-    [chromex.ext.metrics-private refer-macros:[
+    [chromex.ext.metrics-private refer:[
       get-is-crash-reporting-enabled get-field-trial get-variation-params record-user-action
       record-percentage record-count record-small-count record-medium-count record-time
       record-medium-time record-long-time record-sparse-hashable record-sparse-value record-value
       record-boolean record-enumeration-value tap-all-events]]
 
-    [chromex.ext.mojo-private refer-macros:[
+    [chromex.ext.mojo-private refer:[
       require-async tap-all-events]]
 
-    [chromex.ext.networking-private refer-macros:[
+    [chromex.ext.networking-private refer:[
       get-properties get-managed-properties get-state set-properties create-network forget-network
       get-networks get-visible-networks get-enabled-network-types get-device-states enable-network-type
       disable-network-type request-network-scan start-connect start-disconnect start-activate
@@ -226,63 +226,63 @@ Generated 39 namespaces containing 1 properties, 330 functions and 66 events:
       tap-on-device-state-list-changed tap-on-portal-detection-completed tap-on-certificate-lists-changed
       tap-all-events]]
 
-    [chromex.ext.passwords-private refer-macros:[
+    [chromex.ext.passwords-private refer:[
       remove-saved-password remove-password-exception undo-remove-saved-password-or-exception
       request-plaintext-password get-saved-password-list get-password-exception-list import-passwords
       export-passwords request-export-progress-status cancel-export-passwords
       tap-on-saved-passwords-list-changed tap-on-password-exceptions-list-changed
       tap-on-plaintext-password-retrieved tap-on-passwords-file-export-progress tap-all-events]]
 
-    [chromex.ext.preferences-private refer-macros:[
+    [chromex.ext.preferences-private refer:[
       get-easy-unlock-proximity-required tap-all-events]]
 
-    [chromex.ext.quick-unlock-private refer-macros:[
+    [chromex.ext.quick-unlock-private refer:[
       get-auth-token set-lock-screen-enabled get-available-modes get-active-modes check-credential
       get-credential-requirements set-modes tap-on-active-modes-changed tap-all-events]]
 
-    [chromex.ext.resources-private refer-macros:[
+    [chromex.ext.resources-private refer:[
       get-strings tap-all-events]]
 
-    [chromex.ext.settings-private refer-macros:[
+    [chromex.ext.settings-private refer:[
       set-pref get-all-prefs get-pref get-default-zoom set-default-zoom tap-on-prefs-changed
       tap-all-events]]
 
-    [chromex.ext.streams-private refer-macros:[
+    [chromex.ext.streams-private refer:[
       abort tap-on-execute-mime-type-handler tap-all-events]]
 
-    [chromex.ext.system-private refer-macros:[
+    [chromex.ext.system-private refer:[
       get-incognito-mode-availability get-update-status get-api-key tap-on-volume-changed
       tap-on-brightness-changed tap-on-screen-unlocked tap-on-woke-up tap-all-events]]
 
-    [chromex.ext.terminal-private refer-macros:[
+    [chromex.ext.terminal-private refer:[
       open-terminal-process close-terminal-process send-input on-terminal-resize ack-output
       tap-on-process-output tap-all-events]]
 
-    [chromex.ext.users-private refer-macros:[
+    [chromex.ext.users-private refer:[
       get-whitelisted-users add-whitelisted-user remove-whitelisted-user is-current-user-owner
       is-whitelist-managed tap-all-events]]
 
-    [chromex.ext.virtual-keyboard-private refer-macros:[
+    [chromex.ext.virtual-keyboard-private refer:[
       insert-text send-key-event hide-keyboard set-hotrod-keyboard lock-keyboard keyboard-loaded
       get-keyboard-config open-settings set-mode set-container-behavior set-draggable-area
       set-keyboard-state tap-on-bounds-changed tap-on-keyboard-closed tap-on-keyboard-config-changed
       tap-all-events]]
 
-    [chromex.ext.webcam-private refer-macros:[
+    [chromex.ext.webcam-private refer:[
       open-serial-webcam close-webcam get set reset tap-all-events]]
 
-    [chromex.ext.webrtc-audio-private refer-macros:[
+    [chromex.ext.webrtc-audio-private refer:[
       get-sinks get-associated-sink set-audio-experiments tap-on-sinks-changed tap-all-events]]
 
-    [chromex.ext.webrtc-desktop-capture-private refer-macros:[
+    [chromex.ext.webrtc-desktop-capture-private refer:[
       choose-desktop-media cancel-choose-desktop-media tap-all-events]]
 
-    [chromex.ext.webrtc-logging-private refer-macros:[
+    [chromex.ext.webrtc-logging-private refer:[
       set-meta-data start set-upload-on-render-close stop store upload-stored upload discard
       start-rtp-dump stop-rtp-dump start-audio-debug-recordings stop-audio-debug-recordings
       start-event-logging get-logs-directory tap-all-events]]
 
-    [chromex.ext.webstore-private refer-macros:[
+    [chromex.ext.webstore-private refer:[
       install begin-install-with-manifest3 complete-install enable-app-launcher get-browser-login
       get-store-login set-store-login get-web-gl-status get-is-launcher-enabled is-in-incognito-mode
       get-ephemeral-apps-enabled launch-ephemeral-app is-pending-custodian-approval tap-all-events]]))
