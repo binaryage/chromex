@@ -232,7 +232,7 @@
     {:id ::remove-input-method, :name "removeInputMethod", :params [{:name "input-method-id", :type "string"}]}
     {:id ::retry-download-dictionary,
      :name "retryDownloadDictionary",
-     :since "master",
+     :since "67",
      :params [{:name "language-code", :type "string"}]}],
    :events
    [{:id ::on-spellcheck-dictionaries-changed,

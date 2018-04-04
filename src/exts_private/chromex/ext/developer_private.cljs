@@ -36,6 +36,9 @@
 (defn load-unpacked* [config options]
   (gen-wrap :function ::load-unpacked config options))
 
+(defn install-dropped-file* [config]
+  (gen-wrap :function ::install-dropped-file config))
+
 (defn notify-drag-install-in-progress* [config]
   (gen-wrap :function ::notify-drag-install-in-progress config))
 

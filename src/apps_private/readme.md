@@ -47,7 +47,7 @@
 
 ### API stats
 
-Generated 39 namespaces containing 1 properties, 317 functions and 74 events:
+Generated 39 namespaces containing 1 properties, 318 functions and 74 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -61,7 +61,7 @@ Generated 39 namespaces containing 1 properties, 317 functions and 74 events:
     |     chrome.chromeosInfoPrivate |           0 |          2 |       0 |
     |      chrome.commandLinePrivate |           0 |          1 |       0 |
     |        chrome.dashboardPrivate |           0 |          1 |       0 |
-    |        chrome.developerPrivate |           0 |         28 |       2 |
+    |        chrome.developerPrivate |           0 |         29 |       2 |
     |       chrome.easyUnlockPrivate |           0 |         25 |       5 |
     |             chrome.echoPrivate |           0 |          5 |       0 |
     |         chrome.feedbackPrivate |           0 |          6 |       1 |
@@ -137,8 +137,8 @@ Generated 39 namespaces containing 1 properties, 317 functions and 74 events:
     [chromex.app.developer-private refer:[
       auto-update get-extensions-info get-extension-info get-extension-size get-items-info
       get-profile-configuration update-profile-configuration show-permissions-dialog reload
-      update-extension-configuration load-unpacked notify-drag-install-in-progress load-directory
-      choose-path pack-directory is-profile-managed request-file-source open-dev-tools
+      update-extension-configuration load-unpacked install-dropped-file notify-drag-install-in-progress
+      load-directory choose-path pack-directory is-profile-managed request-file-source open-dev-tools
       delete-extension-errors repair-extension show-options show-path set-shortcut-handling-suspended
       update-extension-command enable allow-incognito allow-file-access inspect tap-on-item-state-changed
       tap-on-profile-state-changed tap-all-events]]

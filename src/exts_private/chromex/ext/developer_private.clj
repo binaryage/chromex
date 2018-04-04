@@ -163,6 +163,16 @@
   ([options] (gen-call :function ::load-unpacked &form options))
   ([] `(load-unpacked :omit)))
 
+(defmacro install-dropped-file
+  "Installs the file that was dragged and dropped onto the associated page.
+
+   This function returns a core.async channel which eventually receives a result value and closes.
+   Signature of the result value put on the channel is [].
+
+   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::install-dropped-file &form)))
+
 (defmacro notify-drag-install-in-progress
   "Notifies the browser that a user began a drag in order to install an extension."
   ([] (gen-call :function ::notify-drag-install-in-progress &form)))
@@ -486,6 +496,11 @@
        :optional? true,
        :type :callback,
        :callback {:params [{:name "error", :optional? true, :type "developerPrivate.LoadError"}]}}]}
+    {:id ::install-dropped-file,
+     :name "installDroppedFile",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :optional? true, :type :callback}]}
     {:id ::notify-drag-install-in-progress, :name "notifyDragInstallInProgress", :since "64"}
     {:id ::load-directory,
      :name "loadDirectory",

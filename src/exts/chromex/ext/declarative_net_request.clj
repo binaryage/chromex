@@ -12,11 +12,20 @@
 (declare api-table)
 (declare gen-call)
 
+; -- properties -------------------------------------------------------------------------------------------------------------
+
+(defmacro get-max-number-of-whitelisted-pages
+  "The maximum number of whitelisted pages that an extension can add.
+
+   https://developer.chrome.com/extensions/declarativeNetRequest#property-MAX_NUMBER_OF_WHITELISTED_PAGES."
+  ([] (gen-call :property ::max-number-of-whitelisted-pages &form)))
+
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro add-whitelisted-pages
   "Adds |page_patterns| to the set of whitelisted pages. Requests from these pages are not intercepted by the extension. These
-   are persisted across browser sessions.
+   are persisted across browser sessions. Note: MAX_NUMBER_OF_WHITELISTED_PAGES is the maximum number of whitelisted page an
+   extension can add. Also, adding page patterns is atomic. In case of an error, no page pattern is added.
 
      |page-patterns| - Array of match patterns which are to be added to the whitelist.
 
@@ -30,7 +39,8 @@
   ([page-patterns] (gen-call :function ::add-whitelisted-pages &form page-patterns)))
 
 (defmacro remove-whitelisted-pages
-  "Removes |page_patterns| from the set of whitelisted pages.
+  "Removes |page_patterns| from the set of whitelisted pages. Note: Removing page patterns is atomic. In case of an error, no
+   page pattern is removed.
 
      |page-patterns| - Array of match patterns which are to be removed from the whitelist.
 
@@ -71,22 +81,27 @@
 (def api-table
   {:namespace "chrome.declarativeNetRequest",
    :since "66",
+   :properties
+   [{:id ::max-number-of-whitelisted-pages,
+     :name "MAX_NUMBER_OF_WHITELISTED_PAGES",
+     :since "master",
+     :return-type "unknown-type"}],
    :functions
    [{:id ::add-whitelisted-pages,
      :name "addWhitelistedPages",
-     :since "master",
+     :since "67",
      :callback? true,
      :params
      [{:name "page-patterns", :type "[array-of-strings]"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-whitelisted-pages,
      :name "removeWhitelistedPages",
-     :since "master",
+     :since "67",
      :callback? true,
      :params
      [{:name "page-patterns", :type "[array-of-strings]"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-whitelisted-pages,
      :name "getWhitelistedPages",
-     :since "master",
+     :since "67",
      :callback? true,
      :params
      [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "[array-of-strings]"}]}}]}]})
