@@ -56,7 +56,7 @@
             (done)))))))
 
 (deftest test--custom-error-reporter
-  (testing "excercise custom error reporter"
+  (testing "exercise custom error reporter"
     (async done
       (go
         (let [expected-report (str "[{:id :chromex.playground/get-something-causing-error, "
