@@ -31,7 +31,7 @@
     (gen-fn)))
 
 (def fixed-config
-  {:root                                                  'js/goog.global
+  {:root                                                  'goog/global
    :callback-channel-factory                              'chromex.defaults/default-callback-channel-factory
    :callback-fn-factory                                   'chromex.defaults/default-callback-fn-factory
    :callback-error-reporter                               'chromex.defaults/default-callback-error-reporter
