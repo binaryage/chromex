@@ -17,12 +17,12 @@
   "Retrieves a list of AccountInfo objects describing the accounts present on the profile.getAccounts is only supported on dev
    channel.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [accounts] where:
 
      |accounts| - https://developer.chrome.com/apps/identity#property-callback-accounts.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/identity#method-getAccounts."
@@ -38,12 +38,12 @@
 
      |details| - Token options.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [token] where:
 
      |token| - https://developer.chrome.com/apps/identity#property-callback-token.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/identity#method-getAuthToken."
@@ -55,12 +55,12 @@
    identity.getAccounts in two ways. The information returned is available offline, and it only applies to the primary account
    for the profile.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [user-info] where:
 
      |user-info| - https://developer.chrome.com/apps/identity#property-callback-userInfo.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/identity#method-getProfileUserInfo."
@@ -73,10 +73,10 @@
 
      |details| - Token information.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/identity#method-removeCachedAuthToken."
@@ -92,12 +92,12 @@
 
      |details| - WebAuth flow options.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [response-url] where:
 
      |response-url| - https://developer.chrome.com/apps/identity#property-callback-responseUrl.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/identity#method-launchWebAuthFlow."

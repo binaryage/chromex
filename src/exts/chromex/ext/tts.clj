@@ -22,10 +22,10 @@
                    characters.
      |options| - The speech options.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tts#method-speak."
@@ -55,12 +55,12 @@
   "Checks whether the engine is currently speaking. On Mac OS X, the result is true whenever the system speech engine is
    speaking, even if the speech wasn't initiated by Chrome.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [speaking] where:
 
      |speaking| - True if speaking, false otherwise.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tts#method-isSpeaking."
@@ -69,12 +69,12 @@
 (defmacro get-voices
   "Gets an array of all available voices.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [voices] where:
 
      |voices| - Array of 'tts.TtsVoice' objects representing the available voices for speech synthesis.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tts#method-getVoices."

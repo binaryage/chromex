@@ -20,12 +20,12 @@
 
      |details| - https://developer.chrome.com/apps/mediaGalleries#property-getMediaFileSystems-details.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [media-file-systems] where:
 
      |media-file-systems| - https://developer.chrome.com/apps/mediaGalleries#property-callback-mediaFileSystems.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/mediaGalleries#method-getMediaFileSystems."
@@ -37,13 +37,13 @@
    selectedFileSystemName will be empty. A user gesture is required for the dialog to display. Without a user gesture, the
    callback will run as though the user canceled.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [media-file-systems selected-file-system-name] where:
 
      |media-file-systems| - https://developer.chrome.com/apps/mediaGalleries#property-callback-mediaFileSystems.
      |selected-file-system-name| - https://developer.chrome.com/apps/mediaGalleries#property-callback-selectedFileSystemName.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/mediaGalleries#method-addUserSelectedFolder."
@@ -54,10 +54,10 @@
 
      |gallery-id| - https://developer.chrome.com/apps/mediaGalleries#property-dropPermissionForMediaFileSystem-galleryId.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/mediaGalleries#method-dropPermissionForMediaFileSystem."
@@ -80,12 +80,12 @@
   "Show the user the scan results and let them add any or all of them as galleries. This should be used after the 'finish'
    onScanProgress() event has happened. All galleries the app has access to are returned, not just the newly added galleries.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [media-file-systems] where:
 
      |media-file-systems| - https://developer.chrome.com/apps/mediaGalleries#property-callback-mediaFileSystems.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/mediaGalleries#method-addScanResults."
@@ -102,12 +102,12 @@
 (defmacro get-all-media-file-system-metadata
   "Get metadata for all available media galleries.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [metadata] where:
 
      |metadata| - https://developer.chrome.com/apps/mediaGalleries#property-callback-metadata.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/mediaGalleries#method-getAllMediaFileSystemMetadata."
@@ -120,12 +120,12 @@
      |media-file| - https://developer.chrome.com/apps/mediaGalleries#property-getMetadata-mediaFile.
      |options| - https://developer.chrome.com/apps/mediaGalleries#property-getMetadata-options.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [metadata] where:
 
      |metadata| - https://developer.chrome.com/apps/mediaGalleries#property-callback-metadata.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/mediaGalleries#method-getMetadata."
@@ -138,12 +138,12 @@
 
      |gallery-id| - https://developer.chrome.com/apps/mediaGalleries#property-addGalleryWatch-galleryId.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - https://developer.chrome.com/apps/mediaGalleries#property-callback-result.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/mediaGalleries#method-addGalleryWatch."
@@ -160,12 +160,12 @@
 (defmacro get-all-gallery-watch
   "Notifies which galleries are being watched via the given callback.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [gallery-ids] where:
 
      |gallery-ids| - https://developer.chrome.com/apps/mediaGalleries#property-callback-galleryIds.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/mediaGalleries#method-getAllGalleryWatch."

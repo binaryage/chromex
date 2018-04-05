@@ -29,10 +29,10 @@
 
      |page-patterns| - Array of match patterns which are to be added to the whitelist.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/declarativeNetRequest#method-addWhitelistedPages."
@@ -44,10 +44,10 @@
 
      |page-patterns| - Array of match patterns which are to be removed from the whitelist.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/declarativeNetRequest#method-removeWhitelistedPages."
@@ -56,12 +56,12 @@
 (defmacro get-whitelisted-pages
   "Returns the current set of whitelisted pages.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - https://developer.chrome.com/extensions/declarativeNetRequest#property-callback-result.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/declarativeNetRequest#method-getWhitelistedPages."

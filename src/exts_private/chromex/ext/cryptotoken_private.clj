@@ -25,12 +25,12 @@
      |security-origin| - ?
      |app-id-url| - ?
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - ?
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([security-origin app-id-url] (gen-call :function ::can-origin-assert-app-id &form security-origin app-id-url)))
 
@@ -41,12 +41,12 @@
 
      |app-id-hash| - ?
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - ?
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([app-id-hash] (gen-call :function ::is-app-id-hash-in-enterprise-context &form app-id-hash)))
 
@@ -57,12 +57,12 @@
 
      |options| - ?
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - ?
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([options] (gen-call :function ::can-app-id-get-attestation &form options)))
 

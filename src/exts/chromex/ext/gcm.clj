@@ -28,12 +28,12 @@
      |sender-ids| - A list of server IDs that are allowed to send messages to the application. It should contain at least
                     one and no more than 100 sender IDs.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [registration-id] where:
 
      |registration-id| - A registration ID assigned to the application by the GCM.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/gcm#method-register."
@@ -42,10 +42,10 @@
 (defmacro unregister
   "Unregisters the application from GCM.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/gcm#method-unregister."
@@ -56,12 +56,12 @@
 
      |message| - A message to send to the other party via GCM.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [message-id] where:
 
      |message-id| - The ID of the message that the callback was issued for.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/gcm#method-send."

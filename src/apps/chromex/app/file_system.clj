@@ -23,12 +23,12 @@
 
      |entry| - https://developer.chrome.com/apps/fileSystem#property-getDisplayPath-entry.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [display-path] where:
 
      |display-path| - https://developer.chrome.com/apps/fileSystem#property-callback-displayPath.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/fileSystem#method-getDisplayPath."
@@ -41,12 +41,12 @@
 
      |entry| - https://developer.chrome.com/apps/fileSystem#property-getWritableEntry-entry.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [entry] where:
 
      |entry| - https://developer.chrome.com/apps/fileSystem#property-callback-entry.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/fileSystem#method-getWritableEntry."
@@ -57,12 +57,12 @@
 
      |entry| - https://developer.chrome.com/apps/fileSystem#property-isWritableEntry-entry.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [is-writable] where:
 
      |is-writable| - https://developer.chrome.com/apps/fileSystem#property-callback-isWritable.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/fileSystem#method-isWritableEntry."
@@ -73,13 +73,13 @@
 
      |options| - https://developer.chrome.com/apps/fileSystem#property-chooseEntry-options.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [entry file-entries] where:
 
      |entry| - https://developer.chrome.com/apps/fileSystem#property-callback-entry.
      |file-entries| - https://developer.chrome.com/apps/fileSystem#property-callback-fileEntries.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/fileSystem#method-chooseEntry."
@@ -91,12 +91,12 @@
 
      |id| - https://developer.chrome.com/apps/fileSystem#property-restoreEntry-id.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [entry] where:
 
      |entry| - https://developer.chrome.com/apps/fileSystem#property-callback-entry.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/fileSystem#method-restoreEntry."
@@ -107,12 +107,12 @@
 
      |id| - https://developer.chrome.com/apps/fileSystem#property-isRestorable-id.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [is-restorable] where:
 
      |is-restorable| - https://developer.chrome.com/apps/fileSystem#property-callback-isRestorable.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/fileSystem#method-isRestorable."
@@ -138,12 +138,12 @@
 
      |options| - https://developer.chrome.com/apps/fileSystem#property-requestFileSystem-options.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [file-system] where:
 
      |file-system| - https://developer.chrome.com/apps/fileSystem#property-callback-fileSystem.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/fileSystem#method-requestFileSystem."
@@ -154,12 +154,12 @@
    required. Available to kiosk apps running in the kiosk session only. In case of an error, volumes will be undefined, and
    chrome.runtime.lastError will be set.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [volumes] where:
 
      |volumes| - https://developer.chrome.com/apps/fileSystem#property-callback-volumes.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/fileSystem#method-getVolumeList."

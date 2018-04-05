@@ -19,12 +19,12 @@
 
      |details| - Information about the frame to retrieve information about.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [details] where:
 
      |details| - Information about the requested frame, null if the specified frame ID and/or tab ID are invalid.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/webNavigation#method-getFrame."
@@ -35,12 +35,12 @@
 
      |details| - Information about the tab to retrieve all frames from.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [details] where:
 
      |details| - A list of frames in the given tab, null if the specified tab ID is invalid.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/webNavigation#method-getAllFrames."

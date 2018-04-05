@@ -20,12 +20,12 @@
 
      |properties| - The socket properties (optional).
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [create-info] where:
 
      |create-info| - The result of the socket creation.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.udp#method-create."
@@ -38,10 +38,10 @@
      |socket-id| - The socket ID.
      |properties| - The properties to update.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.udp#method-update."
@@ -53,10 +53,10 @@
      |socket-id| - https://developer.chrome.com/apps/sockets.udp#property-setPaused-socketId.
      |paused| - Flag to indicate whether to pause or unpause.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.udp#method-setPaused."
@@ -72,12 +72,12 @@
                  packets from all local available network interfaces.
      |port| - The port of the local machine. Use '0' to bind to a free port.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - The result code returned from the underlying network call. A negative value indicates an error.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.udp#method-bind."
@@ -92,12 +92,12 @@
      |address| - The address of the remote machine.
      |port| - The port of the remote machine.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [send-info] where:
 
      |send-info| - Result of the send method.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.udp#method-send."
@@ -110,10 +110,10 @@
 
      |socket-id| - The socket ID.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.udp#method-close."
@@ -124,12 +124,12 @@
 
      |socket-id| - The socket ID.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [socket-info] where:
 
      |socket-info| - Object containing the socket information.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.udp#method-getInfo."
@@ -138,12 +138,12 @@
 (defmacro get-sockets
   "Retrieves the list of currently opened sockets owned by the application.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [socket-infos] where:
 
      |socket-infos| - Array of object containing socket information.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.udp#method-getSockets."
@@ -156,12 +156,12 @@
      |socket-id| - The socket ID.
      |address| - The group address to join. Domain names are not supported.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - The result code returned from the underlying network call. A negative value indicates an error.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.udp#method-joinGroup."
@@ -176,12 +176,12 @@
      |socket-id| - The socket ID.
      |address| - The group address to leave. Domain names are not supported.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - The result code returned from the underlying network call. A negative value indicates an error.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.udp#method-leaveGroup."
@@ -194,12 +194,12 @@
      |socket-id| - The socket ID.
      |ttl| - The time-to-live value.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - The result code returned from the underlying network call. A negative value indicates an error.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.udp#method-setMulticastTimeToLive."
@@ -216,12 +216,12 @@
      |socket-id| - The socket ID.
      |enabled| - Indicate whether to enable loopback mode.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - The result code returned from the underlying network call. A negative value indicates an error.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.udp#method-setMulticastLoopbackMode."
@@ -232,12 +232,12 @@
 
      |socket-id| - The socket ID.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [groups] where:
 
      |groups| - Array of groups the socket joined.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.udp#method-getJoinedGroups."
@@ -249,12 +249,12 @@
      |socket-id| - The socket ID.
      |enabled| - true to enable broadcast packets, false to disable them.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - The result code returned from the underlying network call.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.udp#method-setBroadcast."

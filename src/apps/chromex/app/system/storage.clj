@@ -18,12 +18,12 @@
 (defmacro get-info
   "Get the storage information from the system. The argument passed to the callback is an array of StorageUnitInfo objects.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [info] where:
 
      |info| - https://developer.chrome.com/apps/system.storage#property-callback-info.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/system.storage#method-getInfo."
@@ -34,12 +34,12 @@
 
      |id| - https://developer.chrome.com/apps/system.storage#property-ejectDevice-id.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - https://developer.chrome.com/apps/system.storage#property-callback-result.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/system.storage#method-ejectDevice."
@@ -50,12 +50,12 @@
 
      |id| - https://developer.chrome.com/apps/system.storage#property-getAvailableCapacity-id.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [info] where:
 
      |info| - https://developer.chrome.com/apps/system.storage#property-callback-info.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/system.storage#method-getAvailableCapacity."

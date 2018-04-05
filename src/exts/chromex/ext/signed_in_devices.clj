@@ -20,12 +20,12 @@
      |is-local| - If true only return the information for the local device. If false or omitted return the list of all
                   devices including the local device.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [devices] where:
 
      |devices| - https://developer.chrome.com/extensions/signedInDevices#property-callback-devices.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/signedInDevices#method-get."

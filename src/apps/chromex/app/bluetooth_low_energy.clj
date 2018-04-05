@@ -25,10 +25,10 @@
      |device-address| - The Bluetooth address of the remote device to which a GATT connection should be opened.
      |properties| - Connection properties (optional).
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-connect."
@@ -41,10 +41,10 @@
 
      |device-address| - The Bluetooth address of the remote device.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-disconnect."
@@ -55,12 +55,12 @@
 
      |service-id| - The instance ID of the requested GATT service.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-result.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-getService."
@@ -73,12 +73,12 @@
 
      |service| - The service to create.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [service-id] where:
 
      |service-id| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-serviceId.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-createService."
@@ -91,12 +91,12 @@
 
      |device-address| - The Bluetooth address of the remote device whose GATT services should be returned.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-result.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-getServices."
@@ -108,12 +108,12 @@
 
      |characteristic-id| - The instance ID of the requested GATT characteristic.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-result.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-getCharacteristic."
@@ -127,12 +127,12 @@
      |characteristic| - The characteristic to create.
      |service-id| - ID of the service to create this characteristic for.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [characteristic-id] where:
 
      |characteristic-id| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-characteristicId.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-createCharacteristic."
@@ -143,12 +143,12 @@
 
      |service-id| - The instance ID of the GATT service whose characteristics should be returned.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-result.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-getCharacteristics."
@@ -159,12 +159,12 @@
 
      |service-id| - The instance ID of the GATT service whose included services should be returned.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-result.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-getIncludedServices."
@@ -175,12 +175,12 @@
 
      |descriptor-id| - The instance ID of the requested GATT characteristic descriptor.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-result.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-getDescriptor."
@@ -194,12 +194,12 @@
      |descriptor| - The descriptor to create.
      |characteristic-id| - ID of the characteristic to create this descriptor for.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [descriptor-id] where:
 
      |descriptor-id| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-descriptorId.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-createDescriptor."
@@ -210,12 +210,12 @@
 
      |characteristic-id| - The instance ID of the GATT characteristic whose descriptors should be returned.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-result.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-getDescriptors."
@@ -226,12 +226,12 @@
 
      |characteristic-id| - The instance ID of the GATT characteristic whose value should be read from the remote device.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-result.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-readCharacteristicValue."
@@ -243,10 +243,10 @@
      |characteristic-id| - The instance ID of the GATT characteristic whose value should be written to.
      |value| - The value that should be sent to the remote characteristic as part of the write request.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-writeCharacteristicValue."
@@ -259,10 +259,10 @@
      |characteristic-id| - The instance ID of the GATT characteristic that notifications should be enabled on.
      |properties| - Notification session properties (optional).
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-startCharacteristicNotifications."
@@ -276,10 +276,10 @@
      |characteristic-id| - The instance ID of the GATT characteristic on which this app's notification session should be
                            stopped.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-stopCharacteristicNotifications."
@@ -295,10 +295,10 @@
      |characteristic-id| - The characteristic to send the notication for.
      |notification| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-notifyCharacteristicValueChanged-notification.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-notifyCharacteristicValueChanged."
@@ -310,12 +310,12 @@
      |descriptor-id| - The instance ID of the GATT characteristic descriptor whose value should be read from the remote
                        device.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-result.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-readDescriptorValue."
@@ -327,10 +327,10 @@
      |descriptor-id| - The instance ID of the GATT characteristic descriptor whose value should be written to.
      |value| - The value that should be sent to the remote descriptor as part of the write request.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-writeDescriptorValue."
@@ -343,10 +343,10 @@
 
      |service-id| - Unique ID of a created service.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-registerService."
@@ -359,10 +359,10 @@
 
      |service-id| - Unique ID of a current registered service.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-unregisterService."
@@ -375,10 +375,10 @@
 
      |service-id| - Unique ID of a current registered service.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-removeService."
@@ -395,12 +395,12 @@
 
      |advertisement| - The advertisement to advertise.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [advertisement-id] where:
 
      |advertisement-id| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-advertisementId.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-registerAdvertisement."
@@ -412,10 +412,10 @@
 
      |advertisement-id| - Id of the advertisement to unregister.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-unregisterAdvertisement."
@@ -424,10 +424,10 @@
 (defmacro reset-advertising
   "Resets advertising on the current device. It will unregister and stop all existing advertisements.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-resetAdvertising."
@@ -443,10 +443,10 @@
      |max-interval| - Maximum interval between advertisments (in milliseconds). This cannot be more than 10240ms (as per the
                       spec).
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-setAdvertisingInterval."

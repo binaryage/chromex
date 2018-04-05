@@ -23,12 +23,12 @@
 (defmacro get-country-list
   "Gets the list of all countries.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [countries] where:
 
      |countries| - ?
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-country-list &form)))
 
@@ -38,24 +38,24 @@
      |country-code| - A two-character string representing the address' country     whose components should be returned. See
                       autofill_country.cc for a     list of valid codes.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [components] where:
 
      |components| - ?
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([country-code] (gen-call :function ::get-address-components &form country-code)))
 
 (defmacro get-address-list
   "Gets the list of addresses.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [entries] where:
 
      |entries| - ?
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-address-list &form)))
 
@@ -78,24 +78,24 @@
 
      |params| - The parameters to this function.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [validated-phone-numbers] where:
 
      |validated-phone-numbers| - ?
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([params] (gen-call :function ::validate-phone-numbers &form params)))
 
 (defmacro get-credit-card-list
   "Gets the list of credit cards.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [entries] where:
 
      |entries| - ?
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-credit-card-list &form)))
 

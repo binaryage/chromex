@@ -13,36 +13,36 @@
 (defmacro get-incognito-mode-availability
   "Returns whether the incognito mode is enabled, disabled or forced
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [value] where:
 
      |value| - ?
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-incognito-mode-availability &form)))
 
 (defmacro get-update-status
   "Gets information about the system update.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [status] where:
 
      |status| - Details of the system update
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-update-status &form)))
 
 (defmacro get-api-key
   "Gets Chrome's API key to use for requests to Google services.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [key] where:
 
      |key| - The API key.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-api-key &form)))
 

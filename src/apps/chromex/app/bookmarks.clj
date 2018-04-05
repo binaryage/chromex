@@ -29,12 +29,12 @@
 
      |id-or-id-list| - A single string-valued id, or an array of string-valued ids
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [results] where:
 
      |results| - https://developer.chrome.com/apps/bookmarks#property-callback-results.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bookmarks#method-get."
@@ -45,12 +45,12 @@
 
      |id| - https://developer.chrome.com/apps/bookmarks#property-getChildren-id.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [results] where:
 
      |results| - https://developer.chrome.com/apps/bookmarks#property-callback-results.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bookmarks#method-getChildren."
@@ -61,12 +61,12 @@
 
      |number-of-items| - The maximum number of items to return.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [results] where:
 
      |results| - https://developer.chrome.com/apps/bookmarks#property-callback-results.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bookmarks#method-getRecent."
@@ -75,12 +75,12 @@
 (defmacro get-tree
   "Retrieves the entire Bookmarks hierarchy.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [results] where:
 
      |results| - https://developer.chrome.com/apps/bookmarks#property-callback-results.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bookmarks#method-getTree."
@@ -91,12 +91,12 @@
 
      |id| - The ID of the root of the subtree to retrieve.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [results] where:
 
      |results| - https://developer.chrome.com/apps/bookmarks#property-callback-results.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bookmarks#method-getSubTree."
@@ -110,12 +110,12 @@
                If an object, the properties query, url, and title may be specified and bookmarks matching all specified
                properties will be produced.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [results] where:
 
      |results| - https://developer.chrome.com/apps/bookmarks#property-callback-results.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bookmarks#method-search."
@@ -126,12 +126,12 @@
 
      |bookmark| - https://developer.chrome.com/apps/bookmarks#property-create-bookmark.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - https://developer.chrome.com/apps/bookmarks#property-callback-result.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bookmarks#method-create."
@@ -143,12 +143,12 @@
      |id| - https://developer.chrome.com/apps/bookmarks#property-move-id.
      |destination| - https://developer.chrome.com/apps/bookmarks#property-move-destination.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - https://developer.chrome.com/apps/bookmarks#property-callback-result.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bookmarks#method-move."
@@ -161,12 +161,12 @@
      |id| - https://developer.chrome.com/apps/bookmarks#property-update-id.
      |changes| - https://developer.chrome.com/apps/bookmarks#property-update-changes.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - https://developer.chrome.com/apps/bookmarks#property-callback-result.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bookmarks#method-update."
@@ -177,10 +177,10 @@
 
      |id| - https://developer.chrome.com/apps/bookmarks#property-remove-id.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bookmarks#method-remove."
@@ -191,10 +191,10 @@
 
      |id| - https://developer.chrome.com/apps/bookmarks#property-removeTree-id.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bookmarks#method-removeTree."

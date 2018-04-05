@@ -19,12 +19,12 @@
 
      |restrictions| - the preferences to enabled/disabled virtual keyboard features.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [update] where:
 
      |update| - https://developer.chrome.com/apps/virtualKeyboard#property-callback-update.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/virtualKeyboard#method-restrictFeatures."

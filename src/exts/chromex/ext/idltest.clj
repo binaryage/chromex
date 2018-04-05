@@ -19,12 +19,12 @@
 
      |input| - https://developer.chrome.com/extensions/idltest#property-sendArrayBuffer-input.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [array] where:
 
      |array| - https://developer.chrome.com/extensions/idltest#property-cb-array.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/idltest#method-sendArrayBuffer."
@@ -37,24 +37,24 @@
 
      |input| - https://developer.chrome.com/extensions/idltest#property-sendArrayBufferView-input.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [array] where:
 
      |array| - https://developer.chrome.com/extensions/idltest#property-cb-array.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/idltest#method-sendArrayBufferView."
   ([input] (gen-call :function ::send-array-buffer-view &form input)))
 
 (defmacro get-array-buffer
-  "This function returns a core.async channel which eventually receives a result value and closes.
+  "This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [buffer] where:
 
      |buffer| - https://developer.chrome.com/extensions/idltest#property-cb-buffer.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/idltest#method-getArrayBuffer."

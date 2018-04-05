@@ -19,12 +19,12 @@
 
      |properties| - The socket properties (optional).
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [create-info] where:
 
      |create-info| - The result of the socket creation.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothSocket#method-create."
@@ -37,10 +37,10 @@
      |socket-id| - The socket identifier.
      |properties| - The properties to update.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothSocket#method-update."
@@ -57,10 +57,10 @@
      |socket-id| - https://developer.chrome.com/apps/bluetoothSocket#property-setPaused-socketId.
      |paused| - https://developer.chrome.com/apps/bluetoothSocket#property-setPaused-paused.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothSocket#method-setPaused."
@@ -73,10 +73,10 @@
      |uuid| - Service UUID to listen on.
      |options| - Optional additional options for the service.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothSocket#method-listenUsingRfcomm."
@@ -90,10 +90,10 @@
      |uuid| - Service UUID to listen on.
      |options| - Optional additional options for the service.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothSocket#method-listenUsingL2cap."
@@ -110,10 +110,10 @@
      |address| - The address of the Bluetooth device.
      |uuid| - The UUID of the service to connect to.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothSocket#method-connect."
@@ -124,10 +124,10 @@
 
      |socket-id| - The socket identifier.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothSocket#method-disconnect."
@@ -139,10 +139,10 @@
 
      |socket-id| - The socket identifier.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothSocket#method-close."
@@ -154,12 +154,12 @@
      |socket-id| - The socket identifier.
      |data| - The data to send.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [bytes-sent] where:
 
      |bytes-sent| - The number of bytes sent.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothSocket#method-send."
@@ -170,12 +170,12 @@
 
      |socket-id| - The socket identifier.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [socket-info] where:
 
      |socket-info| - Object containing the socket information.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothSocket#method-getInfo."
@@ -184,12 +184,12 @@
 (defmacro get-sockets
   "Retrieves the list of currently opened sockets owned by the application.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [sockets] where:
 
      |sockets| - https://developer.chrome.com/apps/bluetoothSocket#property-callback-sockets.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothSocket#method-getSockets."

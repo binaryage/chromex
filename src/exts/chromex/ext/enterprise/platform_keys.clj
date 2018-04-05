@@ -22,12 +22,12 @@
    a system-wide TPM token is available, the returned list will also contain the system-wide token with id 'system'. The
    system-wide token will be the same for all sessions on this device (device in the sense of e.g. a Chromebook).
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [tokens] where:
 
      |tokens| - The list of available tokens.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/enterprise.platformKeys#method-getTokens."
@@ -39,12 +39,12 @@
 
      |token-id| - The id of a Token returned by getTokens.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [certificates] where:
 
      |certificates| - The list of certificates, each in DER encoding of a X.509     certificate.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/enterprise.platformKeys#method-getCertificates."
@@ -58,10 +58,10 @@
      |token-id| - The id of a Token returned by getTokens.
      |certificate| - The DER encoding of a X.509 certificate.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/enterprise.platformKeys#method-importCertificate."
@@ -75,10 +75,10 @@
      |token-id| - The id of a Token returned by getTokens.
      |certificate| - The DER encoding of a X.509 certificate.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/enterprise.platformKeys#method-removeCertificate."
@@ -103,12 +103,12 @@
                       RSA. Subsequent calls                to this function will then generate a new Enterprise
                       Machine Key.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [response] where:
 
      |response| - The challenge response.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/enterprise.platformKeys#method-challengeMachineKey."
@@ -133,12 +133,12 @@
                       with a certificate and used like any other signing key.                This key is 2048-bit RSA.
                       Subsequent calls to this                function will then generate a new Enterprise User Key.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [response] where:
 
      |response| - The challenge response.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/enterprise.platformKeys#method-challengeUserKey."

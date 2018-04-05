@@ -17,12 +17,12 @@
 (defmacro get-adapter-state
   "Get information about the Bluetooth adapter.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [adapter-info] where:
 
      |adapter-info| - Object containing the adapter information.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetooth#method-getAdapterState."
@@ -33,12 +33,12 @@
 
      |device-address| - Address of device to get.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [device-info] where:
 
      |device-info| - Object containing the device information.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetooth#method-getDevice."
@@ -47,12 +47,12 @@
 (defmacro get-devices
   "Get a list of Bluetooth devices known to the system, including paired and recently discovered devices.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [device-infos] where:
 
      |device-infos| - Array of object containing device information.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetooth#method-getDevices."
@@ -64,10 +64,10 @@
    if information about them changes.Discovery will fail to start if this application has already called startDiscovery.
    Discovery can be resource intensive: stopDiscovery should be called as soon as possible.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetooth#method-startDiscovery."
@@ -76,10 +76,10 @@
 (defmacro stop-discovery
   "Stop discovery.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetooth#method-stopDiscovery."

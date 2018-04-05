@@ -17,12 +17,12 @@
 (defmacro get-all
   "Gets the extension's current set of permissions.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [permissions] where:
 
      |permissions| - The extension's active permissions.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/permissions#method-getAll."
@@ -33,12 +33,12 @@
 
      |permissions| - https://developer.chrome.com/apps/permissions#property-contains-permissions.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - True if the extension has the specified permissions.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/permissions#method-contains."
@@ -50,12 +50,12 @@
 
      |permissions| - https://developer.chrome.com/apps/permissions#property-request-permissions.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [granted] where:
 
      |granted| - True if the user granted the specified permissions.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/permissions#method-request."
@@ -67,12 +67,12 @@
 
      |permissions| - https://developer.chrome.com/apps/permissions#property-remove-permissions.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [removed] where:
 
      |removed| - True if the permissions were removed.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/permissions#method-remove."

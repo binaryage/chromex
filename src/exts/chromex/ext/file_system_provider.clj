@@ -23,10 +23,10 @@
 
      |options| - https://developer.chrome.com/extensions/fileSystemProvider#property-mount-options.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/fileSystemProvider#method-mount."
@@ -39,10 +39,10 @@
 
      |options| - https://developer.chrome.com/extensions/fileSystemProvider#property-unmount-options.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/fileSystemProvider#method-unmount."
@@ -51,12 +51,12 @@
 (defmacro get-all
   "Returns all file systems mounted by the extension.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [file-systems] where:
 
      |file-systems| - https://developer.chrome.com/extensions/fileSystemProvider#property-callback-fileSystems.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/fileSystemProvider#method-getAll."
@@ -67,12 +67,12 @@
 
      |file-system-id| - https://developer.chrome.com/extensions/fileSystemProvider#property-get-fileSystemId.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [file-system] where:
 
      |file-system| - https://developer.chrome.com/extensions/fileSystemProvider#property-callback-fileSystem.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/fileSystemProvider#method-get."
@@ -93,10 +93,10 @@
 
      |options| - https://developer.chrome.com/extensions/fileSystemProvider#property-notify-options.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/fileSystemProvider#method-notify."

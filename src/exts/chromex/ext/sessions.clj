@@ -26,13 +26,13 @@
 
      |filter| - https://developer.chrome.com/extensions/sessions#property-getRecentlyClosed-filter.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [sessions] where:
 
      |sessions| - The list of closed entries in reverse order that they were closed (the most recently closed tab or window
                   will be at index 0). The entries may contain either tabs or windows.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/sessions#method-getRecentlyClosed."
@@ -44,14 +44,14 @@
 
      |filter| - https://developer.chrome.com/extensions/sessions#property-getDevices-filter.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [devices] where:
 
      |devices| - The list of 'sessions.Device' objects for each synced session, sorted in order from device with most recently
                  modified session to device with least recently modified session. 'tabs.Tab' objects are sorted by recency in
                  the 'windows.Window' of the 'sessions.Session' objects.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/sessions#method-getDevices."
@@ -64,12 +64,12 @@
      |session-id| - The 'windows.Window.sessionId', or 'tabs.Tab.sessionId' to restore. If this parameter is not specified,
                     the most recently closed session is restored.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [restored-session] where:
 
      |restored-session| - A 'sessions.Session' containing the restored 'windows.Window' or 'tabs.Tab' object.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/sessions#method-restore."

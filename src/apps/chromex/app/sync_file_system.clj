@@ -25,12 +25,12 @@
    example, if the user is not signed in to Chrome or if there is no network operation. To handle these errors it is important
    chrome.runtime.lastError is checked in the callback.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [file-system] where:
 
      |file-system| - https://developer.chrome.com/apps/syncFileSystem#property-callback-fileSystem.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/syncFileSystem#method-requestFileSystem."
@@ -43,10 +43,10 @@
 
      |policy| - https://developer.chrome.com/apps/syncFileSystem#property-setConflictResolutionPolicy-policy.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/syncFileSystem#method-setConflictResolutionPolicy."
@@ -55,12 +55,12 @@
 (defmacro get-conflict-resolution-policy
   "Gets the current conflict resolution policy.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [policy] where:
 
      |policy| - https://developer.chrome.com/apps/syncFileSystem#property-callback-policy.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/syncFileSystem#method-getConflictResolutionPolicy."
@@ -71,12 +71,12 @@
 
      |file-system| - https://developer.chrome.com/apps/syncFileSystem#property-getUsageAndQuota-fileSystem.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [info] where:
 
      |info| - https://developer.chrome.com/apps/syncFileSystem#property-callback-info.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/syncFileSystem#method-getUsageAndQuota."
@@ -88,12 +88,12 @@
 
      |file-entry| - https://developer.chrome.com/apps/syncFileSystem#property-getFileStatus-fileEntry.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [status] where:
 
      |status| - https://developer.chrome.com/apps/syncFileSystem#property-callback-status.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/syncFileSystem#method-getFileStatus."
@@ -104,12 +104,12 @@
 
      |file-entries| - https://developer.chrome.com/apps/syncFileSystem#property-getFileStatuses-fileEntries.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [status] where:
 
      |status| - https://developer.chrome.com/apps/syncFileSystem#property-callback-status.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/syncFileSystem#method-getFileStatuses."
@@ -118,12 +118,12 @@
 (defmacro get-service-status
   "Returns the current sync backend status.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [status] where:
 
      |status| - https://developer.chrome.com/apps/syncFileSystem#property-callback-status.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/syncFileSystem#method-getServiceStatus."

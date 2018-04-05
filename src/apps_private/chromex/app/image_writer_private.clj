@@ -26,10 +26,10 @@
      |options| - Optional parameters if comparing the download with a given hash or saving the download to the users
                  Downloads folder instead of a temporary directory is desired
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([storage-unit-id image-url options] (gen-call :function ::write-from-url &form storage-unit-id image-url options))
   ([storage-unit-id image-url] `(write-from-url ~storage-unit-id ~image-url :omit)))
@@ -41,20 +41,20 @@
      |storage-unit-id| - The identifier for the storage unit
      |file-entry| - The FileEntry object of the image to be burned.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([storage-unit-id file-entry] (gen-call :function ::write-from-file &form storage-unit-id file-entry)))
 
 (defmacro cancel-write
   "Cancel a current write operation.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::cancel-write &form)))
 
@@ -64,22 +64,22 @@
 
      |storage-unit-id| - The identifier of the storage unit to wipe
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([storage-unit-id] (gen-call :function ::destroy-partitions &form storage-unit-id)))
 
 (defmacro list-removable-storage-devices
   "List all the removable block devices currently attached to the system.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [devices] where:
 
      |devices| - ?
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::list-removable-storage-devices &form)))
 

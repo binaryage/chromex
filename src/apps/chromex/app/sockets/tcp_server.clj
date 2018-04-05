@@ -20,12 +20,12 @@
 
      |properties| - The socket properties (optional).
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [create-info] where:
 
      |create-info| - The result of the socket creation.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.tcpServer#method-create."
@@ -38,10 +38,10 @@
      |socket-id| - The socket identifier.
      |properties| - The properties to update.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.tcpServer#method-update."
@@ -55,10 +55,10 @@
      |socket-id| - https://developer.chrome.com/apps/sockets.tcpServer#property-setPaused-socketId.
      |paused| - https://developer.chrome.com/apps/sockets.tcpServer#property-setPaused-paused.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.tcpServer#method-setPaused."
@@ -74,12 +74,12 @@
      |backlog| - Length of the socket's listen queue. The default value depends on the Operating System (SOMAXCONN), which
                  ensures a reasonable queue length for most applications.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - The result code returned from the underlying network call. A negative value indicates an error.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.tcpServer#method-listen."
@@ -92,10 +92,10 @@
 
      |socket-id| - The socket identifier.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.tcpServer#method-disconnect."
@@ -107,10 +107,10 @@
 
      |socket-id| - The socket identifier.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.tcpServer#method-close."
@@ -121,12 +121,12 @@
 
      |socket-id| - The socket identifier.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [socket-info] where:
 
      |socket-info| - Object containing the socket information.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.tcpServer#method-getInfo."
@@ -135,12 +135,12 @@
 (defmacro get-sockets
   "Retrieves the list of currently opened sockets owned by the application.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [socket-infos] where:
 
      |socket-infos| - Array of object containing socket information.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.tcpServer#method-getSockets."

@@ -22,12 +22,12 @@
 
      |id| - The service id of the offer eligibility check.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - The returned offer info. If the offer info is not available, api will raise error.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([id] (gen-call :function ::get-offer-info &form id)))
 
@@ -36,24 +36,24 @@
 
      |type| - Type of coupon code requested to be read (coupon or group).
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - The coupon code.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([type] (gen-call :function ::get-registration-code &form type)))
 
 (defmacro get-oobe-timestamp
   "Get the OOBE timestamp.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - The OOBE timestamp.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-oobe-timestamp &form)))
 
@@ -64,12 +64,12 @@
 
      |consent-requester| - Information about the service requesting user consent.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - Whether the user consent was given.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([consent-requester] (gen-call :function ::get-user-consent &form consent-requester)))
 

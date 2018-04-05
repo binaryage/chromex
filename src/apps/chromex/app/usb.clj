@@ -24,12 +24,12 @@
 
      |options| - The properties to search for on target devices.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [devices] where:
 
      |devices| - https://developer.chrome.com/apps/usb#property-callback-devices.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-getDevices."
@@ -42,12 +42,12 @@
 
      |options| - Configuration of the device picker dialog box.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [devices] where:
 
      |devices| - https://developer.chrome.com/apps/usb#property-callback-devices.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-getUserSelectedDevices."
@@ -58,12 +58,12 @@
 
      |device| - The 'Device' to fetch descriptors from.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [configs] where:
 
      |configs| - https://developer.chrome.com/apps/usb#property-callback-configs.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-getConfigurations."
@@ -76,12 +76,12 @@
      |device| - The 'Device' to request access to.
      |interface-id| - The particular interface requested.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [success] where:
 
      |success| - https://developer.chrome.com/apps/usb#property-callback-success.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-requestAccess."
@@ -92,12 +92,12 @@
 
      |device| - The 'Device' to open.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [handle] where:
 
      |handle| - https://developer.chrome.com/apps/usb#property-callback-handle.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-openDevice."
@@ -110,12 +110,12 @@
 
      |options| - The properties to search for on target devices.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [handles] where:
 
      |handles| - https://developer.chrome.com/apps/usb#property-callback-handles.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-findDevices."
@@ -127,10 +127,10 @@
 
      |handle| - The 'ConnectionHandle' to close.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-closeDevice."
@@ -144,10 +144,10 @@
      |handle| - An open connection to the device.
      |configuration-value| - https://developer.chrome.com/apps/usb#property-setConfiguration-configurationValue.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-setConfiguration."
@@ -158,12 +158,12 @@
 
      |handle| - An open connection to the device.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [config] where:
 
      |config| - https://developer.chrome.com/apps/usb#property-callback-config.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-getConfiguration."
@@ -174,12 +174,12 @@
 
      |handle| - An open connection to the device.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [descriptors] where:
 
      |descriptors| - https://developer.chrome.com/apps/usb#property-callback-descriptors.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-listInterfaces."
@@ -193,10 +193,10 @@
      |handle| - An open connection to the device.
      |interface-number| - The interface to be claimed.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-claimInterface."
@@ -208,10 +208,10 @@
      |handle| - An open connection to the device.
      |interface-number| - The interface to be released.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-releaseInterface."
@@ -224,10 +224,10 @@
      |interface-number| - The interface to configure.
      |alternate-setting| - The alternate setting to configure.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-setInterfaceAlternateSetting."
@@ -240,12 +240,12 @@
      |handle| - An open connection to the device.
      |transfer-info| - https://developer.chrome.com/apps/usb#property-controlTransfer-transferInfo.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [info] where:
 
      |info| - https://developer.chrome.com/apps/usb#property-callback-info.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-controlTransfer."
@@ -257,12 +257,12 @@
      |handle| - An open connection to the device.
      |transfer-info| - The transfer parameters.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [info] where:
 
      |info| - https://developer.chrome.com/apps/usb#property-callback-info.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-bulkTransfer."
@@ -274,12 +274,12 @@
      |handle| - An open connection to the device.
      |transfer-info| - The transfer parameters.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [info] where:
 
      |info| - https://developer.chrome.com/apps/usb#property-callback-info.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-interruptTransfer."
@@ -291,12 +291,12 @@
      |handle| - An open connection to the device.
      |transfer-info| - https://developer.chrome.com/apps/usb#property-isochronousTransfer-transferInfo.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [info] where:
 
      |info| - https://developer.chrome.com/apps/usb#property-callback-info.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-isochronousTransfer."
@@ -309,12 +309,12 @@
 
      |handle| - A connection handle to reset.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [success] where:
 
      |success| - https://developer.chrome.com/apps/usb#property-callback-success.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-resetDevice."

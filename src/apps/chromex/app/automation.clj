@@ -24,12 +24,12 @@
 
      |tab-id| - https://developer.chrome.com/apps/automation#property-getTree-tabId.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [root-node] where:
 
      |root-node| - https://developer.chrome.com/apps/automation#property-callback-rootNode.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/automation#method-getTree."
@@ -40,12 +40,12 @@
   "Get the automation tree for the whole desktop which consists of all on screen views. Note this API is currently only
    supported on Chrome OS.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [root-node] where:
 
      |root-node| - https://developer.chrome.com/apps/automation#property-callback-rootNode.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/automation#method-getDesktop."
@@ -55,12 +55,12 @@
   "Get the automation node that currently has focus, globally. Will return null if none of the nodes in any loaded trees have
    focus.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [focused-node] where:
 
      |focused-node| - https://developer.chrome.com/apps/automation#property-callback-focusedNode.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/automation#method-getFocus."
@@ -72,12 +72,12 @@
 
      |filter| - https://developer.chrome.com/apps/automation#property-addTreeChangeObserver-filter.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [tree-change] where:
 
      |tree-change| - https://developer.chrome.com/apps/automation#property-observer-treeChange.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/automation#method-addTreeChangeObserver."
@@ -86,12 +86,12 @@
 (defmacro remove-tree-change-observer
   "Remove a tree change observer.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [tree-change] where:
 
      |tree-change| - https://developer.chrome.com/apps/automation#property-observer-treeChange.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/automation#method-removeTreeChangeObserver."

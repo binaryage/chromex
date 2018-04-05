@@ -20,12 +20,12 @@
 
      |details| - Details to identify the cookie being retrieved.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [cookie] where:
 
      |cookie| - Contains details about the cookie. This parameter is null if no such cookie was found.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/cookies#method-get."
@@ -38,12 +38,12 @@
 
      |details| - Information to filter the cookies being retrieved.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [cookies] where:
 
      |cookies| - All the existing, unexpired cookies that match the given cookie info.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/cookies#method-getAll."
@@ -54,13 +54,13 @@
 
      |details| - Details about the cookie being set.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [cookie] where:
 
      |cookie| - Contains details about the cookie that's been set.  If setting failed for any reason, this will be 'null', and
                 'chrome.runtime.lastError' will be set.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/cookies#method-set."
@@ -71,13 +71,13 @@
 
      |details| - Information to identify the cookie to remove.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [details] where:
 
      |details| - Contains details about the cookie that's been removed.  If removal failed for any reason, this will be
                  'null', and 'chrome.runtime.lastError' will be set.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/cookies#method-remove."
@@ -86,12 +86,12 @@
 (defmacro get-all-cookie-stores
   "Lists all existing cookie stores.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [cookie-stores] where:
 
      |cookie-stores| - All the existing cookie stores.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/cookies#method-getAllCookieStores."

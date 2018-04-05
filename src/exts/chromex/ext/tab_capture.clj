@@ -21,12 +21,12 @@
 
      |options| - Configures the returned media stream.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [stream] where:
 
      |stream| - https://developer.chrome.com/extensions/tabCapture#property-callback-stream.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tabCapture#method-capture."
@@ -37,12 +37,12 @@
    allows extensions to inform the user that there is an existing tab capture that would prevent a new tab capture from
    succeeding (or to prevent redundant requests for the same tab).
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - https://developer.chrome.com/extensions/tabCapture#property-callback-result.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tabCapture#method-getCapturedTabs."
@@ -62,12 +62,12 @@
      |start-url| - https://developer.chrome.com/extensions/tabCapture#property-captureOffscreenTab-startUrl.
      |options| - Constraints for the capture and returned MediaStream.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [stream] where:
 
      |stream| - https://developer.chrome.com/extensions/tabCapture#property-callback-stream.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tabCapture#method-captureOffscreenTab."

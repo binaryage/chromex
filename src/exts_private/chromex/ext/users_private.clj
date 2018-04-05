@@ -15,12 +15,12 @@
 (defmacro get-whitelisted-users
   "Gets a list of the currently whitelisted users.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [users] where:
 
      |users| - ?
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-whitelisted-users &form)))
 
@@ -30,12 +30,12 @@
 
      |email| - ?
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [success] where:
 
      |success| - ?
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([email] (gen-call :function ::add-whitelisted-user &form email)))
 
@@ -45,36 +45,36 @@
 
      |email| - ?
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [success] where:
 
      |success| - ?
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([email] (gen-call :function ::remove-whitelisted-user &form email)))
 
 (defmacro is-current-user-owner
   "Whether the current user is the owner of the device.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [is-owner] where:
 
      |is-owner| - ?
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::is-current-user-owner &form)))
 
 (defmacro is-whitelist-managed
   "Whether the whitelist is managed by enterprise.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [managed] where:
 
      |managed| - ?
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::is-whitelist-managed &form)))
 

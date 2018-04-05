@@ -20,12 +20,12 @@
    record of the device for querying in the cloud directory API. If the current user is not affiliated, returns an empty
    string.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [device-id] where:
 
      |device-id| - https://developer.chrome.com/apps/enterprise.deviceAttributes#property-callback-deviceId.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/enterprise.deviceAttributes#method-getDirectoryDeviceId."
@@ -36,12 +36,12 @@
    Certificate Sign Requests for device-wide certificates). This API may not be used for tracking devices without the consent
    of the device's administrator. If the current user is not affiliated, returns an empty string.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [serial-number] where:
 
      |serial-number| - https://developer.chrome.com/apps/enterprise.deviceAttributes#property-callback-serialNumber.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/enterprise.deviceAttributes#method-getDeviceSerialNumber."
@@ -51,12 +51,12 @@
   "Fetches the administrator-annotated Asset Id. If the current user is not affiliated or no Asset Id has been set by the
    administrator, returns an empty string.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [asset-id] where:
 
      |asset-id| - https://developer.chrome.com/apps/enterprise.deviceAttributes#property-callback-assetId.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/enterprise.deviceAttributes#method-getDeviceAssetId."
@@ -66,12 +66,12 @@
   "Fetches the administrator-annotated Location. If the current user is not affiliated or no Annotated Location has been set
    by the administrator, returns an empty string.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [annotated-location] where:
 
      |annotated-location| - https://developer.chrome.com/apps/enterprise.deviceAttributes#property-callback-annotatedLocation.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/enterprise.deviceAttributes#method-getDeviceAnnotatedLocation."

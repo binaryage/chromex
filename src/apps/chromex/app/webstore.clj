@@ -21,14 +21,14 @@
                           shown and the user agrees to add the item to Chrome). You may wish to use this to hide the user
                           interface element that prompted the user to install the app or extension.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [error error-code] where:
 
      |error| - The failure detail. You may wish to inspect or log this for debugging purposes, but you should not rely on
                specific strings being passed back.
      |error-code| - The error code from the stable set of possible errors.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/webstore#method-install."

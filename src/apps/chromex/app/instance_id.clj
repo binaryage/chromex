@@ -17,12 +17,12 @@
   "Retrieves an identifier for the app instance. The instance ID will be returned by the callback. The same ID will be
    returned as long as the application identity has not been revoked or expired.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [instance-id] where:
 
      |instance-id| - An Instance ID assigned to the app instance.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/instanceID#method-getID."
@@ -31,12 +31,12 @@
 (defmacro get-creation-time
   "Retrieves the time when the InstanceID has been generated. The creation time will be returned by the callback.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [creation-time] where:
 
      |creation-time| - The time when the Instance ID has been generated, represented in milliseconds since the epoch.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/instanceID#method-getCreationTime."
@@ -47,12 +47,12 @@
 
      |get-token-params| - Parameters for getToken.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [token] where:
 
      |token| - A token assigned by the requested service.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/instanceID#method-getToken."
@@ -63,10 +63,10 @@
 
      |delete-token-params| - Parameters for deleteToken.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/instanceID#method-deleteToken."
@@ -75,10 +75,10 @@
 (defmacro delete-id
   "Resets the app instance identifier and revokes all tokens associated with it.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/instanceID#method-deleteID."

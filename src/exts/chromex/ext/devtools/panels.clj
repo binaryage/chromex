@@ -41,12 +41,12 @@
      |icon-path| - Path of the panel's icon relative to the extension directory.
      |page-path| - Path of the panel's HTML page relative to the extension directory.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [panel] where:
 
      |panel| - An ExtensionPanel object representing the created panel.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/devtools.panels#method-create."
@@ -56,12 +56,12 @@
   "Specifies the function to be called when the user clicks a resource link in the Developer Tools window. To unset the
    handler, either call the method with no parameters or pass null as the parameter.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [resource] where:
 
      |resource| - A 'devtools.inspectedWindow.Resource' object for the resource that was clicked.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/devtools.panels#method-setOpenResourceHandler."
@@ -73,10 +73,10 @@
      |url| - The URL of the resource to open.
      |line-number| - Specifies the line number to scroll to when the resource is loaded.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/devtools.panels#method-openResource."

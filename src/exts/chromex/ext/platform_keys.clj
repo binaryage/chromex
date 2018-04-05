@@ -25,13 +25,13 @@
 
      |details| - https://developer.chrome.com/extensions/platformKeys#property-selectClientCertificates-details.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [matches] where:
 
      |matches| - The list of certificates that match the request, that the extension has permission for and, if interactive is
                  true, that were selected by the user.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/platformKeys#method-selectClientCertificates."
@@ -48,13 +48,13 @@
                     given data. Currently, this function only supports the 'RSASSA-PKCS1-v1_5' algorithm with one of the
                     hashing algorithms 'none', 'SHA-1', 'SHA-256', 'SHA-384', and 'SHA-512'.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [public-key private-key] where:
 
      |public-key| - https://developer.chrome.com/extensions/platformKeys#property-callback-publicKey.
      |private-key| - Might be null if this extension does not have   access to it.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/platformKeys#method-getKeyPair."
@@ -75,12 +75,12 @@
 
      |details| - https://developer.chrome.com/extensions/platformKeys#property-verifyTLSServerCertificate-details.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - https://developer.chrome.com/extensions/platformKeys#property-callback-result.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/platformKeys#method-verifyTLSServerCertificate."

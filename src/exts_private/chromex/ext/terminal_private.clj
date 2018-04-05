@@ -16,12 +16,12 @@
      |process-name| - Name of the process to open. May be 'crosh' or 'vmshell'.
      |args| - Command line arguments to pass to the process.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [pid] where:
 
      |pid| - Id of the launched process.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([process-name args] (gen-call :function ::open-terminal-process &form process-name args))
   ([process-name] `(open-terminal-process ~process-name :omit)))
@@ -31,12 +31,12 @@
 
      |pid| - Process id of the process we want to close.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [success] where:
 
      |success| - ?
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([pid] (gen-call :function ::close-terminal-process &form pid)))
 
@@ -46,12 +46,12 @@
      |pid| - The id of the process to which we want to send input.
      |input| - Input we are sending to the process.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [success] where:
 
      |success| - ?
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([pid input] (gen-call :function ::send-input &form pid input)))
 
@@ -62,12 +62,12 @@
      |width| - New window width (as column count).
      |height| - New window height (as row count).
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [success] where:
 
      |success| - ?
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([pid width height] (gen-call :function ::on-terminal-resize &form pid width height)))
 

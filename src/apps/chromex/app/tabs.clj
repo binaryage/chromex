@@ -27,12 +27,12 @@
 
      |tab-id| - https://developer.chrome.com/apps/tabs#property-get-tabId.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [tab] where:
 
      |tab| - https://developer.chrome.com/apps/tabs#property-callback-tab.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tabs#method-get."
@@ -42,12 +42,12 @@
   "Gets the tab that this script call is being made from. May be undefined if called from a non-tab context (for example: a
    background page or popup view).
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [tab] where:
 
      |tab| - https://developer.chrome.com/apps/tabs#property-callback-tab.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tabs#method-getCurrent."
@@ -72,14 +72,14 @@
      |tab-id| - https://developer.chrome.com/apps/tabs#property-sendRequest-tabId.
      |request| - https://developer.chrome.com/apps/tabs#property-sendRequest-request.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [response] where:
 
      |response| - The JSON response object sent by the handler of the request. If an error occurs while connecting to the
                   specified tab, the callback will be called with no arguments and 'runtime.lastError' will be set to the
                   error message.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tabs#method-sendRequest."
@@ -94,14 +94,14 @@
      |message| - The message to send. This message should be a JSON-ifiable object.
      |options| - https://developer.chrome.com/apps/tabs#property-sendMessage-options.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [response] where:
 
      |response| - The JSON response object sent by the handler of the message. If an error occurs while connecting to the
                   specified tab, the callback will be called with no arguments and 'runtime.lastError' will be set to the
                   error message.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tabs#method-sendMessage."
@@ -113,12 +113,12 @@
 
      |window-id| - Defaults to the current window.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [tab] where:
 
      |tab| - https://developer.chrome.com/apps/tabs#property-callback-tab.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tabs#method-getSelected."
@@ -130,12 +130,12 @@
 
      |window-id| - Defaults to the current window.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [tabs] where:
 
      |tabs| - https://developer.chrome.com/apps/tabs#property-callback-tabs.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tabs#method-getAllInWindow."
@@ -147,12 +147,12 @@
 
      |create-properties| - https://developer.chrome.com/apps/tabs#property-create-createProperties.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [tab] where:
 
      |tab| - Details about the created tab. Will contain the ID of the new tab.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tabs#method-create."
@@ -163,13 +163,13 @@
 
      |tab-id| - The ID of the tab which is to be duplicated.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [tab] where:
 
      |tab| - Details about the duplicated tab. The 'tabs.Tab' object doesn't contain url, title and favIconUrl if the 'tabs'
              permission has not been requested.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tabs#method-duplicate."
@@ -180,12 +180,12 @@
 
      |query-info| - https://developer.chrome.com/apps/tabs#property-query-queryInfo.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - https://developer.chrome.com/apps/tabs#property-callback-result.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tabs#method-query."
@@ -197,12 +197,12 @@
 
      |highlight-info| - https://developer.chrome.com/apps/tabs#property-highlight-highlightInfo.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [window] where:
 
      |window| - Contains details about the window whose tabs were highlighted.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tabs#method-highlight."
@@ -214,13 +214,13 @@
      |tab-id| - Defaults to the selected tab of the current window.
      |update-properties| - https://developer.chrome.com/apps/tabs#property-update-updateProperties.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [tab] where:
 
      |tab| - Details about the updated tab. The 'tabs.Tab' object doesn't contain url, title and favIconUrl if the 'tabs'
              permission has not been requested.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tabs#method-update."
@@ -233,12 +233,12 @@
      |tab-ids| - The tab or list of tabs to move.
      |move-properties| - https://developer.chrome.com/apps/tabs#property-move-moveProperties.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [tabs] where:
 
      |tabs| - Details about the moved tabs.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tabs#method-move."
@@ -250,10 +250,10 @@
      |tab-id| - The ID of the tab to reload; defaults to the selected tab of the current window.
      |reload-properties| - https://developer.chrome.com/apps/tabs#property-reload-reloadProperties.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tabs#method-reload."
@@ -266,10 +266,10 @@
 
      |tab-ids| - The tab or list of tabs to close.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tabs#method-remove."
@@ -280,7 +280,7 @@
 
      |tab-id| - Defaults to the active tab of the current window.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [language] where:
 
      |language| - An ISO language code such as en or fr. For a complete list of languages supported by this method, see
@@ -288,7 +288,7 @@
                   except for Simplified Chinese for which zh-CN will be returned. For an unknown language, und will be
                   returned.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tabs#method-detectLanguage."
@@ -302,13 +302,13 @@
      |window-id| - The target window. Defaults to the current window.
      |options| - Details about the format and quality of an image.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [data-url] where:
 
      |data-url| - A data URL which encodes an image of the visible area of the captured tab. May be assigned to the 'src'
                   property of an HTML Image element for display.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tabs#method-captureVisibleTab."
@@ -323,12 +323,12 @@
      |details| - Details of the script to run. Either the code or the file property must be set, but both may not be set at
                  the same time.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - The result of the script in every injected frame.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tabs#method-executeScript."
@@ -341,10 +341,10 @@
      |details| - Details of the CSS text to insert. Either the code or the file property must be set, but both may not be
                  set at the same time.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tabs#method-insertCSS."
@@ -357,10 +357,10 @@
      |zoom-factor| - The new zoom factor. Use a value of 0 here to set the tab to its current default zoom factor. Values
                      greater than zero specify a (possibly non-default) zoom factor for the tab.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tabs#method-setZoom."
@@ -371,12 +371,12 @@
 
      |tab-id| - The ID of the tab to get the current zoom factor from; defaults to the active tab of the current window.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [zoom-factor] where:
 
      |zoom-factor| - The tab's current zoom factor.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tabs#method-getZoom."
@@ -390,10 +390,10 @@
      |tab-id| - The ID of the tab to change the zoom settings for; defaults to the active tab of the current window.
      |zoom-settings| - Defines how zoom changes are handled and at what scope.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tabs#method-setZoomSettings."
@@ -404,12 +404,12 @@
 
      |tab-id| - The ID of the tab to get the current zoom settings from; defaults to the active tab of the current window.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [zoom-settings] where:
 
      |zoom-settings| - The tab's current zoom settings.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tabs#method-getZoomSettings."
@@ -423,12 +423,12 @@
                 discarded. If omitted, the browser will discard the least important tab. This can fail if no discardable
                 tabs exist.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [tab] where:
 
      |tab| - Discarded tab if it was successfully discarded. Undefined otherwise.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tabs#method-discard."

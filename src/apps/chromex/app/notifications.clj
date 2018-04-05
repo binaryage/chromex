@@ -23,12 +23,12 @@
                          parameter is required before Chrome 42.
      |options| - Contents of the notification.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [notification-id] where:
 
      |notification-id| - https://developer.chrome.com/apps/notifications#property-callback-notificationId.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/notifications#method-create."
@@ -40,12 +40,12 @@
      |notification-id| - The id of the notification to be updated. This is returned by 'notifications.create' method.
      |options| - Contents of the notification to update to.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [was-updated] where:
 
      |was-updated| - https://developer.chrome.com/apps/notifications#property-callback-wasUpdated.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/notifications#method-update."
@@ -56,12 +56,12 @@
 
      |notification-id| - The id of the notification to be cleared. This is returned by 'notifications.create' method.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [was-cleared] where:
 
      |was-cleared| - https://developer.chrome.com/apps/notifications#property-callback-wasCleared.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/notifications#method-clear."
@@ -70,12 +70,12 @@
 (defmacro get-all
   "Retrieves all the notifications.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [notifications] where:
 
      |notifications| - https://developer.chrome.com/apps/notifications#property-callback-notifications.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/notifications#method-getAll."
@@ -84,12 +84,12 @@
 (defmacro get-permission-level
   "Retrieves whether the user has enabled notifications from this app or extension.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [level] where:
 
      |level| - https://developer.chrome.com/apps/notifications#property-callback-level.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/notifications#method-getPermissionLevel."

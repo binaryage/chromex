@@ -42,24 +42,24 @@
 (defmacro get-saved-password-list
   "Returns the list of saved passwords.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [entries] where:
 
      |entries| - ?
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-saved-password-list &form)))
 
 (defmacro get-password-exception-list
   "Returns the list of password exceptions.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [exceptions] where:
 
      |exceptions| - ?
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-password-exception-list &form)))
 
@@ -72,10 +72,10 @@
    onPasswordsFileExportProgress event.|callback| will be called when the request is started or rejected. If rejected
    chrome.runtime.lastError will be set to 'in-progress' or 'reauth-failed'.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::export-passwords &form)))
 
@@ -84,12 +84,12 @@
    This function is useful for checking if an export has already been initiated from an older tab, where we might have missed
    the original event.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [status] where:
 
      |status| - ?
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::request-export-progress-status &form)))
 

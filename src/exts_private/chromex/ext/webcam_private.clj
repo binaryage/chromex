@@ -18,12 +18,12 @@
      |path| - ?
      |protocol| - ?
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [webcam-id] where:
 
      |webcam-id| - ?
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([path protocol] (gen-call :function ::open-serial-webcam &form path protocol)))
 
@@ -36,12 +36,12 @@
 (defmacro get
   "  |webcam-id| - ?
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [configuration] where:
 
      |configuration| - ?
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([webcam-id] (gen-call :function ::get &form webcam-id)))
 

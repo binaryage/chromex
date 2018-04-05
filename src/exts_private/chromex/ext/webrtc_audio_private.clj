@@ -24,12 +24,12 @@
 (defmacro get-sinks
   "Retrieves a list of available audio sink devices.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [sink-info] where:
 
      |sink-info| - ?
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-sinks &form)))
 
@@ -41,12 +41,12 @@
      |security-origin| - ?
      |source-id-in-origin| - ?
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [sink-id] where:
 
      |sink-id| - ?
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([security-origin source-id-in-origin] (gen-call :function ::get-associated-sink &form security-origin source-id-in-origin)))
 
@@ -57,10 +57,10 @@
      |security-origin| - The origin to restrict the settings to.
      |audio-experiments| - The experiments to enable or disable.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([request security-origin audio-experiments] (gen-call :function ::set-audio-experiments &form request security-origin audio-experiments)))
 

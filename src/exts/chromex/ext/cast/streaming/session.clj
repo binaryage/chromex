@@ -30,14 +30,14 @@
      |audio-track| - the source audio track.
      |video-track| - the source video track.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [audio-stream-id video-stream-id udp-transport-id] where:
 
      |audio-stream-id| - The audio RTP stream ID.
      |video-stream-id| - The video RTP stream ID.
      |udp-transport-id| - The UDP transport ID.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/cast.streaming.session#method-create."

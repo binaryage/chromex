@@ -37,14 +37,14 @@
      |extension-id| - The extension ID of the extension you want to connect to. If omitted, default is your own extension.
      |request| - https://developer.chrome.com/extensions/extension#property-sendRequest-request.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [response] where:
 
      |response| - The JSON response object sent by the handler of the request. If an error occurs while connecting to the
                   extension, the callback will be called with no arguments and 'runtime.lastError' will be set to the error
                   message.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/extension#method-sendRequest."
@@ -88,12 +88,12 @@
   "Retrieves the state of the extension's access to Incognito-mode (as determined by the user-controlled 'Allowed in
    Incognito' checkbox.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [is-allowed-access] where:
 
      |is-allowed-access| - True if the extension has access to Incognito mode, false otherwise.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/extension#method-isAllowedIncognitoAccess."
@@ -103,12 +103,12 @@
   "Retrieves the state of the extension's access to the 'file://' scheme (as determined by the user-controlled 'Allow access
    to File URLs' checkbox.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [is-allowed-access] where:
 
      |is-allowed-access| - True if the extension can access the 'file://' scheme, false otherwise.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/extension#method-isAllowedFileSchemeAccess."

@@ -22,7 +22,7 @@
                     only by the calling extension. The stream can only be used by frames in the given tab whose security
                     origin matches tab.url. The tab's origin must be a secure origin, e.g. HTTPS.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [stream-id options] where:
 
      |stream-id| - An opaque string that can be passed to getUserMedia() API to generate media stream that corresponds to the
@@ -31,7 +31,7 @@
                    seconds when it is not used.
      |options| - Contains properties that describe the stream.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/desktopCapture#method-chooseDesktopMedia."

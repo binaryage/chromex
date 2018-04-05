@@ -36,12 +36,12 @@
 
      |name| - The name of the alarm to get. Defaults to the empty string.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [alarm] where:
 
      |alarm| - https://developer.chrome.com/apps/alarms#property-callback-alarm.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/alarms#method-get."
@@ -51,12 +51,12 @@
 (defmacro get-all
   "Gets an array of all the alarms.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [alarms] where:
 
      |alarms| - https://developer.chrome.com/apps/alarms#property-callback-alarms.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/alarms#method-getAll."
@@ -67,12 +67,12 @@
 
      |name| - The name of the alarm to clear. Defaults to the empty string.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [was-cleared] where:
 
      |was-cleared| - https://developer.chrome.com/apps/alarms#property-callback-wasCleared.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/alarms#method-clear."
@@ -82,12 +82,12 @@
 (defmacro clear-all
   "Clears all alarms.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [was-cleared] where:
 
      |was-cleared| - https://developer.chrome.com/apps/alarms#property-callback-wasCleared.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/alarms#method-clearAll."

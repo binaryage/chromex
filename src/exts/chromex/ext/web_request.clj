@@ -26,10 +26,10 @@
   "Needs to be called when the behavior of the webRequest handlers has changed to prevent incorrect handling due to caching.
    This function call is expensive. Don't call it often.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/webRequest#method-handlerBehaviorChanged."

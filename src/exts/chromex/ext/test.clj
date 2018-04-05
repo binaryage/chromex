@@ -14,12 +14,12 @@
 (defmacro get-config
   "Gives configuration options set by the test.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [test-config] where:
 
      |test-config| - https://developer.chrome.com/extensions/test#property-callback-testConfig.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/test#method-getConfig."
@@ -55,12 +55,12 @@
 
      |message| - https://developer.chrome.com/extensions/test#property-sendMessage-message.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [response] where:
 
      |response| - https://developer.chrome.com/extensions/test#property-callback-response.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/test#method-sendMessage."
@@ -173,10 +173,10 @@
 (defmacro listen-once
   "  |event| - https://developer.chrome.com/extensions/test#property-listenOnce-event.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/test#method-listenOnce."
@@ -185,20 +185,20 @@
 (defmacro listen-forever
   "  |event| - https://developer.chrome.com/extensions/test#property-listenForever-event.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/test#method-listenForever."
   ([event] (gen-call :function ::listen-forever &form event)))
 
 (defmacro callback-pass
-  "This function returns a core.async channel which eventually receives a result value and closes.
+  "This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/test#method-callbackPass."
@@ -207,10 +207,10 @@
 (defmacro callback-fail
   "  |expected-error| - https://developer.chrome.com/extensions/test#property-callbackFail-expectedError.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/test#method-callbackFail."
@@ -240,20 +240,20 @@
 (defmacro run-with-user-gesture
   "Runs the callback in the context of a user gesture.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/test#method-runWithUserGesture."
   ([] (gen-call :function ::run-with-user-gesture &form)))
 
 (defmacro run-without-user-gesture
-  "This function returns a core.async channel which eventually receives a result value and closes.
+  "This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/test#method-runWithoutUserGesture."
@@ -264,12 +264,12 @@
 
      |message| - https://developer.chrome.com/extensions/test#property-waitForRoundTrip-message.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [message] where:
 
      |message| - https://developer.chrome.com/extensions/test#property-callback-message.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/test#method-waitForRoundTrip."
@@ -279,13 +279,13 @@
   "Sets the function to be called when an exception occurs. By default this is a function which fails the test. This is reset
    for every test run through test.runTests.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [message exception] where:
 
      |message| - https://developer.chrome.com/extensions/test#property-callback-message.
      |exception| - https://developer.chrome.com/extensions/test#property-callback-exception.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/test#method-setExceptionHandler."

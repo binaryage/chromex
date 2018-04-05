@@ -16,12 +16,12 @@
 
      |property-names| - Chrome OS Property names
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [properties-dictionary] where:
 
      |properties-dictionary| - Dictionary which contains all requested properties
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([property-names] (gen-call :function ::get &form property-names)))
 

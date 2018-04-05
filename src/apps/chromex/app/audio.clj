@@ -21,12 +21,12 @@
      |filter| - Device properties by which to filter the list of returned     audio devices. If the filter is not set or set
                 to {},     returned device list will contain all available audio devices.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [devices] where:
 
      |devices| - https://developer.chrome.com/apps/audio#property-callback-devices.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/audio#method-getDevices."
@@ -41,10 +41,10 @@
              the method signature allows device IDs to be     passed as a list of strings, this method of setting active
              devices     is deprecated and should not be relied upon to work. Please use     'DeviceIdLists' instead.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/audio#method-setActiveDevices."
@@ -56,10 +56,10 @@
      |id| - https://developer.chrome.com/apps/audio#property-setProperties-id.
      |properties| - https://developer.chrome.com/apps/audio#property-setProperties-properties.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/audio#method-setProperties."
@@ -70,12 +70,12 @@
 
      |stream-type| - Stream type for which mute state should be fetched.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [value] where:
 
      |value| - https://developer.chrome.com/apps/audio#property-callback-value.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/audio#method-getMute."
@@ -87,10 +87,10 @@
      |stream-type| - Stream type for which mute state should be set.
      |is-muted| - New mute value.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/audio#method-setMute."

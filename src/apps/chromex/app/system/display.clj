@@ -18,12 +18,12 @@
 
      |flags| - Options affecting how the information is returned.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [display-info] where:
 
      |display-info| - https://developer.chrome.com/apps/system.display#property-callback-displayInfo.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/system.display#method-getInfo."
@@ -33,12 +33,12 @@
 (defmacro get-display-layout
   "Requests the layout info for all displays. NOTE: This is only available to Chrome OS Kiosk apps and Web UI.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [layouts] where:
 
      |layouts| - https://developer.chrome.com/apps/system.display#property-callback-layouts.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/system.display#method-getDisplayLayout."
@@ -52,10 +52,10 @@
      |info| - The information about display properties that should be changed.     A property will be changed only if a new
               value for it is specified in     |info|.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/system.display#method-setDisplayProperties."
@@ -68,10 +68,10 @@
 
      |layouts| - The layout information, required for all displays except     the primary display.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/system.display#method-setDisplayLayout."
@@ -130,12 +130,12 @@
 
      |id| - The display's unique identifier.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [success] where:
 
      |success| - https://developer.chrome.com/apps/system.display#property-callback-success.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/system.display#method-showNativeTouchCalibration."
@@ -178,10 +178,10 @@
 
      |info| - The information of the mirror mode that should be applied to the     display mode.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/system.display#method-setMirrorMode."

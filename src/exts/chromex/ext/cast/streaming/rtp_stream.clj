@@ -67,13 +67,13 @@
      |extra-data| - Extra data to attach to the log, e.g. system info or              experiment tags, in key-value JSON
                     string format.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [raw-events] where:
 
      |raw-events| - compressed serialized raw bytes containing raw events              recorded for a stream. The compression
                     is in gzip format. The serialization format can be found at  media/cast/logging/log_serializer.cc.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/cast.streaming.rtpStream#method-getRawEvents."
@@ -85,12 +85,12 @@
 
      |stream-id| - Stream to get stats for.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [stats] where:
 
      |stats| - https://developer.chrome.com/extensions/cast.streaming.rtpStream#property-callback-stats.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/cast.streaming.rtpStream#method-getStats."

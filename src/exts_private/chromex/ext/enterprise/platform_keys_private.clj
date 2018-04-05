@@ -15,12 +15,12 @@
 
      |challenge| - Challenge to be signed in base64.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [response] where:
 
      |response| - Response in base64.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([challenge] (gen-call :function ::challenge-machine-key &form challenge)))
 
@@ -30,12 +30,12 @@
      |challenge| - Challenge to be signed in base64.
      |register-key| - If true, the key will be registered.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [response] where:
 
      |response| - Response in base64.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([challenge register-key] (gen-call :function ::challenge-user-key &form challenge register-key)))
 

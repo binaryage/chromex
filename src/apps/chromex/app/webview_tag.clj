@@ -40,12 +40,12 @@
 (defmacro get-audio-state
   "Queries audio state.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [audible] where:
 
      |audible| - https://developer.chrome.com/apps/tags/webview#property-callback-audible.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tags/webview#method-getAudioState."
@@ -62,12 +62,12 @@
 (defmacro is-audio-muted
   "Queries whether audio is muted.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [muted] where:
 
      |muted| - https://developer.chrome.com/apps/tags/webview#property-callback-muted.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tags/webview#method-isAudioMuted."
@@ -78,13 +78,13 @@
 
      |options| - Details about the format and quality of an image.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [data-url] where:
 
      |data-url| - A data URL which encodes an image of the visible area of the captured tab. May be assigned to the 'src'
                   property of an HTML Image element for display.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tags/webview#method-captureVisibleRegion."
@@ -144,12 +144,12 @@ webview.addContentScripts([{
 (defmacro back
   "Navigates backward one history entry if possible. Equivalent to go(-1).
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [success] where:
 
      |success| - Indicates whether the navigation was successful.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tags/webview#method-back."
@@ -175,10 +175,10 @@ webview.addContentScripts([{
      |options| - Options determining which data to clear.
      |types| - The types of data to be cleared.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tags/webview#method-clearData."
@@ -190,12 +190,12 @@ webview.addContentScripts([{
 
      |details| - Details of the script to run.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - The result of the script in every injected frame.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tags/webview#method-executeScript."
@@ -207,13 +207,13 @@ webview.addContentScripts([{
      |search-text| - The string to find in the page.
      |options| - Options for the find request.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [results] where:
 
      |results| - Contains all of the results of the find request. results can be omitted if it is not utilized in the callback
                  function body; for example, if the callback is only used to discern when the find request has completed.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tags/webview#method-find."
@@ -223,12 +223,12 @@ webview.addContentScripts([{
 (defmacro forward
   "Navigates forward one history entry if possible. Equivalent to go(1).
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [success] where:
 
      |success| - Indicates whether the navigation was successful.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tags/webview#method-forward."
@@ -252,12 +252,12 @@ webview.addContentScripts([{
 (defmacro get-zoom
   "Gets the current zoom factor.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [zoom-factor] where:
 
      |zoom-factor| - The current zoom factor.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tags/webview#method-getZoom."
@@ -266,12 +266,12 @@ webview.addContentScripts([{
 (defmacro get-zoom-mode
   "Gets the current zoom mode.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [zoom-mode] where:
 
      |zoom-mode| - The webview's current zoom mode.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tags/webview#method-getZoomMode."
@@ -284,12 +284,12 @@ webview.addContentScripts([{
      |relative-index| - Relative history index to which the webview should be navigated. For example, a value of 2 will
                         navigate forward 2 history entries if possible; a value of -3 will navigate backward 3 entries.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [success] where:
 
      |success| - Indicates whether the navigation was successful.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tags/webview#method-go."
@@ -300,10 +300,10 @@ webview.addContentScripts([{
 
      |details| - Details of the CSS to insert.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tags/webview#method-insertCSS."
@@ -352,10 +352,10 @@ webview.addContentScripts([{
 
      |zoom-factor| - The new zoom factor.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tags/webview#method-setZoom."
@@ -366,10 +366,10 @@ webview.addContentScripts([{
 
      |zoom-mode| - Defines how zooming is handled in the webview.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tags/webview#method-setZoomMode."

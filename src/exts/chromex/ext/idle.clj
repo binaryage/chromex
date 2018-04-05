@@ -20,12 +20,12 @@
      |detection-interval-in-seconds| - The system is considered idle if detectionIntervalInSeconds seconds have elapsed
                                        since the last user input detected.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [new-state] where:
 
      |new-state| - https://developer.chrome.com/extensions/idle#property-callback-newState.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/idle#method-queryState."

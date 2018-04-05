@@ -19,12 +19,12 @@
 
      |parameters| - https://developer.chrome.com/extensions/input.ime#property-setComposition-parameters.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [success] where:
 
      |success| - https://developer.chrome.com/extensions/input.ime#property-callback-success.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/input.ime#method-setComposition."
@@ -35,12 +35,12 @@
 
      |parameters| - https://developer.chrome.com/extensions/input.ime#property-clearComposition-parameters.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [success] where:
 
      |success| - https://developer.chrome.com/extensions/input.ime#property-callback-success.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/input.ime#method-clearComposition."
@@ -51,12 +51,12 @@
 
      |parameters| - https://developer.chrome.com/extensions/input.ime#property-commitText-parameters.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [success] where:
 
      |success| - https://developer.chrome.com/extensions/input.ime#property-callback-success.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/input.ime#method-commitText."
@@ -68,10 +68,10 @@
 
      |parameters| - https://developer.chrome.com/extensions/input.ime#property-sendKeyEvents-parameters.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/input.ime#method-sendKeyEvents."
@@ -89,12 +89,12 @@
 
      |parameters| - https://developer.chrome.com/extensions/input.ime#property-setCandidateWindowProperties-parameters.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [success] where:
 
      |success| - https://developer.chrome.com/extensions/input.ime#property-callback-success.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/input.ime#method-setCandidateWindowProperties."
@@ -105,12 +105,12 @@
 
      |parameters| - https://developer.chrome.com/extensions/input.ime#property-setCandidates-parameters.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [success] where:
 
      |success| - https://developer.chrome.com/extensions/input.ime#property-callback-success.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/input.ime#method-setCandidates."
@@ -121,12 +121,12 @@
 
      |parameters| - https://developer.chrome.com/extensions/input.ime#property-setCursorPosition-parameters.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [success] where:
 
      |success| - https://developer.chrome.com/extensions/input.ime#property-callback-success.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/input.ime#method-setCursorPosition."
@@ -137,10 +137,10 @@
 
      |parameters| - https://developer.chrome.com/extensions/input.ime#property-setMenuItems-parameters.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/input.ime#method-setMenuItems."
@@ -151,10 +151,10 @@
 
      |parameters| - https://developer.chrome.com/extensions/input.ime#property-updateMenuItems-parameters.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/input.ime#method-updateMenuItems."
@@ -165,10 +165,10 @@
 
      |parameters| - https://developer.chrome.com/extensions/input.ime#property-deleteSurroundingText-parameters.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/input.ime#method-deleteSurroundingText."
@@ -189,13 +189,13 @@
 
      |options| - The options of the newly created IME window.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [window-object] where:
 
      |window-object| - The JavaScript 'window' object of the newly created IME window. It contains the additional 'id'
                        property for the parameters of the other functions like showWindow/hideWindow.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/input.ime#method-createWindow."
@@ -206,10 +206,10 @@
 
      |window-id| - The ID of the IME window.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/input.ime#method-showWindow."
@@ -221,10 +221,10 @@
 
      |window-id| - The ID of the IME window.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/input.ime#method-hideWindow."
@@ -233,10 +233,10 @@
 (defmacro activate
   "Activates the IME extension so that it can receive events.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/input.ime#method-activate."
@@ -245,10 +245,10 @@
 (defmacro deactivate
   "Deactivates the IME extension so that it cannot receive events.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/input.ime#method-deactivate."

@@ -34,12 +34,12 @@
    background page is an event page, the system will ensure it is loaded before calling the callback. If there is no
    background page, an error is set.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [background-page] where:
 
      |background-page| - The JavaScript 'window' object for the background page.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/runtime#method-getBackgroundPage."
@@ -52,10 +52,10 @@
    reload.If your Extension does not declare an options page, or Chrome failed to create one for some other reason, the
    callback will set 'lastError'.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/runtime#method-openOptionsPage."
@@ -83,10 +83,10 @@
      |url| - URL to be opened after the extension is uninstalled. This URL must have an http: or https: scheme. Set an empty
              string to not open a new tab upon uninstallation.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/runtime#method-setUninstallURL."
@@ -108,13 +108,13 @@
    requestUpdateCheck, such as calling it unconditionally based on a repeating timer, probably only serve to waste client,
    network, and server resources.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [status details] where:
 
      |status| - Result of the update check.
      |details| - If an update is available, this contains more information about the available update.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/runtime#method-requestUpdateCheck."
@@ -133,10 +133,10 @@
 
      |seconds| - Time to wait in seconds before rebooting the device, or -1 to cancel a scheduled reboot.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/runtime#method-restartAfterDelay."
@@ -177,14 +177,14 @@
      |message| - The message to send. This message should be a JSON-ifiable object.
      |options| - https://developer.chrome.com/apps/runtime#property-sendMessage-options.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [response] where:
 
      |response| - The JSON response object sent by the handler of the message. If an error occurs while connecting to the
                   extension, the callback will be called with no arguments and 'runtime.lastError' will be set to the error
                   message.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/runtime#method-sendMessage."
@@ -197,14 +197,14 @@
      |application| - The name of the native messaging host.
      |message| - The message that will be passed to the native messaging host.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [response] where:
 
      |response| - The response message sent by the native messaging host. If an error occurs while connecting to the native
                   messaging host, the callback will be called with no arguments and 'runtime.lastError' will be set to the
                   error message.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/runtime#method-sendNativeMessage."
@@ -213,12 +213,12 @@
 (defmacro get-platform-info
   "Returns information about the current platform.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [platform-info] where:
 
      |platform-info| - https://developer.chrome.com/apps/runtime#property-callback-platformInfo.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/runtime#method-getPlatformInfo."
@@ -227,12 +227,12 @@
 (defmacro get-package-directory-entry
   "Returns a DirectoryEntry for the package directory.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [directory-entry] where:
 
      |directory-entry| - https://developer.chrome.com/apps/runtime#property-callback-directoryEntry.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/runtime#method-getPackageDirectoryEntry."

@@ -18,10 +18,10 @@
 
      |details| - https://developer.chrome.com/extensions/fontSettings#property-clearFont-details.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/fontSettings#method-clearFont."
@@ -32,12 +32,12 @@
 
      |details| - https://developer.chrome.com/extensions/fontSettings#property-getFont-details.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [details] where:
 
      |details| - https://developer.chrome.com/extensions/fontSettings#property-callback-details.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/fontSettings#method-getFont."
@@ -48,10 +48,10 @@
 
      |details| - https://developer.chrome.com/extensions/fontSettings#property-setFont-details.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/fontSettings#method-setFont."
@@ -60,12 +60,12 @@
 (defmacro get-font-list
   "Gets a list of fonts on the system.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [results] where:
 
      |results| - https://developer.chrome.com/extensions/fontSettings#property-callback-results.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/fontSettings#method-getFontList."
@@ -76,10 +76,10 @@
 
      |details| - This parameter is currently unused.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/fontSettings#method-clearDefaultFontSize."
@@ -91,12 +91,12 @@
 
      |details| - This parameter is currently unused.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [details] where:
 
      |details| - https://developer.chrome.com/extensions/fontSettings#property-callback-details.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/fontSettings#method-getDefaultFontSize."
@@ -108,10 +108,10 @@
 
      |details| - https://developer.chrome.com/extensions/fontSettings#property-setDefaultFontSize-details.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/fontSettings#method-setDefaultFontSize."
@@ -122,10 +122,10 @@
 
      |details| - This parameter is currently unused.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/fontSettings#method-clearDefaultFixedFontSize."
@@ -137,12 +137,12 @@
 
      |details| - This parameter is currently unused.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [details] where:
 
      |details| - https://developer.chrome.com/extensions/fontSettings#property-callback-details.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/fontSettings#method-getDefaultFixedFontSize."
@@ -154,10 +154,10 @@
 
      |details| - https://developer.chrome.com/extensions/fontSettings#property-setDefaultFixedFontSize-details.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/fontSettings#method-setDefaultFixedFontSize."
@@ -168,10 +168,10 @@
 
      |details| - This parameter is currently unused.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/fontSettings#method-clearMinimumFontSize."
@@ -183,12 +183,12 @@
 
      |details| - This parameter is currently unused.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [details] where:
 
      |details| - https://developer.chrome.com/extensions/fontSettings#property-callback-details.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/fontSettings#method-getMinimumFontSize."
@@ -200,10 +200,10 @@
 
      |details| - https://developer.chrome.com/extensions/fontSettings#property-setMinimumFontSize-details.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/fontSettings#method-setMinimumFontSize."

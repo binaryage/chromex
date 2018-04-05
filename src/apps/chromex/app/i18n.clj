@@ -17,12 +17,12 @@
   "Gets the accept-languages of the browser. This is different from the locale used by the browser; to get the locale, use
    'i18n.getUILanguage'.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [languages] where:
 
      |languages| - Array of LanguageCode
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/i18n#method-getAcceptLanguages."
@@ -52,12 +52,12 @@
 
      |text| - User input string to be translated.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - LanguageDetectionResult object that holds detected langugae reliability and array of DetectedLanguage
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/i18n#method-detectLanguage."

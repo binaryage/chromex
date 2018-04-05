@@ -23,12 +23,12 @@
 
      |account-password| - The account password for the logged in user.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - ?
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([account-password] (gen-call :function ::get-auth-token &form account-password)))
 
@@ -40,10 +40,10 @@
      |token| - The token returned by 'getAuthToken'.
      |enabled| - Whether to enable the lock screen.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([token enabled] (gen-call :function ::set-lock-screen-enabled &form token enabled)))
 
@@ -51,24 +51,24 @@
   "Returns the set of quick unlock modes that are available for the user to use. Some quick unlock modes may be disabled by
    policy.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [modes] where:
 
      |modes| - ?
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-available-modes &form)))
 
 (defmacro get-active-modes
   "Returns the quick unlock modes that are currently enabled and usable on the lock screen.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [modes] where:
 
      |modes| - ?
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-active-modes &form)))
 
@@ -78,12 +78,12 @@
      |mode| - The quick unlock mode that is used.
      |credential| - The given credential.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [check] where:
 
      |check| - ?
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([mode credential] (gen-call :function ::check-credential &form mode credential)))
 
@@ -92,12 +92,12 @@
 
      |mode| - The quick unlock mode that is used.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [requirements] where:
 
      |requirements| - ?
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([mode] (gen-call :function ::get-credential-requirements &form mode)))
 
@@ -109,10 +109,10 @@
      |credentials| - The associated credential for each mode. To keep the     credential the same for the associated mode,
                      pass an empty string.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([token modes credentials] (gen-call :function ::set-modes &form token modes credentials)))
 

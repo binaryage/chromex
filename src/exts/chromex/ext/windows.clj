@@ -34,12 +34,12 @@
      |window-id| - https://developer.chrome.com/extensions/windows#property-get-windowId.
      |get-info| - https://developer.chrome.com/extensions/windows#property-get-getInfo.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [window] where:
 
      |window| - https://developer.chrome.com/extensions/windows#property-callback-window.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/windows#method-get."
@@ -51,12 +51,12 @@
 
      |get-info| - https://developer.chrome.com/extensions/windows#property-getCurrent-getInfo.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [window] where:
 
      |window| - https://developer.chrome.com/extensions/windows#property-callback-window.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/windows#method-getCurrent."
@@ -68,12 +68,12 @@
 
      |get-info| - https://developer.chrome.com/extensions/windows#property-getLastFocused-getInfo.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [window] where:
 
      |window| - https://developer.chrome.com/extensions/windows#property-callback-window.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/windows#method-getLastFocused."
@@ -85,12 +85,12 @@
 
      |get-info| - https://developer.chrome.com/extensions/windows#property-getAll-getInfo.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [windows] where:
 
      |windows| - https://developer.chrome.com/extensions/windows#property-callback-windows.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/windows#method-getAll."
@@ -102,12 +102,12 @@
 
      |create-data| - https://developer.chrome.com/extensions/windows#property-create-createData.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [window] where:
 
      |window| - Contains details about the created window.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/windows#method-create."
@@ -121,12 +121,12 @@
      |window-id| - https://developer.chrome.com/extensions/windows#property-update-windowId.
      |update-info| - https://developer.chrome.com/extensions/windows#property-update-updateInfo.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [window] where:
 
      |window| - https://developer.chrome.com/extensions/windows#property-callback-window.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/windows#method-update."
@@ -137,10 +137,10 @@
 
      |window-id| - https://developer.chrome.com/extensions/windows#property-remove-windowId.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/windows#method-remove."

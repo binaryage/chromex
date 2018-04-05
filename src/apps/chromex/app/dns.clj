@@ -18,12 +18,12 @@
 
      |hostname| - The hostname to resolve.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [resolve-info] where:
 
      |resolve-info| - https://developer.chrome.com/apps/dns#property-callback-resolveInfo.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/dns#method-resolve."

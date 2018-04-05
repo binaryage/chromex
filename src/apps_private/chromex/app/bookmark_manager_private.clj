@@ -15,10 +15,10 @@
 
      |id-list| - An array of string-valued ids
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([id-list] (gen-call :function ::copy &form id-list)))
 
@@ -27,10 +27,10 @@
 
      |id-list| - An array of string-valued ids
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([id-list] (gen-call :function ::cut &form id-list)))
 
@@ -40,10 +40,10 @@
      |parent-id| - ?
      |selected-id-list| - An array of string-valued ids for selected bookmarks.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([parent-id selected-id-list] (gen-call :function ::paste &form parent-id selected-id-list))
   ([parent-id] `(paste ~parent-id :omit)))
@@ -53,12 +53,12 @@
 
      |parent-id| - The ID of the folder to paste into.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - ?
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([parent-id] (gen-call :function ::can-paste &form parent-id)))
 
@@ -71,12 +71,12 @@
 (defmacro get-strings
   "Gets the i18n strings for the bookmark manager.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - ?
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-strings &form)))
 
@@ -94,10 +94,10 @@
      |index| - The index of the position to drop at. If left out the dropped items will be placed at the end of the existing
                children.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([parent-id index] (gen-call :function ::drop &form parent-id index))
   ([parent-id] `(drop ~parent-id :omit)))
@@ -109,24 +109,24 @@
      |id| - ID of the root of the tree to pull.  If empty, the entire tree will be returned.
      |folders-only| - Pass true to only return folders.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [results] where:
 
      |results| - ?
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([id folders-only] (gen-call :function ::get-subtree &form id folders-only)))
 
 (defmacro can-edit
   "Whether bookmarks can be modified.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - ?
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::can-edit &form)))
 
@@ -135,10 +135,10 @@
 
      |id-list| - An array of string-valued ids.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([id-list] (gen-call :function ::remove-trees &form id-list)))
 
@@ -150,12 +150,12 @@
      |bookmark| - ?
      |meta-info| - ?
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - ?
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([bookmark meta-info] (gen-call :function ::create-with-meta-info &form bookmark meta-info)))
 
@@ -165,13 +165,13 @@
      |id| - The id of the bookmark to retrieve meta info from. If omitted meta info for all nodes is returned.
      |key| - The key for the meta info to retrieve. If omitted, all fields are returned.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [value] where:
 
      |value| - If a key was given, the value of the specified field, if present. Otherwise an object containing all meta info
                fields for the node. If id is not given then meta info for all nodes as an object with node id to meta info.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([id key] (gen-call :function ::get-meta-info &form id key))
   ([id] `(get-meta-info ~id :omit))
@@ -184,10 +184,10 @@
      |key| - The key of the meta info to set.
      |value| - The meta info to set.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([id key value] (gen-call :function ::set-meta-info &form id key value)))
 
@@ -197,10 +197,10 @@
      |id| - The id of the bookmark node to update the meta info of.
      |meta-info-changes| - A set of meta info key/value pairs to update.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([id meta-info-changes] (gen-call :function ::update-meta-info &form id meta-info-changes)))
 
@@ -215,24 +215,24 @@
 (defmacro get-undo-info
   "Gets the information for the undo if available.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - ?
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-undo-info &form)))
 
 (defmacro get-redo-info
   "Gets the information for the redo if available.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
      |result| - ?
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-redo-info &form)))
 

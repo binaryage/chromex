@@ -34,12 +34,12 @@
 (defmacro create
   "Creates a new data item reference - available only in lock screen contexts.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [item] where:
 
      |item| - https://developer.chrome.com/apps/lockScreen.data#property-callback-item.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/lockScreen.data#method-create."
@@ -48,12 +48,12 @@
 (defmacro get-all
   "Gets references to all data items available to the app.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [items] where:
 
      |items| - https://developer.chrome.com/apps/lockScreen.data#property-callback-items.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/lockScreen.data#method-getAll."
@@ -64,12 +64,12 @@
 
      |id| - https://developer.chrome.com/apps/lockScreen.data#property-getContent-id.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [data] where:
 
      |data| - https://developer.chrome.com/apps/lockScreen.data#property-callback-data.
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/lockScreen.data#method-getContent."
@@ -81,10 +81,10 @@
      |id| - https://developer.chrome.com/apps/lockScreen.data#property-setContent-id.
      |data| - https://developer.chrome.com/apps/lockScreen.data#property-setContent-data.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/lockScreen.data#method-setContent."
@@ -96,10 +96,10 @@
 
      |id| - https://developer.chrome.com/apps/lockScreen.data#property-delete-id.
 
-   This function returns a core.async channel which eventually receives a result value and closes.
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of error the channel closes without receiving any result and relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/lockScreen.data#method-delete."
