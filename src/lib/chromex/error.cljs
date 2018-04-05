@@ -14,6 +14,7 @@
 ; see chromex.defaults/default-callback-fn-factory for default implementation.
 
 (def last-error (atom nil))
+(def last-error-args (atom nil))
 
 ; -- error api --------------------------------------------------------------------------------------------------------------
 
@@ -22,3 +23,9 @@
 
 (defn get-last-error []
   @last-error)
+
+(defn set-last-error-args! [args]
+  (reset! last-error-args args))
+
+(defn get-last-error-args []
+  @last-error-args)
