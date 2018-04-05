@@ -1,11 +1,11 @@
 (ns chromex.defaults
   (:require-macros [chromex.defaults]
                    [chromex.config :refer [gen-default-config]])
-  (:require [cljs.core.async :refer [put! chan close!]]
+  (:require [cljs.core.async :refer [put! chan promise-chan close!]]
             [chromex.support :refer [call-hook]]
             [oops.core :refer [oget]]
             [goog.object :as gobj]
-            [chromex.error :refer [set-last-error!]]
+            [chromex.error :refer [set-last-error! set-last-error-args!]]
             [chromex.protocols :as protocols]))
 
 ; -- logging support --------------------------------------------------------------------------------------------------------
@@ -36,19 +36,25 @@
     (assert (fn? error-reporter))
     (error-reporter descriptor error)))
 
+(defn normalize-args [args]
+  (vec args))
+
 (defn default-callback-fn-factory [config descriptor chan]
   (fn [& args]
-    (if-let [error (oget (:root config) "chrome" "runtime" "?lastError")]
-      (do
-        (set-last-error! error)
-        (report-error-if-needed! config descriptor error))
-      (do
-        (set-last-error! nil)
-        (put! chan (vec args))))
-    (close! chan)))
+    (let [normalized-args (normalize-args args)]
+      (if-some [error (oget (:root config) "chrome.runtime.?lastError")]
+        (do
+          (set-last-error! error)
+          (set-last-error-args! normalized-args)
+          (report-error-if-needed! config descriptor error)
+          (close! chan))
+        (do
+          (set-last-error! nil)
+          (set-last-error-args! nil)
+          (put! chan normalized-args))))))
 
 (defn default-callback-channel-factory [_config]
-  (chan))
+  (promise-chan))
 
 (defn default-event-listener-factory [_config event-id chan]
   (fn [& args]
