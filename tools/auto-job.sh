@@ -108,11 +108,11 @@ NEW_README="${README_WITH_MARKER/DATESOURCEMARKER/$DATE_SOURCE_INFO}"
 
 echo "$NEW_README" > "$CHROMEX_README"
 
+git config user.email "bot@binaryage.com"
+git config user.name "BinaryAge Bot"
 git add --all
 git commit -m "regenerate APIs from Chromium @ $CHROMIUM_SHORT_SHA" \
-           -m "$SOURCE_LINK" \
-           --author="BinaryAge Bot <bot@binaryage.com>"
-
+           -m "$SOURCE_LINK"
 git push
 
 popd
