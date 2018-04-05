@@ -187,13 +187,13 @@
 
 (defn build-callback-docstring [context callback]
   (let [parameters (:parameters callback)
-        intro "This function returns a core.async channel which eventually receives a result value and closes."
+        intro "This function returns a core.async channel of type `promise-chan` which eventually receives a result value."
         signature (str "\nSignature of the result value put on the channel is " (build-signature parameters))
         context (assoc context :property-name (:name callback))                                                               ; generated IDs in official docs are not unique, they can shadow properties and other callbacks
         param-docs (build-param-docs context parameters)
         params (if (empty? param-docs) "." (str " where:\n\n" (apply str (string/join "\n" param-docs))))
-        error (str "\n\nIn case of error the channel closes without receiving any result and "
-                   "relevant error object can be obtained via chromex.error/get-last-error.")]
+        error (str "\n\nIn case of an error the channel closes without receiving any value and "
+                   "a relevant error object can be obtained via chromex.error/get-last-error.")]
     (str intro signature params error)))
 
 (defn build-function-docstring [context description parameters callback]
