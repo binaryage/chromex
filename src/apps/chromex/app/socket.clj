@@ -27,7 +27,7 @@
 
      |create-info| - https://developer.chrome.com/apps/socket#property-callback-createInfo.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/socket#method-create."
@@ -55,7 +55,7 @@
 
      |result| - https://developer.chrome.com/apps/socket#property-callback-result.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/socket#method-connect."
@@ -73,7 +73,7 @@
 
      |result| - https://developer.chrome.com/apps/socket#property-callback-result.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/socket#method-bind."
@@ -98,7 +98,7 @@
 
      |read-info| - https://developer.chrome.com/apps/socket#property-callback-readInfo.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/socket#method-read."
@@ -116,7 +116,7 @@
 
      |write-info| - https://developer.chrome.com/apps/socket#property-callback-writeInfo.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/socket#method-write."
@@ -133,7 +133,7 @@
 
      |recv-from-info| - https://developer.chrome.com/apps/socket#property-callback-recvFromInfo.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/socket#method-recvFrom."
@@ -153,7 +153,7 @@
 
      |write-info| - https://developer.chrome.com/apps/socket#property-callback-writeInfo.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/socket#method-sendTo."
@@ -173,7 +173,7 @@
 
      |result| - https://developer.chrome.com/apps/socket#property-callback-result.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/socket#method-listen."
@@ -192,7 +192,7 @@
 
      |accept-info| - https://developer.chrome.com/apps/socket#property-callback-acceptInfo.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/socket#method-accept."
@@ -210,7 +210,7 @@
 
      |result| - https://developer.chrome.com/apps/socket#property-callback-result.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/socket#method-setKeepAlive."
@@ -228,7 +228,7 @@
 
      |result| - https://developer.chrome.com/apps/socket#property-callback-result.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/socket#method-setNoDelay."
@@ -244,7 +244,7 @@
 
      |result| - https://developer.chrome.com/apps/socket#property-callback-result.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/socket#method-getInfo."
@@ -258,7 +258,7 @@
 
      |result| - https://developer.chrome.com/apps/socket#property-callback-result.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/socket#method-getNetworkList."
@@ -276,7 +276,7 @@
 
      |result| - https://developer.chrome.com/apps/socket#property-callback-result.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/socket#method-joinGroup."
@@ -295,7 +295,7 @@
 
      |result| - https://developer.chrome.com/apps/socket#property-callback-result.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/socket#method-leaveGroup."
@@ -313,7 +313,7 @@
 
      |result| - https://developer.chrome.com/apps/socket#property-callback-result.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/socket#method-setMulticastTimeToLive."
@@ -335,7 +335,7 @@
 
      |result| - https://developer.chrome.com/apps/socket#property-callback-result.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/socket#method-setMulticastLoopbackMode."
@@ -351,7 +351,7 @@
 
      |groups| - https://developer.chrome.com/apps/socket#property-callback-groups.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/socket#method-getJoinedGroups."
@@ -368,7 +368,7 @@
 
      |result| - https://developer.chrome.com/apps/socket#property-callback-result.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/socket#method-secure."

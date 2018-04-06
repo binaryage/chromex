@@ -73,7 +73,7 @@
      |raw-events| - compressed serialized raw bytes containing raw events              recorded for a stream. The compression
                     is in gzip format. The serialization format can be found at  media/cast/logging/log_serializer.cc.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/cast.streaming.rtpStream#method-getRawEvents."
@@ -90,7 +90,7 @@
 
      |stats| - https://developer.chrome.com/extensions/cast.streaming.rtpStream#property-callback-stats.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/cast.streaming.rtpStream#method-getStats."

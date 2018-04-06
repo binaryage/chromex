@@ -26,7 +26,7 @@
 
      |success| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([name value page-id] (gen-call :function ::set-pref &form name value page-id)))
 
@@ -38,7 +38,7 @@
 
      |prefs| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-all-prefs &form)))
 
@@ -52,7 +52,7 @@
 
      |pref| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([name] (gen-call :function ::get-pref &form name)))
 
@@ -65,7 +65,7 @@
 
      |zoom| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-default-zoom &form)))
 
@@ -79,7 +79,7 @@
 
      |success| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([zoom] (gen-call :function ::set-default-zoom &form zoom)))
 

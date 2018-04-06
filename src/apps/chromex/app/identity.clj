@@ -22,7 +22,7 @@
 
      |accounts| - https://developer.chrome.com/apps/identity#property-callback-accounts.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/identity#method-getAccounts."
@@ -43,7 +43,7 @@
 
      |token| - https://developer.chrome.com/apps/identity#property-callback-token.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/identity#method-getAuthToken."
@@ -60,7 +60,7 @@
 
      |user-info| - https://developer.chrome.com/apps/identity#property-callback-userInfo.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/identity#method-getProfileUserInfo."
@@ -76,7 +76,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/identity#method-removeCachedAuthToken."
@@ -97,7 +97,7 @@
 
      |response-url| - https://developer.chrome.com/apps/identity#property-callback-responseUrl.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/identity#method-launchWebAuthFlow."

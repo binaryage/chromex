@@ -24,7 +24,7 @@
 
      |process-id| - Process ID of the tab's renderer process.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/processes#method-getProcessIdForTab."
@@ -40,7 +40,7 @@
 
      |did-terminate| - True if terminating the process was successful, and false otherwise.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/processes#method-terminate."
@@ -61,7 +61,7 @@
                    browser process, indexed by process ID. Metrics requiring aggregation over time will not be populated in
                    each Process object.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/processes#method-getProcessInfo."

@@ -20,7 +20,7 @@
 
      |response| - Response in base64.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([challenge] (gen-call :function ::challenge-machine-key &form challenge)))
 
@@ -35,7 +35,7 @@
 
      |response| - Response in base64.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([challenge register-key] (gen-call :function ::challenge-user-key &form challenge register-key)))
 

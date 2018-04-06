@@ -21,7 +21,7 @@
 
      |network-interfaces| - Array of object containing network interfaces information.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/system.network#method-getNetworkInterfaces."

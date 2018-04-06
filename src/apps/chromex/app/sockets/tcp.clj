@@ -25,7 +25,7 @@
 
      |create-info| - The result of the socket creation.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.tcp#method-create."
@@ -41,7 +41,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.tcp#method-update."
@@ -58,7 +58,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.tcp#method-setPaused."
@@ -76,7 +76,7 @@
 
      |result| - The result code returned from the underlying network call. A negative value indicates an error.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.tcp#method-setKeepAlive."
@@ -94,7 +94,7 @@
 
      |result| - The result code returned from the underlying network call. A negative value indicates an error.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.tcp#method-setNoDelay."
@@ -114,7 +114,7 @@
 
      |result| - The result code returned from the underlying network call. A negative value indicates an error.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.tcp#method-connect."
@@ -128,7 +128,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.tcp#method-disconnect."
@@ -145,7 +145,7 @@
 
      |result| - https://developer.chrome.com/apps/sockets.tcp#property-callback-result.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.tcp#method-secure."
@@ -163,7 +163,7 @@
 
      |send-info| - Result of the send method.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.tcp#method-send."
@@ -179,7 +179,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.tcp#method-close."
@@ -195,7 +195,7 @@
 
      |socket-info| - Object containing the socket information.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.tcp#method-getInfo."
@@ -209,7 +209,7 @@
 
      |socket-infos| - Array of object containing socket information.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.tcp#method-getSockets."

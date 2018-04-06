@@ -45,7 +45,7 @@
 
      |audible| - https://developer.chrome.com/apps/tags/webview#property-callback-audible.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tags/webview#method-getAudioState."
@@ -67,7 +67,7 @@
 
      |muted| - https://developer.chrome.com/apps/tags/webview#property-callback-muted.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tags/webview#method-isAudioMuted."
@@ -84,7 +84,7 @@
      |data-url| - A data URL which encodes an image of the visible area of the captured tab. May be assigned to the 'src'
                   property of an HTML Image element for display.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tags/webview#method-captureVisibleRegion."
@@ -149,7 +149,7 @@ webview.addContentScripts([{
 
      |success| - Indicates whether the navigation was successful.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tags/webview#method-back."
@@ -178,7 +178,7 @@ webview.addContentScripts([{
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tags/webview#method-clearData."
@@ -195,7 +195,7 @@ webview.addContentScripts([{
 
      |result| - The result of the script in every injected frame.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tags/webview#method-executeScript."
@@ -213,7 +213,7 @@ webview.addContentScripts([{
      |results| - Contains all of the results of the find request. results can be omitted if it is not utilized in the callback
                  function body; for example, if the callback is only used to discern when the find request has completed.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tags/webview#method-find."
@@ -228,7 +228,7 @@ webview.addContentScripts([{
 
      |success| - Indicates whether the navigation was successful.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tags/webview#method-forward."
@@ -257,7 +257,7 @@ webview.addContentScripts([{
 
      |zoom-factor| - The current zoom factor.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tags/webview#method-getZoom."
@@ -271,7 +271,7 @@ webview.addContentScripts([{
 
      |zoom-mode| - The webview's current zoom mode.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tags/webview#method-getZoomMode."
@@ -289,7 +289,7 @@ webview.addContentScripts([{
 
      |success| - Indicates whether the navigation was successful.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tags/webview#method-go."
@@ -303,7 +303,7 @@ webview.addContentScripts([{
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tags/webview#method-insertCSS."
@@ -355,7 +355,7 @@ webview.addContentScripts([{
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tags/webview#method-setZoom."
@@ -369,7 +369,7 @@ webview.addContentScripts([{
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/tags/webview#method-setZoomMode."

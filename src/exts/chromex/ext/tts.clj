@@ -25,7 +25,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tts#method-speak."
@@ -60,7 +60,7 @@
 
      |speaking| - True if speaking, false otherwise.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tts#method-isSpeaking."
@@ -74,7 +74,7 @@
 
      |voices| - Array of 'tts.TtsVoice' objects representing the available voices for speech synthesis.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tts#method-getVoices."

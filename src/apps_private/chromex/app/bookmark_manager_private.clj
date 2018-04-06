@@ -18,7 +18,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([id-list] (gen-call :function ::copy &form id-list)))
 
@@ -30,7 +30,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([id-list] (gen-call :function ::cut &form id-list)))
 
@@ -43,7 +43,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([parent-id selected-id-list] (gen-call :function ::paste &form parent-id selected-id-list))
   ([parent-id] `(paste ~parent-id :omit)))
@@ -58,7 +58,7 @@
 
      |result| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([parent-id] (gen-call :function ::can-paste &form parent-id)))
 
@@ -76,7 +76,7 @@
 
      |result| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-strings &form)))
 
@@ -97,7 +97,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([parent-id index] (gen-call :function ::drop &form parent-id index))
   ([parent-id] `(drop ~parent-id :omit)))
@@ -114,7 +114,7 @@
 
      |results| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([id folders-only] (gen-call :function ::get-subtree &form id folders-only)))
 
@@ -126,7 +126,7 @@
 
      |result| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::can-edit &form)))
 
@@ -138,7 +138,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([id-list] (gen-call :function ::remove-trees &form id-list)))
 
@@ -155,7 +155,7 @@
 
      |result| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([bookmark meta-info] (gen-call :function ::create-with-meta-info &form bookmark meta-info)))
 
@@ -171,7 +171,7 @@
      |value| - If a key was given, the value of the specified field, if present. Otherwise an object containing all meta info
                fields for the node. If id is not given then meta info for all nodes as an object with node id to meta info.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([id key] (gen-call :function ::get-meta-info &form id key))
   ([id] `(get-meta-info ~id :omit))
@@ -187,7 +187,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([id key value] (gen-call :function ::set-meta-info &form id key value)))
 
@@ -200,7 +200,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([id meta-info-changes] (gen-call :function ::update-meta-info &form id meta-info-changes)))
 
@@ -220,7 +220,7 @@
 
      |result| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-undo-info &form)))
 
@@ -232,7 +232,7 @@
 
      |result| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-redo-info &form)))
 

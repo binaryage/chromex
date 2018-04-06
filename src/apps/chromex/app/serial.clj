@@ -22,7 +22,7 @@
 
      |ports| - https://developer.chrome.com/apps/serial#property-callback-ports.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/serial#method-getDevices."
@@ -39,7 +39,7 @@
 
      |connection-info| - https://developer.chrome.com/apps/serial#property-callback-connectionInfo.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/serial#method-connect."
@@ -57,7 +57,7 @@
 
      |result| - https://developer.chrome.com/apps/serial#property-callback-result.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/serial#method-update."
@@ -73,7 +73,7 @@
 
      |result| - https://developer.chrome.com/apps/serial#property-callback-result.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/serial#method-disconnect."
@@ -88,7 +88,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/serial#method-setPaused."
@@ -104,7 +104,7 @@
 
      |connection-info| - https://developer.chrome.com/apps/serial#property-callback-connectionInfo.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/serial#method-getInfo."
@@ -118,7 +118,7 @@
 
      |connection-infos| - https://developer.chrome.com/apps/serial#property-callback-connectionInfos.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/serial#method-getConnections."
@@ -135,7 +135,7 @@
 
      |send-info| - https://developer.chrome.com/apps/serial#property-callback-sendInfo.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/serial#method-send."
@@ -151,7 +151,7 @@
 
      |result| - https://developer.chrome.com/apps/serial#property-callback-result.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/serial#method-flush."
@@ -167,7 +167,7 @@
 
      |signals| - https://developer.chrome.com/apps/serial#property-callback-signals.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/serial#method-getControlSignals."
@@ -184,7 +184,7 @@
 
      |result| - https://developer.chrome.com/apps/serial#property-callback-result.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/serial#method-setControlSignals."
@@ -201,7 +201,7 @@
 
      |result| - https://developer.chrome.com/apps/serial#property-callback-result.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/serial#method-setBreak."
@@ -217,7 +217,7 @@
 
      |result| - https://developer.chrome.com/apps/serial#property-callback-result.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/serial#method-clearBreak."

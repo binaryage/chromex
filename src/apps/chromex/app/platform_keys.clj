@@ -31,7 +31,7 @@
      |matches| - The list of certificates that match the request, that the extension has permission for and, if interactive is
                  true, that were selected by the user.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/platformKeys#method-selectClientCertificates."
@@ -54,7 +54,7 @@
      |public-key| - https://developer.chrome.com/apps/platformKeys#property-callback-publicKey.
      |private-key| - Might be null if this extension does not have   access to it.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/platformKeys#method-getKeyPair."
@@ -80,7 +80,7 @@
 
      |result| - https://developer.chrome.com/apps/platformKeys#property-callback-result.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/platformKeys#method-verifyTLSServerCertificate."

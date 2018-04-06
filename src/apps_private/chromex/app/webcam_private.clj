@@ -23,7 +23,7 @@
 
      |webcam-id| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([path protocol] (gen-call :function ::open-serial-webcam &form path protocol)))
 
@@ -41,7 +41,7 @@
 
      |configuration| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([webcam-id] (gen-call :function ::get &form webcam-id)))
 

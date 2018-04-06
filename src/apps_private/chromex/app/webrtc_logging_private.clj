@@ -24,7 +24,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([request security-origin meta-data] (gen-call :function ::set-meta-data &form request security-origin meta-data)))
 
@@ -38,7 +38,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([request security-origin] (gen-call :function ::start &form request security-origin)))
 
@@ -62,7 +62,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([request security-origin] (gen-call :function ::stop &form request security-origin)))
 
@@ -77,7 +77,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([request security-origin log-id] (gen-call :function ::store &form request security-origin log-id)))
 
@@ -94,7 +94,7 @@
 
      |result| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([request security-origin log-id] (gen-call :function ::upload-stored &form request security-origin log-id)))
 
@@ -109,7 +109,7 @@
 
      |result| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([request security-origin] (gen-call :function ::upload &form request security-origin)))
 
@@ -122,7 +122,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([request security-origin] (gen-call :function ::discard &form request security-origin)))
 
@@ -137,7 +137,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([request security-origin incoming outgoing] (gen-call :function ::start-rtp-dump &form request security-origin incoming outgoing)))
 
@@ -153,7 +153,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([request security-origin incoming outgoing] (gen-call :function ::stop-rtp-dump &form request security-origin incoming outgoing)))
 
@@ -172,7 +172,7 @@
 
      |info| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([request security-origin seconds] (gen-call :function ::start-audio-debug-recordings &form request security-origin seconds)))
 
@@ -188,7 +188,7 @@
 
      |info| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([request security-origin] (gen-call :function ::stop-audio-debug-recordings &form request security-origin)))
 
@@ -206,7 +206,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([request security-origin peer-connection-id max-log-size-bytes metadata] (gen-call :function ::start-event-logging &form request security-origin peer-connection-id max-log-size-bytes metadata)))
 
@@ -219,7 +219,7 @@
 
      |entry| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-logs-directory &form)))
 

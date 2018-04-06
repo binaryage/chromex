@@ -25,7 +25,7 @@
 
      |media-file-systems| - https://developer.chrome.com/apps/mediaGalleries#property-callback-mediaFileSystems.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/mediaGalleries#method-getMediaFileSystems."
@@ -43,7 +43,7 @@
      |media-file-systems| - https://developer.chrome.com/apps/mediaGalleries#property-callback-mediaFileSystems.
      |selected-file-system-name| - https://developer.chrome.com/apps/mediaGalleries#property-callback-selectedFileSystemName.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/mediaGalleries#method-addUserSelectedFolder."
@@ -57,7 +57,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/mediaGalleries#method-dropPermissionForMediaFileSystem."
@@ -85,7 +85,7 @@
 
      |media-file-systems| - https://developer.chrome.com/apps/mediaGalleries#property-callback-mediaFileSystems.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/mediaGalleries#method-addScanResults."
@@ -107,7 +107,7 @@
 
      |metadata| - https://developer.chrome.com/apps/mediaGalleries#property-callback-metadata.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/mediaGalleries#method-getAllMediaFileSystemMetadata."
@@ -125,7 +125,7 @@
 
      |metadata| - https://developer.chrome.com/apps/mediaGalleries#property-callback-metadata.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/mediaGalleries#method-getMetadata."
@@ -143,7 +143,7 @@
 
      |result| - https://developer.chrome.com/apps/mediaGalleries#property-callback-result.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/mediaGalleries#method-addGalleryWatch."
@@ -165,7 +165,7 @@
 
      |gallery-ids| - https://developer.chrome.com/apps/mediaGalleries#property-callback-galleryIds.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/mediaGalleries#method-getAllGalleryWatch."

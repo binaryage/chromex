@@ -29,7 +29,7 @@
 
      |root-node| - https://developer.chrome.com/extensions/automation#property-callback-rootNode.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/automation#method-getTree."
@@ -45,7 +45,7 @@
 
      |root-node| - https://developer.chrome.com/extensions/automation#property-callback-rootNode.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/automation#method-getDesktop."
@@ -60,7 +60,7 @@
 
      |focused-node| - https://developer.chrome.com/extensions/automation#property-callback-focusedNode.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/automation#method-getFocus."
@@ -77,7 +77,7 @@
 
      |tree-change| - https://developer.chrome.com/extensions/automation#property-observer-treeChange.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/automation#method-addTreeChangeObserver."
@@ -91,7 +91,7 @@
 
      |tree-change| - https://developer.chrome.com/extensions/automation#property-observer-treeChange.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/automation#method-removeTreeChangeObserver."

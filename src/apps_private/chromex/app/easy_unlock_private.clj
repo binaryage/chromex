@@ -21,7 +21,7 @@
 
      |strings| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-strings &form)))
 
@@ -36,7 +36,7 @@
      |public-key| - ?
      |private-key| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::generate-ec-p256-key-pair &form)))
 
@@ -53,7 +53,7 @@
 
      |data| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([private-key public-key] (gen-call :function ::perform-ecdh-key-agreement &form private-key public-key)))
 
@@ -71,7 +71,7 @@
 
      |data| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([payload key options] (gen-call :function ::create-secure-message &form payload key options)))
 
@@ -89,7 +89,7 @@
 
      |data| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([secure-message key options] (gen-call :function ::unwrap-secure-message &form secure-message key options)))
 
@@ -104,7 +104,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([device-address] (gen-call :function ::seek-bluetooth-device-by-address &form device-address)))
 
@@ -120,7 +120,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([socket-id device-address uuid] (gen-call :function ::connect-to-bluetooth-service-insecurely &form socket-id device-address uuid)))
 
@@ -132,7 +132,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([state] (gen-call :function ::update-screenlock-state &form state)))
 
@@ -144,7 +144,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([permit-access] (gen-call :function ::set-permit-access &form permit-access)))
 
@@ -156,7 +156,7 @@
 
      |permit-access| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-permit-access &form)))
 
@@ -166,7 +166,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::clear-permit-access &form)))
 
@@ -178,7 +178,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([devices] (gen-call :function ::set-remote-devices &form devices)))
 
@@ -190,7 +190,7 @@
 
      |devices| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-remote-devices &form)))
 
@@ -207,7 +207,7 @@
      |signed-nonce| - Nonce signed by Chrome OS TPM, provided as an argument to     the |getSignInChallenge()| function and
                       signed by the TPM key     associated with the user.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([nonce] (gen-call :function ::get-sign-in-challenge &form nonce)))
 
@@ -220,7 +220,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([sign-in-secret] (gen-call :function ::try-sign-in-secret &form sign-in-secret)))
 
@@ -232,7 +232,7 @@
 
      |users| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-user-info &form)))
 
@@ -249,7 +249,7 @@
      |transmit-power| - ?
      |max-transmit-power| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([device-address] (gen-call :function ::get-connection-info &form device-address)))
 
@@ -279,7 +279,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([result] (gen-call :function ::set-auto-pairing-result &form result)))
 
@@ -296,7 +296,7 @@
      |connection-id| - The identifier of the connection found. To be used in future calls refering to this connection.
      |device-address| - The Bluetooth address of the remote device.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([setup-service-uuid time-out] (gen-call :function ::find-setup-connection &form setup-service-uuid time-out)))
 
@@ -310,7 +310,7 @@
 
      |status| - The status of the connection with |connection_id|.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([connection-id] (gen-call :function ::setup-connection-status &form connection-id)))
 
@@ -322,7 +322,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([connection-id] (gen-call :function ::setup-connection-disconnect &form connection-id)))
 
@@ -335,7 +335,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([connection-id data] (gen-call :function ::setup-connection-send &form connection-id data)))
 
@@ -349,7 +349,7 @@
 
      |device-address| - The bluetooth address of the connection with  |connectionId|.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([connection-id] (gen-call :function ::setup-connection-get-device-address &form connection-id)))
 

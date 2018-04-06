@@ -18,7 +18,7 @@
 
      |is-enabled| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-is-crash-reporting-enabled &form)))
 
@@ -32,7 +32,7 @@
 
      |group| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([name] (gen-call :function ::get-field-trial &form name)))
 
@@ -46,7 +46,7 @@
 
      |params| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([name] (gen-call :function ::get-variation-params &form name)))
 

@@ -41,7 +41,7 @@
 
      |alarm| - https://developer.chrome.com/extensions/alarms#property-callback-alarm.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/alarms#method-get."
@@ -56,7 +56,7 @@
 
      |alarms| - https://developer.chrome.com/extensions/alarms#property-callback-alarms.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/alarms#method-getAll."
@@ -72,7 +72,7 @@
 
      |was-cleared| - https://developer.chrome.com/extensions/alarms#property-callback-wasCleared.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/alarms#method-clear."
@@ -87,7 +87,7 @@
 
      |was-cleared| - https://developer.chrome.com/extensions/alarms#property-callback-wasCleared.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/alarms#method-clearAll."

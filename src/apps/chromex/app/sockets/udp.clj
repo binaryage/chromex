@@ -25,7 +25,7 @@
 
      |create-info| - The result of the socket creation.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.udp#method-create."
@@ -41,7 +41,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.udp#method-update."
@@ -56,7 +56,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.udp#method-setPaused."
@@ -77,7 +77,7 @@
 
      |result| - The result code returned from the underlying network call. A negative value indicates an error.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.udp#method-bind."
@@ -97,7 +97,7 @@
 
      |send-info| - Result of the send method.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.udp#method-send."
@@ -113,7 +113,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.udp#method-close."
@@ -129,7 +129,7 @@
 
      |socket-info| - Object containing the socket information.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.udp#method-getInfo."
@@ -143,7 +143,7 @@
 
      |socket-infos| - Array of object containing socket information.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.udp#method-getSockets."
@@ -161,7 +161,7 @@
 
      |result| - The result code returned from the underlying network call. A negative value indicates an error.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.udp#method-joinGroup."
@@ -181,7 +181,7 @@
 
      |result| - The result code returned from the underlying network call. A negative value indicates an error.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.udp#method-leaveGroup."
@@ -199,7 +199,7 @@
 
      |result| - The result code returned from the underlying network call. A negative value indicates an error.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.udp#method-setMulticastTimeToLive."
@@ -221,7 +221,7 @@
 
      |result| - The result code returned from the underlying network call. A negative value indicates an error.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.udp#method-setMulticastLoopbackMode."
@@ -237,7 +237,7 @@
 
      |groups| - Array of groups the socket joined.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.udp#method-getJoinedGroups."
@@ -254,7 +254,7 @@
 
      |result| - The result code returned from the underlying network call.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/sockets.udp#method-setBroadcast."

@@ -28,7 +28,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-connect."
@@ -44,7 +44,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-disconnect."
@@ -60,7 +60,7 @@
 
      |result| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-result.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-getService."
@@ -78,7 +78,7 @@
 
      |service-id| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-serviceId.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-createService."
@@ -96,7 +96,7 @@
 
      |result| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-result.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-getServices."
@@ -113,7 +113,7 @@
 
      |result| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-result.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-getCharacteristic."
@@ -132,7 +132,7 @@
 
      |characteristic-id| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-characteristicId.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-createCharacteristic."
@@ -148,7 +148,7 @@
 
      |result| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-result.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-getCharacteristics."
@@ -164,7 +164,7 @@
 
      |result| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-result.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-getIncludedServices."
@@ -180,7 +180,7 @@
 
      |result| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-result.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-getDescriptor."
@@ -199,7 +199,7 @@
 
      |descriptor-id| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-descriptorId.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-createDescriptor."
@@ -215,7 +215,7 @@
 
      |result| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-result.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-getDescriptors."
@@ -231,7 +231,7 @@
 
      |result| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-result.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-readCharacteristicValue."
@@ -246,7 +246,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-writeCharacteristicValue."
@@ -262,7 +262,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-startCharacteristicNotifications."
@@ -279,7 +279,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-stopCharacteristicNotifications."
@@ -298,7 +298,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-notifyCharacteristicValueChanged."
@@ -315,7 +315,7 @@
 
      |result| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-result.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-readDescriptorValue."
@@ -330,7 +330,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-writeDescriptorValue."
@@ -346,7 +346,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-registerService."
@@ -362,7 +362,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-unregisterService."
@@ -378,7 +378,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-removeService."
@@ -400,7 +400,7 @@
 
      |advertisement-id| - https://developer.chrome.com/apps/bluetoothLowEnergy#property-callback-advertisementId.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-registerAdvertisement."
@@ -415,7 +415,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-unregisterAdvertisement."
@@ -427,7 +427,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-resetAdvertising."
@@ -446,7 +446,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/bluetoothLowEnergy#method-setAdvertisingInterval."

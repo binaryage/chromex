@@ -25,7 +25,7 @@
 
      |cookie| - Contains details about the cookie. This parameter is null if no such cookie was found.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/cookies#method-get."
@@ -43,7 +43,7 @@
 
      |cookies| - All the existing, unexpired cookies that match the given cookie info.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/cookies#method-getAll."
@@ -60,7 +60,7 @@
      |cookie| - Contains details about the cookie that's been set.  If setting failed for any reason, this will be 'null', and
                 'chrome.runtime.lastError' will be set.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/cookies#method-set."
@@ -77,7 +77,7 @@
      |details| - Contains details about the cookie that's been removed.  If removal failed for any reason, this will be
                  'null', and 'chrome.runtime.lastError' will be set.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/cookies#method-remove."
@@ -91,7 +91,7 @@
 
      |cookie-stores| - All the existing cookie stores.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/cookies#method-getAllCookieStores."

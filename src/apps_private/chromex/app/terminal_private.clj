@@ -21,7 +21,7 @@
 
      |pid| - Id of the launched process.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([process-name args] (gen-call :function ::open-terminal-process &form process-name args))
   ([process-name] `(open-terminal-process ~process-name :omit)))
@@ -36,7 +36,7 @@
 
      |success| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([pid] (gen-call :function ::close-terminal-process &form pid)))
 
@@ -51,7 +51,7 @@
 
      |success| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([pid input] (gen-call :function ::send-input &form pid input)))
 
@@ -67,7 +67,7 @@
 
      |success| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([pid width height] (gen-call :function ::on-terminal-resize &form pid width height)))
 

@@ -33,7 +33,7 @@
 
      |result| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([task-id entries] (gen-call :function ::execute-task &form task-id entries)))
 
@@ -50,7 +50,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([task-id entries mime-types] (gen-call :function ::set-default-task &form task-id entries mime-types)))
 
@@ -64,7 +64,7 @@
 
      |tasks| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([entries] (gen-call :function ::get-file-tasks &form entries)))
 
@@ -78,7 +78,7 @@
 
      |result| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([entry] (gen-call :function ::get-mime-type &form entry)))
 
@@ -90,7 +90,7 @@
 
      |result| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-strings &form)))
 
@@ -104,7 +104,7 @@
 
      |success| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([entry] (gen-call :function ::add-file-watch &form entry)))
 
@@ -118,7 +118,7 @@
 
      |success| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([entry] (gen-call :function ::remove-file-watch &form entry)))
 
@@ -136,7 +136,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([entry-urls] (gen-call :function ::grant-access &form entry-urls)))
 
@@ -150,7 +150,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([selected-paths should-return-local-path] (gen-call :function ::select-files &form selected-paths should-return-local-path)))
 
@@ -166,7 +166,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([selected-path index for-opening should-return-local-path] (gen-call :function ::select-file &form selected-path index for-opening should-return-local-path)))
 
@@ -183,7 +183,7 @@
 
      |entry-properties| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([entries names] (gen-call :function ::get-entry-properties &form entries names)))
 
@@ -197,7 +197,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([entry pin] (gen-call :function ::pin-drive-file &form entry pin)))
 
@@ -213,7 +213,7 @@
 
      |entries| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([entries] (gen-call :function ::resolve-isolated-entries &form entries)))
 
@@ -228,7 +228,7 @@
 
      |source-path| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([source] (gen-call :function ::add-mount &form source)))
 
@@ -250,7 +250,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([source-path is-mounted] (gen-call :function ::mark-cache-as-mounted &form source-path is-mounted)))
 
@@ -262,7 +262,7 @@
 
      |volume-metadata-list| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-volume-metadata-list &form)))
 
@@ -275,7 +275,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([entries] (gen-call :function ::cancel-file-transfers &form entries)))
 
@@ -285,7 +285,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::cancel-all-file-transfers &form)))
 
@@ -303,7 +303,7 @@
 
      |copy-id| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([entry parent-entry new-name] (gen-call :function ::start-copy &form entry parent-entry new-name)))
 
@@ -315,7 +315,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([copy-id] (gen-call :function ::cancel-copy &form copy-id)))
 
@@ -329,7 +329,7 @@
 
      |size-stats| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([volume-id] (gen-call :function ::get-size-stats &form volume-id)))
 
@@ -354,7 +354,7 @@
 
      |result| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-preferences &form)))
 
@@ -375,7 +375,7 @@
      |entries| - ?
      |next-feed| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([search-params] (gen-call :function ::search-drive &form search-params)))
 
@@ -389,7 +389,7 @@
 
      |results| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([search-params] (gen-call :function ::search-drive-metadata &form search-params)))
 
@@ -404,7 +404,7 @@
 
      |urls| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([volume-id hash-list] (gen-call :function ::search-files-by-hashes &form volume-id hash-list)))
 
@@ -423,7 +423,7 @@
 
      |success| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([entries parent-entry dest-name] (gen-call :function ::zip-selection &form entries parent-entry dest-name)))
 
@@ -435,7 +435,7 @@
 
      |result| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-drive-connection-state &form)))
 
@@ -451,7 +451,7 @@
 
      |result| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([parent-entry name] (gen-call :function ::validate-path-name-length &form parent-entry name)))
 
@@ -472,7 +472,7 @@
 
      |access-token| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([refresh] (gen-call :function ::request-access-token &form refresh)))
 
@@ -484,7 +484,7 @@
 
      |access-token| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::request-web-store-access-token &form)))
 
@@ -498,7 +498,7 @@
 
      |url| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([entry] (gen-call :function ::get-share-url &form entry)))
 
@@ -512,7 +512,7 @@
 
      |url| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([entry] (gen-call :function ::get-download-url &form entry)))
 
@@ -525,7 +525,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([entry share-type] (gen-call :function ::request-drive-share &form entry share-type)))
 
@@ -539,7 +539,7 @@
      |running-profile| - ?
      |display-profile| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-profiles &form)))
 
@@ -559,7 +559,7 @@
 
      |checksum| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([entry] (gen-call :function ::compute-checksum &form entry)))
 
@@ -571,7 +571,7 @@
 
      |result| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::is-uma-enabled &form)))
 
@@ -586,7 +586,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([entry visibility key value] (gen-call :function ::set-entry-tag &form entry visibility key value)))
 
@@ -598,7 +598,7 @@
 
      |result| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::is-piex-loader-enabled &form)))
 
@@ -610,7 +610,7 @@
 
      |extensions| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-providers &form)))
 
@@ -622,7 +622,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([provider-id] (gen-call :function ::add-provided-file-system &form provider-id)))
 
@@ -634,7 +634,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([volume-id] (gen-call :function ::configure-volume &form volume-id)))
 
@@ -649,7 +649,7 @@
 
      |actions| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([entries] (gen-call :function ::get-custom-actions &form entries)))
 
@@ -662,7 +662,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([entries action-id] (gen-call :function ::execute-custom-action &form entries action-id)))
 
@@ -676,7 +676,7 @@
 
      |size| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([entry] (gen-call :function ::get-directory-size &form entry)))
 
@@ -690,7 +690,7 @@
 
      |entries| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([restriction] (gen-call :function ::get-recent-files &form restriction)))
 

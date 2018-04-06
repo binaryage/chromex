@@ -22,7 +22,7 @@
 
      |languages| - Array of LanguageCode
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/i18n#method-getAcceptLanguages."
@@ -57,7 +57,7 @@
 
      |result| - LanguageDetectionResult object that holds detected langugae reliability and array of DetectedLanguage
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/i18n#method-detectLanguage."

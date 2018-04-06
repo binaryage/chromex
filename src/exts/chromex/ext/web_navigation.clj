@@ -24,7 +24,7 @@
 
      |details| - Information about the requested frame, null if the specified frame ID and/or tab ID are invalid.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/webNavigation#method-getFrame."
@@ -40,7 +40,7 @@
 
      |details| - A list of frames in the given tab, null if the specified tab ID is invalid.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/webNavigation#method-getAllFrames."

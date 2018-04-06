@@ -32,7 +32,7 @@
 
      |tab| - https://developer.chrome.com/extensions/tabs#property-callback-tab.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tabs#method-get."
@@ -47,7 +47,7 @@
 
      |tab| - https://developer.chrome.com/extensions/tabs#property-callback-tab.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tabs#method-getCurrent."
@@ -79,7 +79,7 @@
                   specified tab, the callback will be called with no arguments and 'runtime.lastError' will be set to the
                   error message.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tabs#method-sendRequest."
@@ -101,7 +101,7 @@
                   specified tab, the callback will be called with no arguments and 'runtime.lastError' will be set to the
                   error message.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tabs#method-sendMessage."
@@ -118,7 +118,7 @@
 
      |tab| - https://developer.chrome.com/extensions/tabs#property-callback-tab.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tabs#method-getSelected."
@@ -135,7 +135,7 @@
 
      |tabs| - https://developer.chrome.com/extensions/tabs#property-callback-tabs.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tabs#method-getAllInWindow."
@@ -152,7 +152,7 @@
 
      |tab| - Details about the created tab. Will contain the ID of the new tab.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tabs#method-create."
@@ -169,7 +169,7 @@
      |tab| - Details about the duplicated tab. The 'tabs.Tab' object doesn't contain url, title and favIconUrl if the 'tabs'
              permission has not been requested.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tabs#method-duplicate."
@@ -185,7 +185,7 @@
 
      |result| - https://developer.chrome.com/extensions/tabs#property-callback-result.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tabs#method-query."
@@ -202,7 +202,7 @@
 
      |window| - Contains details about the window whose tabs were highlighted.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tabs#method-highlight."
@@ -220,7 +220,7 @@
      |tab| - Details about the updated tab. The 'tabs.Tab' object doesn't contain url, title and favIconUrl if the 'tabs'
              permission has not been requested.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tabs#method-update."
@@ -238,7 +238,7 @@
 
      |tabs| - Details about the moved tabs.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tabs#method-move."
@@ -253,7 +253,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tabs#method-reload."
@@ -269,7 +269,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tabs#method-remove."
@@ -288,7 +288,7 @@
                   except for Simplified Chinese for which zh-CN will be returned. For an unknown language, und will be
                   returned.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tabs#method-detectLanguage."
@@ -308,7 +308,7 @@
      |data-url| - A data URL which encodes an image of the visible area of the captured tab. May be assigned to the 'src'
                   property of an HTML Image element for display.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tabs#method-captureVisibleTab."
@@ -328,7 +328,7 @@
 
      |result| - The result of the script in every injected frame.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tabs#method-executeScript."
@@ -344,7 +344,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tabs#method-insertCSS."
@@ -360,7 +360,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tabs#method-setZoom."
@@ -376,7 +376,7 @@
 
      |zoom-factor| - The tab's current zoom factor.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tabs#method-getZoom."
@@ -393,7 +393,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tabs#method-setZoomSettings."
@@ -409,7 +409,7 @@
 
      |zoom-settings| - The tab's current zoom settings.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tabs#method-getZoomSettings."
@@ -428,7 +428,7 @@
 
      |tab| - Discarded tab if it was successfully discarded. Undefined otherwise.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/tabs#method-discard."

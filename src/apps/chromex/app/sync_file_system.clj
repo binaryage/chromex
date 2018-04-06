@@ -30,7 +30,7 @@
 
      |file-system| - https://developer.chrome.com/apps/syncFileSystem#property-callback-fileSystem.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/syncFileSystem#method-requestFileSystem."
@@ -46,7 +46,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/syncFileSystem#method-setConflictResolutionPolicy."
@@ -60,7 +60,7 @@
 
      |policy| - https://developer.chrome.com/apps/syncFileSystem#property-callback-policy.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/syncFileSystem#method-getConflictResolutionPolicy."
@@ -76,7 +76,7 @@
 
      |info| - https://developer.chrome.com/apps/syncFileSystem#property-callback-info.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/syncFileSystem#method-getUsageAndQuota."
@@ -93,7 +93,7 @@
 
      |status| - https://developer.chrome.com/apps/syncFileSystem#property-callback-status.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/syncFileSystem#method-getFileStatus."
@@ -109,7 +109,7 @@
 
      |status| - https://developer.chrome.com/apps/syncFileSystem#property-callback-status.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/syncFileSystem#method-getFileStatuses."
@@ -123,7 +123,7 @@
 
      |status| - https://developer.chrome.com/apps/syncFileSystem#property-callback-status.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/syncFileSystem#method-getServiceStatus."

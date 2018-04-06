@@ -39,7 +39,7 @@
 
      |window| - https://developer.chrome.com/apps/windows#property-callback-window.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/windows#method-get."
@@ -56,7 +56,7 @@
 
      |window| - https://developer.chrome.com/apps/windows#property-callback-window.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/windows#method-getCurrent."
@@ -73,7 +73,7 @@
 
      |window| - https://developer.chrome.com/apps/windows#property-callback-window.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/windows#method-getLastFocused."
@@ -90,7 +90,7 @@
 
      |windows| - https://developer.chrome.com/apps/windows#property-callback-windows.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/windows#method-getAll."
@@ -107,7 +107,7 @@
 
      |window| - Contains details about the created window.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/windows#method-create."
@@ -126,7 +126,7 @@
 
      |window| - https://developer.chrome.com/apps/windows#property-callback-window.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/windows#method-update."
@@ -140,7 +140,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/windows#method-remove."

@@ -40,7 +40,7 @@
      |result| - The result of evaluation.
      |exception-info| - An object providing details if an exception occurred while evaluating the expression.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/devtools.inspectedWindow#method-eval."
@@ -64,7 +64,7 @@
 
      |resources| - The resources within the page.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/devtools.inspectedWindow#method-getResources."

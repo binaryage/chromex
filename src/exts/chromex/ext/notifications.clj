@@ -28,7 +28,7 @@
 
      |notification-id| - https://developer.chrome.com/extensions/notifications#property-callback-notificationId.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/notifications#method-create."
@@ -45,7 +45,7 @@
 
      |was-updated| - https://developer.chrome.com/extensions/notifications#property-callback-wasUpdated.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/notifications#method-update."
@@ -61,7 +61,7 @@
 
      |was-cleared| - https://developer.chrome.com/extensions/notifications#property-callback-wasCleared.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/notifications#method-clear."
@@ -75,7 +75,7 @@
 
      |notifications| - https://developer.chrome.com/extensions/notifications#property-callback-notifications.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/notifications#method-getAll."
@@ -89,7 +89,7 @@
 
      |level| - https://developer.chrome.com/extensions/notifications#property-callback-level.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/notifications#method-getPermissionLevel."

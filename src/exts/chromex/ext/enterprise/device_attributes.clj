@@ -25,7 +25,7 @@
 
      |device-id| - https://developer.chrome.com/extensions/enterprise.deviceAttributes#property-callback-deviceId.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/enterprise.deviceAttributes#method-getDirectoryDeviceId."
@@ -41,7 +41,7 @@
 
      |serial-number| - https://developer.chrome.com/extensions/enterprise.deviceAttributes#property-callback-serialNumber.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/enterprise.deviceAttributes#method-getDeviceSerialNumber."
@@ -56,7 +56,7 @@
 
      |asset-id| - https://developer.chrome.com/extensions/enterprise.deviceAttributes#property-callback-assetId.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/enterprise.deviceAttributes#method-getDeviceAssetId."
@@ -71,7 +71,7 @@
 
      |annotated-location| - https://developer.chrome.com/extensions/enterprise.deviceAttributes#property-callback-annotatedLocation.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/enterprise.deviceAttributes#method-getDeviceAnnotatedLocation."

@@ -21,7 +21,7 @@
      |result| - A string result code, which will be empty upon success. The possible values in the case of errors include
                 'unknown_error', 'user_cancelled', 'manifest_error', 'icon_error', 'invalid_id', and 'invalid_icon_url'.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([details] (gen-call :function ::show-permission-prompt-for-delegated-install &form details)))
 

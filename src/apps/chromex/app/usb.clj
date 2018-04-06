@@ -29,7 +29,7 @@
 
      |devices| - https://developer.chrome.com/apps/usb#property-callback-devices.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-getDevices."
@@ -47,7 +47,7 @@
 
      |devices| - https://developer.chrome.com/apps/usb#property-callback-devices.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-getUserSelectedDevices."
@@ -63,7 +63,7 @@
 
      |configs| - https://developer.chrome.com/apps/usb#property-callback-configs.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-getConfigurations."
@@ -81,7 +81,7 @@
 
      |success| - https://developer.chrome.com/apps/usb#property-callback-success.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-requestAccess."
@@ -97,7 +97,7 @@
 
      |handle| - https://developer.chrome.com/apps/usb#property-callback-handle.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-openDevice."
@@ -115,7 +115,7 @@
 
      |handles| - https://developer.chrome.com/apps/usb#property-callback-handles.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-findDevices."
@@ -130,7 +130,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-closeDevice."
@@ -147,7 +147,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-setConfiguration."
@@ -163,7 +163,7 @@
 
      |config| - https://developer.chrome.com/apps/usb#property-callback-config.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-getConfiguration."
@@ -179,7 +179,7 @@
 
      |descriptors| - https://developer.chrome.com/apps/usb#property-callback-descriptors.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-listInterfaces."
@@ -196,7 +196,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-claimInterface."
@@ -211,7 +211,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-releaseInterface."
@@ -227,7 +227,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-setInterfaceAlternateSetting."
@@ -245,7 +245,7 @@
 
      |info| - https://developer.chrome.com/apps/usb#property-callback-info.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-controlTransfer."
@@ -262,7 +262,7 @@
 
      |info| - https://developer.chrome.com/apps/usb#property-callback-info.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-bulkTransfer."
@@ -279,7 +279,7 @@
 
      |info| - https://developer.chrome.com/apps/usb#property-callback-info.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-interruptTransfer."
@@ -296,7 +296,7 @@
 
      |info| - https://developer.chrome.com/apps/usb#property-callback-info.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-isochronousTransfer."
@@ -314,7 +314,7 @@
 
      |success| - https://developer.chrome.com/apps/usb#property-callback-success.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/usb#method-resetDevice."

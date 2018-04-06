@@ -28,7 +28,7 @@
 
      |countries| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-country-list &form)))
 
@@ -43,7 +43,7 @@
 
      |components| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([country-code] (gen-call :function ::get-address-components &form country-code)))
 
@@ -55,7 +55,7 @@
 
      |entries| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-address-list &form)))
 
@@ -83,7 +83,7 @@
 
      |validated-phone-numbers| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([params] (gen-call :function ::validate-phone-numbers &form params)))
 
@@ -95,7 +95,7 @@
 
      |entries| - ?
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-credit-card-list &form)))
 

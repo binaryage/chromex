@@ -27,7 +27,7 @@
 
      |result| - The returned offer info. If the offer info is not available, api will raise error.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([id] (gen-call :function ::get-offer-info &form id)))
 
@@ -41,7 +41,7 @@
 
      |result| - The coupon code.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([type] (gen-call :function ::get-registration-code &form type)))
 
@@ -53,7 +53,7 @@
 
      |result| - The OOBE timestamp.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-oobe-timestamp &form)))
 
@@ -69,7 +69,7 @@
 
      |result| - Whether the user consent was given.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([consent-requester] (gen-call :function ::get-user-consent &form consent-requester)))
 

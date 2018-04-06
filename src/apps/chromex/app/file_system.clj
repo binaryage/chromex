@@ -28,7 +28,7 @@
 
      |display-path| - https://developer.chrome.com/apps/fileSystem#property-callback-displayPath.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/fileSystem#method-getDisplayPath."
@@ -46,7 +46,7 @@
 
      |entry| - https://developer.chrome.com/apps/fileSystem#property-callback-entry.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/fileSystem#method-getWritableEntry."
@@ -62,7 +62,7 @@
 
      |is-writable| - https://developer.chrome.com/apps/fileSystem#property-callback-isWritable.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/fileSystem#method-isWritableEntry."
@@ -79,7 +79,7 @@
      |entry| - https://developer.chrome.com/apps/fileSystem#property-callback-entry.
      |file-entries| - https://developer.chrome.com/apps/fileSystem#property-callback-fileEntries.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/fileSystem#method-chooseEntry."
@@ -96,7 +96,7 @@
 
      |entry| - https://developer.chrome.com/apps/fileSystem#property-callback-entry.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/fileSystem#method-restoreEntry."
@@ -112,7 +112,7 @@
 
      |is-restorable| - https://developer.chrome.com/apps/fileSystem#property-callback-isRestorable.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/fileSystem#method-isRestorable."
@@ -143,7 +143,7 @@
 
      |file-system| - https://developer.chrome.com/apps/fileSystem#property-callback-fileSystem.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/fileSystem#method-requestFileSystem."
@@ -159,7 +159,7 @@
 
      |volumes| - https://developer.chrome.com/apps/fileSystem#property-callback-volumes.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/fileSystem#method-getVolumeList."

@@ -32,7 +32,7 @@
      |sessions| - The list of closed entries in reverse order that they were closed (the most recently closed tab or window
                   will be at index 0). The entries may contain either tabs or windows.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/sessions#method-getRecentlyClosed."
@@ -51,7 +51,7 @@
                  modified session to device with least recently modified session. 'tabs.Tab' objects are sorted by recency in
                  the 'windows.Window' of the 'sessions.Session' objects.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/sessions#method-getDevices."
@@ -69,7 +69,7 @@
 
      |restored-session| - A 'sessions.Session' containing the restored 'windows.Window' or 'tabs.Tab' object.
 
-   In case of an error the channel closes without receiving any value and a relevant error object can be obtained via
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/sessions#method-restore."
