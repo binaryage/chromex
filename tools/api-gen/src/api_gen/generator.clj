@@ -193,7 +193,7 @@
         param-docs (build-param-docs context parameters)
         params (if (empty? param-docs) "." (str " where:\n\n" (apply str (string/join "\n" param-docs))))
         error (str "\n\nIn case of an error the channel closes without receiving any value and "
-                   "a relevant error object can be obtained via chromex.error/get-last-error.")]
+                   "relevant error object can be obtained via chromex.error/get-last-error.")]
     (str intro signature params error)))
 
 (defn build-function-docstring [context description parameters callback]
