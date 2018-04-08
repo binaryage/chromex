@@ -57,10 +57,10 @@
   (let [static-config (get-static-config)]
     (merge
       fixed-config
-      (if-not (:elide-verbose-logging static-config)
+      (when-not (:elide-verbose-logging static-config)
         {:verbose-logging false
          :logger          'chromex.defaults/default-logger})
-      (if-not (:elide-missing-api-checks static-config)
+      (when-not (:elide-missing-api-checks static-config)
         {:missing-api-check-fn 'chromex.defaults/default-missing-api-check}))))
 
 (defmacro with-custom-config [f & body]

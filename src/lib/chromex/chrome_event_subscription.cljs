@@ -18,7 +18,7 @@
     (if-not (= subscribed-count 0)
       (*subscribe-called-while-subscribed* this)
       (do
-        (if (satisfies? IChromeEventChannel chan)
+        (when (satisfies? IChromeEventChannel chan)
           (protocols/register! chan this))
         (set! subscribed-count (inc subscribed-count))
         (oapply! chrome-event "addListener" (cons listener extra-args)))))                                                    ; see https://developer.chrome.com/extensions/events#filtered or 'Registering event listeners' at https://developer.chrome.com/extensions/webRequest

@@ -31,12 +31,14 @@
         deprecated? (not (nil? deprecation-info))
         wrap-sym (get-wrap-symbol id)
         wrap-call `(~wrap-sym ~config ~@args)]
-    (if-not valid? (emit-api-version-warning static-config src-info api [since until]))
-    (if deprecated? (emit-deprecation-warning static-config src-info api deprecation-info))
+    (when-not valid?
+      (emit-api-version-warning static-config src-info api [since until]))
+    (when deprecated?
+      (emit-deprecation-warning static-config src-info api deprecation-info))
     (with-meta wrap-call {:deprecated? deprecated? :valid? valid?})))
 
 (defn gen-call-from-group [collection tag singular static-config api-table item-id src-info config & args]
-  (if-let [descriptor (get-item-by-id item-id (collection api-table))]
+  (if-some [descriptor (get-item-by-id item-id (collection api-table))]
     (apply gen-wrap-call static-config src-info api-table (assoc descriptor tag true) config args)
     (assert false (str "unable to find " singular " with id " item-id "in:\n" api-table))))
 

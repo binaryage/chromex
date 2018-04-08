@@ -63,7 +63,7 @@
 ; -- missing API checks -----------------------------------------------------------------------------------------------------
 
 (defn default-missing-api-check [api obj key]
-  (if-not (gobj/containsKey obj key)
+  (when-not (gobj/containsKey obj key)
     (throw (js/Error. (str "Chromex library tried to access a missing Chrome API object '" api "'.\n"
                            "Your Chrome version might be too old or too recent for running this extension.\n"
                            "This is a failure which probably requires a software update.")))))

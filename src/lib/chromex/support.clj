@@ -51,7 +51,7 @@
     (str "(in '" file ":" line ":" column "')")))
 
 (defn print-warning [static-config src-info msg]
-  (if-not (:silence-compilation-warnings static-config)
+  (when-not (:silence-compilation-warnings static-config)
     (let [println-fn (:compiler-println static-config)]
       (assert println-fn (str ":compiler-println not specified in static-config: " static-config))
       (println-fn "WARNING:" msg (get-source-location src-info)))))
@@ -63,7 +63,7 @@
 ; -- logging support --------------------------------------------------------------------------------------------------------
 
 (defn gen-logging-if-verbose [static-config config operation api args-array]
-  (if-not (:elide-verbose-logging static-config)                                                                              ; static compile-time switch
+  (when-not (:elide-verbose-logging static-config)                                                                            ; static compile-time switch
     `(let [config# ~config]
        (if (:verbose-logging config#)                                                                                         ; dynamic toggle for verbose logging
          (let [logger# (:logger config#)
@@ -74,7 +74,7 @@
 ; -- missing API checking ---------------------------------------------------------------------------------------------------
 
 (defn gen-missing-api-check [static-config config api obj-sym key-sym]
-  (if-not (:elide-missing-api-checks static-config)
+  (when-not (:elide-missing-api-checks static-config)
     `(let [config# ~config
            api-check-fn# (:missing-api-check-fn config#)]
        (assert (fn? api-check-fn#) (str "invalid :api-check-fn in chromex config\n" "config:" config#))
