@@ -2,7 +2,7 @@
 
 This library is auto-generated. Current version was **generated on 2018-04-06** from [**Chromium @ 2896ec3**](https://chromium.googlesource.com/chromium/src.git/+/2896ec3f8bdb1d499f825aa79484c9a57064ef20).
 
-Looking for a nightly version? Check out [**nightly branch**](https://github.com/binaryage/chromex/tree/nightly) which gets updated nightly if there were any new API changes.
+Looking for a nightly version? Check out [**nightly branch**](https://github.com/binaryage/chromex/tree/nightly) which gets updated if there are any new API changes.
 
 #### Chromex provides idiomatic ClojureScript interface
 
@@ -20,12 +20,12 @@ Note: Chromex generator uses the same data source as [developer.chrome.com/exten
 
 Following documentation is mostly speaking about Chrome Extension development but the same patterns generally apply to Chrome App development as well.
 
-This library is data-driven. Given API namespace, all API methods, properties and events are described in a Clojure map
+This library is data-driven. Given an API namespace, all API methods, properties and events are described in a Clojure map
 along with their parameters, callbacks, versions and additional metadata ([a simple example - look for `api-table` here](src/exts/chromex/ext/context_menus.clj)).
 Chromex then provides a set of macros which consume this table and generate actual ClojureScript code wrapping native APIs.
 
 These macros can be further parametrized which allows for greater flexibility. Sane defaults
-are provided with goals:
+are provided with following goals:
 
   * API version checking and deprecation warnings at compile-time
   * flexible marshalling of Javascript values to ClojureScript and back
@@ -38,7 +38,7 @@ Chrome Extension API is evolving. You might want to target multiple Chrome versi
 different APIs. Good news is that our API data map contains full versioning and deprecation information.
 
 By default you target the latest APIs. But you can target older API version instead and
-we will warn you during compilation in case you were accessing any APIs not yet available in that particular version.
+we will warn you during compilation in case you were accessing any API not yet available in that particular version.
 
 Additionally we are able to detect calls to deprecated APIs and warn you during compilation.
 
@@ -62,19 +62,19 @@ Many Chrome API calls are async in nature and require you to specify a callback 
 You might want to watch this video explaining [API conventions](https://www.youtube.com/watch?v=bmxr75CV36A) in Chrome.
 
 We automatically turn all API functions with a callback parameter to a ClojureScript function without that callback parameter
-but returning a new core.async channel instead. The channel eventually receives a vector of parameters passed into the callback.
-When error occurs, the channel closes without receiving any result (you get `nil`). In that case you can immediately
+but returning a new core.async channel instead (`promise-chan`). The channel eventually receives a vector of parameters passed into the callback.
+When an error occurs, the channel closes without receiving any result (you receive `nil`). In that case you can immediately
 call `chromex.error/get-last-error` to obtain relevant error object (which is what was found in `chrome.runtime.lastError` during the callback).
 
 This mechanism is pluggable, so you can optionally implement your own mechanism of consuming callback calls.
 
 #### Events are emitted into core.async channels
 
-Chrome API namespaces usually provide multiple `event` objects, which you can subscribe with `.addListener`.
+Chrome API namespaces usually provide multiple `event` objects which you can subscribe with `.addListener`.
 You provide a callback function which will get called with future events as they occur. Later you can call `.removeListener`
 to unsubscribe from the event stream.
 
-We think consuming events via core.async channel is more natural for ClojureScript developers.
+We think consuming events via core.async channels is more natural for ClojureScript developers.
 In Chromex, you can request Chrome events to be emitted into a core.async channel provided by you.
 And then implement a single loop to sequentially process events as they appear on the channel.
 
@@ -93,6 +93,7 @@ Please refer to [readme in chromex-sample](https://github.com/binaryage/chromex-
 Chromex does not rely on externs file. Instead it is rigorously [using string names](https://github.com/clojure/clojurescript/wiki/Dependencies#using-string-names)
 to access Javascript properties. I would recommend you to do the same in your own extension code. It is not that hard after all. You can use `oget`, `ocall` and `oapply`
 macros from [`chromex.support`](https://github.com/binaryage/chromex/blob/master/src/lib/chromex/support.clj) namespace.
+Or even better use full-featured library [cljs-oops](https://github.com/binaryage/cljs-oops) designed to work with string names.
 
 Note: There is a [chrome_extensions.js](https://github.com/google/closure-compiler/blob/master/contrib/externs/chrome_extensions.js) externs file available,
 but that's been updated ad-hoc by the community. It is definitely incomplete and may be incorrect. But of course you are free to include the externs
@@ -105,7 +106,7 @@ Let's say for example you want to subscribe to [tab creation events](https://dev
 
 ```clojure
 (ns your.project
-  (:require [cljs.core.async :refer [chan close!]]
+  (:require [cljs.core.async :refer [chan close! go-loop]]
             [chromex.ext.tabs :as tabs]
             [chromex.ext.web-navigation :as web-navigation]
             [chromex.chrome-event-channel :refer [make-chrome-event-channel]]))
@@ -116,7 +117,7 @@ Let's say for example you want to subscribe to [tab creation events](https://dev
 
   ; do something with the channel...
   (go-loop []
-    (when-let [[event-id event-params] (<! chrome-event-channel)]
+    (when-some [[event-id event-params] (<! chrome-event-channel)]
       (process-chrome-event event-id event-params)
       (recur))
     (println "leaving main event loop"))
@@ -140,7 +141,7 @@ for example usage. Refer to [Chrome's API docs](https://developer.chrome.com/ext
 
 Note: instead of calling tap-some-events you could call `tap-all-events`. This is a convenience function which will
 tap events on all valid non-deprecated event objects in given namespace. For example `tabs/tap-all-events` will subscribe
-to all existing tabs events in latest API version.
+to all existing tabs events in the latest API.
 
 `make-chrome-event-channel` is a convenience wrapper for raw core.async channel. It is aware of event listeners and
 is able to unsubscribe them when channel gets closed. But you are free to remove listeners manually as well,
@@ -170,7 +171,7 @@ Here is an example how you would do this in chromex:
 (defn my-event-listener-factory []
   (fn [& args]
     ; do something useful with args...
-    #js ["return native answer"])) ; note: this value will be passed back to Chrome as-is, marshalling won't kick-in here
+    #js ["return native answer"])) ; note: this value will be passed back to Chrome as-is, marshalling won't be applied here
 
 ...
 (with-custom-event-listener-factory my-event-listener-factory
@@ -179,7 +180,7 @@ Here is an example how you would do this in chromex:
 ```
 
 What happened here? We have specified our own event listener factory which is responsible for creating a new
-event callback function whenever chromex asks for it. The default [implementation is here](src/lib/chromex/defaults.cljs).
+event callback function whenever chromex asks for it. The default implementation is [here](src/lib/chromex/defaults.cljs).
 This function is part of our config object, so it can be redefined during runtime.
 [`with-custom-event-listener-factory`](https://github.com/binaryage/chromex/blob/master/src/lib/chromex/config.clj)
 is just a convenience macro to override this config setting temporarily.
@@ -193,7 +194,7 @@ it there in your custom listener code.
 Also note how we passed extra arguments for .addListener call. This was discussed in the previous section.
 
 Advanced tip: similarly you can replace some other configurable functions in the config object. For example you can change the
-way how callbacks are turned into core.async channels. Theoretically you could replace it with some other mechanism.
+way how callbacks are turned into core.async channels. Theoretically you could replace it with some other mechanism (e.g. with js promises).
 
 ### Projects using Chromex
 
