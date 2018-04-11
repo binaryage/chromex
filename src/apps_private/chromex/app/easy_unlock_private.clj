@@ -93,49 +93,6 @@
    chromex.error/get-last-error."
   ([secure-message key options] (gen-call :function ::unwrap-secure-message &form secure-message key options)))
 
-(defmacro seek-bluetooth-device-by-address
-  "Connects to the SDP service on a device, given just the device's Bluetooth address. This function is useful as a faster
-   alternative to Bluetooth discovery, when you already know the remote device's Bluetooth address. A successful call to this
-   function has the side-effect of registering the device with the Bluetooth daemon, making it available for future outgoing
-   connections.
-
-     |device-address| - The Bluetooth address of the device to connect to.
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [].
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([device-address] (gen-call :function ::seek-bluetooth-device-by-address &form device-address)))
-
-(defmacro connect-to-bluetooth-service-insecurely
-  "Connects the socket to a remote Bluetooth device over an insecure connection, i.e. a connection that requests no bonding
-   and no man-in-the-middle protection. Other than the reduced security setting, behaves identically to the
-   chrome.bluetoothSocket.connect() function.
-
-     |socket-id| - The socket identifier, as issued by the     chrome.bluetoothSocket API.
-     |device-address| - The Bluetooth address of the device to connect to.
-     |uuid| - The UUID of the service to connect to.
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [].
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([socket-id device-address uuid] (gen-call :function ::connect-to-bluetooth-service-insecurely &form socket-id device-address uuid)))
-
-(defmacro update-screenlock-state
-  "Updates the screenlock state to reflect the Easy Unlock app state.
-
-     |state| - ?
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [].
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([state] (gen-call :function ::update-screenlock-state &form state)))
-
 (defmacro set-permit-access
   "Saves the permit record for the local device.
 
@@ -194,36 +151,6 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-remote-devices &form)))
 
-(defmacro get-sign-in-challenge
-  "Gets the sign-in challenge for the current user.
-
-     |nonce| - Nonce that should be signed by the Chrome OS TPM. The signed     nonce is returned with the sign-in challenge.
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [challenge signed-nonce] where:
-
-     |challenge| - The sign in challenge to be used when signing in the user     currently associated with the Easy Unlock
-                   service.
-     |signed-nonce| - Nonce signed by Chrome OS TPM, provided as an argument to     the |getSignInChallenge()| function and
-                      signed by the TPM key     associated with the user.
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([nonce] (gen-call :function ::get-sign-in-challenge &form nonce)))
-
-(defmacro try-sign-in-secret
-  "Tries to sign-in the current user with a secret obtained by decrypting the sign-in challenge. Check
-   chrome.runtime.lastError for failures. Upon success, the user session will be started.
-
-     |sign-in-secret| - ?
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [].
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([sign-in-secret] (gen-call :function ::try-sign-in-secret &form sign-in-secret)))
-
 (defmacro get-user-info
   "Retrieves information about the user associated with the Easy unlock service.
 
@@ -235,23 +162,6 @@
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-user-info &form)))
-
-(defmacro get-connection-info
-  "Gets the connection info for the Bluetooth device identified by deviceAddress.
-
-     |device-address| - ?
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [rssi transmit-power max-transmit-power] where:
-
-     |rssi| - The received signal strength from the remote device in dB. |transmit_power| The local transmission power to the
-              remote device in dB. |max_transmit_power| The maximum transmission power that can be achieved.
-     |transmit-power| - ?
-     |max-transmit-power| - ?
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([device-address] (gen-call :function ::get-connection-info &form device-address)))
 
 (defmacro show-error-bubble
   "Shows an error bubble with the given |message|, anchored to an edge of the given |anchorRect| -- typically the right edge,
@@ -269,20 +179,6 @@
   "Hides the currently visible error bubble, if there is one."
   ([] (gen-call :function ::hide-error-bubble &form)))
 
-(defmacro set-auto-pairing-result
-  "Sets the result of auto pairing triggered from onStartAutoPairing event. If auto pairing is completed successfully,
-   |result.success| should be true so that Easy bootstrap flow would finish and starts the user session. Otherwise,
-   |result.success| is set to false with an optional error message to be displayed to the user.
-
-     |result| - ?
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [].
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([result] (gen-call :function ::set-auto-pairing-result &form result)))
-
 (defmacro find-setup-connection
   "Finds and connects the remote BLE device that is advertising: |setupServiceUUID|. Returns when a connection is found or
    |timeOut| seconds have elapsed.
@@ -299,20 +195,6 @@
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([setup-service-uuid time-out] (gen-call :function ::find-setup-connection &form setup-service-uuid time-out)))
-
-(defmacro setup-connection-status
-  "Returns the status of the connection with |connectionId|.
-
-     |connection-id| - ?
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [status] where:
-
-     |status| - The status of the connection with |connection_id|.
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([connection-id] (gen-call :function ::setup-connection-status &form connection-id)))
 
 (defmacro setup-connection-disconnect
   "Disconnects the connection with |connectionId|.
@@ -339,43 +221,9 @@
    chromex.error/get-last-error."
   ([connection-id data] (gen-call :function ::setup-connection-send &form connection-id data)))
 
-(defmacro setup-connection-get-device-address
-  "Gets the Bluetooth address of the connection with |connectionId
-
-     |connection-id| - ?
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [device-address] where:
-
-     |device-address| - The bluetooth address of the connection with  |connectionId|.
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([connection-id] (gen-call :function ::setup-connection-get-device-address &form connection-id)))
-
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
-
-(defmacro tap-on-user-info-updated-events
-  "Event fired when the data for the user currently associated with Easy unlock service is updated. |userInfo| The updated
-   user information.
-
-   Events will be put on the |channel| with signature [::on-user-info-updated [user-info]] where:
-
-     |user-info| - ?
-
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
-  ([channel & args] (apply gen-call :event ::on-user-info-updated &form channel args)))
-
-(defmacro tap-on-start-auto-pairing-events
-  "Event fired at the end of Easy bootstrap to start auto pairing so that a proper cryptohome key could be generated for the
-   user.
-
-   Events will be put on the |channel| with signature [::on-start-auto-pairing []].
-
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
-  ([channel & args] (apply gen-call :event ::on-start-auto-pairing &form channel args)))
 
 (defmacro tap-on-connection-status-changed-events
   "Event fired when |connectionId| change status.
@@ -465,22 +313,6 @@
       {:name "key", :type "ArrayBuffer"}
       {:name "options", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "data", :optional? true, :type "ArrayBuffer"}]}}]}
-    {:id ::seek-bluetooth-device-by-address,
-     :name "seekBluetoothDeviceByAddress",
-     :callback? true,
-     :params [{:name "device-address", :type "string"} {:name "callback", :optional? true, :type :callback}]}
-    {:id ::connect-to-bluetooth-service-insecurely,
-     :name "connectToBluetoothServiceInsecurely",
-     :callback? true,
-     :params
-     [{:name "socket-id", :type "integer"}
-      {:name "device-address", :type "string"}
-      {:name "uuid", :type "string"}
-      {:name "callback", :type :callback}]}
-    {:id ::update-screenlock-state,
-     :name "updateScreenlockState",
-     :callback? true,
-     :params [{:name "state", :type "unknown-type"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::set-permit-access,
      :name "setPermitAccess",
      :callback? true,
@@ -511,40 +343,10 @@
      [{:name "callback",
        :type :callback,
        :callback {:params [{:name "devices", :type "[array-of-easyUnlockPrivate.Devices]"}]}}]}
-    {:id ::get-sign-in-challenge,
-     :name "getSignInChallenge",
-     :callback? true,
-     :params
-     [{:name "nonce", :type "ArrayBuffer"}
-      {:name "callback",
-       :type :callback,
-       :callback
-       {:params
-        [{:name "challenge", :optional? true, :type "ArrayBuffer"}
-         {:name "signed-nonce", :optional? true, :type "ArrayBuffer"}]}}]}
-    {:id ::try-sign-in-secret,
-     :name "trySignInSecret",
-     :callback? true,
-     :params [{:name "sign-in-secret", :type "ArrayBuffer"} {:name "callback", :type :callback}]}
     {:id ::get-user-info,
      :name "getUserInfo",
      :callback? true,
-     :params
-     [{:name "callback",
-       :type :callback,
-       :callback {:params [{:name "users", :type "[array-of-easyUnlockPrivate.UserInfos]"}]}}]}
-    {:id ::get-connection-info,
-     :name "getConnectionInfo",
-     :callback? true,
-     :params
-     [{:name "device-address", :type "string"}
-      {:name "callback",
-       :type :callback,
-       :callback
-       {:params
-        [{:name "rssi", :type "integer"}
-         {:name "transmit-power", :type "integer"}
-         {:name "max-transmit-power", :type "integer"}]}}]}
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "users", :type "[array-of-objects]"}]}}]}
     {:id ::show-error-bubble,
      :name "showErrorBubble",
      :since "42",
@@ -554,11 +356,6 @@
       {:name "link-target", :type "string"}
       {:name "anchor-rect", :type "object"}]}
     {:id ::hide-error-bubble, :name "hideErrorBubble", :since "43"}
-    {:id ::set-auto-pairing-result,
-     :name "setAutoPairingResult",
-     :since "42",
-     :callback? true,
-     :params [{:name "result", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::find-setup-connection,
      :name "findSetupConnection",
      :since "47",
@@ -569,15 +366,6 @@
       {:name "callback",
        :type :callback,
        :callback {:params [{:name "connection-id", :type "integer"} {:name "device-address", :type "string"}]}}]}
-    {:id ::setup-connection-status,
-     :name "setupConnectionStatus",
-     :since "47",
-     :callback? true,
-     :params
-     [{:name "connection-id", :type "integer"}
-      {:name "callback",
-       :type :callback,
-       :callback {:params [{:name "status", :type "easyUnlockPrivate.ConnectionStatus"}]}}]}
     {:id ::setup-connection-disconnect,
      :name "setupConnectionDisconnect",
      :since "47",
@@ -590,20 +378,9 @@
      :params
      [{:name "connection-id", :type "integer"}
       {:name "data", :type "ArrayBuffer"}
-      {:name "callback", :optional? true, :type :callback}]}
-    {:id ::setup-connection-get-device-address,
-     :name "setupConnectionGetDeviceAddress",
-     :since "47",
-     :callback? true,
-     :params
-     [{:name "connection-id", :type "integer"}
-      {:name "callback", :type :callback, :callback {:params [{:name "device-address", :type "string"}]}}]}],
+      {:name "callback", :optional? true, :type :callback}]}],
    :events
-   [{:id ::on-user-info-updated,
-     :name "onUserInfoUpdated",
-     :params [{:name "user-info", :type "easyUnlockPrivate.UserInfo"}]}
-    {:id ::on-start-auto-pairing, :name "onStartAutoPairing", :since "42"}
-    {:id ::on-connection-status-changed,
+   [{:id ::on-connection-status-changed,
      :name "onConnectionStatusChanged",
      :since "47",
      :params

@@ -201,6 +201,23 @@
    chromex.error/get-last-error."
   ([entry pin] (gen-call :function ::pin-drive-file &form entry pin)))
 
+(defmacro ensure-file-downloaded
+  "If |entry| is a Drive file, ensures the file is downloaded to the cache. Otherwise, finishes immediately in success. For
+   example, when the file is under Downloads, MTP, removeable media, or provided by extensions for other cloud storage
+   services than Google Drive, this does nothing. This is a workaround to avoid intermittent and duplicated downloading of a
+   Drive file by current implementation of Drive integration when an extension reads a file sequentially but intermittently.
+   |entry| A regular file entry to be read. |callback| Callback called after having the file in cache.     'runtime.lastError'
+   will be set if there was an error.
+
+     |entry| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([entry] (gen-call :function ::ensure-file-downloaded &form entry)))
+
 (defmacro resolve-isolated-entries
   "Resolves entries in the isolated file system and returns corresponding entries in the external file system mounted to
    Chrome OS file manager backend. If resolving entry fails, the entry will be just ignored and the corresponding entry does
@@ -549,6 +566,12 @@
      |type| - ?"
   ([type] (gen-call :function ::open-inspector &form type)))
 
+(defmacro open-settings-subpage
+  "Opens page in Settings window. |sub_page| Name of a sub_page to show.
+
+     |sub-page| - ?"
+  ([sub-page] (gen-call :function ::open-settings-subpage &form sub-page)))
+
 (defmacro compute-checksum
   "Computes an MD5 checksum for the given file. |entry| The entry of the file to checksum. |callback
 
@@ -870,6 +893,11 @@
      :name "pinDriveFile",
      :callback? true,
      :params [{:name "entry", :type "object"} {:name "pin", :type "boolean"} {:name "callback", :type :callback}]}
+    {:id ::ensure-file-downloaded,
+     :name "ensureFileDownloaded",
+     :since "master",
+     :callback? true,
+     :params [{:name "entry", :type "object"} {:name "callback", :type :callback}]}
     {:id ::resolve-isolated-entries,
      :name "resolveIsolatedEntries",
      :callback? true,
@@ -1016,6 +1044,10 @@
          {:name "running-profile", :type "string"}
          {:name "display-profile", :type "string"}]}}]}
     {:id ::open-inspector, :name "openInspector", :params [{:name "type", :type "unknown-type"}]}
+    {:id ::open-settings-subpage,
+     :name "openSettingsSubpage",
+     :since "master",
+     :params [{:name "sub-page", :type "string"}]}
     {:id ::compute-checksum,
      :name "computeChecksum",
      :since "41",

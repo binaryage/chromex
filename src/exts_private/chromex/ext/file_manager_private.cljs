@@ -48,6 +48,9 @@
 (defn pin-drive-file* [config entry pin]
   (gen-wrap :function ::pin-drive-file config entry pin))
 
+(defn ensure-file-downloaded* [config entry]
+  (gen-wrap :function ::ensure-file-downloaded config entry))
+
 (defn resolve-isolated-entries* [config entries]
   (gen-wrap :function ::resolve-isolated-entries config entries))
 
@@ -131,6 +134,9 @@
 
 (defn open-inspector* [config type]
   (gen-wrap :function ::open-inspector config type))
+
+(defn open-settings-subpage* [config sub-page]
+  (gen-wrap :function ::open-settings-subpage config sub-page))
 
 (defn compute-checksum* [config entry]
   (gen-wrap :function ::compute-checksum config entry))
