@@ -84,7 +84,7 @@
    :properties
    [{:id ::max-number-of-whitelisted-pages,
      :name "MAX_NUMBER_OF_WHITELISTED_PAGES",
-     :since "master",
+     :since "67",
      :return-type "unknown-type"}],
    :functions
    [{:id ::add-whitelisted-pages,

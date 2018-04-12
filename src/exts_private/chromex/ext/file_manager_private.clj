@@ -895,7 +895,7 @@
      :params [{:name "entry", :type "object"} {:name "pin", :type "boolean"} {:name "callback", :type :callback}]}
     {:id ::ensure-file-downloaded,
      :name "ensureFileDownloaded",
-     :since "master",
+     :since "67",
      :callback? true,
      :params [{:name "entry", :type "object"} {:name "callback", :type :callback}]}
     {:id ::resolve-isolated-entries,

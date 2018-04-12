@@ -497,7 +497,7 @@
        :callback {:params [{:name "error", :optional? true, :type "developerPrivate.LoadError"}]}}]}
     {:id ::install-dropped-file,
      :name "installDroppedFile",
-     :since "master",
+     :since "67",
      :callback? true,
      :params [{:name "callback", :optional? true, :type :callback}]}
     {:id ::notify-drag-install-in-progress, :name "notifyDragInstallInProgress", :since "64"}
