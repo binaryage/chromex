@@ -9,8 +9,8 @@
 (defn get-device* [config device-address]
   (gen-wrap :function ::get-device config device-address))
 
-(defn get-devices* [config]
-  (gen-wrap :function ::get-devices config))
+(defn get-devices* [config filter]
+  (gen-wrap :function ::get-devices config filter))
 
 (defn start-discovery* [config]
   (gen-wrap :function ::start-discovery config))

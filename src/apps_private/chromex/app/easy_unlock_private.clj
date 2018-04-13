@@ -93,18 +93,6 @@
    chromex.error/get-last-error."
   ([secure-message key options] (gen-call :function ::unwrap-secure-message &form secure-message key options)))
 
-(defmacro set-permit-access
-  "Saves the permit record for the local device.
-
-     |permit-access| - The permit record to be saved.
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [].
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([permit-access] (gen-call :function ::set-permit-access &form permit-access)))
-
 (defmacro get-permit-access
   "Gets the permit record for the local device.
 
@@ -313,12 +301,6 @@
       {:name "key", :type "ArrayBuffer"}
       {:name "options", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "data", :optional? true, :type "ArrayBuffer"}]}}]}
-    {:id ::set-permit-access,
-     :name "setPermitAccess",
-     :callback? true,
-     :params
-     [{:name "permit-access", :type "easyUnlockPrivate.PermitRecord"}
-      {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-permit-access,
      :name "getPermitAccess",
      :callback? true,

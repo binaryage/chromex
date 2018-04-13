@@ -47,6 +47,10 @@
 (defmacro get-devices
   "Get a list of Bluetooth devices known to the system, including paired and recently discovered devices.
 
+     |filter| - Some criteria to filter the list of returned bluetooth devices. If the filter is not set or set to {},
+                returned device list will contain all bluetooth devices. Right now this is only supported in ChromeOS, for
+                other platforms, a full list is returned.
+
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [device-infos] where:
 
@@ -56,7 +60,8 @@
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/bluetooth#method-getDevices."
-  ([] (gen-call :function ::get-devices &form)))
+  ([filter] (gen-call :function ::get-devices &form filter))
+  ([] `(get-devices :omit)))
 
 (defmacro start-discovery
   "Start discovery. Newly discovered devices will be returned via the onDeviceAdded event. Previously discovered devices
@@ -172,7 +177,8 @@
      :name "getDevices",
      :callback? true,
      :params
-     [{:name "callback",
+     [{:name "filter", :optional? true, :type "object"}
+      {:name "callback",
        :type :callback,
        :callback {:params [{:name "device-infos", :type "[array-of-bluetooth.Devices]"}]}}]}
     {:id ::start-discovery,

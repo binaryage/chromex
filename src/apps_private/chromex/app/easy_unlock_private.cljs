@@ -18,9 +18,6 @@
 (defn unwrap-secure-message* [config secure-message key options]
   (gen-wrap :function ::unwrap-secure-message config secure-message key options))
 
-(defn set-permit-access* [config permit-access]
-  (gen-wrap :function ::set-permit-access config permit-access))
-
 (defn get-permit-access* [config]
   (gen-wrap :function ::get-permit-access config))
 
