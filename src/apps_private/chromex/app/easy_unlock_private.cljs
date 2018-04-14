@@ -6,33 +6,6 @@
 (defn get-strings* [config]
   (gen-wrap :function ::get-strings config))
 
-(defn generate-ec-p256-key-pair* [config]
-  (gen-wrap :function ::generate-ec-p256-key-pair config))
-
-(defn perform-ecdh-key-agreement* [config private-key public-key]
-  (gen-wrap :function ::perform-ecdh-key-agreement config private-key public-key))
-
-(defn create-secure-message* [config payload key options]
-  (gen-wrap :function ::create-secure-message config payload key options))
-
-(defn unwrap-secure-message* [config secure-message key options]
-  (gen-wrap :function ::unwrap-secure-message config secure-message key options))
-
-(defn get-permit-access* [config]
-  (gen-wrap :function ::get-permit-access config))
-
-(defn clear-permit-access* [config]
-  (gen-wrap :function ::clear-permit-access config))
-
-(defn set-remote-devices* [config devices]
-  (gen-wrap :function ::set-remote-devices config devices))
-
-(defn get-remote-devices* [config]
-  (gen-wrap :function ::get-remote-devices config))
-
-(defn get-user-info* [config]
-  (gen-wrap :function ::get-user-info config))
-
 (defn show-error-bubble* [config message link-range link-target anchor-rect]
   (gen-wrap :function ::show-error-bubble config message link-range link-target anchor-rect))
 

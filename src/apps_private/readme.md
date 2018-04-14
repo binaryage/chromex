@@ -47,7 +47,7 @@
 
 ### API stats
 
-Generated 39 namespaces containing 1 properties, 310 functions and 72 events:
+Generated 39 namespaces containing 1 properties, 301 functions and 72 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -62,7 +62,7 @@ Generated 39 namespaces containing 1 properties, 310 functions and 72 events:
     |      chrome.commandLinePrivate |           0 |          1 |       0 |
     |        chrome.dashboardPrivate |           0 |          1 |       0 |
     |        chrome.developerPrivate |           0 |         29 |       2 |
-    |       chrome.easyUnlockPrivate |           0 |         15 |       3 |
+    |       chrome.easyUnlockPrivate |           0 |          6 |       3 |
     |             chrome.echoPrivate |           0 |          5 |       0 |
     |         chrome.feedbackPrivate |           0 |          6 |       1 |
     |      chrome.fileManagerPrivate |           0 |         56 |       9 |
@@ -144,9 +144,7 @@ Generated 39 namespaces containing 1 properties, 310 functions and 72 events:
       tap-on-profile-state-changed tap-all-events]]
 
     [chromex.app.easy-unlock-private refer:[
-      get-strings generate-ec-p256-key-pair perform-ecdh-key-agreement create-secure-message
-      unwrap-secure-message get-permit-access clear-permit-access set-remote-devices get-remote-devices
-      get-user-info show-error-bubble hide-error-bubble find-setup-connection setup-connection-disconnect
+      get-strings show-error-bubble hide-error-bubble find-setup-connection setup-connection-disconnect
       setup-connection-send tap-on-connection-status-changed tap-on-data-received tap-on-send-completed
       tap-all-events]]
 
