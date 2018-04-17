@@ -48,7 +48,7 @@
 
 ### API stats
 
-Generated 40 namespaces containing 1 properties, 334 functions and 66 events:
+Generated 40 namespaces containing 1 properties, 334 functions and 62 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -84,7 +84,7 @@ Generated 40 namespaces containing 1 properties, 334 functions and 66 events:
     |               chrome.resourcesPrivate |           0 |          1 |       0 |
     |                chrome.settingsPrivate |           0 |          5 |       1 |
     |                 chrome.streamsPrivate |           0 |          1 |       1 |
-    |                  chrome.systemPrivate |           0 |          3 |       4 |
+    |                  chrome.systemPrivate |           0 |          3 |       0 |
     |                chrome.terminalPrivate |           0 |          5 |       1 |
     |                   chrome.usersPrivate |           0 |          5 |       0 |
     |         chrome.virtualKeyboardPrivate |           0 |         12 |       3 |
@@ -256,8 +256,7 @@ Generated 40 namespaces containing 1 properties, 334 functions and 66 events:
       abort tap-on-execute-mime-type-handler tap-all-events]]
 
     [chromex.ext.system-private refer:[
-      get-incognito-mode-availability get-update-status get-api-key tap-on-volume-changed
-      tap-on-brightness-changed tap-on-screen-unlocked tap-on-woke-up tap-all-events]]
+      get-incognito-mode-availability get-update-status get-api-key tap-all-events]]
 
     [chromex.ext.terminal-private refer:[
       open-terminal-process close-terminal-process send-input on-terminal-resize ack-output

@@ -49,10 +49,9 @@
      |time-out| - ?
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [connection-id device-address] where:
+   Signature of the result value put on the channel is [connection-id] where:
 
      |connection-id| - The identifier of the connection found. To be used in future calls refering to this connection.
-     |device-address| - The Bluetooth address of the remote device.
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
@@ -158,9 +157,7 @@
      :params
      [{:name "setup-service-uuid", :type "string"}
       {:name "time-out", :type "integer"}
-      {:name "callback",
-       :type :callback,
-       :callback {:params [{:name "connection-id", :type "integer"} {:name "device-address", :type "string"}]}}]}
+      {:name "callback", :type :callback, :callback {:params [{:name "connection-id", :type "integer"}]}}]}
     {:id ::setup-connection-disconnect,
      :name "setupConnectionDisconnect",
      :since "47",
