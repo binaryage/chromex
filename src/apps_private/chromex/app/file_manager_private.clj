@@ -1046,7 +1046,7 @@
     {:id ::open-inspector, :name "openInspector", :params [{:name "type", :type "unknown-type"}]}
     {:id ::open-settings-subpage,
      :name "openSettingsSubpage",
-     :since "master",
+     :since "67",
      :params [{:name "sub-page", :type "string"}]}
     {:id ::compute-checksum,
      :name "computeChecksum",

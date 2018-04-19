@@ -1,7 +1,7 @@
-(ns chromex.ext.enterprise.reporting-private
-  "Private API for reporting Chrome browser status to admin console.
+(ns chromex.ext.cec-private
+  "Private API for HDMI CEC functionality.
 
-     * available since Chrome 67"
+     * available since Chrome master"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -12,23 +12,20 @@
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
-(defmacro upload-chrome-desktop-report
-  "Uploads the status of Chrome browser to the admin console by sending request to the DMServer. Sets runtime.lastError on
-   failure.
+(defmacro send-stand-by
+  "Attempt to put all HDMI CEC compatible devices in stand-by.This is not guaranteed to have any effect on the connected
+   displays. Displays that do not support HDMI CEC will not be affected."
+  ([] (gen-call :function ::send-stand-by &form)))
 
-     |report| - ?
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [].
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([report] (gen-call :function ::upload-chrome-desktop-report &form report)))
+(defmacro send-wake-up
+  "Attempt to announce this device as the active input source towards all HDMI CEC enabled displays connected, waking them
+   from standby if necessary."
+  ([] (gen-call :function ::send-wake-up &form)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
-  "Taps all valid non-deprecated events in chromex.ext.enterprise.reporting-private namespace."
+  "Taps all valid non-deprecated events in chromex.ext.cec-private namespace."
   [chan]
   (gen-tap-all-events-call api-table (meta &form) chan))
 
@@ -37,13 +34,9 @@
 ; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
-  {:namespace "chrome.enterprise.reportingPrivate",
-   :since "67",
-   :functions
-   [{:id ::upload-chrome-desktop-report,
-     :name "uploadChromeDesktopReport",
-     :callback? true,
-     :params [{:name "report", :type "object"} {:name "callback", :optional? true, :type :callback}]}]})
+  {:namespace "chrome.cecPrivate",
+   :since "master",
+   :functions [{:id ::send-stand-by, :name "sendStandBy"} {:id ::send-wake-up, :name "sendWakeUp"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

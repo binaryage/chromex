@@ -10,6 +10,7 @@
 | [chrome.bluetoothPrivate](https://developer.chrome.com/extensions/bluetoothPrivate) | [chromex/app/bluetooth_private.clj](chromex/app/bluetooth_private.clj) |
 | [chrome.bookmarkManagerPrivate](https://developer.chrome.com/extensions/bookmarkManagerPrivate) | [chromex/app/bookmark_manager_private.clj](chromex/app/bookmark_manager_private.clj) |
 | [chrome.brailleDisplayPrivate](https://developer.chrome.com/extensions/brailleDisplayPrivate) | [chromex/app/braille_display_private.clj](chromex/app/braille_display_private.clj) |
+| [chrome.cecPrivate](https://developer.chrome.com/extensions/cecPrivate) | [chromex/app/cec_private.clj](chromex/app/cec_private.clj) |
 | [chrome.chromeosInfoPrivate](https://developer.chrome.com/extensions/chromeosInfoPrivate) | [chromex/app/chromeos_info_private.clj](chromex/app/chromeos_info_private.clj) |
 | [chrome.commandLinePrivate](https://developer.chrome.com/extensions/commandLinePrivate) | [chromex/app/command_line_private.clj](chromex/app/command_line_private.clj) |
 | [chrome.dashboardPrivate](https://developer.chrome.com/extensions/dashboardPrivate) | [chromex/app/dashboard_private.clj](chromex/app/dashboard_private.clj) |
@@ -47,7 +48,7 @@
 
 ### API stats
 
-Generated 39 namespaces containing 1 properties, 301 functions and 68 events:
+Generated 40 namespaces containing 1 properties, 303 functions and 68 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -58,6 +59,7 @@ Generated 39 namespaces containing 1 properties, 301 functions and 68 events:
     |        chrome.bluetoothPrivate |           0 |          7 |       1 |
     |  chrome.bookmarkManagerPrivate |           0 |         20 |       4 |
     |   chrome.brailleDisplayPrivate |           0 |          2 |       2 |
+    |              chrome.cecPrivate |           0 |          2 |       0 |
     |     chrome.chromeosInfoPrivate |           0 |          2 |       0 |
     |      chrome.commandLinePrivate |           0 |          1 |       0 |
     |        chrome.dashboardPrivate |           0 |          1 |       0 |
@@ -124,6 +126,9 @@ Generated 39 namespaces containing 1 properties, 301 functions and 68 events:
 
     [chromex.app.braille-display-private refer:[
       get-display-state write-dots tap-on-display-state-changed tap-on-key-event tap-all-events]]
+
+    [chromex.app.cec-private refer:[
+      send-stand-by send-wake-up tap-all-events]]
 
     [chromex.app.chromeos-info-private refer:[
       get set tap-all-events]]
