@@ -168,6 +168,19 @@
    chromex.error/get-last-error."
   ([id] (gen-call :function ::is-pending-custodian-approval &form id)))
 
+(defmacro get-referrer-chain
+  "Returns a base-64 encoded referrer chain leading to the webstore page. Should only be used for extension anti-abuse
+   purposes.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [referrer-chain] where:
+
+     |referrer-chain| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::get-referrer-chain &form)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -255,7 +268,12 @@
      :callback? true,
      :params
      [{:name "id", :type "string"}
-      {:name "callback", :type :callback, :callback {:params [{:name "is-pending-approval", :type "boolean"}]}}]}]})
+      {:name "callback", :type :callback, :callback {:params [{:name "is-pending-approval", :type "boolean"}]}}]}
+    {:id ::get-referrer-chain,
+     :name "getReferrerChain",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "referrer-chain", :type "string"}]}}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

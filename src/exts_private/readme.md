@@ -49,7 +49,7 @@
 
 ### API stats
 
-Generated 41 namespaces containing 1 properties, 336 functions and 62 events:
+Generated 41 namespaces containing 1 properties, 337 functions and 62 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -94,7 +94,7 @@ Generated 41 namespaces containing 1 properties, 336 functions and 62 events:
     |             chrome.webrtcAudioPrivate |           0 |          3 |       1 |
     |    chrome.webrtcDesktopCapturePrivate |           0 |          2 |       0 |
     |           chrome.webrtcLoggingPrivate |           0 |         14 |       0 |
-    |                chrome.webstorePrivate |           0 |         13 |       0 |
+    |                chrome.webstorePrivate |           0 |         14 |       0 |
 
 ### Requires
 
@@ -294,5 +294,6 @@ Generated 41 namespaces containing 1 properties, 336 functions and 62 events:
     [chromex.ext.webstore-private refer:[
       install begin-install-with-manifest3 complete-install enable-app-launcher get-browser-login
       get-store-login set-store-login get-web-gl-status get-is-launcher-enabled is-in-incognito-mode
-      get-ephemeral-apps-enabled launch-ephemeral-app is-pending-custodian-approval tap-all-events]]))
+      get-ephemeral-apps-enabled launch-ephemeral-app is-pending-custodian-approval get-referrer-chain
+      tap-all-events]]))
 ```

@@ -42,3 +42,6 @@
 (defn is-pending-custodian-approval* [config id]
   (gen-wrap :function ::is-pending-custodian-approval config id))
 
+(defn get-referrer-chain* [config]
+  (gen-wrap :function ::get-referrer-chain config))
+
