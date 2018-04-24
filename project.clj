@@ -2,8 +2,8 @@
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [org.clojure/clojurescript "1.10.238"]
                  [org.clojure/core.async "0.4.474"]
-                 [binaryage/chromex "0.5.16"]
-                 [binaryage/devtools "0.9.9"]
+                 [binaryage/chromex "0.6.0"]
+                 [binaryage/devtools "0.9.10"]
                  [figwheel "0.5.15"]
                  [environ "1.1.0"]]
 
