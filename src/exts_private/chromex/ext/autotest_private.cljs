@@ -57,6 +57,12 @@
 (defn get-printer-list* [config]
   (gen-wrap :function ::get-printer-list config))
 
+(defn update-printer* [config printer]
+  (gen-wrap :function ::update-printer config printer))
+
+(defn remove-printer* [config printer-id]
+  (gen-wrap :function ::remove-printer config printer-id))
+
 (defn set-play-store-enabled* [config enabled]
   (gen-wrap :function ::set-play-store-enabled config enabled))
 

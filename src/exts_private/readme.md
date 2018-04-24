@@ -49,7 +49,7 @@
 
 ### API stats
 
-Generated 41 namespaces containing 1 properties, 337 functions and 62 events:
+Generated 41 namespaces containing 1 properties, 339 functions and 62 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -57,7 +57,7 @@ Generated 41 namespaces containing 1 properties, 337 functions and 62 events:
     |           chrome.accessibilityPrivate |           0 |          8 |       4 |
     |             chrome.activityLogPrivate |           0 |          4 |       1 |
     |                chrome.autofillPrivate |           0 |          9 |       2 |
-    |                chrome.autotestPrivate |           0 |         19 |       0 |
+    |                chrome.autotestPrivate |           0 |         21 |       0 |
     |               chrome.bluetoothPrivate |           0 |          7 |       1 |
     |         chrome.bookmarkManagerPrivate |           0 |         20 |       4 |
     |          chrome.brailleDisplayPrivate |           0 |          2 |       2 |
@@ -120,8 +120,8 @@ Generated 41 namespaces containing 1 properties, 337 functions and 62 events:
       logout restart shutdown login-status lock-screen get-extensions-info simulate-asan-memory-bug
       set-touchpad-sensitivity set-tap-to-click set-three-finger-click set-tap-dragging
       set-natural-scroll set-mouse-sensitivity set-primary-button-right set-mouse-reverse-scroll
-      get-visible-notifications get-play-store-state get-printer-list set-play-store-enabled
-      tap-all-events]]
+      get-visible-notifications get-play-store-state get-printer-list update-printer remove-printer
+      set-play-store-enabled tap-all-events]]
 
     [chromex.ext.bluetooth-private refer:[
       set-adapter-state set-pairing-response disconnect-all forget-device set-discovery-filter connect

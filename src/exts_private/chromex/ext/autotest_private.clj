@@ -143,6 +143,18 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-printer-list &form)))
 
+(defmacro update-printer
+  "Update printer. Printer with empty ID is considered new.
+
+     |printer| - ?"
+  ([printer] (gen-call :function ::update-printer &form printer)))
+
+(defmacro remove-printer
+  "Remove printer.
+
+     |printer-id| - ?"
+  ([printer-id] (gen-call :function ::remove-printer &form printer-id)))
+
 (defmacro set-play-store-enabled
   "Enable/disable the Play Store.
 
@@ -210,7 +222,14 @@
      :since "65",
      :callback? true,
      :params
-     [{:name "callback", :type :callback, :callback {:params [{:name "printers", :type "[array-of-objects]"}]}}]}
+     [{:name "callback",
+       :type :callback,
+       :callback {:params [{:name "printers", :type "[array-of-autotestPrivate.Printers]"}]}}]}
+    {:id ::update-printer,
+     :name "updatePrinter",
+     :since "master",
+     :params [{:name "printer", :type "autotestPrivate.Printer"}]}
+    {:id ::remove-printer, :name "removePrinter", :since "master", :params [{:name "printer-id", :type "string"}]}
     {:id ::set-play-store-enabled,
      :name "setPlayStoreEnabled",
      :since "60",
