@@ -31,7 +31,7 @@
                             :compiler     {:output-to     "resources/unpacked/compiled/background/main.js"
                                            :output-dir    "resources/unpacked/compiled/background"
                                            :asset-path    "compiled/background"
-                                           :preloads      [devtools.preload]
+                                           :preloads      [devtools.preload figwheel.preload]
                                            :main          chromex-sample.background
                                            :optimizations :none
                                            :source-map    true}}
@@ -41,7 +41,7 @@
                             :compiler     {:output-to     "resources/unpacked/compiled/popup/main.js"
                                            :output-dir    "resources/unpacked/compiled/popup"
                                            :asset-path    "compiled/popup"
-                                           :preloads      [devtools.preload]
+                                           :preloads      [devtools.preload figwheel.preload]
                                            :main          chromex-sample.popup
                                            :optimizations :none
                                            :source-map    true}}}}}
