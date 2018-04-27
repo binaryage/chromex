@@ -2,7 +2,7 @@
   "The chrome.declarativeNetRequest API is used to intercept and
    perform actions on a network request by specifying declarative rules.
 
-     * available since Chrome 66
+     * available since Chrome 67
      * https://developer.chrome.com/extensions/declarativeNetRequest"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -80,28 +80,22 @@
 
 (def api-table
   {:namespace "chrome.declarativeNetRequest",
-   :since "66",
+   :since "67",
    :properties
-   [{:id ::max-number-of-whitelisted-pages,
-     :name "MAX_NUMBER_OF_WHITELISTED_PAGES",
-     :since "67",
-     :return-type "unknown-type"}],
+   [{:id ::max-number-of-whitelisted-pages, :name "MAX_NUMBER_OF_WHITELISTED_PAGES", :return-type "unknown-type"}],
    :functions
    [{:id ::add-whitelisted-pages,
      :name "addWhitelistedPages",
-     :since "67",
      :callback? true,
      :params
      [{:name "page-patterns", :type "[array-of-strings]"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-whitelisted-pages,
      :name "removeWhitelistedPages",
-     :since "67",
      :callback? true,
      :params
      [{:name "page-patterns", :type "[array-of-strings]"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-whitelisted-pages,
      :name "getWhitelistedPages",
-     :since "67",
      :callback? true,
      :params
      [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "[array-of-strings]"}]}}]}]})

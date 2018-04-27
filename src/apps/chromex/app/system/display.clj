@@ -78,8 +78,8 @@
   ([layouts] (gen-call :function ::set-display-layout &form layouts)))
 
 (defmacro enable-unified-desktop
-  "Enables/disables the unified desktop feature. Note that this simply enables the feature, but will not change the actual
-   desktop mode. (That is, if the desktop is in mirror mode, it will stay in mirror mode) NOTE: This is only available to
+  "Enables/disables the unified desktop feature. If enabled while mirroring is active, the desktop mode will not change until
+   mirroring is turned off. Otherwise, the desktop mode will switch to unified immediately. NOTE: This is only available to
    Chrome OS Kiosk apps and Web UI.
 
      |enabled| - True if unified desktop should be enabled.
@@ -97,7 +97,7 @@
   ([id] (gen-call :function ::overscan-calibration-start &form id)))
 
 (defmacro overscan-calibration-adjust
-  "Adjusts the current overscan insets for a display. Typically this should etiher move the display along an axis (e.g.
+  "Adjusts the current overscan insets for a display. Typically this should either move the display along an axis (e.g.
    left+right have the same value) or scale it along an axis (e.g. top+bottom have opposite values). Each Adjust call is
    cumulative with previous calls since Start.
 
@@ -125,7 +125,7 @@
 
 (defmacro show-native-touch-calibration
   "Displays the native touch calibration UX for the display with |id| as display id. This will show an overlay on the screen
-   with required instructions on how to proceed. The callback will be invoked in case of successful calibraion only. If the
+   with required instructions on how to proceed. The callback will be invoked in case of successful calibration only. If the
    calibration fails, this will throw an error.
 
      |id| - The display's unique identifier.
