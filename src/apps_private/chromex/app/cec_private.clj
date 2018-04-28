@@ -1,7 +1,7 @@
 (ns chromex.app.cec-private
   "Private API for HDMI CEC functionality.
 
-     * available since Chrome master"
+     * available since Chrome 68"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -35,7 +35,7 @@
 
 (def api-table
   {:namespace "chrome.cecPrivate",
-   :since "master",
+   :since "68",
    :functions [{:id ::send-stand-by, :name "sendStandBy"} {:id ::send-wake-up, :name "sendWakeUp"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

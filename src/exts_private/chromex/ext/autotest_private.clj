@@ -227,9 +227,9 @@
        :callback {:params [{:name "printers", :type "[array-of-autotestPrivate.Printers]"}]}}]}
     {:id ::update-printer,
      :name "updatePrinter",
-     :since "master",
+     :since "68",
      :params [{:name "printer", :type "autotestPrivate.Printer"}]}
-    {:id ::remove-printer, :name "removePrinter", :since "master", :params [{:name "printer-id", :type "string"}]}
+    {:id ::remove-printer, :name "removePrinter", :since "68", :params [{:name "printer-id", :type "string"}]}
     {:id ::set-play-store-enabled,
      :name "setPlayStoreEnabled",
      :since "60",

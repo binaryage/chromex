@@ -271,7 +271,7 @@
       {:name "callback", :type :callback, :callback {:params [{:name "is-pending-approval", :type "boolean"}]}}]}
     {:id ::get-referrer-chain,
      :name "getReferrerChain",
-     :since "master",
+     :since "68",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "referrer-chain", :type "string"}]}}]}]})
 
