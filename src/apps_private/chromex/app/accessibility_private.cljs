@@ -27,6 +27,9 @@
 (defn send-synthetic-key-event* [config key-event]
   (gen-wrap :function ::send-synthetic-key-event config key-event))
 
+(defn on-select-to-speak-state-changed* [config state]
+  (gen-wrap :function ::on-select-to-speak-state-changed config state))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-introduce-chrome-vox* [config channel & args]
@@ -40,4 +43,7 @@
 
 (defn on-two-finger-touch-stop* [config channel & args]
   (gen-wrap :event ::on-two-finger-touch-stop config channel args))
+
+(defn on-select-to-speak-state-change-requested* [config channel & args]
+  (gen-wrap :event ::on-select-to-speak-state-change-requested config channel args))
 

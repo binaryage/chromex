@@ -66,6 +66,13 @@
      |key-event| - The event to send."
   ([key-event] (gen-call :function ::send-synthetic-key-event &form key-event)))
 
+(defmacro on-select-to-speak-state-changed
+  "Called by the Select-to-Speak extension when Select-to-Speak has changed states, between selecting with the mouse,
+   speaking, and inactive.
+
+     |state| - ?"
+  ([state] (gen-call :function ::on-select-to-speak-state-changed &form state)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -98,12 +105,20 @@
   ([channel & args] (apply gen-call :event ::on-two-finger-touch-start &form channel args)))
 
 (defmacro tap-on-two-finger-touch-stop-events
-  "Fired when  the user is no longer holding down two fingers (including releasing one, holding down three, or moving them).
+  "Fired when the user is no longer holding down two fingers (including releasing one, holding down three, or moving them).
 
    Events will be put on the |channel| with signature [::on-two-finger-touch-stop []].
 
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-two-finger-touch-stop &form channel args)))
+
+(defmacro tap-on-select-to-speak-state-change-requested-events
+  "Called when Chrome OS wants to change the Select-to-Speak state, between selecting with the mouse, speaking, and inactive.
+
+   Events will be put on the |channel| with signature [::on-select-to-speak-state-change-requested []].
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-select-to-speak-state-change-requested &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
@@ -149,7 +164,11 @@
     {:id ::send-synthetic-key-event,
      :name "sendSyntheticKeyEvent",
      :since "65",
-     :params [{:name "key-event", :type "accessibilityPrivate.SyntheticKeyboardEvent"}]}],
+     :params [{:name "key-event", :type "accessibilityPrivate.SyntheticKeyboardEvent"}]}
+    {:id ::on-select-to-speak-state-changed,
+     :name "onSelectToSpeakStateChanged",
+     :since "master",
+     :params [{:name "state", :type "accessibilityPrivate.SelectToSpeakState"}]}],
    :events
    [{:id ::on-introduce-chrome-vox, :name "onIntroduceChromeVox", :since "42"}
     {:id ::on-accessibility-gesture,
@@ -157,7 +176,8 @@
      :since "52",
      :params [{:name "gesture", :type "accessibilityPrivate.Gesture"}]}
     {:id ::on-two-finger-touch-start, :name "onTwoFingerTouchStart", :since "59"}
-    {:id ::on-two-finger-touch-stop, :name "onTwoFingerTouchStop", :since "59"}]})
+    {:id ::on-two-finger-touch-stop, :name "onTwoFingerTouchStop", :since "59"}
+    {:id ::on-select-to-speak-state-change-requested, :name "onSelectToSpeakStateChangeRequested", :since "master"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
