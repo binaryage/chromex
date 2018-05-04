@@ -59,3 +59,6 @@
 (defn on-ime-menu-items-changed* [config channel & args]
   (gen-wrap :event ::on-ime-menu-items-changed config channel args))
 
+(defn on-focus* [config channel & args]
+  (gen-wrap :event ::on-focus config channel args))
+

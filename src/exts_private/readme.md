@@ -49,7 +49,7 @@
 
 ### API stats
 
-Generated 41 namespaces containing 1 properties, 340 functions and 63 events:
+Generated 41 namespaces containing 1 properties, 340 functions and 64 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -74,7 +74,7 @@ Generated 41 namespaces containing 1 properties, 340 functions and 63 events:
     |                chrome.feedbackPrivate |           0 |          6 |       1 |
     |             chrome.fileManagerPrivate |           0 |         56 |       9 |
     |             chrome.imageWriterPrivate |           0 |          5 |       5 |
-    |             chrome.inputMethodPrivate |           0 |         11 |       7 |
+    |             chrome.inputMethodPrivate |           0 |         11 |       8 |
     |        chrome.languageSettingsPrivate |           0 |         14 |       4 |
     |             chrome.mediaPlayerPrivate |           0 |          0 |       3 |
     |                 chrome.metricsPrivate |           0 |         16 |       0 |
@@ -206,7 +206,7 @@ Generated 41 namespaces containing 1 properties, 340 functions and 63 events:
       notify-ime-menu-item-activated show-input-view open-options-page tap-on-changed
       tap-on-composition-bounds-changed tap-on-dictionary-loaded tap-on-dictionary-changed
       tap-on-ime-menu-activation-changed tap-on-ime-menu-list-changed tap-on-ime-menu-items-changed
-      tap-all-events]]
+      tap-on-focus tap-all-events]]
 
     [chromex.ext.language-settings-private refer:[
       get-language-list enable-language disable-language set-enable-translation-for-language

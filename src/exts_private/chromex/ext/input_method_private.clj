@@ -203,6 +203,17 @@
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-ime-menu-items-changed &form channel args)))
 
+(defmacro tap-on-focus-events
+  "This event is sent when focus enters a text box. It is sent to all extensions that are listening to this event, and enabled
+   by the user.
+
+   Events will be put on the |channel| with signature [::on-focus [context]] where:
+
+     |context| - Describes the text field that has acquired focus.
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-focus &form channel args)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -292,7 +303,11 @@
     {:id ::on-ime-menu-items-changed,
      :name "onImeMenuItemsChanged",
      :since "51",
-     :params [{:name "engine-id", :type "string"} {:name "items", :type "[array-of-inputMethodPrivate.MenuItems]"}]}]})
+     :params [{:name "engine-id", :type "string"} {:name "items", :type "[array-of-inputMethodPrivate.MenuItems]"}]}
+    {:id ::on-focus,
+     :name "onFocus",
+     :since "master",
+     :params [{:name "context", :type "inputMethodPrivate.InputContext"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
