@@ -167,7 +167,7 @@
      :params [{:name "key-event", :type "accessibilityPrivate.SyntheticKeyboardEvent"}]}
     {:id ::on-select-to-speak-state-changed,
      :name "onSelectToSpeakStateChanged",
-     :since "master",
+     :since "68",
      :params [{:name "state", :type "accessibilityPrivate.SelectToSpeakState"}]}],
    :events
    [{:id ::on-introduce-chrome-vox, :name "onIntroduceChromeVox", :since "42"}
@@ -177,7 +177,7 @@
      :params [{:name "gesture", :type "accessibilityPrivate.Gesture"}]}
     {:id ::on-two-finger-touch-start, :name "onTwoFingerTouchStart", :since "59"}
     {:id ::on-two-finger-touch-stop, :name "onTwoFingerTouchStop", :since "59"}
-    {:id ::on-select-to-speak-state-change-requested, :name "onSelectToSpeakStateChangeRequested", :since "master"}]})
+    {:id ::on-select-to-speak-state-change-requested, :name "onSelectToSpeakStateChangeRequested", :since "68"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
