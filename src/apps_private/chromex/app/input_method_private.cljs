@@ -36,6 +36,9 @@
 (defn open-options-page* [config input-method-id]
   (gen-wrap :function ::open-options-page config input-method-id))
 
+(defn get-composition-bounds* [config]
+  (gen-wrap :function ::get-composition-bounds config))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-changed* [config channel & args]

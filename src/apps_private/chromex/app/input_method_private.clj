@@ -130,6 +130,18 @@
      |input-method-id| - ID of the input method to open options for."
   ([input-method-id] (gen-call :function ::open-options-page &form input-method-id)))
 
+(defmacro get-composition-bounds
+  "Gets the composition bounds
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [bounds-list] where:
+
+     |bounds-list| - List of bounds information.
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::get-composition-bounds &form)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -280,10 +292,13 @@
      :since "51",
      :callback? true,
      :params [{:name "callback", :optional? true, :type :callback}]}
-    {:id ::open-options-page,
-     :name "openOptionsPage",
-     :since "52",
-     :params [{:name "input-method-id", :type "string"}]}],
+    {:id ::open-options-page, :name "openOptionsPage", :since "52", :params [{:name "input-method-id", :type "string"}]}
+    {:id ::get-composition-bounds,
+     :name "getCompositionBounds",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "callback", :type :callback, :callback {:params [{:name "bounds-list", :type "[array-of-objects]"}]}}]}],
    :events
    [{:id ::on-changed, :name "onChanged", :params [{:name "new-input-method-id", :type "string"}]}
     {:id ::on-composition-bounds-changed,
