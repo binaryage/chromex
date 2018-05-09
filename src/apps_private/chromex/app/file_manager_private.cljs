@@ -171,6 +171,12 @@
 (defn get-recent-files* [config restriction]
   (gen-wrap :function ::get-recent-files config restriction))
 
+(defn is-crostini-enabled* [config]
+  (gen-wrap :function ::is-crostini-enabled config))
+
+(defn mount-crostini-container* [config]
+  (gen-wrap :function ::mount-crostini-container config))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-mount-completed* [config channel & args]

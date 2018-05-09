@@ -321,7 +321,7 @@
      :params [{:name "engine-id", :type "string"} {:name "items", :type "[array-of-inputMethodPrivate.MenuItems]"}]}
     {:id ::on-focus,
      :name "onFocus",
-     :since "master",
+     :since "68",
      :params [{:name "context", :type "inputMethodPrivate.InputContext"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

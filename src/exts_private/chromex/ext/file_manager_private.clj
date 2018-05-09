@@ -717,6 +717,22 @@
    chromex.error/get-last-error."
   ([restriction] (gen-call :function ::get-recent-files &form restriction)))
 
+(defmacro is-crostini-enabled
+  "Returns true if crostini is enabled. |callback
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [result] where:
+
+     |result| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::is-crostini-enabled &form)))
+
+(defmacro mount-crostini-container
+  "Starts and mounts crostini container."
+  ([] (gen-call :function ::mount-crostini-container &form)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -1121,7 +1137,13 @@
      :callback? true,
      :params
      [{:name "restriction", :type "unknown-type"}
-      {:name "callback", :type :callback, :callback {:params [{:name "entries", :type "[array-of-Entrys]"}]}}]}],
+      {:name "callback", :type :callback, :callback {:params [{:name "entries", :type "[array-of-Entrys]"}]}}]}
+    {:id ::is-crostini-enabled,
+     :name "isCrostiniEnabled",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
+    {:id ::mount-crostini-container, :name "mountCrostiniContainer", :since "master"}],
    :events
    [{:id ::on-mount-completed, :name "onMountCompleted", :params [{:name "event", :type "object"}]}
     {:id ::on-file-transfers-updated, :name "onFileTransfersUpdated", :params [{:name "event", :type "object"}]}
