@@ -13,7 +13,7 @@
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro send-stand-by
-  "Attempt to put all HDMI CEC compatible devices in stand-by.This is not guaranteed to have any effect on the connected
+  "Attempt to put all HDMI CEC compatible devices in standby.This is not guaranteed to have any effect on the connected
    displays. Displays that do not support HDMI CEC will not be affected."
   ([] (gen-call :function ::send-stand-by &form)))
 
@@ -21,6 +21,18 @@
   "Attempt to announce this device as the active input source towards all HDMI CEC enabled displays connected, waking them
    from standby if necessary."
   ([] (gen-call :function ::send-wake-up &form)))
+
+(defmacro query-display-cec-power-state
+  "Queries all HDMI CEC capable displays for their current power state.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [power-states] where:
+
+     |power-states| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::query-display-cec-power-state &form)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
@@ -36,7 +48,17 @@
 (def api-table
   {:namespace "chrome.cecPrivate",
    :since "68",
-   :functions [{:id ::send-stand-by, :name "sendStandBy"} {:id ::send-wake-up, :name "sendWakeUp"}]})
+   :functions
+   [{:id ::send-stand-by, :name "sendStandBy"}
+    {:id ::send-wake-up, :name "sendWakeUp"}
+    {:id ::query-display-cec-power-state,
+     :name "queryDisplayCecPowerState",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "callback",
+       :type :callback,
+       :callback {:params [{:name "power-states", :type "[array-of-unknown-types]"}]}}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

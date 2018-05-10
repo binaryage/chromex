@@ -86,7 +86,7 @@
 
 ### API stats
 
-Generated 78 namespaces containing 51 properties, 378 functions and 177 events:
+Generated 78 namespaces containing 51 properties, 377 functions and 177 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -159,7 +159,7 @@ Generated 78 namespaces containing 51 properties, 378 functions and 177 events:
     |                chrome.systemIndicator |           0 |          3 |       1 |
     |                     chrome.tabCapture |           0 |          3 |       1 |
     |                           chrome.tabs |           1 |         24 |      13 |
-    |                           chrome.test |           0 |         32 |       1 |
+    |                           chrome.test |           0 |         31 |       1 |
     |                       chrome.topSites |           0 |          1 |       0 |
     |                            chrome.tts |           0 |          6 |       0 |
     |                      chrome.ttsEngine |           0 |          1 |       4 |
@@ -450,8 +450,7 @@ Generated 78 namespaces containing 51 properties, 378 functions and 177 events:
       get-module-system assert-true assert-false assert-bool check-deep-eq assert-eq assert-no-last-error
       assert-last-error assert-throws callback listen-once listen-forever callback-pass callback-fail
       run-tests get-api-features get-api-definitions is-processing-user-gesture run-with-user-gesture
-      run-without-user-gesture wait-for-round-trip set-exception-handler get-wake-event-page
-      tap-on-message tap-all-events]]
+      wait-for-round-trip set-exception-handler get-wake-event-page tap-on-message tap-all-events]]
 
     [chromex.ext.top-sites refer:[
       get tap-all-events]]

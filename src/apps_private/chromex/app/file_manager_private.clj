@@ -730,7 +730,15 @@
   ([] (gen-call :function ::is-crostini-enabled &form)))
 
 (defmacro mount-crostini-container
-  "Starts and mounts crostini container."
+  "Starts and mounts crostini container. |callback
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [result] where:
+
+     |result| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::mount-crostini-container &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
@@ -1143,7 +1151,11 @@
      :since "master",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
-    {:id ::mount-crostini-container, :name "mountCrostiniContainer", :since "master"}],
+    {:id ::mount-crostini-container,
+     :name "mountCrostiniContainer",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}],
    :events
    [{:id ::on-mount-completed, :name "onMountCompleted", :params [{:name "event", :type "object"}]}
     {:id ::on-file-transfers-updated, :name "onFileTransfersUpdated", :params [{:name "event", :type "object"}]}

@@ -249,16 +249,6 @@
    https://developer.chrome.com/extensions/test#method-runWithUserGesture."
   ([] (gen-call :function ::run-with-user-gesture &form)))
 
-(defmacro run-without-user-gesture
-  "This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [].
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error.
-
-   https://developer.chrome.com/extensions/test#method-runWithoutUserGesture."
-  ([] (gen-call :function ::run-without-user-gesture &form)))
-
 (defmacro wait-for-round-trip
   "Sends a string message one round trip from the renderer to the browser process and back.
 
@@ -420,11 +410,6 @@
     {:id ::is-processing-user-gesture, :name "isProcessingUserGesture", :since "32"}
     {:id ::run-with-user-gesture,
      :name "runWithUserGesture",
-     :since "32",
-     :callback? true,
-     :params [{:name "callback", :type :callback}]}
-    {:id ::run-without-user-gesture,
-     :name "runWithoutUserGesture",
      :since "32",
      :callback? true,
      :params [{:name "callback", :type :callback}]}

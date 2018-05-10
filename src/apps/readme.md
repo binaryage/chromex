@@ -77,7 +77,7 @@
 
 ### API stats
 
-Generated 69 namespaces containing 30 properties, 448 functions and 153 events:
+Generated 69 namespaces containing 30 properties, 447 functions and 153 events:
 
 
     |                         :namespace | :properties | :functions | :events |
@@ -143,7 +143,7 @@ Generated 69 namespaces containing 30 properties, 448 functions and 153 events:
     |              chrome.system.storage |           0 |          3 |       2 |
     |             chrome.systemIndicator |           0 |          3 |       1 |
     |                        chrome.tabs |           1 |         24 |      13 |
-    |                        chrome.test |           0 |         32 |       1 |
+    |                        chrome.test |           0 |         31 |       1 |
     |                         chrome.tts |           0 |          6 |       0 |
     |                         chrome.usb |           0 |         18 |       2 |
     |             chrome.virtualKeyboard |           0 |          1 |       0 |
@@ -421,8 +421,7 @@ Generated 69 namespaces containing 30 properties, 448 functions and 153 events:
       get-module-system assert-true assert-false assert-bool check-deep-eq assert-eq assert-no-last-error
       assert-last-error assert-throws callback listen-once listen-forever callback-pass callback-fail
       run-tests get-api-features get-api-definitions is-processing-user-gesture run-with-user-gesture
-      run-without-user-gesture wait-for-round-trip set-exception-handler get-wake-event-page
-      tap-on-message tap-all-events]]
+      wait-for-round-trip set-exception-handler get-wake-event-page tap-on-message tap-all-events]]
 
     [chromex.app.tts refer:[
       speak stop pause resume is-speaking get-voices tap-all-events]]

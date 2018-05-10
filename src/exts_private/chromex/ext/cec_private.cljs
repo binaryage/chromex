@@ -9,3 +9,6 @@
 (defn send-wake-up* [config]
   (gen-wrap :function ::send-wake-up config))
 
+(defn query-display-cec-power-state* [config]
+  (gen-wrap :function ::query-display-cec-power-state config))
+

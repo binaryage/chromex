@@ -87,9 +87,6 @@
 (defn run-with-user-gesture* [config]
   (gen-wrap :function ::run-with-user-gesture config))
 
-(defn run-without-user-gesture* [config]
-  (gen-wrap :function ::run-without-user-gesture config))
-
 (defn wait-for-round-trip* [config message]
   (gen-wrap :function ::wait-for-round-trip config message))
 
