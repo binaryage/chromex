@@ -295,7 +295,7 @@
     {:id ::open-options-page, :name "openOptionsPage", :since "52", :params [{:name "input-method-id", :type "string"}]}
     {:id ::get-composition-bounds,
      :name "getCompositionBounds",
-     :since "master",
+     :since "68",
      :callback? true,
      :params
      [{:name "callback", :type :callback, :callback {:params [{:name "bounds-list", :type "[array-of-objects]"}]}}]}],

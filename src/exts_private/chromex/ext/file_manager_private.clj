@@ -1146,12 +1146,12 @@
       {:name "callback", :type :callback, :callback {:params [{:name "entries", :type "[array-of-Entrys]"}]}}]}
     {:id ::is-crostini-enabled,
      :name "isCrostiniEnabled",
-     :since "master",
+     :since "68",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
     {:id ::mount-crostini-container,
      :name "mountCrostiniContainer",
-     :since "master",
+     :since "68",
      :callback? true,
      :params [{:name "callback", :type :callback}]}],
    :events

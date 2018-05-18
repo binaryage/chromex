@@ -53,7 +53,6 @@
     {:id ::send-wake-up, :name "sendWakeUp"}
     {:id ::query-display-cec-power-state,
      :name "queryDisplayCecPowerState",
-     :since "master",
      :callback? true,
      :params
      [{:name "callback",
