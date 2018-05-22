@@ -78,6 +78,12 @@
 (defn update-extension-command* [config update]
   (gen-wrap :function ::update-extension-command config update))
 
+(defn add-host-permission* [config extension-id host]
+  (gen-wrap :function ::add-host-permission config extension-id host))
+
+(defn remove-host-permission* [config extension-id host]
+  (gen-wrap :function ::remove-host-permission config extension-id host))
+
 (defn enable* [config id enabled]
   (gen-wrap :function ::enable config id enabled))
 

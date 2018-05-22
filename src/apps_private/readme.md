@@ -48,7 +48,7 @@
 
 ### API stats
 
-Generated 40 namespaces containing 1 properties, 308 functions and 70 events:
+Generated 40 namespaces containing 1 properties, 310 functions and 70 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -63,7 +63,7 @@ Generated 40 namespaces containing 1 properties, 308 functions and 70 events:
     |     chrome.chromeosInfoPrivate |           0 |          2 |       0 |
     |      chrome.commandLinePrivate |           0 |          1 |       0 |
     |        chrome.dashboardPrivate |           0 |          1 |       0 |
-    |        chrome.developerPrivate |           0 |         29 |       2 |
+    |        chrome.developerPrivate |           0 |         31 |       2 |
     |       chrome.easyUnlockPrivate |           0 |          6 |       3 |
     |             chrome.echoPrivate |           0 |          5 |       0 |
     |         chrome.feedbackPrivate |           0 |          6 |       1 |
@@ -146,8 +146,8 @@ Generated 40 namespaces containing 1 properties, 308 functions and 70 events:
       update-extension-configuration load-unpacked install-dropped-file notify-drag-install-in-progress
       load-directory choose-path pack-directory is-profile-managed request-file-source open-dev-tools
       delete-extension-errors repair-extension show-options show-path set-shortcut-handling-suspended
-      update-extension-command enable allow-incognito allow-file-access inspect tap-on-item-state-changed
-      tap-on-profile-state-changed tap-all-events]]
+      update-extension-command add-host-permission remove-host-permission enable allow-incognito
+      allow-file-access inspect tap-on-item-state-changed tap-on-profile-state-changed tap-all-events]]
 
     [chromex.app.easy-unlock-private refer:[
       get-strings show-error-bubble hide-error-bubble find-setup-connection setup-connection-disconnect

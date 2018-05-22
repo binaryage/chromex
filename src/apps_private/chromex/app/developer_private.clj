@@ -334,6 +334,33 @@
    chromex.error/get-last-error."
   ([update] (gen-call :function ::update-extension-command &form update)))
 
+(defmacro add-host-permission
+  "Adds a new host permission to the extension. The extension will only have access to the host if it is within the requested
+   permissions.
+
+     |extension-id| - The id of the extension to modify.
+     |host| - The host to add.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([extension-id host] (gen-call :function ::add-host-permission &form extension-id host)))
+
+(defmacro remove-host-permission
+  "Removes a host permission from the extension. This should only be called with a host that the extension has access to.
+
+     |extension-id| - The id of the extension to modify.
+     |host| - The host to remove.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([extension-id host] (gen-call :function ::remove-host-permission &form extension-id host)))
+
 (defmacro enable
   "  |id| - ?
      |enabled| - ?
@@ -569,6 +596,22 @@
      :since "45",
      :callback? true,
      :params [{:name "update", :type "object"} {:name "callback", :optional? true, :type :callback}]}
+    {:id ::add-host-permission,
+     :name "addHostPermission",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "extension-id", :type "string"}
+      {:name "host", :type "string"}
+      {:name "callback", :optional? true, :type :callback}]}
+    {:id ::remove-host-permission,
+     :name "removeHostPermission",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "extension-id", :type "string"}
+      {:name "host", :type "string"}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::enable,
      :name "enable",
      :since "43",

@@ -49,7 +49,7 @@
 
 ### API stats
 
-Generated 41 namespaces containing 1 properties, 344 functions and 64 events:
+Generated 41 namespaces containing 1 properties, 346 functions and 64 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -67,7 +67,7 @@ Generated 41 namespaces containing 1 properties, 344 functions and 64 events:
     |             chrome.commandLinePrivate |           0 |          1 |       0 |
     |             chrome.cryptotokenPrivate |           0 |          3 |       0 |
     |               chrome.dashboardPrivate |           0 |          1 |       0 |
-    |               chrome.developerPrivate |           0 |         29 |       2 |
+    |               chrome.developerPrivate |           0 |         31 |       2 |
     |                    chrome.echoPrivate |           0 |          5 |       0 |
     | chrome.enterprise.platformKeysPrivate |           0 |          2 |       0 |
     |    chrome.enterprise.reportingPrivate |           0 |          1 |       0 |
@@ -162,8 +162,8 @@ Generated 41 namespaces containing 1 properties, 344 functions and 64 events:
       update-extension-configuration load-unpacked install-dropped-file notify-drag-install-in-progress
       load-directory choose-path pack-directory is-profile-managed request-file-source open-dev-tools
       delete-extension-errors repair-extension show-options show-path set-shortcut-handling-suspended
-      update-extension-command enable allow-incognito allow-file-access inspect tap-on-item-state-changed
-      tap-on-profile-state-changed tap-all-events]]
+      update-extension-command add-host-permission remove-host-permission enable allow-incognito
+      allow-file-access inspect tap-on-item-state-changed tap-on-profile-state-changed tap-all-events]]
 
     [chromex.ext.echo-private refer:[
       set-offer-info get-offer-info get-registration-code get-oobe-timestamp get-user-consent
