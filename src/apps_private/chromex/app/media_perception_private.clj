@@ -67,6 +67,21 @@
    chromex.error/get-last-error."
   ([component] (gen-call :function ::set-analytics-component &form component)))
 
+(defmacro set-component-process-state
+  "Manages the lifetime of the component process. This function should only be used if the component is installed. It will
+   fail if the component is not installed.
+
+     |process-state| - The desired state for the component process.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [process-state] where:
+
+     |process-state| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([process-state] (gen-call :function ::set-component-process-state &form process-state)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -122,7 +137,16 @@
      :callback? true,
      :params
      [{:name "component", :type "object"}
-      {:name "callback", :type :callback, :callback {:params [{:name "component-state", :type "object"}]}}]}],
+      {:name "callback", :type :callback, :callback {:params [{:name "component-state", :type "object"}]}}]}
+    {:id ::set-component-process-state,
+     :name "setComponentProcessState",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "process-state", :type "mediaPerceptionPrivate.ProcessState"}
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "process-state", :type "mediaPerceptionPrivate.ProcessState"}]}}]}],
    :events
    [{:id ::on-media-perception, :name "onMediaPerception", :params [{:name "media-perception", :type "object"}]}]})
 

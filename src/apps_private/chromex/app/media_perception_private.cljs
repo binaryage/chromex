@@ -15,6 +15,9 @@
 (defn set-analytics-component* [config component]
   (gen-wrap :function ::set-analytics-component config component))
 
+(defn set-component-process-state* [config process-state]
+  (gen-wrap :function ::set-component-process-state config process-state))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-media-perception* [config channel & args]
