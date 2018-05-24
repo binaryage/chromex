@@ -14,12 +14,25 @@
 
 (defmacro send-stand-by
   "Attempt to put all HDMI CEC compatible devices in standby.This is not guaranteed to have any effect on the connected
-   displays. Displays that do not support HDMI CEC will not be affected."
+   displays. Displays that do not support HDMI CEC will not be affected.|callback| will be run as soon as all displays have
+   been requested to change their power state.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::send-stand-by &form)))
 
 (defmacro send-wake-up
   "Attempt to announce this device as the active input source towards all HDMI CEC enabled displays connected, waking them
-   from standby if necessary."
+   from standby if necessary.|callback| will be run as soon as all displays have been requested to change their power state.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([] (gen-call :function ::send-wake-up &form)))
 
 (defmacro query-display-cec-power-state
@@ -49,8 +62,14 @@
   {:namespace "chrome.cecPrivate",
    :since "68",
    :functions
-   [{:id ::send-stand-by, :name "sendStandBy"}
-    {:id ::send-wake-up, :name "sendWakeUp"}
+   [{:id ::send-stand-by,
+     :name "sendStandBy",
+     :callback? true,
+     :params [{:name "callback", :optional? true, :type :callback}]}
+    {:id ::send-wake-up,
+     :name "sendWakeUp",
+     :callback? true,
+     :params [{:name "callback", :optional? true, :type :callback}]}
     {:id ::query-display-cec-power-state,
      :name "queryDisplayCecPowerState",
      :callback? true,

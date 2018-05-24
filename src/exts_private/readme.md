@@ -11,7 +11,6 @@
 | [chrome.bluetoothPrivate](https://developer.chrome.com/extensions/bluetoothPrivate) | [chromex/ext/bluetooth_private.clj](chromex/ext/bluetooth_private.clj) |
 | [chrome.bookmarkManagerPrivate](https://developer.chrome.com/extensions/bookmarkManagerPrivate) | [chromex/ext/bookmark_manager_private.clj](chromex/ext/bookmark_manager_private.clj) |
 | [chrome.brailleDisplayPrivate](https://developer.chrome.com/extensions/brailleDisplayPrivate) | [chromex/ext/braille_display_private.clj](chromex/ext/braille_display_private.clj) |
-| [chrome.cecPrivate](https://developer.chrome.com/extensions/cecPrivate) | [chromex/ext/cec_private.clj](chromex/ext/cec_private.clj) |
 | [chrome.chromeosInfoPrivate](https://developer.chrome.com/extensions/chromeosInfoPrivate) | [chromex/ext/chromeos_info_private.clj](chromex/ext/chromeos_info_private.clj) |
 | [chrome.cloudPrintPrivate](https://developer.chrome.com/extensions/cloudPrintPrivate) | [chromex/ext/cloud_print_private.clj](chromex/ext/cloud_print_private.clj) |
 | [chrome.commandLinePrivate](https://developer.chrome.com/extensions/commandLinePrivate) | [chromex/ext/command_line_private.clj](chromex/ext/command_line_private.clj) |
@@ -49,7 +48,7 @@
 
 ### API stats
 
-Generated 41 namespaces containing 1 properties, 346 functions and 64 events:
+Generated 40 namespaces containing 1 properties, 343 functions and 64 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -61,7 +60,6 @@ Generated 41 namespaces containing 1 properties, 346 functions and 64 events:
     |               chrome.bluetoothPrivate |           0 |          7 |       1 |
     |         chrome.bookmarkManagerPrivate |           0 |         20 |       4 |
     |          chrome.brailleDisplayPrivate |           0 |          2 |       2 |
-    |                     chrome.cecPrivate |           0 |          3 |       0 |
     |            chrome.chromeosInfoPrivate |           0 |          2 |       0 |
     |              chrome.cloudPrintPrivate |           0 |          4 |       0 |
     |             chrome.commandLinePrivate |           0 |          1 |       0 |
@@ -136,9 +134,6 @@ Generated 41 namespaces containing 1 properties, 346 functions and 64 events:
 
     [chromex.ext.braille-display-private refer:[
       get-display-state write-dots tap-on-display-state-changed tap-on-key-event tap-all-events]]
-
-    [chromex.ext.cec-private refer:[
-      send-stand-by send-wake-up query-display-cec-power-state tap-all-events]]
 
     [chromex.ext.chromeos-info-private refer:[
       get set tap-all-events]]
