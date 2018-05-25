@@ -2,7 +2,7 @@
   "Use the chrome.proxy API to manage Chrome's proxy settings. This API relies on the ChromeSetting prototype of the type API
    for getting and setting the proxy configuration.
 
-     * available since Chrome 23
+     * available since Chrome 24
      * https://developer.chrome.com/apps/proxy"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -49,7 +49,7 @@
 
 (def api-table
   {:namespace "chrome.proxy",
-   :since "23",
+   :since "24",
    :properties [{:id ::settings, :name "settings", :return-type "object"}],
    :events [{:id ::on-proxy-error, :name "onProxyError", :params [{:name "details", :type "object"}]}]})
 

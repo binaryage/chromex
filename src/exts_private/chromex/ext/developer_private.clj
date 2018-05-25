@@ -602,7 +602,7 @@
      :params [{:name "update", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::add-host-permission,
      :name "addHostPermission",
-     :since "master",
+     :since "68",
      :callback? true,
      :params
      [{:name "extension-id", :type "string"}
@@ -610,7 +610,7 @@
       {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-host-permission,
      :name "removeHostPermission",
-     :since "master",
+     :since "68",
      :callback? true,
      :params
      [{:name "extension-id", :type "string"}

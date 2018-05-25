@@ -2,7 +2,7 @@
   "Use the chrome.mediaGalleries API to access media files (audio,
    images, video) from the user's local disks (with the user's consent).
 
-     * available since Chrome 23
+     * available since Chrome 24
      * https://developer.chrome.com/apps/mediaGalleries"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -218,7 +218,7 @@
 
 (def api-table
   {:namespace "chrome.mediaGalleries",
-   :since "23",
+   :since "24",
    :functions
    [{:id ::get-media-file-systems,
      :name "getMediaFileSystems",

@@ -140,7 +140,7 @@
       {:name "callback", :type :callback, :callback {:params [{:name "component-state", :type "object"}]}}]}
     {:id ::set-component-process-state,
      :name "setComponentProcessState",
-     :since "master",
+     :since "68",
      :callback? true,
      :params
      [{:name "process-state", :type "mediaPerceptionPrivate.ProcessState"}
