@@ -10,3 +10,4 @@
 /.tmp
 .figwheel*.log
 .chrome-profile
+.test-dirac-chrome-profile
