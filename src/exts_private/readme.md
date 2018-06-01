@@ -33,6 +33,7 @@
 | [chrome.preferencesPrivate](https://developer.chrome.com/extensions/preferencesPrivate) | [chromex/ext/preferences_private.clj](chromex/ext/preferences_private.clj) |
 | [chrome.quickUnlockPrivate](https://developer.chrome.com/extensions/quickUnlockPrivate) | [chromex/ext/quick_unlock_private.clj](chromex/ext/quick_unlock_private.clj) |
 | [chrome.resourcesPrivate](https://developer.chrome.com/extensions/resourcesPrivate) | [chromex/ext/resources_private.clj](chromex/ext/resources_private.clj) |
+| [chrome.safeBrowsingPrivate](https://developer.chrome.com/extensions/safeBrowsingPrivate) | [chromex/ext/safe_browsing_private.clj](chromex/ext/safe_browsing_private.clj) |
 | [chrome.settingsPrivate](https://developer.chrome.com/extensions/settingsPrivate) | [chromex/ext/settings_private.clj](chromex/ext/settings_private.clj) |
 | [chrome.streamsPrivate](https://developer.chrome.com/extensions/streamsPrivate) | [chromex/ext/streams_private.clj](chromex/ext/streams_private.clj) |
 | [chrome.systemPrivate](https://developer.chrome.com/extensions/systemPrivate) | [chromex/ext/system_private.clj](chromex/ext/system_private.clj) |
@@ -48,7 +49,7 @@
 
 ### API stats
 
-Generated 40 namespaces containing 1 properties, 343 functions and 64 events:
+Generated 41 namespaces containing 1 properties, 343 functions and 69 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -82,6 +83,7 @@ Generated 40 namespaces containing 1 properties, 343 functions and 64 events:
     |             chrome.preferencesPrivate |           1 |          0 |       0 |
     |             chrome.quickUnlockPrivate |           0 |          7 |       1 |
     |               chrome.resourcesPrivate |           0 |          1 |       0 |
+    |            chrome.safeBrowsingPrivate |           0 |          0 |       5 |
     |                chrome.settingsPrivate |           0 |          5 |       1 |
     |                 chrome.streamsPrivate |           0 |          1 |       1 |
     |                  chrome.systemPrivate |           0 |          3 |       0 |
@@ -250,6 +252,11 @@ Generated 40 namespaces containing 1 properties, 343 functions and 64 events:
     [chromex.ext.resources-private refer:[
       get-strings tap-all-events]]
 
+    [chromex.ext.safe-browsing-private refer:[
+      tap-on-policy-specified-password-reuse-detected tap-on-policy-specified-password-changed
+      tap-on-dangerous-download-opened tap-on-security-interstitial-shown
+      tap-on-security-interstitial-proceeded tap-all-events]]
+
     [chromex.ext.settings-private refer:[
       set-pref get-all-prefs get-pref get-default-zoom set-default-zoom tap-on-prefs-changed
       tap-all-events]]
@@ -265,8 +272,8 @@ Generated 40 namespaces containing 1 properties, 343 functions and 64 events:
       tap-on-process-output tap-all-events]]
 
     [chromex.ext.users-private refer:[
-      get-whitelisted-users add-whitelisted-user remove-whitelisted-user is-current-user-owner
-      is-whitelist-managed tap-all-events]]
+      get-whitelisted-users add-whitelisted-user remove-whitelisted-user is-whitelist-managed
+      get-current-user tap-all-events]]
 
     [chromex.ext.virtual-keyboard-private refer:[
       insert-text send-key-event hide-keyboard set-hotrod-keyboard lock-keyboard keyboard-loaded

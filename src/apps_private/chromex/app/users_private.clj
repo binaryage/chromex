@@ -54,18 +54,6 @@
    chromex.error/get-last-error."
   ([email] (gen-call :function ::remove-whitelisted-user &form email)))
 
-(defmacro is-current-user-owner
-  "Whether the current user is the owner of the device.
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [is-owner] where:
-
-     |is-owner| - ?
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([] (gen-call :function ::is-current-user-owner &form)))
-
 (defmacro is-whitelist-managed
   "Whether the whitelist is managed by enterprise.
 
@@ -77,6 +65,18 @@
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::is-whitelist-managed &form)))
+
+(defmacro get-current-user
+  "Returns the current user.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [user] where:
+
+     |user| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::get-current-user &form)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
@@ -96,7 +96,10 @@
    [{:id ::get-whitelisted-users,
      :name "getWhitelistedUsers",
      :callback? true,
-     :params [{:name "callback", :type :callback, :callback {:params [{:name "users", :type "[array-of-objects]"}]}}]}
+     :params
+     [{:name "callback",
+       :type :callback,
+       :callback {:params [{:name "users", :type "[array-of-usersPrivate.Users]"}]}}]}
     {:id ::add-whitelisted-user,
      :name "addWhitelistedUser",
      :callback? true,
@@ -109,14 +112,15 @@
      :params
      [{:name "email", :type "string"}
       {:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
-    {:id ::is-current-user-owner,
-     :name "isCurrentUserOwner",
-     :callback? true,
-     :params [{:name "callback", :type :callback, :callback {:params [{:name "is-owner", :type "boolean"}]}}]}
     {:id ::is-whitelist-managed,
      :name "isWhitelistManaged",
      :callback? true,
-     :params [{:name "callback", :type :callback, :callback {:params [{:name "managed", :type "boolean"}]}}]}]})
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "managed", :type "boolean"}]}}]}
+    {:id ::get-current-user,
+     :name "getCurrentUser",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "user", :type "usersPrivate.User"}]}}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

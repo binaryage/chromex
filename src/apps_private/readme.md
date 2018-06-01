@@ -266,8 +266,8 @@ Generated 40 namespaces containing 1 properties, 311 functions and 70 events:
       tap-on-process-output tap-all-events]]
 
     [chromex.app.users-private refer:[
-      get-whitelisted-users add-whitelisted-user remove-whitelisted-user is-current-user-owner
-      is-whitelist-managed tap-all-events]]
+      get-whitelisted-users add-whitelisted-user remove-whitelisted-user is-whitelist-managed
+      get-current-user tap-all-events]]
 
     [chromex.app.virtual-keyboard-private refer:[
       insert-text send-key-event hide-keyboard set-hotrod-keyboard lock-keyboard keyboard-loaded
