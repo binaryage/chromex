@@ -118,7 +118,7 @@
      :params [{:name "callback", :type :callback, :callback {:params [{:name "managed", :type "boolean"}]}}]}
     {:id ::get-current-user,
      :name "getCurrentUser",
-     :since "master",
+     :since "68",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "user", :type "usersPrivate.User"}]}}]}]})
 
