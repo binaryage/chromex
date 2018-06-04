@@ -82,18 +82,6 @@
   "Opens chrome://settings/languages page."
   ([] (gen-call :function ::open-settings &form)))
 
-(defmacro set-mode
-  "Sets the virtual keyboard container mode.
-
-     |mode| - The value of the virtual keyboard mode to set to.
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [].
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([mode] (gen-call :function ::set-mode &form mode)))
-
 (defmacro set-container-behavior
   "Sets the virtual keyboard container behavior
 
@@ -196,14 +184,6 @@
        :type :callback,
        :callback {:params [{:name "config", :type "virtualKeyboardPrivate.KeyboardConfig"}]}}]}
     {:id ::open-settings, :name "openSettings", :since "37"}
-    {:id ::set-mode,
-     :name "setMode",
-     :since "67",
-     :deprecated "Please use 'setContainerBehavior'",
-     :callback? true,
-     :params
-     [{:name "mode", :type "virtualKeyboardPrivate.KeyboardMode"}
-      {:name "callback", :optional? true, :type :callback}]}
     {:id ::set-container-behavior,
      :name "setContainerBehavior",
      :since "67",

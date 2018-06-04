@@ -27,9 +27,6 @@
 (defn open-settings* [config]
   (gen-wrap :function ::open-settings config))
 
-(defn set-mode* [config mode]
-  (gen-wrap :function ::set-mode config mode))
-
 (defn set-container-behavior* [config options]
   (gen-wrap :function ::set-container-behavior config options))
 
