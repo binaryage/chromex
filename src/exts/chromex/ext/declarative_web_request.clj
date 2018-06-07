@@ -1,7 +1,7 @@
 (ns chromex.ext.declarative-web-request
   "Note: this API is currently on hold, without concrete plans to move to stable. Use the chrome.declarativeWebRequest API to
    intercept, block, or modify requests in-flight. It is significantly faster than the chrome.webRequest API because you can
-   register rules that are evaluated in the browser rather than the JavaScript engine with reduces roundtrip latencies and
+   register rules that are evaluated in the browser rather than the JavaScript engine, which reduces roundtrip latencies and
    allows higher efficiency.
 
      * available since Chrome 67
