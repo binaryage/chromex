@@ -2,7 +2,7 @@
   "The chrome.declarativeNetRequest API is used to intercept and
    perform actions on a network request by specifying declarative rules.
 
-     * available since Chrome 67
+     * available since Chrome 68
      * https://developer.chrome.com/extensions/declarativeNetRequest"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -80,7 +80,7 @@
 
 (def api-table
   {:namespace "chrome.declarativeNetRequest",
-   :since "67",
+   :since "68",
    :properties
    [{:id ::max-number-of-whitelisted-pages, :name "MAX_NUMBER_OF_WHITELISTED_PAGES", :return-type "unknown-type"}],
    :functions

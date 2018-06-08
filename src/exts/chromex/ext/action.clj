@@ -4,7 +4,7 @@
    disabled, the action appears grayed out when inactive. In addition to its icon, an action can also have a tooltip, a
    badge, and a popup.
 
-     * available since Chrome 67
+     * available since Chrome 68
      * https://developer.chrome.com/extensions/action"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -210,7 +210,7 @@
 
 (def api-table
   {:namespace "chrome.action",
-   :since "67",
+   :since "68",
    :functions
    [{:id ::set-title,
      :name "setTitle",

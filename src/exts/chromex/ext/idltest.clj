@@ -1,7 +1,7 @@
 (ns chromex.ext.idltest
   "An API to test IDL schema specifications.
 
-     * available since Chrome 67
+     * available since Chrome 68
      * https://developer.chrome.com/extensions/idltest"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -91,7 +91,7 @@
 
 (def api-table
   {:namespace "chrome.idltest",
-   :since "67",
+   :since "68",
    :functions
    [{:id ::send-array-buffer,
      :name "sendArrayBuffer",
