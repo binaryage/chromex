@@ -2,7 +2,7 @@
   "Use the chrome.diagnostics API to query various properties of
    the environment that may be useful for diagnostics.
 
-     * available since Chrome 68
+     * available since Chrome 69
      * https://developer.chrome.com/apps/diagnostics"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -43,7 +43,7 @@
 
 (def api-table
   {:namespace "chrome.diagnostics",
-   :since "68",
+   :since "69",
    :functions
    [{:id ::send-packet,
      :name "sendPacket",

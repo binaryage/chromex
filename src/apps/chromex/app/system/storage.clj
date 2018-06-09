@@ -119,7 +119,7 @@
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "unknown-type"}]}}]}
     {:id ::get-available-capacity,
      :name "getAvailableCapacity",
-     :since "68",
+     :since "69",
      :callback? true,
      :params
      [{:name "id", :type "string"}
