@@ -106,6 +106,12 @@
      |state| - The value of the virtual keyboard state to change to."
   ([state] (gen-call :function ::set-keyboard-state &form state)))
 
+(defmacro set-occluded-bounds
+  "Sets the areas on the screen that are blocked by the virtual keyboard.
+
+     |bounds-list| - List of rectangles representing regions occluded by the keyboard."
+  ([bounds-list] (gen-call :function ::set-occluded-bounds &form bounds-list)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -198,7 +204,11 @@
     {:id ::set-keyboard-state,
      :name "setKeyboardState",
      :since "46",
-     :params [{:name "state", :type "virtualKeyboardPrivate.KeyboardState"}]}],
+     :params [{:name "state", :type "virtualKeyboardPrivate.KeyboardState"}]}
+    {:id ::set-occluded-bounds,
+     :name "setOccludedBounds",
+     :since "master",
+     :params [{:name "bounds-list", :type "[array-of-virtualKeyboardPrivate.Boundss]"}]}],
    :events
    [{:id ::on-bounds-changed,
      :name "onBoundsChanged",

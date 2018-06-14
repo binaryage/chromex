@@ -36,6 +36,9 @@
 (defn set-keyboard-state* [config state]
   (gen-wrap :function ::set-keyboard-state config state))
 
+(defn set-occluded-bounds* [config bounds-list]
+  (gen-wrap :function ::set-occluded-bounds config bounds-list))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-bounds-changed* [config channel & args]
