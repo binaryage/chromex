@@ -252,8 +252,8 @@ Generated 78 namespaces containing 51 properties, 377 functions and 177 events:
       tap-on-page-changed tap-all-events]]
 
     [chromex.ext.declarative-net-request refer:[
-      get-max-number-of-whitelisted-pages add-whitelisted-pages remove-whitelisted-pages
-      get-whitelisted-pages tap-all-events]]
+      get-max-number-of-allowed-pages add-allowed-pages remove-allowed-pages get-allowed-pages
+      tap-all-events]]
 
     [chromex.ext.declarative-web-request refer:[
       tap-on-request tap-on-message tap-all-events]]

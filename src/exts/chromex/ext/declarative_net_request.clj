@@ -14,35 +14,20 @@
 
 ; -- properties -------------------------------------------------------------------------------------------------------------
 
-(defmacro get-max-number-of-whitelisted-pages
-  "The maximum number of whitelisted pages that an extension can add.
+(defmacro get-max-number-of-allowed-pages
+  "The maximum number of allowed pages that an extension can add.
 
-   https://developer.chrome.com/extensions/declarativeNetRequest#property-MAX_NUMBER_OF_WHITELISTED_PAGES."
-  ([] (gen-call :property ::max-number-of-whitelisted-pages &form)))
+   https://developer.chrome.com/extensions/declarativeNetRequest#property-MAX_NUMBER_OF_ALLOWED_PAGES."
+  ([] (gen-call :property ::max-number-of-allowed-pages &form)))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
-(defmacro add-whitelisted-pages
-  "Adds |page_patterns| to the set of whitelisted pages. Requests from these pages are not intercepted by the extension. These
-   are persisted across browser sessions. Note: MAX_NUMBER_OF_WHITELISTED_PAGES is the maximum number of whitelisted page an
-   extension can add. Also, adding page patterns is atomic. In case of an error, no page pattern is added.
+(defmacro add-allowed-pages
+  "Adds |page_patterns| to the set of allowed pages. Requests from these pages are not intercepted by the extension. These are
+   persisted across browser sessions. Note: MAX_NUMBER_OF_ALLOWED_PAGES is the maximum number of allowed page an extension can
+   add. Also, adding page patterns is atomic. In case of an error, no page pattern is added.
 
-     |page-patterns| - Array of match patterns which are to be added to the whitelist.
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [].
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error.
-
-   https://developer.chrome.com/extensions/declarativeNetRequest#method-addWhitelistedPages."
-  ([page-patterns] (gen-call :function ::add-whitelisted-pages &form page-patterns)))
-
-(defmacro remove-whitelisted-pages
-  "Removes |page_patterns| from the set of whitelisted pages. Note: Removing page patterns is atomic. In case of an error, no
-   page pattern is removed.
-
-     |page-patterns| - Array of match patterns which are to be removed from the whitelist.
+     |page-patterns| - Array of match patterns which are to be allowed.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
@@ -50,11 +35,26 @@
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
-   https://developer.chrome.com/extensions/declarativeNetRequest#method-removeWhitelistedPages."
-  ([page-patterns] (gen-call :function ::remove-whitelisted-pages &form page-patterns)))
+   https://developer.chrome.com/extensions/declarativeNetRequest#method-addAllowedPages."
+  ([page-patterns] (gen-call :function ::add-allowed-pages &form page-patterns)))
 
-(defmacro get-whitelisted-pages
-  "Returns the current set of whitelisted pages.
+(defmacro remove-allowed-pages
+  "Removes |page_patterns| from the set of allowed pages. Note: Removing page patterns is atomic. In case of an error, no page
+   pattern is removed.
+
+     |page-patterns| - Array of match patterns which are to removed.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/extensions/declarativeNetRequest#method-removeAllowedPages."
+  ([page-patterns] (gen-call :function ::remove-allowed-pages &form page-patterns)))
+
+(defmacro get-allowed-pages
+  "Returns the current set of allowed pages.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
@@ -64,8 +64,8 @@
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
 
-   https://developer.chrome.com/extensions/declarativeNetRequest#method-getWhitelistedPages."
-  ([] (gen-call :function ::get-whitelisted-pages &form)))
+   https://developer.chrome.com/extensions/declarativeNetRequest#method-getAllowedPages."
+  ([] (gen-call :function ::get-allowed-pages &form)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
@@ -82,20 +82,26 @@
   {:namespace "chrome.declarativeNetRequest",
    :since "68",
    :properties
-   [{:id ::max-number-of-whitelisted-pages, :name "MAX_NUMBER_OF_WHITELISTED_PAGES", :return-type "unknown-type"}],
+   [{:id ::max-number-of-allowed-pages,
+     :name "MAX_NUMBER_OF_ALLOWED_PAGES",
+     :since "master",
+     :return-type "unknown-type"}],
    :functions
-   [{:id ::add-whitelisted-pages,
-     :name "addWhitelistedPages",
+   [{:id ::add-allowed-pages,
+     :name "addAllowedPages",
+     :since "master",
      :callback? true,
      :params
      [{:name "page-patterns", :type "[array-of-strings]"} {:name "callback", :optional? true, :type :callback}]}
-    {:id ::remove-whitelisted-pages,
-     :name "removeWhitelistedPages",
+    {:id ::remove-allowed-pages,
+     :name "removeAllowedPages",
+     :since "master",
      :callback? true,
      :params
      [{:name "page-patterns", :type "[array-of-strings]"} {:name "callback", :optional? true, :type :callback}]}
-    {:id ::get-whitelisted-pages,
-     :name "getWhitelistedPages",
+    {:id ::get-allowed-pages,
+     :name "getAllowedPages",
+     :since "master",
      :callback? true,
      :params
      [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "[array-of-strings]"}]}}]}]})
