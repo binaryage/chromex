@@ -207,7 +207,7 @@
      :params [{:name "state", :type "virtualKeyboardPrivate.KeyboardState"}]}
     {:id ::set-occluded-bounds,
      :name "setOccludedBounds",
-     :since "master",
+     :since "69",
      :params [{:name "bounds-list", :type "[array-of-virtualKeyboardPrivate.Boundss]"}]}],
    :events
    [{:id ::on-bounds-changed,

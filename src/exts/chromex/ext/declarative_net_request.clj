@@ -82,26 +82,23 @@
   {:namespace "chrome.declarativeNetRequest",
    :since "68",
    :properties
-   [{:id ::max-number-of-allowed-pages,
-     :name "MAX_NUMBER_OF_ALLOWED_PAGES",
-     :since "master",
-     :return-type "unknown-type"}],
+   [{:id ::max-number-of-allowed-pages, :name "MAX_NUMBER_OF_ALLOWED_PAGES", :since "69", :return-type "unknown-type"}],
    :functions
    [{:id ::add-allowed-pages,
      :name "addAllowedPages",
-     :since "master",
+     :since "69",
      :callback? true,
      :params
      [{:name "page-patterns", :type "[array-of-strings]"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-allowed-pages,
      :name "removeAllowedPages",
-     :since "master",
+     :since "69",
      :callback? true,
      :params
      [{:name "page-patterns", :type "[array-of-strings]"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-allowed-pages,
      :name "getAllowedPages",
-     :since "master",
+     :since "69",
      :callback? true,
      :params
      [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "[array-of-strings]"}]}}]}]})
