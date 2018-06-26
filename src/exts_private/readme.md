@@ -49,7 +49,7 @@
 
 ### API stats
 
-Generated 41 namespaces containing 1 properties, 343 functions and 69 events:
+Generated 41 namespaces containing 1 properties, 344 functions and 69 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -73,7 +73,7 @@ Generated 41 namespaces containing 1 properties, 343 functions and 69 events:
     |                chrome.feedbackPrivate |           0 |          6 |       1 |
     |             chrome.fileManagerPrivate |           0 |         58 |       9 |
     |             chrome.imageWriterPrivate |           0 |          5 |       5 |
-    |             chrome.inputMethodPrivate |           0 |         12 |       8 |
+    |             chrome.inputMethodPrivate |           0 |         13 |       8 |
     |        chrome.languageSettingsPrivate |           0 |         14 |       4 |
     |             chrome.mediaPlayerPrivate |           0 |          0 |       3 |
     |                 chrome.metricsPrivate |           0 |         16 |       0 |
@@ -202,9 +202,9 @@ Generated 41 namespaces containing 1 properties, 343 functions and 69 events:
       get-input-method-config get-input-methods get-current-input-method set-current-input-method
       fetch-all-dictionary-words add-word-to-dictionary get-encrypt-sync-enabled set-xkb-layout
       notify-ime-menu-item-activated show-input-view open-options-page get-composition-bounds
-      tap-on-changed tap-on-composition-bounds-changed tap-on-dictionary-loaded tap-on-dictionary-changed
-      tap-on-ime-menu-activation-changed tap-on-ime-menu-list-changed tap-on-ime-menu-items-changed
-      tap-on-focus tap-all-events]]
+      get-surrounding-text tap-on-changed tap-on-composition-bounds-changed tap-on-dictionary-loaded
+      tap-on-dictionary-changed tap-on-ime-menu-activation-changed tap-on-ime-menu-list-changed
+      tap-on-ime-menu-items-changed tap-on-focus tap-all-events]]
 
     [chromex.ext.language-settings-private refer:[
       get-language-list enable-language disable-language set-enable-translation-for-language

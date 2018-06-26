@@ -39,6 +39,9 @@
 (defn get-composition-bounds* [config]
   (gen-wrap :function ::get-composition-bounds config))
 
+(defn get-surrounding-text* [config before-length after-length]
+  (gen-wrap :function ::get-surrounding-text config before-length after-length))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-changed* [config channel & args]

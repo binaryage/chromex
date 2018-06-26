@@ -142,6 +142,21 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-composition-bounds &form)))
 
+(defmacro get-surrounding-text
+  "Gets the surrounding text of the current selection
+
+     |before-length| - The number of characters before the current selection.
+     |after-length| - The number of characters after the current selection.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [surrounding-info] where:
+
+     |surrounding-info| - The surrouding text info.
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([before-length after-length] (gen-call :function ::get-surrounding-text &form before-length after-length)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -298,7 +313,15 @@
      :since "68",
      :callback? true,
      :params
-     [{:name "callback", :type :callback, :callback {:params [{:name "bounds-list", :type "[array-of-objects]"}]}}]}],
+     [{:name "callback", :type :callback, :callback {:params [{:name "bounds-list", :type "[array-of-objects]"}]}}]}
+    {:id ::get-surrounding-text,
+     :name "getSurroundingText",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "before-length", :type "integer"}
+      {:name "after-length", :type "integer"}
+      {:name "callback", :type :callback, :callback {:params [{:name "surrounding-info", :type "object"}]}}]}],
    :events
    [{:id ::on-changed, :name "onChanged", :params [{:name "new-input-method-id", :type "string"}]}
     {:id ::on-composition-bounds-changed,
