@@ -39,8 +39,8 @@
 (defn stop-audio-debug-recordings* [config request security-origin]
   (gen-wrap :function ::stop-audio-debug-recordings config request security-origin))
 
-(defn start-event-logging* [config request security-origin peer-connection-id max-log-size-bytes metadata]
-  (gen-wrap :function ::start-event-logging config request security-origin peer-connection-id max-log-size-bytes metadata))
+(defn start-event-logging* [config request security-origin peer-connection-id max-log-size-bytes]
+  (gen-wrap :function ::start-event-logging config request security-origin peer-connection-id max-log-size-bytes))
 
 (defn get-logs-directory* [config]
   (gen-wrap :function ::get-logs-directory config))

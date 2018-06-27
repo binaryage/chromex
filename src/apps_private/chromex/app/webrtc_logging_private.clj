@@ -195,20 +195,18 @@
 (defmacro start-event-logging
   "Start remote-bound event logging for a specific peer connection, indicated by its ID, for which remote-bound event logging
    was not active. The callback will be posted back, indicating |true| if and only if an event log was successfully started.
-   |metadata| is an arbitrary string, to be prepended to the event log.
 
      |request| - ?
      |security-origin| - ?
      |peer-connection-id| - ?
      |max-log-size-bytes| - ?
-     |metadata| - ?
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([request security-origin peer-connection-id max-log-size-bytes metadata] (gen-call :function ::start-event-logging &form request security-origin peer-connection-id max-log-size-bytes metadata)))
+  ([request security-origin peer-connection-id max-log-size-bytes] (gen-call :function ::start-event-logging &form request security-origin peer-connection-id max-log-size-bytes)))
 
 (defmacro get-logs-directory
   "Returns the directory entry for the 'WebRTC Logs' directory. If the directory doesn't exist yet, this will create it. If
@@ -350,7 +348,6 @@
       {:name "security-origin", :type "string"}
       {:name "peer-connection-id", :type "string"}
       {:name "max-log-size-bytes", :type "integer"}
-      {:name "metadata", :type "string"}
       {:name "callback", :type :callback}]}
     {:id ::get-logs-directory,
      :name "getLogsDirectory",
