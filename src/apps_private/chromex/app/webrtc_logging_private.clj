@@ -194,7 +194,7 @@
 
 (defmacro start-event-logging
   "Start remote-bound event logging for a specific peer connection, indicated by its ID, for which remote-bound event logging
-   was not active. The callback will be posted back, indicating |true| if and only if an event log was successfully started.
+   was not active. If successful, the callback will carry the ID of the log.
 
      |request| - ?
      |security-origin| - ?
@@ -202,7 +202,9 @@
      |max-log-size-bytes| - ?
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [].
+   Signature of the result value put on the channel is [result] where:
+
+     |result| - ?
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
@@ -348,7 +350,7 @@
       {:name "security-origin", :type "string"}
       {:name "peer-connection-id", :type "string"}
       {:name "max-log-size-bytes", :type "integer"}
-      {:name "callback", :type :callback}]}
+      {:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}
     {:id ::get-logs-directory,
      :name "getLogsDirectory",
      :since "64",
