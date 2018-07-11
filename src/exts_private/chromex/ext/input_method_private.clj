@@ -316,7 +316,7 @@
      [{:name "callback", :type :callback, :callback {:params [{:name "bounds-list", :type "[array-of-objects]"}]}}]}
     {:id ::get-surrounding-text,
      :name "getSurroundingText",
-     :since "master",
+     :since "69",
      :callback? true,
      :params
      [{:name "before-length", :type "integer"}
