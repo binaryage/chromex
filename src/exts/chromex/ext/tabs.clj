@@ -296,8 +296,11 @@
   ([] `(detect-language :omit)))
 
 (defmacro capture-visible-tab
-  "Captures the visible area of the currently active tab in the specified window. You must have &lt;all_urls&gt; permission to
-   use this method.
+  "Captures the visible area of the currently active tab in the specified window. In order to call this method, the extension
+   must have either the &lt;all_urls&gt; permission or the activeTab permission. In addition to sites extensions can normally
+   access, this method allows extensions to capture sensitive sites that are otherwise restricted, including chrome:-scheme
+   pages, other extensions' pages, and data: URLs. These sensitive sites can only be captured with the activeTab permission.
+   File URLs may be captured only if the extension has been granted file access.
 
      |window-id| - The target window. Defaults to the current window.
      |options| - Details about the format and quality of an image.
