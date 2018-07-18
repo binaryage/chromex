@@ -3,7 +3,7 @@
    to events in the app or extension lifecycle. You can also use this API to convert the relative path of URLs to
    fully-qualified URLs.
 
-     * available since Chrome 24
+     * available since Chrome 25
      * https://developer.chrome.com/apps/runtime"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -394,7 +394,7 @@
 
 (def api-table
   {:namespace "chrome.runtime",
-   :since "24",
+   :since "25",
    :properties
    [{:id ::last-error, :name "lastError", :return-type "object"} {:id ::id, :name "id", :return-type "string"}],
    :functions
@@ -417,10 +417,9 @@
      :since "41",
      :callback? true,
      :params [{:name "url", :type "string"} {:name "callback", :optional? true, :type :callback}]}
-    {:id ::reload, :name "reload", :since "25"}
+    {:id ::reload, :name "reload"}
     {:id ::request-update-check,
      :name "requestUpdateCheck",
-     :since "25",
      :callback? true,
      :params
      [{:name "callback",
@@ -488,7 +487,7 @@
     {:id ::on-installed, :name "onInstalled", :params [{:name "details", :type "object"}]}
     {:id ::on-suspend, :name "onSuspend"}
     {:id ::on-suspend-canceled, :name "onSuspendCanceled"}
-    {:id ::on-update-available, :name "onUpdateAvailable", :since "25", :params [{:name "details", :type "object"}]}
+    {:id ::on-update-available, :name "onUpdateAvailable", :params [{:name "details", :type "object"}]}
     {:id ::on-browser-update-available,
      :name "onBrowserUpdateAvailable",
      :since "33",

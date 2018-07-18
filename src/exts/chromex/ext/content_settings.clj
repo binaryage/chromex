@@ -3,7 +3,7 @@
    JavaScript, and plugins. More generally speaking, content settings allow you to customize Chrome's behavior on a per-site
    basis instead of globally.
 
-     * available since Chrome 24
+     * available since Chrome 25
      * https://developer.chrome.com/extensions/contentSettings"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -131,7 +131,7 @@
 
 (def api-table
   {:namespace "chrome.contentSettings",
-   :since "24",
+   :since "25",
    :properties
    [{:id ::cookies, :name "cookies", :return-type "contentSettings.ContentSetting"}
     {:id ::images, :name "images", :return-type "contentSettings.ContentSetting"}

@@ -1,7 +1,7 @@
 (ns chromex.app.storage
   "Use the chrome.storage API to store, retrieve, and track changes to user data.
 
-     * available since Chrome 24
+     * available since Chrome 25
      * https://developer.chrome.com/apps/storage"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -62,7 +62,7 @@
 
 (def api-table
   {:namespace "chrome.storage",
-   :since "24",
+   :since "25",
    :properties
    [{:id ::sync, :name "sync", :return-type "storage.StorageArea"}
     {:id ::local, :name "local", :return-type "storage.StorageArea"}
