@@ -177,6 +177,9 @@
 (defn mount-crostini-container* [config]
   (gen-wrap :function ::mount-crostini-container config))
 
+(defn install-linux-package* [config entry]
+  (gen-wrap :function ::install-linux-package config entry))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-mount-completed* [config channel & args]

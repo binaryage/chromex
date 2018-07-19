@@ -78,6 +78,18 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-current-user &form)))
 
+(defmacro get-login-status
+  "Get login status.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [status] where:
+
+     |status| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::get-login-status &form)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -119,7 +131,12 @@
     {:id ::get-current-user,
      :name "getCurrentUser",
      :callback? true,
-     :params [{:name "callback", :type :callback, :callback {:params [{:name "user", :type "usersPrivate.User"}]}}]}]})
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "user", :type "usersPrivate.User"}]}}]}
+    {:id ::get-login-status,
+     :name "getLoginStatus",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "status", :type "object"}]}}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

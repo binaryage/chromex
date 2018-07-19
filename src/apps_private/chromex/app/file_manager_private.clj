@@ -739,6 +739,21 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::mount-crostini-container &form)))
 
+(defmacro install-linux-package
+  "Starts installation of a Linux package.
+
+     |entry| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [response failure-reason] where:
+
+     |response| - ?
+     |failure-reason| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([entry] (gen-call :function ::install-linux-package &form entry)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -1153,7 +1168,16 @@
      :name "mountCrostiniContainer",
      :since "68",
      :callback? true,
-     :params [{:name "callback", :type :callback}]}],
+     :params [{:name "callback", :type :callback}]}
+    {:id ::install-linux-package,
+     :name "installLinuxPackage",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "entry", :type "object"}
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "response", :type "unknown-type"} {:name "failure-reason", :type "string"}]}}]}],
    :events
    [{:id ::on-mount-completed, :name "onMountCompleted", :params [{:name "event", :type "object"}]}
     {:id ::on-file-transfers-updated, :name "onFileTransfersUpdated", :params [{:name "event", :type "object"}]}

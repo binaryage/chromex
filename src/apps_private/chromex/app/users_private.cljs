@@ -18,3 +18,6 @@
 (defn get-current-user* [config]
   (gen-wrap :function ::get-current-user config))
 
+(defn get-login-status* [config]
+  (gen-wrap :function ::get-login-status config))
+

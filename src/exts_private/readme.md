@@ -49,7 +49,7 @@
 
 ### API stats
 
-Generated 41 namespaces containing 1 properties, 344 functions and 69 events:
+Generated 41 namespaces containing 1 properties, 346 functions and 69 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -71,7 +71,7 @@ Generated 41 namespaces containing 1 properties, 344 functions and 69 events:
     | chrome.enterprise.platformKeysPrivate |           0 |          2 |       0 |
     |    chrome.enterprise.reportingPrivate |           0 |          1 |       0 |
     |                chrome.feedbackPrivate |           0 |          6 |       1 |
-    |             chrome.fileManagerPrivate |           0 |         58 |       9 |
+    |             chrome.fileManagerPrivate |           0 |         59 |       9 |
     |             chrome.imageWriterPrivate |           0 |          5 |       5 |
     |             chrome.inputMethodPrivate |           0 |         13 |       8 |
     |        chrome.languageSettingsPrivate |           0 |         14 |       4 |
@@ -88,7 +88,7 @@ Generated 41 namespaces containing 1 properties, 344 functions and 69 events:
     |                 chrome.streamsPrivate |           0 |          1 |       1 |
     |                  chrome.systemPrivate |           0 |          3 |       0 |
     |                chrome.terminalPrivate |           0 |          5 |       1 |
-    |                   chrome.usersPrivate |           0 |          5 |       0 |
+    |                   chrome.usersPrivate |           0 |          6 |       0 |
     |         chrome.virtualKeyboardPrivate |           0 |         12 |       3 |
     |                  chrome.webcamPrivate |           0 |          5 |       0 |
     |             chrome.webrtcAudioPrivate |           0 |          3 |       1 |
@@ -188,10 +188,10 @@ Generated 41 namespaces containing 1 properties, 344 functions and 69 events:
       request-drive-share get-profiles open-inspector open-settings-subpage compute-checksum
       is-uma-enabled set-entry-tag is-piex-loader-enabled get-providers add-provided-file-system
       configure-volume get-custom-actions execute-custom-action get-directory-size get-recent-files
-      is-crostini-enabled mount-crostini-container tap-on-mount-completed tap-on-file-transfers-updated
-      tap-on-copy-progress tap-on-directory-changed tap-on-preferences-changed
-      tap-on-drive-connection-status-changed tap-on-device-changed tap-on-drive-sync-error
-      tap-on-apps-updated tap-all-events]]
+      is-crostini-enabled mount-crostini-container install-linux-package tap-on-mount-completed
+      tap-on-file-transfers-updated tap-on-copy-progress tap-on-directory-changed
+      tap-on-preferences-changed tap-on-drive-connection-status-changed tap-on-device-changed
+      tap-on-drive-sync-error tap-on-apps-updated tap-all-events]]
 
     [chromex.ext.image-writer-private refer:[
       write-from-url write-from-file cancel-write destroy-partitions list-removable-storage-devices
@@ -273,7 +273,7 @@ Generated 41 namespaces containing 1 properties, 344 functions and 69 events:
 
     [chromex.ext.users-private refer:[
       get-whitelisted-users add-whitelisted-user remove-whitelisted-user is-whitelist-managed
-      get-current-user tap-all-events]]
+      get-current-user get-login-status tap-all-events]]
 
     [chromex.ext.virtual-keyboard-private refer:[
       insert-text send-key-event hide-keyboard set-hotrod-keyboard lock-keyboard keyboard-loaded
