@@ -134,7 +134,7 @@
      :params [{:name "callback", :type :callback, :callback {:params [{:name "user", :type "usersPrivate.User"}]}}]}
     {:id ::get-login-status,
      :name "getLoginStatus",
-     :since "master",
+     :since "69",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "status", :type "object"}]}}]}]})
 

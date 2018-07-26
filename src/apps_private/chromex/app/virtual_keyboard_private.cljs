@@ -39,6 +39,9 @@
 (defn set-occluded-bounds* [config bounds-list]
   (gen-wrap :function ::set-occluded-bounds config bounds-list))
 
+(defn set-hit-test-bounds* [config bounds-list]
+  (gen-wrap :function ::set-hit-test-bounds config bounds-list))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-bounds-changed* [config channel & args]

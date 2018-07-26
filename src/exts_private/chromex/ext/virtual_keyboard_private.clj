@@ -112,6 +112,13 @@
      |bounds-list| - List of rectangles representing regions occluded by the keyboard."
   ([bounds-list] (gen-call :function ::set-occluded-bounds &form bounds-list)))
 
+(defmacro set-hit-test-bounds
+  "Sets the areas on the keyboard window where events are handled. Any event outside of these areas are passed on to the
+   window behind it.
+
+     |bounds-list| - List of rectangles representing regions where events targeting the keyboard should be handled."
+  ([bounds-list] (gen-call :function ::set-hit-test-bounds &form bounds-list)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -208,6 +215,10 @@
     {:id ::set-occluded-bounds,
      :name "setOccludedBounds",
      :since "69",
+     :params [{:name "bounds-list", :type "[array-of-virtualKeyboardPrivate.Boundss]"}]}
+    {:id ::set-hit-test-bounds,
+     :name "setHitTestBounds",
+     :since "master",
      :params [{:name "bounds-list", :type "[array-of-virtualKeyboardPrivate.Boundss]"}]}],
    :events
    [{:id ::on-bounds-changed,

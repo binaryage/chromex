@@ -48,7 +48,7 @@
 
 ### API stats
 
-Generated 40 namespaces containing 1 properties, 314 functions and 70 events:
+Generated 40 namespaces containing 1 properties, 315 functions and 70 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -88,7 +88,7 @@ Generated 40 namespaces containing 1 properties, 314 functions and 70 events:
     |           chrome.systemPrivate |           0 |          3 |       0 |
     |         chrome.terminalPrivate |           0 |          5 |       1 |
     |            chrome.usersPrivate |           0 |          6 |       0 |
-    |  chrome.virtualKeyboardPrivate |           0 |         12 |       3 |
+    |  chrome.virtualKeyboardPrivate |           0 |         13 |       3 |
     |        chrome.wallpaperPrivate |           0 |          0 |       1 |
     |           chrome.webcamPrivate |           0 |          5 |       0 |
     |    chrome.webrtcLoggingPrivate |           0 |         14 |       0 |
@@ -272,8 +272,8 @@ Generated 40 namespaces containing 1 properties, 314 functions and 70 events:
     [chromex.app.virtual-keyboard-private refer:[
       insert-text send-key-event hide-keyboard set-hotrod-keyboard lock-keyboard keyboard-loaded
       get-keyboard-config open-settings set-container-behavior set-draggable-area set-keyboard-state
-      set-occluded-bounds tap-on-bounds-changed tap-on-keyboard-closed tap-on-keyboard-config-changed
-      tap-all-events]]
+      set-occluded-bounds set-hit-test-bounds tap-on-bounds-changed tap-on-keyboard-closed
+      tap-on-keyboard-config-changed tap-all-events]]
 
     [chromex.app.wallpaper-private refer:[
       tap-on-wallpaper-changed-by3rd-party tap-all-events]]

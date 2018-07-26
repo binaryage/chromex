@@ -1171,7 +1171,7 @@
      :params [{:name "callback", :type :callback}]}
     {:id ::install-linux-package,
      :name "installLinuxPackage",
-     :since "master",
+     :since "69",
      :callback? true,
      :params
      [{:name "entry", :type "object"}
