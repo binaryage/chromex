@@ -40,3 +40,6 @@
 (defn on-error-occurred* [config channel & args]
   (gen-wrap :event ::on-error-occurred config channel args))
 
+(defn on-action-ignored* [config channel & args]
+  (gen-wrap :event ::on-action-ignored config channel args))
+

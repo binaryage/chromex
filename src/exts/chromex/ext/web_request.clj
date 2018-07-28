@@ -153,6 +153,19 @@
    https://developer.chrome.com/extensions/webRequest#event-onErrorOccurred."
   ([channel & args] (apply gen-call :event ::on-error-occurred &form channel args)))
 
+(defmacro tap-on-action-ignored-events
+  "Fired when an extension's proposed modification to a network request is ignored. This happens in case of conflicts with
+   other extensions.
+
+   Events will be put on the |channel| with signature [::on-action-ignored [details]] where:
+
+     |details| - https://developer.chrome.com/extensions/webRequest#property-onActionIgnored-details.
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+
+   https://developer.chrome.com/extensions/webRequest#event-onActionIgnored."
+  ([channel & args] (apply gen-call :event ::on-action-ignored &form channel args)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -187,7 +200,8 @@
     {:id ::on-response-started, :name "onResponseStarted", :params [{:name "details", :type "object"}]}
     {:id ::on-before-redirect, :name "onBeforeRedirect", :params [{:name "details", :type "object"}]}
     {:id ::on-completed, :name "onCompleted", :params [{:name "details", :type "object"}]}
-    {:id ::on-error-occurred, :name "onErrorOccurred", :params [{:name "details", :type "object"}]}]})
+    {:id ::on-error-occurred, :name "onErrorOccurred", :params [{:name "details", :type "object"}]}
+    {:id ::on-action-ignored, :name "onActionIgnored", :since "master", :params [{:name "details", :type "object"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

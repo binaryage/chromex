@@ -86,7 +86,7 @@
 
 ### API stats
 
-Generated 78 namespaces containing 51 properties, 377 functions and 177 events:
+Generated 78 namespaces containing 51 properties, 377 functions and 178 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -166,7 +166,7 @@ Generated 78 namespaces containing 51 properties, 377 functions and 177 events:
     |                    chrome.vpnProvider |           0 |          5 |       5 |
     |                      chrome.wallpaper |           0 |          1 |       0 |
     |                  chrome.webNavigation |           0 |          2 |       9 |
-    |                     chrome.webRequest |           1 |          1 |       9 |
+    |                     chrome.webRequest |           1 |          1 |      10 |
     |                       chrome.webstore |           0 |          1 |       2 |
     |                        chrome.windows |           2 |          7 |       3 |
 
@@ -477,7 +477,8 @@ Generated 78 namespaces containing 51 properties, 377 functions and 177 events:
     [chromex.ext.web-request refer:[
       get-max-handler-behavior-changed-calls-per10-minutes handler-behavior-changed tap-on-before-request
       tap-on-before-send-headers tap-on-send-headers tap-on-headers-received tap-on-auth-required
-      tap-on-response-started tap-on-before-redirect tap-on-completed tap-on-error-occurred tap-all-events]]
+      tap-on-response-started tap-on-before-redirect tap-on-completed tap-on-error-occurred
+      tap-on-action-ignored tap-all-events]]
 
     [chromex.ext.webstore refer:[
       install tap-on-install-stage-changed tap-on-download-progress tap-all-events]]
