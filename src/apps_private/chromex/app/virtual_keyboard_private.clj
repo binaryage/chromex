@@ -218,7 +218,7 @@
      :params [{:name "bounds-list", :type "[array-of-virtualKeyboardPrivate.Boundss]"}]}
     {:id ::set-hit-test-bounds,
      :name "setHitTestBounds",
-     :since "master",
+     :since "69",
      :params [{:name "bounds-list", :type "[array-of-virtualKeyboardPrivate.Boundss]"}]}],
    :events
    [{:id ::on-bounds-changed,
