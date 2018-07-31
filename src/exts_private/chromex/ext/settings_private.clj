@@ -19,7 +19,7 @@
 
      |name| - The name of the pref.
      |value| - The new value of the pref.
-     |page-id| - The user metrics identifier or null.
+     |page-id| - An optional user metrics identifier.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [success] where:
@@ -28,7 +28,8 @@
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([name value page-id] (gen-call :function ::set-pref &form name value page-id)))
+  ([name value page-id] (gen-call :function ::set-pref &form name value page-id))
+  ([name value] `(set-pref ~name ~value :omit)))
 
 (defmacro get-all-prefs
   "Gets an array of all the prefs.
@@ -118,8 +119,8 @@
      :params
      [{:name "name", :type "string"}
       {:name "value", :type "any"}
-      {:name "page-id", :type "string"}
-      {:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
+      {:name "page-id", :optional? true, :type "string"}
+      {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::get-all-prefs,
      :name "getAllPrefs",
      :callback? true,
