@@ -2,7 +2,7 @@
   "Use the chrome.autofillPrivate API to add, remove, or update
    autofill data from the settings UI.
 
-     * available since Chrome 68"
+     * available since Chrome 69"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -145,7 +145,7 @@
 
 (def api-table
   {:namespace "chrome.autofillPrivate",
-   :since "68",
+   :since "69",
    :functions
    [{:id ::save-address, :name "saveAddress", :params [{:name "address", :type "autofillPrivate.AddressEntry"}]}
     {:id ::get-country-list,

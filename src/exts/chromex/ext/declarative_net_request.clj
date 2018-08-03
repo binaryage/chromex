@@ -2,7 +2,7 @@
   "The chrome.declarativeNetRequest API is used to intercept and
    perform actions on a network request by specifying declarative rules.
 
-     * available since Chrome 68
+     * available since Chrome 69
      * https://developer.chrome.com/extensions/declarativeNetRequest"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -80,25 +80,21 @@
 
 (def api-table
   {:namespace "chrome.declarativeNetRequest",
-   :since "68",
-   :properties
-   [{:id ::max-number-of-allowed-pages, :name "MAX_NUMBER_OF_ALLOWED_PAGES", :since "69", :return-type "unknown-type"}],
+   :since "69",
+   :properties [{:id ::max-number-of-allowed-pages, :name "MAX_NUMBER_OF_ALLOWED_PAGES", :return-type "unknown-type"}],
    :functions
    [{:id ::add-allowed-pages,
      :name "addAllowedPages",
-     :since "69",
      :callback? true,
      :params
      [{:name "page-patterns", :type "[array-of-strings]"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-allowed-pages,
      :name "removeAllowedPages",
-     :since "69",
      :callback? true,
      :params
      [{:name "page-patterns", :type "[array-of-strings]"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-allowed-pages,
      :name "getAllowedPages",
-     :since "69",
      :callback? true,
      :params
      [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "[array-of-strings]"}]}}]}]})

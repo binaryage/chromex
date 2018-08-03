@@ -1,7 +1,7 @@
 (ns chromex.ext.users-private
   "Use the chrome.usersPrivate API to manage users.
 
-     * available since Chrome 68"
+     * available since Chrome 69"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -103,7 +103,7 @@
 
 (def api-table
   {:namespace "chrome.usersPrivate",
-   :since "68",
+   :since "69",
    :functions
    [{:id ::get-whitelisted-users,
      :name "getWhitelistedUsers",
@@ -134,7 +134,6 @@
      :params [{:name "callback", :type :callback, :callback {:params [{:name "user", :type "usersPrivate.User"}]}}]}
     {:id ::get-login-status,
      :name "getLoginStatus",
-     :since "69",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "status", :type "object"}]}}]}]})
 
