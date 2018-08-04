@@ -201,7 +201,7 @@
     {:id ::on-before-redirect, :name "onBeforeRedirect", :params [{:name "details", :type "object"}]}
     {:id ::on-completed, :name "onCompleted", :params [{:name "details", :type "object"}]}
     {:id ::on-error-occurred, :name "onErrorOccurred", :params [{:name "details", :type "object"}]}
-    {:id ::on-action-ignored, :name "onActionIgnored", :since "master", :params [{:name "details", :type "object"}]}]})
+    {:id ::on-action-ignored, :name "onActionIgnored", :since "70", :params [{:name "details", :type "object"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

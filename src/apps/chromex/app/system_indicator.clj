@@ -4,7 +4,7 @@
    This is modelled after the other extension action APIs, such as
    chrome.browserAction and chrome.pageAction.
 
-     * available since Chrome 69
+     * available since Chrome 70
      * https://developer.chrome.com/apps/systemIndicator"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -71,7 +71,7 @@
 
 (def api-table
   {:namespace "chrome.systemIndicator",
-   :since "69",
+   :since "70",
    :functions
    [{:id ::set-icon,
      :name "setIcon",
