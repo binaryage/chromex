@@ -324,7 +324,9 @@
 
 (defmacro tap-on-key-event-events
   "Fired when a key event is sent from the operating system. The event will be sent to the extension if this extension owns
-   the active IME.
+   the active IME. The listener function should return true if the event was handled false if it was not.  If the event will
+   be evaluated asynchronously, this function must return undefined and the IME must later call keyEventHandled() with the
+   result.
 
    Events will be put on the |channel| with signature [::on-key-event [engine-id key-data]] where:
 
