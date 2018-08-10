@@ -66,3 +66,6 @@
 (defn set-play-store-enabled* [config enabled]
   (gen-wrap :function ::set-play-store-enabled config enabled))
 
+(defn run-crostini-installer* [config]
+  (gen-wrap :function ::run-crostini-installer config))
+
