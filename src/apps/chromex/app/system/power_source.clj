@@ -2,7 +2,7 @@
   "The chrome.system.powerSource API allows Chrome Kiosk Apps to
    query the state of connected power sources.
 
-     * available since Chrome 70
+     * available since Chrome 69
      * https://developer.chrome.com/apps/system.powerSource"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -63,7 +63,7 @@
 
 (def api-table
   {:namespace "chrome.system.powerSource",
-   :since "70",
+   :since "69",
    :functions
    [{:id ::get-power-source-info,
      :name "getPowerSourceInfo",
