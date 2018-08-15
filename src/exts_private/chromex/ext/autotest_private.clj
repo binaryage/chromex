@@ -248,7 +248,7 @@
      :params [{:name "enabled", :type "boolean"} {:name "callback", :type :callback}]}
     {:id ::run-crostini-installer,
      :name "runCrostiniInstaller",
-     :since "master",
+     :since "70",
      :callback? true,
      :params [{:name "callback", :type :callback}]}]})
 
