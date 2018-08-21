@@ -296,16 +296,6 @@
    chromex.error/get-last-error."
   ([entries] (gen-call :function ::cancel-file-transfers &form entries)))
 
-(defmacro cancel-all-file-transfers
-  "Cancels all ongoing file transfers. |callback| Completion callback of the cancel.
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [].
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([] (gen-call :function ::cancel-all-file-transfers &form)))
-
 (defmacro start-copy
   "Starts to copy an entry. If the source is a directory, the copy is done recursively. |entry| Entry of the source entry to
    be copied. |parentEntry| Entry for the destination (parent) directory. |newName| Name of the new entry. It must not contain
@@ -965,11 +955,6 @@
      :name "cancelFileTransfers",
      :callback? true,
      :params [{:name "entries", :type "[array-of-objects]"} {:name "callback", :type :callback}]}
-    {:id ::cancel-all-file-transfers,
-     :name "cancelAllFileTransfers",
-     :since "46",
-     :callback? true,
-     :params [{:name "callback", :type :callback}]}
     {:id ::start-copy,
      :name "startCopy",
      :callback? true,

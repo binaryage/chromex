@@ -69,9 +69,6 @@
 (defn cancel-file-transfers* [config entries]
   (gen-wrap :function ::cancel-file-transfers config entries))
 
-(defn cancel-all-file-transfers* [config]
-  (gen-wrap :function ::cancel-all-file-transfers config))
-
 (defn start-copy* [config entry parent-entry new-name]
   (gen-wrap :function ::start-copy config entry parent-entry new-name))
 
