@@ -106,6 +106,10 @@
      |guid| - GUID of the credit card to mask."
   ([guid] (gen-call :function ::mask-credit-card &form guid)))
 
+(defmacro migrate-credit-cards
+  "Triggers local credit cards migration."
+  ([] (gen-call :function ::migrate-credit-cards &form)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -183,7 +187,8 @@
      [{:name "callback",
        :type :callback,
        :callback {:params [{:name "entries", :type "[array-of-autofillPrivate.CreditCardEntrys]"}]}}]}
-    {:id ::mask-credit-card, :name "maskCreditCard", :params [{:name "guid", :type "string"}]}],
+    {:id ::mask-credit-card, :name "maskCreditCard", :params [{:name "guid", :type "string"}]}
+    {:id ::migrate-credit-cards, :name "migrateCreditCards", :since "master"}],
    :events
    [{:id ::on-address-list-changed,
      :name "onAddressListChanged",

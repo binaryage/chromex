@@ -30,6 +30,9 @@
 (defn mask-credit-card* [config guid]
   (gen-wrap :function ::mask-credit-card config guid))
 
+(defn migrate-credit-cards* [config]
+  (gen-wrap :function ::migrate-credit-cards config))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-address-list-changed* [config channel & args]

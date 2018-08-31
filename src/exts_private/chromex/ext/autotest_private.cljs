@@ -57,6 +57,9 @@
 (defn get-printer-list* [config]
   (gen-wrap :function ::get-printer-list config))
 
+(defn is-app-shown* [config app-id]
+  (gen-wrap :function ::is-app-shown config app-id))
+
 (defn update-printer* [config printer]
   (gen-wrap :function ::update-printer config printer))
 
