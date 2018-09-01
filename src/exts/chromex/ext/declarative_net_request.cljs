@@ -6,6 +6,9 @@
 (defn max-number-of-allowed-pages* [config]
   (gen-wrap :property ::max-number-of-allowed-pages config))
 
+(defn max-number-of-rules* [config]
+  (gen-wrap :property ::max-number-of-rules config))
+
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn add-allowed-pages* [config page-patterns]

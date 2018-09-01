@@ -20,6 +20,12 @@
    https://developer.chrome.com/extensions/declarativeNetRequest#property-MAX_NUMBER_OF_ALLOWED_PAGES."
   ([] (gen-call :property ::max-number-of-allowed-pages &form)))
 
+(defmacro get-max-number-of-rules
+  "The maximum number of rules that an extension can specify in the rule resources file. Any excess rules will be ignored.
+
+   https://developer.chrome.com/extensions/declarativeNetRequest#property-MAX_NUMBER_OF_RULES."
+  ([] (gen-call :property ::max-number-of-rules &form)))
+
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro add-allowed-pages
@@ -81,7 +87,9 @@
 (def api-table
   {:namespace "chrome.declarativeNetRequest",
    :since "69",
-   :properties [{:id ::max-number-of-allowed-pages, :name "MAX_NUMBER_OF_ALLOWED_PAGES", :return-type "unknown-type"}],
+   :properties
+   [{:id ::max-number-of-allowed-pages, :name "MAX_NUMBER_OF_ALLOWED_PAGES", :return-type "unknown-type"}
+    {:id ::max-number-of-rules, :name "MAX_NUMBER_OF_RULES", :since "master", :return-type "unknown-type"}],
    :functions
    [{:id ::add-allowed-pages,
      :name "addAllowedPages",

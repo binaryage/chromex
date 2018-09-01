@@ -25,6 +25,19 @@
    chromex.error/get-last-error."
   ([report] (gen-call :function ::upload-chrome-desktop-report &form report)))
 
+(defmacro get-device-id
+  "Gets the identity of device that Chrome browser is running on. The ID is retrieved from the local device and used by the
+   Google admin console.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [id] where:
+
+     |id| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::get-device-id &form)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -43,7 +56,13 @@
    [{:id ::upload-chrome-desktop-report,
      :name "uploadChromeDesktopReport",
      :callback? true,
-     :params [{:name "report", :type "object"} {:name "callback", :optional? true, :type :callback}]}]})
+     :params [{:name "report", :type "object"} {:name "callback", :optional? true, :type :callback}]}
+    {:id ::get-device-id,
+     :name "getDeviceId",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "callback", :optional? true, :type :callback, :callback {:params [{:name "id", :type "string"}]}}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

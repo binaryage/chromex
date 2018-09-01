@@ -35,6 +35,7 @@
 | [chrome.documentScan](https://developer.chrome.com/extensions/documentScan) | [chromex/ext/document_scan.clj](chromex/ext/document_scan.clj) |
 | [chrome.downloads](https://developer.chrome.com/extensions/downloads) | [chromex/ext/downloads.clj](chromex/ext/downloads.clj) |
 | [chrome.enterprise.deviceAttributes](https://developer.chrome.com/extensions/enterprise.deviceAttributes) | [chromex/ext/enterprise/device_attributes.clj](chromex/ext/enterprise/device_attributes.clj) |
+| [chrome.enterprise.hardwarePlatform](https://developer.chrome.com/extensions/enterprise.hardwarePlatform) | [chromex/ext/enterprise/hardware_platform.clj](chromex/ext/enterprise/hardware_platform.clj) |
 | [chrome.enterprise.platformKeys](https://developer.chrome.com/extensions/enterprise.platformKeys) | [chromex/ext/enterprise/platform_keys.clj](chromex/ext/enterprise/platform_keys.clj) |
 | [chrome.extension](https://developer.chrome.com/extensions/extension) | [chromex/ext/extension.clj](chromex/ext/extension.clj) |
 | [chrome.fileBrowserHandler](https://developer.chrome.com/extensions/fileBrowserHandler) | [chromex/ext/file_browser_handler.clj](chromex/ext/file_browser_handler.clj) |
@@ -86,7 +87,7 @@
 
 ### API stats
 
-Generated 78 namespaces containing 51 properties, 377 functions and 178 events:
+Generated 79 namespaces containing 52 properties, 378 functions and 178 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -111,7 +112,7 @@ Generated 78 namespaces containing 51 properties, 377 functions and 178 events:
     |                        chrome.cookies |           0 |          5 |       1 |
     |                       chrome.debugger |           0 |          4 |       2 |
     |             chrome.declarativeContent |           0 |          0 |       1 |
-    |          chrome.declarativeNetRequest |           1 |          3 |       0 |
+    |          chrome.declarativeNetRequest |           2 |          3 |       0 |
     |          chrome.declarativeWebRequest |           0 |          0 |       2 |
     |                 chrome.desktopCapture |           0 |          2 |       0 |
     |       chrome.devtools.inspectedWindow |           1 |          3 |       2 |
@@ -122,6 +123,7 @@ Generated 78 namespaces containing 51 properties, 377 functions and 178 events:
     |                   chrome.documentScan |           0 |          1 |       0 |
     |                      chrome.downloads |           0 |         14 |       4 |
     |    chrome.enterprise.deviceAttributes |           0 |          4 |       0 |
+    |    chrome.enterprise.hardwarePlatform |           0 |          1 |       0 |
     |        chrome.enterprise.platformKeys |           0 |          6 |       0 |
     |                      chrome.extension |           2 |          8 |       2 |
     |             chrome.fileBrowserHandler |           0 |          1 |       1 |
@@ -252,8 +254,8 @@ Generated 78 namespaces containing 51 properties, 377 functions and 178 events:
       tap-on-page-changed tap-all-events]]
 
     [chromex.ext.declarative-net-request refer:[
-      get-max-number-of-allowed-pages add-allowed-pages remove-allowed-pages get-allowed-pages
-      tap-all-events]]
+      get-max-number-of-allowed-pages get-max-number-of-rules add-allowed-pages remove-allowed-pages
+      get-allowed-pages tap-all-events]]
 
     [chromex.ext.declarative-web-request refer:[
       tap-on-request tap-on-message tap-all-events]]
@@ -290,6 +292,9 @@ Generated 78 namespaces containing 51 properties, 377 functions and 178 events:
     [chromex.ext.enterprise.device-attributes refer:[
       get-directory-device-id get-device-serial-number get-device-asset-id get-device-annotated-location
       tap-all-events]]
+
+    [chromex.ext.enterprise.hardware-platform refer:[
+      get-hardware-platform-info tap-all-events]]
 
     [chromex.ext.enterprise.platform-keys refer:[
       get-tokens get-certificates import-certificate remove-certificate challenge-machine-key
