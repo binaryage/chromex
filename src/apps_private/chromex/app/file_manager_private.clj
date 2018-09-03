@@ -729,6 +729,18 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::mount-crostini-container &form)))
 
+(defmacro share-path-with-crostini-container
+  "Shares directory with crostini container. |entry| Entry of the directory to share. |callback
+
+     |entry| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([entry] (gen-call :function ::share-path-with-crostini-container &form entry)))
+
 (defmacro install-linux-package
   "Starts installation of a Linux package.
 
@@ -1154,6 +1166,11 @@
      :since "68",
      :callback? true,
      :params [{:name "callback", :type :callback}]}
+    {:id ::share-path-with-crostini-container,
+     :name "sharePathWithCrostiniContainer",
+     :since "master",
+     :callback? true,
+     :params [{:name "entry", :type "object"} {:name "callback", :type :callback}]}
     {:id ::install-linux-package,
      :name "installLinuxPackage",
      :since "69",

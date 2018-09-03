@@ -174,6 +174,9 @@
 (defn mount-crostini-container* [config]
   (gen-wrap :function ::mount-crostini-container config))
 
+(defn share-path-with-crostini-container* [config entry]
+  (gen-wrap :function ::share-path-with-crostini-container config entry))
+
 (defn install-linux-package* [config entry]
   (gen-wrap :function ::install-linux-package config entry))
 
