@@ -72,3 +72,6 @@
 (defn run-crostini-installer* [config]
   (gen-wrap :function ::run-crostini-installer config))
 
+(defn set-crostini-enabled* [config enabled]
+  (gen-wrap :function ::set-crostini-enabled config enabled))
+

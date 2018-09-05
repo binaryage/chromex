@@ -192,6 +192,18 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::run-crostini-installer &form)))
 
+(defmacro set-crostini-enabled
+  "Enable/disable Crostini in preferences.
+
+     |enabled| - Enable Crostini.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([enabled] (gen-call :function ::set-crostini-enabled &form enabled)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -271,7 +283,12 @@
      :name "runCrostiniInstaller",
      :since "70",
      :callback? true,
-     :params [{:name "callback", :type :callback}]}]})
+     :params [{:name "callback", :type :callback}]}
+    {:id ::set-crostini-enabled,
+     :name "setCrostiniEnabled",
+     :since "master",
+     :callback? true,
+     :params [{:name "enabled", :type "boolean"} {:name "callback", :type :callback}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
