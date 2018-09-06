@@ -181,6 +181,20 @@
    chromex.error/get-last-error."
   ([enabled] (gen-call :function ::set-play-store-enabled &form enabled)))
 
+(defmacro get-histogram
+  "Get details about a histogram displayed at chrome://histogram.
+
+     |name| - Histogram name, e.g. 'Accessibility.CrosAutoclick'.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [histogram] where:
+
+     |histogram| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([name] (gen-call :function ::get-histogram &form name)))
+
 (defmacro run-crostini-installer
   "Run the crostini installer GUI to install the default crostini vm / container and create sshfs mount.  The installer
    launches the crostini terminal app on completion.  The installer expects that crostini is not already installed.
@@ -279,6 +293,13 @@
      :since "60",
      :callback? true,
      :params [{:name "enabled", :type "boolean"} {:name "callback", :type :callback}]}
+    {:id ::get-histogram,
+     :name "getHistogram",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "name", :type "string"}
+      {:name "callback", :type :callback, :callback {:params [{:name "histogram", :type "object"}]}}]}
     {:id ::run-crostini-installer,
      :name "runCrostiniInstaller",
      :since "70",
