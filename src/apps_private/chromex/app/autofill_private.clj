@@ -188,7 +188,7 @@
        :type :callback,
        :callback {:params [{:name "entries", :type "[array-of-autofillPrivate.CreditCardEntrys]"}]}}]}
     {:id ::mask-credit-card, :name "maskCreditCard", :params [{:name "guid", :type "string"}]}
-    {:id ::migrate-credit-cards, :name "migrateCreditCards", :since "master"}],
+    {:id ::migrate-credit-cards, :name "migrateCreditCards", :since "70"}],
    :events
    [{:id ::on-address-list-changed,
      :name "onAddressListChanged",
