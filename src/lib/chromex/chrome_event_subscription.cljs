@@ -3,8 +3,8 @@
             [oops.core :refer [ocall! oapply!]]))
 
 ; exception handlers, see https://www.youtube.com/watch?v=zp0OEDcAro0
-(declare *subscribe-called-while-subscribed*)
-(declare *unsubscribe-called-while-not-subscribed*)
+(declare ^:dynamic *subscribe-called-while-subscribed*)
+(declare ^:dynamic *unsubscribe-called-while-not-subscribed*)
 
 ; -- ChromeEventSubscription ------------------------------------------------------------------------------------------------
 
