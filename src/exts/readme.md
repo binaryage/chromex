@@ -87,7 +87,7 @@
 
 ### API stats
 
-Generated 79 namespaces containing 52 properties, 378 functions and 178 events:
+Generated 79 namespaces containing 52 properties, 379 functions and 178 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -159,7 +159,7 @@ Generated 79 namespaces containing 52 properties, 378 functions and 178 events:
     |                  chrome.system.memory |           0 |          1 |       0 |
     |                 chrome.system.storage |           0 |          3 |       2 |
     |                chrome.systemIndicator |           0 |          3 |       1 |
-    |                     chrome.tabCapture |           0 |          3 |       1 |
+    |                     chrome.tabCapture |           0 |          4 |       1 |
     |                           chrome.tabs |           1 |         24 |      13 |
     |                           chrome.test |           0 |         31 |       1 |
     |                       chrome.topSites |           0 |          1 |       0 |
@@ -440,7 +440,8 @@ Generated 79 namespaces containing 52 properties, 378 functions and 178 events:
       set-icon enable disable tap-on-clicked tap-all-events]]
 
     [chromex.ext.tab-capture refer:[
-      capture get-captured-tabs capture-offscreen-tab tap-on-status-changed tap-all-events]]
+      capture get-captured-tabs capture-offscreen-tab get-media-stream-id tap-on-status-changed
+      tap-all-events]]
 
     [chromex.ext.tabs refer:[
       get-tab-id-none get get-current connect send-request send-message get-selected get-all-in-window
