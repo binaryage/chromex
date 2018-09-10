@@ -1,5 +1,5 @@
 (ns chromex.app.virtual-keyboard
-  "The chrome.virtualKeybaord API is a kiosk only API used to
+  "The chrome.virtualKeyboard API is a kiosk only API used to
    configure virtual keyboard layout and behavior in kiosk sessions.
 
      * available since Chrome 58
