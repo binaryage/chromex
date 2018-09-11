@@ -12,9 +12,6 @@
 (defn capture-offscreen-tab* [config start-url options]
   (gen-wrap :function ::capture-offscreen-tab config start-url options))
 
-(defn get-media-stream-id* [config options]
-  (gen-wrap :function ::get-media-stream-id config options))
-
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-status-changed* [config channel & args]

@@ -73,24 +73,6 @@
    https://developer.chrome.com/extensions/tabCapture#method-captureOffscreenTab."
   ([start-url options] (gen-call :function ::capture-offscreen-tab &form start-url options)))
 
-(defmacro get-media-stream-id
-  "Creates a stream ID to capture the target tab. Similar to chrome.tabCapture.capture() method, but returns a media stream
-   ID, instead of a media stream, to the consumer tab.
-
-     |options| - https://developer.chrome.com/extensions/tabCapture#property-getMediaStreamId-options.
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [stream-id] where:
-
-     |stream-id| - https://developer.chrome.com/extensions/tabCapture#property-callback-streamId.
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error.
-
-   https://developer.chrome.com/extensions/tabCapture#method-getMediaStreamId."
-  ([options] (gen-call :function ::get-media-stream-id &form options))
-  ([] `(get-media-stream-id :omit)))
-
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -143,14 +125,7 @@
      :params
      [{:name "start-url", :type "string"}
       {:name "options", :type "tabCapture.CaptureOptions"}
-      {:name "callback", :type :callback, :callback {:params [{:name "stream", :type "LocalMediaStream"}]}}]}
-    {:id ::get-media-stream-id,
-     :name "getMediaStreamId",
-     :since "master",
-     :callback? true,
-     :params
-     [{:name "options", :optional? true, :type "object"}
-      {:name "callback", :type :callback, :callback {:params [{:name "stream-id", :type "string"}]}}]}],
+      {:name "callback", :type :callback, :callback {:params [{:name "stream", :type "LocalMediaStream"}]}}]}],
    :events
    [{:id ::on-status-changed, :name "onStatusChanged", :params [{:name "info", :type "tabCapture.CaptureInfo"}]}]})
 
