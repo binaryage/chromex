@@ -1,7 +1,7 @@
 (ns chromex.ext.font-settings
   "Use the chrome.fontSettings API to manage Chrome's font settings.
 
-     * available since Chrome 25
+     * available since Chrome 26
      * https://developer.chrome.com/extensions/fontSettings"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -274,7 +274,7 @@
 
 (def api-table
   {:namespace "chrome.fontSettings",
-   :since "25",
+   :since "26",
    :functions
    [{:id ::clear-font,
      :name "clearFont",

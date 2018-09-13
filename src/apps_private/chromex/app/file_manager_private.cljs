@@ -171,11 +171,11 @@
 (defn is-crostini-enabled* [config]
   (gen-wrap :function ::is-crostini-enabled config))
 
-(defn mount-crostini-container* [config]
-  (gen-wrap :function ::mount-crostini-container config))
+(defn mount-crostini* [config]
+  (gen-wrap :function ::mount-crostini config))
 
-(defn share-path-with-crostini-container* [config entry]
-  (gen-wrap :function ::share-path-with-crostini-container config entry))
+(defn share-path-with-crostini* [config entry]
+  (gen-wrap :function ::share-path-with-crostini config entry))
 
 (defn install-linux-package* [config entry]
   (gen-wrap :function ::install-linux-package config entry))

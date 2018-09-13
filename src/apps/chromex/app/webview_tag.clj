@@ -3,7 +3,7 @@
    can control the appearance of the webview and interact with the web content, initiate navigations in an embedded web page,
    react to error events that happen within it, and more (see Usage).
 
-     * available since Chrome 25
+     * available since Chrome 32
      * https://developer.chrome.com/apps/tags/webview"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -424,7 +424,7 @@ webview.addContentScripts([{
 
 (def api-table
   {:namespace "<webview>",
-   :since "25",
+   :since "32",
    :properties
    [{:id ::content-window, :name "contentWindow", :return-type "webviewTag.ContentWindow"}
     {:id ::request, :name "request", :since "33", :return-type "webviewTag.WebRequestEventInterface"}

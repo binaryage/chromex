@@ -3,7 +3,7 @@
    to events in the app or extension lifecycle. You can also use this API to convert the relative path of URLs to
    fully-qualified URLs.
 
-     * available since Chrome 25
+     * available since Chrome 26
      * https://developer.chrome.com/extensions/runtime"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -394,7 +394,7 @@
 
 (def api-table
   {:namespace "chrome.runtime",
-   :since "25",
+   :since "26",
    :properties
    [{:id ::last-error, :name "lastError", :return-type "object"} {:id ::id, :name "id", :return-type "string"}],
    :functions
@@ -436,7 +436,6 @@
      :params [{:name "seconds", :type "integer"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::connect,
      :name "connect",
-     :since "26",
      :return-type "runtime.Port",
      :params
      [{:name "extension-id", :optional? true, :type "string"} {:name "connect-info", :optional? true, :type "object"}]}
@@ -447,7 +446,6 @@
      :params [{:name "application", :type "string"}]}
     {:id ::send-message,
      :name "sendMessage",
-     :since "26",
      :callback? true,
      :params
      [{:name "extension-id", :optional? true, :type "string"}
@@ -492,18 +490,16 @@
      :name "onBrowserUpdateAvailable",
      :since "33",
      :deprecated "Please use 'runtime.onRestartRequired'."}
-    {:id ::on-connect, :name "onConnect", :since "26", :params [{:name "port", :type "runtime.Port"}]}
-    {:id ::on-connect-external, :name "onConnectExternal", :since "26", :params [{:name "port", :type "runtime.Port"}]}
+    {:id ::on-connect, :name "onConnect", :params [{:name "port", :type "runtime.Port"}]}
+    {:id ::on-connect-external, :name "onConnectExternal", :params [{:name "port", :type "runtime.Port"}]}
     {:id ::on-message,
      :name "onMessage",
-     :since "26",
      :params
      [{:name "message", :optional? true, :type "any"}
       {:name "sender", :type "runtime.MessageSender"}
       {:name "send-response", :type :callback}]}
     {:id ::on-message-external,
      :name "onMessageExternal",
-     :since "26",
      :params
      [{:name "message", :optional? true, :type "any"}
       {:name "sender", :type "runtime.MessageSender"}

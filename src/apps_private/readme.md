@@ -173,11 +173,11 @@ Generated 40 namespaces containing 1 properties, 316 functions and 70 events:
       request-web-store-access-token get-share-url get-download-url request-drive-share get-profiles
       open-inspector open-settings-subpage compute-checksum is-uma-enabled set-entry-tag
       is-piex-loader-enabled get-providers add-provided-file-system configure-volume get-custom-actions
-      execute-custom-action get-directory-size get-recent-files is-crostini-enabled
-      mount-crostini-container share-path-with-crostini-container install-linux-package
-      tap-on-mount-completed tap-on-file-transfers-updated tap-on-copy-progress tap-on-directory-changed
-      tap-on-preferences-changed tap-on-drive-connection-status-changed tap-on-device-changed
-      tap-on-drive-sync-error tap-on-apps-updated tap-all-events]]
+      execute-custom-action get-directory-size get-recent-files is-crostini-enabled mount-crostini
+      share-path-with-crostini install-linux-package tap-on-mount-completed tap-on-file-transfers-updated
+      tap-on-copy-progress tap-on-directory-changed tap-on-preferences-changed
+      tap-on-drive-connection-status-changed tap-on-device-changed tap-on-drive-sync-error
+      tap-on-apps-updated tap-all-events]]
 
     [chromex.app.identity-private refer:[
       tap-on-web-flow-request tap-all-events]]

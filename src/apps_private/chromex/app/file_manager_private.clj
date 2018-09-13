@@ -719,7 +719,7 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::is-crostini-enabled &form)))
 
-(defmacro mount-crostini-container
+(defmacro mount-crostini
   "Starts and mounts crostini container. |callback
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
@@ -727,9 +727,9 @@
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([] (gen-call :function ::mount-crostini-container &form)))
+  ([] (gen-call :function ::mount-crostini &form)))
 
-(defmacro share-path-with-crostini-container
+(defmacro share-path-with-crostini
   "Shares directory with crostini container. |entry| Entry of the directory to share. |callback
 
      |entry| - ?
@@ -739,7 +739,7 @@
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([entry] (gen-call :function ::share-path-with-crostini-container &form entry)))
+  ([entry] (gen-call :function ::share-path-with-crostini &form entry)))
 
 (defmacro install-linux-package
   "Starts installation of a Linux package.
@@ -1161,13 +1161,13 @@
      :since "68",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
-    {:id ::mount-crostini-container,
-     :name "mountCrostiniContainer",
-     :since "68",
+    {:id ::mount-crostini,
+     :name "mountCrostini",
+     :since "master",
      :callback? true,
      :params [{:name "callback", :type :callback}]}
-    {:id ::share-path-with-crostini-container,
-     :name "sharePathWithCrostiniContainer",
+    {:id ::share-path-with-crostini,
+     :name "sharePathWithCrostini",
      :since "master",
      :callback? true,
      :params [{:name "entry", :type "object"} {:name "callback", :type :callback}]}

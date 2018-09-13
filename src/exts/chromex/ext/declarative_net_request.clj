@@ -1,6 +1,6 @@
 (ns chromex.ext.declarative-net-request
-  "The chrome.declarativeNetRequest API is used to intercept and
-   perform actions on a network request by specifying declarative rules.
+  "The chrome.declarativeNetRequest API is used to block or
+   redirect network requests by specifying declarative rules.
 
      * available since Chrome master
      * https://developer.chrome.com/extensions/declarativeNetRequest"
@@ -21,7 +21,8 @@
   ([] (gen-call :property ::max-number-of-allowed-pages &form)))
 
 (defmacro get-max-number-of-rules
-  "The maximum number of rules that an extension can specify in the rule resources file. Any excess rules will be ignored.
+  "The maximum number of rules that an extension can specify in the rule resources file. Any excess rules will be ignored and
+   an install warning will be raised.
 
    https://developer.chrome.com/extensions/declarativeNetRequest#property-MAX_NUMBER_OF_RULES."
   ([] (gen-call :property ::max-number-of-rules &form)))
@@ -29,9 +30,9 @@
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro add-allowed-pages
-  "Adds |page_patterns| to the set of allowed pages. Requests from these pages are not intercepted by the extension. These are
-   persisted across browser sessions. Note: MAX_NUMBER_OF_ALLOWED_PAGES is the maximum number of allowed page an extension can
-   add. Also, adding page patterns is atomic. In case of an error, no page pattern is added.
+  "Adds page_patterns to the set of allowed pages. Requests from these pages are not intercepted by the extension. These are
+   persisted across browser sessions. Note:  MAX_NUMBER_OF_ALLOWED_PAGES is the maximum number of allowed page an extension
+   can add. Also, adding page patterns is atomic. In case of an error, no page pattern is added.
 
      |page-patterns| - Array of match patterns which are to be allowed.
 
@@ -45,7 +46,7 @@
   ([page-patterns] (gen-call :function ::add-allowed-pages &form page-patterns)))
 
 (defmacro remove-allowed-pages
-  "Removes |page_patterns| from the set of allowed pages. Note: Removing page patterns is atomic. In case of an error, no page
+  "Removes page_patterns from the set of allowed pages. Note: Removing page patterns is atomic. In case of an error, no page
    pattern is removed.
 
      |page-patterns| - Array of match patterns which are to removed.
