@@ -15,7 +15,7 @@
 ; -- properties -------------------------------------------------------------------------------------------------------------
 
 (defmacro get-tab-id-none
-  "An ID which represents the absence of a browser tab.
+  "An ID that represents the absence of a browser tab.
 
    https://developer.chrome.com/apps/tabs#property-TAB_ID_NONE."
   ([] (gen-call :property ::tab-id-none &form)))
@@ -39,7 +39,7 @@
   ([tab-id] (gen-call :function ::get &form tab-id)))
 
 (defmacro get-current
-  "Gets the tab that this script call is being made from. May be undefined if called from a non-tab context (for example: a
+  "Gets the tab that this script call is being made from. May be undefined if called from a non-tab context (for example, a
    background page or popup view).
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
@@ -76,8 +76,7 @@
    Signature of the result value put on the channel is [response] where:
 
      |response| - The JSON response object sent by the handler of the request. If an error occurs while connecting to the
-                  specified tab, the callback will be called with no arguments and 'runtime.lastError' will be set to the
-                  error message.
+                  specified tab, the callback is called with no arguments and 'runtime.lastError' is set to the error message.
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
@@ -98,8 +97,7 @@
    Signature of the result value put on the channel is [response] where:
 
      |response| - The JSON response object sent by the handler of the message. If an error occurs while connecting to the
-                  specified tab, the callback will be called with no arguments and 'runtime.lastError' will be set to the
-                  error message.
+                  specified tab, the callback is called with no arguments and 'runtime.lastError' is set to the error message.
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
@@ -150,7 +148,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [tab] where:
 
-     |tab| - Details about the created tab. Will contain the ID of the new tab.
+     |tab| - The created tab.
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
@@ -161,12 +159,12 @@
 (defmacro duplicate
   "Duplicates a tab.
 
-     |tab-id| - The ID of the tab which is to be duplicated.
+     |tab-id| - The ID of the tab to duplicate.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [tab] where:
 
-     |tab| - Details about the duplicated tab. The 'tabs.Tab' object doesn't contain url, title and favIconUrl if the 'tabs'
+     |tab| - Details about the duplicated tab. The 'tabs.Tab' object does not contain url, title, and favIconUrl if the 'tabs'
              permission has not been requested.
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
@@ -192,7 +190,7 @@
   ([query-info] (gen-call :function ::query &form query-info)))
 
 (defmacro highlight
-  "Highlights the given tabs and focuses on the first of group. Will appear to do nothing if specified tab is currently
+  "Highlights the given tabs and focuses on the first of group. Will appear to do nothing if the specified tab is currently
    active.
 
      |highlight-info| - https://developer.chrome.com/apps/tabs#property-highlight-highlightInfo.
@@ -217,7 +215,7 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [tab] where:
 
-     |tab| - Details about the updated tab. The 'tabs.Tab' object doesn't contain url, title and favIconUrl if the 'tabs'
+     |tab| - Details about the updated tab. The 'tabs.Tab' object does not contain url, title, and favIconUrl if the 'tabs'
              permission has not been requested.
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
@@ -230,7 +228,7 @@
   "Moves one or more tabs to a new position within its window, or to a new window. Note that tabs can only be moved to and
    from normal (window.type === 'normal') windows.
 
-     |tab-ids| - The tab or list of tabs to move.
+     |tab-ids| - The tab ID or list of tab IDs to move.
      |move-properties| - https://developer.chrome.com/apps/tabs#property-move-moveProperties.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
@@ -264,7 +262,7 @@
 (defmacro remove
   "Closes one or more tabs.
 
-     |tab-ids| - The tab or list of tabs to close.
+     |tab-ids| - The tab ID or list of tab IDs to close.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
@@ -284,8 +282,8 @@
    Signature of the result value put on the channel is [language] where:
 
      |language| - An ISO language code such as en or fr. For a complete list of languages supported by this method, see
-                  kLanguageInfoTable. The 2nd to 4th columns will be checked and the first non-NULL value will be returned
-                  except for Simplified Chinese for which zh-CN will be returned. For an unknown language, und will be
+                  kLanguageInfoTable. The second to fourth columns are checked and the first non-NULL value is returned,
+                  except for Simplified Chinese for which zh-CN is returned. For an unknown/undefined language, und is
                   returned.
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
@@ -297,10 +295,10 @@
 
 (defmacro capture-visible-tab
   "Captures the visible area of the currently active tab in the specified window. In order to call this method, the extension
-   must have either the &lt;all_urls&gt; permission or the activeTab permission. In addition to sites extensions can normally
-   access, this method allows extensions to capture sensitive sites that are otherwise restricted, including chrome:-scheme
-   pages, other extensions' pages, and data: URLs. These sensitive sites can only be captured with the activeTab permission.
-   File URLs may be captured only if the extension has been granted file access.
+   must have either the &lt;all_urls&gt; permission or the activeTab permission. In addition to sites that extensions can
+   normally access, this method allows extensions to capture sensitive sites that are otherwise restricted, including
+   chrome:-scheme pages, other extensions' pages, and data: URLs. These sensitive sites can only be captured with the
+   activeTab permission. File URLs may be captured only if the extension has been granted file access.
 
      |window-id| - The target window. Defaults to the current window.
      |options| - Details about the format and quality of an image.
@@ -308,8 +306,8 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [data-url] where:
 
-     |data-url| - A data URL which encodes an image of the visible area of the captured tab. May be assigned to the 'src'
-                  property of an HTML Image element for display.
+     |data-url| - A data URL that encodes an image of the visible area of the captured tab. May be assigned to the 'src'
+                  property of an HTML img element for display.
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
@@ -357,8 +355,8 @@
   "Zooms a specified tab.
 
      |tab-id| - The ID of the tab to zoom; defaults to the active tab of the current window.
-     |zoom-factor| - The new zoom factor. Use a value of 0 here to set the tab to its current default zoom factor. Values
-                     greater than zero specify a (possibly non-default) zoom factor for the tab.
+     |zoom-factor| - The new zoom factor. A value of 0 sets the tab to its current default zoom factor. Values greater than
+                     0 specify a (possibly non-default) zoom factor for the tab.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
@@ -422,14 +420,14 @@
 (defmacro discard
   "Discards a tab from memory. Discarded tabs are still visible on the tab strip and are reloaded when activated.
 
-     |tab-id| - The ID of the tab to be discarded. If specified, the tab will be discarded unless it's active or already
-                discarded. If omitted, the browser will discard the least important tab. This can fail if no discardable
-                tabs exist.
+     |tab-id| - The ID of the tab to be discarded. If specified, the tab is discarded unless it is active or already
+                discarded. If omitted, the browser discards the least important tab. This can fail if no discardable tabs
+                exist.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [tab] where:
 
-     |tab| - Discarded tab if it was successfully discarded. Undefined otherwise.
+     |tab| - The discarded tab, if it was successfully discarded; undefined otherwise.
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
@@ -443,8 +441,8 @@
 ; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-created-events
-  "Fired when a tab is created. Note that the tab's URL may not be set at the time this event fired, but you can listen to
-   onUpdated events to be notified when a URL is set.
+  "Fired when a tab is created. Note that the tab's URL may not be set at the time this event is fired, but you can listen to
+   onUpdated events so as to be notified when a URL is set.
 
    Events will be put on the |channel| with signature [::on-created [tab]] where:
 
@@ -471,8 +469,8 @@
 
 (defmacro tap-on-moved-events
   "Fired when a tab is moved within a window. Only one move event is fired, representing the tab the user directly moved. Move
-   events are not fired for the other tabs that must move in response. This event is not fired when a tab is moved between
-   windows. For that, see 'tabs.onDetached'.
+   events are not fired for the other tabs that must move in response to the manually-moved tab. This event is not fired when
+   a tab is moved between windows; for details, see 'tabs.onDetached'.
 
    Events will be put on the |channel| with signature [::on-moved [tab-id move-info]] where:
 
@@ -499,7 +497,7 @@
 
 (defmacro tap-on-active-changed-events
   "Fires when the selected tab in a window changes. Note that the tab's URL may not be set at the time this event fired, but
-   you can listen to 'tabs.onUpdated' events to be notified when a URL is set.
+   you can listen to 'tabs.onUpdated' events so as to be notified when a URL is set.
 
    Events will be put on the |channel| with signature [::on-active-changed [tab-id select-info]] where:
 
@@ -513,7 +511,7 @@
 
 (defmacro tap-on-activated-events
   "Fires when the active tab in a window changes. Note that the tab's URL may not be set at the time this event fired, but you
-   can listen to onUpdated events to be notified when a URL is set.
+   can listen to onUpdated events so as to be notified when a URL is set.
 
    Events will be put on the |channel| with signature [::on-activated [active-info]] where:
 
@@ -549,7 +547,7 @@
   ([channel & args] (apply gen-call :event ::on-highlighted &form channel args)))
 
 (defmacro tap-on-detached-events
-  "Fired when a tab is detached from a window, for example because it is being moved between windows.
+  "Fired when a tab is detached from a window; for example, because it was moved between windows.
 
    Events will be put on the |channel| with signature [::on-detached [tab-id detach-info]] where:
 
@@ -562,7 +560,7 @@
   ([channel & args] (apply gen-call :event ::on-detached &form channel args)))
 
 (defmacro tap-on-attached-events
-  "Fired when a tab is attached to a window, for example because it was moved between windows.
+  "Fired when a tab is attached to a window; for example, because it was moved between windows.
 
    Events will be put on the |channel| with signature [::on-attached [tab-id attach-info]] where:
 

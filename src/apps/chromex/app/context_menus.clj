@@ -24,8 +24,8 @@
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro create
-  "Creates a new context menu item. Note that if an error occurs during creation, you may not find out until the creation
-   callback fires (the details will be in chrome.runtime.lastError).
+  "Creates a new context menu item. If an error occurs during creation, it may not be detected until the creation callback
+   fires; details will be in chrome.runtime.lastError.
 
      |create-properties| - https://developer.chrome.com/apps/contextMenus#property-create-createProperties.
 
@@ -42,7 +42,7 @@
   "Updates a previously created context menu item.
 
      |id| - The ID of the item to update.
-     |update-properties| - The properties to update. Accepts the same values as the create function.
+     |update-properties| - The properties to update. Accepts the same values as the 'contextMenus.create' function.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].

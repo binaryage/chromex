@@ -117,9 +117,6 @@
 (defn request-web-store-access-token* [config]
   (gen-wrap :function ::request-web-store-access-token config))
 
-(defn get-share-url* [config entry]
-  (gen-wrap :function ::get-share-url config entry))
-
 (defn get-download-url* [config entry]
   (gen-wrap :function ::get-download-url config entry))
 

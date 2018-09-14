@@ -495,20 +495,6 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::request-web-store-access-token &form)))
 
-(defmacro get-share-url
-  "Requests a share dialog url for the specified file. |entry| The entry to share. |callback
-
-     |entry| - ?
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [url] where:
-
-     |url| - ?
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([entry] (gen-call :function ::get-share-url &form entry)))
-
 (defmacro get-download-url
   "Requests a download url to download the file contents. |entry| The entry to download. |callback
 
@@ -1049,12 +1035,6 @@
      :name "requestWebStoreAccessToken",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "access-token", :type "string"}]}}]}
-    {:id ::get-share-url,
-     :name "getShareUrl",
-     :callback? true,
-     :params
-     [{:name "entry", :type "object"}
-      {:name "callback", :type :callback, :callback {:params [{:name "url", :type "string"}]}}]}
     {:id ::get-download-url,
      :name "getDownloadUrl",
      :callback? true,

@@ -49,7 +49,7 @@
 
 ### API stats
 
-Generated 41 namespaces containing 1 properties, 353 functions and 69 events:
+Generated 41 namespaces containing 1 properties, 352 functions and 69 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -71,7 +71,7 @@ Generated 41 namespaces containing 1 properties, 353 functions and 69 events:
     | chrome.enterprise.platformKeysPrivate |           0 |          2 |       0 |
     |    chrome.enterprise.reportingPrivate |           0 |          2 |       0 |
     |                chrome.feedbackPrivate |           0 |          6 |       1 |
-    |             chrome.fileManagerPrivate |           0 |         59 |       9 |
+    |             chrome.fileManagerPrivate |           0 |         58 |       9 |
     |             chrome.imageWriterPrivate |           0 |          5 |       5 |
     |             chrome.inputMethodPrivate |           0 |         13 |       8 |
     |        chrome.languageSettingsPrivate |           0 |         14 |       4 |
@@ -185,14 +185,13 @@ Generated 41 namespaces containing 1 properties, 353 functions and 69 events:
       cancel-file-transfers start-copy cancel-copy get-size-stats format-volume rename-volume
       get-preferences set-preferences search-drive search-drive-metadata search-files-by-hashes
       zip-selection get-drive-connection-state validate-path-name-length zoom request-access-token
-      request-web-store-access-token get-share-url get-download-url request-drive-share get-profiles
-      open-inspector open-settings-subpage compute-checksum is-uma-enabled set-entry-tag
-      is-piex-loader-enabled get-providers add-provided-file-system configure-volume get-custom-actions
-      execute-custom-action get-directory-size get-recent-files is-crostini-enabled mount-crostini
-      share-path-with-crostini install-linux-package tap-on-mount-completed tap-on-file-transfers-updated
-      tap-on-copy-progress tap-on-directory-changed tap-on-preferences-changed
-      tap-on-drive-connection-status-changed tap-on-device-changed tap-on-drive-sync-error
-      tap-on-apps-updated tap-all-events]]
+      request-web-store-access-token get-download-url request-drive-share get-profiles open-inspector
+      open-settings-subpage compute-checksum is-uma-enabled set-entry-tag is-piex-loader-enabled
+      get-providers add-provided-file-system configure-volume get-custom-actions execute-custom-action
+      get-directory-size get-recent-files is-crostini-enabled mount-crostini share-path-with-crostini
+      install-linux-package tap-on-mount-completed tap-on-file-transfers-updated tap-on-copy-progress
+      tap-on-directory-changed tap-on-preferences-changed tap-on-drive-connection-status-changed
+      tap-on-device-changed tap-on-drive-sync-error tap-on-apps-updated tap-all-events]]
 
     [chromex.ext.image-writer-private refer:[
       write-from-url write-from-file cancel-write destroy-partitions list-removable-storage-devices
