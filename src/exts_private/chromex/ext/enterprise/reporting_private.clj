@@ -59,7 +59,7 @@
      :params [{:name "report", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-device-id,
      :name "getDeviceId",
-     :since "master",
+     :since "71",
      :callback? true,
      :params
      [{:name "callback", :optional? true, :type :callback, :callback {:params [{:name "id", :type "string"}]}}]}]})

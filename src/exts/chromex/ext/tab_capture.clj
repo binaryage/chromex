@@ -146,7 +146,7 @@
       {:name "callback", :type :callback, :callback {:params [{:name "stream", :type "LocalMediaStream"}]}}]}
     {:id ::get-media-stream-id,
      :name "getMediaStreamId",
-     :since "master",
+     :since "71",
      :callback? true,
      :params
      [{:name "options", :optional? true, :type "object"}

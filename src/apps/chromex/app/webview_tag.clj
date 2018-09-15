@@ -404,6 +404,28 @@ webview.addContentScripts([{
   ([data-url base-url virtual-url] (gen-call :function ::load-data-with-base-url &form data-url base-url virtual-url))
   ([data-url base-url] `(load-data-with-base-url ~data-url ~base-url :omit)))
 
+(defmacro set-spatial-navigation-enabled
+  "Sets spatial navigation state of the webview.
+
+     |enabled| - Spatial navigation state value.
+
+   https://developer.chrome.com/apps/tags/webview#method-setSpatialNavigationEnabled."
+  ([enabled] (gen-call :function ::set-spatial-navigation-enabled &form enabled)))
+
+(defmacro is-spatial-navigation-enabled
+  "Queries whether spatial navigation is enabled for the webview.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [enabled] where:
+
+     |enabled| - https://developer.chrome.com/apps/tags/webview#property-callback-enabled.
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/apps/tags/webview#method-isSpatialNavigationEnabled."
+  ([] (gen-call :function ::is-spatial-navigation-enabled &form)))
+
 (defmacro terminate
   "Forcibly kills the guest web page's renderer process. This may affect multiple webview tags in the current app if they
    share the same process, but it will not affect webview tags in other apps.
@@ -549,6 +571,15 @@ webview.addContentScripts([{
      [{:name "data-url", :type "string"}
       {:name "base-url", :type "string"}
       {:name "virtual-url", :optional? true, :type "string"}]}
+    {:id ::set-spatial-navigation-enabled,
+     :name "setSpatialNavigationEnabled",
+     :since "master",
+     :params [{:name "enabled", :type "boolean"}]}
+    {:id ::is-spatial-navigation-enabled,
+     :name "isSpatialNavigationEnabled",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "enabled", :type "boolean"}]}}]}
     {:id ::terminate, :name "terminate"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

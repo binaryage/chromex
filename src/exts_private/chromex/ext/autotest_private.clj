@@ -278,7 +278,7 @@
        :callback {:params [{:name "printers", :type "[array-of-autotestPrivate.Printers]"}]}}]}
     {:id ::is-app-shown,
      :name "isAppShown",
-     :since "master",
+     :since "71",
      :callback? true,
      :params
      [{:name "app-id", :type "string"}
@@ -295,7 +295,7 @@
      :params [{:name "enabled", :type "boolean"} {:name "callback", :type :callback}]}
     {:id ::get-histogram,
      :name "getHistogram",
-     :since "master",
+     :since "71",
      :callback? true,
      :params
      [{:name "name", :type "string"}
@@ -307,7 +307,7 @@
      :params [{:name "callback", :type :callback}]}
     {:id ::set-crostini-enabled,
      :name "setCrostiniEnabled",
-     :since "master",
+     :since "71",
      :callback? true,
      :params [{:name "enabled", :type "boolean"} {:name "callback", :type :callback}]}]})
 

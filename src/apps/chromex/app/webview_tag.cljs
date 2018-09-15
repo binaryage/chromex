@@ -98,6 +98,12 @@
 (defn load-data-with-base-url* [config data-url base-url virtual-url]
   (gen-wrap :function ::load-data-with-base-url config data-url base-url virtual-url))
 
+(defn set-spatial-navigation-enabled* [config enabled]
+  (gen-wrap :function ::set-spatial-navigation-enabled config enabled))
+
+(defn is-spatial-navigation-enabled* [config]
+  (gen-wrap :function ::is-spatial-navigation-enabled config))
+
 (defn terminate* [config]
   (gen-wrap :function ::terminate config))
 
