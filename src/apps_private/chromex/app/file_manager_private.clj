@@ -742,6 +742,22 @@
    chromex.error/get-last-error."
   ([entry] (gen-call :function ::install-linux-package &form entry)))
 
+(defmacro get-thumbnail
+  "For a file in DriveFS, retrieves its thumbnail. If |cropToSquare| is true, returns a thumbnail appropriate for file list or
+   grid views; otherwise, returns a thumbnail appropriate for quickview.
+
+     |entry| - ?
+     |crop-to-square| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [thumbnail-data-url] where:
+
+     |thumbnail-data-url| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([entry crop-to-square] (gen-call :function ::get-thumbnail &form entry crop-to-square)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -1159,7 +1175,15 @@
      [{:name "entry", :type "object"}
       {:name "callback",
        :type :callback,
-       :callback {:params [{:name "response", :type "unknown-type"} {:name "failure-reason", :type "string"}]}}]}],
+       :callback {:params [{:name "response", :type "unknown-type"} {:name "failure-reason", :type "string"}]}}]}
+    {:id ::get-thumbnail,
+     :name "getThumbnail",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "entry", :type "FileEntry"}
+      {:name "crop-to-square", :type "boolean"}
+      {:name "callback", :type :callback, :callback {:params [{:name "thumbnail-data-url", :type "string"}]}}]}],
    :events
    [{:id ::on-mount-completed, :name "onMountCompleted", :params [{:name "event", :type "object"}]}
     {:id ::on-file-transfers-updated, :name "onFileTransfersUpdated", :params [{:name "event", :type "object"}]}

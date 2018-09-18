@@ -177,6 +177,9 @@
 (defn install-linux-package* [config entry]
   (gen-wrap :function ::install-linux-package config entry))
 
+(defn get-thumbnail* [config entry crop-to-square]
+  (gen-wrap :function ::get-thumbnail config entry crop-to-square))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-mount-completed* [config channel & args]
