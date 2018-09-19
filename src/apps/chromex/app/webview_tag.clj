@@ -573,11 +573,11 @@ webview.addContentScripts([{
       {:name "virtual-url", :optional? true, :type "string"}]}
     {:id ::set-spatial-navigation-enabled,
      :name "setSpatialNavigationEnabled",
-     :since "master",
+     :since "71",
      :params [{:name "enabled", :type "boolean"}]}
     {:id ::is-spatial-navigation-enabled,
      :name "isSpatialNavigationEnabled",
-     :since "master",
+     :since "71",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "enabled", :type "boolean"}]}}]}
     {:id ::terminate, :name "terminate"}]})

@@ -727,6 +727,18 @@
    chromex.error/get-last-error."
   ([entry] (gen-call :function ::share-path-with-crostini &form entry)))
 
+(defmacro get-crostini-shared-paths
+  "Returns list of paths shared with crostini container.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [entries] where:
+
+     |entries| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::get-crostini-shared-paths &form)))
+
 (defmacro install-linux-package
   "Starts installation of a Linux package.
 
@@ -1159,14 +1171,19 @@
      :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
     {:id ::mount-crostini,
      :name "mountCrostini",
-     :since "master",
+     :since "71",
      :callback? true,
      :params [{:name "callback", :type :callback}]}
     {:id ::share-path-with-crostini,
      :name "sharePathWithCrostini",
-     :since "master",
+     :since "71",
      :callback? true,
      :params [{:name "entry", :type "object"} {:name "callback", :type :callback}]}
+    {:id ::get-crostini-shared-paths,
+     :name "getCrostiniSharedPaths",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "entries", :type "[array-of-Entrys]"}]}}]}
     {:id ::install-linux-package,
      :name "installLinuxPackage",
      :since "69",
