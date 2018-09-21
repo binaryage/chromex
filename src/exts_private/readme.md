@@ -49,7 +49,7 @@
 
 ### API stats
 
-Generated 41 namespaces containing 1 properties, 354 functions and 69 events:
+Generated 41 namespaces containing 1 properties, 356 functions and 69 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -57,7 +57,7 @@ Generated 41 namespaces containing 1 properties, 354 functions and 69 events:
     |           chrome.accessibilityPrivate |           0 |          9 |       5 |
     |             chrome.activityLogPrivate |           0 |          4 |       1 |
     |                chrome.autofillPrivate |           0 |         10 |       2 |
-    |                chrome.autotestPrivate |           0 |         25 |       0 |
+    |                chrome.autotestPrivate |           0 |         27 |       0 |
     |               chrome.bluetoothPrivate |           0 |          7 |       1 |
     |         chrome.bookmarkManagerPrivate |           0 |         20 |       4 |
     |          chrome.brailleDisplayPrivate |           0 |          2 |       2 |
@@ -121,9 +121,9 @@ Generated 41 namespaces containing 1 properties, 354 functions and 69 events:
       logout restart shutdown login-status lock-screen get-extensions-info simulate-asan-memory-bug
       set-touchpad-sensitivity set-tap-to-click set-three-finger-click set-tap-dragging
       set-natural-scroll set-mouse-sensitivity set-primary-button-right set-mouse-reverse-scroll
-      get-visible-notifications get-play-store-state get-printer-list is-app-shown update-printer
-      remove-printer set-play-store-enabled get-histogram run-crostini-installer set-crostini-enabled
-      tap-all-events]]
+      get-visible-notifications get-play-store-state get-printer-list is-app-shown launch-app
+      update-printer remove-printer set-play-store-enabled get-histogram run-crostini-installer
+      set-crostini-enabled bootstrap-machine-learning-service tap-all-events]]
 
     [chromex.ext.bluetooth-private refer:[
       set-adapter-state set-pairing-response disconnect-all forget-device set-discovery-filter connect

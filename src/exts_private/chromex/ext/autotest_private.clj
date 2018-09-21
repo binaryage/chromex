@@ -157,6 +157,18 @@
    chromex.error/get-last-error."
   ([app-id] (gen-call :function ::is-app-shown &form app-id)))
 
+(defmacro launch-app
+  "Launches an application from the launcher with the given appId.
+
+     |app-id| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([app-id] (gen-call :function ::launch-app &form app-id)))
+
 (defmacro update-printer
   "Update printer. Printer with empty ID is considered new.
 
@@ -217,6 +229,17 @@
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([enabled] (gen-call :function ::set-crostini-enabled &form enabled)))
+
+(defmacro bootstrap-machine-learning-service
+  "Makes a basic request to ML Service, triggering 1. ML Service daemon startup, and 2. the initial D-Bus -> Mojo IPC
+   bootstrap.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::bootstrap-machine-learning-service &form)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
@@ -283,6 +306,11 @@
      :params
      [{:name "app-id", :type "string"}
       {:name "callback", :type :callback, :callback {:params [{:name "app-shown", :type "boolean"}]}}]}
+    {:id ::launch-app,
+     :name "launchApp",
+     :since "master",
+     :callback? true,
+     :params [{:name "app-id", :type "string"} {:name "callback", :type :callback}]}
     {:id ::update-printer,
      :name "updatePrinter",
      :since "68",
@@ -309,7 +337,12 @@
      :name "setCrostiniEnabled",
      :since "71",
      :callback? true,
-     :params [{:name "enabled", :type "boolean"} {:name "callback", :type :callback}]}]})
+     :params [{:name "enabled", :type "boolean"} {:name "callback", :type :callback}]}
+    {:id ::bootstrap-machine-learning-service,
+     :name "bootstrapMachineLearningService",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

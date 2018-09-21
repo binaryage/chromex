@@ -60,6 +60,9 @@
 (defn is-app-shown* [config app-id]
   (gen-wrap :function ::is-app-shown config app-id))
 
+(defn launch-app* [config app-id]
+  (gen-wrap :function ::launch-app config app-id))
+
 (defn update-printer* [config printer]
   (gen-wrap :function ::update-printer config printer))
 
@@ -77,4 +80,7 @@
 
 (defn set-crostini-enabled* [config enabled]
   (gen-wrap :function ::set-crostini-enabled config enabled))
+
+(defn bootstrap-machine-learning-service* [config]
+  (gen-wrap :function ::bootstrap-machine-learning-service config))
 
