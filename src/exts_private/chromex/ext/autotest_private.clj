@@ -318,7 +318,7 @@
       {:name "callback", :type :callback, :callback {:params [{:name "app-shown", :type "boolean"}]}}]}
     {:id ::launch-app,
      :name "launchApp",
-     :since "master",
+     :since "71",
      :callback? true,
      :params [{:name "app-id", :type "string"} {:name "callback", :type :callback}]}
     {:id ::update-printer,
@@ -355,7 +355,7 @@
      :params [{:name "enabled", :type "boolean"} {:name "callback", :type :callback}]}
     {:id ::bootstrap-machine-learning-service,
      :name "bootstrapMachineLearningService",
-     :since "master",
+     :since "71",
      :callback? true,
      :params [{:name "callback", :type :callback}]}]})
 

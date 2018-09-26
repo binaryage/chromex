@@ -1181,7 +1181,7 @@
      :params [{:name "entry", :type "object"} {:name "callback", :type :callback}]}
     {:id ::get-crostini-shared-paths,
      :name "getCrostiniSharedPaths",
-     :since "master",
+     :since "71",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "entries", :type "[array-of-Entrys]"}]}}]}
     {:id ::install-linux-package,
@@ -1195,7 +1195,7 @@
        :callback {:params [{:name "response", :type "unknown-type"} {:name "failure-reason", :type "string"}]}}]}
     {:id ::get-thumbnail,
      :name "getThumbnail",
-     :since "master",
+     :since "71",
      :callback? true,
      :params
      [{:name "entry", :type "FileEntry"}
