@@ -84,6 +84,9 @@
 (defn set-crostini-enabled* [config enabled]
   (gen-wrap :function ::set-crostini-enabled config enabled))
 
+(defn take-screenshot* [config]
+  (gen-wrap :function ::take-screenshot config))
+
 (defn bootstrap-machine-learning-service* [config]
   (gen-wrap :function ::bootstrap-machine-learning-service config))
 
