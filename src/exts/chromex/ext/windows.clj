@@ -98,7 +98,7 @@
   ([] `(get-all :omit)))
 
 (defmacro create
-  "Creates (opens) a new browser with any optional sizing, position or default URL provided.
+  "Creates (opens) a new browser window with any optional sizing, position, or default URL provided.
 
      |create-data| - https://developer.chrome.com/extensions/windows#property-create-createData.
 
@@ -115,8 +115,7 @@
   ([] `(create :omit)))
 
 (defmacro update
-  "Updates the properties of a window. Specify only the properties that you want to change; unspecified properties will be
-   left unchanged.
+  "Updates the properties of a window. Specify only the properties that to be changed; unspecified properties are unchanged.
 
      |window-id| - https://developer.chrome.com/extensions/windows#property-update-windowId.
      |update-info| - https://developer.chrome.com/extensions/windows#property-update-updateInfo.
@@ -133,7 +132,7 @@
   ([window-id update-info] (gen-call :function ::update &form window-id update-info)))
 
 (defmacro remove
-  "Removes (closes) a window, and all the tabs inside it.
+  "Removes (closes) a window and all the tabs inside it.
 
      |window-id| - https://developer.chrome.com/extensions/windows#property-remove-windowId.
 
@@ -155,7 +154,7 @@
 
    Events will be put on the |channel| with signature [::on-created [window]] where:
 
-     |window| - Details of the window that was created.
+     |window| - Details of the created window.
 
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
 
@@ -175,13 +174,13 @@
   ([channel & args] (apply gen-call :event ::on-removed &form channel args)))
 
 (defmacro tap-on-focus-changed-events
-  "Fired when the currently focused window changes. Will be chrome.windows.WINDOW_ID_NONE if all chrome windows have lost
-   focus. Note: On some Linux window managers, WINDOW_ID_NONE will always be sent immediately preceding a switch from one
-   chrome window to another.
+  "Fired when the currently focused window changes. Returns chrome.windows.WINDOW_ID_NONE if all Chrome windows have lost
+   focus. Note: On some Linux window managers, WINDOW_ID_NONE is always sent immediately preceding a switch from one Chrome
+   window to another.
 
    Events will be put on the |channel| with signature [::on-focus-changed [window-id]] where:
 
-     |window-id| - ID of the newly focused window.
+     |window-id| - ID of the newly-focused window.
 
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
 

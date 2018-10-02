@@ -1,6 +1,6 @@
 (ns chromex.ext.browser-action
   "Use browser actions to put icons in the main Google Chrome toolbar, to the right of the address bar. In addition to its
-   icon, a browser action can also have a tooltip, a badge, and a popup.
+   icon, a browser action can have a tooltip, a badge, and a popup.
 
      * available since Chrome 26
      * https://developer.chrome.com/extensions/browserAction"
@@ -15,7 +15,7 @@
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro set-title
-  "Sets the title of the browser action. This shows up in the tooltip.
+  "Sets the title of the browser action. This title appears in the tooltip.
 
      |details| - https://developer.chrome.com/extensions/browserAction#property-setTitle-details.
 
@@ -45,9 +45,8 @@
   ([details] (gen-call :function ::get-title &form details)))
 
 (defmacro set-icon
-  "Sets the icon for the browser action. The icon can be specified either as the path to an image file or as the pixel data
-   from a canvas element, or as dictionary of either one of those. Either the path or the imageData property must be
-   specified.
+  "Sets the icon for the browser action. The icon can be specified as the path to an image file, as the pixel data from a
+   canvas element, or as a dictionary of one of those. Either the path or the imageData property must be specified.
 
      |details| - https://developer.chrome.com/extensions/browserAction#property-setIcon-details.
 
@@ -61,7 +60,7 @@
   ([details] (gen-call :function ::set-icon &form details)))
 
 (defmacro set-popup
-  "Sets the html document to be opened as a popup when the user clicks on the browser action's icon.
+  "Sets the HTML document to be opened as a popup when the user clicks the browser action icon.
 
      |details| - https://developer.chrome.com/extensions/browserAction#property-setPopup-details.
 
@@ -75,7 +74,7 @@
   ([details] (gen-call :function ::set-popup &form details)))
 
 (defmacro get-popup
-  "Gets the html document set as the popup for this browser action.
+  "Gets the HTML document that is set as the popup for this browser action.
 
      |details| - https://developer.chrome.com/extensions/browserAction#property-getPopup-details.
 
@@ -151,9 +150,9 @@
   ([details] (gen-call :function ::get-badge-background-color &form details)))
 
 (defmacro enable
-  "Enables the browser action for a tab. By default, browser actions are enabled.
+  "Enables the browser action for a tab. Defaults to enabled.
 
-     |tab-id| - The id of the tab for which you want to modify the browser action.
+     |tab-id| - The ID of the tab for which to modify the browser action.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
@@ -168,7 +167,7 @@
 (defmacro disable
   "Disables the browser action for a tab.
 
-     |tab-id| - The id of the tab for which you want to modify the browser action.
+     |tab-id| - The ID of the tab for which to modify the browser action.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
@@ -185,7 +184,7 @@
 ; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-clicked-events
-  "Fired when a browser action icon is clicked.  This event will not fire if the browser action has a popup.
+  "Fired when a browser action icon is clicked. Does not fire if the browser action has a popup.
 
    Events will be put on the |channel| with signature [::on-clicked [tab]] where:
 
