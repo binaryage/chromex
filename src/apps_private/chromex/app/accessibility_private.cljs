@@ -30,6 +30,9 @@
 (defn on-select-to-speak-state-changed* [config state]
   (gen-wrap :function ::on-select-to-speak-state-changed config state))
 
+(defn toggle-dictation* [config]
+  (gen-wrap :function ::toggle-dictation config))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-introduce-chrome-vox* [config channel & args]

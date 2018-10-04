@@ -73,6 +73,10 @@
      |state| - ?"
   ([state] (gen-call :function ::on-select-to-speak-state-changed &form state)))
 
+(defmacro toggle-dictation
+  "Toggles dictation between active and inactive states."
+  ([] (gen-call :function ::toggle-dictation &form)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -168,7 +172,8 @@
     {:id ::on-select-to-speak-state-changed,
      :name "onSelectToSpeakStateChanged",
      :since "68",
-     :params [{:name "state", :type "accessibilityPrivate.SelectToSpeakState"}]}],
+     :params [{:name "state", :type "accessibilityPrivate.SelectToSpeakState"}]}
+    {:id ::toggle-dictation, :name "toggleDictation", :since "master"}],
    :events
    [{:id ::on-introduce-chrome-vox, :name "onIntroduceChromeVox", :since "42"}
     {:id ::on-accessibility-gesture,
