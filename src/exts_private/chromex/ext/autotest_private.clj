@@ -357,7 +357,7 @@
      :params [{:name "callback", :type :callback}]}
     {:id ::run-crostini-uninstaller,
      :name "runCrostiniUninstaller",
-     :since "master",
+     :since "71",
      :callback? true,
      :params [{:name "callback", :type :callback}]}
     {:id ::set-crostini-enabled,
@@ -367,7 +367,7 @@
      :params [{:name "enabled", :type "boolean"} {:name "callback", :type :callback}]}
     {:id ::take-screenshot,
      :name "takeScreenshot",
-     :since "master",
+     :since "71",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "base64-png", :type "string"}]}}]}
     {:id ::bootstrap-machine-learning-service,
