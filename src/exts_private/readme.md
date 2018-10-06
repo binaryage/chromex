@@ -49,12 +49,12 @@
 
 ### API stats
 
-Generated 41 namespaces containing 1 properties, 359 functions and 69 events:
+Generated 41 namespaces containing 1 properties, 360 functions and 69 events:
 
 
     |                            :namespace | :properties | :functions | :events |
     |---------------------------------------+-------------+------------+---------|
-    |           chrome.accessibilityPrivate |           0 |         10 |       5 |
+    |           chrome.accessibilityPrivate |           0 |         11 |       5 |
     |             chrome.activityLogPrivate |           0 |          4 |       1 |
     |                chrome.autofillPrivate |           0 |         10 |       2 |
     |                chrome.autotestPrivate |           0 |         29 |       0 |
@@ -104,9 +104,9 @@ Generated 41 namespaces containing 1 properties, 359 functions and 69 events:
     [chromex.ext.accessibility-private refer:[
       set-native-accessibility-enabled set-focus-ring set-highlights set-keyboard-listener darken-screen
       set-switch-access-keys set-native-chrome-vox-arc-support-for-current-app send-synthetic-key-event
-      on-select-to-speak-state-changed toggle-dictation tap-on-introduce-chrome-vox
-      tap-on-accessibility-gesture tap-on-two-finger-touch-start tap-on-two-finger-touch-stop
-      tap-on-select-to-speak-state-change-requested tap-all-events]]
+      enable-chrome-vox-mouse-events on-select-to-speak-state-changed toggle-dictation
+      tap-on-introduce-chrome-vox tap-on-accessibility-gesture tap-on-two-finger-touch-start
+      tap-on-two-finger-touch-stop tap-on-select-to-speak-state-change-requested tap-all-events]]
 
     [chromex.ext.activity-log-private refer:[
       get-extension-activities delete-activities delete-database delete-urls tap-on-extension-activity

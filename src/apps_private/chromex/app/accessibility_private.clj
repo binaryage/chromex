@@ -66,6 +66,12 @@
      |key-event| - The event to send."
   ([key-event] (gen-call :function ::send-synthetic-key-event &form key-event)))
 
+(defmacro enable-chrome-vox-mouse-events
+  "Enables or disables mouse events in ChromeVox.
+
+     |enabled| - True if ChromeVox should receive mouse events."
+  ([enabled] (gen-call :function ::enable-chrome-vox-mouse-events &form enabled)))
+
 (defmacro on-select-to-speak-state-changed
   "Called by the Select-to-Speak extension when Select-to-Speak has changed states, between selecting with the mouse,
    speaking, and inactive.
@@ -169,6 +175,10 @@
      :name "sendSyntheticKeyEvent",
      :since "65",
      :params [{:name "key-event", :type "accessibilityPrivate.SyntheticKeyboardEvent"}]}
+    {:id ::enable-chrome-vox-mouse-events,
+     :name "enableChromeVoxMouseEvents",
+     :since "master",
+     :params [{:name "enabled", :type "boolean"}]}
     {:id ::on-select-to-speak-state-changed,
      :name "onSelectToSpeakStateChanged",
      :since "68",
