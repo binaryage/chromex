@@ -21,8 +21,8 @@
 (defn get-strings* [config]
   (gen-wrap :function ::get-strings config))
 
-(defn start-drag* [config id-list is-from-touch]
-  (gen-wrap :function ::start-drag config id-list is-from-touch))
+(defn start-drag* [config id-list drag-node-index is-from-touch]
+  (gen-wrap :function ::start-drag config id-list drag-node-index is-from-touch))
 
 (defn drop* [config parent-id index]
   (gen-wrap :function ::drop config parent-id index))

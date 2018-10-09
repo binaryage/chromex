@@ -84,8 +84,10 @@
   "Begins dragging a set of bookmarks.
 
      |id-list| - An array of string-valued ids.
+     |drag-node-index| - The index of the dragged node in |idList
+
      |is-from-touch| - True if the drag was initiated from touch."
-  ([id-list is-from-touch] (gen-call :function ::start-drag &form id-list is-from-touch)))
+  ([id-list drag-node-index is-from-touch] (gen-call :function ::start-drag &form id-list drag-node-index is-from-touch)))
 
 (defmacro drop
   "Performs the drop action of the drag and drop session.
@@ -324,7 +326,10 @@
      :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}
     {:id ::start-drag,
      :name "startDrag",
-     :params [{:name "id-list", :type "[array-of-strings]"} {:name "is-from-touch", :type "boolean"}]}
+     :params
+     [{:name "id-list", :type "[array-of-strings]"}
+      {:name "drag-node-index", :type "integer"}
+      {:name "is-from-touch", :type "boolean"}]}
     {:id ::drop,
      :name "drop",
      :callback? true,
