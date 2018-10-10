@@ -30,6 +30,9 @@
 (defn enable-chrome-vox-mouse-events* [config enabled]
   (gen-wrap :function ::enable-chrome-vox-mouse-events config enabled))
 
+(defn send-synthetic-mouse-event* [config mouse-event]
+  (gen-wrap :function ::send-synthetic-mouse-event config mouse-event))
+
 (defn on-select-to-speak-state-changed* [config state]
   (gen-wrap :function ::on-select-to-speak-state-changed config state))
 

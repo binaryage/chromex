@@ -72,6 +72,12 @@
      |enabled| - True if ChromeVox should receive mouse events."
   ([enabled] (gen-call :function ::enable-chrome-vox-mouse-events &form enabled)))
 
+(defmacro send-synthetic-mouse-event
+  "Sends a fabricated mouse event.
+
+     |mouse-event| - The event to send."
+  ([mouse-event] (gen-call :function ::send-synthetic-mouse-event &form mouse-event)))
+
 (defmacro on-select-to-speak-state-changed
   "Called by the Select-to-Speak extension when Select-to-Speak has changed states, between selecting with the mouse,
    speaking, and inactive.
@@ -177,13 +183,17 @@
      :params [{:name "key-event", :type "accessibilityPrivate.SyntheticKeyboardEvent"}]}
     {:id ::enable-chrome-vox-mouse-events,
      :name "enableChromeVoxMouseEvents",
-     :since "master",
+     :since "71",
      :params [{:name "enabled", :type "boolean"}]}
+    {:id ::send-synthetic-mouse-event,
+     :name "sendSyntheticMouseEvent",
+     :since "master",
+     :params [{:name "mouse-event", :type "accessibilityPrivate.SyntheticMouseEvent"}]}
     {:id ::on-select-to-speak-state-changed,
      :name "onSelectToSpeakStateChanged",
      :since "68",
      :params [{:name "state", :type "accessibilityPrivate.SelectToSpeakState"}]}
-    {:id ::toggle-dictation, :name "toggleDictation", :since "master"}],
+    {:id ::toggle-dictation, :name "toggleDictation", :since "71"}],
    :events
    [{:id ::on-introduce-chrome-vox, :name "onIntroduceChromeVox", :since "42"}
     {:id ::on-accessibility-gesture,

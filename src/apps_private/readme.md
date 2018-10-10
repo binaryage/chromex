@@ -35,7 +35,6 @@
 | [chrome.quickUnlockPrivate](https://developer.chrome.com/extensions/quickUnlockPrivate) | [chromex/app/quick_unlock_private.clj](chromex/app/quick_unlock_private.clj) |
 | [chrome.resourcesPrivate](https://developer.chrome.com/extensions/resourcesPrivate) | [chromex/app/resources_private.clj](chromex/app/resources_private.clj) |
 | [chrome.settingsPrivate](https://developer.chrome.com/extensions/settingsPrivate) | [chromex/app/settings_private.clj](chromex/app/settings_private.clj) |
-| [chrome.streamsPrivate](https://developer.chrome.com/extensions/streamsPrivate) | [chromex/app/streams_private.clj](chromex/app/streams_private.clj) |
 | [chrome.systemPrivate](https://developer.chrome.com/extensions/systemPrivate) | [chromex/app/system_private.clj](chromex/app/system_private.clj) |
 | [chrome.terminalPrivate](https://developer.chrome.com/extensions/terminalPrivate) | [chromex/app/terminal_private.clj](chromex/app/terminal_private.clj) |
 | [chrome.usersPrivate](https://developer.chrome.com/extensions/usersPrivate) | [chromex/app/users_private.clj](chromex/app/users_private.clj) |
@@ -48,12 +47,12 @@
 
 ### API stats
 
-Generated 40 namespaces containing 1 properties, 319 functions and 70 events:
+Generated 39 namespaces containing 1 properties, 319 functions and 69 events:
 
 
     |                     :namespace | :properties | :functions | :events |
     |--------------------------------+-------------+------------+---------|
-    |    chrome.accessibilityPrivate |           0 |         11 |       5 |
+    |    chrome.accessibilityPrivate |           0 |         12 |       5 |
     |      chrome.activityLogPrivate |           0 |          4 |       1 |
     |         chrome.autofillPrivate |           0 |         10 |       2 |
     |        chrome.bluetoothPrivate |           0 |          7 |       1 |
@@ -84,7 +83,6 @@ Generated 40 namespaces containing 1 properties, 319 functions and 70 events:
     |      chrome.quickUnlockPrivate |           0 |          7 |       1 |
     |        chrome.resourcesPrivate |           0 |          1 |       0 |
     |         chrome.settingsPrivate |           0 |          5 |       1 |
-    |          chrome.streamsPrivate |           0 |          1 |       1 |
     |           chrome.systemPrivate |           0 |          3 |       0 |
     |         chrome.terminalPrivate |           0 |          5 |       1 |
     |            chrome.usersPrivate |           0 |          6 |       0 |
@@ -102,9 +100,10 @@ Generated 40 namespaces containing 1 properties, 319 functions and 70 events:
     [chromex.app.accessibility-private refer:[
       set-native-accessibility-enabled set-focus-ring set-highlights set-keyboard-listener darken-screen
       set-switch-access-keys set-native-chrome-vox-arc-support-for-current-app send-synthetic-key-event
-      enable-chrome-vox-mouse-events on-select-to-speak-state-changed toggle-dictation
-      tap-on-introduce-chrome-vox tap-on-accessibility-gesture tap-on-two-finger-touch-start
-      tap-on-two-finger-touch-stop tap-on-select-to-speak-state-change-requested tap-all-events]]
+      enable-chrome-vox-mouse-events send-synthetic-mouse-event on-select-to-speak-state-changed
+      toggle-dictation tap-on-introduce-chrome-vox tap-on-accessibility-gesture
+      tap-on-two-finger-touch-start tap-on-two-finger-touch-stop
+      tap-on-select-to-speak-state-change-requested tap-all-events]]
 
     [chromex.app.activity-log-private refer:[
       get-extension-activities delete-activities delete-database delete-urls tap-on-extension-activity
@@ -254,9 +253,6 @@ Generated 40 namespaces containing 1 properties, 319 functions and 70 events:
     [chromex.app.settings-private refer:[
       set-pref get-all-prefs get-pref get-default-zoom set-default-zoom tap-on-prefs-changed
       tap-all-events]]
-
-    [chromex.app.streams-private refer:[
-      abort tap-on-execute-mime-type-handler tap-all-events]]
 
     [chromex.app.system-private refer:[
       get-incognito-mode-availability get-update-status get-api-key tap-all-events]]
