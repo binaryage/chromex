@@ -17,27 +17,27 @@
   "Removes the saved password corresponding to |loginPair|. If no saved password for this pair exists, this function is a
    no-op.
 
-     |index| - The index for the password entry being removed."
-  ([index] (gen-call :function ::remove-saved-password &form index)))
+     |id| - The id for the password entry being removed."
+  ([id] (gen-call :function ::remove-saved-password &form id)))
 
 (defmacro remove-password-exception
   "Removes the saved password exception corresponding to |exceptionUrl|. If no exception with this URL exists, this function
    is a no-op.
 
-     |index| - The index for the exception url entry being removed."
-  ([index] (gen-call :function ::remove-password-exception &form index)))
+     |id| - The id for the exception url entry being removed."
+  ([id] (gen-call :function ::remove-password-exception &form id)))
 
 (defmacro undo-remove-saved-password-or-exception
   "Undoes the last removal of a saved password or exception."
   ([] (gen-call :function ::undo-remove-saved-password-or-exception &form)))
 
 (defmacro request-plaintext-password
-  "Returns the plaintext password corresponding to |index|. Note that on some operating systems, this call may result in an
+  "Returns the plaintext password corresponding to |id|. Note that on some operating systems, this call may result in an
    OS-level reauthentication. Once the password has been fetched, it will be returned via the onPlaintextPasswordRetrieved
    event. TODO(hcarmona): Investigate using a callback for consistency.
 
-     |index| - The index for the password entry being being retrieved."
-  ([index] (gen-call :function ::request-plaintext-password &form index)))
+     |id| - The id for the password entry being being retrieved."
+  ([id] (gen-call :function ::request-plaintext-password &form id)))
 
 (defmacro get-saved-password-list
   "Returns the list of saved passwords.
@@ -127,7 +127,7 @@
 
    Events will be put on the |channel| with signature [::on-plaintext-password-retrieved [dict]] where:
 
-     |dict| - ?
+     |dict| - Contains the plaintext password and id of the relevant entry.
 
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-plaintext-password-retrieved &form channel args)))
@@ -157,10 +157,10 @@
   {:namespace "chrome.passwordsPrivate",
    :since "master",
    :functions
-   [{:id ::remove-saved-password, :name "removeSavedPassword", :params [{:name "index", :type "integer"}]}
-    {:id ::remove-password-exception, :name "removePasswordException", :params [{:name "index", :type "integer"}]}
+   [{:id ::remove-saved-password, :name "removeSavedPassword", :params [{:name "id", :type "integer"}]}
+    {:id ::remove-password-exception, :name "removePasswordException", :params [{:name "id", :type "integer"}]}
     {:id ::undo-remove-saved-password-or-exception, :name "undoRemoveSavedPasswordOrException"}
-    {:id ::request-plaintext-password, :name "requestPlaintextPassword", :params [{:name "index", :type "integer"}]}
+    {:id ::request-plaintext-password, :name "requestPlaintextPassword", :params [{:name "id", :type "integer"}]}
     {:id ::get-saved-password-list,
      :name "getSavedPasswordList",
      :callback? true,

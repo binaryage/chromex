@@ -3,17 +3,17 @@
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
-(defn remove-saved-password* [config index]
-  (gen-wrap :function ::remove-saved-password config index))
+(defn remove-saved-password* [config id]
+  (gen-wrap :function ::remove-saved-password config id))
 
-(defn remove-password-exception* [config index]
-  (gen-wrap :function ::remove-password-exception config index))
+(defn remove-password-exception* [config id]
+  (gen-wrap :function ::remove-password-exception config id))
 
 (defn undo-remove-saved-password-or-exception* [config]
   (gen-wrap :function ::undo-remove-saved-password-or-exception config))
 
-(defn request-plaintext-password* [config index]
-  (gen-wrap :function ::request-plaintext-password config index))
+(defn request-plaintext-password* [config id]
+  (gen-wrap :function ::request-plaintext-password config id))
 
 (defn get-saved-password-list* [config]
   (gen-wrap :function ::get-saved-password-list config))
