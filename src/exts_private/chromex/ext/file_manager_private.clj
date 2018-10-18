@@ -770,6 +770,22 @@
    chromex.error/get-last-error."
   ([entry crop-to-square] (gen-call :function ::get-thumbnail &form entry crop-to-square)))
 
+(defmacro detect-character-encoding
+  "Returns a guessed character encoding of a hex-encoded string. Every 2 characters of |bytes| represent one byte by 2-digit
+   hexadecimal number. The result is preferred MIME name of the detected character encoding system. It is slightly different
+   from IANA name. See third_party/ced/src/util/encodings/encodings.cc Returns an empty string if failed.
+
+     |bytes| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [result] where:
+
+     |result| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([bytes] (gen-call :function ::detect-character-encoding &form bytes)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -1200,7 +1216,15 @@
      :params
      [{:name "entry", :type "FileEntry"}
       {:name "crop-to-square", :type "boolean"}
-      {:name "callback", :type :callback, :callback {:params [{:name "thumbnail-data-url", :type "string"}]}}]}],
+      {:name "callback", :type :callback, :callback {:params [{:name "thumbnail-data-url", :type "string"}]}}]}
+    {:id ::detect-character-encoding,
+     :name "detectCharacterEncoding",
+     :since "master",
+     :callback? true,
+     :return-type "string",
+     :params
+     [{:name "bytes", :type "string"}
+      {:name "callback", :type :callback, :callback {:params [{:name "result", :type "string"}]}}]}],
    :events
    [{:id ::on-mount-completed, :name "onMountCompleted", :params [{:name "event", :type "object"}]}
     {:id ::on-file-transfers-updated, :name "onFileTransfersUpdated", :params [{:name "event", :type "object"}]}

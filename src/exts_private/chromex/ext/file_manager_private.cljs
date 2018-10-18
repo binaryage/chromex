@@ -183,6 +183,9 @@
 (defn get-thumbnail* [config entry crop-to-square]
   (gen-wrap :function ::get-thumbnail config entry crop-to-square))
 
+(defn detect-character-encoding* [config bytes]
+  (gen-wrap :function ::detect-character-encoding config bytes))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-mount-completed* [config channel & args]

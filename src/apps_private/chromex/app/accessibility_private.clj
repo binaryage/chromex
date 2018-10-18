@@ -187,7 +187,7 @@
      :params [{:name "enabled", :type "boolean"}]}
     {:id ::send-synthetic-mouse-event,
      :name "sendSyntheticMouseEvent",
-     :since "master",
+     :since "71",
      :params [{:name "mouse-event", :type "accessibilityPrivate.SyntheticMouseEvent"}]}
     {:id ::on-select-to-speak-state-changed,
      :name "onSelectToSpeakStateChanged",
