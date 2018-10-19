@@ -72,13 +72,12 @@
 | [chrome.virtualKeyboard](https://developer.chrome.com/extensions/virtualKeyboard) | [chromex/app/virtual_keyboard.clj](chromex/app/virtual_keyboard.clj) |
 | [chrome.vpnProvider](https://developer.chrome.com/extensions/vpnProvider) | [chromex/app/vpn_provider.clj](chromex/app/vpn_provider.clj) |
 | [chrome.wallpaper](https://developer.chrome.com/extensions/wallpaper) | [chromex/app/wallpaper.clj](chromex/app/wallpaper.clj) |
-| [chrome.webstore](https://developer.chrome.com/extensions/webstore) | [chromex/app/webstore.clj](chromex/app/webstore.clj) |
 | [chrome.windows](https://developer.chrome.com/extensions/windows) | [chromex/app/windows.clj](chromex/app/windows.clj) |
 
 
 ### API stats
 
-Generated 70 namespaces containing 30 properties, 451 functions and 154 events:
+Generated 69 namespaces containing 30 properties, 450 functions and 152 events:
 
 
     |                         :namespace | :properties | :functions | :events |
@@ -151,7 +150,6 @@ Generated 70 namespaces containing 30 properties, 451 functions and 154 events:
     |             chrome.virtualKeyboard |           0 |          1 |       0 |
     |                 chrome.vpnProvider |           0 |          5 |       5 |
     |                   chrome.wallpaper |           0 |          1 |       0 |
-    |                    chrome.webstore |           0 |          1 |       2 |
     |                     chrome.windows |           2 |          7 |       3 |
 
 ### Requires
@@ -448,9 +446,6 @@ Generated 70 namespaces containing 30 properties, 451 functions and 154 events:
 
     [chromex.app.wallpaper refer:[
       set-wallpaper tap-all-events]]
-
-    [chromex.app.webstore refer:[
-      install tap-on-install-stage-changed tap-on-download-progress tap-all-events]]
 
     [chromex.app.windows refer:[
       get-window-id-none get-window-id-current get get-current get-last-focused get-all create update

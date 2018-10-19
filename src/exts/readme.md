@@ -81,13 +81,12 @@
 | [chrome.wallpaper](https://developer.chrome.com/extensions/wallpaper) | [chromex/ext/wallpaper.clj](chromex/ext/wallpaper.clj) |
 | [chrome.webNavigation](https://developer.chrome.com/extensions/webNavigation) | [chromex/ext/web_navigation.clj](chromex/ext/web_navigation.clj) |
 | [chrome.webRequest](https://developer.chrome.com/extensions/webRequest) | [chromex/ext/web_request.clj](chromex/ext/web_request.clj) |
-| [chrome.webstore](https://developer.chrome.com/extensions/webstore) | [chromex/ext/webstore.clj](chromex/ext/webstore.clj) |
 | [chrome.windows](https://developer.chrome.com/extensions/windows) | [chromex/ext/windows.clj](chromex/ext/windows.clj) |
 
 
 ### API stats
 
-Generated 79 namespaces containing 52 properties, 379 functions and 178 events:
+Generated 78 namespaces containing 52 properties, 378 functions and 176 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -169,7 +168,6 @@ Generated 79 namespaces containing 52 properties, 379 functions and 178 events:
     |                      chrome.wallpaper |           0 |          1 |       0 |
     |                  chrome.webNavigation |           0 |          2 |       9 |
     |                     chrome.webRequest |           1 |          1 |      10 |
-    |                       chrome.webstore |           0 |          1 |       2 |
     |                        chrome.windows |           2 |          7 |       3 |
 
 ### Requires
@@ -485,9 +483,6 @@ Generated 79 namespaces containing 52 properties, 379 functions and 178 events:
       tap-on-before-send-headers tap-on-send-headers tap-on-headers-received tap-on-auth-required
       tap-on-response-started tap-on-before-redirect tap-on-completed tap-on-error-occurred
       tap-on-action-ignored tap-all-events]]
-
-    [chromex.ext.webstore refer:[
-      install tap-on-install-stage-changed tap-on-download-progress tap-all-events]]
 
     [chromex.ext.windows refer:[
       get-window-id-none get-window-id-current get get-current get-last-focused get-all create update

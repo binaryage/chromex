@@ -21,7 +21,6 @@
 | [chrome.fileManagerPrivate](https://developer.chrome.com/extensions/fileManagerPrivate) | [chromex/app/file_manager_private.clj](chromex/app/file_manager_private.clj) |
 | [chrome.identityPrivate](https://developer.chrome.com/extensions/identityPrivate) | [chromex/app/identity_private.clj](chromex/app/identity_private.clj) |
 | [chrome.imageWriterPrivate](https://developer.chrome.com/extensions/imageWriterPrivate) | [chromex/app/image_writer_private.clj](chromex/app/image_writer_private.clj) |
-| [chrome.inlineInstallPrivate](https://developer.chrome.com/extensions/inlineInstallPrivate) | [chromex/app/inline_install_private.clj](chromex/app/inline_install_private.clj) |
 | [chrome.inputMethodPrivate](https://developer.chrome.com/extensions/inputMethodPrivate) | [chromex/app/input_method_private.clj](chromex/app/input_method_private.clj) |
 | [chrome.languageSettingsPrivate](https://developer.chrome.com/extensions/languageSettingsPrivate) | [chromex/app/language_settings_private.clj](chromex/app/language_settings_private.clj) |
 | [chrome.mediaPerceptionPrivate](https://developer.chrome.com/extensions/mediaPerceptionPrivate) | [chromex/app/media_perception_private.clj](chromex/app/media_perception_private.clj) |
@@ -47,7 +46,7 @@
 
 ### API stats
 
-Generated 39 namespaces containing 1 properties, 320 functions and 69 events:
+Generated 38 namespaces containing 1 properties, 319 functions and 69 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -69,7 +68,6 @@ Generated 39 namespaces containing 1 properties, 320 functions and 69 events:
     |      chrome.fileManagerPrivate |           0 |         61 |       9 |
     |         chrome.identityPrivate |           0 |          0 |       1 |
     |      chrome.imageWriterPrivate |           0 |          5 |       5 |
-    |    chrome.inlineInstallPrivate |           0 |          1 |       0 |
     |      chrome.inputMethodPrivate |           0 |         13 |       8 |
     | chrome.languageSettingsPrivate |           0 |         14 |       4 |
     |  chrome.mediaPerceptionPrivate |           0 |          5 |       1 |
@@ -185,9 +183,6 @@ Generated 39 namespaces containing 1 properties, 320 functions and 69 events:
       write-from-url write-from-file cancel-write destroy-partitions list-removable-storage-devices
       tap-on-write-progress tap-on-write-complete tap-on-write-error tap-on-device-inserted
       tap-on-device-removed tap-all-events]]
-
-    [chromex.app.inline-install-private refer:[
-      install tap-all-events]]
 
     [chromex.app.input-method-private refer:[
       get-input-method-config get-input-methods get-current-input-method set-current-input-method
