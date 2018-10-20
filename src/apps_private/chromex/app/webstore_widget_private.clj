@@ -1,6 +1,7 @@
 (ns chromex.app.webstore-widget-private
   "webstoreWidgetPrivate API.
-   This is a private API used by the Chrome Webstore widget app on Chrome OS.
+   This is a private API used to install apps via Chrome Web Store widget - for
+   example in Files app to install file system provider services.
 
      * available since Chrome 44"
 
@@ -12,18 +13,6 @@
 (declare gen-call)
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
-
-(defmacro get-strings
-  "Gets localized strings and initialization data.
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [result] where:
-
-     |result| - ?
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([] (gen-call :function ::get-strings &form)))
 
 (defmacro install-webstore-item
   "Requests to install a webstore item. |item_id| The id of the item to install. |silentInstallation| False to show
@@ -38,20 +27,6 @@
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([item-id silent-installation] (gen-call :function ::install-webstore-item &form item-id silent-installation)))
-
-; -- events -----------------------------------------------------------------------------------------------------------------
-;
-; docs: https://github.com/binaryage/chromex/#tapping-events
-
-(defmacro tap-on-show-widget-events
-  "Event dispatched when a Chrome Webstore widget is requested to be shown.
-
-   Events will be put on the |channel| with signature [::on-show-widget [options]] where:
-
-     |options| - Options describing the set of apps that should be shown in the     widget.
-
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
-  ([channel & args] (apply gen-call :event ::on-show-widget &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
@@ -68,18 +43,13 @@
   {:namespace "chrome.webstoreWidgetPrivate",
    :since "44",
    :functions
-   [{:id ::get-strings,
-     :name "getStrings",
-     :callback? true,
-     :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}
-    {:id ::install-webstore-item,
+   [{:id ::install-webstore-item,
      :name "installWebstoreItem",
      :callback? true,
      :params
      [{:name "item-id", :type "string"}
       {:name "silent-installation", :type "boolean"}
-      {:name "callback", :type :callback}]}],
-   :events [{:id ::on-show-widget, :name "onShowWidget", :params [{:name "options", :type "object"}]}]})
+      {:name "callback", :type :callback}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

@@ -46,7 +46,7 @@
 
 ### API stats
 
-Generated 38 namespaces containing 1 properties, 319 functions and 69 events:
+Generated 38 namespaces containing 1 properties, 318 functions and 68 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -88,7 +88,7 @@ Generated 38 namespaces containing 1 properties, 319 functions and 69 events:
     |        chrome.wallpaperPrivate |           0 |          0 |       1 |
     |           chrome.webcamPrivate |           0 |          5 |       0 |
     |    chrome.webrtcLoggingPrivate |           0 |         14 |       0 |
-    |   chrome.webstoreWidgetPrivate |           0 |          2 |       1 |
+    |   chrome.webstoreWidgetPrivate |           0 |          1 |       0 |
 
 ### Requires
 
@@ -278,5 +278,5 @@ Generated 38 namespaces containing 1 properties, 319 functions and 69 events:
       start-event-logging get-logs-directory tap-all-events]]
 
     [chromex.app.webstore-widget-private refer:[
-      get-strings install-webstore-item tap-on-show-widget tap-all-events]]))
+      install-webstore-item tap-all-events]]))
 ```
