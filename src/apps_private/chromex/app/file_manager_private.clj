@@ -1219,7 +1219,7 @@
       {:name "callback", :type :callback, :callback {:params [{:name "thumbnail-data-url", :type "string"}]}}]}
     {:id ::detect-character-encoding,
      :name "detectCharacterEncoding",
-     :since "master",
+     :since "71",
      :callback? true,
      :return-type "string",
      :params
