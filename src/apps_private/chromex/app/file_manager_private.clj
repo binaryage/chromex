@@ -739,6 +739,20 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-crostini-shared-paths &form)))
 
+(defmacro get-linux-package-info
+  "Requests information about a Linux package. |entry| is a .deb file.
+
+     |entry| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [linux-package-info] where:
+
+     |linux-package-info| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([entry] (gen-call :function ::get-linux-package-info &form entry)))
+
 (defmacro install-linux-package
   "Starts installation of a Linux package.
 
@@ -1200,6 +1214,13 @@
      :since "71",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "entries", :type "[array-of-Entrys]"}]}}]}
+    {:id ::get-linux-package-info,
+     :name "getLinuxPackageInfo",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "entry", :type "object"}
+      {:name "callback", :type :callback, :callback {:params [{:name "linux-package-info", :type "object"}]}}]}
     {:id ::install-linux-package,
      :name "installLinuxPackage",
      :since "69",

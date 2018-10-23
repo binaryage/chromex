@@ -177,6 +177,9 @@
 (defn get-crostini-shared-paths* [config]
   (gen-wrap :function ::get-crostini-shared-paths config))
 
+(defn get-linux-package-info* [config entry]
+  (gen-wrap :function ::get-linux-package-info config entry))
+
 (defn install-linux-package* [config entry]
   (gen-wrap :function ::install-linux-package config entry))
 

@@ -46,7 +46,7 @@
 
 ### API stats
 
-Generated 38 namespaces containing 1 properties, 318 functions and 68 events:
+Generated 38 namespaces containing 1 properties, 319 functions and 68 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -65,7 +65,7 @@ Generated 38 namespaces containing 1 properties, 318 functions and 68 events:
     |       chrome.easyUnlockPrivate |           0 |          6 |       3 |
     |             chrome.echoPrivate |           0 |          5 |       0 |
     |         chrome.feedbackPrivate |           0 |          6 |       1 |
-    |      chrome.fileManagerPrivate |           0 |         61 |       9 |
+    |      chrome.fileManagerPrivate |           0 |         62 |       9 |
     |         chrome.identityPrivate |           0 |          0 |       1 |
     |      chrome.imageWriterPrivate |           0 |          5 |       5 |
     |      chrome.inputMethodPrivate |           0 |         13 |       8 |
@@ -171,10 +171,10 @@ Generated 38 namespaces containing 1 properties, 318 functions and 68 events:
       open-settings-subpage compute-checksum is-uma-enabled set-entry-tag is-piex-loader-enabled
       get-providers add-provided-file-system configure-volume get-custom-actions execute-custom-action
       get-directory-size get-recent-files is-crostini-enabled mount-crostini share-path-with-crostini
-      get-crostini-shared-paths install-linux-package get-thumbnail detect-character-encoding
-      tap-on-mount-completed tap-on-file-transfers-updated tap-on-copy-progress tap-on-directory-changed
-      tap-on-preferences-changed tap-on-drive-connection-status-changed tap-on-device-changed
-      tap-on-drive-sync-error tap-on-apps-updated tap-all-events]]
+      get-crostini-shared-paths get-linux-package-info install-linux-package get-thumbnail
+      detect-character-encoding tap-on-mount-completed tap-on-file-transfers-updated tap-on-copy-progress
+      tap-on-directory-changed tap-on-preferences-changed tap-on-drive-connection-status-changed
+      tap-on-device-changed tap-on-drive-sync-error tap-on-apps-updated tap-all-events]]
 
     [chromex.app.identity-private refer:[
       tap-on-web-flow-request tap-all-events]]
