@@ -715,17 +715,19 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::mount-crostini &form)))
 
-(defmacro share-path-with-crostini
-  "Shares directory with crostini container. |entry| Entry of the directory to share. |callback
+(defmacro share-paths-with-crostini
+  "Shares directory with crostini container. |entries| Entries of the files or directories to share. |persist| If true, shares
+   will persist across restarts. |callback
 
-     |entry| - ?
+     |entries| - ?
+     |persist| - ?
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([entry] (gen-call :function ::share-path-with-crostini &form entry)))
+  ([entries persist] (gen-call :function ::share-paths-with-crostini &form entries persist)))
 
 (defmacro get-crostini-shared-paths
   "Returns list of paths shared with crostini container.
@@ -1204,11 +1206,14 @@
      :since "71",
      :callback? true,
      :params [{:name "callback", :type :callback}]}
-    {:id ::share-path-with-crostini,
-     :name "sharePathWithCrostini",
-     :since "71",
+    {:id ::share-paths-with-crostini,
+     :name "sharePathsWithCrostini",
+     :since "master",
      :callback? true,
-     :params [{:name "entry", :type "object"} {:name "callback", :type :callback}]}
+     :params
+     [{:name "entries", :type "[array-of-objects]"}
+      {:name "persist", :type "boolean"}
+      {:name "callback", :type :callback}]}
     {:id ::get-crostini-shared-paths,
      :name "getCrostiniSharedPaths",
      :since "71",

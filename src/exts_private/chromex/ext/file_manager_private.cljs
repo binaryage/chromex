@@ -171,8 +171,8 @@
 (defn mount-crostini* [config]
   (gen-wrap :function ::mount-crostini config))
 
-(defn share-path-with-crostini* [config entry]
-  (gen-wrap :function ::share-path-with-crostini config entry))
+(defn share-paths-with-crostini* [config entries persist]
+  (gen-wrap :function ::share-paths-with-crostini config entries persist))
 
 (defn get-crostini-shared-paths* [config]
   (gen-wrap :function ::get-crostini-shared-paths config))

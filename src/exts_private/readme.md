@@ -188,7 +188,7 @@ Generated 40 namespaces containing 1 properties, 362 functions and 68 events:
       request-web-store-access-token get-download-url request-drive-share get-profiles open-inspector
       open-settings-subpage compute-checksum is-uma-enabled set-entry-tag is-piex-loader-enabled
       get-providers add-provided-file-system configure-volume get-custom-actions execute-custom-action
-      get-directory-size get-recent-files is-crostini-enabled mount-crostini share-path-with-crostini
+      get-directory-size get-recent-files is-crostini-enabled mount-crostini share-paths-with-crostini
       get-crostini-shared-paths get-linux-package-info install-linux-package get-thumbnail
       detect-character-encoding tap-on-mount-completed tap-on-file-transfers-updated tap-on-copy-progress
       tap-on-directory-changed tap-on-preferences-changed tap-on-drive-connection-status-changed
