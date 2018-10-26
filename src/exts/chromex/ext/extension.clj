@@ -2,7 +2,7 @@
   "The chrome.extension API has utilities that can be used by any extension page. It includes support for exchanging messages
    between an extension and its content scripts or between extensions, as described in detail in Message Passing.
 
-     * available since Chrome 26
+     * available since Chrome 27
      * https://developer.chrome.com/extensions/extension"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -166,7 +166,7 @@
 
 (def api-table
   {:namespace "chrome.extension",
-   :since "26",
+   :since "27",
    :properties
    [{:id ::last-error,
      :name "lastError",

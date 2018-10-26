@@ -1221,7 +1221,7 @@
      :params [{:name "callback", :type :callback, :callback {:params [{:name "entries", :type "[array-of-Entrys]"}]}}]}
     {:id ::get-linux-package-info,
      :name "getLinuxPackageInfo",
-     :since "master",
+     :since "72",
      :callback? true,
      :params
      [{:name "entry", :type "object"}

@@ -4,7 +4,7 @@
    chromeos platform apps until open-web alternative is available. It will be
    deprecated once open-web solution is available, which could be in 2017 Q4.
 
-     * available since Chrome 71
+     * available since Chrome 72
      * https://developer.chrome.com/apps/clipboard"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -64,18 +64,18 @@
 
 (def api-table
   {:namespace "chrome.clipboard",
-   :since "71",
+   :since "72",
    :functions
    [{:id ::set-image-data,
      :name "setImageData",
-     :since "71",
+     :since "72",
      :callback? true,
      :params
      [{:name "image-data", :type "ArrayBuffer"}
       {:name "type", :type "unknown-type"}
       {:name "additional-items", :optional? true, :type "[array-of-objects]"}
       {:name "callback", :optional? true, :type :callback}]}],
-   :events [{:id ::on-clipboard-data-changed, :name "onClipboardDataChanged", :since "71"}]})
+   :events [{:id ::on-clipboard-data-changed, :name "onClipboardDataChanged", :since "72"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

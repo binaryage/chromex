@@ -4,7 +4,7 @@
    Note: This API is only available to extensions installed by enterprise
    policy.
 
-     * available since Chrome 70
+     * available since Chrome 71
      * https://developer.chrome.com/extensions/enterprise.hardwarePlatform"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -44,7 +44,7 @@
 
 (def api-table
   {:namespace "chrome.enterprise.hardwarePlatform",
-   :since "70",
+   :since "71",
    :functions
    [{:id ::get-hardware-platform-info,
      :name "getHardwarePlatformInfo",
