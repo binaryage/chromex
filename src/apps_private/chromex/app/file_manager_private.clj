@@ -1208,7 +1208,7 @@
      :params [{:name "callback", :type :callback}]}
     {:id ::share-paths-with-crostini,
      :name "sharePathsWithCrostini",
-     :since "master",
+     :since "72",
      :callback? true,
      :params
      [{:name "entries", :type "[array-of-objects]"}
