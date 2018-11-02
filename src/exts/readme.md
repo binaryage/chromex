@@ -86,7 +86,7 @@
 
 ### API stats
 
-Generated 78 namespaces containing 52 properties, 378 functions and 176 events:
+Generated 78 namespaces containing 52 properties, 380 functions and 176 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -159,7 +159,7 @@ Generated 78 namespaces containing 52 properties, 378 functions and 176 events:
     |                 chrome.system.storage |           0 |          3 |       2 |
     |                chrome.systemIndicator |           0 |          3 |       1 |
     |                     chrome.tabCapture |           0 |          4 |       1 |
-    |                           chrome.tabs |           1 |         24 |      13 |
+    |                           chrome.tabs |           1 |         26 |      13 |
     |                           chrome.test |           0 |         31 |       1 |
     |                       chrome.topSites |           0 |          1 |       0 |
     |                            chrome.tts |           0 |          6 |       0 |
@@ -444,8 +444,8 @@ Generated 78 namespaces containing 52 properties, 378 functions and 176 events:
     [chromex.ext.tabs refer:[
       get-tab-id-none get get-current connect send-request send-message get-selected get-all-in-window
       create duplicate query highlight update move reload remove detect-language capture-visible-tab
-      execute-script insert-css set-zoom get-zoom set-zoom-settings get-zoom-settings discard
-      tap-on-created tap-on-updated tap-on-moved tap-on-selection-changed tap-on-active-changed
+      execute-script insert-css set-zoom get-zoom set-zoom-settings get-zoom-settings discard go-forward
+      go-back tap-on-created tap-on-updated tap-on-moved tap-on-selection-changed tap-on-active-changed
       tap-on-activated tap-on-highlight-changed tap-on-highlighted tap-on-detached tap-on-attached
       tap-on-removed tap-on-replaced tap-on-zoom-change tap-all-events]]
 

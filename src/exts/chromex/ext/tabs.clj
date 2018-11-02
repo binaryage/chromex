@@ -436,6 +436,36 @@
   ([tab-id] (gen-call :function ::discard &form tab-id))
   ([] `(discard :omit)))
 
+(defmacro go-forward
+  "Go foward to the next page, if one is available.
+
+     |tab-id| - The ID of the tab to navigate forward; defaults to the selected tab of the current window.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/extensions/tabs#method-goForward."
+  ([tab-id] (gen-call :function ::go-forward &form tab-id))
+  ([] `(go-forward :omit)))
+
+(defmacro go-back
+  "Go back to the previous page, if one is available.
+
+     |tab-id| - The ID of the tab to navigate back; defaults to the selected tab of the current window.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/extensions/tabs#method-goBack."
+  ([tab-id] (gen-call :function ::go-back &form tab-id))
+  ([] `(go-back :omit)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -811,7 +841,18 @@
       {:name "callback",
        :optional? true,
        :type :callback,
-       :callback {:params [{:name "tab", :optional? true, :type "tabs.Tab"}]}}]}],
+       :callback {:params [{:name "tab", :optional? true, :type "tabs.Tab"}]}}]}
+    {:id ::go-forward,
+     :name "goForward",
+     :since "master",
+     :callback? true,
+     :params [{:name "tab-id", :optional? true, :type "integer"} {:name "callback", :optional? true, :type :callback}]}
+    {:id ::go-back,
+     :name "goBack",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "tab-id", :optional? true, :type "integer"} {:name "callback", :optional? true, :type :callback}]}],
    :events
    [{:id ::on-created, :name "onCreated", :params [{:name "tab", :type "tabs.Tab"}]}
     {:id ::on-updated,

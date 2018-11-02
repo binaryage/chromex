@@ -80,6 +80,12 @@
 (defn discard* [config tab-id]
   (gen-wrap :function ::discard config tab-id))
 
+(defn go-forward* [config tab-id]
+  (gen-wrap :function ::go-forward config tab-id))
+
+(defn go-back* [config tab-id]
+  (gen-wrap :function ::go-back config tab-id))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-created* [config channel & args]
