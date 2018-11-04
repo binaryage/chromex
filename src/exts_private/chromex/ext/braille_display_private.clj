@@ -37,6 +37,13 @@
      |rows| - ?"
   ([cells columns rows] (gen-call :function ::write-dots &form cells columns rows)))
 
+(defmacro update-bluetooth-braille-display-address
+  "Updates the single user-preferred braille device with the given bluetooth device address and starts or restarts the Brltty
+   daemon.
+
+     |address| - ?"
+  ([address] (gen-call :function ::update-bluetooth-braille-display-address &form address)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -85,8 +92,11 @@
        :callback {:params [{:name "result", :type "brailleDisplayPrivate.DisplayState"}]}}]}
     {:id ::write-dots,
      :name "writeDots",
-     :params
-     [{:name "cells", :type "ArrayBuffer"} {:name "columns", :type "integer"} {:name "rows", :type "integer"}]}],
+     :params [{:name "cells", :type "ArrayBuffer"} {:name "columns", :type "integer"} {:name "rows", :type "integer"}]}
+    {:id ::update-bluetooth-braille-display-address,
+     :name "updateBluetoothBrailleDisplayAddress",
+     :since "master",
+     :params [{:name "address", :type "string"}]}],
    :events
    [{:id ::on-display-state-changed,
      :name "onDisplayStateChanged",

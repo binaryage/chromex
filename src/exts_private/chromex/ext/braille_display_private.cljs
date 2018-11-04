@@ -9,6 +9,9 @@
 (defn write-dots* [config cells columns rows]
   (gen-wrap :function ::write-dots config cells columns rows))
 
+(defn update-bluetooth-braille-display-address* [config address]
+  (gen-wrap :function ::update-bluetooth-braille-display-address config address))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-display-state-changed* [config channel & args]

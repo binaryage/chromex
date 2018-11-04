@@ -48,7 +48,7 @@
 
 ### API stats
 
-Generated 40 namespaces containing 1 properties, 362 functions and 68 events:
+Generated 40 namespaces containing 1 properties, 363 functions and 68 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -59,7 +59,7 @@ Generated 40 namespaces containing 1 properties, 362 functions and 68 events:
     |                chrome.autotestPrivate |           0 |         29 |       0 |
     |               chrome.bluetoothPrivate |           0 |          7 |       1 |
     |         chrome.bookmarkManagerPrivate |           0 |         20 |       4 |
-    |          chrome.brailleDisplayPrivate |           0 |          2 |       2 |
+    |          chrome.brailleDisplayPrivate |           0 |          3 |       2 |
     |            chrome.chromeosInfoPrivate |           0 |          2 |       0 |
     |              chrome.cloudPrintPrivate |           0 |          4 |       0 |
     |             chrome.commandLinePrivate |           0 |          1 |       0 |
@@ -136,7 +136,8 @@ Generated 40 namespaces containing 1 properties, 362 functions and 68 events:
       tap-on-meta-info-changed tap-all-events]]
 
     [chromex.ext.braille-display-private refer:[
-      get-display-state write-dots tap-on-display-state-changed tap-on-key-event tap-all-events]]
+      get-display-state write-dots update-bluetooth-braille-display-address tap-on-display-state-changed
+      tap-on-key-event tap-all-events]]
 
     [chromex.ext.chromeos-info-private refer:[
       get set tap-all-events]]

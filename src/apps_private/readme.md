@@ -46,7 +46,7 @@
 
 ### API stats
 
-Generated 38 namespaces containing 1 properties, 319 functions and 68 events:
+Generated 38 namespaces containing 1 properties, 320 functions and 68 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -56,7 +56,7 @@ Generated 38 namespaces containing 1 properties, 319 functions and 68 events:
     |         chrome.autofillPrivate |           0 |         10 |       2 |
     |        chrome.bluetoothPrivate |           0 |          7 |       1 |
     |  chrome.bookmarkManagerPrivate |           0 |         20 |       4 |
-    |   chrome.brailleDisplayPrivate |           0 |          2 |       2 |
+    |   chrome.brailleDisplayPrivate |           0 |          3 |       2 |
     |              chrome.cecPrivate |           0 |          3 |       0 |
     |     chrome.chromeosInfoPrivate |           0 |          2 |       0 |
     |      chrome.commandLinePrivate |           0 |          1 |       0 |
@@ -123,7 +123,8 @@ Generated 38 namespaces containing 1 properties, 319 functions and 68 events:
       tap-on-meta-info-changed tap-all-events]]
 
     [chromex.app.braille-display-private refer:[
-      get-display-state write-dots tap-on-display-state-changed tap-on-key-event tap-all-events]]
+      get-display-state write-dots update-bluetooth-braille-display-address tap-on-display-state-changed
+      tap-on-key-event tap-all-events]]
 
     [chromex.app.cec-private refer:[
       send-stand-by send-wake-up query-display-cec-power-state tap-all-events]]
