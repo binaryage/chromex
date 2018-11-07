@@ -1,14 +1,14 @@
 (defproject binaryage/chromex-sample "0.1.0-SNAPSHOT"
   :dependencies [[org.clojure/clojure "1.9.0"]
-                 [org.clojure/clojurescript "1.10.339"]
+                 [org.clojure/clojurescript "1.10.439"]
                  [org.clojure/core.async "0.4.474"]
-                 [binaryage/chromex "0.6.2"]
+                 [binaryage/chromex "0.6.5"]
                  [binaryage/devtools "0.9.10"]
-                 [figwheel "0.5.16"]
+                 [figwheel "0.5.17"]
                  [environ "1.1.0"]]
 
   :plugins [[lein-cljsbuild "1.1.7"]
-            [lein-figwheel "0.5.16"]
+            [lein-figwheel "0.5.17"]
             [lein-shell "0.5.0"]
             [lein-environ "1.1.0"]
             [lein-cooper "1.2.2"]]
