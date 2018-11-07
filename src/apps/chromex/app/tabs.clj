@@ -844,12 +844,12 @@
        :callback {:params [{:name "tab", :optional? true, :type "tabs.Tab"}]}}]}
     {:id ::go-forward,
      :name "goForward",
-     :since "master",
+     :since "72",
      :callback? true,
      :params [{:name "tab-id", :optional? true, :type "integer"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::go-back,
      :name "goBack",
-     :since "master",
+     :since "72",
      :callback? true,
      :params
      [{:name "tab-id", :optional? true, :type "integer"} {:name "callback", :optional? true, :type :callback}]}],

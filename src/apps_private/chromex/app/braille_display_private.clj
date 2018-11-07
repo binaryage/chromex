@@ -95,7 +95,7 @@
      :params [{:name "cells", :type "ArrayBuffer"} {:name "columns", :type "integer"} {:name "rows", :type "integer"}]}
     {:id ::update-bluetooth-braille-display-address,
      :name "updateBluetoothBrailleDisplayAddress",
-     :since "master",
+     :since "72",
      :params [{:name "address", :type "string"}]}],
    :events
    [{:id ::on-display-state-changed,
