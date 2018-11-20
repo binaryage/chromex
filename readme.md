@@ -92,8 +92,7 @@ Please refer to [readme in chromex-sample](https://github.com/binaryage/chromex-
 
 Chromex does not rely on externs file. Instead it is rigorously [using string names](https://github.com/clojure/clojurescript/wiki/Dependencies#using-string-names)
 to access Javascript properties. I would recommend you to do the same in your own extension code. It is not that hard after all. You can use `oget`, `ocall` and `oapply`
-macros from [`chromex.support`](https://github.com/binaryage/chromex/blob/master/src/lib/chromex/support.clj) namespace.
-Or even better use full-featured library [cljs-oops](https://github.com/binaryage/cljs-oops) designed to work with string names.
+macros from the [cljs-oops](https://github.com/binaryage/cljs-oops) library, which is designed to work with string names.
 
 Note: There is a [chrome_extensions.js](https://github.com/google/closure-compiler/blob/master/contrib/externs/chrome_extensions.js) externs file available,
 but that's been updated ad-hoc by the community. It is definitely incomplete and may be incorrect. But of course you are free to include the externs
