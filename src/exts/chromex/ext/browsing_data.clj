@@ -72,6 +72,20 @@
    https://developer.chrome.com/extensions/browsingData#method-removeCache."
   ([options] (gen-call :function ::remove-cache &form options)))
 
+(defmacro remove-cache-storage
+  "Clears websites' cache storage data.
+
+     |options| - https://developer.chrome.com/extensions/browsingData#property-removeCacheStorage-options.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/extensions/browsingData#method-removeCacheStorage."
+  ([options] (gen-call :function ::remove-cache-storage &form options)))
+
 (defmacro remove-cookies
   "Clears the browser's cookies and server-bound certificates modified within a particular timeframe.
 
@@ -198,6 +212,20 @@
    https://developer.chrome.com/extensions/browsingData#method-removePasswords."
   ([options] (gen-call :function ::remove-passwords &form options)))
 
+(defmacro remove-service-workers
+  "Clears websites' service workers.
+
+     |options| - https://developer.chrome.com/extensions/browsingData#property-removeServiceWorkers-options.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/extensions/browsingData#method-removeServiceWorkers."
+  ([options] (gen-call :function ::remove-service-workers &form options)))
+
 (defmacro remove-web-sql
   "Clears websites' WebSQL data.
 
@@ -248,6 +276,12 @@
      :callback? true,
      :params
      [{:name "options", :type "browsingData.RemovalOptions"} {:name "callback", :optional? true, :type :callback}]}
+    {:id ::remove-cache-storage,
+     :name "removeCacheStorage",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "options", :type "browsingData.RemovalOptions"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-cookies,
      :name "removeCookies",
      :callback? true,
@@ -290,6 +324,12 @@
      [{:name "options", :type "browsingData.RemovalOptions"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-passwords,
      :name "removePasswords",
+     :callback? true,
+     :params
+     [{:name "options", :type "browsingData.RemovalOptions"} {:name "callback", :optional? true, :type :callback}]}
+    {:id ::remove-service-workers,
+     :name "removeServiceWorkers",
+     :since "master",
      :callback? true,
      :params
      [{:name "options", :type "browsingData.RemovalOptions"} {:name "callback", :optional? true, :type :callback}]}

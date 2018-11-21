@@ -15,7 +15,6 @@
 | [chrome.commandLinePrivate](https://developer.chrome.com/extensions/commandLinePrivate) | [chromex/app/command_line_private.clj](chromex/app/command_line_private.clj) |
 | [chrome.dashboardPrivate](https://developer.chrome.com/extensions/dashboardPrivate) | [chromex/app/dashboard_private.clj](chromex/app/dashboard_private.clj) |
 | [chrome.developerPrivate](https://developer.chrome.com/extensions/developerPrivate) | [chromex/app/developer_private.clj](chromex/app/developer_private.clj) |
-| [chrome.easyUnlockPrivate](https://developer.chrome.com/extensions/easyUnlockPrivate) | [chromex/app/easy_unlock_private.clj](chromex/app/easy_unlock_private.clj) |
 | [chrome.echoPrivate](https://developer.chrome.com/extensions/echoPrivate) | [chromex/app/echo_private.clj](chromex/app/echo_private.clj) |
 | [chrome.feedbackPrivate](https://developer.chrome.com/extensions/feedbackPrivate) | [chromex/app/feedback_private.clj](chromex/app/feedback_private.clj) |
 | [chrome.fileManagerPrivate](https://developer.chrome.com/extensions/fileManagerPrivate) | [chromex/app/file_manager_private.clj](chromex/app/file_manager_private.clj) |
@@ -46,7 +45,7 @@
 
 ### API stats
 
-Generated 38 namespaces containing 1 properties, 320 functions and 68 events:
+Generated 37 namespaces containing 1 properties, 314 functions and 66 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -62,10 +61,9 @@ Generated 38 namespaces containing 1 properties, 320 functions and 68 events:
     |      chrome.commandLinePrivate |           0 |          1 |       0 |
     |        chrome.dashboardPrivate |           0 |          1 |       0 |
     |        chrome.developerPrivate |           0 |         31 |       2 |
-    |       chrome.easyUnlockPrivate |           0 |          6 |       3 |
     |             chrome.echoPrivate |           0 |          5 |       0 |
     |         chrome.feedbackPrivate |           0 |          6 |       1 |
-    |      chrome.fileManagerPrivate |           0 |         62 |       9 |
+    |      chrome.fileManagerPrivate |           0 |         62 |      10 |
     |         chrome.identityPrivate |           0 |          0 |       1 |
     |      chrome.imageWriterPrivate |           0 |          5 |       5 |
     |      chrome.inputMethodPrivate |           0 |         13 |       8 |
@@ -147,11 +145,6 @@ Generated 38 namespaces containing 1 properties, 320 functions and 68 events:
       update-extension-command add-host-permission remove-host-permission enable allow-incognito
       allow-file-access inspect tap-on-item-state-changed tap-on-profile-state-changed tap-all-events]]
 
-    [chromex.app.easy-unlock-private refer:[
-      get-strings show-error-bubble hide-error-bubble find-setup-connection setup-connection-disconnect
-      setup-connection-send tap-on-connection-status-changed tap-on-data-received tap-on-send-completed
-      tap-all-events]]
-
     [chromex.app.echo-private refer:[
       set-offer-info get-offer-info get-registration-code get-oobe-timestamp get-user-consent
       tap-all-events]]
@@ -175,7 +168,8 @@ Generated 38 namespaces containing 1 properties, 320 functions and 68 events:
       get-crostini-shared-paths get-linux-package-info install-linux-package get-thumbnail
       detect-character-encoding tap-on-mount-completed tap-on-file-transfers-updated tap-on-copy-progress
       tap-on-directory-changed tap-on-preferences-changed tap-on-drive-connection-status-changed
-      tap-on-device-changed tap-on-drive-sync-error tap-on-apps-updated tap-all-events]]
+      tap-on-device-changed tap-on-drive-sync-error tap-on-apps-updated
+      tap-on-crostini-shared-paths-changed tap-all-events]]
 
     [chromex.app.identity-private refer:[
       tap-on-web-flow-request tap-all-events]]

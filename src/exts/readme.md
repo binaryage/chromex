@@ -86,7 +86,7 @@
 
 ### API stats
 
-Generated 78 namespaces containing 52 properties, 380 functions and 176 events:
+Generated 78 namespaces containing 52 properties, 382 functions and 176 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -99,7 +99,7 @@ Generated 78 namespaces containing 52 properties, 380 functions and 176 events:
     |                      chrome.bluetooth |           0 |          5 |       4 |
     |                      chrome.bookmarks |           2 |         11 |       7 |
     |                  chrome.browserAction |           0 |         11 |       1 |
-    |                   chrome.browsingData |           0 |         14 |       0 |
+    |                   chrome.browsingData |           0 |         16 |       0 |
     | chrome.cast.streaming.receiverSession |           0 |          1 |       0 |
     |       chrome.cast.streaming.rtpStream |           0 |          7 |       3 |
     |         chrome.cast.streaming.session |           0 |          1 |       0 |
@@ -210,9 +210,9 @@ Generated 78 namespaces containing 52 properties, 380 functions and 176 events:
       set-badge-background-color get-badge-background-color enable disable tap-on-clicked tap-all-events]]
 
     [chromex.ext.browsing-data refer:[
-      settings remove remove-appcache remove-cache remove-cookies remove-downloads remove-file-systems
-      remove-form-data remove-history remove-indexed-db remove-local-storage remove-plugin-data
-      remove-passwords remove-web-sql tap-all-events]]
+      settings remove remove-appcache remove-cache remove-cache-storage remove-cookies remove-downloads
+      remove-file-systems remove-form-data remove-history remove-indexed-db remove-local-storage
+      remove-plugin-data remove-passwords remove-service-workers remove-web-sql tap-all-events]]
 
     [chromex.ext.cast.streaming.receiver-session refer:[
       create-and-bind tap-all-events]]

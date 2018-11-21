@@ -60,6 +60,9 @@
 (defn is-app-shown* [config app-id]
   (gen-wrap :function ::is-app-shown config app-id))
 
+(defn is-arc-provisioned* [config]
+  (gen-wrap :function ::is-arc-provisioned config))
+
 (defn launch-app* [config app-id]
   (gen-wrap :function ::launch-app config app-id))
 
@@ -89,4 +92,7 @@
 
 (defn bootstrap-machine-learning-service* [config]
   (gen-wrap :function ::bootstrap-machine-learning-service config))
+
+(defn set-assistant-enabled* [config enabled timeout-ms]
+  (gen-wrap :function ::set-assistant-enabled config enabled timeout-ms))
 

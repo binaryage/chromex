@@ -218,3 +218,6 @@
 (defn on-apps-updated* [config channel & args]
   (gen-wrap :event ::on-apps-updated config channel args))
 
+(defn on-crostini-shared-paths-changed* [config channel & args]
+  (gen-wrap :event ::on-crostini-shared-paths-changed config channel args))
+

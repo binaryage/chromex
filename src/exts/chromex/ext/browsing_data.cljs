@@ -15,6 +15,9 @@
 (defn remove-cache* [config options]
   (gen-wrap :function ::remove-cache config options))
 
+(defn remove-cache-storage* [config options]
+  (gen-wrap :function ::remove-cache-storage config options))
+
 (defn remove-cookies* [config options]
   (gen-wrap :function ::remove-cookies config options))
 
@@ -41,6 +44,9 @@
 
 (defn remove-passwords* [config options]
   (gen-wrap :function ::remove-passwords config options))
+
+(defn remove-service-workers* [config options]
+  (gen-wrap :function ::remove-service-workers config options))
 
 (defn remove-web-sql* [config options]
   (gen-wrap :function ::remove-web-sql config options))

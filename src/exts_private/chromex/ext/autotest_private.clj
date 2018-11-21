@@ -157,6 +157,18 @@
    chromex.error/get-last-error."
   ([app-id] (gen-call :function ::is-app-shown &form app-id)))
 
+(defmacro is-arc-provisioned
+  "Returns true if ARC is provisioned.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [arc-provisioned] where:
+
+     |arc-provisioned| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::is-arc-provisioned &form)))
+
 (defmacro launch-app
   "Launches an application from the launcher with the given appId.
 
@@ -263,6 +275,19 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::bootstrap-machine-learning-service &form)))
 
+(defmacro set-assistant-enabled
+  "Enable/disable the Google Assistant
+
+     |enabled| - ?
+     |timeout-ms| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([enabled timeout-ms] (gen-call :function ::set-assistant-enabled &form enabled timeout-ms)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -328,6 +353,11 @@
      :params
      [{:name "app-id", :type "string"}
       {:name "callback", :type :callback, :callback {:params [{:name "app-shown", :type "boolean"}]}}]}
+    {:id ::is-arc-provisioned,
+     :name "isArcProvisioned",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "arc-provisioned", :type "boolean"}]}}]}
     {:id ::launch-app,
      :name "launchApp",
      :since "71",
@@ -374,7 +404,13 @@
      :name "bootstrapMachineLearningService",
      :since "71",
      :callback? true,
-     :params [{:name "callback", :type :callback}]}]})
+     :params [{:name "callback", :type :callback}]}
+    {:id ::set-assistant-enabled,
+     :name "setAssistantEnabled",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "enabled", :type "boolean"} {:name "timeout-ms", :type "integer"} {:name "callback", :type :callback}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

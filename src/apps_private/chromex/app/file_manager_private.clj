@@ -882,6 +882,15 @@
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-apps-updated &form channel args)))
 
+(defmacro tap-on-crostini-shared-paths-changed-events
+  "
+   Events will be put on the |channel| with signature [::on-crostini-shared-paths-changed [event]] where:
+
+     |event| - ?
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-crostini-shared-paths-changed &form channel args)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -1262,7 +1271,11 @@
     {:id ::on-drive-connection-status-changed, :name "onDriveConnectionStatusChanged"}
     {:id ::on-device-changed, :name "onDeviceChanged", :params [{:name "event", :type "object"}]}
     {:id ::on-drive-sync-error, :name "onDriveSyncError", :params [{:name "event", :type "object"}]}
-    {:id ::on-apps-updated, :name "onAppsUpdated", :since "57"}]})
+    {:id ::on-apps-updated, :name "onAppsUpdated", :since "57"}
+    {:id ::on-crostini-shared-paths-changed,
+     :name "onCrostiniSharedPathsChanged",
+     :since "72",
+     :params [{:name "event", :type "object"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

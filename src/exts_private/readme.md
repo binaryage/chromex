@@ -48,7 +48,7 @@
 
 ### API stats
 
-Generated 40 namespaces containing 1 properties, 363 functions and 68 events:
+Generated 40 namespaces containing 1 properties, 366 functions and 69 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -56,21 +56,21 @@ Generated 40 namespaces containing 1 properties, 363 functions and 68 events:
     |           chrome.accessibilityPrivate |           0 |         12 |       5 |
     |             chrome.activityLogPrivate |           0 |          4 |       1 |
     |                chrome.autofillPrivate |           0 |         10 |       2 |
-    |                chrome.autotestPrivate |           0 |         29 |       0 |
+    |                chrome.autotestPrivate |           0 |         31 |       0 |
     |               chrome.bluetoothPrivate |           0 |          7 |       1 |
     |         chrome.bookmarkManagerPrivate |           0 |         20 |       4 |
     |          chrome.brailleDisplayPrivate |           0 |          3 |       2 |
     |            chrome.chromeosInfoPrivate |           0 |          2 |       0 |
     |              chrome.cloudPrintPrivate |           0 |          4 |       0 |
     |             chrome.commandLinePrivate |           0 |          1 |       0 |
-    |             chrome.cryptotokenPrivate |           0 |          3 |       0 |
+    |             chrome.cryptotokenPrivate |           0 |          4 |       0 |
     |               chrome.dashboardPrivate |           0 |          1 |       0 |
     |               chrome.developerPrivate |           0 |         31 |       2 |
     |                    chrome.echoPrivate |           0 |          5 |       0 |
     | chrome.enterprise.platformKeysPrivate |           0 |          2 |       0 |
     |    chrome.enterprise.reportingPrivate |           0 |          2 |       0 |
     |                chrome.feedbackPrivate |           0 |          6 |       1 |
-    |             chrome.fileManagerPrivate |           0 |         62 |       9 |
+    |             chrome.fileManagerPrivate |           0 |         62 |      10 |
     |             chrome.imageWriterPrivate |           0 |          5 |       5 |
     |             chrome.inputMethodPrivate |           0 |         13 |       8 |
     |        chrome.languageSettingsPrivate |           0 |         14 |       4 |
@@ -120,10 +120,10 @@ Generated 40 namespaces containing 1 properties, 363 functions and 68 events:
       logout restart shutdown login-status lock-screen get-extensions-info simulate-asan-memory-bug
       set-touchpad-sensitivity set-tap-to-click set-three-finger-click set-tap-dragging
       set-natural-scroll set-mouse-sensitivity set-primary-button-right set-mouse-reverse-scroll
-      get-visible-notifications get-play-store-state get-printer-list is-app-shown launch-app
-      update-printer remove-printer set-play-store-enabled get-histogram run-crostini-installer
-      run-crostini-uninstaller set-crostini-enabled take-screenshot bootstrap-machine-learning-service
-      tap-all-events]]
+      get-visible-notifications get-play-store-state get-printer-list is-app-shown is-arc-provisioned
+      launch-app update-printer remove-printer set-play-store-enabled get-histogram
+      run-crostini-installer run-crostini-uninstaller set-crostini-enabled take-screenshot
+      bootstrap-machine-learning-service set-assistant-enabled tap-all-events]]
 
     [chromex.ext.bluetooth-private refer:[
       set-adapter-state set-pairing-response disconnect-all forget-device set-discovery-filter connect
@@ -150,7 +150,7 @@ Generated 40 namespaces containing 1 properties, 363 functions and 68 events:
 
     [chromex.ext.cryptotoken-private refer:[
       can-origin-assert-app-id is-app-id-hash-in-enterprise-context can-app-id-get-attestation
-      tap-all-events]]
+      can-proxy-to-web-authn tap-all-events]]
 
     [chromex.ext.dashboard-private refer:[
       show-permission-prompt-for-delegated-install tap-all-events]]
@@ -193,7 +193,8 @@ Generated 40 namespaces containing 1 properties, 363 functions and 68 events:
       get-crostini-shared-paths get-linux-package-info install-linux-package get-thumbnail
       detect-character-encoding tap-on-mount-completed tap-on-file-transfers-updated tap-on-copy-progress
       tap-on-directory-changed tap-on-preferences-changed tap-on-drive-connection-status-changed
-      tap-on-device-changed tap-on-drive-sync-error tap-on-apps-updated tap-all-events]]
+      tap-on-device-changed tap-on-drive-sync-error tap-on-apps-updated
+      tap-on-crostini-shared-paths-changed tap-all-events]]
 
     [chromex.ext.image-writer-private refer:[
       write-from-url write-from-file cancel-write destroy-partitions list-removable-storage-devices
