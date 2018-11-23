@@ -68,6 +68,16 @@
                            "Your Chrome version might be too old or too recent for running this extension.\n"
                            "This is a failure which probably requires a software update.")))))
 
+; -- ChromeContentSetting ------------------------------------------------------------------------------------------------------
+
+(defn default-chrome-content-setting-callback-fn-factory [config chan]
+  (fn [& args]
+    (let [last-error (oget (:root config) "chrome" "runtime" "?lastError")]
+      (put! chan [(vec args) last-error]))))
+
+(defn default-chrome-content-setting-callback-channel-factory [_config]
+  (chan))
+
 ; -- ChromeStorageArea ------------------------------------------------------------------------------------------------------
 
 (defn default-chrome-storage-area-callback-fn-factory [config chan]

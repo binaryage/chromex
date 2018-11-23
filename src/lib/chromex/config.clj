@@ -47,7 +47,9 @@
    :chrome-port-on-message-called-on-disconnected-port    'chromex.defaults/default-chrome-port-on-message-called-on-disconnected-port
    :chrome-port-post-message-called-with-nil              'chromex.defaults/default-chrome-port-post-message-called-with-nil
    :chrome-port-received-nil-message                      'chromex.defaults/default-chrome-port-received-nil-message
-   :chrome-port-put-message-called-on-disconnected-port   'chromex.defaults/default-chrome-port-put-message-called-on-disconnected-port})
+   :chrome-port-put-message-called-on-disconnected-port   'chromex.defaults/default-chrome-port-put-message-called-on-disconnected-port
+   :chrome-content-setting-callback-channel-factory       'chromex.defaults/default-chrome-content-setting-callback-channel-factory
+   :chrome-content-setting-callback-fn-factory            'chromex.defaults/default-chrome-content-setting-callback-fn-factory})
 
 
 ; config has to be generated via a macro:
