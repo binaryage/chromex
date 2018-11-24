@@ -1,6 +1,6 @@
 (ns chromex.protocols
   "DON'T USE THIS NAMESPACE. Instead use specific protocol under chromex.protocols.<protocol>.
-  See https://github.com/binaryage/chromex/issues/15."
+  See https://github.com/binaryage/chromex/issues/17."
   (:refer-clojure :exclude [get set remove])
   (:require [chromex.protocols.chrome-event-subscription]
             [chromex.protocols.chrome-event-channel]
