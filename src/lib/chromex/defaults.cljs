@@ -6,7 +6,8 @@
             [oops.core :refer [oget]]
             [goog.object :as gobj]
             [chromex.error :refer [set-last-error! set-last-error-args!]]
-            [chromex.protocols :as protocols]))
+            [chromex.protocols.chrome-port]
+            [chromex.protocols.chrome-port-state]))
 
 ; -- logging support --------------------------------------------------------------------------------------------------------
 
@@ -98,13 +99,13 @@
     (if (nil? message)
       (call-hook config :chrome-port-received-nil-message chrome-port)
       (do
-        (protocols/put-message! chrome-port message)
+        (chromex.protocols.chrome-port-state/put-message! chrome-port message)
         nil))))
 
 (defn default-chrome-port-on-disconnect-fn-factory [_config chrome-port]
   (fn []
-    (protocols/close-resources! chrome-port)
-    (protocols/set-connected! chrome-port false)
+    (chromex.protocols.chrome-port-state/close-resources! chrome-port)
+    (chromex.protocols.chrome-port-state/set-connected! chrome-port false)
     nil))
 
 (defn default-chrome-port-disconnect-called-on-disconnected-port [_config _chrome-port]

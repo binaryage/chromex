@@ -1,6 +1,7 @@
 (ns chromex.chrome-event-channel
   (:require [cljs.core.async.impl.protocols :as core-async]
-            [chromex.protocols :as protocols :refer [IChromeEventChannel]]))
+            [chromex.protocols.chrome-event-subscription]
+            [chromex.protocols.chrome-event-channel :refer [IChromeEventChannel]]))
 
 (deftype ChromeEventChannel [chan ^:mutable subscriptions]
 
@@ -11,7 +12,7 @@
     (set! subscriptions (disj subscriptions subscription)))
   (unsubscribe-all! [_this]
     (doseq [subscription subscriptions]
-      (protocols/unsubscribe! subscription))
+      (chromex.protocols.chrome-event-subscription/unsubscribe! subscription))
     (set! subscriptions #{}))
 
   core-async/WritePort
@@ -26,7 +27,7 @@
   (closed? [_this]
     (core-async/closed? chan))
   (close! [this]
-    (protocols/unsubscribe-all! this)
+    (chromex.protocols.chrome-event-channel/unsubscribe-all! this)
     (core-async/close! chan)))
 
 (defn make-chrome-event-channel [chan]

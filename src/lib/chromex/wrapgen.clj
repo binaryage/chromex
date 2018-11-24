@@ -161,7 +161,7 @@
        ~(gen-missing-api-check static-config config api ns-obj-sym event-key)
        (let [~event-obj-sym (oops.core/oget ~ns-obj-sym ~event-key)
              ~result-sym (chromex.chrome-event-subscription/make-chrome-event-subscription ~event-obj-sym ~logging-fn-sym ~chan)]
-         (chromex.protocols/subscribe! ~result-sym ~extra-args)
+         (chromex.protocols.chrome-event-subscription/subscribe! ~result-sym ~extra-args)
          ~result-sym))))
 
 ; ---------------------------------------------------------------------------------------------------------------------------

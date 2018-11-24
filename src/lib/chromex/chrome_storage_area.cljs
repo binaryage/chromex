@@ -1,7 +1,7 @@
 (ns chromex.chrome-storage-area
-  (:require [chromex.support :refer [call-hook get-hook]]
+  (:require [chromex.support :refer [get-hook]]
             [oops.core :refer [ocall ocall!]]
-            [chromex.protocols :as protocols :refer [IChromeStorageArea]]))
+            [chromex.protocols.chrome-storage-area :refer [IChromeStorageArea]]))
 
 ; -- ChromeStorageArea ------------------------------------------------------------------------------------------------------
 ; wrapping https://developer.chrome.com/extensions/storage#type-StorageArea
@@ -12,13 +12,13 @@
   (get-native-storage-area [_this]
     native-chrome-storage-area)
   (get [this]
-    (protocols/get this nil))
+    (chromex.protocols.chrome-storage-area/get this nil))
   (get [_this keys]
     (let [channel (channel-factory)]
       (ocall native-chrome-storage-area "get" keys (callback-factory channel))
       channel))
   (get-bytes-in-use [this]
-    (protocols/get-bytes-in-use this nil))
+    (chromex.protocols.chrome-storage-area/get-bytes-in-use this nil))
   (get-bytes-in-use [_this keys]
     (let [channel (channel-factory)]
       (ocall native-chrome-storage-area "getBytesInUse" keys (callback-factory channel))

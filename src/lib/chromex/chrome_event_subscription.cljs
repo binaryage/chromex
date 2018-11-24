@@ -1,5 +1,6 @@
 (ns chromex.chrome-event-subscription
-  (:require [chromex.protocols :as protocols :refer [IChromeEventSubscription IChromeEventChannel]]
+  (:require [chromex.protocols.chrome-event-subscription :refer [IChromeEventSubscription]]
+            [chromex.protocols.chrome-event-channel :refer [IChromeEventChannel]]
             [oops.core :refer [ocall! oapply!]]))
 
 ; exception handlers, see https://www.youtube.com/watch?v=zp0OEDcAro0
@@ -12,14 +13,14 @@
 
   IChromeEventSubscription
   (subscribe! [this]
-    (protocols/subscribe! this nil))
+    (chromex.protocols.chrome-event-subscription/subscribe! this nil))
   (subscribe! [this extra-args]
     {:pre [(or (nil? extra-args) (seq? extra-args))]}
     (if-not (= subscribed-count 0)
       (*subscribe-called-while-subscribed* this)
       (do
         (when (satisfies? IChromeEventChannel chan)
-          (protocols/register! chan this))
+          (chromex.protocols.chrome-event-channel/register! chan this))
         (set! subscribed-count (inc subscribed-count))
         (oapply! chrome-event "addListener" (cons listener extra-args)))))                                                    ; see https://developer.chrome.com/extensions/events#filtered or 'Registering event listeners' at https://developer.chrome.com/extensions/webRequest
   (unsubscribe! [this]
@@ -29,7 +30,7 @@
         (set! subscribed-count (dec subscribed-count))
         (ocall! chrome-event "removeListener" listener)
         (if (satisfies? IChromeEventChannel chan)
-          (protocols/unregister! chan this))))))
+          (chromex.protocols.chrome-event-channel/unregister! chan this))))))
 
 ; -- constructor ------------------------------------------------------------------------------------------------------------
 
