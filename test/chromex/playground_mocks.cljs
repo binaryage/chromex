@@ -82,6 +82,24 @@
     "clear" (fn [callback]
               (call-callback-with-delay callback "some 'clear' answer"))))
 
+(defn get-content-setting-mock []
+  (js-obj
+   "get" (fn [details callback]
+           (case (oget details "primaryPattern")
+             "https://www.google.com/*" (call-callback-with-delay callback "blocked")
+             nil (call-error-callback-with-delay callback "no primaryPattern")
+             (call-callback-with-delay callback "allowed")))
+   "set" (fn [details callback]
+           (case (oget details "primaryPattern")
+             nil (call-error-callback-with-delay callback "no primaryPattern")
+             (call-callback-with-delay callback)))
+   "clear" (fn [details callback]
+             (case details
+               nil (call-error-callback-with-delay callback "no details")
+               (call-callback-with-delay callback)))
+   "getResourceIdentifiers" (fn [callback]
+                              (call-callback-with-delay callback "some 'getResourceIdentifiers' answer"))))
+
 (defn make-event-object-mock []
   (let [state (atom {:listeners []})]
     (js-obj
@@ -128,6 +146,7 @@
 (oset! js/window ["chrome" "playground" "!onSomethingElse"] on-something-else-mock)
 (oset! js/window ["chrome" "playground" "!getStorageArea"] get-storage-area-mock)
 (oset! js/window ["chrome" "playground" "!getPort"] get-port-mock)
+(oset! js/window ["chrome" "playground" "!getContentSetting"] get-content-setting-mock)
 (oset! js/window ["chrome" "playground" "!callFutureApi"] (constantly nil))
 (oset! js/window ["chrome" "playground" "!callMasterApi"] (constantly nil))
 

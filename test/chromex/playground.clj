@@ -41,6 +41,9 @@
 (defmacro get-port []
   (gen-call :function ::get-port &form))
 
+(defmacro get-content-setting []
+  (gen-call :function ::get-content-setting &form))
+
 (defmacro call-future-api []
   (gen-call :function ::call-future-api &form))
 
@@ -132,6 +135,10 @@
                {:id          ::get-port
                 :name        "getPort"
                 :return-type "runtime.Port"
+                :params      []}
+               {:id          ::get-content-setting
+                :name        "getContentSetting"
+                :return-type "contentSettings.ContentSetting"
                 :params      []}
                {:id     ::call-future-api
                 :name   "callFutureApi"

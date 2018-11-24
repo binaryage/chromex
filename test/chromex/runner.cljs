@@ -6,6 +6,7 @@
             [chromex.test-utils]
             [chromex.playground]
             [chromex.test.playground]
+            [chromex.test.chrome-content-setting]
             [chromex.test.chrome-storage-area]
             [chromex.test.chrome-port]
             [goog.object :as gobj]))
@@ -37,4 +38,5 @@
   (cljs.test/empty-env ::test/default)
   'chromex.test.playground
   'chromex.test.chrome-storage-area
-  'chromex.test.chrome-port)
+  'chromex.test.chrome-port
+  'chromex.test.chrome-content-setting)

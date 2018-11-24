@@ -34,6 +34,9 @@
 (defn get-port* [config]
   (gen-wrap :function ::get-port config))
 
+(defn get-content-setting* [config]
+  (gen-wrap :function ::get-content-setting config))
+
 (defn call-future-api* [config]
   (gen-wrap :function ::call-future-api config))
 
