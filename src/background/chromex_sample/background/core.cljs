@@ -5,7 +5,7 @@
             [cljs.core.async :refer [<! chan]]
             [chromex.logging :refer-macros [log info warn error group group-end]]
             [chromex.chrome-event-channel :refer [make-chrome-event-channel]]
-            [chromex.protocols :refer [post-message! get-sender]]
+            [chromex.protocols.chrome-port :refer [post-message! get-sender]]
             [chromex.ext.tabs :as tabs]
             [chromex.ext.runtime :as runtime]
             [chromex-sample.background.storage :refer [test-storage!]]))

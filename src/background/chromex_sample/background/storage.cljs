@@ -2,7 +2,7 @@
   (:require-macros [cljs.core.async.macros :refer [go go-loop]])
   (:require [cljs.core.async :refer [<! chan]]
             [chromex.logging :refer-macros [log info warn error group group-end]]
-            [chromex.protocols :refer [get set]]
+            [chromex.protocols.chrome-storage-area :refer [get set]]
             [chromex.ext.storage :as storage]))
 
 (defn test-storage! []

@@ -2,7 +2,7 @@
   (:require-macros [cljs.core.async.macros :refer [go-loop]])
   (:require [cljs.core.async :refer [<!]]
             [chromex.logging :refer-macros [log info warn error group group-end]]
-            [chromex.protocols :refer [post-message!]]
+            [chromex.protocols.chrome-port :refer [post-message!]]
             [chromex.ext.runtime :as runtime :refer-macros [connect]]))
 
 ; -- a message loop ---------------------------------------------------------------------------------------------------------
