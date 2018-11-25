@@ -23,7 +23,7 @@
 
 (defn to-native-chrome-storage-area [_config chrome-storage-area]
   (when (some? chrome-storage-area)
-    (satisfies? IChromeStorageArea chrome-storage-area)
+    (assert (satisfies? IChromeStorageArea chrome-storage-area))
     (chromex.protocols.chrome-storage-area/get-native-storage-area chrome-storage-area)))
 
 (defn from-native-chrome-content-setting [config native-chrome-content-setting]
@@ -32,5 +32,5 @@
 
 (defn to-native-chrome-content-setting [_config chrome-content-setting]
   (when (some? chrome-content-setting)
-    (satisfies? IChromeContentSetting chrome-content-setting)
+    (assert (satisfies? IChromeContentSetting chrome-content-setting))
     (chromex.protocols.chrome-content-setting/get-native-content-setting chrome-content-setting)))
