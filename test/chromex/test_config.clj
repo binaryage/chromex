@@ -1,7 +1,7 @@
 (ns chromex.test-config
   (:require [chromex.config :as config]
-            [chromex.test.marshalling :as marshalling]
-            [chromex.test-utils :as test-utils]))
+            [chromex.test-utils :as test-utils]
+            [chromex.test.marshalling :as marshalling]))
 
 (test-utils/init!)
 

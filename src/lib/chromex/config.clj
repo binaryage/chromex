@@ -1,8 +1,8 @@
 (ns chromex.config
-  (:require [environ.core :refer [env]]
-            [chromex.defaults :refer [default-gen-active-config
-                                      default-gen-marshalling
-                                      default-compiler-println]]))
+  (:require [chromex.defaults :refer [default-compiler-println
+                                      default-gen-active-config
+                                      default-gen-marshalling]]
+            [environ.core :refer [env]]))
 
 (def ^:dynamic *target-api-version* (or (env :chromex-target-api-version) "latest"))
 (def ^:dynamic *silence-compilation-warnings* (boolean (env :chromex-silence-compilation-warnings)))

@@ -1,6 +1,6 @@
 (ns chromex.version
-  (:require [clojure.string :as string]
-            [cljs.util]))
+  (:require [cljs.util]
+            [clojure.string :as string]))
 
 ; -- project version --------------------------------------------------------------------------------------------------------
 

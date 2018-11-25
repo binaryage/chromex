@@ -1,7 +1,7 @@
 (ns chromex.playground-mocks
   (:require-macros [cljs.core.async.macros :refer [go go-loop]])
-  (:require [cljs.core.async :refer [<! >! timeout chan close!]]
-            [oops.core :refer [oset! oget ocall]]))
+  (:require [cljs.core.async :refer [<! >! chan close! timeout]]
+            [oops.core :refer [ocall oget oset!]]))
 
 (def last-event-result (volatile! nil))
 

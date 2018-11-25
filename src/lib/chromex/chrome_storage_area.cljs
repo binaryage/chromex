@@ -1,7 +1,7 @@
 (ns chromex.chrome-storage-area
-  (:require [chromex.support :refer [get-hook]]
-            [oops.core :refer [ocall ocall!]]
-            [chromex.protocols.chrome-storage-area :refer [IChromeStorageArea]]))
+  (:require [chromex.protocols.chrome-storage-area :refer [IChromeStorageArea]]
+            [chromex.support :refer [get-hook]]
+            [oops.core :refer [ocall ocall!]]))
 
 ; -- ChromeStorageArea ------------------------------------------------------------------------------------------------------
 ; wrapping https://developer.chrome.com/extensions/storage#type-StorageArea

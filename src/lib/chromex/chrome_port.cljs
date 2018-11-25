@@ -1,10 +1,10 @@
 (ns chromex.chrome-port
-  (:require [oops.core :refer [oget ocall!]]
-            [chromex.support :refer [call-hook get-hook]]
-            [chromex.protocols.chrome-port :refer [IChromePort]]
+  (:require [chromex.protocols.chrome-port :refer [IChromePort]]
             [chromex.protocols.chrome-port-state :refer [IChromePortState]]
+            [chromex.support :refer [call-hook get-hook]]
+            [cljs.core.async :refer [chan put!]]
             [cljs.core.async.impl.protocols :as core-async]
-            [cljs.core.async :refer [put! chan]]))
+            [oops.core :refer [ocall! oget]]))
 
 ; -- ChromePort -------------------------------------------------------------------------------------------------------------
 ; wrapping https://developer.chrome.com/extensions/runtime#type-Port

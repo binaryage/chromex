@@ -1,12 +1,12 @@
 (ns chromex.callgen
-  (:require [chromex.config :refer [get-static-config gen-active-config]]
-            [chromex.support :refer [valid-api-version?
-                                     emit-api-version-warning
+  (:require [chromex.config :refer [gen-active-config get-static-config]]
+            [chromex.support :refer [emit-api-version-warning
                                      emit-deprecation-warning
-                                     get-wrap-symbol
                                      get-api-id
                                      get-item-by-id
-                                     get-src-info]]))
+                                     get-src-info
+                                     get-wrap-symbol
+                                     valid-api-version?]]))
 
 ; this file is responsible for generating code which will be expanded at library call sites in user's code
 ; (gen-call-from-table and gen-tap-all-call are called from macros in some-library-namespace.clj)

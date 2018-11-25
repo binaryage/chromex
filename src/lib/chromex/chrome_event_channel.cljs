@@ -1,7 +1,7 @@
 (ns chromex.chrome-event-channel
-  (:require [cljs.core.async.impl.protocols :as core-async]
+  (:require [chromex.protocols.chrome-event-channel :refer [IChromeEventChannel]]
             [chromex.protocols.chrome-event-subscription]
-            [chromex.protocols.chrome-event-channel :refer [IChromeEventChannel]]))
+            [cljs.core.async.impl.protocols :as core-async]))
 
 (deftype ChromeEventChannel [chan ^:mutable subscriptions]
 

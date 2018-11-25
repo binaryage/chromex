@@ -1,7 +1,7 @@
 (ns chromex.chrome-event-subscription
-  (:require [chromex.protocols.chrome-event-subscription :refer [IChromeEventSubscription]]
-            [chromex.protocols.chrome-event-channel :refer [IChromeEventChannel]]
-            [oops.core :refer [ocall! oapply!]]))
+  (:require [chromex.protocols.chrome-event-channel :refer [IChromeEventChannel]]
+            [chromex.protocols.chrome-event-subscription :refer [IChromeEventSubscription]]
+            [oops.core :refer [oapply! ocall!]]))
 
 ; exception handlers, see https://www.youtube.com/watch?v=zp0OEDcAro0
 (declare ^:dynamic *subscribe-called-while-subscribed*)

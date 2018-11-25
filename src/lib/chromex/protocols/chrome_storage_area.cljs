@@ -1,5 +1,5 @@
 (ns chromex.protocols.chrome-storage-area
-  (:refer-clojure :exclude [get set remove]))
+  (:refer-clojure :exclude [get remove set]))
 
 (defprotocol IChromeStorageArea
   "a wrapper for https://developer.chrome.com/extensions/storage#type-StorageArea"

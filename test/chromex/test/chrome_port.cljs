@@ -1,12 +1,12 @@
 (ns chromex.test.chrome-port
   (:require-macros [cljs.core.async.macros :refer [go]])
-  (:require [cljs.test :refer-macros [deftest testing is async]]
-            [cljs.core.async :refer [<!]]
+  (:require [chromex.playground :refer-macros [get-port]]
             [chromex.protocols.chrome-port :refer [IChromePort]]
             [chromex.protocols.chrome-port-state :refer [IChromePortState]]
-            [oops.core :refer [ocall oget]]
             [chromex.test-utils :refer [advanced-mode?]]
-            [chromex.playground :refer-macros [get-port]]))
+            [cljs.core.async :refer [<!]]
+            [cljs.test :refer-macros [async deftest is testing]]
+            [oops.core :refer [ocall oget]]))
 
 ; -- test against mocks -----------------------------------------------------------------------------------------------------
 

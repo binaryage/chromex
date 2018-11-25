@@ -1,7 +1,7 @@
 (ns chromex.test-utils
-  (:require [clojure.string :as string]
+  (:require [chromex.support :as chromex-support]
             [clojure.java.io :as io]
-            [chromex.support :as chromex-support]
+            [clojure.string :as string]
             [environ.core :refer [env]]))
 
 (defn get-test-mode []

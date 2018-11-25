@@ -1,7 +1,7 @@
 (ns chromex.chrome-content-setting
-  (:require [chromex.support :refer [get-hook]]
-            [oops.core :refer [ocall ocall!]]
-            [chromex.protocols.chrome-content-setting :refer [IChromeContentSetting]]))
+  (:require [chromex.protocols.chrome-content-setting :refer [IChromeContentSetting]]
+            [chromex.support :refer [get-hook]]
+            [oops.core :refer [ocall ocall!]]))
 
 (deftype ChromeContentSetting [native-chrome-content-setting channel-factory callback-factory]
   IChromeContentSetting

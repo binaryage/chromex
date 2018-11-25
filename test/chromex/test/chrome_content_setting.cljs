@@ -1,9 +1,9 @@
 (ns chromex.test.chrome-content-setting
   (:require-macros [cljs.core.async.macros :refer [go]])
-  (:require [cljs.test :refer-macros [deftest testing is async]]
-            [cljs.core.async :refer [<!]]
+  (:require [chromex.playground :refer-macros [get-content-setting]]
             [chromex.protocols.chrome-content-setting :refer [IChromeContentSetting]]
-            [chromex.playground :refer-macros [get-content-setting]]))
+            [cljs.core.async :refer [<!]]
+            [cljs.test :refer-macros [async deftest is testing]]))
 
 (deftest test-content-setting
   (testing "exercise ChromeContentSetting"

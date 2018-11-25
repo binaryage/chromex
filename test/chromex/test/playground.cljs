@@ -1,18 +1,18 @@
 (ns chromex.test.playground
   (:require-macros [cljs.core.async.macros :refer [go go-loop]])
-  (:require [cljs.test :refer-macros [deftest testing is async]]
-            [cljs.core.async :refer [<! >! timeout chan close!]]
-            [chromex.test-utils :refer [advanced-mode?] :refer-macros [valid-api-version?]]
-            [chromex.playground-mocks :refer [last-event-result]]
-            [oops.core :refer [oset! oget ocall oapply]]
+  (:require [chromex.chrome-event-channel :refer [make-chrome-event-channel]]
+            [chromex.config :refer-macros [with-custom-config with-custom-event-listener-factory with-muted-error-reporting]]
             [chromex.error :refer [get-last-error set-last-error!]]
-            [chromex.config :refer-macros [with-custom-event-listener-factory with-muted-error-reporting with-custom-config]]
-            [chromex.playground :refer-macros [get-something do-something get-some-prop tap-on-something-events
-                                               tap-all-events do-something-optional-args tap-on-something-else-events
-                                               get-some-missing-prop do-something-missing tap-on-something-missing-events
-                                               call-future-api call-master-api get-something-causing-error]]
-            [chromex.chrome-event-channel :refer [make-chrome-event-channel]]
-            [clojure.string :as string]))
+            [chromex.playground :refer-macros [call-future-api call-master-api do-something do-something-missing
+                                               do-something-optional-args get-some-missing-prop get-some-prop
+                                               get-something get-something-causing-error tap-all-events
+                                               tap-on-something-else-events tap-on-something-events tap-on-something-missing-events]]
+            [chromex.playground-mocks :refer [last-event-result]]
+            [chromex.test-utils :refer [advanced-mode?] :refer-macros [valid-api-version?]]
+            [cljs.core.async :refer [<! >! chan close! timeout]]
+            [cljs.test :refer-macros [async deftest is testing]]
+            [clojure.string :as string]
+            [oops.core :refer [oapply ocall oget oset!]]))
 
 ; -- test against mocks -----------------------------------------------------------------------------------------------------
 

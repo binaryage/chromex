@@ -1,13 +1,13 @@
 (ns chromex.defaults
-  (:require-macros [chromex.defaults]
-                   [chromex.config :refer [gen-default-config]])
-  (:require [cljs.core.async :refer [put! chan promise-chan close!]]
-            [chromex.support :refer [call-hook]]
-            [oops.core :refer [oget]]
-            [goog.object :as gobj]
-            [chromex.error :refer [set-last-error! set-last-error-args!]]
+  (:require-macros [chromex.config :refer [gen-default-config]]
+                   [chromex.defaults])
+  (:require [chromex.error :refer [set-last-error! set-last-error-args!]]
             [chromex.protocols.chrome-port]
-            [chromex.protocols.chrome-port-state]))
+            [chromex.protocols.chrome-port-state]
+            [chromex.support :refer [call-hook]]
+            [cljs.core.async :refer [chan close! promise-chan put!]]
+            [goog.object :as gobj]
+            [oops.core :refer [oget]]))
 
 ; -- logging support --------------------------------------------------------------------------------------------------------
 

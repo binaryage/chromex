@@ -1,12 +1,12 @@
 (ns chromex.wrapgen
-  (:require [clojure.string :as string]
-            [chromex.config :refer [get-static-config]]
-            [chromex.support :refer [gen-logging-if-verbose
-                                     get-item-by-id
-                                     get-api-id
-                                     print-debug
+  (:require [chromex.config :refer [get-static-config]]
+            [chromex.support :refer [gen-call-hook
+                                     gen-logging-if-verbose
                                      gen-missing-api-check
-                                     gen-call-hook]]))
+                                     get-api-id
+                                     get-item-by-id
+                                     print-debug]]
+            [clojure.string :as string]))
 
 ; This file is responsible for generating code wrapping Chrome API calls.
 ; Each Chrome API method will get generated one representing ClojureScript stub method (stubs have star postfix).

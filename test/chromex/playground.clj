@@ -1,8 +1,8 @@
 (ns chromex.playground
-    (:refer-clojure :only [defmacro defn apply declare meta let partial macroexpand-1])
-    (:require [chromex.wrapgen :refer [gen-wrap-helper gen-wrap-from-table]]
-      [chromex.callgen :refer [gen-call-helper gen-tap-all-events-call]]
-      [chromex.debug :refer [print-code]]))
+    (:refer-clojure :only [apply declare defmacro defn let macroexpand-1 meta partial])
+    (:require [chromex.callgen :refer [gen-call-helper gen-tap-all-events-call]]
+      [chromex.debug :refer [print-code]]
+      [chromex.wrapgen :refer [gen-wrap-from-table gen-wrap-helper]]))
 
 (declare api-table)
 (declare gen-call)

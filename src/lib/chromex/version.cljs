@@ -1,5 +1,5 @@
 (ns chromex.version
-  (:require-macros [chromex.version :refer [get-current-version check-env!]]))
+  (:require-macros [chromex.version :refer [check-env! get-current-version]]))
 
 (check-env!)
 

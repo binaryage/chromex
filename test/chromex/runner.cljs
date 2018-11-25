@@ -1,14 +1,14 @@
 (ns chromex.runner
-  (:require [cljs.test :as test :refer-macros [run-tests] :refer [report]]
-            [chromex.config :refer [get-active-config set-active-config!]]
+  (:require [chromex.config :refer [get-active-config set-active-config!]]
             [chromex.defaults :refer [console-log]]
-            [chromex.test.compiler]
-            [chromex.test-utils]
             [chromex.playground]
-            [chromex.test.playground]
+            [chromex.test-utils]
             [chromex.test.chrome-content-setting]
-            [chromex.test.chrome-storage-area]
             [chromex.test.chrome-port]
+            [chromex.test.chrome-storage-area]
+            [chromex.test.compiler]
+            [chromex.test.playground]
+            [cljs.test :as test :refer-macros [run-tests] :refer [report]]
             [goog.object :as gobj]))
 
 (enable-console-print!)

@@ -1,12 +1,12 @@
 (ns chromex.marshalling
   (:require-macros [chromex.marshalling])
-  (:require [chromex.protocols.chrome-port :refer [IChromePort]]
-            [chromex.protocols.chrome-storage-area :refer [IChromeStorageArea]]
-            [chromex.protocols.chrome-content-setting :refer [IChromeContentSetting]]
-            [chromex.config :refer [get-active-config]]
+  (:require [chromex.chrome-content-setting :refer [make-chrome-content-setting]]
             [chromex.chrome-port :refer [make-chrome-port]]
             [chromex.chrome-storage-area :refer [make-chrome-storage-area]]
-            [chromex.chrome-content-setting :refer [make-chrome-content-setting]]))
+            [chromex.config :refer [get-active-config]]
+            [chromex.protocols.chrome-content-setting :refer [IChromeContentSetting]]
+            [chromex.protocols.chrome-port :refer [IChromePort]]
+            [chromex.protocols.chrome-storage-area :refer [IChromeStorageArea]]))
 
 (defn from-native-chrome-port [config native-chrome-port]
   (when (some? native-chrome-port)
