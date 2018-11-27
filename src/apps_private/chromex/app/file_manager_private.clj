@@ -733,9 +733,10 @@
   "Returns list of paths shared with crostini container.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [entries] where:
+   Signature of the result value put on the channel is [entries first-for-session] where:
 
      |entries| - ?
+     |first-for-session| - ?
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
@@ -1227,7 +1228,11 @@
      :name "getCrostiniSharedPaths",
      :since "71",
      :callback? true,
-     :params [{:name "callback", :type :callback, :callback {:params [{:name "entries", :type "[array-of-Entrys]"}]}}]}
+     :params
+     [{:name "callback",
+       :type :callback,
+       :callback
+       {:params [{:name "entries", :type "[array-of-Entrys]"} {:name "first-for-session", :type "boolean"}]}}]}
     {:id ::get-linux-package-info,
      :name "getLinuxPackageInfo",
      :since "72",
