@@ -117,7 +117,7 @@
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
     {:id ::can-proxy-to-web-authn,
      :name "canProxyToWebAuthn",
-     :since "master",
+     :since "72",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}]})
 

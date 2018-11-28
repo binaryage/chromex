@@ -355,7 +355,7 @@
       {:name "callback", :type :callback, :callback {:params [{:name "app-shown", :type "boolean"}]}}]}
     {:id ::is-arc-provisioned,
      :name "isArcProvisioned",
-     :since "master",
+     :since "71",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "arc-provisioned", :type "boolean"}]}}]}
     {:id ::launch-app,
@@ -407,7 +407,7 @@
      :params [{:name "callback", :type :callback}]}
     {:id ::set-assistant-enabled,
      :name "setAssistantEnabled",
-     :since "master",
+     :since "72",
      :callback? true,
      :params
      [{:name "enabled", :type "boolean"} {:name "timeout-ms", :type "integer"} {:name "callback", :type :callback}]}]})

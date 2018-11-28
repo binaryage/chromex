@@ -278,7 +278,7 @@
      [{:name "options", :type "browsingData.RemovalOptions"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-cache-storage,
      :name "removeCacheStorage",
-     :since "master",
+     :since "72",
      :callback? true,
      :params
      [{:name "options", :type "browsingData.RemovalOptions"} {:name "callback", :optional? true, :type :callback}]}
@@ -329,7 +329,7 @@
      [{:name "options", :type "browsingData.RemovalOptions"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-service-workers,
      :name "removeServiceWorkers",
-     :since "master",
+     :since "72",
      :callback? true,
      :params
      [{:name "options", :type "browsingData.RemovalOptions"} {:name "callback", :optional? true, :type :callback}]}
