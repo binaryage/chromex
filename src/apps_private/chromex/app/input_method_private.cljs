@@ -42,6 +42,12 @@
 (defn get-surrounding-text* [config before-length after-length]
   (gen-wrap :function ::get-surrounding-text config before-length after-length))
 
+(defn get-setting* [config engine-id key]
+  (gen-wrap :function ::get-setting config engine-id key))
+
+(defn set-setting* [config engine-id key value]
+  (gen-wrap :function ::set-setting config engine-id key value))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-changed* [config channel & args]

@@ -157,6 +157,35 @@
    chromex.error/get-last-error."
   ([before-length after-length] (gen-call :function ::get-surrounding-text &form before-length after-length)))
 
+(defmacro get-setting
+  "Gets the current value of a setting for a particular input method
+
+     |engine-id| - The ID of the engine (e.g. 'zh-t-i0-pinyin', 'xkb:us::eng')
+     |key| - The setting to get
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [setting] where:
+
+     |setting| - The value for the requested setting, or null if there's no value
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([engine-id key] (gen-call :function ::get-setting &form engine-id key)))
+
+(defmacro set-setting
+  "Sets the value of a setting for a particular input method
+
+     |engine-id| - The ID of the engine (e.g. 'zh-t-i0-pinyin', 'xkb:us::eng')
+     |key| - The setting to set
+     |value| - The new value of the setting
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([engine-id key value] (gen-call :function ::set-setting &form engine-id key value)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -321,7 +350,24 @@
      :params
      [{:name "before-length", :type "integer"}
       {:name "after-length", :type "integer"}
-      {:name "callback", :type :callback, :callback {:params [{:name "surrounding-info", :type "object"}]}}]}],
+      {:name "callback", :type :callback, :callback {:params [{:name "surrounding-info", :type "object"}]}}]}
+    {:id ::get-setting,
+     :name "getSetting",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "engine-id", :type "string"}
+      {:name "key", :type "string"}
+      {:name "callback", :type :callback, :callback {:params [{:name "setting", :optional? true, :type "any"}]}}]}
+    {:id ::set-setting,
+     :name "setSetting",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "engine-id", :type "string"}
+      {:name "key", :type "string"}
+      {:name "value", :type "any"}
+      {:name "callback", :type :callback}]}],
    :events
    [{:id ::on-changed, :name "onChanged", :params [{:name "new-input-method-id", :type "string"}]}
     {:id ::on-composition-bounds-changed,
