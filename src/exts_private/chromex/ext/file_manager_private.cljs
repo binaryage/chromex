@@ -174,6 +174,9 @@
 (defn share-paths-with-crostini* [config entries persist]
   (gen-wrap :function ::share-paths-with-crostini config entries persist))
 
+(defn unshare-path-with-crostini* [config entry]
+  (gen-wrap :function ::unshare-path-with-crostini config entry))
+
 (defn get-crostini-shared-paths* [config]
   (gen-wrap :function ::get-crostini-shared-paths config))
 

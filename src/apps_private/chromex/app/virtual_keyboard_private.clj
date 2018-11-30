@@ -88,7 +88,9 @@
      |options| - Optional parameters for new container behavior.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [].
+   Signature of the result value put on the channel is [success] where:
+
+     |success| - Whether the container mode changed successfully
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
@@ -203,7 +205,7 @@
      :callback? true,
      :params
      [{:name "options", :type "virtualKeyboardPrivate.ContainerBehaviorOptions"}
-      {:name "callback", :optional? true, :type :callback}]}
+      {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::set-draggable-area,
      :name "setDraggableArea",
      :since "64",

@@ -20,7 +20,9 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [permissions] where:
 
-     |permissions| - The extension's active permissions.
+     |permissions| - The extension's active permissions. Note that the origins property will contain granted origins from
+                     those specified in the permissions and optional_permissions keys in the manifest and those associated
+                     with Content Scripts.
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
@@ -36,7 +38,8 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [result] where:
 
-     |result| - True if the extension has the specified permissions.
+     |result| - True if the extension has the specified permissions. If an origin is specified as both an optional permission
+                and a content script match pattern, this will return false unless both permissions are granted.
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
@@ -45,8 +48,11 @@
   ([permissions] (gen-call :function ::contains &form permissions)))
 
 (defmacro request
-  "Requests access to the specified permissions. These permissions must be defined in the optional_permissions field of the
-   manifest. If there are any problems requesting the permissions, 'runtime.lastError' will be set.
+  "Requests access to the specified permissions, displaying a prompt to the user if necessary. These permissions must either
+   be defined in the optional_permissions field of the manifest or be required permissions that were withheld by the user.
+   Paths on origin patterns will be ignored. You can request subsets of optional origin permissions; for example, if you
+   specify *://*/* in the optional_permissions section of the manifest, you can request http://example.com/. If there are any
+   problems requesting the permissions, 'runtime.lastError' will be set.
 
      |permissions| - https://developer.chrome.com/apps/permissions#property-request-permissions.
 
