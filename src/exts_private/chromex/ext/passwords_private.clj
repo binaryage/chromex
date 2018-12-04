@@ -13,6 +13,10 @@
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
+(defmacro record-passwords-page-access-in-settings
+  "Function that logs that the Passwords page was accessed from the Chrome Settings WebUI."
+  ([] (gen-call :function ::record-passwords-page-access-in-settings &form)))
+
 (defmacro remove-saved-password
   "Removes the saved password corresponding to |loginPair|. If no saved password for this pair exists, this function is a
    no-op.
@@ -157,7 +161,8 @@
   {:namespace "chrome.passwordsPrivate",
    :since "master",
    :functions
-   [{:id ::remove-saved-password, :name "removeSavedPassword", :params [{:name "id", :type "integer"}]}
+   [{:id ::record-passwords-page-access-in-settings, :name "recordPasswordsPageAccessInSettings"}
+    {:id ::remove-saved-password, :name "removeSavedPassword", :params [{:name "id", :type "integer"}]}
     {:id ::remove-password-exception, :name "removePasswordException", :params [{:name "id", :type "integer"}]}
     {:id ::undo-remove-saved-password-or-exception, :name "undoRemoveSavedPasswordOrException"}
     {:id ::request-plaintext-password, :name "requestPlaintextPassword", :params [{:name "id", :type "integer"}]}

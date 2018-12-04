@@ -3,6 +3,9 @@
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
+(defn record-passwords-page-access-in-settings* [config]
+  (gen-wrap :function ::record-passwords-page-access-in-settings config))
+
 (defn remove-saved-password* [config id]
   (gen-wrap :function ::remove-saved-password config id))
 

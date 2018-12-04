@@ -48,7 +48,7 @@
 
 ### API stats
 
-Generated 40 namespaces containing 1 properties, 369 functions and 69 events:
+Generated 40 namespaces containing 1 properties, 370 functions and 69 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -78,7 +78,7 @@ Generated 40 namespaces containing 1 properties, 369 functions and 69 events:
     |                 chrome.metricsPrivate |           0 |         16 |       0 |
     |                    chrome.mojoPrivate |           0 |          1 |       0 |
     |              chrome.networkingPrivate |           0 |         22 |       5 |
-    |               chrome.passwordsPrivate |           0 |         10 |       4 |
+    |               chrome.passwordsPrivate |           0 |         11 |       4 |
     |             chrome.preferencesPrivate |           1 |          0 |       0 |
     |             chrome.quickUnlockPrivate |           0 |          7 |       1 |
     |               chrome.resourcesPrivate |           0 |          1 |       0 |
@@ -239,10 +239,10 @@ Generated 40 namespaces containing 1 properties, 369 functions and 69 events:
       tap-all-events]]
 
     [chromex.ext.passwords-private refer:[
-      remove-saved-password remove-password-exception undo-remove-saved-password-or-exception
-      request-plaintext-password get-saved-password-list get-password-exception-list import-passwords
-      export-passwords request-export-progress-status cancel-export-passwords
-      tap-on-saved-passwords-list-changed tap-on-password-exceptions-list-changed
+      record-passwords-page-access-in-settings remove-saved-password remove-password-exception
+      undo-remove-saved-password-or-exception request-plaintext-password get-saved-password-list
+      get-password-exception-list import-passwords export-passwords request-export-progress-status
+      cancel-export-passwords tap-on-saved-passwords-list-changed tap-on-password-exceptions-list-changed
       tap-on-plaintext-password-retrieved tap-on-passwords-file-export-progress tap-all-events]]
 
     [chromex.ext.preferences-private refer:[
