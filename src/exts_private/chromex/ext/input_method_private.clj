@@ -353,7 +353,7 @@
       {:name "callback", :type :callback, :callback {:params [{:name "surrounding-info", :type "object"}]}}]}
     {:id ::get-setting,
      :name "getSetting",
-     :since "master",
+     :since "72",
      :callback? true,
      :params
      [{:name "engine-id", :type "string"}
@@ -361,7 +361,7 @@
       {:name "callback", :type :callback, :callback {:params [{:name "setting", :optional? true, :type "any"}]}}]}
     {:id ::set-setting,
      :name "setSetting",
-     :since "master",
+     :since "72",
      :callback? true,
      :params
      [{:name "engine-id", :type "string"}
