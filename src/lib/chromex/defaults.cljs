@@ -69,7 +69,7 @@
                            "Your Chrome version might be too old or too recent for running this extension.\n"
                            "This is a failure which probably requires a software update.")))))
 
-; -- ChromeContentSetting ------------------------------------------------------------------------------------------------------
+; -- ChromeContentSetting ---------------------------------------------------------------------------------------------------
 
 (defn default-chrome-content-setting-callback-fn-factory [config chan]
   (fn [& args]
@@ -89,7 +89,7 @@
 (defn default-chrome-storage-area-callback-channel-factory [_config]
   (promise-chan))
 
-; -- ChromePort ------------------------------------------------------------------------------------------------------
+; -- ChromePort -------------------------------------------------------------------------------------------------------------
 
 (defn default-chrome-port-channel-factory [_config]
   (chan))
