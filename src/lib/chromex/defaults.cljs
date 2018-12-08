@@ -77,7 +77,7 @@
       (put! chan [(vec args) last-error]))))
 
 (defn default-chrome-content-setting-callback-channel-factory [_config]
-  (chan))
+  (promise-chan))
 
 ; -- ChromeStorageArea ------------------------------------------------------------------------------------------------------
 
