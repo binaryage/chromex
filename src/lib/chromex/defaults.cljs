@@ -87,7 +87,7 @@
       (put! chan [(vec args) last-error]))))
 
 (defn default-chrome-storage-area-callback-channel-factory [_config]
-  (chan))
+  (promise-chan))
 
 ; -- ChromePort ------------------------------------------------------------------------------------------------------
 
