@@ -270,6 +270,29 @@
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-focus &form channel args)))
 
+(defmacro tap-on-settings-changed-events
+  "This event is sent when the settings for any input method changed. It is sent to all extensions that are listening to this
+   event, and enabled by the user.
+
+   Events will be put on the |channel| with signature [::on-settings-changed [engine-id key value]] where:
+
+     |engine-id| - ID of the engine that changed
+     |key| - The setting that changed
+     |value| - The new value of the setting
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-settings-changed &form channel args)))
+
+(defmacro tap-on-screen-projection-changed-events
+  "This event is sent when the screen is being mirrored or the desktop is being cast.
+
+   Events will be put on the |channel| with signature [::on-screen-projection-changed [is-projected]] where:
+
+     |is-projected| - Whether the screen is projected.
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-screen-projection-changed &form channel args)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -367,7 +390,7 @@
      [{:name "engine-id", :type "string"}
       {:name "key", :type "string"}
       {:name "value", :type "any"}
-      {:name "callback", :type :callback}]}],
+      {:name "callback", :optional? true, :type :callback}]}],
    :events
    [{:id ::on-changed, :name "onChanged", :params [{:name "new-input-method-id", :type "string"}]}
     {:id ::on-composition-bounds-changed,
@@ -388,10 +411,15 @@
      :name "onImeMenuItemsChanged",
      :since "51",
      :params [{:name "engine-id", :type "string"} {:name "items", :type "[array-of-inputMethodPrivate.MenuItems]"}]}
-    {:id ::on-focus,
-     :name "onFocus",
-     :since "68",
-     :params [{:name "context", :type "inputMethodPrivate.InputContext"}]}]})
+    {:id ::on-focus, :name "onFocus", :since "68", :params [{:name "context", :type "inputMethodPrivate.InputContext"}]}
+    {:id ::on-settings-changed,
+     :name "onSettingsChanged",
+     :since "master",
+     :params [{:name "engine-id", :type "string"} {:name "key", :type "string"} {:name "value", :type "any"}]}
+    {:id ::on-screen-projection-changed,
+     :name "onScreenProjectionChanged",
+     :since "master",
+     :params [{:name "is-projected", :type "boolean"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

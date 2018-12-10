@@ -74,3 +74,9 @@
 (defn on-focus* [config channel & args]
   (gen-wrap :event ::on-focus config channel args))
 
+(defn on-settings-changed* [config channel & args]
+  (gen-wrap :event ::on-settings-changed config channel args))
+
+(defn on-screen-projection-changed* [config channel & args]
+  (gen-wrap :event ::on-screen-projection-changed config channel args))
+
