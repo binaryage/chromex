@@ -33,6 +33,9 @@
 (defn migrate-credit-cards* [config]
   (gen-wrap :function ::migrate-credit-cards config))
 
+(defn log-server-card-link-clicked* [config]
+  (gen-wrap :function ::log-server-card-link-clicked config))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-address-list-changed* [config channel & args]

@@ -63,8 +63,20 @@
 (defn is-arc-provisioned* [config]
   (gen-wrap :function ::is-arc-provisioned config))
 
+(defn get-arc-app* [config app-id]
+  (gen-wrap :function ::get-arc-app config app-id))
+
+(defn get-arc-package* [config package-name]
+  (gen-wrap :function ::get-arc-package config package-name))
+
+(defn launch-arc-app* [config app-id intent]
+  (gen-wrap :function ::launch-arc-app config app-id intent))
+
 (defn launch-app* [config app-id]
   (gen-wrap :function ::launch-app config app-id))
+
+(defn close-app* [config app-id]
+  (gen-wrap :function ::close-app config app-id))
 
 (defn update-printer* [config printer]
   (gen-wrap :function ::update-printer config printer))

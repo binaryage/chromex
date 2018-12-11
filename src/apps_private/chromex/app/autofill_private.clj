@@ -110,6 +110,10 @@
   "Triggers local credit cards migration."
   ([] (gen-call :function ::migrate-credit-cards &form)))
 
+(defmacro log-server-card-link-clicked
+  "Logs that the server cards edit link was clicked."
+  ([] (gen-call :function ::log-server-card-link-clicked &form)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -188,7 +192,8 @@
        :type :callback,
        :callback {:params [{:name "entries", :type "[array-of-autofillPrivate.CreditCardEntrys]"}]}}]}
     {:id ::mask-credit-card, :name "maskCreditCard", :params [{:name "guid", :type "string"}]}
-    {:id ::migrate-credit-cards, :name "migrateCreditCards"}],
+    {:id ::migrate-credit-cards, :name "migrateCreditCards"}
+    {:id ::log-server-card-link-clicked, :name "logServerCardLinkClicked"}],
    :events
    [{:id ::on-address-list-changed,
      :name "onAddressListChanged",

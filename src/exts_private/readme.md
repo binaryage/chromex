@@ -48,15 +48,15 @@
 
 ### API stats
 
-Generated 40 namespaces containing 1 properties, 370 functions and 71 events:
+Generated 40 namespaces containing 1 properties, 375 functions and 71 events:
 
 
     |                            :namespace | :properties | :functions | :events |
     |---------------------------------------+-------------+------------+---------|
     |           chrome.accessibilityPrivate |           0 |         12 |       5 |
     |             chrome.activityLogPrivate |           0 |          4 |       1 |
-    |                chrome.autofillPrivate |           0 |         10 |       2 |
-    |                chrome.autotestPrivate |           0 |         31 |       0 |
+    |                chrome.autofillPrivate |           0 |         11 |       2 |
+    |                chrome.autotestPrivate |           0 |         35 |       0 |
     |               chrome.bluetoothPrivate |           0 |          7 |       1 |
     |         chrome.bookmarkManagerPrivate |           0 |         20 |       4 |
     |          chrome.brailleDisplayPrivate |           0 |          3 |       2 |
@@ -114,16 +114,18 @@ Generated 40 namespaces containing 1 properties, 370 functions and 71 events:
     [chromex.ext.autofill-private refer:[
       save-address get-country-list get-address-components get-address-list save-credit-card remove-entry
       validate-phone-numbers get-credit-card-list mask-credit-card migrate-credit-cards
-      tap-on-address-list-changed tap-on-credit-card-list-changed tap-all-events]]
+      log-server-card-link-clicked tap-on-address-list-changed tap-on-credit-card-list-changed
+      tap-all-events]]
 
     [chromex.ext.autotest-private refer:[
       logout restart shutdown login-status lock-screen get-extensions-info simulate-asan-memory-bug
       set-touchpad-sensitivity set-tap-to-click set-three-finger-click set-tap-dragging
       set-natural-scroll set-mouse-sensitivity set-primary-button-right set-mouse-reverse-scroll
       get-visible-notifications get-play-store-state get-printer-list is-app-shown is-arc-provisioned
-      launch-app update-printer remove-printer set-play-store-enabled get-histogram
-      run-crostini-installer run-crostini-uninstaller set-crostini-enabled take-screenshot
-      bootstrap-machine-learning-service set-assistant-enabled tap-all-events]]
+      get-arc-app get-arc-package launch-arc-app launch-app close-app update-printer remove-printer
+      set-play-store-enabled get-histogram run-crostini-installer run-crostini-uninstaller
+      set-crostini-enabled take-screenshot bootstrap-machine-learning-service set-assistant-enabled
+      tap-all-events]]
 
     [chromex.ext.bluetooth-private refer:[
       set-adapter-state set-pairing-response disconnect-all forget-device set-discovery-filter connect

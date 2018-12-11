@@ -169,6 +169,49 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::is-arc-provisioned &form)))
 
+(defmacro get-arc-app
+  "Gets information about the requested ARC app.
+
+     |app-id| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [package] where:
+
+     |package| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([app-id] (gen-call :function ::get-arc-app &form app-id)))
+
+(defmacro get-arc-package
+  "Gets information about requested ARC package.
+
+     |package-name| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [package] where:
+
+     |package| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([package-name] (gen-call :function ::get-arc-package &form package-name)))
+
+(defmacro launch-arc-app
+  "Launches ARC app with optional intent. Returns true if ARC is active, app exists and launch request is passed to Android.
+
+     |app-id| - ?
+     |intent| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [app-launched] where:
+
+     |app-launched| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([app-id intent] (gen-call :function ::launch-arc-app &form app-id intent)))
+
 (defmacro launch-app
   "Launches an application from the launcher with the given appId.
 
@@ -180,6 +223,18 @@
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([app-id] (gen-call :function ::launch-app &form app-id)))
+
+(defmacro close-app
+  "Closes an application the given appId in case it was running.
+
+     |app-id| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([app-id] (gen-call :function ::close-app &form app-id)))
 
 (defmacro update-printer
   "Update printer. Printer with empty ID is considered new.
@@ -358,9 +413,36 @@
      :since "71",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "arc-provisioned", :type "boolean"}]}}]}
+    {:id ::get-arc-app,
+     :name "getArcApp",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "app-id", :type "string"}
+      {:name "callback", :type :callback, :callback {:params [{:name "package", :type "object"}]}}]}
+    {:id ::get-arc-package,
+     :name "getArcPackage",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "package-name", :type "string"}
+      {:name "callback", :type :callback, :callback {:params [{:name "package", :type "object"}]}}]}
+    {:id ::launch-arc-app,
+     :name "launchArcApp",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "app-id", :type "string"}
+      {:name "intent", :type "string"}
+      {:name "callback", :type :callback, :callback {:params [{:name "app-launched", :type "boolean"}]}}]}
     {:id ::launch-app,
      :name "launchApp",
      :since "71",
+     :callback? true,
+     :params [{:name "app-id", :type "string"} {:name "callback", :type :callback}]}
+    {:id ::close-app,
+     :name "closeApp",
+     :since "master",
      :callback? true,
      :params [{:name "app-id", :type "string"} {:name "callback", :type :callback}]}
     {:id ::update-printer,
