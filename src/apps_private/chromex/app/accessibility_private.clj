@@ -54,6 +54,13 @@
      |key-codes| - The key codes for the keys that will be captured."
   ([key-codes] (gen-call :function ::set-switch-access-keys &form key-codes)))
 
+(defmacro set-switch-access-menu-state
+  "Shows or hides the Switch Access menu. If shown, it is at the indicated location.
+
+     |show| - If true, show the menu. If false, hide the menu.
+     |element-bounds| - Position of an element, in global screen coordinates, to place the menu next to."
+  ([show element-bounds] (gen-call :function ::set-switch-access-menu-state &form show element-bounds)))
+
 (defmacro set-native-chrome-vox-arc-support-for-current-app
   "Sets current ARC app to use native ARC support.
 
@@ -173,6 +180,10 @@
      :name "setSwitchAccessKeys",
      :since "61",
      :params [{:name "key-codes", :type "[array-of-integers]"}]}
+    {:id ::set-switch-access-menu-state,
+     :name "setSwitchAccessMenuState",
+     :since "master",
+     :params [{:name "show", :type "boolean"} {:name "element-bounds", :type "accessibilityPrivate.ScreenRect"}]}
     {:id ::set-native-chrome-vox-arc-support-for-current-app,
      :name "setNativeChromeVoxArcSupportForCurrentApp",
      :since "63",

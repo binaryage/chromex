@@ -21,6 +21,9 @@
 (defn set-switch-access-keys* [config key-codes]
   (gen-wrap :function ::set-switch-access-keys config key-codes))
 
+(defn set-switch-access-menu-state* [config show element-bounds]
+  (gen-wrap :function ::set-switch-access-menu-state config show element-bounds))
+
 (defn set-native-chrome-vox-arc-support-for-current-app* [config enabled]
   (gen-wrap :function ::set-native-chrome-vox-arc-support-for-current-app config enabled))
 
