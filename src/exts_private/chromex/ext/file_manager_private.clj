@@ -1238,7 +1238,7 @@
       {:name "callback", :type :callback}]}
     {:id ::unshare-path-with-crostini,
      :name "unsharePathWithCrostini",
-     :since "master",
+     :since "73",
      :callback? true,
      :params [{:name "entry", :type "object"} {:name "callback", :type :callback}]}
     {:id ::get-crostini-shared-paths,

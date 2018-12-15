@@ -414,11 +414,11 @@
     {:id ::on-focus, :name "onFocus", :since "68", :params [{:name "context", :type "inputMethodPrivate.InputContext"}]}
     {:id ::on-settings-changed,
      :name "onSettingsChanged",
-     :since "master",
+     :since "73",
      :params [{:name "engine-id", :type "string"} {:name "key", :type "string"} {:name "value", :type "any"}]}
     {:id ::on-screen-projection-changed,
      :name "onScreenProjectionChanged",
-     :since "master",
+     :since "73",
      :params [{:name "is-projected", :type "boolean"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

@@ -415,21 +415,21 @@
      :params [{:name "callback", :type :callback, :callback {:params [{:name "arc-provisioned", :type "boolean"}]}}]}
     {:id ::get-arc-app,
      :name "getArcApp",
-     :since "master",
+     :since "73",
      :callback? true,
      :params
      [{:name "app-id", :type "string"}
       {:name "callback", :type :callback, :callback {:params [{:name "package", :type "object"}]}}]}
     {:id ::get-arc-package,
      :name "getArcPackage",
-     :since "master",
+     :since "73",
      :callback? true,
      :params
      [{:name "package-name", :type "string"}
       {:name "callback", :type :callback, :callback {:params [{:name "package", :type "object"}]}}]}
     {:id ::launch-arc-app,
      :name "launchArcApp",
-     :since "master",
+     :since "73",
      :callback? true,
      :params
      [{:name "app-id", :type "string"}
@@ -442,7 +442,7 @@
      :params [{:name "app-id", :type "string"} {:name "callback", :type :callback}]}
     {:id ::close-app,
      :name "closeApp",
-     :since "master",
+     :since "73",
      :callback? true,
      :params [{:name "app-id", :type "string"} {:name "callback", :type :callback}]}
     {:id ::update-printer,

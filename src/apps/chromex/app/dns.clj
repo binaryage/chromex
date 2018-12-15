@@ -1,7 +1,7 @@
 (ns chromex.app.dns
   "Use the chrome.dns API for dns resolution.
 
-     * available since Chrome 72
+     * available since Chrome 73
      * https://developer.chrome.com/apps/dns"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -42,7 +42,7 @@
 
 (def api-table
   {:namespace "chrome.dns",
-   :since "72",
+   :since "73",
    :functions
    [{:id ::resolve,
      :name "resolve",
