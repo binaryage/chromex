@@ -182,7 +182,7 @@
      :params [{:name "key-codes", :type "[array-of-integers]"}]}
     {:id ::set-switch-access-menu-state,
      :name "setSwitchAccessMenuState",
-     :since "master",
+     :since "73",
      :params [{:name "show", :type "boolean"} {:name "element-bounds", :type "accessibilityPrivate.ScreenRect"}]}
     {:id ::set-native-chrome-vox-arc-support-for-current-app,
      :name "setNativeChromeVoxArcSupportForCurrentApp",
