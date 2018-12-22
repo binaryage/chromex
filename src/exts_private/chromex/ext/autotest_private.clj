@@ -343,6 +343,21 @@
    chromex.error/get-last-error."
   ([enabled timeout-ms] (gen-call :function ::set-assistant-enabled &form enabled timeout-ms)))
 
+(defmacro send-assistant-text-query
+  "Send a text query via Google Assistant.
+
+     |query| - ?
+     |timeout-ms| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [response] where:
+
+     |response| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([query timeout-ms] (gen-call :function ::send-assistant-text-query &form query timeout-ms)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -492,7 +507,15 @@
      :since "72",
      :callback? true,
      :params
-     [{:name "enabled", :type "boolean"} {:name "timeout-ms", :type "integer"} {:name "callback", :type :callback}]}]})
+     [{:name "enabled", :type "boolean"} {:name "timeout-ms", :type "integer"} {:name "callback", :type :callback}]}
+    {:id ::send-assistant-text-query,
+     :name "sendAssistantTextQuery",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "query", :type "string"}
+      {:name "timeout-ms", :type "integer"}
+      {:name "callback", :type :callback, :callback {:params [{:name "response", :type "object"}]}}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
