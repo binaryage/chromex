@@ -358,6 +358,19 @@
    chromex.error/get-last-error."
   ([query timeout-ms] (gen-call :function ::send-assistant-text-query &form query timeout-ms)))
 
+(defmacro set-crostini-app-scaled
+  "Enable/disable a Crostini app's 'scaled' property.
+
+     |app-id| - The Crostini application ID.
+     |scaled| - The app is 'scaled' when shown, which means it uses low display density.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([app-id scaled] (gen-call :function ::set-crostini-app-scaled &form app-id scaled)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -515,7 +528,12 @@
      :params
      [{:name "query", :type "string"}
       {:name "timeout-ms", :type "integer"}
-      {:name "callback", :type :callback, :callback {:params [{:name "response", :type "object"}]}}]}]})
+      {:name "callback", :type :callback, :callback {:params [{:name "response", :type "object"}]}}]}
+    {:id ::set-crostini-app-scaled,
+     :name "setCrostiniAppScaled",
+     :since "master",
+     :callback? true,
+     :params [{:name "app-id", :type "string"} {:name "scaled", :type "boolean"} {:name "callback", :type :callback}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

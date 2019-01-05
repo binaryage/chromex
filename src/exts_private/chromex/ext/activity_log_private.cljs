@@ -9,6 +9,9 @@
 (defn delete-activities* [config activity-ids]
   (gen-wrap :function ::delete-activities config activity-ids))
 
+(defn delete-activities-by-extension* [config extension-id]
+  (gen-wrap :function ::delete-activities-by-extension config extension-id))
+
 (defn delete-database* [config]
   (gen-wrap :function ::delete-database config))
 

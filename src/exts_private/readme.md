@@ -48,15 +48,15 @@
 
 ### API stats
 
-Generated 40 namespaces containing 1 properties, 377 functions and 71 events:
+Generated 40 namespaces containing 1 properties, 379 functions and 71 events:
 
 
     |                            :namespace | :properties | :functions | :events |
     |---------------------------------------+-------------+------------+---------|
     |           chrome.accessibilityPrivate |           0 |         13 |       5 |
-    |             chrome.activityLogPrivate |           0 |          4 |       1 |
+    |             chrome.activityLogPrivate |           0 |          5 |       1 |
     |                chrome.autofillPrivate |           0 |         11 |       2 |
-    |                chrome.autotestPrivate |           0 |         36 |       0 |
+    |                chrome.autotestPrivate |           0 |         37 |       0 |
     |               chrome.bluetoothPrivate |           0 |          7 |       1 |
     |         chrome.bookmarkManagerPrivate |           0 |         20 |       4 |
     |          chrome.brailleDisplayPrivate |           0 |          3 |       2 |
@@ -109,8 +109,8 @@ Generated 40 namespaces containing 1 properties, 377 functions and 71 events:
       tap-on-select-to-speak-state-change-requested tap-all-events]]
 
     [chromex.ext.activity-log-private refer:[
-      get-extension-activities delete-activities delete-database delete-urls tap-on-extension-activity
-      tap-all-events]]
+      get-extension-activities delete-activities delete-activities-by-extension delete-database
+      delete-urls tap-on-extension-activity tap-all-events]]
 
     [chromex.ext.autofill-private refer:[
       save-address get-country-list get-address-components get-address-list save-credit-card remove-entry
@@ -126,7 +126,7 @@ Generated 40 namespaces containing 1 properties, 377 functions and 71 events:
       get-arc-app get-arc-package launch-arc-app launch-app close-app update-printer remove-printer
       set-play-store-enabled get-histogram run-crostini-installer run-crostini-uninstaller
       set-crostini-enabled take-screenshot bootstrap-machine-learning-service set-assistant-enabled
-      send-assistant-text-query tap-all-events]]
+      send-assistant-text-query set-crostini-app-scaled tap-all-events]]
 
     [chromex.ext.bluetooth-private refer:[
       set-adapter-state set-pairing-response disconnect-all forget-device set-discovery-filter connect

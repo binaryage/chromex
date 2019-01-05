@@ -45,13 +45,13 @@
 
 ### API stats
 
-Generated 37 namespaces containing 1 properties, 320 functions and 68 events:
+Generated 37 namespaces containing 1 properties, 321 functions and 68 events:
 
 
     |                     :namespace | :properties | :functions | :events |
     |--------------------------------+-------------+------------+---------|
     |    chrome.accessibilityPrivate |           0 |         13 |       5 |
-    |      chrome.activityLogPrivate |           0 |          4 |       1 |
+    |      chrome.activityLogPrivate |           0 |          5 |       1 |
     |         chrome.autofillPrivate |           0 |         11 |       2 |
     |        chrome.bluetoothPrivate |           0 |          7 |       1 |
     |  chrome.bookmarkManagerPrivate |           0 |         20 |       4 |
@@ -103,8 +103,8 @@ Generated 37 namespaces containing 1 properties, 320 functions and 68 events:
       tap-on-select-to-speak-state-change-requested tap-all-events]]
 
     [chromex.app.activity-log-private refer:[
-      get-extension-activities delete-activities delete-database delete-urls tap-on-extension-activity
-      tap-all-events]]
+      get-extension-activities delete-activities delete-activities-by-extension delete-database
+      delete-urls tap-on-extension-activity tap-all-events]]
 
     [chromex.app.autofill-private refer:[
       save-address get-country-list get-address-components get-address-list save-credit-card remove-entry

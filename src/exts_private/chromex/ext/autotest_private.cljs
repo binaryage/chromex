@@ -111,3 +111,6 @@
 (defn send-assistant-text-query* [config query timeout-ms]
   (gen-wrap :function ::send-assistant-text-query config query timeout-ms))
 
+(defn set-crostini-app-scaled* [config app-id scaled]
+  (gen-wrap :function ::set-crostini-app-scaled config app-id scaled))
+

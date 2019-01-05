@@ -30,6 +30,18 @@
      |activity-ids| - Erases only the activities which IDs are listed in the array."
   ([activity-ids] (gen-call :function ::delete-activities &form activity-ids)))
 
+(defmacro delete-activities-by-extension
+  "Deletes activities in the ActivityLog database specified by the extension ID.
+
+     |extension-id| - The ID of the extension to delete activities for.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([extension-id] (gen-call :function ::delete-activities-by-extension &form extension-id)))
+
 (defmacro delete-database
   "Deletes the entire ActivityLog database."
   ([] (gen-call :function ::delete-database &form)))
@@ -82,6 +94,11 @@
      :name "deleteActivities",
      :since "34",
      :params [{:name "activity-ids", :type "[array-of-strings]"}]}
+    {:id ::delete-activities-by-extension,
+     :name "deleteActivitiesByExtension",
+     :since "master",
+     :callback? true,
+     :params [{:name "extension-id", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::delete-database, :name "deleteDatabase", :since "31"}
     {:id ::delete-urls,
      :name "deleteUrls",
