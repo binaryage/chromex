@@ -45,7 +45,7 @@
 
 ### API stats
 
-Generated 37 namespaces containing 1 properties, 321 functions and 68 events:
+Generated 37 namespaces containing 1 properties, 321 functions and 67 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -74,7 +74,7 @@ Generated 37 namespaces containing 1 properties, 321 functions and 68 events:
     |             chrome.mojoPrivate |           0 |          1 |       0 |
     |     chrome.musicManagerPrivate |           0 |          1 |       0 |
     |       chrome.networkingPrivate |           0 |         22 |       5 |
-    |        chrome.passwordsPrivate |           0 |         11 |       4 |
+    |        chrome.passwordsPrivate |           0 |         11 |       3 |
     |      chrome.preferencesPrivate |           1 |          0 |       0 |
     |      chrome.quickUnlockPrivate |           0 |          7 |       1 |
     |        chrome.resourcesPrivate |           0 |          1 |       0 |
@@ -231,7 +231,7 @@ Generated 37 namespaces containing 1 properties, 321 functions and 68 events:
       undo-remove-saved-password-or-exception request-plaintext-password get-saved-password-list
       get-password-exception-list import-passwords export-passwords request-export-progress-status
       cancel-export-passwords tap-on-saved-passwords-list-changed tap-on-password-exceptions-list-changed
-      tap-on-plaintext-password-retrieved tap-on-passwords-file-export-progress tap-all-events]]
+      tap-on-passwords-file-export-progress tap-all-events]]
 
     [chromex.app.preferences-private refer:[
       get-easy-unlock-proximity-required tap-all-events]]

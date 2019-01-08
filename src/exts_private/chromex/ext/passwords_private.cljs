@@ -44,9 +44,6 @@
 (defn on-password-exceptions-list-changed* [config channel & args]
   (gen-wrap :event ::on-password-exceptions-list-changed config channel args))
 
-(defn on-plaintext-password-retrieved* [config channel & args]
-  (gen-wrap :event ::on-plaintext-password-retrieved config channel args))
-
 (defn on-passwords-file-export-progress* [config channel & args]
   (gen-wrap :event ::on-passwords-file-export-progress config channel args))
 

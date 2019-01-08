@@ -37,10 +37,17 @@
 
 (defmacro request-plaintext-password
   "Returns the plaintext password corresponding to |id|. Note that on some operating systems, this call may result in an
-   OS-level reauthentication. Once the password has been fetched, it will be returned via the onPlaintextPasswordRetrieved
-   event. TODO(hcarmona): Investigate using a callback for consistency.
+   OS-level reauthentication. Once the password has been fetched, it will be returned via |callback|.
 
-     |id| - The id for the password entry being being retrieved."
+     |id| - The id for the password entry being being retrieved.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [password] where:
+
+     |password| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([id] (gen-call :function ::request-plaintext-password &form id)))
 
 (defmacro get-saved-password-list
@@ -125,17 +132,6 @@
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-password-exceptions-list-changed &form channel args)))
 
-(defmacro tap-on-plaintext-password-retrieved-events
-  "Fired when a plaintext password has been fetched in response to a call to
-   chrome.passwordsPrivate.requestPlaintextPassword().
-
-   Events will be put on the |channel| with signature [::on-plaintext-password-retrieved [dict]] where:
-
-     |dict| - Contains the plaintext password and id of the relevant entry.
-
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
-  ([channel & args] (apply gen-call :event ::on-plaintext-password-retrieved &form channel args)))
-
 (defmacro tap-on-passwords-file-export-progress-events
   "Fired when the status of the export has changed.
 
@@ -165,7 +161,12 @@
     {:id ::remove-saved-password, :name "removeSavedPassword", :params [{:name "id", :type "integer"}]}
     {:id ::remove-password-exception, :name "removePasswordException", :params [{:name "id", :type "integer"}]}
     {:id ::undo-remove-saved-password-or-exception, :name "undoRemoveSavedPasswordOrException"}
-    {:id ::request-plaintext-password, :name "requestPlaintextPassword", :params [{:name "id", :type "integer"}]}
+    {:id ::request-plaintext-password,
+     :name "requestPlaintextPassword",
+     :callback? true,
+     :params
+     [{:name "id", :type "integer"}
+      {:name "callback", :type :callback, :callback {:params [{:name "password", :optional? true, :type "string"}]}}]}
     {:id ::get-saved-password-list,
      :name "getSavedPasswordList",
      :callback? true,
@@ -197,9 +198,6 @@
     {:id ::on-password-exceptions-list-changed,
      :name "onPasswordExceptionsListChanged",
      :params [{:name "exceptions", :type "[array-of-passwordsPrivate.ExceptionEntrys]"}]}
-    {:id ::on-plaintext-password-retrieved,
-     :name "onPlaintextPasswordRetrieved",
-     :params [{:name "dict", :type "object"}]}
     {:id ::on-passwords-file-export-progress,
      :name "onPasswordsFileExportProgress",
      :params [{:name "status", :type "object"}]}]})
