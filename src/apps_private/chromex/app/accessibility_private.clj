@@ -61,6 +61,12 @@
      |element-bounds| - Position of an element, in global screen coordinates, to place the menu next to."
   ([show element-bounds] (gen-call :function ::set-switch-access-menu-state &form show element-bounds)))
 
+(defmacro forward-key-events-to-switch-access
+  "When enabled, forwards key events to the Switch Access extension
+
+     |should-forward| - ?"
+  ([should-forward] (gen-call :function ::forward-key-events-to-switch-access &form should-forward)))
+
 (defmacro set-native-chrome-vox-arc-support-for-current-app
   "Sets current ARC app to use native ARC support.
 
@@ -184,6 +190,10 @@
      :name "setSwitchAccessMenuState",
      :since "73",
      :params [{:name "show", :type "boolean"} {:name "element-bounds", :type "accessibilityPrivate.ScreenRect"}]}
+    {:id ::forward-key-events-to-switch-access,
+     :name "forwardKeyEventsToSwitchAccess",
+     :since "master",
+     :params [{:name "should-forward", :type "boolean"}]}
     {:id ::set-native-chrome-vox-arc-support-for-current-app,
      :name "setNativeChromeVoxArcSupportForCurrentApp",
      :since "63",

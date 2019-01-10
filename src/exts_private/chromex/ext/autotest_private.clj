@@ -523,7 +523,7 @@
      [{:name "enabled", :type "boolean"} {:name "timeout-ms", :type "integer"} {:name "callback", :type :callback}]}
     {:id ::send-assistant-text-query,
      :name "sendAssistantTextQuery",
-     :since "master",
+     :since "73",
      :callback? true,
      :params
      [{:name "query", :type "string"}
@@ -531,7 +531,7 @@
       {:name "callback", :type :callback, :callback {:params [{:name "response", :type "object"}]}}]}
     {:id ::set-crostini-app-scaled,
      :name "setCrostiniAppScaled",
-     :since "master",
+     :since "73",
      :callback? true,
      :params [{:name "app-id", :type "string"} {:name "scaled", :type "boolean"} {:name "callback", :type :callback}]}]})
 

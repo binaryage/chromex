@@ -96,7 +96,7 @@
      :params [{:name "activity-ids", :type "[array-of-strings]"}]}
     {:id ::delete-activities-by-extension,
      :name "deleteActivitiesByExtension",
-     :since "master",
+     :since "73",
      :callback? true,
      :params [{:name "extension-id", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::delete-database, :name "deleteDatabase"}
