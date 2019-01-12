@@ -3,6 +3,9 @@
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
+(defn get-battery-description* [config]
+  (gen-wrap :function ::get-battery-description config))
+
 (defn set-native-accessibility-enabled* [config enabled]
   (gen-wrap :function ::set-native-accessibility-enabled config enabled))
 

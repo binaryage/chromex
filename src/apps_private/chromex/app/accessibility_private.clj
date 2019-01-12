@@ -10,6 +10,18 @@
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
+(defmacro get-battery-description
+  "Called to request battery status from Chrome OS system.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [battery-description] where:
+
+     |battery-description| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::get-battery-description &form)))
+
 (defmacro set-native-accessibility-enabled
   "Enables or disables native accessibility support. Once disabled, it is up to the calling extension to provide accessibility
    for web contents.
@@ -164,7 +176,13 @@
   {:namespace "chrome.accessibilityPrivate",
    :since "36",
    :functions
-   [{:id ::set-native-accessibility-enabled,
+   [{:id ::get-battery-description,
+     :name "getBatteryDescription",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "callback", :type :callback, :callback {:params [{:name "battery-description", :type "string"}]}}]}
+    {:id ::set-native-accessibility-enabled,
      :name "setNativeAccessibilityEnabled",
      :params [{:name "enabled", :type "boolean"}]}
     {:id ::set-focus-ring,

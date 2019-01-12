@@ -48,15 +48,15 @@
 
 ### API stats
 
-Generated 40 namespaces containing 1 properties, 380 functions and 70 events:
+Generated 40 namespaces containing 1 properties, 382 functions and 70 events:
 
 
     |                            :namespace | :properties | :functions | :events |
     |---------------------------------------+-------------+------------+---------|
-    |           chrome.accessibilityPrivate |           0 |         14 |       5 |
+    |           chrome.accessibilityPrivate |           0 |         15 |       5 |
     |             chrome.activityLogPrivate |           0 |          5 |       1 |
     |                chrome.autofillPrivate |           0 |         11 |       2 |
-    |                chrome.autotestPrivate |           0 |         37 |       0 |
+    |                chrome.autotestPrivate |           0 |         38 |       0 |
     |               chrome.bluetoothPrivate |           0 |          7 |       1 |
     |         chrome.bookmarkManagerPrivate |           0 |         20 |       4 |
     |          chrome.brailleDisplayPrivate |           0 |          3 |       2 |
@@ -100,12 +100,12 @@ Generated 40 namespaces containing 1 properties, 380 functions and 70 events:
 (ns your.project
   (:require
     [chromex.ext.accessibility-private refer:[
-      set-native-accessibility-enabled set-focus-ring set-highlights set-keyboard-listener darken-screen
-      set-switch-access-keys set-switch-access-menu-state forward-key-events-to-switch-access
-      set-native-chrome-vox-arc-support-for-current-app send-synthetic-key-event
-      enable-chrome-vox-mouse-events send-synthetic-mouse-event on-select-to-speak-state-changed
-      toggle-dictation tap-on-introduce-chrome-vox tap-on-accessibility-gesture
-      tap-on-two-finger-touch-start tap-on-two-finger-touch-stop
+      get-battery-description set-native-accessibility-enabled set-focus-ring set-highlights
+      set-keyboard-listener darken-screen set-switch-access-keys set-switch-access-menu-state
+      forward-key-events-to-switch-access set-native-chrome-vox-arc-support-for-current-app
+      send-synthetic-key-event enable-chrome-vox-mouse-events send-synthetic-mouse-event
+      on-select-to-speak-state-changed toggle-dictation tap-on-introduce-chrome-vox
+      tap-on-accessibility-gesture tap-on-two-finger-touch-start tap-on-two-finger-touch-stop
       tap-on-select-to-speak-state-change-requested tap-all-events]]
 
     [chromex.ext.activity-log-private refer:[
@@ -126,7 +126,8 @@ Generated 40 namespaces containing 1 properties, 380 functions and 70 events:
       get-arc-app get-arc-package launch-arc-app launch-app close-app update-printer remove-printer
       set-play-store-enabled get-histogram run-crostini-installer run-crostini-uninstaller
       set-crostini-enabled take-screenshot bootstrap-machine-learning-service set-assistant-enabled
-      send-assistant-text-query set-crostini-app-scaled tap-all-events]]
+      send-assistant-text-query set-crostini-app-scaled ensure-window-service-client-has-drawn-window
+      tap-all-events]]
 
     [chromex.ext.bluetooth-private refer:[
       set-adapter-state set-pairing-response disconnect-all forget-device set-discovery-filter connect

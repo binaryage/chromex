@@ -362,7 +362,7 @@
   "Enable/disable a Crostini app's 'scaled' property.
 
      |app-id| - The Crostini application ID.
-     |scaled| - The app is 'scaled' when shown, which means it uses low display density.
+     |scaled| - The app is 'scaled' when shown, which means it uses low display           density.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
@@ -370,6 +370,22 @@
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([app-id scaled] (gen-call :function ::set-crostini-app-scaled &form app-id scaled)))
+
+(defmacro ensure-window-service-client-has-drawn-window
+  "Ensure that the Window Service client identified by |clientName| has drawn any window. |callback| is invoked with true if
+   the client has drawn anything or when it does so before the time out. Otherwise, an error is raised when timeout happens.
+
+     |client-name| - ?
+     |timeout-ms| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [success] where:
+
+     |success| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([client-name timeout-ms] (gen-call :function ::ensure-window-service-client-has-drawn-window &form client-name timeout-ms)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
@@ -533,7 +549,15 @@
      :name "setCrostiniAppScaled",
      :since "73",
      :callback? true,
-     :params [{:name "app-id", :type "string"} {:name "scaled", :type "boolean"} {:name "callback", :type :callback}]}]})
+     :params [{:name "app-id", :type "string"} {:name "scaled", :type "boolean"} {:name "callback", :type :callback}]}
+    {:id ::ensure-window-service-client-has-drawn-window,
+     :name "ensureWindowServiceClientHasDrawnWindow",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "client-name", :type "string"}
+      {:name "timeout-ms", :type "integer"}
+      {:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
