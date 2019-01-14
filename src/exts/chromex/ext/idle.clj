@@ -40,6 +40,22 @@
    https://developer.chrome.com/extensions/idle#method-setDetectionInterval."
   ([interval-in-seconds] (gen-call :function ::set-detection-interval &form interval-in-seconds)))
 
+(defmacro get-auto-lock-delay
+  "Gets the time, in seconds, it takes until the screen is locked automatically while idle. Returns a zero duration if the
+   screen is never locked automatically. Currently supported on Chrome OS only.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [delay] where:
+
+     |delay| - Time, in seconds, until the screen is locked automatically while idle. This is zero if the screen never locks
+               automatically.
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/extensions/idle#method-getAutoLockDelay."
+  ([] (gen-call :function ::get-auto-lock-delay &form)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -81,7 +97,12 @@
       {:name "callback", :type :callback, :callback {:params [{:name "new-state", :type "idle.IdleState"}]}}]}
     {:id ::set-detection-interval,
      :name "setDetectionInterval",
-     :params [{:name "interval-in-seconds", :type "integer"}]}],
+     :params [{:name "interval-in-seconds", :type "integer"}]}
+    {:id ::get-auto-lock-delay,
+     :name "getAutoLockDelay",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "delay", :type "integer"}]}}]}],
    :events [{:id ::on-state-changed, :name "onStateChanged", :params [{:name "new-state", :type "idle.IdleState"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

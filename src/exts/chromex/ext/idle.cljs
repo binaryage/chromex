@@ -9,6 +9,9 @@
 (defn set-detection-interval* [config interval-in-seconds]
   (gen-wrap :function ::set-detection-interval config interval-in-seconds))
 
+(defn get-auto-lock-delay* [config]
+  (gen-wrap :function ::get-auto-lock-delay config))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-state-changed* [config channel & args]

@@ -76,7 +76,7 @@
 
 ### API stats
 
-Generated 68 namespaces containing 30 properties, 447 functions and 151 events:
+Generated 68 namespaces containing 30 properties, 448 functions and 151 events:
 
 
     |                         :namespace | :properties | :functions | :events |
@@ -112,7 +112,7 @@ Generated 68 namespaces containing 30 properties, 447 functions and 151 events:
     |                         chrome.hid |           0 |          8 |       2 |
     |                        chrome.i18n |           0 |          4 |       0 |
     |                    chrome.identity |           0 |          6 |       1 |
-    |                        chrome.idle |           0 |          2 |       1 |
+    |                        chrome.idle |           0 |          3 |       1 |
     |                  chrome.instanceID |           0 |          5 |       1 |
     |                  chrome.management |           0 |         12 |       4 |
     |                        chrome.mdns |           1 |          1 |       1 |
@@ -290,7 +290,7 @@ Generated 68 namespaces containing 30 properties, 447 functions and 151 events:
       get-redirect-url tap-on-sign-in-changed tap-all-events]]
 
     [chromex.app.idle refer:[
-      query-state set-detection-interval tap-on-state-changed tap-all-events]]
+      query-state set-detection-interval get-auto-lock-delay tap-on-state-changed tap-all-events]]
 
     [chromex.app.instance-id refer:[
       get-id get-creation-time get-token delete-token delete-id tap-on-token-refresh tap-all-events]]
