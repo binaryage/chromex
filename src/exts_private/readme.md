@@ -48,7 +48,7 @@
 
 ### API stats
 
-Generated 40 namespaces containing 1 properties, 382 functions and 70 events:
+Generated 40 namespaces containing 1 properties, 383 functions and 70 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -56,7 +56,7 @@ Generated 40 namespaces containing 1 properties, 382 functions and 70 events:
     |           chrome.accessibilityPrivate |           0 |         15 |       5 |
     |             chrome.activityLogPrivate |           0 |          5 |       1 |
     |                chrome.autofillPrivate |           0 |         11 |       2 |
-    |                chrome.autotestPrivate |           0 |         38 |       0 |
+    |                chrome.autotestPrivate |           0 |         39 |       0 |
     |               chrome.bluetoothPrivate |           0 |          7 |       1 |
     |         chrome.bookmarkManagerPrivate |           0 |         20 |       4 |
     |          chrome.brailleDisplayPrivate |           0 |          3 |       2 |
@@ -127,7 +127,7 @@ Generated 40 namespaces containing 1 properties, 382 functions and 70 events:
       set-play-store-enabled get-histogram run-crostini-installer run-crostini-uninstaller
       set-crostini-enabled take-screenshot bootstrap-machine-learning-service set-assistant-enabled
       send-assistant-text-query set-crostini-app-scaled ensure-window-service-client-has-drawn-window
-      tap-all-events]]
+      get-primary-display-scale-factor tap-all-events]]
 
     [chromex.ext.bluetooth-private refer:[
       set-adapter-state set-pairing-response disconnect-all forget-device set-discovery-filter connect

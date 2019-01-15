@@ -387,6 +387,18 @@
    chromex.error/get-last-error."
   ([client-name timeout-ms] (gen-call :function ::ensure-window-service-client-has-drawn-window &form client-name timeout-ms)))
 
+(defmacro get-primary-display-scale-factor
+  "Get the primary display scale factor. |callback| is invoked with the scale factor.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [scale-factor] where:
+
+     |scale-factor| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::get-primary-display-scale-factor &form)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -557,7 +569,12 @@
      :params
      [{:name "client-name", :type "string"}
       {:name "timeout-ms", :type "integer"}
-      {:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}]})
+      {:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
+    {:id ::get-primary-display-scale-factor,
+     :name "getPrimaryDisplayScaleFactor",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "scale-factor", :type "double"}]}}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
