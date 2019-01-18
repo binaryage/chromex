@@ -3,7 +3,7 @@
    to events in the app or extension lifecycle. You can also use this API to convert the relative path of URLs to
    fully-qualified URLs.
 
-     * available since Chrome 27
+     * available since Chrome 28
      * https://developer.chrome.com/apps/runtime"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -394,7 +394,7 @@
 
 (def api-table
   {:namespace "chrome.runtime",
-   :since "27",
+   :since "28",
    :properties
    [{:id ::last-error, :name "lastError", :return-type "object"} {:id ::id, :name "id", :return-type "string"}],
    :functions
@@ -441,7 +441,6 @@
      [{:name "extension-id", :optional? true, :type "string"} {:name "connect-info", :optional? true, :type "object"}]}
     {:id ::connect-native,
      :name "connectNative",
-     :since "28",
      :return-type "runtime.Port",
      :params [{:name "application", :type "string"}]}
     {:id ::send-message,
@@ -457,7 +456,6 @@
        :callback {:params [{:name "response", :type "any"}]}}]}
     {:id ::send-native-message,
      :name "sendNativeMessage",
-     :since "28",
      :callback? true,
      :params
      [{:name "application", :type "string"}

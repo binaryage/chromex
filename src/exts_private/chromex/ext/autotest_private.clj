@@ -2,7 +2,7 @@
   "API for integration testing. To be used on test images with a test component
    extension.
 
-     * available since Chrome 27"
+     * available since Chrome 28"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -412,7 +412,7 @@
 
 (def api-table
   {:namespace "chrome.autotestPrivate",
-   :since "27",
+   :since "28",
    :functions
    [{:id ::logout, :name "logout"}
     {:id ::restart, :name "restart"}
@@ -564,7 +564,7 @@
      :params [{:name "app-id", :type "string"} {:name "scaled", :type "boolean"} {:name "callback", :type :callback}]}
     {:id ::ensure-window-service-client-has-drawn-window,
      :name "ensureWindowServiceClientHasDrawnWindow",
-     :since "master",
+     :since "73",
      :callback? true,
      :params
      [{:name "client-name", :type "string"}
@@ -572,7 +572,7 @@
       {:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::get-primary-display-scale-factor,
      :name "getPrimaryDisplayScaleFactor",
-     :since "master",
+     :since "73",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "scale-factor", :type "double"}]}}]}]})
 

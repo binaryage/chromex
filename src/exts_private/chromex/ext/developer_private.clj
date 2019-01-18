@@ -3,7 +3,7 @@
    This is a private API exposing developing and debugging functionalities for
    apps and extensions.
 
-     * available since Chrome 27"
+     * available since Chrome 28"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -441,7 +441,7 @@
 
 (def api-table
   {:namespace "chrome.developerPrivate",
-   :since "27",
+   :since "28",
    :functions
    [{:id ::auto-update,
      :name "autoUpdate",
@@ -496,7 +496,6 @@
      :params [{:name "update", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::show-permissions-dialog,
      :name "showPermissionsDialog",
-     :since "28",
      :callback? true,
      :params [{:name "extension-id", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::reload,

@@ -1,7 +1,7 @@
 (ns chromex.ext.idle
   "Use the chrome.idle API to detect when the machine's idle state changes.
 
-     * available since Chrome 27
+     * available since Chrome 28
      * https://developer.chrome.com/extensions/idle"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -87,7 +87,7 @@
 
 (def api-table
   {:namespace "chrome.idle",
-   :since "27",
+   :since "28",
    :functions
    [{:id ::query-state,
      :name "queryState",
@@ -100,7 +100,7 @@
      :params [{:name "interval-in-seconds", :type "integer"}]}
     {:id ::get-auto-lock-delay,
      :name "getAutoLockDelay",
-     :since "master",
+     :since "73",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "delay", :type "integer"}]}}]}],
    :events [{:id ::on-state-changed, :name "onStateChanged", :params [{:name "new-state", :type "idle.IdleState"}]}]})

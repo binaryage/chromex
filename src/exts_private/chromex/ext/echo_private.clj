@@ -1,5 +1,5 @@
 (ns chromex.ext.echo-private
-  "  * available since Chrome 27"
+  "  * available since Chrome 28"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -86,7 +86,7 @@
 
 (def api-table
   {:namespace "chrome.echoPrivate",
-   :since "27",
+   :since "28",
    :functions
    [{:id ::set-offer-info,
      :name "setOfferInfo",

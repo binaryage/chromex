@@ -178,7 +178,7 @@
    :functions
    [{:id ::get-battery-description,
      :name "getBatteryDescription",
-     :since "master",
+     :since "73",
      :callback? true,
      :params
      [{:name "callback", :type :callback, :callback {:params [{:name "battery-description", :type "string"}]}}]}
@@ -210,7 +210,7 @@
      :params [{:name "show", :type "boolean"} {:name "element-bounds", :type "accessibilityPrivate.ScreenRect"}]}
     {:id ::forward-key-events-to-switch-access,
      :name "forwardKeyEventsToSwitchAccess",
-     :since "master",
+     :since "73",
      :params [{:name "should-forward", :type "boolean"}]}
     {:id ::set-native-chrome-vox-arc-support-for-current-app,
      :name "setNativeChromeVoxArcSupportForCurrentApp",

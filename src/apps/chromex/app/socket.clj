@@ -4,7 +4,7 @@
    this API is deprecated in favor of the 'sockets.udp', 'sockets.tcp' and
    'sockets.tcpServer' APIs.
 
-     * available since Chrome 27
+     * available since Chrome 28
      * https://developer.chrome.com/apps/socket"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -388,7 +388,7 @@
 
 (def api-table
   {:namespace "chrome.socket",
-   :since "27",
+   :since "28",
    :functions
    [{:id ::create,
      :name "create",
@@ -487,7 +487,6 @@
      :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "[array-of-objects]"}]}}]}
     {:id ::join-group,
      :name "joinGroup",
-     :since "28",
      :callback? true,
      :params
      [{:name "socket-id", :type "integer"}
@@ -495,7 +494,6 @@
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "integer"}]}}]}
     {:id ::leave-group,
      :name "leaveGroup",
-     :since "28",
      :callback? true,
      :params
      [{:name "socket-id", :type "integer"}
@@ -503,7 +501,6 @@
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "integer"}]}}]}
     {:id ::set-multicast-time-to-live,
      :name "setMulticastTimeToLive",
-     :since "28",
      :callback? true,
      :params
      [{:name "socket-id", :type "integer"}
@@ -511,7 +508,6 @@
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "integer"}]}}]}
     {:id ::set-multicast-loopback-mode,
      :name "setMulticastLoopbackMode",
-     :since "28",
      :callback? true,
      :params
      [{:name "socket-id", :type "integer"}
@@ -519,7 +515,6 @@
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "integer"}]}}]}
     {:id ::get-joined-groups,
      :name "getJoinedGroups",
-     :since "28",
      :callback? true,
      :params
      [{:name "socket-id", :type "integer"}

@@ -5,7 +5,7 @@
    can use the API to read and write local documents. All failures are notified
    via chrome.runtime.lastError.
 
-     * available since Chrome 27
+     * available since Chrome 28
      * https://developer.chrome.com/apps/fileSystem"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -194,7 +194,7 @@
 
 (def api-table
   {:namespace "chrome.fileSystem",
-   :since "27",
+   :since "28",
    :functions
    [{:id ::get-display-path,
      :name "getDisplayPath",

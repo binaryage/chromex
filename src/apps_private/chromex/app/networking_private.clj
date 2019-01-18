@@ -24,7 +24,7 @@
    TODO(stevenjb/pneubeck): Merge the ONC documentation with this document and
    use it as the ONC specification.
 
-     * available since Chrome 27"
+     * available since Chrome 28"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -397,7 +397,7 @@
 
 (def api-table
   {:namespace "chrome.networkingPrivate",
-   :since "27",
+   :since "28",
    :functions
    [{:id ::get-properties,
      :name "getProperties",
@@ -407,7 +407,6 @@
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}
     {:id ::get-managed-properties,
      :name "getManagedProperties",
-     :since "28",
      :callback? true,
      :params
      [{:name "network-guid", :type "string"}
@@ -483,7 +482,6 @@
      :params [{:name "network-type", :type "networkingPrivate.NetworkType"}]}
     {:id ::request-network-scan,
      :name "requestNetworkScan",
-     :since "28",
      :params [{:name "network-type", :optional? true, :type "networkingPrivate.NetworkType"}]}
     {:id ::start-connect,
      :name "startConnect",
