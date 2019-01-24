@@ -99,6 +99,30 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-credit-card-list &form)))
 
+(defmacro get-local-credit-card-list
+  "Gets the list of local credit cards.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [entries] where:
+
+     |entries| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::get-local-credit-card-list &form)))
+
+(defmacro get-server-credit-card-list
+  "Gets the list of server credit cards.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [entries] where:
+
+     |entries| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::get-server-credit-card-list &form)))
+
 (defmacro mask-credit-card
   "Clears the data associated with a wallet card which was saved locally so that the saved copy is masked (e.g., 'Card ending
    in 1234').
@@ -139,6 +163,29 @@
 
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-credit-card-list-changed &form channel args)))
+
+(defmacro tap-on-local-credit-card-list-changed-events
+  "Fired when the local credit card list has changed, meaning that an entry has been added, removed, or changed. |entries| The
+   updated list of entries.
+
+   Events will be put on the |channel| with signature [::on-local-credit-card-list-changed [entries]] where:
+
+     |entries| - ?
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-local-credit-card-list-changed &form channel args)))
+
+(defmacro tap-on-server-credit-card-list-changed-events
+  "Fired when the server credit card list has changed, meaning that an entry has been added, removed, or changed. |entries
+
+   The updated list of entries.
+
+   Events will be put on the |channel| with signature [::on-server-credit-card-list-changed [entries]] where:
+
+     |entries| - ?
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-server-credit-card-list-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
@@ -191,6 +238,20 @@
      [{:name "callback",
        :type :callback,
        :callback {:params [{:name "entries", :type "[array-of-autofillPrivate.CreditCardEntrys]"}]}}]}
+    {:id ::get-local-credit-card-list,
+     :name "getLocalCreditCardList",
+     :callback? true,
+     :params
+     [{:name "callback",
+       :type :callback,
+       :callback {:params [{:name "entries", :type "[array-of-autofillPrivate.CreditCardEntrys]"}]}}]}
+    {:id ::get-server-credit-card-list,
+     :name "getServerCreditCardList",
+     :callback? true,
+     :params
+     [{:name "callback",
+       :type :callback,
+       :callback {:params [{:name "entries", :type "[array-of-autofillPrivate.CreditCardEntrys]"}]}}]}
     {:id ::mask-credit-card, :name "maskCreditCard", :params [{:name "guid", :type "string"}]}
     {:id ::migrate-credit-cards, :name "migrateCreditCards"}
     {:id ::log-server-card-link-clicked, :name "logServerCardLinkClicked"}],
@@ -200,6 +261,12 @@
      :params [{:name "entries", :type "[array-of-autofillPrivate.AddressEntrys]"}]}
     {:id ::on-credit-card-list-changed,
      :name "onCreditCardListChanged",
+     :params [{:name "entries", :type "[array-of-autofillPrivate.CreditCardEntrys]"}]}
+    {:id ::on-local-credit-card-list-changed,
+     :name "onLocalCreditCardListChanged",
+     :params [{:name "entries", :type "[array-of-autofillPrivate.CreditCardEntrys]"}]}
+    {:id ::on-server-credit-card-list-changed,
+     :name "onServerCreditCardListChanged",
      :params [{:name "entries", :type "[array-of-autofillPrivate.CreditCardEntrys]"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

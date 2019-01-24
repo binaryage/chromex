@@ -48,14 +48,14 @@
 
 ### API stats
 
-Generated 40 namespaces containing 1 properties, 383 functions and 70 events:
+Generated 40 namespaces containing 1 properties, 385 functions and 72 events:
 
 
     |                            :namespace | :properties | :functions | :events |
     |---------------------------------------+-------------+------------+---------|
     |           chrome.accessibilityPrivate |           0 |         15 |       5 |
     |             chrome.activityLogPrivate |           0 |          5 |       1 |
-    |                chrome.autofillPrivate |           0 |         11 |       2 |
+    |                chrome.autofillPrivate |           0 |         13 |       4 |
     |                chrome.autotestPrivate |           0 |         39 |       0 |
     |               chrome.bluetoothPrivate |           0 |          7 |       1 |
     |         chrome.bookmarkManagerPrivate |           0 |         20 |       4 |
@@ -114,9 +114,10 @@ Generated 40 namespaces containing 1 properties, 383 functions and 70 events:
 
     [chromex.ext.autofill-private refer:[
       save-address get-country-list get-address-components get-address-list save-credit-card remove-entry
-      validate-phone-numbers get-credit-card-list mask-credit-card migrate-credit-cards
-      log-server-card-link-clicked tap-on-address-list-changed tap-on-credit-card-list-changed
-      tap-all-events]]
+      validate-phone-numbers get-credit-card-list get-local-credit-card-list get-server-credit-card-list
+      mask-credit-card migrate-credit-cards log-server-card-link-clicked tap-on-address-list-changed
+      tap-on-credit-card-list-changed tap-on-local-credit-card-list-changed
+      tap-on-server-credit-card-list-changed tap-all-events]]
 
     [chromex.ext.autotest-private refer:[
       logout restart shutdown login-status lock-screen get-extensions-info simulate-asan-memory-bug

@@ -27,6 +27,12 @@
 (defn get-credit-card-list* [config]
   (gen-wrap :function ::get-credit-card-list config))
 
+(defn get-local-credit-card-list* [config]
+  (gen-wrap :function ::get-local-credit-card-list config))
+
+(defn get-server-credit-card-list* [config]
+  (gen-wrap :function ::get-server-credit-card-list config))
+
 (defn mask-credit-card* [config guid]
   (gen-wrap :function ::mask-credit-card config guid))
 
@@ -43,4 +49,10 @@
 
 (defn on-credit-card-list-changed* [config channel & args]
   (gen-wrap :event ::on-credit-card-list-changed config channel args))
+
+(defn on-local-credit-card-list-changed* [config channel & args]
+  (gen-wrap :event ::on-local-credit-card-list-changed config channel args))
+
+(defn on-server-credit-card-list-changed* [config channel & args]
+  (gen-wrap :event ::on-server-credit-card-list-changed config channel args))
 
