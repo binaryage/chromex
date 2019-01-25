@@ -31,38 +31,38 @@
               disconnect-count (atom 0)]
           (chromex.protocols.chrome-port/on-message! port (fn [& args] (swap! message-recorder conj args)))
           (chromex.protocols.chrome-port/on-disconnect! port (fn [] (swap! disconnect-count inc)))
+          ; --- CONNECTED -------------------------------------------------------------------------------------------------
+          (is (= (chromex.protocols.chrome-port/get-name port) "I'm a ChromePort"))
+          (is (= (chromex.protocols.chrome-port/get-sender port) "this port's sender"))
+          (when-not advanced-mode?
+            (is (thrown-with-msg? js/Error
+                                  #"post-message! called with nil message"
+                                  (chromex.protocols.chrome-port/post-message! port nil))))
+          (is (= (get-port-mock-state port) {:connected     true
+                                             :sent-messages []}))
+          (chromex.protocols.chrome-port/post-message! port "outgoing message 1")
+          (is (= (get-port-mock-state port) {:connected     true
+                                             :sent-messages ["outgoing message 1"]}))
+          (chromex.protocols.chrome-port/post-message! port "outgoing message 2")
+          (is (= (get-port-mock-state port) {:connected     true
+                                             :sent-messages ["outgoing message 1"
+                                                             "outgoing message 2"]}))
+          (chromex.protocols.chrome-port/post-message! port "outgoing message 3")
+          (is (= (get-port-mock-state port) {:connected     true
+                                             :sent-messages ["outgoing message 1"
+                                                             "outgoing message 2"
+                                                             "outgoing message 3"]}))
+          (when-not advanced-mode?
+            (is (thrown-with-msg? js/Error
+                                  #"received a nil message"
+                                  (fire-message-on-port port nil))))
+          (fire-message-on-port port "incoming message 1")
+          (is (= @message-recorder ['("incoming message 1")]))
+          (fire-message-on-port port "incoming message 2")
+          (is (= @message-recorder ['("incoming message 1")
+                                    '("incoming message 2")]))
+          (fire-message-on-port port "incoming message 3")
           (go
-            ; --- CONNECTED -------------------------------------------------------------------------------------------------
-            (is (= (chromex.protocols.chrome-port/get-name port) "I'm a ChromePort"))
-            (is (= (chromex.protocols.chrome-port/get-sender port) "this port's sender"))
-            (when-not advanced-mode?
-              (is (thrown-with-msg? js/Error
-                                    #"post-message! called with nil message"
-                                    (chromex.protocols.chrome-port/post-message! port nil))))
-            (is (= (get-port-mock-state port) {:connected     true
-                                               :sent-messages []}))
-            (chromex.protocols.chrome-port/post-message! port "outgoing message 1")
-            (is (= (get-port-mock-state port) {:connected     true
-                                               :sent-messages ["outgoing message 1"]}))
-            (chromex.protocols.chrome-port/post-message! port "outgoing message 2")
-            (is (= (get-port-mock-state port) {:connected     true
-                                               :sent-messages ["outgoing message 1"
-                                                               "outgoing message 2"]}))
-            (chromex.protocols.chrome-port/post-message! port "outgoing message 3")
-            (is (= (get-port-mock-state port) {:connected     true
-                                               :sent-messages ["outgoing message 1"
-                                                               "outgoing message 2"
-                                                               "outgoing message 3"]}))
-            (when-not advanced-mode?
-              (is (thrown-with-msg? js/Error
-                                    #"received a nil message"
-                                    (fire-message-on-port port nil))))
-            (fire-message-on-port port "incoming message 1")
-            (is (= @message-recorder ['("incoming message 1")]))
-            (fire-message-on-port port "incoming message 2")
-            (is (= @message-recorder ['("incoming message 1")
-                                      '("incoming message 2")]))
-            (fire-message-on-port port "incoming message 3")
             (is (= "incoming message 1" (<! port)))
             (is (= @disconnect-count 0))
 
