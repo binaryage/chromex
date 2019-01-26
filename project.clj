@@ -18,7 +18,6 @@
                                     "test/.compiled"]
 
   :plugins [[lein-cljsbuild "1.1.7"]
-            [lein-environ "1.1.0"]
             [lein-shell "0.5.0"]]
 
   ; this is just for IntelliJ + Cursive to play well, see :lib profile for real source paths
@@ -75,9 +74,8 @@
                                                    :optimizations  :none
                                                    :checked-arrays :warn
                                                    :source-map     true}}}}}
-             :test
-             {:env       {:running-dev-test "true"}
-              :cljsbuild {:builds {:test-dev
+             :test-none
+             {:cljsbuild {:builds {:tests
                                    {:source-paths ["src/lib"
                                                    "test"]
                                     :compiler     {:output-to     "test/.compiled/optimizations_none/chromex.test.js"
@@ -88,10 +86,7 @@
                                                    :source-map    false}}}}}
 
              :test-advanced
-             {:env       {:running-advanced-test            "true"
-                          :chromex-elide-verbose-logging    "true"
-                          :chromex-elide-missing-api-checks "true"}
-              :cljsbuild {:builds {:test-advanced
+             {:cljsbuild {:builds {:tests
                                    {:source-paths ["src/lib"
                                                    "test"]
                                     :compiler     {:output-to      "test/.compiled/optimizations_advanced/chromex.test.js"
@@ -100,26 +95,12 @@
                                                    :main           chromex.runner
                                                    :optimizations  :advanced
                                                    :checked-arrays :warn
-                                                   :elide-asserts  true
-                                                   :source-map     "test/.compiled/optimizations_advanced/chromex.test.js.map"}}}}}}
+                                                   :elide-asserts  true}}}}}}
 
-  :aliases {"test"          ["with-profile" "test" "do"
-                             ["cljsbuild" "test"]
-                             ["shell" "phantomjs" "test/phantom.js" "test/runner_none.html"]]
-            "test-advanced" ["with-profile" "test-advanced" "do"
-                             ["cljsbuild" "test"]
-                             ["shell" "phantomjs" "test/phantom.js" "test/runner_advanced.html"]]
-            "test-all"      ["do"
-                             ["test"]
-                             ["test-advanced"]]
-            "install"       ["do"
-                             ["shell" "scripts/prepare-jar.sh"]
-                             ["shell" "scripts/local-install.sh"]]
+  :aliases {"test"          ["shell" "scripts/test.sh"]
+            "test-advanced" ["shell" "scripts/test-advanced.sh"]
+            "test-all"      ["shell" "scripts/test-all.sh"]
+            "install"       ["shell" "scripts/install.sh"]
             "jar"           ["shell" "scripts/prepare-jar.sh"]
-            "release"       ["do"
-                             ["clean"]
-                             ["shell" "scripts/check-versions.sh"]
-                             ["shell" "scripts/prepare-jar.sh"]
-                             ["shell" "scripts/check-release.sh"]
-                             ["shell" "scripts/deploy-clojars.sh"]]
+            "release"       ["shell" "scripts/release.sh"]
             "deploy"        ["shell" "scripts/deploy-clojars.sh"]})
