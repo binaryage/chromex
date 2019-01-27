@@ -6,4 +6,4 @@ cd `dirname "${BASH_SOURCE[0]}"` && source "./config.sh"  && cd "$ROOT"
 
 ./scripts/list-jar.sh
 
-lein with-profile lib install
+lein install

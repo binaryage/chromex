@@ -19,7 +19,6 @@
 
   :plugins [[lein-cljsbuild "1.1.7"]]
 
-  ; this is just for IntelliJ + Cursive to play well, see :lib profile for real source paths
   :resource-paths ^:replace []
   :source-paths ["src/lib"
                  "src/exts"
@@ -27,27 +26,14 @@
                  "src/exts_internal"
                  "src/apps"
                  "src/apps_private"
-                 "src/apps_internal"
-                 "scripts"]
+                 "src/apps_internal"]
   :test-paths ["test"]
 
   :jar-exclusions [#"readme\.md"]
 
   :cljsbuild {:builds {}}                                                                                                     ; prevent https://github.com/emezeske/lein-cljsbuild/issues/413
 
-  :profiles {:lib
-             ^{:pom-scope :provided}                                                                                          ; ! to overcome default jar/pom behaviour, our :dependencies replacement would be ignored for some reason
-             {:source-paths   ^:replace ["src/lib"
-                                         "src/exts"
-                                         "src/exts_private"
-                                         "src/exts_internal"
-                                         "src/apps"
-                                         "src/apps_private"
-                                         "src/apps_internal"]
-              :resource-paths ^:replace []
-              :test-paths     ^:replace []}
-
-             :test-none
+  :profiles {:test-none
              {:cljsbuild {:builds {:tests
                                    {:source-paths ["src/lib"
                                                    "test"]
