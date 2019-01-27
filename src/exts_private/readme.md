@@ -48,7 +48,7 @@
 
 ### API stats
 
-Generated 40 namespaces containing 1 properties, 385 functions and 72 events:
+Generated 40 namespaces containing 1 properties, 386 functions and 72 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -78,7 +78,7 @@ Generated 40 namespaces containing 1 properties, 385 functions and 72 events:
     |                 chrome.metricsPrivate |           0 |         16 |       0 |
     |                    chrome.mojoPrivate |           0 |          1 |       0 |
     |              chrome.networkingPrivate |           0 |         22 |       5 |
-    |               chrome.passwordsPrivate |           0 |         11 |       3 |
+    |               chrome.passwordsPrivate |           0 |         12 |       3 |
     |             chrome.preferencesPrivate |           1 |          0 |       0 |
     |             chrome.quickUnlockPrivate |           0 |          7 |       1 |
     |               chrome.resourcesPrivate |           0 |          1 |       0 |
@@ -245,11 +245,11 @@ Generated 40 namespaces containing 1 properties, 385 functions and 72 events:
       tap-all-events]]
 
     [chromex.ext.passwords-private refer:[
-      record-passwords-page-access-in-settings remove-saved-password remove-password-exception
-      undo-remove-saved-password-or-exception request-plaintext-password get-saved-password-list
-      get-password-exception-list import-passwords export-passwords request-export-progress-status
-      cancel-export-passwords tap-on-saved-passwords-list-changed tap-on-password-exceptions-list-changed
-      tap-on-passwords-file-export-progress tap-all-events]]
+      record-passwords-page-access-in-settings change-saved-password remove-saved-password
+      remove-password-exception undo-remove-saved-password-or-exception request-plaintext-password
+      get-saved-password-list get-password-exception-list import-passwords export-passwords
+      request-export-progress-status cancel-export-passwords tap-on-saved-passwords-list-changed
+      tap-on-password-exceptions-list-changed tap-on-passwords-file-export-progress tap-all-events]]
 
     [chromex.ext.preferences-private refer:[
       get-easy-unlock-proximity-required tap-all-events]]

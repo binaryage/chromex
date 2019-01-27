@@ -17,6 +17,15 @@
   "Function that logs that the Passwords page was accessed from the Chrome Settings WebUI."
   ([] (gen-call :function ::record-passwords-page-access-in-settings &form)))
 
+(defmacro change-saved-password
+  "Changes the username and password corresponding to |id|.
+
+     |id| - The id for the password entry being updated.
+     |new-username| - The new username.
+     |new-password| - The new password."
+  ([id new-username new-password] (gen-call :function ::change-saved-password &form id new-username new-password))
+  ([id new-username] `(change-saved-password ~id ~new-username :omit)))
+
 (defmacro remove-saved-password
   "Removes the saved password corresponding to |loginPair|. If no saved password for this pair exists, this function is a
    no-op.
@@ -80,7 +89,7 @@
 
 (defmacro export-passwords
   "Triggers the Password Manager password export functionality. Completion Will be signaled by the
-   onPasswordsFileExportProgress event.|callback| will be called when the request is started or rejected. If rejected
+   onPasswordsFileExportProgress event. |callback| will be called when the request is started or rejected. If rejected
    chrome.runtime.lastError will be set to 'in-progress' or 'reauth-failed'.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
@@ -158,6 +167,12 @@
    :since "master",
    :functions
    [{:id ::record-passwords-page-access-in-settings, :name "recordPasswordsPageAccessInSettings"}
+    {:id ::change-saved-password,
+     :name "changeSavedPassword",
+     :params
+     [{:name "id", :type "integer"}
+      {:name "new-username", :type "string"}
+      {:name "new-password", :optional? true, :type "string"}]}
     {:id ::remove-saved-password, :name "removeSavedPassword", :params [{:name "id", :type "integer"}]}
     {:id ::remove-password-exception, :name "removePasswordException", :params [{:name "id", :type "integer"}]}
     {:id ::undo-remove-saved-password-or-exception, :name "undoRemoveSavedPasswordOrException"}

@@ -6,6 +6,9 @@
 (defn record-passwords-page-access-in-settings* [config]
   (gen-wrap :function ::record-passwords-page-access-in-settings config))
 
+(defn change-saved-password* [config id new-username new-password]
+  (gen-wrap :function ::change-saved-password config id new-username new-password))
+
 (defn remove-saved-password* [config id]
   (gen-wrap :function ::remove-saved-password config id))
 
