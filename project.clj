@@ -17,8 +17,7 @@
   :clean-targets ^{:protect false} ["target"
                                     "test/.compiled"]
 
-  :plugins [[lein-cljsbuild "1.1.7"]
-            [lein-shell "0.5.0"]]
+  :plugins [[lein-cljsbuild "1.1.7"]]
 
   ; this is just for IntelliJ + Cursive to play well, see :lib profile for real source paths
   :resource-paths ^:replace []
@@ -36,21 +35,17 @@
 
   :cljsbuild {:builds {}}                                                                                                     ; prevent https://github.com/emezeske/lein-cljsbuild/issues/413
 
-  :profiles {:nuke-aliases
-             {:aliases ^:replace {}}
-
-             :lib
+  :profiles {:lib
              ^{:pom-scope :provided}                                                                                          ; ! to overcome default jar/pom behaviour, our :dependencies replacement would be ignored for some reason
-             [:nuke-aliases
-              {:source-paths   ^:replace ["src/lib"
-                                          "src/exts"
-                                          "src/exts_private"
-                                          "src/exts_internal"
-                                          "src/apps"
-                                          "src/apps_private"
-                                          "src/apps_internal"]
-               :resource-paths ^:replace []
-               :test-paths     ^:replace []}]
+             {:source-paths   ^:replace ["src/lib"
+                                         "src/exts"
+                                         "src/exts_private"
+                                         "src/exts_internal"
+                                         "src/apps"
+                                         "src/apps_private"
+                                         "src/apps_internal"]
+              :resource-paths ^:replace []
+              :test-paths     ^:replace []}
 
              :dev-ext
              {:cljsbuild {:builds {:dev
@@ -95,12 +90,4 @@
                                                    :main           chromex.runner
                                                    :optimizations  :advanced
                                                    :checked-arrays :warn
-                                                   :elide-asserts  true}}}}}}
-
-  :aliases {"test"          ["shell" "scripts/test.sh"]
-            "test-advanced" ["shell" "scripts/test-advanced.sh"]
-            "test-all"      ["shell" "scripts/test-all.sh"]
-            "install"       ["shell" "scripts/install.sh"]
-            "jar"           ["shell" "scripts/prepare-jar.sh"]
-            "release"       ["shell" "scripts/release.sh"]
-            "deploy"        ["shell" "scripts/deploy-clojars.sh"]})
+                                                   :elide-asserts  true}}}}}})
