@@ -47,28 +47,6 @@
               :resource-paths ^:replace []
               :test-paths     ^:replace []}
 
-             :dev-ext
-             {:cljsbuild {:builds {:dev
-                                   {:source-paths ["src/lib"
-                                                   "src/exts"
-                                                   "src/exts_private"
-                                                   "src/exts_internal"]
-                                    :compiler     {:output-to      "target/dev-ext/chromex.js"
-                                                   :output-dir     "target/dev-ext"
-                                                   :optimizations  :none
-                                                   :checked-arrays :warn
-                                                   :source-map     true}}}}}
-             :dev-app
-             {:cljsbuild {:builds {:dev
-                                   {:source-paths ["src/lib"
-                                                   "src/apps"
-                                                   "src/apps_private"
-                                                   "src/apps_internal"]
-                                    :compiler     {:output-to      "target/dev-app/chromex.js"
-                                                   :output-dir     "target/dev-app"
-                                                   :optimizations  :none
-                                                   :checked-arrays :warn
-                                                   :source-map     true}}}}}
              :test-none
              {:cljsbuild {:builds {:tests
                                    {:source-paths ["src/lib"
