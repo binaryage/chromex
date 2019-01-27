@@ -2,9 +2,7 @@
 
 set -e
 
-cd `dirname "${BASH_SOURCE[0]}"` && source "./config.sh"
-
-cd "$ROOT"
+cd `dirname "${BASH_SOURCE[0]}"` && source "./config.sh"  && cd "$ROOT"
 
 export RUNNING_DEV_TEST=1
 

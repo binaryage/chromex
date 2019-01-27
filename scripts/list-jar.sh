@@ -2,10 +2,7 @@
 
 set -e
 
-pushd `dirname "${BASH_SOURCE[0]}"` > /dev/null
-source "./config.sh"
-
-pushd "$ROOT"
+cd `dirname "${BASH_SOURCE[0]}"` && source "./config.sh"  && cd "$ROOT"
 
 ./scripts/check-versions.sh
 
@@ -26,7 +23,3 @@ cat "$INSPECT_DIR/$POM_PATH" | grep -E -i "artifactId|version"
 echo
 echo "----------------------------"
 echo
-
-popd
-
-popd

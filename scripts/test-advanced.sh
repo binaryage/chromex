@@ -2,9 +2,7 @@
 
 set -e
 
-cd `dirname "${BASH_SOURCE[0]}"` && source "./config.sh"
-
-cd "$ROOT"
+cd `dirname "${BASH_SOURCE[0]}"` && source "./config.sh"  && cd "$ROOT"
 
 export RUNNING_ADVANCED_TEST=1
 export CHROMEX_ELIDE_VERBOSE_LOGGING=1

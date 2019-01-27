@@ -2,16 +2,13 @@
 
 set -e
 
-pushd `dirname "${BASH_SOURCE[0]}"` > /dev/null
-source "./config.sh"
+cd `dirname "${BASH_SOURCE[0]}"` && source "./config.sh"  && cd "$ROOT"
 
 NIGHTLY_WORKTREE="$ROOT/../chromex-nightly"
 
-pushd "$ROOT"
-
 # rebase nightly on top of our current master
 # see http://stackoverflow.com/a/35097583/84283
-if [ -d "$NIGHTLY_WORKTREE" ]; then
+if [[ -d "$NIGHTLY_WORKTREE" ]]; then
   rm -rf "$NIGHTLY_WORKTREE"
 fi
 
@@ -27,7 +24,3 @@ git worktree prune
 
 # we should be able to merge nightly as fast-forward thanks to the rebase above
 git merge --ff-only nightly
-
-popd
-
-popd

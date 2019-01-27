@@ -2,10 +2,7 @@
 
 set -e
 
-pushd `dirname "${BASH_SOURCE[0]}"` > /dev/null
-source "./config.sh"
-
-pushd "$ROOT"
+cd `dirname "${BASH_SOURCE[0]}"` && source "./config.sh"  && cd "$ROOT"
 
 ./scripts/list-jar.sh
 
@@ -19,7 +16,3 @@ if [[ "$REPLY" =~ ^[Yy]$ ]]; then
 else
   exit 1
 fi
-
-popd
-
-popd
