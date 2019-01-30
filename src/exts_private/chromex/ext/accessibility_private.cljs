@@ -24,8 +24,8 @@
 (defn set-switch-access-keys* [config key-codes]
   (gen-wrap :function ::set-switch-access-keys config key-codes))
 
-(defn set-switch-access-menu-state* [config show element-bounds]
-  (gen-wrap :function ::set-switch-access-menu-state config show element-bounds))
+(defn set-switch-access-menu-state* [config show element-bounds item-count]
+  (gen-wrap :function ::set-switch-access-menu-state config show element-bounds item-count))
 
 (defn forward-key-events-to-switch-access* [config should-forward]
   (gen-wrap :function ::forward-key-events-to-switch-access config should-forward))

@@ -70,8 +70,9 @@
   "Shows or hides the Switch Access menu. If shown, it is at the indicated location.
 
      |show| - If true, show the menu. If false, hide the menu.
-     |element-bounds| - Position of an element, in global screen coordinates, to place the menu next to."
-  ([show element-bounds] (gen-call :function ::set-switch-access-menu-state &form show element-bounds)))
+     |element-bounds| - Position of an element, in global screen coordinates, to place the menu next to.
+     |item-count| - The number of items that need to be shown in the menu."
+  ([show element-bounds item-count] (gen-call :function ::set-switch-access-menu-state &form show element-bounds item-count)))
 
 (defmacro forward-key-events-to-switch-access
   "When enabled, forwards key events to the Switch Access extension
@@ -207,7 +208,10 @@
     {:id ::set-switch-access-menu-state,
      :name "setSwitchAccessMenuState",
      :since "73",
-     :params [{:name "show", :type "boolean"} {:name "element-bounds", :type "accessibilityPrivate.ScreenRect"}]}
+     :params
+     [{:name "show", :type "boolean"}
+      {:name "element-bounds", :type "accessibilityPrivate.ScreenRect"}
+      {:name "item-count", :type "integer"}]}
     {:id ::forward-key-events-to-switch-access,
      :name "forwardKeyEventsToSwitchAccess",
      :since "73",
