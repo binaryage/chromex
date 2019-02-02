@@ -65,3 +65,6 @@
 (defn on-select-to-speak-state-change-requested* [config channel & args]
   (gen-wrap :event ::on-select-to-speak-state-change-requested config channel args))
 
+(defn on-announce-for-accessibility* [config channel & args]
+  (gen-wrap :event ::on-announce-for-accessibility config channel args))
+

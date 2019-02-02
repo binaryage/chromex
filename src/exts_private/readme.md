@@ -48,12 +48,12 @@
 
 ### API stats
 
-Generated 40 namespaces containing 1 properties, 386 functions and 72 events:
+Generated 40 namespaces containing 1 properties, 386 functions and 73 events:
 
 
     |                            :namespace | :properties | :functions | :events |
     |---------------------------------------+-------------+------------+---------|
-    |           chrome.accessibilityPrivate |           0 |         15 |       5 |
+    |           chrome.accessibilityPrivate |           0 |         15 |       6 |
     |             chrome.activityLogPrivate |           0 |          5 |       1 |
     |                chrome.autofillPrivate |           0 |         13 |       4 |
     |                chrome.autotestPrivate |           0 |         39 |       0 |
@@ -106,7 +106,7 @@ Generated 40 namespaces containing 1 properties, 386 functions and 72 events:
       send-synthetic-key-event enable-chrome-vox-mouse-events send-synthetic-mouse-event
       on-select-to-speak-state-changed toggle-dictation tap-on-introduce-chrome-vox
       tap-on-accessibility-gesture tap-on-two-finger-touch-start tap-on-two-finger-touch-stop
-      tap-on-select-to-speak-state-change-requested tap-all-events]]
+      tap-on-select-to-speak-state-change-requested tap-on-announce-for-accessibility tap-all-events]]
 
     [chromex.ext.activity-log-private refer:[
       get-extension-activities delete-activities delete-activities-by-extension delete-database

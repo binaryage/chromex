@@ -162,6 +162,17 @@
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-select-to-speak-state-change-requested &form channel args)))
 
+(defmacro tap-on-announce-for-accessibility-events
+  "Called when an internal component within accessibility wants to force speech output for an accessibility extension. Do not
+   use without approval from accessibility owners.
+
+   Events will be put on the |channel| with signature [::on-announce-for-accessibility [announce-text]] where:
+
+     |announce-text| - Text to be announced.
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-announce-for-accessibility &form channel args)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -245,7 +256,11 @@
      :params [{:name "gesture", :type "accessibilityPrivate.Gesture"}]}
     {:id ::on-two-finger-touch-start, :name "onTwoFingerTouchStart", :since "59"}
     {:id ::on-two-finger-touch-stop, :name "onTwoFingerTouchStop", :since "59"}
-    {:id ::on-select-to-speak-state-change-requested, :name "onSelectToSpeakStateChangeRequested", :since "68"}]})
+    {:id ::on-select-to-speak-state-change-requested, :name "onSelectToSpeakStateChangeRequested", :since "68"}
+    {:id ::on-announce-for-accessibility,
+     :name "onAnnounceForAccessibility",
+     :since "master",
+     :params [{:name "announce-text", :type "[array-of-strings]"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
