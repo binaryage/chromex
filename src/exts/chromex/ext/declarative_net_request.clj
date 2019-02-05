@@ -49,7 +49,7 @@
   "Removes page_patterns from the set of allowed pages. Note: Removing page patterns is atomic. In case of an error, no page
    pattern is removed.
 
-     |page-patterns| - Array of match patterns which are to removed.
+     |page-patterns| - Array of match patterns which are to be removed.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
