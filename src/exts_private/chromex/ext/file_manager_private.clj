@@ -742,7 +742,10 @@
   ([entry] (gen-call :function ::unshare-path-with-crostini &form entry)))
 
 (defmacro get-crostini-shared-paths
-  "Returns list of paths shared with crostini container.
+  "Returns list of paths shared with crostini container. |observeFirstForSession| If true, callback provides whether this is
+   the first time this function has been called with observeFirstForSession true.
+
+     |observe-first-for-session| - ?
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [entries first-for-session] where:
@@ -752,7 +755,7 @@
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([] (gen-call :function ::get-crostini-shared-paths &form)))
+  ([observe-first-for-session] (gen-call :function ::get-crostini-shared-paths &form observe-first-for-session)))
 
 (defmacro get-linux-package-info
   "Requests information about a Linux package. |entry| is a .deb file.
@@ -1246,7 +1249,8 @@
      :since "71",
      :callback? true,
      :params
-     [{:name "callback",
+     [{:name "observe-first-for-session", :type "boolean"}
+      {:name "callback",
        :type :callback,
        :callback
        {:params [{:name "entries", :type "[array-of-Entrys]"} {:name "first-for-session", :type "boolean"}]}}]}

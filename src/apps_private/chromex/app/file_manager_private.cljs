@@ -177,8 +177,8 @@
 (defn unshare-path-with-crostini* [config entry]
   (gen-wrap :function ::unshare-path-with-crostini config entry))
 
-(defn get-crostini-shared-paths* [config]
-  (gen-wrap :function ::get-crostini-shared-paths config))
+(defn get-crostini-shared-paths* [config observe-first-for-session]
+  (gen-wrap :function ::get-crostini-shared-paths config observe-first-for-session))
 
 (defn get-linux-package-info* [config entry]
   (gen-wrap :function ::get-linux-package-info config entry))
