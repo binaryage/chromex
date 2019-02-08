@@ -27,8 +27,7 @@
   ([id new-username] `(change-saved-password ~id ~new-username :omit)))
 
 (defmacro remove-saved-password
-  "Removes the saved password corresponding to |loginPair|. If no saved password for this pair exists, this function is a
-   no-op.
+  "Removes the saved password corresponding to |id|. If no saved password for this pair exists, this function is a no-op.
 
      |id| - The id for the password entry being removed."
   ([id] (gen-call :function ::remove-saved-password &form id)))

@@ -111,6 +111,9 @@
 (defn send-assistant-text-query* [config query timeout-ms]
   (gen-wrap :function ::send-assistant-text-query config query timeout-ms))
 
+(defn set-whitelisted-pref* [config pref-name value]
+  (gen-wrap :function ::set-whitelisted-pref config pref-name value))
+
 (defn set-crostini-app-scaled* [config app-id scaled]
   (gen-wrap :function ::set-crostini-app-scaled config app-id scaled))
 

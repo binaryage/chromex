@@ -358,6 +358,19 @@
    chromex.error/get-last-error."
   ([query timeout-ms] (gen-call :function ::send-assistant-text-query &form query timeout-ms)))
 
+(defmacro set-whitelisted-pref
+  "Set value for the specified user pref in the pref tree.
+
+     |pref-name| - ?
+     |value| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([pref-name value] (gen-call :function ::set-whitelisted-pref &form pref-name value)))
+
 (defmacro set-crostini-app-scaled
   "Enable/disable a Crostini app's 'scaled' property.
 
@@ -557,6 +570,11 @@
      [{:name "query", :type "string"}
       {:name "timeout-ms", :type "integer"}
       {:name "callback", :type :callback, :callback {:params [{:name "response", :type "object"}]}}]}
+    {:id ::set-whitelisted-pref,
+     :name "setWhitelistedPref",
+     :since "master",
+     :callback? true,
+     :params [{:name "pref-name", :type "string"} {:name "value", :type "any"} {:name "callback", :type :callback}]}
     {:id ::set-crostini-app-scaled,
      :name "setCrostiniAppScaled",
      :since "73",
