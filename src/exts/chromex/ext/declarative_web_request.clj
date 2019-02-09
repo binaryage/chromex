@@ -4,7 +4,7 @@
    register rules that are evaluated in the browser rather than the JavaScript engine, which reduces roundtrip latencies and
    allows higher efficiency.
 
-     * available since Chrome 72
+     * available since Chrome 73
      * https://developer.chrome.com/extensions/declarativeWebRequest"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -53,7 +53,7 @@
 
 (def api-table
   {:namespace "chrome.declarativeWebRequest",
-   :since "72",
+   :since "73",
    :events
    [{:id ::on-request, :name "onRequest"}
     {:id ::on-message, :name "onMessage", :params [{:name "details", :type "object"}]}]})
