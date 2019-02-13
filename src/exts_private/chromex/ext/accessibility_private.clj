@@ -259,7 +259,7 @@
     {:id ::on-select-to-speak-state-change-requested, :name "onSelectToSpeakStateChangeRequested", :since "68"}
     {:id ::on-announce-for-accessibility,
      :name "onAnnounceForAccessibility",
-     :since "master",
+     :since "74",
      :params [{:name "announce-text", :type "[array-of-strings]"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

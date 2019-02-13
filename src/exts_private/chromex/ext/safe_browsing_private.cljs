@@ -1,6 +1,11 @@
 (ns chromex.ext.safe-browsing-private (:require-macros [chromex.ext.safe-browsing-private :refer [gen-wrap]])
     (:require [chromex.core]))
 
+; -- functions --------------------------------------------------------------------------------------------------------------
+
+(defn get-referrer-chain* [config tab-id]
+  (gen-wrap :function ::get-referrer-chain config tab-id))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-policy-specified-password-reuse-detected* [config channel & args]

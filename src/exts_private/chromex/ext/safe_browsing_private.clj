@@ -1,5 +1,6 @@
 (ns chromex.ext.safe-browsing-private
-  "Use the chrome.safeBrowsingPrivate API to observe events.
+  "Use the chrome.safeBrowsingPrivate API to observe events
+   or retrieve referrer chain.
 
      * available since Chrome 68"
 
@@ -9,6 +10,22 @@
 
 (declare api-table)
 (declare gen-call)
+
+; -- functions --------------------------------------------------------------------------------------------------------------
+
+(defmacro get-referrer-chain
+  "Gets referrer chain for the specified tab.
+
+     |tab-id| - Id of the tab from which to retrieve the referrer.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [entries] where:
+
+     |entries| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([tab-id] (gen-call :function ::get-referrer-chain &form tab-id)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -78,6 +95,14 @@
 (def api-table
   {:namespace "chrome.safeBrowsingPrivate",
    :since "68",
+   :functions
+   [{:id ::get-referrer-chain,
+     :name "getReferrerChain",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "tab-id", :type "integer"}
+      {:name "callback", :type :callback, :callback {:params [{:name "entries", :type "[array-of-objects]"}]}}]}],
    :events
    [{:id ::on-policy-specified-password-reuse-detected,
      :name "onPolicySpecifiedPasswordReuseDetected",

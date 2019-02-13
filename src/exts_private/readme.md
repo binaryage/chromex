@@ -48,7 +48,7 @@
 
 ### API stats
 
-Generated 40 namespaces containing 1 properties, 387 functions and 73 events:
+Generated 40 namespaces containing 1 properties, 388 functions and 73 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -82,7 +82,7 @@ Generated 40 namespaces containing 1 properties, 387 functions and 73 events:
     |             chrome.preferencesPrivate |           1 |          0 |       0 |
     |             chrome.quickUnlockPrivate |           0 |          7 |       1 |
     |               chrome.resourcesPrivate |           0 |          1 |       0 |
-    |            chrome.safeBrowsingPrivate |           0 |          0 |       5 |
+    |            chrome.safeBrowsingPrivate |           0 |          1 |       5 |
     |                chrome.settingsPrivate |           0 |          5 |       1 |
     |                  chrome.systemPrivate |           0 |          3 |       0 |
     |                chrome.terminalPrivate |           0 |          5 |       1 |
@@ -262,9 +262,9 @@ Generated 40 namespaces containing 1 properties, 387 functions and 73 events:
       get-strings tap-all-events]]
 
     [chromex.ext.safe-browsing-private refer:[
-      tap-on-policy-specified-password-reuse-detected tap-on-policy-specified-password-changed
-      tap-on-dangerous-download-opened tap-on-security-interstitial-shown
-      tap-on-security-interstitial-proceeded tap-all-events]]
+      get-referrer-chain tap-on-policy-specified-password-reuse-detected
+      tap-on-policy-specified-password-changed tap-on-dangerous-download-opened
+      tap-on-security-interstitial-shown tap-on-security-interstitial-proceeded tap-all-events]]
 
     [chromex.ext.settings-private refer:[
       set-pref get-all-prefs get-pref get-default-zoom set-default-zoom tap-on-prefs-changed

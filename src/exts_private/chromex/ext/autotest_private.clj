@@ -572,7 +572,7 @@
       {:name "callback", :type :callback, :callback {:params [{:name "response", :type "object"}]}}]}
     {:id ::set-whitelisted-pref,
      :name "setWhitelistedPref",
-     :since "master",
+     :since "74",
      :callback? true,
      :params [{:name "pref-name", :type "string"} {:name "value", :type "any"} {:name "callback", :type :callback}]}
     {:id ::set-crostini-app-scaled,
