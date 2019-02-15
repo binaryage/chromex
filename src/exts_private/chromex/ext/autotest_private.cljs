@@ -51,6 +51,9 @@
 (defn get-visible-notifications* [config]
   (gen-wrap :function ::get-visible-notifications config))
 
+(defn get-arc-state* [config]
+  (gen-wrap :function ::get-arc-state config))
+
 (defn get-play-store-state* [config]
   (gen-wrap :function ::get-play-store-state config))
 

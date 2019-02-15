@@ -48,7 +48,7 @@
 
 ### API stats
 
-Generated 40 namespaces containing 1 properties, 388 functions and 73 events:
+Generated 40 namespaces containing 1 properties, 389 functions and 73 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -56,7 +56,7 @@ Generated 40 namespaces containing 1 properties, 388 functions and 73 events:
     |           chrome.accessibilityPrivate |           0 |         15 |       6 |
     |             chrome.activityLogPrivate |           0 |          5 |       1 |
     |                chrome.autofillPrivate |           0 |         13 |       4 |
-    |                chrome.autotestPrivate |           0 |         40 |       0 |
+    |                chrome.autotestPrivate |           0 |         41 |       0 |
     |               chrome.bluetoothPrivate |           0 |          7 |       1 |
     |         chrome.bookmarkManagerPrivate |           0 |         20 |       4 |
     |          chrome.brailleDisplayPrivate |           0 |          3 |       2 |
@@ -123,9 +123,9 @@ Generated 40 namespaces containing 1 properties, 388 functions and 73 events:
       logout restart shutdown login-status lock-screen get-extensions-info simulate-asan-memory-bug
       set-touchpad-sensitivity set-tap-to-click set-three-finger-click set-tap-dragging
       set-natural-scroll set-mouse-sensitivity set-primary-button-right set-mouse-reverse-scroll
-      get-visible-notifications get-play-store-state get-printer-list is-app-shown is-arc-provisioned
-      get-arc-app get-arc-package launch-arc-app launch-app close-app update-printer remove-printer
-      set-play-store-enabled get-histogram run-crostini-installer run-crostini-uninstaller
+      get-visible-notifications get-arc-state get-play-store-state get-printer-list is-app-shown
+      is-arc-provisioned get-arc-app get-arc-package launch-arc-app launch-app close-app update-printer
+      remove-printer set-play-store-enabled get-histogram run-crostini-installer run-crostini-uninstaller
       set-crostini-enabled take-screenshot bootstrap-machine-learning-service set-assistant-enabled
       send-assistant-text-query set-whitelisted-pref set-crostini-app-scaled
       ensure-window-service-client-has-drawn-window get-primary-display-scale-factor tap-all-events]]

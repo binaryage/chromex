@@ -119,6 +119,18 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-visible-notifications &form)))
 
+(defmacro get-arc-state
+  "Get state of the ARC session.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [result] where:
+
+     |result| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::get-arc-state &form)))
+
 (defmacro get-play-store-state
   "Get state of the Play Store.
 
@@ -158,7 +170,7 @@
   ([app-id] (gen-call :function ::is-app-shown &form app-id)))
 
 (defmacro is-arc-provisioned
-  "Returns true if ARC is provisioned.
+  "Returns true if ARC is provisioned. [deprecated='Use getArcState()']
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [arc-provisioned] where:
@@ -457,6 +469,11 @@
      :callback? true,
      :params
      [{:name "callback", :type :callback, :callback {:params [{:name "notifications", :type "[array-of-objects]"}]}}]}
+    {:id ::get-arc-state,
+     :name "getArcState",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}
     {:id ::get-play-store-state,
      :name "getPlayStoreState",
      :since "60",
