@@ -126,3 +126,6 @@
 (defn get-primary-display-scale-factor* [config]
   (gen-wrap :function ::get-primary-display-scale-factor config))
 
+(defn is-tablet-mode-enabled* [config]
+  (gen-wrap :function ::is-tablet-mode-enabled config))
+

@@ -424,6 +424,18 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-primary-display-scale-factor &form)))
 
+(defmacro is-tablet-mode-enabled
+  "Returns the tablet mode enabled status. |callback| is invoked with the table mode enablement status.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [tablet-mode] where:
+
+     |tablet-mode| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::is-tablet-mode-enabled &form)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -609,7 +621,12 @@
      :name "getPrimaryDisplayScaleFactor",
      :since "73",
      :callback? true,
-     :params [{:name "callback", :type :callback, :callback {:params [{:name "scale-factor", :type "double"}]}}]}]})
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "scale-factor", :type "double"}]}}]}
+    {:id ::is-tablet-mode-enabled,
+     :name "isTabletModeEnabled",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "tablet-mode", :type "boolean"}]}}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
