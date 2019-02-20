@@ -483,7 +483,7 @@
      [{:name "callback", :type :callback, :callback {:params [{:name "notifications", :type "[array-of-objects]"}]}}]}
     {:id ::get-arc-state,
      :name "getArcState",
-     :since "master",
+     :since "74",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}
     {:id ::get-play-store-state,
