@@ -17,9 +17,9 @@
      |args| - Command line arguments to pass to the process.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [pid] where:
+   Signature of the result value put on the channel is [id] where:
 
-     |pid| - Id of the launched process.
+     |id| - Id of the launched process.
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
@@ -29,7 +29,7 @@
 (defmacro close-terminal-process
   "Closes previously opened process.
 
-     |pid| - Process id of the process we want to close.
+     |id| - Unique id of the process we want to close.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [success] where:
@@ -38,12 +38,12 @@
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([pid] (gen-call :function ::close-terminal-process &form pid)))
+  ([id] (gen-call :function ::close-terminal-process &form id)))
 
 (defmacro send-input
   "Sends input that will be routed to stdin of the process with the specified id.
 
-     |pid| - The id of the process to which we want to send input.
+     |id| - The id of the process to which we want to send input.
      |input| - Input we are sending to the process.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
@@ -53,12 +53,12 @@
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([pid input] (gen-call :function ::send-input &form pid input)))
+  ([id input] (gen-call :function ::send-input &form id input)))
 
 (defmacro on-terminal-resize
   "Notify the process with the id id that terminal window size has changed.
 
-     |pid| - The id of the process.
+     |id| - The id of the process.
      |width| - New window width (as column count).
      |height| - New window height (as row count).
 
@@ -69,15 +69,15 @@
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([pid width height] (gen-call :function ::on-terminal-resize &form pid width height)))
+  ([id width height] (gen-call :function ::on-terminal-resize &form id width height)))
 
 (defmacro ack-output
   "Called from |onProcessOutput| when the event is dispatched to terminal extension. Observing the terminal process output
    will be paused after |onProcessOutput| is dispatched until this method is called.
 
      |tab-id| - Tab ID from |onProcessOutput| event.
-     |pid| - The id of the process to which |onProcessOutput| was dispatched."
-  ([tab-id pid] (gen-call :function ::ack-output &form tab-id pid)))
+     |id| - The id of the process to which |onProcessOutput| was dispatched."
+  ([tab-id id] (gen-call :function ::ack-output &form tab-id id)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -88,9 +88,9 @@
    |ackOutput| for the terminal is called. Internally, first event argument will be ID of the tab that contains terminal
    instance for which this event is intended. This argument will be stripped before passing the event to the extension.
 
-   Events will be put on the |channel| with signature [::on-process-output [pid type text]] where:
+   Events will be put on the |channel| with signature [::on-process-output [id type text]] where:
 
-     |pid| - Id of the process from which the output came.
+     |id| - Id of the process from which the output came.
      |type| - Type of the output stream from which output came. When process exits, output type will be set to exit
      |text| - Text that was written to the output stream.
 
@@ -118,39 +118,37 @@
      :params
      [{:name "process-name", :type "string"}
       {:name "args", :optional? true, :type "[array-of-strings]"}
-      {:name "callback", :type :callback, :callback {:params [{:name "pid", :type "integer"}]}}]}
+      {:name "callback", :type :callback, :callback {:params [{:name "id", :type "string"}]}}]}
     {:id ::close-terminal-process,
      :name "closeTerminalProcess",
      :callback? true,
      :params
-     [{:name "pid", :type "integer"}
+     [{:name "id", :type "string"}
       {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::send-input,
      :name "sendInput",
      :callback? true,
      :params
-     [{:name "pid", :type "integer"}
+     [{:name "id", :type "string"}
       {:name "input", :type "string"}
       {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::on-terminal-resize,
      :name "onTerminalResize",
      :callback? true,
      :params
-     [{:name "pid", :type "integer"}
+     [{:name "id", :type "string"}
       {:name "width", :type "integer"}
       {:name "height", :type "integer"}
       {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::ack-output,
      :name "ackOutput",
      :since "49",
-     :params [{:name "tab-id", :type "integer"} {:name "pid", :type "integer"}]}],
+     :params [{:name "tab-id", :type "integer"} {:name "id", :type "string"}]}],
    :events
    [{:id ::on-process-output,
      :name "onProcessOutput",
      :params
-     [{:name "pid", :type "integer"}
-      {:name "type", :type "terminalPrivate.OutputType"}
-      {:name "text", :type "string"}]}]})
+     [{:name "id", :type "string"} {:name "type", :type "terminalPrivate.OutputType"} {:name "text", :type "string"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
