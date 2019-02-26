@@ -82,6 +82,9 @@
 (defn on-connect-external* [config channel & args]
   (gen-wrap :event ::on-connect-external config channel args))
 
+(defn on-connect-native* [config channel & args]
+  (gen-wrap :event ::on-connect-native config channel args))
+
 (defn on-message* [config channel & args]
   (gen-wrap :event ::on-message config channel args))
 

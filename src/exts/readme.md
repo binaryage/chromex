@@ -86,7 +86,7 @@
 
 ### API stats
 
-Generated 78 namespaces containing 52 properties, 383 functions and 176 events:
+Generated 78 namespaces containing 52 properties, 383 functions and 177 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -149,7 +149,7 @@ Generated 78 namespaces containing 52 properties, 383 functions and 176 events:
     |                        chrome.privacy |           3 |          0 |       0 |
     |                      chrome.processes |           0 |          3 |       5 |
     |                          chrome.proxy |           1 |          0 |       1 |
-    |                        chrome.runtime |           2 |         15 |      11 |
+    |                        chrome.runtime |           2 |         15 |      12 |
     |                       chrome.sessions |           1 |          3 |       1 |
     |                chrome.signedInDevices |           0 |          1 |       1 |
     |                        chrome.storage |           3 |          0 |       1 |
@@ -406,7 +406,7 @@ Generated 78 namespaces containing 52 properties, 383 functions and 176 events:
       reload request-update-check restart restart-after-delay connect connect-native send-message
       send-native-message get-platform-info get-package-directory-entry tap-on-startup tap-on-installed
       tap-on-suspend tap-on-suspend-canceled tap-on-update-available tap-on-browser-update-available
-      tap-on-connect tap-on-connect-external tap-on-message tap-on-message-external
+      tap-on-connect tap-on-connect-external tap-on-connect-native tap-on-message tap-on-message-external
       tap-on-restart-required tap-all-events]]
 
     [chromex.ext.sessions refer:[

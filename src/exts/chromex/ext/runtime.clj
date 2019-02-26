@@ -340,6 +340,18 @@
    https://developer.chrome.com/extensions/runtime#event-onConnectExternal."
   ([channel & args] (apply gen-call :event ::on-connect-external &form channel args)))
 
+(defmacro tap-on-connect-native-events
+  "Fired when a connection is made from a native application. Currently only supported on Chrome OS.
+
+   Events will be put on the |channel| with signature [::on-connect-native [port]] where:
+
+     |port| - https://developer.chrome.com/extensions/runtime#property-onConnectNative-port.
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+
+   https://developer.chrome.com/extensions/runtime#event-onConnectNative."
+  ([channel & args] (apply gen-call :event ::on-connect-native &form channel args)))
+
 (defmacro tap-on-message-events
   "Fired when a message is sent from either an extension process (by 'runtime.sendMessage') or a content script (by
    'tabs.sendMessage').
@@ -490,6 +502,7 @@
      :deprecated "Please use 'runtime.onRestartRequired'."}
     {:id ::on-connect, :name "onConnect", :params [{:name "port", :type "runtime.Port"}]}
     {:id ::on-connect-external, :name "onConnectExternal", :params [{:name "port", :type "runtime.Port"}]}
+    {:id ::on-connect-native, :name "onConnectNative", :since "master", :params [{:name "port", :type "runtime.Port"}]}
     {:id ::on-message,
      :name "onMessage",
      :params

@@ -76,7 +76,7 @@
 
 ### API stats
 
-Generated 68 namespaces containing 30 properties, 448 functions and 151 events:
+Generated 68 namespaces containing 30 properties, 448 functions and 152 events:
 
 
     |                         :namespace | :properties | :functions | :events |
@@ -125,7 +125,7 @@ Generated 68 namespaces containing 30 properties, 448 functions and 151 events:
     |                       chrome.power |           0 |          2 |       0 |
     |             chrome.printerProvider |           0 |          0 |       4 |
     |                       chrome.proxy |           1 |          0 |       1 |
-    |                     chrome.runtime |           2 |         15 |      11 |
+    |                     chrome.runtime |           2 |         15 |      12 |
     |                      chrome.serial |           0 |         13 |       2 |
     |             chrome.signedInDevices |           0 |          1 |       1 |
     |                      chrome.socket |           0 |         21 |       0 |
@@ -345,7 +345,7 @@ Generated 68 namespaces containing 30 properties, 448 functions and 151 events:
       reload request-update-check restart restart-after-delay connect connect-native send-message
       send-native-message get-platform-info get-package-directory-entry tap-on-startup tap-on-installed
       tap-on-suspend tap-on-suspend-canceled tap-on-update-available tap-on-browser-update-available
-      tap-on-connect tap-on-connect-external tap-on-message tap-on-message-external
+      tap-on-connect tap-on-connect-external tap-on-connect-native tap-on-message tap-on-message-external
       tap-on-restart-required tap-all-events]]
 
     [chromex.app.serial refer:[
