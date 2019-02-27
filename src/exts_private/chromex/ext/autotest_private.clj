@@ -624,7 +624,7 @@
      :params [{:name "callback", :type :callback, :callback {:params [{:name "scale-factor", :type "double"}]}}]}
     {:id ::is-tablet-mode-enabled,
      :name "isTabletModeEnabled",
-     :since "master",
+     :since "74",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "tablet-mode", :type "boolean"}]}}]}]})
 
