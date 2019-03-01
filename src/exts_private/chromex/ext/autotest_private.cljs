@@ -129,3 +129,6 @@
 (defn is-tablet-mode-enabled* [config]
   (gen-wrap :function ::is-tablet-mode-enabled config))
 
+(defn set-tablet-mode-enabled* [config enabled]
+  (gen-wrap :function ::set-tablet-mode-enabled config enabled))
+

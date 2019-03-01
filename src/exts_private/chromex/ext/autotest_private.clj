@@ -425,16 +425,31 @@
   ([] (gen-call :function ::get-primary-display-scale-factor &form)))
 
 (defmacro is-tablet-mode-enabled
-  "Returns the tablet mode enabled status. |callback| is invoked with the table mode enablement status.
+  "Returns the tablet mode enabled status. |callback| is invoked with the tablet mode enablement status.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [tablet-mode] where:
+   Signature of the result value put on the channel is [enabled] where:
 
-     |tablet-mode| - ?
+     |enabled| - ?
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::is-tablet-mode-enabled &form)))
+
+(defmacro set-tablet-mode-enabled
+  "Enable/disable tablet mode. After calling this function, it won't be possible to physically switch to/from tablet mode
+   since that functionality will be disabled.
+
+     |enabled| - if set, enable tablet mode.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [enabled] where:
+
+     |enabled| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([enabled] (gen-call :function ::set-tablet-mode-enabled &form enabled)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
@@ -626,7 +641,14 @@
      :name "isTabletModeEnabled",
      :since "74",
      :callback? true,
-     :params [{:name "callback", :type :callback, :callback {:params [{:name "tablet-mode", :type "boolean"}]}}]}]})
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "enabled", :type "boolean"}]}}]}
+    {:id ::set-tablet-mode-enabled,
+     :name "setTabletModeEnabled",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "enabled", :type "boolean"}
+      {:name "callback", :type :callback, :callback {:params [{:name "enabled", :type "boolean"}]}}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
