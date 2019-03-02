@@ -193,16 +193,17 @@
   ([request security-origin] (gen-call :function ::stop-audio-debug-recordings &form request security-origin)))
 
 (defmacro start-event-logging
-  "Start remote-bound event logging for a specific peer connection, indicated by its ID, for which remote-bound event logging
-   was not active. If successful, the callback will carry the ID of the log. * |webAppId| must be a number between 1 and 99
-   (inclusive), which will be   incorporated into the uploaded log, so as to help distinugish logs   captured by different
-   web-apps. * |outputPeriodMs| refers to the time between emissions of logs.   Only non-negative values are allowed. If set
-   to zero, logs will be   produced as soon as an event occurs. If positive, events will be   batched together and emitted
-   approximately every |outputPeriodMs| ms.
+  "Start remote-bound event logging for a specific peer connection, indicated by its session description's ID. If successful,
+   the callback will carry the ID of the log. * |webAppId| must be a number between 1 and 99 (inclusive), which will be
+   incorporated into the uploaded log, so as to help distinugish logs   captured by different web-apps. * |outputPeriodMs
+
+   refers to the time between emissions of logs.   Only non-negative values are allowed. If set to zero, logs will be
+   produced as soon as an event occurs. If positive, events will be   batched together and emitted approximately every
+   |outputPeriodMs| ms.
 
      |request| - ?
      |security-origin| - ?
-     |peer-connection-id| - ?
+     |session-id| - ?
      |max-log-size-bytes| - ?
      |output-period-ms| - ?
      |web-app-id| - ?
@@ -214,7 +215,7 @@
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([request security-origin peer-connection-id max-log-size-bytes output-period-ms web-app-id] (gen-call :function ::start-event-logging &form request security-origin peer-connection-id max-log-size-bytes output-period-ms web-app-id)))
+  ([request security-origin session-id max-log-size-bytes output-period-ms web-app-id] (gen-call :function ::start-event-logging &form request security-origin session-id max-log-size-bytes output-period-ms web-app-id)))
 
 (defmacro get-logs-directory
   "Returns the directory entry for the 'WebRTC Logs' directory. If the directory doesn't exist yet, this will create it. If
@@ -354,7 +355,7 @@
      :params
      [{:name "request", :type "webrtcLoggingPrivate.RequestInfo"}
       {:name "security-origin", :type "string"}
-      {:name "peer-connection-id", :type "string"}
+      {:name "session-id", :type "string"}
       {:name "max-log-size-bytes", :type "integer"}
       {:name "output-period-ms", :type "integer"}
       {:name "web-app-id", :type "integer"}
