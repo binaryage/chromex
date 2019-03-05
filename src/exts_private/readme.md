@@ -48,7 +48,7 @@
 
 ### API stats
 
-Generated 40 namespaces containing 1 properties, 391 functions and 73 events:
+Generated 40 namespaces containing 1 properties, 390 functions and 73 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -70,7 +70,7 @@ Generated 40 namespaces containing 1 properties, 391 functions and 73 events:
     | chrome.enterprise.platformKeysPrivate |           0 |          2 |       0 |
     |    chrome.enterprise.reportingPrivate |           0 |          2 |       0 |
     |                chrome.feedbackPrivate |           0 |          6 |       1 |
-    |             chrome.fileManagerPrivate |           0 |         63 |      10 |
+    |             chrome.fileManagerPrivate |           0 |         62 |      10 |
     |             chrome.imageWriterPrivate |           0 |          5 |       5 |
     |             chrome.inputMethodPrivate |           0 |         15 |      10 |
     |        chrome.languageSettingsPrivate |           0 |         14 |       4 |
@@ -195,12 +195,12 @@ Generated 40 namespaces containing 1 properties, 391 functions and 73 events:
       request-web-store-access-token get-download-url request-drive-share get-profiles open-inspector
       open-settings-subpage compute-checksum is-uma-enabled set-entry-tag is-piex-loader-enabled
       get-providers add-provided-file-system configure-volume get-custom-actions execute-custom-action
-      get-directory-size get-recent-files is-crostini-enabled mount-crostini share-paths-with-crostini
+      get-directory-size get-recent-files mount-crostini share-paths-with-crostini
       unshare-path-with-crostini get-crostini-shared-paths get-linux-package-info install-linux-package
       get-thumbnail detect-character-encoding tap-on-mount-completed tap-on-file-transfers-updated
       tap-on-copy-progress tap-on-directory-changed tap-on-preferences-changed
       tap-on-drive-connection-status-changed tap-on-device-changed tap-on-drive-sync-error
-      tap-on-apps-updated tap-on-crostini-shared-paths-changed tap-all-events]]
+      tap-on-apps-updated tap-on-crostini-changed tap-all-events]]
 
     [chromex.ext.image-writer-private refer:[
       write-from-url write-from-file cancel-write destroy-partitions list-removable-storage-devices

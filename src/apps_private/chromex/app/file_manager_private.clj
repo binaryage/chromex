@@ -693,18 +693,6 @@
    chromex.error/get-last-error."
   ([restriction] (gen-call :function ::get-recent-files &form restriction)))
 
-(defmacro is-crostini-enabled
-  "Returns true if crostini is enabled. |callback
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [result] where:
-
-     |result| - ?
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([] (gen-call :function ::is-crostini-enabled &form)))
-
 (defmacro mount-crostini
   "Starts and mounts crostini container. |callback
 
@@ -898,14 +886,14 @@
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-apps-updated &form channel args)))
 
-(defmacro tap-on-crostini-shared-paths-changed-events
+(defmacro tap-on-crostini-changed-events
   "
-   Events will be put on the |channel| with signature [::on-crostini-shared-paths-changed [event]] where:
+   Events will be put on the |channel| with signature [::on-crostini-changed [event]] where:
 
      |event| - ?
 
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
-  ([channel & args] (apply gen-call :event ::on-crostini-shared-paths-changed &form channel args)))
+  ([channel & args] (apply gen-call :event ::on-crostini-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
@@ -1221,11 +1209,6 @@
      :params
      [{:name "restriction", :type "unknown-type"}
       {:name "callback", :type :callback, :callback {:params [{:name "entries", :type "[array-of-Entrys]"}]}}]}
-    {:id ::is-crostini-enabled,
-     :name "isCrostiniEnabled",
-     :since "68",
-     :callback? true,
-     :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
     {:id ::mount-crostini,
      :name "mountCrostini",
      :since "71",
@@ -1298,10 +1281,7 @@
     {:id ::on-device-changed, :name "onDeviceChanged", :params [{:name "event", :type "object"}]}
     {:id ::on-drive-sync-error, :name "onDriveSyncError", :params [{:name "event", :type "object"}]}
     {:id ::on-apps-updated, :name "onAppsUpdated", :since "57"}
-    {:id ::on-crostini-shared-paths-changed,
-     :name "onCrostiniSharedPathsChanged",
-     :since "72",
-     :params [{:name "event", :type "object"}]}]})
+    {:id ::on-crostini-changed, :name "onCrostiniChanged", :since "master", :params [{:name "event", :type "object"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

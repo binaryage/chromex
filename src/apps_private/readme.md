@@ -45,7 +45,7 @@
 
 ### API stats
 
-Generated 37 namespaces containing 1 properties, 326 functions and 70 events:
+Generated 37 namespaces containing 1 properties, 325 functions and 70 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -63,7 +63,7 @@ Generated 37 namespaces containing 1 properties, 326 functions and 70 events:
     |        chrome.developerPrivate |           0 |         31 |       2 |
     |             chrome.echoPrivate |           0 |          5 |       0 |
     |         chrome.feedbackPrivate |           0 |          6 |       1 |
-    |      chrome.fileManagerPrivate |           0 |         63 |      10 |
+    |      chrome.fileManagerPrivate |           0 |         62 |      10 |
     |         chrome.identityPrivate |           0 |          0 |       1 |
     |      chrome.imageWriterPrivate |           0 |          5 |       5 |
     |      chrome.inputMethodPrivate |           0 |         15 |      10 |
@@ -167,12 +167,12 @@ Generated 37 namespaces containing 1 properties, 326 functions and 70 events:
       request-web-store-access-token get-download-url request-drive-share get-profiles open-inspector
       open-settings-subpage compute-checksum is-uma-enabled set-entry-tag is-piex-loader-enabled
       get-providers add-provided-file-system configure-volume get-custom-actions execute-custom-action
-      get-directory-size get-recent-files is-crostini-enabled mount-crostini share-paths-with-crostini
+      get-directory-size get-recent-files mount-crostini share-paths-with-crostini
       unshare-path-with-crostini get-crostini-shared-paths get-linux-package-info install-linux-package
       get-thumbnail detect-character-encoding tap-on-mount-completed tap-on-file-transfers-updated
       tap-on-copy-progress tap-on-directory-changed tap-on-preferences-changed
       tap-on-drive-connection-status-changed tap-on-device-changed tap-on-drive-sync-error
-      tap-on-apps-updated tap-on-crostini-shared-paths-changed tap-all-events]]
+      tap-on-apps-updated tap-on-crostini-changed tap-all-events]]
 
     [chromex.app.identity-private refer:[
       tap-on-web-flow-request tap-all-events]]

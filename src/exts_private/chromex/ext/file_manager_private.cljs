@@ -165,9 +165,6 @@
 (defn get-recent-files* [config restriction]
   (gen-wrap :function ::get-recent-files config restriction))
 
-(defn is-crostini-enabled* [config]
-  (gen-wrap :function ::is-crostini-enabled config))
-
 (defn mount-crostini* [config]
   (gen-wrap :function ::mount-crostini config))
 
@@ -221,6 +218,6 @@
 (defn on-apps-updated* [config channel & args]
   (gen-wrap :event ::on-apps-updated config channel args))
 
-(defn on-crostini-shared-paths-changed* [config channel & args]
-  (gen-wrap :event ::on-crostini-shared-paths-changed config channel args))
+(defn on-crostini-changed* [config channel & args]
+  (gen-wrap :event ::on-crostini-changed config channel args))
 
