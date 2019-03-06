@@ -644,7 +644,7 @@
      :params [{:name "callback", :type :callback, :callback {:params [{:name "enabled", :type "boolean"}]}}]}
     {:id ::set-tablet-mode-enabled,
      :name "setTabletModeEnabled",
-     :since "master",
+     :since "74",
      :callback? true,
      :params
      [{:name "enabled", :type "boolean"}

@@ -68,18 +68,6 @@
      |parent-id| - The ID of the folder to sort the children of."
   ([parent-id] (gen-call :function ::sort-children &form parent-id)))
 
-(defmacro get-strings
-  "Gets the i18n strings for the bookmark manager.
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [result] where:
-
-     |result| - ?
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([] (gen-call :function ::get-strings &form)))
-
 (defmacro start-drag
   "Begins dragging a set of bookmarks.
 
@@ -320,10 +308,6 @@
      [{:name "parent-id", :type "string"}
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
     {:id ::sort-children, :name "sortChildren", :params [{:name "parent-id", :type "string"}]}
-    {:id ::get-strings,
-     :name "getStrings",
-     :callback? true,
-     :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}
     {:id ::start-drag,
      :name "startDrag",
      :params
@@ -375,6 +359,7 @@
      [{:name "id", :optional? true, :type "string"}
       {:name "key", :optional? true, :type "string"}
       {:name "callback",
+       :optional? true,
        :type :callback,
        :callback {:params [{:name "value", :optional? true, :type "string-or-object"}]}}]}
     {:id ::set-meta-info,

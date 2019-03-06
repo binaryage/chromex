@@ -18,9 +18,6 @@
 (defn sort-children* [config parent-id]
   (gen-wrap :function ::sort-children config parent-id))
 
-(defn get-strings* [config]
-  (gen-wrap :function ::get-strings config))
-
 (defn start-drag* [config id-list drag-node-index is-from-touch]
   (gen-wrap :function ::start-drag config id-list drag-node-index is-from-touch))
 

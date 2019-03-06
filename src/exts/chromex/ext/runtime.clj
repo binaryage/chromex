@@ -502,7 +502,7 @@
      :deprecated "Please use 'runtime.onRestartRequired'."}
     {:id ::on-connect, :name "onConnect", :params [{:name "port", :type "runtime.Port"}]}
     {:id ::on-connect-external, :name "onConnectExternal", :params [{:name "port", :type "runtime.Port"}]}
-    {:id ::on-connect-native, :name "onConnectNative", :since "master", :params [{:name "port", :type "runtime.Port"}]}
+    {:id ::on-connect-native, :name "onConnectNative", :since "74", :params [{:name "port", :type "runtime.Port"}]}
     {:id ::on-message,
      :name "onMessage",
      :params

@@ -45,7 +45,7 @@
 
 ### API stats
 
-Generated 37 namespaces containing 1 properties, 325 functions and 70 events:
+Generated 37 namespaces containing 1 properties, 324 functions and 70 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -54,7 +54,7 @@ Generated 37 namespaces containing 1 properties, 325 functions and 70 events:
     |      chrome.activityLogPrivate |           0 |          5 |       1 |
     |         chrome.autofillPrivate |           0 |         13 |       4 |
     |        chrome.bluetoothPrivate |           0 |          7 |       1 |
-    |  chrome.bookmarkManagerPrivate |           0 |         20 |       4 |
+    |  chrome.bookmarkManagerPrivate |           0 |         19 |       4 |
     |   chrome.brailleDisplayPrivate |           0 |          3 |       2 |
     |              chrome.cecPrivate |           0 |          3 |       0 |
     |     chrome.chromeosInfoPrivate |           0 |          2 |       0 |
@@ -118,9 +118,9 @@ Generated 37 namespaces containing 1 properties, 325 functions and 70 events:
       pair tap-on-pairing tap-all-events]]
 
     [chromex.app.bookmark-manager-private refer:[
-      copy cut paste can-paste sort-children get-strings start-drag drop get-subtree can-edit
-      remove-trees record-launch create-with-meta-info get-meta-info set-meta-info update-meta-info undo
-      redo get-undo-info get-redo-info tap-on-drag-enter tap-on-drag-leave tap-on-drop
+      copy cut paste can-paste sort-children start-drag drop get-subtree can-edit remove-trees
+      record-launch create-with-meta-info get-meta-info set-meta-info update-meta-info undo redo
+      get-undo-info get-redo-info tap-on-drag-enter tap-on-drag-leave tap-on-drop
       tap-on-meta-info-changed tap-all-events]]
 
     [chromex.app.braille-display-private refer:[
