@@ -9,8 +9,8 @@
 (defn set-native-accessibility-enabled* [config enabled]
   (gen-wrap :function ::set-native-accessibility-enabled config enabled))
 
-(defn set-focus-ring* [config rects color]
-  (gen-wrap :function ::set-focus-ring config rects color))
+(defn set-focus-rings* [config focus-rings]
+  (gen-wrap :function ::set-focus-rings config focus-rings))
 
 (defn set-highlights* [config rects color]
   (gen-wrap :function ::set-highlights config rects color))

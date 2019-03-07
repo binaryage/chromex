@@ -29,13 +29,11 @@
      |enabled| - True if native accessibility support should be enabled."
   ([enabled] (gen-call :function ::set-native-accessibility-enabled &form enabled)))
 
-(defmacro set-focus-ring
-  "Sets the bounds of the accessibility focus ring.
+(defmacro set-focus-rings
+  "Sets the given accessibility focus rings for this extension.
 
-     |rects| - Array of rectangles to draw the accessibility focus ring around.
-     |color| - CSS-style hex color string beginning with # like #FF9982 or #EEE."
-  ([rects color] (gen-call :function ::set-focus-ring &form rects color))
-  ([rects] `(set-focus-ring ~rects :omit)))
+     |focus-rings| - Array of focus rings to draw."
+  ([focus-rings] (gen-call :function ::set-focus-rings &form focus-rings)))
 
 (defmacro set-highlights
   "Sets the bounds of the accessibility highlight.
@@ -197,12 +195,10 @@
     {:id ::set-native-accessibility-enabled,
      :name "setNativeAccessibilityEnabled",
      :params [{:name "enabled", :type "boolean"}]}
-    {:id ::set-focus-ring,
-     :name "setFocusRing",
-     :since "39",
-     :params
-     [{:name "rects", :type "[array-of-accessibilityPrivate.ScreenRects]"}
-      {:name "color", :optional? true, :type "string"}]}
+    {:id ::set-focus-rings,
+     :name "setFocusRings",
+     :since "master",
+     :params [{:name "focus-rings", :type "[array-of-accessibilityPrivate.FocusRingInfos]"}]}
     {:id ::set-highlights,
      :name "setHighlights",
      :since "64",

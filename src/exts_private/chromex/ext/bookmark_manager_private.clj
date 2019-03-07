@@ -48,20 +48,6 @@
   ([parent-id selected-id-list] (gen-call :function ::paste &form parent-id selected-id-list))
   ([parent-id] `(paste ~parent-id :omit)))
 
-(defmacro can-paste
-  "Whether there are any bookmarks that can be pasted.
-
-     |parent-id| - The ID of the folder to paste into.
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [result] where:
-
-     |result| - ?
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([parent-id] (gen-call :function ::can-paste &form parent-id)))
-
 (defmacro sort-children
   "Sorts the children of a given folder.
 
@@ -108,18 +94,6 @@
    chromex.error/get-last-error."
   ([id folders-only] (gen-call :function ::get-subtree &form id folders-only)))
 
-(defmacro can-edit
-  "Whether bookmarks can be modified.
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [result] where:
-
-     |result| - ?
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([] (gen-call :function ::can-edit &form)))
-
 (defmacro remove-trees
   "Recursively removes list of bookmarks nodes.
 
@@ -132,68 +106,6 @@
    chromex.error/get-last-error."
   ([id-list] (gen-call :function ::remove-trees &form id-list)))
 
-(defmacro record-launch ([] (gen-call :function ::record-launch &form)))
-
-(defmacro create-with-meta-info
-  "Mimics the functionality of bookmarks.create, but will additionally set the given meta info fields.
-
-     |bookmark| - ?
-     |meta-info| - ?
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [result] where:
-
-     |result| - ?
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([bookmark meta-info] (gen-call :function ::create-with-meta-info &form bookmark meta-info)))
-
-(defmacro get-meta-info
-  "Gets meta info from a bookmark node.
-
-     |id| - The id of the bookmark to retrieve meta info from. If omitted meta info for all nodes is returned.
-     |key| - The key for the meta info to retrieve. If omitted, all fields are returned.
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [value] where:
-
-     |value| - If a key was given, the value of the specified field, if present. Otherwise an object containing all meta info
-               fields for the node. If id is not given then meta info for all nodes as an object with node id to meta info.
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([id key] (gen-call :function ::get-meta-info &form id key))
-  ([id] `(get-meta-info ~id :omit))
-  ([] `(get-meta-info :omit :omit)))
-
-(defmacro set-meta-info
-  "Sets a meta info value for a bookmark node.
-
-     |id| - The id of the bookmark node to set the meta info on.
-     |key| - The key of the meta info to set.
-     |value| - The meta info to set.
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [].
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([id key value] (gen-call :function ::set-meta-info &form id key value)))
-
-(defmacro update-meta-info
-  "Updates a set of meta info values for a bookmark node.
-
-     |id| - The id of the bookmark node to update the meta info of.
-     |meta-info-changes| - A set of meta info key/value pairs to update.
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [].
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([id meta-info-changes] (gen-call :function ::update-meta-info &form id meta-info-changes)))
-
 (defmacro undo
   "Performs an undo of the last change to the bookmark model."
   ([] (gen-call :function ::undo &form)))
@@ -201,30 +113,6 @@
 (defmacro redo
   "Performs a redo of last undone change to the bookmark model."
   ([] (gen-call :function ::redo &form)))
-
-(defmacro get-undo-info
-  "Gets the information for the undo if available.
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [result] where:
-
-     |result| - ?
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([] (gen-call :function ::get-undo-info &form)))
-
-(defmacro get-redo-info
-  "Gets the information for the redo if available.
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [result] where:
-
-     |result| - ?
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([] (gen-call :function ::get-redo-info &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -260,17 +148,6 @@
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-drop &form channel args)))
 
-(defmacro tap-on-meta-info-changed-events
-  "Fired when the meta info of a node changes.
-
-   Events will be put on the |channel| with signature [::on-meta-info-changed [id meta-info-changes]] where:
-
-     |id| - ?
-     |meta-info-changes| - ?
-
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
-  ([channel & args] (apply gen-call :event ::on-meta-info-changed &form channel args)))
-
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -301,12 +178,6 @@
      [{:name "parent-id", :type "string"}
       {:name "selected-id-list", :optional? true, :type "[array-of-strings]"}
       {:name "callback", :optional? true, :type :callback}]}
-    {:id ::can-paste,
-     :name "canPaste",
-     :callback? true,
-     :params
-     [{:name "parent-id", :type "string"}
-      {:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
     {:id ::sort-children, :name "sortChildren", :params [{:name "parent-id", :type "string"}]}
     {:id ::start-drag,
      :name "startDrag",
@@ -330,67 +201,13 @@
       {:name "callback",
        :type :callback,
        :callback {:params [{:name "results", :type "[array-of-bookmarks.BookmarkTreeNodes]"}]}}]}
-    {:id ::can-edit,
-     :name "canEdit",
-     :callback? true,
-     :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
     {:id ::remove-trees,
      :name "removeTrees",
      :since "30",
      :callback? true,
      :params [{:name "id-list", :type "[array-of-strings]"} {:name "callback", :optional? true, :type :callback}]}
-    {:id ::record-launch, :name "recordLaunch"}
-    {:id ::create-with-meta-info,
-     :name "createWithMetaInfo",
-     :since "36",
-     :callback? true,
-     :params
-     [{:name "bookmark", :type "bookmarks.CreateDetails"}
-      {:name "meta-info", :type "bookmarkManagerPrivate.MetaInfoFields"}
-      {:name "callback",
-       :optional? true,
-       :type :callback,
-       :callback {:params [{:name "result", :type "bookmarks.BookmarkTreeNode"}]}}]}
-    {:id ::get-meta-info,
-     :name "getMetaInfo",
-     :since "33",
-     :callback? true,
-     :params
-     [{:name "id", :optional? true, :type "string"}
-      {:name "key", :optional? true, :type "string"}
-      {:name "callback",
-       :optional? true,
-       :type :callback,
-       :callback {:params [{:name "value", :optional? true, :type "string-or-object"}]}}]}
-    {:id ::set-meta-info,
-     :name "setMetaInfo",
-     :since "33",
-     :callback? true,
-     :params
-     [{:name "id", :type "string"}
-      {:name "key", :type "string"}
-      {:name "value", :type "string"}
-      {:name "callback", :optional? true, :type :callback}]}
-    {:id ::update-meta-info,
-     :name "updateMetaInfo",
-     :since "36",
-     :callback? true,
-     :params
-     [{:name "id", :type "string"}
-      {:name "meta-info-changes", :type "bookmarkManagerPrivate.MetaInfoFields"}
-      {:name "callback", :optional? true, :type :callback}]}
     {:id ::undo, :name "undo", :since "34"}
-    {:id ::redo, :name "redo", :since "34"}
-    {:id ::get-undo-info,
-     :name "getUndoInfo",
-     :since "34",
-     :callback? true,
-     :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}
-    {:id ::get-redo-info,
-     :name "getRedoInfo",
-     :since "34",
-     :callback? true,
-     :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}],
+    {:id ::redo, :name "redo", :since "34"}],
    :events
    [{:id ::on-drag-enter,
      :name "onDragEnter",
@@ -400,12 +217,7 @@
      :params [{:name "bookmark-node-data", :type "bookmarkManagerPrivate.BookmarkNodeData"}]}
     {:id ::on-drop,
      :name "onDrop",
-     :params [{:name "bookmark-node-data", :type "bookmarkManagerPrivate.BookmarkNodeData"}]}
-    {:id ::on-meta-info-changed,
-     :name "onMetaInfoChanged",
-     :since "35",
-     :params
-     [{:name "id", :type "string"} {:name "meta-info-changes", :type "bookmarkManagerPrivate.MetaInfoFields"}]}]})
+     :params [{:name "bookmark-node-data", :type "bookmarkManagerPrivate.BookmarkNodeData"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

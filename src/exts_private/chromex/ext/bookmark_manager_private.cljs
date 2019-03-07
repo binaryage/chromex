@@ -12,9 +12,6 @@
 (defn paste* [config parent-id selected-id-list]
   (gen-wrap :function ::paste config parent-id selected-id-list))
 
-(defn can-paste* [config parent-id]
-  (gen-wrap :function ::can-paste config parent-id))
-
 (defn sort-children* [config parent-id]
   (gen-wrap :function ::sort-children config parent-id))
 
@@ -27,38 +24,14 @@
 (defn get-subtree* [config id folders-only]
   (gen-wrap :function ::get-subtree config id folders-only))
 
-(defn can-edit* [config]
-  (gen-wrap :function ::can-edit config))
-
 (defn remove-trees* [config id-list]
   (gen-wrap :function ::remove-trees config id-list))
-
-(defn record-launch* [config]
-  (gen-wrap :function ::record-launch config))
-
-(defn create-with-meta-info* [config bookmark meta-info]
-  (gen-wrap :function ::create-with-meta-info config bookmark meta-info))
-
-(defn get-meta-info* [config id key]
-  (gen-wrap :function ::get-meta-info config id key))
-
-(defn set-meta-info* [config id key value]
-  (gen-wrap :function ::set-meta-info config id key value))
-
-(defn update-meta-info* [config id meta-info-changes]
-  (gen-wrap :function ::update-meta-info config id meta-info-changes))
 
 (defn undo* [config]
   (gen-wrap :function ::undo config))
 
 (defn redo* [config]
   (gen-wrap :function ::redo config))
-
-(defn get-undo-info* [config]
-  (gen-wrap :function ::get-undo-info config))
-
-(defn get-redo-info* [config]
-  (gen-wrap :function ::get-redo-info config))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
@@ -70,7 +43,4 @@
 
 (defn on-drop* [config channel & args]
   (gen-wrap :event ::on-drop config channel args))
-
-(defn on-meta-info-changed* [config channel & args]
-  (gen-wrap :event ::on-meta-info-changed config channel args))
 

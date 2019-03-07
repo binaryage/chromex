@@ -45,7 +45,7 @@
 
 ### API stats
 
-Generated 37 namespaces containing 1 properties, 324 functions and 70 events:
+Generated 37 namespaces containing 1 properties, 315 functions and 69 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -54,7 +54,7 @@ Generated 37 namespaces containing 1 properties, 324 functions and 70 events:
     |      chrome.activityLogPrivate |           0 |          5 |       1 |
     |         chrome.autofillPrivate |           0 |         13 |       4 |
     |        chrome.bluetoothPrivate |           0 |          7 |       1 |
-    |  chrome.bookmarkManagerPrivate |           0 |         19 |       4 |
+    |  chrome.bookmarkManagerPrivate |           0 |         10 |       3 |
     |   chrome.brailleDisplayPrivate |           0 |          3 |       2 |
     |              chrome.cecPrivate |           0 |          3 |       0 |
     |     chrome.chromeosInfoPrivate |           0 |          2 |       0 |
@@ -94,7 +94,7 @@ Generated 37 namespaces containing 1 properties, 324 functions and 70 events:
 (ns your.project
   (:require
     [chromex.app.accessibility-private refer:[
-      get-battery-description set-native-accessibility-enabled set-focus-ring set-highlights
+      get-battery-description set-native-accessibility-enabled set-focus-rings set-highlights
       set-keyboard-listener darken-screen set-switch-access-keys set-switch-access-menu-state
       forward-key-events-to-switch-access set-native-chrome-vox-arc-support-for-current-app
       send-synthetic-key-event enable-chrome-vox-mouse-events send-synthetic-mouse-event
@@ -118,10 +118,8 @@ Generated 37 namespaces containing 1 properties, 324 functions and 70 events:
       pair tap-on-pairing tap-all-events]]
 
     [chromex.app.bookmark-manager-private refer:[
-      copy cut paste can-paste sort-children start-drag drop get-subtree can-edit remove-trees
-      record-launch create-with-meta-info get-meta-info set-meta-info update-meta-info undo redo
-      get-undo-info get-redo-info tap-on-drag-enter tap-on-drag-leave tap-on-drop
-      tap-on-meta-info-changed tap-all-events]]
+      copy cut paste sort-children start-drag drop get-subtree remove-trees undo redo tap-on-drag-enter
+      tap-on-drag-leave tap-on-drop tap-all-events]]
 
     [chromex.app.braille-display-private refer:[
       get-display-state write-dots update-bluetooth-braille-display-address tap-on-display-state-changed
