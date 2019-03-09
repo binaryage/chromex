@@ -425,7 +425,7 @@
   ([] (gen-call :function ::get-primary-display-scale-factor &form)))
 
 (defmacro is-tablet-mode-enabled
-  "Returns the tablet mode enabled status. |callback| is invoked with the tablet mode enablement status.
+  "Get the tablet mode enabled status. |callback| is invoked with the tablet mode enablement status.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [enabled] where:
@@ -450,6 +450,34 @@
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([enabled] (gen-call :function ::set-tablet-mode-enabled &form enabled)))
+
+(defmacro get-shelf-auto-hide-behavior
+  "Get the shelf auto hide behavior.
+
+     |display-id| - display that contains the shelf. |callback| is invoked with the shelf auto hide behavior. Possible
+                    behavior values are: 'always', 'never' or 'hidden'.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [behavior] where:
+
+     |behavior| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([display-id] (gen-call :function ::get-shelf-auto-hide-behavior &form display-id)))
+
+(defmacro set-shelf-auto-hide-behavior
+  "Set the shelf auto hide behavior.
+
+     |display-id| - display that contains the shelf.
+     |behavior| - an enum of 'always', 'never' or 'hidden'.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([display-id behavior] (gen-call :function ::set-shelf-auto-hide-behavior &form display-id behavior)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
@@ -648,7 +676,20 @@
      :callback? true,
      :params
      [{:name "enabled", :type "boolean"}
-      {:name "callback", :type :callback, :callback {:params [{:name "enabled", :type "boolean"}]}}]}]})
+      {:name "callback", :type :callback, :callback {:params [{:name "enabled", :type "boolean"}]}}]}
+    {:id ::get-shelf-auto-hide-behavior,
+     :name "getShelfAutoHideBehavior",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "display-id", :type "string"}
+      {:name "callback", :type :callback, :callback {:params [{:name "behavior", :type "string"}]}}]}
+    {:id ::set-shelf-auto-hide-behavior,
+     :name "setShelfAutoHideBehavior",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "display-id", :type "string"} {:name "behavior", :type "string"} {:name "callback", :type :callback}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
