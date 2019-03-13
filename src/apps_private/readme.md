@@ -45,14 +45,14 @@
 
 ### API stats
 
-Generated 37 namespaces containing 1 properties, 315 functions and 69 events:
+Generated 37 namespaces containing 1 properties, 313 functions and 67 events:
 
 
     |                     :namespace | :properties | :functions | :events |
     |--------------------------------+-------------+------------+---------|
     |    chrome.accessibilityPrivate |           0 |         15 |       6 |
     |      chrome.activityLogPrivate |           0 |          5 |       1 |
-    |         chrome.autofillPrivate |           0 |         13 |       4 |
+    |         chrome.autofillPrivate |           0 |         11 |       2 |
     |        chrome.bluetoothPrivate |           0 |          7 |       1 |
     |  chrome.bookmarkManagerPrivate |           0 |         10 |       3 |
     |   chrome.brailleDisplayPrivate |           0 |          3 |       2 |
@@ -108,10 +108,9 @@ Generated 37 namespaces containing 1 properties, 315 functions and 69 events:
 
     [chromex.app.autofill-private refer:[
       save-address get-country-list get-address-components get-address-list save-credit-card remove-entry
-      validate-phone-numbers get-credit-card-list get-local-credit-card-list get-server-credit-card-list
-      mask-credit-card migrate-credit-cards log-server-card-link-clicked tap-on-address-list-changed
-      tap-on-credit-card-list-changed tap-on-local-credit-card-list-changed
-      tap-on-server-credit-card-list-changed tap-all-events]]
+      validate-phone-numbers get-credit-card-list mask-credit-card migrate-credit-cards
+      log-server-card-link-clicked tap-on-address-list-changed tap-on-credit-card-list-changed
+      tap-all-events]]
 
     [chromex.app.bluetooth-private refer:[
       set-adapter-state set-pairing-response disconnect-all forget-device set-discovery-filter connect
