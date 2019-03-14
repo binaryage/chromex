@@ -1281,7 +1281,7 @@
     {:id ::on-device-changed, :name "onDeviceChanged", :params [{:name "event", :type "object"}]}
     {:id ::on-drive-sync-error, :name "onDriveSyncError", :params [{:name "event", :type "object"}]}
     {:id ::on-apps-updated, :name "onAppsUpdated", :since "57"}
-    {:id ::on-crostini-changed, :name "onCrostiniChanged", :since "master", :params [{:name "event", :type "object"}]}]})
+    {:id ::on-crostini-changed, :name "onCrostiniChanged", :since "74", :params [{:name "event", :type "object"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

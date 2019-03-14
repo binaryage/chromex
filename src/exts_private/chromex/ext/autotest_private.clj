@@ -319,6 +319,30 @@
    chromex.error/get-last-error."
   ([enabled] (gen-call :function ::set-crostini-enabled &form enabled)))
 
+(defmacro export-crostini
+  "Export the crostini container.
+
+     |path| - The path in Downloads to save the export.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([path] (gen-call :function ::export-crostini &form path)))
+
+(defmacro import-crostini
+  "Import the crostini container.
+
+     |path| - The path in Downloads to read the import.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([path] (gen-call :function ::import-crostini &form path)))
+
 (defmacro take-screenshot
   "Takes a screenshot and returns the data in base64 encoded PNG format.
 
@@ -618,6 +642,16 @@
      :since "71",
      :callback? true,
      :params [{:name "enabled", :type "boolean"} {:name "callback", :type :callback}]}
+    {:id ::export-crostini,
+     :name "exportCrostini",
+     :since "master",
+     :callback? true,
+     :params [{:name "path", :type "string"} {:name "callback", :type :callback}]}
+    {:id ::import-crostini,
+     :name "importCrostini",
+     :since "master",
+     :callback? true,
+     :params [{:name "path", :type "string"} {:name "callback", :type :callback}]}
     {:id ::take-screenshot,
      :name "takeScreenshot",
      :since "71",

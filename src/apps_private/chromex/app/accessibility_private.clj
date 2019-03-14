@@ -197,7 +197,7 @@
      :params [{:name "enabled", :type "boolean"}]}
     {:id ::set-focus-rings,
      :name "setFocusRings",
-     :since "master",
+     :since "74",
      :params [{:name "focus-rings", :type "[array-of-accessibilityPrivate.FocusRingInfos]"}]}
     {:id ::set-highlights,
      :name "setHighlights",

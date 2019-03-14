@@ -387,11 +387,12 @@
 (defmacro register-advertisement
   "Create an advertisement and register it for advertising. To call this function, the app must have the bluetooth:low_energy
    and bluetooth:peripheral permissions set to true. Additionally this API is only available to auto launched apps in Kiosk
-   Mode of by setting the 'enable-ble-advertising-in-apps' flag. See https://developer.chrome.com/apps/manifest/bluetooth
-   Note: On some hardware, central and peripheral modes at the same time is supported but on hardware that doesn't support
-   this, making this call will switch the device to peripheral mode. In the case of hardware which does not support both
-   central and peripheral mode, attempting to use the device in both modes will lead to undefined behavior or prevent other
-   central-role applications from behaving correctly (including the discovery of Bluetooth Low Energy devices).
+   Mode or by setting the '--enable-ble-advertising-in-apps' command-line switch. See
+   https://developer.chrome.com/apps/manifest/bluetooth Note: On some hardware, central and peripheral modes at the same time
+   is supported but on hardware that doesn't support this, making this call will switch the device to peripheral mode. In the
+   case of hardware which does not support both central and peripheral mode, attempting to use the device in both modes will
+   lead to undefined behavior or prevent other central-role applications from behaving correctly (including the discovery of
+   Bluetooth Low Energy devices).
 
      |advertisement| - The advertisement to advertise.
 

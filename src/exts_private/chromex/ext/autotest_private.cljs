@@ -102,6 +102,12 @@
 (defn set-crostini-enabled* [config enabled]
   (gen-wrap :function ::set-crostini-enabled config enabled))
 
+(defn export-crostini* [config path]
+  (gen-wrap :function ::export-crostini config path))
+
+(defn import-crostini* [config path]
+  (gen-wrap :function ::import-crostini config path))
+
 (defn take-screenshot* [config]
   (gen-wrap :function ::take-screenshot config))
 
