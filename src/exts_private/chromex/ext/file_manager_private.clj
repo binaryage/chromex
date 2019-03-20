@@ -562,18 +562,6 @@
    chromex.error/get-last-error."
   ([entry] (gen-call :function ::compute-checksum &form entry)))
 
-(defmacro is-uma-enabled
-  "Is UMA enabled?
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [result] where:
-
-     |result| - ?
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([] (gen-call :function ::is-uma-enabled &form)))
-
 (defmacro set-entry-tag
   "Sets a tag on a file or a directory. Only Drive files are supported.
 
@@ -1142,11 +1130,6 @@
      :params
      [{:name "entry", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "checksum", :type "string"}]}}]}
-    {:id ::is-uma-enabled,
-     :name "isUMAEnabled",
-     :since "42",
-     :callback? true,
-     :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
     {:id ::set-entry-tag,
      :name "setEntryTag",
      :since "43",

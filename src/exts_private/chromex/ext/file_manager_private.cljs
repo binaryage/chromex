@@ -135,9 +135,6 @@
 (defn compute-checksum* [config entry]
   (gen-wrap :function ::compute-checksum config entry))
 
-(defn is-uma-enabled* [config]
-  (gen-wrap :function ::is-uma-enabled config))
-
 (defn set-entry-tag* [config entry visibility key value]
   (gen-wrap :function ::set-entry-tag config entry visibility key value))
 

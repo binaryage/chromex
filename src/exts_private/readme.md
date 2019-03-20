@@ -30,7 +30,6 @@
 | [chrome.mojoPrivate](https://developer.chrome.com/extensions/mojoPrivate) | [chromex/ext/mojo_private.clj](chromex/ext/mojo_private.clj) |
 | [chrome.networkingPrivate](https://developer.chrome.com/extensions/networkingPrivate) | [chromex/ext/networking_private.clj](chromex/ext/networking_private.clj) |
 | [chrome.passwordsPrivate](https://developer.chrome.com/extensions/passwordsPrivate) | [chromex/ext/passwords_private.clj](chromex/ext/passwords_private.clj) |
-| [chrome.preferencesPrivate](https://developer.chrome.com/extensions/preferencesPrivate) | [chromex/ext/preferences_private.clj](chromex/ext/preferences_private.clj) |
 | [chrome.quickUnlockPrivate](https://developer.chrome.com/extensions/quickUnlockPrivate) | [chromex/ext/quick_unlock_private.clj](chromex/ext/quick_unlock_private.clj) |
 | [chrome.resourcesPrivate](https://developer.chrome.com/extensions/resourcesPrivate) | [chromex/ext/resources_private.clj](chromex/ext/resources_private.clj) |
 | [chrome.safeBrowsingPrivate](https://developer.chrome.com/extensions/safeBrowsingPrivate) | [chromex/ext/safe_browsing_private.clj](chromex/ext/safe_browsing_private.clj) |
@@ -48,7 +47,7 @@
 
 ### API stats
 
-Generated 40 namespaces containing 1 properties, 382 functions and 70 events:
+Generated 39 namespaces containing 0 properties, 381 functions and 70 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -70,7 +69,7 @@ Generated 40 namespaces containing 1 properties, 382 functions and 70 events:
     | chrome.enterprise.platformKeysPrivate |           0 |          2 |       0 |
     |    chrome.enterprise.reportingPrivate |           0 |          2 |       0 |
     |                chrome.feedbackPrivate |           0 |          6 |       1 |
-    |             chrome.fileManagerPrivate |           0 |         62 |      10 |
+    |             chrome.fileManagerPrivate |           0 |         61 |      10 |
     |             chrome.imageWriterPrivate |           0 |          5 |       5 |
     |             chrome.inputMethodPrivate |           0 |         15 |      10 |
     |        chrome.languageSettingsPrivate |           0 |         14 |       4 |
@@ -79,7 +78,6 @@ Generated 40 namespaces containing 1 properties, 382 functions and 70 events:
     |                    chrome.mojoPrivate |           0 |          1 |       0 |
     |              chrome.networkingPrivate |           0 |         22 |       5 |
     |               chrome.passwordsPrivate |           0 |         12 |       3 |
-    |             chrome.preferencesPrivate |           1 |          0 |       0 |
     |             chrome.quickUnlockPrivate |           0 |          7 |       1 |
     |               chrome.resourcesPrivate |           0 |          1 |       0 |
     |            chrome.safeBrowsingPrivate |           0 |          1 |       5 |
@@ -191,8 +189,8 @@ Generated 40 namespaces containing 1 properties, 382 functions and 70 events:
       get-preferences set-preferences search-drive search-drive-metadata search-files-by-hashes
       zip-selection get-drive-connection-state validate-path-name-length zoom request-access-token
       request-web-store-access-token get-download-url request-drive-share get-profiles open-inspector
-      open-settings-subpage compute-checksum is-uma-enabled set-entry-tag is-piex-loader-enabled
-      get-providers add-provided-file-system configure-volume get-custom-actions execute-custom-action
+      open-settings-subpage compute-checksum set-entry-tag is-piex-loader-enabled get-providers
+      add-provided-file-system configure-volume get-custom-actions execute-custom-action
       get-directory-size get-recent-files mount-crostini share-paths-with-crostini
       unshare-path-with-crostini get-crostini-shared-paths get-linux-package-info install-linux-package
       get-thumbnail detect-character-encoding tap-on-mount-completed tap-on-file-transfers-updated
@@ -249,9 +247,6 @@ Generated 40 namespaces containing 1 properties, 382 functions and 70 events:
       get-saved-password-list get-password-exception-list import-passwords export-passwords
       request-export-progress-status cancel-export-passwords tap-on-saved-passwords-list-changed
       tap-on-password-exceptions-list-changed tap-on-passwords-file-export-progress tap-all-events]]
-
-    [chromex.ext.preferences-private refer:[
-      get-easy-unlock-proximity-required tap-all-events]]
 
     [chromex.ext.quick-unlock-private refer:[
       get-auth-token set-lock-screen-enabled get-available-modes get-active-modes check-credential

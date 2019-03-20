@@ -29,7 +29,6 @@
 | [chrome.musicManagerPrivate](https://developer.chrome.com/extensions/musicManagerPrivate) | [chromex/app/music_manager_private.clj](chromex/app/music_manager_private.clj) |
 | [chrome.networkingPrivate](https://developer.chrome.com/extensions/networkingPrivate) | [chromex/app/networking_private.clj](chromex/app/networking_private.clj) |
 | [chrome.passwordsPrivate](https://developer.chrome.com/extensions/passwordsPrivate) | [chromex/app/passwords_private.clj](chromex/app/passwords_private.clj) |
-| [chrome.preferencesPrivate](https://developer.chrome.com/extensions/preferencesPrivate) | [chromex/app/preferences_private.clj](chromex/app/preferences_private.clj) |
 | [chrome.quickUnlockPrivate](https://developer.chrome.com/extensions/quickUnlockPrivate) | [chromex/app/quick_unlock_private.clj](chromex/app/quick_unlock_private.clj) |
 | [chrome.resourcesPrivate](https://developer.chrome.com/extensions/resourcesPrivate) | [chromex/app/resources_private.clj](chromex/app/resources_private.clj) |
 | [chrome.settingsPrivate](https://developer.chrome.com/extensions/settingsPrivate) | [chromex/app/settings_private.clj](chromex/app/settings_private.clj) |
@@ -45,7 +44,7 @@
 
 ### API stats
 
-Generated 37 namespaces containing 1 properties, 313 functions and 67 events:
+Generated 36 namespaces containing 0 properties, 312 functions and 67 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -63,7 +62,7 @@ Generated 37 namespaces containing 1 properties, 313 functions and 67 events:
     |        chrome.developerPrivate |           0 |         31 |       2 |
     |             chrome.echoPrivate |           0 |          5 |       0 |
     |         chrome.feedbackPrivate |           0 |          6 |       1 |
-    |      chrome.fileManagerPrivate |           0 |         62 |      10 |
+    |      chrome.fileManagerPrivate |           0 |         61 |      10 |
     |         chrome.identityPrivate |           0 |          0 |       1 |
     |      chrome.imageWriterPrivate |           0 |          5 |       5 |
     |      chrome.inputMethodPrivate |           0 |         15 |      10 |
@@ -75,7 +74,6 @@ Generated 37 namespaces containing 1 properties, 313 functions and 67 events:
     |     chrome.musicManagerPrivate |           0 |          1 |       0 |
     |       chrome.networkingPrivate |           0 |         22 |       5 |
     |        chrome.passwordsPrivate |           0 |         12 |       3 |
-    |      chrome.preferencesPrivate |           1 |          0 |       0 |
     |      chrome.quickUnlockPrivate |           0 |          7 |       1 |
     |        chrome.resourcesPrivate |           0 |          1 |       0 |
     |         chrome.settingsPrivate |           0 |          5 |       1 |
@@ -162,8 +160,8 @@ Generated 37 namespaces containing 1 properties, 313 functions and 67 events:
       get-preferences set-preferences search-drive search-drive-metadata search-files-by-hashes
       zip-selection get-drive-connection-state validate-path-name-length zoom request-access-token
       request-web-store-access-token get-download-url request-drive-share get-profiles open-inspector
-      open-settings-subpage compute-checksum is-uma-enabled set-entry-tag is-piex-loader-enabled
-      get-providers add-provided-file-system configure-volume get-custom-actions execute-custom-action
+      open-settings-subpage compute-checksum set-entry-tag is-piex-loader-enabled get-providers
+      add-provided-file-system configure-volume get-custom-actions execute-custom-action
       get-directory-size get-recent-files mount-crostini share-paths-with-crostini
       unshare-path-with-crostini get-crostini-shared-paths get-linux-package-info install-linux-package
       get-thumbnail detect-character-encoding tap-on-mount-completed tap-on-file-transfers-updated
@@ -230,9 +228,6 @@ Generated 37 namespaces containing 1 properties, 313 functions and 67 events:
       get-saved-password-list get-password-exception-list import-passwords export-passwords
       request-export-progress-status cancel-export-passwords tap-on-saved-passwords-list-changed
       tap-on-password-exceptions-list-changed tap-on-passwords-file-export-progress tap-all-events]]
-
-    [chromex.app.preferences-private refer:[
-      get-easy-unlock-proximity-required tap-all-events]]
 
     [chromex.app.quick-unlock-private refer:[
       get-auth-token set-lock-screen-enabled get-available-modes get-active-modes check-credential
