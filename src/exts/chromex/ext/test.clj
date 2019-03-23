@@ -1,5 +1,5 @@
 (ns chromex.ext.test
-  "  * available since Chrome 28
+  "  * available since Chrome 29
      * https://developer.chrome.com/extensions/test"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -316,7 +316,7 @@
 
 (def api-table
   {:namespace "chrome.test",
-   :since "28",
+   :since "29",
    :functions
    [{:id ::get-config,
      :name "getConfig",
@@ -365,7 +365,6 @@
     {:id ::assert-last-error, :name "assertLastError", :params [{:name "expected-error", :type "string"}]}
     {:id ::assert-throws,
      :name "assertThrows",
-     :since "29",
      :params
      [{:name "fn", :type "function"}
       {:name "self", :optional? true, :type "object"}
@@ -392,7 +391,7 @@
      :callback? true,
      :params [{:name "expected-error", :type "string"} {:name "func", :optional? true, :type :callback}]}
     {:id ::run-tests, :name "runTests", :params [{:name "tests", :type "[array-of-functions]"}]}
-    {:id ::get-api-features, :name "getApiFeatures", :since "29"}
+    {:id ::get-api-features, :name "getApiFeatures"}
     {:id ::get-api-definitions,
      :name "getApiDefinitions",
      :params [{:name "api-names", :optional? true, :type "[array-of-strings]"}]}

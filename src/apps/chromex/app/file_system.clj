@@ -5,7 +5,7 @@
    can use the API to read and write local documents. All failures are notified
    via chrome.runtime.lastError.
 
-     * available since Chrome 28
+     * available since Chrome 29
      * https://developer.chrome.com/apps/fileSystem"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -194,7 +194,7 @@
 
 (def api-table
   {:namespace "chrome.fileSystem",
-   :since "28",
+   :since "29",
    :functions
    [{:id ::get-display-path,
      :name "getDisplayPath",
@@ -227,23 +227,17 @@
          {:name "file-entries", :optional? true, :type "[array-of-FileEntrys]"}]}}]}
     {:id ::restore-entry,
      :name "restoreEntry",
-     :since "29",
      :callback? true,
      :params
      [{:name "id", :type "string"}
       {:name "callback", :type :callback, :callback {:params [{:name "entry", :type "Entry"}]}}]}
     {:id ::is-restorable,
      :name "isRestorable",
-     :since "29",
      :callback? true,
      :params
      [{:name "id", :type "string"}
       {:name "callback", :type :callback, :callback {:params [{:name "is-restorable", :type "boolean"}]}}]}
-    {:id ::retain-entry,
-     :name "retainEntry",
-     :since "29",
-     :return-type "string",
-     :params [{:name "entry", :type "Entry"}]}
+    {:id ::retain-entry, :name "retainEntry", :return-type "string", :params [{:name "entry", :type "Entry"}]}
     {:id ::request-file-system,
      :name "requestFileSystem",
      :since "44",

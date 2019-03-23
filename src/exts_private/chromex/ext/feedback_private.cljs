@@ -15,9 +15,6 @@
 (defn get-strings* [config flow]
   (gen-wrap :function ::get-strings config flow))
 
-(defn log-srt-prompt-result* [config result]
-  (gen-wrap :function ::log-srt-prompt-result config result))
-
 (defn read-log-source* [config params]
   (gen-wrap :function ::read-log-source config params))
 

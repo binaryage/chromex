@@ -67,12 +67,6 @@
    chromex.error/get-last-error."
   ([flow] (gen-call :function ::get-strings &form flow)))
 
-(defmacro log-srt-prompt-result
-  "Logs whether the user accepted a prompt to try the Software Removal Tool.
-
-     |result| - ?"
-  ([result] (gen-call :function ::log-srt-prompt-result &form result)))
-
 (defmacro read-log-source
   "Reads from a log source indicated by source. If incremental is false:    Returns the entire contents of the log file.
    Returns readerId value of 0 to callback.  If incremental is true, and no readerId is provided:    Returns the entire
@@ -149,10 +143,6 @@
      :params
      [{:name "flow", :type "feedbackPrivate.FeedbackFlow"}
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}
-    {:id ::log-srt-prompt-result,
-     :name "logSrtPromptResult",
-     :since "52",
-     :params [{:name "result", :type "unknown-type"}]}
     {:id ::read-log-source,
      :name "readLogSource",
      :since "61",

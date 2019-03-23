@@ -4,7 +4,7 @@
    this API is deprecated in favor of the 'sockets.udp', 'sockets.tcp' and
    'sockets.tcpServer' APIs.
 
-     * available since Chrome 28
+     * available since Chrome 29
      * https://developer.chrome.com/apps/socket"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -388,7 +388,7 @@
 
 (def api-table
   {:namespace "chrome.socket",
-   :since "28",
+   :since "29",
    :functions
    [{:id ::create,
      :name "create",

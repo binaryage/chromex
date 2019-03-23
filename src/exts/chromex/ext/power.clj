@@ -2,7 +2,7 @@
   "Use the chrome.power API to override the system's power
    management features.
 
-     * available since Chrome 28
+     * available since Chrome 29
      * https://developer.chrome.com/extensions/power"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -42,7 +42,7 @@
 
 (def api-table
   {:namespace "chrome.power",
-   :since "28",
+   :since "29",
    :functions
    [{:id ::request-keep-awake, :name "requestKeepAwake", :params [{:name "level", :type "power.Level"}]}
     {:id ::release-keep-awake, :name "releaseKeepAwake"}]})

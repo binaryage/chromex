@@ -2,7 +2,7 @@
   "Use the chrome.notifications API to create rich notifications
    using templates and show these notifications to users in the system tray.
 
-     * available since Chrome 28
+     * available since Chrome 29
      * https://developer.chrome.com/apps/notifications"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -173,7 +173,7 @@
 
 (def api-table
   {:namespace "chrome.notifications",
-   :since "28",
+   :since "29",
    :functions
    [{:id ::create,
      :name "create",
@@ -206,7 +206,6 @@
        :callback {:params [{:name "was-cleared", :type "boolean"}]}}]}
     {:id ::get-all,
      :name "getAll",
-     :since "29",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "notifications", :type "object"}]}}]}
     {:id ::get-permission-level,

@@ -7,7 +7,7 @@
    'runtime.lastError' and executing the function's regular callback. The
    callback's regular parameters will be undefined in this case.
 
-     * available since Chrome 28
+     * available since Chrome 29
      * https://developer.chrome.com/apps/usb"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -363,7 +363,7 @@
 
 (def api-table
   {:namespace "chrome.usb",
-   :since "28",
+   :since "29",
    :functions
    [{:id ::get-devices,
      :name "getDevices",
@@ -434,7 +434,6 @@
       {:name "callback", :type :callback, :callback {:params [{:name "config", :type "usb.ConfigDescriptor"}]}}]}
     {:id ::list-interfaces,
      :name "listInterfaces",
-     :since "29",
      :callback? true,
      :params
      [{:name "handle", :type "usb.ConnectionHandle"}
