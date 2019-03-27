@@ -644,12 +644,12 @@
      :params [{:name "enabled", :type "boolean"} {:name "callback", :type :callback}]}
     {:id ::export-crostini,
      :name "exportCrostini",
-     :since "master",
+     :since "75",
      :callback? true,
      :params [{:name "path", :type "string"} {:name "callback", :type :callback}]}
     {:id ::import-crostini,
      :name "importCrostini",
-     :since "master",
+     :since "75",
      :callback? true,
      :params [{:name "path", :type "string"} {:name "callback", :type :callback}]}
     {:id ::take-screenshot,
@@ -713,14 +713,14 @@
       {:name "callback", :type :callback, :callback {:params [{:name "enabled", :type "boolean"}]}}]}
     {:id ::get-shelf-auto-hide-behavior,
      :name "getShelfAutoHideBehavior",
-     :since "master",
+     :since "75",
      :callback? true,
      :params
      [{:name "display-id", :type "string"}
       {:name "callback", :type :callback, :callback {:params [{:name "behavior", :type "string"}]}}]}
     {:id ::set-shelf-auto-hide-behavior,
      :name "setShelfAutoHideBehavior",
-     :since "master",
+     :since "75",
      :callback? true,
      :params
      [{:name "display-id", :type "string"} {:name "behavior", :type "string"} {:name "callback", :type :callback}]}]})
