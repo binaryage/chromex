@@ -9,6 +9,9 @@
 (defn max-number-of-rules* [config]
   (gen-wrap :property ::max-number-of-rules config))
 
+(defn max-number-of-dynamic-rules* [config]
+  (gen-wrap :property ::max-number-of-dynamic-rules config))
+
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn add-allowed-pages* [config page-patterns]

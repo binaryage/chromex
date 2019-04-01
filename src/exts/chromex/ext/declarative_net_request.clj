@@ -27,6 +27,12 @@
    https://developer.chrome.com/extensions/declarativeNetRequest#property-MAX_NUMBER_OF_RULES."
   ([] (gen-call :property ::max-number-of-rules &form)))
 
+(defmacro get-max-number-of-dynamic-rules
+  "The maximum number of dynamic rules that an extension can add.
+
+   https://developer.chrome.com/extensions/declarativeNetRequest#property-MAX_NUMBER_OF_DYNAMIC_RULES."
+  ([] (gen-call :property ::max-number-of-dynamic-rules &form)))
+
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro add-allowed-pages
@@ -90,7 +96,11 @@
    :since "74",
    :properties
    [{:id ::max-number-of-allowed-pages, :name "MAX_NUMBER_OF_ALLOWED_PAGES", :return-type "unknown-type"}
-    {:id ::max-number-of-rules, :name "MAX_NUMBER_OF_RULES", :return-type "unknown-type"}],
+    {:id ::max-number-of-rules, :name "MAX_NUMBER_OF_RULES", :return-type "unknown-type"}
+    {:id ::max-number-of-dynamic-rules,
+     :name "MAX_NUMBER_OF_DYNAMIC_RULES",
+     :since "master",
+     :return-type "unknown-type"}],
    :functions
    [{:id ::add-allowed-pages,
      :name "addAllowedPages",
