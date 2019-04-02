@@ -1,5 +1,6 @@
 (ns chromex.ext.top-sites
-  "Use the chrome.topSites API to access the top sites that are displayed on the new tab page.
+  "Use the chrome.topSites API to access the top sites (i.e. most visited) that are displayed on the new tab page. These do
+   not include shortcuts customized by the user.
 
      * available since Chrome 29
      * https://developer.chrome.com/extensions/topSites"
