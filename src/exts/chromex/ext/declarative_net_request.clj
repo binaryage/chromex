@@ -97,10 +97,7 @@
    :properties
    [{:id ::max-number-of-allowed-pages, :name "MAX_NUMBER_OF_ALLOWED_PAGES", :return-type "unknown-type"}
     {:id ::max-number-of-rules, :name "MAX_NUMBER_OF_RULES", :return-type "unknown-type"}
-    {:id ::max-number-of-dynamic-rules,
-     :name "MAX_NUMBER_OF_DYNAMIC_RULES",
-     :since "master",
-     :return-type "unknown-type"}],
+    {:id ::max-number-of-dynamic-rules, :name "MAX_NUMBER_OF_DYNAMIC_RULES", :since "75", :return-type "unknown-type"}],
    :functions
    [{:id ::add-allowed-pages,
      :name "addAllowedPages",

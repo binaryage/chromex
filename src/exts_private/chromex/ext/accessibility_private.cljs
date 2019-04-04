@@ -48,6 +48,9 @@
 (defn toggle-dictation* [config]
   (gen-wrap :function ::toggle-dictation config))
 
+(defn set-virtual-keyboard-visible* [config is-visible]
+  (gen-wrap :function ::set-virtual-keyboard-visible config is-visible))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-introduce-chrome-vox* [config channel & args]

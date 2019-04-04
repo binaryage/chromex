@@ -113,6 +113,12 @@
   "Toggles dictation between active and inactive states."
   ([] (gen-call :function ::toggle-dictation &form)))
 
+(defmacro set-virtual-keyboard-visible
+  "Shows or hides the virtual keyboard.
+
+     |is-visible| - ?"
+  ([is-visible] (gen-call :function ::set-virtual-keyboard-visible &form is-visible)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -243,7 +249,11 @@
      :name "onSelectToSpeakStateChanged",
      :since "68",
      :params [{:name "state", :type "accessibilityPrivate.SelectToSpeakState"}]}
-    {:id ::toggle-dictation, :name "toggleDictation", :since "71"}],
+    {:id ::toggle-dictation, :name "toggleDictation", :since "71"}
+    {:id ::set-virtual-keyboard-visible,
+     :name "setVirtualKeyboardVisible",
+     :since "master",
+     :params [{:name "is-visible", :type "boolean"}]}],
    :events
    [{:id ::on-introduce-chrome-vox, :name "onIntroduceChromeVox", :since "42"}
     {:id ::on-accessibility-gesture,

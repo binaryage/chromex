@@ -44,12 +44,12 @@
 
 ### API stats
 
-Generated 36 namespaces containing 0 properties, 311 functions and 67 events:
+Generated 36 namespaces containing 0 properties, 312 functions and 67 events:
 
 
     |                     :namespace | :properties | :functions | :events |
     |--------------------------------+-------------+------------+---------|
-    |    chrome.accessibilityPrivate |           0 |         15 |       6 |
+    |    chrome.accessibilityPrivate |           0 |         16 |       6 |
     |      chrome.activityLogPrivate |           0 |          5 |       1 |
     |         chrome.autofillPrivate |           0 |         11 |       2 |
     |        chrome.bluetoothPrivate |           0 |          7 |       1 |
@@ -96,9 +96,10 @@ Generated 36 namespaces containing 0 properties, 311 functions and 67 events:
       set-keyboard-listener darken-screen set-switch-access-keys set-switch-access-menu-state
       forward-key-events-to-switch-access set-native-chrome-vox-arc-support-for-current-app
       send-synthetic-key-event enable-chrome-vox-mouse-events send-synthetic-mouse-event
-      on-select-to-speak-state-changed toggle-dictation tap-on-introduce-chrome-vox
-      tap-on-accessibility-gesture tap-on-two-finger-touch-start tap-on-two-finger-touch-stop
-      tap-on-select-to-speak-state-change-requested tap-on-announce-for-accessibility tap-all-events]]
+      on-select-to-speak-state-changed toggle-dictation set-virtual-keyboard-visible
+      tap-on-introduce-chrome-vox tap-on-accessibility-gesture tap-on-two-finger-touch-start
+      tap-on-two-finger-touch-stop tap-on-select-to-speak-state-change-requested
+      tap-on-announce-for-accessibility tap-all-events]]
 
     [chromex.app.activity-log-private refer:[
       get-extension-activities delete-activities delete-activities-by-extension delete-database
