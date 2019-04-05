@@ -416,14 +416,16 @@
     {:id ::close-device,
      :name "closeDevice",
      :callback? true,
-     :params [{:name "handle", :type "usb.ConnectionHandle"} {:name "callback", :optional? true, :type :callback}]}
+     :params
+     [{:name "handle", :since "31", :type "usb.ConnectionHandle"}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::set-configuration,
      :name "setConfiguration",
      :since "42",
      :callback? true,
      :params
-     [{:name "handle", :type "usb.ConnectionHandle"}
-      {:name "configuration-value", :type "integer"}
+     [{:name "handle", :since "41", :type "usb.ConnectionHandle"}
+      {:name "configuration-value", :since "41", :type "integer"}
       {:name "callback", :type :callback}]}
     {:id ::get-configuration,
      :name "getConfiguration",
@@ -436,7 +438,7 @@
      :name "listInterfaces",
      :callback? true,
      :params
-     [{:name "handle", :type "usb.ConnectionHandle"}
+     [{:name "handle", :since "31", :type "usb.ConnectionHandle"}
       {:name "callback",
        :type :callback,
        :callback {:params [{:name "descriptors", :type "[array-of-usb.InterfaceDescriptors]"}]}}]}
@@ -444,21 +446,21 @@
      :name "claimInterface",
      :callback? true,
      :params
-     [{:name "handle", :type "usb.ConnectionHandle"}
+     [{:name "handle", :since "31", :type "usb.ConnectionHandle"}
       {:name "interface-number", :type "integer"}
       {:name "callback", :type :callback}]}
     {:id ::release-interface,
      :name "releaseInterface",
      :callback? true,
      :params
-     [{:name "handle", :type "usb.ConnectionHandle"}
+     [{:name "handle", :since "31", :type "usb.ConnectionHandle"}
       {:name "interface-number", :type "integer"}
       {:name "callback", :type :callback}]}
     {:id ::set-interface-alternate-setting,
      :name "setInterfaceAlternateSetting",
      :callback? true,
      :params
-     [{:name "handle", :type "usb.ConnectionHandle"}
+     [{:name "handle", :since "31", :type "usb.ConnectionHandle"}
       {:name "interface-number", :type "integer"}
       {:name "alternate-setting", :type "integer"}
       {:name "callback", :type :callback}]}
@@ -466,39 +468,45 @@
      :name "controlTransfer",
      :callback? true,
      :params
-     [{:name "handle", :type "usb.ConnectionHandle"}
+     [{:name "handle", :since "31", :type "usb.ConnectionHandle"}
       {:name "transfer-info", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "info", :type "usb.TransferResultInfo"}]}}]}
     {:id ::bulk-transfer,
      :name "bulkTransfer",
      :callback? true,
      :params
-     [{:name "handle", :type "usb.ConnectionHandle"}
+     [{:name "handle", :since "31", :type "usb.ConnectionHandle"}
       {:name "transfer-info", :type "usb.GenericTransferInfo"}
       {:name "callback", :type :callback, :callback {:params [{:name "info", :type "usb.TransferResultInfo"}]}}]}
     {:id ::interrupt-transfer,
      :name "interruptTransfer",
      :callback? true,
      :params
-     [{:name "handle", :type "usb.ConnectionHandle"}
+     [{:name "handle", :since "31", :type "usb.ConnectionHandle"}
       {:name "transfer-info", :type "usb.GenericTransferInfo"}
       {:name "callback", :type :callback, :callback {:params [{:name "info", :type "usb.TransferResultInfo"}]}}]}
     {:id ::isochronous-transfer,
      :name "isochronousTransfer",
      :callback? true,
      :params
-     [{:name "handle", :type "usb.ConnectionHandle"}
+     [{:name "handle", :since "31", :type "usb.ConnectionHandle"}
       {:name "transfer-info", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "info", :type "usb.TransferResultInfo"}]}}]}
     {:id ::reset-device,
      :name "resetDevice",
      :callback? true,
      :params
-     [{:name "handle", :type "usb.ConnectionHandle"}
+     [{:name "handle", :since "31", :type "usb.ConnectionHandle"}
       {:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}],
    :events
-   [{:id ::on-device-added, :name "onDeviceAdded", :since "42", :params [{:name "device", :type "usb.Device"}]}
-    {:id ::on-device-removed, :name "onDeviceRemoved", :since "42", :params [{:name "device", :type "usb.Device"}]}]})
+   [{:id ::on-device-added,
+     :name "onDeviceAdded",
+     :since "42",
+     :params [{:name "device", :since "41", :type "usb.Device"}]}
+    {:id ::on-device-removed,
+     :name "onDeviceRemoved",
+     :since "42",
+     :params [{:name "device", :since "41", :type "usb.Device"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

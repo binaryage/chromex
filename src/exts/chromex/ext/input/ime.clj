@@ -507,7 +507,7 @@
    :events
    [{:id ::on-activate,
      :name "onActivate",
-     :params [{:name "engine-id", :type "string"} {:name "screen", :type "input.ime.ScreenType"}]}
+     :params [{:name "engine-id", :type "string"} {:name "screen", :since "38", :type "input.ime.ScreenType"}]}
     {:id ::on-deactivated, :name "onDeactivated", :params [{:name "engine-id", :type "string"}]}
     {:id ::on-focus, :name "onFocus", :params [{:name "context", :type "input.ime.InputContext"}]}
     {:id ::on-blur, :name "onBlur", :params [{:name "context-id", :type "integer"}]}

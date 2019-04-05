@@ -689,7 +689,7 @@
      :params
      [{:name "tab-id", :type "integer"}
       {:name "message", :type "any"}
-      {:name "options", :optional? true, :type "object"}
+      {:name "options", :optional? true, :since "41", :type "object"}
       {:name "response-callback",
        :optional? true,
        :type :callback,
@@ -807,30 +807,30 @@
      :since "42",
      :callback? true,
      :params
-     [{:name "tab-id", :optional? true, :type "integer"}
-      {:name "zoom-factor", :type "double"}
+     [{:name "tab-id", :optional? true, :since "38", :type "integer"}
+      {:name "zoom-factor", :since "38", :type "double"}
       {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-zoom,
      :name "getZoom",
      :since "42",
      :callback? true,
      :params
-     [{:name "tab-id", :optional? true, :type "integer"}
+     [{:name "tab-id", :optional? true, :since "38", :type "integer"}
       {:name "callback", :type :callback, :callback {:params [{:name "zoom-factor", :type "double"}]}}]}
     {:id ::set-zoom-settings,
      :name "setZoomSettings",
      :since "42",
      :callback? true,
      :params
-     [{:name "tab-id", :optional? true, :type "integer"}
-      {:name "zoom-settings", :type "tabs.ZoomSettings"}
+     [{:name "tab-id", :optional? true, :since "38", :type "integer"}
+      {:name "zoom-settings", :since "38", :type "tabs.ZoomSettings"}
       {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-zoom-settings,
      :name "getZoomSettings",
      :since "42",
      :callback? true,
      :params
-     [{:name "tab-id", :optional? true, :type "integer"}
+     [{:name "tab-id", :optional? true, :since "38", :type "integer"}
       {:name "callback", :type :callback, :callback {:params [{:name "zoom-settings", :type "tabs.ZoomSettings"}]}}]}
     {:id ::discard,
      :name "discard",

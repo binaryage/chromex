@@ -121,7 +121,7 @@
      :callback? true,
      :params
      [{:name "expression", :type "string"}
-      {:name "options", :optional? true, :type "object"}
+      {:name "options", :optional? true, :since "38", :type "object"}
       {:name "callback",
        :optional? true,
        :type :callback,

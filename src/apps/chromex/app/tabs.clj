@@ -689,7 +689,7 @@
      :params
      [{:name "tab-id", :type "integer"}
       {:name "message", :type "any"}
-      {:name "options", :optional? true, :type "object"}
+      {:name "options", :optional? true, :since "41", :type "object"}
       {:name "response-callback",
        :optional? true,
        :type :callback,

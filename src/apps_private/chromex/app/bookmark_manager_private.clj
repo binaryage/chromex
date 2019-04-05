@@ -183,8 +183,8 @@
      :name "startDrag",
      :params
      [{:name "id-list", :type "[array-of-strings]"}
-      {:name "drag-node-index", :type "integer"}
-      {:name "is-from-touch", :type "boolean"}]}
+      {:name "drag-node-index", :since "71", :type "integer"}
+      {:name "is-from-touch", :since "34", :type "boolean"}]}
     {:id ::drop,
      :name "drop",
      :callback? true,

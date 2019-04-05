@@ -92,7 +92,10 @@
        :callback {:params [{:name "result", :type "brailleDisplayPrivate.DisplayState"}]}}]}
     {:id ::write-dots,
      :name "writeDots",
-     :params [{:name "cells", :type "ArrayBuffer"} {:name "columns", :type "integer"} {:name "rows", :type "integer"}]}
+     :params
+     [{:name "cells", :type "ArrayBuffer"}
+      {:name "columns", :since "56", :type "integer"}
+      {:name "rows", :since "56", :type "integer"}]}
     {:id ::update-bluetooth-braille-display-address,
      :name "updateBluetoothBrailleDisplayAddress",
      :since "72",

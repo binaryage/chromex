@@ -220,7 +220,7 @@
      :name "getInfo",
      :callback? true,
      :params
-     [{:name "flags", :optional? true, :type "object"}
+     [{:name "flags", :optional? true, :since "59", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "display-info", :type "[array-of-objects]"}]}}]}
     {:id ::get-display-layout,
      :name "getDisplayLayout",

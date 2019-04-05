@@ -200,19 +200,19 @@
      :name "getDisplayPath",
      :callback? true,
      :params
-     [{:name "entry", :type "Entry"}
+     [{:name "entry", :since "31", :type "Entry"}
       {:name "callback", :type :callback, :callback {:params [{:name "display-path", :type "string"}]}}]}
     {:id ::get-writable-entry,
      :name "getWritableEntry",
      :callback? true,
      :params
-     [{:name "entry", :type "Entry"}
+     [{:name "entry", :since "31", :type "Entry"}
       {:name "callback", :type :callback, :callback {:params [{:name "entry", :type "Entry"}]}}]}
     {:id ::is-writable-entry,
      :name "isWritableEntry",
      :callback? true,
      :params
-     [{:name "entry", :type "Entry"}
+     [{:name "entry", :since "31", :type "Entry"}
       {:name "callback", :type :callback, :callback {:params [{:name "is-writable", :type "boolean"}]}}]}
     {:id ::choose-entry,
      :name "chooseEntry",
@@ -237,7 +237,10 @@
      :params
      [{:name "id", :type "string"}
       {:name "callback", :type :callback, :callback {:params [{:name "is-restorable", :type "boolean"}]}}]}
-    {:id ::retain-entry, :name "retainEntry", :return-type "string", :params [{:name "entry", :type "Entry"}]}
+    {:id ::retain-entry,
+     :name "retainEntry",
+     :return-type "string",
+     :params [{:name "entry", :since "31", :type "Entry"}]}
     {:id ::request-file-system,
      :name "requestFileSystem",
      :since "44",

@@ -345,7 +345,7 @@
      :callback? true,
      :params
      [{:name "connection-id", :type "integer"}
-      {:name "signals", :type "object"}
+      {:name "signals", :since "33", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
     {:id ::set-break,
      :name "setBreak",

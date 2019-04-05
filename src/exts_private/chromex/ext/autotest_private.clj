@@ -554,7 +554,7 @@
      [{:name "callback", :type :callback, :callback {:params [{:name "notifications", :type "[array-of-objects]"}]}}]}
     {:id ::get-arc-state,
      :name "getArcState",
-     :since "74",
+     :since "future",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}
     {:id ::get-play-store-state,
@@ -648,12 +648,12 @@
      :params [{:name "enabled", :type "boolean"} {:name "callback", :type :callback}]}
     {:id ::export-crostini,
      :name "exportCrostini",
-     :since "75",
+     :since "future",
      :callback? true,
      :params [{:name "path", :type "string"} {:name "callback", :type :callback}]}
     {:id ::import-crostini,
      :name "importCrostini",
-     :since "75",
+     :since "future",
      :callback? true,
      :params [{:name "path", :type "string"} {:name "callback", :type :callback}]}
     {:id ::take-screenshot,
@@ -682,7 +682,7 @@
       {:name "callback", :type :callback, :callback {:params [{:name "response", :type "object"}]}}]}
     {:id ::set-whitelisted-pref,
      :name "setWhitelistedPref",
-     :since "74",
+     :since "future",
      :callback? true,
      :params [{:name "pref-name", :type "string"} {:name "value", :type "any"} {:name "callback", :type :callback}]}
     {:id ::set-crostini-app-scaled,
@@ -705,26 +705,26 @@
      :params [{:name "callback", :type :callback, :callback {:params [{:name "scale-factor", :type "double"}]}}]}
     {:id ::is-tablet-mode-enabled,
      :name "isTabletModeEnabled",
-     :since "74",
+     :since "future",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "enabled", :type "boolean"}]}}]}
     {:id ::set-tablet-mode-enabled,
      :name "setTabletModeEnabled",
-     :since "74",
+     :since "future",
      :callback? true,
      :params
      [{:name "enabled", :type "boolean"}
       {:name "callback", :type :callback, :callback {:params [{:name "enabled", :type "boolean"}]}}]}
     {:id ::get-shelf-auto-hide-behavior,
      :name "getShelfAutoHideBehavior",
-     :since "75",
+     :since "future",
      :callback? true,
      :params
      [{:name "display-id", :type "string"}
       {:name "callback", :type :callback, :callback {:params [{:name "behavior", :type "string"}]}}]}
     {:id ::set-shelf-auto-hide-behavior,
      :name "setShelfAutoHideBehavior",
-     :since "75",
+     :since "future",
      :callback? true,
      :params
      [{:name "display-id", :type "string"} {:name "behavior", :type "string"} {:name "callback", :type :callback}]}

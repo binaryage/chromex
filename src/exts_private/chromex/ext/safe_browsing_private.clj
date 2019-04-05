@@ -98,7 +98,7 @@
    :functions
    [{:id ::get-referrer-chain,
      :name "getReferrerChain",
-     :since "74",
+     :since "future",
      :callback? true,
      :params
      [{:name "tab-id", :type "integer"}

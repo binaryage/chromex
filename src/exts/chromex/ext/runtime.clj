@@ -428,7 +428,7 @@
      :name "setUninstallURL",
      :since "41",
      :callback? true,
-     :params [{:name "url", :type "string"} {:name "callback", :optional? true, :type :callback}]}
+     :params [{:name "url", :since "34", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::reload, :name "reload"}
     {:id ::request-update-check,
      :name "requestUpdateCheck",
@@ -461,7 +461,7 @@
      :params
      [{:name "extension-id", :optional? true, :type "string"}
       {:name "message", :type "any"}
-      {:name "options", :optional? true, :type "object"}
+      {:name "options", :optional? true, :since "32", :type "object"}
       {:name "response-callback",
        :optional? true,
        :type :callback,
@@ -500,7 +500,10 @@
      :deprecated "Please use 'runtime.onRestartRequired'."}
     {:id ::on-connect, :name "onConnect", :params [{:name "port", :type "runtime.Port"}]}
     {:id ::on-connect-external, :name "onConnectExternal", :params [{:name "port", :type "runtime.Port"}]}
-    {:id ::on-connect-native, :name "onConnectNative", :since "74", :params [{:name "port", :type "runtime.Port"}]}
+    {:id ::on-connect-native,
+     :name "onConnectNative",
+     :since "74",
+     :params [{:name "port", :since "future", :type "runtime.Port"}]}
     {:id ::on-message,
      :name "onMessage",
      :params

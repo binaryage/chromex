@@ -454,7 +454,7 @@
      :deprecated "Use getNetworks.",
      :callback? true,
      :params
-     [{:name "network-type", :type "networkingPrivate.NetworkType"}
+     [{:name "network-type", :since "37", :type "networkingPrivate.NetworkType"}
       {:name "callback",
        :type :callback,
        :callback {:params [{:name "result", :type "[array-of-networkingPrivate.NetworkStatePropertiess]"}]}}]}
@@ -482,7 +482,7 @@
      :params [{:name "network-type", :type "networkingPrivate.NetworkType"}]}
     {:id ::request-network-scan,
      :name "requestNetworkScan",
-     :params [{:name "network-type", :optional? true, :type "networkingPrivate.NetworkType"}]}
+     :params [{:name "network-type", :optional? true, :since "63", :type "networkingPrivate.NetworkType"}]}
     {:id ::start-connect,
      :name "startConnect",
      :callback? true,
@@ -504,7 +504,7 @@
      :since "36",
      :callback? true,
      :params
-     [{:name "network-guid", :type "string"}
+     [{:name "network-guid", :since "37", :type "string"}
       {:name "callback",
        :type :callback,
        :callback {:params [{:name "result", :type "networkingPrivate.CaptivePortalStatus"}]}}]}
@@ -552,7 +552,9 @@
     {:id ::on-portal-detection-completed,
      :name "onPortalDetectionCompleted",
      :since "36",
-     :params [{:name "network-guid", :type "string"} {:name "status", :type "networkingPrivate.CaptivePortalStatus"}]}
+     :params
+     [{:name "network-guid", :since "37", :type "string"}
+      {:name "status", :type "networkingPrivate.CaptivePortalStatus"}]}
     {:id ::on-certificate-lists-changed, :name "onCertificateListsChanged", :since "60"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

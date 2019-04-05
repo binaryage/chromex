@@ -339,7 +339,7 @@
      :name "createAppShortcut",
      :since "37",
      :callback? true,
-     :params [{:name "id", :type "string"} {:name "callback", :optional? true, :type :callback}]}
+     :params [{:name "id", :since "36", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::set-launch-type,
      :name "setLaunchType",
      :since "37",

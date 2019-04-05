@@ -194,7 +194,7 @@
      :callback? true,
      :params
      [{:name "challenge", :type "ArrayBuffer"}
-      {:name "register-key", :optional? true, :type "boolean"}
+      {:name "register-key", :optional? true, :since "59", :type "boolean"}
       {:name "callback", :type :callback, :callback {:params [{:name "response", :type "ArrayBuffer"}]}}]}
     {:id ::challenge-user-key,
      :name "challengeUserKey",

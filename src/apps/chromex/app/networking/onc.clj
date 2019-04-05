@@ -379,7 +379,7 @@
      :params [{:name "network-type", :type "networking.onc.NetworkType"}]}
     {:id ::request-network-scan,
      :name "requestNetworkScan",
-     :params [{:name "network-type", :optional? true, :type "networking.onc.NetworkType"}]}
+     :params [{:name "network-type", :optional? true, :since "63", :type "networking.onc.NetworkType"}]}
     {:id ::start-connect,
      :name "startConnect",
      :callback? true,

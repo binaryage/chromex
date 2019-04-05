@@ -71,9 +71,9 @@
      :since "75",
      :callback? true,
      :params
-     [{:name "image-data", :type "ArrayBuffer"}
-      {:name "type", :type "unknown-type"}
-      {:name "additional-items", :optional? true, :type "[array-of-objects]"}
+     [{:name "image-data", :since "future", :type "ArrayBuffer"}
+      {:name "type", :since "future", :type "unknown-type"}
+      {:name "additional-items", :optional? true, :since "future", :type "[array-of-objects]"}
       {:name "callback", :optional? true, :type :callback}]}],
    :events [{:id ::on-clipboard-data-changed, :name "onClipboardDataChanged", :since "75"}]})
 

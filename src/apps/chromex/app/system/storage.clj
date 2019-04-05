@@ -122,7 +122,7 @@
      :since "75",
      :callback? true,
      :params
-     [{:name "id", :type "string"}
+     [{:name "id", :since "32", :type "string"}
       {:name "callback", :type :callback, :callback {:params [{:name "info", :type "object"}]}}]}],
    :events
    [{:id ::on-attached, :name "onAttached", :params [{:name "info", :type "system.storage.StorageUnitInfo"}]}

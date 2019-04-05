@@ -45,10 +45,10 @@
      :name "onWallpaperChangedBy3rdParty",
      :since "43",
      :params
-     [{:name "wallpaper", :type "binary"}
-      {:name "thumbnail", :type "binary"}
-      {:name "layout", :type "wallpaper.WallpaperLayout"}
-      {:name "app-name", :type "string"}]}]})
+     [{:name "wallpaper", :since "49", :type "binary"}
+      {:name "thumbnail", :since "49", :type "binary"}
+      {:name "layout", :since "49", :type "wallpaper.WallpaperLayout"}
+      {:name "app-name", :since "50", :type "string"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

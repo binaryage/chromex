@@ -117,38 +117,40 @@
      :callback? true,
      :params
      [{:name "process-name", :type "string"}
-      {:name "args", :optional? true, :type "[array-of-strings]"}
+      {:name "args", :optional? true, :since "66", :type "[array-of-strings]"}
       {:name "callback", :type :callback, :callback {:params [{:name "id", :type "string"}]}}]}
     {:id ::close-terminal-process,
      :name "closeTerminalProcess",
      :callback? true,
      :params
-     [{:name "id", :type "string"}
+     [{:name "id", :since "future", :type "string"}
       {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::send-input,
      :name "sendInput",
      :callback? true,
      :params
-     [{:name "id", :type "string"}
+     [{:name "id", :since "future", :type "string"}
       {:name "input", :type "string"}
       {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::on-terminal-resize,
      :name "onTerminalResize",
      :callback? true,
      :params
-     [{:name "id", :type "string"}
+     [{:name "id", :since "future", :type "string"}
       {:name "width", :type "integer"}
       {:name "height", :type "integer"}
       {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::ack-output,
      :name "ackOutput",
      :since "49",
-     :params [{:name "tab-id", :type "integer"} {:name "id", :type "string"}]}],
+     :params [{:name "tab-id", :type "integer"} {:name "id", :since "future", :type "string"}]}],
    :events
    [{:id ::on-process-output,
      :name "onProcessOutput",
      :params
-     [{:name "id", :type "string"} {:name "type", :type "terminalPrivate.OutputType"} {:name "text", :type "string"}]}]})
+     [{:name "id", :since "future", :type "string"}
+      {:name "type", :type "terminalPrivate.OutputType"}
+      {:name "text", :type "string"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

@@ -188,7 +188,8 @@
    [{:id ::on-sign-in-changed,
      :name "onSignInChanged",
      :since "33",
-     :params [{:name "account", :type "identity.AccountInfo"} {:name "signed-in", :type "boolean"}]}]})
+     :params
+     [{:name "account", :since "32", :type "identity.AccountInfo"} {:name "signed-in", :since "32", :type "boolean"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

@@ -396,7 +396,9 @@
     {:id ::on-composition-bounds-changed,
      :name "onCompositionBoundsChanged",
      :since "40",
-     :params [{:name "first-bounds", :type "object"} {:name "bounds-list", :type "[array-of-objects]"}]}
+     :params
+     [{:name "first-bounds", :since "45", :type "object"}
+      {:name "bounds-list", :since "45", :type "[array-of-objects]"}]}
     {:id ::on-dictionary-loaded, :name "onDictionaryLoaded", :since "43"}
     {:id ::on-dictionary-changed,
      :name "onDictionaryChanged",

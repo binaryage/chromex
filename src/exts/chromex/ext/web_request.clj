@@ -193,7 +193,7 @@
    [{:id ::on-before-request, :name "onBeforeRequest", :params [{:name "details", :type "object"}]}
     {:id ::on-before-send-headers, :name "onBeforeSendHeaders", :params [{:name "details", :type "object"}]}
     {:id ::on-send-headers, :name "onSendHeaders", :params [{:name "details", :type "object"}]}
-    {:id ::on-headers-received, :name "onHeadersReceived", :params [{:name "details", :type "object"}]}
+    {:id ::on-headers-received, :name "onHeadersReceived", :params [{:name "details", :since "31", :type "object"}]}
     {:id ::on-auth-required,
      :name "onAuthRequired",
      :params [{:name "details", :type "object"} {:name "async-callback", :optional? true, :type :callback}]}

@@ -208,7 +208,7 @@
      :since "75",
      :callback? true,
      :params
-     [{:name "options", :optional? true, :type "object"}
+     [{:name "options", :optional? true, :since "45", :type "object"}
       {:name "callback",
        :type :callback,
        :callback {:params [{:name "devices", :type "[array-of-hid.HidDeviceInfos]"}]}}]}

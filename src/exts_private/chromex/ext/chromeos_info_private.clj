@@ -57,7 +57,8 @@
      :name "set",
      :since "32",
      :params
-     [{:name "property-name", :type "chromeosInfoPrivate.PropertyName"} {:name "property-value", :type "any"}]}]})
+     [{:name "property-name", :type "chromeosInfoPrivate.PropertyName"}
+      {:name "property-value", :since "34", :type "any"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

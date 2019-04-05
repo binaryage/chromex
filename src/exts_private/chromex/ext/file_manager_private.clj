@@ -909,28 +909,28 @@
      :callback? true,
      :params
      [{:name "task-id", :type "string"}
-      {:name "entries", :type "[array-of-objects]"}
+      {:name "entries", :since "46", :type "[array-of-objects]"}
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "unknown-type"}]}}]}
     {:id ::set-default-task,
      :name "setDefaultTask",
      :callback? true,
      :params
      [{:name "task-id", :type "string"}
-      {:name "entries", :type "[array-of-objects]"}
+      {:name "entries", :since "46", :type "[array-of-objects]"}
       {:name "mime-types", :type "[array-of-strings]"}
       {:name "callback", :type :callback}]}
     {:id ::get-file-tasks,
      :name "getFileTasks",
      :callback? true,
      :params
-     [{:name "entries", :type "[array-of-objects]"}
+     [{:name "entries", :since "46", :type "[array-of-objects]"}
       {:name "callback", :type :callback, :callback {:params [{:name "tasks", :type "[array-of-objects]"}]}}]}
     {:id ::get-mime-type,
      :name "getMimeType",
      :since "41",
      :callback? true,
      :params
-     [{:name "entry", :type "object"}
+     [{:name "entry", :since "46", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "string"}]}}]}
     {:id ::get-strings,
      :name "getStrings",
@@ -940,13 +940,13 @@
      :name "addFileWatch",
      :callback? true,
      :params
-     [{:name "entry", :type "object"}
+     [{:name "entry", :since "45", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "success", :optional? true, :type "boolean"}]}}]}
     {:id ::remove-file-watch,
      :name "removeFileWatch",
      :callback? true,
      :params
-     [{:name "entry", :type "object"}
+     [{:name "entry", :since "45", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "success", :optional? true, :type "boolean"}]}}]}
     {:id ::enable-external-file-scheme, :name "enableExternalFileScheme", :since "43"}
     {:id ::grant-access,
@@ -974,15 +974,16 @@
      :name "getEntryProperties",
      :callback? true,
      :params
-     [{:name "entries", :type "[array-of-Entrys]"}
-      {:name "names", :type "[array-of-unknown-types]"}
+     [{:name "entries", :since "45", :type "[array-of-Entrys]"}
+      {:name "names", :since "42", :type "[array-of-unknown-types]"}
       {:name "callback",
        :type :callback,
        :callback {:params [{:name "entry-properties", :type "[array-of-objects]"}]}}]}
     {:id ::pin-drive-file,
      :name "pinDriveFile",
      :callback? true,
-     :params [{:name "entry", :type "object"} {:name "pin", :type "boolean"} {:name "callback", :type :callback}]}
+     :params
+     [{:name "entry", :since "46", :type "object"} {:name "pin", :type "boolean"} {:name "callback", :type :callback}]}
     {:id ::ensure-file-downloaded,
      :name "ensureFileDownloaded",
      :since "67",
@@ -1017,13 +1018,13 @@
     {:id ::cancel-file-transfers,
      :name "cancelFileTransfers",
      :callback? true,
-     :params [{:name "entries", :type "[array-of-objects]"} {:name "callback", :type :callback}]}
+     :params [{:name "entries", :since "46", :type "[array-of-objects]"} {:name "callback", :type :callback}]}
     {:id ::start-copy,
      :name "startCopy",
      :callback? true,
      :params
-     [{:name "entry", :type "object"}
-      {:name "parent-entry", :type "object"}
+     [{:name "entry", :since "46", :type "object"}
+      {:name "parent-entry", :since "46", :type "object"}
       {:name "new-name", :type "string"}
       {:name "callback", :type :callback, :callback {:params [{:name "copy-id", :type "integer"}]}}]}
     {:id ::cancel-copy,
@@ -1074,8 +1075,8 @@
      :name "zipSelection",
      :callback? true,
      :params
-     [{:name "entries", :type "[array-of-objects]"}
-      {:name "parent-entry", :type "object"}
+     [{:name "entries", :since "46", :type "[array-of-objects]"}
+      {:name "parent-entry", :since "46", :type "object"}
       {:name "dest-name", :type "string"}
       {:name "callback", :type :callback, :callback {:params [{:name "success", :optional? true, :type "boolean"}]}}]}
     {:id ::get-drive-connection-state,
@@ -1086,7 +1087,7 @@
      :name "validatePathNameLength",
      :callback? true,
      :params
-     [{:name "parent-entry", :type "object"}
+     [{:name "parent-entry", :since "46", :type "object"}
       {:name "name", :type "string"}
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
     {:id ::zoom, :name "zoom", :params [{:name "operation", :type "unknown-type"}]}
@@ -1104,13 +1105,15 @@
      :name "getDownloadUrl",
      :callback? true,
      :params
-     [{:name "entry", :type "object"}
+     [{:name "entry", :since "46", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "url", :type "string"}]}}]}
     {:id ::request-drive-share,
      :name "requestDriveShare",
      :callback? true,
      :params
-     [{:name "entry", :type "object"} {:name "share-type", :type "unknown-type"} {:name "callback", :type :callback}]}
+     [{:name "entry", :since "46", :type "object"}
+      {:name "share-type", :type "unknown-type"}
+      {:name "callback", :type :callback}]}
     {:id ::get-profiles,
      :name "getProfiles",
      :callback? true,
@@ -1132,14 +1135,14 @@
      :since "41",
      :callback? true,
      :params
-     [{:name "entry", :type "object"}
+     [{:name "entry", :since "46", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "checksum", :type "string"}]}}]}
     {:id ::set-entry-tag,
      :name "setEntryTag",
      :since "43",
      :callback? true,
      :params
-     [{:name "entry", :type "object"}
+     [{:name "entry", :since "46", :type "object"}
       {:name "visibility", :type "unknown-type"}
       {:name "key", :type "string"}
       {:name "value", :type "string"}
@@ -1159,7 +1162,7 @@
      :name "addProvidedFileSystem",
      :since "44",
      :callback? true,
-     :params [{:name "provider-id", :type "string"} {:name "callback", :type :callback}]}
+     :params [{:name "provider-id", :since "65", :type "string"} {:name "callback", :type :callback}]}
     {:id ::configure-volume,
      :name "configureVolume",
      :since "44",
@@ -1206,7 +1209,7 @@
      :since "72",
      :callback? true,
      :params
-     [{:name "vm-name", :type "string"}
+     [{:name "vm-name", :since "master", :type "string"}
       {:name "entries", :type "[array-of-objects]"}
       {:name "persist", :type "boolean"}
       {:name "callback", :type :callback}]}
@@ -1214,14 +1217,17 @@
      :name "unsharePathWithCrostini",
      :since "73",
      :callback? true,
-     :params [{:name "vm-name", :type "string"} {:name "entry", :type "object"} {:name "callback", :type :callback}]}
+     :params
+     [{:name "vm-name", :since "master", :type "string"}
+      {:name "entry", :type "object"}
+      {:name "callback", :type :callback}]}
     {:id ::get-crostini-shared-paths,
      :name "getCrostiniSharedPaths",
      :since "71",
      :callback? true,
      :params
-     [{:name "observe-first-for-session", :type "boolean"}
-      {:name "vm-name", :type "string"}
+     [{:name "observe-first-for-session", :since "future", :type "boolean"}
+      {:name "vm-name", :since "master", :type "string"}
       {:name "callback",
        :type :callback,
        :callback
@@ -1270,7 +1276,7 @@
     {:id ::on-device-changed, :name "onDeviceChanged", :params [{:name "event", :type "object"}]}
     {:id ::on-drive-sync-error, :name "onDriveSyncError", :params [{:name "event", :type "object"}]}
     {:id ::on-apps-updated, :name "onAppsUpdated", :since "57"}
-    {:id ::on-crostini-changed, :name "onCrostiniChanged", :since "74", :params [{:name "event", :type "object"}]}]})
+    {:id ::on-crostini-changed, :name "onCrostiniChanged", :since "future", :params [{:name "event", :type "object"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

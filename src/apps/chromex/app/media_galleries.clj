@@ -278,8 +278,8 @@
      :since "38",
      :callback? true,
      :params
-     [{:name "media-file", :type "Blob"}
-      {:name "options", :optional? true, :type "object"}
+     [{:name "media-file", :since "33", :type "Blob"}
+      {:name "options", :optional? true, :since "33", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "metadata", :type "object"}]}}]}
     {:id ::add-gallery-watch,
      :name "addGalleryWatch",
@@ -309,7 +309,7 @@
      :name "onScanProgress",
      :since "51",
      :deprecated "The mediaGalleries API no longer supports scanning.",
-     :params [{:name "details", :type "object"}]}]})
+     :params [{:name "details", :since "34", :type "object"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

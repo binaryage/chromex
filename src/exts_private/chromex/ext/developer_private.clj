@@ -480,8 +480,8 @@
      :deprecated "Use getExtensionsInfo",
      :callback? true,
      :params
-     [{:name "include-disabled", :type "boolean"}
-      {:name "include-terminated", :type "boolean"}
+     [{:name "include-disabled", :since "43", :type "boolean"}
+      {:name "include-terminated", :since "43", :type "boolean"}
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "[array-of-objects]"}]}}]}
     {:id ::get-profile-configuration,
      :name "getProfileConfiguration",
@@ -497,13 +497,14 @@
     {:id ::show-permissions-dialog,
      :name "showPermissionsDialog",
      :callback? true,
-     :params [{:name "extension-id", :type "string"} {:name "callback", :optional? true, :type :callback}]}
+     :params
+     [{:name "extension-id", :since "43", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::reload,
      :name "reload",
      :callback? true,
      :params
-     [{:name "extension-id", :type "string"}
-      {:name "options", :optional? true, :type "object"}
+     [{:name "extension-id", :since "43", :type "string"}
+      {:name "options", :optional? true, :since "43", :type "object"}
       {:name "callback",
        :optional? true,
        :type :callback,
@@ -517,7 +518,7 @@
      :name "loadUnpacked",
      :callback? true,
      :params
-     [{:name "options", :optional? true, :type "object"}
+     [{:name "options", :optional? true, :since "43", :type "object"}
       {:name "callback",
        :optional? true,
        :type :callback,
@@ -539,15 +540,15 @@
      :name "choosePath",
      :callback? true,
      :params
-     [{:name "select-type", :type "unknown-type"}
-      {:name "file-type", :type "unknown-type"}
+     [{:name "select-type", :since "43", :type "unknown-type"}
+      {:name "file-type", :since "43", :type "unknown-type"}
       {:name "callback", :type :callback, :callback {:params [{:name "string", :type "string"}]}}]}
     {:id ::pack-directory,
      :name "packDirectory",
      :callback? true,
      :params
      [{:name "path", :type "string"}
-      {:name "private-key-path", :optional? true, :type "string"}
+      {:name "private-key-path", :optional? true, :since "43", :type "string"}
       {:name "flags", :optional? true, :type "integer"}
       {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "response", :type "object"}]}}]}
     {:id ::is-profile-managed,
@@ -560,13 +561,13 @@
      :since "34",
      :callback? true,
      :params
-     [{:name "properties", :type "object"}
+     [{:name "properties", :since "43", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "response", :type "object"}]}}]}
     {:id ::open-dev-tools,
      :name "openDevTools",
      :since "34",
      :callback? true,
-     :params [{:name "properties", :type "object"} {:name "callback", :optional? true, :type :callback}]}
+     :params [{:name "properties", :since "43", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::delete-extension-errors,
      :name "deleteExtensionErrors",
      :since "43",
@@ -619,8 +620,8 @@
      :deprecated "Use management.setEnabled",
      :callback? true,
      :params
-     [{:name "id", :type "string"}
-      {:name "enabled", :type "boolean"}
+     [{:name "id", :since "43", :type "string"}
+      {:name "enabled", :since "43", :type "boolean"}
       {:name "callback", :optional? true, :type :callback}]}
     {:id ::allow-incognito,
      :name "allowIncognito",
@@ -628,7 +629,7 @@
      :deprecated "Use updateExtensionConfiguration",
      :callback? true,
      :params
-     [{:name "extension-id", :type "string"}
+     [{:name "extension-id", :since "43", :type "string"}
       {:name "allow", :type "boolean"}
       {:name "callback", :optional? true, :type :callback}]}
     {:id ::allow-file-access,
@@ -637,7 +638,7 @@
      :deprecated "Use updateExtensionConfiguration",
      :callback? true,
      :params
-     [{:name "extension-id", :type "string"}
+     [{:name "extension-id", :since "43", :type "string"}
       {:name "allow", :type "boolean"}
       {:name "callback", :optional? true, :type :callback}]}
     {:id ::inspect,

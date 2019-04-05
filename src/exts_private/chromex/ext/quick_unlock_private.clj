@@ -193,7 +193,7 @@
      :name "setModes",
      :callback? true,
      :params
-     [{:name "token", :type "string"}
+     [{:name "token", :since "67", :type "string"}
       {:name "modes", :type "[array-of-quickUnlockPrivate.QuickUnlockModes]"}
       {:name "credentials", :type "[array-of-strings]"}
       {:name "on-complete", :type :callback}]}],

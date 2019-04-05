@@ -175,7 +175,7 @@
      :name "getDevices",
      :callback? true,
      :params
-     [{:name "filter", :optional? true, :type "object"}
+     [{:name "filter", :optional? true, :since "67", :type "object"}
       {:name "callback",
        :type :callback,
        :callback {:params [{:name "device-infos", :type "[array-of-bluetooth.Devices]"}]}}]}

@@ -141,7 +141,7 @@
      :since "31",
      :callback? true,
      :params
-     [{:name "flow", :type "feedbackPrivate.FeedbackFlow"}
+     [{:name "flow", :since "60", :type "feedbackPrivate.FeedbackFlow"}
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}
     {:id ::read-log-source,
      :name "readLogSource",
