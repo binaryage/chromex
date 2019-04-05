@@ -12,6 +12,7 @@
             [cljs.core.async :refer [<! >! chan close! timeout]]
             [cljs.test :refer-macros [async deftest is testing]]
             [clojure.string :as string]
+            [chromex.console :refer [with-captured-console get-captured-console-content]]
             [oops.core :refer [oapply ocall oget oset!]]))
 
 ; -- test against mocks -----------------------------------------------------------------------------------------------------
@@ -153,17 +154,29 @@
           (close! chan)
           (done))))))
 
-(if-not advanced-mode?
-  (deftest test-using-missing-apis
+(deftest test-using-missing-apis
+  (when-not advanced-mode?
     (testing "try access missing property"
-      (is (= nil (get-some-missing-prop))))
+      (with-captured-console
+        (is (= nil (get-some-missing-prop))))
+      (let [console-content (get-captured-console-content)]
+        (is (= (count console-content) 1))
+        (is (= (first (first console-content)) :log))))
     (testing "try call missing function"
-      (is (thrown-with-msg? js/Error #"library tried to access a missing Chrome API object" (do-something-missing))))
+      (with-captured-console
+        (do-something-missing))
+      (let [console-content (get-captured-console-content)]
+        (is (= (count console-content) 1))
+        (is (= (first (first console-content)) :error))
+        (is (some? (re-find #"library tried to access a missing Chrome API object" (second (first console-content)))))))
     (testing "try tap missing event"
-      (let [chan (make-chrome-event-channel (chan))]
-        (is (thrown-with-msg? js/Error
-                              #"library tried to access a missing Chrome API object"
-                              (tap-on-something-missing-events chan)))))))
+      (with-captured-console
+        (let [chan (make-chrome-event-channel (chan))]
+          (tap-on-something-missing-events chan)))
+      (let [console-content (get-captured-console-content)]
+        (is (= (count console-content) 1))
+        (is (= (first (first console-content)) :error))
+        (is (some? (re-find #"library tried to access a missing Chrome API object" (second (first console-content)))))))))
 
 (deftest test-api-version-checking
   (testing "valid-api-version?"
