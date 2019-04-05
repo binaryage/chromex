@@ -8,7 +8,7 @@
             [api-gen.word-wrap :refer [wrap]]
             [cljfmt.core :as cljfmt]
             [clojure.java.io :as io])
-  (import [java.net URLEncoder]))
+  (:import [java.net URLEncoder]))
 
 (def ^:const INDENT-CHAR " ")
 
