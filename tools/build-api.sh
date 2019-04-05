@@ -26,6 +26,9 @@ SRC_EXTS="$SRC/exts"
 SRC_EXTS_PRIVATE="$SRC/exts_private"
 SRC_APPS="$SRC/apps"
 SRC_APPS_PRIVATE="$SRC/apps_private"
+GENONLY=${GENONLY}
+SKIP_EXTRACTION=${SKIP_EXTRACTION}
+SKIP_DISTILLING=${SKIP_DISTILLING}
 
 SERVER2_DIR="${CHROMIUM_SRC}chrome/common/extensions/docs/server2"
 APIS_CACHE_FILE="$WORKDIR/apis.cache"
@@ -34,28 +37,32 @@ APIS_FILTERED_JSON_FILE="$WORKDIR/apis-filtered.json"
 APIS_LAST_FILE="$WORKDIR/apis.last"
 API_SOURCE_DIR="$WORKDIR/api"
 
-if [ ! -d "$WORKDIR" ] ; then
+if [[ ! -d "$WORKDIR" ]]; then
   mkdir -p "$WORKDIR"
 fi
 
-if [ ! -r "$APIS_CACHE_FILE" ] ; then
+if [[ ! -r "$APIS_CACHE_FILE" ]]; then
   echo "'$APIS_CACHE_FILE' does not exist, run ./build-cache.sh"
   popd
   exit 1
 fi
 
-if [ ! "$GENONLY" ] ; then
+if [[ ! "$GENONLY" ]]; then
   echo "reminder: you might consider fetching latest chromium sources and running ./update-cache.sh first"
 
-  pushd .
-  cd "$TOOLS/api-extractor"
-  ./api-extractor.py --load-file="$APIS_CACHE_FILE" --save-file="$APIS_JSON_FILE" --server2-dir="$SERVER2_DIR"
-  popd
+  if [[ -z "$SKIP_EXTRACTION" ]]; then
+    pushd .
+    cd "$TOOLS/api-extractor"
+    ./api-extractor.py --load-file="$APIS_CACHE_FILE" --save-file="$APIS_JSON_FILE" --server2-dir="$SERVER2_DIR"
+    popd
+  fi
 
-  pushd .
-  cd "$TOOLS/api-distiller"
-  lein run -- --input="$APIS_JSON_FILE" --output="$APIS_FILTERED_JSON_FILE"
-  popd
+  if [[ -z "$SKIP_DISTILLING" ]]; then
+    pushd .
+    cd "$TOOLS/api-distiller"
+    lein run -- --input="$APIS_JSON_FILE" --output="$APIS_FILTERED_JSON_FILE"
+    popd
+  fi
 fi
 
 pushd .

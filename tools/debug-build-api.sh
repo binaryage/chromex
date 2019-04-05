@@ -36,11 +36,11 @@ APIS_FILTERED_JSON_FILE="$WORKDIR/apis-filtered.json"
 APIS_LAST_FILE="$WORKDIR/apis.last"
 API_SOURCE_DIR="$WORKDIR/api"
 
-if [ ! -d "$WORKDIR" ] ; then
+if [[ ! -d "$WORKDIR" ]]; then
   mkdir -p "$WORKDIR"
 fi
 
-if [ ! -r "$APIS_CACHE_FILE" ] ; then
+if [[ ! -r "$APIS_CACHE_FILE" ]]; then
   echo "'$APIS_CACHE_FILE' does not exist, run ./build-cache.sh"
   popd
   exit 1

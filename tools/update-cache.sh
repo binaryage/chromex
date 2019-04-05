@@ -25,19 +25,19 @@ SERVER2_DIR="${CHROMIUM_SRC}chrome/common/extensions/docs/server2"
 APIS_CACHE_FILE="$WORKDIR/apis.cache"
 APIS_LAST_FILE="$WORKDIR/apis.last"
 
-if [ ! -d "$WORKDIR" ] ; then
+if [[ ! -d "$WORKDIR" ]]; then
   mkdir -p "$WORKDIR"
 fi
 
 pushd .
 cd "${CHROMIUM_SRC}chrome/common/extensions/docs"
 
-if [ -r "$APIS_LAST_FILE" ] ; then
+if [[ -r "$APIS_LAST_FILE" ]]; then
   LAST_SHA=`cat "$APIS_LAST_FILE"`
 fi
 
 CURRENT_SHA=`git rev-parse HEAD`
-if [ "$CURRENT_SHA" == "$LAST_SHA" ] ; then
+if [[ "$CURRENT_SHA" == "$LAST_SHA" ]]; then
   echo "chromium sources have been already cached for this commit ($CURRENT_SHA)"
   echo "maybe you forgot to pull latest changes?"
   echo "cd \"$CHROMIUM_SRC\" && git pull && gclient sync --with_branch_heads"
@@ -46,7 +46,7 @@ if [ "$CURRENT_SHA" == "$LAST_SHA" ] ; then
   exit 3
 fi
 
-if [ ! -r "$APIS_CACHE_FILE" ] ; then
+if [[ ! -r "$APIS_CACHE_FILE" ]]; then
   echo "'$APIS_CACHE_FILE' does not exist, will running full generation"
   LOAD_ARGS=""
 else

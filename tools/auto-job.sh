@@ -23,7 +23,7 @@ popd () {
 }
 
 die_if_dirty_working_copy () {
-  if [ -n "$(git status -uno --porcelain)" ] ; then
+  if [[ -n "$(git status -uno --porcelain)" ]]; then
     echo "working copy is not clean in '$(pwd)'"
     exit 1
   fi
@@ -90,7 +90,7 @@ git add --all
 
 set +e
 git diff-index --exit-code HEAD > /dev/null
-if [ $? -eq 0 ] ; then
+if [[ $? -eq 0 ]]; then
     echo "no changes from previous version in '$(pwd)'"
     echo "nothing to commit => exit"
     popd
