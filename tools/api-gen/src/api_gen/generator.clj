@@ -177,6 +177,9 @@
     (if-let [availability (some #(if (= (:title %) "Availability") %) intro-list)]
       (extract-version (get-in availability [:content 0])))))
 
+(defn extract-param-since [data]
+  (extract-version (:availability data)))
+
 (defn extract-deprecated [data]
   (if-let [deprecated (:deprecated data)]
     (plain-doc deprecated)))
@@ -229,7 +232,8 @@
   (let [{:keys [name is-callback optional]} data
         param-name (kebab-case name)
         base-part {:name      param-name
-                   :optional? optional}
+                   :optional? optional
+                   :since     (extract-param-since data)}
         flexible-part (if-not is-callback
                         {:type (extract-type data)}
                         {:type     :callback
