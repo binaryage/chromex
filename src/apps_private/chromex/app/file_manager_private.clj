@@ -692,9 +692,10 @@
   ([] (gen-call :function ::mount-crostini &form)))
 
 (defmacro share-paths-with-crostini
-  "Shares paths with crostini container. |entries| Entries of the files or directories to share. |persist| If true, shares
-   will persist across restarts. |callback
+  "Shares paths with crostini container. |vmName| VM to share path with. |entries| Entries of the files or directories to
+   share. |persist| If true, shares will persist across restarts. |callback
 
+     |vm-name| - ?
      |entries| - ?
      |persist| - ?
 
@@ -703,11 +704,13 @@
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([entries persist] (gen-call :function ::share-paths-with-crostini &form entries persist)))
+  ([vm-name entries persist] (gen-call :function ::share-paths-with-crostini &form vm-name entries persist)))
 
 (defmacro unshare-path-with-crostini
-  "Unshares path with crostini container. |entry| Entry of the file or directory to unshare. |callback
+  "Unshares path with crostini container. |vmName| VM to unshare path from. |entry| Entry of the file or directory to unshare.
+   |callback
 
+     |vm-name| - ?
      |entry| - ?
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
@@ -715,13 +718,14 @@
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([entry] (gen-call :function ::unshare-path-with-crostini &form entry)))
+  ([vm-name entry] (gen-call :function ::unshare-path-with-crostini &form vm-name entry)))
 
 (defmacro get-crostini-shared-paths
   "Returns list of paths shared with crostini container. |observeFirstForSession| If true, callback provides whether this is
-   the first time this function has been called with observeFirstForSession true.
+   the |vmName| VM to get shared paths of. first time this function has been called with observeFirstForSession true.
 
      |observe-first-for-session| - ?
+     |vm-name| - ?
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [entries first-for-session] where:
@@ -731,7 +735,7 @@
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([observe-first-for-session] (gen-call :function ::get-crostini-shared-paths &form observe-first-for-session)))
+  ([observe-first-for-session vm-name] (gen-call :function ::get-crostini-shared-paths &form observe-first-for-session vm-name)))
 
 (defmacro get-linux-package-info
   "Requests information about a Linux package. |entry| is a .deb file.
@@ -1202,20 +1206,22 @@
      :since "72",
      :callback? true,
      :params
-     [{:name "entries", :type "[array-of-objects]"}
+     [{:name "vm-name", :type "string"}
+      {:name "entries", :type "[array-of-objects]"}
       {:name "persist", :type "boolean"}
       {:name "callback", :type :callback}]}
     {:id ::unshare-path-with-crostini,
      :name "unsharePathWithCrostini",
      :since "73",
      :callback? true,
-     :params [{:name "entry", :type "object"} {:name "callback", :type :callback}]}
+     :params [{:name "vm-name", :type "string"} {:name "entry", :type "object"} {:name "callback", :type :callback}]}
     {:id ::get-crostini-shared-paths,
      :name "getCrostiniSharedPaths",
      :since "71",
      :callback? true,
      :params
      [{:name "observe-first-for-session", :type "boolean"}
+      {:name "vm-name", :type "string"}
       {:name "callback",
        :type :callback,
        :callback

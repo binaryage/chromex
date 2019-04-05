@@ -503,6 +503,10 @@
    chromex.error/get-last-error."
   ([display-id behavior] (gen-call :function ::set-shelf-auto-hide-behavior &form display-id behavior)))
 
+(defmacro show-virtual-keyboard-if-enabled
+  "Show virtual keyboard of the current input method if it's available."
+  ([] (gen-call :function ::show-virtual-keyboard-if-enabled &form)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -723,7 +727,8 @@
      :since "75",
      :callback? true,
      :params
-     [{:name "display-id", :type "string"} {:name "behavior", :type "string"} {:name "callback", :type :callback}]}]})
+     [{:name "display-id", :type "string"} {:name "behavior", :type "string"} {:name "callback", :type :callback}]}
+    {:id ::show-virtual-keyboard-if-enabled, :name "showVirtualKeyboardIfEnabled", :since "master"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

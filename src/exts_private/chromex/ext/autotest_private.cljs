@@ -144,3 +144,6 @@
 (defn set-shelf-auto-hide-behavior* [config display-id behavior]
   (gen-wrap :function ::set-shelf-auto-hide-behavior config display-id behavior))
 
+(defn show-virtual-keyboard-if-enabled* [config]
+  (gen-wrap :function ::show-virtual-keyboard-if-enabled config))
+

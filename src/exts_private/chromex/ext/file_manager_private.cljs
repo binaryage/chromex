@@ -165,14 +165,14 @@
 (defn mount-crostini* [config]
   (gen-wrap :function ::mount-crostini config))
 
-(defn share-paths-with-crostini* [config entries persist]
-  (gen-wrap :function ::share-paths-with-crostini config entries persist))
+(defn share-paths-with-crostini* [config vm-name entries persist]
+  (gen-wrap :function ::share-paths-with-crostini config vm-name entries persist))
 
-(defn unshare-path-with-crostini* [config entry]
-  (gen-wrap :function ::unshare-path-with-crostini config entry))
+(defn unshare-path-with-crostini* [config vm-name entry]
+  (gen-wrap :function ::unshare-path-with-crostini config vm-name entry))
 
-(defn get-crostini-shared-paths* [config observe-first-for-session]
-  (gen-wrap :function ::get-crostini-shared-paths config observe-first-for-session))
+(defn get-crostini-shared-paths* [config observe-first-for-session vm-name]
+  (gen-wrap :function ::get-crostini-shared-paths config observe-first-for-session vm-name))
 
 (defn get-linux-package-info* [config entry]
   (gen-wrap :function ::get-linux-package-info config entry))
