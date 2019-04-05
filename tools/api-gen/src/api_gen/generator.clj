@@ -160,16 +160,22 @@
     (extract-array-type data)
     (extract-simple-type data)))
 
+(defn extract-version [availability-data]
+  (let [{:keys [version scheduled]} availability-data]
+    (if (some? scheduled)
+      "future"                                                                                                                ; with scheduled apis we assume they are not available yet, and mark them as "future"
+      (if (some? version)
+        (str version)))))
+
 (defn extract-avail-since [data]
-  (if-let [version (get-in data [:availability :version])]
-    (str version)))
+  (extract-version (:availability data)))
 
 (defn extract-avail-until [_data])                                                                                            ; note: it looks like nothing has been removed
 
 (defn extract-namespace-since [data]
   (let [{:keys [intro-list]} data]
     (if-let [availability (some #(if (= (:title %) "Availability") %) intro-list)]
-      (str (get-in availability [:content 0 :version])))))
+      (extract-version (get-in availability [:content 0])))))
 
 (defn extract-deprecated [data]
   (if-let [deprecated (:deprecated data)]

@@ -82,7 +82,8 @@
 
 ; -- api versioning ---------------------------------------------------------------------------------------------------------
 
-(def ^:dynamic max-api-version 1000000)
+(def ^:dynamic latest-api-version 1000000)
+(def ^:dynamic future-api-version 1000001) ; apis scheduled for future introduction, only available on dev channels
 
 ; http://stackoverflow.com/a/12503724/84283
 (defn parse-int [s]
@@ -91,10 +92,11 @@
 ; here we rely on sane version strings like "24" or "9"
 (defn api-version-num [v]
   (case v
-    "latest" max-api-version
+    "latest" latest-api-version
     ; sometimes newly introduced apis temporarily specify :since "master" instead of specific Chrome version
     ; e.g. https://github.com/binaryage/chromex/commit/5add1479ed0b1491b8c8b6ae5f00a690de4e5416#diff-a8df69996aa69518c645721ecd31a3bdR328
-    "master" max-api-version                                                                                                  ; only "latest" target-api-version will match "master"
+    "master" latest-api-version                                                                                                  ; only "latest" target-api-version will match "master"
+    "future" future-api-version
     (num (parse-int (str v)))))
 
 (defn api-version-compare [v1 v2]
