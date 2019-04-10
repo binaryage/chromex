@@ -87,6 +87,11 @@
    chromex.error/get-last-error."
   ([params] (gen-call :function ::read-log-source &form params)))
 
+(defmacro login-feedback-complete
+  "Invoked when the extension is complete during sending feedback from the login page. This is then used to know we can unload
+   the feedback extension from the login profile."
+  ([] (gen-call :function ::login-feedback-complete &form)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -149,7 +154,8 @@
      :callback? true,
      :params
      [{:name "params", :type "object"}
-      {:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}],
+      {:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}
+    {:id ::login-feedback-complete, :name "loginFeedbackComplete", :since "master"}],
    :events
    [{:id ::on-feedback-requested,
      :name "onFeedbackRequested",

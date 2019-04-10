@@ -1209,7 +1209,7 @@
      :since "72",
      :callback? true,
      :params
-     [{:name "vm-name", :since "master", :type "string"}
+     [{:name "vm-name", :since "future", :type "string"}
       {:name "entries", :type "[array-of-objects]"}
       {:name "persist", :type "boolean"}
       {:name "callback", :type :callback}]}
@@ -1218,7 +1218,7 @@
      :since "73",
      :callback? true,
      :params
-     [{:name "vm-name", :since "master", :type "string"}
+     [{:name "vm-name", :since "future", :type "string"}
       {:name "entry", :type "object"}
       {:name "callback", :type :callback}]}
     {:id ::get-crostini-shared-paths,
@@ -1227,7 +1227,7 @@
      :callback? true,
      :params
      [{:name "observe-first-for-session", :since "future", :type "boolean"}
-      {:name "vm-name", :since "master", :type "string"}
+      {:name "vm-name", :since "future", :type "string"}
       {:name "callback",
        :type :callback,
        :callback

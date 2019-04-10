@@ -728,7 +728,7 @@
      :callback? true,
      :params
      [{:name "display-id", :type "string"} {:name "behavior", :type "string"} {:name "callback", :type :callback}]}
-    {:id ::show-virtual-keyboard-if-enabled, :name "showVirtualKeyboardIfEnabled", :since "master"}]})
+    {:id ::show-virtual-keyboard-if-enabled, :name "showVirtualKeyboardIfEnabled", :since "future"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

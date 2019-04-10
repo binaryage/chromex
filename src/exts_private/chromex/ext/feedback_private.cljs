@@ -18,6 +18,9 @@
 (defn read-log-source* [config params]
   (gen-wrap :function ::read-log-source config params))
 
+(defn login-feedback-complete* [config]
+  (gen-wrap :function ::login-feedback-complete config))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-feedback-requested* [config channel & args]

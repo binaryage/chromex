@@ -252,7 +252,7 @@
     {:id ::toggle-dictation, :name "toggleDictation", :since "71"}
     {:id ::set-virtual-keyboard-visible,
      :name "setVirtualKeyboardVisible",
-     :since "master",
+     :since "future",
      :params [{:name "is-visible", :type "boolean"}]}],
    :events
    [{:id ::on-introduce-chrome-vox, :name "onIntroduceChromeVox", :since "42"}
