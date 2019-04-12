@@ -99,6 +99,9 @@
 (defn search-files-by-hashes* [config volume-id hash-list]
   (gen-wrap :function ::search-files-by-hashes config volume-id hash-list))
 
+(defn search-files* [config search-params]
+  (gen-wrap :function ::search-files config search-params))
+
 (defn zip-selection* [config entries parent-entry dest-name]
   (gen-wrap :function ::zip-selection config entries parent-entry dest-name))
 

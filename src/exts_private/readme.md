@@ -47,7 +47,7 @@
 
 ### API stats
 
-Generated 39 namespaces containing 0 properties, 383 functions and 70 events:
+Generated 39 namespaces containing 0 properties, 384 functions and 70 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -69,7 +69,7 @@ Generated 39 namespaces containing 0 properties, 383 functions and 70 events:
     | chrome.enterprise.platformKeysPrivate |           0 |          2 |       0 |
     |    chrome.enterprise.reportingPrivate |           0 |          2 |       0 |
     |                chrome.feedbackPrivate |           0 |          6 |       1 |
-    |             chrome.fileManagerPrivate |           0 |         61 |      10 |
+    |             chrome.fileManagerPrivate |           0 |         62 |      10 |
     |             chrome.imageWriterPrivate |           0 |          5 |       5 |
     |             chrome.inputMethodPrivate |           0 |         15 |      10 |
     |        chrome.languageSettingsPrivate |           0 |         14 |       4 |
@@ -189,11 +189,11 @@ Generated 39 namespaces containing 0 properties, 383 functions and 70 events:
       resolve-isolated-entries add-mount remove-mount mark-cache-as-mounted get-volume-metadata-list
       cancel-file-transfers start-copy cancel-copy get-size-stats format-volume rename-volume
       get-preferences set-preferences search-drive search-drive-metadata search-files-by-hashes
-      zip-selection get-drive-connection-state validate-path-name-length zoom request-access-token
-      request-web-store-access-token get-download-url request-drive-share get-profiles open-inspector
-      open-settings-subpage compute-checksum set-entry-tag is-piex-loader-enabled get-providers
-      add-provided-file-system configure-volume get-custom-actions execute-custom-action
-      get-directory-size get-recent-files mount-crostini share-paths-with-crostini
+      search-files zip-selection get-drive-connection-state validate-path-name-length zoom
+      request-access-token request-web-store-access-token get-download-url request-drive-share
+      get-profiles open-inspector open-settings-subpage compute-checksum set-entry-tag
+      is-piex-loader-enabled get-providers add-provided-file-system configure-volume get-custom-actions
+      execute-custom-action get-directory-size get-recent-files mount-crostini share-paths-with-crostini
       unshare-path-with-crostini get-crostini-shared-paths get-linux-package-info install-linux-package
       get-thumbnail detect-character-encoding tap-on-mount-completed tap-on-file-transfers-updated
       tap-on-copy-progress tap-on-directory-changed tap-on-preferences-changed

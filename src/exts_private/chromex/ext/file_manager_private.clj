@@ -415,6 +415,20 @@
    chromex.error/get-last-error."
   ([volume-id hash-list] (gen-call :function ::search-files-by-hashes &form volume-id hash-list)))
 
+(defmacro search-files
+  "Search files in My Files.
+
+     |search-params| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [entries] where:
+
+     |entries| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([search-params] (gen-call :function ::search-files &form search-params)))
+
 (defmacro zip-selection
   "Create a zip file for the selected files. |parentEntry| Entry of the directory containing the selected files. |entries
 
@@ -1061,7 +1075,7 @@
      :name "searchDriveMetadata",
      :callback? true,
      :params
-     [{:name "search-params", :type "object"}
+     [{:name "search-params", :type "fileManagerPrivate.SearchMetadataParams"}
       {:name "callback", :type :callback, :callback {:params [{:name "results", :type "[array-of-objects]"}]}}]}
     {:id ::search-files-by-hashes,
      :name "searchFilesByHashes",
@@ -1071,6 +1085,13 @@
      [{:name "volume-id", :type "string"}
       {:name "hash-list", :type "[array-of-strings]"}
       {:name "callback", :type :callback, :callback {:params [{:name "urls", :type "object"}]}}]}
+    {:id ::search-files,
+     :name "searchFiles",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "search-params", :type "fileManagerPrivate.SearchMetadataParams"}
+      {:name "callback", :type :callback, :callback {:params [{:name "entries", :type "[array-of-Entrys]"}]}}]}
     {:id ::zip-selection,
      :name "zipSelection",
      :callback? true,
