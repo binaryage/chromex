@@ -39,6 +39,9 @@
 (defn generate-app-for-link* [config url title]
   (gen-wrap :function ::generate-app-for-link config url title))
 
+(defn install-replacement-web-app* [config]
+  (gen-wrap :function ::install-replacement-web-app config))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-installed* [config channel & args]

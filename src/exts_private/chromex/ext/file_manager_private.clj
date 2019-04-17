@@ -1087,7 +1087,7 @@
       {:name "callback", :type :callback, :callback {:params [{:name "urls", :type "object"}]}}]}
     {:id ::search-files,
      :name "searchFiles",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "search-params", :type "fileManagerPrivate.SearchMetadataParams"}

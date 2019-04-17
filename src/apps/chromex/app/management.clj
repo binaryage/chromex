@@ -202,6 +202,18 @@
    https://developer.chrome.com/apps/management#method-generateAppForLink."
   ([url title] (gen-call :function ::generate-app-for-link &form url title)))
 
+(defmacro install-replacement-web-app
+  "Prompts the user to install the replacement web app from the manifest.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/apps/management#method-installReplacementWebApp."
+  ([] (gen-call :function ::install-replacement-web-app &form)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -358,7 +370,12 @@
       {:name "callback",
        :optional? true,
        :type :callback,
-       :callback {:params [{:name "result", :type "management.ExtensionInfo"}]}}]}],
+       :callback {:params [{:name "result", :type "management.ExtensionInfo"}]}}]}
+    {:id ::install-replacement-web-app,
+     :name "installReplacementWebApp",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :optional? true, :type :callback}]}],
    :events
    [{:id ::on-installed, :name "onInstalled", :params [{:name "info", :type "management.ExtensionInfo"}]}
     {:id ::on-uninstalled, :name "onUninstalled", :params [{:name "id", :type "string"}]}
