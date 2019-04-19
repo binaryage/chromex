@@ -50,20 +50,6 @@
    chromex.error/get-last-error."
   ([security-origin source-id-in-origin] (gen-call :function ::get-associated-sink &form security-origin source-id-in-origin)))
 
-(defmacro set-audio-experiments
-  "Sets the active audio experiments.
-
-     |request| - Information about the requesting process.
-     |security-origin| - The origin to restrict the settings to.
-     |audio-experiments| - The experiments to enable or disable.
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [].
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([request security-origin audio-experiments] (gen-call :function ::set-audio-experiments &form request security-origin audio-experiments)))
-
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -102,16 +88,7 @@
      :params
      [{:name "security-origin", :type "string"}
       {:name "source-id-in-origin", :type "string"}
-      {:name "cb", :type :callback, :callback {:params [{:name "sink-id", :type "string"}]}}]}
-    {:id ::set-audio-experiments,
-     :name "setAudioExperiments",
-     :since "59",
-     :callback? true,
-     :params
-     [{:name "request", :type "object"}
-      {:name "security-origin", :type "string"}
-      {:name "audio-experiments", :type "object"}
-      {:name "callback", :type :callback}]}],
+      {:name "cb", :type :callback, :callback {:params [{:name "sink-id", :type "string"}]}}]}],
    :events [{:id ::on-sinks-changed, :name "onSinksChanged"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
