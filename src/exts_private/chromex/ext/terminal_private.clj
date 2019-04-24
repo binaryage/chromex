@@ -123,32 +123,32 @@
      :name "closeTerminalProcess",
      :callback? true,
      :params
-     [{:name "id", :since "future", :type "string"}
+     [{:name "id", :since "74", :type "string"}
       {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::send-input,
      :name "sendInput",
      :callback? true,
      :params
-     [{:name "id", :since "future", :type "string"}
+     [{:name "id", :since "74", :type "string"}
       {:name "input", :type "string"}
       {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::on-terminal-resize,
      :name "onTerminalResize",
      :callback? true,
      :params
-     [{:name "id", :since "future", :type "string"}
+     [{:name "id", :since "74", :type "string"}
       {:name "width", :type "integer"}
       {:name "height", :type "integer"}
       {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::ack-output,
      :name "ackOutput",
      :since "49",
-     :params [{:name "tab-id", :type "integer"} {:name "id", :since "future", :type "string"}]}],
+     :params [{:name "tab-id", :type "integer"} {:name "id", :since "74", :type "string"}]}],
    :events
    [{:id ::on-process-output,
      :name "onProcessOutput",
      :params
-     [{:name "id", :since "future", :type "string"}
+     [{:name "id", :since "74", :type "string"}
       {:name "type", :type "terminalPrivate.OutputType"}
       {:name "text", :type "string"}]}]})
 

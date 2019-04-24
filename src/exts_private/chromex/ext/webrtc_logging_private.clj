@@ -355,7 +355,7 @@
      :params
      [{:name "request", :type "webrtcLoggingPrivate.RequestInfo"}
       {:name "security-origin", :type "string"}
-      {:name "session-id", :since "future", :type "string"}
+      {:name "session-id", :since "74", :type "string"}
       {:name "max-log-size-bytes", :type "integer"}
       {:name "output-period-ms", :since "72", :type "integer"}
       {:name "web-app-id", :since "70", :type "integer"}

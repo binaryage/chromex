@@ -554,7 +554,7 @@
      [{:name "callback", :type :callback, :callback {:params [{:name "notifications", :type "[array-of-objects]"}]}}]}
     {:id ::get-arc-state,
      :name "getArcState",
-     :since "future",
+     :since "74",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}
     {:id ::get-play-store-state,
@@ -682,7 +682,7 @@
       {:name "callback", :type :callback, :callback {:params [{:name "response", :type "object"}]}}]}
     {:id ::set-whitelisted-pref,
      :name "setWhitelistedPref",
-     :since "future",
+     :since "74",
      :callback? true,
      :params [{:name "pref-name", :type "string"} {:name "value", :type "any"} {:name "callback", :type :callback}]}
     {:id ::set-crostini-app-scaled,
@@ -705,12 +705,12 @@
      :params [{:name "callback", :type :callback, :callback {:params [{:name "scale-factor", :type "double"}]}}]}
     {:id ::is-tablet-mode-enabled,
      :name "isTabletModeEnabled",
-     :since "future",
+     :since "74",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "enabled", :type "boolean"}]}}]}
     {:id ::set-tablet-mode-enabled,
      :name "setTabletModeEnabled",
-     :since "future",
+     :since "74",
      :callback? true,
      :params
      [{:name "enabled", :type "boolean"}

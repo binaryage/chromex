@@ -203,7 +203,7 @@
      :params [{:name "enabled", :type "boolean"}]}
     {:id ::set-focus-rings,
      :name "setFocusRings",
-     :since "future",
+     :since "74",
      :params [{:name "focus-rings", :type "[array-of-accessibilityPrivate.FocusRingInfos]"}]}
     {:id ::set-highlights,
      :name "setHighlights",
@@ -224,7 +224,7 @@
      :params
      [{:name "show", :type "boolean"}
       {:name "element-bounds", :type "accessibilityPrivate.ScreenRect"}
-      {:name "item-count", :since "future", :type "integer"}]}
+      {:name "item-count", :since "74", :type "integer"}]}
     {:id ::forward-key-events-to-switch-access,
      :name "forwardKeyEventsToSwitchAccess",
      :since "73",
@@ -265,7 +265,7 @@
     {:id ::on-select-to-speak-state-change-requested, :name "onSelectToSpeakStateChangeRequested", :since "68"}
     {:id ::on-announce-for-accessibility,
      :name "onAnnounceForAccessibility",
-     :since "future",
+     :since "74",
      :params [{:name "announce-text", :type "[array-of-strings]"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

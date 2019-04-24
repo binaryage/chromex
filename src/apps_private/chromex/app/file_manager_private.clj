@@ -1247,7 +1247,7 @@
      :since "71",
      :callback? true,
      :params
-     [{:name "observe-first-for-session", :since "future", :type "boolean"}
+     [{:name "observe-first-for-session", :since "74", :type "boolean"}
       {:name "vm-name", :since "future", :type "string"}
       {:name "callback",
        :type :callback,
@@ -1297,7 +1297,7 @@
     {:id ::on-device-changed, :name "onDeviceChanged", :params [{:name "event", :type "object"}]}
     {:id ::on-drive-sync-error, :name "onDriveSyncError", :params [{:name "event", :type "object"}]}
     {:id ::on-apps-updated, :name "onAppsUpdated", :since "57"}
-    {:id ::on-crostini-changed, :name "onCrostiniChanged", :since "future", :params [{:name "event", :type "object"}]}]})
+    {:id ::on-crostini-changed, :name "onCrostiniChanged", :since "74", :params [{:name "event", :type "object"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
