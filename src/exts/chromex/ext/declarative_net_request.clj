@@ -1,6 +1,6 @@
 (ns chromex.ext.declarative-net-request
-  "The chrome.declarativeNetRequest API is used to block or
-   redirect network requests by specifying declarative rules.
+  "The chrome.declarativeNetRequest API is used to block or modify
+   network requests by specifying declarative rules.
 
      * available since Chrome 74
      * https://developer.chrome.com/extensions/declarativeNetRequest"
