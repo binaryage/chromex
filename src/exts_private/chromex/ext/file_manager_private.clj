@@ -812,6 +812,32 @@
    chromex.error/get-last-error."
   ([bytes] (gen-call :function ::detect-character-encoding &form bytes)))
 
+(defmacro get-android-picker-apps
+  "Returns a list of Android picker apps to be shown in file selector.
+
+     |extensions| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [apps] where:
+
+     |apps| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([extensions] (gen-call :function ::get-android-picker-apps &form extensions)))
+
+(defmacro select-android-picker-app
+  "Called when the user selects an Android picker app in file selector.
+
+     |android-app| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([android-app] (gen-call :function ::select-android-picker-app &form android-app)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -1284,7 +1310,21 @@
      :return-type "string",
      :params
      [{:name "bytes", :type "string"}
-      {:name "callback", :type :callback, :callback {:params [{:name "result", :type "string"}]}}]}],
+      {:name "callback", :type :callback, :callback {:params [{:name "result", :type "string"}]}}]}
+    {:id ::get-android-picker-apps,
+     :name "getAndroidPickerApps",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "extensions", :type "[array-of-strings]"}
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "apps", :type "[array-of-fileManagerPrivate.AndroidApps]"}]}}]}
+    {:id ::select-android-picker-app,
+     :name "selectAndroidPickerApp",
+     :since "master",
+     :callback? true,
+     :params [{:name "android-app", :type "fileManagerPrivate.AndroidApp"} {:name "callback", :type :callback}]}],
    :events
    [{:id ::on-mount-completed, :name "onMountCompleted", :params [{:name "event", :type "object"}]}
     {:id ::on-file-transfers-updated, :name "onFileTransfersUpdated", :params [{:name "event", :type "object"}]}

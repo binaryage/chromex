@@ -189,6 +189,12 @@
 (defn detect-character-encoding* [config bytes]
   (gen-wrap :function ::detect-character-encoding config bytes))
 
+(defn get-android-picker-apps* [config extensions]
+  (gen-wrap :function ::get-android-picker-apps config extensions))
+
+(defn select-android-picker-app* [config android-app]
+  (gen-wrap :function ::select-android-picker-app config android-app))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-mount-completed* [config channel & args]
