@@ -35,51 +35,6 @@
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
-(defmacro add-dynamic-rules
-  "Adds rules to the current set of dynamic rules for the extension. These rules are persisted across browser sessions. Note:
-   MAX_NUMBER_OF_DYNAMIC_RULES is the maximum number of dynamic rules an extension can add.
-
-     |rules| - The rules to add.
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [].
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error.
-
-   https://developer.chrome.com/extensions/declarativeNetRequest#method-addDynamicRules."
-  ([rules] (gen-call :function ::add-dynamic-rules &form rules)))
-
-(defmacro remove-dynamic-rules
-  "Removes rules corresponding to rule_ids from the current set of dynamic rules for the extension. Any rule_ids not already
-   present are ignored. Note that static rules specified as part of the extension package can not be removed using this
-   function.
-
-     |rule-ids| - The IDs of dynamic rules to remove.
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [].
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error.
-
-   https://developer.chrome.com/extensions/declarativeNetRequest#method-removeDynamicRules."
-  ([rule-ids] (gen-call :function ::remove-dynamic-rules &form rule-ids)))
-
-(defmacro get-dynamic-rules
-  "Returns the current set of dynamic rules for the extension.
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [rules] where:
-
-     |rules| - https://developer.chrome.com/extensions/declarativeNetRequest#property-callback-rules.
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error.
-
-   https://developer.chrome.com/extensions/declarativeNetRequest#method-getDynamicRules."
-  ([] (gen-call :function ::get-dynamic-rules &form)))
-
 (defmacro add-allowed-pages
   "Adds page_patterns to the set of allowed pages. Requests from these pages are not intercepted by the extension. These are
    persisted across browser sessions. Note:  MAX_NUMBER_OF_ALLOWED_PAGES is the maximum number of allowed page an extension
@@ -147,27 +102,7 @@
      :since "future",
      :return-type "unknown-type"}],
    :functions
-   [{:id ::add-dynamic-rules,
-     :name "addDynamicRules",
-     :since "master",
-     :callback? true,
-     :params
-     [{:name "rules", :type "[array-of-declarativeNetRequest.Rules]"}
-      {:name "callback", :optional? true, :type :callback}]}
-    {:id ::remove-dynamic-rules,
-     :name "removeDynamicRules",
-     :since "master",
-     :callback? true,
-     :params [{:name "rule-ids", :type "[array-of-integers]"} {:name "callback", :optional? true, :type :callback}]}
-    {:id ::get-dynamic-rules,
-     :name "getDynamicRules",
-     :since "master",
-     :callback? true,
-     :params
-     [{:name "callback",
-       :type :callback,
-       :callback {:params [{:name "rules", :type "[array-of-declarativeNetRequest.Rules]"}]}}]}
-    {:id ::add-allowed-pages,
+   [{:id ::add-allowed-pages,
      :name "addAllowedPages",
      :callback? true,
      :params

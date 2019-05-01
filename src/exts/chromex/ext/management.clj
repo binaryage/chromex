@@ -373,7 +373,7 @@
        :callback {:params [{:name "result", :type "management.ExtensionInfo"}]}}]}
     {:id ::install-replacement-web-app,
      :name "installReplacementWebApp",
-     :since "75",
+     :since "future",
      :callback? true,
      :params [{:name "callback", :optional? true, :type :callback}]}],
    :events
