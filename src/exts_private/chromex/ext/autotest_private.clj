@@ -503,6 +503,33 @@
    chromex.error/get-last-error."
   ([display-id behavior] (gen-call :function ::set-shelf-auto-hide-behavior &form display-id behavior)))
 
+(defmacro get-shelf-alignment
+  "Get the shelf alignment.
+
+     |display-id| - display that contains the shelf. |callback| is invoked with the shelf alignment type.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [alignment] where:
+
+     |alignment| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([display-id] (gen-call :function ::get-shelf-alignment &form display-id)))
+
+(defmacro set-shelf-alignment
+  "Set the shelf alignment.
+
+     |display-id| - display that contains the shelf.
+     |alignment| - the type of alignment to set.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([display-id alignment] (gen-call :function ::set-shelf-alignment &form display-id alignment)))
+
 (defmacro show-virtual-keyboard-if-enabled
   "Show virtual keyboard of the current input method if it's available."
   ([] (gen-call :function ::show-virtual-keyboard-if-enabled &form)))
@@ -728,6 +755,23 @@
      :callback? true,
      :params
      [{:name "display-id", :type "string"} {:name "behavior", :type "string"} {:name "callback", :type :callback}]}
+    {:id ::get-shelf-alignment,
+     :name "getShelfAlignment",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "display-id", :type "string"}
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "alignment", :type "autotestPrivate.ShelfAlignmentType"}]}}]}
+    {:id ::set-shelf-alignment,
+     :name "setShelfAlignment",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "display-id", :type "string"}
+      {:name "alignment", :type "autotestPrivate.ShelfAlignmentType"}
+      {:name "callback", :type :callback}]}
     {:id ::show-virtual-keyboard-if-enabled, :name "showVirtualKeyboardIfEnabled", :since "future"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

@@ -144,6 +144,12 @@
 (defn set-shelf-auto-hide-behavior* [config display-id behavior]
   (gen-wrap :function ::set-shelf-auto-hide-behavior config display-id behavior))
 
+(defn get-shelf-alignment* [config display-id]
+  (gen-wrap :function ::get-shelf-alignment config display-id))
+
+(defn set-shelf-alignment* [config display-id alignment]
+  (gen-wrap :function ::set-shelf-alignment config display-id alignment))
+
 (defn show-virtual-keyboard-if-enabled* [config]
   (gen-wrap :function ::show-virtual-keyboard-if-enabled config))
 
