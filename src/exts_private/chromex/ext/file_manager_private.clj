@@ -1313,7 +1313,7 @@
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "string"}]}}]}
     {:id ::get-android-picker-apps,
      :name "getAndroidPickerApps",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "extensions", :type "[array-of-strings]"}
@@ -1322,7 +1322,7 @@
        :callback {:params [{:name "apps", :type "[array-of-fileManagerPrivate.AndroidApps]"}]}}]}
     {:id ::select-android-picker-app,
      :name "selectAndroidPickerApp",
-     :since "master",
+     :since "future",
      :callback? true,
      :params [{:name "android-app", :type "fileManagerPrivate.AndroidApp"} {:name "callback", :type :callback}]}],
    :events

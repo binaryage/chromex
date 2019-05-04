@@ -14,6 +14,15 @@
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
+(defn add-dynamic-rules* [config rules]
+  (gen-wrap :function ::add-dynamic-rules config rules))
+
+(defn remove-dynamic-rules* [config rule-ids]
+  (gen-wrap :function ::remove-dynamic-rules config rule-ids))
+
+(defn get-dynamic-rules* [config]
+  (gen-wrap :function ::get-dynamic-rules config))
+
 (defn add-allowed-pages* [config page-patterns]
   (gen-wrap :function ::add-allowed-pages config page-patterns))
 
