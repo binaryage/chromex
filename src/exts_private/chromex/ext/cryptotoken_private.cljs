@@ -12,6 +12,3 @@
 (defn can-app-id-get-attestation* [config options]
   (gen-wrap :function ::can-app-id-get-attestation config options))
 
-(defn can-proxy-to-web-authn* [config]
-  (gen-wrap :function ::can-proxy-to-web-authn config))
-

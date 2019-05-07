@@ -66,18 +66,6 @@
    chromex.error/get-last-error."
   ([options] (gen-call :function ::can-app-id-get-attestation &form options)))
 
-(defmacro can-proxy-to-web-authn
-  "Checks whether Cryptotoken can proxy the request through to WebAuthn.
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [result] where:
-
-     |result| - ?
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([] (gen-call :function ::can-proxy-to-web-authn &form)))
-
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -114,12 +102,7 @@
      :callback? true,
      :params
      [{:name "options", :type "object"}
-      {:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
-    {:id ::can-proxy-to-web-authn,
-     :name "canProxyToWebAuthn",
-     :since "72",
-     :callback? true,
-     :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}]})
+      {:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
