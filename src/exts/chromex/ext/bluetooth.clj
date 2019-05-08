@@ -90,6 +90,15 @@
    https://developer.chrome.com/extensions/bluetooth#method-stopDiscovery."
   ([] (gen-call :function ::stop-discovery &form)))
 
+(defmacro record-pairing
+  "Record that a pairing attempt finished. Do not record cancellations.
+
+     |success| - https://developer.chrome.com/extensions/bluetooth#property-recordPairing-success.
+     |transport| - https://developer.chrome.com/extensions/bluetooth#property-recordPairing-transport.
+
+   https://developer.chrome.com/extensions/bluetooth#method-recordPairing."
+  ([success transport] (gen-call :function ::record-pairing &form success transport)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -187,7 +196,11 @@
     {:id ::stop-discovery,
      :name "stopDiscovery",
      :callback? true,
-     :params [{:name "callback", :optional? true, :type :callback}]}],
+     :params [{:name "callback", :optional? true, :type :callback}]}
+    {:id ::record-pairing,
+     :name "recordPairing",
+     :since "master",
+     :params [{:name "success", :type "boolean"} {:name "transport", :type "bluetooth.Transport"}]}],
    :events
    [{:id ::on-adapter-state-changed,
      :name "onAdapterStateChanged",

@@ -76,7 +76,7 @@
 
 ### API stats
 
-Generated 68 namespaces containing 30 properties, 449 functions and 152 events:
+Generated 68 namespaces containing 30 properties, 450 functions and 152 events:
 
 
     |                         :namespace | :properties | :functions | :events |
@@ -89,7 +89,7 @@ Generated 68 namespaces containing 30 properties, 449 functions and 152 events:
     |                  chrome.app.window |           0 |          5 |       6 |
     |                       chrome.audio |           0 |          5 |       3 |
     |                  chrome.automation |           0 |          6 |       0 |
-    |                   chrome.bluetooth |           0 |          5 |       4 |
+    |                   chrome.bluetooth |           0 |          6 |       4 |
     |          chrome.bluetoothLowEnergy |           0 |         27 |       9 |
     |             chrome.bluetoothSocket |           0 |         11 |       4 |
     |                   chrome.bookmarks |           2 |         11 |       7 |
@@ -190,7 +190,7 @@ Generated 68 namespaces containing 30 properties, 449 functions and 152 events:
       set-document-selection tap-all-events]]
 
     [chromex.app.bluetooth refer:[
-      get-adapter-state get-device get-devices start-discovery stop-discovery
+      get-adapter-state get-device get-devices start-discovery stop-discovery record-pairing
       tap-on-adapter-state-changed tap-on-device-added tap-on-device-changed tap-on-device-removed
       tap-all-events]]
 

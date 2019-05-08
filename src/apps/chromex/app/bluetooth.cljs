@@ -18,6 +18,9 @@
 (defn stop-discovery* [config]
   (gen-wrap :function ::stop-discovery config))
 
+(defn record-pairing* [config success transport]
+  (gen-wrap :function ::record-pairing config success transport))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-adapter-state-changed* [config channel & args]
