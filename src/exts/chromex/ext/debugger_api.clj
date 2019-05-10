@@ -3,7 +3,7 @@
    attach to one or more tabs to instrument network interaction, debug JavaScript, mutate the DOM and CSS, etc. Use the
    Debuggee tabId to target tabs with sendCommand and route events by tabId from onEvent callbacks.
 
-     * available since Chrome 29
+     * available since Chrome 30
      * https://developer.chrome.com/extensions/debugger"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -127,7 +127,7 @@
 
 (def api-table
   {:namespace "chrome.debugger",
-   :since "29",
+   :since "30",
    :functions
    [{:id ::attach,
      :name "attach",

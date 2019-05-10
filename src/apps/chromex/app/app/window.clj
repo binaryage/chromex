@@ -4,7 +4,7 @@
    associated with any Chrome browser windows. See the 
    Window State Sample for a demonstration of these options.
 
-     * available since Chrome 29
+     * available since Chrome 30
      * https://developer.chrome.com/apps/app.window"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -150,7 +150,7 @@
 
 (def api-table
   {:namespace "chrome.app.window",
-   :since "29",
+   :since "30",
    :functions
    [{:id ::create,
      :name "create",

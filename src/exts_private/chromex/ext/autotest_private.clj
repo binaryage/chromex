@@ -2,7 +2,7 @@
   "API for integration testing. To be used on test images with a test component
    extension.
 
-     * available since Chrome 29"
+     * available since Chrome 30"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -547,7 +547,7 @@
 
 (def api-table
   {:namespace "chrome.autotestPrivate",
-   :since "29",
+   :since "30",
    :functions
    [{:id ::logout, :name "logout"}
     {:id ::restart, :name "restart"}
@@ -757,7 +757,7 @@
      [{:name "display-id", :type "string"} {:name "behavior", :type "string"} {:name "callback", :type :callback}]}
     {:id ::get-shelf-alignment,
      :name "getShelfAlignment",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "display-id", :type "string"}
@@ -766,7 +766,7 @@
        :callback {:params [{:name "alignment", :type "autotestPrivate.ShelfAlignmentType"}]}}]}
     {:id ::set-shelf-alignment,
      :name "setShelfAlignment",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "display-id", :type "string"}

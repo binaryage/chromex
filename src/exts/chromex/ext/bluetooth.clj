@@ -2,7 +2,7 @@
   "Use the chrome.bluetooth API to connect to a Bluetooth
    device. All functions report failures via chrome.runtime.lastError.
 
-     * available since Chrome 29
+     * available since Chrome 30
      * https://developer.chrome.com/extensions/bluetooth"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -165,7 +165,7 @@
 
 (def api-table
   {:namespace "chrome.bluetooth",
-   :since "29",
+   :since "30",
    :functions
    [{:id ::get-adapter-state,
      :name "getAdapterState",
@@ -199,7 +199,7 @@
      :params [{:name "callback", :optional? true, :type :callback}]}
     {:id ::record-pairing,
      :name "recordPairing",
-     :since "master",
+     :since "future",
      :params [{:name "success", :type "boolean"} {:name "transport", :type "bluetooth.Transport"}]}],
    :events
    [{:id ::on-adapter-state-changed,

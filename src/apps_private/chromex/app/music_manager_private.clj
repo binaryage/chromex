@@ -1,7 +1,7 @@
 (ns chromex.app.music-manager-private
   "musicManagerPrivate.
 
-     * available since Chrome 29"
+     * available since Chrome 30"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -37,7 +37,7 @@
 
 (def api-table
   {:namespace "chrome.musicManagerPrivate",
-   :since "29",
+   :since "30",
    :functions
    [{:id ::get-device-id,
      :name "getDeviceId",

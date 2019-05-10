@@ -198,7 +198,7 @@
      :params [{:name "callback", :optional? true, :type :callback}]}
     {:id ::record-pairing,
      :name "recordPairing",
-     :since "master",
+     :since "future",
      :params [{:name "success", :type "boolean"} {:name "transport", :type "bluetooth.Transport"}]}],
    :events
    [{:id ::on-adapter-state-changed,

@@ -2,7 +2,7 @@
   "Use the chrome.serial API to read from and write to a device
    connected to a serial port.
 
-     * available since Chrome 29
+     * available since Chrome 30
      * https://developer.chrome.com/apps/serial"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -265,7 +265,7 @@
 
 (def api-table
   {:namespace "chrome.serial",
-   :since "29",
+   :since "30",
    :functions
    [{:id ::get-devices,
      :name "getDevices",
