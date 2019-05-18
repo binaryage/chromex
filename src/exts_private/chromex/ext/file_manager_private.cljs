@@ -90,6 +90,9 @@
 (defn set-preferences* [config change-info]
   (gen-wrap :function ::set-preferences config change-info))
 
+(defn set-arc-storage-toast-shown-flag* [config]
+  (gen-wrap :function ::set-arc-storage-toast-shown-flag config))
+
 (defn search-drive* [config search-params]
   (gen-wrap :function ::search-drive config search-params))
 

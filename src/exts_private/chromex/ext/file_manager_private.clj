@@ -371,6 +371,19 @@
      |change-info| - ?"
   ([change-info] (gen-call :function ::set-preferences &form change-info)))
 
+(defmacro set-arc-storage-toast-shown-flag
+  "Sets the flag for remembering if the toast UI for ARC storage has already been shown. |callback| Completion callback with
+   the original value of the flag.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [result] where:
+
+     |result| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::set-arc-storage-toast-shown-flag &form)))
+
 (defmacro search-drive
   "Performs drive content search. |searchParams| |callback
 
@@ -1089,6 +1102,11 @@
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}
     {:id ::set-preferences, :name "setPreferences", :params [{:name "change-info", :type "object"}]}
+    {:id ::set-arc-storage-toast-shown-flag,
+     :name "setArcStorageToastShownFlag",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
     {:id ::search-drive,
      :name "searchDrive",
      :callback? true,

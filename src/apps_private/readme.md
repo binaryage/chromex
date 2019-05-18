@@ -44,7 +44,7 @@
 
 ### API stats
 
-Generated 36 namespaces containing 0 properties, 316 functions and 67 events:
+Generated 36 namespaces containing 0 properties, 317 functions and 67 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -62,7 +62,7 @@ Generated 36 namespaces containing 0 properties, 316 functions and 67 events:
     |        chrome.developerPrivate |           0 |         31 |       2 |
     |             chrome.echoPrivate |           0 |          5 |       0 |
     |         chrome.feedbackPrivate |           0 |          6 |       1 |
-    |      chrome.fileManagerPrivate |           0 |         64 |      10 |
+    |      chrome.fileManagerPrivate |           0 |         65 |      10 |
     |         chrome.identityPrivate |           0 |          0 |       1 |
     |      chrome.imageWriterPrivate |           0 |          5 |       5 |
     |      chrome.inputMethodPrivate |           0 |         15 |      10 |
@@ -158,15 +158,16 @@ Generated 36 namespaces containing 0 properties, 316 functions and 67 events:
       select-files select-file get-entry-properties pin-drive-file ensure-file-downloaded
       resolve-isolated-entries add-mount remove-mount mark-cache-as-mounted get-volume-metadata-list
       cancel-file-transfers start-copy cancel-copy get-size-stats format-volume rename-volume
-      get-preferences set-preferences search-drive search-drive-metadata search-files-by-hashes
-      search-files zip-selection get-drive-connection-state validate-path-name-length zoom
-      request-access-token request-web-store-access-token get-download-url request-drive-share
-      get-profiles open-inspector open-settings-subpage compute-checksum set-entry-tag
-      is-piex-loader-enabled get-providers add-provided-file-system configure-volume get-custom-actions
-      execute-custom-action get-directory-size get-recent-files mount-crostini share-paths-with-crostini
-      unshare-path-with-crostini get-crostini-shared-paths get-linux-package-info install-linux-package
-      get-thumbnail detect-character-encoding get-android-picker-apps select-android-picker-app
-      tap-on-mount-completed tap-on-file-transfers-updated tap-on-copy-progress tap-on-directory-changed
+      get-preferences set-preferences set-arc-storage-toast-shown-flag search-drive search-drive-metadata
+      search-files-by-hashes search-files zip-selection get-drive-connection-state
+      validate-path-name-length zoom request-access-token request-web-store-access-token get-download-url
+      request-drive-share get-profiles open-inspector open-settings-subpage compute-checksum
+      set-entry-tag is-piex-loader-enabled get-providers add-provided-file-system configure-volume
+      get-custom-actions execute-custom-action get-directory-size get-recent-files mount-crostini
+      share-paths-with-crostini unshare-path-with-crostini get-crostini-shared-paths
+      get-linux-package-info install-linux-package get-thumbnail detect-character-encoding
+      get-android-picker-apps select-android-picker-app tap-on-mount-completed
+      tap-on-file-transfers-updated tap-on-copy-progress tap-on-directory-changed
       tap-on-preferences-changed tap-on-drive-connection-status-changed tap-on-device-changed
       tap-on-drive-sync-error tap-on-apps-updated tap-on-crostini-changed tap-all-events]]
 
