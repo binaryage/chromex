@@ -11,6 +11,7 @@ finish () {
 trap finish EXIT
 
 CHROMIUM_SRC=${CHROMIUM_SRC:?please specify CHROMIUM_SRC} # should be set to ~/tasks/chromium/src/ on nightly machine
+CHROMEX_DRY_RUN=${CHROMEX_DRY_RUN}
 
 set -ex
 
@@ -44,6 +45,10 @@ WORKDIR="$TOOLS/_workdir"
 
 #############################################################################################################################
 # print some info
+
+if [[ ! -z "$CHROMEX_DRY_RUN" ]]; then
+  echo "running in DRY mode because CHROMEX_DRY_RUN"
+fi
 
 which python
 python --version
@@ -119,8 +124,13 @@ git add --all
 git commit -m "regenerate APIs from Chromium @ $CHROMIUM_SHORT_SHA" \
            -m "$SOURCE_LINK"
 
+if [[ -z "$CHROMEX_DRY_RUN" ]]; then
   git push -f origin nightly
   git push
+else
+  echo "not pushing because CHROMEX_DRY_RUN is set"
+fi
+
 popd
 
 popd
