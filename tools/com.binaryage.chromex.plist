@@ -26,7 +26,7 @@
   <key>EnvironmentVariables</key>
   <dict>
 		<key>PATH</key>
-		<string>/usr/local/opt/python@2/bin:/Users/darwin/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/darwin/bin/depot_tools</string>
+		<string>/Users/darwin/bin/depot_tools:/usr/local/opt/python@2/bin:/Users/darwin/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
 		<key>PYTHONPATH</key>
 		<string>/usr/local/lib/python2.7/site-packages</string>
 		<key>CHROMIUM_SRC</key>
