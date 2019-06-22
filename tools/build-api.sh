@@ -30,7 +30,7 @@ GENONLY=${GENONLY}
 SKIP_EXTRACTION=${SKIP_EXTRACTION}
 SKIP_DISTILLING=${SKIP_DISTILLING}
 
-SERVER2_DIR="${CHROMIUM_SRC}chrome/common/extensions/docs/server2"
+SERVER2_DIR="${CHROMIUM_SRC}/chrome/common/extensions/docs/server2"
 APIS_CACHE_FILE="$WORKDIR/apis.cache"
 APIS_JSON_FILE="$WORKDIR/apis.json"
 APIS_FILTERED_JSON_FILE="$WORKDIR/apis-filtered.json"

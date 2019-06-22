@@ -29,7 +29,7 @@ SRC_APPS="$SRC/apps"
 SRC_APPS_PRIVATE="$SRC/apps_private"
 SRC_APPS_INTERNAL="$SRC/apps_internal"
 
-SERVER2_DIR="${CHROMIUM_SRC}chrome/common/extensions/docs/server2"
+SERVER2_DIR="${CHROMIUM_SRC}/chrome/common/extensions/docs/server2"
 APIS_CACHE_FILE="$WORKDIR/apis.cache"
 APIS_JSON_FILE="$WORKDIR/apis.json"
 APIS_FILTERED_JSON_FILE="$WORKDIR/apis-filtered.json"

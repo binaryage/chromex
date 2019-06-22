@@ -21,7 +21,7 @@ ROOT=`pwd`
 TOOLS="$ROOT/tools"
 WORKDIR="$TOOLS/_workdir"
 
-SERVER2_DIR="${CHROMIUM_SRC}chrome/common/extensions/docs/server2"
+SERVER2_DIR="${CHROMIUM_SRC}/chrome/common/extensions/docs/server2"
 APIS_CACHE_FILE="$WORKDIR/apis.cache"
 APIS_LAST_FILE="$WORKDIR/apis.last"
 
@@ -30,7 +30,7 @@ if [[ ! -d "$WORKDIR" ]]; then
 fi
 
 pushd .
-cd "${CHROMIUM_SRC}chrome/common/extensions/docs"
+cd "${CHROMIUM_SRC}/chrome/common/extensions/docs"
 
 if [[ -r "$APIS_LAST_FILE" ]]; then
   LAST_SHA=`cat "$APIS_LAST_FILE"`
