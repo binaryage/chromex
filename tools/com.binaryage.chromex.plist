@@ -29,6 +29,8 @@
 		<string>/usr/local/opt/python@2/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/darwin/bin:/Users/darwin/bin/depot_tools</string>
 		<key>PYTHONPATH</key>
 		<string>/usr/local/lib/python2.7/site-packages</string>
+		<key>CHROMIUM_SRC</key>
+		<string>/Users/darwin/tasks/chromium/src</string>
 	</dict>
 </dict>
 </plist>

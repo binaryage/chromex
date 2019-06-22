@@ -10,7 +10,7 @@ finish () {
 }
 trap finish EXIT
 
-export CHROMIUM_SRC=~/tasks/chromium/src/
+CHROMIUM_SRC=${CHROMIUM_SRC:?please specify CHROMIUM_SRC} # should be set to ~/tasks/chromium/src/ on nightly machine
 
 set -ex
 
