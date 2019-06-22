@@ -166,6 +166,16 @@
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-select-to-speak-state-change-requested &form channel args)))
 
+(defmacro tap-on-switch-access-command-events
+  "Called when Chrome OS has received a key event corresponding to a Switch Access command.
+
+   Events will be put on the |channel| with signature [::on-switch-access-command [command]] where:
+
+     |command| - ?
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-switch-access-command &form channel args)))
+
 (defmacro tap-on-announce-for-accessibility-events
   "Called when an internal component within accessibility wants to force speech output for an accessibility extension. Do not
    use without approval from accessibility owners.
@@ -252,7 +262,7 @@
     {:id ::toggle-dictation, :name "toggleDictation", :since "71"}
     {:id ::set-virtual-keyboard-visible,
      :name "setVirtualKeyboardVisible",
-     :since "future",
+     :since "75",
      :params [{:name "is-visible", :type "boolean"}]}],
    :events
    [{:id ::on-introduce-chrome-vox, :name "onIntroduceChromeVox", :since "42"}
@@ -263,6 +273,10 @@
     {:id ::on-two-finger-touch-start, :name "onTwoFingerTouchStart", :since "59"}
     {:id ::on-two-finger-touch-stop, :name "onTwoFingerTouchStop", :since "59"}
     {:id ::on-select-to-speak-state-change-requested, :name "onSelectToSpeakStateChangeRequested", :since "68"}
+    {:id ::on-switch-access-command,
+     :name "onSwitchAccessCommand",
+     :since "master",
+     :params [{:name "command", :type "accessibilityPrivate.SwitchAccessCommand"}]}
     {:id ::on-announce-for-accessibility,
      :name "onAnnounceForAccessibility",
      :since "74",

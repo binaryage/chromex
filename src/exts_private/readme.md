@@ -47,16 +47,16 @@
 
 ### API stats
 
-Generated 39 namespaces containing 0 properties, 387 functions and 70 events:
+Generated 39 namespaces containing 0 properties, 390 functions and 71 events:
 
 
     |                            :namespace | :properties | :functions | :events |
     |---------------------------------------+-------------+------------+---------|
-    |           chrome.accessibilityPrivate |           0 |         16 |       6 |
+    |           chrome.accessibilityPrivate |           0 |         16 |       7 |
     |             chrome.activityLogPrivate |           0 |          5 |       1 |
     |                chrome.autofillPrivate |           0 |         11 |       2 |
-    |                chrome.autotestPrivate |           0 |         50 |       0 |
-    |               chrome.bluetoothPrivate |           0 |          7 |       1 |
+    |                chrome.autotestPrivate |           0 |         49 |       0 |
+    |               chrome.bluetoothPrivate |           0 |         10 |       1 |
     |         chrome.bookmarkManagerPrivate |           0 |         10 |       3 |
     |          chrome.brailleDisplayPrivate |           0 |          3 |       2 |
     |            chrome.chromeosInfoPrivate |           0 |          2 |       0 |
@@ -71,7 +71,7 @@ Generated 39 namespaces containing 0 properties, 387 functions and 70 events:
     |                chrome.feedbackPrivate |           0 |          6 |       1 |
     |             chrome.fileManagerPrivate |           0 |         65 |      10 |
     |             chrome.imageWriterPrivate |           0 |          5 |       5 |
-    |             chrome.inputMethodPrivate |           0 |         15 |      10 |
+    |             chrome.inputMethodPrivate |           0 |         16 |      10 |
     |        chrome.languageSettingsPrivate |           0 |         14 |       4 |
     |             chrome.mediaPlayerPrivate |           0 |          0 |       3 |
     |                 chrome.metricsPrivate |           0 |         16 |       0 |
@@ -105,7 +105,7 @@ Generated 39 namespaces containing 0 properties, 387 functions and 70 events:
       on-select-to-speak-state-changed toggle-dictation set-virtual-keyboard-visible
       tap-on-introduce-chrome-vox tap-on-accessibility-gesture tap-on-two-finger-touch-start
       tap-on-two-finger-touch-stop tap-on-select-to-speak-state-change-requested
-      tap-on-announce-for-accessibility tap-all-events]]
+      tap-on-switch-access-command tap-on-announce-for-accessibility tap-all-events]]
 
     [chromex.ext.activity-log-private refer:[
       get-extension-activities delete-activities delete-activities-by-extension delete-database
@@ -126,14 +126,14 @@ Generated 39 namespaces containing 0 properties, 387 functions and 70 events:
       remove-printer set-play-store-enabled get-histogram run-crostini-installer run-crostini-uninstaller
       set-crostini-enabled export-crostini import-crostini take-screenshot
       bootstrap-machine-learning-service set-assistant-enabled send-assistant-text-query
-      set-whitelisted-pref set-crostini-app-scaled ensure-window-service-client-has-drawn-window
-      get-primary-display-scale-factor is-tablet-mode-enabled set-tablet-mode-enabled
-      get-shelf-auto-hide-behavior set-shelf-auto-hide-behavior get-shelf-alignment set-shelf-alignment
+      set-whitelisted-pref set-crostini-app-scaled get-primary-display-scale-factor
+      is-tablet-mode-enabled set-tablet-mode-enabled get-shelf-auto-hide-behavior
+      set-shelf-auto-hide-behavior get-shelf-alignment set-shelf-alignment
       show-virtual-keyboard-if-enabled tap-all-events]]
 
     [chromex.ext.bluetooth-private refer:[
       set-adapter-state set-pairing-response disconnect-all forget-device set-discovery-filter connect
-      pair tap-on-pairing tap-all-events]]
+      pair record-pairing record-reconnection record-device-selection tap-on-pairing tap-all-events]]
 
     [chromex.ext.bookmark-manager-private refer:[
       copy cut paste sort-children start-drag drop get-subtree remove-trees undo redo tap-on-drag-enter
@@ -210,10 +210,10 @@ Generated 39 namespaces containing 0 properties, 387 functions and 70 events:
       get-input-method-config get-input-methods get-current-input-method set-current-input-method
       fetch-all-dictionary-words add-word-to-dictionary get-encrypt-sync-enabled set-xkb-layout
       notify-ime-menu-item-activated show-input-view open-options-page get-composition-bounds
-      get-surrounding-text get-setting set-setting tap-on-changed tap-on-composition-bounds-changed
-      tap-on-dictionary-loaded tap-on-dictionary-changed tap-on-ime-menu-activation-changed
-      tap-on-ime-menu-list-changed tap-on-ime-menu-items-changed tap-on-focus tap-on-settings-changed
-      tap-on-screen-projection-changed tap-all-events]]
+      get-surrounding-text get-setting set-setting set-composition-range tap-on-changed
+      tap-on-composition-bounds-changed tap-on-dictionary-loaded tap-on-dictionary-changed
+      tap-on-ime-menu-activation-changed tap-on-ime-menu-list-changed tap-on-ime-menu-items-changed
+      tap-on-focus tap-on-settings-changed tap-on-screen-projection-changed tap-all-events]]
 
     [chromex.ext.language-settings-private refer:[
       get-language-list enable-language disable-language set-enable-translation-for-language

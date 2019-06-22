@@ -60,8 +60,10 @@
      |id-list| - An array of string-valued ids.
      |drag-node-index| - The index of the dragged node in |idList
 
-     |is-from-touch| - True if the drag was initiated from touch."
-  ([id-list drag-node-index is-from-touch] (gen-call :function ::start-drag &form id-list drag-node-index is-from-touch)))
+     |is-from-touch| - True if the drag was initiated from touch.
+     |x| - The clientX of the dragStart event
+     |y| - The clientY of the dragStart event"
+  ([id-list drag-node-index is-from-touch x y] (gen-call :function ::start-drag &form id-list drag-node-index is-from-touch x y)))
 
 (defmacro drop
   "Performs the drop action of the drag and drop session.
@@ -184,7 +186,9 @@
      :params
      [{:name "id-list", :type "[array-of-strings]"}
       {:name "drag-node-index", :since "71", :type "integer"}
-      {:name "is-from-touch", :since "34", :type "boolean"}]}
+      {:name "is-from-touch", :since "34", :type "boolean"}
+      {:name "x", :since "master", :type "integer"}
+      {:name "y", :since "master", :type "integer"}]}
     {:id ::drop,
      :name "drop",
      :callback? true,

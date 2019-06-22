@@ -99,6 +99,28 @@
    chromex.error/get-last-error."
   ([device-address] (gen-call :function ::pair &form device-address)))
 
+(defmacro record-pairing
+  "Record that a pairing attempt finished. Do not record cancellations.
+
+     |success| - ?
+     |transport| - ?
+     |pairing-duration-ms| - ?"
+  ([success transport pairing-duration-ms] (gen-call :function ::record-pairing &form success transport pairing-duration-ms)))
+
+(defmacro record-reconnection
+  "Record that a user-initiated reconnection attempt to an already paired device finished. Do not record cancellations.
+
+     |success| - ?"
+  ([success] (gen-call :function ::record-reconnection &form success)))
+
+(defmacro record-device-selection
+  "Record that a user selected a device to connect to.
+
+     |selection-duration-ms| - ?
+     |was-paired| - ?
+     |transport| - ?"
+  ([selection-duration-ms was-paired transport] (gen-call :function ::record-device-selection &form selection-duration-ms was-paired transport)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -165,7 +187,25 @@
      :name "pair",
      :since "47",
      :callback? true,
-     :params [{:name "device-address", :type "string"} {:name "callback", :optional? true, :type :callback}]}],
+     :params [{:name "device-address", :type "string"} {:name "callback", :optional? true, :type :callback}]}
+    {:id ::record-pairing,
+     :name "recordPairing",
+     :since "future",
+     :params
+     [{:name "success", :type "boolean"}
+      {:name "transport", :type "bluetooth.Transport"}
+      {:name "pairing-duration-ms", :since "future", :type "integer"}]}
+    {:id ::record-reconnection,
+     :name "recordReconnection",
+     :since "future",
+     :params [{:name "success", :type "boolean"}]}
+    {:id ::record-device-selection,
+     :name "recordDeviceSelection",
+     :since "future",
+     :params
+     [{:name "selection-duration-ms", :type "integer"}
+      {:name "was-paired", :type "boolean"}
+      {:name "transport", :type "bluetooth.Transport"}]}],
    :events [{:id ::on-pairing, :name "onPairing", :params [{:name "pairing-event", :type "object"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

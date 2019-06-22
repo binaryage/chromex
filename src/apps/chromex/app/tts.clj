@@ -100,7 +100,7 @@
      :callback? true,
      :params
      [{:name "utterance", :type "string"}
-      {:name "options", :optional? true, :type "object"}
+      {:name "options", :optional? true, :type "tts.TtsOptions"}
       {:name "callback", :optional? true, :type :callback}]}
     {:id ::stop, :name "stop"}
     {:id ::pause, :name "pause"}

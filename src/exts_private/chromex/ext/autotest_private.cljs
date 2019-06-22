@@ -126,9 +126,6 @@
 (defn set-crostini-app-scaled* [config app-id scaled]
   (gen-wrap :function ::set-crostini-app-scaled config app-id scaled))
 
-(defn ensure-window-service-client-has-drawn-window* [config client-name timeout-ms]
-  (gen-wrap :function ::ensure-window-service-client-has-drawn-window config client-name timeout-ms))
-
 (defn get-primary-display-scale-factor* [config]
   (gen-wrap :function ::get-primary-display-scale-factor config))
 

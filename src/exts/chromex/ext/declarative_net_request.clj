@@ -2,7 +2,7 @@
   "The chrome.declarativeNetRequest API is used to block or modify
    network requests by specifying declarative rules.
 
-     * available since Chrome 75
+     * available since Chrome 76
      * https://developer.chrome.com/extensions/declarativeNetRequest"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -138,7 +138,7 @@
 
 (def api-table
   {:namespace "chrome.declarativeNetRequest",
-   :since "75",
+   :since "76",
    :properties
    [{:id ::max-number-of-allowed-pages, :name "MAX_NUMBER_OF_ALLOWED_PAGES", :return-type "unknown-type"}
     {:id ::max-number-of-rules, :name "MAX_NUMBER_OF_RULES", :return-type "unknown-type"}

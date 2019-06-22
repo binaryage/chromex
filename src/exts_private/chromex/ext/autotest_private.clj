@@ -420,22 +420,6 @@
    chromex.error/get-last-error."
   ([app-id scaled] (gen-call :function ::set-crostini-app-scaled &form app-id scaled)))
 
-(defmacro ensure-window-service-client-has-drawn-window
-  "Ensure that the Window Service client identified by |clientName| has drawn any window. |callback| is invoked with true if
-   the client has drawn anything or when it does so before the time out. Otherwise, an error is raised when timeout happens.
-
-     |client-name| - ?
-     |timeout-ms| - ?
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [success] where:
-
-     |success| - ?
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([client-name timeout-ms] (gen-call :function ::ensure-window-service-client-has-drawn-window &form client-name timeout-ms)))
-
 (defmacro get-primary-display-scale-factor
   "Get the primary display scale factor. |callback| is invoked with the scale factor.
 
@@ -675,12 +659,12 @@
      :params [{:name "enabled", :type "boolean"} {:name "callback", :type :callback}]}
     {:id ::export-crostini,
      :name "exportCrostini",
-     :since "future",
+     :since "75",
      :callback? true,
      :params [{:name "path", :type "string"} {:name "callback", :type :callback}]}
     {:id ::import-crostini,
      :name "importCrostini",
-     :since "future",
+     :since "75",
      :callback? true,
      :params [{:name "path", :type "string"} {:name "callback", :type :callback}]}
     {:id ::take-screenshot,
@@ -717,14 +701,6 @@
      :since "73",
      :callback? true,
      :params [{:name "app-id", :type "string"} {:name "scaled", :type "boolean"} {:name "callback", :type :callback}]}
-    {:id ::ensure-window-service-client-has-drawn-window,
-     :name "ensureWindowServiceClientHasDrawnWindow",
-     :since "73",
-     :callback? true,
-     :params
-     [{:name "client-name", :type "string"}
-      {:name "timeout-ms", :type "integer"}
-      {:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::get-primary-display-scale-factor,
      :name "getPrimaryDisplayScaleFactor",
      :since "73",
@@ -744,14 +720,14 @@
       {:name "callback", :type :callback, :callback {:params [{:name "enabled", :type "boolean"}]}}]}
     {:id ::get-shelf-auto-hide-behavior,
      :name "getShelfAutoHideBehavior",
-     :since "future",
+     :since "75",
      :callback? true,
      :params
      [{:name "display-id", :type "string"}
       {:name "callback", :type :callback, :callback {:params [{:name "behavior", :type "string"}]}}]}
     {:id ::set-shelf-auto-hide-behavior,
      :name "setShelfAutoHideBehavior",
-     :since "future",
+     :since "75",
      :callback? true,
      :params
      [{:name "display-id", :type "string"} {:name "behavior", :type "string"} {:name "callback", :type :callback}]}
@@ -772,7 +748,7 @@
      [{:name "display-id", :type "string"}
       {:name "alignment", :type "autotestPrivate.ShelfAlignmentType"}
       {:name "callback", :type :callback}]}
-    {:id ::show-virtual-keyboard-if-enabled, :name "showVirtualKeyboardIfEnabled", :since "future"}]})
+    {:id ::show-virtual-keyboard-if-enabled, :name "showVirtualKeyboardIfEnabled", :since "75"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

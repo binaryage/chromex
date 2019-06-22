@@ -5,7 +5,7 @@
    used to programmatically interact with a page by examining names, roles, and
    states, listening for events, and performing actions on nodes.
 
-     * available since Chrome 76
+     * available since Chrome 77
      * https://developer.chrome.com/apps/automation"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -109,6 +109,17 @@
    https://developer.chrome.com/apps/automation#method-setDocumentSelection."
   ([params] (gen-call :function ::set-document-selection &form params)))
 
+(defmacro language-annotation-for-string-attribute
+  "Returns the detected languages for the provided string attribute as an array of LanguageSpan objects. There are several
+   guarantees about the format of the LanguageSpan array: 1. Is either empty or contains LanguageSpans that cover all indices
+   in the associated string attribute value. 2. Is sorted by increasing startIndex (those with smaller startIndex appear
+   first). 3. LanguageSpans are non-overlapping and contain exactly one language.
+
+     |attribute| - https://developer.chrome.com/apps/automation#property-languageAnnotationForStringAttribute-attribute.
+
+   https://developer.chrome.com/apps/automation#method-languageAnnotationForStringAttribute."
+  ([attribute] (gen-call :function ::language-annotation-for-string-attribute &form attribute)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -122,7 +133,7 @@
 
 (def api-table
   {:namespace "chrome.automation",
-   :since "76",
+   :since "77",
    :functions
    [{:id ::get-tree,
      :name "getTree",
@@ -160,7 +171,11 @@
      [{:name "observer", :type :callback, :callback {:params [{:name "tree-change", :type "automation.TreeChange"}]}}]}
     {:id ::set-document-selection,
      :name "setDocumentSelection",
-     :params [{:name "params", :type "automation.SetDocumentSelectionParams"}]}]})
+     :params [{:name "params", :type "automation.SetDocumentSelectionParams"}]}
+    {:id ::language-annotation-for-string-attribute,
+     :name "languageAnnotationForStringAttribute",
+     :return-type "[array-of-objects]",
+     :params [{:name "attribute", :type "string"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

@@ -186,6 +186,20 @@
    chromex.error/get-last-error."
   ([engine-id key value] (gen-call :function ::set-setting &form engine-id key value)))
 
+(defmacro set-composition-range
+  "Set the composition range. If this extension does not own the active IME, this fails.
+
+     |parameters| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [success] where:
+
+     |success| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([parameters] (gen-call :function ::set-composition-range &form parameters)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -390,7 +404,17 @@
      [{:name "engine-id", :type "string"}
       {:name "key", :type "string"}
       {:name "value", :type "any"}
-      {:name "callback", :optional? true, :type :callback}]}],
+      {:name "callback", :optional? true, :type :callback}]}
+    {:id ::set-composition-range,
+     :name "setCompositionRange",
+     :since "future",
+     :callback? true,
+     :params
+     [{:name "parameters", :type "object"}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "success", :type "boolean"}]}}]}],
    :events
    [{:id ::on-changed, :name "onChanged", :params [{:name "new-input-method-id", :type "string"}]}
     {:id ::on-composition-bounds-changed,

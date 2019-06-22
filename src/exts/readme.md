@@ -95,8 +95,8 @@ Generated 78 namespaces containing 53 properties, 388 functions and 177 events:
     |                         chrome.action |           0 |         11 |       1 |
     |                         chrome.alarms |           0 |          5 |       1 |
     |                            chrome.app |           0 |          4 |       0 |
-    |                     chrome.automation |           0 |          6 |       0 |
-    |                      chrome.bluetooth |           0 |          6 |       4 |
+    |                     chrome.automation |           0 |          7 |       0 |
+    |                      chrome.bluetooth |           0 |          5 |       4 |
     |                      chrome.bookmarks |           2 |         11 |       7 |
     |                  chrome.browserAction |           0 |         11 |       1 |
     |                   chrome.browsingData |           0 |         16 |       0 |
@@ -192,10 +192,10 @@ Generated 78 namespaces containing 53 properties, 388 functions and 177 events:
 
     [chromex.ext.automation refer:[
       get-tree get-desktop get-focus add-tree-change-observer remove-tree-change-observer
-      set-document-selection tap-all-events]]
+      set-document-selection language-annotation-for-string-attribute tap-all-events]]
 
     [chromex.ext.bluetooth refer:[
-      get-adapter-state get-device get-devices start-discovery stop-discovery record-pairing
+      get-adapter-state get-device get-devices start-discovery stop-discovery
       tap-on-adapter-state-changed tap-on-device-added tap-on-device-changed tap-on-device-removed
       tap-all-events]]
 

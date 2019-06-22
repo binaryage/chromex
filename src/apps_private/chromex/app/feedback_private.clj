@@ -155,7 +155,7 @@
      :params
      [{:name "params", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}
-    {:id ::login-feedback-complete, :name "loginFeedbackComplete", :since "future"}],
+    {:id ::login-feedback-complete, :name "loginFeedbackComplete", :since "75"}],
    :events
    [{:id ::on-feedback-requested,
      :name "onFeedbackRequested",

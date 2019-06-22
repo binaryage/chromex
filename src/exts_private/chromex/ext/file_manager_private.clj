@@ -1104,7 +1104,7 @@
     {:id ::set-preferences, :name "setPreferences", :params [{:name "change-info", :type "object"}]}
     {:id ::set-arc-storage-toast-shown-flag,
      :name "setArcStorageToastShownFlag",
-     :since "master",
+     :since "future",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
     {:id ::search-drive,
@@ -1131,7 +1131,7 @@
       {:name "callback", :type :callback, :callback {:params [{:name "urls", :type "object"}]}}]}
     {:id ::search-files,
      :name "searchFiles",
-     :since "future",
+     :since "75",
      :callback? true,
      :params
      [{:name "search-params", :type "fileManagerPrivate.SearchMetadataParams"}
@@ -1274,7 +1274,7 @@
      :since "72",
      :callback? true,
      :params
-     [{:name "vm-name", :since "future", :type "string"}
+     [{:name "vm-name", :since "75", :type "string"}
       {:name "entries", :type "[array-of-objects]"}
       {:name "persist", :type "boolean"}
       {:name "callback", :type :callback}]}
@@ -1283,7 +1283,7 @@
      :since "73",
      :callback? true,
      :params
-     [{:name "vm-name", :since "future", :type "string"}
+     [{:name "vm-name", :since "75", :type "string"}
       {:name "entry", :type "object"}
       {:name "callback", :type :callback}]}
     {:id ::get-crostini-shared-paths,
@@ -1292,7 +1292,7 @@
      :callback? true,
      :params
      [{:name "observe-first-for-session", :since "74", :type "boolean"}
-      {:name "vm-name", :since "future", :type "string"}
+      {:name "vm-name", :since "75", :type "string"}
       {:name "callback",
        :type :callback,
        :callback

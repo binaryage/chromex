@@ -9,7 +9,7 @@
 
    Valid resource IDs are positive and non-zero.
 
-     * available since Chrome 76
+     * available since Chrome 77
      * https://developer.chrome.com/extensions/cast.streaming.session"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -58,7 +58,7 @@
 
 (def api-table
   {:namespace "chrome.cast.streaming.session",
-   :since "76",
+   :since "77",
    :functions
    [{:id ::create,
      :name "create",

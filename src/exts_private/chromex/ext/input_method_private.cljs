@@ -48,6 +48,9 @@
 (defn set-setting* [config engine-id key value]
   (gen-wrap :function ::set-setting config engine-id key value))
 
+(defn set-composition-range* [config parameters]
+  (gen-wrap :function ::set-composition-range config parameters))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-changed* [config channel & args]

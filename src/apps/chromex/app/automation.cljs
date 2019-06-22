@@ -21,3 +21,6 @@
 (defn set-document-selection* [config params]
   (gen-wrap :function ::set-document-selection config params))
 
+(defn language-annotation-for-string-attribute* [config attribute]
+  (gen-wrap :function ::language-annotation-for-string-attribute config attribute))
+
