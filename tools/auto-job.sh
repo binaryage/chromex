@@ -80,12 +80,8 @@ die_if_dirty_working_copy
 
 git fetch origin
 
-git checkout master
-git reset --hard origin/master
-
 git checkout -B nightly origin/nightly
 git rebase master
-git push -f origin nightly
 
 # hack - update-cache.sh does not work reliably (or I'm not using it properly)
 # since we run this as a batch task on a server, we don't care about speed that much
@@ -122,8 +118,9 @@ git config user.name "BinaryAge Bot"
 git add --all
 git commit -m "regenerate APIs from Chromium @ $CHROMIUM_SHORT_SHA" \
            -m "$SOURCE_LINK"
-git push
 
+  git push -f origin nightly
+  git push
 popd
 
 popd
