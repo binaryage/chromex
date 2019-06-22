@@ -74,8 +74,7 @@ git fetch origin
 git checkout master
 git reset --hard origin/master
 
-git checkout nightly
-git reset --hard origin/nightly
+git checkout -B nightly origin/nightly
 git rebase master
 git push -f origin nightly
 
