@@ -88,6 +88,12 @@ git fetch origin
 git checkout -B nightly origin/nightly
 git rebase master
 
+if [[ -z "$CHROMEX_DRY_RUN" ]]; then
+  git push -f origin nightly
+else
+  echo "not pushing nightly rebase because CHROMEX_DRY_RUN is set"
+fi
+
 # hack - update-cache.sh does not work reliably (or I'm not using it properly)
 # since we run this as a batch task on a server, we don't care about speed that much
 # time ./tools/update-cache.sh
@@ -125,7 +131,6 @@ git commit -m "regenerate APIs from Chromium @ $CHROMIUM_SHORT_SHA" \
            -m "$SOURCE_LINK"
 
 if [[ -z "$CHROMEX_DRY_RUN" ]]; then
-  git push -f origin nightly
   git push
 else
   echo "not pushing because CHROMEX_DRY_RUN is set"
