@@ -7,7 +7,7 @@
    'runtime.lastError' and executing the function's regular callback. The
    callback's regular parameters will be undefined in this case.
 
-     * available since Chrome 30
+     * available since Chrome 31
      * https://developer.chrome.com/apps/usb"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -363,11 +363,10 @@
 
 (def api-table
   {:namespace "chrome.usb",
-   :since "30",
+   :since "31",
    :functions
    [{:id ::get-devices,
      :name "getDevices",
-     :since "31",
      :callback? true,
      :params
      [{:name "options", :type "object"}
@@ -400,7 +399,6 @@
       {:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::open-device,
      :name "openDevice",
-     :since "31",
      :callback? true,
      :params
      [{:name "device", :type "usb.Device"}
@@ -416,9 +414,7 @@
     {:id ::close-device,
      :name "closeDevice",
      :callback? true,
-     :params
-     [{:name "handle", :since "31", :type "usb.ConnectionHandle"}
-      {:name "callback", :optional? true, :type :callback}]}
+     :params [{:name "handle", :type "usb.ConnectionHandle"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::set-configuration,
      :name "setConfiguration",
      :since "42",
@@ -438,7 +434,7 @@
      :name "listInterfaces",
      :callback? true,
      :params
-     [{:name "handle", :since "31", :type "usb.ConnectionHandle"}
+     [{:name "handle", :type "usb.ConnectionHandle"}
       {:name "callback",
        :type :callback,
        :callback {:params [{:name "descriptors", :type "[array-of-usb.InterfaceDescriptors]"}]}}]}
@@ -446,21 +442,21 @@
      :name "claimInterface",
      :callback? true,
      :params
-     [{:name "handle", :since "31", :type "usb.ConnectionHandle"}
+     [{:name "handle", :type "usb.ConnectionHandle"}
       {:name "interface-number", :type "integer"}
       {:name "callback", :type :callback}]}
     {:id ::release-interface,
      :name "releaseInterface",
      :callback? true,
      :params
-     [{:name "handle", :since "31", :type "usb.ConnectionHandle"}
+     [{:name "handle", :type "usb.ConnectionHandle"}
       {:name "interface-number", :type "integer"}
       {:name "callback", :type :callback}]}
     {:id ::set-interface-alternate-setting,
      :name "setInterfaceAlternateSetting",
      :callback? true,
      :params
-     [{:name "handle", :since "31", :type "usb.ConnectionHandle"}
+     [{:name "handle", :type "usb.ConnectionHandle"}
       {:name "interface-number", :type "integer"}
       {:name "alternate-setting", :type "integer"}
       {:name "callback", :type :callback}]}
@@ -468,35 +464,35 @@
      :name "controlTransfer",
      :callback? true,
      :params
-     [{:name "handle", :since "31", :type "usb.ConnectionHandle"}
+     [{:name "handle", :type "usb.ConnectionHandle"}
       {:name "transfer-info", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "info", :type "usb.TransferResultInfo"}]}}]}
     {:id ::bulk-transfer,
      :name "bulkTransfer",
      :callback? true,
      :params
-     [{:name "handle", :since "31", :type "usb.ConnectionHandle"}
+     [{:name "handle", :type "usb.ConnectionHandle"}
       {:name "transfer-info", :type "usb.GenericTransferInfo"}
       {:name "callback", :type :callback, :callback {:params [{:name "info", :type "usb.TransferResultInfo"}]}}]}
     {:id ::interrupt-transfer,
      :name "interruptTransfer",
      :callback? true,
      :params
-     [{:name "handle", :since "31", :type "usb.ConnectionHandle"}
+     [{:name "handle", :type "usb.ConnectionHandle"}
       {:name "transfer-info", :type "usb.GenericTransferInfo"}
       {:name "callback", :type :callback, :callback {:params [{:name "info", :type "usb.TransferResultInfo"}]}}]}
     {:id ::isochronous-transfer,
      :name "isochronousTransfer",
      :callback? true,
      :params
-     [{:name "handle", :since "31", :type "usb.ConnectionHandle"}
+     [{:name "handle", :type "usb.ConnectionHandle"}
       {:name "transfer-info", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "info", :type "usb.TransferResultInfo"}]}}]}
     {:id ::reset-device,
      :name "resetDevice",
      :callback? true,
      :params
-     [{:name "handle", :since "31", :type "usb.ConnectionHandle"}
+     [{:name "handle", :type "usb.ConnectionHandle"}
       {:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}],
    :events
    [{:id ::on-device-added,

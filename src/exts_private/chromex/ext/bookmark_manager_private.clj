@@ -1,5 +1,5 @@
 (ns chromex.ext.bookmark-manager-private
-  "  * available since Chrome 30"
+  "  * available since Chrome 31"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -163,7 +163,7 @@
 
 (def api-table
   {:namespace "chrome.bookmarkManagerPrivate",
-   :since "30",
+   :since "31",
    :functions
    [{:id ::copy,
      :name "copy",
@@ -187,8 +187,8 @@
      [{:name "id-list", :type "[array-of-strings]"}
       {:name "drag-node-index", :since "71", :type "integer"}
       {:name "is-from-touch", :since "34", :type "boolean"}
-      {:name "x", :since "master", :type "integer"}
-      {:name "y", :since "master", :type "integer"}]}
+      {:name "x", :since "future", :type "integer"}
+      {:name "y", :since "future", :type "integer"}]}
     {:id ::drop,
      :name "drop",
      :callback? true,

@@ -5,7 +5,7 @@
    can use the API to read and write local documents. All failures are notified
    via chrome.runtime.lastError.
 
-     * available since Chrome 30
+     * available since Chrome 31
      * https://developer.chrome.com/apps/fileSystem"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -194,25 +194,25 @@
 
 (def api-table
   {:namespace "chrome.fileSystem",
-   :since "30",
+   :since "31",
    :functions
    [{:id ::get-display-path,
      :name "getDisplayPath",
      :callback? true,
      :params
-     [{:name "entry", :since "31", :type "Entry"}
+     [{:name "entry", :type "Entry"}
       {:name "callback", :type :callback, :callback {:params [{:name "display-path", :type "string"}]}}]}
     {:id ::get-writable-entry,
      :name "getWritableEntry",
      :callback? true,
      :params
-     [{:name "entry", :since "31", :type "Entry"}
+     [{:name "entry", :type "Entry"}
       {:name "callback", :type :callback, :callback {:params [{:name "entry", :type "Entry"}]}}]}
     {:id ::is-writable-entry,
      :name "isWritableEntry",
      :callback? true,
      :params
-     [{:name "entry", :since "31", :type "Entry"}
+     [{:name "entry", :type "Entry"}
       {:name "callback", :type :callback, :callback {:params [{:name "is-writable", :type "boolean"}]}}]}
     {:id ::choose-entry,
      :name "chooseEntry",
@@ -237,10 +237,7 @@
      :params
      [{:name "id", :type "string"}
       {:name "callback", :type :callback, :callback {:params [{:name "is-restorable", :type "boolean"}]}}]}
-    {:id ::retain-entry,
-     :name "retainEntry",
-     :return-type "string",
-     :params [{:name "entry", :since "31", :type "Entry"}]}
+    {:id ::retain-entry, :name "retainEntry", :return-type "string", :params [{:name "entry", :type "Entry"}]}
     {:id ::request-file-system,
      :name "requestFileSystem",
      :since "44",

@@ -2,7 +2,7 @@
   "Use the chrome.feedbackPrivate API to provide Chrome [OS]
    feedback to the Google Feedback servers.
 
-     * available since Chrome 30"
+     * available since Chrome 31"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -120,7 +120,7 @@
 
 (def api-table
   {:namespace "chrome.feedbackPrivate",
-   :since "30",
+   :since "31",
    :functions
    [{:id ::get-user-email,
      :name "getUserEmail",
@@ -143,7 +143,6 @@
        :callback {:params [{:name "status", :type "unknown-type"} {:name "type", :type "unknown-type"}]}}]}
     {:id ::get-strings,
      :name "getStrings",
-     :since "31",
      :callback? true,
      :params
      [{:name "flow", :since "60", :type "feedbackPrivate.FeedbackFlow"}

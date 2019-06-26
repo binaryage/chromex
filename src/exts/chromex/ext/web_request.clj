@@ -1,7 +1,7 @@
 (ns chromex.ext.web-request
   "Use the chrome.webRequest API to observe and analyze traffic and to intercept, block, or modify requests in-flight.
 
-     * available since Chrome 30
+     * available since Chrome 31
      * https://developer.chrome.com/extensions/webRequest"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -179,7 +179,7 @@
 
 (def api-table
   {:namespace "chrome.webRequest",
-   :since "30",
+   :since "31",
    :properties
    [{:id ::max-handler-behavior-changed-calls-per10-minutes,
      :name "MAX_HANDLER_BEHAVIOR_CHANGED_CALLS_PER_10_MINUTES",
@@ -193,7 +193,7 @@
    [{:id ::on-before-request, :name "onBeforeRequest", :params [{:name "details", :type "object"}]}
     {:id ::on-before-send-headers, :name "onBeforeSendHeaders", :params [{:name "details", :type "object"}]}
     {:id ::on-send-headers, :name "onSendHeaders", :params [{:name "details", :type "object"}]}
-    {:id ::on-headers-received, :name "onHeadersReceived", :params [{:name "details", :since "31", :type "object"}]}
+    {:id ::on-headers-received, :name "onHeadersReceived", :params [{:name "details", :type "object"}]}
     {:id ::on-auth-required,
      :name "onAuthRequired",
      :params [{:name "details", :type "object"} {:name "async-callback", :optional? true, :type :callback}]}

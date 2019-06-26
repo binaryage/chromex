@@ -275,7 +275,7 @@
     {:id ::on-select-to-speak-state-change-requested, :name "onSelectToSpeakStateChangeRequested", :since "68"}
     {:id ::on-switch-access-command,
      :name "onSwitchAccessCommand",
-     :since "master",
+     :since "future",
      :params [{:name "command", :type "accessibilityPrivate.SwitchAccessCommand"}]}
     {:id ::on-announce-for-accessibility,
      :name "onAnnounceForAccessibility",
