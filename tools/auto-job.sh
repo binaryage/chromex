@@ -86,7 +86,7 @@ die_if_dirty_working_copy
 git fetch origin
 
 git checkout -B nightly origin/nightly
-git rebase master
+git rebase origin/master
 
 if [[ -z "$CHROMEX_DRY_RUN" ]]; then
   git push -f origin nightly
