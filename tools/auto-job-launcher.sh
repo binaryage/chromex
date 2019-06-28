@@ -21,4 +21,4 @@ git fetch origin
 git checkout -B master origin/master
 
 # run the job
-exec "$TOOLS/auto-job.sh" 2>&1
+exec "$TOOLS/auto-job.sh"
