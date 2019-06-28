@@ -1,8 +1,24 @@
 #!/usr/bin/env bash
 
-# ensure we start in tools folder
-cd "$(dirname "${BASH_SOURCE[0]}")";
+die_if_dirty_working_copy () {
+  if [[ -n "$(git status -uno --porcelain)" ]]; then
+    echo "working copy is not clean in '$(pwd)'"
+    exit 1
+  fi
+}
 
-TOOLS=`pwd`
+# ensure we start in root folder
+cd "$(dirname "${BASH_SOURCE[0]}")"
+cd ..
 
-"$TOOLS/auto-job.sh" 2>&1
+ROOT="$(pwd)"
+TOOLS="$ROOT/tools"
+
+die_if_dirty_working_copy
+
+# update our code to latest
+git fetch origin
+git checkout -B master origin/master
+
+# run the job
+exec "$TOOLS/auto-job.sh" 2>&1
