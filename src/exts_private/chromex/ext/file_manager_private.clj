@@ -341,10 +341,13 @@
   ([volume-id] (gen-call :function ::get-size-stats &form volume-id)))
 
 (defmacro format-volume
-  "Formats a mounted volume. |volumeId| ID of the volume to be formatted.
+  "Formats a mounted volume. |volumeId| ID of the volume to be formatted. |filesystem| Filesystem type to be formatted to.
+   |volumeLabel| Label of the drive after formatting.
 
-     |volume-id| - ?"
-  ([volume-id] (gen-call :function ::format-volume &form volume-id)))
+     |volume-id| - ?
+     |filesystem| - ?
+     |volume-label| - ?"
+  ([volume-id filesystem volume-label] (gen-call :function ::format-volume &form volume-id filesystem volume-label)))
 
 (defmacro rename-volume
   "Renames a mounted volume. |volumeId| ID of the volume to be renamed. |newName| New name of the target volume.
@@ -1092,7 +1095,12 @@
       {:name "callback",
        :type :callback,
        :callback {:params [{:name "size-stats", :optional? true, :type "object"}]}}]}
-    {:id ::format-volume, :name "formatVolume", :params [{:name "volume-id", :type "string"}]}
+    {:id ::format-volume,
+     :name "formatVolume",
+     :params
+     [{:name "volume-id", :type "string"}
+      {:name "filesystem", :since "master", :type "unknown-type"}
+      {:name "volume-label", :since "master", :type "string"}]}
     {:id ::rename-volume,
      :name "renameVolume",
      :since "62",

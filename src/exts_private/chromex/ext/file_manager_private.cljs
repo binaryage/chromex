@@ -78,8 +78,8 @@
 (defn get-size-stats* [config volume-id]
   (gen-wrap :function ::get-size-stats config volume-id))
 
-(defn format-volume* [config volume-id]
-  (gen-wrap :function ::format-volume config volume-id))
+(defn format-volume* [config volume-id filesystem volume-label]
+  (gen-wrap :function ::format-volume config volume-id filesystem volume-label))
 
 (defn rename-volume* [config volume-id new-name]
   (gen-wrap :function ::rename-volume config volume-id new-name))
