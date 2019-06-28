@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -ex
+
 die_if_dirty_working_copy () {
   if [[ -n "$(git status -uno --porcelain)" ]]; then
     echo "working copy is not clean in '$(pwd)'"

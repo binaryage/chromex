@@ -40,10 +40,10 @@ if [[ ! -z "$CHROMEX_DRY_RUN" ]]; then
   echo "running in DRY mode because CHROMEX_DRY_RUN"
 fi
 
-which python
+command -v python
 python --version
 
-which git
+command -v git
 git --version
 
 #############################################################################################################################
@@ -105,7 +105,7 @@ GENERATION_DATE=$(date "+%Y-%m-%d")
 SOURCE_LINK="https://chromium.googlesource.com/chromium/src.git/+/$CHROMIUM_SHA"
 SOURCE_INFO="[**Chromium @ $CHROMIUM_SHORT_SHA**]($SOURCE_LINK)"
 DATE_SOURCE_INFO="Current version was **generated on $GENERATION_DATE** from $SOURCE_INFO."
-README_WITH_MARKER=`perl -pe 'BEGIN{undef $/;} s/Current version was.*?Looking for a nightly version/DATESOURCEMARKER\n\nLooking for a nightly version/smg' "$CHROMEX_README"`
+README_WITH_MARKER=$(perl -pe 'BEGIN{undef $/;} s/Current version was.*?Looking for a nightly version/DATESOURCEMARKER\n\nLooking for a nightly version/smg' "$CHROMEX_README")
 NEW_README="${README_WITH_MARKER/DATESOURCEMARKER/$DATE_SOURCE_INFO}"
 
 echo "$NEW_README" > "$CHROMEX_README"
