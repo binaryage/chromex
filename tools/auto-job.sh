@@ -15,14 +15,6 @@ CHROMEX_DRY_RUN=${CHROMEX_DRY_RUN}
 
 set -ex
 
-pushd () {
-  command pushd "$@" > /dev/null
-}
-
-popd () {
-  command popd "$@" > /dev/null
-}
-
 die_if_dirty_working_copy () {
   if [[ -n "$(git status -uno --porcelain)" ]]; then
     echo "working copy is not clean in '$(pwd)'"
@@ -31,8 +23,6 @@ die_if_dirty_working_copy () {
 }
 
 #############################################################################################################################
-
-pushd .
 
 # ensure we start in root folder
 cd "$(dirname "${BASH_SOURCE[0]}")"; cd ../..
@@ -59,7 +49,7 @@ git --version
 #############################################################################################################################
 # pull latest chromium
 
-pushd "$CHROMIUM_SRC"
+cd "$CHROMIUM_SRC"
 
 die_if_dirty_working_copy
 
@@ -74,12 +64,10 @@ git fetch --tags
 CHROMIUM_SHA=$(git rev-parse HEAD)
 CHROMIUM_SHORT_SHA=$(git rev-parse --short HEAD)
 
-popd
-
 #############################################################################################################################
 # generate chromex APIs
 
-pushd "$CHROMEX"
+cd "$CHROMEX"
 
 die_if_dirty_working_copy
 
@@ -108,8 +96,6 @@ git diff-index --exit-code HEAD > /dev/null
 if [[ $? -eq 0 ]]; then
     echo "no changes from previous version in '$(pwd)'"
     echo "nothing to commit => exit"
-    popd
-    popd
     exit 42
 fi
 set -e
@@ -135,7 +121,3 @@ if [[ -z "$CHROMEX_DRY_RUN" ]]; then
 else
   echo "not pushing because CHROMEX_DRY_RUN is set"
 fi
-
-popd
-
-popd
