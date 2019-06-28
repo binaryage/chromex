@@ -4,20 +4,10 @@ CHROMIUM_SRC=${CHROMIUM_SRC:?"Please set CHROMIUM_SRC env var pointing to your c
 
 set -e
 
-pushd () {
-    command pushd "$@" > /dev/null
-}
-
-popd () {
-    command popd "$@" > /dev/null
-}
-
-pushd .
-
 # ensure we start in root folder
-cd "$(dirname "${BASH_SOURCE[0]}")"; cd ..
+cd "$(dirname "${BASH_SOURCE[0]}")/.."
 
-ROOT=`pwd`
+ROOT=$(pwd)
 SRC="$ROOT/src"
 TOOLS="$ROOT/tools"
 WORKDIR="$TOOLS/_workdir"
@@ -43,7 +33,6 @@ fi
 
 if [[ ! -r "$APIS_CACHE_FILE" ]]; then
   echo "'$APIS_CACHE_FILE' does not exist, run ./build-cache.sh"
-  popd
   exit 1
 fi
 
@@ -51,32 +40,27 @@ if [[ ! "$GENONLY" ]]; then
   echo "reminder: you might consider fetching latest chromium sources and running ./update-cache.sh first"
 
   if [[ -z "$SKIP_EXTRACTION" ]]; then
-    pushd .
     cd "$TOOLS/api-extractor"
     ./api-extractor.py --load-file="$APIS_CACHE_FILE" --save-file="$APIS_JSON_FILE" --server2-dir="$SERVER2_DIR"
-    popd
   fi
 
   if [[ -z "$SKIP_DISTILLING" ]]; then
-    pushd .
     cd "$TOOLS/api-distiller"
     lein run -- --input="$APIS_JSON_FILE" --output="$APIS_FILTERED_JSON_FILE"
-    popd
   fi
 fi
 
-pushd .
-
-rm -rf "$API_SOURCE_DIR"
+if [[ -d "$API_SOURCE_DIR" ]]; then
+  rm -rf "$API_SOURCE_DIR"
+fi
 mkdir -p "$API_SOURCE_DIR"
-cd "$TOOLS/api-gen"
-SHA=`cat "$APIS_LAST_FILE"`
-EXTS_RESULT=`lein run -- --input="$APIS_FILTERED_JSON_FILE" --outdir="$API_SOURCE_DIR/exts" --chromium-sha="$SHA" --filter="exts" --subns="ext" | grep "RESULT:"`
-EXTS_PRIVATE_RESULT=`lein run -- --input="$APIS_FILTERED_JSON_FILE" --outdir="$API_SOURCE_DIR/exts_private" --chromium-sha="$SHA" --filter="exts-private" --subns="ext" | grep "RESULT:"`
-APPS_RESULT=`lein run -- --input="$APIS_FILTERED_JSON_FILE" --outdir="$API_SOURCE_DIR/apps" --chromium-sha="$SHA" --filter="apps" --subns="app" | grep "RESULT:"`
-APPS_PRIVATE_RESULT=`lein run -- --input="$APIS_FILTERED_JSON_FILE" --outdir="$API_SOURCE_DIR/apps_private" --chromium-sha="$SHA" --filter="apps-private" --subns="app"| grep "RESULT:"`
 
-popd
+cd "$TOOLS/api-gen"
+SHA=$(cat "$APIS_LAST_FILE")
+EXTS_RESULT=$(lein run -- --input="$APIS_FILTERED_JSON_FILE" --outdir="$API_SOURCE_DIR/exts" --chromium-sha="$SHA" --filter="exts" --subns="ext" | grep "RESULT:")
+EXTS_PRIVATE_RESULT=$(lein run -- --input="$APIS_FILTERED_JSON_FILE" --outdir="$API_SOURCE_DIR/exts_private" --chromium-sha="$SHA" --filter="exts-private" --subns="ext" | grep "RESULT:")
+APPS_RESULT=$(lein run -- --input="$APIS_FILTERED_JSON_FILE" --outdir="$API_SOURCE_DIR/apps" --chromium-sha="$SHA" --filter="apps" --subns="app" | grep "RESULT:")
+APPS_PRIVATE_RESULT=$(lein run -- --input="$APIS_FILTERED_JSON_FILE" --outdir="$API_SOURCE_DIR/apps_private" --chromium-sha="$SHA" --filter="apps-private" --subns="app"| grep "RESULT:")
 
 rm -rf "$SRC_EXTS"
 rm -rf "$SRC_EXTS_PRIVATE"
@@ -89,8 +73,6 @@ mkdir -p "$SRC_APPS"
 mkdir -p "$SRC_APPS_PRIVATE"
 
 cp -R "$API_SOURCE_DIR/"* "$SRC"
-
-popd
 
 STATS_HEADER1="| API family | namespaces | properties | functions | events |"
 STATS_HEADER2="| --- | --- | --- | --- | --- |"
@@ -108,7 +90,7 @@ $APPS_PUBLIC_APIS
 $EXTS_PRIVATE_APIS
 $APPS_PRIVATE_APIS"
 
-README_WITH_MARKER=`perl -pe 'BEGIN{undef $/;} s/also for Chrome Apps:\n.*?Note: Chromex generator uses/also for Chrome Apps:\nDYNAMICMARKER\n\nNote: Chromex generator uses/smg' "$ROOT_README"`
+README_WITH_MARKER=$(perl -pe 'BEGIN{undef $/;} s/also for Chrome Apps:\n.*?Note: Chromex generator uses/also for Chrome Apps:\nDYNAMICMARKER\n\nNote: Chromex generator uses/smg' "$ROOT_README")
 NEW_README="${README_WITH_MARKER/DYNAMICMARKER/$STATS_TABLE}"
 
 echo "$NEW_README" > "$ROOT_README"

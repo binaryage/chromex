@@ -6,14 +6,6 @@ echo "chromium src dir: ${CHROMIUM_SRC}"
 
 set -e
 
-pushd () {
-    command pushd "$@" > /dev/null
-}
-
-popd () {
-    command popd "$@" > /dev/null
-}
-
 clean_chromium_working_copy() {
   echo "cleaning chromium working copy at ${CHROMIUM_SRC}"
   pushd "${CHROMIUM_SRC}"
@@ -21,12 +13,10 @@ clean_chromium_working_copy() {
   popd
 }
 
-pushd .
-
 # ensure we start in root folder
-cd "$(dirname "${BASH_SOURCE[0]}")"; cd ..
+cd "$(dirname "${BASH_SOURCE[0]}")/.."
 
-ROOT=`pwd`
+ROOT=$(pwd)
 TOOLS="$ROOT/tools"
 WORKDIR="$TOOLS/_workdir"
 
@@ -39,17 +29,13 @@ if [[ ! -d "$WORKDIR" ]]; then
 fi
 
 # a hack around some asserts in update_cache.py, not sure what went wrong and why they don't fix it
-pushd .
 cd "${CHROMIUM_SRC}"
 git reset --hard HEAD
 git clean -fd
 git checkout -f master
 trap clean_chromium_working_copy EXIT
-popd
 
-pushd .
 cd "${SERVER2_DIR}"
-
 # without this bootstrapping subsequent update_cache.py would fail
 # with 'ImportError: No module named third_party.json_schema_compiler.memoize'
 python << EOF
@@ -59,10 +45,6 @@ EOF
 
 python update_cache.py --no-push --save-file="$APIS_CACHE_FILE"
 
-popd
-
 cd "${CHROMIUM_SRC}"
-SHA=`git rev-parse HEAD`
+SHA=$(git rev-parse HEAD)
 echo "$SHA" > "$APIS_LAST_FILE"
-
-popd

@@ -10,8 +10,7 @@ die_if_dirty_working_copy () {
 }
 
 # ensure we start in root folder
-cd "$(dirname "${BASH_SOURCE[0]}")"
-cd ..
+cd "$(dirname "${BASH_SOURCE[0]}")/.."
 
 ROOT="$(pwd)"
 TOOLS="$ROOT/tools"
