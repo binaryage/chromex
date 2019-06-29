@@ -2,6 +2,10 @@
 
 set -ex
 
+# this will combine stdout and stderr and tee logs into syslog as well
+# see http://elevated-dev.com/TechTips/Launchd%20&%20Logging/
+exec 1> >(tee >(logger -t "chromex auto-job")) 2>&1
+
 die_if_dirty_working_copy () {
   if [[ -n "$(git status -uno --porcelain)" ]]; then
     echo "working copy is not clean in '$(pwd)'"
