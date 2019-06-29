@@ -47,12 +47,12 @@
 
 ### API stats
 
-Generated 39 namespaces containing 0 properties, 390 functions and 71 events:
+Generated 39 namespaces containing 0 properties, 391 functions and 72 events:
 
 
     |                            :namespace | :properties | :functions | :events |
     |---------------------------------------+-------------+------------+---------|
-    |           chrome.accessibilityPrivate |           0 |         16 |       7 |
+    |           chrome.accessibilityPrivate |           0 |         17 |       8 |
     |             chrome.activityLogPrivate |           0 |          5 |       1 |
     |                chrome.autofillPrivate |           0 |         11 |       2 |
     |                chrome.autotestPrivate |           0 |         49 |       0 |
@@ -102,10 +102,11 @@ Generated 39 namespaces containing 0 properties, 390 functions and 71 events:
       set-keyboard-listener darken-screen set-switch-access-keys set-switch-access-menu-state
       forward-key-events-to-switch-access set-native-chrome-vox-arc-support-for-current-app
       send-synthetic-key-event enable-chrome-vox-mouse-events send-synthetic-mouse-event
-      on-select-to-speak-state-changed toggle-dictation set-virtual-keyboard-visible
-      tap-on-introduce-chrome-vox tap-on-accessibility-gesture tap-on-two-finger-touch-start
-      tap-on-two-finger-touch-stop tap-on-select-to-speak-state-change-requested
-      tap-on-switch-access-command tap-on-announce-for-accessibility tap-all-events]]
+      on-select-to-speak-state-changed on-scrollable-bounds-for-point-found toggle-dictation
+      set-virtual-keyboard-visible tap-on-introduce-chrome-vox tap-on-accessibility-gesture
+      tap-on-two-finger-touch-start tap-on-two-finger-touch-stop
+      tap-on-select-to-speak-state-change-requested tap-on-switch-access-command
+      tap-on-announce-for-accessibility tap-find-scrollable-bounds-for-point tap-all-events]]
 
     [chromex.ext.activity-log-private refer:[
       get-extension-activities delete-activities delete-activities-by-extension delete-database
