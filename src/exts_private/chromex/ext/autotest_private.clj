@@ -55,6 +55,19 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-extensions-info &form)))
 
+(defmacro get-all-enterprise-policies
+  "Get state of the policies. Will contain device policies and policies from the active profile. The policy values are
+   formatted as they would be for exporting in chrome://policy.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [all-policies] where:
+
+     |all-policies| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::get-all-enterprise-policies &form)))
+
 (defmacro simulate-asan-memory-bug
   "Simulates a memory access bug for asan testing."
   ([] (gen-call :function ::simulate-asan-memory-bug &form)))
@@ -545,6 +558,11 @@
      :name "getExtensionsInfo",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "info", :type "object"}]}}]}
+    {:id ::get-all-enterprise-policies,
+     :name "getAllEnterprisePolicies",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "all-policies", :type "any"}]}}]}
     {:id ::simulate-asan-memory-bug, :name "simulateAsanMemoryBug"}
     {:id ::set-touchpad-sensitivity, :name "setTouchpadSensitivity", :params [{:name "value", :type "integer"}]}
     {:id ::set-tap-to-click, :name "setTapToClick", :params [{:name "enabled", :type "boolean"}]}

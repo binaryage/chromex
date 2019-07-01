@@ -47,15 +47,15 @@
 
 ### API stats
 
-Generated 39 namespaces containing 0 properties, 391 functions and 72 events:
+Generated 39 namespaces containing 0 properties, 391 functions and 71 events:
 
 
     |                            :namespace | :properties | :functions | :events |
     |---------------------------------------+-------------+------------+---------|
-    |           chrome.accessibilityPrivate |           0 |         17 |       8 |
+    |           chrome.accessibilityPrivate |           0 |         16 |       7 |
     |             chrome.activityLogPrivate |           0 |          5 |       1 |
     |                chrome.autofillPrivate |           0 |         11 |       2 |
-    |                chrome.autotestPrivate |           0 |         49 |       0 |
+    |                chrome.autotestPrivate |           0 |         50 |       0 |
     |               chrome.bluetoothPrivate |           0 |         10 |       1 |
     |         chrome.bookmarkManagerPrivate |           0 |         10 |       3 |
     |          chrome.brailleDisplayPrivate |           0 |          3 |       2 |
@@ -102,11 +102,10 @@ Generated 39 namespaces containing 0 properties, 391 functions and 72 events:
       set-keyboard-listener darken-screen set-switch-access-keys set-switch-access-menu-state
       forward-key-events-to-switch-access set-native-chrome-vox-arc-support-for-current-app
       send-synthetic-key-event enable-chrome-vox-mouse-events send-synthetic-mouse-event
-      on-select-to-speak-state-changed on-scrollable-bounds-for-point-found toggle-dictation
-      set-virtual-keyboard-visible tap-on-introduce-chrome-vox tap-on-accessibility-gesture
-      tap-on-two-finger-touch-start tap-on-two-finger-touch-stop
-      tap-on-select-to-speak-state-change-requested tap-on-switch-access-command
-      tap-on-announce-for-accessibility tap-find-scrollable-bounds-for-point tap-all-events]]
+      on-select-to-speak-state-changed toggle-dictation set-virtual-keyboard-visible
+      tap-on-introduce-chrome-vox tap-on-accessibility-gesture tap-on-two-finger-touch-start
+      tap-on-two-finger-touch-stop tap-on-select-to-speak-state-change-requested
+      tap-on-switch-access-command tap-on-announce-for-accessibility tap-all-events]]
 
     [chromex.ext.activity-log-private refer:[
       get-extension-activities delete-activities delete-activities-by-extension delete-database
@@ -119,17 +118,17 @@ Generated 39 namespaces containing 0 properties, 391 functions and 72 events:
       tap-all-events]]
 
     [chromex.ext.autotest-private refer:[
-      logout restart shutdown login-status lock-screen get-extensions-info simulate-asan-memory-bug
-      set-touchpad-sensitivity set-tap-to-click set-three-finger-click set-tap-dragging
-      set-natural-scroll set-mouse-sensitivity set-primary-button-right set-mouse-reverse-scroll
-      get-visible-notifications get-arc-state get-play-store-state get-printer-list is-app-shown
-      is-arc-provisioned get-arc-app get-arc-package launch-arc-app launch-app close-app update-printer
-      remove-printer set-play-store-enabled get-histogram run-crostini-installer run-crostini-uninstaller
-      set-crostini-enabled export-crostini import-crostini take-screenshot
-      bootstrap-machine-learning-service set-assistant-enabled send-assistant-text-query
-      set-whitelisted-pref set-crostini-app-scaled get-primary-display-scale-factor
-      is-tablet-mode-enabled set-tablet-mode-enabled get-shelf-auto-hide-behavior
-      set-shelf-auto-hide-behavior get-shelf-alignment set-shelf-alignment
+      logout restart shutdown login-status lock-screen get-extensions-info get-all-enterprise-policies
+      simulate-asan-memory-bug set-touchpad-sensitivity set-tap-to-click set-three-finger-click
+      set-tap-dragging set-natural-scroll set-mouse-sensitivity set-primary-button-right
+      set-mouse-reverse-scroll get-visible-notifications get-arc-state get-play-store-state
+      get-printer-list is-app-shown is-arc-provisioned get-arc-app get-arc-package launch-arc-app
+      launch-app close-app update-printer remove-printer set-play-store-enabled get-histogram
+      run-crostini-installer run-crostini-uninstaller set-crostini-enabled export-crostini
+      import-crostini take-screenshot bootstrap-machine-learning-service set-assistant-enabled
+      send-assistant-text-query set-whitelisted-pref set-crostini-app-scaled
+      get-primary-display-scale-factor is-tablet-mode-enabled set-tablet-mode-enabled
+      get-shelf-auto-hide-behavior set-shelf-auto-hide-behavior get-shelf-alignment set-shelf-alignment
       show-virtual-keyboard-if-enabled tap-all-events]]
 
     [chromex.ext.bluetooth-private refer:[

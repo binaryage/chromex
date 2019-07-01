@@ -21,6 +21,9 @@
 (defn get-extensions-info* [config]
   (gen-wrap :function ::get-extensions-info config))
 
+(defn get-all-enterprise-policies* [config]
+  (gen-wrap :function ::get-all-enterprise-policies config))
+
 (defn simulate-asan-memory-bug* [config]
   (gen-wrap :function ::simulate-asan-memory-bug config))
 

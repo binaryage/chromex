@@ -109,13 +109,6 @@
      |state| - ?"
   ([state] (gen-call :function ::on-select-to-speak-state-changed &form state)))
 
-(defmacro on-scrollable-bounds-for-point-found
-  "Called by the Autoclick extension when findScrollableBoundsForPoint has found a scrolling container. |rect| will be the
-   bounds of the nearest scrollable ancestor of the node at the point requested using findScrollableBoundsForPoint.
-
-     |rect| - ?"
-  ([rect] (gen-call :function ::on-scrollable-bounds-for-point-found &form rect)))
-
 (defmacro toggle-dictation
   "Toggles dictation between active and inactive states."
   ([] (gen-call :function ::toggle-dictation &form)))
@@ -194,18 +187,6 @@
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-announce-for-accessibility &form channel args)))
 
-(defmacro tap-find-scrollable-bounds-for-point-events
-  "Called when an internal component within accessibility wants to find the nearest scrolling container at a given screen
-   coordinate. Used in Automatic Clicks.
-
-   Events will be put on the |channel| with signature [::find-scrollable-bounds-for-point [x y]] where:
-
-     |x| - X screen coordinate of the point.
-     |y| - Y screen coordinate of the point.
-
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
-  ([channel & args] (apply gen-call :event ::find-scrollable-bounds-for-point &form channel args)))
-
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -278,10 +259,6 @@
      :name "onSelectToSpeakStateChanged",
      :since "68",
      :params [{:name "state", :type "accessibilityPrivate.SelectToSpeakState"}]}
-    {:id ::on-scrollable-bounds-for-point-found,
-     :name "onScrollableBoundsForPointFound",
-     :since "master",
-     :params [{:name "rect", :type "accessibilityPrivate.ScreenRect"}]}
     {:id ::toggle-dictation, :name "toggleDictation", :since "71"}
     {:id ::set-virtual-keyboard-visible,
      :name "setVirtualKeyboardVisible",
@@ -303,11 +280,7 @@
     {:id ::on-announce-for-accessibility,
      :name "onAnnounceForAccessibility",
      :since "74",
-     :params [{:name "announce-text", :type "[array-of-strings]"}]}
-    {:id ::find-scrollable-bounds-for-point,
-     :name "findScrollableBoundsForPoint",
-     :since "master",
-     :params [{:name "x", :type "double"} {:name "y", :type "double"}]}]})
+     :params [{:name "announce-text", :type "[array-of-strings]"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
