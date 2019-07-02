@@ -45,6 +45,9 @@
 (defn on-select-to-speak-state-changed* [config state]
   (gen-wrap :function ::on-select-to-speak-state-changed config state))
 
+(defn on-scrollable-bounds-for-point-found* [config rect]
+  (gen-wrap :function ::on-scrollable-bounds-for-point-found config rect))
+
 (defn toggle-dictation* [config]
   (gen-wrap :function ::toggle-dictation config))
 
@@ -73,4 +76,7 @@
 
 (defn on-announce-for-accessibility* [config channel & args]
   (gen-wrap :event ::on-announce-for-accessibility config channel args))
+
+(defn find-scrollable-bounds-for-point* [config channel & args]
+  (gen-wrap :event ::find-scrollable-bounds-for-point config channel args))
 
