@@ -3,6 +3,9 @@
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
+(defn get-display-language* [config language-code]
+  (gen-wrap :function ::get-display-language config language-code))
+
 (defn get-battery-description* [config]
   (gen-wrap :function ::get-battery-description config))
 
