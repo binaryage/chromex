@@ -47,7 +47,7 @@
 
 ### API stats
 
-Generated 39 namespaces containing 0 properties, 393 functions and 72 events:
+Generated 39 namespaces containing 0 properties, 394 functions and 72 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -55,7 +55,7 @@ Generated 39 namespaces containing 0 properties, 393 functions and 72 events:
     |           chrome.accessibilityPrivate |           0 |         18 |       8 |
     |             chrome.activityLogPrivate |           0 |          5 |       1 |
     |                chrome.autofillPrivate |           0 |         11 |       2 |
-    |                chrome.autotestPrivate |           0 |         50 |       0 |
+    |                chrome.autotestPrivate |           0 |         51 |       0 |
     |               chrome.bluetoothPrivate |           0 |         10 |       1 |
     |         chrome.bookmarkManagerPrivate |           0 |         10 |       3 |
     |          chrome.brailleDisplayPrivate |           0 |          3 |       2 |
@@ -131,7 +131,7 @@ Generated 39 namespaces containing 0 properties, 393 functions and 72 events:
       send-assistant-text-query set-whitelisted-pref set-crostini-app-scaled
       get-primary-display-scale-factor is-tablet-mode-enabled set-tablet-mode-enabled
       get-shelf-auto-hide-behavior set-shelf-auto-hide-behavior get-shelf-alignment set-shelf-alignment
-      show-virtual-keyboard-if-enabled tap-all-events]]
+      show-virtual-keyboard-if-enabled set-arc-app-window-state tap-all-events]]
 
     [chromex.ext.bluetooth-private refer:[
       set-adapter-state set-pairing-response disconnect-all forget-device set-discovery-filter connect

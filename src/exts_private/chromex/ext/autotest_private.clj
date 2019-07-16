@@ -531,6 +531,21 @@
   "Show virtual keyboard of the current input method if it's available."
   ([] (gen-call :function ::show-virtual-keyboard-if-enabled &form)))
 
+(defmacro set-arc-app-window-state
+  "Sends WM event to change the ARC app window's window state.
+
+     |package-name| - the package name of the ARC app window.
+     |change| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [current-type] where:
+
+     |current-type| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([package-name change] (gen-call :function ::set-arc-app-window-state &form package-name change)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -766,7 +781,15 @@
      [{:name "display-id", :type "string"}
       {:name "alignment", :type "autotestPrivate.ShelfAlignmentType"}
       {:name "callback", :type :callback}]}
-    {:id ::show-virtual-keyboard-if-enabled, :name "showVirtualKeyboardIfEnabled", :since "75"}]})
+    {:id ::show-virtual-keyboard-if-enabled, :name "showVirtualKeyboardIfEnabled", :since "75"}
+    {:id ::set-arc-app-window-state,
+     :name "setArcAppWindowState",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "package-name", :type "string"}
+      {:name "change", :type "object"}
+      {:name "callback", :type :callback, :callback {:params [{:name "current-type", :type "unknown-type"}]}}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

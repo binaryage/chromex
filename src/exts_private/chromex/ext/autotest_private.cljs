@@ -153,3 +153,6 @@
 (defn show-virtual-keyboard-if-enabled* [config]
   (gen-wrap :function ::show-virtual-keyboard-if-enabled config))
 
+(defn set-arc-app-window-state* [config package-name change]
+  (gen-wrap :function ::set-arc-app-window-state config package-name change))
+
