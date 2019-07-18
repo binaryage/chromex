@@ -575,7 +575,7 @@
      :params [{:name "callback", :type :callback, :callback {:params [{:name "info", :type "object"}]}}]}
     {:id ::get-all-enterprise-policies,
      :name "getAllEnterprisePolicies",
-     :since "master",
+     :since "future",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "all-policies", :type "any"}]}}]}
     {:id ::simulate-asan-memory-bug, :name "simulateAsanMemoryBug"}
@@ -784,7 +784,7 @@
     {:id ::show-virtual-keyboard-if-enabled, :name "showVirtualKeyboardIfEnabled", :since "75"}
     {:id ::set-arc-app-window-state,
      :name "setArcAppWindowState",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "package-name", :type "string"}

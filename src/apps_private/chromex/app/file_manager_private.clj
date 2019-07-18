@@ -1099,8 +1099,8 @@
      :name "formatVolume",
      :params
      [{:name "volume-id", :type "string"}
-      {:name "filesystem", :since "master", :type "unknown-type"}
-      {:name "volume-label", :since "master", :type "string"}]}
+      {:name "filesystem", :since "future", :type "unknown-type"}
+      {:name "volume-label", :since "future", :type "string"}]}
     {:id ::rename-volume,
      :name "renameVolume",
      :since "62",

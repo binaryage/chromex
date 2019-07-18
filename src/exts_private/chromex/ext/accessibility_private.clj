@@ -132,6 +132,13 @@
      |is-visible| - ?"
   ([is-visible] (gen-call :function ::set-virtual-keyboard-visible &form is-visible)))
 
+(defmacro open-settings-subpage
+  "Opens a specified settings subpage. To open a page with url chrome://settings/manageAccessibility/tts, pass in the
+   substring 'manageAccessibility/tts'.
+
+     |subpage| - ?"
+  ([subpage] (gen-call :function ::open-settings-subpage &form subpage)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -229,7 +236,7 @@
    :functions
    [{:id ::get-display-language,
      :name "getDisplayLanguage",
-     :since "master",
+     :since "future",
      :return-type "string",
      :params [{:name "language-code", :type "string"}]}
     {:id ::get-battery-description,
@@ -291,13 +298,17 @@
      :params [{:name "state", :type "accessibilityPrivate.SelectToSpeakState"}]}
     {:id ::on-scrollable-bounds-for-point-found,
      :name "onScrollableBoundsForPointFound",
-     :since "master",
+     :since "future",
      :params [{:name "rect", :type "accessibilityPrivate.ScreenRect"}]}
     {:id ::toggle-dictation, :name "toggleDictation", :since "71"}
     {:id ::set-virtual-keyboard-visible,
      :name "setVirtualKeyboardVisible",
      :since "75",
-     :params [{:name "is-visible", :type "boolean"}]}],
+     :params [{:name "is-visible", :type "boolean"}]}
+    {:id ::open-settings-subpage,
+     :name "openSettingsSubpage",
+     :since "master",
+     :params [{:name "subpage", :type "string"}]}],
    :events
    [{:id ::on-introduce-chrome-vox, :name "onIntroduceChromeVox", :since "42"}
     {:id ::on-accessibility-gesture,
@@ -317,7 +328,7 @@
      :params [{:name "announce-text", :type "[array-of-strings]"}]}
     {:id ::find-scrollable-bounds-for-point,
      :name "findScrollableBoundsForPoint",
-     :since "master",
+     :since "future",
      :params [{:name "x", :type "double"} {:name "y", :type "double"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

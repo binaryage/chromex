@@ -57,6 +57,9 @@
 (defn set-virtual-keyboard-visible* [config is-visible]
   (gen-wrap :function ::set-virtual-keyboard-visible config is-visible))
 
+(defn open-settings-subpage* [config subpage]
+  (gen-wrap :function ::open-settings-subpage config subpage))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-introduce-chrome-vox* [config channel & args]
