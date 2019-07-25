@@ -307,7 +307,7 @@
      :params [{:name "is-visible", :type "boolean"}]}
     {:id ::open-settings-subpage,
      :name "openSettingsSubpage",
-     :since "master",
+     :since "future",
      :params [{:name "subpage", :type "string"}]}],
    :events
    [{:id ::on-introduce-chrome-vox, :name "onIntroduceChromeVox", :since "42"}
