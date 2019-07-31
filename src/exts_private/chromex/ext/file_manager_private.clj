@@ -796,6 +796,12 @@
    chromex.error/get-last-error."
   ([entry] (gen-call :function ::install-linux-package &form entry)))
 
+(defmacro import-crostini-image
+  "Imports a Crostini Image File (.tini). This overrides the existing Linux apps and files.
+
+     |entry| - ?"
+  ([entry] (gen-call :function ::import-crostini-image &form entry)))
+
 (defmacro get-thumbnail
   "For a file in DriveFS, retrieves its thumbnail. If |cropToSquare| is true, returns a thumbnail appropriate for file list or
    grid views; otherwise, returns a thumbnail appropriate for quickview.
@@ -1112,7 +1118,7 @@
     {:id ::set-preferences, :name "setPreferences", :params [{:name "change-info", :type "object"}]}
     {:id ::set-arc-storage-toast-shown-flag,
      :name "setArcStorageToastShownFlag",
-     :since "future",
+     :since "76",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
     {:id ::search-drive,
@@ -1321,6 +1327,10 @@
       {:name "callback",
        :type :callback,
        :callback {:params [{:name "response", :type "unknown-type"} {:name "failure-reason", :type "string"}]}}]}
+    {:id ::import-crostini-image,
+     :name "importCrostiniImage",
+     :since "master",
+     :params [{:name "entry", :type "object"}]}
     {:id ::get-thumbnail,
      :name "getThumbnail",
      :since "71",
@@ -1339,7 +1349,7 @@
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "string"}]}}]}
     {:id ::get-android-picker-apps,
      :name "getAndroidPickerApps",
-     :since "future",
+     :since "76",
      :callback? true,
      :params
      [{:name "extensions", :type "[array-of-strings]"}
@@ -1348,7 +1358,7 @@
        :callback {:params [{:name "apps", :type "[array-of-fileManagerPrivate.AndroidApps]"}]}}]}
     {:id ::select-android-picker-app,
      :name "selectAndroidPickerApp",
-     :since "future",
+     :since "76",
      :callback? true,
      :params [{:name "android-app", :type "fileManagerPrivate.AndroidApp"} {:name "callback", :type :callback}]}],
    :events

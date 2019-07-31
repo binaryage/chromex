@@ -766,7 +766,7 @@
      [{:name "display-id", :type "string"} {:name "behavior", :type "string"} {:name "callback", :type :callback}]}
     {:id ::get-shelf-alignment,
      :name "getShelfAlignment",
-     :since "future",
+     :since "76",
      :callback? true,
      :params
      [{:name "display-id", :type "string"}
@@ -775,7 +775,7 @@
        :callback {:params [{:name "alignment", :type "autotestPrivate.ShelfAlignmentType"}]}}]}
     {:id ::set-shelf-alignment,
      :name "setShelfAlignment",
-     :since "future",
+     :since "76",
      :callback? true,
      :params
      [{:name "display-id", :type "string"}

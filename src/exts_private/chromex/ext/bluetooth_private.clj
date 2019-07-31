@@ -190,15 +190,12 @@
      :params [{:name "device-address", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::record-pairing,
      :name "recordPairing",
-     :since "future",
+     :since "76",
      :params
      [{:name "success", :type "boolean"}
       {:name "transport", :type "bluetooth.Transport"}
       {:name "pairing-duration-ms", :since "future", :type "integer"}]}
-    {:id ::record-reconnection,
-     :name "recordReconnection",
-     :since "future",
-     :params [{:name "success", :type "boolean"}]}
+    {:id ::record-reconnection, :name "recordReconnection", :since "76", :params [{:name "success", :type "boolean"}]}
     {:id ::record-device-selection,
      :name "recordDeviceSelection",
      :since "future",

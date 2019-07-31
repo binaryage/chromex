@@ -407,7 +407,7 @@
       {:name "callback", :optional? true, :type :callback}]}
     {:id ::set-composition-range,
      :name "setCompositionRange",
-     :since "future",
+     :since "76",
      :callback? true,
      :params
      [{:name "parameters", :type "object"}

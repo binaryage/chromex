@@ -186,6 +186,9 @@
 (defn install-linux-package* [config entry]
   (gen-wrap :function ::install-linux-package config entry))
 
+(defn import-crostini-image* [config entry]
+  (gen-wrap :function ::import-crostini-image config entry))
+
 (defn get-thumbnail* [config entry crop-to-square]
   (gen-wrap :function ::get-thumbnail config entry crop-to-square))
 

@@ -502,7 +502,7 @@
     {:id ::on-connect-external, :name "onConnectExternal", :params [{:name "port", :type "runtime.Port"}]}
     {:id ::on-connect-native,
      :name "onConnectNative",
-     :since "future",
+     :since "76",
      :params [{:name "port", :since "74", :type "runtime.Port"}]}
     {:id ::on-message,
      :name "onMessage",
