@@ -138,6 +138,9 @@
 (defn set-tablet-mode-enabled* [config enabled]
   (gen-wrap :function ::set-tablet-mode-enabled config enabled))
 
+(defn get-shelf-items* [config]
+  (gen-wrap :function ::get-shelf-items config))
+
 (defn get-shelf-auto-hide-behavior* [config display-id]
   (gen-wrap :function ::get-shelf-auto-hide-behavior config display-id))
 

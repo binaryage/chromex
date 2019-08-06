@@ -47,7 +47,7 @@
 
 ### API stats
 
-Generated 39 namespaces containing 0 properties, 396 functions and 72 events:
+Generated 39 namespaces containing 0 properties, 397 functions and 72 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -55,7 +55,7 @@ Generated 39 namespaces containing 0 properties, 396 functions and 72 events:
     |           chrome.accessibilityPrivate |           0 |         19 |       8 |
     |             chrome.activityLogPrivate |           0 |          5 |       1 |
     |                chrome.autofillPrivate |           0 |         11 |       2 |
-    |                chrome.autotestPrivate |           0 |         51 |       0 |
+    |                chrome.autotestPrivate |           0 |         52 |       0 |
     |               chrome.bluetoothPrivate |           0 |         10 |       1 |
     |         chrome.bookmarkManagerPrivate |           0 |         10 |       3 |
     |          chrome.brailleDisplayPrivate |           0 |          3 |       2 |
@@ -129,7 +129,7 @@ Generated 39 namespaces containing 0 properties, 396 functions and 72 events:
       run-crostini-installer run-crostini-uninstaller set-crostini-enabled export-crostini
       import-crostini take-screenshot bootstrap-machine-learning-service set-assistant-enabled
       send-assistant-text-query set-whitelisted-pref set-crostini-app-scaled
-      get-primary-display-scale-factor is-tablet-mode-enabled set-tablet-mode-enabled
+      get-primary-display-scale-factor is-tablet-mode-enabled set-tablet-mode-enabled get-shelf-items
       get-shelf-auto-hide-behavior set-shelf-auto-hide-behavior get-shelf-alignment set-shelf-alignment
       show-virtual-keyboard-if-enabled set-arc-app-window-state tap-all-events]]
 

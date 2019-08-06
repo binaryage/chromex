@@ -472,6 +472,18 @@
    chromex.error/get-last-error."
   ([enabled] (gen-call :function ::set-tablet-mode-enabled &form enabled)))
 
+(defmacro get-shelf-items
+  "Get the list of all shelf items
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [items] where:
+
+     |items| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::get-shelf-items &form)))
+
 (defmacro get-shelf-auto-hide-behavior
   "Get the shelf auto hide behavior.
 
@@ -751,6 +763,11 @@
      :params
      [{:name "enabled", :type "boolean"}
       {:name "callback", :type :callback, :callback {:params [{:name "enabled", :type "boolean"}]}}]}
+    {:id ::get-shelf-items,
+     :name "getShelfItems",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "items", :type "[array-of-objects]"}]}}]}
     {:id ::get-shelf-auto-hide-behavior,
      :name "getShelfAutoHideBehavior",
      :since "75",
