@@ -39,6 +39,12 @@
 (defn generate-app-for-link* [config url title]
   (gen-wrap :function ::generate-app-for-link config url title))
 
+(defn can-install-replacement-android-app* [config]
+  (gen-wrap :function ::can-install-replacement-android-app config))
+
+(defn install-replacement-android-app* [config]
+  (gen-wrap :function ::install-replacement-android-app config))
+
 (defn install-replacement-web-app* [config]
   (gen-wrap :function ::install-replacement-web-app config))
 

@@ -76,7 +76,7 @@
 
 ### API stats
 
-Generated 68 namespaces containing 30 properties, 450 functions and 152 events:
+Generated 68 namespaces containing 30 properties, 452 functions and 152 events:
 
 
     |                         :namespace | :properties | :functions | :events |
@@ -114,7 +114,7 @@ Generated 68 namespaces containing 30 properties, 450 functions and 152 events:
     |                    chrome.identity |           0 |          6 |       1 |
     |                        chrome.idle |           0 |          3 |       1 |
     |                  chrome.instanceID |           0 |          5 |       1 |
-    |                  chrome.management |           0 |         13 |       4 |
+    |                  chrome.management |           0 |         15 |       4 |
     |                        chrome.mdns |           1 |          1 |       1 |
     |              chrome.mediaGalleries |           0 |         13 |       2 |
     |           chrome.networking.config |           0 |          2 |       1 |
@@ -298,8 +298,8 @@ Generated 68 namespaces containing 30 properties, 450 functions and 152 events:
     [chromex.app.management refer:[
       get-all get get-self get-permission-warnings-by-id get-permission-warnings-by-manifest set-enabled
       uninstall uninstall-self launch-app create-app-shortcut set-launch-type generate-app-for-link
-      install-replacement-web-app tap-on-installed tap-on-uninstalled tap-on-enabled tap-on-disabled
-      tap-all-events]]
+      can-install-replacement-android-app install-replacement-android-app install-replacement-web-app
+      tap-on-installed tap-on-uninstalled tap-on-enabled tap-on-disabled tap-all-events]]
 
     [chromex.app.mdns refer:[
       get-max-service-instances-per-event force-discovery tap-on-service-list tap-all-events]]

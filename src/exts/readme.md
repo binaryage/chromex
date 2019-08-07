@@ -86,7 +86,7 @@
 
 ### API stats
 
-Generated 78 namespaces containing 53 properties, 388 functions and 177 events:
+Generated 78 namespaces containing 53 properties, 390 functions and 177 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -136,7 +136,7 @@ Generated 78 namespaces containing 53 properties, 388 functions and 177 events:
     |                        chrome.idltest |           0 |          5 |       0 |
     |                      chrome.input.ime |           0 |         17 |      11 |
     |                     chrome.instanceID |           0 |          5 |       1 |
-    |                     chrome.management |           0 |         13 |       4 |
+    |                     chrome.management |           0 |         15 |       4 |
     |              chrome.networking.config |           0 |          2 |       1 |
     |                  chrome.notifications |           0 |          5 |       5 |
     |                        chrome.omnibox |           0 |          1 |       5 |
@@ -360,8 +360,8 @@ Generated 78 namespaces containing 53 properties, 388 functions and 177 events:
     [chromex.ext.management refer:[
       get-all get get-self get-permission-warnings-by-id get-permission-warnings-by-manifest set-enabled
       uninstall uninstall-self launch-app create-app-shortcut set-launch-type generate-app-for-link
-      install-replacement-web-app tap-on-installed tap-on-uninstalled tap-on-enabled tap-on-disabled
-      tap-all-events]]
+      can-install-replacement-android-app install-replacement-android-app install-replacement-web-app
+      tap-on-installed tap-on-uninstalled tap-on-enabled tap-on-disabled tap-all-events]]
 
     [chromex.ext.networking.config refer:[
       set-network-filter finish-authentication tap-on-captive-portal-detected tap-all-events]]
