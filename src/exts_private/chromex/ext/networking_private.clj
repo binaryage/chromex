@@ -1,6 +1,6 @@
 (ns chromex.ext.networking-private
   "The chrome.networkingPrivate API is used for configuring
-   network connections (Cellular, Ethernet, VPN, WiFi or WiMAX). This private
+   network connections (Cellular, Ethernet, VPN or WiFi). This private
    API is only valid if called from a browser or app associated with the
    primary user. See the Open Network Configuration (ONC) documentation for
    descriptions of properties:

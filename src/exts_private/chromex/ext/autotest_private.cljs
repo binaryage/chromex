@@ -111,6 +111,9 @@
 (defn import-crostini* [config path]
   (gen-wrap :function ::import-crostini config path))
 
+(defn register-component* [config name path]
+  (gen-wrap :function ::register-component config name path))
+
 (defn take-screenshot* [config]
   (gen-wrap :function ::take-screenshot config))
 

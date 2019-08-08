@@ -356,6 +356,13 @@
    chromex.error/get-last-error."
   ([path] (gen-call :function ::import-crostini &form path)))
 
+(defmacro register-component
+  "Register a component with CrOSComponentManager.
+
+     |name| - The name of the component.
+     |path| - Path to the component."
+  ([name path] (gen-call :function ::register-component &form name path)))
+
 (defmacro take-screenshot
   "Takes a screenshot and returns the data in base64 encoded PNG format.
 
@@ -712,6 +719,10 @@
      :since "75",
      :callback? true,
      :params [{:name "path", :type "string"} {:name "callback", :type :callback}]}
+    {:id ::register-component,
+     :name "registerComponent",
+     :since "master",
+     :params [{:name "name", :type "string"} {:name "path", :type "string"}]}
     {:id ::take-screenshot,
      :name "takeScreenshot",
      :since "71",

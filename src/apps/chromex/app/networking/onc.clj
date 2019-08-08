@@ -1,7 +1,7 @@
 (ns chromex.app.networking.onc
   "
      The chrome.networking.onc API is used for configuring
-     network connections (Cellular, Ethernet, VPN, WiFi or WiMAX).
+     network connections (Cellular, Ethernet, VPN or WiFi).
      This API is available in Chrome OS kiosk sessions.
 
      Network connection configurations are specified following
