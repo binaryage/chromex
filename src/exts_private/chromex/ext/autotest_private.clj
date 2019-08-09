@@ -776,7 +776,7 @@
       {:name "callback", :type :callback, :callback {:params [{:name "enabled", :type "boolean"}]}}]}
     {:id ::get-shelf-items,
      :name "getShelfItems",
-     :since "master",
+     :since "future",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "items", :type "[array-of-objects]"}]}}]}
     {:id ::get-shelf-auto-hide-behavior,

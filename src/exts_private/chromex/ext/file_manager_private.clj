@@ -1329,7 +1329,7 @@
        :callback {:params [{:name "response", :type "unknown-type"} {:name "failure-reason", :type "string"}]}}]}
     {:id ::import-crostini-image,
      :name "importCrostiniImage",
-     :since "master",
+     :since "future",
      :params [{:name "entry", :type "object"}]}
     {:id ::get-thumbnail,
      :name "getThumbnail",
