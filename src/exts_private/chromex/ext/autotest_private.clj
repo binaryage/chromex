@@ -551,7 +551,7 @@
   ([] (gen-call :function ::show-virtual-keyboard-if-enabled &form)))
 
 (defmacro set-arc-app-window-state
-  "Sends WM event to change the ARC app window's window state.
+  "Send WM event to change the ARC app window's window state.
 
      |package-name| - the package name of the ARC app window.
      |change| - ?
@@ -564,6 +564,34 @@
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([package-name change] (gen-call :function ::set-arc-app-window-state &form package-name change)))
+
+(defmacro get-arc-app-window-state
+  "Get ARC app window's window state.
+
+     |package-name| - the package name of the ARC app window. |callback| is invoked with the window state.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [current-type] where:
+
+     |current-type| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([package-name] (gen-call :function ::get-arc-app-window-state &form package-name)))
+
+(defmacro get-arc-app-window-info
+  "Get various information on an ARC window.
+
+     |package-name| - the package name of the ARC app window.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [info] where:
+
+     |info| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([package-name] (gen-call :function ::get-arc-app-window-info &form package-name)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
@@ -721,7 +749,7 @@
      :params [{:name "path", :type "string"} {:name "callback", :type :callback}]}
     {:id ::register-component,
      :name "registerComponent",
-     :since "master",
+     :since "future",
      :params [{:name "name", :type "string"} {:name "path", :type "string"}]}
     {:id ::take-screenshot,
      :name "takeScreenshot",
@@ -817,7 +845,25 @@
      :params
      [{:name "package-name", :type "string"}
       {:name "change", :type "object"}
-      {:name "callback", :type :callback, :callback {:params [{:name "current-type", :type "unknown-type"}]}}]}]})
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "current-type", :type "autotestPrivate.WindowStateType"}]}}]}
+    {:id ::get-arc-app-window-state,
+     :name "getArcAppWindowState",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "package-name", :type "string"}
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "current-type", :type "autotestPrivate.WindowStateType"}]}}]}
+    {:id ::get-arc-app-window-info,
+     :name "getArcAppWindowInfo",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "package-name", :type "string"}
+      {:name "callback", :type :callback, :callback {:params [{:name "info", :type "object"}]}}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

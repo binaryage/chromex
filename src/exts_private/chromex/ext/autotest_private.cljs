@@ -162,3 +162,9 @@
 (defn set-arc-app-window-state* [config package-name change]
   (gen-wrap :function ::set-arc-app-window-state config package-name change))
 
+(defn get-arc-app-window-state* [config package-name]
+  (gen-wrap :function ::get-arc-app-window-state config package-name))
+
+(defn get-arc-app-window-info* [config package-name]
+  (gen-wrap :function ::get-arc-app-window-info config package-name))
+

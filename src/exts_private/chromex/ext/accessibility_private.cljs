@@ -24,9 +24,6 @@
 (defn darken-screen* [config enabled]
   (gen-wrap :function ::darken-screen config enabled))
 
-(defn set-switch-access-keys* [config key-codes]
-  (gen-wrap :function ::set-switch-access-keys config key-codes))
-
 (defn set-switch-access-menu-state* [config show element-bounds item-count]
   (gen-wrap :function ::set-switch-access-menu-state config show element-bounds item-count))
 

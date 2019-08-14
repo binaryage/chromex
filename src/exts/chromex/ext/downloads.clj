@@ -194,14 +194,6 @@
    https://developer.chrome.com/extensions/downloads#method-acceptDanger."
   ([download-id] (gen-call :function ::accept-danger &form download-id)))
 
-(defmacro drag
-  "Initiate dragging the downloaded file to another application. Call in a javascript ondragstart handler.
-
-     |download-id| - https://developer.chrome.com/extensions/downloads#property-drag-downloadId.
-
-   https://developer.chrome.com/extensions/downloads#method-drag."
-  ([download-id] (gen-call :function ::drag &form download-id)))
-
 (defmacro set-shelf-enabled
   "Enable or disable the gray shelf at the bottom of every window associated with the current browser profile. The shelf will
    be disabled as long as at least one extension has disabled it. Enabling the shelf while at least one other extension has
@@ -347,7 +339,6 @@
      :name "acceptDanger",
      :callback? true,
      :params [{:name "download-id", :type "integer"} {:name "callback", :optional? true, :type :callback}]}
-    {:id ::drag, :name "drag", :params [{:name "download-id", :type "integer"}]}
     {:id ::set-shelf-enabled, :name "setShelfEnabled", :params [{:name "enabled", :type "boolean"}]}],
    :events
    [{:id ::on-created, :name "onCreated", :params [{:name "download-item", :type "downloads.DownloadItem"}]}

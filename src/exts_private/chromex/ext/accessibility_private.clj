@@ -64,12 +64,6 @@
      |enabled| - True to darken screen; false to undarken screen."
   ([enabled] (gen-call :function ::darken-screen &form enabled)))
 
-(defmacro set-switch-access-keys
-  "Change the keyboard keys captured by Switch Access.
-
-     |key-codes| - The key codes for the keys that will be captured."
-  ([key-codes] (gen-call :function ::set-switch-access-keys &form key-codes)))
-
 (defmacro set-switch-access-menu-state
   "Shows or hides the Switch Access menu. If shown, it is at the indicated location.
 
@@ -261,10 +255,6 @@
      :since "48",
      :params [{:name "enabled", :type "boolean"} {:name "capture", :type "boolean"}]}
     {:id ::darken-screen, :name "darkenScreen", :since "59", :params [{:name "enabled", :type "boolean"}]}
-    {:id ::set-switch-access-keys,
-     :name "setSwitchAccessKeys",
-     :since "61",
-     :params [{:name "key-codes", :type "[array-of-integers]"}]}
     {:id ::set-switch-access-menu-state,
      :name "setSwitchAccessMenuState",
      :since "73",

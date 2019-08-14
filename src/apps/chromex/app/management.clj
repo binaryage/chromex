@@ -401,12 +401,12 @@
        :callback {:params [{:name "result", :type "management.ExtensionInfo"}]}}]}
     {:id ::can-install-replacement-android-app,
      :name "canInstallReplacementAndroidApp",
-     :since "master",
+     :since "78",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
     {:id ::install-replacement-android-app,
      :name "installReplacementAndroidApp",
-     :since "master",
+     :since "78",
      :callback? true,
      :params [{:name "callback", :optional? true, :type :callback}]}
     {:id ::install-replacement-web-app,

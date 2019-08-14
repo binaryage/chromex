@@ -39,9 +39,6 @@
 (defn accept-danger* [config download-id]
   (gen-wrap :function ::accept-danger config download-id))
 
-(defn drag* [config download-id]
-  (gen-wrap :function ::drag config download-id))
-
 (defn set-shelf-enabled* [config enabled]
   (gen-wrap :function ::set-shelf-enabled config enabled))
 
