@@ -141,6 +141,9 @@
 (defn set-tablet-mode-enabled* [config enabled]
   (gen-wrap :function ::set-tablet-mode-enabled config enabled))
 
+(defn get-all-installed-apps* [config]
+  (gen-wrap :function ::get-all-installed-apps config))
+
 (defn get-shelf-items* [config]
   (gen-wrap :function ::get-shelf-items config))
 

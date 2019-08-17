@@ -479,6 +479,18 @@
    chromex.error/get-last-error."
   ([enabled] (gen-call :function ::set-tablet-mode-enabled &form enabled)))
 
+(defmacro get-all-installed-apps
+  "Get the list of all installed applications
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [apps] where:
+
+     |apps| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::get-all-installed-apps &form)))
+
 (defmacro get-shelf-items
   "Get the list of all shelf items
 
@@ -802,6 +814,11 @@
      :params
      [{:name "enabled", :type "boolean"}
       {:name "callback", :type :callback, :callback {:params [{:name "enabled", :type "boolean"}]}}]}
+    {:id ::get-all-installed-apps,
+     :name "getAllInstalledApps",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "apps", :type "[array-of-objects]"}]}}]}
     {:id ::get-shelf-items,
      :name "getShelfItems",
      :since "future",
