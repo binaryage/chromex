@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-CHROMIUM_SRC=${CHROMIUM_SRC:?"Please set CHROMIUM_SRC env var pointing to your chrome/src checkout directory"}
+set -e -o pipefail
 
-set -e
+CHROMIUM_SRC=${CHROMIUM_SRC:?"Please set CHROMIUM_SRC env var pointing to your chrome/src checkout directory"}
 
 # ensure we start in root folder
 cd "$(dirname "${BASH_SOURCE[0]}")/.."

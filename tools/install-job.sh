@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e -o pipefail
+
 AGENTS_DIR=~/Library/LaunchAgents
 PLIST_NAME=com.binaryage.chromex.plist
 PLIST_PATH="$AGENTS_DIR/$PLIST_NAME"

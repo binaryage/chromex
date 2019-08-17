@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
+set -e -o pipefail
+
 CHROMIUM_SRC=${CHROMIUM_SRC:?"Please set CHROMIUM_SRC env var pointing to your chrome/src checkout directory"}
 
 echo "chromium src dir: ${CHROMIUM_SRC}"
-
-set -e
 
 clean_chromium_working_copy() {
   echo "cleaning chromium working copy at ${CHROMIUM_SRC}"

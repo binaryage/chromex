@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e -o pipefail
+
 launchctl start com.binaryage.chromex
 
 # note: you may want to

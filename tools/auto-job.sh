@@ -36,7 +36,7 @@ WORKDIR="$TOOLS/_workdir"
 #############################################################################################################################
 # print some info
 
-if [[ ! -z "$CHROMEX_DRY_RUN" ]]; then
+if [[ -n "$CHROMEX_DRY_RUN" ]]; then
   echo "running in DRY mode because CHROMEX_DRY_RUN"
 fi
 
@@ -92,8 +92,7 @@ time ./tools/build-api.sh
 git add --all
 
 set +e
-git diff-index --exit-code HEAD > /dev/null
-if [[ $? -eq 0 ]]; then
+if git diff-index --exit-code HEAD > /dev/null; then
     echo "no changes from previous version in '$(pwd)'"
     echo "nothing to commit => exit"
     exit 42
