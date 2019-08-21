@@ -816,7 +816,7 @@
       {:name "callback", :type :callback, :callback {:params [{:name "enabled", :type "boolean"}]}}]}
     {:id ::get-all-installed-apps,
      :name "getAllInstalledApps",
-     :since "master",
+     :since "future",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "apps", :type "[array-of-objects]"}]}}]}
     {:id ::get-shelf-items,
@@ -867,7 +867,7 @@
        :callback {:params [{:name "current-type", :type "autotestPrivate.WindowStateType"}]}}]}
     {:id ::get-arc-app-window-state,
      :name "getArcAppWindowState",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "package-name", :type "string"}
@@ -876,7 +876,7 @@
        :callback {:params [{:name "current-type", :type "autotestPrivate.WindowStateType"}]}}]}
     {:id ::get-arc-app-window-info,
      :name "getArcAppWindowInfo",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "package-name", :type "string"}
