@@ -605,6 +605,16 @@
    chromex.error/get-last-error."
   ([package-name] (gen-call :function ::get-arc-app-window-info &form package-name)))
 
+(defmacro swap-windows-in-split-view
+  "Swap the windows in the split view.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::swap-windows-in-split-view &form)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -880,7 +890,12 @@
      :callback? true,
      :params
      [{:name "package-name", :type "string"}
-      {:name "callback", :type :callback, :callback {:params [{:name "info", :type "object"}]}}]}]})
+      {:name "callback", :type :callback, :callback {:params [{:name "info", :type "object"}]}}]}
+    {:id ::swap-windows-in-split-view,
+     :name "swapWindowsInSplitView",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

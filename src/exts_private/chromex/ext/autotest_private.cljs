@@ -171,3 +171,6 @@
 (defn get-arc-app-window-info* [config package-name]
   (gen-wrap :function ::get-arc-app-window-info config package-name))
 
+(defn swap-windows-in-split-view* [config]
+  (gen-wrap :function ::swap-windows-in-split-view config))
+
