@@ -615,6 +615,18 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::swap-windows-in-split-view &form)))
 
+(defmacro set-arc-app-window-focus
+  "Set ARC app window focused.
+
+     |package-name| - the package name of the ARC app window.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([package-name] (gen-call :function ::set-arc-app-window-focus &form package-name)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -893,9 +905,14 @@
       {:name "callback", :type :callback, :callback {:params [{:name "info", :type "object"}]}}]}
     {:id ::swap-windows-in-split-view,
      :name "swapWindowsInSplitView",
+     :since "future",
+     :callback? true,
+     :params [{:name "callback", :type :callback}]}
+    {:id ::set-arc-app-window-focus,
+     :name "setArcAppWindowFocus",
      :since "master",
      :callback? true,
-     :params [{:name "callback", :type :callback}]}]})
+     :params [{:name "package-name", :type "string"} {:name "callback", :type :callback}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

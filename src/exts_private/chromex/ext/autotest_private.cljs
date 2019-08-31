@@ -174,3 +174,6 @@
 (defn swap-windows-in-split-view* [config]
   (gen-wrap :function ::swap-windows-in-split-view config))
 
+(defn set-arc-app-window-focus* [config package-name]
+  (gen-wrap :function ::set-arc-app-window-focus config package-name))
+

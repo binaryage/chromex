@@ -174,8 +174,9 @@
      :params [{:name "params", :type "automation.SetDocumentSelectionParams"}]}
     {:id ::language-annotation-for-string-attribute,
      :name "languageAnnotationForStringAttribute",
+     :since "78",
      :return-type "[array-of-objects]",
-     :params [{:name "attribute", :type "string"}]}]})
+     :params [{:name "attribute", :since "future", :type "string"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
