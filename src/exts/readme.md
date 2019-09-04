@@ -49,6 +49,7 @@
 | [chrome.idltest](https://developer.chrome.com/extensions/idltest) | [chromex/ext/idltest.clj](chromex/ext/idltest.clj) |
 | [chrome.input.ime](https://developer.chrome.com/extensions/input.ime) | [chromex/ext/input/ime.clj](chromex/ext/input/ime.clj) |
 | [chrome.instanceID](https://developer.chrome.com/extensions/instanceID) | [chromex/ext/instance_id.clj](chromex/ext/instance_id.clj) |
+| [chrome.loginState](https://developer.chrome.com/extensions/loginState) | [chromex/ext/login_state.clj](chromex/ext/login_state.clj) |
 | [chrome.management](https://developer.chrome.com/extensions/management) | [chromex/ext/management.clj](chromex/ext/management.clj) |
 | [chrome.networking.config](https://developer.chrome.com/extensions/networking.config) | [chromex/ext/networking/config.clj](chromex/ext/networking/config.clj) |
 | [chrome.notifications](https://developer.chrome.com/extensions/notifications) | [chromex/ext/notifications.clj](chromex/ext/notifications.clj) |
@@ -86,7 +87,7 @@
 
 ### API stats
 
-Generated 78 namespaces containing 53 properties, 389 functions and 177 events:
+Generated 79 namespaces containing 53 properties, 391 functions and 178 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -136,6 +137,7 @@ Generated 78 namespaces containing 53 properties, 389 functions and 177 events:
     |                        chrome.idltest |           0 |          5 |       0 |
     |                      chrome.input.ime |           0 |         17 |      11 |
     |                     chrome.instanceID |           0 |          5 |       1 |
+    |                     chrome.loginState |           0 |          2 |       1 |
     |                     chrome.management |           0 |         15 |       4 |
     |              chrome.networking.config |           0 |          2 |       1 |
     |                  chrome.notifications |           0 |          5 |       5 |
@@ -356,6 +358,9 @@ Generated 78 namespaces containing 53 properties, 389 functions and 177 events:
 
     [chromex.ext.instance-id refer:[
       get-id get-creation-time get-token delete-token delete-id tap-on-token-refresh tap-all-events]]
+
+    [chromex.ext.login-state refer:[
+      get-profile-type get-session-state tap-on-session-state-changed tap-all-events]]
 
     [chromex.ext.management refer:[
       get-all get get-self get-permission-warnings-by-id get-permission-warnings-by-manifest set-enabled
