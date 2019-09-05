@@ -54,6 +54,9 @@
 (defn get-visible-notifications* [config]
   (gen-wrap :function ::get-visible-notifications config))
 
+(defn get-arc-start-time* [config]
+  (gen-wrap :function ::get-arc-start-time config))
+
 (defn get-arc-state* [config]
   (gen-wrap :function ::get-arc-state config))
 

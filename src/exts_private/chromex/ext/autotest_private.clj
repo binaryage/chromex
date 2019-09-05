@@ -132,6 +132,18 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-visible-notifications &form)))
 
+(defmacro get-arc-start-time
+  "Get ARC start time.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [start-time] where:
+
+     |start-time| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::get-arc-start-time &form)))
+
 (defmacro get-arc-state
   "Get state of the ARC session.
 
@@ -677,6 +689,11 @@
      :callback? true,
      :params
      [{:name "callback", :type :callback, :callback {:params [{:name "notifications", :type "[array-of-objects]"}]}}]}
+    {:id ::get-arc-start-time,
+     :name "getArcStartTime",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "start-time", :type "double"}]}}]}
     {:id ::get-arc-state,
      :name "getArcState",
      :since "74",
