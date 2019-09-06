@@ -570,6 +570,20 @@
    chromex.error/get-last-error."
   ([display-id alignment] (gen-call :function ::set-shelf-alignment &form display-id alignment)))
 
+(defmacro set-overview-mode-state
+  "Enter or exit the overview mode.
+
+     |start| - whether entering to or exiting from the overview mode.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [finished] where:
+
+     |finished| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([start] (gen-call :function ::set-overview-mode-state &form start)))
+
 (defmacro show-virtual-keyboard-if-enabled
   "Show virtual keyboard of the current input method if it's available."
   ([] (gen-call :function ::show-virtual-keyboard-if-enabled &form)))
@@ -893,6 +907,13 @@
      [{:name "display-id", :type "string"}
       {:name "alignment", :type "autotestPrivate.ShelfAlignmentType"}
       {:name "callback", :type :callback}]}
+    {:id ::set-overview-mode-state,
+     :name "setOverviewModeState",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "start", :type "boolean"}
+      {:name "callback", :type :callback, :callback {:params [{:name "finished", :type "boolean"}]}}]}
     {:id ::show-virtual-keyboard-if-enabled, :name "showVirtualKeyboardIfEnabled", :since "75"}
     {:id ::set-arc-app-window-state,
      :name "setArcAppWindowState",
@@ -927,7 +948,7 @@
      :params [{:name "callback", :type :callback}]}
     {:id ::set-arc-app-window-focus,
      :name "setArcAppWindowFocus",
-     :since "master",
+     :since "future",
      :callback? true,
      :params [{:name "package-name", :type "string"} {:name "callback", :type :callback}]}]})
 

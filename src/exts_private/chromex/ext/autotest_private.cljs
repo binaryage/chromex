@@ -162,6 +162,9 @@
 (defn set-shelf-alignment* [config display-id alignment]
   (gen-wrap :function ::set-shelf-alignment config display-id alignment))
 
+(defn set-overview-mode-state* [config start]
+  (gen-wrap :function ::set-overview-mode-state config start))
+
 (defn show-virtual-keyboard-if-enabled* [config]
   (gen-wrap :function ::show-virtual-keyboard-if-enabled config))
 

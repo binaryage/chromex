@@ -2,7 +2,7 @@
   "Use the chrome.loginState API to read and monitor the login
    state.
 
-     * available since Chrome master
+     * available since Chrome 78
      * https://developer.chrome.com/extensions/loginState"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -71,7 +71,7 @@
 
 (def api-table
   {:namespace "chrome.loginState",
-   :since "master",
+   :since "78",
    :functions
    [{:id ::get-profile-type,
      :name "getProfileType",
