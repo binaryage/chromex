@@ -120,6 +120,9 @@
 (defn take-screenshot* [config]
   (gen-wrap :function ::take-screenshot config))
 
+(defn take-screenshot-for-display* [config display-id]
+  (gen-wrap :function ::take-screenshot-for-display config display-id))
+
 (defn bootstrap-machine-learning-service* [config]
   (gen-wrap :function ::bootstrap-machine-learning-service config))
 

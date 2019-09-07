@@ -387,6 +387,20 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::take-screenshot &form)))
 
+(defmacro take-screenshot-for-display
+  "Tasks a screenshot for a display.
+
+     |display-id| - the display id of the display.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [base64-png] where:
+
+     |base64-png| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([display-id] (gen-call :function ::take-screenshot-for-display &form display-id)))
+
 (defmacro bootstrap-machine-learning-service
   "Makes a basic request to ML Service, triggering 1. ML Service daemon startup, and 2. the initial D-Bus -> Mojo IPC
    bootstrap.
@@ -821,6 +835,13 @@
      :since "71",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "base64-png", :type "string"}]}}]}
+    {:id ::take-screenshot-for-display,
+     :name "takeScreenshotForDisplay",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "display-id", :type "string"}
+      {:name "callback", :type :callback, :callback {:params [{:name "base64-png", :type "string"}]}}]}
     {:id ::bootstrap-machine-learning-service,
      :name "bootstrapMachineLearningService",
      :since "71",
