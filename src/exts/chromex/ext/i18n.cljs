@@ -6,8 +6,8 @@
 (defn get-accept-languages* [config]
   (gen-wrap :function ::get-accept-languages config))
 
-(defn get-message* [config message-name substitutions]
-  (gen-wrap :function ::get-message config message-name substitutions))
+(defn get-message* [config message-name substitutions options]
+  (gen-wrap :function ::get-message config message-name substitutions options))
 
 (defn get-ui-language* [config]
   (gen-wrap :function ::get-ui-language config))

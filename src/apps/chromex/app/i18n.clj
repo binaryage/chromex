@@ -35,10 +35,12 @@
 
      |message-name| - The name of the message, as specified in the messages.json file.
      |substitutions| - Up to 9 substitution strings, if the message requires any.
+     |options| - https://developer.chrome.com/apps/i18n#property-getMessage-options.
 
    https://developer.chrome.com/apps/i18n#method-getMessage."
-  ([message-name substitutions] (gen-call :function ::get-message &form message-name substitutions))
-  ([message-name] `(get-message ~message-name :omit)))
+  ([message-name substitutions options] (gen-call :function ::get-message &form message-name substitutions options))
+  ([message-name substitutions] `(get-message ~message-name ~substitutions :omit))
+  ([message-name] `(get-message ~message-name :omit :omit)))
 
 (defmacro get-ui-language
   "Gets the browser UI language of the browser. This is different from 'i18n.getAcceptLanguages' which returns the preferred
@@ -88,7 +90,10 @@
     {:id ::get-message,
      :name "getMessage",
      :return-type "string",
-     :params [{:name "message-name", :type "string"} {:name "substitutions", :optional? true, :type "any"}]}
+     :params
+     [{:name "message-name", :type "string"}
+      {:name "substitutions", :optional? true, :type "any"}
+      {:name "options", :optional? true, :since "master", :type "object"}]}
     {:id ::get-ui-language, :name "getUILanguage", :since "35", :return-type "string"}
     {:id ::detect-language,
      :name "detectLanguage",
