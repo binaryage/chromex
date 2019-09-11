@@ -149,14 +149,14 @@
      :since "77",
      :callback? true,
      :params
-     [{:name "rules", :since "future", :type "[array-of-declarativeNetRequest.Rules]"}
+     [{:name "rules", :since "77", :type "[array-of-declarativeNetRequest.Rules]"}
       {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-dynamic-rules,
      :name "removeDynamicRules",
      :since "77",
      :callback? true,
      :params
-     [{:name "rule-ids", :since "future", :type "[array-of-integers]"}
+     [{:name "rule-ids", :since "77", :type "[array-of-integers]"}
       {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-dynamic-rules,
      :name "getDynamicRules",

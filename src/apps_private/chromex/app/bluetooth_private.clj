@@ -194,11 +194,11 @@
      :params
      [{:name "success", :type "boolean"}
       {:name "transport", :type "bluetooth.Transport"}
-      {:name "pairing-duration-ms", :since "future", :type "integer"}]}
+      {:name "pairing-duration-ms", :since "77", :type "integer"}]}
     {:id ::record-reconnection, :name "recordReconnection", :since "76", :params [{:name "success", :type "boolean"}]}
     {:id ::record-device-selection,
      :name "recordDeviceSelection",
-     :since "future",
+     :since "77",
      :params
      [{:name "selection-duration-ms", :type "integer"}
       {:name "was-paired", :type "boolean"}

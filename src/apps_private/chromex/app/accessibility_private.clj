@@ -230,7 +230,7 @@
    :functions
    [{:id ::get-display-language,
      :name "getDisplayLanguage",
-     :since "future",
+     :since "77",
      :return-type "string",
      :params [{:name "language-code", :type "string"}]}
     {:id ::get-battery-description,
@@ -288,7 +288,7 @@
      :params [{:name "state", :type "accessibilityPrivate.SelectToSpeakState"}]}
     {:id ::on-scrollable-bounds-for-point-found,
      :name "onScrollableBoundsForPointFound",
-     :since "future",
+     :since "77",
      :params [{:name "rect", :type "accessibilityPrivate.ScreenRect"}]}
     {:id ::toggle-dictation, :name "toggleDictation", :since "71"}
     {:id ::set-virtual-keyboard-visible,
@@ -297,7 +297,7 @@
      :params [{:name "is-visible", :type "boolean"}]}
     {:id ::open-settings-subpage,
      :name "openSettingsSubpage",
-     :since "future",
+     :since "77",
      :params [{:name "subpage", :type "string"}]}],
    :events
    [{:id ::on-introduce-chrome-vox, :name "onIntroduceChromeVox", :since "42"}
@@ -310,7 +310,7 @@
     {:id ::on-select-to-speak-state-change-requested, :name "onSelectToSpeakStateChangeRequested", :since "68"}
     {:id ::on-switch-access-command,
      :name "onSwitchAccessCommand",
-     :since "future",
+     :since "77",
      :params [{:name "command", :type "accessibilityPrivate.SwitchAccessCommand"}]}
     {:id ::on-announce-for-accessibility,
      :name "onAnnounceForAccessibility",
@@ -318,7 +318,7 @@
      :params [{:name "announce-text", :type "[array-of-strings]"}]}
     {:id ::find-scrollable-bounds-for-point,
      :name "findScrollableBoundsForPoint",
-     :since "future",
+     :since "77",
      :params [{:name "x", :type "double"} {:name "y", :type "double"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

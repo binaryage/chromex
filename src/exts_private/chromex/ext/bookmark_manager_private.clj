@@ -187,8 +187,8 @@
      [{:name "id-list", :type "[array-of-strings]"}
       {:name "drag-node-index", :since "71", :type "integer"}
       {:name "is-from-touch", :since "34", :type "boolean"}
-      {:name "x", :since "future", :type "integer"}
-      {:name "y", :since "future", :type "integer"}]}
+      {:name "x", :since "77", :type "integer"}
+      {:name "y", :since "77", :type "integer"}]}
     {:id ::drop,
      :name "drop",
      :callback? true,
