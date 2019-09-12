@@ -1,7 +1,7 @@
 (ns chromex.app.identity
   "Use the chrome.identity API to get OAuth2 access tokens.
 
-     * available since Chrome 31
+     * available since Chrome 32
      * https://developer.chrome.com/apps/identity"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -143,7 +143,7 @@
 
 (def api-table
   {:namespace "chrome.identity",
-   :since "31",
+   :since "32",
    :functions
    [{:id ::get-accounts,
      :name "getAccounts",

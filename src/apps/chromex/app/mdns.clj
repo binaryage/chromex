@@ -3,7 +3,7 @@
    This comprises a subset of the features of the NSD spec:
    http://www.w3.org/TR/discovery-api/
 
-     * available since Chrome 31
+     * available since Chrome 32
      * https://developer.chrome.com/apps/mdns"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -68,7 +68,7 @@
 
 (def api-table
   {:namespace "chrome.mdns",
-   :since "31",
+   :since "32",
    :properties
    [{:id ::max-service-instances-per-event,
      :name "MAX_SERVICE_INSTANCES_PER_EVENT",

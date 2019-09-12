@@ -3,7 +3,7 @@
    This is a private API exposing developing and debugging functionalities for
    apps and extensions.
 
-     * available since Chrome 31"
+     * available since Chrome 32"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -441,7 +441,7 @@
 
 (def api-table
   {:namespace "chrome.developerPrivate",
-   :since "31",
+   :since "32",
    :functions
    [{:id ::auto-update,
      :name "autoUpdate",

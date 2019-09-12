@@ -2,7 +2,7 @@
   "Use the chrome.tts API to play synthesized text-to-speech (TTS). See also the related ttsEngine API, which allows an
    extension to implement a speech engine.
 
-     * available since Chrome 31
+     * available since Chrome 32
      * https://developer.chrome.com/apps/tts"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -93,7 +93,7 @@
 
 (def api-table
   {:namespace "chrome.tts",
-   :since "31",
+   :since "32",
    :functions
    [{:id ::speak,
      :name "speak",

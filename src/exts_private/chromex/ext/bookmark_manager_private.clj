@@ -1,5 +1,5 @@
 (ns chromex.ext.bookmark-manager-private
-  "  * available since Chrome 31"
+  "  * available since Chrome 32"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -47,6 +47,20 @@
    chromex.error/get-last-error."
   ([parent-id selected-id-list] (gen-call :function ::paste &form parent-id selected-id-list))
   ([parent-id] `(paste ~parent-id :omit)))
+
+(defmacro can-paste
+  "Whether there are any bookmarks that can be pasted.
+
+     |parent-id| - The ID of the folder to paste into.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [result] where:
+
+     |result| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([parent-id] (gen-call :function ::can-paste &form parent-id)))
 
 (defmacro sort-children
   "Sorts the children of a given folder.
@@ -163,7 +177,7 @@
 
 (def api-table
   {:namespace "chrome.bookmarkManagerPrivate",
-   :since "31",
+   :since "32",
    :functions
    [{:id ::copy,
      :name "copy",
@@ -180,6 +194,12 @@
      [{:name "parent-id", :type "string"}
       {:name "selected-id-list", :optional? true, :type "[array-of-strings]"}
       {:name "callback", :optional? true, :type :callback}]}
+    {:id ::can-paste,
+     :name "canPaste",
+     :callback? true,
+     :params
+     [{:name "parent-id", :type "string"}
+      {:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
     {:id ::sort-children, :name "sortChildren", :params [{:name "parent-id", :type "string"}]}
     {:id ::start-drag,
      :name "startDrag",

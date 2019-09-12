@@ -2,7 +2,7 @@
   "The chrome.management API provides ways to manage the list of extensions/apps that are installed and running. It is
    particularly useful for extensions that override the built-in New Tab page.
 
-     * available since Chrome 31
+     * available since Chrome 32
      * https://developer.chrome.com/apps/management"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -307,7 +307,7 @@
 
 (def api-table
   {:namespace "chrome.management",
-   :since "31",
+   :since "32",
    :functions
    [{:id ::get-all,
      :name "getAll",

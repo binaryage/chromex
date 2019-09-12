@@ -2,7 +2,7 @@
   "Use the chrome.alarms API to schedule code to run
    periodically or at a specified time in the future.
 
-     * available since Chrome 31
+     * available since Chrome 32
      * https://developer.chrome.com/extensions/alarms"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -122,7 +122,7 @@
 
 (def api-table
   {:namespace "chrome.alarms",
-   :since "31",
+   :since "32",
    :functions
    [{:id ::create,
      :name "create",

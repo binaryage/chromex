@@ -71,7 +71,7 @@
 
 (def api-table
   {:namespace "chrome.loginState",
-   :since "78",
+   :since "future",
    :functions
    [{:id ::get-profile-type,
      :name "getProfileType",

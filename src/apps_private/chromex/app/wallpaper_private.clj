@@ -1,5 +1,5 @@
 (ns chromex.app.wallpaper-private
-  "  * available since Chrome 31"
+  "  * available since Chrome 32"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -39,7 +39,7 @@
 
 (def api-table
   {:namespace "chrome.wallpaperPrivate",
-   :since "31",
+   :since "32",
    :events
    [{:id ::on-wallpaper-changed-by3rd-party,
      :name "onWallpaperChangedBy3rdParty",

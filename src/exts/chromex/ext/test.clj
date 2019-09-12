@@ -1,5 +1,5 @@
 (ns chromex.ext.test
-  "  * available since Chrome 31
+  "  * available since Chrome 32
      * https://developer.chrome.com/extensions/test"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -316,7 +316,7 @@
 
 (def api-table
   {:namespace "chrome.test",
-   :since "31",
+   :since "32",
    :functions
    [{:id ::get-config,
      :name "getConfig",
@@ -395,10 +395,9 @@
     {:id ::get-api-definitions,
      :name "getApiDefinitions",
      :params [{:name "api-names", :optional? true, :type "[array-of-strings]"}]}
-    {:id ::is-processing-user-gesture, :name "isProcessingUserGesture", :since "32"}
+    {:id ::is-processing-user-gesture, :name "isProcessingUserGesture"}
     {:id ::run-with-user-gesture,
      :name "runWithUserGesture",
-     :since "32",
      :callback? true,
      :params [{:name "callback", :type :callback}]}
     {:id ::wait-for-round-trip,

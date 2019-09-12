@@ -2,7 +2,7 @@
   "Use the chrome.topSites API to access the top sites (i.e. most visited sites) that are displayed on the new tab page.
    These do not include shortcuts customized by the user.
 
-     * available since Chrome 31
+     * available since Chrome 32
      * https://developer.chrome.com/extensions/topSites"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -41,7 +41,7 @@
 
 (def api-table
   {:namespace "chrome.topSites",
-   :since "31",
+   :since "32",
    :functions
    [{:id ::get,
      :name "get",

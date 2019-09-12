@@ -2,7 +2,7 @@
   "Use the commands API to add keyboard shortcuts that trigger actions in your extension, for example, an action to open the
    browser action or send a command to the extension.
 
-     * available since Chrome 31
+     * available since Chrome 32
      * https://developer.chrome.com/extensions/commands"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -57,7 +57,7 @@
 
 (def api-table
   {:namespace "chrome.commands",
-   :since "31",
+   :since "32",
    :functions
    [{:id ::get-all,
      :name "getAll",

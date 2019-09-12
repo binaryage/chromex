@@ -1,5 +1,5 @@
 (ns chromex.ext.chromeos-info-private
-  "  * available since Chrome 31"
+  "  * available since Chrome 32"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -45,7 +45,7 @@
 
 (def api-table
   {:namespace "chrome.chromeosInfoPrivate",
-   :since "31",
+   :since "32",
    :functions
    [{:id ::get,
      :name "get",
@@ -55,7 +55,6 @@
       {:name "callback", :type :callback, :callback {:params [{:name "properties-dictionary", :type "object"}]}}]}
     {:id ::set,
      :name "set",
-     :since "32",
      :params
      [{:name "property-name", :type "chromeosInfoPrivate.PropertyName"}
       {:name "property-value", :since "34", :type "any"}]}]})

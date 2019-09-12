@@ -2,7 +2,7 @@
   "API for integration testing. To be used on test images with a test component
    extension.
 
-     * available since Chrome 31"
+     * available since Chrome 32"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -680,7 +680,7 @@
 
 (def api-table
   {:namespace "chrome.autotestPrivate",
-   :since "31",
+   :since "32",
    :functions
    [{:id ::logout, :name "logout"}
     {:id ::restart, :name "restart"}
@@ -719,7 +719,7 @@
      [{:name "callback", :type :callback, :callback {:params [{:name "notifications", :type "[array-of-objects]"}]}}]}
     {:id ::get-arc-start-time,
      :name "getArcStartTime",
-     :since "master",
+     :since "future",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "start-time", :type "double"}]}}]}
     {:id ::get-arc-state,
@@ -930,7 +930,7 @@
       {:name "callback", :type :callback}]}
     {:id ::set-overview-mode-state,
      :name "setOverviewModeState",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "start", :type "boolean"}

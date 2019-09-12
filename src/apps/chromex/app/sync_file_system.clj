@@ -6,7 +6,7 @@
    clients. Read Manage Data for more on using
    this API.
 
-     * available since Chrome 31
+     * available since Chrome 32
      * https://developer.chrome.com/apps/syncFileSystem"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -171,7 +171,7 @@
 
 (def api-table
   {:namespace "chrome.syncFileSystem",
-   :since "31",
+   :since "32",
    :functions
    [{:id ::request-file-system,
      :name "requestFileSystem",

@@ -12,6 +12,9 @@
 (defn paste* [config parent-id selected-id-list]
   (gen-wrap :function ::paste config parent-id selected-id-list))
 
+(defn can-paste* [config parent-id]
+  (gen-wrap :function ::can-paste config parent-id))
+
 (defn sort-children* [config parent-id]
   (gen-wrap :function ::sort-children config parent-id))
 

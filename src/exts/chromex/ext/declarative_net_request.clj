@@ -146,21 +146,21 @@
    :functions
    [{:id ::add-dynamic-rules,
      :name "addDynamicRules",
-     :since "77",
+     :since "future",
      :callback? true,
      :params
      [{:name "rules", :since "77", :type "[array-of-declarativeNetRequest.Rules]"}
       {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-dynamic-rules,
      :name "removeDynamicRules",
-     :since "77",
+     :since "future",
      :callback? true,
      :params
      [{:name "rule-ids", :since "77", :type "[array-of-integers]"}
       {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-dynamic-rules,
      :name "getDynamicRules",
-     :since "77",
+     :since "future",
      :callback? true,
      :params
      [{:name "callback",

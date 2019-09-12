@@ -47,7 +47,7 @@
 
 ### API stats
 
-Generated 39 namespaces containing 0 properties, 404 functions and 72 events:
+Generated 39 namespaces containing 0 properties, 405 functions and 72 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -57,7 +57,7 @@ Generated 39 namespaces containing 0 properties, 404 functions and 72 events:
     |                chrome.autofillPrivate |           0 |         11 |       2 |
     |                chrome.autotestPrivate |           0 |         61 |       0 |
     |               chrome.bluetoothPrivate |           0 |         10 |       1 |
-    |         chrome.bookmarkManagerPrivate |           0 |         10 |       3 |
+    |         chrome.bookmarkManagerPrivate |           0 |         11 |       3 |
     |          chrome.brailleDisplayPrivate |           0 |          3 |       2 |
     |            chrome.chromeosInfoPrivate |           0 |          2 |       0 |
     |              chrome.cloudPrintPrivate |           0 |          4 |       0 |
@@ -140,8 +140,8 @@ Generated 39 namespaces containing 0 properties, 404 functions and 72 events:
       pair record-pairing record-reconnection record-device-selection tap-on-pairing tap-all-events]]
 
     [chromex.ext.bookmark-manager-private refer:[
-      copy cut paste sort-children start-drag drop get-subtree remove-trees undo redo tap-on-drag-enter
-      tap-on-drag-leave tap-on-drop tap-all-events]]
+      copy cut paste can-paste sort-children start-drag drop get-subtree remove-trees undo redo
+      tap-on-drag-enter tap-on-drag-leave tap-on-drop tap-all-events]]
 
     [chromex.ext.braille-display-private refer:[
       get-display-state write-dots update-bluetooth-braille-display-address tap-on-display-state-changed
