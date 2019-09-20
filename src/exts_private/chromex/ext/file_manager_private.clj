@@ -404,15 +404,15 @@
   ([search-params] (gen-call :function ::search-drive-metadata &form search-params)))
 
 (defmacro search-files-by-hashes
-  "Search files in the volume having |volumeId| by using |hashList|. sub-directories) the given |targetDirectoryUrl|.
+  "Search files in the volume having |volumeId| by using |hashList|.
 
      |volume-id| - ?
      |hash-list| - ?
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [urls] where:
+   Signature of the result value put on the channel is [paths] where:
 
-     |urls| - ?
+     |paths| - ?
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
@@ -1124,7 +1124,7 @@
      :params
      [{:name "volume-id", :type "string"}
       {:name "hash-list", :type "[array-of-strings]"}
-      {:name "callback", :type :callback, :callback {:params [{:name "urls", :type "object"}]}}]}
+      {:name "callback", :type :callback, :callback {:params [{:name "paths", :type "object"}]}}]}
     {:id ::search-files,
      :name "searchFiles",
      :since "75",

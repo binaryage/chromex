@@ -2,7 +2,7 @@
   "The chrome.declarativeNetRequest API is used to block or modify
    network requests by specifying declarative rules.
 
-     * available since Chrome 77
+     * available since Chrome 78
      * https://developer.chrome.com/extensions/declarativeNetRequest"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -138,7 +138,7 @@
 
 (def api-table
   {:namespace "chrome.declarativeNetRequest",
-   :since "77",
+   :since "78",
    :properties
    [{:id ::max-number-of-allowed-pages, :name "MAX_NUMBER_OF_ALLOWED_PAGES", :return-type "unknown-type"}
     {:id ::max-number-of-rules, :name "MAX_NUMBER_OF_RULES", :return-type "unknown-type"}
@@ -146,21 +146,16 @@
    :functions
    [{:id ::add-dynamic-rules,
      :name "addDynamicRules",
-     :since "future",
      :callback? true,
      :params
-     [{:name "rules", :since "77", :type "[array-of-declarativeNetRequest.Rules]"}
+     [{:name "rules", :type "[array-of-declarativeNetRequest.Rules]"}
       {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-dynamic-rules,
      :name "removeDynamicRules",
-     :since "future",
      :callback? true,
-     :params
-     [{:name "rule-ids", :since "77", :type "[array-of-integers]"}
-      {:name "callback", :optional? true, :type :callback}]}
+     :params [{:name "rule-ids", :type "[array-of-integers]"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-dynamic-rules,
      :name "getDynamicRules",
-     :since "future",
      :callback? true,
      :params
      [{:name "callback",
