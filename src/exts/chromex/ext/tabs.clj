@@ -164,8 +164,8 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [tab] where:
 
-     |tab| - Details about the duplicated tab. The 'tabs.Tab' object does not contain url, title, and favIconUrl if the 'tabs'
-             permission has not been requested.
+     |tab| - Details about the duplicated tab. The 'tabs.Tab' object does not contain url, pendingUrl, title, and favIconUrl
+             if the 'tabs' permission has not been requested.
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
@@ -215,8 +215,8 @@
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [tab] where:
 
-     |tab| - Details about the updated tab. The 'tabs.Tab' object does not contain url, title, and favIconUrl if the 'tabs'
-             permission has not been requested.
+     |tab| - Details about the updated tab. The 'tabs.Tab' object does not contain url, pendingUrl, title, and favIconUrl if
+             the 'tabs' permission has not been requested.
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
