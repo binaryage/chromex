@@ -36,6 +36,9 @@
 (defn log-server-card-link-clicked* [config]
   (gen-wrap :function ::log-server-card-link-clicked config))
 
+(defn set-credit-card-fido-auth-enabled-state* [config enabled]
+  (gen-wrap :function ::set-credit-card-fido-auth-enabled-state config enabled))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-address-list-changed* [config channel & args]

@@ -328,10 +328,12 @@
    be evaluated asynchronously, this function must return undefined and the IME must later call keyEventHandled() with the
    result.
 
-   Events will be put on the |channel| with signature [::on-key-event [engine-id key-data]] where:
+   Events will be put on the |channel| with signature [::on-key-event [engine-id key-data request-id]] where:
 
      |engine-id| - ID of the engine receiving the event
      |key-data| - Data on the key event
+     |request-id| - ID of the request. If the event listener returns undefined, then keyEventHandled must be called later with
+                    this requestId.
 
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
 
@@ -516,7 +518,10 @@
      :params [{:name "context", :type "input.ime.InputContext"}]}
     {:id ::on-key-event,
      :name "onKeyEvent",
-     :params [{:name "engine-id", :type "string"} {:name "key-data", :type "input.ime.KeyboardEvent"}]}
+     :params
+     [{:name "engine-id", :type "string"}
+      {:name "key-data", :type "input.ime.KeyboardEvent"}
+      {:name "request-id", :since "master", :type "string"}]}
     {:id ::on-candidate-clicked,
      :name "onCandidateClicked",
      :params

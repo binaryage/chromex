@@ -44,14 +44,14 @@
 
 ### API stats
 
-Generated 36 namespaces containing 0 properties, 324 functions and 69 events:
+Generated 36 namespaces containing 0 properties, 325 functions and 69 events:
 
 
     |                     :namespace | :properties | :functions | :events |
     |--------------------------------+-------------+------------+---------|
     |    chrome.accessibilityPrivate |           0 |         18 |       8 |
     |      chrome.activityLogPrivate |           0 |          5 |       1 |
-    |         chrome.autofillPrivate |           0 |         11 |       2 |
+    |         chrome.autofillPrivate |           0 |         12 |       2 |
     |        chrome.bluetoothPrivate |           0 |         10 |       1 |
     |  chrome.bookmarkManagerPrivate |           0 |         11 |       3 |
     |   chrome.brailleDisplayPrivate |           0 |          3 |       2 |
@@ -109,8 +109,8 @@ Generated 36 namespaces containing 0 properties, 324 functions and 69 events:
     [chromex.app.autofill-private refer:[
       save-address get-country-list get-address-components get-address-list save-credit-card remove-entry
       validate-phone-numbers get-credit-card-list mask-credit-card migrate-credit-cards
-      log-server-card-link-clicked tap-on-address-list-changed tap-on-credit-card-list-changed
-      tap-all-events]]
+      log-server-card-link-clicked set-credit-card-fido-auth-enabled-state tap-on-address-list-changed
+      tap-on-credit-card-list-changed tap-all-events]]
 
     [chromex.app.bluetooth-private refer:[
       set-adapter-state set-pairing-response disconnect-all forget-device set-discovery-filter connect

@@ -47,14 +47,14 @@
 
 ### API stats
 
-Generated 39 namespaces containing 0 properties, 405 functions and 72 events:
+Generated 39 namespaces containing 0 properties, 406 functions and 72 events:
 
 
     |                            :namespace | :properties | :functions | :events |
     |---------------------------------------+-------------+------------+---------|
     |           chrome.accessibilityPrivate |           0 |         18 |       8 |
     |             chrome.activityLogPrivate |           0 |          5 |       1 |
-    |                chrome.autofillPrivate |           0 |         11 |       2 |
+    |                chrome.autofillPrivate |           0 |         12 |       2 |
     |                chrome.autotestPrivate |           0 |         61 |       0 |
     |               chrome.bluetoothPrivate |           0 |         10 |       1 |
     |         chrome.bookmarkManagerPrivate |           0 |         11 |       3 |
@@ -115,8 +115,8 @@ Generated 39 namespaces containing 0 properties, 405 functions and 72 events:
     [chromex.ext.autofill-private refer:[
       save-address get-country-list get-address-components get-address-list save-credit-card remove-entry
       validate-phone-numbers get-credit-card-list mask-credit-card migrate-credit-cards
-      log-server-card-link-clicked tap-on-address-list-changed tap-on-credit-card-list-changed
-      tap-all-events]]
+      log-server-card-link-clicked set-credit-card-fido-auth-enabled-state tap-on-address-list-changed
+      tap-on-credit-card-list-changed tap-all-events]]
 
     [chromex.ext.autotest-private refer:[
       logout restart shutdown login-status lock-screen get-extensions-info get-all-enterprise-policies

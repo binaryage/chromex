@@ -114,6 +114,12 @@
   "Logs that the server cards edit link was clicked."
   ([] (gen-call :function ::log-server-card-link-clicked &form)))
 
+(defmacro set-credit-card-fido-auth-enabled-state
+  "Enables or disables FIDO Authentication for credit card unmasking.
+
+     |enabled| - ?"
+  ([enabled] (gen-call :function ::set-credit-card-fido-auth-enabled-state &form enabled)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -193,7 +199,10 @@
        :callback {:params [{:name "entries", :type "[array-of-autofillPrivate.CreditCardEntrys]"}]}}]}
     {:id ::mask-credit-card, :name "maskCreditCard", :params [{:name "guid", :type "string"}]}
     {:id ::migrate-credit-cards, :name "migrateCreditCards"}
-    {:id ::log-server-card-link-clicked, :name "logServerCardLinkClicked"}],
+    {:id ::log-server-card-link-clicked, :name "logServerCardLinkClicked"}
+    {:id ::set-credit-card-fido-auth-enabled-state,
+     :name "setCreditCardFIDOAuthEnabledState",
+     :params [{:name "enabled", :type "boolean"}]}],
    :events
    [{:id ::on-address-list-changed,
      :name "onAddressListChanged",
