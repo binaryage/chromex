@@ -24,6 +24,20 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-whitelisted-users &form)))
 
+(defmacro is-whitelisted-user
+  "Checks to see if the user is already present as a whitelisted user.
+
+     |email| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [found] where:
+
+     |found| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([email] (gen-call :function ::is-whitelisted-user &form email)))
+
 (defmacro add-whitelisted-user
   "Adds a new user with the given email to the whitelist. The callback is called with true if the user was added succesfully,
    or with false if not (e.g. because the user was already present, or the current user isn't the owner).
@@ -112,6 +126,12 @@
      [{:name "callback",
        :type :callback,
        :callback {:params [{:name "users", :type "[array-of-usersPrivate.Users]"}]}}]}
+    {:id ::is-whitelisted-user,
+     :name "isWhitelistedUser",
+     :callback? true,
+     :params
+     [{:name "email", :type "string"}
+      {:name "callback", :type :callback, :callback {:params [{:name "found", :type "boolean"}]}}]}
     {:id ::add-whitelisted-user,
      :name "addWhitelistedUser",
      :callback? true,

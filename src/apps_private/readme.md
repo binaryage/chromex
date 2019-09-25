@@ -44,7 +44,7 @@
 
 ### API stats
 
-Generated 36 namespaces containing 0 properties, 325 functions and 69 events:
+Generated 36 namespaces containing 0 properties, 326 functions and 69 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -79,7 +79,7 @@ Generated 36 namespaces containing 0 properties, 325 functions and 69 events:
     |         chrome.settingsPrivate |           0 |          5 |       1 |
     |           chrome.systemPrivate |           0 |          3 |       0 |
     |         chrome.terminalPrivate |           0 |          5 |       1 |
-    |            chrome.usersPrivate |           0 |          6 |       0 |
+    |            chrome.usersPrivate |           0 |          7 |       0 |
     |  chrome.virtualKeyboardPrivate |           0 |         13 |       3 |
     |        chrome.wallpaperPrivate |           0 |          0 |       1 |
     |           chrome.webcamPrivate |           0 |          5 |       0 |
@@ -251,8 +251,8 @@ Generated 36 namespaces containing 0 properties, 325 functions and 69 events:
       tap-on-process-output tap-all-events]]
 
     [chromex.app.users-private refer:[
-      get-whitelisted-users add-whitelisted-user remove-whitelisted-user is-whitelist-managed
-      get-current-user get-login-status tap-all-events]]
+      get-whitelisted-users is-whitelisted-user add-whitelisted-user remove-whitelisted-user
+      is-whitelist-managed get-current-user get-login-status tap-all-events]]
 
     [chromex.app.virtual-keyboard-private refer:[
       insert-text send-key-event hide-keyboard set-hotrod-keyboard lock-keyboard keyboard-loaded

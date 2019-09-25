@@ -5,7 +5,7 @@
    used to programmatically interact with a page by examining names, roles, and
    states, listening for events, and performing actions on nodes.
 
-     * available since Chrome 78
+     * available since Chrome 79
      * https://developer.chrome.com/extensions/automation"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -133,7 +133,7 @@
 
 (def api-table
   {:namespace "chrome.automation",
-   :since "78",
+   :since "79",
    :functions
    [{:id ::get-tree,
      :name "getTree",
@@ -174,7 +174,7 @@
      :params [{:name "params", :type "automation.SetDocumentSelectionParams"}]}
     {:id ::language-annotation-for-string-attribute,
      :name "languageAnnotationForStringAttribute",
-     :since "78",
+     :since "79",
      :return-type "[array-of-objects]",
      :params [{:name "attribute", :since "future", :type "string"}]}]})
 

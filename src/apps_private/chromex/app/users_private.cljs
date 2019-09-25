@@ -6,6 +6,9 @@
 (defn get-whitelisted-users* [config]
   (gen-wrap :function ::get-whitelisted-users config))
 
+(defn is-whitelisted-user* [config email]
+  (gen-wrap :function ::is-whitelisted-user config email))
+
 (defn add-whitelisted-user* [config email]
   (gen-wrap :function ::add-whitelisted-user config email))
 

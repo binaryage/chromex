@@ -837,7 +837,7 @@
      :params [{:name "callback", :type :callback, :callback {:params [{:name "base64-png", :type "string"}]}}]}
     {:id ::take-screenshot-for-display,
      :name "takeScreenshotForDisplay",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "display-id", :type "string"}

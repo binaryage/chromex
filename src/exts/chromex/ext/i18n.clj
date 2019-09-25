@@ -93,7 +93,7 @@
      :params
      [{:name "message-name", :type "string"}
       {:name "substitutions", :optional? true, :type "any"}
-      {:name "options", :optional? true, :since "master", :type "object"}]}
+      {:name "options", :optional? true, :since "future", :type "object"}]}
     {:id ::get-ui-language, :name "getUILanguage", :since "35", :return-type "string"}
     {:id ::detect-language,
      :name "detectLanguage",
