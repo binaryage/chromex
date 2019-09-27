@@ -413,7 +413,7 @@
   ([] (gen-call :function ::bootstrap-machine-learning-service &form)))
 
 (defmacro set-assistant-enabled
-  "Enable/disable the Google Assistant
+  "Enables/disables the Google Assistant.
 
      |enabled| - ?
      |timeout-ms| - ?
@@ -426,19 +426,40 @@
   ([enabled timeout-ms] (gen-call :function ::set-assistant-enabled &form enabled timeout-ms)))
 
 (defmacro send-assistant-text-query
-  "Send a text query via Google Assistant.
+  "Sends a text query via Google Assistant.
 
      |query| - ?
      |timeout-ms| - ?
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [response] where:
+   Signature of the result value put on the channel is [status] where:
 
-     |response| - ?
+     |status| - ?
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([query timeout-ms] (gen-call :function ::send-assistant-text-query &form query timeout-ms)))
+
+(defmacro wait-for-assistant-query-status
+  "Invokes |callback| once the current text/voice interaction is completed. Responds with the the query status if any valid
+   response was caught before the timeout. This API should be called before sending the query. To use it for testing a voice
+   query via OKG in Autotest, for example, you can do:// Enable hotword setting for Assistant.
+   assistant_util.enable_hotword();// Call this API with your callback function.
+   chrome.autotestPrivate.waitForAssistantQueryStatus(timeout_s,        function(status) {...});then start Assistant via OKG
+   and send voice query before timeout.TODO(meilinw@): disable warmer welcome to avoid an unintended early return of this API
+   when launching Assistant via hotkey. TODO(meilinw@): update the comment above to use Tast instead after adding API to
+   enable hotword in Tast.
+
+     |timeout-s| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [status] where:
+
+     |status| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([timeout-s] (gen-call :function ::wait-for-assistant-query-status &form timeout-s)))
 
 (defmacro set-whitelisted-pref
   "Set value for the specified user pref in the pref tree.
@@ -860,7 +881,18 @@
      :params
      [{:name "query", :type "string"}
       {:name "timeout-ms", :type "integer"}
-      {:name "callback", :type :callback, :callback {:params [{:name "response", :type "object"}]}}]}
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "status", :type "autotestPrivate.AssistantQueryStatus"}]}}]}
+    {:id ::wait-for-assistant-query-status,
+     :name "waitForAssistantQueryStatus",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "timeout-s", :type "integer"}
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "status", :type "autotestPrivate.AssistantQueryStatus"}]}}]}
     {:id ::set-whitelisted-pref,
      :name "setWhitelistedPref",
      :since "74",

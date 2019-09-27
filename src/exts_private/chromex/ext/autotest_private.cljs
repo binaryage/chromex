@@ -132,6 +132,9 @@
 (defn send-assistant-text-query* [config query timeout-ms]
   (gen-wrap :function ::send-assistant-text-query config query timeout-ms))
 
+(defn wait-for-assistant-query-status* [config timeout-s]
+  (gen-wrap :function ::wait-for-assistant-query-status config timeout-s))
+
 (defn set-whitelisted-pref* [config pref-name value]
   (gen-wrap :function ::set-whitelisted-pref config pref-name value))
 

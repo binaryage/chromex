@@ -47,7 +47,7 @@
 
 ### API stats
 
-Generated 39 namespaces containing 0 properties, 407 functions and 72 events:
+Generated 39 namespaces containing 0 properties, 403 functions and 72 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -55,7 +55,7 @@ Generated 39 namespaces containing 0 properties, 407 functions and 72 events:
     |           chrome.accessibilityPrivate |           0 |         18 |       8 |
     |             chrome.activityLogPrivate |           0 |          5 |       1 |
     |                chrome.autofillPrivate |           0 |         12 |       2 |
-    |                chrome.autotestPrivate |           0 |         61 |       0 |
+    |                chrome.autotestPrivate |           0 |         62 |       0 |
     |               chrome.bluetoothPrivate |           0 |         10 |       1 |
     |         chrome.bookmarkManagerPrivate |           0 |         11 |       3 |
     |          chrome.brailleDisplayPrivate |           0 |          3 |       2 |
@@ -69,7 +69,7 @@ Generated 39 namespaces containing 0 properties, 407 functions and 72 events:
     | chrome.enterprise.platformKeysPrivate |           0 |          2 |       0 |
     |    chrome.enterprise.reportingPrivate |           0 |          2 |       0 |
     |                chrome.feedbackPrivate |           0 |          6 |       1 |
-    |             chrome.fileManagerPrivate |           0 |         65 |      10 |
+    |             chrome.fileManagerPrivate |           0 |         60 |      10 |
     |             chrome.imageWriterPrivate |           0 |          5 |       5 |
     |             chrome.inputMethodPrivate |           0 |         16 |      10 |
     |        chrome.languageSettingsPrivate |           0 |         14 |       4 |
@@ -128,12 +128,12 @@ Generated 39 namespaces containing 0 properties, 407 functions and 72 events:
       get-histogram run-crostini-installer run-crostini-uninstaller set-crostini-enabled export-crostini
       import-crostini register-component take-screenshot take-screenshot-for-display
       bootstrap-machine-learning-service set-assistant-enabled send-assistant-text-query
-      set-whitelisted-pref set-crostini-app-scaled get-primary-display-scale-factor
-      is-tablet-mode-enabled set-tablet-mode-enabled get-all-installed-apps get-shelf-items
-      get-shelf-auto-hide-behavior set-shelf-auto-hide-behavior get-shelf-alignment set-shelf-alignment
-      set-overview-mode-state show-virtual-keyboard-if-enabled set-arc-app-window-state
-      get-arc-app-window-state get-arc-app-window-info swap-windows-in-split-view
-      set-arc-app-window-focus tap-all-events]]
+      wait-for-assistant-query-status set-whitelisted-pref set-crostini-app-scaled
+      get-primary-display-scale-factor is-tablet-mode-enabled set-tablet-mode-enabled
+      get-all-installed-apps get-shelf-items get-shelf-auto-hide-behavior set-shelf-auto-hide-behavior
+      get-shelf-alignment set-shelf-alignment set-overview-mode-state show-virtual-keyboard-if-enabled
+      set-arc-app-window-state get-arc-app-window-state get-arc-app-window-info
+      swap-windows-in-split-view set-arc-app-window-focus tap-all-events]]
 
     [chromex.ext.bluetooth-private refer:[
       set-adapter-state set-pairing-response disconnect-all forget-device set-discovery-filter connect
@@ -189,15 +189,14 @@ Generated 39 namespaces containing 0 properties, 407 functions and 72 events:
     [chromex.ext.file-manager-private refer:[
       logout-user-for-reauthentication cancel-dialog execute-task set-default-task get-file-tasks
       get-mime-type get-strings add-file-watch remove-file-watch enable-external-file-scheme grant-access
-      select-files select-file get-entry-properties pin-drive-file ensure-file-downloaded
-      resolve-isolated-entries add-mount remove-mount mark-cache-as-mounted get-volume-metadata-list
-      cancel-file-transfers start-copy cancel-copy get-size-stats format-volume rename-volume
-      get-preferences set-preferences search-drive search-drive-metadata search-files-by-hashes
-      search-files zip-selection get-drive-connection-state validate-path-name-length zoom
-      request-access-token request-web-store-access-token get-download-url request-drive-share
-      get-profiles open-inspector open-settings-subpage compute-checksum set-entry-tag
-      is-piex-loader-enabled get-providers add-provided-file-system configure-volume get-custom-actions
-      execute-custom-action get-directory-size get-recent-files mount-crostini share-paths-with-crostini
+      select-files select-file get-entry-properties pin-drive-file resolve-isolated-entries add-mount
+      remove-mount mark-cache-as-mounted get-volume-metadata-list start-copy cancel-copy get-size-stats
+      format-volume rename-volume get-preferences set-preferences search-drive search-drive-metadata
+      search-files-by-hashes search-files zip-selection get-drive-connection-state
+      validate-path-name-length zoom request-web-store-access-token get-download-url get-profiles
+      open-inspector open-settings-subpage compute-checksum is-piex-loader-enabled get-providers
+      add-provided-file-system configure-volume get-custom-actions execute-custom-action
+      get-directory-size get-recent-files mount-crostini share-paths-with-crostini
       unshare-path-with-crostini get-crostini-shared-paths get-linux-package-info install-linux-package
       import-crostini-image get-thumbnail detect-character-encoding get-android-picker-apps
       select-android-picker-app tap-on-mount-completed tap-on-file-transfers-updated tap-on-copy-progress

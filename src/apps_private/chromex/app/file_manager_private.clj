@@ -201,23 +201,6 @@
    chromex.error/get-last-error."
   ([entry pin] (gen-call :function ::pin-drive-file &form entry pin)))
 
-(defmacro ensure-file-downloaded
-  "If |entry| is a Drive file, ensures the file is downloaded to the cache. Otherwise, finishes immediately in success. For
-   example, when the file is under Downloads, MTP, removeable media, or provided by extensions for other cloud storage
-   services than Google Drive, this does nothing. This is a workaround to avoid intermittent and duplicated downloading of a
-   Drive file by current implementation of Drive integration when an extension reads a file sequentially but intermittently.
-   |entry| A regular file entry to be read. |callback| Callback called after having the file in cache.     'runtime.lastError'
-   will be set if there was an error.
-
-     |entry| - ?
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [].
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([entry] (gen-call :function ::ensure-file-downloaded &form entry)))
-
 (defmacro resolve-isolated-entries
   "Resolves entries in the isolated file system and returns corresponding entries in the external file system mounted to
    Chrome OS file manager backend. If resolving entry fails, the entry will be just ignored and the corresponding entry does
@@ -282,19 +265,6 @@
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-volume-metadata-list &form)))
-
-(defmacro cancel-file-transfers
-  "Cancels ongoing file transfers for selected files. |entries| Array of files for which ongoing transfer should be canceled.
-   |callback| Completion callback of the cancel.
-
-     |entries| - ?
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [].
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([entries] (gen-call :function ::cancel-file-transfers &form entries)))
 
 (defmacro start-copy
   "Starts to copy an entry. If the source is a directory, the copy is done recursively. |entry| Entry of the source entry to
@@ -485,21 +455,6 @@
      |operation| - ?"
   ([operation] (gen-call :function ::zoom &form operation)))
 
-(defmacro request-access-token
-  "Requests a Drive API OAuth2 access token. |refresh| Whether the token should be refetched instead of using the cached
-   one. |callback
-
-     |refresh| - ?
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [access-token] where:
-
-     |access-token| - ?
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([refresh] (gen-call :function ::request-access-token &form refresh)))
-
 (defmacro request-web-store-access-token
   "Requests a Webstore API OAuth2 access token. |callback
 
@@ -525,19 +480,6 @@
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([entry] (gen-call :function ::get-download-url &form entry)))
-
-(defmacro request-drive-share
-  "Requests to share drive files. |entry| Entry to be shared. |shareType| Type of access that is getting granted.
-
-     |entry| - ?
-     |share-type| - ?
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [].
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([entry share-type] (gen-call :function ::request-drive-share &form entry share-type)))
 
 (defmacro get-profiles
   "Obtains a list of profiles that are logged-in.
@@ -578,21 +520,6 @@
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([entry] (gen-call :function ::compute-checksum &form entry)))
-
-(defmacro set-entry-tag
-  "Sets a tag on a file or a directory. Only Drive files are supported.
-
-     |entry| - ?
-     |visibility| - ?
-     |key| - ?
-     |value| - ?
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [].
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([entry visibility key value] (gen-call :function ::set-entry-tag &form entry visibility key value)))
 
 (defmacro is-piex-loader-enabled
   "Returns if Piex loader is enabled.
@@ -1033,11 +960,6 @@
      :callback? true,
      :params
      [{:name "entry", :since "46", :type "object"} {:name "pin", :type "boolean"} {:name "callback", :type :callback}]}
-    {:id ::ensure-file-downloaded,
-     :name "ensureFileDownloaded",
-     :since "67",
-     :callback? true,
-     :params [{:name "entry", :type "object"} {:name "callback", :type :callback}]}
     {:id ::resolve-isolated-entries,
      :name "resolveIsolatedEntries",
      :callback? true,
@@ -1064,10 +986,6 @@
      [{:name "callback",
        :type :callback,
        :callback {:params [{:name "volume-metadata-list", :type "[array-of-fileManagerPrivate.VolumeMetadatas]"}]}}]}
-    {:id ::cancel-file-transfers,
-     :name "cancelFileTransfers",
-     :callback? true,
-     :params [{:name "entries", :since "46", :type "[array-of-objects]"} {:name "callback", :type :callback}]}
     {:id ::start-copy,
      :name "startCopy",
      :callback? true,
@@ -1152,12 +1070,6 @@
       {:name "name", :type "string"}
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
     {:id ::zoom, :name "zoom", :params [{:name "operation", :type "unknown-type"}]}
-    {:id ::request-access-token,
-     :name "requestAccessToken",
-     :callback? true,
-     :params
-     [{:name "refresh", :type "boolean"}
-      {:name "callback", :type :callback, :callback {:params [{:name "access-token", :type "string"}]}}]}
     {:id ::request-web-store-access-token,
      :name "requestWebStoreAccessToken",
      :callback? true,
@@ -1168,13 +1080,6 @@
      :params
      [{:name "entry", :since "46", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "url", :type "string"}]}}]}
-    {:id ::request-drive-share,
-     :name "requestDriveShare",
-     :callback? true,
-     :params
-     [{:name "entry", :since "46", :type "object"}
-      {:name "share-type", :type "unknown-type"}
-      {:name "callback", :type :callback}]}
     {:id ::get-profiles,
      :name "getProfiles",
      :callback? true,
@@ -1198,16 +1103,6 @@
      :params
      [{:name "entry", :since "46", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "checksum", :type "string"}]}}]}
-    {:id ::set-entry-tag,
-     :name "setEntryTag",
-     :since "43",
-     :callback? true,
-     :params
-     [{:name "entry", :since "46", :type "object"}
-      {:name "visibility", :type "unknown-type"}
-      {:name "key", :type "string"}
-      {:name "value", :type "string"}
-      {:name "callback", :type :callback}]}
     {:id ::is-piex-loader-enabled,
      :name "isPiexLoaderEnabled",
      :since "43",

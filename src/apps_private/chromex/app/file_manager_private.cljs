@@ -48,9 +48,6 @@
 (defn pin-drive-file* [config entry pin]
   (gen-wrap :function ::pin-drive-file config entry pin))
 
-(defn ensure-file-downloaded* [config entry]
-  (gen-wrap :function ::ensure-file-downloaded config entry))
-
 (defn resolve-isolated-entries* [config entries]
   (gen-wrap :function ::resolve-isolated-entries config entries))
 
@@ -65,9 +62,6 @@
 
 (defn get-volume-metadata-list* [config]
   (gen-wrap :function ::get-volume-metadata-list config))
-
-(defn cancel-file-transfers* [config entries]
-  (gen-wrap :function ::cancel-file-transfers config entries))
 
 (defn start-copy* [config entry parent-entry new-name]
   (gen-wrap :function ::start-copy config entry parent-entry new-name))
@@ -114,17 +108,11 @@
 (defn zoom* [config operation]
   (gen-wrap :function ::zoom config operation))
 
-(defn request-access-token* [config refresh]
-  (gen-wrap :function ::request-access-token config refresh))
-
 (defn request-web-store-access-token* [config]
   (gen-wrap :function ::request-web-store-access-token config))
 
 (defn get-download-url* [config entry]
   (gen-wrap :function ::get-download-url config entry))
-
-(defn request-drive-share* [config entry share-type]
-  (gen-wrap :function ::request-drive-share config entry share-type))
 
 (defn get-profiles* [config]
   (gen-wrap :function ::get-profiles config))
@@ -137,9 +125,6 @@
 
 (defn compute-checksum* [config entry]
   (gen-wrap :function ::compute-checksum config entry))
-
-(defn set-entry-tag* [config entry visibility key value]
-  (gen-wrap :function ::set-entry-tag config entry visibility key value))
 
 (defn is-piex-loader-enabled* [config]
   (gen-wrap :function ::is-piex-loader-enabled config))
