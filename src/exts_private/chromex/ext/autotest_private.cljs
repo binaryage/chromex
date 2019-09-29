@@ -3,6 +3,9 @@
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
+(defn initialize-events* [config]
+  (gen-wrap :function ::initialize-events config))
+
 (defn logout* [config]
   (gen-wrap :function ::logout config))
 
@@ -99,6 +102,12 @@
 (defn get-histogram* [config name]
   (gen-wrap :function ::get-histogram config name))
 
+(defn get-clipboard-text-data* [config]
+  (gen-wrap :function ::get-clipboard-text-data config))
+
+(defn set-clipboard-text-data* [config data]
+  (gen-wrap :function ::set-clipboard-text-data config data))
+
 (defn run-crostini-installer* [config]
   (gen-wrap :function ::run-crostini-installer config))
 
@@ -188,4 +197,9 @@
 
 (defn set-arc-app-window-focus* [config package-name]
   (gen-wrap :function ::set-arc-app-window-focus config package-name))
+
+; -- events -----------------------------------------------------------------------------------------------------------------
+
+(defn on-clipboard-data-changed* [config channel & args]
+  (gen-wrap :event ::on-clipboard-data-changed config channel args))
 

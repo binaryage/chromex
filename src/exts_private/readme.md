@@ -47,7 +47,7 @@
 
 ### API stats
 
-Generated 39 namespaces containing 0 properties, 403 functions and 72 events:
+Generated 39 namespaces containing 0 properties, 406 functions and 73 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -55,7 +55,7 @@ Generated 39 namespaces containing 0 properties, 403 functions and 72 events:
     |           chrome.accessibilityPrivate |           0 |         18 |       8 |
     |             chrome.activityLogPrivate |           0 |          5 |       1 |
     |                chrome.autofillPrivate |           0 |         12 |       2 |
-    |                chrome.autotestPrivate |           0 |         62 |       0 |
+    |                chrome.autotestPrivate |           0 |         65 |       1 |
     |               chrome.bluetoothPrivate |           0 |         10 |       1 |
     |         chrome.bookmarkManagerPrivate |           0 |         11 |       3 |
     |          chrome.brailleDisplayPrivate |           0 |          3 |       2 |
@@ -119,13 +119,14 @@ Generated 39 namespaces containing 0 properties, 403 functions and 72 events:
       tap-on-credit-card-list-changed tap-all-events]]
 
     [chromex.ext.autotest-private refer:[
-      logout restart shutdown login-status lock-screen get-extensions-info get-all-enterprise-policies
-      simulate-asan-memory-bug set-touchpad-sensitivity set-tap-to-click set-three-finger-click
-      set-tap-dragging set-natural-scroll set-mouse-sensitivity set-primary-button-right
-      set-mouse-reverse-scroll get-visible-notifications get-arc-start-time get-arc-state
-      get-play-store-state get-printer-list is-app-shown is-arc-provisioned get-arc-app get-arc-package
-      launch-arc-app launch-app close-app update-printer remove-printer set-play-store-enabled
-      get-histogram run-crostini-installer run-crostini-uninstaller set-crostini-enabled export-crostini
+      initialize-events logout restart shutdown login-status lock-screen get-extensions-info
+      get-all-enterprise-policies simulate-asan-memory-bug set-touchpad-sensitivity set-tap-to-click
+      set-three-finger-click set-tap-dragging set-natural-scroll set-mouse-sensitivity
+      set-primary-button-right set-mouse-reverse-scroll get-visible-notifications get-arc-start-time
+      get-arc-state get-play-store-state get-printer-list is-app-shown is-arc-provisioned get-arc-app
+      get-arc-package launch-arc-app launch-app close-app update-printer remove-printer
+      set-play-store-enabled get-histogram get-clipboard-text-data set-clipboard-text-data
+      run-crostini-installer run-crostini-uninstaller set-crostini-enabled export-crostini
       import-crostini register-component take-screenshot take-screenshot-for-display
       bootstrap-machine-learning-service set-assistant-enabled send-assistant-text-query
       wait-for-assistant-query-status set-whitelisted-pref set-crostini-app-scaled
@@ -133,7 +134,7 @@ Generated 39 namespaces containing 0 properties, 403 functions and 72 events:
       get-all-installed-apps get-shelf-items get-shelf-auto-hide-behavior set-shelf-auto-hide-behavior
       get-shelf-alignment set-shelf-alignment set-overview-mode-state show-virtual-keyboard-if-enabled
       set-arc-app-window-state get-arc-app-window-state get-arc-app-window-info
-      swap-windows-in-split-view set-arc-app-window-focus tap-all-events]]
+      swap-windows-in-split-view set-arc-app-window-focus tap-on-clipboard-data-changed tap-all-events]]
 
     [chromex.ext.bluetooth-private refer:[
       set-adapter-state set-pairing-response disconnect-all forget-device set-discovery-filter connect

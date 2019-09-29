@@ -13,6 +13,10 @@
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
+(defmacro initialize-events
+  "Must be called to allow autotestPrivateAPI events to be fired."
+  ([] (gen-call :function ::initialize-events &form)))
+
 (defmacro logout
   "Logout of a user session."
   ([] (gen-call :function ::logout &form)))
@@ -310,6 +314,30 @@
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([name] (gen-call :function ::get-histogram &form name)))
+
+(defmacro get-clipboard-text-data
+  "Get text from ui::Clipboard.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [data] where:
+
+     |data| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::get-clipboard-text-data &form)))
+
+(defmacro set-clipboard-text-data
+  "Set text in ui::Clipbaord.
+
+     |data| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([data] (gen-call :function ::set-clipboard-text-data &form data)))
 
 (defmacro run-crostini-installer
   "Run the crostini installer GUI to install the default crostini vm / container and create sshfs mount.  The installer
@@ -688,6 +716,18 @@
    chromex.error/get-last-error."
   ([package-name] (gen-call :function ::set-arc-app-window-focus &form package-name)))
 
+; -- events -----------------------------------------------------------------------------------------------------------------
+;
+; docs: https://github.com/binaryage/chromex/#tapping-events
+
+(defmacro tap-on-clipboard-data-changed-events
+  "Fired when the data in ui::Clipboard is changed.
+
+   Events will be put on the |channel| with signature [::on-clipboard-data-changed []].
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-clipboard-data-changed &form channel args)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -703,7 +743,8 @@
   {:namespace "chrome.autotestPrivate",
    :since "32",
    :functions
-   [{:id ::logout, :name "logout"}
+   [{:id ::initialize-events, :name "initializeEvents", :since "master"}
+    {:id ::logout, :name "logout"}
     {:id ::restart, :name "restart"}
     {:id ::shutdown, :name "shutdown", :params [{:name "force", :type "boolean"}]}
     {:id ::login-status,
@@ -822,6 +863,16 @@
      :params
      [{:name "name", :type "string"}
       {:name "callback", :type :callback, :callback {:params [{:name "histogram", :type "object"}]}}]}
+    {:id ::get-clipboard-text-data,
+     :name "getClipboardTextData",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "data", :type "string"}]}}]}
+    {:id ::set-clipboard-text-data,
+     :name "setClipboardTextData",
+     :since "master",
+     :callback? true,
+     :params [{:name "data", :type "string"} {:name "callback", :type :callback}]}
     {:id ::run-crostini-installer,
      :name "runCrostiniInstaller",
      :since "70",
@@ -1003,7 +1054,8 @@
      :name "setArcAppWindowFocus",
      :since "future",
      :callback? true,
-     :params [{:name "package-name", :type "string"} {:name "callback", :type :callback}]}]})
+     :params [{:name "package-name", :type "string"} {:name "callback", :type :callback}]}],
+   :events [{:id ::on-clipboard-data-changed, :name "onClipboardDataChanged", :since "master"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
