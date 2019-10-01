@@ -57,9 +57,6 @@
 (defn remove-mount* [config volume-id]
   (gen-wrap :function ::remove-mount config volume-id))
 
-(defn mark-cache-as-mounted* [config source-path is-mounted]
-  (gen-wrap :function ::mark-cache-as-mounted config source-path is-mounted))
-
 (defn get-volume-metadata-list* [config]
   (gen-wrap :function ::get-volume-metadata-list config))
 

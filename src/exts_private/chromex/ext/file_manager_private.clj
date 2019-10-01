@@ -238,22 +238,6 @@
      |volume-id| - ?"
   ([volume-id] (gen-call :function ::remove-mount &form volume-id)))
 
-(defmacro mark-cache-as-mounted
-  "Marks a cache file of Drive as mounted or unmounted. Does nothing if the file is not under Drive directory. |sourcePath
-
-   Mounted source file. Relative file path within external file     system. |isMounted| Mark as mounted if true. Mark as
-   unmounted otherwise. |callback| Completion callback. 'runtime.lastError' will be set if     there was an error.
-
-     |source-path| - ?
-     |is-mounted| - ?
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [].
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([source-path is-mounted] (gen-call :function ::mark-cache-as-mounted &form source-path is-mounted)))
-
 (defmacro get-volume-metadata-list
   "Get the list of mounted volumes. |callback
 
@@ -973,12 +957,6 @@
      [{:name "source", :type "string"}
       {:name "callback", :type :callback, :callback {:params [{:name "source-path", :type "string"}]}}]}
     {:id ::remove-mount, :name "removeMount", :params [{:name "volume-id", :type "string"}]}
-    {:id ::mark-cache-as-mounted,
-     :name "markCacheAsMounted",
-     :since "67",
-     :callback? true,
-     :params
-     [{:name "source-path", :type "string"} {:name "is-mounted", :type "boolean"} {:name "callback", :type :callback}]}
     {:id ::get-volume-metadata-list,
      :name "getVolumeMetadataList",
      :callback? true,

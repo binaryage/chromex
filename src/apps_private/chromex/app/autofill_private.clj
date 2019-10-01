@@ -124,27 +124,18 @@
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
 
-(defmacro tap-on-address-list-changed-events
-  "Fired when the address list has changed, meaning that an entry has been added, removed, or changed. |entries| The updated
+(defmacro tap-on-personal-data-changed-events
+  "Fired when the personal data has changed, meaning that an entry has been added, removed, or changed. |entries| The updated
    list of entries.
 
-   Events will be put on the |channel| with signature [::on-address-list-changed [entries]] where:
+   Events will be put on the |channel| with signature [::on-personal-data-changed [address-entries credit-card-entries]]
+   where:
 
-     |entries| - ?
-
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
-  ([channel & args] (apply gen-call :event ::on-address-list-changed &form channel args)))
-
-(defmacro tap-on-credit-card-list-changed-events
-  "Fired when the credit card list has changed, meaning that an entry has been added, removed, or changed. |entries| The
-   updated list of entries.
-
-   Events will be put on the |channel| with signature [::on-credit-card-list-changed [entries]] where:
-
-     |entries| - ?
+     |address-entries| - ?
+     |credit-card-entries| - ?
 
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
-  ([channel & args] (apply gen-call :event ::on-credit-card-list-changed &form channel args)))
+  ([channel & args] (apply gen-call :event ::on-personal-data-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
@@ -204,12 +195,11 @@
      :name "setCreditCardFIDOAuthEnabledState",
      :params [{:name "enabled", :type "boolean"}]}],
    :events
-   [{:id ::on-address-list-changed,
-     :name "onAddressListChanged",
-     :params [{:name "entries", :type "[array-of-autofillPrivate.AddressEntrys]"}]}
-    {:id ::on-credit-card-list-changed,
-     :name "onCreditCardListChanged",
-     :params [{:name "entries", :type "[array-of-autofillPrivate.CreditCardEntrys]"}]}]})
+   [{:id ::on-personal-data-changed,
+     :name "onPersonalDataChanged",
+     :params
+     [{:name "address-entries", :type "[array-of-autofillPrivate.AddressEntrys]"}
+      {:name "credit-card-entries", :type "[array-of-autofillPrivate.CreditCardEntrys]"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

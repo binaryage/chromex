@@ -44,14 +44,14 @@
 
 ### API stats
 
-Generated 36 namespaces containing 0 properties, 321 functions and 69 events:
+Generated 36 namespaces containing 0 properties, 320 functions and 68 events:
 
 
     |                     :namespace | :properties | :functions | :events |
     |--------------------------------+-------------+------------+---------|
     |    chrome.accessibilityPrivate |           0 |         18 |       8 |
     |      chrome.activityLogPrivate |           0 |          5 |       1 |
-    |         chrome.autofillPrivate |           0 |         12 |       2 |
+    |         chrome.autofillPrivate |           0 |         12 |       1 |
     |        chrome.bluetoothPrivate |           0 |         10 |       1 |
     |  chrome.bookmarkManagerPrivate |           0 |         11 |       3 |
     |   chrome.brailleDisplayPrivate |           0 |          3 |       2 |
@@ -62,7 +62,7 @@ Generated 36 namespaces containing 0 properties, 321 functions and 69 events:
     |        chrome.developerPrivate |           0 |         31 |       2 |
     |             chrome.echoPrivate |           0 |          5 |       0 |
     |         chrome.feedbackPrivate |           0 |          6 |       1 |
-    |      chrome.fileManagerPrivate |           0 |         60 |      10 |
+    |      chrome.fileManagerPrivate |           0 |         59 |      10 |
     |         chrome.identityPrivate |           0 |          0 |       1 |
     |      chrome.imageWriterPrivate |           0 |          5 |       5 |
     |      chrome.inputMethodPrivate |           0 |         16 |      10 |
@@ -109,8 +109,8 @@ Generated 36 namespaces containing 0 properties, 321 functions and 69 events:
     [chromex.app.autofill-private refer:[
       save-address get-country-list get-address-components get-address-list save-credit-card remove-entry
       validate-phone-numbers get-credit-card-list mask-credit-card migrate-credit-cards
-      log-server-card-link-clicked set-credit-card-fido-auth-enabled-state tap-on-address-list-changed
-      tap-on-credit-card-list-changed tap-all-events]]
+      log-server-card-link-clicked set-credit-card-fido-auth-enabled-state tap-on-personal-data-changed
+      tap-all-events]]
 
     [chromex.app.bluetooth-private refer:[
       set-adapter-state set-pairing-response disconnect-all forget-device set-discovery-filter connect
@@ -157,8 +157,8 @@ Generated 36 namespaces containing 0 properties, 321 functions and 69 events:
       logout-user-for-reauthentication cancel-dialog execute-task set-default-task get-file-tasks
       get-mime-type get-strings add-file-watch remove-file-watch enable-external-file-scheme grant-access
       select-files select-file get-entry-properties pin-drive-file resolve-isolated-entries add-mount
-      remove-mount mark-cache-as-mounted get-volume-metadata-list start-copy cancel-copy get-size-stats
-      format-volume rename-volume get-preferences set-preferences search-drive search-drive-metadata
+      remove-mount get-volume-metadata-list start-copy cancel-copy get-size-stats format-volume
+      rename-volume get-preferences set-preferences search-drive search-drive-metadata
       search-files-by-hashes search-files zip-selection get-drive-connection-state
       validate-path-name-length zoom request-web-store-access-token get-download-url get-profiles
       open-inspector open-settings-subpage compute-checksum is-piex-loader-enabled get-providers

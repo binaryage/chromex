@@ -47,14 +47,14 @@
 
 ### API stats
 
-Generated 39 namespaces containing 0 properties, 406 functions and 73 events:
+Generated 39 namespaces containing 0 properties, 405 functions and 72 events:
 
 
     |                            :namespace | :properties | :functions | :events |
     |---------------------------------------+-------------+------------+---------|
     |           chrome.accessibilityPrivate |           0 |         18 |       8 |
     |             chrome.activityLogPrivate |           0 |          5 |       1 |
-    |                chrome.autofillPrivate |           0 |         12 |       2 |
+    |                chrome.autofillPrivate |           0 |         12 |       1 |
     |                chrome.autotestPrivate |           0 |         65 |       1 |
     |               chrome.bluetoothPrivate |           0 |         10 |       1 |
     |         chrome.bookmarkManagerPrivate |           0 |         11 |       3 |
@@ -69,7 +69,7 @@ Generated 39 namespaces containing 0 properties, 406 functions and 73 events:
     | chrome.enterprise.platformKeysPrivate |           0 |          2 |       0 |
     |    chrome.enterprise.reportingPrivate |           0 |          2 |       0 |
     |                chrome.feedbackPrivate |           0 |          6 |       1 |
-    |             chrome.fileManagerPrivate |           0 |         60 |      10 |
+    |             chrome.fileManagerPrivate |           0 |         59 |      10 |
     |             chrome.imageWriterPrivate |           0 |          5 |       5 |
     |             chrome.inputMethodPrivate |           0 |         16 |      10 |
     |        chrome.languageSettingsPrivate |           0 |         14 |       4 |
@@ -115,8 +115,8 @@ Generated 39 namespaces containing 0 properties, 406 functions and 73 events:
     [chromex.ext.autofill-private refer:[
       save-address get-country-list get-address-components get-address-list save-credit-card remove-entry
       validate-phone-numbers get-credit-card-list mask-credit-card migrate-credit-cards
-      log-server-card-link-clicked set-credit-card-fido-auth-enabled-state tap-on-address-list-changed
-      tap-on-credit-card-list-changed tap-all-events]]
+      log-server-card-link-clicked set-credit-card-fido-auth-enabled-state tap-on-personal-data-changed
+      tap-all-events]]
 
     [chromex.ext.autotest-private refer:[
       initialize-events logout restart shutdown login-status lock-screen get-extensions-info
@@ -191,8 +191,8 @@ Generated 39 namespaces containing 0 properties, 406 functions and 73 events:
       logout-user-for-reauthentication cancel-dialog execute-task set-default-task get-file-tasks
       get-mime-type get-strings add-file-watch remove-file-watch enable-external-file-scheme grant-access
       select-files select-file get-entry-properties pin-drive-file resolve-isolated-entries add-mount
-      remove-mount mark-cache-as-mounted get-volume-metadata-list start-copy cancel-copy get-size-stats
-      format-volume rename-volume get-preferences set-preferences search-drive search-drive-metadata
+      remove-mount get-volume-metadata-list start-copy cancel-copy get-size-stats format-volume
+      rename-volume get-preferences set-preferences search-drive search-drive-metadata
       search-files-by-hashes search-files zip-selection get-drive-connection-state
       validate-path-name-length zoom request-web-store-access-token get-download-url get-profiles
       open-inspector open-settings-subpage compute-checksum is-piex-loader-enabled get-providers
