@@ -2,7 +2,7 @@
   "Use the chrome.printingMetrics API to fetch data about
    printing usage.
 
-     * available since Chrome master
+     * available since Chrome 79
      * https://developer.chrome.com/extensions/printingMetrics"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -57,7 +57,7 @@
 
 (def api-table
   {:namespace "chrome.printingMetrics",
-   :since "master",
+   :since "79",
    :functions
    [{:id ::get-print-jobs,
      :name "getPrintJobs",

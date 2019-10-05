@@ -198,6 +198,9 @@
 (defn set-arc-app-window-focus* [config package-name]
   (gen-wrap :function ::set-arc-app-window-focus config package-name))
 
+(defn wait-for-display-rotation* [config display-id rotation]
+  (gen-wrap :function ::wait-for-display-rotation config display-id rotation))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-clipboard-data-changed* [config channel & args]

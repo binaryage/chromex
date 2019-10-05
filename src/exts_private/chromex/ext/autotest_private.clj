@@ -716,6 +716,22 @@
    chromex.error/get-last-error."
   ([package-name] (gen-call :function ::set-arc-app-window-focus &form package-name)))
 
+(defmacro wait-for-display-rotation
+  "Invokes the callback when the display rotation animation is finished, or invokes it immediately if it is not animating. The
+   callback argument is true if the display's rotation is same as |rotation|, or false otherwise.
+
+     |display-id| - display that contains the shelf.
+     |rotation| - the target rotation.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [success] where:
+
+     |success| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([display-id rotation] (gen-call :function ::wait-for-display-rotation &form display-id rotation)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -743,7 +759,7 @@
   {:namespace "chrome.autotestPrivate",
    :since "32",
    :functions
-   [{:id ::initialize-events, :name "initializeEvents", :since "master"}
+   [{:id ::initialize-events, :name "initializeEvents", :since "future"}
     {:id ::logout, :name "logout"}
     {:id ::restart, :name "restart"}
     {:id ::shutdown, :name "shutdown", :params [{:name "force", :type "boolean"}]}
@@ -865,12 +881,12 @@
       {:name "callback", :type :callback, :callback {:params [{:name "histogram", :type "object"}]}}]}
     {:id ::get-clipboard-text-data,
      :name "getClipboardTextData",
-     :since "master",
+     :since "future",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "data", :type "string"}]}}]}
     {:id ::set-clipboard-text-data,
      :name "setClipboardTextData",
-     :since "master",
+     :since "future",
      :callback? true,
      :params [{:name "data", :type "string"} {:name "callback", :type :callback}]}
     {:id ::run-crostini-installer,
@@ -937,7 +953,7 @@
        :callback {:params [{:name "status", :type "autotestPrivate.AssistantQueryStatus"}]}}]}
     {:id ::wait-for-assistant-query-status,
      :name "waitForAssistantQueryStatus",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "timeout-s", :type "integer"}
@@ -1054,8 +1070,16 @@
      :name "setArcAppWindowFocus",
      :since "future",
      :callback? true,
-     :params [{:name "package-name", :type "string"} {:name "callback", :type :callback}]}],
-   :events [{:id ::on-clipboard-data-changed, :name "onClipboardDataChanged", :since "master"}]})
+     :params [{:name "package-name", :type "string"} {:name "callback", :type :callback}]}
+    {:id ::wait-for-display-rotation,
+     :name "waitForDisplayRotation",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "display-id", :type "string"}
+      {:name "rotation", :type "unknown-type"}
+      {:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}],
+   :events [{:id ::on-clipboard-data-changed, :name "onClipboardDataChanged", :since "future"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

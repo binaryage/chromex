@@ -521,7 +521,7 @@
      :params
      [{:name "engine-id", :type "string"}
       {:name "key-data", :type "input.ime.KeyboardEvent"}
-      {:name "request-id", :since "master", :type "string"}]}
+      {:name "request-id", :since "future", :type "string"}]}
     {:id ::on-candidate-clicked,
      :name "onCandidateClicked",
      :params
