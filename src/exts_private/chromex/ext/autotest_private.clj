@@ -1073,7 +1073,7 @@
      :params [{:name "package-name", :type "string"} {:name "callback", :type :callback}]}
     {:id ::wait-for-display-rotation,
      :name "waitForDisplayRotation",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "display-id", :type "string"}
