@@ -694,6 +694,28 @@
    chromex.error/get-last-error."
   ([package-name] (gen-call :function ::get-arc-app-window-info &form package-name)))
 
+(defmacro arc-app-tracing-start
+  "Start ARC performance tracing for the active ARC app window.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::arc-app-tracing-start &form)))
+
+(defmacro arc-app-tracing-stop-and-analyze
+  "Stop ARC performance tracing if it was started and analyze results.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [info] where:
+
+     |info| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::arc-app-tracing-stop-and-analyze &form)))
+
 (defmacro swap-windows-in-split-view
   "Swap the windows in the split view.
 
@@ -1061,6 +1083,16 @@
      :params
      [{:name "package-name", :type "string"}
       {:name "callback", :type :callback, :callback {:params [{:name "info", :type "object"}]}}]}
+    {:id ::arc-app-tracing-start,
+     :name "arcAppTracingStart",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback}]}
+    {:id ::arc-app-tracing-stop-and-analyze,
+     :name "arcAppTracingStopAndAnalyze",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "info", :type "object"}]}}]}
     {:id ::swap-windows-in-split-view,
      :name "swapWindowsInSplitView",
      :since "future",

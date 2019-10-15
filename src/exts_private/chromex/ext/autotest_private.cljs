@@ -192,6 +192,12 @@
 (defn get-arc-app-window-info* [config package-name]
   (gen-wrap :function ::get-arc-app-window-info config package-name))
 
+(defn arc-app-tracing-start* [config]
+  (gen-wrap :function ::arc-app-tracing-start config))
+
+(defn arc-app-tracing-stop-and-analyze* [config]
+  (gen-wrap :function ::arc-app-tracing-stop-and-analyze config))
+
 (defn swap-windows-in-split-view* [config]
   (gen-wrap :function ::swap-windows-in-split-view config))
 
