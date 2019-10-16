@@ -11,10 +11,11 @@
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro get-display-language
-  "Called to translate language code into human-readable string in the language of the provided language code.
+  "Called to translate languageCodeToTranslate into human-readable string in the language specified by targetLanguageCode
 
-     |language-code| - ?"
-  ([language-code] (gen-call :function ::get-display-language &form language-code)))
+     |language-code-to-translate| - ?
+     |target-language-code| - ?"
+  ([language-code-to-translate target-language-code] (gen-call :function ::get-display-language &form language-code-to-translate target-language-code)))
 
 (defmacro get-battery-description
   "Called to request battery status from Chrome OS system.
@@ -232,7 +233,9 @@
      :name "getDisplayLanguage",
      :since "77",
      :return-type "string",
-     :params [{:name "language-code", :type "string"}]}
+     :params
+     [{:name "language-code-to-translate", :since "master", :type "string"}
+      {:name "target-language-code", :since "master", :type "string"}]}
     {:id ::get-battery-description,
      :name "getBatteryDescription",
      :since "73",
