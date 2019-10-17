@@ -34,7 +34,10 @@
   ([webcam-id] (gen-call :function ::close-webcam &form webcam-id)))
 
 (defmacro get
-  "  |webcam-id| - ?
+  "Retrieve webcam parameters. Will respond with a config holding the requested values that are available, or default values
+   for those that aren't. If none of the requests succeed, will respond with an error.
+
+     |webcam-id| - ?
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [configuration] where:
@@ -46,16 +49,35 @@
   ([webcam-id] (gen-call :function ::get &form webcam-id)))
 
 (defmacro set
-  "  |webcam-id| - ?
-     |config| - ?"
+  "A callback is included here which is invoked when the function responds. No configuration is returned through it.
+
+     |webcam-id| - ?
+     |config| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [configuration] where:
+
+     |configuration| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([webcam-id config] (gen-call :function ::set &form webcam-id config)))
 
 (defmacro reset
   "Reset a webcam. Note: the value of the parameter have no effect, it's the presence of the parameter that matters. E.g.:
-   reset(webcamId, {pan: 0, tilt: 1}); will reset pan & tilt, but not zoom.
+   reset(webcamId, {pan: 0, tilt: 1}); will reset pan & tilt, but not zoom. A callback is included here which is invoked when
+   the function responds. No configuration is returned through it.
 
      |webcam-id| - ?
-     |config| - ?"
+     |config| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [configuration] where:
+
+     |configuration| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
   ([webcam-id config] (gen-call :function ::reset &form webcam-id config)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
@@ -87,13 +109,27 @@
      :callback? true,
      :params
      [{:name "webcam-id", :type "string"}
-      {:name "callback", :type :callback, :callback {:params [{:name "configuration", :type "object"}]}}]}
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "configuration", :type "webcamPrivate.WebcamCurrentConfiguration"}]}}]}
     {:id ::set,
      :name "set",
-     :params [{:name "webcam-id", :type "string"} {:name "config", :type "webcamPrivate.WebcamConfiguration"}]}
+     :callback? true,
+     :params
+     [{:name "webcam-id", :type "string"}
+      {:name "config", :type "webcamPrivate.WebcamConfiguration"}
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "configuration", :type "webcamPrivate.WebcamCurrentConfiguration"}]}}]}
     {:id ::reset,
      :name "reset",
-     :params [{:name "webcam-id", :type "string"} {:name "config", :type "webcamPrivate.WebcamConfiguration"}]}]})
+     :callback? true,
+     :params
+     [{:name "webcam-id", :type "string"}
+      {:name "config", :type "webcamPrivate.WebcamConfiguration"}
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "configuration", :type "webcamPrivate.WebcamCurrentConfiguration"}]}}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
