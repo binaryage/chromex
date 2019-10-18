@@ -207,6 +207,15 @@
 (defn wait-for-display-rotation* [config display-id rotation]
   (gen-wrap :function ::wait-for-display-rotation config display-id rotation))
 
+(defn get-app-window-list* [config]
+  (gen-wrap :function ::get-app-window-list config))
+
+(defn set-app-window-state* [config id change]
+  (gen-wrap :function ::set-app-window-state config id change))
+
+(defn close-app-window* [config id]
+  (gen-wrap :function ::close-app-window config id))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-clipboard-data-changed* [config channel & args]

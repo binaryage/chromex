@@ -47,7 +47,7 @@
 
 ### API stats
 
-Generated 39 namespaces containing 0 properties, 408 functions and 72 events:
+Generated 39 namespaces containing 0 properties, 411 functions and 72 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -55,7 +55,7 @@ Generated 39 namespaces containing 0 properties, 408 functions and 72 events:
     |           chrome.accessibilityPrivate |           0 |         18 |       8 |
     |             chrome.activityLogPrivate |           0 |          5 |       1 |
     |                chrome.autofillPrivate |           0 |         12 |       1 |
-    |                chrome.autotestPrivate |           0 |         68 |       1 |
+    |                chrome.autotestPrivate |           0 |         71 |       1 |
     |               chrome.bluetoothPrivate |           0 |         10 |       1 |
     |         chrome.bookmarkManagerPrivate |           0 |         11 |       3 |
     |          chrome.brailleDisplayPrivate |           0 |          3 |       2 |
@@ -135,7 +135,8 @@ Generated 39 namespaces containing 0 properties, 408 functions and 72 events:
       get-shelf-alignment set-shelf-alignment set-overview-mode-state show-virtual-keyboard-if-enabled
       set-arc-app-window-state get-arc-app-window-state get-arc-app-window-info arc-app-tracing-start
       arc-app-tracing-stop-and-analyze swap-windows-in-split-view set-arc-app-window-focus
-      wait-for-display-rotation tap-on-clipboard-data-changed tap-all-events]]
+      wait-for-display-rotation get-app-window-list set-app-window-state close-app-window
+      tap-on-clipboard-data-changed tap-all-events]]
 
     [chromex.ext.bluetooth-private refer:[
       set-adapter-state set-pairing-response disconnect-all forget-device set-discovery-filter connect

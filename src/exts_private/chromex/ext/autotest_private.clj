@@ -655,7 +655,7 @@
   "Send WM event to change the ARC app window's window state.
 
      |package-name| - the package name of the ARC app window.
-     |change| - ?
+     |change| - WM event type to send to the ARC app window.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [current-type] where:
@@ -753,6 +753,45 @@
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([display-id rotation] (gen-call :function ::wait-for-display-rotation &form display-id rotation)))
+
+(defmacro get-app-window-list
+  "Get information on nall application windows. Callback will be called with the list of |AppWindowInfo| dictionary.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [window-list] where:
+
+     |window-list| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::get-app-window-list &form)))
+
+(defmacro set-app-window-state
+  "Send WM event to change the app window's window state.
+
+     |id| - the id of the window
+     |change| - WM event type to send to the app window.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [current-type] where:
+
+     |current-type| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([id change] (gen-call :function ::set-app-window-state &form id change)))
+
+(defmacro close-app-window
+  "Closes an app window given by 'id'.
+
+     |id| - the id of the window
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([id] (gen-call :function ::close-app-window &form id)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -1059,11 +1098,12 @@
     {:id ::show-virtual-keyboard-if-enabled, :name "showVirtualKeyboardIfEnabled", :since "75"}
     {:id ::set-arc-app-window-state,
      :name "setArcAppWindowState",
-     :since "77",
+     :since "master",
+     :deprecated "Use setAppWindowState",
      :callback? true,
      :params
      [{:name "package-name", :type "string"}
-      {:name "change", :type "object"}
+      {:name "change", :type "autotestPrivate.WindowStateChangeDict"}
       {:name "callback",
        :type :callback,
        :callback {:params [{:name "current-type", :type "autotestPrivate.WindowStateType"}]}}]}
@@ -1078,7 +1118,8 @@
        :callback {:params [{:name "current-type", :type "autotestPrivate.WindowStateType"}]}}]}
     {:id ::get-arc-app-window-info,
      :name "getArcAppWindowInfo",
-     :since "future",
+     :since "master",
+     :deprecated "Use getAppWindowList",
      :callback? true,
      :params
      [{:name "package-name", :type "string"}
@@ -1110,7 +1151,28 @@
      :params
      [{:name "display-id", :type "string"}
       {:name "rotation", :type "unknown-type"}
-      {:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}],
+      {:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
+    {:id ::get-app-window-list,
+     :name "getAppWindowList",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "callback", :type :callback, :callback {:params [{:name "window-list", :type "[array-of-objects]"}]}}]}
+    {:id ::set-app-window-state,
+     :name "setAppWindowState",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "id", :type "integer"}
+      {:name "change", :type "autotestPrivate.WindowStateChangeDict"}
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "current-type", :type "autotestPrivate.WindowStateType"}]}}]}
+    {:id ::close-app-window,
+     :name "closeAppWindow",
+     :since "master",
+     :callback? true,
+     :params [{:name "id", :type "integer"} {:name "callback", :type :callback}]}],
    :events [{:id ::on-clipboard-data-changed, :name "onClipboardDataChanged", :since "future"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
