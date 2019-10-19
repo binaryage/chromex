@@ -47,7 +47,7 @@
 
 ### API stats
 
-Generated 39 namespaces containing 0 properties, 411 functions and 72 events:
+Generated 39 namespaces containing 0 properties, 412 functions and 72 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -55,7 +55,7 @@ Generated 39 namespaces containing 0 properties, 411 functions and 72 events:
     |           chrome.accessibilityPrivate |           0 |         18 |       8 |
     |             chrome.activityLogPrivate |           0 |          5 |       1 |
     |                chrome.autofillPrivate |           0 |         12 |       1 |
-    |                chrome.autotestPrivate |           0 |         71 |       1 |
+    |                chrome.autotestPrivate |           0 |         72 |       1 |
     |               chrome.bluetoothPrivate |           0 |         10 |       1 |
     |         chrome.bookmarkManagerPrivate |           0 |         11 |       3 |
     |          chrome.brailleDisplayPrivate |           0 |          3 |       2 |
@@ -120,14 +120,14 @@ Generated 39 namespaces containing 0 properties, 411 functions and 72 events:
 
     [chromex.ext.autotest-private refer:[
       initialize-events logout restart shutdown login-status lock-screen get-extensions-info
-      get-all-enterprise-policies simulate-asan-memory-bug set-touchpad-sensitivity set-tap-to-click
-      set-three-finger-click set-tap-dragging set-natural-scroll set-mouse-sensitivity
-      set-primary-button-right set-mouse-reverse-scroll get-visible-notifications get-arc-start-time
-      get-arc-state get-play-store-state get-printer-list is-app-shown is-arc-provisioned get-arc-app
-      get-arc-package launch-arc-app launch-app close-app update-printer remove-printer
-      set-play-store-enabled get-histogram get-clipboard-text-data set-clipboard-text-data
-      run-crostini-installer run-crostini-uninstaller set-crostini-enabled export-crostini
-      import-crostini register-component take-screenshot take-screenshot-for-display
+      get-all-enterprise-policies refresh-enterprise-policies simulate-asan-memory-bug
+      set-touchpad-sensitivity set-tap-to-click set-three-finger-click set-tap-dragging
+      set-natural-scroll set-mouse-sensitivity set-primary-button-right set-mouse-reverse-scroll
+      get-visible-notifications get-arc-start-time get-arc-state get-play-store-state get-printer-list
+      is-app-shown is-arc-provisioned get-arc-app get-arc-package launch-arc-app launch-app close-app
+      update-printer remove-printer set-play-store-enabled get-histogram get-clipboard-text-data
+      set-clipboard-text-data run-crostini-installer run-crostini-uninstaller set-crostini-enabled
+      export-crostini import-crostini register-component take-screenshot take-screenshot-for-display
       bootstrap-machine-learning-service set-assistant-enabled send-assistant-text-query
       wait-for-assistant-query-status set-whitelisted-pref set-crostini-app-scaled
       get-primary-display-scale-factor is-tablet-mode-enabled set-tablet-mode-enabled

@@ -72,6 +72,16 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-all-enterprise-policies &form)))
 
+(defmacro refresh-enterprise-policies
+  "Refreshes the Enterprise Policies.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::refresh-enterprise-policies &form)))
+
 (defmacro simulate-asan-memory-bug
   "Simulates a memory access bug for asan testing."
   ([] (gen-call :function ::simulate-asan-memory-bug &form)))
@@ -838,6 +848,11 @@
      :since "77",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "all-policies", :type "any"}]}}]}
+    {:id ::refresh-enterprise-policies,
+     :name "refreshEnterprisePolicies",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback}]}
     {:id ::simulate-asan-memory-bug, :name "simulateAsanMemoryBug"}
     {:id ::set-touchpad-sensitivity, :name "setTouchpadSensitivity", :params [{:name "value", :type "integer"}]}
     {:id ::set-tap-to-click, :name "setTapToClick", :params [{:name "enabled", :type "boolean"}]}

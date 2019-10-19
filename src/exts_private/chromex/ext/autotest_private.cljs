@@ -27,6 +27,9 @@
 (defn get-all-enterprise-policies* [config]
   (gen-wrap :function ::get-all-enterprise-policies config))
 
+(defn refresh-enterprise-policies* [config]
+  (gen-wrap :function ::refresh-enterprise-policies config))
+
 (defn simulate-asan-memory-bug* [config]
   (gen-wrap :function ::simulate-asan-memory-bug config))
 
