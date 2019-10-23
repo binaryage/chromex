@@ -873,7 +873,7 @@
      [{:name "callback", :type :callback, :callback {:params [{:name "notifications", :type "[array-of-objects]"}]}}]}
     {:id ::get-arc-start-time,
      :name "getArcStartTime",
-     :since "future",
+     :since "78",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "start-time", :type "double"}]}}]}
     {:id ::get-arc-state,
@@ -992,7 +992,7 @@
      :params [{:name "path", :type "string"} {:name "callback", :type :callback}]}
     {:id ::register-component,
      :name "registerComponent",
-     :since "future",
+     :since "78",
      :params [{:name "name", :type "string"} {:name "path", :type "string"}]}
     {:id ::take-screenshot,
      :name "takeScreenshot",
@@ -1065,12 +1065,12 @@
       {:name "callback", :type :callback, :callback {:params [{:name "enabled", :type "boolean"}]}}]}
     {:id ::get-all-installed-apps,
      :name "getAllInstalledApps",
-     :since "future",
+     :since "78",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "apps", :type "[array-of-objects]"}]}}]}
     {:id ::get-shelf-items,
      :name "getShelfItems",
-     :since "future",
+     :since "78",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "items", :type "[array-of-objects]"}]}}]}
     {:id ::get-shelf-auto-hide-behavior,
@@ -1105,7 +1105,7 @@
       {:name "callback", :type :callback}]}
     {:id ::set-overview-mode-state,
      :name "setOverviewModeState",
-     :since "future",
+     :since "78",
      :callback? true,
      :params
      [{:name "start", :type "boolean"}
@@ -1124,7 +1124,7 @@
        :callback {:params [{:name "current-type", :type "autotestPrivate.WindowStateType"}]}}]}
     {:id ::get-arc-app-window-state,
      :name "getArcAppWindowState",
-     :since "future",
+     :since "78",
      :callback? true,
      :params
      [{:name "package-name", :type "string"}
@@ -1151,12 +1151,12 @@
      :params [{:name "callback", :type :callback, :callback {:params [{:name "info", :type "object"}]}}]}
     {:id ::swap-windows-in-split-view,
      :name "swapWindowsInSplitView",
-     :since "future",
+     :since "78",
      :callback? true,
      :params [{:name "callback", :type :callback}]}
     {:id ::set-arc-app-window-focus,
      :name "setArcAppWindowFocus",
-     :since "future",
+     :since "78",
      :callback? true,
      :params [{:name "package-name", :type "string"} {:name "callback", :type :callback}]}
     {:id ::wait-for-display-rotation,

@@ -1182,10 +1182,7 @@
       {:name "callback",
        :type :callback,
        :callback {:params [{:name "response", :type "unknown-type"} {:name "failure-reason", :type "string"}]}}]}
-    {:id ::import-crostini-image,
-     :name "importCrostiniImage",
-     :since "future",
-     :params [{:name "entry", :type "object"}]}
+    {:id ::import-crostini-image, :name "importCrostiniImage", :since "78", :params [{:name "entry", :type "object"}]}
     {:id ::get-thumbnail,
      :name "getThumbnail",
      :since "71",
