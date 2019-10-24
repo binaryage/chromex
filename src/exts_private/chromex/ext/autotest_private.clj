@@ -765,7 +765,7 @@
   ([display-id rotation] (gen-call :function ::wait-for-display-rotation &form display-id rotation)))
 
 (defmacro get-app-window-list
-  "Get information on nall application windows. Callback will be called with the list of |AppWindowInfo| dictionary.
+  "Get information on all application windows. Callback will be called with the list of |AppWindowInfo| dictionary.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [window-list] where:
@@ -802,6 +802,20 @@
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([id] (gen-call :function ::close-app-window &form id)))
+
+(defmacro install-pwa-for-current-url
+  "Installs the Progressive Web App (PWA) that is in the current URL.
+
+     |timeout-ms| - Timeout in milliseconds for the operation to complete.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [app-id] where:
+
+     |app-id| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([timeout-ms] (gen-call :function ::install-pwa-for-current-url &form timeout-ms)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -1141,12 +1155,12 @@
       {:name "callback", :type :callback, :callback {:params [{:name "info", :type "object"}]}}]}
     {:id ::arc-app-tracing-start,
      :name "arcAppTracingStart",
-     :since "master",
+     :since "future",
      :callback? true,
      :params [{:name "callback", :type :callback}]}
     {:id ::arc-app-tracing-stop-and-analyze,
      :name "arcAppTracingStopAndAnalyze",
-     :since "master",
+     :since "future",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "info", :type "object"}]}}]}
     {:id ::swap-windows-in-split-view,
@@ -1187,7 +1201,14 @@
      :name "closeAppWindow",
      :since "master",
      :callback? true,
-     :params [{:name "id", :type "integer"} {:name "callback", :type :callback}]}],
+     :params [{:name "id", :type "integer"} {:name "callback", :type :callback}]}
+    {:id ::install-pwa-for-current-url,
+     :name "installPWAForCurrentURL",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "timeout-ms", :type "integer"}
+      {:name "callback", :type :callback, :callback {:params [{:name "app-id", :type "string"}]}}]}],
    :events [{:id ::on-clipboard-data-changed, :name "onClipboardDataChanged", :since "future"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

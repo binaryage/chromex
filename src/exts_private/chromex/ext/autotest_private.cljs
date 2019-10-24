@@ -219,6 +219,9 @@
 (defn close-app-window* [config id]
   (gen-wrap :function ::close-app-window config id))
 
+(defn install-pwa-for-current-url* [config timeout-ms]
+  (gen-wrap :function ::install-pwa-for-current-url config timeout-ms))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-clipboard-data-changed* [config channel & args]

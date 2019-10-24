@@ -234,8 +234,8 @@
      :since "77",
      :return-type "string",
      :params
-     [{:name "language-code-to-translate", :since "master", :type "string"}
-      {:name "target-language-code", :since "master", :type "string"}]}
+     [{:name "language-code-to-translate", :since "future", :type "string"}
+      {:name "target-language-code", :since "future", :type "string"}]}
     {:id ::get-battery-description,
      :name "getBatteryDescription",
      :since "73",

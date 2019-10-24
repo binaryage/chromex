@@ -2,7 +2,7 @@
   "
      The chrome.networking.onc API is used for configuring
      network connections (Cellular, Ethernet, VPN or WiFi).
-     This API is available in Chrome OS kiosk sessions.
+     This API is available in auto-launched Chrome OS kiosk sessions.
 
      Network connection configurations are specified following
      
