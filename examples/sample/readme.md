@@ -1,4 +1,4 @@
-# chromex-sample [![GitHub license](https://img.shields.io/github/license/binaryage/chromex-sample.svg)](license.txt)
+# chromex-sample
 
 ### An example extension using Chromex library
 
@@ -44,8 +44,8 @@ java, maven, leiningen, etc.
 
   * clone this repo somewhere:
     ```bash
-    git clone https://github.com/binaryage/chromex-sample.git
-    cd chromex-sample
+    git clone https://github.com/binaryage/chromex.git
+    cd chromex/examples/sample
     ```
   * chromex sample is gets built into `resources/unpacked/compiled` folder.
 

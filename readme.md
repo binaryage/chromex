@@ -1,4 +1,4 @@
-# chromex [![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg)](license.txt) [![Clojars Project](https://img.shields.io/clojars/v/binaryage/chromex.svg)](https://clojars.org/binaryage/chromex) [![Travis](https://img.shields.io/travis/binaryage/chromex.svg)](https://travis-ci.org/binaryage/chromex) [![Sample Project](https://img.shields.io/badge/project-example-ff69b4.svg)](https://github.com/binaryage/chromex-sample)
+# chromex [![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg)](license.txt) [![Clojars Project](https://img.shields.io/clojars/v/binaryage/chromex.svg)](https://clojars.org/binaryage/chromex) [![Travis](https://img.shields.io/travis/binaryage/chromex.svg)](https://travis-ci.org/binaryage/chromex) [![Example Project](https://img.shields.io/badge/project-example-ff69b4.svg)](https://github.com/binaryage/chromex/tree/master/examples/sample)
 
 This library is auto-generated. Current version was **generated on 2019-10-24** from [**Chromium @ 4f5733d66cfe**](https://chromium.googlesource.com/chromium/src.git/+/4f5733d66cfec9491bc567834267cb98bf385713).
 
@@ -82,11 +82,11 @@ Again this mechanism is pluggable, so you can optionally implement a different m
 
 ### Usage examples
 
-We provide an example skeleton Chrome extension [chromex-sample](https://github.com/binaryage/chromex-sample). This project
+We provide an example skeleton Chrome extension [chromex-sample](https://github.com/binaryage/chromex/tree/master/examples/sample). This project
 acts as a code example but also as a skeleton with project configuration. We recommended to use it as starting point when
 starting development of your own extension.
 
-Please refer to [readme in chromex-sample](https://github.com/binaryage/chromex-sample) for further explanation and code examples.
+Please refer to [readme in chromex-sample](https://github.com/binaryage/chromex/tree/master/examples/sample) for further explanation and code examples.
 
 ### Advanced mode compilation
 
@@ -135,7 +135,7 @@ As we wrote in previous sections, by default you consume Chrome events via core.
 If you don't want to use the channel anymore, you should `close!` it.
 
 Events coming from the channel are pairs `[event-id params]`, where params is a vector of parameters passed into event's
-callback function. See [chromex-sample](https://github.com/binaryage/chromex-sample/blob/master/src/background/chromex_sample/background/core.cljs)
+callback function. See [chromex-sample](https://github.com/binaryage/chromex/blob/master/examples/sample/src/background/chromex_sample/background/core.cljs)
 for example usage. Refer to [Chrome's API docs](https://developer.chrome.com/extensions/api_index) for specific event objects.
 
 Note: instead of calling tap-some-events you could call `tap-all-events`. This is a convenience function which will
@@ -197,7 +197,7 @@ way how callbacks are turned into core.async channels. Theoretically you could r
 
 ### Projects using Chromex
 
-  * [binaryage/chromex-sample](https://github.com/binaryage/chromex-sample) - a demo project of Chromex usage
+  * [chromex-sample](https://github.com/binaryage/chromex/tree/master/examples/sample) - a demo project of Chromex usage
   * [binaryage/dirac](https://github.com/binaryage/dirac) - a Chrome DevTools fork for ClojureScript developers
   * [madvas/thai2english-chrome-extension](https://github.com/madvas/thai2english-chrome-extension) - a Chrome extension to translate Thai to English
   * [jazzytomato/hnlookup](https://github.com/jazzytomato/hnlookup) - a Chrome popup extension to look up pages on Hacker News
