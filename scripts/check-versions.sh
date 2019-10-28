@@ -2,13 +2,14 @@
 
 set -e
 
-cd `dirname "${BASH_SOURCE[0]}"` && source "./config.sh"  && cd "$ROOT"
+# shellcheck source=_config.sh
+source "$(dirname "${BASH_SOURCE[0]}")/_config.sh"
 
-LEIN_VERSION=`cat "$PROJECT_FILE" | grep "defproject" | cut -d' ' -f3 | cut -d\" -f2`
+LEIN_VERSION=$(grep "defproject" < "$PROJECT_FILE" | cut -d' ' -f3 | cut -d\" -f2)
 
 # same version must be in src/version.clj
 
-PROJECT_VERSION=`cat "$PROJECT_VERSION_FILE" | grep "(def current-version" | cut -d" " -f3 | cut -d\" -f2`
+PROJECT_VERSION=$(grep "(def current-version" < "$PROJECT_VERSION_FILE" | cut -d" " -f3 | cut -d\" -f2)
 if [[ -z "$PROJECT_VERSION" ]]; then
   echo "Unable to retrieve 'current-version' string from '$PROJECT_VERSION_FILE'"
   popd

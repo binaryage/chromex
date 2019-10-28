@@ -4,7 +4,8 @@
 
 set -e
 
-cd `dirname "${BASH_SOURCE[0]}"` && source "./config.sh"  && cd "$ROOT"
+# shellcheck source=_config.sh
+source "$(dirname "${BASH_SOURCE[0]}")/_config.sh"
 
 VERSION=$1
 

@@ -1,20 +1,18 @@
 #!/usr/bin/env bash
 
+set -e
+
 pushd () {
   command pushd "$@" > /dev/null
 }
 
 popd () {
-  command popd "$@" > /dev/null
+  command popd > /dev/null
 }
 
-pushd `dirname "${BASH_SOURCE[0]}"`
+cd "$(dirname "${BASH_SOURCE[0]}")/.."
 
-cd ..
-
-ROOT=`pwd`
+ROOT=$(pwd -P)
 PROJECT_FILE="project.clj"
 PROJECT_VERSION_FILE="src/lib/chromex/version.clj"
 EXAMPLES_SAMPLE_PROJECT_FILE="examples/sample/project.clj"
-
-popd
