@@ -1,7 +1,7 @@
 (ns chromex.app.storage
   "Use the chrome.storage API to store, retrieve, and track changes to user data.
 
-     * available since Chrome 32
+     * available since Chrome 33
      * https://developer.chrome.com/apps/storage"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -62,11 +62,11 @@
 
 (def api-table
   {:namespace "chrome.storage",
-   :since "32",
+   :since "33",
    :properties
    [{:id ::sync, :name "sync", :return-type "storage.StorageArea"}
     {:id ::local, :name "local", :return-type "storage.StorageArea"}
-    {:id ::managed, :name "managed", :since "33", :return-type "storage.StorageArea"}],
+    {:id ::managed, :name "managed", :return-type "storage.StorageArea"}],
    :events
    [{:id ::on-changed,
      :name "onChanged",

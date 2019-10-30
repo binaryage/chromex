@@ -1,7 +1,7 @@
 (ns chromex.app.identity-private
   "identityPrivate.
 
-     * available since Chrome 32"
+     * available since Chrome 33"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -39,7 +39,7 @@
 
 (def api-table
   {:namespace "chrome.identityPrivate",
-   :since "32",
+   :since "33",
    :events
    [{:id ::on-web-flow-request,
      :name "onWebFlowRequest",

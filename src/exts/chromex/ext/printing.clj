@@ -1,9 +1,9 @@
-(ns chromex.ext.proxy
-  "Use the chrome.proxy API to manage Chrome's proxy settings. This API relies on the ChromeSetting prototype of the type API
-   for getting and setting the proxy configuration.
+(ns chromex.ext.printing
+  "Use the chrome.printing API to send print jobs to printers
+   installed on Chromebook.
 
-     * available since Chrome 33
-     * https://developer.chrome.com/extensions/proxy"
+     * available since Chrome master
+     * https://developer.chrome.com/extensions/printing"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -12,34 +12,27 @@
 (declare api-table)
 (declare gen-call)
 
-; -- properties -------------------------------------------------------------------------------------------------------------
-
-(defmacro get-settings
-  "Proxy settings to be used. The value of this setting is a ProxyConfig object.
-
-   https://developer.chrome.com/extensions/proxy#property-settings."
-  ([] (gen-call :property ::settings &form)))
-
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
 
-(defmacro tap-on-proxy-error-events
-  "Notifies about proxy errors.
+(defmacro tap-on-job-status-changed-events
+  "Event fired when the status of the job is changed. This is only fired for the jobs created by this extension.
 
-   Events will be put on the |channel| with signature [::on-proxy-error [details]] where:
+   Events will be put on the |channel| with signature [::on-job-status-changed [job-id status]] where:
 
-     |details| - https://developer.chrome.com/extensions/proxy#property-onProxyError-details.
+     |job-id| - https://developer.chrome.com/extensions/printing#property-onJobStatusChanged-jobId.
+     |status| - https://developer.chrome.com/extensions/printing#property-onJobStatusChanged-status.
 
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
 
-   https://developer.chrome.com/extensions/proxy#event-onProxyError."
-  ([channel & args] (apply gen-call :event ::on-proxy-error &form channel args)))
+   https://developer.chrome.com/extensions/printing#event-onJobStatusChanged."
+  ([channel & args] (apply gen-call :event ::on-job-status-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
-  "Taps all valid non-deprecated events in chromex.ext.proxy namespace."
+  "Taps all valid non-deprecated events in chromex.ext.printing namespace."
   [chan]
   (gen-tap-all-events-call api-table (meta &form) chan))
 
@@ -48,10 +41,12 @@
 ; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
-  {:namespace "chrome.proxy",
-   :since "33",
-   :properties [{:id ::settings, :name "settings", :return-type "object"}],
-   :events [{:id ::on-proxy-error, :name "onProxyError", :params [{:name "details", :type "object"}]}]})
+  {:namespace "chrome.printing",
+   :since "master",
+   :events
+   [{:id ::on-job-status-changed,
+     :name "onJobStatusChanged",
+     :params [{:name "job-id", :type "string"} {:name "status", :type "unknown-type"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

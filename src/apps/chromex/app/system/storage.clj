@@ -3,7 +3,7 @@
    information and be notified when a removable storage device is attached and
    detached.
 
-     * available since Chrome 32
+     * available since Chrome 33
      * https://developer.chrome.com/apps/system.storage"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -102,7 +102,7 @@
 
 (def api-table
   {:namespace "chrome.system.storage",
-   :since "32",
+   :since "33",
    :functions
    [{:id ::get-info,
      :name "getInfo",
@@ -122,7 +122,7 @@
      :since "79",
      :callback? true,
      :params
-     [{:name "id", :since "32", :type "string"}
+     [{:name "id", :since "33", :type "string"}
       {:name "callback", :type :callback, :callback {:params [{:name "info", :type "object"}]}}]}],
    :events
    [{:id ::on-attached, :name "onAttached", :params [{:name "info", :type "system.storage.StorageUnitInfo"}]}

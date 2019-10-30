@@ -1,5 +1,5 @@
 (ns chromex.ext.virtual-keyboard-private
-  "  * available since Chrome 32"
+  "  * available since Chrome 33"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -167,7 +167,7 @@
 
 (def api-table
   {:namespace "chrome.virtualKeyboardPrivate",
-   :since "32",
+   :since "33",
    :functions
    [{:id ::insert-text,
      :name "insertText",
@@ -184,7 +184,7 @@
      :callback? true,
      :params [{:name "callback", :optional? true, :type :callback}]}
     {:id ::set-hotrod-keyboard, :name "setHotrodKeyboard", :since "46", :params [{:name "enable", :type "boolean"}]}
-    {:id ::lock-keyboard, :name "lockKeyboard", :since "33", :params [{:name "lock", :type "boolean"}]}
+    {:id ::lock-keyboard, :name "lockKeyboard", :params [{:name "lock", :type "boolean"}]}
     {:id ::keyboard-loaded,
      :name "keyboardLoaded",
      :callback? true,

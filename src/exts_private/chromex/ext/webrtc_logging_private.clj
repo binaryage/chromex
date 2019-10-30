@@ -2,7 +2,7 @@
   "Use the chrome.webrtcLoggingPrivate API to control diagnostic
    WebRTC logging.
 
-     * available since Chrome 32"
+     * available since Chrome 33"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -243,7 +243,7 @@
 
 (def api-table
   {:namespace "chrome.webrtcLoggingPrivate",
-   :since "32",
+   :since "33",
    :functions
    [{:id ::set-meta-data,
      :name "setMetaData",

@@ -4,7 +4,7 @@
    associated with any Chrome browser windows. See the 
    Window State Sample for a demonstration of these options.
 
-     * available since Chrome 32
+     * available since Chrome 33
      * https://developer.chrome.com/apps/app.window"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -150,7 +150,7 @@
 
 (def api-table
   {:namespace "chrome.app.window",
-   :since "32",
+   :since "33",
    :functions
    [{:id ::create,
      :name "create",
@@ -163,8 +163,8 @@
        :type :callback,
        :callback {:params [{:name "created-window", :type "AppWindow"}]}}]}
     {:id ::current, :name "current", :return-type "app.window.AppWindow"}
-    {:id ::get-all, :name "getAll", :since "33", :return-type "[array-of-app.window.AppWindows]"}
-    {:id ::get, :name "get", :since "33", :return-type "app.window.AppWindow", :params [{:name "id", :type "string"}]}
+    {:id ::get-all, :name "getAll", :return-type "[array-of-app.window.AppWindows]"}
+    {:id ::get, :name "get", :return-type "app.window.AppWindow", :params [{:name "id", :type "string"}]}
     {:id ::can-set-visible-on-all-workspaces,
      :name "canSetVisibleOnAllWorkspaces",
      :since "42",

@@ -1,5 +1,5 @@
 (ns chromex.app.system-private
-  "  * available since Chrome 32"
+  "  * available since Chrome 33"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -59,7 +59,7 @@
 
 (def api-table
   {:namespace "chrome.systemPrivate",
-   :since "32",
+   :since "33",
    :functions
    [{:id ::get-incognito-mode-availability,
      :name "getIncognitoModeAvailability",
@@ -75,7 +75,6 @@
      [{:name "callback", :type :callback, :callback {:params [{:name "status", :type "systemPrivate.UpdateStatus"}]}}]}
     {:id ::get-api-key,
      :name "getApiKey",
-     :since "33",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "key", :type "string"}]}}]}]})
 

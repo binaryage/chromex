@@ -1,7 +1,7 @@
 (ns chromex.ext.identity
   "Use the chrome.identity API to get OAuth2 access tokens.
 
-     * available since Chrome 32
+     * available since Chrome 33
      * https://developer.chrome.com/extensions/identity"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -143,7 +143,7 @@
 
 (def api-table
   {:namespace "chrome.identity",
-   :since "32",
+   :since "33",
    :functions
    [{:id ::get-accounts,
      :name "getAccounts",
@@ -181,15 +181,12 @@
        :callback {:params [{:name "response-url", :optional? true, :type "string"}]}}]}
     {:id ::get-redirect-url,
      :name "getRedirectURL",
-     :since "33",
      :return-type "string",
      :params [{:name "path", :optional? true, :type "string"}]}],
    :events
    [{:id ::on-sign-in-changed,
      :name "onSignInChanged",
-     :since "33",
-     :params
-     [{:name "account", :since "32", :type "identity.AccountInfo"} {:name "signed-in", :since "32", :type "boolean"}]}]})
+     :params [{:name "account", :type "identity.AccountInfo"} {:name "signed-in", :type "boolean"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

@@ -1,7 +1,7 @@
 (ns chromex.ext.wallpaper
   "Use the chrome.wallpaper API to change the ChromeOS wallpaper.
 
-     * available since Chrome 32
+     * available since Chrome 33
      * https://developer.chrome.com/extensions/wallpaper"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -42,11 +42,10 @@
 
 (def api-table
   {:namespace "chrome.wallpaper",
-   :since "32",
+   :since "33",
    :functions
    [{:id ::set-wallpaper,
      :name "setWallpaper",
-     :since "33",
      :callback? true,
      :params
      [{:name "details", :type "object"}

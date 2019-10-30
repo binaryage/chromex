@@ -2,7 +2,7 @@
   "The chrome.extension API has utilities that can be used by any extension page. It includes support for exchanging messages
    between an extension and its content scripts or between extensions, as described in detail in Message Passing.
 
-     * available since Chrome 32
+     * available since Chrome 33
      * https://developer.chrome.com/extensions/extension"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -166,7 +166,7 @@
 
 (def api-table
   {:namespace "chrome.extension",
-   :since "32",
+   :since "33",
    :properties
    [{:id ::last-error,
      :name "lastError",
@@ -181,8 +181,8 @@
      :deprecated "Please use 'runtime.sendMessage'.",
      :callback? true,
      :params
-     [{:name "extension-id", :optional? true, :since "33", :type "string"}
-      {:name "request", :since "33", :type "any"}
+     [{:name "extension-id", :optional? true, :type "string"}
+      {:name "request", :type "any"}
       {:name "response-callback",
        :optional? true,
        :type :callback,
@@ -219,8 +219,8 @@
      :since "33",
      :deprecated "Please use 'runtime.onMessage'.",
      :params
-     [{:name "request", :optional? true, :since "33", :type "any"}
-      {:name "sender", :since "33", :type "runtime.MessageSender"}
+     [{:name "request", :optional? true, :type "any"}
+      {:name "sender", :type "runtime.MessageSender"}
       {:name "send-response", :type :callback}]}
     {:id ::on-request-external,
      :name "onRequestExternal",

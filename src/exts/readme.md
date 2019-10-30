@@ -60,6 +60,7 @@
 | [chrome.platformKeys](https://developer.chrome.com/extensions/platformKeys) | [chromex/ext/platform_keys.clj](chromex/ext/platform_keys.clj) |
 | [chrome.power](https://developer.chrome.com/extensions/power) | [chromex/ext/power.clj](chromex/ext/power.clj) |
 | [chrome.printerProvider](https://developer.chrome.com/extensions/printerProvider) | [chromex/ext/printer_provider.clj](chromex/ext/printer_provider.clj) |
+| [chrome.printing](https://developer.chrome.com/extensions/printing) | [chromex/ext/printing.clj](chromex/ext/printing.clj) |
 | [chrome.printingMetrics](https://developer.chrome.com/extensions/printingMetrics) | [chromex/ext/printing_metrics.clj](chromex/ext/printing_metrics.clj) |
 | [chrome.privacy](https://developer.chrome.com/extensions/privacy) | [chromex/ext/privacy.clj](chromex/ext/privacy.clj) |
 | [chrome.processes](https://developer.chrome.com/extensions/processes) | [chromex/ext/processes.clj](chromex/ext/processes.clj) |
@@ -88,7 +89,7 @@
 
 ### API stats
 
-Generated 80 namespaces containing 53 properties, 391 functions and 179 events:
+Generated 81 namespaces containing 53 properties, 391 functions and 180 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -149,6 +150,7 @@ Generated 80 namespaces containing 53 properties, 391 functions and 179 events:
     |                   chrome.platformKeys |           0 |          4 |       0 |
     |                          chrome.power |           0 |          2 |       0 |
     |                chrome.printerProvider |           0 |          0 |       4 |
+    |                       chrome.printing |           0 |          0 |       1 |
     |                chrome.printingMetrics |           0 |          1 |       1 |
     |                        chrome.privacy |           3 |          0 |       0 |
     |                      chrome.processes |           0 |          3 |       5 |
@@ -399,6 +401,9 @@ Generated 80 namespaces containing 53 properties, 391 functions and 179 events:
     [chromex.ext.printer-provider refer:[
       tap-on-get-printers-requested tap-on-get-usb-printer-info-requested tap-on-get-capability-requested
       tap-on-print-requested tap-all-events]]
+
+    [chromex.ext.printing refer:[
+      tap-on-job-status-changed tap-all-events]]
 
     [chromex.ext.printing-metrics refer:[
       get-print-jobs tap-on-print-job-finished tap-all-events]]

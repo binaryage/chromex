@@ -2,7 +2,7 @@
   "Use the chrome.serial API to read from and write to a device
    connected to a serial port.
 
-     * available since Chrome 32
+     * available since Chrome 33
      * https://developer.chrome.com/apps/serial"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -265,16 +265,14 @@
 
 (def api-table
   {:namespace "chrome.serial",
-   :since "32",
+   :since "33",
    :functions
    [{:id ::get-devices,
      :name "getDevices",
-     :since "33",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "ports", :type "[array-of-objects]"}]}}]}
     {:id ::connect,
      :name "connect",
-     :since "33",
      :callback? true,
      :params
      [{:name "path", :type "string"}
@@ -284,7 +282,6 @@
        :callback {:params [{:name "connection-info", :type "serial.ConnectionInfo"}]}}]}
     {:id ::update,
      :name "update",
-     :since "33",
      :callback? true,
      :params
      [{:name "connection-id", :type "integer"}
@@ -292,20 +289,17 @@
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
     {:id ::disconnect,
      :name "disconnect",
-     :since "33",
      :callback? true,
      :params
      [{:name "connection-id", :type "integer"}
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
     {:id ::set-paused,
      :name "setPaused",
-     :since "33",
      :callback? true,
      :params
      [{:name "connection-id", :type "integer"} {:name "paused", :type "boolean"} {:name "callback", :type :callback}]}
     {:id ::get-info,
      :name "getInfo",
-     :since "33",
      :callback? true,
      :params
      [{:name "connection-id", :type "integer"}
@@ -314,7 +308,6 @@
        :callback {:params [{:name "connection-info", :type "serial.ConnectionInfo"}]}}]}
     {:id ::get-connections,
      :name "getConnections",
-     :since "33",
      :callback? true,
      :params
      [{:name "callback",
@@ -322,7 +315,6 @@
        :callback {:params [{:name "connection-infos", :type "[array-of-serial.ConnectionInfos]"}]}}]}
     {:id ::send,
      :name "send",
-     :since "33",
      :callback? true,
      :params
      [{:name "connection-id", :type "integer"}
@@ -345,7 +337,7 @@
      :callback? true,
      :params
      [{:name "connection-id", :type "integer"}
-      {:name "signals", :since "33", :type "object"}
+      {:name "signals", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
     {:id ::set-break,
      :name "setBreak",
@@ -362,8 +354,8 @@
      [{:name "connection-id", :type "integer"}
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}],
    :events
-   [{:id ::on-receive, :name "onReceive", :since "33", :params [{:name "info", :type "object"}]}
-    {:id ::on-receive-error, :name "onReceiveError", :since "33", :params [{:name "info", :type "object"}]}]})
+   [{:id ::on-receive, :name "onReceive", :params [{:name "info", :type "object"}]}
+    {:id ::on-receive-error, :name "onReceiveError", :params [{:name "info", :type "object"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

@@ -3,7 +3,7 @@
    can control the appearance of the webview and interact with the web content, initiate navigations in an embedded web page,
    react to error events that happen within it, and more (see Usage).
 
-     * available since Chrome 32
+     * available since Chrome 33
      * https://developer.chrome.com/apps/tags/webview"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -446,10 +446,10 @@ webview.addContentScripts([{
 
 (def api-table
   {:namespace "<webview>",
-   :since "32",
+   :since "33",
    :properties
    [{:id ::content-window, :name "contentWindow", :return-type "webviewTag.ContentWindow"}
-    {:id ::request, :name "request", :since "33", :return-type "webviewTag.WebRequestEventInterface"}
+    {:id ::request, :name "request", :return-type "webviewTag.WebRequestEventInterface"}
     {:id ::context-menus, :name "contextMenus", :since "44", :return-type "webviewTag.ContextMenus"}],
    :functions
    [{:id ::get-audio-state,
@@ -483,7 +483,6 @@ webview.addContentScripts([{
     {:id ::can-go-forward, :name "canGoForward", :return-type "boolean"}
     {:id ::clear-data,
      :name "clearData",
-     :since "33",
      :callback? true,
      :params
      [{:name "options", :type "webviewTag.ClearDataOptions"}
@@ -515,7 +514,7 @@ webview.addContentScripts([{
      :params
      [{:name "callback", :optional? true, :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::get-process-id, :name "getProcessId", :return-type "integer"}
-    {:id ::get-user-agent, :name "getUserAgent", :since "33", :return-type "string"}
+    {:id ::get-user-agent, :name "getUserAgent", :return-type "string"}
     {:id ::get-zoom,
      :name "getZoom",
      :since "36",
@@ -538,17 +537,14 @@ webview.addContentScripts([{
      :callback? true,
      :params
      [{:name "details", :type "webviewTag.InjectDetails"} {:name "callback", :optional? true, :type :callback}]}
-    {:id ::is-user-agent-overridden, :name "isUserAgentOverridden", :since "33"}
+    {:id ::is-user-agent-overridden, :name "isUserAgentOverridden"}
     {:id ::print, :name "print", :since "38"}
     {:id ::reload, :name "reload"}
     {:id ::remove-content-scripts,
      :name "removeContentScripts",
      :since "44",
      :params [{:name "script-name-list", :optional? true, :type "[array-of-strings]"}]}
-    {:id ::set-user-agent-override,
-     :name "setUserAgentOverride",
-     :since "33",
-     :params [{:name "user-agent", :type "string"}]}
+    {:id ::set-user-agent-override, :name "setUserAgentOverride", :params [{:name "user-agent", :type "string"}]}
     {:id ::set-zoom,
      :name "setZoom",
      :since "36",
