@@ -817,6 +817,32 @@
    chromex.error/get-last-error."
   ([timeout-ms] (gen-call :function ::install-pwa-for-current-url &form timeout-ms)))
 
+(defmacro activate-accelerator
+  "Activates shortcut.
+
+     |accelerator| - the accelerator to activate.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [success] where:
+
+     |success| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([accelerator] (gen-call :function ::activate-accelerator &form accelerator)))
+
+(defmacro wait-for-launcher-state
+  "Wwait until the launcher is transitionto the |launcherState|, if it's not in that state.
+
+     |launcher-state| - the target launcher state.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([launcher-state] (gen-call :function ::wait-for-launcher-state &form launcher-state)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -1208,7 +1234,19 @@
      :callback? true,
      :params
      [{:name "timeout-ms", :type "integer"}
-      {:name "callback", :type :callback, :callback {:params [{:name "app-id", :type "string"}]}}]}],
+      {:name "callback", :type :callback, :callback {:params [{:name "app-id", :type "string"}]}}]}
+    {:id ::activate-accelerator,
+     :name "activateAccelerator",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "accelerator", :type "object"}
+      {:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
+    {:id ::wait-for-launcher-state,
+     :name "waitForLauncherState",
+     :since "master",
+     :callback? true,
+     :params [{:name "launcher-state", :type "unknown-type"} {:name "callback", :type :callback}]}],
    :events [{:id ::on-clipboard-data-changed, :name "onClipboardDataChanged", :since "future"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

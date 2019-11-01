@@ -222,6 +222,12 @@
 (defn install-pwa-for-current-url* [config timeout-ms]
   (gen-wrap :function ::install-pwa-for-current-url config timeout-ms))
 
+(defn activate-accelerator* [config accelerator]
+  (gen-wrap :function ::activate-accelerator config accelerator))
+
+(defn wait-for-launcher-state* [config launcher-state]
+  (gen-wrap :function ::wait-for-launcher-state config launcher-state))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-clipboard-data-changed* [config channel & args]
