@@ -890,7 +890,7 @@
      :params [{:name "callback", :type :callback, :callback {:params [{:name "all-policies", :type "any"}]}}]}
     {:id ::refresh-enterprise-policies,
      :name "refreshEnterprisePolicies",
-     :since "master",
+     :since "future",
      :callback? true,
      :params [{:name "callback", :type :callback}]}
     {:id ::simulate-asan-memory-bug, :name "simulateAsanMemoryBug"}
@@ -1153,7 +1153,7 @@
     {:id ::show-virtual-keyboard-if-enabled, :name "showVirtualKeyboardIfEnabled", :since "75"}
     {:id ::set-arc-app-window-state,
      :name "setArcAppWindowState",
-     :since "master",
+     :since "future",
      :deprecated "Use setAppWindowState",
      :callback? true,
      :params
@@ -1173,7 +1173,7 @@
        :callback {:params [{:name "current-type", :type "autotestPrivate.WindowStateType"}]}}]}
     {:id ::get-arc-app-window-info,
      :name "getArcAppWindowInfo",
-     :since "master",
+     :since "future",
      :deprecated "Use getAppWindowList",
      :callback? true,
      :params
@@ -1209,13 +1209,13 @@
       {:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::get-app-window-list,
      :name "getAppWindowList",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "callback", :type :callback, :callback {:params [{:name "window-list", :type "[array-of-objects]"}]}}]}
     {:id ::set-app-window-state,
      :name "setAppWindowState",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "id", :type "integer"}
@@ -1225,12 +1225,12 @@
        :callback {:params [{:name "current-type", :type "autotestPrivate.WindowStateType"}]}}]}
     {:id ::close-app-window,
      :name "closeAppWindow",
-     :since "master",
+     :since "future",
      :callback? true,
      :params [{:name "id", :type "integer"} {:name "callback", :type :callback}]}
     {:id ::install-pwa-for-current-url,
      :name "installPWAForCurrentURL",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "timeout-ms", :type "integer"}
