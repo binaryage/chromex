@@ -231,7 +231,7 @@
   ([] (gen-call :function ::install-replacement-android-app &form)))
 
 (defmacro install-replacement-web-app
-  "Prompts the user to install the replacement web app from the manifest.
+  "Launches the replacement_web_app specified in the manifest. Prompts the user to install if not already installed.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
