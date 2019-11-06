@@ -18,6 +18,9 @@
 (defn ack-output* [config tab-id id]
   (gen-wrap :function ::ack-output config tab-id id))
 
+(defn get-crosh-settings* [config]
+  (gen-wrap :function ::get-crosh-settings config))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-process-output* [config channel & args]

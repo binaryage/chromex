@@ -843,6 +843,44 @@
    chromex.error/get-last-error."
   ([launcher-state] (gen-call :function ::wait-for-launcher-state &form launcher-state)))
 
+(defmacro create-new-desk
+  "Creates a new desk if the maximum number of desks has not been reached.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [success] where:
+
+     |success| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::create-new-desk &form)))
+
+(defmacro activate-desk-at-index
+  "Activates the desk at the given |index| triggering the activate-desk animation.
+
+     |index| - the zero-based index of the desk desired to be activated.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [success] where:
+
+     |success| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([index] (gen-call :function ::activate-desk-at-index &form index)))
+
+(defmacro remove-active-desk
+  "Removes the currently active desk and triggers the remove-desk animation.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [success] where:
+
+     |success| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::remove-active-desk &form)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -1246,7 +1284,24 @@
      :name "waitForLauncherState",
      :since "master",
      :callback? true,
-     :params [{:name "launcher-state", :type "unknown-type"} {:name "callback", :type :callback}]}],
+     :params [{:name "launcher-state", :type "unknown-type"} {:name "callback", :type :callback}]}
+    {:id ::create-new-desk,
+     :name "createNewDesk",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
+    {:id ::activate-desk-at-index,
+     :name "activateDeskAtIndex",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "index", :type "integer"}
+      {:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
+    {:id ::remove-active-desk,
+     :name "removeActiveDesk",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}],
    :events [{:id ::on-clipboard-data-changed, :name "onClipboardDataChanged", :since "future"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

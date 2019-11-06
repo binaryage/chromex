@@ -228,6 +228,15 @@
 (defn wait-for-launcher-state* [config launcher-state]
   (gen-wrap :function ::wait-for-launcher-state config launcher-state))
 
+(defn create-new-desk* [config]
+  (gen-wrap :function ::create-new-desk config))
+
+(defn activate-desk-at-index* [config index]
+  (gen-wrap :function ::activate-desk-at-index config index))
+
+(defn remove-active-desk* [config]
+  (gen-wrap :function ::remove-active-desk config))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-clipboard-data-changed* [config channel & args]

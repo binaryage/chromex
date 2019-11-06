@@ -47,7 +47,7 @@
 
 ### API stats
 
-Generated 39 namespaces containing 0 properties, 415 functions and 72 events:
+Generated 39 namespaces containing 0 properties, 419 functions and 72 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -55,7 +55,7 @@ Generated 39 namespaces containing 0 properties, 415 functions and 72 events:
     |           chrome.accessibilityPrivate |           0 |         18 |       8 |
     |             chrome.activityLogPrivate |           0 |          5 |       1 |
     |                chrome.autofillPrivate |           0 |         12 |       1 |
-    |                chrome.autotestPrivate |           0 |         75 |       1 |
+    |                chrome.autotestPrivate |           0 |         78 |       1 |
     |               chrome.bluetoothPrivate |           0 |         10 |       1 |
     |         chrome.bookmarkManagerPrivate |           0 |         11 |       3 |
     |          chrome.brailleDisplayPrivate |           0 |          3 |       2 |
@@ -83,7 +83,7 @@ Generated 39 namespaces containing 0 properties, 415 functions and 72 events:
     |            chrome.safeBrowsingPrivate |           0 |          1 |       5 |
     |                chrome.settingsPrivate |           0 |          5 |       1 |
     |                  chrome.systemPrivate |           0 |          3 |       0 |
-    |                chrome.terminalPrivate |           0 |          5 |       1 |
+    |                chrome.terminalPrivate |           0 |          6 |       1 |
     |                   chrome.usersPrivate |           0 |          7 |       0 |
     |         chrome.virtualKeyboardPrivate |           0 |         13 |       3 |
     |                  chrome.webcamPrivate |           0 |          5 |       0 |
@@ -136,8 +136,8 @@ Generated 39 namespaces containing 0 properties, 415 functions and 72 events:
       set-arc-app-window-state get-arc-app-window-state get-arc-app-window-info arc-app-tracing-start
       arc-app-tracing-stop-and-analyze swap-windows-in-split-view set-arc-app-window-focus
       wait-for-display-rotation get-app-window-list set-app-window-state close-app-window
-      install-pwa-for-current-url activate-accelerator wait-for-launcher-state
-      tap-on-clipboard-data-changed tap-all-events]]
+      install-pwa-for-current-url activate-accelerator wait-for-launcher-state create-new-desk
+      activate-desk-at-index remove-active-desk tap-on-clipboard-data-changed tap-all-events]]
 
     [chromex.ext.bluetooth-private refer:[
       set-adapter-state set-pairing-response disconnect-all forget-device set-discovery-filter connect
@@ -279,7 +279,7 @@ Generated 39 namespaces containing 0 properties, 415 functions and 72 events:
 
     [chromex.ext.terminal-private refer:[
       open-terminal-process close-terminal-process send-input on-terminal-resize ack-output
-      tap-on-process-output tap-all-events]]
+      get-crosh-settings tap-on-process-output tap-all-events]]
 
     [chromex.ext.users-private refer:[
       get-whitelisted-users is-whitelisted-user add-whitelisted-user remove-whitelisted-user

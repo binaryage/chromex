@@ -79,6 +79,19 @@
      |id| - The id of the process to which |onProcessOutput| was dispatched."
   ([tab-id id] (gen-call :function ::ack-output &form tab-id id)))
 
+(defmacro get-crosh-settings
+  "Returns settings used by the crosh extension.  This function is called by the terminal system app the first time it is run
+   to migrate any previous settings.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [settings] where:
+
+     |settings| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::get-crosh-settings &form)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -143,7 +156,12 @@
     {:id ::ack-output,
      :name "ackOutput",
      :since "49",
-     :params [{:name "tab-id", :type "integer"} {:name "id", :since "74", :type "string"}]}],
+     :params [{:name "tab-id", :type "integer"} {:name "id", :since "74", :type "string"}]}
+    {:id ::get-crosh-settings,
+     :name "getCroshSettings",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "settings", :type "object"}]}}]}],
    :events
    [{:id ::on-process-output,
      :name "onProcessOutput",
