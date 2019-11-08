@@ -27,6 +27,9 @@
 (defn set-xkb-layout* [config xkb-name]
   (gen-wrap :function ::set-xkb-layout config xkb-name))
 
+(defn finish-composing-text* [config]
+  (gen-wrap :function ::finish-composing-text config))
+
 (defn notify-ime-menu-item-activated* [config engine-id name]
   (gen-wrap :function ::notify-ime-menu-item-activated config engine-id name))
 

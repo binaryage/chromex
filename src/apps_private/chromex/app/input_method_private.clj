@@ -106,6 +106,16 @@
    chromex.error/get-last-error."
   ([xkb-name] (gen-call :function ::set-xkb-layout &form xkb-name)))
 
+(defmacro finish-composing-text
+  "Commits the text currently being composed without moving the selected text range
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::finish-composing-text &form)))
+
 (defmacro notify-ime-menu-item-activated
   "Fires the input.ime.onMenuItemActivated event.
 
@@ -364,6 +374,11 @@
      :since "49",
      :callback? true,
      :params [{:name "xkb-name", :type "string"} {:name "callback", :optional? true, :type :callback}]}
+    {:id ::finish-composing-text,
+     :name "finishComposingText",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :optional? true, :type :callback}]}
     {:id ::notify-ime-menu-item-activated,
      :name "notifyImeMenuItemActivated",
      :since "51",

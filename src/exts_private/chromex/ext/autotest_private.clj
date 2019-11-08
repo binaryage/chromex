@@ -463,6 +463,16 @@
    chromex.error/get-last-error."
   ([enabled timeout-ms] (gen-call :function ::set-assistant-enabled &form enabled timeout-ms)))
 
+(defmacro enable-assistant-and-wait-for-ready
+  "Bring up the Assistant service, and wait for the ready signal.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::enable-assistant-and-wait-for-ready &form)))
+
 (defmacro send-assistant-text-query
   "Sends a text query via Google Assistant.
 
@@ -1095,6 +1105,11 @@
      :callback? true,
      :params
      [{:name "enabled", :type "boolean"} {:name "timeout-ms", :type "integer"} {:name "callback", :type :callback}]}
+    {:id ::enable-assistant-and-wait-for-ready,
+     :name "enableAssistantAndWaitForReady",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback}]}
     {:id ::send-assistant-text-query,
      :name "sendAssistantTextQuery",
      :since "73",

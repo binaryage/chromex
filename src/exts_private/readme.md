@@ -47,7 +47,7 @@
 
 ### API stats
 
-Generated 39 namespaces containing 0 properties, 419 functions and 72 events:
+Generated 39 namespaces containing 0 properties, 421 functions and 72 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -55,7 +55,7 @@ Generated 39 namespaces containing 0 properties, 419 functions and 72 events:
     |           chrome.accessibilityPrivate |           0 |         18 |       8 |
     |             chrome.activityLogPrivate |           0 |          5 |       1 |
     |                chrome.autofillPrivate |           0 |         12 |       1 |
-    |                chrome.autotestPrivate |           0 |         78 |       1 |
+    |                chrome.autotestPrivate |           0 |         79 |       1 |
     |               chrome.bluetoothPrivate |           0 |         10 |       1 |
     |         chrome.bookmarkManagerPrivate |           0 |         11 |       3 |
     |          chrome.brailleDisplayPrivate |           0 |          3 |       2 |
@@ -71,7 +71,7 @@ Generated 39 namespaces containing 0 properties, 419 functions and 72 events:
     |                chrome.feedbackPrivate |           0 |          6 |       1 |
     |             chrome.fileManagerPrivate |           0 |         59 |      10 |
     |             chrome.imageWriterPrivate |           0 |          5 |       5 |
-    |             chrome.inputMethodPrivate |           0 |         16 |      10 |
+    |             chrome.inputMethodPrivate |           0 |         17 |      10 |
     |        chrome.languageSettingsPrivate |           0 |         14 |       4 |
     |             chrome.mediaPlayerPrivate |           0 |          0 |       3 |
     |                 chrome.metricsPrivate |           0 |         16 |       0 |
@@ -128,16 +128,17 @@ Generated 39 namespaces containing 0 properties, 419 functions and 72 events:
       update-printer remove-printer set-play-store-enabled get-histogram get-clipboard-text-data
       set-clipboard-text-data run-crostini-installer run-crostini-uninstaller set-crostini-enabled
       export-crostini import-crostini register-component take-screenshot take-screenshot-for-display
-      bootstrap-machine-learning-service set-assistant-enabled send-assistant-text-query
-      wait-for-assistant-query-status set-whitelisted-pref set-crostini-app-scaled
-      get-primary-display-scale-factor is-tablet-mode-enabled set-tablet-mode-enabled
-      get-all-installed-apps get-shelf-items get-shelf-auto-hide-behavior set-shelf-auto-hide-behavior
-      get-shelf-alignment set-shelf-alignment set-overview-mode-state show-virtual-keyboard-if-enabled
-      set-arc-app-window-state get-arc-app-window-state get-arc-app-window-info arc-app-tracing-start
-      arc-app-tracing-stop-and-analyze swap-windows-in-split-view set-arc-app-window-focus
-      wait-for-display-rotation get-app-window-list set-app-window-state close-app-window
-      install-pwa-for-current-url activate-accelerator wait-for-launcher-state create-new-desk
-      activate-desk-at-index remove-active-desk tap-on-clipboard-data-changed tap-all-events]]
+      bootstrap-machine-learning-service set-assistant-enabled enable-assistant-and-wait-for-ready
+      send-assistant-text-query wait-for-assistant-query-status set-whitelisted-pref
+      set-crostini-app-scaled get-primary-display-scale-factor is-tablet-mode-enabled
+      set-tablet-mode-enabled get-all-installed-apps get-shelf-items get-shelf-auto-hide-behavior
+      set-shelf-auto-hide-behavior get-shelf-alignment set-shelf-alignment set-overview-mode-state
+      show-virtual-keyboard-if-enabled set-arc-app-window-state get-arc-app-window-state
+      get-arc-app-window-info arc-app-tracing-start arc-app-tracing-stop-and-analyze
+      swap-windows-in-split-view set-arc-app-window-focus wait-for-display-rotation get-app-window-list
+      set-app-window-state close-app-window install-pwa-for-current-url activate-accelerator
+      wait-for-launcher-state create-new-desk activate-desk-at-index remove-active-desk
+      tap-on-clipboard-data-changed tap-all-events]]
 
     [chromex.ext.bluetooth-private refer:[
       set-adapter-state set-pairing-response disconnect-all forget-device set-discovery-filter connect
@@ -216,9 +217,9 @@ Generated 39 namespaces containing 0 properties, 419 functions and 72 events:
     [chromex.ext.input-method-private refer:[
       get-input-method-config get-input-methods get-current-input-method set-current-input-method
       fetch-all-dictionary-words add-word-to-dictionary get-encrypt-sync-enabled set-xkb-layout
-      notify-ime-menu-item-activated show-input-view open-options-page get-composition-bounds
-      get-surrounding-text get-setting set-setting set-composition-range tap-on-changed
-      tap-on-composition-bounds-changed tap-on-dictionary-loaded tap-on-dictionary-changed
+      finish-composing-text notify-ime-menu-item-activated show-input-view open-options-page
+      get-composition-bounds get-surrounding-text get-setting set-setting set-composition-range
+      tap-on-changed tap-on-composition-bounds-changed tap-on-dictionary-loaded tap-on-dictionary-changed
       tap-on-ime-menu-activation-changed tap-on-ime-menu-list-changed tap-on-ime-menu-items-changed
       tap-on-focus tap-on-settings-changed tap-on-screen-projection-changed tap-all-events]]
 

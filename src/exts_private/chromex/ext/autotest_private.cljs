@@ -141,6 +141,9 @@
 (defn set-assistant-enabled* [config enabled timeout-ms]
   (gen-wrap :function ::set-assistant-enabled config enabled timeout-ms))
 
+(defn enable-assistant-and-wait-for-ready* [config]
+  (gen-wrap :function ::enable-assistant-and-wait-for-ready config))
+
 (defn send-assistant-text-query* [config query timeout-ms]
   (gen-wrap :function ::send-assistant-text-query config query timeout-ms))
 
