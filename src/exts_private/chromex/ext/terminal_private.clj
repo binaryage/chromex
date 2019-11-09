@@ -159,7 +159,7 @@
      :params [{:name "tab-id", :type "integer"} {:name "id", :since "74", :type "string"}]}
     {:id ::get-crosh-settings,
      :name "getCroshSettings",
-     :since "master",
+     :since "future",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "settings", :type "object"}]}}]}],
    :events

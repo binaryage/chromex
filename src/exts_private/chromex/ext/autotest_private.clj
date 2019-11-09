@@ -1290,31 +1290,31 @@
       {:name "callback", :type :callback, :callback {:params [{:name "app-id", :type "string"}]}}]}
     {:id ::activate-accelerator,
      :name "activateAccelerator",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "accelerator", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::wait-for-launcher-state,
      :name "waitForLauncherState",
-     :since "master",
+     :since "future",
      :callback? true,
      :params [{:name "launcher-state", :type "unknown-type"} {:name "callback", :type :callback}]}
     {:id ::create-new-desk,
      :name "createNewDesk",
-     :since "master",
+     :since "future",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::activate-desk-at-index,
      :name "activateDeskAtIndex",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "index", :type "integer"}
       {:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::remove-active-desk,
      :name "removeActiveDesk",
-     :since "master",
+     :since "future",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}],
    :events [{:id ::on-clipboard-data-changed, :name "onClipboardDataChanged", :since "future"}]})
