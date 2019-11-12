@@ -14,11 +14,8 @@
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
-(defn add-dynamic-rules* [config rules]
-  (gen-wrap :function ::add-dynamic-rules config rules))
-
-(defn remove-dynamic-rules* [config rule-ids]
-  (gen-wrap :function ::remove-dynamic-rules config rule-ids))
+(defn update-dynamic-rules* [config rule-ids-to-remove rules-to-add]
+  (gen-wrap :function ::update-dynamic-rules config rule-ids-to-remove rules-to-add))
 
 (defn get-dynamic-rules* [config]
   (gen-wrap :function ::get-dynamic-rules config))

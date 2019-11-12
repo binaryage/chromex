@@ -89,7 +89,7 @@
 
 ### API stats
 
-Generated 81 namespaces containing 53 properties, 391 functions and 180 events:
+Generated 81 namespaces containing 53 properties, 390 functions and 180 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -114,7 +114,7 @@ Generated 81 namespaces containing 53 properties, 391 functions and 180 events:
     |                        chrome.cookies |           0 |          5 |       1 |
     |                       chrome.debugger |           0 |          4 |       2 |
     |             chrome.declarativeContent |           0 |          0 |       1 |
-    |          chrome.declarativeNetRequest |           3 |          6 |       0 |
+    |          chrome.declarativeNetRequest |           3 |          5 |       0 |
     |          chrome.declarativeWebRequest |           0 |          0 |       2 |
     |                 chrome.desktopCapture |           0 |          2 |       0 |
     |       chrome.devtools.inspectedWindow |           1 |          3 |       2 |
@@ -259,8 +259,8 @@ Generated 81 namespaces containing 53 properties, 391 functions and 180 events:
 
     [chromex.ext.declarative-net-request refer:[
       get-max-number-of-allowed-pages get-max-number-of-rules get-max-number-of-dynamic-rules
-      add-dynamic-rules remove-dynamic-rules get-dynamic-rules add-allowed-pages remove-allowed-pages
-      get-allowed-pages tap-all-events]]
+      update-dynamic-rules get-dynamic-rules add-allowed-pages remove-allowed-pages get-allowed-pages
+      tap-all-events]]
 
     [chromex.ext.declarative-web-request refer:[
       tap-on-request tap-on-message tap-all-events]]
