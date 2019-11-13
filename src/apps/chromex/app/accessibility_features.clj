@@ -95,7 +95,7 @@
   ([] (gen-call :property ::select-to-speak &form)))
 
 (defmacro get-switch-access
-  "ChromeOS only.Switch access. The value indicates whether the feature is enabled or not. get() requires
+  "ChromeOS only.Switch Access. The value indicates whether the feature is enabled or not. get() requires
    accessibilityFeatures.read permission. set() and clear() require accessibilityFeatures.modify permission.
 
    https://developer.chrome.com/apps/accessibilityFeatures#property-switchAccess."

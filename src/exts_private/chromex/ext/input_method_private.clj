@@ -376,7 +376,7 @@
      :params [{:name "xkb-name", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::finish-composing-text,
      :name "finishComposingText",
-     :since "master",
+     :since "future",
      :callback? true,
      :params [{:name "callback", :optional? true, :type :callback}]}
     {:id ::notify-ime-menu-item-activated,

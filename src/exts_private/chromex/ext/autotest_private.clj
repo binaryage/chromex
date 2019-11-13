@@ -1107,7 +1107,7 @@
      [{:name "enabled", :type "boolean"} {:name "timeout-ms", :type "integer"} {:name "callback", :type :callback}]}
     {:id ::enable-assistant-and-wait-for-ready,
      :name "enableAssistantAndWaitForReady",
-     :since "master",
+     :since "future",
      :callback? true,
      :params [{:name "callback", :type :callback}]}
     {:id ::send-assistant-text-query,
