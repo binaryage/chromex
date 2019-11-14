@@ -891,6 +891,58 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::remove-active-desk &form)))
 
+(defmacro mouse-click
+  "Create mouse events to cause a mouse click.
+
+     |button| - the mouse button for the click event.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([button] (gen-call :function ::mouse-click &form button)))
+
+(defmacro mouse-press
+  "Create a mouse event to cause mouse pressing. The mouse button stays in the pressed state.
+
+     |button| - the mouse button to be pressed.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([button] (gen-call :function ::mouse-press &form button)))
+
+(defmacro mouse-release
+  "Create a mouse event to release a mouse button. This does nothing and returns immediately if the specified button is not
+   pressed.
+
+     |button| - the mouse button to be released.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([button] (gen-call :function ::mouse-release &form button)))
+
+(defmacro mouse-move
+  "Create mouse events to move a mouse cursor to the location. This can cause a dragging if a button is pressed. It starts
+   from the last mouse location. It does not support the move or drag across display boundaries.
+
+     |location| - the target location (in display's coordinate).
+     |duration-in-ms| - the duration (in milliseconds) for the mouse movement.    The mouse will move linearly. 0 means
+                        moving immediately.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([location duration-in-ms] (gen-call :function ::mouse-move &form location duration-in-ms)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -1316,7 +1368,30 @@
      :name "removeActiveDesk",
      :since "future",
      :callback? true,
-     :params [{:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}],
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
+    {:id ::mouse-click,
+     :name "mouseClick",
+     :since "master",
+     :callback? true,
+     :params [{:name "button", :type "autotestPrivate.MouseButton"} {:name "callback", :type :callback}]}
+    {:id ::mouse-press,
+     :name "mousePress",
+     :since "master",
+     :callback? true,
+     :params [{:name "button", :type "autotestPrivate.MouseButton"} {:name "callback", :type :callback}]}
+    {:id ::mouse-release,
+     :name "mouseRelease",
+     :since "master",
+     :callback? true,
+     :params [{:name "button", :type "autotestPrivate.MouseButton"} {:name "callback", :type :callback}]}
+    {:id ::mouse-move,
+     :name "mouseMove",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "location", :type "object"}
+      {:name "duration-in-ms", :type "double"}
+      {:name "callback", :type :callback}]}],
    :events [{:id ::on-clipboard-data-changed, :name "onClipboardDataChanged", :since "future"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

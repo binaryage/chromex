@@ -181,6 +181,20 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-referrer-chain &form)))
 
+(defmacro get-extension-status
+  "Returns the install status of the extension.
+
+     |id| - The id of the extension
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [status] where:
+
+     |status| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([id] (gen-call :function ::get-extension-status &form id)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -270,7 +284,16 @@
      :name "getReferrerChain",
      :since "68",
      :callback? true,
-     :params [{:name "callback", :type :callback, :callback {:params [{:name "referrer-chain", :type "string"}]}}]}]})
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "referrer-chain", :type "string"}]}}]}
+    {:id ::get-extension-status,
+     :name "getExtensionStatus",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "id", :type "string"}
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "status", :type "webstorePrivate.ExtensionInstallStatus"}]}}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

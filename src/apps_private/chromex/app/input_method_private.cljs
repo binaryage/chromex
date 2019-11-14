@@ -30,6 +30,9 @@
 (defn finish-composing-text* [config]
   (gen-wrap :function ::finish-composing-text config))
 
+(defn set-selection-range* [config parameters]
+  (gen-wrap :function ::set-selection-range config parameters))
+
 (defn notify-ime-menu-item-activated* [config engine-id name]
   (gen-wrap :function ::notify-ime-menu-item-activated config engine-id name))
 

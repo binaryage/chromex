@@ -240,6 +240,18 @@
 (defn remove-active-desk* [config]
   (gen-wrap :function ::remove-active-desk config))
 
+(defn mouse-click* [config button]
+  (gen-wrap :function ::mouse-click config button))
+
+(defn mouse-press* [config button]
+  (gen-wrap :function ::mouse-press config button))
+
+(defn mouse-release* [config button]
+  (gen-wrap :function ::mouse-release config button))
+
+(defn mouse-move* [config location duration-in-ms]
+  (gen-wrap :function ::mouse-move config location duration-in-ms))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-clipboard-data-changed* [config channel & args]

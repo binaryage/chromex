@@ -116,6 +116,20 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::finish-composing-text &form)))
 
+(defmacro set-selection-range
+  "Sets the selection range
+
+     |parameters| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [success] where:
+
+     |success| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([parameters] (gen-call :function ::set-selection-range &form parameters)))
+
 (defmacro notify-ime-menu-item-activated
   "Fires the input.ime.onMenuItemActivated event.
 
@@ -379,6 +393,13 @@
      :since "future",
      :callback? true,
      :params [{:name "callback", :optional? true, :type :callback}]}
+    {:id ::set-selection-range,
+     :name "setSelectionRange",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "parameters", :type "object"}
+      {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::notify-ime-menu-item-activated,
      :name "notifyImeMenuItemActivated",
      :since "51",

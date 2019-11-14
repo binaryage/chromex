@@ -47,7 +47,7 @@
 
 ### API stats
 
-Generated 39 namespaces containing 0 properties, 421 functions and 72 events:
+Generated 39 namespaces containing 0 properties, 427 functions and 72 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -55,7 +55,7 @@ Generated 39 namespaces containing 0 properties, 421 functions and 72 events:
     |           chrome.accessibilityPrivate |           0 |         18 |       8 |
     |             chrome.activityLogPrivate |           0 |          5 |       1 |
     |                chrome.autofillPrivate |           0 |         12 |       1 |
-    |                chrome.autotestPrivate |           0 |         79 |       1 |
+    |                chrome.autotestPrivate |           0 |         83 |       1 |
     |               chrome.bluetoothPrivate |           0 |         10 |       1 |
     |         chrome.bookmarkManagerPrivate |           0 |         11 |       3 |
     |          chrome.brailleDisplayPrivate |           0 |          3 |       2 |
@@ -71,7 +71,7 @@ Generated 39 namespaces containing 0 properties, 421 functions and 72 events:
     |                chrome.feedbackPrivate |           0 |          6 |       1 |
     |             chrome.fileManagerPrivate |           0 |         59 |      10 |
     |             chrome.imageWriterPrivate |           0 |          5 |       5 |
-    |             chrome.inputMethodPrivate |           0 |         17 |      10 |
+    |             chrome.inputMethodPrivate |           0 |         18 |      10 |
     |        chrome.languageSettingsPrivate |           0 |         14 |       4 |
     |             chrome.mediaPlayerPrivate |           0 |          0 |       3 |
     |                 chrome.metricsPrivate |           0 |         16 |       0 |
@@ -90,7 +90,7 @@ Generated 39 namespaces containing 0 properties, 421 functions and 72 events:
     |             chrome.webrtcAudioPrivate |           0 |          2 |       1 |
     |    chrome.webrtcDesktopCapturePrivate |           0 |          2 |       0 |
     |           chrome.webrtcLoggingPrivate |           0 |         14 |       0 |
-    |                chrome.webstorePrivate |           0 |         14 |       0 |
+    |                chrome.webstorePrivate |           0 |         15 |       0 |
 
 ### Requires
 
@@ -137,8 +137,8 @@ Generated 39 namespaces containing 0 properties, 421 functions and 72 events:
       get-arc-app-window-info arc-app-tracing-start arc-app-tracing-stop-and-analyze
       swap-windows-in-split-view set-arc-app-window-focus wait-for-display-rotation get-app-window-list
       set-app-window-state close-app-window install-pwa-for-current-url activate-accelerator
-      wait-for-launcher-state create-new-desk activate-desk-at-index remove-active-desk
-      tap-on-clipboard-data-changed tap-all-events]]
+      wait-for-launcher-state create-new-desk activate-desk-at-index remove-active-desk mouse-click
+      mouse-press mouse-release mouse-move tap-on-clipboard-data-changed tap-all-events]]
 
     [chromex.ext.bluetooth-private refer:[
       set-adapter-state set-pairing-response disconnect-all forget-device set-discovery-filter connect
@@ -217,11 +217,12 @@ Generated 39 namespaces containing 0 properties, 421 functions and 72 events:
     [chromex.ext.input-method-private refer:[
       get-input-method-config get-input-methods get-current-input-method set-current-input-method
       fetch-all-dictionary-words add-word-to-dictionary get-encrypt-sync-enabled set-xkb-layout
-      finish-composing-text notify-ime-menu-item-activated show-input-view open-options-page
-      get-composition-bounds get-surrounding-text get-setting set-setting set-composition-range
-      tap-on-changed tap-on-composition-bounds-changed tap-on-dictionary-loaded tap-on-dictionary-changed
-      tap-on-ime-menu-activation-changed tap-on-ime-menu-list-changed tap-on-ime-menu-items-changed
-      tap-on-focus tap-on-settings-changed tap-on-screen-projection-changed tap-all-events]]
+      finish-composing-text set-selection-range notify-ime-menu-item-activated show-input-view
+      open-options-page get-composition-bounds get-surrounding-text get-setting set-setting
+      set-composition-range tap-on-changed tap-on-composition-bounds-changed tap-on-dictionary-loaded
+      tap-on-dictionary-changed tap-on-ime-menu-activation-changed tap-on-ime-menu-list-changed
+      tap-on-ime-menu-items-changed tap-on-focus tap-on-settings-changed tap-on-screen-projection-changed
+      tap-all-events]]
 
     [chromex.ext.language-settings-private refer:[
       get-language-list enable-language disable-language set-enable-translation-for-language
@@ -310,5 +311,5 @@ Generated 39 namespaces containing 0 properties, 421 functions and 72 events:
       install begin-install-with-manifest3 complete-install enable-app-launcher get-browser-login
       get-store-login set-store-login get-web-gl-status get-is-launcher-enabled is-in-incognito-mode
       get-ephemeral-apps-enabled launch-ephemeral-app is-pending-custodian-approval get-referrer-chain
-      tap-all-events]]))
+      get-extension-status tap-all-events]]))
 ```
