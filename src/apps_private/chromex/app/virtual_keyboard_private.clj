@@ -121,6 +121,14 @@
      |bounds-list| - List of rectangles representing regions where events targeting the keyboard should be handled."
   ([bounds-list] (gen-call :function ::set-hit-test-bounds &form bounds-list)))
 
+(defmacro set-area-to-remain-on-screen
+  "Sets the area of the keyboard window that should not move off screen. Any area outside of this can be moved off the user's
+   screen.
+
+     |bounds| - The bounds of the area inside the keyboard window, relative to the window origin, that should not be moved
+                off screen. Any area outside of this bounds can be moved off screen."
+  ([bounds] (gen-call :function ::set-area-to-remain-on-screen &form bounds)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -220,7 +228,11 @@
     {:id ::set-hit-test-bounds,
      :name "setHitTestBounds",
      :since "69",
-     :params [{:name "bounds-list", :type "[array-of-virtualKeyboardPrivate.Boundss]"}]}],
+     :params [{:name "bounds-list", :type "[array-of-virtualKeyboardPrivate.Boundss]"}]}
+    {:id ::set-area-to-remain-on-screen,
+     :name "setAreaToRemainOnScreen",
+     :since "master",
+     :params [{:name "bounds", :type "virtualKeyboardPrivate.Bounds"}]}],
    :events
    [{:id ::on-bounds-changed,
      :name "onBoundsChanged",

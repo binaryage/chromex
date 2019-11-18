@@ -47,7 +47,7 @@
 
 ### API stats
 
-Generated 39 namespaces containing 0 properties, 427 functions and 72 events:
+Generated 39 namespaces containing 0 properties, 428 functions and 72 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -85,7 +85,7 @@ Generated 39 namespaces containing 0 properties, 427 functions and 72 events:
     |                  chrome.systemPrivate |           0 |          3 |       0 |
     |                chrome.terminalPrivate |           0 |          6 |       1 |
     |                   chrome.usersPrivate |           0 |          7 |       0 |
-    |         chrome.virtualKeyboardPrivate |           0 |         13 |       3 |
+    |         chrome.virtualKeyboardPrivate |           0 |         14 |       3 |
     |                  chrome.webcamPrivate |           0 |          5 |       0 |
     |             chrome.webrtcAudioPrivate |           0 |          2 |       1 |
     |    chrome.webrtcDesktopCapturePrivate |           0 |          2 |       0 |
@@ -290,8 +290,8 @@ Generated 39 namespaces containing 0 properties, 427 functions and 72 events:
     [chromex.ext.virtual-keyboard-private refer:[
       insert-text send-key-event hide-keyboard set-hotrod-keyboard lock-keyboard keyboard-loaded
       get-keyboard-config open-settings set-container-behavior set-draggable-area set-keyboard-state
-      set-occluded-bounds set-hit-test-bounds tap-on-bounds-changed tap-on-keyboard-closed
-      tap-on-keyboard-config-changed tap-all-events]]
+      set-occluded-bounds set-hit-test-bounds set-area-to-remain-on-screen tap-on-bounds-changed
+      tap-on-keyboard-closed tap-on-keyboard-config-changed tap-all-events]]
 
     [chromex.ext.webcam-private refer:[
       open-serial-webcam close-webcam get set reset tap-all-events]]

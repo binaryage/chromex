@@ -44,7 +44,7 @@
 
 ### API stats
 
-Generated 36 namespaces containing 0 properties, 323 functions and 68 events:
+Generated 36 namespaces containing 0 properties, 324 functions and 68 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -80,7 +80,7 @@ Generated 36 namespaces containing 0 properties, 323 functions and 68 events:
     |           chrome.systemPrivate |           0 |          3 |       0 |
     |         chrome.terminalPrivate |           0 |          6 |       1 |
     |            chrome.usersPrivate |           0 |          7 |       0 |
-    |  chrome.virtualKeyboardPrivate |           0 |         13 |       3 |
+    |  chrome.virtualKeyboardPrivate |           0 |         14 |       3 |
     |        chrome.wallpaperPrivate |           0 |          0 |       1 |
     |           chrome.webcamPrivate |           0 |          5 |       0 |
     |    chrome.webrtcLoggingPrivate |           0 |         14 |       0 |
@@ -257,8 +257,8 @@ Generated 36 namespaces containing 0 properties, 323 functions and 68 events:
     [chromex.app.virtual-keyboard-private refer:[
       insert-text send-key-event hide-keyboard set-hotrod-keyboard lock-keyboard keyboard-loaded
       get-keyboard-config open-settings set-container-behavior set-draggable-area set-keyboard-state
-      set-occluded-bounds set-hit-test-bounds tap-on-bounds-changed tap-on-keyboard-closed
-      tap-on-keyboard-config-changed tap-all-events]]
+      set-occluded-bounds set-hit-test-bounds set-area-to-remain-on-screen tap-on-bounds-changed
+      tap-on-keyboard-closed tap-on-keyboard-config-changed tap-all-events]]
 
     [chromex.app.wallpaper-private refer:[
       tap-on-wallpaper-changed-by3rd-party tap-all-events]]

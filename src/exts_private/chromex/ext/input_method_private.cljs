@@ -27,8 +27,8 @@
 (defn set-xkb-layout* [config xkb-name]
   (gen-wrap :function ::set-xkb-layout config xkb-name))
 
-(defn finish-composing-text* [config]
-  (gen-wrap :function ::finish-composing-text config))
+(defn finish-composing-text* [config parameters]
+  (gen-wrap :function ::finish-composing-text config parameters))
 
 (defn set-selection-range* [config parameters]
   (gen-wrap :function ::set-selection-range config parameters))

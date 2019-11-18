@@ -107,14 +107,17 @@
   ([xkb-name] (gen-call :function ::set-xkb-layout &form xkb-name)))
 
 (defmacro finish-composing-text
-  "Commits the text currently being composed without moving the selected text range
+  "Commits the text currently being composed without moving the selected text range. This is a no-op if the context is
+   incorrect.
+
+     |parameters| - ?
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([] (gen-call :function ::finish-composing-text &form)))
+  ([parameters] (gen-call :function ::finish-composing-text &form parameters)))
 
 (defmacro set-selection-range
   "Sets the selection range
@@ -392,7 +395,8 @@
      :name "finishComposingText",
      :since "future",
      :callback? true,
-     :params [{:name "callback", :optional? true, :type :callback}]}
+     :params
+     [{:name "parameters", :since "master", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::set-selection-range,
      :name "setSelectionRange",
      :since "master",

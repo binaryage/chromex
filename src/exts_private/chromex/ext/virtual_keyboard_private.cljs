@@ -42,6 +42,9 @@
 (defn set-hit-test-bounds* [config bounds-list]
   (gen-wrap :function ::set-hit-test-bounds config bounds-list))
 
+(defn set-area-to-remain-on-screen* [config bounds]
+  (gen-wrap :function ::set-area-to-remain-on-screen config bounds))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-bounds-changed* [config channel & args]
