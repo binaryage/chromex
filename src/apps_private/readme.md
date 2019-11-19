@@ -44,7 +44,7 @@
 
 ### API stats
 
-Generated 36 namespaces containing 0 properties, 324 functions and 68 events:
+Generated 36 namespaces containing 0 properties, 326 functions and 69 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -78,7 +78,7 @@ Generated 36 namespaces containing 0 properties, 324 functions and 68 events:
     |        chrome.resourcesPrivate |           0 |          1 |       0 |
     |         chrome.settingsPrivate |           0 |          5 |       1 |
     |           chrome.systemPrivate |           0 |          3 |       0 |
-    |         chrome.terminalPrivate |           0 |          6 |       1 |
+    |         chrome.terminalPrivate |           0 |          8 |       2 |
     |            chrome.usersPrivate |           0 |          7 |       0 |
     |  chrome.virtualKeyboardPrivate |           0 |         14 |       3 |
     |        chrome.wallpaperPrivate |           0 |          0 |       1 |
@@ -248,7 +248,8 @@ Generated 36 namespaces containing 0 properties, 324 functions and 68 events:
 
     [chromex.app.terminal-private refer:[
       open-terminal-process close-terminal-process send-input on-terminal-resize ack-output
-      get-crosh-settings tap-on-process-output tap-all-events]]
+      get-crosh-settings get-settings set-settings tap-on-process-output tap-on-settings-changed
+      tap-all-events]]
 
     [chromex.app.users-private refer:[
       get-whitelisted-users is-whitelisted-user add-whitelisted-user remove-whitelisted-user

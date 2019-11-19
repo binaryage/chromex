@@ -21,8 +21,17 @@
 (defn get-crosh-settings* [config]
   (gen-wrap :function ::get-crosh-settings config))
 
+(defn get-settings* [config]
+  (gen-wrap :function ::get-settings config))
+
+(defn set-settings* [config settings]
+  (gen-wrap :function ::set-settings config settings))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-process-output* [config channel & args]
   (gen-wrap :event ::on-process-output config channel args))
+
+(defn on-settings-changed* [config channel & args]
+  (gen-wrap :event ::on-settings-changed config channel args))
 

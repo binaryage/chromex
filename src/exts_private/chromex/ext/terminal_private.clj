@@ -80,8 +80,8 @@
   ([tab-id id] (gen-call :function ::ack-output &form tab-id id)))
 
 (defmacro get-crosh-settings
-  "Returns settings used by the crosh extension.  This function is called by the terminal system app the first time it is run
-   to migrate any previous settings.
+  "Returns an object (DictionaryValue) containing UI settings such as font style and color used by the crosh extension.  This
+   function is called by the terminal system app the first time it is run to migrate any previous settings.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [settings] where:
@@ -91,6 +91,32 @@
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-crosh-settings &form)))
+
+(defmacro get-settings
+  "Returns an object (DictionaryValue) containing UI settings such as font style and colors used by terminal and stored as a
+   syncable pref.  The UI currently has ~70 properties and we wish to allow flexibility for these to change in the UI without
+   updating this API, so we allow any properties.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [settings] where:
+
+     |settings| - Settings from prefs.
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::get-settings &form)))
+
+(defmacro set-settings
+  "Sets terminal UI settings which are stored as a syncable pref.
+
+     |settings| - Settings to update into prefs.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([settings] (gen-call :function ::set-settings &form settings)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -109,6 +135,16 @@
 
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-process-output &form channel args)))
+
+(defmacro tap-on-settings-changed-events
+  "Fired when terminal UI settings change.
+
+   Events will be put on the |channel| with signature [::on-settings-changed [settings]] where:
+
+     |settings| - Terminal UI Settings with updated values.
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-settings-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
@@ -161,14 +197,28 @@
      :name "getCroshSettings",
      :since "future",
      :callback? true,
-     :params [{:name "callback", :type :callback, :callback {:params [{:name "settings", :type "object"}]}}]}],
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "settings", :type "object"}]}}]}
+    {:id ::get-settings,
+     :name "getSettings",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "settings", :type "object"}]}}]}
+    {:id ::set-settings,
+     :name "setSettings",
+     :since "master",
+     :callback? true,
+     :params [{:name "settings", :type "object"} {:name "callback", :type :callback}]}],
    :events
    [{:id ::on-process-output,
      :name "onProcessOutput",
      :params
      [{:name "id", :since "74", :type "string"}
       {:name "type", :type "terminalPrivate.OutputType"}
-      {:name "text", :type "string"}]}]})
+      {:name "text", :type "string"}]}
+    {:id ::on-settings-changed,
+     :name "onSettingsChanged",
+     :since "master",
+     :params [{:name "settings", :type "object"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
