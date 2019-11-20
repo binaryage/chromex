@@ -135,7 +135,7 @@
    :functions
    [{:id ::update-dynamic-rules,
      :name "updateDynamicRules",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "rule-ids-to-remove", :type "[array-of-integers]"}

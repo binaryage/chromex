@@ -189,15 +189,6 @@
 (defn show-virtual-keyboard-if-enabled* [config]
   (gen-wrap :function ::show-virtual-keyboard-if-enabled config))
 
-(defn set-arc-app-window-state* [config package-name change]
-  (gen-wrap :function ::set-arc-app-window-state config package-name change))
-
-(defn get-arc-app-window-state* [config package-name]
-  (gen-wrap :function ::get-arc-app-window-state config package-name))
-
-(defn get-arc-app-window-info* [config package-name]
-  (gen-wrap :function ::get-arc-app-window-info config package-name))
-
 (defn arc-app-tracing-start* [config]
   (gen-wrap :function ::arc-app-tracing-start config))
 

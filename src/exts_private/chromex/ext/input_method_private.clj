@@ -399,7 +399,7 @@
      [{:name "parameters", :since "master", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::set-selection-range,
      :name "setSelectionRange",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "parameters", :type "object"}

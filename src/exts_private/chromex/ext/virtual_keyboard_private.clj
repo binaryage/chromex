@@ -231,7 +231,7 @@
      :params [{:name "bounds-list", :type "[array-of-virtualKeyboardPrivate.Boundss]"}]}
     {:id ::set-area-to-remain-on-screen,
      :name "setAreaToRemainOnScreen",
-     :since "master",
+     :since "future",
      :params [{:name "bounds", :type "virtualKeyboardPrivate.Bounds"}]}],
    :events
    [{:id ::on-bounds-changed,

@@ -671,49 +671,6 @@
   "Show virtual keyboard of the current input method if it's available."
   ([] (gen-call :function ::show-virtual-keyboard-if-enabled &form)))
 
-(defmacro set-arc-app-window-state
-  "Send WM event to change the ARC app window's window state.
-
-     |package-name| - the package name of the ARC app window.
-     |change| - WM event type to send to the ARC app window.
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [current-type] where:
-
-     |current-type| - ?
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([package-name change] (gen-call :function ::set-arc-app-window-state &form package-name change)))
-
-(defmacro get-arc-app-window-state
-  "Get ARC app window's window state.
-
-     |package-name| - the package name of the ARC app window. |callback| is invoked with the window state.
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [current-type] where:
-
-     |current-type| - ?
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([package-name] (gen-call :function ::get-arc-app-window-state &form package-name)))
-
-(defmacro get-arc-app-window-info
-  "Get various information on an ARC window.
-
-     |package-name| - the package name of the ARC app window.
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [info] where:
-
-     |info| - ?
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([package-name] (gen-call :function ::get-arc-app-window-info &form package-name)))
-
 (defmacro arc-app-tracing-start
   "Start ARC performance tracing for the active ARC app window.
 
@@ -1256,34 +1213,6 @@
      [{:name "start", :type "boolean"}
       {:name "callback", :type :callback, :callback {:params [{:name "finished", :type "boolean"}]}}]}
     {:id ::show-virtual-keyboard-if-enabled, :name "showVirtualKeyboardIfEnabled", :since "75"}
-    {:id ::set-arc-app-window-state,
-     :name "setArcAppWindowState",
-     :since "future",
-     :deprecated "Use setAppWindowState",
-     :callback? true,
-     :params
-     [{:name "package-name", :type "string"}
-      {:name "change", :type "autotestPrivate.WindowStateChangeDict"}
-      {:name "callback",
-       :type :callback,
-       :callback {:params [{:name "current-type", :type "autotestPrivate.WindowStateType"}]}}]}
-    {:id ::get-arc-app-window-state,
-     :name "getArcAppWindowState",
-     :since "78",
-     :callback? true,
-     :params
-     [{:name "package-name", :type "string"}
-      {:name "callback",
-       :type :callback,
-       :callback {:params [{:name "current-type", :type "autotestPrivate.WindowStateType"}]}}]}
-    {:id ::get-arc-app-window-info,
-     :name "getArcAppWindowInfo",
-     :since "future",
-     :deprecated "Use getAppWindowList",
-     :callback? true,
-     :params
-     [{:name "package-name", :type "string"}
-      {:name "callback", :type :callback, :callback {:params [{:name "info", :type "object"}]}}]}
     {:id ::arc-app-tracing-start,
      :name "arcAppTracingStart",
      :since "future",
@@ -1324,7 +1253,7 @@
      :callback? true,
      :params
      [{:name "id", :type "integer"}
-      {:name "change", :type "autotestPrivate.WindowStateChangeDict"}
+      {:name "change", :type "object"}
       {:name "callback",
        :type :callback,
        :callback {:params [{:name "current-type", :type "autotestPrivate.WindowStateType"}]}}]}
@@ -1371,22 +1300,22 @@
      :params [{:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::mouse-click,
      :name "mouseClick",
-     :since "master",
+     :since "future",
      :callback? true,
      :params [{:name "button", :type "autotestPrivate.MouseButton"} {:name "callback", :type :callback}]}
     {:id ::mouse-press,
      :name "mousePress",
-     :since "master",
+     :since "future",
      :callback? true,
      :params [{:name "button", :type "autotestPrivate.MouseButton"} {:name "callback", :type :callback}]}
     {:id ::mouse-release,
      :name "mouseRelease",
-     :since "master",
+     :since "future",
      :callback? true,
      :params [{:name "button", :type "autotestPrivate.MouseButton"} {:name "callback", :type :callback}]}
     {:id ::mouse-move,
      :name "mouseMove",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "location", :type "object"}

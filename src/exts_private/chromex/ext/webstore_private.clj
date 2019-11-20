@@ -287,7 +287,7 @@
      :params [{:name "callback", :type :callback, :callback {:params [{:name "referrer-chain", :type "string"}]}}]}
     {:id ::get-extension-status,
      :name "getExtensionStatus",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "id", :type "string"}

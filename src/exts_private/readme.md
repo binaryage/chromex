@@ -47,7 +47,7 @@
 
 ### API stats
 
-Generated 39 namespaces containing 0 properties, 430 functions and 73 events:
+Generated 39 namespaces containing 0 properties, 427 functions and 73 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -55,7 +55,7 @@ Generated 39 namespaces containing 0 properties, 430 functions and 73 events:
     |           chrome.accessibilityPrivate |           0 |         18 |       8 |
     |             chrome.activityLogPrivate |           0 |          5 |       1 |
     |                chrome.autofillPrivate |           0 |         12 |       1 |
-    |                chrome.autotestPrivate |           0 |         83 |       1 |
+    |                chrome.autotestPrivate |           0 |         80 |       1 |
     |               chrome.bluetoothPrivate |           0 |         10 |       1 |
     |         chrome.bookmarkManagerPrivate |           0 |         11 |       3 |
     |          chrome.brailleDisplayPrivate |           0 |          3 |       2 |
@@ -133,8 +133,7 @@ Generated 39 namespaces containing 0 properties, 430 functions and 73 events:
       set-crostini-app-scaled get-primary-display-scale-factor is-tablet-mode-enabled
       set-tablet-mode-enabled get-all-installed-apps get-shelf-items get-shelf-auto-hide-behavior
       set-shelf-auto-hide-behavior get-shelf-alignment set-shelf-alignment set-overview-mode-state
-      show-virtual-keyboard-if-enabled set-arc-app-window-state get-arc-app-window-state
-      get-arc-app-window-info arc-app-tracing-start arc-app-tracing-stop-and-analyze
+      show-virtual-keyboard-if-enabled arc-app-tracing-start arc-app-tracing-stop-and-analyze
       swap-windows-in-split-view set-arc-app-window-focus wait-for-display-rotation get-app-window-list
       set-app-window-state close-app-window install-pwa-for-current-url activate-accelerator
       wait-for-launcher-state create-new-desk activate-desk-at-index remove-active-desk mouse-click
