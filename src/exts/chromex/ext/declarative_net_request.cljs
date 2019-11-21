@@ -29,3 +29,8 @@
 (defn get-allowed-pages* [config]
   (gen-wrap :function ::get-allowed-pages config))
 
+; -- events -----------------------------------------------------------------------------------------------------------------
+
+(defn on-rule-matched-debug* [config channel & args]
+  (gen-wrap :event ::on-rule-matched-debug config channel args))
+

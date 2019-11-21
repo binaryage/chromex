@@ -195,6 +195,20 @@
    chromex.error/get-last-error."
   ([id] (gen-call :function ::get-extension-status &form id)))
 
+(defmacro request-extension
+  "Ask Chrome to send the extension request to the Admin Console.
+
+     |id| - The id of the extension to be requested. The webstore should call this after a call to getExtensionStatus
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [status] where:
+
+     |status| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([id] (gen-call :function ::request-extension &form id)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -292,6 +306,16 @@
      :params
      [{:name "id", :type "string"}
       {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "status", :type "webstorePrivate.ExtensionInstallStatus"}]}}]}
+    {:id ::request-extension,
+     :name "requestExtension",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "id", :type "string"}
+      {:name "callback",
+       :optional? true,
        :type :callback,
        :callback {:params [{:name "status", :type "webstorePrivate.ExtensionInstallStatus"}]}}]}]})
 

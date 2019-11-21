@@ -48,3 +48,6 @@
 (defn get-extension-status* [config id]
   (gen-wrap :function ::get-extension-status config id))
 
+(defn request-extension* [config id]
+  (gen-wrap :function ::request-extension config id))
+

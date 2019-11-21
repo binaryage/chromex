@@ -114,6 +114,23 @@
    https://developer.chrome.com/extensions/declarativeNetRequest#method-getAllowedPages."
   ([] (gen-call :function ::get-allowed-pages &form)))
 
+; -- events -----------------------------------------------------------------------------------------------------------------
+;
+; docs: https://github.com/binaryage/chromex/#tapping-events
+
+(defmacro tap-on-rule-matched-debug-events
+  "Fired when a rule is matched with a request. Only available for unpacked extensions as this is intended to be used for
+   debugging purposes only.
+
+   Events will be put on the |channel| with signature [::on-rule-matched-debug [matched-rule-info]] where:
+
+     |matched-rule-info| - The rule that has been matched along with information about the associated request.
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+
+   https://developer.chrome.com/extensions/declarativeNetRequest#event-onRuleMatchedDebug."
+  ([channel & args] (apply gen-call :event ::on-rule-matched-debug &form channel args)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -162,7 +179,12 @@
      :name "getAllowedPages",
      :callback? true,
      :params
-     [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "[array-of-strings]"}]}}]}]})
+     [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "[array-of-strings]"}]}}]}],
+   :events
+   [{:id ::on-rule-matched-debug,
+     :name "onRuleMatchedDebug",
+     :since "master",
+     :params [{:name "matched-rule-info", :type "object"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
