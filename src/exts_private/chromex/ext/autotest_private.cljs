@@ -126,6 +126,9 @@
 (defn import-crostini* [config path]
   (gen-wrap :function ::import-crostini config path))
 
+(defn install-plugin-vm* [config image-url image-hash license-key]
+  (gen-wrap :function ::install-plugin-vm config image-url image-hash license-key))
+
 (defn register-component* [config name path]
   (gen-wrap :function ::register-component config name path))
 

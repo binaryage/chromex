@@ -406,6 +406,20 @@
    chromex.error/get-last-error."
   ([path] (gen-call :function ::import-crostini &form path)))
 
+(defmacro install-plugin-vm
+  "Installs Plugin VM via the installer and then launches the VM.
+
+     |image-url| - URL to the image to install.
+     |image-hash| - Hash for the provided image.
+     |license-key| - License key for Plugin VM.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([image-url image-hash license-key] (gen-call :function ::install-plugin-vm &form image-url image-hash license-key)))
+
 (defmacro register-component
   "Register a component with CrOSComponentManager.
 
@@ -1087,6 +1101,15 @@
      :since "75",
      :callback? true,
      :params [{:name "path", :type "string"} {:name "callback", :type :callback}]}
+    {:id ::install-plugin-vm,
+     :name "installPluginVM",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "image-url", :type "string"}
+      {:name "image-hash", :type "string"}
+      {:name "license-key", :type "string"}
+      {:name "callback", :type :callback}]}
     {:id ::register-component,
      :name "registerComponent",
      :since "78",
