@@ -505,18 +505,6 @@
    chromex.error/get-last-error."
   ([entry] (gen-call :function ::compute-checksum &form entry)))
 
-(defmacro is-piex-loader-enabled
-  "Returns if Piex loader is enabled.
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [result] where:
-
-     |result| - ?
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([] (gen-call :function ::is-piex-loader-enabled &form)))
-
 (defmacro get-providers
   "Returns list of available providers.
 
@@ -1081,11 +1069,6 @@
      :params
      [{:name "entry", :since "46", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "checksum", :type "string"}]}}]}
-    {:id ::is-piex-loader-enabled,
-     :name "isPiexLoaderEnabled",
-     :since "43",
-     :callback? true,
-     :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
     {:id ::get-providers,
      :name "getProviders",
      :since "65",

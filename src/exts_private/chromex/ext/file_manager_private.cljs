@@ -123,9 +123,6 @@
 (defn compute-checksum* [config entry]
   (gen-wrap :function ::compute-checksum config entry))
 
-(defn is-piex-loader-enabled* [config]
-  (gen-wrap :function ::is-piex-loader-enabled config))
-
 (defn get-providers* [config]
   (gen-wrap :function ::get-providers config))
 
