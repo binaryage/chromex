@@ -914,6 +914,18 @@
    chromex.error/get-last-error."
   ([location duration-in-ms] (gen-call :function ::mouse-move &form location duration-in-ms)))
 
+(defmacro set-metrics-enabled
+  "Enable/disable metrics reporting in preferences.
+
+     |enabled| - Enable metrics reporting.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([enabled] (gen-call :function ::set-metrics-enabled &form enabled)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -1341,9 +1353,12 @@
      :since "future",
      :callback? true,
      :params
-     [{:name "location", :type "object"}
-      {:name "duration-in-ms", :type "double"}
-      {:name "callback", :type :callback}]}],
+     [{:name "location", :type "object"} {:name "duration-in-ms", :type "double"} {:name "callback", :type :callback}]}
+    {:id ::set-metrics-enabled,
+     :name "setMetricsEnabled",
+     :since "master",
+     :callback? true,
+     :params [{:name "enabled", :type "boolean"} {:name "callback", :type :callback}]}],
    :events [{:id ::on-clipboard-data-changed, :name "onClipboardDataChanged", :since "future"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

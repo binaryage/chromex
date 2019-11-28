@@ -246,6 +246,9 @@
 (defn mouse-move* [config location duration-in-ms]
   (gen-wrap :function ::mouse-move config location duration-in-ms))
 
+(defn set-metrics-enabled* [config enabled]
+  (gen-wrap :function ::set-metrics-enabled config enabled))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-clipboard-data-changed* [config channel & args]
