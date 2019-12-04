@@ -310,7 +310,7 @@
        :callback {:params [{:name "status", :type "webstorePrivate.ExtensionInstallStatus"}]}}]}
     {:id ::request-extension,
      :name "requestExtension",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "id", :type "string"}

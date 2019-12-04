@@ -395,8 +395,7 @@
      :name "finishComposingText",
      :since "future",
      :callback? true,
-     :params
-     [{:name "parameters", :since "master", :type "object"} {:name "callback", :optional? true, :type :callback}]}
+     :params [{:name "parameters", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::set-selection-range,
      :name "setSelectionRange",
      :since "future",

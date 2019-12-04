@@ -1115,7 +1115,7 @@
      :params [{:name "path", :type "string"} {:name "callback", :type :callback}]}
     {:id ::install-plugin-vm,
      :name "installPluginVM",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "image-url", :type "string"}
@@ -1356,7 +1356,7 @@
      [{:name "location", :type "object"} {:name "duration-in-ms", :type "double"} {:name "callback", :type :callback}]}
     {:id ::set-metrics-enabled,
      :name "setMetricsEnabled",
-     :since "master",
+     :since "future",
      :callback? true,
      :params [{:name "enabled", :type "boolean"} {:name "callback", :type :callback}]}],
    :events [{:id ::on-clipboard-data-changed, :name "onClipboardDataChanged", :since "future"}]})

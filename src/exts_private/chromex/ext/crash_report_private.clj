@@ -1,7 +1,7 @@
 (ns chromex.ext.crash-report-private
   "Private API for Chrome component extensions to report errors.
 
-     * available since Chrome master"
+     * available since Chrome 80"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -37,7 +37,7 @@
 
 (def api-table
   {:namespace "chrome.crashReportPrivate",
-   :since "master",
+   :since "80",
    :functions
    [{:id ::report-error,
      :name "reportError",

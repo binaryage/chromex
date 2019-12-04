@@ -183,8 +183,8 @@
    :events
    [{:id ::on-rule-matched-debug,
      :name "onRuleMatchedDebug",
-     :since "master",
-     :params [{:name "matched-rule-info", :type "object"}]}]})
+     :since "80",
+     :params [{:name "matched-rule-info", :since "future", :type "object"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
