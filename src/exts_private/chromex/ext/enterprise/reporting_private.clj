@@ -38,6 +38,58 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-device-id &form)))
 
+(defmacro get-persistent-secret
+  "Gets a randomly generated persistent secret (symmetric key) that can be used to encrypt the data stored with
+   |setDeviceData|.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [secret] where:
+
+     |secret| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::get-persistent-secret &form)))
+
+(defmacro get-device-data
+  "Gets the device data for |id|. Sets runtime.lastError on failure.
+
+     |id| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [data] where:
+
+     |data| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([id] (gen-call :function ::get-device-data &form id)))
+
+(defmacro set-device-data
+  "Sets the device data for |id|. Sets runtime.lastError on failure.
+
+     |id| - ?
+     |data| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([id data] (gen-call :function ::set-device-data &form id data)))
+
+(defmacro get-device-info
+  "Gets the device information (including disk encryption status, screen lock status, serial number, model).
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [device-info] where:
+
+     |device-info| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::get-device-info &form)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -62,7 +114,36 @@
      :since "71",
      :callback? true,
      :params
-     [{:name "callback", :optional? true, :type :callback, :callback {:params [{:name "id", :type "string"}]}}]}]})
+     [{:name "callback", :optional? true, :type :callback, :callback {:params [{:name "id", :type "string"}]}}]}
+    {:id ::get-persistent-secret,
+     :name "getPersistentSecret",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "secret", :type "ArrayBuffer"}]}}]}
+    {:id ::get-device-data,
+     :name "getDeviceData",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "id", :type "string"}
+      {:name "callback", :type :callback, :callback {:params [{:name "data", :type "ArrayBuffer"}]}}]}
+    {:id ::set-device-data,
+     :name "setDeviceData",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "id", :type "string"}
+      {:name "data", :type "ArrayBuffer"}
+      {:name "callback", :optional? true, :type :callback}]}
+    {:id ::get-device-info,
+     :name "getDeviceInfo",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "device-info", :type "object"}]}}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

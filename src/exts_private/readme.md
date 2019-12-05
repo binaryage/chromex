@@ -48,7 +48,7 @@
 
 ### API stats
 
-Generated 40 namespaces containing 0 properties, 430 functions and 73 events:
+Generated 40 namespaces containing 0 properties, 434 functions and 73 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -69,7 +69,7 @@ Generated 40 namespaces containing 0 properties, 430 functions and 73 events:
     |               chrome.developerPrivate |           0 |         31 |       2 |
     |                    chrome.echoPrivate |           0 |          5 |       0 |
     | chrome.enterprise.platformKeysPrivate |           0 |          2 |       0 |
-    |    chrome.enterprise.reportingPrivate |           0 |          2 |       0 |
+    |    chrome.enterprise.reportingPrivate |           0 |          6 |       0 |
     |                chrome.feedbackPrivate |           0 |          6 |       1 |
     |             chrome.fileManagerPrivate |           0 |         58 |      10 |
     |             chrome.imageWriterPrivate |           0 |          5 |       5 |
@@ -190,7 +190,8 @@ Generated 40 namespaces containing 0 properties, 430 functions and 73 events:
       challenge-machine-key challenge-user-key tap-all-events]]
 
     [chromex.ext.enterprise.reporting-private refer:[
-      upload-chrome-desktop-report get-device-id tap-all-events]]
+      upload-chrome-desktop-report get-device-id get-persistent-secret get-device-data set-device-data
+      get-device-info tap-all-events]]
 
     [chromex.ext.feedback-private refer:[
       get-user-email get-system-information send-feedback get-strings read-log-source
