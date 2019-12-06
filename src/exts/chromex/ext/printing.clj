@@ -12,6 +12,22 @@
 (declare api-table)
 (declare gen-call)
 
+; -- functions --------------------------------------------------------------------------------------------------------------
+
+(defmacro get-printers
+  "Returns the list of available printers on the device. This includes manually added, enterprise and discovered printers.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [printers] where:
+
+     |printers| - https://developer.chrome.com/extensions/printing#property-callback-printers.
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/extensions/printing#method-getPrinters."
+  ([] (gen-call :function ::get-printers &form)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -43,6 +59,13 @@
 (def api-table
   {:namespace "chrome.printing",
    :since "80",
+   :functions
+   [{:id ::get-printers,
+     :name "getPrinters",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "callback", :type :callback, :callback {:params [{:name "printers", :type "[array-of-objects]"}]}}]}],
    :events
    [{:id ::on-job-status-changed,
      :name "onJobStatusChanged",
