@@ -57,7 +57,7 @@
 
 (def api-table
   {:namespace "chrome.printingMetrics",
-   :since "future",
+   :since "79",
    :functions
    [{:id ::get-print-jobs,
      :name "getPrintJobs",

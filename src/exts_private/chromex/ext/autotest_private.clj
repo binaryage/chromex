@@ -953,7 +953,7 @@
   {:namespace "chrome.autotestPrivate",
    :since "33",
    :functions
-   [{:id ::initialize-events, :name "initializeEvents", :since "future"}
+   [{:id ::initialize-events, :name "initializeEvents", :since "79"}
     {:id ::logout, :name "logout"}
     {:id ::restart, :name "restart"}
     {:id ::shutdown, :name "shutdown", :params [{:name "force", :type "boolean"}]}
@@ -1080,12 +1080,12 @@
       {:name "callback", :type :callback, :callback {:params [{:name "histogram", :type "object"}]}}]}
     {:id ::get-clipboard-text-data,
      :name "getClipboardTextData",
-     :since "future",
+     :since "79",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "data", :type "string"}]}}]}
     {:id ::set-clipboard-text-data,
      :name "setClipboardTextData",
-     :since "future",
+     :since "79",
      :callback? true,
      :params [{:name "data", :type "string"} {:name "callback", :type :callback}]}
     {:id ::run-crostini-installer,
@@ -1133,7 +1133,7 @@
      :params [{:name "callback", :type :callback, :callback {:params [{:name "base64-png", :type "string"}]}}]}
     {:id ::take-screenshot-for-display,
      :name "takeScreenshotForDisplay",
-     :since "future",
+     :since "79",
      :callback? true,
      :params
      [{:name "display-id", :type "string"}
@@ -1166,7 +1166,7 @@
        :callback {:params [{:name "status", :type "autotestPrivate.AssistantQueryStatus"}]}}]}
     {:id ::wait-for-assistant-query-status,
      :name "waitForAssistantQueryStatus",
-     :since "future",
+     :since "79",
      :callback? true,
      :params
      [{:name "timeout-s", :type "integer"}
@@ -1250,12 +1250,12 @@
     {:id ::show-virtual-keyboard-if-enabled, :name "showVirtualKeyboardIfEnabled", :since "75"}
     {:id ::arc-app-tracing-start,
      :name "arcAppTracingStart",
-     :since "future",
+     :since "79",
      :callback? true,
      :params [{:name "callback", :type :callback}]}
     {:id ::arc-app-tracing-stop-and-analyze,
      :name "arcAppTracingStopAndAnalyze",
-     :since "future",
+     :since "79",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "info", :type "object"}]}}]}
     {:id ::swap-windows-in-split-view,
@@ -1270,7 +1270,7 @@
      :params [{:name "package-name", :type "string"} {:name "callback", :type :callback}]}
     {:id ::wait-for-display-rotation,
      :name "waitForDisplayRotation",
-     :since "future",
+     :since "79",
      :callback? true,
      :params
      [{:name "display-id", :type "string"}
@@ -1359,7 +1359,7 @@
      :since "future",
      :callback? true,
      :params [{:name "enabled", :type "boolean"} {:name "callback", :type :callback}]}],
-   :events [{:id ::on-clipboard-data-changed, :name "onClipboardDataChanged", :since "future"}]})
+   :events [{:id ::on-clipboard-data-changed, :name "onClipboardDataChanged", :since "79"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
