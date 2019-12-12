@@ -18,3 +18,6 @@
 (defn reset* [config webcam-id config]
   (gen-wrap :function ::reset config webcam-id config))
 
+(defn set-home* [config webcam-id]
+  (gen-wrap :function ::set-home config webcam-id))
+

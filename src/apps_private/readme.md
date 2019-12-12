@@ -44,7 +44,7 @@
 
 ### API stats
 
-Generated 36 namespaces containing 0 properties, 325 functions and 69 events:
+Generated 36 namespaces containing 0 properties, 326 functions and 69 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -82,7 +82,7 @@ Generated 36 namespaces containing 0 properties, 325 functions and 69 events:
     |            chrome.usersPrivate |           0 |          7 |       0 |
     |  chrome.virtualKeyboardPrivate |           0 |         14 |       3 |
     |        chrome.wallpaperPrivate |           0 |          0 |       1 |
-    |           chrome.webcamPrivate |           0 |          5 |       0 |
+    |           chrome.webcamPrivate |           0 |          6 |       0 |
     |    chrome.webrtcLoggingPrivate |           0 |         14 |       0 |
     |   chrome.webstoreWidgetPrivate |           0 |          1 |       0 |
 
@@ -264,7 +264,7 @@ Generated 36 namespaces containing 0 properties, 325 functions and 69 events:
       tap-on-wallpaper-changed-by3rd-party tap-all-events]]
 
     [chromex.app.webcam-private refer:[
-      open-serial-webcam close-webcam get set reset tap-all-events]]
+      open-serial-webcam close-webcam get set reset set-home tap-all-events]]
 
     [chromex.app.webrtc-logging-private refer:[
       set-meta-data start set-upload-on-render-close stop store upload-stored upload discard

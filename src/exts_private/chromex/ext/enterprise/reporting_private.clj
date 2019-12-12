@@ -117,19 +117,19 @@
      [{:name "callback", :optional? true, :type :callback, :callback {:params [{:name "id", :type "string"}]}}]}
     {:id ::get-persistent-secret,
      :name "getPersistentSecret",
-     :since "master",
+     :since "future",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "secret", :type "ArrayBuffer"}]}}]}
     {:id ::get-device-data,
      :name "getDeviceData",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "id", :type "string"}
       {:name "callback", :type :callback, :callback {:params [{:name "data", :type "ArrayBuffer"}]}}]}
     {:id ::set-device-data,
      :name "setDeviceData",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "id", :type "string"}
@@ -137,7 +137,7 @@
       {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-device-info,
      :name "getDeviceInfo",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "callback",

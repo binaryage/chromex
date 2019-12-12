@@ -62,7 +62,6 @@
    :functions
    [{:id ::get-printers,
      :name "getPrinters",
-     :since "master",
      :callback? true,
      :params
      [{:name "callback", :type :callback, :callback {:params [{:name "printers", :type "[array-of-objects]"}]}}]}],

@@ -80,6 +80,20 @@
    chromex.error/get-last-error."
   ([webcam-id config] (gen-call :function ::reset &form webcam-id config)))
 
+(defmacro set-home
+  "Set home preset for a webcam. A callback is included here which is invoked when the function responds.
+
+     |webcam-id| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [configuration] where:
+
+     |configuration| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([webcam-id] (gen-call :function ::set-home &form webcam-id)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -127,6 +141,15 @@
      :params
      [{:name "webcam-id", :type "string"}
       {:name "config", :type "webcamPrivate.WebcamConfiguration"}
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "configuration", :type "webcamPrivate.WebcamCurrentConfiguration"}]}}]}
+    {:id ::set-home,
+     :name "setHome",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "webcam-id", :type "string"}
       {:name "callback",
        :type :callback,
        :callback {:params [{:name "configuration", :type "webcamPrivate.WebcamCurrentConfiguration"}]}}]}]})
