@@ -4,7 +4,7 @@
 
 ; -- project version --------------------------------------------------------------------------------------------------------
 
-(def current-version "0.8.4")                                                                                                ; this should match our project.clj
+(def current-version "0.8.5")                                                                                                ; this should match our project.clj
 
 (defmacro get-current-version []
   current-version)
