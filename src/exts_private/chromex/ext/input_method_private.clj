@@ -227,6 +227,10 @@
    chromex.error/get-last-error."
   ([parameters] (gen-call :function ::set-composition-range &form parameters)))
 
+(defmacro reset
+  "Resets the current engine to its initial state. Fires an OnReset event."
+  ([] (gen-call :function ::reset &form)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -450,10 +454,8 @@
      :callback? true,
      :params
      [{:name "parameters", :type "object"}
-      {:name "callback",
-       :optional? true,
-       :type :callback,
-       :callback {:params [{:name "success", :type "boolean"}]}}]}],
+      {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
+    {:id ::reset, :name "reset", :since "master"}],
    :events
    [{:id ::on-changed, :name "onChanged", :params [{:name "new-input-method-id", :type "string"}]}
     {:id ::on-composition-bounds-changed,

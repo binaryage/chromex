@@ -57,6 +57,9 @@
 (defn set-composition-range* [config parameters]
   (gen-wrap :function ::set-composition-range config parameters))
 
+(defn reset* [config]
+  (gen-wrap :function ::reset config))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-changed* [config channel & args]

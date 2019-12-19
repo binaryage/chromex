@@ -44,7 +44,7 @@
 
 ### API stats
 
-Generated 36 namespaces containing 0 properties, 326 functions and 69 events:
+Generated 36 namespaces containing 0 properties, 327 functions and 69 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -65,7 +65,7 @@ Generated 36 namespaces containing 0 properties, 326 functions and 69 events:
     |      chrome.fileManagerPrivate |           0 |         58 |      10 |
     |         chrome.identityPrivate |           0 |          0 |       1 |
     |      chrome.imageWriterPrivate |           0 |          5 |       5 |
-    |      chrome.inputMethodPrivate |           0 |         18 |      10 |
+    |      chrome.inputMethodPrivate |           0 |         19 |      10 |
     | chrome.languageSettingsPrivate |           0 |         14 |       4 |
     |  chrome.mediaPerceptionPrivate |           0 |          5 |       1 |
     |      chrome.mediaPlayerPrivate |           0 |          0 |       3 |
@@ -183,10 +183,10 @@ Generated 36 namespaces containing 0 properties, 326 functions and 69 events:
       fetch-all-dictionary-words add-word-to-dictionary get-encrypt-sync-enabled set-xkb-layout
       finish-composing-text set-selection-range notify-ime-menu-item-activated show-input-view
       open-options-page get-composition-bounds get-surrounding-text get-setting set-setting
-      set-composition-range tap-on-changed tap-on-composition-bounds-changed tap-on-dictionary-loaded
-      tap-on-dictionary-changed tap-on-ime-menu-activation-changed tap-on-ime-menu-list-changed
-      tap-on-ime-menu-items-changed tap-on-focus tap-on-settings-changed tap-on-screen-projection-changed
-      tap-all-events]]
+      set-composition-range reset tap-on-changed tap-on-composition-bounds-changed
+      tap-on-dictionary-loaded tap-on-dictionary-changed tap-on-ime-menu-activation-changed
+      tap-on-ime-menu-list-changed tap-on-ime-menu-items-changed tap-on-focus tap-on-settings-changed
+      tap-on-screen-projection-changed tap-all-events]]
 
     [chromex.app.language-settings-private refer:[
       get-language-list enable-language disable-language set-enable-translation-for-language
