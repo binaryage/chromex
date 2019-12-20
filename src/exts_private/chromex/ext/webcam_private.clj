@@ -146,7 +146,7 @@
        :callback {:params [{:name "configuration", :type "webcamPrivate.WebcamCurrentConfiguration"}]}}]}
     {:id ::set-home,
      :name "setHome",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "webcam-id", :type "string"}

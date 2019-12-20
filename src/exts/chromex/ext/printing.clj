@@ -2,7 +2,7 @@
   "Use the chrome.printing API to send print jobs to printers
    installed on Chromebook.
 
-     * available since Chrome 80
+     * available since Chrome 81
      * https://developer.chrome.com/extensions/printing"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -58,7 +58,7 @@
 
 (def api-table
   {:namespace "chrome.printing",
-   :since "80",
+   :since "81",
    :functions
    [{:id ::get-printers,
      :name "getPrinters",
