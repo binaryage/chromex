@@ -6,6 +6,9 @@
 (defn get-printers* [config]
   (gen-wrap :function ::get-printers config))
 
+(defn get-printer-info* [config printer-id]
+  (gen-wrap :function ::get-printer-info config printer-id))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-job-status-changed* [config channel & args]

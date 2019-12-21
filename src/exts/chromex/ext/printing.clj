@@ -28,6 +28,23 @@
    https://developer.chrome.com/extensions/printing#method-getPrinters."
   ([] (gen-call :function ::get-printers &form)))
 
+(defmacro get-printer-info
+  "Returns the status and capabilities of the printer in  CDD format. This call will fail with a runtime error if no printers
+   with given id are installed.
+
+     |printer-id| - https://developer.chrome.com/extensions/printing#property-getPrinterInfo-printerId.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [response] where:
+
+     |response| - https://developer.chrome.com/extensions/printing#property-callback-response.
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/extensions/printing#method-getPrinterInfo."
+  ([printer-id] (gen-call :function ::get-printer-info &form printer-id)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -64,7 +81,14 @@
      :name "getPrinters",
      :callback? true,
      :params
-     [{:name "callback", :type :callback, :callback {:params [{:name "printers", :type "[array-of-objects]"}]}}]}],
+     [{:name "callback", :type :callback, :callback {:params [{:name "printers", :type "[array-of-objects]"}]}}]}
+    {:id ::get-printer-info,
+     :name "getPrinterInfo",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "printer-id", :type "string"}
+      {:name "callback", :type :callback, :callback {:params [{:name "response", :type "object"}]}}]}],
    :events
    [{:id ::on-job-status-changed,
      :name "onJobStatusChanged",
