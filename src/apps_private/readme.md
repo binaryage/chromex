@@ -92,8 +92,8 @@ Generated 36 namespaces containing 0 properties, 327 functions and 69 events:
 (ns your.project
   (:require
     [chromex.app.accessibility-private refer:[
-      get-display-language get-battery-description set-native-accessibility-enabled set-focus-rings
-      set-highlights set-keyboard-listener darken-screen set-switch-access-menu-state
+      get-display-name-for-locale get-battery-description set-native-accessibility-enabled
+      set-focus-rings set-highlights set-keyboard-listener darken-screen set-switch-access-menu-state
       forward-key-events-to-switch-access set-native-chrome-vox-arc-support-for-current-app
       send-synthetic-key-event enable-chrome-vox-mouse-events send-synthetic-mouse-event
       on-select-to-speak-state-changed on-scrollable-bounds-for-point-found toggle-dictation

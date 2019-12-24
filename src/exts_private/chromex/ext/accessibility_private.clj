@@ -10,12 +10,12 @@
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
-(defmacro get-display-language
-  "Called to translate languageCodeToTranslate into human-readable string in the language specified by targetLanguageCode
+(defmacro get-display-name-for-locale
+  "Called to translate localeCodeToTranslate into human-readable string in the locale specified by displayLocaleCode
 
-     |language-code-to-translate| - ?
-     |target-language-code| - ?"
-  ([language-code-to-translate target-language-code] (gen-call :function ::get-display-language &form language-code-to-translate target-language-code)))
+     |locale-code-to-translate| - ?
+     |display-locale-code| - ?"
+  ([locale-code-to-translate display-locale-code] (gen-call :function ::get-display-name-for-locale &form locale-code-to-translate display-locale-code)))
 
 (defmacro get-battery-description
   "Called to request battery status from Chrome OS system.
@@ -229,13 +229,11 @@
   {:namespace "chrome.accessibilityPrivate",
    :since "36",
    :functions
-   [{:id ::get-display-language,
-     :name "getDisplayLanguage",
-     :since "77",
+   [{:id ::get-display-name-for-locale,
+     :name "getDisplayNameForLocale",
+     :since "master",
      :return-type "string",
-     :params
-     [{:name "language-code-to-translate", :since "79", :type "string"}
-      {:name "target-language-code", :since "79", :type "string"}]}
+     :params [{:name "locale-code-to-translate", :type "string"} {:name "display-locale-code", :type "string"}]}
     {:id ::get-battery-description,
      :name "getBatteryDescription",
      :since "73",

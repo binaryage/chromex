@@ -3,8 +3,8 @@
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
-(defn get-display-language* [config language-code-to-translate target-language-code]
-  (gen-wrap :function ::get-display-language config language-code-to-translate target-language-code))
+(defn get-display-name-for-locale* [config locale-code-to-translate display-locale-code]
+  (gen-wrap :function ::get-display-name-for-locale config locale-code-to-translate display-locale-code))
 
 (defn get-battery-description* [config]
   (gen-wrap :function ::get-battery-description config))
