@@ -29,6 +29,9 @@
 (defn get-allowed-pages* [config]
   (gen-wrap :function ::get-allowed-pages config))
 
+(defn set-action-count-as-badge-text* [config enable]
+  (gen-wrap :function ::set-action-count-as-badge-text config enable))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-rule-matched-debug* [config channel & args]

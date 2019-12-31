@@ -114,6 +114,15 @@
    https://developer.chrome.com/extensions/declarativeNetRequest#method-getAllowedPages."
   ([] (gen-call :function ::get-allowed-pages &form)))
 
+(defmacro set-action-count-as-badge-text
+  "Sets whether to automatically badge extension's icon to the matched action count for a tab. This preference is persisted
+   across sessions and is false by default.
+
+     |enable| - https://developer.chrome.com/extensions/declarativeNetRequest#property-setActionCountAsBadgeText-enable.
+
+   https://developer.chrome.com/extensions/declarativeNetRequest#method-setActionCountAsBadgeText."
+  ([enable] (gen-call :function ::set-action-count-as-badge-text &form enable)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -177,8 +186,11 @@
     {:id ::get-allowed-pages,
      :name "getAllowedPages",
      :callback? true,
-     :params
-     [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "[array-of-strings]"}]}}]}],
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "[array-of-strings]"}]}}]}
+    {:id ::set-action-count-as-badge-text,
+     :name "setActionCountAsBadgeText",
+     :since "master",
+     :params [{:name "enable", :type "boolean"}]}],
    :events
    [{:id ::on-rule-matched-debug,
      :name "onRuleMatchedDebug",
