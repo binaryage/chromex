@@ -153,6 +153,9 @@
 (defn wait-for-assistant-query-status* [config timeout-s]
   (gen-wrap :function ::wait-for-assistant-query-status config timeout-s))
 
+(defn is-arc-package-list-initial-refreshed* [config]
+  (gen-wrap :function ::is-arc-package-list-initial-refreshed config))
+
 (defn set-whitelisted-pref* [config pref-name value]
   (gen-wrap :function ::set-whitelisted-pref config pref-name value))
 

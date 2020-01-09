@@ -48,7 +48,7 @@
 
 ### API stats
 
-Generated 40 namespaces containing 0 properties, 436 functions and 73 events:
+Generated 40 namespaces containing 0 properties, 437 functions and 73 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -56,7 +56,7 @@ Generated 40 namespaces containing 0 properties, 436 functions and 73 events:
     |           chrome.accessibilityPrivate |           0 |         18 |       8 |
     |             chrome.activityLogPrivate |           0 |          5 |       1 |
     |                chrome.autofillPrivate |           0 |         12 |       1 |
-    |                chrome.autotestPrivate |           0 |         82 |       1 |
+    |                chrome.autotestPrivate |           0 |         83 |       1 |
     |               chrome.bluetoothPrivate |           0 |         10 |       1 |
     |         chrome.bookmarkManagerPrivate |           0 |         11 |       3 |
     |          chrome.brailleDisplayPrivate |           0 |          3 |       2 |
@@ -132,15 +132,15 @@ Generated 40 namespaces containing 0 properties, 436 functions and 73 events:
       export-crostini import-crostini install-plugin-vm register-component take-screenshot
       take-screenshot-for-display bootstrap-machine-learning-service set-assistant-enabled
       enable-assistant-and-wait-for-ready send-assistant-text-query wait-for-assistant-query-status
-      set-whitelisted-pref set-crostini-app-scaled get-primary-display-scale-factor
-      is-tablet-mode-enabled set-tablet-mode-enabled get-all-installed-apps get-shelf-items
-      get-shelf-auto-hide-behavior set-shelf-auto-hide-behavior get-shelf-alignment set-shelf-alignment
-      set-overview-mode-state show-virtual-keyboard-if-enabled arc-app-tracing-start
-      arc-app-tracing-stop-and-analyze swap-windows-in-split-view set-arc-app-window-focus
-      wait-for-display-rotation get-app-window-list set-app-window-state close-app-window
-      install-pwa-for-current-url activate-accelerator wait-for-launcher-state create-new-desk
-      activate-desk-at-index remove-active-desk mouse-click mouse-press mouse-release mouse-move
-      set-metrics-enabled tap-on-clipboard-data-changed tap-all-events]]
+      is-arc-package-list-initial-refreshed set-whitelisted-pref set-crostini-app-scaled
+      get-primary-display-scale-factor is-tablet-mode-enabled set-tablet-mode-enabled
+      get-all-installed-apps get-shelf-items get-shelf-auto-hide-behavior set-shelf-auto-hide-behavior
+      get-shelf-alignment set-shelf-alignment set-overview-mode-state show-virtual-keyboard-if-enabled
+      arc-app-tracing-start arc-app-tracing-stop-and-analyze swap-windows-in-split-view
+      set-arc-app-window-focus wait-for-display-rotation get-app-window-list set-app-window-state
+      close-app-window install-pwa-for-current-url activate-accelerator wait-for-launcher-state
+      create-new-desk activate-desk-at-index remove-active-desk mouse-click mouse-press mouse-release
+      mouse-move set-metrics-enabled tap-on-clipboard-data-changed tap-all-events]]
 
     [chromex.ext.bluetooth-private refer:[
       set-adapter-state set-pairing-response disconnect-all forget-device set-discovery-filter connect

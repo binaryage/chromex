@@ -523,6 +523,18 @@
    chromex.error/get-last-error."
   ([timeout-s] (gen-call :function ::wait-for-assistant-query-status &form timeout-s)))
 
+(defmacro is-arc-package-list-initial-refreshed
+  "Whether the local list of installed ARC packages has been refreshed for the first time after user login.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [refreshed] where:
+
+     |refreshed| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::is-arc-package-list-initial-refreshed &form)))
+
 (defmacro set-whitelisted-pref
   "Set value for the specified user pref in the pref tree.
 
@@ -1173,6 +1185,11 @@
       {:name "callback",
        :type :callback,
        :callback {:params [{:name "status", :type "autotestPrivate.AssistantQueryStatus"}]}}]}
+    {:id ::is-arc-package-list-initial-refreshed,
+     :name "isArcPackageListInitialRefreshed",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "refreshed", :type "boolean"}]}}]}
     {:id ::set-whitelisted-pref,
      :name "setWhitelistedPref",
      :since "74",
