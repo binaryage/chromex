@@ -231,7 +231,7 @@
    :functions
    [{:id ::get-display-name-for-locale,
      :name "getDisplayNameForLocale",
-     :since "master",
+     :since "future",
      :return-type "string",
      :params [{:name "locale-code-to-translate", :type "string"} {:name "display-locale-code", :type "string"}]}
     {:id ::get-battery-description,

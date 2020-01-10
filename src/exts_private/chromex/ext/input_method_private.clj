@@ -455,7 +455,7 @@
      :params
      [{:name "parameters", :type "object"}
       {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
-    {:id ::reset, :name "reset", :since "master"}],
+    {:id ::reset, :name "reset", :since "future"}],
    :events
    [{:id ::on-changed, :name "onChanged", :params [{:name "new-input-method-id", :type "string"}]}
     {:id ::on-composition-bounds-changed,

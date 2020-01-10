@@ -938,6 +938,30 @@
    chromex.error/get-last-error."
   ([enabled] (gen-call :function ::set-metrics-enabled &form enabled)))
 
+(defmacro start-tracing
+  "Starts Chrome tracing.
+
+     |config| - the tracing configuration.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([config] (gen-call :function ::start-tracing &form config)))
+
+(defmacro stop-tracing
+  "Stops Chrome tracing.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [data] where:
+
+     |data| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::stop-tracing &form)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -1375,7 +1399,17 @@
      :name "setMetricsEnabled",
      :since "future",
      :callback? true,
-     :params [{:name "enabled", :type "boolean"} {:name "callback", :type :callback}]}],
+     :params [{:name "enabled", :type "boolean"} {:name "callback", :type :callback}]}
+    {:id ::start-tracing,
+     :name "startTracing",
+     :since "master",
+     :callback? true,
+     :params [{:name "config", :type "object"} {:name "callback", :type :callback}]}
+    {:id ::stop-tracing,
+     :name "stopTracing",
+     :since "master",
+     :callback? true,
+     :params [{:name "complete-callback", :type :callback, :callback {:params [{:name "data", :type "string"}]}}]}],
    :events [{:id ::on-clipboard-data-changed, :name "onClipboardDataChanged", :since "79"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

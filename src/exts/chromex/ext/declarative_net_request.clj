@@ -189,7 +189,7 @@
      :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "[array-of-strings]"}]}}]}
     {:id ::set-action-count-as-badge-text,
      :name "setActionCountAsBadgeText",
-     :since "master",
+     :since "future",
      :params [{:name "enable", :type "boolean"}]}],
    :events
    [{:id ::on-rule-matched-debug,

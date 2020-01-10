@@ -84,7 +84,6 @@
      [{:name "callback", :type :callback, :callback {:params [{:name "printers", :type "[array-of-objects]"}]}}]}
     {:id ::get-printer-info,
      :name "getPrinterInfo",
-     :since "master",
      :callback? true,
      :params
      [{:name "printer-id", :type "string"}

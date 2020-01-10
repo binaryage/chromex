@@ -252,6 +252,12 @@
 (defn set-metrics-enabled* [config enabled]
   (gen-wrap :function ::set-metrics-enabled config enabled))
 
+(defn start-tracing* [config config]
+  (gen-wrap :function ::start-tracing config config))
+
+(defn stop-tracing* [config]
+  (gen-wrap :function ::stop-tracing config))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-clipboard-data-changed* [config channel & args]
