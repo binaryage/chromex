@@ -962,6 +962,18 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::stop-tracing &form)))
 
+(defmacro set-arc-touch-mode
+  "Sends ARC touch mode enabled or disabled.
+
+     |enabled| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([enabled] (gen-call :function ::set-arc-touch-mode &form enabled)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -1409,7 +1421,12 @@
      :name "stopTracing",
      :since "master",
      :callback? true,
-     :params [{:name "complete-callback", :type :callback, :callback {:params [{:name "data", :type "string"}]}}]}],
+     :params [{:name "complete-callback", :type :callback, :callback {:params [{:name "data", :type "string"}]}}]}
+    {:id ::set-arc-touch-mode,
+     :name "setArcTouchMode",
+     :since "master",
+     :callback? true,
+     :params [{:name "enabled", :type "boolean"} {:name "callback", :type :callback}]}],
    :events [{:id ::on-clipboard-data-changed, :name "onClipboardDataChanged", :since "79"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

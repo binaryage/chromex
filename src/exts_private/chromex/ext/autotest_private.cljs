@@ -258,6 +258,9 @@
 (defn stop-tracing* [config]
   (gen-wrap :function ::stop-tracing config))
 
+(defn set-arc-touch-mode* [config enabled]
+  (gen-wrap :function ::set-arc-touch-mode config enabled))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-clipboard-data-changed* [config channel & args]
