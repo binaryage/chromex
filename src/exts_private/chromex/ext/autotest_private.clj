@@ -1223,7 +1223,7 @@
        :callback {:params [{:name "status", :type "autotestPrivate.AssistantQueryStatus"}]}}]}
     {:id ::is-arc-package-list-initial-refreshed,
      :name "isArcPackageListInitialRefreshed",
-     :since "master",
+     :since "future",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "refreshed", :type "boolean"}]}}]}
     {:id ::set-whitelisted-pref,
@@ -1414,12 +1414,12 @@
      :params [{:name "enabled", :type "boolean"} {:name "callback", :type :callback}]}
     {:id ::start-tracing,
      :name "startTracing",
-     :since "master",
+     :since "future",
      :callback? true,
      :params [{:name "config", :type "object"} {:name "callback", :type :callback}]}
     {:id ::stop-tracing,
      :name "stopTracing",
-     :since "master",
+     :since "future",
      :callback? true,
      :params [{:name "complete-callback", :type :callback, :callback {:params [{:name "data", :type "string"}]}}]}
     {:id ::set-arc-touch-mode,
