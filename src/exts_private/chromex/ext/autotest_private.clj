@@ -1424,7 +1424,7 @@
      :params [{:name "complete-callback", :type :callback, :callback {:params [{:name "data", :type "string"}]}}]}
     {:id ::set-arc-touch-mode,
      :name "setArcTouchMode",
-     :since "master",
+     :since "future",
      :callback? true,
      :params [{:name "enabled", :type "boolean"} {:name "callback", :type :callback}]}],
    :events [{:id ::on-clipboard-data-changed, :name "onClipboardDataChanged", :since "79"}]})
