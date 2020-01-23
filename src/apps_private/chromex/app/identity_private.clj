@@ -10,6 +10,15 @@
 (declare api-table)
 (declare gen-call)
 
+; -- functions --------------------------------------------------------------------------------------------------------------
+
+(defmacro set-consent-result
+  "The Identity API application with specified window_id returns the consent result to the browser.
+
+     |result| - ?
+     |window-id| - ?"
+  ([result window-id] (gen-call :function ::set-consent-result &form result window-id)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -40,6 +49,11 @@
 (def api-table
   {:namespace "chrome.identityPrivate",
    :since "33",
+   :functions
+   [{:id ::set-consent-result,
+     :name "setConsentResult",
+     :since "master",
+     :params [{:name "result", :type "string"} {:name "window-id", :type "string"}]}],
    :events
    [{:id ::on-web-flow-request,
      :name "onWebFlowRequest",

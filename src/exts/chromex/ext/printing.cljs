@@ -3,6 +3,9 @@
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
+(defn submit-job* [config request]
+  (gen-wrap :function ::submit-job config request))
+
 (defn get-printers* [config]
   (gen-wrap :function ::get-printers config))
 

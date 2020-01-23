@@ -14,6 +14,22 @@
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
+(defmacro submit-job
+  "Submits the job for print.
+
+     |request| - https://developer.chrome.com/extensions/printing#property-submitJob-request.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [response] where:
+
+     |response| - https://developer.chrome.com/extensions/printing#property-callback-response.
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/extensions/printing#method-submitJob."
+  ([request] (gen-call :function ::submit-job &form request)))
+
 (defmacro get-printers
   "Returns the list of available printers on the device. This includes manually added, enterprise and discovered printers.
 
@@ -77,7 +93,14 @@
   {:namespace "chrome.printing",
    :since "81",
    :functions
-   [{:id ::get-printers,
+   [{:id ::submit-job,
+     :name "submitJob",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "request", :type "object"}
+      {:name "callback", :type :callback, :callback {:params [{:name "response", :type "object"}]}}]}
+    {:id ::get-printers,
      :name "getPrinters",
      :callback? true,
      :params

@@ -44,7 +44,7 @@
 
 ### API stats
 
-Generated 36 namespaces containing 0 properties, 327 functions and 69 events:
+Generated 36 namespaces containing 0 properties, 328 functions and 69 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -63,7 +63,7 @@ Generated 36 namespaces containing 0 properties, 327 functions and 69 events:
     |             chrome.echoPrivate |           0 |          5 |       0 |
     |         chrome.feedbackPrivate |           0 |          6 |       1 |
     |      chrome.fileManagerPrivate |           0 |         58 |      10 |
-    |         chrome.identityPrivate |           0 |          0 |       1 |
+    |         chrome.identityPrivate |           0 |          1 |       1 |
     |      chrome.imageWriterPrivate |           0 |          5 |       5 |
     |      chrome.inputMethodPrivate |           0 |         19 |      10 |
     | chrome.languageSettingsPrivate |           0 |         14 |       4 |
@@ -171,7 +171,7 @@ Generated 36 namespaces containing 0 properties, 327 functions and 69 events:
       tap-on-drive-sync-error tap-on-apps-updated tap-on-crostini-changed tap-all-events]]
 
     [chromex.app.identity-private refer:[
-      tap-on-web-flow-request tap-all-events]]
+      set-consent-result tap-on-web-flow-request tap-all-events]]
 
     [chromex.app.image-writer-private refer:[
       write-from-url write-from-file cancel-write destroy-partitions list-removable-storage-devices
