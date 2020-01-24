@@ -587,6 +587,7 @@
   "Gets recently modified files across file systems. |restriction| Flag to restrict sources of recent files. |callback
 
      |restriction| - ?
+     |file-type| - ?
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [entries] where:
@@ -595,7 +596,7 @@
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([restriction] (gen-call :function ::get-recent-files &form restriction)))
+  ([restriction file-type] (gen-call :function ::get-recent-files &form restriction file-type)))
 
 (defmacro mount-crostini
   "Starts and mounts crostini container. |callback
@@ -1115,6 +1116,7 @@
      :callback? true,
      :params
      [{:name "restriction", :type "unknown-type"}
+      {:name "file-type", :since "master", :type "unknown-type"}
       {:name "callback", :type :callback, :callback {:params [{:name "entries", :type "[array-of-Entrys]"}]}}]}
     {:id ::mount-crostini,
      :name "mountCrostini",

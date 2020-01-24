@@ -89,7 +89,7 @@
 
 ### API stats
 
-Generated 81 namespaces containing 53 properties, 394 functions and 181 events:
+Generated 81 namespaces containing 53 properties, 395 functions and 181 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -150,7 +150,7 @@ Generated 81 namespaces containing 53 properties, 394 functions and 181 events:
     |                   chrome.platformKeys |           0 |          4 |       0 |
     |                          chrome.power |           0 |          2 |       0 |
     |                chrome.printerProvider |           0 |          0 |       4 |
-    |                       chrome.printing |           0 |          3 |       1 |
+    |                       chrome.printing |           0 |          4 |       1 |
     |                chrome.printingMetrics |           0 |          1 |       1 |
     |                        chrome.privacy |           3 |          0 |       0 |
     |                      chrome.processes |           0 |          3 |       5 |
@@ -403,7 +403,7 @@ Generated 81 namespaces containing 53 properties, 394 functions and 181 events:
       tap-on-print-requested tap-all-events]]
 
     [chromex.ext.printing refer:[
-      submit-job get-printers get-printer-info tap-on-job-status-changed tap-all-events]]
+      submit-job cancel-job get-printers get-printer-info tap-on-job-status-changed tap-all-events]]
 
     [chromex.ext.printing-metrics refer:[
       get-print-jobs tap-on-print-job-finished tap-all-events]]

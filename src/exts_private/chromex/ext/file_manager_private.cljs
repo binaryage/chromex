@@ -141,8 +141,8 @@
 (defn get-directory-size* [config entry]
   (gen-wrap :function ::get-directory-size config entry))
 
-(defn get-recent-files* [config restriction]
-  (gen-wrap :function ::get-recent-files config restriction))
+(defn get-recent-files* [config restriction file-type]
+  (gen-wrap :function ::get-recent-files config restriction file-type))
 
 (defn mount-crostini* [config]
   (gen-wrap :function ::mount-crostini config))

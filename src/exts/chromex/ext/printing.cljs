@@ -6,6 +6,9 @@
 (defn submit-job* [config request]
   (gen-wrap :function ::submit-job config request))
 
+(defn cancel-job* [config job-id]
+  (gen-wrap :function ::cancel-job config job-id))
+
 (defn get-printers* [config]
   (gen-wrap :function ::get-printers config))
 

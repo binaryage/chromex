@@ -30,6 +30,20 @@
    https://developer.chrome.com/extensions/printing#method-submitJob."
   ([request] (gen-call :function ::submit-job &form request)))
 
+(defmacro cancel-job
+  "Cancels previously submitted job.
+
+     |job-id| - The id of the print job to cancel. This should be the same id received in a 'SubmitJobResponse'.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/extensions/printing#method-cancelJob."
+  ([job-id] (gen-call :function ::cancel-job &form job-id)))
+
 (defmacro get-printers
   "Returns the list of available printers on the device. This includes manually added, enterprise and discovered printers.
 
@@ -100,6 +114,11 @@
      :params
      [{:name "request", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "response", :type "object"}]}}]}
+    {:id ::cancel-job,
+     :name "cancelJob",
+     :since "master",
+     :callback? true,
+     :params [{:name "job-id", :type "string"} {:name "callback", :type :callback}]}
     {:id ::get-printers,
      :name "getPrinters",
      :callback? true,
