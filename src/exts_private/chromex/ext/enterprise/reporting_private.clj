@@ -66,7 +66,8 @@
   ([id] (gen-call :function ::get-device-data &form id)))
 
 (defmacro set-device-data
-  "Sets the device data for |id|. Sets runtime.lastError on failure.
+  "Sets the device data for |id|. Sets runtime.lastError on failure. If the |data| parameter is undefined and there is already
+   data associated with |id| it will be cleared.
 
      |id| - ?
      |data| - ?
@@ -76,7 +77,8 @@
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([id data] (gen-call :function ::set-device-data &form id data)))
+  ([id data] (gen-call :function ::set-device-data &form id data))
+  ([id] `(set-device-data ~id :omit)))
 
 (defmacro get-device-info
   "Gets the device information (including disk encryption status, screen lock status, serial number, model).
@@ -133,7 +135,7 @@
      :callback? true,
      :params
      [{:name "id", :type "string"}
-      {:name "data", :type "ArrayBuffer"}
+      {:name "data", :optional? true, :type "ArrayBuffer"}
       {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-device-info,
      :name "getDeviceInfo",
