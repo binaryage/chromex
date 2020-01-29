@@ -1116,7 +1116,7 @@
      :callback? true,
      :params
      [{:name "restriction", :type "unknown-type"}
-      {:name "file-type", :since "master", :type "unknown-type"}
+      {:name "file-type", :since "future", :type "unknown-type"}
       {:name "callback", :type :callback, :callback {:params [{:name "entries", :type "[array-of-Entrys]"}]}}]}
     {:id ::mount-crostini,
      :name "mountCrostini",

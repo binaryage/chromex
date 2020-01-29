@@ -3,9 +3,6 @@
 
 ; -- properties -------------------------------------------------------------------------------------------------------------
 
-(defn max-number-of-allowed-pages* [config]
-  (gen-wrap :property ::max-number-of-allowed-pages config))
-
 (defn max-number-of-rules* [config]
   (gen-wrap :property ::max-number-of-rules config))
 
@@ -19,15 +16,6 @@
 
 (defn get-dynamic-rules* [config]
   (gen-wrap :function ::get-dynamic-rules config))
-
-(defn add-allowed-pages* [config page-patterns]
-  (gen-wrap :function ::add-allowed-pages config page-patterns))
-
-(defn remove-allowed-pages* [config page-patterns]
-  (gen-wrap :function ::remove-allowed-pages config page-patterns))
-
-(defn get-allowed-pages* [config]
-  (gen-wrap :function ::get-allowed-pages config))
 
 (defn set-action-count-as-badge-text* [config enable]
   (gen-wrap :function ::set-action-count-as-badge-text config enable))

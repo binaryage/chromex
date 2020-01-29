@@ -14,12 +14,6 @@
 
 ; -- properties -------------------------------------------------------------------------------------------------------------
 
-(defmacro get-max-number-of-allowed-pages
-  "The maximum number of allowed pages that an extension can add.
-
-   https://developer.chrome.com/extensions/declarativeNetRequest#property-MAX_NUMBER_OF_ALLOWED_PAGES."
-  ([] (gen-call :property ::max-number-of-allowed-pages &form)))
-
 (defmacro get-max-number-of-rules
   "The maximum number of rules that an extension can specify in the rule resources file. Any excess rules will be ignored and
    an install warning will be raised.
@@ -69,51 +63,6 @@
    https://developer.chrome.com/extensions/declarativeNetRequest#method-getDynamicRules."
   ([] (gen-call :function ::get-dynamic-rules &form)))
 
-(defmacro add-allowed-pages
-  "Adds page_patterns to the set of allowed pages. Requests from these pages are not intercepted by the extension. These are
-   persisted across browser sessions. Note:  MAX_NUMBER_OF_ALLOWED_PAGES is the maximum number of allowed page an extension
-   can add. Also, adding page patterns is atomic. In case of an error, no page pattern is added.
-
-     |page-patterns| - Array of match patterns which are to be allowed.
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [].
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error.
-
-   https://developer.chrome.com/extensions/declarativeNetRequest#method-addAllowedPages."
-  ([page-patterns] (gen-call :function ::add-allowed-pages &form page-patterns)))
-
-(defmacro remove-allowed-pages
-  "Removes page_patterns from the set of allowed pages. Note: Removing page patterns is atomic. In case of an error, no page
-   pattern is removed.
-
-     |page-patterns| - Array of match patterns which are to be removed.
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [].
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error.
-
-   https://developer.chrome.com/extensions/declarativeNetRequest#method-removeAllowedPages."
-  ([page-patterns] (gen-call :function ::remove-allowed-pages &form page-patterns)))
-
-(defmacro get-allowed-pages
-  "Returns the current set of allowed pages.
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [result] where:
-
-     |result| - https://developer.chrome.com/extensions/declarativeNetRequest#property-callback-result.
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error.
-
-   https://developer.chrome.com/extensions/declarativeNetRequest#method-getAllowedPages."
-  ([] (gen-call :function ::get-allowed-pages &form)))
-
 (defmacro set-action-count-as-badge-text
   "Sets whether to automatically badge extension's icon to the matched action count for a tab. This preference is persisted
    across sessions and is false by default.
@@ -155,8 +104,7 @@
   {:namespace "chrome.declarativeNetRequest",
    :since "80",
    :properties
-   [{:id ::max-number-of-allowed-pages, :name "MAX_NUMBER_OF_ALLOWED_PAGES", :return-type "unknown-type"}
-    {:id ::max-number-of-rules, :name "MAX_NUMBER_OF_RULES", :return-type "unknown-type"}
+   [{:id ::max-number-of-rules, :name "MAX_NUMBER_OF_RULES", :return-type "unknown-type"}
     {:id ::max-number-of-dynamic-rules, :name "MAX_NUMBER_OF_DYNAMIC_RULES", :return-type "unknown-type"}],
    :functions
    [{:id ::update-dynamic-rules,
@@ -173,20 +121,6 @@
      [{:name "callback",
        :type :callback,
        :callback {:params [{:name "rules", :type "[array-of-declarativeNetRequest.Rules]"}]}}]}
-    {:id ::add-allowed-pages,
-     :name "addAllowedPages",
-     :callback? true,
-     :params
-     [{:name "page-patterns", :type "[array-of-strings]"} {:name "callback", :optional? true, :type :callback}]}
-    {:id ::remove-allowed-pages,
-     :name "removeAllowedPages",
-     :callback? true,
-     :params
-     [{:name "page-patterns", :type "[array-of-strings]"} {:name "callback", :optional? true, :type :callback}]}
-    {:id ::get-allowed-pages,
-     :name "getAllowedPages",
-     :callback? true,
-     :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "[array-of-strings]"}]}}]}
     {:id ::set-action-count-as-badge-text,
      :name "setActionCountAsBadgeText",
      :since "future",

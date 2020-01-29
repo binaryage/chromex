@@ -109,14 +109,12 @@
    :functions
    [{:id ::submit-job,
      :name "submitJob",
-     :since "master",
      :callback? true,
      :params
      [{:name "request", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "response", :type "object"}]}}]}
     {:id ::cancel-job,
      :name "cancelJob",
-     :since "master",
      :callback? true,
      :params [{:name "job-id", :type "string"} {:name "callback", :type :callback}]}
     {:id ::get-printers,
