@@ -12,6 +12,20 @@
 (declare api-table)
 (declare gen-call)
 
+; -- properties -------------------------------------------------------------------------------------------------------------
+
+(defmacro get-max-submit-job-calls-per-minute
+  "The maximum number of times that 'submitJob' can be called per minute.
+
+   https://developer.chrome.com/extensions/printing#property-MAX_SUBMIT_JOB_CALLS_PER_MINUTE."
+  ([] (gen-call :property ::max-submit-job-calls-per-minute &form)))
+
+(defmacro get-max-get-printer-info-calls-per-minute
+  "The maximum number of times that 'getPrinterInfo' can be called per minute.
+
+   https://developer.chrome.com/extensions/printing#property-MAX_GET_PRINTER_INFO_CALLS_PER_MINUTE."
+  ([] (gen-call :property ::max-get-printer-info-calls-per-minute &form)))
+
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro submit-job
@@ -106,6 +120,15 @@
 (def api-table
   {:namespace "chrome.printing",
    :since "81",
+   :properties
+   [{:id ::max-submit-job-calls-per-minute,
+     :name "MAX_SUBMIT_JOB_CALLS_PER_MINUTE",
+     :since "master",
+     :return-type "unknown-type"}
+    {:id ::max-get-printer-info-calls-per-minute,
+     :name "MAX_GET_PRINTER_INFO_CALLS_PER_MINUTE",
+     :since "master",
+     :return-type "unknown-type"}],
    :functions
    [{:id ::submit-job,
      :name "submitJob",

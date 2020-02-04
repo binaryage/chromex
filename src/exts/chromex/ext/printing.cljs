@@ -1,6 +1,14 @@
 (ns chromex.ext.printing (:require-macros [chromex.ext.printing :refer [gen-wrap]])
     (:require [chromex.core]))
 
+; -- properties -------------------------------------------------------------------------------------------------------------
+
+(defn max-submit-job-calls-per-minute* [config]
+  (gen-wrap :property ::max-submit-job-calls-per-minute config))
+
+(defn max-get-printer-info-calls-per-minute* [config]
+  (gen-wrap :property ::max-get-printer-info-calls-per-minute config))
+
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn submit-job* [config request]

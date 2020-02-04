@@ -89,7 +89,7 @@
 
 ### API stats
 
-Generated 81 namespaces containing 52 properties, 392 functions and 181 events:
+Generated 81 namespaces containing 56 properties, 393 functions and 181 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -114,7 +114,7 @@ Generated 81 namespaces containing 52 properties, 392 functions and 181 events:
     |                        chrome.cookies |           0 |          5 |       1 |
     |                       chrome.debugger |           0 |          4 |       2 |
     |             chrome.declarativeContent |           0 |          0 |       1 |
-    |          chrome.declarativeNetRequest |           2 |          3 |       1 |
+    |          chrome.declarativeNetRequest |           4 |          4 |       1 |
     |          chrome.declarativeWebRequest |           0 |          0 |       2 |
     |                 chrome.desktopCapture |           0 |          2 |       0 |
     |       chrome.devtools.inspectedWindow |           1 |          3 |       2 |
@@ -150,7 +150,7 @@ Generated 81 namespaces containing 52 properties, 392 functions and 181 events:
     |                   chrome.platformKeys |           0 |          4 |       0 |
     |                          chrome.power |           0 |          2 |       0 |
     |                chrome.printerProvider |           0 |          0 |       4 |
-    |                       chrome.printing |           0 |          4 |       1 |
+    |                       chrome.printing |           2 |          4 |       1 |
     |                chrome.printingMetrics |           0 |          1 |       1 |
     |                        chrome.privacy |           3 |          0 |       0 |
     |                      chrome.processes |           0 |          3 |       5 |
@@ -258,7 +258,8 @@ Generated 81 namespaces containing 52 properties, 392 functions and 181 events:
       tap-on-page-changed tap-all-events]]
 
     [chromex.ext.declarative-net-request refer:[
-      get-max-number-of-rules get-max-number-of-dynamic-rules update-dynamic-rules get-dynamic-rules
+      get-max-number-of-rules get-max-number-of-dynamic-rules get-getmatchedrules-quota-interval
+      get-max-getmatchedrules-calls-per-interval update-dynamic-rules get-dynamic-rules get-matched-rules
       set-action-count-as-badge-text tap-on-rule-matched-debug tap-all-events]]
 
     [chromex.ext.declarative-web-request refer:[
@@ -402,7 +403,8 @@ Generated 81 namespaces containing 52 properties, 392 functions and 181 events:
       tap-on-print-requested tap-all-events]]
 
     [chromex.ext.printing refer:[
-      submit-job cancel-job get-printers get-printer-info tap-on-job-status-changed tap-all-events]]
+      get-max-submit-job-calls-per-minute get-max-get-printer-info-calls-per-minute submit-job cancel-job
+      get-printers get-printer-info tap-on-job-status-changed tap-all-events]]
 
     [chromex.ext.printing-metrics refer:[
       get-print-jobs tap-on-print-job-finished tap-all-events]]

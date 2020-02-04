@@ -27,6 +27,19 @@
    https://developer.chrome.com/extensions/declarativeNetRequest#property-MAX_NUMBER_OF_DYNAMIC_RULES."
   ([] (gen-call :property ::max-number-of-dynamic-rules &form)))
 
+(defmacro get-getmatchedrules-quota-interval
+  "Time interval within which MAX_GETMATCHEDRULES_CALLS_PER_INTERVAL getMatchedRules calls can be made, specified in minutes.
+   Additional calls will fail immediately and set 'runtime.lastError'.
+
+   https://developer.chrome.com/extensions/declarativeNetRequest#property-GETMATCHEDRULES_QUOTA_INTERVAL."
+  ([] (gen-call :property ::getmatchedrules-quota-interval &form)))
+
+(defmacro get-max-getmatchedrules-calls-per-interval
+  "The number of times getMatchedRules can be called within a period of GETMATCHEDRULES_QUOTA_INTERVAL.
+
+   https://developer.chrome.com/extensions/declarativeNetRequest#property-MAX_GETMATCHEDRULES_CALLS_PER_INTERVAL."
+  ([] (gen-call :property ::max-getmatchedrules-calls-per-interval &form)))
+
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro update-dynamic-rules
@@ -63,6 +76,26 @@
    https://developer.chrome.com/extensions/declarativeNetRequest#method-getDynamicRules."
   ([] (gen-call :function ::get-dynamic-rules &form)))
 
+(defmacro get-matched-rules
+  "Returns all rules matched for the extension. Callers can optionally filter the list of matched rules by specifying a
+   |filter|. This method is only available to extensions with the declarativeNetRequestFeedback permission or having the
+   activeTab permission granted for the tabId specified in filter. Note: Rules not associated with an active document that
+   were matched more than five minutes ago will not be returned.
+
+     |filter| - An object to filter the list of matched rules.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [details] where:
+
+     |details| - https://developer.chrome.com/extensions/declarativeNetRequest#property-callback-details.
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/extensions/declarativeNetRequest#method-getMatchedRules."
+  ([filter] (gen-call :function ::get-matched-rules &form filter))
+  ([] `(get-matched-rules :omit)))
+
 (defmacro set-action-count-as-badge-text
   "Sets whether to automatically badge extension's icon to the matched action count for a tab. This preference is persisted
    across sessions and is false by default.
@@ -77,8 +110,8 @@
 ; docs: https://github.com/binaryage/chromex/#tapping-events
 
 (defmacro tap-on-rule-matched-debug-events
-  "Fired when a rule is matched with a request. Only available for unpacked extensions as this is intended to be used for
-   debugging purposes only.
+  "Fired when a rule is matched with a request. Only available for unpacked extensions with the declarativeNetRequestFeedback
+   permission as this is intended to be used for debugging purposes only.
 
    Events will be put on the |channel| with signature [::on-rule-matched-debug [matched-rule-info]] where:
 
@@ -105,7 +138,15 @@
    :since "80",
    :properties
    [{:id ::max-number-of-rules, :name "MAX_NUMBER_OF_RULES", :return-type "unknown-type"}
-    {:id ::max-number-of-dynamic-rules, :name "MAX_NUMBER_OF_DYNAMIC_RULES", :return-type "unknown-type"}],
+    {:id ::max-number-of-dynamic-rules, :name "MAX_NUMBER_OF_DYNAMIC_RULES", :return-type "unknown-type"}
+    {:id ::getmatchedrules-quota-interval,
+     :name "GETMATCHEDRULES_QUOTA_INTERVAL",
+     :since "master",
+     :return-type "unknown-type"}
+    {:id ::max-getmatchedrules-calls-per-interval,
+     :name "MAX_GETMATCHEDRULES_CALLS_PER_INTERVAL",
+     :since "master",
+     :return-type "unknown-type"}],
    :functions
    [{:id ::update-dynamic-rules,
      :name "updateDynamicRules",
@@ -121,6 +162,13 @@
      [{:name "callback",
        :type :callback,
        :callback {:params [{:name "rules", :type "[array-of-declarativeNetRequest.Rules]"}]}}]}
+    {:id ::get-matched-rules,
+     :name "getMatchedRules",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "filter", :optional? true, :type "object"}
+      {:name "callback", :type :callback, :callback {:params [{:name "details", :type "object"}]}}]}
     {:id ::set-action-count-as-badge-text,
      :name "setActionCountAsBadgeText",
      :since "future",

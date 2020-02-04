@@ -6,6 +6,7 @@
 | --- | --- |
 | [chrome.accessibilityPrivate](https://developer.chrome.com/extensions/accessibilityPrivate) | [chromex/ext/accessibility_private.clj](chromex/ext/accessibility_private.clj) |
 | [chrome.activityLogPrivate](https://developer.chrome.com/extensions/activityLogPrivate) | [chromex/ext/activity_log_private.clj](chromex/ext/activity_log_private.clj) |
+| [chrome.autofillAssistantPrivate](https://developer.chrome.com/extensions/autofillAssistantPrivate) | [chromex/ext/autofill_assistant_private.clj](chromex/ext/autofill_assistant_private.clj) |
 | [chrome.autofillPrivate](https://developer.chrome.com/extensions/autofillPrivate) | [chromex/ext/autofill_private.clj](chromex/ext/autofill_private.clj) |
 | [chrome.autotestPrivate](https://developer.chrome.com/extensions/autotestPrivate) | [chromex/ext/autotest_private.clj](chromex/ext/autotest_private.clj) |
 | [chrome.bluetoothPrivate](https://developer.chrome.com/extensions/bluetoothPrivate) | [chromex/ext/bluetooth_private.clj](chromex/ext/bluetooth_private.clj) |
@@ -48,13 +49,14 @@
 
 ### API stats
 
-Generated 40 namespaces containing 0 properties, 440 functions and 73 events:
+Generated 41 namespaces containing 0 properties, 444 functions and 75 events:
 
 
     |                            :namespace | :properties | :functions | :events |
     |---------------------------------------+-------------+------------+---------|
     |           chrome.accessibilityPrivate |           0 |         18 |       8 |
     |             chrome.activityLogPrivate |           0 |          5 |       1 |
+    |       chrome.autofillAssistantPrivate |           0 |          4 |       2 |
     |                chrome.autofillPrivate |           0 |         12 |       1 |
     |                chrome.autotestPrivate |           0 |         86 |       1 |
     |               chrome.bluetoothPrivate |           0 |         10 |       1 |
@@ -113,6 +115,10 @@ Generated 40 namespaces containing 0 properties, 440 functions and 73 events:
     [chromex.ext.activity-log-private refer:[
       get-extension-activities delete-activities delete-activities-by-extension delete-database
       delete-urls tap-on-extension-activity tap-all-events]]
+
+    [chromex.ext.autofill-assistant-private refer:[
+      create start perform-action provide-user-data tap-on-status-message-changed tap-on-actions-changed
+      tap-all-events]]
 
     [chromex.ext.autofill-private refer:[
       save-address get-country-list get-address-components get-address-list save-credit-card remove-entry
