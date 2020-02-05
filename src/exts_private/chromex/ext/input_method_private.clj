@@ -397,12 +397,12 @@
      :params [{:name "xkb-name", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::finish-composing-text,
      :name "finishComposingText",
-     :since "future",
+     :since "80",
      :callback? true,
      :params [{:name "parameters", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::set-selection-range,
      :name "setSelectionRange",
-     :since "future",
+     :since "80",
      :callback? true,
      :params
      [{:name "parameters", :type "object"}

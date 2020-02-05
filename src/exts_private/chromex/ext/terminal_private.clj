@@ -195,17 +195,17 @@
      :params [{:name "tab-id", :type "integer"} {:name "id", :since "74", :type "string"}]}
     {:id ::get-crosh-settings,
      :name "getCroshSettings",
-     :since "future",
+     :since "80",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "settings", :type "object"}]}}]}
     {:id ::get-settings,
      :name "getSettings",
-     :since "future",
+     :since "80",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "settings", :type "object"}]}}]}
     {:id ::set-settings,
      :name "setSettings",
-     :since "future",
+     :since "80",
      :callback? true,
      :params [{:name "settings", :type "object"} {:name "callback", :type :callback}]}],
    :events
@@ -215,10 +215,7 @@
      [{:name "id", :since "74", :type "string"}
       {:name "type", :type "terminalPrivate.OutputType"}
       {:name "text", :type "string"}]}
-    {:id ::on-settings-changed,
-     :name "onSettingsChanged",
-     :since "future",
-     :params [{:name "settings", :type "object"}]}]})
+    {:id ::on-settings-changed, :name "onSettingsChanged", :since "80", :params [{:name "settings", :type "object"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

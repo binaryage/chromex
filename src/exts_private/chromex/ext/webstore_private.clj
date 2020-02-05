@@ -301,7 +301,7 @@
      :params [{:name "callback", :type :callback, :callback {:params [{:name "referrer-chain", :type "string"}]}}]}
     {:id ::get-extension-status,
      :name "getExtensionStatus",
-     :since "future",
+     :since "80",
      :callback? true,
      :params
      [{:name "id", :type "string"}
@@ -310,7 +310,7 @@
        :callback {:params [{:name "status", :type "webstorePrivate.ExtensionInstallStatus"}]}}]}
     {:id ::request-extension,
      :name "requestExtension",
-     :since "future",
+     :since "80",
      :callback? true,
      :params
      [{:name "id", :type "string"}

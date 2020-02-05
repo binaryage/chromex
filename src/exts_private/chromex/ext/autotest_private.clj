@@ -1021,7 +1021,7 @@
      :params [{:name "callback", :type :callback, :callback {:params [{:name "all-policies", :type "any"}]}}]}
     {:id ::refresh-enterprise-policies,
      :name "refreshEnterprisePolicies",
-     :since "future",
+     :since "80",
      :callback? true,
      :params [{:name "callback", :type :callback}]}
     {:id ::simulate-asan-memory-bug, :name "simulateAsanMemoryBug"}
@@ -1163,7 +1163,7 @@
      :params [{:name "path", :type "string"} {:name "callback", :type :callback}]}
     {:id ::install-plugin-vm,
      :name "installPluginVM",
-     :since "future",
+     :since "80",
      :callback? true,
      :params
      [{:name "image-url", :type "string"}
@@ -1199,7 +1199,7 @@
      [{:name "enabled", :type "boolean"} {:name "timeout-ms", :type "integer"} {:name "callback", :type :callback}]}
     {:id ::enable-assistant-and-wait-for-ready,
      :name "enableAssistantAndWaitForReady",
-     :since "future",
+     :since "80",
      :callback? true,
      :params [{:name "callback", :type :callback}]}
     {:id ::send-assistant-text-query,
@@ -1331,13 +1331,13 @@
       {:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::get-app-window-list,
      :name "getAppWindowList",
-     :since "future",
+     :since "80",
      :callback? true,
      :params
      [{:name "callback", :type :callback, :callback {:params [{:name "window-list", :type "[array-of-objects]"}]}}]}
     {:id ::set-app-window-state,
      :name "setAppWindowState",
-     :since "future",
+     :since "80",
      :callback? true,
      :params
      [{:name "id", :type "integer"}
@@ -1347,69 +1347,69 @@
        :callback {:params [{:name "current-type", :type "autotestPrivate.WindowStateType"}]}}]}
     {:id ::close-app-window,
      :name "closeAppWindow",
-     :since "future",
+     :since "80",
      :callback? true,
      :params [{:name "id", :type "integer"} {:name "callback", :type :callback}]}
     {:id ::install-pwa-for-current-url,
      :name "installPWAForCurrentURL",
-     :since "future",
+     :since "80",
      :callback? true,
      :params
      [{:name "timeout-ms", :type "integer"}
       {:name "callback", :type :callback, :callback {:params [{:name "app-id", :type "string"}]}}]}
     {:id ::activate-accelerator,
      :name "activateAccelerator",
-     :since "future",
+     :since "80",
      :callback? true,
      :params
      [{:name "accelerator", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::wait-for-launcher-state,
      :name "waitForLauncherState",
-     :since "future",
+     :since "80",
      :callback? true,
      :params [{:name "launcher-state", :type "unknown-type"} {:name "callback", :type :callback}]}
     {:id ::create-new-desk,
      :name "createNewDesk",
-     :since "future",
+     :since "80",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::activate-desk-at-index,
      :name "activateDeskAtIndex",
-     :since "future",
+     :since "80",
      :callback? true,
      :params
      [{:name "index", :type "integer"}
       {:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::remove-active-desk,
      :name "removeActiveDesk",
-     :since "future",
+     :since "80",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::mouse-click,
      :name "mouseClick",
-     :since "future",
+     :since "80",
      :callback? true,
      :params [{:name "button", :type "autotestPrivate.MouseButton"} {:name "callback", :type :callback}]}
     {:id ::mouse-press,
      :name "mousePress",
-     :since "future",
+     :since "80",
      :callback? true,
      :params [{:name "button", :type "autotestPrivate.MouseButton"} {:name "callback", :type :callback}]}
     {:id ::mouse-release,
      :name "mouseRelease",
-     :since "future",
+     :since "80",
      :callback? true,
      :params [{:name "button", :type "autotestPrivate.MouseButton"} {:name "callback", :type :callback}]}
     {:id ::mouse-move,
      :name "mouseMove",
-     :since "future",
+     :since "80",
      :callback? true,
      :params
      [{:name "location", :type "object"} {:name "duration-in-ms", :type "double"} {:name "callback", :type :callback}]}
     {:id ::set-metrics-enabled,
      :name "setMetricsEnabled",
-     :since "future",
+     :since "80",
      :callback? true,
      :params [{:name "enabled", :type "boolean"} {:name "callback", :type :callback}]}
     {:id ::start-tracing,

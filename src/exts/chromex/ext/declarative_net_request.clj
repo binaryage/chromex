@@ -177,7 +177,7 @@
    [{:id ::on-rule-matched-debug,
      :name "onRuleMatchedDebug",
      :since "80",
-     :params [{:name "matched-rule-info", :since "future", :type "object"}]}]})
+     :params [{:name "matched-rule-info", :since "80", :type "object"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
