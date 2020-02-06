@@ -3,7 +3,7 @@
    to events in the app or extension lifecycle. You can also use this API to convert the relative path of URLs to
    fully-qualified URLs.
 
-     * available since Chrome 33
+     * available since Chrome 34
      * https://developer.chrome.com/extensions/runtime"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -406,7 +406,7 @@
 
 (def api-table
   {:namespace "chrome.runtime",
-   :since "33",
+   :since "34",
    :properties
    [{:id ::last-error, :name "lastError", :return-type "object"} {:id ::id, :name "id", :return-type "string"}],
    :functions
@@ -496,7 +496,7 @@
     {:id ::on-update-available, :name "onUpdateAvailable", :params [{:name "details", :type "object"}]}
     {:id ::on-browser-update-available,
      :name "onBrowserUpdateAvailable",
-     :since "33",
+     :since "34",
      :deprecated "Please use 'runtime.onRestartRequired'."}
     {:id ::on-connect, :name "onConnect", :params [{:name "port", :type "runtime.Port"}]}
     {:id ::on-connect-external, :name "onConnectExternal", :params [{:name "port", :type "runtime.Port"}]}

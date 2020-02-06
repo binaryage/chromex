@@ -1,5 +1,5 @@
 (ns chromex.ext.enterprise.platform-keys-private
-  "  * available since Chrome 33"
+  "  * available since Chrome 34"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -52,7 +52,7 @@
 
 (def api-table
   {:namespace "chrome.enterprise.platformKeysPrivate",
-   :since "33",
+   :since "34",
    :functions
    [{:id ::challenge-machine-key,
      :name "challengeMachineKey",

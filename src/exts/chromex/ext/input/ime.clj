@@ -2,7 +2,7 @@
   "Use the chrome.input.ime API to implement a custom IME for Chrome OS. This allows your extension to handle keystrokes, set
    the composition, and manage the candidate window.
 
-     * available since Chrome 33
+     * available since Chrome 34
      * https://developer.chrome.com/extensions/input.ime"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -420,7 +420,7 @@
 
 (def api-table
   {:namespace "chrome.input.ime",
-   :since "33",
+   :since "34",
    :functions
    [{:id ::set-composition,
      :name "setComposition",
@@ -444,7 +444,7 @@
      :name "sendKeyEvents",
      :callback? true,
      :params [{:name "parameters", :type "object"} {:name "callback", :optional? true, :type :callback}]}
-    {:id ::hide-input-view, :name "hideInputView", :since "34"}
+    {:id ::hide-input-view, :name "hideInputView"}
     {:id ::set-candidate-window-properties,
      :name "setCandidateWindowProperties",
      :callback? true,

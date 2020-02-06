@@ -38,3 +38,6 @@
 (defn on-pairing* [config channel & args]
   (gen-wrap :event ::on-pairing config channel args))
 
+(defn on-device-address-changed* [config channel & args]
+  (gen-wrap :event ::on-device-address-changed config channel args))
+

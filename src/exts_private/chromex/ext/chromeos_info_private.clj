@@ -1,5 +1,5 @@
 (ns chromex.ext.chromeos-info-private
-  "  * available since Chrome 33"
+  "  * available since Chrome 34"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -45,7 +45,7 @@
 
 (def api-table
   {:namespace "chrome.chromeosInfoPrivate",
-   :since "33",
+   :since "34",
    :functions
    [{:id ::get,
      :name "get",
@@ -56,8 +56,7 @@
     {:id ::set,
      :name "set",
      :params
-     [{:name "property-name", :type "chromeosInfoPrivate.PropertyName"}
-      {:name "property-value", :since "34", :type "any"}]}]})
+     [{:name "property-name", :type "chromeosInfoPrivate.PropertyName"} {:name "property-value", :type "any"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

@@ -3,7 +3,7 @@
    page, evaluate the code in the context of the inspected window, reload the page, or obtain the list of resources within
    the page.
 
-     * available since Chrome 33
+     * available since Chrome 34
      * https://developer.chrome.com/extensions/devtools.inspectedWindow"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -113,7 +113,7 @@
 
 (def api-table
   {:namespace "chrome.devtools.inspectedWindow",
-   :since "33",
+   :since "34",
    :properties [{:id ::tab-id, :name "tabId", :return-type "integer"}],
    :functions
    [{:id ::eval,

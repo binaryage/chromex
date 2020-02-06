@@ -1,5 +1,5 @@
 (ns chromex.ext.virtual-keyboard-private
-  "  * available since Chrome 33"
+  "  * available since Chrome 34"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -175,7 +175,7 @@
 
 (def api-table
   {:namespace "chrome.virtualKeyboardPrivate",
-   :since "33",
+   :since "34",
    :functions
    [{:id ::insert-text,
      :name "insertText",
@@ -199,7 +199,6 @@
      :params [{:name "callback", :optional? true, :type :callback}]}
     {:id ::get-keyboard-config,
      :name "getKeyboardConfig",
-     :since "34",
      :callback? true,
      :params
      [{:name "callback",

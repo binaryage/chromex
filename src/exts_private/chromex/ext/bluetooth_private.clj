@@ -135,6 +135,17 @@
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-pairing &form channel args)))
 
+(defmacro tap-on-device-address-changed-events
+  "Fired when a Bluetooth device changed its address.
+
+   Events will be put on the |channel| with signature [::on-device-address-changed [device old-address]] where:
+
+     |device| - ?
+     |old-address| - ?
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-device-address-changed &form channel args)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -203,7 +214,12 @@
      [{:name "selection-duration-ms", :type "integer"}
       {:name "was-paired", :type "boolean"}
       {:name "transport", :type "bluetooth.Transport"}]}],
-   :events [{:id ::on-pairing, :name "onPairing", :params [{:name "pairing-event", :type "object"}]}]})
+   :events
+   [{:id ::on-pairing, :name "onPairing", :params [{:name "pairing-event", :type "object"}]}
+    {:id ::on-device-address-changed,
+     :name "onDeviceAddressChanged",
+     :since "master",
+     :params [{:name "device", :type "bluetooth.Device"} {:name "old-address", :type "string"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

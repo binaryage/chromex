@@ -3,7 +3,7 @@
    This is a private API exposing developing and debugging functionalities for
    apps and extensions.
 
-     * available since Chrome 33"
+     * available since Chrome 34"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -441,7 +441,7 @@
 
 (def api-table
   {:namespace "chrome.developerPrivate",
-   :since "33",
+   :since "34",
    :functions
    [{:id ::auto-update,
      :name "autoUpdate",
@@ -531,7 +531,6 @@
     {:id ::notify-drag-install-in-progress, :name "notifyDragInstallInProgress", :since "64"}
     {:id ::load-directory,
      :name "loadDirectory",
-     :since "34",
      :callback? true,
      :params
      [{:name "directory", :type "DirectoryEntry"}
@@ -557,14 +556,12 @@
      :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
     {:id ::request-file-source,
      :name "requestFileSource",
-     :since "34",
      :callback? true,
      :params
      [{:name "properties", :since "43", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "response", :type "object"}]}}]}
     {:id ::open-dev-tools,
      :name "openDevTools",
-     :since "34",
      :callback? true,
      :params [{:name "properties", :since "43", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::delete-extension-errors,

@@ -3,7 +3,7 @@
    The app runtime manages app installation, controls the event page, and can
    shut down the app at anytime.
 
-     * available since Chrome 33
+     * available since Chrome 34
      * https://developer.chrome.com/apps/app.runtime"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -68,7 +68,7 @@
 
 (def api-table
   {:namespace "chrome.app.runtime",
-   :since "33",
+   :since "34",
    :events
    [{:id ::on-embed-requested, :name "onEmbedRequested", :since "38", :params [{:name "request", :type "object"}]}
     {:id ::on-launched, :name "onLaunched", :params [{:name "launch-data", :optional? true, :type "object"}]}

@@ -1,5 +1,5 @@
 (ns chromex.app.activity-log-private
-  "  * available since Chrome 33"
+  "  * available since Chrome 34"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -86,7 +86,7 @@
 
 (def api-table
   {:namespace "chrome.activityLogPrivate",
-   :since "33",
+   :since "34",
    :functions
    [{:id ::get-extension-activities,
      :name "getExtensionActivities",
@@ -98,7 +98,6 @@
        :callback {:params [{:name "result", :type "activityLogPrivate.ActivityResultSet"}]}}]}
     {:id ::delete-activities,
      :name "deleteActivities",
-     :since "34",
      :callback? true,
      :params [{:name "activity-ids", :type "[array-of-strings]"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::delete-activities-by-extension,

@@ -49,7 +49,7 @@
 
 ### API stats
 
-Generated 41 namespaces containing 0 properties, 444 functions and 75 events:
+Generated 41 namespaces containing 0 properties, 444 functions and 76 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -59,7 +59,7 @@ Generated 41 namespaces containing 0 properties, 444 functions and 75 events:
     |       chrome.autofillAssistantPrivate |           0 |          4 |       2 |
     |                chrome.autofillPrivate |           0 |         12 |       1 |
     |                chrome.autotestPrivate |           0 |         86 |       1 |
-    |               chrome.bluetoothPrivate |           0 |         10 |       1 |
+    |               chrome.bluetoothPrivate |           0 |         10 |       2 |
     |         chrome.bookmarkManagerPrivate |           0 |         11 |       3 |
     |          chrome.brailleDisplayPrivate |           0 |          3 |       2 |
     |            chrome.chromeosInfoPrivate |           0 |          2 |       0 |
@@ -151,7 +151,8 @@ Generated 41 namespaces containing 0 properties, 444 functions and 75 events:
 
     [chromex.ext.bluetooth-private refer:[
       set-adapter-state set-pairing-response disconnect-all forget-device set-discovery-filter connect
-      pair record-pairing record-reconnection record-device-selection tap-on-pairing tap-all-events]]
+      pair record-pairing record-reconnection record-device-selection tap-on-pairing
+      tap-on-device-address-changed tap-all-events]]
 
     [chromex.ext.bookmark-manager-private refer:[
       copy cut paste can-paste sort-children start-drag drop get-subtree remove-trees undo redo

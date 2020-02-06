@@ -3,7 +3,7 @@
    applications using TCP connections. This API supersedes the TCP functionality
    previously found in the chrome.socket API.
 
-     * available since Chrome 33
+     * available since Chrome 34
      * https://developer.chrome.com/apps/sockets.tcpServer"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -189,7 +189,7 @@
 
 (def api-table
   {:namespace "chrome.sockets.tcpServer",
-   :since "33",
+   :since "34",
    :functions
    [{:id ::create,
      :name "create",
