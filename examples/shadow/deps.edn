@@ -1,0 +1,13 @@
+{:paths ["src/background"
+         "src/popup"
+         "src/content_script"
+
+         ; this is just a temporary override of shadow-cljs behaviour
+         ; see https://github.com/thheller/shadow-cljs/issues/279 for further discussion
+         "src/shadow-hacks"]
+ :deps  {org.clojure/clojure       {:mvn/version "RELEASE"}
+         org.clojure/clojurescript {:mvn/version "RELEASE"}
+         binaryage/devtools        {:mvn/version "RELEASE"}
+         binaryage/chromex         {:local/root "../.."}
+         ; ---
+         thheller/shadow-cljs      {:mvn/version "RELEASE"}}}
