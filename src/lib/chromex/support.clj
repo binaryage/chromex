@@ -83,7 +83,7 @@
 ; -- api versioning ---------------------------------------------------------------------------------------------------------
 
 (def ^:dynamic latest-api-version 1000000)
-(def ^:dynamic future-api-version 1000001) ; apis scheduled for future introduction, only available on dev channels
+(def ^:dynamic future-api-version 1000001)                                                                                    ; apis scheduled for future introduction, only available on dev channels
 
 ; http://stackoverflow.com/a/12503724/84283
 (defn parse-int [s]
@@ -95,7 +95,7 @@
     "latest" latest-api-version
     ; sometimes newly introduced apis temporarily specify :since "master" instead of specific Chrome version
     ; e.g. https://github.com/binaryage/chromex/commit/5add1479ed0b1491b8c8b6ae5f00a690de4e5416#diff-a8df69996aa69518c645721ecd31a3bdR328
-    "master" latest-api-version                                                                                                  ; only "latest" target-api-version will match "master"
+    "master" latest-api-version                                                                                               ; only "latest" target-api-version will match "master"
     "future" future-api-version
     (num (parse-int (str v)))))
 
@@ -115,6 +115,11 @@
 (defn valid-api-version? [static-config & range]
   (let [version (:target-api-version static-config)]
     (version-in-range? version range)))
+
+(defn blacklisted-api? [_static-config api-descriptor]
+  ; although onConnectNative is included in the api table, currently it is supported only on Chrome OS
+  ; https://developer.chrome.com/extensions/runtime#event-onConnectNative
+  (some? (#{:chromex.ext.runtime/on-connect-native} (:id api-descriptor))))
 
 (defn emit-api-version-warning [static-config src-info api-name range]
   (let [version (:target-api-version static-config)]

@@ -6,7 +6,8 @@
                                      get-item-by-id
                                      get-src-info
                                      get-wrap-symbol
-                                     valid-api-version?]]))
+                                     valid-api-version?
+                                     blacklisted-api?]]))
 
 ; this file is responsible for generating code which will be expanded at library call sites in user's code
 ; (gen-call-from-table and gen-tap-all-call are called from macros in some-library-namespace.clj)
@@ -29,13 +30,14 @@
         valid? (valid-api-version? static-config since until)
         deprecation-info (or (:deprecated descriptor) (:deprecated api-table))
         deprecated? (not (nil? deprecation-info))
+        blacklisted? (blacklisted-api? static-config descriptor)
         wrap-sym (get-wrap-symbol id)
         wrap-call `(~wrap-sym ~config ~@args)]
     (when-not valid?
       (emit-api-version-warning static-config src-info api [since until]))
     (when deprecated?
       (emit-deprecation-warning static-config src-info api deprecation-info))
-    (with-meta wrap-call {:deprecated? deprecated? :valid? valid?})))
+    (with-meta wrap-call {:deprecated? deprecated? :valid? valid? :blacklisted? blacklisted?})))
 
 (defn gen-call-from-group [collection tag singular static-config api-table item-id src-info config & args]
   (if-some [descriptor (get-item-by-id item-id (collection api-table))]
@@ -64,8 +66,8 @@
     (apply gen-call-from-table static-config api-table kind item src-info config args)))
 
 (defn valid-and-non-deprecated-call? [call]
-  (let [{:keys [valid? deprecated?]} (meta call)]
-    (and valid? (not deprecated?))))
+  (let [{:keys [valid? deprecated? blacklisted?]} (meta call)]
+    (and valid? (not deprecated?) (not blacklisted?))))
 
 ; ---------------------------------------------------------------------------------------------------------------------------
 
