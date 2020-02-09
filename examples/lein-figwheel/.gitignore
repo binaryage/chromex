@@ -11,3 +11,4 @@
 .figwheel*.log
 .chrome-profile
 .test-dirac-chrome-profile
+.rebel_readline_history
