@@ -2,12 +2,14 @@
 
 ## A basic Chrome extension with Chromex library with shadow-cljs
 
-### Dev Build using shadow-cljs 
+### Dev build using shadow-cljs 
 
 From within this repo:
 
-* `npm install`
-* `shadow-cljs watch extension`
+```bash
+npm install
+shadow-cljs watch extension
+```
 
 * Open Chrome (ideally Canary) and go to the Extensions page
 * Make sure `Developer mode` is active (upper right corner of the page)
@@ -16,15 +18,20 @@ From within this repo:
 
 It should load the extension. 
 
-* You can click on the `background page` link in the extension that showed up in the  extension page
+* You can click on the `background page` link in the extension that showed up in the extension page
   * Should popup the devtools window with the output of the background
   * You should see log output from the background page like `BACKGROUND init` and log output whenever you open or do Chrome actions
 
-### Release Build using shadow-cljs 
+### Release build using shadow-cljs 
   
-TBD
+```bash
+shadow-cljs release extension
+```
+
+Then follow the same steps as in dev build.
 
 ----
+
 ## You can ignore the rest for now, it is the lein/figwheel instructions from the original chromes-sample
 
 This project acts as a code example for [chromex
