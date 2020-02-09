@@ -45,9 +45,9 @@ java, maven, leiningen, etc.
   * clone this repo somewhere:
     ```bash
     git clone https://github.com/binaryage/chromex.git
-    cd chromex/examples/sample
+    cd chromex/examples/lein-figwheel
     ```
-  * chromex sample is gets built into `resources/unpacked/compiled` folder.
+  * chromex example is gets built into `resources/unpacked/compiled` folder.
 
     In one terminal session run (will build background and popup pages using figwheel):
     ```bash
