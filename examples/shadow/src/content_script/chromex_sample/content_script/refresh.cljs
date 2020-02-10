@@ -18,7 +18,7 @@
 (defn serialize-source [source]
   #js {"name" (:resource-name source)
        "js"   (:js source)
-       "rest" (pr-str (dissoc source :js))})
+       "rest" (pr-str (dissoc source :js :resource-name))})
 
 (defn serialize-sources [sources]
   (let [a (array)]
@@ -43,11 +43,10 @@
 
 (set! js/shadow.cljs.devtools.client.browser.do_js_load my-do-js-load)
 
-(defn really-replay-reloads! [sources-list]
-  (doseq [serialized-sources sources-list]
-    (let [sources (unserialize-sources serialized-sources)]
-      ;(js/console.log "REPLAY" sources)
-      (orig-do-js-load sources))))
+(defn really-replay-reloads! [serialized-sources]
+  (let [sources (unserialize-sources serialized-sources)]
+    ;(js/console.log "REPLAY" sources)
+    (orig-do-js-load sources)))
 
 (defn replay-reloads! [sources-list]
   ; for some reason we have to return to event loop for this to work

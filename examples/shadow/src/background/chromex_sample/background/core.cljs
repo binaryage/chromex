@@ -11,7 +11,19 @@
             [chromex-sample.background.storage :refer [test-storage!]]
             [goog.object :as gobj]))
 
-(defonce sources-loaded (array))
+(defonce ^:dynamic *sources-loaded* (array))
+
+(defn prune-source? [name source]
+  (not= (gobj/get source "name") name))
+
+(defn prune-sources-loaded! [name]
+  (let [new-sources-loaded (.filter *sources-loaded* (partial prune-source? name))]
+    (set! *sources-loaded* new-sources-loaded)))
+
+(defn register-sources-loaded! [sources]
+  (doseq [source sources]
+    (prune-sources-loaded! (gobj/get source "name"))
+    (.push *sources-loaded* source)))
 
 (def clients (atom []))
 
@@ -35,7 +47,7 @@
       (cond
         (string? message) (log "BACKGROUND: got client message:" message "from" (get-sender client))
         :else (case (gobj/get message "command")
-                "record-sources-load" (.push sources-loaded (gobj/get message "sources"))))
+                "record-sources-load" (register-sources-loaded! (gobj/get message "sources"))))
       (recur))
     (log "BACKGROUND: leaving event loop for client:" (get-sender client))
     (remove-client! client)))
@@ -45,9 +57,9 @@
 (defn handle-client-connection! [client]
   (add-client! client)
   (post-message! client "hello from BACKGROUND PAGE!")
-  (when-not (empty? sources-loaded)
+  (when-not (empty? *sources-loaded*)
     (post-message! client #js {:command "replay-sources-load"
-                               :sources sources-loaded}))
+                               :sources *sources-loaded*}))
   (run-client-message-loop! client))
 
 (defn tell-clients-about-new-tab! []
