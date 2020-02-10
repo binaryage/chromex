@@ -8,7 +8,10 @@
             [chromex.protocols.chrome-port :refer [post-message! get-sender]]
             [chromex.ext.tabs :as tabs]
             [chromex.ext.runtime :as runtime]
-            [chromex-sample.background.storage :refer [test-storage!]]))
+            [chromex-sample.background.storage :refer [test-storage!]]
+            [goog.object :as gobj]))
+
+(defonce sources-loaded (array))
 
 (def clients (atom []))
 
@@ -29,7 +32,10 @@
   (log "BACKGROUND: starting event loop for client:" (get-sender client))
   (go-loop []
     (when-some [message (<! client)]
-      (log "BACKGROUND: got client message:" message "from" (get-sender client))
+      (cond
+        (string? message) (log "BACKGROUND: got client message:" message "from" (get-sender client))
+        :else (case (gobj/get message "command")
+                "record-sources-load" (.push sources-loaded (gobj/get message "sources"))))
       (recur))
     (log "BACKGROUND: leaving event loop for client:" (get-sender client))
     (remove-client! client)))
@@ -39,6 +45,9 @@
 (defn handle-client-connection! [client]
   (add-client! client)
   (post-message! client "hello from BACKGROUND PAGE!")
+  (when-not (empty? sources-loaded)
+    (post-message! client #js {:command "replay-sources-load"
+                               :sources sources-loaded}))
   (run-client-message-loop! client))
 
 (defn tell-clients-about-new-tab! []

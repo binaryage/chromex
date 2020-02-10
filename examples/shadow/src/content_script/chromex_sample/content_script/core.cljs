@@ -3,12 +3,20 @@
   (:require [cljs.core.async :refer [<!]]
             [chromex.logging :refer-macros [log info warn error group group-end]]
             [chromex.protocols.chrome-port :refer [post-message!]]
-            [chromex.ext.runtime :as runtime :refer-macros [connect]]))
+            [chromex-sample.content-script.state :as state]
+            [chromex-sample.content-script.refresh :refer [replay-reloads!]]
+            [chromex.ext.runtime :as runtime :refer-macros [connect]]
+            [goog.object :as gobj]))
+
+(defonce background-port-atom (atom nil))
 
 ; -- a message loop ---------------------------------------------------------------------------------------------------------
 
 (defn process-message! [message]
-  (log "CONTENT SCRIPT: got message:" message))
+  (if (string? message)
+    (log "CONTENT SCRIPT: got message:" message)
+    (case (gobj/get message "command")
+      "replay-sources-load" (replay-reloads! (gobj/get message "sources")))))
 
 (defn run-message-loop! [message-channel]
   (log "CONTENT SCRIPT: starting message loop...")
@@ -30,6 +38,7 @@
 
 (defn connect-to-background-page! []
   (let [background-port (runtime/connect)]
+    (reset! state/background-port-atom background-port)
     (post-message! background-port "hello from CONTENT SCRIPT!")
     (run-message-loop! background-port)
     (do-page-analysis! background-port)))
