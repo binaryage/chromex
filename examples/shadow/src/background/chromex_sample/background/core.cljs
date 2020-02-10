@@ -14,10 +14,10 @@
 (defonce ^:dynamic *sources-loaded* (array))
 
 (defn prune-source? [name source]
-  (not= (gobj/get source "name") name))
+  (= (gobj/get source "name") name))
 
 (defn prune-sources-loaded! [name]
-  (let [new-sources-loaded (.filter *sources-loaded* (partial prune-source? name))]
+  (let [new-sources-loaded (.filter *sources-loaded* (partial (complement prune-source?) name))]
     (set! *sources-loaded* new-sources-loaded)))
 
 (defn register-sources-loaded! [sources]
