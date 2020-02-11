@@ -49,7 +49,7 @@
 
 ### API stats
 
-Generated 41 namespaces containing 0 properties, 444 functions and 76 events:
+Generated 41 namespaces containing 0 properties, 445 functions and 77 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -81,7 +81,7 @@ Generated 41 namespaces containing 0 properties, 444 functions and 76 events:
     |                 chrome.metricsPrivate |           0 |         16 |       0 |
     |                    chrome.mojoPrivate |           0 |          1 |       0 |
     |              chrome.networkingPrivate |           0 |         22 |       5 |
-    |               chrome.passwordsPrivate |           0 |         12 |       3 |
+    |               chrome.passwordsPrivate |           0 |         13 |       4 |
     |             chrome.quickUnlockPrivate |           0 |          7 |       1 |
     |               chrome.resourcesPrivate |           0 |          1 |       0 |
     |            chrome.safeBrowsingPrivate |           0 |          1 |       5 |
@@ -270,8 +270,9 @@ Generated 41 namespaces containing 0 properties, 444 functions and 76 events:
       record-passwords-page-access-in-settings change-saved-password remove-saved-password
       remove-password-exception undo-remove-saved-password-or-exception request-plaintext-password
       get-saved-password-list get-password-exception-list import-passwords export-passwords
-      request-export-progress-status cancel-export-passwords tap-on-saved-passwords-list-changed
-      tap-on-password-exceptions-list-changed tap-on-passwords-file-export-progress tap-all-events]]
+      request-export-progress-status cancel-export-passwords is-opted-in-for-account-storage
+      tap-on-saved-passwords-list-changed tap-on-password-exceptions-list-changed
+      tap-on-passwords-file-export-progress tap-on-account-storage-opt-in-state-changed tap-all-events]]
 
     [chromex.ext.quick-unlock-private refer:[
       get-auth-token set-lock-screen-enabled get-available-modes get-active-modes check-credential

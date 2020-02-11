@@ -116,6 +116,18 @@
   "Stops exporting passwords and cleans up any passwords, which were already written to the filesystem."
   ([] (gen-call :function ::cancel-export-passwords &form)))
 
+(defmacro is-opted-in-for-account-storage
+  "Requests the account-storage opt-in state of the current user.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [opted-in] where:
+
+     |opted-in| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::is-opted-in-for-account-storage &form)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -149,6 +161,16 @@
 
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-passwords-file-export-progress &form channel args)))
+
+(defmacro tap-on-account-storage-opt-in-state-changed-events
+  "Fired when the opt-in state for the account-scoped storage has changed.
+
+   Events will be put on the |channel| with signature [::on-account-storage-opt-in-state-changed [opted-in]] where:
+
+     |opted-in| - The new opt-in state.
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-account-storage-opt-in-state-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
@@ -204,7 +226,11 @@
      [{:name "callback",
        :type :callback,
        :callback {:params [{:name "status", :type "passwordsPrivate.ExportProgressStatus"}]}}]}
-    {:id ::cancel-export-passwords, :name "cancelExportPasswords"}],
+    {:id ::cancel-export-passwords, :name "cancelExportPasswords"}
+    {:id ::is-opted-in-for-account-storage,
+     :name "isOptedInForAccountStorage",
+     :callback? true,
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "opted-in", :type "boolean"}]}}]}],
    :events
    [{:id ::on-saved-passwords-list-changed,
      :name "onSavedPasswordsListChanged",
@@ -214,7 +240,10 @@
      :params [{:name "exceptions", :type "[array-of-passwordsPrivate.ExceptionEntrys]"}]}
     {:id ::on-passwords-file-export-progress,
      :name "onPasswordsFileExportProgress",
-     :params [{:name "status", :type "object"}]}]})
+     :params [{:name "status", :type "object"}]}
+    {:id ::on-account-storage-opt-in-state-changed,
+     :name "onAccountStorageOptInStateChanged",
+     :params [{:name "opted-in", :type "boolean"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

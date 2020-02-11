@@ -39,6 +39,9 @@
 (defn cancel-export-passwords* [config]
   (gen-wrap :function ::cancel-export-passwords config))
 
+(defn is-opted-in-for-account-storage* [config]
+  (gen-wrap :function ::is-opted-in-for-account-storage config))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-saved-passwords-list-changed* [config channel & args]
@@ -49,4 +52,7 @@
 
 (defn on-passwords-file-export-progress* [config channel & args]
   (gen-wrap :event ::on-passwords-file-export-progress config channel args))
+
+(defn on-account-storage-opt-in-state-changed* [config channel & args]
+  (gen-wrap :event ::on-account-storage-opt-in-state-changed config channel args))
 
