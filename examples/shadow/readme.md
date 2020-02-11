@@ -69,14 +69,14 @@ _popup_: Chrome normally closes the popup anytime focus leaves Chrome. So, if yo
 working in your editor, the popup is closed and you will not see any error messages
 anywhere. This can be very frustrating but is easy to fix. When you first open the
 popup, right click on its icon and select `Inspect popup`. This opens the Chrome
-inspector/console and keeps the popup open while the inspector remains open. Any errrors
+inspector/console and keeps the popup open while the inspector remains open. Any errors
 will appear in both the console and the output of the `shadow-cljs watch extension`. Also,
 of course, this gives you niceties of shadow-cljs live coding. Your changes will appear
 immediately, with no need to close and reopen the popup.
 
 _background_: The background code is running under shadow-cljs, messages may
 appear in the as output of the `shadow-cljs watch extension` command. It also
-has no visibile window. You will only see warnings in the Chrome console. You
+has no visible window. You will only see warnings in the Chrome console. You
 can open the inspector/console from `chrome://extensions`. Under your extension,
 click on the `Inspect Views background page` link.
 
