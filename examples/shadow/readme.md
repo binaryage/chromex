@@ -1,43 +1,10 @@
-# chromex-sample-shadow
+# chromex-sample
 
-## A basic Chrome extension with Chromex library with shadow-cljs
+### An example extension using Chromex library and shadow-cljs
 
-### Dev build using shadow-cljs 
-
-From within this repo:
-
-```bash
-npm install
-shadow-cljs watch extension
-```
-
-* Open Chrome (ideally Canary) and go to the Extensions page
-* Make sure `Developer mode` is active (upper right corner of the page)
-* Click on `Load unpacked` 
-* Navigate to this repo and to `resources/unpacked` and click `Select`
-
-It should load the extension. 
-
-* You can click on the `background page` link in the extension that showed up in the extension page
-  * Should popup the devtools window with the output of the background
-  * You should see log output from the background page like `BACKGROUND init` and log output whenever you open or do Chrome actions
-
-### Release build using shadow-cljs 
-  
-```bash
-shadow-cljs release extension
-```
-
-Then follow the same steps as in dev build.
-
-----
-
-## You can ignore the rest for now, it is the lein/figwheel instructions from the original chromes-sample
-
-This project acts as a code example for [chromex
-library](https://github.com/binaryage/chromex) but also as a skeleton with
-project configuration following best practices. We recommend to use it as a
-starting point when starting development of your own extension.
+This project acts as a code example for [chromex library](https://github.com/binaryage/chromex) but also as a skeleton
+with project configuration based on shadow-cljs and deps.edn following best practices. We recommend to use it as a starting point when starting development
+of your own extension.
 
 #### **chromex-sample** has a minimalist **background page**, **popup button** and **content script**:
 
@@ -49,47 +16,45 @@ starting point when starting development of your own extension.
 
 #### **chromex-sample** project has following configuration:
 
-  * uses [leiningen](http://leiningen.org) + [lein-cljsbuild](https://github.com/emezeske/lein-cljsbuild)
-  * integrates [cljs-devtools](https://github.com/binaryage/cljs-devtools)
-  * integrates [figwheel](https://github.com/bhauman/lein-figwheel) (for background page and popup buttons)
+  * uses [shadow-cljs](http://shadow-cljs.org)
+  * integrates [cljs-devtools](https://github.com/binaryage/cljs-devtools) 
+    * shadow-cljs automatically includes devtools in non-release builds
   * under `:unpacked` profile (development)
     * background page and popup button
       * compiles with `optimizations :none`
-      * namespaces are included as individual files and source maps work as expected
-      * figwheel works
+      * namespaces are included as individual files and source maps right now require the hacks in the deps.edn, shadow-cljs
+      * The source html and images files for popup are also in `resources/unpacked`
     * content script
       * due to [security restrictions](https://github.com/binaryage/chromex-sample/issues/2), content script has to be provided as a single file
       * compiles with `:optimizations :whitespace` and `:pretty-print true`
-      * figwheel cannot be used in this context (eval is not allowed)
-  * under `:release` profile
-    * background page, popup button and content script compile with `optimizations :advanced`
-    * elides asserts
-    * no figwheel support
-    * no cljs-devtools support
-    * `lein package` task is provided for building an extension package for release
 
 ### Local setup
 
 #### Extension development
 
 We assume you are familiar with ClojureScript tooling and you have your machine in a good shape running recent versions of
-java, maven, leiningen, etc.
+java, maven, shadow-cljs, etc.
 
   * clone this repo somewhere:
     ```bash
     git clone https://github.com/binaryage/chromex.git
-    cd chromex/examples/sample
+    cd chromex/examples/shadow
     ```
-  * chromex sample is gets built into `resources/unpacked/compiled` folder.
+  * If you have not already installed shadow-cljs
+    ```bash
+    npm install -g shadow-cljs
+    ```
+  * For the first run, load any npm libraries
+    ```bash
+    npm install
+    ```
+  * chromex shadow example is gets built into `resources/unpacked/compiled` folder.
 
-    In one terminal session run (will build background and popup pages using figwheel):
+    In one terminal session run (will build background, popup and content pages using shadow-cljs):
     ```bash
-    lein fig
+    shadow-cljs watch extension
     ```
-    In a second terminal session run (will auto-build content-script):
-    ```bash
-    lein content
-    ```
+
   * use latest Chrome Canary with [Custom Formatters](https://github.com/binaryage/cljs-devtools#enable-custom-formatters-in-your-chrome-canary) enabled
   * In Chrome Canary, open `chrome://extensions` and add `resources/unpacked` via "Load unpacked extension..."
 
@@ -99,34 +64,33 @@ Chrome extension development is more complex than regular ClojureScript front-en
 work. You are writing (and debugging) multiple parallel communicating processes: your
 background page, your popup, and all the browser pages running your content script.
 
-Amazingly, the ClojureScript tooling and Figwheel live coding remain very usable in this
+Amazingly, the ClojureScript tooling and shadow-cljs live coding remain very usable in this
 environment. But, you need to be aware of a few things, particularly in regard to
 compiler warnings:
 
-Most warnings do not appear in the repls. Figwheel intercepts them for display in the
-browser. Warning will appear in the Chrome console and, when possible, as an overlay in
-the browser window. But, the exact behavior depends upon which part of your code has the
-error:
+Most warnings will show up as output of the `shadow-cljs watch extension` But,
+the exact behavior depends upon which part of your code has the error:
 
-_Content script_: Warnings and errors will appear in the repl running `lein content`.
+_Content script_: Warnings and errors will appear in the output of the `shadow-cljs watch extension`
 
 _popup_: Chrome normally closes the popup anytime focus leaves Chrome. So, if you are
 working in your editor, the popup is closed and you will not see any error messages
 anywhere. This can be very frustrating but is easy to fix. When you first open the
 popup, right click on its icon and select `Inspect popup`. This opens the Chrome
 inspector/console and keeps the popup open while the inspector remains open. Any errrors
-will appear in both the console and as the Figwheel overlay in your popup window. Also,
-of course, this gives you niceties of Figwheel live coding. Your changes will appear
+will appear in both the console and the output of the `shadow-cljs watch extension`. Also,
+of course, this gives you niceties of shadow-cljs live coding. Your changes will appear
 immediately, with no need to close and reopen the popup.
 
-_background_: The background code is running under Figwheel, so no messages will appear
-in the repl. It also has no visibile window, so no Figwheel overlay can appear. You will
-only see warnings in the Chrome console. You can open the inspector/console from
-`chrome://extensions`. Under your extension, click on the `Inspect Views` line.
+_background_: The background code is running under shadow-cljs, messages may
+appear in the as output of the `shadow-cljs watch extension` command. It also
+has no visibile window. You will only see warnings in the Chrome console. You
+can open the inspector/console from `chrome://extensions`. Under your extension,
+click on the `Inspect Views background page` link.
 
 In summary, effective live debugging requires up to five open windows on your screen:
 - Your editor;
-- The shell running `lein content`, if you are making changes to content script code;
+- The shell running `shadow-cljs watch extension**, if you are making changes to content script code;
 - The web browser, with open popup and/or content page;
 - A Chrome inspector console, watching the background page; and
 - A Chrome inspector console, watching the popup page.
@@ -135,23 +99,100 @@ In summary, effective live debugging requires up to five open windows on your sc
 
 #### Extension packaging
 
-[Leiningen project](project.clj) has defined "release" profile for compilation in advanced mode. Run:
-```bash
-lein release
+**TBD***
+
+### Shadow-cljs Configuration
+
+The documentation for `:chrome-extension` target in shadow-cljs is not yet in
+existence other than some comments in
+[thheller/shadow-cljs :chrome-extension target support #279](https://github.com/thheller/shadow-cljs/issues/279#issuecomment-392007641)
+
+The information below can help to get you started.
+
+The main configuration files are
+* `deps.edn`
+* `shadow-cljs.edn`
+* `package.json`
+* `resources/unpacked/manifest.edn`
+
+#### Deps.edn
+
+This is the standard [`deps.edn`](https://www.clojure.org/guides/deps_and_cli)
+file that works with Clojure Tools. Shadow-cljs can use it directly as well. It
+contains all the Clojure dependencies (`:deps`) and also specifies the `:paths`
+to the project source code.
+
+At this time it contains a temporary `src/shadow-hacks` patch to shadow-cljs
+output code for special support for source maps being served by an dev-http
+server. This will eventually go away when shadow-cljs adds a similar mechanism.
+
+#### Shadow-cljs.edn
+
+This is the main [shadow-cljs config](https://shadow-cljs.github.io/docs/UsersGuide.html#_configuration) file. 
+
+The main section is:
+```clojure
+ :builds   {:extension ; name of the build
+
+            {:target           :chrome-extension ; Tells shadow-cljs that this is a chrome extension
+
+             ; Where the unpacked built extension files will be, including the compiled output
+             :extension-dir    "resources/unpacked" 
+
+             ; The input file for driving the build 
+             :manifest-file    "resources/unpacked/manifest.edn" 
+             :compiler-options {:closure-output-charset "US-ASCII"
+                                ; Work around for supporting source-maps
+                                :source-map-prefix      "http://localhost:9080/out/cljs-runtime/"}
+
+             ; Describes the 3 compiled outputs, their entry points and any options
+             :outputs          {:background     {:output-type :chrome/background
+                                                 :entries     [chromex-sample.background]}
+                                :content-script {:output-type    :chrome/content-script
+                                                 :chrome/options {:matches ["<all_urls>"]
+                                                                  :run-at  "document_end"}
+                                                 :entries        [chromex-sample.content-script]}
+                                :popup          {:entries [chromex-sample.popup]}}}}
 ```
 
-This will build an optimized build into [resources/release](resources/release). You can add this folder via "Load unpacked extension..."
-to test it.
+The three outputs (`:background`, `:content-script` and `:popup`) are the 3
+types of components in the chrome extension and map to the top level
+directories in `src`.
 
-When satisfied, you can run:
-```bash
-lein package
-```
 
-This will create a folder `releases/chromex-sample-0.1.0` where 0.1.0 will be current version from [project.clj](project.clj).
-This folder will contain only files meant to be packaged.
+#### package.json
 
-Finally you can use Chrome's "Pack extension" tool to prepare the final package (.crx and .pem files).
+This is the normal
+[package.json](https://shadow-cljs.github.io/docs/UsersGuide.html#npm-install)
+that you can use to add npm libraries to your extension. The one in this example
+does not include anything other than shadow-cljs
+
+#### Manifest.edn
+
+The
+[manifest.edn](https://shadow-cljs.github.io/docs/UsersGuide.html#BrowserManifest)
+location is specified by `:manifest-file` value in `shadow-cljs.edn`. In this
+case it is in `resource/unpacked/manifest.edn`
+
+This file is used to build the final
+[manifest.json](https://developer.chrome.com/extensions/manifest) that will be
+generated in `:extension-dir`.
+
+* `:permissions`
+  [Specifies](https://developer.chrome.com/extensions/permission_warnings) which
+  pages and chrome resources the extension can access. In this case, its the
+  `activeTab`, the browser storage mechanism and any webiste.
+  
+* `:browser-action` 
+  [Browser action](https://developer.chrome.com/extensions/browserAction) puts icons in
+  the main Google Chrome toolbar, to the right of the address bar.
+
+* `:content-security-policy` 
+  [Content Security Policy](https://developer.chrome.com/extensions/contentSecurityPolicy) is used
+  by Chrome as a block/allowlisting mechanism for resources loaded or executed
+  by your extension.
+
+
 
 ### Code discussion
 

@@ -1,12 +1,12 @@
 {
   "name": "chromex-sample-shadow",
   "version": "1.0.0",
-  "description": "Making chromex-sample work with shadow-cljs",
+  "description": "chromex example working with shadow-cljs",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Robert J. Berger",
+  "author": "",
   "license": "MIT",
   "devDependencies": {
     "shadow-cljs": "2.8.83"
