@@ -40,7 +40,7 @@ java, maven, shadow-cljs, etc.
     ```bash
     npm install
     ```
-  * chromex shadow example is gets built into `resources/unpacked/compiled` folder.
+  * chromex shadow example is gets built into `resources/unpacked/out` folder.
 
     In one terminal session run (will build background, popup and content pages using shadow-cljs):
     ```bash
@@ -87,11 +87,59 @@ In summary, effective live debugging requires up to five open windows on your sc
 - A Chrome inspector console, watching the background page; and
 - A Chrome inspector console, watching the popup page.
 
+#### Release build
 
+```bash
+./scripts/release.sh
+```
+
+The files get built into `resources/unpacked`. You may open this folder as unpacked extension in Chrome and test it.
+
+The output should be similar to this:
+
+```text
+> ./scripts/release.sh
++ ./scripts/clean.sh
++ shadow-cljs release extension
+shadow-cljs - config: /Users/darwin/code/chromex/examples/shadow/shadow-cljs.edn  cli version: 2.8.83  node: v13.8.0
+shadow-cljs - starting via "clojure"
+[:extension] Compiling ...
+[:extension] Build completed. (101 files, 0 compiled, 0 warnings, 10.76s)
+```
 
 #### Extension packaging
 
-**TBD***
+```bash
+./scripts/package.sh
+```
+
+This will produce a new zip file in `releases` folder named `chromex-sample-$VERSION.zip` 
+and `VERSION` is taken from [package.json](package.json).
+
+The output should look like:
+```
+> ./scripts/package.sh
+Archive:  /Users/darwin/code/chromex/examples/shadow/releases/chromex-sample-1.0.0.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+        0  02-11-2020 12:27   out/
+     1301  02-11-2020 12:27   out/popup.js
+    25000  02-11-2020 12:27   out/background.js
+        0  02-11-2020 12:27   out/bg-shared.js
+     1524  02-11-2020 12:27   out/content-script.js
+   183102  02-11-2020 12:27   out/shared.js
+        0  02-09-2020 18:55   images/
+      350  02-09-2020 15:46   images/icon16.png
+      780  02-09-2020 15:46   images/icon38.png
+     1026  02-09-2020 15:46   images/icon48.png
+     2438  02-09-2020 15:46   images/icon128.png
+      374  02-09-2020 15:46   images/icon19.png
+      252  02-09-2020 19:45   popup.html
+      970  02-11-2020 12:27   manifest.json
+---------                     -------
+   217117                     14 files
+'/Users/darwin/code/chromex/examples/shadow/releases/chromex-sample-1.0.0.zip' ready for upload => https://chrome.google.com/webstore/developer/dashboard
+```
 
 ### Shadow-cljs Configuration
 
