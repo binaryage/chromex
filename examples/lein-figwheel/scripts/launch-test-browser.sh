@@ -1,21 +1,21 @@
 #!/usr/bin/env bash
 
-set -e
+set -e -o pipefail
 
-pushd `dirname "${BASH_SOURCE[0]}"` > /dev/null
-source "./config.sh"
+# shellcheck source=_config.sh
+source "$(dirname "${BASH_SOURCE[0]}")/_config.sh"
 
-pushd "$ROOT"
+cd "$ROOT"
 
-if [ ! -d "$BROWSER_USER_PROFILE" ] ; then
+if [[ ! -d "$BROWSER_USER_PROFILE" ]]; then
   mkdir -p "$BROWSER_USER_PROFILE"
 fi
 
 EXE="/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary"
-if [ -n "$USE_CHROME" ] ; then
+if [[ -n "$USE_CHROME" ]]; then
   EXE="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 fi
-if [ -n "$USE_CHROMIUM" ] ; then
+if [[ -n "$USE_CHROMIUM" ]]; then
   EXE="/Applications/Chromium.app/Contents/MacOS/Chromium"
 fi
 
@@ -29,18 +29,14 @@ echo "launching Chrome from $EXE"
 
 set -x
 "$EXE" \
-      --user-data-dir="$BROWSER_USER_PROFILE" \
-      --no-first-run \
-      --enable-experimental-extension-apis \
-      --disk-cache-dir=/dev/null \
-      --media-cache-dir=/dev/null \
-      --disable-hang-monitor \
-      --disable-prompt-on-repost \
-      --dom-automation \
-      --full-memory-crash-report \
-      --no-default-browser-check \
-      --load-extension="$DEV_EXTENSION_PATH"
-
-set +x
-
-popd
+  --user-data-dir="$BROWSER_USER_PROFILE" \
+  --no-first-run \
+  --enable-experimental-extension-apis \
+  --disk-cache-dir=/dev/null \
+  --media-cache-dir=/dev/null \
+  --disable-hang-monitor \
+  --disable-prompt-on-repost \
+  --dom-automation \
+  --full-memory-crash-report \
+  --no-default-browser-check \
+  --load-extension="$DEV_EXTENSION_PATH"
