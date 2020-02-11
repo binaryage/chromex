@@ -13,8 +13,8 @@ pushd .
 cd "$(dirname "${BASH_SOURCE[0]}")/.." || exit 11
 
 ROOT=$(pwd -P)
-RELEASES="$ROOT/releases"
-RELEASE_BUILD="$ROOT/resources/unpacked"
-RELEASE_BUILD_COMPILED="$RELEASE_BUILD/out"
+RELEASES_DIR="releases"
+RELEASE_BUILD_DIR="resources/unpacked"
+RELEASE_BUILD_COMPILED_DIR="$RELEASE_BUILD_DIR/out"
 
 popd || exit 11

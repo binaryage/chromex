@@ -101,7 +101,7 @@ The output should be similar to this:
 > ./scripts/release.sh
 + ./scripts/clean.sh
 + shadow-cljs release extension
-shadow-cljs - config: /Users/darwin/code/chromex/examples/shadow/shadow-cljs.edn  cli version: 2.8.83  node: v13.8.0
+shadow-cljs - config: ...
 shadow-cljs - starting via "clojure"
 [:extension] Compiling ...
 [:extension] Build completed. (101 files, 0 compiled, 0 warnings, 10.76s)
@@ -117,17 +117,18 @@ This will produce a new zip file in `releases` folder named `chromex-sample-$VER
 and `VERSION` is taken from [package.json](package.json).
 
 The output should look like:
-```
+
+```text
 > ./scripts/package.sh
-Archive:  /Users/darwin/code/chromex/examples/shadow/releases/chromex-sample-1.0.0.zip
+Archive:  releases/chromex-sample-1.0.0.zip
   Length      Date    Time    Name
 ---------  ---------- -----   ----
         0  02-11-2020 12:27   out/
-     1301  02-11-2020 12:27   out/popup.js
-    25000  02-11-2020 12:27   out/background.js
-        0  02-11-2020 12:27   out/bg-shared.js
-     1524  02-11-2020 12:27   out/content-script.js
-   183102  02-11-2020 12:27   out/shared.js
+     1301  02-11-2020 12:35   out/popup.js
+    25000  02-11-2020 12:35   out/background.js
+        0  02-11-2020 12:35   out/bg-shared.js
+     1524  02-11-2020 12:35   out/content-script.js
+   183102  02-11-2020 12:35   out/shared.js
         0  02-09-2020 18:55   images/
       350  02-09-2020 15:46   images/icon16.png
       780  02-09-2020 15:46   images/icon38.png
@@ -135,10 +136,12 @@ Archive:  /Users/darwin/code/chromex/examples/shadow/releases/chromex-sample-1.0
      2438  02-09-2020 15:46   images/icon128.png
       374  02-09-2020 15:46   images/icon19.png
       252  02-09-2020 19:45   popup.html
-      970  02-11-2020 12:27   manifest.json
+      970  02-11-2020 12:35   manifest.json
 ---------                     -------
    217117                     14 files
-'/Users/darwin/code/chromex/examples/shadow/releases/chromex-sample-1.0.0.zip' ready for upload => https://chrome.google.com/webstore/developer/dashboard
+
+'releases/chromex-sample-1.0.0.zip' is ready for upload
+=> https://chrome.google.com/webstore/developer/dashboard
 ```
 
 ### Shadow-cljs Configuration
