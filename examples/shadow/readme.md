@@ -19,14 +19,6 @@ of your own extension.
   * uses [shadow-cljs](http://shadow-cljs.org)
   * integrates [cljs-devtools](https://github.com/binaryage/cljs-devtools) 
     * shadow-cljs automatically includes devtools in non-release builds
-  * under `:unpacked` profile (development)
-    * background page and popup button
-      * compiles with `optimizations :none`
-      * namespaces are included as individual files and source maps right now require the hacks in the deps.edn, shadow-cljs
-      * The source html and images files for popup are also in `resources/unpacked`
-    * content script
-      * due to [security restrictions](https://github.com/binaryage/chromex-sample/issues/2), content script has to be provided as a single file
-      * compiles with `:optimizations :whitespace` and `:pretty-print true`
 
 ### Local setup
 
