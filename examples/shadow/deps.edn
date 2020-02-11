@@ -3,7 +3,6 @@
          "src/content_script"
 
          ; this is just a temporary override of shadow-cljs behaviour
-         ; see https://github.com/thheller/shadow-cljs/issues/279 and
          ; https://clojurians.slack.com/archives/C6N245JGG/p1581362714447400 for further discussion
          "src/shadow-hacks"]
 

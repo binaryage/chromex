@@ -166,8 +166,8 @@ contains all the Clojure dependencies (`:deps`) and also specifies the `:paths`
 to the project source code.
 
 At this time it contains a temporary `src/shadow-hacks` patch to shadow-cljs
-output code for special support for source maps being served by an dev-http
-server. This will eventually go away when shadow-cljs adds a similar mechanism.
+output code for special support for source maps being [fully inlined](https://github.com/thheller/shadow-cljs/commit/94c99bd609bf674e24b47964d37c89e57e838414). 
+This will eventually go away when shadow-cljs adds a similar mechanism.
 
 #### Shadow-cljs.edn
 
@@ -185,8 +185,7 @@ The main section is:
              ; The input file for driving the build 
              :manifest-file    "resources/unpacked/manifest.edn" 
              :compiler-options {:closure-output-charset "US-ASCII"
-                                ; Work around for supporting source-maps
-                                :source-map-prefix      "http://localhost:9080/out/cljs-runtime/"}
+                                :source-map-inline  true}
 
              ; Describes the 3 compiled outputs, their entry points and any options
              :outputs          {:background     {:output-type :chrome/background
