@@ -189,6 +189,9 @@
 (defn set-shelf-alignment* [config display-id alignment]
   (gen-wrap :function ::set-shelf-alignment config display-id alignment))
 
+(defn pin-shelf-icon* [config app-id]
+  (gen-wrap :function ::pin-shelf-icon config app-id))
+
 (defn set-overview-mode-state* [config start]
   (gen-wrap :function ::set-overview-mode-state config start))
 

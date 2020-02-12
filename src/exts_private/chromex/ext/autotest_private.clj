@@ -679,6 +679,18 @@
    chromex.error/get-last-error."
   ([display-id alignment] (gen-call :function ::set-shelf-alignment &form display-id alignment)))
 
+(defmacro pin-shelf-icon
+  "Create a pin on shelf for the app specified by |appId|.
+
+     |app-id| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([app-id] (gen-call :function ::pin-shelf-icon &form app-id)))
+
 (defmacro set-overview-mode-state
   "Enter or exit the overview mode.
 
@@ -1293,6 +1305,11 @@
      [{:name "display-id", :type "string"}
       {:name "alignment", :type "autotestPrivate.ShelfAlignmentType"}
       {:name "callback", :type :callback}]}
+    {:id ::pin-shelf-icon,
+     :name "pinShelfIcon",
+     :since "master",
+     :callback? true,
+     :params [{:name "app-id", :type "string"} {:name "callback", :type :callback}]}
     {:id ::set-overview-mode-state,
      :name "setOverviewModeState",
      :since "78",

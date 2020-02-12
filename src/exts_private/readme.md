@@ -49,7 +49,7 @@
 
 ### API stats
 
-Generated 41 namespaces containing 0 properties, 445 functions and 77 events:
+Generated 41 namespaces containing 0 properties, 446 functions and 77 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -58,7 +58,7 @@ Generated 41 namespaces containing 0 properties, 445 functions and 77 events:
     |             chrome.activityLogPrivate |           0 |          5 |       1 |
     |       chrome.autofillAssistantPrivate |           0 |          4 |       2 |
     |                chrome.autofillPrivate |           0 |         12 |       1 |
-    |                chrome.autotestPrivate |           0 |         86 |       1 |
+    |                chrome.autotestPrivate |           0 |         87 |       1 |
     |               chrome.bluetoothPrivate |           0 |         10 |       2 |
     |         chrome.bookmarkManagerPrivate |           0 |         11 |       3 |
     |          chrome.brailleDisplayPrivate |           0 |          3 |       2 |
@@ -141,13 +141,13 @@ Generated 41 namespaces containing 0 properties, 445 functions and 77 events:
       is-arc-package-list-initial-refreshed set-whitelisted-pref set-crostini-app-scaled
       get-primary-display-scale-factor is-tablet-mode-enabled set-tablet-mode-enabled
       get-all-installed-apps get-shelf-items get-shelf-auto-hide-behavior set-shelf-auto-hide-behavior
-      get-shelf-alignment set-shelf-alignment set-overview-mode-state show-virtual-keyboard-if-enabled
-      arc-app-tracing-start arc-app-tracing-stop-and-analyze swap-windows-in-split-view
-      set-arc-app-window-focus wait-for-display-rotation get-app-window-list set-app-window-state
-      close-app-window install-pwa-for-current-url activate-accelerator wait-for-launcher-state
-      create-new-desk activate-desk-at-index remove-active-desk mouse-click mouse-press mouse-release
-      mouse-move set-metrics-enabled start-tracing stop-tracing set-arc-touch-mode
-      tap-on-clipboard-data-changed tap-all-events]]
+      get-shelf-alignment set-shelf-alignment pin-shelf-icon set-overview-mode-state
+      show-virtual-keyboard-if-enabled arc-app-tracing-start arc-app-tracing-stop-and-analyze
+      swap-windows-in-split-view set-arc-app-window-focus wait-for-display-rotation get-app-window-list
+      set-app-window-state close-app-window install-pwa-for-current-url activate-accelerator
+      wait-for-launcher-state create-new-desk activate-desk-at-index remove-active-desk mouse-click
+      mouse-press mouse-release mouse-move set-metrics-enabled start-tracing stop-tracing
+      set-arc-touch-mode tap-on-clipboard-data-changed tap-all-events]]
 
     [chromex.ext.bluetooth-private refer:[
       set-adapter-state set-pairing-response disconnect-all forget-device set-discovery-filter connect
