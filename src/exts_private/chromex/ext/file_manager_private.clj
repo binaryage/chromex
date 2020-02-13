@@ -584,7 +584,9 @@
   ([entry] (gen-call :function ::get-directory-size &form entry)))
 
 (defmacro get-recent-files
-  "Gets recently modified files across file systems. |restriction| Flag to restrict sources of recent files. |callback
+  "Gets recently modified files across file systems. |restriction| Flag to restrict sources of recent files. |fileType
+
+   Requested file type to filter recent files. |callback
 
      |restriction| - ?
      |file-type| - ?
@@ -1116,7 +1118,7 @@
      :callback? true,
      :params
      [{:name "restriction", :type "unknown-type"}
-      {:name "file-type", :since "future", :type "unknown-type"}
+      {:name "file-type", :since "master", :type "unknown-type"}
       {:name "callback", :type :callback, :callback {:params [{:name "entries", :type "[array-of-Entrys]"}]}}]}
     {:id ::mount-crostini,
      :name "mountCrostini",
