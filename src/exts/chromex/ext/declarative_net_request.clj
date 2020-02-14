@@ -2,7 +2,7 @@
   "The chrome.declarativeNetRequest API is used to block or modify
    network requests by specifying declarative rules.
 
-     * available since Chrome 80
+     * available since Chrome 81
      * https://developer.chrome.com/extensions/declarativeNetRequest"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -135,7 +135,7 @@
 
 (def api-table
   {:namespace "chrome.declarativeNetRequest",
-   :since "80",
+   :since "81",
    :properties
    [{:id ::max-number-of-rules, :name "MAX_NUMBER_OF_RULES", :return-type "unknown-type"}
     {:id ::max-number-of-dynamic-rules, :name "MAX_NUMBER_OF_DYNAMIC_RULES", :return-type "unknown-type"}
@@ -171,13 +171,12 @@
       {:name "callback", :type :callback, :callback {:params [{:name "details", :type "object"}]}}]}
     {:id ::set-action-count-as-badge-text,
      :name "setActionCountAsBadgeText",
-     :since "future",
      :params [{:name "enable", :type "boolean"}]}],
    :events
    [{:id ::on-rule-matched-debug,
      :name "onRuleMatchedDebug",
-     :since "80",
-     :params [{:name "matched-rule-info", :since "80", :type "object"}]}]})
+     :since "81",
+     :params [{:name "matched-rule-info", :since "future", :type "object"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
