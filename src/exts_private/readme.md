@@ -49,12 +49,12 @@
 
 ### API stats
 
-Generated 41 namespaces containing 0 properties, 446 functions and 77 events:
+Generated 41 namespaces containing 0 properties, 446 functions and 78 events:
 
 
     |                            :namespace | :properties | :functions | :events |
     |---------------------------------------+-------------+------------+---------|
-    |           chrome.accessibilityPrivate |           0 |         18 |       8 |
+    |           chrome.accessibilityPrivate |           0 |         18 |       9 |
     |             chrome.activityLogPrivate |           0 |          5 |       1 |
     |       chrome.autofillAssistantPrivate |           0 |          4 |       2 |
     |                chrome.autofillPrivate |           0 |         12 |       1 |
@@ -110,7 +110,8 @@ Generated 41 namespaces containing 0 properties, 446 functions and 77 events:
       set-virtual-keyboard-visible open-settings-subpage tap-on-introduce-chrome-vox
       tap-on-accessibility-gesture tap-on-two-finger-touch-start tap-on-two-finger-touch-stop
       tap-on-select-to-speak-state-change-requested tap-on-switch-access-command
-      tap-on-announce-for-accessibility tap-find-scrollable-bounds-for-point tap-all-events]]
+      tap-on-announce-for-accessibility tap-find-scrollable-bounds-for-point
+      tap-on-custom-spoken-feedback-toggled tap-all-events]]
 
     [chromex.ext.activity-log-private refer:[
       get-extension-activities delete-activities delete-activities-by-extension delete-database

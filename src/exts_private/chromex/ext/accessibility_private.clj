@@ -174,7 +174,7 @@
   ([channel & args] (apply gen-call :event ::on-two-finger-touch-stop &form channel args)))
 
 (defmacro tap-on-select-to-speak-state-change-requested-events
-  "Called when Chrome OS wants to change the Select-to-Speak state, between selecting with the mouse, speaking, and inactive.
+  "Fired when Chrome OS wants to change the Select-to-Speak state, between selecting with the mouse, speaking, and inactive.
 
    Events will be put on the |channel| with signature [::on-select-to-speak-state-change-requested []].
 
@@ -182,7 +182,7 @@
   ([channel & args] (apply gen-call :event ::on-select-to-speak-state-change-requested &form channel args)))
 
 (defmacro tap-on-switch-access-command-events
-  "Called when Chrome OS has received a key event corresponding to a Switch Access command.
+  "Fired when Chrome OS has received a key event corresponding to a Switch Access command.
 
    Events will be put on the |channel| with signature [::on-switch-access-command [command]] where:
 
@@ -192,7 +192,7 @@
   ([channel & args] (apply gen-call :event ::on-switch-access-command &form channel args)))
 
 (defmacro tap-on-announce-for-accessibility-events
-  "Called when an internal component within accessibility wants to force speech output for an accessibility extension. Do not
+  "Fired when an internal component within accessibility wants to force speech output for an accessibility extension. Do not
    use without approval from accessibility owners.
 
    Events will be put on the |channel| with signature [::on-announce-for-accessibility [announce-text]] where:
@@ -203,7 +203,7 @@
   ([channel & args] (apply gen-call :event ::on-announce-for-accessibility &form channel args)))
 
 (defmacro tap-find-scrollable-bounds-for-point-events
-  "Called when an internal component within accessibility wants to find the nearest scrolling container at a given screen
+  "Fired when an internal component within accessibility wants to find the nearest scrolling container at a given screen
    coordinate. Used in Automatic Clicks.
 
    Events will be put on the |channel| with signature [::find-scrollable-bounds-for-point [x y]] where:
@@ -213,6 +213,16 @@
 
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::find-scrollable-bounds-for-point &form channel args)))
+
+(defmacro tap-on-custom-spoken-feedback-toggled-events
+  "Fired when a custom spoken feedback on the active window gets enabled or disabled. Called from ARC++ accessibility.
+
+   Events will be put on the |channel| with signature [::on-custom-spoken-feedback-toggled [enabled]] where:
+
+     |enabled| - True if the active window implements custom spoken feedback features.
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-custom-spoken-feedback-toggled &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
@@ -320,7 +330,11 @@
     {:id ::find-scrollable-bounds-for-point,
      :name "findScrollableBoundsForPoint",
      :since "77",
-     :params [{:name "x", :type "double"} {:name "y", :type "double"}]}]})
+     :params [{:name "x", :type "double"} {:name "y", :type "double"}]}
+    {:id ::on-custom-spoken-feedback-toggled,
+     :name "onCustomSpokenFeedbackToggled",
+     :since "master",
+     :params [{:name "enabled", :type "boolean"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

@@ -83,3 +83,6 @@
 (defn find-scrollable-bounds-for-point* [config channel & args]
   (gen-wrap :event ::find-scrollable-bounds-for-point config channel args))
 
+(defn on-custom-spoken-feedback-toggled* [config channel & args]
+  (gen-wrap :event ::on-custom-spoken-feedback-toggled config channel args))
+
