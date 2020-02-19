@@ -18,8 +18,8 @@
 (defn undo-remove-saved-password-or-exception* [config]
   (gen-wrap :function ::undo-remove-saved-password-or-exception config))
 
-(defn request-plaintext-password* [config id]
-  (gen-wrap :function ::request-plaintext-password config id))
+(defn request-plaintext-password* [config id reason]
+  (gen-wrap :function ::request-plaintext-password config id reason))
 
 (defn get-saved-password-list* [config]
   (gen-wrap :function ::get-saved-password-list config))

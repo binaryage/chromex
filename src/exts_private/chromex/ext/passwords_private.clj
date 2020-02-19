@@ -48,6 +48,7 @@
    OS-level reauthentication. Once the password has been fetched, it will be returned via |callback|.
 
      |id| - The id for the password entry being being retrieved.
+     |reason| - The reason why the plaintext password is requested.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [password] where:
@@ -56,7 +57,7 @@
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([id] (gen-call :function ::request-plaintext-password &form id)))
+  ([id reason] (gen-call :function ::request-plaintext-password &form id reason)))
 
 (defmacro get-saved-password-list
   "Returns the list of saved passwords.
@@ -202,7 +203,8 @@
      :callback? true,
      :params
      [{:name "id", :type "integer"}
-      {:name "callback", :type :callback, :callback {:params [{:name "password", :optional? true, :type "string"}]}}]}
+      {:name "reason", :type "unknown-type"}
+      {:name "callback", :type :callback, :callback {:params [{:name "password", :type "string"}]}}]}
     {:id ::get-saved-password-list,
      :name "getSavedPasswordList",
      :callback? true,
