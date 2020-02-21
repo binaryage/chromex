@@ -218,7 +218,7 @@
    [{:id ::on-pairing, :name "onPairing", :params [{:name "pairing-event", :type "object"}]}
     {:id ::on-device-address-changed,
      :name "onDeviceAddressChanged",
-     :since "master",
+     :since "future",
      :params [{:name "device", :type "bluetooth.Device"} {:name "old-address", :type "string"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

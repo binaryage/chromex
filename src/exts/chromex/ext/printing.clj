@@ -29,7 +29,8 @@
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro submit-job
-  "Submits the job for print.
+  "Submits the job for print. If the extension is not listed in PrintingAPIExtensionsWhitelist policy, the user will be
+   prompted to accept the print job.
 
      |request| - https://developer.chrome.com/extensions/printing#property-submitJob-request.
 

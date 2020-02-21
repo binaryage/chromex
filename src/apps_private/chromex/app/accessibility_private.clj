@@ -333,7 +333,7 @@
      :params [{:name "x", :type "double"} {:name "y", :type "double"}]}
     {:id ::on-custom-spoken-feedback-toggled,
      :name "onCustomSpokenFeedbackToggled",
-     :since "master",
+     :since "future",
      :params [{:name "enabled", :type "boolean"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

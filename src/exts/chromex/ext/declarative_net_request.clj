@@ -141,11 +141,11 @@
     {:id ::max-number-of-dynamic-rules, :name "MAX_NUMBER_OF_DYNAMIC_RULES", :return-type "unknown-type"}
     {:id ::getmatchedrules-quota-interval,
      :name "GETMATCHEDRULES_QUOTA_INTERVAL",
-     :since "master",
+     :since "future",
      :return-type "unknown-type"}
     {:id ::max-getmatchedrules-calls-per-interval,
      :name "MAX_GETMATCHEDRULES_CALLS_PER_INTERVAL",
-     :since "master",
+     :since "future",
      :return-type "unknown-type"}],
    :functions
    [{:id ::update-dynamic-rules,
@@ -164,7 +164,7 @@
        :callback {:params [{:name "rules", :type "[array-of-declarativeNetRequest.Rules]"}]}}]}
     {:id ::get-matched-rules,
      :name "getMatchedRules",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "filter", :optional? true, :type "object"}

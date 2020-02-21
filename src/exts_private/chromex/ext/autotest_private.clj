@@ -1307,7 +1307,7 @@
       {:name "callback", :type :callback}]}
     {:id ::pin-shelf-icon,
      :name "pinShelfIcon",
-     :since "master",
+     :since "future",
      :callback? true,
      :params [{:name "app-id", :type "string"} {:name "callback", :type :callback}]}
     {:id ::set-overview-mode-state,
