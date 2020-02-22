@@ -13,10 +13,10 @@
 (defmacro test-mode []
   (get-test-mode))
 
-(def compiler-out-file (str ".compiler-out.txt"))
+(def compiler-out-file ".compiler-out.txt")
 
 (defn output-path []
-  (io/file "test" compiler-out-file)) ; relative to project root
+  (io/file "test" compiler-out-file))                                                                                         ; relative to project root
 
 (defn init! []
   (spit (output-path) ""))

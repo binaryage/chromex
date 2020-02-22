@@ -15,7 +15,7 @@
                  [environ "1.1.0"]]
 
   :clean-targets ^{:protect false} ["target"
-                                    "test/.compiled"]
+                                    "test/resources/.compiled"]
 
   :plugins [[lein-cljsbuild "1.1.7"]]
 
@@ -27,7 +27,7 @@
                  "src/apps"
                  "src/apps_private"
                  "src/apps_internal"]
-  :test-paths ["test"]
+  :test-paths ["test/src"]
 
   :jar-exclusions [#"readme\.md"]
 
@@ -36,20 +36,19 @@
   :profiles {:test-none
              {:cljsbuild {:builds {:tests
                                    {:source-paths ["src/lib"
-                                                   "test"]
-                                    :compiler     {:output-to     "test/.compiled/optimizations_none/chromex.test.js"
-                                                   :output-dir    "test/.compiled/optimizations_none"
+                                                   "test/src"]
+                                    :compiler     {:output-to     "test/resources/.compiled/optimizations_none/chromex.test.js"
+                                                   :output-dir    "test/resources/.compiled/optimizations_none"
                                                    :asset-path    ".compiled/optimizations_none"
                                                    :main          chromex.runner
-                                                   :optimizations :none
-                                                   :source-map    false}}}}}
+                                                   :optimizations :none}}}}}
 
              :test-advanced
              {:cljsbuild {:builds {:tests
                                    {:source-paths ["src/lib"
-                                                   "test"]
-                                    :compiler     {:output-to      "test/.compiled/optimizations_advanced/chromex.test.js"
-                                                   :output-dir     "test/.compiled/optimizations_advanced"
+                                                   "test/src"]
+                                    :compiler     {:output-to      "test/resources/.compiled/optimizations_advanced/chromex.test.js"
+                                                   :output-dir     "test/resources/.compiled/optimizations_advanced"
                                                    :asset-path     ".compiled/optimizations_advanced"
                                                    :main           chromex.runner
                                                    :optimizations  :advanced

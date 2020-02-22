@@ -11,4 +11,4 @@ export CHROMEX_ELIDE_MISSING_API_CHECKS=1
 
 lein with-profile +test-advanced cljsbuild once tests
 
-exec phantomjs test/phantom.js test/runner_advanced.html
+exec node --unhandled-rejections=strict test/resources/puppeteer.js test/resources runner_advanced.html

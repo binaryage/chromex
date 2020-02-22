@@ -5,6 +5,6 @@ tools/_workdir/
 .lein*
 pom.xml.*
 .idea
-test/.compiled
-test/.compiler*.txt
+test/resources/.compiled
+test/resources/.compiler*.txt
 .nrepl-port

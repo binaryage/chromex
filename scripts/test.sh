@@ -9,4 +9,4 @@ export RUNNING_DEV_TEST=1
 
 lein with-profile +test-none cljsbuild once tests
 
-exec phantomjs test/phantom.js test/runner_none.html
+exec node --unhandled-rejections=strict test/resources/puppeteer.js test/resources runner_none.html
