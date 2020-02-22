@@ -10,7 +10,7 @@
 
   :dependencies [[org.clojure/clojure "1.10.1" :scope "provided"]
                  [org.clojure/clojurescript ~clojurescript-version :scope "provided"]
-                 [org.clojure/core.async "0.7.559"]
+                 [org.clojure/core.async "1.0.567"]
                  [binaryage/oops "0.7.0"]
                  [environ "1.1.0"]]
 
