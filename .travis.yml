@@ -10,6 +10,6 @@ cache:
 before_install:
   - yes y | sudo lein upgrade
   - curl -sSL https://raw.githubusercontent.com/cljs-oss/canary/master/scripts/install-canary.sh | bash
-  - cd test; npm install
+  - (cd test && npm install)
 script:
   - ./scripts/test-all.sh
