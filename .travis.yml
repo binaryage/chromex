@@ -3,13 +3,6 @@ dist: trusty
 language: clojure
 notifications:
   email:
-  - antonin@hildebrand.cz
-  hipchat:
-    rooms:
-      secure: Lvi37hPtHGpNDADtPHJJaDXg6KEvXKndRjeGJruDKOyyPYP9pXkwOtT7brpLxZQzTtqKTaZrfVJv15FdhylS9xj33pAO5qW9/iilqgj8GN8hQXj8SMJG4MZRj6P9ZBDcOEYsB54SSYoLK9i/E1VwFpbM8fTiFP0276uVd03dP/oGL/HRZFoJLerEbGQzSgaf2amO1i0y4TdoMId4SYCOPv9LA5HGue8RZpWbNQCN7o7DYVb+GlQZAuakaRdv6LSMLbZwTTHsT6Rdoh5qdGMwp4sXqAjGoLmOOULOI2NOriqU1MvhUTXkXbQADrGMjYgAMTAW8Wxm68vluHxfy6/WCrN2mvUyFMKrhQZQbhyGpkLGpgid/x490dOXKmZTbnSIKb1++FFY3RRgyOXKUVW90olsJzQ4N4SkBxWzvHjLPpraY73wd+XgrlTZpZdX4IzY9sV7qjzvI+EkSsKnXKsyDYRAWpSVw9EQ3/POdzdpg/q6zZeQuoWP7HzkjRXLhhfBEZwUTFEpmhERdXOWiko37wuf4ZqtVvGvAdtssfkHMj1yZF9bVsnjoWVTf6PMFpG4VSv9JytQTtXh2CE3M88Y6JSqTi6U0bEl0bF2c11adw7B2tnmBsiAME8I080w+HA6wYO7f0TTXdjHeNeOylR8O5yrkuYOpv4k3Q+8bBLWmzI=
-    template:
-    - '<a href="%{build_url}">%{repository}#%{build_number}</a>: %{message} (<a href="%{compare_url}">changes</a>)'
-    format: html
 cache:
   directories:
   - "$HOME/.m2"
