@@ -7,6 +7,7 @@ notifications:
 cache:
   directories:
     - "$HOME/.m2"
+    - "$HOME/travis/build/binaryage/chromex/test/node_modules"
 before_install:
   - npm i -g npm
   - yes y | sudo lein upgrade
