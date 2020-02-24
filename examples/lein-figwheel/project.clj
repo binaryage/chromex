@@ -1,4 +1,4 @@
-(defproject binaryage/chromex-sample "0.1.0-SNAPSHOT"
+(defproject binaryage/chromex-sample "0.1.0"
   :dependencies [[org.clojure/clojure "1.10.1"]
                  [org.clojure/clojurescript "1.10.597"]
                  [org.clojure/core.async "1.0.567"]

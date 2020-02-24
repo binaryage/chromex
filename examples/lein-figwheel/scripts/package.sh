@@ -7,8 +7,8 @@ source "$(dirname "${BASH_SOURCE[0]}")/_config.sh"
 
 cd "$ROOT"
 
-RELEASES="$ROOT/releases"
-RELEASE_BUILD="$ROOT/resources/release"
+RELEASES="releases"
+RELEASE_BUILD="resources/release"
 RELEASE_BUILD_COMPILED="$RELEASE_BUILD/compiled"
 
 if [[ ! -d "$RELEASE_BUILD" ]]; then
@@ -43,9 +43,22 @@ cp -RL "$RELEASE_BUILD" "$PACKAGE_DIR"
 
 # prune release directory from extra files/folders
 rm -rf "$PACKAGE_DIR/compiled/background"
-rm -rf "$PACKAGE_DIR/compiled/content_script"
+rm -rf "$PACKAGE_DIR/compiled/content-script"
 rm -rf "$PACKAGE_DIR/compiled/popup"
 
-echo "'$PACKAGE_DIR' prepared for packing"
-echo "  use Chrome's Window -> Extensions -> 'Pack extension...' to package it"
-echo "  or => https://developer.chrome.com/extensions/packaging#packaging"
+ZIP_NAME="$PACKAGE_DIR.zip"
+
+if [[ -f "$ZIP_NAME" ]]; then
+  rm "$ZIP_NAME"
+fi
+
+cd "$PACKAGE_DIR"
+zip -qr -9 -x manifest.edn -X "$ROOT/$ZIP_NAME" .
+cd "$ROOT"
+
+# this lists content of the packaged file just for review
+unzip -l "$ZIP_NAME"
+
+echo
+echo "'$ZIP_NAME' is ready for upload"
+echo "=> https://chrome.google.com/webstore/developer/dashboard"
