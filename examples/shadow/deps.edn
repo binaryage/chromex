@@ -1,6 +1,6 @@
 {:paths ["src/background"
          "src/popup"
-         "src/content_script"
+         "src/content-script"
 
          ; this is just a temporary override of shadow-cljs behaviour
          ; https://clojurians.slack.com/archives/C6N245JGG/p1581362714447400 for further discussion

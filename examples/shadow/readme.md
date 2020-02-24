@@ -410,7 +410,7 @@ Please keep in mind that you can always access underlying objects and talk to th
 
 #### Content Script
 
-Our [content script](src/content_script/chromex_sample/content_script/core.cljs) is almost copy&paste of popup page code:
+Our [content script](src/content-script/chromex_sample/content_script/core.cljs) is almost copy&paste of popup page code:
 
 ```clojure
 ; -- a message loop -------------------------------------------------------------------------------
