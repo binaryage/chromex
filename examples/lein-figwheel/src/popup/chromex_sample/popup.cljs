@@ -1,6 +1,6 @@
 (ns chromex-sample.popup
-  (:require-macros [chromex.support :refer [runonce]])
-  (:require [chromex-sample.popup.core :as core]))
+  (:require [chromex-sample.popup.core :as core]
+            [chromex.support :refer [runonce]]))
 
 (runonce
   (core/init!))

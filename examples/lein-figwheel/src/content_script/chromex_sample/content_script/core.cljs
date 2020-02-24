@@ -1,6 +1,5 @@
 (ns chromex-sample.content-script.core
-  (:require-macros [cljs.core.async.macros :refer [go-loop]])
-  (:require [cljs.core.async :refer [<!]]
+  (:require [cljs.core.async :refer [go-loop <!]]
             [chromex.logging :refer-macros [log info warn error group group-end]]
             [chromex.protocols.chrome-port :refer [post-message!]]
             [chromex.ext.runtime :as runtime :refer-macros [connect]]))

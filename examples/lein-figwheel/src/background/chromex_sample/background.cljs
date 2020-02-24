@@ -1,6 +1,6 @@
 (ns chromex-sample.background
-  (:require-macros [chromex.support :refer [runonce]])
-  (:require [chromex-sample.background.core :as core]))
+  (:require [chromex-sample.background.core :as core]
+            [chromex.support :refer [runonce]]))
 
 (runonce
   (core/init!))

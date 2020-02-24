@@ -1,6 +1,5 @@
 (ns chromex-sample.background.storage
-  (:require-macros [cljs.core.async.macros :refer [go go-loop]])
-  (:require [cljs.core.async :refer [<! chan]]
+  (:require [cljs.core.async :refer [go <! chan]]
             [chromex.logging :refer-macros [log info warn error group group-end]]
             [chromex.protocols.chrome-storage-area :refer [get set]]
             [chromex.ext.storage :as storage]))

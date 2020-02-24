@@ -1,8 +1,7 @@
 (ns chromex-sample.background.core
-  (:require-macros [cljs.core.async.macros :refer [go go-loop]])
   (:require [goog.string :as gstring]
             [goog.string.format]
-            [cljs.core.async :refer [<! chan]]
+            [cljs.core.async :refer [go-loop <! chan]]
             [chromex.logging :refer-macros [log info warn error group group-end]]
             [chromex.chrome-event-channel :refer [make-chrome-event-channel]]
             [chromex.protocols.chrome-port :refer [post-message! get-sender]]
