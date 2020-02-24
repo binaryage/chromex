@@ -136,7 +136,7 @@ As we wrote in previous sections, by default you consume Chrome events via core.
 If you don't want to use the channel anymore, you should `close!` it.
 
 Events coming from the channel are pairs `[event-id params]`, where params is a vector of parameters passed into event's
-callback function. See [chromex/examples](https://github.com/binaryage/chromex/blob/master/examples/lein-figwheel/src/background/chromex_sample/background/core.cljs)
+callback function. See [chromex/examples](https://github.com/binaryage/chromex/blob/master/examples/lein/src/background/chromex_sample/background/core.cljs)
 for example usage. Refer to [Chrome's API docs](https://developer.chrome.com/extensions/api_index) for specific event objects.
 
 Note: instead of calling tap-some-events you could call `tap-all-events`. This is a convenience function which will

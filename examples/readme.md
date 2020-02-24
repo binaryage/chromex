@@ -2,7 +2,7 @@
 
 Here we maintain example projects suitable for learning or starting your own extensions:
 
-* [lein-figwheel](lein-figwheel) - a Leiningen based project with Figwheel support
+* [lein](lein) - a Leiningen based project with Figwheel support
 * [shadow](shadow) - a shadow-cljs based project with deps.edn
 
 Note that [_shared](_shared) contains shared sources between projects - we symlink them into individual projects.

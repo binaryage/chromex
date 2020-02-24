@@ -46,7 +46,7 @@ We assume you are familiar with ClojureScript tooling:
   * clone this repo somewhere:
     ```bash
     git clone https://github.com/binaryage/chromex.git
-    cd chromex/examples/lein-figwheel
+    cd chromex/examples/lein
     ```
   * chromex example is gets built into `resources/unpacked/compiled` folder.
 
