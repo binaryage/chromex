@@ -9,9 +9,7 @@
 
   :plugins [[lein-cljsbuild "1.1.7"]
             [lein-figwheel "0.5.19"]
-            [lein-shell "0.5.0"]
-            [lein-environ "1.1.0"]
-            [lein-cooper "1.2.2"]]
+            [lein-environ "1.1.0"]]
 
   :source-paths ["src/background"
                  "src/popup"
@@ -57,34 +55,11 @@
                                            :optimizations :advanced                                                           ; let's use advanced build with pseudo-names for now, there seems to be a bug in deps ordering under :whitespace mode
                                            :pseudo-names  true
                                            :pretty-print  true}}}}}
-             :checkouts
-             ; DON'T FORGET TO UPDATE scripts/ensure-checkouts.sh
-             {:cljsbuild {:builds
-                          {:background {:source-paths ["checkouts/cljs-devtools/src/lib"
-                                                       "checkouts/chromex/src/lib"
-                                                       "checkouts/chromex/src/exts"]}
-                           :popup      {:source-paths ["checkouts/cljs-devtools/src/lib"
-                                                       "checkouts/chromex/src/lib"
-                                                       "checkouts/chromex/src/exts"]}}}}
-             :checkouts-content-script
-             ; DON'T FORGET TO UPDATE scripts/ensure-checkouts.sh
-             {:cljsbuild {:builds
-                          {:content-script {:source-paths ["checkouts/cljs-devtools/src/lib"
-                                                           "checkouts/chromex/src/lib"
-                                                           "checkouts/chromex/src/exts"]}}}}
 
              :figwheel
              {:figwheel {:server-port    6888
                          :server-logfile ".figwheel.log"
                          :repl           true}}
-
-             :disable-figwheel-repl
-             {:figwheel {:repl false}}
-
-             :cooper
-             {:cooper {"content-dev"     ["lein" "content-dev"]
-                       "fig-dev-no-repl" ["lein" "fig-dev-no-repl"]
-                       "browser"         ["scripts/launch-test-browser.sh"]}}
 
              :release
              {:env       {:chromex-elide-verbose-logging "true"}
@@ -114,15 +89,9 @@
                                            :optimizations :advanced
                                            :elide-asserts true}}}}}}
 
-  :aliases {"dev-build"       ["with-profile" "+unpacked,+unpacked-content-script,+checkouts,+checkouts-content-script" "cljsbuild" "once"]
-            "fig"             ["with-profile" "+unpacked,+figwheel" "figwheel" "background" "popup"]
-            "content"         ["with-profile" "+unpacked-content-script" "cljsbuild" "auto" "content-script"]
-            "fig-dev-no-repl" ["with-profile" "+unpacked,+figwheel,+disable-figwheel-repl,+checkouts" "figwheel" "background" "popup"]
-            "content-dev"     ["with-profile" "+unpacked-content-script,+checkouts-content-script" "cljsbuild" "auto"]
-            "devel"           ["with-profile" "+cooper" "do"                                                                  ; for mac only
-                               ["shell" "scripts/ensure-checkouts.sh"]
-                               ["cooper"]]
-            "release"         ["with-profile" "+release" "do"
-                               ["clean"]
-                               ["cljsbuild" "once" "background" "popup" "content-script"]]
-            "package"         ["shell" "scripts/package.sh"]})
+  :aliases {"fig"     ["with-profile" "+unpacked,+figwheel" "figwheel" "background" "popup"]
+            "content" ["with-profile" "+unpacked-content-script" "cljsbuild" "auto" "content-script"]
+            "release" ["with-profile" "+release" "do"
+                       ["clean"]
+                       ["cljsbuild" "once" "background" "popup" "content-script"]]
+            "package" ["shell" "scripts/package.sh"]})

@@ -35,7 +35,7 @@ of your own extension.
     * elides asserts
     * no figwheel support
     * no cljs-devtools support
-    * `lein package` task is provided for building an extension package for release
+    * `./scripts/package.sh` builds extension package for release
 
 ### Local setup
 
@@ -113,7 +113,7 @@ This will build an optimized build into [resources/release](resources/release). 
 
 When satisfied, you can run:
 ```bash
-lein package
+./scripts/package.sh
 ```
 
 This will create a folder `releases/chromex-sample-0.1.0` where 0.1.0 will be the current version from [project.clj](project.clj).
