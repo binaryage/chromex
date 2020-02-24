@@ -1,10 +1,6 @@
 {:paths ["src/background"
          "src/popup"
-         "src/content-script"
-
-         ; this is just a temporary override of shadow-cljs behaviour
-         ; https://clojurians.slack.com/archives/C6N245JGG/p1581362714447400 for further discussion
-         "src/shadow-hacks"]
+         "src/content-script"]
 
  :deps  {org.clojure/clojure       {:mvn/version "RELEASE"}
          org.clojure/clojurescript {:mvn/version "RELEASE"}
