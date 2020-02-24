@@ -159,7 +159,7 @@ When you click the popup button, Chrome creates a new javascript context and run
 At this point we call [`runtime/connect`][runtime-connect-docs] to connect to our 
 background page. We get a `background-port` back which is a wrapper of [`runtime.Port`][runtime-port-docs].
 `background-port` implements chromex protocol [`IChromePort`][chrome-port-src]
-which we can use to `post-message!` to our background page. `background-port` also implements `core-async/ReadPort` so we 
+which we can use to `post-message!` to our background page. `background-port` implements `core-async/ReadPort` so we 
 can treat it as a core.async channel for reading incoming messages sent by our background page. You can see that implemented 
 in `run-message-loop!` which takes messages off the channel and simply prints them into the console (in `process-message!`).
 
@@ -365,4 +365,3 @@ should be sending notifications about new tabs.
 [marshalling-clj-src]: https://github.com/binaryage/chromex/blob/master/src/lib/chromex/marshalling.clj
 [marshalling-cljs-src]: https://github.com/binaryage/chromex/blob/master/src/lib/chromex/marshalling.cljs
 [core-async-docs]: https://clojure.github.io/core.async/#clojure.core.async/<!
-[chrome-port-src]: https://github.com/binaryage/chromex/blob/master/src/lib/chromex/chrome_port.cljs
