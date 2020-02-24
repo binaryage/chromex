@@ -13,7 +13,7 @@
 
   :source-paths ["src/background"
                  "src/popup"
-                 "src/content_script"]
+                 "src/content-script"]
 
   :clean-targets ^{:protect false} ["target"
                                     "resources/unpacked/compiled"
@@ -46,7 +46,7 @@
              :unpacked-content-script
              {:cljsbuild {:builds
                           {:content-script
-                           {:source-paths ["src/content_script"]
+                           {:source-paths ["src/content-script"]
                             :compiler     {:output-to     "resources/unpacked/compiled/content-script/main.js"
                                            :output-dir    "resources/unpacked/compiled/content-script"
                                            :asset-path    "compiled/content-script"
@@ -81,7 +81,7 @@
                                            :optimizations :advanced
                                            :elide-asserts true}}
                            :content-script
-                           {:source-paths ["src/content_script"]
+                           {:source-paths ["src/content-script"]
                             :compiler     {:output-to     "resources/release/compiled/content-script.js"
                                            :output-dir    "resources/release/compiled/content-script"
                                            :asset-path    "compiled/content-script"
