@@ -9,7 +9,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "shadow-cljs": "2.8.85"
+    "shadow-cljs": "2.8.86"
   },
   "dependencies": {}
 }
