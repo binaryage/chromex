@@ -10,6 +10,7 @@ cache:
     # this is mainly for puppeteer, by default it stores chromium downloads in node_modules/puppeteer/.local-chromium
     - "$TRAVIS_BUILD_DIR/test/node_modules"
 before_install:
+  - nvm use v13.3.0
   - npm i -g npm
   - yes y | sudo lein upgrade
   - curl -sSL https://raw.githubusercontent.com/cljs-oss/canary/master/scripts/install-canary.sh | bash
