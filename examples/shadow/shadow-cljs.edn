@@ -15,4 +15,5 @@
                                                :chrome/options {:matches ["<all_urls>"]
                                                                 :run-at  "document_end"}
                                                :entries        [chromex-sample.content-script]}
-                              :popup          {:entries [chromex-sample.popup]}}}}}
+                              :popup          {:output-type :chrome/shared
+                                               :entries     [chromex-sample.popup]}}}}}
