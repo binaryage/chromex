@@ -15,6 +15,9 @@
 (defn max-getmatchedrules-calls-per-interval* [config]
   (gen-wrap :property ::max-getmatchedrules-calls-per-interval config))
 
+(defn max-number-of-regex-rules* [config]
+  (gen-wrap :property ::max-number-of-regex-rules config))
+
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn update-dynamic-rules* [config rule-ids-to-remove rules-to-add]

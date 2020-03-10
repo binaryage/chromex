@@ -129,6 +129,93 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::is-opted-in-for-account-storage &form)))
 
+(defmacro get-compromised-credentials-info
+  "Requests the latest information about compromised credentials.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [info] where:
+
+     |info| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::get-compromised-credentials-info &form)))
+
+(defmacro get-plaintext-compromised-password
+  "Requests the plaintext password for |credential|. |callback| gets invoked with the same |credential|, whose |password
+
+   field will be set.
+
+     |credential| - The compromised credential whose password is being retrieved.
+     |reason| - The reason why the plaintext password is requested.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [credential] where:
+
+     |credential| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([credential reason] (gen-call :function ::get-plaintext-compromised-password &form credential reason)))
+
+(defmacro change-compromised-credential
+  "Requests to change the password of |credential| to |new_password|. Invokes |callback| or raises an error depending on
+   whether the operation succeeded.
+
+     |credential| - The credential whose password should be changed.
+     |new-password| - The new password.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([credential new-password] (gen-call :function ::change-compromised-credential &form credential new-password)))
+
+(defmacro remove-compromised-credential
+  "Requests to remove |credential| from the password store. Invokes |callback| on completion.
+
+     |credential| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([credential] (gen-call :function ::remove-compromised-credential &form credential)))
+
+(defmacro start-password-check
+  "Starts a check for compromised passwords. Invokes |callback| on completion.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::start-password-check &form)))
+
+(defmacro stop-password-check
+  "Stops checking for compromised passwords. Invokes |callback| on completion.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::stop-password-check &form)))
+
+(defmacro get-password-check-status
+  "Returns the current status of the check via |callback|.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [status] where:
+
+     |status| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::get-password-check-status &form)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -173,6 +260,26 @@
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-account-storage-opt-in-state-changed &form channel args)))
 
+(defmacro tap-on-compromised-credentials-info-changed-events
+  "Fired when the compromised credentials changed.
+
+   Events will be put on the |channel| with signature [::on-compromised-credentials-info-changed [info]] where:
+
+     |info| - The updated info about compromised credentials.
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-compromised-credentials-info-changed &form channel args)))
+
+(defmacro tap-on-password-check-status-changed-events
+  "Fired when the status of the password check changes.
+
+   Events will be put on the |channel| with signature [::on-password-check-status-changed [status]] where:
+
+     |status| - The updated status of the password check.
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-password-check-status-changed &form channel args)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -203,7 +310,7 @@
      :callback? true,
      :params
      [{:name "id", :type "integer"}
-      {:name "reason", :type "unknown-type"}
+      {:name "reason", :type "passwordsPrivate.PlaintextReason"}
       {:name "callback", :type :callback, :callback {:params [{:name "password", :type "string"}]}}]}
     {:id ::get-saved-password-list,
      :name "getSavedPasswordList",
@@ -232,7 +339,51 @@
     {:id ::is-opted-in-for-account-storage,
      :name "isOptedInForAccountStorage",
      :callback? true,
-     :params [{:name "callback", :type :callback, :callback {:params [{:name "opted-in", :type "boolean"}]}}]}],
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "opted-in", :type "boolean"}]}}]}
+    {:id ::get-compromised-credentials-info,
+     :name "getCompromisedCredentialsInfo",
+     :callback? true,
+     :params
+     [{:name "callback",
+       :type :callback,
+       :callback {:params [{:name "info", :type "passwordsPrivate.CompromisedCredentialsInfo"}]}}]}
+    {:id ::get-plaintext-compromised-password,
+     :name "getPlaintextCompromisedPassword",
+     :callback? true,
+     :params
+     [{:name "credential", :type "passwordsPrivate.CompromisedCredential"}
+      {:name "reason", :type "passwordsPrivate.PlaintextReason"}
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "credential", :type "passwordsPrivate.CompromisedCredential"}]}}]}
+    {:id ::change-compromised-credential,
+     :name "changeCompromisedCredential",
+     :callback? true,
+     :params
+     [{:name "credential", :type "passwordsPrivate.CompromisedCredential"}
+      {:name "new-password", :type "string"}
+      {:name "callback", :optional? true, :type :callback}]}
+    {:id ::remove-compromised-credential,
+     :name "removeCompromisedCredential",
+     :callback? true,
+     :params
+     [{:name "credential", :type "passwordsPrivate.CompromisedCredential"}
+      {:name "callback", :optional? true, :type :callback}]}
+    {:id ::start-password-check,
+     :name "startPasswordCheck",
+     :callback? true,
+     :params [{:name "callback", :optional? true, :type :callback}]}
+    {:id ::stop-password-check,
+     :name "stopPasswordCheck",
+     :callback? true,
+     :params [{:name "callback", :optional? true, :type :callback}]}
+    {:id ::get-password-check-status,
+     :name "getPasswordCheckStatus",
+     :callback? true,
+     :params
+     [{:name "callback",
+       :type :callback,
+       :callback {:params [{:name "status", :type "passwordsPrivate.PasswordCheckStatus"}]}}]}],
    :events
    [{:id ::on-saved-passwords-list-changed,
      :name "onSavedPasswordsListChanged",
@@ -245,7 +396,13 @@
      :params [{:name "status", :type "object"}]}
     {:id ::on-account-storage-opt-in-state-changed,
      :name "onAccountStorageOptInStateChanged",
-     :params [{:name "opted-in", :type "boolean"}]}]})
+     :params [{:name "opted-in", :type "boolean"}]}
+    {:id ::on-compromised-credentials-info-changed,
+     :name "onCompromisedCredentialsInfoChanged",
+     :params [{:name "info", :type "passwordsPrivate.CompromisedCredentialsInfo"}]}
+    {:id ::on-password-check-status-changed,
+     :name "onPasswordCheckStatusChanged",
+     :params [{:name "status", :type "passwordsPrivate.PasswordCheckStatus"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

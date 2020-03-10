@@ -231,6 +231,9 @@
 (defn wait-for-launcher-state* [config launcher-state]
   (gen-wrap :function ::wait-for-launcher-state config launcher-state))
 
+(defn wait-for-overview-state* [config overview-state]
+  (gen-wrap :function ::wait-for-overview-state config overview-state))
+
 (defn create-new-desk* [config]
   (gen-wrap :function ::create-new-desk config))
 
@@ -263,6 +266,12 @@
 
 (defn set-arc-touch-mode* [config enabled]
   (gen-wrap :function ::set-arc-touch-mode config enabled))
+
+(defn get-scrollable-shelf-info-for-state* [config state]
+  (gen-wrap :function ::get-scrollable-shelf-info-for-state config state))
+
+(defn get-shelf-ui-info-for-state* [config state]
+  (gen-wrap :function ::get-shelf-ui-info-for-state config state))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 

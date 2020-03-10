@@ -120,6 +120,18 @@
      |enabled| - ?"
   ([enabled] (gen-call :function ::set-credit-card-fido-auth-enabled-state &form enabled)))
 
+(defmacro get-upi-id-list
+  "Gets the list of UPI IDs (a.k.a. Virtual Payment Addresses).
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [entries] where:
+
+     |entries| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::get-upi-id-list &form)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -193,7 +205,12 @@
     {:id ::log-server-card-link-clicked, :name "logServerCardLinkClicked"}
     {:id ::set-credit-card-fido-auth-enabled-state,
      :name "setCreditCardFIDOAuthEnabledState",
-     :params [{:name "enabled", :type "boolean"}]}],
+     :params [{:name "enabled", :type "boolean"}]}
+    {:id ::get-upi-id-list,
+     :name "getUpiIdList",
+     :callback? true,
+     :params
+     [{:name "callback", :type :callback, :callback {:params [{:name "entries", :type "[array-of-strings]"}]}}]}],
    :events
    [{:id ::on-personal-data-changed,
      :name "onPersonalDataChanged",

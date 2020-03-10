@@ -118,6 +118,18 @@
    chromex.error/get-last-error."
   ([settings] (gen-call :function ::set-settings &form settings)))
 
+(defmacro get-a11y-status
+  "Returns a boolean indicating whether the accessibility spoken feedback is on.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [a11y-status] where:
+
+     |a11y-status| - True if a11y spoken feedback is on.
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::get-a11y-status &form)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -145,6 +157,16 @@
 
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-settings-changed &form channel args)))
+
+(defmacro tap-on-a11y-status-changed-events
+  "Fired when a11y spoken feedback is enabled/disabled.
+
+   Events will be put on the |channel| with signature [::on-a11y-status-changed [status]] where:
+
+     |status| - True if a11y spoken feedback is on.
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-a11y-status-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
@@ -207,7 +229,12 @@
      :name "setSettings",
      :since "80",
      :callback? true,
-     :params [{:name "settings", :type "object"} {:name "callback", :type :callback}]}],
+     :params [{:name "settings", :type "object"} {:name "callback", :type :callback}]}
+    {:id ::get-a11y-status,
+     :name "getA11yStatus",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "a11y-status", :type "boolean"}]}}]}],
    :events
    [{:id ::on-process-output,
      :name "onProcessOutput",
@@ -215,7 +242,11 @@
      [{:name "id", :since "74", :type "string"}
       {:name "type", :type "terminalPrivate.OutputType"}
       {:name "text", :type "string"}]}
-    {:id ::on-settings-changed, :name "onSettingsChanged", :since "80", :params [{:name "settings", :type "object"}]}]})
+    {:id ::on-settings-changed, :name "onSettingsChanged", :since "80", :params [{:name "settings", :type "object"}]}
+    {:id ::on-a11y-status-changed,
+     :name "onA11yStatusChanged",
+     :since "master",
+     :params [{:name "status", :type "boolean"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

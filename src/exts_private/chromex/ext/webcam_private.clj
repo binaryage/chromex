@@ -94,6 +94,38 @@
    chromex.error/get-last-error."
   ([webcam-id] (gen-call :function ::set-home &form webcam-id)))
 
+(defmacro restore-camera-preset
+  "Restore the camera's position to that of the specified preset. A callback is included here which is invoked when the
+   function responds.
+
+     |webcam-id| - ?
+     |preset-number| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [configuration] where:
+
+     |configuration| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([webcam-id preset-number] (gen-call :function ::restore-camera-preset &form webcam-id preset-number)))
+
+(defmacro set-camera-preset
+  "Set the current camera's position to be stored for the specified preset. A callback is included here which is invoked when
+   the function responds.
+
+     |webcam-id| - ?
+     |preset-number| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [configuration] where:
+
+     |configuration| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([webcam-id preset-number] (gen-call :function ::set-camera-preset &form webcam-id preset-number)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -150,6 +182,26 @@
      :callback? true,
      :params
      [{:name "webcam-id", :type "string"}
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "configuration", :type "webcamPrivate.WebcamCurrentConfiguration"}]}}]}
+    {:id ::restore-camera-preset,
+     :name "restoreCameraPreset",
+     :since "future",
+     :callback? true,
+     :params
+     [{:name "webcam-id", :type "string"}
+      {:name "preset-number", :type "double"}
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "configuration", :type "webcamPrivate.WebcamCurrentConfiguration"}]}}]}
+    {:id ::set-camera-preset,
+     :name "setCameraPreset",
+     :since "future",
+     :callback? true,
+     :params
+     [{:name "webcam-id", :type "string"}
+      {:name "preset-number", :type "double"}
       {:name "callback",
        :type :callback,
        :callback {:params [{:name "configuration", :type "webcamPrivate.WebcamCurrentConfiguration"}]}}]}]})

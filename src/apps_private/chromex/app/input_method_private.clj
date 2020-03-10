@@ -150,6 +150,16 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::show-input-view &form)))
 
+(defmacro hide-input-view
+  "Shows the input view window. If the input view window is already hidden, this function will do nothing.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::hide-input-view &form)))
+
 (defmacro open-options-page
   "Opens the options page for the input method extension. If the input method does not have options, this function will do
    nothing.
@@ -414,6 +424,11 @@
     {:id ::show-input-view,
      :name "showInputView",
      :since "51",
+     :callback? true,
+     :params [{:name "callback", :optional? true, :type :callback}]}
+    {:id ::hide-input-view,
+     :name "hideInputView",
+     :since "future",
      :callback? true,
      :params [{:name "callback", :optional? true, :type :callback}]}
     {:id ::open-options-page, :name "openOptionsPage", :since "52", :params [{:name "input-method-id", :type "string"}]}

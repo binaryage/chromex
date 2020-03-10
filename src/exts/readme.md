@@ -89,7 +89,7 @@
 
 ### API stats
 
-Generated 81 namespaces containing 56 properties, 393 functions and 181 events:
+Generated 81 namespaces containing 57 properties, 394 functions and 181 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -114,7 +114,7 @@ Generated 81 namespaces containing 56 properties, 393 functions and 181 events:
     |                        chrome.cookies |           0 |          5 |       1 |
     |                       chrome.debugger |           0 |          4 |       2 |
     |             chrome.declarativeContent |           0 |          0 |       1 |
-    |          chrome.declarativeNetRequest |           4 |          4 |       1 |
+    |          chrome.declarativeNetRequest |           5 |          4 |       1 |
     |          chrome.declarativeWebRequest |           0 |          0 |       2 |
     |                 chrome.desktopCapture |           0 |          2 |       0 |
     |       chrome.devtools.inspectedWindow |           1 |          3 |       2 |
@@ -124,7 +124,7 @@ Generated 81 namespaces containing 56 properties, 393 functions and 181 events:
     |                            chrome.dns |           0 |          1 |       0 |
     |                   chrome.documentScan |           0 |          1 |       0 |
     |                      chrome.downloads |           0 |         13 |       4 |
-    |    chrome.enterprise.deviceAttributes |           0 |          4 |       0 |
+    |    chrome.enterprise.deviceAttributes |           0 |          5 |       0 |
     |    chrome.enterprise.hardwarePlatform |           0 |          1 |       0 |
     |        chrome.enterprise.platformKeys |           0 |          6 |       0 |
     |                      chrome.extension |           2 |          8 |       2 |
@@ -259,8 +259,9 @@ Generated 81 namespaces containing 56 properties, 393 functions and 181 events:
 
     [chromex.ext.declarative-net-request refer:[
       get-max-number-of-rules get-max-number-of-dynamic-rules get-getmatchedrules-quota-interval
-      get-max-getmatchedrules-calls-per-interval update-dynamic-rules get-dynamic-rules get-matched-rules
-      set-action-count-as-badge-text tap-on-rule-matched-debug tap-all-events]]
+      get-max-getmatchedrules-calls-per-interval get-max-number-of-regex-rules update-dynamic-rules
+      get-dynamic-rules get-matched-rules set-action-count-as-badge-text tap-on-rule-matched-debug
+      tap-all-events]]
 
     [chromex.ext.declarative-web-request refer:[
       tap-on-request tap-on-message tap-all-events]]
@@ -296,7 +297,7 @@ Generated 81 namespaces containing 56 properties, 393 functions and 181 events:
 
     [chromex.ext.enterprise.device-attributes refer:[
       get-directory-device-id get-device-serial-number get-device-asset-id get-device-annotated-location
-      tap-all-events]]
+      get-device-hostname tap-all-events]]
 
     [chromex.ext.enterprise.hardware-platform refer:[
       get-hardware-platform-info tap-all-events]]

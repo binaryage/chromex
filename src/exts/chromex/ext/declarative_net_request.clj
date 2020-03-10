@@ -29,7 +29,8 @@
 
 (defmacro get-getmatchedrules-quota-interval
   "Time interval within which MAX_GETMATCHEDRULES_CALLS_PER_INTERVAL getMatchedRules calls can be made, specified in minutes.
-   Additional calls will fail immediately and set 'runtime.lastError'.
+   Additional calls will fail immediately and set 'runtime.lastError'. Note: getMatchedRules calls associated with a user
+   gesture are exempt from the quota.
 
    https://developer.chrome.com/extensions/declarativeNetRequest#property-GETMATCHEDRULES_QUOTA_INTERVAL."
   ([] (gen-call :property ::getmatchedrules-quota-interval &form)))
@@ -39,6 +40,13 @@
 
    https://developer.chrome.com/extensions/declarativeNetRequest#property-MAX_GETMATCHEDRULES_CALLS_PER_INTERVAL."
   ([] (gen-call :property ::max-getmatchedrules-calls-per-interval &form)))
+
+(defmacro get-max-number-of-regex-rules
+  "The maximum number of regular expression rules that an extension can add. This limit is evaluated separately for the set of
+   dynamic rules and those specified in the rule resources file.
+
+   https://developer.chrome.com/extensions/declarativeNetRequest#property-MAX_NUMBER_OF_REGEX_RULES."
+  ([] (gen-call :property ::max-number-of-regex-rules &form)))
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
@@ -146,7 +154,8 @@
     {:id ::max-getmatchedrules-calls-per-interval,
      :name "MAX_GETMATCHEDRULES_CALLS_PER_INTERVAL",
      :since "future",
-     :return-type "unknown-type"}],
+     :return-type "unknown-type"}
+    {:id ::max-number-of-regex-rules, :name "MAX_NUMBER_OF_REGEX_RULES", :since "master", :return-type "unknown-type"}],
    :functions
    [{:id ::update-dynamic-rules,
      :name "updateDynamicRules",

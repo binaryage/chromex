@@ -15,3 +15,6 @@
 (defn get-device-annotated-location* [config]
   (gen-wrap :function ::get-device-annotated-location config))
 
+(defn get-device-hostname* [config]
+  (gen-wrap :function ::get-device-hostname config))
+

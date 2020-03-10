@@ -27,6 +27,9 @@
 (defn set-settings* [config settings]
   (gen-wrap :function ::set-settings config settings))
 
+(defn get-a11y-status* [config]
+  (gen-wrap :function ::get-a11y-status config))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-process-output* [config channel & args]
@@ -34,4 +37,7 @@
 
 (defn on-settings-changed* [config channel & args]
   (gen-wrap :event ::on-settings-changed config channel args))
+
+(defn on-a11y-status-changed* [config channel & args]
+  (gen-wrap :event ::on-a11y-status-changed config channel args))
 

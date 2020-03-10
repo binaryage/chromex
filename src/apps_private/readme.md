@@ -13,6 +13,7 @@
 | [chrome.cecPrivate](https://developer.chrome.com/extensions/cecPrivate) | [chromex/app/cec_private.clj](chromex/app/cec_private.clj) |
 | [chrome.chromeosInfoPrivate](https://developer.chrome.com/extensions/chromeosInfoPrivate) | [chromex/app/chromeos_info_private.clj](chromex/app/chromeos_info_private.clj) |
 | [chrome.commandLinePrivate](https://developer.chrome.com/extensions/commandLinePrivate) | [chromex/app/command_line_private.clj](chromex/app/command_line_private.clj) |
+| [chrome.crashReportPrivate](https://developer.chrome.com/extensions/crashReportPrivate) | [chromex/app/crash_report_private.clj](chromex/app/crash_report_private.clj) |
 | [chrome.dashboardPrivate](https://developer.chrome.com/extensions/dashboardPrivate) | [chromex/app/dashboard_private.clj](chromex/app/dashboard_private.clj) |
 | [chrome.developerPrivate](https://developer.chrome.com/extensions/developerPrivate) | [chromex/app/developer_private.clj](chromex/app/developer_private.clj) |
 | [chrome.echoPrivate](https://developer.chrome.com/extensions/echoPrivate) | [chromex/app/echo_private.clj](chromex/app/echo_private.clj) |
@@ -44,20 +45,21 @@
 
 ### API stats
 
-Generated 36 namespaces containing 0 properties, 329 functions and 72 events:
+Generated 37 namespaces containing 0 properties, 342 functions and 75 events:
 
 
     |                     :namespace | :properties | :functions | :events |
     |--------------------------------+-------------+------------+---------|
     |    chrome.accessibilityPrivate |           0 |         18 |       9 |
     |      chrome.activityLogPrivate |           0 |          5 |       1 |
-    |         chrome.autofillPrivate |           0 |         12 |       1 |
+    |         chrome.autofillPrivate |           0 |         13 |       1 |
     |        chrome.bluetoothPrivate |           0 |         10 |       2 |
     |  chrome.bookmarkManagerPrivate |           0 |         11 |       3 |
     |   chrome.brailleDisplayPrivate |           0 |          3 |       2 |
     |              chrome.cecPrivate |           0 |          3 |       0 |
     |     chrome.chromeosInfoPrivate |           0 |          2 |       0 |
     |      chrome.commandLinePrivate |           0 |          1 |       0 |
+    |      chrome.crashReportPrivate |           0 |          1 |       0 |
     |        chrome.dashboardPrivate |           0 |          1 |       0 |
     |        chrome.developerPrivate |           0 |         31 |       2 |
     |             chrome.echoPrivate |           0 |          5 |       0 |
@@ -65,7 +67,7 @@ Generated 36 namespaces containing 0 properties, 329 functions and 72 events:
     |      chrome.fileManagerPrivate |           0 |         58 |      10 |
     |         chrome.identityPrivate |           0 |          1 |       1 |
     |      chrome.imageWriterPrivate |           0 |          5 |       5 |
-    |      chrome.inputMethodPrivate |           0 |         19 |      10 |
+    |      chrome.inputMethodPrivate |           0 |         20 |      10 |
     | chrome.languageSettingsPrivate |           0 |         14 |       4 |
     |  chrome.mediaPerceptionPrivate |           0 |          5 |       1 |
     |      chrome.mediaPlayerPrivate |           0 |          0 |       3 |
@@ -73,16 +75,16 @@ Generated 36 namespaces containing 0 properties, 329 functions and 72 events:
     |             chrome.mojoPrivate |           0 |          1 |       0 |
     |     chrome.musicManagerPrivate |           0 |          1 |       0 |
     |       chrome.networkingPrivate |           0 |         22 |       5 |
-    |        chrome.passwordsPrivate |           0 |         13 |       4 |
+    |        chrome.passwordsPrivate |           0 |         20 |       6 |
     |      chrome.quickUnlockPrivate |           0 |          7 |       1 |
     |        chrome.resourcesPrivate |           0 |          1 |       0 |
     |         chrome.settingsPrivate |           0 |          5 |       1 |
     |           chrome.systemPrivate |           0 |          3 |       0 |
-    |         chrome.terminalPrivate |           0 |          8 |       2 |
+    |         chrome.terminalPrivate |           0 |          9 |       3 |
     |            chrome.usersPrivate |           0 |          7 |       0 |
     |  chrome.virtualKeyboardPrivate |           0 |         14 |       3 |
     |        chrome.wallpaperPrivate |           0 |          0 |       1 |
-    |           chrome.webcamPrivate |           0 |          6 |       0 |
+    |           chrome.webcamPrivate |           0 |          8 |       0 |
     |    chrome.webrtcLoggingPrivate |           0 |         14 |       0 |
     |   chrome.webstoreWidgetPrivate |           0 |          1 |       0 |
 
@@ -110,8 +112,8 @@ Generated 36 namespaces containing 0 properties, 329 functions and 72 events:
     [chromex.app.autofill-private refer:[
       save-address get-country-list get-address-components get-address-list save-credit-card remove-entry
       validate-phone-numbers get-credit-card-list mask-credit-card migrate-credit-cards
-      log-server-card-link-clicked set-credit-card-fido-auth-enabled-state tap-on-personal-data-changed
-      tap-all-events]]
+      log-server-card-link-clicked set-credit-card-fido-auth-enabled-state get-upi-id-list
+      tap-on-personal-data-changed tap-all-events]]
 
     [chromex.app.bluetooth-private refer:[
       set-adapter-state set-pairing-response disconnect-all forget-device set-discovery-filter connect
@@ -134,6 +136,9 @@ Generated 36 namespaces containing 0 properties, 329 functions and 72 events:
 
     [chromex.app.command-line-private refer:[
       has-switch tap-all-events]]
+
+    [chromex.app.crash-report-private refer:[
+      report-error tap-all-events]]
 
     [chromex.app.dashboard-private refer:[
       show-permission-prompt-for-delegated-install tap-all-events]]
@@ -184,8 +189,8 @@ Generated 36 namespaces containing 0 properties, 329 functions and 72 events:
       get-input-method-config get-input-methods get-current-input-method set-current-input-method
       fetch-all-dictionary-words add-word-to-dictionary get-encrypt-sync-enabled set-xkb-layout
       finish-composing-text set-selection-range notify-ime-menu-item-activated show-input-view
-      open-options-page get-composition-bounds get-surrounding-text get-setting set-setting
-      set-composition-range reset tap-on-changed tap-on-composition-bounds-changed
+      hide-input-view open-options-page get-composition-bounds get-surrounding-text get-setting
+      set-setting set-composition-range reset tap-on-changed tap-on-composition-bounds-changed
       tap-on-dictionary-loaded tap-on-dictionary-changed tap-on-ime-menu-activation-changed
       tap-on-ime-menu-list-changed tap-on-ime-menu-items-changed tap-on-focus tap-on-settings-changed
       tap-on-screen-projection-changed tap-all-events]]
@@ -231,8 +236,11 @@ Generated 36 namespaces containing 0 properties, 329 functions and 72 events:
       remove-password-exception undo-remove-saved-password-or-exception request-plaintext-password
       get-saved-password-list get-password-exception-list import-passwords export-passwords
       request-export-progress-status cancel-export-passwords is-opted-in-for-account-storage
+      get-compromised-credentials-info get-plaintext-compromised-password change-compromised-credential
+      remove-compromised-credential start-password-check stop-password-check get-password-check-status
       tap-on-saved-passwords-list-changed tap-on-password-exceptions-list-changed
-      tap-on-passwords-file-export-progress tap-on-account-storage-opt-in-state-changed tap-all-events]]
+      tap-on-passwords-file-export-progress tap-on-account-storage-opt-in-state-changed
+      tap-on-compromised-credentials-info-changed tap-on-password-check-status-changed tap-all-events]]
 
     [chromex.app.quick-unlock-private refer:[
       get-auth-token set-lock-screen-enabled get-available-modes get-active-modes check-credential
@@ -250,8 +258,8 @@ Generated 36 namespaces containing 0 properties, 329 functions and 72 events:
 
     [chromex.app.terminal-private refer:[
       open-terminal-process close-terminal-process send-input on-terminal-resize ack-output
-      get-crosh-settings get-settings set-settings tap-on-process-output tap-on-settings-changed
-      tap-all-events]]
+      get-crosh-settings get-settings set-settings get-a11y-status tap-on-process-output
+      tap-on-settings-changed tap-on-a11y-status-changed tap-all-events]]
 
     [chromex.app.users-private refer:[
       get-whitelisted-users is-whitelisted-user add-whitelisted-user remove-whitelisted-user
@@ -267,7 +275,8 @@ Generated 36 namespaces containing 0 properties, 329 functions and 72 events:
       tap-on-wallpaper-changed-by3rd-party tap-all-events]]
 
     [chromex.app.webcam-private refer:[
-      open-serial-webcam close-webcam get set reset set-home tap-all-events]]
+      open-serial-webcam close-webcam get set reset set-home restore-camera-preset set-camera-preset
+      tap-all-events]]
 
     [chromex.app.webrtc-logging-private refer:[
       set-meta-data start set-upload-on-render-close stop store upload-stored upload discard

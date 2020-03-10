@@ -42,6 +42,27 @@
 (defn is-opted-in-for-account-storage* [config]
   (gen-wrap :function ::is-opted-in-for-account-storage config))
 
+(defn get-compromised-credentials-info* [config]
+  (gen-wrap :function ::get-compromised-credentials-info config))
+
+(defn get-plaintext-compromised-password* [config credential reason]
+  (gen-wrap :function ::get-plaintext-compromised-password config credential reason))
+
+(defn change-compromised-credential* [config credential new-password]
+  (gen-wrap :function ::change-compromised-credential config credential new-password))
+
+(defn remove-compromised-credential* [config credential]
+  (gen-wrap :function ::remove-compromised-credential config credential))
+
+(defn start-password-check* [config]
+  (gen-wrap :function ::start-password-check config))
+
+(defn stop-password-check* [config]
+  (gen-wrap :function ::stop-password-check config))
+
+(defn get-password-check-status* [config]
+  (gen-wrap :function ::get-password-check-status config))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-saved-passwords-list-changed* [config channel & args]
@@ -55,4 +76,10 @@
 
 (defn on-account-storage-opt-in-state-changed* [config channel & args]
   (gen-wrap :event ::on-account-storage-opt-in-state-changed config channel args))
+
+(defn on-compromised-credentials-info-changed* [config channel & args]
+  (gen-wrap :event ::on-compromised-credentials-info-changed config channel args))
+
+(defn on-password-check-status-changed* [config channel & args]
+  (gen-wrap :event ::on-password-check-status-changed config channel args))
 

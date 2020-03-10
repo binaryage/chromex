@@ -848,6 +848,18 @@
    chromex.error/get-last-error."
   ([launcher-state] (gen-call :function ::wait-for-launcher-state &form launcher-state)))
 
+(defmacro wait-for-overview-state
+  "Wait until overview has transitioned to |overviewState|, if it is not in that state.
+
+     |overview-state| - the target overview state.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([overview-state] (gen-call :function ::wait-for-overview-state &form overview-state)))
+
 (defmacro create-new-desk
   "Creates a new desk if the maximum number of desks has not been reached.
 
@@ -985,6 +997,36 @@
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([enabled] (gen-call :function ::set-arc-touch-mode &form enabled)))
+
+(defmacro get-scrollable-shelf-info-for-state
+  "Fetches ui information of scrollable shelf view for the given shelf state. This function does not change scrollable shelf.
+   [deprecated='Use getShelfUIInfoForState()']
+
+     |state| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [info] where:
+
+     |info| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([state] (gen-call :function ::get-scrollable-shelf-info-for-state &form state)))
+
+(defmacro get-shelf-ui-info-for-state
+  "Fetches UI information of shelf (including scrollable shelf and hotseat) for the given shelf state. This function does not
+   change any shelf component.
+
+     |state| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [info] where:
+
+     |info| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([state] (gen-call :function ::get-shelf-ui-info-for-state &form state)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -1386,6 +1428,11 @@
      :since "80",
      :callback? true,
      :params [{:name "launcher-state", :type "unknown-type"} {:name "callback", :type :callback}]}
+    {:id ::wait-for-overview-state,
+     :name "waitForOverviewState",
+     :since "future",
+     :callback? true,
+     :params [{:name "overview-state", :type "unknown-type"} {:name "callback", :type :callback}]}
     {:id ::create-new-desk,
      :name "createNewDesk",
      :since "80",
@@ -1423,7 +1470,9 @@
      :since "80",
      :callback? true,
      :params
-     [{:name "location", :type "object"} {:name "duration-in-ms", :type "double"} {:name "callback", :type :callback}]}
+     [{:name "location", :type "autotestPrivate.Location"}
+      {:name "duration-in-ms", :type "double"}
+      {:name "callback", :type :callback}]}
     {:id ::set-metrics-enabled,
      :name "setMetricsEnabled",
      :since "80",
@@ -1443,7 +1492,23 @@
      :name "setArcTouchMode",
      :since "future",
      :callback? true,
-     :params [{:name "enabled", :type "boolean"} {:name "callback", :type :callback}]}],
+     :params [{:name "enabled", :type "boolean"} {:name "callback", :type :callback}]}
+    {:id ::get-scrollable-shelf-info-for-state,
+     :name "getScrollableShelfInfoForState",
+     :since "future",
+     :callback? true,
+     :params
+     [{:name "state", :type "object"}
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "info", :type "autotestPrivate.ScrollableShelfInfo"}]}}]}
+    {:id ::get-shelf-ui-info-for-state,
+     :name "getShelfUIInfoForState",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "state", :type "object"}
+      {:name "callback", :type :callback, :callback {:params [{:name "info", :type "object"}]}}]}],
    :events [{:id ::on-clipboard-data-changed, :name "onClipboardDataChanged", :since "79"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

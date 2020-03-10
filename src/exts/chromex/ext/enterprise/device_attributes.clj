@@ -77,6 +77,21 @@
    https://developer.chrome.com/extensions/enterprise.deviceAttributes#method-getDeviceAnnotatedLocation."
   ([] (gen-call :function ::get-device-annotated-location &form)))
 
+(defmacro get-device-hostname
+  "Fetches the device's hostname as set by DeviceHostnameTemplate policy. If the current user is not affiliated or no hostname
+   has been set by the the enterprise policy, returns an empty string.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [hostname] where:
+
+     |hostname| - https://developer.chrome.com/extensions/enterprise.deviceAttributes#property-callback-hostname.
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/extensions/enterprise.deviceAttributes#method-getDeviceHostname."
+  ([] (gen-call :function ::get-device-hostname &form)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -110,8 +125,12 @@
      :name "getDeviceAnnotatedLocation",
      :since "66",
      :callback? true,
-     :params
-     [{:name "callback", :type :callback, :callback {:params [{:name "annotated-location", :type "string"}]}}]}]})
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "annotated-location", :type "string"}]}}]}
+    {:id ::get-device-hostname,
+     :name "getDeviceHostname",
+     :since "future",
+     :callback? true,
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "hostname", :type "string"}]}}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

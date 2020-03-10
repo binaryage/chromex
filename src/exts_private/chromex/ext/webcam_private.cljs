@@ -21,3 +21,9 @@
 (defn set-home* [config webcam-id]
   (gen-wrap :function ::set-home config webcam-id))
 
+(defn restore-camera-preset* [config webcam-id preset-number]
+  (gen-wrap :function ::restore-camera-preset config webcam-id preset-number))
+
+(defn set-camera-preset* [config webcam-id preset-number]
+  (gen-wrap :function ::set-camera-preset config webcam-id preset-number))
+

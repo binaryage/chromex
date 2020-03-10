@@ -39,6 +39,9 @@
 (defn set-credit-card-fido-auth-enabled-state* [config enabled]
   (gen-wrap :function ::set-credit-card-fido-auth-enabled-state config enabled))
 
+(defn get-upi-id-list* [config]
+  (gen-wrap :function ::get-upi-id-list config))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-personal-data-changed* [config channel & args]
