@@ -129,17 +129,17 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::is-opted-in-for-account-storage &form)))
 
-(defmacro get-compromised-credentials-info
-  "Requests the latest information about compromised credentials.
+(defmacro get-compromised-credentials
+  "Requests the latest compromised credentials.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [info] where:
+   Signature of the result value put on the channel is [compromised-credential] where:
 
-     |info| - ?
+     |compromised-credential| - ?
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([] (gen-call :function ::get-compromised-credentials-info &form)))
+  ([] (gen-call :function ::get-compromised-credentials &form)))
 
 (defmacro get-plaintext-compromised-password
   "Requests the plaintext password for |credential|. |callback| gets invoked with the same |credential|, whose |password
@@ -260,15 +260,15 @@
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-account-storage-opt-in-state-changed &form channel args)))
 
-(defmacro tap-on-compromised-credentials-info-changed-events
+(defmacro tap-on-compromised-credentials-changed-events
   "Fired when the compromised credentials changed.
 
-   Events will be put on the |channel| with signature [::on-compromised-credentials-info-changed [info]] where:
+   Events will be put on the |channel| with signature [::on-compromised-credentials-changed [compromised-credentials]] where:
 
-     |info| - The updated info about compromised credentials.
+     |compromised-credentials| - The updated compromised credentials.
 
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
-  ([channel & args] (apply gen-call :event ::on-compromised-credentials-info-changed &form channel args)))
+  ([channel & args] (apply gen-call :event ::on-compromised-credentials-changed &form channel args)))
 
 (defmacro tap-on-password-check-status-changed-events
   "Fired when the status of the password check changes.
@@ -340,13 +340,14 @@
      :name "isOptedInForAccountStorage",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "opted-in", :type "boolean"}]}}]}
-    {:id ::get-compromised-credentials-info,
-     :name "getCompromisedCredentialsInfo",
+    {:id ::get-compromised-credentials,
+     :name "getCompromisedCredentials",
      :callback? true,
      :params
      [{:name "callback",
        :type :callback,
-       :callback {:params [{:name "info", :type "passwordsPrivate.CompromisedCredentialsInfo"}]}}]}
+       :callback
+       {:params [{:name "compromised-credential", :type "[array-of-passwordsPrivate.CompromisedCredentials]"}]}}]}
     {:id ::get-plaintext-compromised-password,
      :name "getPlaintextCompromisedPassword",
      :callback? true,
@@ -397,9 +398,9 @@
     {:id ::on-account-storage-opt-in-state-changed,
      :name "onAccountStorageOptInStateChanged",
      :params [{:name "opted-in", :type "boolean"}]}
-    {:id ::on-compromised-credentials-info-changed,
-     :name "onCompromisedCredentialsInfoChanged",
-     :params [{:name "info", :type "passwordsPrivate.CompromisedCredentialsInfo"}]}
+    {:id ::on-compromised-credentials-changed,
+     :name "onCompromisedCredentialsChanged",
+     :params [{:name "compromised-credentials", :type "[array-of-passwordsPrivate.CompromisedCredentials]"}]}
     {:id ::on-password-check-status-changed,
      :name "onPasswordCheckStatusChanged",
      :params [{:name "status", :type "passwordsPrivate.PasswordCheckStatus"}]}]})

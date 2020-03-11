@@ -49,7 +49,7 @@
 
 ### API stats
 
-Generated 41 namespaces containing 0 properties, 461 functions and 81 events:
+Generated 41 namespaces containing 0 properties, 462 functions and 81 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -87,7 +87,7 @@ Generated 41 namespaces containing 0 properties, 461 functions and 81 events:
     |            chrome.safeBrowsingPrivate |           0 |          1 |       5 |
     |                chrome.settingsPrivate |           0 |          5 |       1 |
     |                  chrome.systemPrivate |           0 |          3 |       0 |
-    |                chrome.terminalPrivate |           0 |          9 |       3 |
+    |                chrome.terminalPrivate |           0 |         10 |       3 |
     |                   chrome.usersPrivate |           0 |          7 |       0 |
     |         chrome.virtualKeyboardPrivate |           0 |         14 |       3 |
     |                  chrome.webcamPrivate |           0 |          8 |       0 |
@@ -273,11 +273,11 @@ Generated 41 namespaces containing 0 properties, 461 functions and 81 events:
       remove-password-exception undo-remove-saved-password-or-exception request-plaintext-password
       get-saved-password-list get-password-exception-list import-passwords export-passwords
       request-export-progress-status cancel-export-passwords is-opted-in-for-account-storage
-      get-compromised-credentials-info get-plaintext-compromised-password change-compromised-credential
+      get-compromised-credentials get-plaintext-compromised-password change-compromised-credential
       remove-compromised-credential start-password-check stop-password-check get-password-check-status
       tap-on-saved-passwords-list-changed tap-on-password-exceptions-list-changed
       tap-on-passwords-file-export-progress tap-on-account-storage-opt-in-state-changed
-      tap-on-compromised-credentials-info-changed tap-on-password-check-status-changed tap-all-events]]
+      tap-on-compromised-credentials-changed tap-on-password-check-status-changed tap-all-events]]
 
     [chromex.ext.quick-unlock-private refer:[
       get-auth-token set-lock-screen-enabled get-available-modes get-active-modes check-credential
@@ -299,8 +299,8 @@ Generated 41 namespaces containing 0 properties, 461 functions and 81 events:
       get-incognito-mode-availability get-update-status get-api-key tap-all-events]]
 
     [chromex.ext.terminal-private refer:[
-      open-terminal-process close-terminal-process send-input on-terminal-resize ack-output
-      get-crosh-settings get-settings set-settings get-a11y-status tap-on-process-output
+      open-terminal-process open-vmshell-process close-terminal-process send-input on-terminal-resize
+      ack-output get-crosh-settings get-settings set-settings get-a11y-status tap-on-process-output
       tap-on-settings-changed tap-on-a11y-status-changed tap-all-events]]
 
     [chromex.ext.users-private refer:[

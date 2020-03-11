@@ -26,8 +26,23 @@
   ([process-name args] (gen-call :function ::open-terminal-process &form process-name args))
   ([process-name] `(open-terminal-process ~process-name :omit)))
 
+(defmacro open-vmshell-process
+  "Starts new vmshell process.
+
+     |args| - Command line arguments to pass to vmshell.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [id] where:
+
+     |id| - Id of the launched vmshell process.
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([args] (gen-call :function ::open-vmshell-process &form args))
+  ([] `(open-vmshell-process :omit)))
+
 (defmacro close-terminal-process
-  "Closes previously opened process.
+  "Closes previously opened process from either openTerminalProcess or openVmshellProcess.
 
      |id| - Unique id of the process we want to close.
 
@@ -189,6 +204,13 @@
      :params
      [{:name "process-name", :type "string"}
       {:name "args", :optional? true, :since "66", :type "[array-of-strings]"}
+      {:name "callback", :type :callback, :callback {:params [{:name "id", :type "string"}]}}]}
+    {:id ::open-vmshell-process,
+     :name "openVmshellProcess",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "args", :optional? true, :type "[array-of-strings]"}
       {:name "callback", :type :callback, :callback {:params [{:name "id", :type "string"}]}}]}
     {:id ::close-terminal-process,
      :name "closeTerminalProcess",

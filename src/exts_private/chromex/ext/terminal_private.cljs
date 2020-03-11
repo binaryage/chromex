@@ -6,6 +6,9 @@
 (defn open-terminal-process* [config process-name args]
   (gen-wrap :function ::open-terminal-process config process-name args))
 
+(defn open-vmshell-process* [config args]
+  (gen-wrap :function ::open-vmshell-process config args))
+
 (defn close-terminal-process* [config id]
   (gen-wrap :function ::close-terminal-process config id))
 

@@ -42,8 +42,8 @@
 (defn is-opted-in-for-account-storage* [config]
   (gen-wrap :function ::is-opted-in-for-account-storage config))
 
-(defn get-compromised-credentials-info* [config]
-  (gen-wrap :function ::get-compromised-credentials-info config))
+(defn get-compromised-credentials* [config]
+  (gen-wrap :function ::get-compromised-credentials config))
 
 (defn get-plaintext-compromised-password* [config credential reason]
   (gen-wrap :function ::get-plaintext-compromised-password config credential reason))
@@ -77,8 +77,8 @@
 (defn on-account-storage-opt-in-state-changed* [config channel & args]
   (gen-wrap :event ::on-account-storage-opt-in-state-changed config channel args))
 
-(defn on-compromised-credentials-info-changed* [config channel & args]
-  (gen-wrap :event ::on-compromised-credentials-info-changed config channel args))
+(defn on-compromised-credentials-changed* [config channel & args]
+  (gen-wrap :event ::on-compromised-credentials-changed config channel args))
 
 (defn on-password-check-status-changed* [config channel & args]
   (gen-wrap :event ::on-password-check-status-changed config channel args))
