@@ -155,7 +155,7 @@
      :name "MAX_GETMATCHEDRULES_CALLS_PER_INTERVAL",
      :since "future",
      :return-type "unknown-type"}
-    {:id ::max-number-of-regex-rules, :name "MAX_NUMBER_OF_REGEX_RULES", :since "master", :return-type "unknown-type"}],
+    {:id ::max-number-of-regex-rules, :name "MAX_NUMBER_OF_REGEX_RULES", :since "future", :return-type "unknown-type"}],
    :functions
    [{:id ::update-dynamic-rules,
      :name "updateDynamicRules",

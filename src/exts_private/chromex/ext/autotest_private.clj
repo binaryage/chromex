@@ -1504,7 +1504,7 @@
        :callback {:params [{:name "info", :type "autotestPrivate.ScrollableShelfInfo"}]}}]}
     {:id ::get-shelf-ui-info-for-state,
      :name "getShelfUIInfoForState",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "state", :type "object"}

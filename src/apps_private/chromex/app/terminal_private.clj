@@ -254,7 +254,7 @@
      :params [{:name "settings", :type "object"} {:name "callback", :type :callback}]}
     {:id ::get-a11y-status,
      :name "getA11yStatus",
-     :since "master",
+     :since "future",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "a11y-status", :type "boolean"}]}}]}],
    :events
@@ -267,7 +267,7 @@
     {:id ::on-settings-changed, :name "onSettingsChanged", :since "80", :params [{:name "settings", :type "object"}]}
     {:id ::on-a11y-status-changed,
      :name "onA11yStatusChanged",
-     :since "master",
+     :since "future",
      :params [{:name "status", :type "boolean"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
