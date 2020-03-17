@@ -233,8 +233,8 @@ Generated 41 namespaces containing 0 properties, 462 functions and 81 events:
       get-input-method-config get-input-methods get-current-input-method set-current-input-method
       fetch-all-dictionary-words add-word-to-dictionary get-encrypt-sync-enabled set-xkb-layout
       finish-composing-text set-selection-range notify-ime-menu-item-activated show-input-view
-      hide-input-view open-options-page get-composition-bounds get-surrounding-text get-setting
-      set-setting set-composition-range reset tap-on-changed tap-on-composition-bounds-changed
+      hide-input-view open-options-page get-composition-bounds get-surrounding-text get-settings
+      set-settings set-composition-range reset tap-on-changed tap-on-composition-bounds-changed
       tap-on-dictionary-loaded tap-on-dictionary-changed tap-on-ime-menu-activation-changed
       tap-on-ime-menu-list-changed tap-on-ime-menu-items-changed tap-on-focus tap-on-settings-changed
       tap-on-screen-projection-changed tap-all-events]]

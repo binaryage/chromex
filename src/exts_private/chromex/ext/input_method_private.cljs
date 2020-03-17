@@ -51,11 +51,11 @@
 (defn get-surrounding-text* [config before-length after-length]
   (gen-wrap :function ::get-surrounding-text config before-length after-length))
 
-(defn get-setting* [config engine-id key]
-  (gen-wrap :function ::get-setting config engine-id key))
+(defn get-settings* [config engine-id]
+  (gen-wrap :function ::get-settings config engine-id))
 
-(defn set-setting* [config engine-id key value]
-  (gen-wrap :function ::set-setting config engine-id key value))
+(defn set-settings* [config engine-id settings]
+  (gen-wrap :function ::set-settings config engine-id settings))
 
 (defn set-composition-range* [config parameters]
   (gen-wrap :function ::set-composition-range config parameters))

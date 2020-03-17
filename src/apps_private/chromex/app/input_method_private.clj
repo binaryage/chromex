@@ -151,7 +151,7 @@
   ([] (gen-call :function ::show-input-view &form)))
 
 (defmacro hide-input-view
-  "Shows the input view window. If the input view window is already hidden, this function will do nothing.
+  "Hides the input view window. If the input view window is already hidden, this function will do nothing.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
@@ -194,34 +194,32 @@
    chromex.error/get-last-error."
   ([before-length after-length] (gen-call :function ::get-surrounding-text &form before-length after-length)))
 
-(defmacro get-setting
-  "Gets the current value of a setting for a particular input method
+(defmacro get-settings
+  "Gets the current values of all settings for a particular input method
 
      |engine-id| - The ID of the engine (e.g. 'zh-t-i0-pinyin', 'xkb:us::eng')
-     |key| - The setting to get
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [setting] where:
+   Signature of the result value put on the channel is [settings] where:
 
-     |setting| - The value for the requested setting, or null if there's no value
+     |settings| - The requested setting, or null if there's no value
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([engine-id key] (gen-call :function ::get-setting &form engine-id key)))
+  ([engine-id] (gen-call :function ::get-settings &form engine-id)))
 
-(defmacro set-setting
-  "Sets the value of a setting for a particular input method
+(defmacro set-settings
+  "Sets the value of all settings for a particular input method
 
      |engine-id| - The ID of the engine (e.g. 'zh-t-i0-pinyin', 'xkb:us::eng')
-     |key| - The setting to set
-     |value| - The new value of the setting
+     |settings| - The settings to set
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([engine-id key value] (gen-call :function ::set-setting &form engine-id key value)))
+  ([engine-id settings] (gen-call :function ::set-settings &form engine-id settings)))
 
 (defmacro set-composition-range
   "Set the composition range. If this extension does not own the active IME, this fails.
@@ -329,11 +327,10 @@
   "This event is sent when the settings for any input method changed. It is sent to all extensions that are listening to this
    event, and enabled by the user.
 
-   Events will be put on the |channel| with signature [::on-settings-changed [engine-id key value]] where:
+   Events will be put on the |channel| with signature [::on-settings-changed [engine-id settings]] where:
 
      |engine-id| - ID of the engine that changed
-     |key| - The setting that changed
-     |value| - The new value of the setting
+     |settings| - The new settings
 
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-settings-changed &form channel args)))
@@ -446,22 +443,22 @@
      [{:name "before-length", :type "integer"}
       {:name "after-length", :type "integer"}
       {:name "callback", :type :callback, :callback {:params [{:name "surrounding-info", :type "object"}]}}]}
-    {:id ::get-setting,
-     :name "getSetting",
-     :since "72",
+    {:id ::get-settings,
+     :name "getSettings",
+     :since "master",
      :callback? true,
      :params
      [{:name "engine-id", :type "string"}
-      {:name "key", :type "string"}
-      {:name "callback", :type :callback, :callback {:params [{:name "setting", :optional? true, :type "any"}]}}]}
-    {:id ::set-setting,
-     :name "setSetting",
-     :since "72",
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "settings", :optional? true, :type "inputMethodPrivate.InputMethodSettings"}]}}]}
+    {:id ::set-settings,
+     :name "setSettings",
+     :since "master",
      :callback? true,
      :params
      [{:name "engine-id", :type "string"}
-      {:name "key", :type "string"}
-      {:name "value", :type "any"}
+      {:name "settings", :type "inputMethodPrivate.InputMethodSettings"}
       {:name "callback", :optional? true, :type :callback}]}
     {:id ::set-composition-range,
      :name "setCompositionRange",
@@ -497,7 +494,9 @@
     {:id ::on-settings-changed,
      :name "onSettingsChanged",
      :since "73",
-     :params [{:name "engine-id", :type "string"} {:name "key", :type "string"} {:name "value", :type "any"}]}
+     :params
+     [{:name "engine-id", :type "string"}
+      {:name "settings", :since "master", :type "inputMethodPrivate.InputMethodSettings"}]}
     {:id ::on-screen-projection-changed,
      :name "onScreenProjectionChanged",
      :since "73",
