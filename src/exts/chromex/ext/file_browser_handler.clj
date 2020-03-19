@@ -2,7 +2,7 @@
   "Use the chrome.fileBrowserHandler API to extend the Chrome OS file browser. For example, you can use this API to enable
    users to upload files to your website.
 
-     * available since Chrome 34
+     * available since Chrome 35
      * https://developer.chrome.com/extensions/fileBrowserHandler"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -63,7 +63,7 @@
 
 (def api-table
   {:namespace "chrome.fileBrowserHandler",
-   :since "34",
+   :since "35",
    :functions
    [{:id ::select-file,
      :name "selectFile",

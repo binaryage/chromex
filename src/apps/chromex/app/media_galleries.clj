@@ -2,7 +2,7 @@
   "Use the chrome.mediaGalleries API to access media files (audio,
    images, video) from the user's local disks (with the user's consent).
 
-     * available since Chrome 34
+     * available since Chrome 35
      * https://developer.chrome.com/apps/mediaGalleries"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -218,7 +218,7 @@
 
 (def api-table
   {:namespace "chrome.mediaGalleries",
-   :since "34",
+   :since "35",
    :functions
    [{:id ::get-media-file-systems,
      :name "getMediaFileSystems",
@@ -277,8 +277,8 @@
      :since "38",
      :callback? true,
      :params
-     [{:name "media-file", :since "34", :type "Blob"}
-      {:name "options", :optional? true, :since "34", :type "object"}
+     [{:name "media-file", :since "35", :type "Blob"}
+      {:name "options", :optional? true, :since "35", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "metadata", :type "object"}]}}]}
     {:id ::add-gallery-watch,
      :name "addGalleryWatch",
@@ -308,7 +308,7 @@
      :name "onScanProgress",
      :since "51",
      :deprecated "The mediaGalleries API no longer supports scanning.",
-     :params [{:name "details", :since "34", :type "object"}]}]})
+     :params [{:name "details", :type "object"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

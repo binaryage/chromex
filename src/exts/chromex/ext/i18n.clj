@@ -1,7 +1,7 @@
 (ns chromex.ext.i18n
   "Use the chrome.i18n infrastructure to implement internationalization across your whole app or extension.
 
-     * available since Chrome 34
+     * available since Chrome 35
      * https://developer.chrome.com/extensions/i18n"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -78,7 +78,7 @@
 
 (def api-table
   {:namespace "chrome.i18n",
-   :since "34",
+   :since "35",
    :functions
    [{:id ::get-accept-languages,
      :name "getAcceptLanguages",
@@ -94,7 +94,7 @@
      [{:name "message-name", :type "string"}
       {:name "substitutions", :optional? true, :type "any"}
       {:name "options", :optional? true, :since "79", :type "object"}]}
-    {:id ::get-ui-language, :name "getUILanguage", :since "35", :return-type "string"}
+    {:id ::get-ui-language, :name "getUILanguage", :return-type "string"}
     {:id ::detect-language,
      :name "detectLanguage",
      :since "47",

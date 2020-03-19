@@ -2,7 +2,7 @@
   "Use the chrome.bluetooth API to connect to a Bluetooth
    device. All functions report failures via chrome.runtime.lastError.
 
-     * available since Chrome 34
+     * available since Chrome 35
      * https://developer.chrome.com/extensions/bluetooth"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -156,7 +156,7 @@
 
 (def api-table
   {:namespace "chrome.bluetooth",
-   :since "34",
+   :since "35",
    :functions
    [{:id ::get-adapter-state,
      :name "getAdapterState",
@@ -167,7 +167,6 @@
        :callback {:params [{:name "adapter-info", :type "bluetooth.AdapterState"}]}}]}
     {:id ::get-device,
      :name "getDevice",
-     :since "35",
      :callback? true,
      :params
      [{:name "device-address", :type "string"}
@@ -192,15 +191,9 @@
    [{:id ::on-adapter-state-changed,
      :name "onAdapterStateChanged",
      :params [{:name "state", :type "bluetooth.AdapterState"}]}
-    {:id ::on-device-added, :name "onDeviceAdded", :since "35", :params [{:name "device", :type "bluetooth.Device"}]}
-    {:id ::on-device-changed,
-     :name "onDeviceChanged",
-     :since "35",
-     :params [{:name "device", :type "bluetooth.Device"}]}
-    {:id ::on-device-removed,
-     :name "onDeviceRemoved",
-     :since "35",
-     :params [{:name "device", :type "bluetooth.Device"}]}]})
+    {:id ::on-device-added, :name "onDeviceAdded", :params [{:name "device", :type "bluetooth.Device"}]}
+    {:id ::on-device-changed, :name "onDeviceChanged", :params [{:name "device", :type "bluetooth.Device"}]}
+    {:id ::on-device-removed, :name "onDeviceRemoved", :params [{:name "device", :type "bluetooth.Device"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

@@ -1,5 +1,5 @@
 (ns chromex.app.chromeos-info-private
-  "  * available since Chrome 34"
+  "  * available since Chrome 35"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -45,7 +45,7 @@
 
 (def api-table
   {:namespace "chrome.chromeosInfoPrivate",
-   :since "34",
+   :since "35",
    :functions
    [{:id ::get,
      :name "get",

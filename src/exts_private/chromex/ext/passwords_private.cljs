@@ -42,6 +42,9 @@
 (defn is-opted-in-for-account-storage* [config]
   (gen-wrap :function ::is-opted-in-for-account-storage config))
 
+(defn opt-in-for-account-storage* [config opt-in]
+  (gen-wrap :function ::opt-in-for-account-storage config opt-in))
+
 (defn get-compromised-credentials* [config]
   (gen-wrap :function ::get-compromised-credentials config))
 

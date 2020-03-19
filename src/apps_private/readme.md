@@ -45,7 +45,7 @@
 
 ### API stats
 
-Generated 37 namespaces containing 0 properties, 343 functions and 75 events:
+Generated 37 namespaces containing 0 properties, 344 functions and 75 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -75,7 +75,7 @@ Generated 37 namespaces containing 0 properties, 343 functions and 75 events:
     |             chrome.mojoPrivate |           0 |          1 |       0 |
     |     chrome.musicManagerPrivate |           0 |          1 |       0 |
     |       chrome.networkingPrivate |           0 |         22 |       5 |
-    |        chrome.passwordsPrivate |           0 |         20 |       6 |
+    |        chrome.passwordsPrivate |           0 |         21 |       6 |
     |      chrome.quickUnlockPrivate |           0 |          7 |       1 |
     |        chrome.resourcesPrivate |           0 |          1 |       0 |
     |         chrome.settingsPrivate |           0 |          5 |       1 |
@@ -236,11 +236,12 @@ Generated 37 namespaces containing 0 properties, 343 functions and 75 events:
       remove-password-exception undo-remove-saved-password-or-exception request-plaintext-password
       get-saved-password-list get-password-exception-list import-passwords export-passwords
       request-export-progress-status cancel-export-passwords is-opted-in-for-account-storage
-      get-compromised-credentials get-plaintext-compromised-password change-compromised-credential
-      remove-compromised-credential start-password-check stop-password-check get-password-check-status
-      tap-on-saved-passwords-list-changed tap-on-password-exceptions-list-changed
-      tap-on-passwords-file-export-progress tap-on-account-storage-opt-in-state-changed
-      tap-on-compromised-credentials-changed tap-on-password-check-status-changed tap-all-events]]
+      opt-in-for-account-storage get-compromised-credentials get-plaintext-compromised-password
+      change-compromised-credential remove-compromised-credential start-password-check
+      stop-password-check get-password-check-status tap-on-saved-passwords-list-changed
+      tap-on-password-exceptions-list-changed tap-on-passwords-file-export-progress
+      tap-on-account-storage-opt-in-state-changed tap-on-compromised-credentials-changed
+      tap-on-password-check-status-changed tap-all-events]]
 
     [chromex.app.quick-unlock-private refer:[
       get-auth-token set-lock-screen-enabled get-available-modes get-active-modes check-credential

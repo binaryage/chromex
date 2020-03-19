@@ -1,5 +1,5 @@
 (ns chromex.ext.terminal-private
-  "  * available since Chrome 34"
+  "  * available since Chrome 35"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -196,7 +196,7 @@
 
 (def api-table
   {:namespace "chrome.terminalPrivate",
-   :since "34",
+   :since "35",
    :functions
    [{:id ::open-terminal-process,
      :name "openTerminalProcess",
@@ -207,7 +207,7 @@
       {:name "callback", :type :callback, :callback {:params [{:name "id", :type "string"}]}}]}
     {:id ::open-vmshell-process,
      :name "openVmshellProcess",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "args", :optional? true, :type "[array-of-strings]"}

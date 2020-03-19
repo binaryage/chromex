@@ -3,7 +3,7 @@
    can control the appearance of the webview and interact with the web content, initiate navigations in an embedded web page,
    react to error events that happen within it, and more (see Usage).
 
-     * available since Chrome 34
+     * available since Chrome 35
      * https://developer.chrome.com/apps/tags/webview"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -446,7 +446,7 @@ webview.addContentScripts([{
 
 (def api-table
   {:namespace "<webview>",
-   :since "34",
+   :since "35",
    :properties
    [{:id ::content-window, :name "contentWindow", :return-type "webviewTag.ContentWindow"}
     {:id ::request, :name "request", :return-type "webviewTag.WebRequestEventInterface"}
@@ -499,7 +499,6 @@ webview.addContentScripts([{
        :callback {:params [{:name "result", :optional? true, :type "[array-of-anys]"}]}}]}
     {:id ::find,
      :name "find",
-     :since "35",
      :callback? true,
      :params
      [{:name "search-text", :type "string"}
@@ -556,10 +555,7 @@ webview.addContentScripts([{
      :callback? true,
      :params [{:name "zoom-mode", :type "webviewTag.ZoomMode"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::stop, :name "stop"}
-    {:id ::stop-finding,
-     :name "stopFinding",
-     :since "35",
-     :params [{:name "action", :optional? true, :type "unknown-type"}]}
+    {:id ::stop-finding, :name "stopFinding", :params [{:name "action", :optional? true, :type "unknown-type"}]}
     {:id ::load-data-with-base-url,
      :name "loadDataWithBaseUrl",
      :since "40",

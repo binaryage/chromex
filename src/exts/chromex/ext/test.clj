@@ -1,5 +1,5 @@
 (ns chromex.ext.test
-  "  * available since Chrome 34
+  "  * available since Chrome 35
      * https://developer.chrome.com/extensions/test"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -316,7 +316,7 @@
 
 (def api-table
   {:namespace "chrome.test",
-   :since "34",
+   :since "35",
    :functions
    [{:id ::get-config,
      :name "getConfig",
@@ -402,7 +402,6 @@
      :params [{:name "callback", :type :callback}]}
     {:id ::wait-for-round-trip,
      :name "waitForRoundTrip",
-     :since "35",
      :callback? true,
      :params
      [{:name "message", :type "string"}

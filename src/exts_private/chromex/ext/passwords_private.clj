@@ -129,6 +129,12 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::is-opted-in-for-account-storage &form)))
 
+(defmacro opt-in-for-account-storage
+  "Triggers the opt-in or opt-out flow for the account storage.
+
+     |opt-in| - ?"
+  ([opt-in] (gen-call :function ::opt-in-for-account-storage &form opt-in)))
+
 (defmacro get-compromised-credentials
   "Requests the latest compromised credentials.
 
@@ -340,6 +346,7 @@
      :name "isOptedInForAccountStorage",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "opted-in", :type "boolean"}]}}]}
+    {:id ::opt-in-for-account-storage, :name "optInForAccountStorage", :params [{:name "opt-in", :type "boolean"}]}
     {:id ::get-compromised-credentials,
      :name "getCompromisedCredentials",
      :callback? true,

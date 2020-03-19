@@ -1,5 +1,5 @@
 (ns chromex.app.command-line-private
-  "  * available since Chrome 34"
+  "  * available since Chrome 35"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -37,7 +37,7 @@
 
 (def api-table
   {:namespace "chrome.commandLinePrivate",
-   :since "34",
+   :since "35",
    :functions
    [{:id ::has-switch,
      :name "hasSwitch",
