@@ -66,6 +66,32 @@
    chromex.error/get-last-error."
   ([options] (gen-call :function ::can-app-id-get-attestation &form options)))
 
+(defmacro record-register-request
+  "Increments the WebFeature::kU2FCryptotokenRegister UseCounter for the main frame associated with |tabId|.
+
+     |tab-id| - ?
+     |frame-id| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([tab-id frame-id] (gen-call :function ::record-register-request &form tab-id frame-id)))
+
+(defmacro record-sign-request
+  "Increments the WebFeature::kU2FCryptotokenSign UseCounter for the main frame associated with |tabId|.
+
+     |tab-id| - ?
+     |frame-id| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([tab-id frame-id] (gen-call :function ::record-sign-request &form tab-id frame-id)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -102,7 +128,23 @@
      :callback? true,
      :params
      [{:name "options", :type "object"}
-      {:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}]})
+      {:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
+    {:id ::record-register-request,
+     :name "recordRegisterRequest",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "tab-id", :type "integer"}
+      {:name "frame-id", :type "integer"}
+      {:name "callback", :optional? true, :type :callback}]}
+    {:id ::record-sign-request,
+     :name "recordSignRequest",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "tab-id", :type "integer"}
+      {:name "frame-id", :type "integer"}
+      {:name "callback", :optional? true, :type :callback}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

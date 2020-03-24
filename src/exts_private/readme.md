@@ -49,7 +49,7 @@
 
 ### API stats
 
-Generated 41 namespaces containing 0 properties, 463 functions and 81 events:
+Generated 41 namespaces containing 0 properties, 465 functions and 81 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -66,7 +66,7 @@ Generated 41 namespaces containing 0 properties, 463 functions and 81 events:
     |              chrome.cloudPrintPrivate |           0 |          4 |       0 |
     |             chrome.commandLinePrivate |           0 |          1 |       0 |
     |             chrome.crashReportPrivate |           0 |          1 |       0 |
-    |             chrome.cryptotokenPrivate |           0 |          3 |       0 |
+    |             chrome.cryptotokenPrivate |           0 |          5 |       0 |
     |               chrome.dashboardPrivate |           0 |          1 |       0 |
     |               chrome.developerPrivate |           0 |         31 |       2 |
     |                    chrome.echoPrivate |           0 |          5 |       0 |
@@ -178,7 +178,7 @@ Generated 41 namespaces containing 0 properties, 463 functions and 81 events:
 
     [chromex.ext.cryptotoken-private refer:[
       can-origin-assert-app-id is-app-id-hash-in-enterprise-context can-app-id-get-attestation
-      tap-all-events]]
+      record-register-request record-sign-request tap-all-events]]
 
     [chromex.ext.dashboard-private refer:[
       show-permission-prompt-for-delegated-install tap-all-events]]

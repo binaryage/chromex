@@ -12,3 +12,9 @@
 (defn can-app-id-get-attestation* [config options]
   (gen-wrap :function ::can-app-id-get-attestation config options))
 
+(defn record-register-request* [config tab-id frame-id]
+  (gen-wrap :function ::record-register-request config tab-id frame-id))
+
+(defn record-sign-request* [config tab-id frame-id]
+  (gen-wrap :function ::record-sign-request config tab-id frame-id))
+
