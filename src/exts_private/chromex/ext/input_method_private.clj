@@ -445,7 +445,7 @@
       {:name "callback", :type :callback, :callback {:params [{:name "surrounding-info", :type "object"}]}}]}
     {:id ::get-settings,
      :name "getSettings",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "engine-id", :type "string"}
@@ -454,7 +454,7 @@
        :callback {:params [{:name "settings", :optional? true, :type "inputMethodPrivate.InputMethodSettings"}]}}]}
     {:id ::set-settings,
      :name "setSettings",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "engine-id", :type "string"}
@@ -496,7 +496,7 @@
      :since "73",
      :params
      [{:name "engine-id", :type "string"}
-      {:name "settings", :since "master", :type "inputMethodPrivate.InputMethodSettings"}]}
+      {:name "settings", :since "future", :type "inputMethodPrivate.InputMethodSettings"}]}
     {:id ::on-screen-projection-changed,
      :name "onScreenProjectionChanged",
      :since "73",

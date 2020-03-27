@@ -68,7 +68,7 @@
   ([notification-id] (gen-call :function ::clear &form notification-id)))
 
 (defmacro get-all
-  "Retrieves all the notifications.
+  "Retrieves all the notifications of this app or extension.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [notifications] where:
