@@ -2,7 +2,7 @@
   "The chrome.declarativeNetRequest API is used to block or modify
    network requests by specifying declarative rules.
 
-     * available since Chrome 81
+     * available since Chrome 83
      * https://developer.chrome.com/extensions/declarativeNetRequest"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -143,19 +143,15 @@
 
 (def api-table
   {:namespace "chrome.declarativeNetRequest",
-   :since "81",
+   :since "83",
    :properties
    [{:id ::max-number-of-rules, :name "MAX_NUMBER_OF_RULES", :return-type "unknown-type"}
     {:id ::max-number-of-dynamic-rules, :name "MAX_NUMBER_OF_DYNAMIC_RULES", :return-type "unknown-type"}
-    {:id ::getmatchedrules-quota-interval,
-     :name "GETMATCHEDRULES_QUOTA_INTERVAL",
-     :since "future",
-     :return-type "unknown-type"}
+    {:id ::getmatchedrules-quota-interval, :name "GETMATCHEDRULES_QUOTA_INTERVAL", :return-type "unknown-type"}
     {:id ::max-getmatchedrules-calls-per-interval,
      :name "MAX_GETMATCHEDRULES_CALLS_PER_INTERVAL",
-     :since "future",
      :return-type "unknown-type"}
-    {:id ::max-number-of-regex-rules, :name "MAX_NUMBER_OF_REGEX_RULES", :since "future", :return-type "unknown-type"}],
+    {:id ::max-number-of-regex-rules, :name "MAX_NUMBER_OF_REGEX_RULES", :return-type "unknown-type"}],
    :functions
    [{:id ::update-dynamic-rules,
      :name "updateDynamicRules",
@@ -173,7 +169,6 @@
        :callback {:params [{:name "rules", :type "[array-of-declarativeNetRequest.Rules]"}]}}]}
     {:id ::get-matched-rules,
      :name "getMatchedRules",
-     :since "future",
      :callback? true,
      :params
      [{:name "filter", :optional? true, :type "object"}
@@ -184,7 +179,7 @@
    :events
    [{:id ::on-rule-matched-debug,
      :name "onRuleMatchedDebug",
-     :since "81",
+     :since "83",
      :params [{:name "matched-rule-info", :since "future", :type "object"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

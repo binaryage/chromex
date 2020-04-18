@@ -178,7 +178,7 @@
        :callback {:params [{:name "configuration", :type "webcamPrivate.WebcamCurrentConfiguration"}]}}]}
     {:id ::set-home,
      :name "setHome",
-     :since "future",
+     :since "81",
      :callback? true,
      :params
      [{:name "webcam-id", :type "string"}
@@ -187,7 +187,7 @@
        :callback {:params [{:name "configuration", :type "webcamPrivate.WebcamCurrentConfiguration"}]}}]}
     {:id ::restore-camera-preset,
      :name "restoreCameraPreset",
-     :since "future",
+     :since "81",
      :callback? true,
      :params
      [{:name "webcam-id", :type "string"}
@@ -197,7 +197,7 @@
        :callback {:params [{:name "configuration", :type "webcamPrivate.WebcamCurrentConfiguration"}]}}]}
     {:id ::set-camera-preset,
      :name "setCameraPreset",
-     :since "future",
+     :since "81",
      :callback? true,
      :params
      [{:name "webcam-id", :type "string"}

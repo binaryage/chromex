@@ -49,7 +49,7 @@
 
 ### API stats
 
-Generated 41 namespaces containing 0 properties, 465 functions and 81 events:
+Generated 41 namespaces containing 0 properties, 469 functions and 81 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -58,7 +58,7 @@ Generated 41 namespaces containing 0 properties, 465 functions and 81 events:
     |             chrome.activityLogPrivate |           0 |          5 |       1 |
     |       chrome.autofillAssistantPrivate |           0 |          4 |       2 |
     |                chrome.autofillPrivate |           0 |         13 |       1 |
-    |                chrome.autotestPrivate |           0 |         90 |       1 |
+    |                chrome.autotestPrivate |           0 |         92 |       1 |
     |               chrome.bluetoothPrivate |           0 |         10 |       2 |
     |         chrome.bookmarkManagerPrivate |           0 |         11 |       3 |
     |          chrome.brailleDisplayPrivate |           0 |          3 |       2 |
@@ -78,7 +78,7 @@ Generated 41 namespaces containing 0 properties, 465 functions and 81 events:
     |             chrome.inputMethodPrivate |           0 |         20 |      10 |
     |        chrome.languageSettingsPrivate |           0 |         14 |       4 |
     |             chrome.mediaPlayerPrivate |           0 |          0 |       3 |
-    |                 chrome.metricsPrivate |           0 |         16 |       0 |
+    |                 chrome.metricsPrivate |           0 |         17 |       0 |
     |                    chrome.mojoPrivate |           0 |          1 |       0 |
     |              chrome.networkingPrivate |           0 |         22 |       5 |
     |               chrome.passwordsPrivate |           0 |         21 |       6 |
@@ -89,7 +89,7 @@ Generated 41 namespaces containing 0 properties, 465 functions and 81 events:
     |                  chrome.systemPrivate |           0 |          3 |       0 |
     |                chrome.terminalPrivate |           0 |         10 |       3 |
     |                   chrome.usersPrivate |           0 |          7 |       0 |
-    |         chrome.virtualKeyboardPrivate |           0 |         14 |       3 |
+    |         chrome.virtualKeyboardPrivate |           0 |         15 |       3 |
     |                  chrome.webcamPrivate |           0 |          8 |       0 |
     |             chrome.webrtcAudioPrivate |           0 |          2 |       1 |
     |    chrome.webrtcDesktopCapturePrivate |           0 |          2 |       0 |
@@ -134,7 +134,7 @@ Generated 41 namespaces containing 0 properties, 465 functions and 81 events:
       set-natural-scroll set-mouse-sensitivity set-primary-button-right set-mouse-reverse-scroll
       get-visible-notifications get-arc-start-time get-arc-state get-play-store-state get-printer-list
       is-app-shown is-arc-provisioned get-arc-app get-arc-package launch-arc-app launch-app close-app
-      update-printer remove-printer set-play-store-enabled get-histogram get-clipboard-text-data
+      update-printer remove-printer set-play-store-enabled get-clipboard-text-data
       set-clipboard-text-data run-crostini-installer run-crostini-uninstaller set-crostini-enabled
       export-crostini import-crostini install-plugin-vm register-component take-screenshot
       take-screenshot-for-display bootstrap-machine-learning-service set-assistant-enabled
@@ -149,7 +149,8 @@ Generated 41 namespaces containing 0 properties, 465 functions and 81 events:
       wait-for-launcher-state wait-for-overview-state create-new-desk activate-desk-at-index
       remove-active-desk mouse-click mouse-press mouse-release mouse-move set-metrics-enabled
       start-tracing stop-tracing set-arc-touch-mode get-scrollable-shelf-info-for-state
-      get-shelf-ui-info-for-state tap-on-clipboard-data-changed tap-all-events]]
+      get-shelf-ui-info-for-state set-window-bounds start-smoothness-tracking stop-smoothness-tracking
+      tap-on-clipboard-data-changed tap-all-events]]
 
     [chromex.ext.bluetooth-private refer:[
       set-adapter-state set-pairing-response disconnect-all forget-device set-discovery-filter connect
@@ -251,10 +252,10 @@ Generated 41 namespaces containing 0 properties, 465 functions and 81 events:
       tap-on-next-track tap-on-prev-track tap-on-toggle-play-state tap-all-events]]
 
     [chromex.ext.metrics-private refer:[
-      get-is-crash-reporting-enabled get-field-trial get-variation-params record-user-action
-      record-percentage record-count record-small-count record-medium-count record-time
-      record-medium-time record-long-time record-sparse-hashable record-sparse-value record-value
-      record-boolean record-enumeration-value tap-all-events]]
+      get-histogram get-is-crash-reporting-enabled get-field-trial get-variation-params
+      record-user-action record-percentage record-count record-small-count record-medium-count
+      record-time record-medium-time record-long-time record-sparse-hashable record-sparse-value
+      record-value record-boolean record-enumeration-value tap-all-events]]
 
     [chromex.ext.mojo-private refer:[
       require-async tap-all-events]]
@@ -311,8 +312,8 @@ Generated 41 namespaces containing 0 properties, 465 functions and 81 events:
     [chromex.ext.virtual-keyboard-private refer:[
       insert-text send-key-event hide-keyboard set-hotrod-keyboard lock-keyboard keyboard-loaded
       get-keyboard-config open-settings set-container-behavior set-draggable-area set-keyboard-state
-      set-occluded-bounds set-hit-test-bounds set-area-to-remain-on-screen tap-on-bounds-changed
-      tap-on-keyboard-closed tap-on-keyboard-config-changed tap-all-events]]
+      set-occluded-bounds set-hit-test-bounds set-area-to-remain-on-screen set-window-bounds-in-screen
+      tap-on-bounds-changed tap-on-keyboard-closed tap-on-keyboard-config-changed tap-all-events]]
 
     [chromex.ext.webcam-private refer:[
       open-serial-webcam close-webcam get set reset set-home restore-camera-preset set-camera-preset

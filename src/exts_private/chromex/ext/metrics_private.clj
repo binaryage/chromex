@@ -10,6 +10,20 @@
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
+(defmacro get-histogram
+  "Get details about a histogram displayed at chrome://histogram.
+
+     |name| - Histogram name, e.g. 'Accessibility.CrosAutoclick'.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [histogram] where:
+
+     |histogram| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([name] (gen-call :function ::get-histogram &form name)))
+
 (defmacro get-is-crash-reporting-enabled
   "Returns true if the user opted in to sending crash reports.
 
@@ -157,7 +171,16 @@
   {:namespace "chrome.metricsPrivate",
    :since "59",
    :functions
-   [{:id ::get-is-crash-reporting-enabled,
+   [{:id ::get-histogram,
+     :name "getHistogram",
+     :since "future",
+     :callback? true,
+     :params
+     [{:name "name", :type "string"}
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "histogram", :type "metricsPrivate.Histogram"}]}}]}
+    {:id ::get-is-crash-reporting-enabled,
      :name "getIsCrashReportingEnabled",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "is-enabled", :type "boolean"}]}}]}

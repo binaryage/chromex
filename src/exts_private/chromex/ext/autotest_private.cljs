@@ -102,9 +102,6 @@
 (defn set-play-store-enabled* [config enabled]
   (gen-wrap :function ::set-play-store-enabled config enabled))
 
-(defn get-histogram* [config name]
-  (gen-wrap :function ::get-histogram config name))
-
 (defn get-clipboard-text-data* [config]
   (gen-wrap :function ::get-clipboard-text-data config))
 
@@ -272,6 +269,15 @@
 
 (defn get-shelf-ui-info-for-state* [config state]
   (gen-wrap :function ::get-shelf-ui-info-for-state config state))
+
+(defn set-window-bounds* [config id bounds display-id]
+  (gen-wrap :function ::set-window-bounds config id bounds display-id))
+
+(defn start-smoothness-tracking* [config display-id]
+  (gen-wrap :function ::start-smoothness-tracking config display-id))
+
+(defn stop-smoothness-tracking* [config display-id]
+  (gen-wrap :function ::stop-smoothness-tracking config display-id))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 

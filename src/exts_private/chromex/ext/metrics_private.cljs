@@ -3,6 +3,9 @@
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
+(defn get-histogram* [config name]
+  (gen-wrap :function ::get-histogram config name))
+
 (defn get-is-crash-reporting-enabled* [config]
   (gen-wrap :function ::get-is-crash-reporting-enabled config))
 

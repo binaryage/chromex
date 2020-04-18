@@ -311,20 +311,6 @@
    chromex.error/get-last-error."
   ([enabled] (gen-call :function ::set-play-store-enabled &form enabled)))
 
-(defmacro get-histogram
-  "Get details about a histogram displayed at chrome://histogram.
-
-     |name| - Histogram name, e.g. 'Accessibility.CrosAutoclick'.
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [histogram] where:
-
-     |histogram| - ?
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([name] (gen-call :function ::get-histogram &form name)))
-
 (defmacro get-clipboard-text-data
   "Get text from ui::Clipboard.
 
@@ -1028,6 +1014,52 @@
    chromex.error/get-last-error."
   ([state] (gen-call :function ::get-shelf-ui-info-for-state &form state)))
 
+(defmacro set-window-bounds
+  "Sends a WM event to change a window's bounds and/or the display it is on.
+
+     |id| - the id of the window.
+     |bounds| - bounds the window should be set to.
+     |display-id| - id of display to move the window to.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [result] where:
+
+     |result| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([id bounds display-id] (gen-call :function ::set-window-bounds &form id bounds display-id)))
+
+(defmacro start-smoothness-tracking
+  "Starts smoothness tracking for a display. If the display id is not specified, the primary display is used. Otherwise, the
+   display specified by the display id is used.
+
+     |display-id| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([display-id] (gen-call :function ::start-smoothness-tracking &form display-id))
+  ([] `(start-smoothness-tracking :omit)))
+
+(defmacro stop-smoothness-tracking
+  "Stops smoothness tracking for a display and report the smoothness. If the display id is not specified, the primary display
+   is used. Otherwise, the display specified by the display id is used.
+
+     |display-id| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [smoothness] where:
+
+     |smoothness| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([display-id] (gen-call :function ::stop-smoothness-tracking &form display-id))
+  ([] `(stop-smoothness-tracking :omit)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -1173,13 +1205,6 @@
      :since "60",
      :callback? true,
      :params [{:name "enabled", :type "boolean"} {:name "callback", :type :callback}]}
-    {:id ::get-histogram,
-     :name "getHistogram",
-     :since "71",
-     :callback? true,
-     :params
-     [{:name "name", :type "string"}
-      {:name "callback", :type :callback, :callback {:params [{:name "histogram", :type "object"}]}}]}
     {:id ::get-clipboard-text-data,
      :name "getClipboardTextData",
      :since "79",
@@ -1277,7 +1302,7 @@
        :callback {:params [{:name "status", :type "autotestPrivate.AssistantQueryStatus"}]}}]}
     {:id ::is-arc-package-list-initial-refreshed,
      :name "isArcPackageListInitialRefreshed",
-     :since "future",
+     :since "81",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "refreshed", :type "boolean"}]}}]}
     {:id ::set-whitelisted-pref,
@@ -1480,17 +1505,17 @@
      :params [{:name "enabled", :type "boolean"} {:name "callback", :type :callback}]}
     {:id ::start-tracing,
      :name "startTracing",
-     :since "future",
+     :since "81",
      :callback? true,
      :params [{:name "config", :type "object"} {:name "callback", :type :callback}]}
     {:id ::stop-tracing,
      :name "stopTracing",
-     :since "future",
+     :since "81",
      :callback? true,
      :params [{:name "complete-callback", :type :callback, :callback {:params [{:name "data", :type "string"}]}}]}
     {:id ::set-arc-touch-mode,
      :name "setArcTouchMode",
-     :since "future",
+     :since "81",
      :callback? true,
      :params [{:name "enabled", :type "boolean"} {:name "callback", :type :callback}]}
     {:id ::get-scrollable-shelf-info-for-state,
@@ -1508,7 +1533,28 @@
      :callback? true,
      :params
      [{:name "state", :type "object"}
-      {:name "callback", :type :callback, :callback {:params [{:name "info", :type "object"}]}}]}],
+      {:name "callback", :type :callback, :callback {:params [{:name "info", :type "object"}]}}]}
+    {:id ::set-window-bounds,
+     :name "setWindowBounds",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "id", :type "integer"}
+      {:name "bounds", :type "autotestPrivate.Bounds"}
+      {:name "display-id", :type "string"}
+      {:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}
+    {:id ::start-smoothness-tracking,
+     :name "startSmoothnessTracking",
+     :since "master",
+     :callback? true,
+     :params [{:name "display-id", :optional? true, :type "string"} {:name "callback", :type :callback}]}
+    {:id ::stop-smoothness-tracking,
+     :name "stopSmoothnessTracking",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "display-id", :optional? true, :type "string"}
+      {:name "callback", :type :callback, :callback {:params [{:name "smoothness", :type "integer"}]}}]}],
    :events [{:id ::on-clipboard-data-changed, :name "onClipboardDataChanged", :since "79"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

@@ -129,6 +129,12 @@
                 off screen. Any area outside of this bounds can be moved off screen."
   ([bounds] (gen-call :function ::set-area-to-remain-on-screen &form bounds)))
 
+(defmacro set-window-bounds-in-screen
+  "Sets the bounds of the keyboard window in screen coordinates.
+
+     |bounds| - A rectangle defining the new bounds of the window in screen coordinates."
+  ([bounds] (gen-call :function ::set-window-bounds-in-screen &form bounds)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -231,6 +237,10 @@
     {:id ::set-area-to-remain-on-screen,
      :name "setAreaToRemainOnScreen",
      :since "80",
+     :params [{:name "bounds", :type "virtualKeyboardPrivate.Bounds"}]}
+    {:id ::set-window-bounds-in-screen,
+     :name "setWindowBoundsInScreen",
+     :since "future",
      :params [{:name "bounds", :type "virtualKeyboardPrivate.Bounds"}]}],
    :events
    [{:id ::on-bounds-changed,

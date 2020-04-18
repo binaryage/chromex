@@ -45,7 +45,7 @@
 
 ### API stats
 
-Generated 37 namespaces containing 0 properties, 344 functions and 75 events:
+Generated 37 namespaces containing 0 properties, 346 functions and 75 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -71,7 +71,7 @@ Generated 37 namespaces containing 0 properties, 344 functions and 75 events:
     | chrome.languageSettingsPrivate |           0 |         14 |       4 |
     |  chrome.mediaPerceptionPrivate |           0 |          5 |       1 |
     |      chrome.mediaPlayerPrivate |           0 |          0 |       3 |
-    |          chrome.metricsPrivate |           0 |         16 |       0 |
+    |          chrome.metricsPrivate |           0 |         17 |       0 |
     |             chrome.mojoPrivate |           0 |          1 |       0 |
     |     chrome.musicManagerPrivate |           0 |          1 |       0 |
     |       chrome.networkingPrivate |           0 |         22 |       5 |
@@ -82,7 +82,7 @@ Generated 37 namespaces containing 0 properties, 344 functions and 75 events:
     |           chrome.systemPrivate |           0 |          3 |       0 |
     |         chrome.terminalPrivate |           0 |         10 |       3 |
     |            chrome.usersPrivate |           0 |          7 |       0 |
-    |  chrome.virtualKeyboardPrivate |           0 |         14 |       3 |
+    |  chrome.virtualKeyboardPrivate |           0 |         15 |       3 |
     |        chrome.wallpaperPrivate |           0 |          0 |       1 |
     |           chrome.webcamPrivate |           0 |          8 |       0 |
     |    chrome.webrtcLoggingPrivate |           0 |         14 |       0 |
@@ -211,10 +211,10 @@ Generated 37 namespaces containing 0 properties, 344 functions and 75 events:
       tap-on-next-track tap-on-prev-track tap-on-toggle-play-state tap-all-events]]
 
     [chromex.app.metrics-private refer:[
-      get-is-crash-reporting-enabled get-field-trial get-variation-params record-user-action
-      record-percentage record-count record-small-count record-medium-count record-time
-      record-medium-time record-long-time record-sparse-hashable record-sparse-value record-value
-      record-boolean record-enumeration-value tap-all-events]]
+      get-histogram get-is-crash-reporting-enabled get-field-trial get-variation-params
+      record-user-action record-percentage record-count record-small-count record-medium-count
+      record-time record-medium-time record-long-time record-sparse-hashable record-sparse-value
+      record-value record-boolean record-enumeration-value tap-all-events]]
 
     [chromex.app.mojo-private refer:[
       require-async tap-all-events]]
@@ -269,8 +269,8 @@ Generated 37 namespaces containing 0 properties, 344 functions and 75 events:
     [chromex.app.virtual-keyboard-private refer:[
       insert-text send-key-event hide-keyboard set-hotrod-keyboard lock-keyboard keyboard-loaded
       get-keyboard-config open-settings set-container-behavior set-draggable-area set-keyboard-state
-      set-occluded-bounds set-hit-test-bounds set-area-to-remain-on-screen tap-on-bounds-changed
-      tap-on-keyboard-closed tap-on-keyboard-config-changed tap-all-events]]
+      set-occluded-bounds set-hit-test-bounds set-area-to-remain-on-screen set-window-bounds-in-screen
+      tap-on-bounds-changed tap-on-keyboard-closed tap-on-keyboard-config-changed tap-all-events]]
 
     [chromex.app.wallpaper-private refer:[
       tap-on-wallpaper-changed-by3rd-party tap-all-events]]

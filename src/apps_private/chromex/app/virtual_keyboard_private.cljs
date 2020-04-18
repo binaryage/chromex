@@ -45,6 +45,9 @@
 (defn set-area-to-remain-on-screen* [config bounds]
   (gen-wrap :function ::set-area-to-remain-on-screen config bounds))
 
+(defn set-window-bounds-in-screen* [config bounds]
+  (gen-wrap :function ::set-window-bounds-in-screen config bounds))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-bounds-changed* [config channel & args]

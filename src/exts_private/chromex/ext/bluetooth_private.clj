@@ -100,18 +100,20 @@
   ([device-address] (gen-call :function ::pair &form device-address)))
 
 (defmacro record-pairing
-  "Record that a pairing attempt finished. Do not record cancellations.
+  "Record that a pairing attempt finished. Ignores cancellations.
 
-     |success| - ?
      |transport| - ?
-     |pairing-duration-ms| - ?"
-  ([success transport pairing-duration-ms] (gen-call :function ::record-pairing &form success transport pairing-duration-ms)))
+     |pairing-duration-ms| - ?
+     |result| - ?"
+  ([transport pairing-duration-ms result] (gen-call :function ::record-pairing &form transport pairing-duration-ms result))
+  ([transport pairing-duration-ms] `(record-pairing ~transport ~pairing-duration-ms :omit)))
 
 (defmacro record-reconnection
-  "Record that a user-initiated reconnection attempt to an already paired device finished. Do not record cancellations.
+  "Record that a user-initiated reconnection attempt to an already paired device finished. Ignores cancellations.
 
-     |success| - ?"
-  ([success] (gen-call :function ::record-reconnection &form success)))
+     |result| - ?"
+  ([result] (gen-call :function ::record-reconnection &form result))
+  ([] `(record-reconnection :omit)))
 
 (defmacro record-device-selection
   "Record that a user selected a device to connect to.
@@ -193,7 +195,7 @@
       {:name "callback",
        :optional? true,
        :type :callback,
-       :callback {:params [{:name "result", :type "unknown-type"}]}}]}
+       :callback {:params [{:name "result", :type "bluetoothPrivate.ConnectResultType"}]}}]}
     {:id ::pair,
      :name "pair",
      :since "47",
@@ -203,10 +205,13 @@
      :name "recordPairing",
      :since "76",
      :params
-     [{:name "success", :type "boolean"}
-      {:name "transport", :type "bluetooth.Transport"}
-      {:name "pairing-duration-ms", :since "77", :type "integer"}]}
-    {:id ::record-reconnection, :name "recordReconnection", :since "76", :params [{:name "success", :type "boolean"}]}
+     [{:name "transport", :type "bluetooth.Transport"}
+      {:name "pairing-duration-ms", :since "77", :type "integer"}
+      {:name "result", :optional? true, :since "future", :type "bluetoothPrivate.ConnectResultType"}]}
+    {:id ::record-reconnection,
+     :name "recordReconnection",
+     :since "76",
+     :params [{:name "result", :optional? true, :since "future", :type "bluetoothPrivate.ConnectResultType"}]}
     {:id ::record-device-selection,
      :name "recordDeviceSelection",
      :since "77",

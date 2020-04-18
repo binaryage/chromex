@@ -120,7 +120,7 @@
 
 (def api-table
   {:namespace "chrome.printing",
-   :since "future",
+   :since "81",
    :properties
    [{:id ::max-submit-job-calls-per-minute, :name "MAX_SUBMIT_JOB_CALLS_PER_MINUTE", :return-type "unknown-type"}
     {:id ::max-get-printer-info-calls-per-minute,

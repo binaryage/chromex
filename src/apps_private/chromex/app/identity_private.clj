@@ -52,7 +52,7 @@
    :functions
    [{:id ::set-consent-result,
      :name "setConsentResult",
-     :since "future",
+     :since "81",
      :params [{:name "result", :type "string"} {:name "window-id", :type "string"}]}],
    :events
    [{:id ::on-web-flow-request,

@@ -24,11 +24,11 @@
 (defn pair* [config device-address]
   (gen-wrap :function ::pair config device-address))
 
-(defn record-pairing* [config success transport pairing-duration-ms]
-  (gen-wrap :function ::record-pairing config success transport pairing-duration-ms))
+(defn record-pairing* [config transport pairing-duration-ms result]
+  (gen-wrap :function ::record-pairing config transport pairing-duration-ms result))
 
-(defn record-reconnection* [config success]
-  (gen-wrap :function ::record-reconnection config success))
+(defn record-reconnection* [config result]
+  (gen-wrap :function ::record-reconnection config result))
 
 (defn record-device-selection* [config selection-duration-ms was-paired transport]
   (gen-wrap :function ::record-device-selection config selection-duration-ms was-paired transport))
