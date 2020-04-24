@@ -1536,7 +1536,7 @@
       {:name "callback", :type :callback, :callback {:params [{:name "info", :type "object"}]}}]}
     {:id ::set-window-bounds,
      :name "setWindowBounds",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "id", :type "integer"}
@@ -1545,12 +1545,12 @@
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}
     {:id ::start-smoothness-tracking,
      :name "startSmoothnessTracking",
-     :since "master",
+     :since "future",
      :callback? true,
      :params [{:name "display-id", :optional? true, :type "string"} {:name "callback", :type :callback}]}
     {:id ::stop-smoothness-tracking,
      :name "stopSmoothnessTracking",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "display-id", :optional? true, :type "string"}
