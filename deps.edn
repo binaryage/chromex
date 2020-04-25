@@ -6,7 +6,7 @@
          "src/apps_private"
          "src/apps_internal"]
  :deps  {org.clojure/clojure       {:mvn/version "1.10.1"}
-         org.clojure/clojurescript {:mvn/version "1.10.597"}
-         org.clojure/core.async    {:mvn/version "0.7.559"}
+         org.clojure/clojurescript {:mvn/version "1.10.741"}
+         org.clojure/core.async    {:mvn/version "1.1.587"}
          binaryage/oops            {:mvn/version "0.7.0"}
          environ                   {:mvn/version "1.1.0"}}}
