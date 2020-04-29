@@ -45,12 +45,12 @@
 
 ### API stats
 
-Generated 37 namespaces containing 0 properties, 346 functions and 75 events:
+Generated 37 namespaces containing 0 properties, 347 functions and 75 events:
 
 
     |                     :namespace | :properties | :functions | :events |
     |--------------------------------+-------------+------------+---------|
-    |    chrome.accessibilityPrivate |           0 |         18 |       9 |
+    |    chrome.accessibilityPrivate |           0 |         19 |       9 |
     |      chrome.activityLogPrivate |           0 |          5 |       1 |
     |         chrome.autofillPrivate |           0 |         13 |       1 |
     |        chrome.bluetoothPrivate |           0 |         10 |       2 |
@@ -96,11 +96,12 @@ Generated 37 namespaces containing 0 properties, 346 functions and 75 events:
     [chromex.app.accessibility-private refer:[
       get-display-name-for-locale get-battery-description set-native-accessibility-enabled
       set-focus-rings set-highlights set-keyboard-listener darken-screen set-switch-access-menu-state
-      forward-key-events-to-switch-access set-native-chrome-vox-arc-support-for-current-app
-      send-synthetic-key-event enable-chrome-vox-mouse-events send-synthetic-mouse-event
-      on-select-to-speak-state-changed on-scrollable-bounds-for-point-found toggle-dictation
-      set-virtual-keyboard-visible open-settings-subpage tap-on-introduce-chrome-vox
-      tap-on-accessibility-gesture tap-on-two-finger-touch-start tap-on-two-finger-touch-stop
+      forward-key-events-to-switch-access update-switch-access-bubble
+      set-native-chrome-vox-arc-support-for-current-app send-synthetic-key-event
+      enable-chrome-vox-mouse-events send-synthetic-mouse-event on-select-to-speak-state-changed
+      on-scrollable-bounds-for-point-found toggle-dictation set-virtual-keyboard-visible
+      open-settings-subpage tap-on-introduce-chrome-vox tap-on-accessibility-gesture
+      tap-on-two-finger-touch-start tap-on-two-finger-touch-stop
       tap-on-select-to-speak-state-change-requested tap-on-switch-access-command
       tap-on-announce-for-accessibility tap-find-scrollable-bounds-for-point
       tap-on-custom-spoken-feedback-toggled tap-all-events]]

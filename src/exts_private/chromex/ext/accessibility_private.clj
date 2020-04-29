@@ -67,6 +67,7 @@
 
 (defmacro set-switch-access-menu-state
   "Shows or hides the Switch Access menu. If shown, it is at the indicated location.
+   TODO(anastasi): Remove this function once the menu refactor is complete.
 
      |show| - If true, show the menu. If false, hide the menu.
      |element-bounds| - Position of an element, in global screen coordinates, to place the menu next to.
@@ -78,6 +79,17 @@
 
      |should-forward| - ?"
   ([should-forward] (gen-call :function ::forward-key-events-to-switch-access &form should-forward)))
+
+(defmacro update-switch-access-bubble
+  "Shows the Switch Access menu next to the specified rectangle and with the given actions
+
+     |bubble| - Which bubble to show/hide
+     |show| - True if the bubble should be shown, false otherwise
+     |anchor| - A rectangle indicating the bounds of the object the menu should be displayed next to.
+     |actions| - The actions to be shown in the menu."
+  ([bubble show anchor actions] (gen-call :function ::update-switch-access-bubble &form bubble show anchor actions))
+  ([bubble show anchor] `(update-switch-access-bubble ~bubble ~show ~anchor :omit))
+  ([bubble show] `(update-switch-access-bubble ~bubble ~show :omit :omit)))
 
 (defmacro set-native-chrome-vox-arc-support-for-current-app
   "Sets current ARC app to use native ARC support.
@@ -277,6 +289,14 @@
      :name "forwardKeyEventsToSwitchAccess",
      :since "73",
      :params [{:name "should-forward", :type "boolean"}]}
+    {:id ::update-switch-access-bubble,
+     :name "updateSwitchAccessBubble",
+     :since "master",
+     :params
+     [{:name "bubble", :type "accessibilityPrivate.SwitchAccessBubble"}
+      {:name "show", :type "boolean"}
+      {:name "anchor", :optional? true, :type "accessibilityPrivate.ScreenRect"}
+      {:name "actions", :optional? true, :type "[array-of-accessibilityPrivate.SwitchAccessMenuActions]"}]}
     {:id ::set-native-chrome-vox-arc-support-for-current-app,
      :name "setNativeChromeVoxArcSupportForCurrentApp",
      :since "63",
