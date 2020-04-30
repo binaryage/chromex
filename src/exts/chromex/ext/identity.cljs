@@ -9,8 +9,8 @@
 (defn get-auth-token* [config details]
   (gen-wrap :function ::get-auth-token config details))
 
-(defn get-profile-user-info* [config]
-  (gen-wrap :function ::get-profile-user-info config))
+(defn get-profile-user-info* [config details]
+  (gen-wrap :function ::get-profile-user-info config details))
 
 (defn remove-cached-auth-token* [config details]
   (gen-wrap :function ::remove-cached-auth-token config details))

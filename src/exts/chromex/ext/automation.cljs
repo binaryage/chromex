@@ -12,6 +12,9 @@
 (defn get-focus* [config]
   (gen-wrap :function ::get-focus config))
 
+(defn get-accessibility-focus* [config]
+  (gen-wrap :function ::get-accessibility-focus config))
+
 (defn add-tree-change-observer* [config filter]
   (gen-wrap :function ::add-tree-change-observer config filter))
 

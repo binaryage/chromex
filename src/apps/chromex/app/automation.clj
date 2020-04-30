@@ -66,6 +66,21 @@
    https://developer.chrome.com/apps/automation#method-getFocus."
   ([] (gen-call :function ::get-focus &form)))
 
+(defmacro get-accessibility-focus
+  "Get the automation node that currently has accessibility focus, globally. Will return null if none of the nodes in any
+   loaded trees have accessibility focus.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [focused-node] where:
+
+     |focused-node| - https://developer.chrome.com/apps/automation#property-callback-focusedNode.
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/apps/automation#method-getAccessibilityFocus."
+  ([] (gen-call :function ::get-accessibility-focus &form)))
+
 (defmacro add-tree-change-observer
   "Add a tree change observer. Tree change observers are static/global, they listen to changes across all trees. Pass a filter
    to determine what specific tree changes to listen to, and note that listnening to all tree changes can be expensive.
@@ -142,6 +157,14 @@
        :callback {:params [{:name "root-node", :type "automation.AutomationNode"}]}}]}
     {:id ::get-focus,
      :name "getFocus",
+     :callback? true,
+     :params
+     [{:name "callback",
+       :type :callback,
+       :callback {:params [{:name "focused-node", :type "automation.AutomationNode"}]}}]}
+    {:id ::get-accessibility-focus,
+     :name "getAccessibilityFocus",
+     :since "master",
      :callback? true,
      :params
      [{:name "callback",

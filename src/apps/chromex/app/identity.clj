@@ -51,9 +51,11 @@
   ([] `(get-auth-token :omit)))
 
 (defmacro get-profile-user-info
-  "Retrieves email address and obfuscated gaia id of the user signed into a profile.This API is different from
-   identity.getAccounts in two ways. The information returned is available offline, and it only applies to the primary account
-   for the profile.
+  "Retrieves email address and obfuscated gaia id of the user signed into a profile.Requires the identity.email manifest
+   permission. Otherwise, returns an empty result.This API is different from identity.getAccounts in two ways. The information
+   returned is available offline, and it only applies to the primary account for the profile.
+
+     |details| - Profile options.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [user-info] where:
@@ -64,7 +66,8 @@
    chromex.error/get-last-error.
 
    https://developer.chrome.com/apps/identity#method-getProfileUserInfo."
-  ([] (gen-call :function ::get-profile-user-info &form)))
+  ([details] (gen-call :function ::get-profile-user-info &form details))
+  ([] `(get-profile-user-info :omit)))
 
 (defmacro remove-cached-auth-token
   "Removes an OAuth2 access token from the Identity API's token cache.If an access token is discovered to be invalid, it
@@ -166,7 +169,9 @@
      :name "getProfileUserInfo",
      :since "37",
      :callback? true,
-     :params [{:name "callback", :type :callback, :callback {:params [{:name "user-info", :type "object"}]}}]}
+     :params
+     [{:name "details", :optional? true, :since "master", :type "object"}
+      {:name "callback", :type :callback, :callback {:params [{:name "user-info", :type "object"}]}}]}
     {:id ::remove-cached-auth-token,
      :name "removeCachedAuthToken",
      :callback? true,
