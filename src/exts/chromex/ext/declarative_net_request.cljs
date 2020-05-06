@@ -18,6 +18,9 @@
 (defn max-number-of-regex-rules* [config]
   (gen-wrap :property ::max-number-of-regex-rules config))
 
+(defn dynamic-ruleset-id* [config]
+  (gen-wrap :property ::dynamic-ruleset-id config))
+
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defn update-dynamic-rules* [config rule-ids-to-remove rules-to-add]

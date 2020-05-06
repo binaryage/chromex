@@ -48,6 +48,12 @@
    https://developer.chrome.com/extensions/declarativeNetRequest#property-MAX_NUMBER_OF_REGEX_RULES."
   ([] (gen-call :property ::max-number-of-regex-rules &form)))
 
+(defmacro get-dynamic-ruleset-id
+  "Ruleset ID for the dynamic rules added by the extension.
+
+   https://developer.chrome.com/extensions/declarativeNetRequest#property-DYNAMIC_RULESET_ID."
+  ([] (gen-call :property ::dynamic-ruleset-id &form)))
+
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro update-dynamic-rules
@@ -55,7 +61,7 @@
    removed, and then the rules given in rules_to_add are added. This update happens as a single atomic operation: either all
    specified rules are added and removed, or an error is returned. These rules are persisted across browser sessions. Any ids
    in rule_ids_to_remove that are not present will be ignored. Note that static rules specified as part of the extension
-   package can not be removed using this function. Note:  MAX_NUMBER_OF_DYNAMIC_RULES is the maximum number of dynamic rules
+   package can not be removed using this function. Note: 'MAX_NUMBER_OF_DYNAMIC_RULES' is the maximum number of dynamic rules
    an extension can add.
 
      |rule-ids-to-remove| - The IDs of rules to remove.
@@ -151,7 +157,8 @@
     {:id ::max-getmatchedrules-calls-per-interval,
      :name "MAX_GETMATCHEDRULES_CALLS_PER_INTERVAL",
      :return-type "unknown-type"}
-    {:id ::max-number-of-regex-rules, :name "MAX_NUMBER_OF_REGEX_RULES", :return-type "unknown-type"}],
+    {:id ::max-number-of-regex-rules, :name "MAX_NUMBER_OF_REGEX_RULES", :return-type "unknown-type"}
+    {:id ::dynamic-ruleset-id, :name "DYNAMIC_RULESET_ID", :since "master", :return-type "unknown-type"}],
    :functions
    [{:id ::update-dynamic-rules,
      :name "updateDynamicRules",
