@@ -291,7 +291,7 @@
      :params [{:name "should-forward", :type "boolean"}]}
     {:id ::update-switch-access-bubble,
      :name "updateSwitchAccessBubble",
-     :since "master",
+     :since "future",
      :params
      [{:name "bubble", :type "accessibilityPrivate.SwitchAccessBubble"}
       {:name "show", :type "boolean"}

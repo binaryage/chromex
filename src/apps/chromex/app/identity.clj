@@ -170,7 +170,7 @@
      :since "37",
      :callback? true,
      :params
-     [{:name "details", :optional? true, :since "master", :type "object"}
+     [{:name "details", :optional? true, :since "future", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "user-info", :type "object"}]}}]}
     {:id ::remove-cached-auth-token,
      :name "removeCachedAuthToken",

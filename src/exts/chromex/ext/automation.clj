@@ -164,7 +164,6 @@
        :callback {:params [{:name "focused-node", :type "automation.AutomationNode"}]}}]}
     {:id ::get-accessibility-focus,
      :name "getAccessibilityFocus",
-     :since "master",
      :callback? true,
      :params
      [{:name "callback",
