@@ -94,6 +94,16 @@
      |id| - The id of the process to which |onProcessOutput| was dispatched."
   ([tab-id id] (gen-call :function ::ack-output &form tab-id id)))
 
+(defmacro open-options-page
+  "Open the Terminal Settings page.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::open-options-page &form)))
+
 (defmacro get-crosh-settings
   "Returns an object (DictionaryValue) containing UI settings such as font style and color used by the crosh extension.  This
    function is called by the terminal system app the first time it is run to migrate any previous settings.
@@ -237,6 +247,11 @@
      :name "ackOutput",
      :since "49",
      :params [{:name "tab-id", :type "integer"} {:name "id", :since "74", :type "string"}]}
+    {:id ::open-options-page,
+     :name "openOptionsPage",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback}]}
     {:id ::get-crosh-settings,
      :name "getCroshSettings",
      :since "80",

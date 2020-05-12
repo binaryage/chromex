@@ -45,7 +45,7 @@
 
 ### API stats
 
-Generated 37 namespaces containing 0 properties, 347 functions and 75 events:
+Generated 37 namespaces containing 0 properties, 348 functions and 75 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -80,7 +80,7 @@ Generated 37 namespaces containing 0 properties, 347 functions and 75 events:
     |        chrome.resourcesPrivate |           0 |          1 |       0 |
     |         chrome.settingsPrivate |           0 |          5 |       1 |
     |           chrome.systemPrivate |           0 |          3 |       0 |
-    |         chrome.terminalPrivate |           0 |         10 |       3 |
+    |         chrome.terminalPrivate |           0 |         11 |       3 |
     |            chrome.usersPrivate |           0 |          7 |       0 |
     |  chrome.virtualKeyboardPrivate |           0 |         15 |       3 |
     |        chrome.wallpaperPrivate |           0 |          0 |       1 |
@@ -260,8 +260,8 @@ Generated 37 namespaces containing 0 properties, 347 functions and 75 events:
 
     [chromex.app.terminal-private refer:[
       open-terminal-process open-vmshell-process close-terminal-process send-input on-terminal-resize
-      ack-output get-crosh-settings get-settings set-settings get-a11y-status tap-on-process-output
-      tap-on-settings-changed tap-on-a11y-status-changed tap-all-events]]
+      ack-output open-options-page get-crosh-settings get-settings set-settings get-a11y-status
+      tap-on-process-output tap-on-settings-changed tap-on-a11y-status-changed tap-all-events]]
 
     [chromex.app.users-private refer:[
       get-whitelisted-users is-whitelisted-user add-whitelisted-user remove-whitelisted-user
