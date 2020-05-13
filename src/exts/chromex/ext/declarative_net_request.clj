@@ -158,14 +158,14 @@
      :name "MAX_GETMATCHEDRULES_CALLS_PER_INTERVAL",
      :return-type "unknown-type"}
     {:id ::max-number-of-regex-rules, :name "MAX_NUMBER_OF_REGEX_RULES", :return-type "unknown-type"}
-    {:id ::dynamic-ruleset-id, :name "DYNAMIC_RULESET_ID", :since "master", :return-type "unknown-type"}],
+    {:id ::dynamic-ruleset-id, :name "DYNAMIC_RULESET_ID", :since "future", :return-type "unknown-type"}],
    :functions
    [{:id ::update-dynamic-rules,
      :name "updateDynamicRules",
      :callback? true,
      :params
-     [{:name "rule-ids-to-remove", :since "master", :type "[array-of-integers]"}
-      {:name "rules-to-add", :since "master", :type "[array-of-declarativeNetRequest.Rules]"}
+     [{:name "rule-ids-to-remove", :since "future", :type "[array-of-integers]"}
+      {:name "rules-to-add", :since "future", :type "[array-of-declarativeNetRequest.Rules]"}
       {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-dynamic-rules,
      :name "getDynamicRules",
