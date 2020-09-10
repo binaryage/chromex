@@ -1,5 +1,5 @@
 (ns chromex.ext.test
-  "  * available since Chrome 35
+  "  * available since Chrome 36
      * https://developer.chrome.com/extensions/test"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -70,10 +70,6 @@
   "https://developer.chrome.com/extensions/test#method-callbackAdded."
   ([] (gen-call :function ::callback-added &form)))
 
-(defmacro run-next-test
-  "https://developer.chrome.com/extensions/test#method-runNextTest."
-  ([] (gen-call :function ::run-next-test &form)))
-
 (defmacro fail
   "  |message| - https://developer.chrome.com/extensions/test#property-fail-message.
 
@@ -111,15 +107,6 @@
    https://developer.chrome.com/extensions/test#method-assertFalse."
   ([test message] (gen-call :function ::assert-false &form test message))
   ([test] `(assert-false ~test :omit)))
-
-(defmacro assert-bool
-  "  |test| - https://developer.chrome.com/extensions/test#property-assertBool-test.
-     |expected| - https://developer.chrome.com/extensions/test#property-assertBool-expected.
-     |message| - https://developer.chrome.com/extensions/test#property-assertBool-message.
-
-   https://developer.chrome.com/extensions/test#method-assertBool."
-  ([test expected message] (gen-call :function ::assert-bool &form test expected message))
-  ([test expected] `(assert-bool ~test ~expected :omit)))
 
 (defmacro check-deep-eq
   "  |expected| - https://developer.chrome.com/extensions/test#property-checkDeepEq-expected.
@@ -316,7 +303,7 @@
 
 (def api-table
   {:namespace "chrome.test",
-   :since "35",
+   :since "36",
    :functions
    [{:id ::get-config,
      :name "getConfig",
@@ -332,7 +319,6 @@
      [{:name "message", :type "string"}
       {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "response", :type "string"}]}}]}
     {:id ::callback-added, :name "callbackAdded"}
-    {:id ::run-next-test, :name "runNextTest"}
     {:id ::fail, :name "fail", :params [{:name "message", :optional? true, :type "any"}]}
     {:id ::succeed, :name "succeed", :params [{:name "message", :optional? true, :type "any"}]}
     {:id ::get-module-system,
@@ -346,12 +332,6 @@
     {:id ::assert-false,
      :name "assertFalse",
      :params [{:name "test", :type "string-or-boolean"} {:name "message", :optional? true, :type "string"}]}
-    {:id ::assert-bool,
-     :name "assertBool",
-     :params
-     [{:name "test", :type "string-or-boolean"}
-      {:name "expected", :type "boolean"}
-      {:name "message", :optional? true, :type "string"}]}
     {:id ::check-deep-eq,
      :name "checkDeepEq",
      :params [{:name "expected", :optional? true, :type "any"} {:name "actual", :optional? true, :type "any"}]}
@@ -408,7 +388,6 @@
       {:name "callback", :type :callback, :callback {:params [{:name "message", :type "string"}]}}]}
     {:id ::set-exception-handler,
      :name "setExceptionHandler",
-     :since "36",
      :callback? true,
      :params
      [{:name "callback",

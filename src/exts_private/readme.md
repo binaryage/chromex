@@ -13,7 +13,6 @@
 | [chrome.bookmarkManagerPrivate](https://developer.chrome.com/extensions/bookmarkManagerPrivate) | [chromex/ext/bookmark_manager_private.clj](chromex/ext/bookmark_manager_private.clj) |
 | [chrome.brailleDisplayPrivate](https://developer.chrome.com/extensions/brailleDisplayPrivate) | [chromex/ext/braille_display_private.clj](chromex/ext/braille_display_private.clj) |
 | [chrome.chromeosInfoPrivate](https://developer.chrome.com/extensions/chromeosInfoPrivate) | [chromex/ext/chromeos_info_private.clj](chromex/ext/chromeos_info_private.clj) |
-| [chrome.cloudPrintPrivate](https://developer.chrome.com/extensions/cloudPrintPrivate) | [chromex/ext/cloud_print_private.clj](chromex/ext/cloud_print_private.clj) |
 | [chrome.commandLinePrivate](https://developer.chrome.com/extensions/commandLinePrivate) | [chromex/ext/command_line_private.clj](chromex/ext/command_line_private.clj) |
 | [chrome.crashReportPrivate](https://developer.chrome.com/extensions/crashReportPrivate) | [chromex/ext/crash_report_private.clj](chromex/ext/crash_report_private.clj) |
 | [chrome.cryptotokenPrivate](https://developer.chrome.com/extensions/cryptotokenPrivate) | [chromex/ext/cryptotoken_private.clj](chromex/ext/cryptotoken_private.clj) |
@@ -49,7 +48,7 @@
 
 ### API stats
 
-Generated 41 namespaces containing 0 properties, 471 functions and 81 events:
+Generated 40 namespaces containing 0 properties, 491 functions and 83 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -58,12 +57,11 @@ Generated 41 namespaces containing 0 properties, 471 functions and 81 events:
     |             chrome.activityLogPrivate |           0 |          5 |       1 |
     |       chrome.autofillAssistantPrivate |           0 |          4 |       2 |
     |                chrome.autofillPrivate |           0 |         13 |       1 |
-    |                chrome.autotestPrivate |           0 |         92 |       1 |
+    |                chrome.autotestPrivate |           0 |        101 |       1 |
     |               chrome.bluetoothPrivate |           0 |         10 |       2 |
     |         chrome.bookmarkManagerPrivate |           0 |         11 |       3 |
     |          chrome.brailleDisplayPrivate |           0 |          3 |       2 |
     |            chrome.chromeosInfoPrivate |           0 |          2 |       0 |
-    |              chrome.cloudPrintPrivate |           0 |          4 |       0 |
     |             chrome.commandLinePrivate |           0 |          1 |       0 |
     |             chrome.crashReportPrivate |           0 |          1 |       0 |
     |             chrome.cryptotokenPrivate |           0 |          5 |       0 |
@@ -71,18 +69,18 @@ Generated 41 namespaces containing 0 properties, 471 functions and 81 events:
     |               chrome.developerPrivate |           0 |         31 |       2 |
     |                    chrome.echoPrivate |           0 |          5 |       0 |
     | chrome.enterprise.platformKeysPrivate |           0 |          2 |       0 |
-    |    chrome.enterprise.reportingPrivate |           0 |          6 |       0 |
+    |    chrome.enterprise.reportingPrivate |           0 |          5 |       0 |
     |                chrome.feedbackPrivate |           0 |          6 |       1 |
-    |             chrome.fileManagerPrivate |           0 |         58 |      10 |
+    |             chrome.fileManagerPrivate |           0 |         65 |      10 |
     |             chrome.imageWriterPrivate |           0 |          5 |       5 |
-    |             chrome.inputMethodPrivate |           0 |         20 |      10 |
+    |             chrome.inputMethodPrivate |           0 |         24 |      12 |
     |        chrome.languageSettingsPrivate |           0 |         14 |       4 |
     |             chrome.mediaPlayerPrivate |           0 |          0 |       3 |
     |                 chrome.metricsPrivate |           0 |         17 |       0 |
     |                    chrome.mojoPrivate |           0 |          1 |       0 |
     |              chrome.networkingPrivate |           0 |         22 |       5 |
-    |               chrome.passwordsPrivate |           0 |         21 |       6 |
-    |             chrome.quickUnlockPrivate |           0 |          7 |       1 |
+    |               chrome.passwordsPrivate |           0 |         24 |       6 |
+    |             chrome.quickUnlockPrivate |           0 |          9 |       1 |
     |               chrome.resourcesPrivate |           0 |          1 |       0 |
     |            chrome.safeBrowsingPrivate |           0 |          1 |       5 |
     |                chrome.settingsPrivate |           0 |          5 |       1 |
@@ -103,13 +101,13 @@ Generated 41 namespaces containing 0 properties, 471 functions and 81 events:
   (:require
     [chromex.ext.accessibility-private refer:[
       get-display-name-for-locale get-battery-description set-native-accessibility-enabled
-      set-focus-rings set-highlights set-keyboard-listener darken-screen set-switch-access-menu-state
+      set-focus-rings set-highlights set-keyboard-listener darken-screen
       forward-key-events-to-switch-access update-switch-access-bubble
       set-native-chrome-vox-arc-support-for-current-app send-synthetic-key-event
       enable-chrome-vox-mouse-events send-synthetic-mouse-event on-select-to-speak-state-changed
       on-scrollable-bounds-for-point-found toggle-dictation set-virtual-keyboard-visible
-      open-settings-subpage tap-on-introduce-chrome-vox tap-on-accessibility-gesture
-      tap-on-two-finger-touch-start tap-on-two-finger-touch-stop
+      open-settings-subpage perform-accelerator-action tap-on-introduce-chrome-vox
+      tap-on-accessibility-gesture tap-on-two-finger-touch-start tap-on-two-finger-touch-stop
       tap-on-select-to-speak-state-change-requested tap-on-switch-access-command
       tap-on-announce-for-accessibility tap-find-scrollable-bounds-for-point
       tap-on-custom-spoken-feedback-toggled tap-all-events]]
@@ -134,24 +132,27 @@ Generated 41 namespaces containing 0 properties, 471 functions and 81 events:
       set-touchpad-sensitivity set-tap-to-click set-three-finger-click set-tap-dragging
       set-natural-scroll set-mouse-sensitivity set-primary-button-right set-mouse-reverse-scroll
       get-visible-notifications get-arc-start-time get-arc-state get-play-store-state get-printer-list
-      is-app-shown is-arc-provisioned get-arc-app get-arc-package launch-arc-app launch-app close-app
+      is-app-shown is-arc-provisioned get-arc-app get-arc-package wait-for-system-web-apps-install
+      get-registered-system-web-apps launch-arc-app launch-app launch-system-web-app close-app
       update-printer remove-printer set-play-store-enabled get-clipboard-text-data
       set-clipboard-text-data run-crostini-installer run-crostini-uninstaller set-crostini-enabled
-      export-crostini import-crostini install-plugin-vm register-component take-screenshot
-      take-screenshot-for-display bootstrap-machine-learning-service set-assistant-enabled
-      enable-assistant-and-wait-for-ready send-assistant-text-query wait-for-assistant-query-status
-      is-arc-package-list-initial-refreshed set-whitelisted-pref set-crostini-app-scaled
-      get-primary-display-scale-factor is-tablet-mode-enabled set-tablet-mode-enabled
-      get-all-installed-apps get-shelf-items get-shelf-auto-hide-behavior set-shelf-auto-hide-behavior
-      get-shelf-alignment set-shelf-alignment pin-shelf-icon set-overview-mode-state
-      show-virtual-keyboard-if-enabled arc-app-tracing-start arc-app-tracing-stop-and-analyze
-      swap-windows-in-split-view set-arc-app-window-focus wait-for-display-rotation get-app-window-list
-      set-app-window-state close-app-window install-pwa-for-current-url activate-accelerator
-      wait-for-launcher-state wait-for-overview-state create-new-desk activate-desk-at-index
-      remove-active-desk mouse-click mouse-press mouse-release mouse-move set-metrics-enabled
-      start-tracing stop-tracing set-arc-touch-mode get-scrollable-shelf-info-for-state
-      get-shelf-ui-info-for-state set-window-bounds start-smoothness-tracking stop-smoothness-tracking
-      tap-on-clipboard-data-changed tap-all-events]]
+      export-crostini import-crostini set-plugin-vm-policy show-plugin-vm-installer register-component
+      take-screenshot take-screenshot-for-display bootstrap-machine-learning-service
+      set-assistant-enabled enable-assistant-and-wait-for-ready send-assistant-text-query
+      wait-for-assistant-query-status is-arc-package-list-initial-refreshed set-whitelisted-pref
+      set-crostini-app-scaled get-primary-display-scale-factor is-tablet-mode-enabled
+      set-tablet-mode-enabled get-all-installed-apps get-shelf-items get-shelf-auto-hide-behavior
+      set-shelf-auto-hide-behavior get-shelf-alignment set-shelf-alignment pin-shelf-icon
+      set-overview-mode-state show-virtual-keyboard-if-enabled arc-app-tracing-start
+      arc-app-tracing-stop-and-analyze swap-windows-in-split-view set-arc-app-window-focus
+      wait-for-display-rotation get-app-window-list set-app-window-state close-app-window
+      install-pwa-for-current-url activate-accelerator wait-for-launcher-state wait-for-overview-state
+      create-new-desk activate-desk-at-index remove-active-desk mouse-click mouse-press mouse-release
+      mouse-move set-metrics-enabled start-tracing stop-tracing set-arc-touch-mode
+      get-scrollable-shelf-info-for-state get-shelf-ui-info-for-state set-window-bounds
+      start-smoothness-tracking stop-smoothness-tracking disable-switch-access-dialog
+      wait-for-ambient-photo-animation disable-automation start-throughput-tracker-data-collection
+      stop-throughput-tracker-data-collection tap-on-clipboard-data-changed tap-all-events]]
 
     [chromex.ext.bluetooth-private refer:[
       set-adapter-state set-pairing-response disconnect-all forget-device set-discovery-filter connect
@@ -168,9 +169,6 @@ Generated 41 namespaces containing 0 properties, 471 functions and 81 events:
 
     [chromex.ext.chromeos-info-private refer:[
       get set tap-all-events]]
-
-    [chromex.ext.cloud-print-private refer:[
-      setup-connector get-host-name get-printers get-client-id tap-all-events]]
 
     [chromex.ext.command-line-private refer:[
       has-switch tap-all-events]]
@@ -202,8 +200,7 @@ Generated 41 namespaces containing 0 properties, 471 functions and 81 events:
       challenge-machine-key challenge-user-key tap-all-events]]
 
     [chromex.ext.enterprise.reporting-private refer:[
-      upload-chrome-desktop-report get-device-id get-persistent-secret get-device-data set-device-data
-      get-device-info tap-all-events]]
+      get-device-id get-persistent-secret get-device-data set-device-data get-device-info tap-all-events]]
 
     [chromex.ext.feedback-private refer:[
       get-user-email get-system-information send-feedback get-strings read-log-source
@@ -211,17 +208,19 @@ Generated 41 namespaces containing 0 properties, 471 functions and 81 events:
 
     [chromex.ext.file-manager-private refer:[
       logout-user-for-reauthentication cancel-dialog execute-task set-default-task get-file-tasks
-      get-mime-type get-strings add-file-watch remove-file-watch enable-external-file-scheme grant-access
-      select-files select-file get-entry-properties pin-drive-file resolve-isolated-entries add-mount
-      remove-mount get-volume-metadata-list start-copy cancel-copy get-size-stats format-volume
-      rename-volume get-preferences set-preferences search-drive search-drive-metadata
+      get-mime-type get-content-mime-type get-content-metadata get-strings add-file-watch
+      remove-file-watch enable-external-file-scheme grant-access select-files select-file
+      get-entry-properties pin-drive-file resolve-isolated-entries add-mount remove-mount
+      get-volume-metadata-list copy-image-to-clipboard start-copy cancel-copy get-size-stats
+      format-volume rename-volume get-preferences set-preferences search-drive search-drive-metadata
       search-files-by-hashes search-files zip-selection get-drive-connection-state
       validate-path-name-length zoom request-web-store-access-token get-download-url get-profiles
       open-inspector open-settings-subpage compute-checksum get-providers add-provided-file-system
       configure-volume get-custom-actions execute-custom-action get-directory-size get-recent-files
       mount-crostini share-paths-with-crostini unshare-path-with-crostini get-crostini-shared-paths
       get-linux-package-info install-linux-package import-crostini-image get-thumbnail
-      detect-character-encoding get-android-picker-apps select-android-picker-app tap-on-mount-completed
+      detect-character-encoding get-android-picker-apps select-android-picker-app sharesheet-has-targets
+      invoke-sharesheet toggle-added-to-holding-space get-holding-space-state tap-on-mount-completed
       tap-on-file-transfers-updated tap-on-copy-progress tap-on-directory-changed
       tap-on-preferences-changed tap-on-drive-connection-status-changed tap-on-device-changed
       tap-on-drive-sync-error tap-on-apps-updated tap-on-crostini-changed tap-all-events]]
@@ -236,10 +235,12 @@ Generated 41 namespaces containing 0 properties, 471 functions and 81 events:
       fetch-all-dictionary-words add-word-to-dictionary get-encrypt-sync-enabled set-xkb-layout
       finish-composing-text set-selection-range notify-ime-menu-item-activated show-input-view
       hide-input-view open-options-page get-composition-bounds get-surrounding-text get-settings
-      set-settings set-composition-range reset tap-on-changed tap-on-composition-bounds-changed
-      tap-on-dictionary-loaded tap-on-dictionary-changed tap-on-ime-menu-activation-changed
-      tap-on-ime-menu-list-changed tap-on-ime-menu-items-changed tap-on-focus tap-on-settings-changed
-      tap-on-screen-projection-changed tap-all-events]]
+      set-settings set-composition-range set-composing-range get-autocorrect-range
+      get-autocorrect-character-bounds set-autocorrect-range reset tap-on-changed
+      tap-on-composition-bounds-changed tap-on-dictionary-loaded tap-on-dictionary-changed
+      tap-on-ime-menu-activation-changed tap-on-ime-menu-list-changed tap-on-ime-menu-items-changed
+      tap-on-focus tap-on-settings-changed tap-on-screen-projection-changed tap-on-suggestions-changed
+      tap-on-input-method-options-changed tap-all-events]]
 
     [chromex.ext.language-settings-private refer:[
       get-language-list enable-language disable-language set-enable-translation-for-language
@@ -272,8 +273,9 @@ Generated 41 namespaces containing 0 properties, 471 functions and 81 events:
 
     [chromex.ext.passwords-private refer:[
       record-passwords-page-access-in-settings change-saved-password remove-saved-password
-      remove-password-exception undo-remove-saved-password-or-exception request-plaintext-password
-      get-saved-password-list get-password-exception-list import-passwords export-passwords
+      remove-saved-passwords remove-password-exception remove-password-exceptions
+      undo-remove-saved-password-or-exception request-plaintext-password get-saved-password-list
+      get-password-exception-list move-password-to-account import-passwords export-passwords
       request-export-progress-status cancel-export-passwords is-opted-in-for-account-storage
       opt-in-for-account-storage get-compromised-credentials get-plaintext-compromised-password
       change-compromised-credential remove-compromised-credential start-password-check
@@ -283,8 +285,9 @@ Generated 41 namespaces containing 0 properties, 471 functions and 81 events:
       tap-on-password-check-status-changed tap-all-events]]
 
     [chromex.ext.quick-unlock-private refer:[
-      get-auth-token set-lock-screen-enabled get-available-modes get-active-modes check-credential
-      get-credential-requirements set-modes tap-on-active-modes-changed tap-all-events]]
+      get-auth-token set-lock-screen-enabled set-pin-autosubmit-enabled can-authenticate-pin
+      get-available-modes get-active-modes check-credential get-credential-requirements set-modes
+      tap-on-active-modes-changed tap-all-events]]
 
     [chromex.ext.resources-private refer:[
       get-strings tap-all-events]]
@@ -303,12 +306,12 @@ Generated 41 namespaces containing 0 properties, 471 functions and 81 events:
 
     [chromex.ext.terminal-private refer:[
       open-terminal-process open-vmshell-process close-terminal-process send-input on-terminal-resize
-      ack-output open-options-page get-crosh-settings get-settings set-settings get-a11y-status
+      ack-output open-window open-options-page get-settings set-settings get-a11y-status
       tap-on-process-output tap-on-settings-changed tap-on-a11y-status-changed tap-all-events]]
 
     [chromex.ext.users-private refer:[
-      get-whitelisted-users is-whitelisted-user add-whitelisted-user remove-whitelisted-user
-      is-whitelist-managed get-current-user get-login-status tap-all-events]]
+      get-users is-user-in-list add-user remove-user is-user-list-managed get-current-user
+      get-login-status tap-all-events]]
 
     [chromex.ext.virtual-keyboard-private refer:[
       insert-text send-key-event hide-keyboard set-hotrod-keyboard lock-keyboard keyboard-loaded

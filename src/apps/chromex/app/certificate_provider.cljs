@@ -9,7 +9,19 @@
 (defn stop-pin-request* [config details]
   (gen-wrap :function ::stop-pin-request config details))
 
+(defn set-certificates* [config details]
+  (gen-wrap :function ::set-certificates config details))
+
+(defn report-signature* [config details]
+  (gen-wrap :function ::report-signature config details))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
+
+(defn on-certificates-update-requested* [config channel & args]
+  (gen-wrap :event ::on-certificates-update-requested config channel args))
+
+(defn on-signature-requested* [config channel & args]
+  (gen-wrap :event ::on-signature-requested config channel args))
 
 (defn on-certificates-requested* [config channel & args]
   (gen-wrap :event ::on-certificates-requested config channel args))

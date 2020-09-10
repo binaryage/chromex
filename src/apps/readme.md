@@ -76,14 +76,14 @@
 
 ### API stats
 
-Generated 68 namespaces containing 30 properties, 453 functions and 152 events:
+Generated 68 namespaces containing 31 properties, 454 functions and 155 events:
 
 
     |                         :namespace | :properties | :functions | :events |
     |------------------------------------+-------------+------------+---------|
     |                          <appview> |           0 |          1 |       0 |
     |                          <webview> |           3 |         31 |       0 |
-    |       chrome.accessibilityFeatures |          13 |          0 |       0 |
+    |       chrome.accessibilityFeatures |          14 |          0 |       0 |
     |                      chrome.alarms |           0 |          5 |       1 |
     |                 chrome.app.runtime |           0 |          0 |       3 |
     |                  chrome.app.window |           0 |          5 |       6 |
@@ -94,7 +94,7 @@ Generated 68 namespaces containing 30 properties, 453 functions and 152 events:
     |             chrome.bluetoothSocket |           0 |         11 |       4 |
     |                   chrome.bookmarks |           2 |         11 |       7 |
     |                     chrome.browser |           0 |          1 |       0 |
-    |         chrome.certificateProvider |           0 |          2 |       2 |
+    |         chrome.certificateProvider |           0 |          4 |       4 |
     |                   chrome.clipboard |           0 |          1 |       1 |
     |                    chrome.commands |           0 |          1 |       1 |
     |                chrome.contextMenus |           1 |          4 |       1 |
@@ -121,7 +121,7 @@ Generated 68 namespaces containing 30 properties, 453 functions and 152 events:
     |              chrome.networking.onc |           0 |         15 |       4 |
     |               chrome.notifications |           0 |          5 |       5 |
     |                 chrome.permissions |           0 |          4 |       2 |
-    |                chrome.platformKeys |           0 |          4 |       0 |
+    |                chrome.platformKeys |           0 |          5 |       0 |
     |                       chrome.power |           0 |          2 |       0 |
     |             chrome.printerProvider |           0 |          0 |       4 |
     |                       chrome.proxy |           1 |          0 |       1 |
@@ -142,13 +142,13 @@ Generated 68 namespaces containing 30 properties, 453 functions and 152 events:
     |              chrome.system.storage |           0 |          3 |       2 |
     |             chrome.systemIndicator |           0 |          3 |       1 |
     |                        chrome.tabs |           1 |         26 |      13 |
-    |                        chrome.test |           0 |         31 |       1 |
+    |                        chrome.test |           0 |         29 |       1 |
     |                         chrome.tts |           0 |          6 |       0 |
     |                         chrome.usb |           0 |         18 |       2 |
     |             chrome.virtualKeyboard |           0 |          1 |       0 |
     |                 chrome.vpnProvider |           0 |          5 |       5 |
     |                   chrome.wallpaper |           0 |          1 |       0 |
-    |                     chrome.windows |           2 |          7 |       3 |
+    |                     chrome.windows |           2 |          7 |       4 |
 
 ### Requires
 
@@ -168,8 +168,8 @@ Generated 68 namespaces containing 30 properties, 453 functions and 152 events:
 
     [chromex.app.accessibility-features refer:[
       get-spoken-feedback get-large-cursor get-sticky-keys get-high-contrast get-screen-magnifier
-      get-autoclick get-virtual-keyboard get-caret-highlight get-cursor-highlight get-focus-highlight
-      get-select-to-speak get-switch-access get-animation-policy tap-all-events]]
+      get-autoclick get-virtual-keyboard get-caret-highlight get-cursor-highlight get-cursor-color
+      get-focus-highlight get-select-to-speak get-switch-access get-animation-policy tap-all-events]]
 
     [chromex.app.alarms refer:[
       create get get-all clear clear-all tap-on-alarm tap-all-events]]
@@ -221,8 +221,8 @@ Generated 68 namespaces containing 30 properties, 453 functions and 152 events:
       open-tab tap-all-events]]
 
     [chromex.app.certificate-provider refer:[
-      request-pin stop-pin-request tap-on-certificates-requested tap-on-sign-digest-requested
-      tap-all-events]]
+      request-pin stop-pin-request set-certificates report-signature tap-on-certificates-update-requested
+      tap-on-signature-requested tap-on-certificates-requested tap-on-sign-digest-requested tap-all-events]]
 
     [chromex.app.clipboard refer:[
       set-image-data tap-on-clipboard-data-changed tap-all-events]]
@@ -329,7 +329,8 @@ Generated 68 namespaces containing 30 properties, 453 functions and 152 events:
       get-all contains request remove tap-on-added tap-on-removed tap-all-events]]
 
     [chromex.app.platform-keys refer:[
-      select-client-certificates get-key-pair subtle-crypto verify-tls-server-certificate tap-all-events]]
+      select-client-certificates get-key-pair get-key-pair-by-spki subtle-crypto
+      verify-tls-server-certificate tap-all-events]]
 
     [chromex.app.power refer:[
       request-keep-awake release-keep-awake tap-all-events]]
@@ -417,10 +418,10 @@ Generated 68 namespaces containing 30 properties, 453 functions and 152 events:
       tap-on-removed tap-on-replaced tap-on-zoom-change tap-all-events]]
 
     [chromex.app.test refer:[
-      get-config notify-fail notify-pass log send-message callback-added run-next-test fail succeed
-      get-module-system assert-true assert-false assert-bool check-deep-eq assert-eq assert-no-last-error
-      assert-last-error assert-throws callback listen-once listen-forever callback-pass callback-fail
-      run-tests get-api-features get-api-definitions is-processing-user-gesture run-with-user-gesture
+      get-config notify-fail notify-pass log send-message callback-added fail succeed get-module-system
+      assert-true assert-false check-deep-eq assert-eq assert-no-last-error assert-last-error
+      assert-throws callback listen-once listen-forever callback-pass callback-fail run-tests
+      get-api-features get-api-definitions is-processing-user-gesture run-with-user-gesture
       wait-for-round-trip set-exception-handler get-wake-event-page tap-on-message tap-all-events]]
 
     [chromex.app.tts refer:[
@@ -445,5 +446,5 @@ Generated 68 namespaces containing 30 properties, 453 functions and 152 events:
 
     [chromex.app.windows refer:[
       get-window-id-none get-window-id-current get get-current get-last-focused get-all create update
-      remove tap-on-created tap-on-removed tap-on-focus-changed tap-all-events]]))
+      remove tap-on-created tap-on-removed tap-on-focus-changed tap-on-bounds-changed tap-all-events]]))
 ```

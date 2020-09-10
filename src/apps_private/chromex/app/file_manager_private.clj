@@ -69,7 +69,7 @@
   ([entries] (gen-call :function ::get-file-tasks &form entries)))
 
 (defmacro get-mime-type
-  "Gets the MIME type of a file. |entry| Entry to be checked. |callback
+  "Gets the MIME type of an entry. |entry| The entry to be checked. |callback
 
      |entry| - ?
 
@@ -81,6 +81,38 @@
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([entry] (gen-call :function ::get-mime-type &form entry)))
+
+(defmacro get-content-mime-type
+  "Gets the content sniffed MIME type of a file. |fileEntry| The file entry to be checked. |callback
+
+     |file-entry| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [result] where:
+
+     |result| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([file-entry] (gen-call :function ::get-content-mime-type &form file-entry)))
+
+(defmacro get-content-metadata
+  "Gets metadata from an Audio or Video file. |fileEntry| The file entry to be checked. |mimeType| Content sniffed mimeType of
+   the file. |includeImages| False returns metadata tags only. True returns     metadata tags and metadata (thumbnail) images.
+   |callback
+
+     |file-entry| - ?
+     |mime-type| - ?
+     |include-images| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [result] where:
+
+     |result| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([file-entry mime-type include-images] (gen-call :function ::get-content-metadata &form file-entry mime-type include-images)))
 
 (defmacro get-strings
   "Gets localized strings and initialization data. |callback
@@ -218,10 +250,12 @@
   ([entries] (gen-call :function ::resolve-isolated-entries &form entries)))
 
 (defmacro add-mount
-  "Mount a resource or a file. |source| Mount point source. For compressed files it is relative file path     within external
-   file system |callback
+  "Mounts a resource or a file. |source| Mount point source. For compressed files it is the relative file     path within the
+   external file system. |password| Optional password to decrypt the file. |callback| Callback called with the source path of
+   the mount.
 
      |source| - ?
+     |password| - ?
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [source-path] where:
@@ -230,7 +264,8 @@
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([source] (gen-call :function ::add-mount &form source)))
+  ([source password] (gen-call :function ::add-mount &form source password))
+  ([source] `(add-mount ~source :omit)))
 
 (defmacro remove-mount
   "Unmounts a mounted resource. |volumeId| An ID of the volume.
@@ -249,6 +284,18 @@
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-volume-metadata-list &form)))
+
+(defmacro copy-image-to-clipboard
+  "Copies an image to the system clipboard. |entry| Entry of the image to copy to the system clipboard.
+
+     |entry| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([entry] (gen-call :function ::copy-image-to-clipboard &form entry)))
 
 (defmacro start-copy
   "Starts to copy an entry. If the source is a directory, the copy is done recursively. |entry| Entry of the source entry to
@@ -518,7 +565,7 @@
   ([] (gen-call :function ::get-providers &form)))
 
 (defmacro add-provided-file-system
-  "Requests adding a new provided file system. If not possible, then an error via chrome.runtime.lastError is returned.
+  "Requests adding a new provided file system. On failure, sets 'runtime.lastError'.
 
      |provider-id| - ?
 
@@ -530,7 +577,7 @@
   ([provider-id] (gen-call :function ::add-provided-file-system &form provider-id)))
 
 (defmacro configure-volume
-  "Requests configuring an existing volume. If not possible, then returns an error via chrome.runtime.lastError.
+  "Requests configuring an existing volume. On failure, sets 'runtime.lastError'.
 
      |volume-id| - ?
 
@@ -542,8 +589,7 @@
   ([volume-id] (gen-call :function ::configure-volume &form volume-id)))
 
 (defmacro get-custom-actions
-  "Requests list of custom actions for the specified entries. If not possible, then an error via chrome.runtime.lastError is
-   returned.
+  "Requests list of custom actions for the specified entries. On failure, sets 'runtime.lastError'.
 
      |entries| - ?
 
@@ -557,7 +603,7 @@
   ([entries] (gen-call :function ::get-custom-actions &form entries)))
 
 (defmacro execute-custom-action
-  "Executes a custom action for a set of entries. If not possible, then an error via chrome.runtime.lastError is returned.
+  "Executes a custom action for a set of entries. On failure, sets 'runtime.lastError'.
 
      |entries| - ?
      |action-id| - ?
@@ -692,8 +738,8 @@
   ([entry] (gen-call :function ::import-crostini-image &form entry)))
 
 (defmacro get-thumbnail
-  "For a file in DriveFS, retrieves its thumbnail. If |cropToSquare| is true, returns a thumbnail appropriate for file list or
-   grid views; otherwise, returns a thumbnail appropriate for quickview.
+  "For a given file entry, retrieves its thumbnail. If |cropToSquare| is true, returns a thumbnail appropriate for file list
+   or grid views; otherwise, returns a thumbnail appropriate for quickview.
 
      |entry| - ?
      |crop-to-square| - ?
@@ -748,6 +794,63 @@
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([android-app] (gen-call :function ::select-android-picker-app &form android-app)))
+
+(defmacro sharesheet-has-targets
+  "Return true if sharesheet contains share targets for entries. |entries| Array of selected entries |callback| is called with
+   error in case of failure and with no arguments if successfully launched the Sharesheet dialog, but before user has finished
+   the sharing.
+
+     |entries| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [result] where:
+
+     |result| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([entries] (gen-call :function ::sharesheet-has-targets &form entries)))
+
+(defmacro invoke-sharesheet
+  "Invoke Sharesheet for selected files. |entries| Array of selected entries. |callback
+
+     |entries| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([entries] (gen-call :function ::invoke-sharesheet &form entries)))
+
+(defmacro toggle-added-to-holding-space
+  "Adds or removes a list of entries to temporary holding space. Any entries whose current holding space state matches the
+   intended state will be skipped. |entries| The list of entries whose holding space needs to be updated. |add| Whether items
+   should be added or removed from the holding space. |callback| Completion callback.
+
+     |entries| - ?
+     |added| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([entries added] (gen-call :function ::toggle-added-to-holding-space &form entries added)))
+
+(defmacro get-holding-space-state
+  "Retrieves the current holding space state, for example the list of items the holding space currently contains. |callback
+
+   The result callback.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [state] where:
+
+     |state| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::get-holding-space-state &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -883,6 +986,22 @@
      :params
      [{:name "entry", :since "46", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "string"}]}}]}
+    {:id ::get-content-mime-type,
+     :name "getContentMimeType",
+     :since "future",
+     :callback? true,
+     :params
+     [{:name "file-entry", :type "object"}
+      {:name "callback", :type :callback, :callback {:params [{:name "result", :type "string"}]}}]}
+    {:id ::get-content-metadata,
+     :name "getContentMetadata",
+     :since "future",
+     :callback? true,
+     :params
+     [{:name "file-entry", :type "object"}
+      {:name "mime-type", :type "string"}
+      {:name "include-images", :since "future", :type "boolean"}
+      {:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}
     {:id ::get-strings,
      :name "getStrings",
      :callback? true,
@@ -946,6 +1065,7 @@
      :callback? true,
      :params
      [{:name "source", :type "string"}
+      {:name "password", :optional? true, :since "future", :type "string"}
       {:name "callback", :type :callback, :callback {:params [{:name "source-path", :type "string"}]}}]}
     {:id ::remove-mount, :name "removeMount", :params [{:name "volume-id", :type "string"}]}
     {:id ::get-volume-metadata-list,
@@ -955,6 +1075,11 @@
      [{:name "callback",
        :type :callback,
        :callback {:params [{:name "volume-metadata-list", :type "[array-of-fileManagerPrivate.VolumeMetadatas]"}]}}]}
+    {:id ::copy-image-to-clipboard,
+     :name "copyImageToClipboard",
+     :since "future",
+     :callback? true,
+     :params [{:name "entry", :type "object"} {:name "callback", :type :callback}]}
     {:id ::start-copy,
      :name "startCopy",
      :callback? true,
@@ -1118,7 +1243,7 @@
      :callback? true,
      :params
      [{:name "restriction", :type "unknown-type"}
-      {:name "file-type", :since "future", :type "unknown-type"}
+      {:name "file-type", :since "82", :type "unknown-type"}
       {:name "callback", :type :callback, :callback {:params [{:name "entries", :type "[array-of-Entrys]"}]}}]}
     {:id ::mount-crostini,
      :name "mountCrostini",
@@ -1199,7 +1324,32 @@
      :name "selectAndroidPickerApp",
      :since "76",
      :callback? true,
-     :params [{:name "android-app", :type "fileManagerPrivate.AndroidApp"} {:name "callback", :type :callback}]}],
+     :params [{:name "android-app", :type "fileManagerPrivate.AndroidApp"} {:name "callback", :type :callback}]}
+    {:id ::sharesheet-has-targets,
+     :name "sharesheetHasTargets",
+     :since "future",
+     :callback? true,
+     :params
+     [{:name "entries", :type "[array-of-objects]"}
+      {:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
+    {:id ::invoke-sharesheet,
+     :name "invokeSharesheet",
+     :since "future",
+     :callback? true,
+     :params [{:name "entries", :type "[array-of-objects]"} {:name "callback", :type :callback}]}
+    {:id ::toggle-added-to-holding-space,
+     :name "toggleAddedToHoldingSpace",
+     :since "future",
+     :callback? true,
+     :params
+     [{:name "entries", :type "[array-of-Entrys]"}
+      {:name "added", :type "boolean"}
+      {:name "callback", :optional? true, :type :callback}]}
+    {:id ::get-holding-space-state,
+     :name "getHoldingSpaceState",
+     :since "future",
+     :callback? true,
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "state", :type "object"}]}}]}],
    :events
    [{:id ::on-mount-completed, :name "onMountCompleted", :params [{:name "event", :type "object"}]}
     {:id ::on-file-transfers-updated, :name "onFileTransfersUpdated", :params [{:name "event", :type "object"}]}

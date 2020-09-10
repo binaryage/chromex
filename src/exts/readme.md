@@ -13,10 +13,6 @@
 | [chrome.bookmarks](https://developer.chrome.com/extensions/bookmarks) | [chromex/ext/bookmarks.clj](chromex/ext/bookmarks.clj) |
 | [chrome.browserAction](https://developer.chrome.com/extensions/browserAction) | [chromex/ext/browser_action.clj](chromex/ext/browser_action.clj) |
 | [chrome.browsingData](https://developer.chrome.com/extensions/browsingData) | [chromex/ext/browsing_data.clj](chromex/ext/browsing_data.clj) |
-| [chrome.cast.streaming.receiverSession](https://developer.chrome.com/extensions/cast.streaming.receiverSession) | [chromex/ext/cast/streaming/receiver_session.clj](chromex/ext/cast/streaming/receiver_session.clj) |
-| [chrome.cast.streaming.rtpStream](https://developer.chrome.com/extensions/cast.streaming.rtpStream) | [chromex/ext/cast/streaming/rtp_stream.clj](chromex/ext/cast/streaming/rtp_stream.clj) |
-| [chrome.cast.streaming.session](https://developer.chrome.com/extensions/cast.streaming.session) | [chromex/ext/cast/streaming/session.clj](chromex/ext/cast/streaming/session.clj) |
-| [chrome.cast.streaming.udpTransport](https://developer.chrome.com/extensions/cast.streaming.udpTransport) | [chromex/ext/cast/streaming/udp_transport.clj](chromex/ext/cast/streaming/udp_transport.clj) |
 | [chrome.certificateProvider](https://developer.chrome.com/extensions/certificateProvider) | [chromex/ext/certificate_provider.clj](chromex/ext/certificate_provider.clj) |
 | [chrome.commands](https://developer.chrome.com/extensions/commands) | [chromex/ext/commands.clj](chromex/ext/commands.clj) |
 | [chrome.contentSettings](https://developer.chrome.com/extensions/contentSettings) | [chromex/ext/content_settings.clj](chromex/ext/content_settings.clj) |
@@ -36,6 +32,7 @@
 | [chrome.downloads](https://developer.chrome.com/extensions/downloads) | [chromex/ext/downloads.clj](chromex/ext/downloads.clj) |
 | [chrome.enterprise.deviceAttributes](https://developer.chrome.com/extensions/enterprise.deviceAttributes) | [chromex/ext/enterprise/device_attributes.clj](chromex/ext/enterprise/device_attributes.clj) |
 | [chrome.enterprise.hardwarePlatform](https://developer.chrome.com/extensions/enterprise.hardwarePlatform) | [chromex/ext/enterprise/hardware_platform.clj](chromex/ext/enterprise/hardware_platform.clj) |
+| [chrome.enterprise.networkingAttributes](https://developer.chrome.com/extensions/enterprise.networkingAttributes) | [chromex/ext/enterprise/networking_attributes.clj](chromex/ext/enterprise/networking_attributes.clj) |
 | [chrome.enterprise.platformKeys](https://developer.chrome.com/extensions/enterprise.platformKeys) | [chromex/ext/enterprise/platform_keys.clj](chromex/ext/enterprise/platform_keys.clj) |
 | [chrome.extension](https://developer.chrome.com/extensions/extension) | [chromex/ext/extension.clj](chromex/ext/extension.clj) |
 | [chrome.fileBrowserHandler](https://developer.chrome.com/extensions/fileBrowserHandler) | [chromex/ext/file_browser_handler.clj](chromex/ext/file_browser_handler.clj) |
@@ -49,6 +46,8 @@
 | [chrome.idltest](https://developer.chrome.com/extensions/idltest) | [chromex/ext/idltest.clj](chromex/ext/idltest.clj) |
 | [chrome.input.ime](https://developer.chrome.com/extensions/input.ime) | [chromex/ext/input/ime.clj](chromex/ext/input/ime.clj) |
 | [chrome.instanceID](https://developer.chrome.com/extensions/instanceID) | [chromex/ext/instance_id.clj](chromex/ext/instance_id.clj) |
+| [chrome.login](https://developer.chrome.com/extensions/login) | [chromex/ext/login.clj](chromex/ext/login.clj) |
+| [chrome.loginScreenStorage](https://developer.chrome.com/extensions/loginScreenStorage) | [chromex/ext/login_screen_storage.clj](chromex/ext/login_screen_storage.clj) |
 | [chrome.loginState](https://developer.chrome.com/extensions/loginState) | [chromex/ext/login_state.clj](chromex/ext/login_state.clj) |
 | [chrome.management](https://developer.chrome.com/extensions/management) | [chromex/ext/management.clj](chromex/ext/management.clj) |
 | [chrome.networking.config](https://developer.chrome.com/extensions/networking.config) | [chromex/ext/networking/config.clj](chromex/ext/networking/config.clj) |
@@ -66,6 +65,7 @@
 | [chrome.processes](https://developer.chrome.com/extensions/processes) | [chromex/ext/processes.clj](chromex/ext/processes.clj) |
 | [chrome.proxy](https://developer.chrome.com/extensions/proxy) | [chromex/ext/proxy.clj](chromex/ext/proxy.clj) |
 | [chrome.runtime](https://developer.chrome.com/extensions/runtime) | [chromex/ext/runtime.clj](chromex/ext/runtime.clj) |
+| [chrome.search](https://developer.chrome.com/extensions/search) | [chromex/ext/search.clj](chromex/ext/search.clj) |
 | [chrome.sessions](https://developer.chrome.com/extensions/sessions) | [chromex/ext/sessions.clj](chromex/ext/sessions.clj) |
 | [chrome.signedInDevices](https://developer.chrome.com/extensions/signedInDevices) | [chromex/ext/signed_in_devices.clj](chromex/ext/signed_in_devices.clj) |
 | [chrome.storage](https://developer.chrome.com/extensions/storage) | [chromex/ext/storage.clj](chromex/ext/storage.clj) |
@@ -89,92 +89,92 @@
 
 ### API stats
 
-Generated 81 namespaces containing 58 properties, 395 functions and 181 events:
+Generated 81 namespaces containing 60 properties, 394 functions and 181 events:
 
 
-    |                            :namespace | :properties | :functions | :events |
-    |---------------------------------------+-------------+------------+---------|
-    |          chrome.accessibilityFeatures |          13 |          0 |       0 |
-    |                         chrome.action |           0 |         11 |       1 |
-    |                         chrome.alarms |           0 |          5 |       1 |
-    |                            chrome.app |           0 |          4 |       0 |
-    |                     chrome.automation |           0 |          7 |       0 |
-    |                      chrome.bluetooth |           0 |          5 |       4 |
-    |                      chrome.bookmarks |           2 |         11 |       7 |
-    |                  chrome.browserAction |           0 |         11 |       1 |
-    |                   chrome.browsingData |           0 |         16 |       0 |
-    | chrome.cast.streaming.receiverSession |           0 |          1 |       0 |
-    |       chrome.cast.streaming.rtpStream |           0 |          7 |       3 |
-    |         chrome.cast.streaming.session |           0 |          1 |       0 |
-    |    chrome.cast.streaming.udpTransport |           0 |          3 |       0 |
-    |            chrome.certificateProvider |           0 |          2 |       2 |
-    |                       chrome.commands |           0 |          1 |       1 |
-    |                chrome.contentSettings |          13 |          0 |       0 |
-    |                   chrome.contextMenus |           1 |          4 |       1 |
-    |                        chrome.cookies |           0 |          5 |       1 |
-    |                       chrome.debugger |           0 |          4 |       2 |
-    |             chrome.declarativeContent |           0 |          0 |       1 |
-    |          chrome.declarativeNetRequest |           6 |          4 |       1 |
-    |          chrome.declarativeWebRequest |           0 |          0 |       2 |
-    |                 chrome.desktopCapture |           0 |          2 |       0 |
-    |       chrome.devtools.inspectedWindow |           1 |          3 |       2 |
-    |               chrome.devtools.network |           0 |          1 |       2 |
-    |                chrome.devtools.panels |           3 |          3 |       0 |
-    |                  chrome.displaySource |           0 |          4 |       3 |
-    |                            chrome.dns |           0 |          1 |       0 |
-    |                   chrome.documentScan |           0 |          1 |       0 |
-    |                      chrome.downloads |           0 |         13 |       4 |
-    |    chrome.enterprise.deviceAttributes |           0 |          5 |       0 |
-    |    chrome.enterprise.hardwarePlatform |           0 |          1 |       0 |
-    |        chrome.enterprise.platformKeys |           0 |          6 |       0 |
-    |                      chrome.extension |           2 |          8 |       2 |
-    |             chrome.fileBrowserHandler |           0 |          1 |       1 |
-    |             chrome.fileSystemProvider |           0 |          5 |      20 |
-    |                   chrome.fontSettings |           0 |         13 |       4 |
-    |                            chrome.gcm |           1 |          3 |       3 |
-    |                        chrome.history |           0 |          6 |       2 |
-    |                           chrome.i18n |           0 |          4 |       0 |
-    |                       chrome.identity |           0 |          6 |       1 |
-    |                           chrome.idle |           0 |          3 |       1 |
-    |                        chrome.idltest |           0 |          5 |       0 |
-    |                      chrome.input.ime |           0 |         17 |      11 |
-    |                     chrome.instanceID |           0 |          5 |       1 |
-    |                     chrome.loginState |           0 |          2 |       1 |
-    |                     chrome.management |           0 |         15 |       4 |
-    |              chrome.networking.config |           0 |          2 |       1 |
-    |                  chrome.notifications |           0 |          5 |       5 |
-    |                        chrome.omnibox |           0 |          1 |       5 |
-    |                     chrome.pageAction |           0 |          7 |       1 |
-    |                    chrome.pageCapture |           0 |          1 |       0 |
-    |                    chrome.permissions |           0 |          4 |       2 |
-    |                   chrome.platformKeys |           0 |          4 |       0 |
-    |                          chrome.power |           0 |          2 |       0 |
-    |                chrome.printerProvider |           0 |          0 |       4 |
-    |                       chrome.printing |           2 |          4 |       1 |
-    |                chrome.printingMetrics |           0 |          1 |       1 |
-    |                        chrome.privacy |           3 |          0 |       0 |
-    |                      chrome.processes |           0 |          3 |       5 |
-    |                          chrome.proxy |           1 |          0 |       1 |
-    |                        chrome.runtime |           2 |         15 |      12 |
-    |                       chrome.sessions |           1 |          3 |       1 |
-    |                chrome.signedInDevices |           0 |          1 |       1 |
-    |                        chrome.storage |           3 |          0 |       1 |
-    |                     chrome.system.cpu |           0 |          1 |       0 |
-    |                 chrome.system.display |           0 |         14 |       1 |
-    |                  chrome.system.memory |           0 |          1 |       0 |
-    |                 chrome.system.storage |           0 |          3 |       2 |
-    |                chrome.systemIndicator |           0 |          3 |       1 |
-    |                     chrome.tabCapture |           0 |          4 |       1 |
-    |                           chrome.tabs |           1 |         26 |      13 |
-    |                           chrome.test |           0 |         31 |       1 |
-    |                       chrome.topSites |           0 |          1 |       0 |
-    |                            chrome.tts |           0 |          6 |       0 |
-    |                      chrome.ttsEngine |           0 |          1 |       4 |
-    |                    chrome.vpnProvider |           0 |          5 |       5 |
-    |                      chrome.wallpaper |           0 |          1 |       0 |
-    |                  chrome.webNavigation |           0 |          2 |       9 |
-    |                     chrome.webRequest |           1 |          1 |      10 |
-    |                        chrome.windows |           2 |          7 |       3 |
+    |                             :namespace | :properties | :functions | :events |
+    |----------------------------------------+-------------+------------+---------|
+    |           chrome.accessibilityFeatures |          14 |          0 |       0 |
+    |                          chrome.action |           0 |         11 |       1 |
+    |                          chrome.alarms |           0 |          5 |       1 |
+    |                             chrome.app |           0 |          4 |       0 |
+    |                      chrome.automation |           0 |          7 |       0 |
+    |                       chrome.bluetooth |           0 |          5 |       4 |
+    |                       chrome.bookmarks |           2 |         11 |       7 |
+    |                   chrome.browserAction |           0 |         11 |       1 |
+    |                    chrome.browsingData |           0 |         16 |       0 |
+    |             chrome.certificateProvider |           0 |          4 |       4 |
+    |                        chrome.commands |           0 |          1 |       1 |
+    |                 chrome.contentSettings |          13 |          0 |       0 |
+    |                    chrome.contextMenus |           1 |          4 |       1 |
+    |                         chrome.cookies |           0 |          5 |       1 |
+    |                        chrome.debugger |           0 |          4 |       2 |
+    |              chrome.declarativeContent |           0 |          0 |       1 |
+    |           chrome.declarativeNetRequest |           7 |          6 |       1 |
+    |           chrome.declarativeWebRequest |           0 |          0 |       2 |
+    |                  chrome.desktopCapture |           0 |          2 |       0 |
+    |        chrome.devtools.inspectedWindow |           1 |          3 |       2 |
+    |                chrome.devtools.network |           0 |          1 |       2 |
+    |                 chrome.devtools.panels |           3 |          3 |       0 |
+    |                   chrome.displaySource |           0 |          4 |       3 |
+    |                             chrome.dns |           0 |          1 |       0 |
+    |                    chrome.documentScan |           0 |          1 |       0 |
+    |                       chrome.downloads |           0 |         13 |       4 |
+    |     chrome.enterprise.deviceAttributes |           0 |          5 |       0 |
+    |     chrome.enterprise.hardwarePlatform |           0 |          1 |       0 |
+    | chrome.enterprise.networkingAttributes |           0 |          1 |       0 |
+    |         chrome.enterprise.platformKeys |           0 |          6 |       0 |
+    |                       chrome.extension |           2 |          8 |       2 |
+    |              chrome.fileBrowserHandler |           0 |          1 |       1 |
+    |              chrome.fileSystemProvider |           0 |          5 |      20 |
+    |                    chrome.fontSettings |           0 |         13 |       4 |
+    |                             chrome.gcm |           1 |          3 |       3 |
+    |                         chrome.history |           0 |          6 |       2 |
+    |                            chrome.i18n |           0 |          4 |       0 |
+    |                        chrome.identity |           0 |          6 |       1 |
+    |                            chrome.idle |           0 |          3 |       1 |
+    |                         chrome.idltest |           0 |          5 |       0 |
+    |                       chrome.input.ime |           0 |         14 |      11 |
+    |                      chrome.instanceID |           0 |          5 |       1 |
+    |                           chrome.login |           0 |          5 |       0 |
+    |              chrome.loginScreenStorage |           0 |          4 |       0 |
+    |                      chrome.loginState |           0 |          2 |       1 |
+    |                      chrome.management |           0 |         15 |       4 |
+    |               chrome.networking.config |           0 |          2 |       1 |
+    |                   chrome.notifications |           0 |          5 |       5 |
+    |                         chrome.omnibox |           0 |          1 |       5 |
+    |                      chrome.pageAction |           0 |          7 |       1 |
+    |                     chrome.pageCapture |           0 |          1 |       0 |
+    |                     chrome.permissions |           0 |          4 |       2 |
+    |                    chrome.platformKeys |           0 |          5 |       0 |
+    |                           chrome.power |           0 |          2 |       0 |
+    |                 chrome.printerProvider |           0 |          0 |       4 |
+    |                        chrome.printing |           2 |          4 |       1 |
+    |                 chrome.printingMetrics |           0 |          1 |       1 |
+    |                         chrome.privacy |           3 |          0 |       0 |
+    |                       chrome.processes |           0 |          3 |       5 |
+    |                           chrome.proxy |           1 |          0 |       1 |
+    |                         chrome.runtime |           2 |         15 |      12 |
+    |                          chrome.search |           0 |          1 |       0 |
+    |                        chrome.sessions |           1 |          3 |       1 |
+    |                 chrome.signedInDevices |           0 |          1 |       1 |
+    |                         chrome.storage |           3 |          0 |       1 |
+    |                      chrome.system.cpu |           0 |          1 |       0 |
+    |                  chrome.system.display |           0 |         14 |       1 |
+    |                   chrome.system.memory |           0 |          1 |       0 |
+    |                  chrome.system.storage |           0 |          3 |       2 |
+    |                 chrome.systemIndicator |           0 |          3 |       1 |
+    |                      chrome.tabCapture |           0 |          4 |       1 |
+    |                            chrome.tabs |           1 |         26 |      13 |
+    |                            chrome.test |           0 |         29 |       1 |
+    |                        chrome.topSites |           0 |          1 |       0 |
+    |                             chrome.tts |           0 |          6 |       0 |
+    |                       chrome.ttsEngine |           0 |          1 |       4 |
+    |                     chrome.vpnProvider |           0 |          5 |       5 |
+    |                       chrome.wallpaper |           0 |          1 |       0 |
+    |                   chrome.webNavigation |           0 |          2 |       9 |
+    |                      chrome.webRequest |           1 |          1 |      10 |
+    |                         chrome.windows |           2 |          7 |       4 |
 
 ### Requires
 
@@ -183,8 +183,8 @@ Generated 81 namespaces containing 58 properties, 395 functions and 181 events:
   (:require
     [chromex.ext.accessibility-features refer:[
       get-spoken-feedback get-large-cursor get-sticky-keys get-high-contrast get-screen-magnifier
-      get-autoclick get-virtual-keyboard get-caret-highlight get-cursor-highlight get-focus-highlight
-      get-select-to-speak get-switch-access get-animation-policy tap-all-events]]
+      get-autoclick get-virtual-keyboard get-caret-highlight get-cursor-highlight get-cursor-color
+      get-focus-highlight get-select-to-speak get-switch-access get-animation-policy tap-all-events]]
 
     [chromex.ext.action refer:[
       set-title get-title set-icon set-popup get-popup set-badge-text get-badge-text
@@ -220,22 +220,9 @@ Generated 81 namespaces containing 58 properties, 395 functions and 181 events:
       remove-file-systems remove-form-data remove-history remove-indexed-db remove-local-storage
       remove-plugin-data remove-passwords remove-service-workers remove-web-sql tap-all-events]]
 
-    [chromex.ext.cast.streaming.receiver-session refer:[
-      create-and-bind tap-all-events]]
-
-    [chromex.ext.cast.streaming.rtp-stream refer:[
-      destroy get-supported-params start stop toggle-logging get-raw-events get-stats tap-on-started
-      tap-on-stopped tap-on-error tap-all-events]]
-
-    [chromex.ext.cast.streaming.session refer:[
-      create tap-all-events]]
-
-    [chromex.ext.cast.streaming.udp-transport refer:[
-      destroy set-destination set-options tap-all-events]]
-
     [chromex.ext.certificate-provider refer:[
-      request-pin stop-pin-request tap-on-certificates-requested tap-on-sign-digest-requested
-      tap-all-events]]
+      request-pin stop-pin-request set-certificates report-signature tap-on-certificates-update-requested
+      tap-on-signature-requested tap-on-certificates-requested tap-on-sign-digest-requested tap-all-events]]
 
     [chromex.ext.commands refer:[
       get-all tap-on-command tap-all-events]]
@@ -259,8 +246,9 @@ Generated 81 namespaces containing 58 properties, 395 functions and 181 events:
 
     [chromex.ext.declarative-net-request refer:[
       get-max-number-of-rules get-max-number-of-dynamic-rules get-getmatchedrules-quota-interval
-      get-max-getmatchedrules-calls-per-interval get-max-number-of-regex-rules get-dynamic-ruleset-id
-      update-dynamic-rules get-dynamic-rules get-matched-rules set-action-count-as-badge-text
+      get-max-getmatchedrules-calls-per-interval get-max-number-of-regex-rules
+      get-max-number-of-static-rulesets get-dynamic-ruleset-id update-dynamic-rules get-dynamic-rules
+      update-enabled-rulesets get-enabled-rulesets get-matched-rules set-action-count-as-badge-text
       tap-on-rule-matched-debug tap-all-events]]
 
     [chromex.ext.declarative-web-request refer:[
@@ -301,6 +289,9 @@ Generated 81 namespaces containing 58 properties, 395 functions and 181 events:
 
     [chromex.ext.enterprise.hardware-platform refer:[
       get-hardware-platform-info tap-all-events]]
+
+    [chromex.ext.enterprise.networking-attributes refer:[
+      get-network-details tap-all-events]]
 
     [chromex.ext.enterprise.platform-keys refer:[
       get-tokens get-certificates import-certificate remove-certificate challenge-machine-key
@@ -355,14 +346,21 @@ Generated 81 namespaces containing 58 properties, 395 functions and 181 events:
 
     [chromex.ext.input.ime refer:[
       set-composition clear-composition commit-text send-key-events hide-input-view
-      set-candidate-window-properties set-candidates set-cursor-position set-menu-items update-menu-items
-      delete-surrounding-text key-event-handled create-window show-window hide-window activate deactivate
-      tap-on-activate tap-on-deactivated tap-on-focus tap-on-blur tap-on-input-context-update
-      tap-on-key-event tap-on-candidate-clicked tap-on-menu-item-activated
-      tap-on-surrounding-text-changed tap-on-reset tap-on-composition-bounds-changed tap-all-events]]
+      set-candidate-window-properties set-candidates set-cursor-position set-assistive-window-properties
+      set-assistive-window-button-highlighted set-menu-items update-menu-items delete-surrounding-text
+      key-event-handled tap-on-activate tap-on-deactivated tap-on-focus tap-on-blur
+      tap-on-input-context-update tap-on-key-event tap-on-candidate-clicked tap-on-menu-item-activated
+      tap-on-surrounding-text-changed tap-on-reset tap-on-assistive-window-button-clicked tap-all-events]]
 
     [chromex.ext.instance-id refer:[
       get-id get-creation-time get-token delete-token delete-id tap-on-token-refresh tap-all-events]]
+
+    [chromex.ext.login refer:[
+      launch-managed-guest-session exit-current-session fetch-data-for-next-login-attempt
+      lock-managed-guest-session unlock-managed-guest-session tap-all-events]]
+
+    [chromex.ext.login-screen-storage refer:[
+      store-persistent-data retrieve-persistent-data store-credentials retrieve-credentials tap-all-events]]
 
     [chromex.ext.login-state refer:[
       get-profile-type get-session-state tap-on-session-state-changed tap-all-events]]
@@ -394,7 +392,8 @@ Generated 81 namespaces containing 58 properties, 395 functions and 181 events:
       get-all contains request remove tap-on-added tap-on-removed tap-all-events]]
 
     [chromex.ext.platform-keys refer:[
-      select-client-certificates get-key-pair subtle-crypto verify-tls-server-certificate tap-all-events]]
+      select-client-certificates get-key-pair get-key-pair-by-spki subtle-crypto
+      verify-tls-server-certificate tap-all-events]]
 
     [chromex.ext.power refer:[
       request-keep-awake release-keep-awake tap-all-events]]
@@ -427,6 +426,9 @@ Generated 81 namespaces containing 58 properties, 395 functions and 181 events:
       tap-on-suspend tap-on-suspend-canceled tap-on-update-available tap-on-browser-update-available
       tap-on-connect tap-on-connect-external tap-on-connect-native tap-on-message tap-on-message-external
       tap-on-restart-required tap-all-events]]
+
+    [chromex.ext.search refer:[
+      query tap-all-events]]
 
     [chromex.ext.sessions refer:[
       get-max-session-results get-recently-closed get-devices restore tap-on-changed tap-all-events]]
@@ -469,10 +471,10 @@ Generated 81 namespaces containing 58 properties, 395 functions and 181 events:
       tap-on-removed tap-on-replaced tap-on-zoom-change tap-all-events]]
 
     [chromex.ext.test refer:[
-      get-config notify-fail notify-pass log send-message callback-added run-next-test fail succeed
-      get-module-system assert-true assert-false assert-bool check-deep-eq assert-eq assert-no-last-error
-      assert-last-error assert-throws callback listen-once listen-forever callback-pass callback-fail
-      run-tests get-api-features get-api-definitions is-processing-user-gesture run-with-user-gesture
+      get-config notify-fail notify-pass log send-message callback-added fail succeed get-module-system
+      assert-true assert-false check-deep-eq assert-eq assert-no-last-error assert-last-error
+      assert-throws callback listen-once listen-forever callback-pass callback-fail run-tests
+      get-api-features get-api-definitions is-processing-user-gesture run-with-user-gesture
       wait-for-round-trip set-exception-handler get-wake-event-page tap-on-message tap-all-events]]
 
     [chromex.ext.top-sites refer:[
@@ -505,5 +507,5 @@ Generated 81 namespaces containing 58 properties, 395 functions and 181 events:
 
     [chromex.ext.windows refer:[
       get-window-id-none get-window-id-current get get-current get-last-focused get-all create update
-      remove tap-on-created tap-on-removed tap-on-focus-changed tap-all-events]]))
+      remove tap-on-created tap-on-removed tap-on-focus-changed tap-on-bounds-changed tap-all-events]]))
 ```

@@ -9,6 +9,12 @@
 (defn set-lock-screen-enabled* [config token enabled]
   (gen-wrap :function ::set-lock-screen-enabled config token enabled))
 
+(defn set-pin-autosubmit-enabled* [config token pin enabled]
+  (gen-wrap :function ::set-pin-autosubmit-enabled config token pin enabled))
+
+(defn can-authenticate-pin* [config]
+  (gen-wrap :function ::can-authenticate-pin config))
+
 (defn get-available-modes* [config]
   (gen-wrap :function ::get-available-modes config))
 

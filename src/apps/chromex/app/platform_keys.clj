@@ -43,10 +43,11 @@
      |certificate| - The certificate of a 'Match' returned by 'selectClientCertificates'.
      |parameters| - Determines signature/hash algorithm parameters additionally to the parameters fixed by the key itself.
                     The same parameters are accepted as by WebCrypto's importKey function, e.g. RsaHashedImportParams for a
-                    RSASSA-PKCS1-v1_5 key. For RSASSA-PKCS1-v1_5 keys, additionally the parameters { 'hash': { 'name':
-                    'none' } } are supported. The sign function will then apply PKCS#1 v1.5 padding and but not hash the
-                    given data. Currently, this function only supports the 'RSASSA-PKCS1-v1_5' algorithm with one of the
-                    hashing algorithms 'none', 'SHA-1', 'SHA-256', 'SHA-384', and 'SHA-512'.
+                    RSASSA-PKCS1-v1_5 key and EcKeyImportParams for EC key. Additionally for RSASSA-PKCS1-v1_5 keys, hashing
+                    algorithm name parameter can be specified with one of the following values: 'none', 'SHA-1', 'SHA-256',
+                    'SHA-384', or 'SHA-512', e.g. {'hash': { 'name': 'none' } }. The sign function will then apply PKCS#1
+                    v1.5 padding but not hash the given data. Currently, this function only supports the 'RSASSA-PKCS1-v1_5'
+                    and 'ECDSA' algorithms.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [public-key private-key] where:
@@ -59,6 +60,32 @@
 
    https://developer.chrome.com/apps/platformKeys#method-getKeyPair."
   ([certificate parameters] (gen-call :function ::get-key-pair &form certificate parameters)))
+
+(defmacro get-key-pair-by-spki
+  "Passes the key pair identified by publicKeySpkiDer for usage with 'platformKeys.subtleCrypto' to callback.
+
+     |public-key-spki-der| - A DER-encoded X.509 SubjectPublicKeyInfo, obtained e.g. by calling WebCrypto's exportKey
+                             function with format='spki'.
+     |parameters| - Provides signature and hash algorithm parameters, in addition to those fixed by the key itself. The same
+                    parameters are accepted as by WebCrypto's importKey function, e.g. RsaHashedImportParams for a
+                    RSASSA-PKCS1-v1_5 key. For RSASSA-PKCS1-v1_5 keys, we need to also pass a 'hash' parameter { 'hash': {
+                    'name': string } }. The 'hash' parameter represents the name of the hashing algorithm to be used in the
+                    digest operation before a sign. It is possible to pass 'none' as the hash name, in which case the sign
+                    function will apply PKCS#1 v1.5 padding and but not hash the given data. Currently, this function only
+                    supports the 'RSASSA-PKCS1-v1_5' algorithm with one of the hashing algorithms 'none', 'SHA-1',
+                    'SHA-256', 'SHA-384', and 'SHA-512'.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [public-key private-key] where:
+
+     |public-key| - https://developer.chrome.com/apps/platformKeys#property-callback-publicKey.
+     |private-key| - Might be null if this extension does not have   access to it.
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/apps/platformKeys#method-getKeyPairBySpki."
+  ([public-key-spki-der parameters] (gen-call :function ::get-key-pair-by-spki &form public-key-spki-der parameters)))
 
 (defmacro subtle-crypto
   "An implementation of WebCrypto's  SubtleCrypto that allows crypto operations on keys of client certificates that are
@@ -114,6 +141,17 @@
      :callback? true,
      :params
      [{:name "certificate", :type "ArrayBuffer"}
+      {:name "parameters", :type "object"}
+      {:name "callback",
+       :type :callback,
+       :callback
+       {:params [{:name "public-key", :type "object"} {:name "private-key", :optional? true, :type "object"}]}}]}
+    {:id ::get-key-pair-by-spki,
+     :name "getKeyPairBySpki",
+     :since "85",
+     :callback? true,
+     :params
+     [{:name "public-key-spki-der", :type "ArrayBuffer"}
       {:name "parameters", :type "object"}
       {:name "callback",
        :type :callback,

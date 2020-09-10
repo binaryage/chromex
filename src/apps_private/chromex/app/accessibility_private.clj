@@ -65,15 +65,6 @@
      |enabled| - True to darken screen; false to undarken screen."
   ([enabled] (gen-call :function ::darken-screen &form enabled)))
 
-(defmacro set-switch-access-menu-state
-  "Shows or hides the Switch Access menu. If shown, it is at the indicated location.
-   TODO(anastasi): Remove this function once the menu refactor is complete.
-
-     |show| - If true, show the menu. If false, hide the menu.
-     |element-bounds| - Position of an element, in global screen coordinates, to place the menu next to.
-     |item-count| - The number of items that need to be shown in the menu."
-  ([show element-bounds item-count] (gen-call :function ::set-switch-access-menu-state &form show element-bounds item-count)))
-
 (defmacro forward-key-events-to-switch-access
   "When enabled, forwards key events to the Switch Access extension
 
@@ -123,8 +114,8 @@
   ([state] (gen-call :function ::on-select-to-speak-state-changed &form state)))
 
 (defmacro on-scrollable-bounds-for-point-found
-  "Called by the Autoclick extension when findScrollableBoundsForPoint has found a scrolling container. |rect| will be the
-   bounds of the nearest scrollable ancestor of the node at the point requested using findScrollableBoundsForPoint.
+  "Called by the Accessibility Common extension when findScrollableBoundsForPoint has found a scrolling container. |rect| will
+   be the bounds of the nearest scrollable ancestor of the node at the point requested using findScrollableBoundsForPoint.
 
      |rect| - ?"
   ([rect] (gen-call :function ::on-scrollable-bounds-for-point-found &form rect)))
@@ -146,6 +137,12 @@
      |subpage| - ?"
   ([subpage] (gen-call :function ::open-settings-subpage &form subpage)))
 
+(defmacro perform-accelerator-action
+  "Performs an accelerator action.
+
+     |accelerator-action| - ?"
+  ([accelerator-action] (gen-call :function ::perform-accelerator-action &form accelerator-action)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -161,9 +158,11 @@
 (defmacro tap-on-accessibility-gesture-events
   "Fired when an accessibility gesture is detected by the touch exploration controller.
 
-   Events will be put on the |channel| with signature [::on-accessibility-gesture [gesture]] where:
+   Events will be put on the |channel| with signature [::on-accessibility-gesture [gesture x y]] where:
 
      |gesture| - ?
+     |x| - ?
+     |y| - ?
 
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-accessibility-gesture &form channel args)))
@@ -278,20 +277,13 @@
      :since "48",
      :params [{:name "enabled", :type "boolean"} {:name "capture", :type "boolean"}]}
     {:id ::darken-screen, :name "darkenScreen", :since "59", :params [{:name "enabled", :type "boolean"}]}
-    {:id ::set-switch-access-menu-state,
-     :name "setSwitchAccessMenuState",
-     :since "73",
-     :params
-     [{:name "show", :type "boolean"}
-      {:name "element-bounds", :type "accessibilityPrivate.ScreenRect"}
-      {:name "item-count", :since "74", :type "integer"}]}
     {:id ::forward-key-events-to-switch-access,
      :name "forwardKeyEventsToSwitchAccess",
      :since "73",
      :params [{:name "should-forward", :type "boolean"}]}
     {:id ::update-switch-access-bubble,
      :name "updateSwitchAccessBubble",
-     :since "future",
+     :since "84",
      :params
      [{:name "bubble", :type "accessibilityPrivate.SwitchAccessBubble"}
       {:name "show", :type "boolean"}
@@ -326,16 +318,20 @@
      :name "setVirtualKeyboardVisible",
      :since "75",
      :params [{:name "is-visible", :type "boolean"}]}
-    {:id ::open-settings-subpage,
-     :name "openSettingsSubpage",
-     :since "77",
-     :params [{:name "subpage", :type "string"}]}],
+    {:id ::open-settings-subpage, :name "openSettingsSubpage", :since "77", :params [{:name "subpage", :type "string"}]}
+    {:id ::perform-accelerator-action,
+     :name "performAcceleratorAction",
+     :since "future",
+     :params [{:name "accelerator-action", :type "accessibilityPrivate.AcceleratorAction"}]}],
    :events
    [{:id ::on-introduce-chrome-vox, :name "onIntroduceChromeVox", :since "42"}
     {:id ::on-accessibility-gesture,
      :name "onAccessibilityGesture",
      :since "52",
-     :params [{:name "gesture", :type "accessibilityPrivate.Gesture"}]}
+     :params
+     [{:name "gesture", :type "accessibilityPrivate.Gesture"}
+      {:name "x", :since "future", :type "integer"}
+      {:name "y", :since "future", :type "integer"}]}
     {:id ::on-two-finger-touch-start, :name "onTwoFingerTouchStart", :since "59"}
     {:id ::on-two-finger-touch-stop, :name "onTwoFingerTouchStop", :since "59"}
     {:id ::on-select-to-speak-state-change-requested, :name "onSelectToSpeakStateChangeRequested", :since "68"}
@@ -353,7 +349,7 @@
      :params [{:name "x", :type "double"} {:name "y", :type "double"}]}
     {:id ::on-custom-spoken-feedback-toggled,
      :name "onCustomSpokenFeedbackToggled",
-     :since "future",
+     :since "82",
      :params [{:name "enabled", :type "boolean"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

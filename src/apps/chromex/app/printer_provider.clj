@@ -92,7 +92,7 @@
      :params [{:name "printer-id", :type "string"} {:name "result-callback", :type :callback}]}
     {:id ::on-print-requested,
      :name "onPrintRequested",
-     :params [{:name "print-job", :type "object"} {:name "result-callback", :type :callback}]}]})
+     :params [{:name "print-job", :type "printerProvider.PrintJob"} {:name "result-callback", :type :callback}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

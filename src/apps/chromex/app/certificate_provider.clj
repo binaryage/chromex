@@ -45,9 +45,69 @@
    https://developer.chrome.com/apps/certificateProvider#method-stopPinRequest."
   ([details] (gen-call :function ::stop-pin-request &form details)))
 
+(defmacro set-certificates
+  "Sets a list of certificates to use in the browser. The extension should call this function after initialization and on
+   every change in the set of currently available certificates. The extension should also call this function in response to
+   'onCertificatesUpdateRequested' every time this event is received.
+
+     |details| - The certificates to set. Invalid certificates will be ignored.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/apps/certificateProvider#method-setCertificates."
+  ([details] (gen-call :function ::set-certificates &form details)))
+
+(defmacro report-signature
+  "Should be called as a response to 'onSignatureRequested'. The extension must eventually call this function for every
+   'onSignatureRequested' event; the API implementation will stop waiting for this call after some time and respond with a
+   timeout error when this function is called.
+
+     |details| - https://developer.chrome.com/apps/certificateProvider#property-reportSignature-details.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/apps/certificateProvider#method-reportSignature."
+  ([details] (gen-call :function ::report-signature &form details)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
+
+(defmacro tap-on-certificates-update-requested-events
+  "This event fires if the certificates set via 'setCertificates' are insufficient or the browser requests updated
+   information. The extension must call 'setCertificates' with the updated list of certificates and the received
+   certificatesRequestId.
+
+   Events will be put on the |channel| with signature [::on-certificates-update-requested [request]] where:
+
+     |request| - https://developer.chrome.com/apps/certificateProvider#property-onCertificatesUpdateRequested-request.
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+
+   https://developer.chrome.com/apps/certificateProvider#event-onCertificatesUpdateRequested."
+  ([channel & args] (apply gen-call :event ::on-certificates-update-requested &form channel args)))
+
+(defmacro tap-on-signature-requested-events
+  "This event fires every time the browser needs to sign a message using a certificate provided by this extension via
+   'setCertificates'. The extension must sign the input data from request using the appropriate algorithm and private key and
+   return it by calling 'reportSignature' with the received signRequestId.
+
+   Events will be put on the |channel| with signature [::on-signature-requested [request]] where:
+
+     |request| - https://developer.chrome.com/apps/certificateProvider#property-onSignatureRequested-request.
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+
+   https://developer.chrome.com/apps/certificateProvider#event-onSignatureRequested."
+  ([channel & args] (apply gen-call :event ::on-signature-requested &form channel args)))
 
 (defmacro tap-on-certificates-requested-events
   "This event fires every time the browser requests the current list of certificates provided by this extension. The extension
@@ -100,15 +160,36 @@
      :name "stopPinRequest",
      :since "57",
      :callback? true,
-     :params [{:name "details", :type "object"} {:name "callback", :type :callback}]}],
+     :params [{:name "details", :type "object"} {:name "callback", :type :callback}]}
+    {:id ::set-certificates,
+     :name "setCertificates",
+     :since "future",
+     :callback? true,
+     :params [{:name "details", :type "object"} {:name "callback", :optional? true, :type :callback}]}
+    {:id ::report-signature,
+     :name "reportSignature",
+     :since "future",
+     :callback? true,
+     :params [{:name "details", :type "object"} {:name "callback", :optional? true, :type :callback}]}],
    :events
-   [{:id ::on-certificates-requested,
+   [{:id ::on-certificates-update-requested,
+     :name "onCertificatesUpdateRequested",
+     :since "future",
+     :params [{:name "request", :type "object"}]}
+    {:id ::on-signature-requested,
+     :name "onSignatureRequested",
+     :since "future",
+     :params [{:name "request", :type "object"}]}
+    {:id ::on-certificates-requested,
      :name "onCertificatesRequested",
-     :since "47",
+     :since "future",
+     :deprecated "Use 'onCertificatesUpdateRequested' instead.",
      :params [{:name "report-callback", :type :callback}]}
     {:id ::on-sign-digest-requested,
      :name "onSignDigestRequested",
-     :params [{:name "request", :type "certificateProvider.SignRequest"} {:name "report-callback", :type :callback}]}]})
+     :since "future",
+     :deprecated "Use 'onSignatureRequested' instead.",
+     :params [{:name "request", :type "object"} {:name "report-callback", :type :callback}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

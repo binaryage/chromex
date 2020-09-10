@@ -18,6 +18,9 @@
 (defn max-number-of-regex-rules* [config]
   (gen-wrap :property ::max-number-of-regex-rules config))
 
+(defn max-number-of-static-rulesets* [config]
+  (gen-wrap :property ::max-number-of-static-rulesets config))
+
 (defn dynamic-ruleset-id* [config]
   (gen-wrap :property ::dynamic-ruleset-id config))
 
@@ -28,6 +31,12 @@
 
 (defn get-dynamic-rules* [config]
   (gen-wrap :function ::get-dynamic-rules config))
+
+(defn update-enabled-rulesets* [config ruleset-ids-to-disable ruleset-ids-to-enable]
+  (gen-wrap :function ::update-enabled-rulesets config ruleset-ids-to-disable ruleset-ids-to-enable))
+
+(defn get-enabled-rulesets* [config]
+  (gen-wrap :function ::get-enabled-rulesets config))
 
 (defn get-matched-rules* [config filter]
   (gen-wrap :function ::get-matched-rules config filter))

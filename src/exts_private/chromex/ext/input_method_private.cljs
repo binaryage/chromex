@@ -60,6 +60,18 @@
 (defn set-composition-range* [config parameters]
   (gen-wrap :function ::set-composition-range config parameters))
 
+(defn set-composing-range* [config parameters]
+  (gen-wrap :function ::set-composing-range config parameters))
+
+(defn get-autocorrect-range* [config parameters]
+  (gen-wrap :function ::get-autocorrect-range config parameters))
+
+(defn get-autocorrect-character-bounds* [config parameters]
+  (gen-wrap :function ::get-autocorrect-character-bounds config parameters))
+
+(defn set-autocorrect-range* [config parameters]
+  (gen-wrap :function ::set-autocorrect-range config parameters))
+
 (defn reset* [config]
   (gen-wrap :function ::reset config))
 
@@ -94,4 +106,10 @@
 
 (defn on-screen-projection-changed* [config channel & args]
   (gen-wrap :event ::on-screen-projection-changed config channel args))
+
+(defn on-suggestions-changed* [config channel & args]
+  (gen-wrap :event ::on-suggestions-changed config channel args))
+
+(defn on-input-method-options-changed* [config channel & args]
+  (gen-wrap :event ::on-input-method-options-changed config channel args))
 

@@ -12,19 +12,6 @@
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
-(defmacro upload-chrome-desktop-report
-  "Uploads the status of Chrome browser to the admin console by sending request to the DMServer. Sets runtime.lastError on
-   failure.
-
-     |report| - ?
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [].
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([report] (gen-call :function ::upload-chrome-desktop-report &form report)))
-
 (defmacro get-device-id
   "Gets the identity of device that Chrome browser is running on. The ID is retrieved from the local device and used by the
    Google admin console.
@@ -40,7 +27,10 @@
 
 (defmacro get-persistent-secret
   "Gets a randomly generated persistent secret (symmetric key) that can be used to encrypt the data stored with
-   |setDeviceData|.
+   |setDeviceData|. If the optional parameter |forceCreation| is set to true the secret is recreated in case of any failure to
+   retrieve the currently stored one. Sets 'runtime.lastError' on failure.
+
+     |reset-secret| - ?
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [secret] where:
@@ -49,10 +39,11 @@
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([] (gen-call :function ::get-persistent-secret &form)))
+  ([reset-secret] (gen-call :function ::get-persistent-secret &form reset-secret))
+  ([] `(get-persistent-secret :omit)))
 
 (defmacro get-device-data
-  "Gets the device data for |id|. Sets runtime.lastError on failure.
+  "Gets the device data for |id|. Sets 'runtime.lastError' on failure.
 
      |id| - ?
 
@@ -66,8 +57,8 @@
   ([id] (gen-call :function ::get-device-data &form id)))
 
 (defmacro set-device-data
-  "Sets the device data for |id|. Sets runtime.lastError on failure. If the |data| parameter is undefined and there is already
-   data associated with |id| it will be cleared.
+  "Sets the device data for |id|. Sets 'runtime.lastError' on failure. If the |data| parameter is undefined and there is
+   already data associated with |id| it will be cleared.
 
      |id| - ?
      |data| - ?
@@ -107,11 +98,7 @@
   {:namespace "chrome.enterprise.reportingPrivate",
    :since "68",
    :functions
-   [{:id ::upload-chrome-desktop-report,
-     :name "uploadChromeDesktopReport",
-     :callback? true,
-     :params [{:name "report", :type "object"} {:name "callback", :optional? true, :type :callback}]}
-    {:id ::get-device-id,
+   [{:id ::get-device-id,
      :name "getDeviceId",
      :since "71",
      :callback? true,
@@ -121,7 +108,9 @@
      :name "getPersistentSecret",
      :since "80",
      :callback? true,
-     :params [{:name "callback", :type :callback, :callback {:params [{:name "secret", :type "ArrayBuffer"}]}}]}
+     :params
+     [{:name "reset-secret", :optional? true, :since "future", :type "boolean"}
+      {:name "callback", :type :callback, :callback {:params [{:name "secret", :type "ArrayBuffer"}]}}]}
     {:id ::get-device-data,
      :name "getDeviceData",
      :since "80",

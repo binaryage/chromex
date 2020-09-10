@@ -45,8 +45,8 @@
 (defn get-referrer-chain* [config]
   (gen-wrap :function ::get-referrer-chain config))
 
-(defn get-extension-status* [config id]
-  (gen-wrap :function ::get-extension-status config id))
+(defn get-extension-status* [config id manifest]
+  (gen-wrap :function ::get-extension-status config id manifest))
 
 (defn request-extension* [config id]
   (gen-wrap :function ::request-extension config id))

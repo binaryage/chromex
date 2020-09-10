@@ -37,7 +37,7 @@
 
 (def api-table
   {:namespace "chrome.crashReportPrivate",
-   :since "future",
+   :since "84",
    :functions
    [{:id ::report-error,
      :name "reportError",

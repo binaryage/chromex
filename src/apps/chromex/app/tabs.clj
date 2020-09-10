@@ -2,7 +2,7 @@
   "Use the chrome.tabs API to interact with the browser's tab system. You can use this API to create, modify, and rearrange
    tabs in the browser.
 
-     * available since Chrome 35
+     * available since Chrome 36
      * https://developer.chrome.com/apps/tabs"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -653,7 +653,7 @@
 
 (def api-table
   {:namespace "chrome.tabs",
-   :since "35",
+   :since "36",
    :properties [{:id ::tab-id-none, :name "TAB_ID_NONE", :since "46", :return-type "unknown-type"}],
    :functions
    [{:id ::get,
@@ -673,7 +673,7 @@
      :params [{:name "tab-id", :type "integer"} {:name "connect-info", :optional? true, :type "object"}]}
     {:id ::send-request,
      :name "sendRequest",
-     :since "35",
+     :since "36",
      :deprecated "Please use 'runtime.sendMessage'.",
      :callback? true,
      :params
@@ -696,7 +696,7 @@
        :callback {:params [{:name "response", :type "any"}]}}]}
     {:id ::get-selected,
      :name "getSelected",
-     :since "35",
+     :since "36",
      :deprecated "Please use 'tabs.query' {active: true}.",
      :callback? true,
      :params
@@ -704,7 +704,7 @@
       {:name "callback", :type :callback, :callback {:params [{:name "tab", :type "tabs.Tab"}]}}]}
     {:id ::get-all-in-window,
      :name "getAllInWindow",
-     :since "35",
+     :since "36",
      :deprecated "Please use 'tabs.query' {windowId: windowId}.",
      :callback? true,
      :params
@@ -861,18 +861,18 @@
     {:id ::on-moved, :name "onMoved", :params [{:name "tab-id", :type "integer"} {:name "move-info", :type "object"}]}
     {:id ::on-selection-changed,
      :name "onSelectionChanged",
-     :since "35",
+     :since "36",
      :deprecated "Please use 'tabs.onActivated'.",
      :params [{:name "tab-id", :type "integer"} {:name "select-info", :type "object"}]}
     {:id ::on-active-changed,
      :name "onActiveChanged",
-     :since "35",
+     :since "36",
      :deprecated "Please use 'tabs.onActivated'.",
      :params [{:name "tab-id", :type "integer"} {:name "select-info", :type "object"}]}
     {:id ::on-activated, :name "onActivated", :params [{:name "active-info", :type "object"}]}
     {:id ::on-highlight-changed,
      :name "onHighlightChanged",
-     :since "35",
+     :since "36",
      :deprecated "Please use 'tabs.onHighlighted'.",
      :params [{:name "select-info", :type "object"}]}
     {:id ::on-highlighted, :name "onHighlighted", :params [{:name "highlight-info", :type "object"}]}

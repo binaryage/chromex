@@ -43,3 +43,6 @@
 (defn on-focus-changed* [config channel & args]
   (gen-wrap :event ::on-focus-changed config channel args))
 
+(defn on-bounds-changed* [config channel & args]
+  (gen-wrap :event ::on-bounds-changed config channel args))
+

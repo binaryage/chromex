@@ -47,6 +47,36 @@
    chromex.error/get-last-error."
   ([token enabled] (gen-call :function ::set-lock-screen-enabled &form token enabled)))
 
+(defmacro set-pin-autosubmit-enabled
+  "Sets the PIN auto submit enabled state. NOTE: The PIN autosubmit state is reflected in the pin_unlock_autosubmit_enabled
+   pref, which can be read but not written using the settings_private API (which also provides policy information). This API
+   must be used to change the pref.
+
+     |token| - The authentication token.
+     |pin| - The PIN of the logged in user.
+     |enabled| - Whether to enable PIN auto submit.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [value] where:
+
+     |value| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([token pin enabled] (gen-call :function ::set-pin-autosubmit-enabled &form token pin enabled)))
+
+(defmacro can-authenticate-pin
+  "Tests wether it is currently possible to authenticate using PIN.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [value] where:
+
+     |value| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::can-authenticate-pin &form)))
+
 (defmacro get-available-modes
   "Returns the set of quick unlock modes that are available for the user to use. Some quick unlock modes may be disabled by
    policy.
@@ -160,6 +190,20 @@
      [{:name "token", :type "string"}
       {:name "enabled", :type "boolean"}
       {:name "on-complete", :optional? true, :type :callback}]}
+    {:id ::set-pin-autosubmit-enabled,
+     :name "setPinAutosubmitEnabled",
+     :since "future",
+     :callback? true,
+     :params
+     [{:name "token", :type "string"}
+      {:name "pin", :type "string"}
+      {:name "enabled", :type "boolean"}
+      {:name "on-complete", :type :callback, :callback {:params [{:name "value", :type "boolean"}]}}]}
+    {:id ::can-authenticate-pin,
+     :name "canAuthenticatePin",
+     :since "future",
+     :callback? true,
+     :params [{:name "on-complete", :type :callback, :callback {:params [{:name "value", :type "boolean"}]}}]}
     {:id ::get-available-modes,
      :name "getAvailableModes",
      :callback? true,

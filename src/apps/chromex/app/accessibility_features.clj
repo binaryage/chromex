@@ -80,6 +80,13 @@
    https://developer.chrome.com/apps/accessibilityFeatures#property-cursorHighlight."
   ([] (gen-call :property ::cursor-highlight &form)))
 
+(defmacro get-cursor-color
+  "ChromeOS only.Cursor color. The value indicates whether the feature is enabled or not. get() requires
+   accessibilityFeatures.read permission. set() and clear() require accessibilityFeatures.modify permission.
+
+   https://developer.chrome.com/apps/accessibilityFeatures#property-cursorColor."
+  ([] (gen-call :property ::cursor-color &form)))
+
 (defmacro get-focus-highlight
   "ChromeOS only.Focus highlighting. The value indicates whether the feature is enabled or not. get() requires
    accessibilityFeatures.read permission. set() and clear() require accessibilityFeatures.modify permission.
@@ -131,6 +138,7 @@
     {:id ::virtual-keyboard, :name "virtualKeyboard", :return-type "object"}
     {:id ::caret-highlight, :name "caretHighlight", :since "51", :return-type "object"}
     {:id ::cursor-highlight, :name "cursorHighlight", :since "51", :return-type "object"}
+    {:id ::cursor-color, :name "cursorColor", :since "85", :return-type "object"}
     {:id ::focus-highlight, :name "focusHighlight", :since "51", :return-type "object"}
     {:id ::select-to-speak, :name "selectToSpeak", :since "51", :return-type "object"}
     {:id ::switch-access, :name "switchAccess", :since "51", :return-type "object"}

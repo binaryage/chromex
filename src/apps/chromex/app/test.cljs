@@ -21,9 +21,6 @@
 (defn callback-added* [config]
   (gen-wrap :function ::callback-added config))
 
-(defn run-next-test* [config]
-  (gen-wrap :function ::run-next-test config))
-
 (defn fail* [config message]
   (gen-wrap :function ::fail config message))
 
@@ -38,9 +35,6 @@
 
 (defn assert-false* [config test message]
   (gen-wrap :function ::assert-false config test message))
-
-(defn assert-bool* [config test expected message]
-  (gen-wrap :function ::assert-bool config test expected message))
 
 (defn check-deep-eq* [config expected actual]
   (gen-wrap :function ::check-deep-eq config expected actual))

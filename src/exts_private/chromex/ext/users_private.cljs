@@ -3,20 +3,20 @@
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
-(defn get-whitelisted-users* [config]
-  (gen-wrap :function ::get-whitelisted-users config))
+(defn get-users* [config]
+  (gen-wrap :function ::get-users config))
 
-(defn is-whitelisted-user* [config email]
-  (gen-wrap :function ::is-whitelisted-user config email))
+(defn is-user-in-list* [config email]
+  (gen-wrap :function ::is-user-in-list config email))
 
-(defn add-whitelisted-user* [config email]
-  (gen-wrap :function ::add-whitelisted-user config email))
+(defn add-user* [config email]
+  (gen-wrap :function ::add-user config email))
 
-(defn remove-whitelisted-user* [config email]
-  (gen-wrap :function ::remove-whitelisted-user config email))
+(defn remove-user* [config email]
+  (gen-wrap :function ::remove-user config email))
 
-(defn is-whitelist-managed* [config]
-  (gen-wrap :function ::is-whitelist-managed config))
+(defn is-user-list-managed* [config]
+  (gen-wrap :function ::is-user-list-managed config))
 
 (defn get-current-user* [config]
   (gen-wrap :function ::get-current-user config))

@@ -1,5 +1,5 @@
 (ns chromex.app.wallpaper-private
-  "  * available since Chrome 35"
+  "  * available since Chrome 36"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -26,6 +26,14 @@
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-wallpaper-changed-by3rd-party &form channel args)))
 
+(defmacro tap-on-close-preview-wallpaper-events
+  "This event is sent when the app side of preview wallpaper should be closed.
+
+   Events will be put on the |channel| with signature [::on-close-preview-wallpaper []].
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-close-preview-wallpaper &form channel args)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -39,7 +47,7 @@
 
 (def api-table
   {:namespace "chrome.wallpaperPrivate",
-   :since "35",
+   :since "36",
    :events
    [{:id ::on-wallpaper-changed-by3rd-party,
      :name "onWallpaperChangedBy3rdParty",
@@ -48,7 +56,8 @@
      [{:name "wallpaper", :since "49", :type "binary"}
       {:name "thumbnail", :since "49", :type "binary"}
       {:name "layout", :since "49", :type "wallpaper.WallpaperLayout"}
-      {:name "app-name", :since "50", :type "string"}]}]})
+      {:name "app-name", :since "50", :type "string"}]}
+    {:id ::on-close-preview-wallpaper, :name "onClosePreviewWallpaper", :since "future"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

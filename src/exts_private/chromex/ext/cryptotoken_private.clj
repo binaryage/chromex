@@ -131,7 +131,7 @@
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
     {:id ::record-register-request,
      :name "recordRegisterRequest",
-     :since "future",
+     :since "83",
      :callback? true,
      :params
      [{:name "tab-id", :type "integer"}
@@ -139,7 +139,7 @@
       {:name "callback", :optional? true, :type :callback}]}
     {:id ::record-sign-request,
      :name "recordSignRequest",
-     :since "future",
+     :since "83",
      :callback? true,
      :params
      [{:name "tab-id", :type "integer"}

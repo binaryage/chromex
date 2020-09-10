@@ -1,7 +1,7 @@
 (ns chromex.ext.cookies
   "Use the chrome.cookies API to query and modify cookies, and to be notified when they change.
 
-     * available since Chrome 35
+     * available since Chrome 36
      * https://developer.chrome.com/extensions/cookies"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -58,7 +58,7 @@
    Signature of the result value put on the channel is [cookie] where:
 
      |cookie| - Contains details about the cookie that's been set.  If setting failed for any reason, this will be 'null', and
-                'chrome.runtime.lastError' will be set.
+                'runtime.lastError' will be set.
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
@@ -75,7 +75,7 @@
    Signature of the result value put on the channel is [details] where:
 
      |details| - Contains details about the cookie that's been removed.  If removal failed for any reason, this will be
-                 'null', and 'chrome.runtime.lastError' will be set.
+                 'null', and 'runtime.lastError' will be set.
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
@@ -128,7 +128,7 @@
 
 (def api-table
   {:namespace "chrome.cookies",
-   :since "35",
+   :since "36",
    :functions
    [{:id ::get,
      :name "get",

@@ -12,8 +12,8 @@
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
-(defmacro get-whitelisted-users
-  "Gets a list of the currently whitelisted users.
+(defmacro get-users
+  "Gets a list of known users.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [users] where:
@@ -22,10 +22,10 @@
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([] (gen-call :function ::get-whitelisted-users &form)))
+  ([] (gen-call :function ::get-users &form)))
 
-(defmacro is-whitelisted-user
-  "Checks to see if the user is already present as a whitelisted user.
+(defmacro is-user-in-list
+  "Checks to see if the user is already present in the user list.
 
      |email| - ?
 
@@ -36,10 +36,10 @@
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([email] (gen-call :function ::is-whitelisted-user &form email)))
+  ([email] (gen-call :function ::is-user-in-list &form email)))
 
-(defmacro add-whitelisted-user
-  "Adds a new user with the given email to the whitelist. The callback is called with true if the user was added succesfully,
+(defmacro add-user
+  "Adds a new user with the given email to the user list. The callback is called with true if the user was added succesfully,
    or with false if not (e.g. because the user was already present, or the current user isn't the owner).
 
      |email| - ?
@@ -51,10 +51,10 @@
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([email] (gen-call :function ::add-whitelisted-user &form email)))
+  ([email] (gen-call :function ::add-user &form email)))
 
-(defmacro remove-whitelisted-user
-  "Removes the user with the given email from the whitelist. The callback is called with true if the user was removed
+(defmacro remove-user
+  "Removes the user with the given email from the user list. The callback is called with true if the user was removed
    succesfully, or with false if not (e.g. because the user was not already present, or the current user isn't the owner).
 
      |email| - ?
@@ -66,10 +66,10 @@
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([email] (gen-call :function ::remove-whitelisted-user &form email)))
+  ([email] (gen-call :function ::remove-user &form email)))
 
-(defmacro is-whitelist-managed
-  "Whether the whitelist is managed by enterprise.
+(defmacro is-user-list-managed
+  "Whether the user list is managed by enterprise.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [managed] where:
@@ -78,7 +78,7 @@
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([] (gen-call :function ::is-whitelist-managed &form)))
+  ([] (gen-call :function ::is-user-list-managed &form)))
 
 (defmacro get-current-user
   "Returns the current user.
@@ -119,33 +119,33 @@
   {:namespace "chrome.usersPrivate",
    :since "master",
    :functions
-   [{:id ::get-whitelisted-users,
-     :name "getWhitelistedUsers",
+   [{:id ::get-users,
+     :name "getUsers",
      :callback? true,
      :params
      [{:name "callback",
        :type :callback,
        :callback {:params [{:name "users", :type "[array-of-usersPrivate.Users]"}]}}]}
-    {:id ::is-whitelisted-user,
-     :name "isWhitelistedUser",
+    {:id ::is-user-in-list,
+     :name "isUserInList",
      :callback? true,
      :params
      [{:name "email", :type "string"}
       {:name "callback", :type :callback, :callback {:params [{:name "found", :type "boolean"}]}}]}
-    {:id ::add-whitelisted-user,
-     :name "addWhitelistedUser",
+    {:id ::add-user,
+     :name "addUser",
      :callback? true,
      :params
      [{:name "email", :type "string"}
       {:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
-    {:id ::remove-whitelisted-user,
-     :name "removeWhitelistedUser",
+    {:id ::remove-user,
+     :name "removeUser",
      :callback? true,
      :params
      [{:name "email", :type "string"}
       {:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
-    {:id ::is-whitelist-managed,
-     :name "isWhitelistManaged",
+    {:id ::is-user-list-managed,
+     :name "isUserListManaged",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "managed", :type "boolean"}]}}]}
     {:id ::get-current-user,

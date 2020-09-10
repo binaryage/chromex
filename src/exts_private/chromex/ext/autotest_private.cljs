@@ -84,11 +84,20 @@
 (defn get-arc-package* [config package-name]
   (gen-wrap :function ::get-arc-package config package-name))
 
+(defn wait-for-system-web-apps-install* [config]
+  (gen-wrap :function ::wait-for-system-web-apps-install config))
+
+(defn get-registered-system-web-apps* [config]
+  (gen-wrap :function ::get-registered-system-web-apps config))
+
 (defn launch-arc-app* [config app-id intent]
   (gen-wrap :function ::launch-arc-app config app-id intent))
 
 (defn launch-app* [config app-id]
   (gen-wrap :function ::launch-app config app-id))
+
+(defn launch-system-web-app* [config app-name url]
+  (gen-wrap :function ::launch-system-web-app config app-name url))
 
 (defn close-app* [config app-id]
   (gen-wrap :function ::close-app config app-id))
@@ -123,8 +132,11 @@
 (defn import-crostini* [config path]
   (gen-wrap :function ::import-crostini config path))
 
-(defn install-plugin-vm* [config image-url image-hash license-key]
-  (gen-wrap :function ::install-plugin-vm config image-url image-hash license-key))
+(defn set-plugin-vm-policy* [config image-url image-hash license-key]
+  (gen-wrap :function ::set-plugin-vm-policy config image-url image-hash license-key))
+
+(defn show-plugin-vm-installer* [config]
+  (gen-wrap :function ::show-plugin-vm-installer config))
 
 (defn register-component* [config name path]
   (gen-wrap :function ::register-component config name path))
@@ -278,6 +290,21 @@
 
 (defn stop-smoothness-tracking* [config display-id]
   (gen-wrap :function ::stop-smoothness-tracking config display-id))
+
+(defn disable-switch-access-dialog* [config]
+  (gen-wrap :function ::disable-switch-access-dialog config))
+
+(defn wait-for-ambient-photo-animation* [config photo-refresh-interval num-completions timeout]
+  (gen-wrap :function ::wait-for-ambient-photo-animation config photo-refresh-interval num-completions timeout))
+
+(defn disable-automation* [config]
+  (gen-wrap :function ::disable-automation config))
+
+(defn start-throughput-tracker-data-collection* [config]
+  (gen-wrap :function ::start-throughput-tracker-data-collection config))
+
+(defn stop-throughput-tracker-data-collection* [config]
+  (gen-wrap :function ::stop-throughput-tracker-data-collection config))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 

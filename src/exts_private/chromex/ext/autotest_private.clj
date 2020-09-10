@@ -2,7 +2,7 @@
   "API for integration testing. To be used on test images with a test component
    extension.
 
-     * available since Chrome 35"
+     * available since Chrome 36"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -248,6 +248,28 @@
    chromex.error/get-last-error."
   ([package-name] (gen-call :function ::get-arc-package &form package-name)))
 
+(defmacro wait-for-system-web-apps-install
+  "Waits for system web apps to complete the installation.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::wait-for-system-web-apps-install &form)))
+
+(defmacro get-registered-system-web-apps
+  "Returns the number of system web apps that should be installed.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [system-apps] where:
+
+     |system-apps| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::get-registered-system-web-apps &form)))
+
 (defmacro launch-arc-app
   "Launches ARC app with optional intent. Returns true if ARC is active, app exists and launch request is passed to Android.
 
@@ -274,6 +296,19 @@
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([app-id] (gen-call :function ::launch-app &form app-id)))
+
+(defmacro launch-system-web-app
+  "Launches an system web app from the launcher with the given app name and url.
+
+     |app-name| - ?
+     |url| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([app-name url] (gen-call :function ::launch-system-web-app &form app-name url)))
 
 (defmacro close-app
   "Closes an application the given appId in case it was running.
@@ -392,19 +427,17 @@
    chromex.error/get-last-error."
   ([path] (gen-call :function ::import-crostini &form path)))
 
-(defmacro install-plugin-vm
-  "Installs Plugin VM via the installer and then launches the VM.
+(defmacro set-plugin-vm-policy
+  "Sets mock Plugin VM policy.
 
      |image-url| - URL to the image to install.
      |image-hash| - Hash for the provided image.
-     |license-key| - License key for Plugin VM.
+     |license-key| - License key for Plugin VM."
+  ([image-url image-hash license-key] (gen-call :function ::set-plugin-vm-policy &form image-url image-hash license-key)))
 
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [].
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([image-url image-hash license-key] (gen-call :function ::install-plugin-vm &form image-url image-hash license-key)))
+(defmacro show-plugin-vm-installer
+  "Shows the Plugin VM installer. Does not start installation."
+  ([] (gen-call :function ::show-plugin-vm-installer &form)))
 
 (defmacro register-component
   "Register a component with CrOSComponentManager.
@@ -1060,6 +1093,58 @@
   ([display-id] (gen-call :function ::stop-smoothness-tracking &form display-id))
   ([] `(stop-smoothness-tracking :omit)))
 
+(defmacro disable-switch-access-dialog
+  "When neccesary, disables showing the dialog when Switch Access is disabled."
+  ([] (gen-call :function ::disable-switch-access-dialog &form)))
+
+(defmacro wait-for-ambient-photo-animation
+  "Waits for the completion of photo transition animation in ambient mode.
+
+     |photo-refresh-interval| - photo refresh interval in seconds.
+     |num-completions| - number of completions of the animation.
+     |timeout| - the timeout in seconds.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([photo-refresh-interval num-completions timeout] (gen-call :function ::wait-for-ambient-photo-animation &form photo-refresh-interval num-completions timeout)))
+
+(defmacro disable-automation
+  "Disables the automation feature. Note that the event handlers and caches of automation nodes still remain in the test
+   extension and so the next automation.getDesktop will miss initialization. The caller should ensure invalidation of those
+   information (i.e. reloading the entire background page).
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::disable-automation &form)))
+
+(defmacro start-throughput-tracker-data-collection
+  "Starts to ui::ThroughputTracker data collection for tracked animations.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::start-throughput-tracker-data-collection &form)))
+
+(defmacro stop-throughput-tracker-data-collection
+  "Stops ui::ThroughputTracker data collection and reports the collected data since the start.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [data] where:
+
+     |data| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::stop-throughput-tracker-data-collection &form)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -1085,7 +1170,7 @@
 
 (def api-table
   {:namespace "chrome.autotestPrivate",
-   :since "35",
+   :since "36",
    :functions
    [{:id ::initialize-events, :name "initializeEvents", :since "79"}
     {:id ::logout, :name "logout"}
@@ -1177,6 +1262,17 @@
      :params
      [{:name "package-name", :type "string"}
       {:name "callback", :type :callback, :callback {:params [{:name "package", :type "object"}]}}]}
+    {:id ::wait-for-system-web-apps-install,
+     :name "waitForSystemWebAppsInstall",
+     :since "future",
+     :callback? true,
+     :params [{:name "callback", :type :callback}]}
+    {:id ::get-registered-system-web-apps,
+     :name "getRegisteredSystemWebApps",
+     :since "future",
+     :callback? true,
+     :params
+     [{:name "callback", :type :callback, :callback {:params [{:name "system-apps", :type "[array-of-objects]"}]}}]}
     {:id ::launch-arc-app,
      :name "launchArcApp",
      :since "73",
@@ -1190,6 +1286,11 @@
      :since "71",
      :callback? true,
      :params [{:name "app-id", :type "string"} {:name "callback", :type :callback}]}
+    {:id ::launch-system-web-app,
+     :name "launchSystemWebApp",
+     :since "future",
+     :callback? true,
+     :params [{:name "app-name", :type "string"} {:name "url", :type "string"} {:name "callback", :type :callback}]}
     {:id ::close-app,
      :name "closeApp",
      :since "73",
@@ -1240,15 +1341,12 @@
      :since "75",
      :callback? true,
      :params [{:name "path", :type "string"} {:name "callback", :type :callback}]}
-    {:id ::install-plugin-vm,
-     :name "installPluginVM",
-     :since "80",
-     :callback? true,
+    {:id ::set-plugin-vm-policy,
+     :name "setPluginVMPolicy",
+     :since "85",
      :params
-     [{:name "image-url", :type "string"}
-      {:name "image-hash", :type "string"}
-      {:name "license-key", :type "string"}
-      {:name "callback", :type :callback}]}
+     [{:name "image-url", :type "string"} {:name "image-hash", :type "string"} {:name "license-key", :type "string"}]}
+    {:id ::show-plugin-vm-installer, :name "showPluginVMInstaller", :since "85"}
     {:id ::register-component,
      :name "registerComponent",
      :since "78",
@@ -1374,7 +1472,7 @@
       {:name "callback", :type :callback}]}
     {:id ::pin-shelf-icon,
      :name "pinShelfIcon",
-     :since "future",
+     :since "82",
      :callback? true,
      :params [{:name "app-id", :type "string"} {:name "callback", :type :callback}]}
     {:id ::set-overview-mode-state,
@@ -1455,7 +1553,7 @@
      :params [{:name "launcher-state", :type "unknown-type"} {:name "callback", :type :callback}]}
     {:id ::wait-for-overview-state,
      :name "waitForOverviewState",
-     :since "future",
+     :since "82",
      :callback? true,
      :params [{:name "overview-state", :type "unknown-type"} {:name "callback", :type :callback}]}
     {:id ::create-new-desk,
@@ -1520,7 +1618,7 @@
      :params [{:name "enabled", :type "boolean"} {:name "callback", :type :callback}]}
     {:id ::get-scrollable-shelf-info-for-state,
      :name "getScrollableShelfInfoForState",
-     :since "future",
+     :since "82",
      :callback? true,
      :params
      [{:name "state", :type "object"}
@@ -1529,14 +1627,14 @@
        :callback {:params [{:name "info", :type "autotestPrivate.ScrollableShelfInfo"}]}}]}
     {:id ::get-shelf-ui-info-for-state,
      :name "getShelfUIInfoForState",
-     :since "future",
+     :since "82",
      :callback? true,
      :params
      [{:name "state", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "info", :type "object"}]}}]}
     {:id ::set-window-bounds,
      :name "setWindowBounds",
-     :since "future",
+     :since "84",
      :callback? true,
      :params
      [{:name "id", :type "integer"}
@@ -1545,16 +1643,41 @@
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}
     {:id ::start-smoothness-tracking,
      :name "startSmoothnessTracking",
-     :since "future",
+     :since "84",
      :callback? true,
      :params [{:name "display-id", :optional? true, :type "string"} {:name "callback", :type :callback}]}
     {:id ::stop-smoothness-tracking,
      :name "stopSmoothnessTracking",
-     :since "future",
+     :since "84",
      :callback? true,
      :params
      [{:name "display-id", :optional? true, :type "string"}
-      {:name "callback", :type :callback, :callback {:params [{:name "smoothness", :type "integer"}]}}]}],
+      {:name "callback", :type :callback, :callback {:params [{:name "smoothness", :type "integer"}]}}]}
+    {:id ::disable-switch-access-dialog, :name "disableSwitchAccessDialog", :since "85"}
+    {:id ::wait-for-ambient-photo-animation,
+     :name "waitForAmbientPhotoAnimation",
+     :since "85",
+     :callback? true,
+     :params
+     [{:name "photo-refresh-interval", :type "integer"}
+      {:name "num-completions", :type "integer"}
+      {:name "timeout", :type "integer"}
+      {:name "callback", :type :callback}]}
+    {:id ::disable-automation,
+     :name "disableAutomation",
+     :since "future",
+     :callback? true,
+     :params [{:name "callback", :type :callback}]}
+    {:id ::start-throughput-tracker-data-collection,
+     :name "startThroughputTrackerDataCollection",
+     :since "future",
+     :callback? true,
+     :params [{:name "callback", :type :callback}]}
+    {:id ::stop-throughput-tracker-data-collection,
+     :name "stopThroughputTrackerDataCollection",
+     :since "future",
+     :callback? true,
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "data", :type "[array-of-objects]"}]}}]}],
    :events [{:id ::on-clipboard-data-changed, :name "onClipboardDataChanged", :since "79"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

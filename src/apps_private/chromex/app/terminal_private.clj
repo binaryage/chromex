@@ -1,5 +1,5 @@
 (ns chromex.app.terminal-private
-  "  * available since Chrome 35"
+  "  * available since Chrome 36"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -94,6 +94,16 @@
      |id| - The id of the process to which |onProcessOutput| was dispatched."
   ([tab-id id] (gen-call :function ::ack-output &form tab-id id)))
 
+(defmacro open-window
+  "Open the Terminal tabbed window.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::open-window &form)))
+
 (defmacro open-options-page
   "Open the Terminal Settings page.
 
@@ -103,19 +113,6 @@
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([] (gen-call :function ::open-options-page &form)))
-
-(defmacro get-crosh-settings
-  "Returns an object (DictionaryValue) containing UI settings such as font style and color used by the crosh extension.  This
-   function is called by the terminal system app the first time it is run to migrate any previous settings.
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [settings] where:
-
-     |settings| - ?
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error."
-  ([] (gen-call :function ::get-crosh-settings &form)))
 
 (defmacro get-settings
   "Returns an object (DictionaryValue) containing UI settings such as font style and colors used by terminal and stored as a
@@ -206,7 +203,7 @@
 
 (def api-table
   {:namespace "chrome.terminalPrivate",
-   :since "35",
+   :since "36",
    :functions
    [{:id ::open-terminal-process,
      :name "openTerminalProcess",
@@ -217,7 +214,7 @@
       {:name "callback", :type :callback, :callback {:params [{:name "id", :type "string"}]}}]}
     {:id ::open-vmshell-process,
      :name "openVmshellProcess",
-     :since "future",
+     :since "82",
      :callback? true,
      :params
      [{:name "args", :optional? true, :type "[array-of-strings]"}
@@ -247,16 +244,12 @@
      :name "ackOutput",
      :since "49",
      :params [{:name "tab-id", :type "integer"} {:name "id", :since "74", :type "string"}]}
+    {:id ::open-window, :name "openWindow", :since "84", :callback? true, :params [{:name "callback", :type :callback}]}
     {:id ::open-options-page,
      :name "openOptionsPage",
-     :since "master",
+     :since "84",
      :callback? true,
      :params [{:name "callback", :type :callback}]}
-    {:id ::get-crosh-settings,
-     :name "getCroshSettings",
-     :since "80",
-     :callback? true,
-     :params [{:name "callback", :type :callback, :callback {:params [{:name "settings", :type "object"}]}}]}
     {:id ::get-settings,
      :name "getSettings",
      :since "80",
@@ -269,7 +262,7 @@
      :params [{:name "settings", :type "object"} {:name "callback", :type :callback}]}
     {:id ::get-a11y-status,
      :name "getA11yStatus",
-     :since "future",
+     :since "82",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "a11y-status", :type "boolean"}]}}]}],
    :events
@@ -282,7 +275,7 @@
     {:id ::on-settings-changed, :name "onSettingsChanged", :since "80", :params [{:name "settings", :type "object"}]}
     {:id ::on-a11y-status-changed,
      :name "onA11yStatusChanged",
-     :since "future",
+     :since "82",
      :params [{:name "status", :type "boolean"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

@@ -21,6 +21,12 @@
 (defn get-mime-type* [config entry]
   (gen-wrap :function ::get-mime-type config entry))
 
+(defn get-content-mime-type* [config file-entry]
+  (gen-wrap :function ::get-content-mime-type config file-entry))
+
+(defn get-content-metadata* [config file-entry mime-type include-images]
+  (gen-wrap :function ::get-content-metadata config file-entry mime-type include-images))
+
 (defn get-strings* [config]
   (gen-wrap :function ::get-strings config))
 
@@ -51,14 +57,17 @@
 (defn resolve-isolated-entries* [config entries]
   (gen-wrap :function ::resolve-isolated-entries config entries))
 
-(defn add-mount* [config source]
-  (gen-wrap :function ::add-mount config source))
+(defn add-mount* [config source password]
+  (gen-wrap :function ::add-mount config source password))
 
 (defn remove-mount* [config volume-id]
   (gen-wrap :function ::remove-mount config volume-id))
 
 (defn get-volume-metadata-list* [config]
   (gen-wrap :function ::get-volume-metadata-list config))
+
+(defn copy-image-to-clipboard* [config entry]
+  (gen-wrap :function ::copy-image-to-clipboard config entry))
 
 (defn start-copy* [config entry parent-entry new-name]
   (gen-wrap :function ::start-copy config entry parent-entry new-name))
@@ -176,6 +185,18 @@
 
 (defn select-android-picker-app* [config android-app]
   (gen-wrap :function ::select-android-picker-app config android-app))
+
+(defn sharesheet-has-targets* [config entries]
+  (gen-wrap :function ::sharesheet-has-targets config entries))
+
+(defn invoke-sharesheet* [config entries]
+  (gen-wrap :function ::invoke-sharesheet config entries))
+
+(defn toggle-added-to-holding-space* [config entries added]
+  (gen-wrap :function ::toggle-added-to-holding-space config entries added))
+
+(defn get-holding-space-state* [config]
+  (gen-wrap :function ::get-holding-space-state config))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 

@@ -3,14 +3,11 @@
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
-(defn upload-chrome-desktop-report* [config report]
-  (gen-wrap :function ::upload-chrome-desktop-report config report))
-
 (defn get-device-id* [config]
   (gen-wrap :function ::get-device-id config))
 
-(defn get-persistent-secret* [config]
-  (gen-wrap :function ::get-persistent-secret config))
+(defn get-persistent-secret* [config reset-secret]
+  (gen-wrap :function ::get-persistent-secret config reset-secret))
 
 (defn get-device-data* [config id]
   (gen-wrap :function ::get-device-data config id))

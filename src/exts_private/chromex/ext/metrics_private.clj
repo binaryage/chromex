@@ -173,7 +173,7 @@
    :functions
    [{:id ::get-histogram,
      :name "getHistogram",
-     :since "future",
+     :since "83",
      :callback? true,
      :params
      [{:name "name", :type "string"}

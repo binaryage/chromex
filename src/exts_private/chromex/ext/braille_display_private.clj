@@ -1,7 +1,7 @@
 (ns chromex.ext.braille-display-private
   "Braille display access private API.
 
-     * available since Chrome 35"
+     * available since Chrome 36"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -81,7 +81,7 @@
 
 (def api-table
   {:namespace "chrome.brailleDisplayPrivate",
-   :since "35",
+   :since "36",
    :functions
    [{:id ::get-display-state,
      :name "getDisplayState",

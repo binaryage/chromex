@@ -207,11 +207,11 @@
      :params
      [{:name "transport", :type "bluetooth.Transport"}
       {:name "pairing-duration-ms", :since "77", :type "integer"}
-      {:name "result", :optional? true, :since "future", :type "bluetoothPrivate.ConnectResultType"}]}
+      {:name "result", :optional? true, :since "83", :type "bluetoothPrivate.ConnectResultType"}]}
     {:id ::record-reconnection,
      :name "recordReconnection",
      :since "76",
-     :params [{:name "result", :optional? true, :since "future", :type "bluetoothPrivate.ConnectResultType"}]}
+     :params [{:name "result", :optional? true, :since "83", :type "bluetoothPrivate.ConnectResultType"}]}
     {:id ::record-device-selection,
      :name "recordDeviceSelection",
      :since "77",
@@ -223,7 +223,7 @@
    [{:id ::on-pairing, :name "onPairing", :params [{:name "pairing-event", :type "object"}]}
     {:id ::on-device-address-changed,
      :name "onDeviceAddressChanged",
-     :since "future",
+     :since "82",
      :params [{:name "device", :type "bluetooth.Device"} {:name "old-address", :type "string"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

@@ -2,7 +2,7 @@
   "Use the commands API to add keyboard shortcuts that trigger actions in your extension, for example, an action to open the
    browser action or send a command to the extension.
 
-     * available since Chrome 35
+     * available since Chrome 36
      * https://developer.chrome.com/extensions/commands"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -35,9 +35,10 @@
 (defmacro tap-on-command-events
   "Fired when a registered command is activated using a keyboard shortcut.
 
-   Events will be put on the |channel| with signature [::on-command [command]] where:
+   Events will be put on the |channel| with signature [::on-command [command tab]] where:
 
      |command| - https://developer.chrome.com/extensions/commands#property-onCommand-command.
+     |tab| - https://developer.chrome.com/extensions/commands#property-onCommand-tab.
 
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
 
@@ -57,7 +58,7 @@
 
 (def api-table
   {:namespace "chrome.commands",
-   :since "35",
+   :since "36",
    :functions
    [{:id ::get-all,
      :name "getAll",
@@ -67,7 +68,10 @@
        :optional? true,
        :type :callback,
        :callback {:params [{:name "commands", :type "[array-of-commands.Commands]"}]}}]}],
-   :events [{:id ::on-command, :name "onCommand", :params [{:name "command", :type "string"}]}]})
+   :events
+   [{:id ::on-command,
+     :name "onCommand",
+     :params [{:name "command", :type "string"} {:name "tab", :optional? true, :since "future", :type "tabs.Tab"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

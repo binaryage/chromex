@@ -2,7 +2,7 @@
   "Use the chrome.input.ime API to implement a custom IME for Chrome OS. This allows your extension to handle keystrokes, set
    the composition, and manage the candidate window.
 
-     * available since Chrome 35
+     * available since Chrome 36
      * https://developer.chrome.com/extensions/input.ime"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -132,6 +132,36 @@
    https://developer.chrome.com/extensions/input.ime#method-setCursorPosition."
   ([parameters] (gen-call :function ::set-cursor-position &form parameters)))
 
+(defmacro set-assistive-window-properties
+  "Shows/Hides an assistive window with the given properties.
+
+     |parameters| - https://developer.chrome.com/extensions/input.ime#property-setAssistiveWindowProperties-parameters.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [success] where:
+
+     |success| - https://developer.chrome.com/extensions/input.ime#property-callback-success.
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/extensions/input.ime#method-setAssistiveWindowProperties."
+  ([parameters] (gen-call :function ::set-assistive-window-properties &form parameters)))
+
+(defmacro set-assistive-window-button-highlighted
+  "Highlights/Unhighlights a button in an assistive window.
+
+     |parameters| - https://developer.chrome.com/extensions/input.ime#property-setAssistiveWindowButtonHighlighted-parameters.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/extensions/input.ime#method-setAssistiveWindowButtonHighlighted."
+  ([parameters] (gen-call :function ::set-assistive-window-button-highlighted &form parameters)))
+
 (defmacro set-menu-items
   "Adds the provided menu items to the language menu when this IME is active.
 
@@ -183,76 +213,6 @@
 
    https://developer.chrome.com/extensions/input.ime#method-keyEventHandled."
   ([request-id response] (gen-call :function ::key-event-handled &form request-id response)))
-
-(defmacro create-window
-  "Creates IME window.
-
-     |options| - The options of the newly created IME window.
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [window-object] where:
-
-     |window-object| - The JavaScript 'window' object of the newly created IME window. It contains the additional 'id'
-                       property for the parameters of the other functions like showWindow/hideWindow.
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error.
-
-   https://developer.chrome.com/extensions/input.ime#method-createWindow."
-  ([options] (gen-call :function ::create-window &form options)))
-
-(defmacro show-window
-  "Shows the IME window. This makes the hidden window visible.
-
-     |window-id| - The ID of the IME window.
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [].
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error.
-
-   https://developer.chrome.com/extensions/input.ime#method-showWindow."
-  ([window-id] (gen-call :function ::show-window &form window-id)))
-
-(defmacro hide-window
-  "Hides the IME window. This doesn't close the window. Instead, it makes the window invisible. The extension can cache the
-   window and show/hide it for better performance.
-
-     |window-id| - The ID of the IME window.
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [].
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error.
-
-   https://developer.chrome.com/extensions/input.ime#method-hideWindow."
-  ([window-id] (gen-call :function ::hide-window &form window-id)))
-
-(defmacro activate
-  "Activates the IME extension so that it can receive events.
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [].
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error.
-
-   https://developer.chrome.com/extensions/input.ime#method-activate."
-  ([] (gen-call :function ::activate &form)))
-
-(defmacro deactivate
-  "Deactivates the IME extension so that it cannot receive events.
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [].
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error.
-
-   https://developer.chrome.com/extensions/input.ime#method-deactivate."
-  ([] (gen-call :function ::deactivate &form)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -393,19 +353,17 @@
    https://developer.chrome.com/extensions/input.ime#event-onReset."
   ([channel & args] (apply gen-call :event ::on-reset &form channel args)))
 
-(defmacro tap-on-composition-bounds-changed-events
-  "Triggered when the bounds of the IME composition text or cursor are changed. The IME composition text is the instance of
-   text produced in the input method editor.
+(defmacro tap-on-assistive-window-button-clicked-events
+  "This event is sent when a button in an assistive window is clicked.
 
-   Events will be put on the |channel| with signature [::on-composition-bounds-changed [bounds-list]] where:
+   Events will be put on the |channel| with signature [::on-assistive-window-button-clicked [details]] where:
 
-     |bounds-list| - List of bounds information for each character on IME composition text. If there's no composition text in
-                     the editor, this array contains the bound information of the cursor.
+     |details| - https://developer.chrome.com/extensions/input.ime#property-onAssistiveWindowButtonClicked-details.
 
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
 
-   https://developer.chrome.com/extensions/input.ime#event-onCompositionBoundsChanged."
-  ([channel & args] (apply gen-call :event ::on-composition-bounds-changed &form channel args)))
+   https://developer.chrome.com/extensions/input.ime#event-onAssistiveWindowButtonClicked."
+  ([channel & args] (apply gen-call :event ::on-assistive-window-button-clicked &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
@@ -420,7 +378,7 @@
 
 (def api-table
   {:namespace "chrome.input.ime",
-   :since "35",
+   :since "36",
    :functions
    [{:id ::set-composition,
      :name "setComposition",
@@ -463,6 +421,18 @@
      :params
      [{:name "parameters", :type "object"}
       {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
+    {:id ::set-assistive-window-properties,
+     :name "setAssistiveWindowProperties",
+     :since "85",
+     :callback? true,
+     :params
+     [{:name "parameters", :type "object"}
+      {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
+    {:id ::set-assistive-window-button-highlighted,
+     :name "setAssistiveWindowButtonHighlighted",
+     :since "future",
+     :callback? true,
+     :params [{:name "parameters", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::set-menu-items,
      :name "setMenuItems",
      :callback? true,
@@ -477,34 +447,7 @@
      :params [{:name "parameters", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::key-event-handled,
      :name "keyEventHandled",
-     :params [{:name "request-id", :type "string"} {:name "response", :type "boolean"}]}
-    {:id ::create-window,
-     :name "createWindow",
-     :since "50",
-     :callback? true,
-     :params
-     [{:name "options", :type "input.ime.CreateWindowOptions"}
-      {:name "callback", :type :callback, :callback {:params [{:name "window-object", :type "Window"}]}}]}
-    {:id ::show-window,
-     :name "showWindow",
-     :since "51",
-     :callback? true,
-     :params [{:name "window-id", :type "integer"} {:name "callback", :optional? true, :type :callback}]}
-    {:id ::hide-window,
-     :name "hideWindow",
-     :since "51",
-     :callback? true,
-     :params [{:name "window-id", :type "integer"} {:name "callback", :optional? true, :type :callback}]}
-    {:id ::activate,
-     :name "activate",
-     :since "50",
-     :callback? true,
-     :params [{:name "callback", :optional? true, :type :callback}]}
-    {:id ::deactivate,
-     :name "deactivate",
-     :since "50",
-     :callback? true,
-     :params [{:name "callback", :optional? true, :type :callback}]}],
+     :params [{:name "request-id", :type "string"} {:name "response", :type "boolean"}]}],
    :events
    [{:id ::on-activate,
      :name "onActivate",
@@ -534,10 +477,10 @@
      :name "onSurroundingTextChanged",
      :params [{:name "engine-id", :type "string"} {:name "surrounding-info", :type "object"}]}
     {:id ::on-reset, :name "onReset", :params [{:name "engine-id", :type "string"}]}
-    {:id ::on-composition-bounds-changed,
-     :name "onCompositionBoundsChanged",
-     :since "50",
-     :params [{:name "bounds-list", :type "[array-of-input.ime.Boundss]"}]}]})
+    {:id ::on-assistive-window-button-clicked,
+     :name "onAssistiveWindowButtonClicked",
+     :since "85",
+     :params [{:name "details", :type "object"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

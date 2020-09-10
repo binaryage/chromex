@@ -128,7 +128,7 @@
      :params [{:name "callback", :type :callback, :callback {:params [{:name "annotated-location", :type "string"}]}}]}
     {:id ::get-device-hostname,
      :name "getDeviceHostname",
-     :since "future",
+     :since "82",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "hostname", :type "string"}]}}]}]})
 

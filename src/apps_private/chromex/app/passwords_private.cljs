@@ -6,14 +6,20 @@
 (defn record-passwords-page-access-in-settings* [config]
   (gen-wrap :function ::record-passwords-page-access-in-settings config))
 
-(defn change-saved-password* [config id new-username new-password]
-  (gen-wrap :function ::change-saved-password config id new-username new-password))
+(defn change-saved-password* [config ids new-password]
+  (gen-wrap :function ::change-saved-password config ids new-password))
 
 (defn remove-saved-password* [config id]
   (gen-wrap :function ::remove-saved-password config id))
 
+(defn remove-saved-passwords* [config ids]
+  (gen-wrap :function ::remove-saved-passwords config ids))
+
 (defn remove-password-exception* [config id]
   (gen-wrap :function ::remove-password-exception config id))
+
+(defn remove-password-exceptions* [config ids]
+  (gen-wrap :function ::remove-password-exceptions config ids))
 
 (defn undo-remove-saved-password-or-exception* [config]
   (gen-wrap :function ::undo-remove-saved-password-or-exception config))
@@ -26,6 +32,9 @@
 
 (defn get-password-exception-list* [config]
   (gen-wrap :function ::get-password-exception-list config))
+
+(defn move-password-to-account* [config id]
+  (gen-wrap :function ::move-password-to-account config id))
 
 (defn import-passwords* [config]
   (gen-wrap :function ::import-passwords config))

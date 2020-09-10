@@ -1,5 +1,5 @@
 (ns chromex.ext.activity-log-private
-  "  * available since Chrome 35"
+  "  * available since Chrome 36"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -86,7 +86,7 @@
 
 (def api-table
   {:namespace "chrome.activityLogPrivate",
-   :since "35",
+   :since "36",
    :functions
    [{:id ::get-extension-activities,
      :name "getExtensionActivities",

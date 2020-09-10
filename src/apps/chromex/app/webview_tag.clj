@@ -3,7 +3,7 @@
    can control the appearance of the webview and interact with the web content, initiate navigations in an embedded web page,
    react to error events that happen within it, and more (see Usage).
 
-     * available since Chrome 35
+     * available since Chrome 36
      * https://developer.chrome.com/apps/tags/webview"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -446,7 +446,7 @@ webview.addContentScripts([{
 
 (def api-table
   {:namespace "<webview>",
-   :since "35",
+   :since "36",
    :properties
    [{:id ::content-window, :name "contentWindow", :return-type "webviewTag.ContentWindow"}
     {:id ::request, :name "request", :return-type "webviewTag.WebRequestEventInterface"}
@@ -516,7 +516,6 @@ webview.addContentScripts([{
     {:id ::get-user-agent, :name "getUserAgent", :return-type "string"}
     {:id ::get-zoom,
      :name "getZoom",
-     :since "36",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "zoom-factor", :type "double"}]}}]}
     {:id ::get-zoom-mode,
@@ -546,7 +545,6 @@ webview.addContentScripts([{
     {:id ::set-user-agent-override, :name "setUserAgentOverride", :params [{:name "user-agent", :type "string"}]}
     {:id ::set-zoom,
      :name "setZoom",
-     :since "36",
      :callback? true,
      :params [{:name "zoom-factor", :type "double"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::set-zoom-mode,

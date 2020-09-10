@@ -1,7 +1,7 @@
 (ns chromex.ext.identity
   "Use the chrome.identity API to get OAuth2 access tokens.
 
-     * available since Chrome 35
+     * available since Chrome 36
      * https://developer.chrome.com/extensions/identity"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -39,9 +39,10 @@
      |details| - Token options.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [token] where:
+   Signature of the result value put on the channel is [token granted-scopes] where:
 
      |token| - https://developer.chrome.com/extensions/identity#property-callback-token.
+     |granted-scopes| - https://developer.chrome.com/extensions/identity#property-callback-grantedScopes.
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error.
@@ -146,11 +147,11 @@
 
 (def api-table
   {:namespace "chrome.identity",
-   :since "35",
+   :since "36",
    :functions
    [{:id ::get-accounts,
      :name "getAccounts",
-     :since "84",
+     :since "87",
      :callback? true,
      :params
      [{:name "callback",
@@ -164,13 +165,16 @@
       {:name "callback",
        :optional? true,
        :type :callback,
-       :callback {:params [{:name "token", :optional? true, :type "string"}]}}]}
+       :callback
+       {:params
+        [{:name "token", :optional? true, :type "string"}
+         {:name "granted-scopes", :optional? true, :type "[array-of-strings]"}]}}]}
     {:id ::get-profile-user-info,
      :name "getProfileUserInfo",
      :since "37",
      :callback? true,
      :params
-     [{:name "details", :optional? true, :since "future", :type "object"}
+     [{:name "details", :optional? true, :since "84", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "user-info", :type "object"}]}}]}
     {:id ::remove-cached-auth-token,
      :name "removeCachedAuthToken",

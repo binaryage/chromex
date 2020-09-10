@@ -10,7 +10,7 @@
 
    See http://goo.gl/8rOmgk for further documentation of this API.
 
-     * available since Chrome 35"
+     * available since Chrome 36"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -75,7 +75,7 @@
 
 (def api-table
   {:namespace "chrome.webrtcAudioPrivate",
-   :since "35",
+   :since "36",
    :functions
    [{:id ::get-sinks,
      :name "getSinks",

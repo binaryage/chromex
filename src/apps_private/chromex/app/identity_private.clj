@@ -1,7 +1,7 @@
 (ns chromex.app.identity-private
   "identityPrivate.
 
-     * available since Chrome 35"
+     * available since Chrome 36"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -26,11 +26,12 @@
 (defmacro tap-on-web-flow-request-events
   "Fired when a web flow dialog should be displayed.
 
-   Events will be put on the |channel| with signature [::on-web-flow-request [key url mode]] where:
+   Events will be put on the |channel| with signature [::on-web-flow-request [key url mode partition]] where:
 
-     |key| - ?
-     |url| - ?
-     |mode| - ?
+     |key| - A unique identifier that the caller can use to locate the dialog window.
+     |url| - A URL that will be loaded in the webview.
+     |mode| - 'interactive' or 'silent'. The window will be displayed if the mode is 'interactive'.
+     |partition| - A name used for the webview partition.
 
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-web-flow-request &form channel args)))
@@ -48,7 +49,7 @@
 
 (def api-table
   {:namespace "chrome.identityPrivate",
-   :since "35",
+   :since "36",
    :functions
    [{:id ::set-consent-result,
      :name "setConsentResult",
@@ -57,7 +58,11 @@
    :events
    [{:id ::on-web-flow-request,
      :name "onWebFlowRequest",
-     :params [{:name "key", :type "string"} {:name "url", :type "string"} {:name "mode", :type "string"}]}]})
+     :params
+     [{:name "key", :type "string"}
+      {:name "url", :type "string"}
+      {:name "mode", :type "string"}
+      {:name "partition", :since "84", :type "string"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

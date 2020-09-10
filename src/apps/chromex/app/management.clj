@@ -2,7 +2,7 @@
   "The chrome.management API provides ways to manage the list of extensions/apps that are installed and running. It is
    particularly useful for extensions that override the built-in New Tab page.
 
-     * available since Chrome 35
+     * available since Chrome 36
      * https://developer.chrome.com/apps/management"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -307,7 +307,7 @@
 
 (def api-table
   {:namespace "chrome.management",
-   :since "35",
+   :since "36",
    :functions
    [{:id ::get-all,
      :name "getAll",
@@ -377,7 +377,6 @@
      :params [{:name "id", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::create-app-shortcut,
      :name "createAppShortcut",
-     :since "36",
      :callback? true,
      :params [{:name "id", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::set-launch-type,

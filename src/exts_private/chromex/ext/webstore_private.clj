@@ -1,5 +1,5 @@
 (ns chromex.ext.webstore-private
-  "  * available since Chrome 35"
+  "  * available since Chrome 36"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -185,6 +185,7 @@
   "Returns the install status of the extension.
 
      |id| - The id of the extension
+     |manifest| - The manifest of the extension
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [status] where:
@@ -193,7 +194,8 @@
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([id] (gen-call :function ::get-extension-status &form id)))
+  ([id manifest] (gen-call :function ::get-extension-status &form id manifest))
+  ([id] `(get-extension-status ~id :omit)))
 
 (defmacro request-extension
   "Ask Chrome to send the extension request to the Admin Console.
@@ -222,7 +224,7 @@
 
 (def api-table
   {:namespace "chrome.webstorePrivate",
-   :since "35",
+   :since "36",
    :functions
    [{:id ::install,
      :name "install",
@@ -305,6 +307,7 @@
      :callback? true,
      :params
      [{:name "id", :type "string"}
+      {:name "manifest", :optional? true, :since "85", :type "string"}
       {:name "callback",
        :type :callback,
        :callback {:params [{:name "status", :type "webstorePrivate.ExtensionInstallStatus"}]}}]}

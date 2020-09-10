@@ -2,7 +2,7 @@
   "Use the chrome.windows API to interact with browser windows. You can use this API to create, modify, and rearrange windows
    in the browser.
 
-     * available since Chrome 35
+     * available since Chrome 36
      * https://developer.chrome.com/extensions/windows"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -187,6 +187,19 @@
    https://developer.chrome.com/extensions/windows#event-onFocusChanged."
   ([channel & args] (apply gen-call :event ::on-focus-changed &form channel args)))
 
+(defmacro tap-on-bounds-changed-events
+  "Fired when a window has been resized; this event is only dispatched when the new bounds are committed, and not for
+   in-progress changes.
+
+   Events will be put on the |channel| with signature [::on-bounds-changed [window]] where:
+
+     |window| - Details of the window. The tabs will not be populated for the window.
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
+
+   https://developer.chrome.com/extensions/windows#event-onBoundsChanged."
+  ([channel & args] (apply gen-call :event ::on-bounds-changed &form channel args)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -200,7 +213,7 @@
 
 (def api-table
   {:namespace "chrome.windows",
-   :since "35",
+   :since "36",
    :properties
    [{:id ::window-id-none, :name "WINDOW_ID_NONE", :return-type "unknown-type"}
     {:id ::window-id-current, :name "WINDOW_ID_CURRENT", :return-type "unknown-type"}],
@@ -258,7 +271,11 @@
    :events
    [{:id ::on-created, :name "onCreated", :params [{:name "window", :type "windows.Window"}]}
     {:id ::on-removed, :name "onRemoved", :params [{:name "window-id", :type "integer"}]}
-    {:id ::on-focus-changed, :name "onFocusChanged", :params [{:name "window-id", :type "integer"}]}]})
+    {:id ::on-focus-changed, :name "onFocusChanged", :params [{:name "window-id", :type "integer"}]}
+    {:id ::on-bounds-changed,
+     :name "onBoundsChanged",
+     :since "future",
+     :params [{:name "window", :type "windows.Window"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

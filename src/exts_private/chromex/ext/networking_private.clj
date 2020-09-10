@@ -24,7 +24,7 @@
    TODO(stevenjb/pneubeck): Merge the ONC documentation with this document and
    use it as the ONC specification.
 
-     * available since Chrome 35"
+     * available since Chrome 36"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -397,7 +397,7 @@
 
 (def api-table
   {:namespace "chrome.networkingPrivate",
-   :since "35",
+   :since "36",
    :functions
    [{:id ::get-properties,
      :name "getProperties",
@@ -498,7 +498,6 @@
       {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-captive-portal-status,
      :name "getCaptivePortalStatus",
-     :since "36",
      :callback? true,
      :params
      [{:name "network-guid", :since "37", :type "string"}
@@ -548,7 +547,6 @@
     {:id ::on-device-state-list-changed, :name "onDeviceStateListChanged", :since "44"}
     {:id ::on-portal-detection-completed,
      :name "onPortalDetectionCompleted",
-     :since "36",
      :params
      [{:name "network-guid", :since "37", :type "string"}
       {:name "status", :type "networkingPrivate.CaptivePortalStatus"}]}

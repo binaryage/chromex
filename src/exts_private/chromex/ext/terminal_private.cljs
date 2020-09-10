@@ -21,11 +21,11 @@
 (defn ack-output* [config tab-id id]
   (gen-wrap :function ::ack-output config tab-id id))
 
+(defn open-window* [config]
+  (gen-wrap :function ::open-window config))
+
 (defn open-options-page* [config]
   (gen-wrap :function ::open-options-page config))
-
-(defn get-crosh-settings* [config]
-  (gen-wrap :function ::get-crosh-settings config))
 
 (defn get-settings* [config]
   (gen-wrap :function ::get-settings config))

@@ -27,6 +27,12 @@
 (defn set-cursor-position* [config parameters]
   (gen-wrap :function ::set-cursor-position config parameters))
 
+(defn set-assistive-window-properties* [config parameters]
+  (gen-wrap :function ::set-assistive-window-properties config parameters))
+
+(defn set-assistive-window-button-highlighted* [config parameters]
+  (gen-wrap :function ::set-assistive-window-button-highlighted config parameters))
+
 (defn set-menu-items* [config parameters]
   (gen-wrap :function ::set-menu-items config parameters))
 
@@ -38,21 +44,6 @@
 
 (defn key-event-handled* [config request-id response]
   (gen-wrap :function ::key-event-handled config request-id response))
-
-(defn create-window* [config options]
-  (gen-wrap :function ::create-window config options))
-
-(defn show-window* [config window-id]
-  (gen-wrap :function ::show-window config window-id))
-
-(defn hide-window* [config window-id]
-  (gen-wrap :function ::hide-window config window-id))
-
-(defn activate* [config]
-  (gen-wrap :function ::activate config))
-
-(defn deactivate* [config]
-  (gen-wrap :function ::deactivate config))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
@@ -86,6 +77,6 @@
 (defn on-reset* [config channel & args]
   (gen-wrap :event ::on-reset config channel args))
 
-(defn on-composition-bounds-changed* [config channel & args]
-  (gen-wrap :event ::on-composition-bounds-changed config channel args))
+(defn on-assistive-window-button-clicked* [config channel & args]
+  (gen-wrap :event ::on-assistive-window-button-clicked config channel args))
 

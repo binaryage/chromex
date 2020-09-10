@@ -45,7 +45,7 @@
 
 ### API stats
 
-Generated 37 namespaces containing 0 properties, 348 functions and 75 events:
+Generated 37 namespaces containing 0 properties, 364 functions and 78 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -64,10 +64,10 @@ Generated 37 namespaces containing 0 properties, 348 functions and 75 events:
     |        chrome.developerPrivate |           0 |         31 |       2 |
     |             chrome.echoPrivate |           0 |          5 |       0 |
     |         chrome.feedbackPrivate |           0 |          6 |       1 |
-    |      chrome.fileManagerPrivate |           0 |         58 |      10 |
+    |      chrome.fileManagerPrivate |           0 |         65 |      10 |
     |         chrome.identityPrivate |           0 |          1 |       1 |
     |      chrome.imageWriterPrivate |           0 |          5 |       5 |
-    |      chrome.inputMethodPrivate |           0 |         20 |      10 |
+    |      chrome.inputMethodPrivate |           0 |         24 |      12 |
     | chrome.languageSettingsPrivate |           0 |         14 |       4 |
     |  chrome.mediaPerceptionPrivate |           0 |          5 |       1 |
     |      chrome.mediaPlayerPrivate |           0 |          0 |       3 |
@@ -75,15 +75,15 @@ Generated 37 namespaces containing 0 properties, 348 functions and 75 events:
     |             chrome.mojoPrivate |           0 |          1 |       0 |
     |     chrome.musicManagerPrivate |           0 |          1 |       0 |
     |       chrome.networkingPrivate |           0 |         22 |       5 |
-    |        chrome.passwordsPrivate |           0 |         21 |       6 |
-    |      chrome.quickUnlockPrivate |           0 |          7 |       1 |
+    |        chrome.passwordsPrivate |           0 |         24 |       6 |
+    |      chrome.quickUnlockPrivate |           0 |          9 |       1 |
     |        chrome.resourcesPrivate |           0 |          1 |       0 |
     |         chrome.settingsPrivate |           0 |          5 |       1 |
     |           chrome.systemPrivate |           0 |          3 |       0 |
     |         chrome.terminalPrivate |           0 |         11 |       3 |
     |            chrome.usersPrivate |           0 |          7 |       0 |
     |  chrome.virtualKeyboardPrivate |           0 |         15 |       3 |
-    |        chrome.wallpaperPrivate |           0 |          0 |       1 |
+    |        chrome.wallpaperPrivate |           0 |          0 |       2 |
     |           chrome.webcamPrivate |           0 |          8 |       0 |
     |    chrome.webrtcLoggingPrivate |           0 |         14 |       0 |
     |   chrome.webstoreWidgetPrivate |           0 |          1 |       0 |
@@ -95,13 +95,13 @@ Generated 37 namespaces containing 0 properties, 348 functions and 75 events:
   (:require
     [chromex.app.accessibility-private refer:[
       get-display-name-for-locale get-battery-description set-native-accessibility-enabled
-      set-focus-rings set-highlights set-keyboard-listener darken-screen set-switch-access-menu-state
+      set-focus-rings set-highlights set-keyboard-listener darken-screen
       forward-key-events-to-switch-access update-switch-access-bubble
       set-native-chrome-vox-arc-support-for-current-app send-synthetic-key-event
       enable-chrome-vox-mouse-events send-synthetic-mouse-event on-select-to-speak-state-changed
       on-scrollable-bounds-for-point-found toggle-dictation set-virtual-keyboard-visible
-      open-settings-subpage tap-on-introduce-chrome-vox tap-on-accessibility-gesture
-      tap-on-two-finger-touch-start tap-on-two-finger-touch-stop
+      open-settings-subpage perform-accelerator-action tap-on-introduce-chrome-vox
+      tap-on-accessibility-gesture tap-on-two-finger-touch-start tap-on-two-finger-touch-stop
       tap-on-select-to-speak-state-change-requested tap-on-switch-access-command
       tap-on-announce-for-accessibility tap-find-scrollable-bounds-for-point
       tap-on-custom-spoken-feedback-toggled tap-all-events]]
@@ -163,17 +163,19 @@ Generated 37 namespaces containing 0 properties, 348 functions and 75 events:
 
     [chromex.app.file-manager-private refer:[
       logout-user-for-reauthentication cancel-dialog execute-task set-default-task get-file-tasks
-      get-mime-type get-strings add-file-watch remove-file-watch enable-external-file-scheme grant-access
-      select-files select-file get-entry-properties pin-drive-file resolve-isolated-entries add-mount
-      remove-mount get-volume-metadata-list start-copy cancel-copy get-size-stats format-volume
-      rename-volume get-preferences set-preferences search-drive search-drive-metadata
+      get-mime-type get-content-mime-type get-content-metadata get-strings add-file-watch
+      remove-file-watch enable-external-file-scheme grant-access select-files select-file
+      get-entry-properties pin-drive-file resolve-isolated-entries add-mount remove-mount
+      get-volume-metadata-list copy-image-to-clipboard start-copy cancel-copy get-size-stats
+      format-volume rename-volume get-preferences set-preferences search-drive search-drive-metadata
       search-files-by-hashes search-files zip-selection get-drive-connection-state
       validate-path-name-length zoom request-web-store-access-token get-download-url get-profiles
       open-inspector open-settings-subpage compute-checksum get-providers add-provided-file-system
       configure-volume get-custom-actions execute-custom-action get-directory-size get-recent-files
       mount-crostini share-paths-with-crostini unshare-path-with-crostini get-crostini-shared-paths
       get-linux-package-info install-linux-package import-crostini-image get-thumbnail
-      detect-character-encoding get-android-picker-apps select-android-picker-app tap-on-mount-completed
+      detect-character-encoding get-android-picker-apps select-android-picker-app sharesheet-has-targets
+      invoke-sharesheet toggle-added-to-holding-space get-holding-space-state tap-on-mount-completed
       tap-on-file-transfers-updated tap-on-copy-progress tap-on-directory-changed
       tap-on-preferences-changed tap-on-drive-connection-status-changed tap-on-device-changed
       tap-on-drive-sync-error tap-on-apps-updated tap-on-crostini-changed tap-all-events]]
@@ -191,10 +193,12 @@ Generated 37 namespaces containing 0 properties, 348 functions and 75 events:
       fetch-all-dictionary-words add-word-to-dictionary get-encrypt-sync-enabled set-xkb-layout
       finish-composing-text set-selection-range notify-ime-menu-item-activated show-input-view
       hide-input-view open-options-page get-composition-bounds get-surrounding-text get-settings
-      set-settings set-composition-range reset tap-on-changed tap-on-composition-bounds-changed
-      tap-on-dictionary-loaded tap-on-dictionary-changed tap-on-ime-menu-activation-changed
-      tap-on-ime-menu-list-changed tap-on-ime-menu-items-changed tap-on-focus tap-on-settings-changed
-      tap-on-screen-projection-changed tap-all-events]]
+      set-settings set-composition-range set-composing-range get-autocorrect-range
+      get-autocorrect-character-bounds set-autocorrect-range reset tap-on-changed
+      tap-on-composition-bounds-changed tap-on-dictionary-loaded tap-on-dictionary-changed
+      tap-on-ime-menu-activation-changed tap-on-ime-menu-list-changed tap-on-ime-menu-items-changed
+      tap-on-focus tap-on-settings-changed tap-on-screen-projection-changed tap-on-suggestions-changed
+      tap-on-input-method-options-changed tap-all-events]]
 
     [chromex.app.language-settings-private refer:[
       get-language-list enable-language disable-language set-enable-translation-for-language
@@ -234,8 +238,9 @@ Generated 37 namespaces containing 0 properties, 348 functions and 75 events:
 
     [chromex.app.passwords-private refer:[
       record-passwords-page-access-in-settings change-saved-password remove-saved-password
-      remove-password-exception undo-remove-saved-password-or-exception request-plaintext-password
-      get-saved-password-list get-password-exception-list import-passwords export-passwords
+      remove-saved-passwords remove-password-exception remove-password-exceptions
+      undo-remove-saved-password-or-exception request-plaintext-password get-saved-password-list
+      get-password-exception-list move-password-to-account import-passwords export-passwords
       request-export-progress-status cancel-export-passwords is-opted-in-for-account-storage
       opt-in-for-account-storage get-compromised-credentials get-plaintext-compromised-password
       change-compromised-credential remove-compromised-credential start-password-check
@@ -245,8 +250,9 @@ Generated 37 namespaces containing 0 properties, 348 functions and 75 events:
       tap-on-password-check-status-changed tap-all-events]]
 
     [chromex.app.quick-unlock-private refer:[
-      get-auth-token set-lock-screen-enabled get-available-modes get-active-modes check-credential
-      get-credential-requirements set-modes tap-on-active-modes-changed tap-all-events]]
+      get-auth-token set-lock-screen-enabled set-pin-autosubmit-enabled can-authenticate-pin
+      get-available-modes get-active-modes check-credential get-credential-requirements set-modes
+      tap-on-active-modes-changed tap-all-events]]
 
     [chromex.app.resources-private refer:[
       get-strings tap-all-events]]
@@ -260,12 +266,12 @@ Generated 37 namespaces containing 0 properties, 348 functions and 75 events:
 
     [chromex.app.terminal-private refer:[
       open-terminal-process open-vmshell-process close-terminal-process send-input on-terminal-resize
-      ack-output open-options-page get-crosh-settings get-settings set-settings get-a11y-status
+      ack-output open-window open-options-page get-settings set-settings get-a11y-status
       tap-on-process-output tap-on-settings-changed tap-on-a11y-status-changed tap-all-events]]
 
     [chromex.app.users-private refer:[
-      get-whitelisted-users is-whitelisted-user add-whitelisted-user remove-whitelisted-user
-      is-whitelist-managed get-current-user get-login-status tap-all-events]]
+      get-users is-user-in-list add-user remove-user is-user-list-managed get-current-user
+      get-login-status tap-all-events]]
 
     [chromex.app.virtual-keyboard-private refer:[
       insert-text send-key-event hide-keyboard set-hotrod-keyboard lock-keyboard keyboard-loaded
@@ -274,7 +280,7 @@ Generated 37 namespaces containing 0 properties, 348 functions and 75 events:
       tap-on-bounds-changed tap-on-keyboard-closed tap-on-keyboard-config-changed tap-all-events]]
 
     [chromex.app.wallpaper-private refer:[
-      tap-on-wallpaper-changed-by3rd-party tap-all-events]]
+      tap-on-wallpaper-changed-by3rd-party tap-on-close-preview-wallpaper tap-all-events]]
 
     [chromex.app.webcam-private refer:[
       open-serial-webcam close-webcam get set reset set-home restore-camera-preset set-camera-preset

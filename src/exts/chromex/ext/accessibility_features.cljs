@@ -30,6 +30,9 @@
 (defn cursor-highlight* [config]
   (gen-wrap :property ::cursor-highlight config))
 
+(defn cursor-color* [config]
+  (gen-wrap :property ::cursor-color config))
+
 (defn focus-highlight* [config]
   (gen-wrap :property ::focus-highlight config))
 

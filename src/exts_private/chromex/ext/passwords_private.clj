@@ -18,13 +18,19 @@
   ([] (gen-call :function ::record-passwords-page-access-in-settings &form)))
 
 (defmacro change-saved-password
-  "Changes the username and password corresponding to |id|.
+  "Changes the saved password corresponding to |ids|. Since the password can be stored in Google Account and on device, in
+   this case we want to change the password for accountId and deviceId. Invokes |callback| or raises an error depending on
+   whether the operation succeeded.
 
-     |id| - The id for the password entry being updated.
-     |new-username| - The new username.
-     |new-password| - The new password."
-  ([id new-username new-password] (gen-call :function ::change-saved-password &form id new-username new-password))
-  ([id new-username] `(change-saved-password ~id ~new-username :omit)))
+     |ids| - The ids for the password entry being updated.
+     |new-password| - The new password.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([ids new-password] (gen-call :function ::change-saved-password &form ids new-password)))
 
 (defmacro remove-saved-password
   "Removes the saved password corresponding to |id|. If no saved password for this pair exists, this function is a no-op.
@@ -32,15 +38,28 @@
      |id| - The id for the password entry being removed."
   ([id] (gen-call :function ::remove-saved-password &form id)))
 
+(defmacro remove-saved-passwords
+  "Removes the saved password corresponding to |ids|. If no saved password exists for a certain id, that id is ignored.
+   Undoing this operation via undoRemoveSavedPasswordOrException will restore all the removed passwords in the batch.
+
+     |ids| - ?"
+  ([ids] (gen-call :function ::remove-saved-passwords &form ids)))
+
 (defmacro remove-password-exception
-  "Removes the saved password exception corresponding to |exceptionUrl|. If no exception with this URL exists, this function
-   is a no-op.
+  "Removes the saved password exception corresponding to |id|. If no exception with this id exists, this function is a no-op.
 
      |id| - The id for the exception url entry being removed."
   ([id] (gen-call :function ::remove-password-exception &form id)))
 
+(defmacro remove-password-exceptions
+  "Removes the saved password exceptions corresponding to |ids|. If no exception exists for a certain id, that id is ignored.
+   Undoing this operation via undoRemoveSavedPasswordOrException will restore all the removed exceptions in the batch.
+
+     |ids| - ?"
+  ([ids] (gen-call :function ::remove-password-exceptions &form ids)))
+
 (defmacro undo-remove-saved-password-or-exception
-  "Undoes the last removal of a saved password or exception."
+  "Undoes the last removal of saved password(s) or exception(s)."
   ([] (gen-call :function ::undo-remove-saved-password-or-exception &form)))
 
 (defmacro request-plaintext-password
@@ -83,6 +102,14 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-password-exception-list &form)))
 
+(defmacro move-password-to-account
+  "Moves a password currently stored on the device to being stored in the signed-in, non-syncing Google Account. The result is
+   a no-op if any of these is true: |id| is invalid; |id| corresponds to a password already stored in the account; or the user
+   is not using the account-scoped password storage.
+
+     |id| - The id for the password entry being moved."
+  ([id] (gen-call :function ::move-password-to-account &form id)))
+
 (defmacro import-passwords
   "Triggers the Password Manager password import functionality."
   ([] (gen-call :function ::import-passwords &form)))
@@ -90,7 +117,7 @@
 (defmacro export-passwords
   "Triggers the Password Manager password export functionality. Completion Will be signaled by the
    onPasswordsFileExportProgress event. |callback| will be called when the request is started or rejected. If rejected
-   chrome.runtime.lastError will be set to 'in-progress' or 'reauth-failed'.
+   'runtime.lastError' will be set to 'in-progress' or 'reauth-failed'.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
@@ -304,12 +331,17 @@
    [{:id ::record-passwords-page-access-in-settings, :name "recordPasswordsPageAccessInSettings"}
     {:id ::change-saved-password,
      :name "changeSavedPassword",
+     :callback? true,
      :params
-     [{:name "id", :type "integer"}
-      {:name "new-username", :type "string"}
-      {:name "new-password", :optional? true, :type "string"}]}
+     [{:name "ids", :type "[array-of-integers]"}
+      {:name "new-password", :type "string"}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-saved-password, :name "removeSavedPassword", :params [{:name "id", :type "integer"}]}
+    {:id ::remove-saved-passwords, :name "removeSavedPasswords", :params [{:name "ids", :type "[array-of-integers]"}]}
     {:id ::remove-password-exception, :name "removePasswordException", :params [{:name "id", :type "integer"}]}
+    {:id ::remove-password-exceptions,
+     :name "removePasswordExceptions",
+     :params [{:name "ids", :type "[array-of-integers]"}]}
     {:id ::undo-remove-saved-password-or-exception, :name "undoRemoveSavedPasswordOrException"}
     {:id ::request-plaintext-password,
      :name "requestPlaintextPassword",
@@ -332,6 +364,7 @@
      [{:name "callback",
        :type :callback,
        :callback {:params [{:name "exceptions", :type "[array-of-passwordsPrivate.ExceptionEntrys]"}]}}]}
+    {:id ::move-password-to-account, :name "movePasswordToAccount", :params [{:name "id", :type "integer"}]}
     {:id ::import-passwords, :name "importPasswords"}
     {:id ::export-passwords, :name "exportPasswords", :callback? true, :params [{:name "callback", :type :callback}]}
     {:id ::request-export-progress-status,

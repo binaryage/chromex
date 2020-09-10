@@ -1,5 +1,5 @@
 (ns chromex.app.virtual-keyboard-private
-  "  * available since Chrome 35"
+  "  * available since Chrome 36"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -181,7 +181,7 @@
 
 (def api-table
   {:namespace "chrome.virtualKeyboardPrivate",
-   :since "35",
+   :since "36",
    :functions
    [{:id ::insert-text,
      :name "insertText",
@@ -240,7 +240,7 @@
      :params [{:name "bounds", :type "virtualKeyboardPrivate.Bounds"}]}
     {:id ::set-window-bounds-in-screen,
      :name "setWindowBoundsInScreen",
-     :since "future",
+     :since "84",
      :params [{:name "bounds", :type "virtualKeyboardPrivate.Bounds"}]}],
    :events
    [{:id ::on-bounds-changed,

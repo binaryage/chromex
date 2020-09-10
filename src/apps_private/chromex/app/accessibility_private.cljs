@@ -24,9 +24,6 @@
 (defn darken-screen* [config enabled]
   (gen-wrap :function ::darken-screen config enabled))
 
-(defn set-switch-access-menu-state* [config show element-bounds item-count]
-  (gen-wrap :function ::set-switch-access-menu-state config show element-bounds item-count))
-
 (defn forward-key-events-to-switch-access* [config should-forward]
   (gen-wrap :function ::forward-key-events-to-switch-access config should-forward))
 
@@ -59,6 +56,9 @@
 
 (defn open-settings-subpage* [config subpage]
   (gen-wrap :function ::open-settings-subpage config subpage))
+
+(defn perform-accelerator-action* [config accelerator-action]
+  (gen-wrap :function ::perform-accelerator-action config accelerator-action))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 

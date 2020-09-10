@@ -1,5 +1,5 @@
 (ns chromex.ext.input-method-private
-  "  * available since Chrome 35"
+  "  * available since Chrome 36"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -222,7 +222,8 @@
   ([engine-id settings] (gen-call :function ::set-settings &form engine-id settings)))
 
 (defmacro set-composition-range
-  "Set the composition range. If this extension does not own the active IME, this fails.
+  "(Deprecated) Set the composition range. If this extension does not own the active IME, this fails. Use setComposingRange
+   instead.
 
      |parameters| - ?
 
@@ -234,6 +235,58 @@
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
   ([parameters] (gen-call :function ::set-composition-range &form parameters)))
+
+(defmacro set-composing-range
+  "Sets the composing range. If this extension does not own the active IME, this fails.
+
+     |parameters| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([parameters] (gen-call :function ::set-composing-range &form parameters)))
+
+(defmacro get-autocorrect-range
+  "Get the autocorrected word's bounds.
+
+     |parameters| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [autocorrect-character-bounds] where:
+
+     |autocorrect-character-bounds| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([parameters] (gen-call :function ::get-autocorrect-range &form parameters)))
+
+(defmacro get-autocorrect-character-bounds
+  "Get the screen coordinates of the autocorrected word's bounds.
+
+     |parameters| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [autocorrect-character-bounds] where:
+
+     |autocorrect-character-bounds| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([parameters] (gen-call :function ::get-autocorrect-character-bounds &form parameters)))
+
+(defmacro set-autocorrect-range
+  "Set the autocorrect range and autocorrect word. If this extension does not own the active IME, this fails.
+
+     |parameters| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([parameters] (gen-call :function ::set-autocorrect-range &form parameters)))
 
 (defmacro reset
   "Resets the current engine to its initial state. Fires an OnReset event."
@@ -345,6 +398,26 @@
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-screen-projection-changed &form channel args)))
 
+(defmacro tap-on-suggestions-changed-events
+  "This event is sent when a new set of suggestions has been generated
+
+   Events will be put on the |channel| with signature [::on-suggestions-changed [suggestions]] where:
+
+     |suggestions| - List of suggestions to display, in order of relevance
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-suggestions-changed &form channel args)))
+
+(defmacro tap-on-input-method-options-changed-events
+  "This event is sent when input method options are changed.
+
+   Events will be put on the |channel| with signature [::on-input-method-options-changed [engine-id]] where:
+
+     |engine-id| - The engine ID for the input method being changed.
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-input-method-options-changed &form channel args)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -358,7 +431,7 @@
 
 (def api-table
   {:namespace "chrome.inputMethodPrivate",
-   :since "35",
+   :since "36",
    :functions
    [{:id ::get-input-method-config,
      :name "getInputMethodConfig",
@@ -425,7 +498,7 @@
      :params [{:name "callback", :optional? true, :type :callback}]}
     {:id ::hide-input-view,
      :name "hideInputView",
-     :since "future",
+     :since "82",
      :callback? true,
      :params [{:name "callback", :optional? true, :type :callback}]}
     {:id ::open-options-page, :name "openOptionsPage", :since "52", :params [{:name "input-method-id", :type "string"}]}
@@ -445,7 +518,7 @@
       {:name "callback", :type :callback, :callback {:params [{:name "surrounding-info", :type "object"}]}}]}
     {:id ::get-settings,
      :name "getSettings",
-     :since "future",
+     :since "83",
      :callback? true,
      :params
      [{:name "engine-id", :type "string"}
@@ -454,7 +527,7 @@
        :callback {:params [{:name "settings", :optional? true, :type "inputMethodPrivate.InputMethodSettings"}]}}]}
     {:id ::set-settings,
      :name "setSettings",
-     :since "future",
+     :since "83",
      :callback? true,
      :params
      [{:name "engine-id", :type "string"}
@@ -467,6 +540,34 @@
      :params
      [{:name "parameters", :type "object"}
       {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
+    {:id ::set-composing-range,
+     :name "setComposingRange",
+     :since "future",
+     :callback? true,
+     :params [{:name "parameters", :type "object"} {:name "callback", :optional? true, :type :callback}]}
+    {:id ::get-autocorrect-range,
+     :name "getAutocorrectRange",
+     :since "future",
+     :callback? true,
+     :params
+     [{:name "parameters", :type "object"}
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "autocorrect-character-bounds", :type "object"}]}}]}
+    {:id ::get-autocorrect-character-bounds,
+     :name "getAutocorrectCharacterBounds",
+     :since "future",
+     :callback? true,
+     :params
+     [{:name "parameters", :type "object"}
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "autocorrect-character-bounds", :type "object"}]}}]}
+    {:id ::set-autocorrect-range,
+     :name "setAutocorrectRange",
+     :since "85",
+     :callback? true,
+     :params [{:name "parameters", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::reset, :name "reset", :since "81"}],
    :events
    [{:id ::on-changed, :name "onChanged", :params [{:name "new-input-method-id", :type "string"}]}
@@ -496,11 +597,19 @@
      :since "73",
      :params
      [{:name "engine-id", :type "string"}
-      {:name "settings", :since "future", :type "inputMethodPrivate.InputMethodSettings"}]}
+      {:name "settings", :since "83", :type "inputMethodPrivate.InputMethodSettings"}]}
     {:id ::on-screen-projection-changed,
      :name "onScreenProjectionChanged",
      :since "73",
-     :params [{:name "is-projected", :type "boolean"}]}]})
+     :params [{:name "is-projected", :type "boolean"}]}
+    {:id ::on-suggestions-changed,
+     :name "onSuggestionsChanged",
+     :since "85",
+     :params [{:name "suggestions", :type "[array-of-strings]"}]}
+    {:id ::on-input-method-options-changed,
+     :name "onInputMethodOptionsChanged",
+     :since "future",
+     :params [{:name "engine-id", :type "string"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

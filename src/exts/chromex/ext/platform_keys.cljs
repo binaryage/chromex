@@ -9,6 +9,9 @@
 (defn get-key-pair* [config certificate parameters]
   (gen-wrap :function ::get-key-pair config certificate parameters))
 
+(defn get-key-pair-by-spki* [config public-key-spki-der parameters]
+  (gen-wrap :function ::get-key-pair-by-spki config public-key-spki-der parameters))
+
 (defn subtle-crypto* [config]
   (gen-wrap :function ::subtle-crypto config))
 

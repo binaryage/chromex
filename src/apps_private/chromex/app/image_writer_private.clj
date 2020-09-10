@@ -5,7 +5,7 @@
    See the design doc for a detailed description of this API.
    https://goo.gl/KzMEFq
 
-     * available since Chrome 35"
+     * available since Chrome 36"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -149,7 +149,7 @@
 
 (def api-table
   {:namespace "chrome.imageWriterPrivate",
-   :since "35",
+   :since "36",
    :functions
    [{:id ::write-from-url,
      :name "writeFromUrl",
