@@ -9,8 +9,8 @@
                  [org.clojure/data.json "1.0.0"]
                  [camel-snake-kebab "0.4.1"]
                  [de.ubercode.clostache/clostache "1.4.0"]
-                 [funcool/cuerdas "2.2.1"]
+                 [funcool/cuerdas "2020.03.26-3"]
                  [clj-time "0.15.2"]
-                 [cljfmt "0.6.6"]]
+                 [cljfmt "0.7.0"]]
   :source-paths ["src"]
   :main api-gen.core)
