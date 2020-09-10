@@ -8,3 +8,4 @@ pom.xml.*
 test/resources/.compiled
 test/resources/.compiler*.txt
 .nrepl-port
+.venv
