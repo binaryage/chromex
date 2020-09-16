@@ -166,9 +166,9 @@
   "Requests the latest compromised credentials.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [compromised-credential] where:
+   Signature of the result value put on the channel is [insecure-credentials] where:
 
-     |compromised-credential| - ?
+     |insecure-credentials| - ?
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
@@ -386,29 +386,28 @@
      :params
      [{:name "callback",
        :type :callback,
-       :callback
-       {:params [{:name "compromised-credential", :type "[array-of-passwordsPrivate.CompromisedCredentials]"}]}}]}
+       :callback {:params [{:name "insecure-credentials", :type "[array-of-passwordsPrivate.InsecureCredentials]"}]}}]}
     {:id ::get-plaintext-compromised-password,
      :name "getPlaintextCompromisedPassword",
      :callback? true,
      :params
-     [{:name "credential", :type "passwordsPrivate.CompromisedCredential"}
+     [{:name "credential", :type "passwordsPrivate.InsecureCredential"}
       {:name "reason", :type "passwordsPrivate.PlaintextReason"}
       {:name "callback",
        :type :callback,
-       :callback {:params [{:name "credential", :type "passwordsPrivate.CompromisedCredential"}]}}]}
+       :callback {:params [{:name "credential", :type "passwordsPrivate.InsecureCredential"}]}}]}
     {:id ::change-compromised-credential,
      :name "changeCompromisedCredential",
      :callback? true,
      :params
-     [{:name "credential", :type "passwordsPrivate.CompromisedCredential"}
+     [{:name "credential", :type "passwordsPrivate.InsecureCredential"}
       {:name "new-password", :type "string"}
       {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-compromised-credential,
      :name "removeCompromisedCredential",
      :callback? true,
      :params
-     [{:name "credential", :type "passwordsPrivate.CompromisedCredential"}
+     [{:name "credential", :type "passwordsPrivate.InsecureCredential"}
       {:name "callback", :optional? true, :type :callback}]}
     {:id ::start-password-check,
      :name "startPasswordCheck",
@@ -440,7 +439,7 @@
      :params [{:name "opted-in", :type "boolean"}]}
     {:id ::on-compromised-credentials-changed,
      :name "onCompromisedCredentialsChanged",
-     :params [{:name "compromised-credentials", :type "[array-of-passwordsPrivate.CompromisedCredentials]"}]}
+     :params [{:name "compromised-credentials", :type "[array-of-passwordsPrivate.InsecureCredentials]"}]}
     {:id ::on-password-check-status-changed,
      :name "onPasswordCheckStatusChanged",
      :params [{:name "status", :type "passwordsPrivate.PasswordCheckStatus"}]}]})

@@ -87,6 +87,13 @@
    https://developer.chrome.com/extensions/accessibilityFeatures#property-cursorColor."
   ([] (gen-call :property ::cursor-color &form)))
 
+(defmacro get-docked-magnifier
+  "ChromeOS only.Docked magnifier. The value indicates whether docked magnifier feature is enabled or not. get() requires
+   accessibilityFeatures.read permission. set() and clear() require accessibilityFeatures.modify permission.
+
+   https://developer.chrome.com/extensions/accessibilityFeatures#property-dockedMagnifier."
+  ([] (gen-call :property ::docked-magnifier &form)))
+
 (defmacro get-focus-highlight
   "ChromeOS only.Focus highlighting. The value indicates whether the feature is enabled or not. get() requires
    accessibilityFeatures.read permission. set() and clear() require accessibilityFeatures.modify permission.
@@ -139,6 +146,7 @@
     {:id ::caret-highlight, :name "caretHighlight", :since "51", :return-type "object"}
     {:id ::cursor-highlight, :name "cursorHighlight", :since "51", :return-type "object"}
     {:id ::cursor-color, :name "cursorColor", :since "85", :return-type "object"}
+    {:id ::docked-magnifier, :name "dockedMagnifier", :since "master", :return-type "object"}
     {:id ::focus-highlight, :name "focusHighlight", :since "51", :return-type "object"}
     {:id ::select-to-speak, :name "selectToSpeak", :since "51", :return-type "object"}
     {:id ::switch-access, :name "switchAccess", :since "51", :return-type "object"}

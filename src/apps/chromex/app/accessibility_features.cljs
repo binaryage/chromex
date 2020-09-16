@@ -33,6 +33,9 @@
 (defn cursor-color* [config]
   (gen-wrap :property ::cursor-color config))
 
+(defn docked-magnifier* [config]
+  (gen-wrap :property ::docked-magnifier config))
+
 (defn focus-highlight* [config]
   (gen-wrap :property ::focus-highlight config))
 
