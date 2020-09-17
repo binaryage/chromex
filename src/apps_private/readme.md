@@ -242,9 +242,9 @@ Generated 37 namespaces containing 0 properties, 364 functions and 78 events:
       undo-remove-saved-password-or-exception request-plaintext-password get-saved-password-list
       get-password-exception-list move-password-to-account import-passwords export-passwords
       request-export-progress-status cancel-export-passwords is-opted-in-for-account-storage
-      opt-in-for-account-storage get-compromised-credentials get-plaintext-compromised-password
-      change-compromised-credential remove-compromised-credential start-password-check
-      stop-password-check get-password-check-status tap-on-saved-passwords-list-changed
+      opt-in-for-account-storage get-compromised-credentials get-plaintext-insecure-password
+      change-insecure-credential remove-insecure-credential start-password-check stop-password-check
+      get-password-check-status tap-on-saved-passwords-list-changed
       tap-on-password-exceptions-list-changed tap-on-passwords-file-export-progress
       tap-on-account-storage-opt-in-state-changed tap-on-compromised-credentials-changed
       tap-on-password-check-status-changed tap-all-events]]

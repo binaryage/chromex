@@ -174,12 +174,12 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-compromised-credentials &form)))
 
-(defmacro get-plaintext-compromised-password
+(defmacro get-plaintext-insecure-password
   "Requests the plaintext password for |credential|. |callback| gets invoked with the same |credential|, whose |password
 
    field will be set.
 
-     |credential| - The compromised credential whose password is being retrieved.
+     |credential| - The insecure credential whose password is being retrieved.
      |reason| - The reason why the plaintext password is requested.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
@@ -189,9 +189,9 @@
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([credential reason] (gen-call :function ::get-plaintext-compromised-password &form credential reason)))
+  ([credential reason] (gen-call :function ::get-plaintext-insecure-password &form credential reason)))
 
-(defmacro change-compromised-credential
+(defmacro change-insecure-credential
   "Requests to change the password of |credential| to |new_password|. Invokes |callback| or raises an error depending on
    whether the operation succeeded.
 
@@ -203,9 +203,9 @@
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([credential new-password] (gen-call :function ::change-compromised-credential &form credential new-password)))
+  ([credential new-password] (gen-call :function ::change-insecure-credential &form credential new-password)))
 
-(defmacro remove-compromised-credential
+(defmacro remove-insecure-credential
   "Requests to remove |credential| from the password store. Invokes |callback| on completion.
 
      |credential| - ?
@@ -215,10 +215,10 @@
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([credential] (gen-call :function ::remove-compromised-credential &form credential)))
+  ([credential] (gen-call :function ::remove-insecure-credential &form credential)))
 
 (defmacro start-password-check
-  "Starts a check for compromised passwords. Invokes |callback| on completion.
+  "Starts a check for insecure passwords. Invokes |callback| on completion.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
@@ -228,7 +228,7 @@
   ([] (gen-call :function ::start-password-check &form)))
 
 (defmacro stop-password-check
-  "Stops checking for compromised passwords. Invokes |callback| on completion.
+  "Stops checking for insecure passwords. Invokes |callback| on completion.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
@@ -387,8 +387,8 @@
      [{:name "callback",
        :type :callback,
        :callback {:params [{:name "insecure-credentials", :type "[array-of-passwordsPrivate.InsecureCredentials]"}]}}]}
-    {:id ::get-plaintext-compromised-password,
-     :name "getPlaintextCompromisedPassword",
+    {:id ::get-plaintext-insecure-password,
+     :name "getPlaintextInsecurePassword",
      :callback? true,
      :params
      [{:name "credential", :type "passwordsPrivate.InsecureCredential"}
@@ -396,15 +396,15 @@
       {:name "callback",
        :type :callback,
        :callback {:params [{:name "credential", :type "passwordsPrivate.InsecureCredential"}]}}]}
-    {:id ::change-compromised-credential,
-     :name "changeCompromisedCredential",
+    {:id ::change-insecure-credential,
+     :name "changeInsecureCredential",
      :callback? true,
      :params
      [{:name "credential", :type "passwordsPrivate.InsecureCredential"}
       {:name "new-password", :type "string"}
       {:name "callback", :optional? true, :type :callback}]}
-    {:id ::remove-compromised-credential,
-     :name "removeCompromisedCredential",
+    {:id ::remove-insecure-credential,
+     :name "removeInsecureCredential",
      :callback? true,
      :params
      [{:name "credential", :type "passwordsPrivate.InsecureCredential"}

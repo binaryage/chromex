@@ -57,14 +57,14 @@
 (defn get-compromised-credentials* [config]
   (gen-wrap :function ::get-compromised-credentials config))
 
-(defn get-plaintext-compromised-password* [config credential reason]
-  (gen-wrap :function ::get-plaintext-compromised-password config credential reason))
+(defn get-plaintext-insecure-password* [config credential reason]
+  (gen-wrap :function ::get-plaintext-insecure-password config credential reason))
 
-(defn change-compromised-credential* [config credential new-password]
-  (gen-wrap :function ::change-compromised-credential config credential new-password))
+(defn change-insecure-credential* [config credential new-password]
+  (gen-wrap :function ::change-insecure-credential config credential new-password))
 
-(defn remove-compromised-credential* [config credential]
-  (gen-wrap :function ::remove-compromised-credential config credential))
+(defn remove-insecure-credential* [config credential]
+  (gen-wrap :function ::remove-insecure-credential config credential))
 
 (defn start-password-check* [config]
   (gen-wrap :function ::start-password-check config))
