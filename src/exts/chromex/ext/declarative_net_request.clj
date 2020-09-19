@@ -159,6 +159,22 @@
    https://developer.chrome.com/extensions/declarativeNetRequest#method-setActionCountAsBadgeText."
   ([enable] (gen-call :function ::set-action-count-as-badge-text &form enable)))
 
+(defmacro is-regex-supported
+  "Checks if the given regular expression will be supported as a regexFilter rule condition.
+
+     |regex-options| - The regular expression to check.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [result] where:
+
+     |result| - https://developer.chrome.com/extensions/declarativeNetRequest#property-callback-result.
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/extensions/declarativeNetRequest#method-isRegexSupported."
+  ([regex-options] (gen-call :function ::is-regex-supported &form regex-options)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -235,7 +251,14 @@
       {:name "callback", :type :callback, :callback {:params [{:name "details", :type "object"}]}}]}
     {:id ::set-action-count-as-badge-text,
      :name "setActionCountAsBadgeText",
-     :params [{:name "enable", :type "boolean"}]}],
+     :params [{:name "enable", :type "boolean"}]}
+    {:id ::is-regex-supported,
+     :name "isRegexSupported",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "regex-options", :type "object"}
+      {:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}],
    :events
    [{:id ::on-rule-matched-debug, :name "onRuleMatchedDebug", :params [{:name "info", :since "85", :type "object"}]}]})
 

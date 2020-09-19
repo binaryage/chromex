@@ -89,7 +89,7 @@
 
 ### API stats
 
-Generated 81 namespaces containing 61 properties, 394 functions and 181 events:
+Generated 81 namespaces containing 61 properties, 395 functions and 181 events:
 
 
     |                             :namespace | :properties | :functions | :events |
@@ -110,7 +110,7 @@ Generated 81 namespaces containing 61 properties, 394 functions and 181 events:
     |                         chrome.cookies |           0 |          5 |       1 |
     |                        chrome.debugger |           0 |          4 |       2 |
     |              chrome.declarativeContent |           0 |          0 |       1 |
-    |           chrome.declarativeNetRequest |           7 |          6 |       1 |
+    |           chrome.declarativeNetRequest |           7 |          7 |       1 |
     |           chrome.declarativeWebRequest |           0 |          0 |       2 |
     |                  chrome.desktopCapture |           0 |          2 |       0 |
     |        chrome.devtools.inspectedWindow |           1 |          3 |       2 |
@@ -250,7 +250,7 @@ Generated 81 namespaces containing 61 properties, 394 functions and 181 events:
       get-max-getmatchedrules-calls-per-interval get-max-number-of-regex-rules
       get-max-number-of-static-rulesets get-dynamic-ruleset-id update-dynamic-rules get-dynamic-rules
       update-enabled-rulesets get-enabled-rulesets get-matched-rules set-action-count-as-badge-text
-      tap-on-rule-matched-debug tap-all-events]]
+      is-regex-supported tap-on-rule-matched-debug tap-all-events]]
 
     [chromex.ext.declarative-web-request refer:[
       tap-on-request tap-on-message tap-all-events]]
