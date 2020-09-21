@@ -48,7 +48,7 @@
 
 ### API stats
 
-Generated 40 namespaces containing 0 properties, 491 functions and 83 events:
+Generated 40 namespaces containing 0 properties, 492 functions and 84 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -79,7 +79,7 @@ Generated 40 namespaces containing 0 properties, 491 functions and 83 events:
     |                 chrome.metricsPrivate |           0 |         17 |       0 |
     |                    chrome.mojoPrivate |           0 |          1 |       0 |
     |              chrome.networkingPrivate |           0 |         22 |       5 |
-    |               chrome.passwordsPrivate |           0 |         24 |       6 |
+    |               chrome.passwordsPrivate |           0 |         25 |       7 |
     |             chrome.quickUnlockPrivate |           0 |          9 |       1 |
     |               chrome.resourcesPrivate |           0 |          1 |       0 |
     |            chrome.safeBrowsingPrivate |           0 |          1 |       5 |
@@ -277,11 +277,12 @@ Generated 40 namespaces containing 0 properties, 491 functions and 83 events:
       undo-remove-saved-password-or-exception request-plaintext-password get-saved-password-list
       get-password-exception-list move-password-to-account import-passwords export-passwords
       request-export-progress-status cancel-export-passwords is-opted-in-for-account-storage
-      opt-in-for-account-storage get-compromised-credentials get-plaintext-insecure-password
-      change-insecure-credential remove-insecure-credential start-password-check stop-password-check
-      get-password-check-status tap-on-saved-passwords-list-changed
-      tap-on-password-exceptions-list-changed tap-on-passwords-file-export-progress
-      tap-on-account-storage-opt-in-state-changed tap-on-compromised-credentials-changed
+      opt-in-for-account-storage get-compromised-credentials get-weak-credentials
+      get-plaintext-insecure-password change-insecure-credential remove-insecure-credential
+      start-password-check stop-password-check get-password-check-status
+      tap-on-saved-passwords-list-changed tap-on-password-exceptions-list-changed
+      tap-on-passwords-file-export-progress tap-on-account-storage-opt-in-state-changed
+      tap-on-compromised-credentials-changed tap-on-weak-credentials-changed
       tap-on-password-check-status-changed tap-all-events]]
 
     [chromex.ext.quick-unlock-private refer:[

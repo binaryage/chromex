@@ -174,6 +174,18 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-compromised-credentials &form)))
 
+(defmacro get-weak-credentials
+  "Requests the latest weak credentials.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [insecure-credentials] where:
+
+     |insecure-credentials| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::get-weak-credentials &form)))
+
 (defmacro get-plaintext-insecure-password
   "Requests the plaintext password for |credential|. |callback| gets invoked with the same |credential|, whose |password
 
@@ -303,6 +315,16 @@
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-compromised-credentials-changed &form channel args)))
 
+(defmacro tap-on-weak-credentials-changed-events
+  "Fired when the weak credentials changed.
+
+   Events will be put on the |channel| with signature [::on-weak-credentials-changed [weak-credentials]] where:
+
+     |weak-credentials| - The updated weak credentials.
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-weak-credentials-changed &form channel args)))
+
 (defmacro tap-on-password-check-status-changed-events
   "Fired when the status of the password check changes.
 
@@ -387,6 +409,13 @@
      [{:name "callback",
        :type :callback,
        :callback {:params [{:name "insecure-credentials", :type "[array-of-passwordsPrivate.InsecureCredentials]"}]}}]}
+    {:id ::get-weak-credentials,
+     :name "getWeakCredentials",
+     :callback? true,
+     :params
+     [{:name "callback",
+       :type :callback,
+       :callback {:params [{:name "insecure-credentials", :type "[array-of-passwordsPrivate.InsecureCredentials]"}]}}]}
     {:id ::get-plaintext-insecure-password,
      :name "getPlaintextInsecurePassword",
      :callback? true,
@@ -440,6 +469,9 @@
     {:id ::on-compromised-credentials-changed,
      :name "onCompromisedCredentialsChanged",
      :params [{:name "compromised-credentials", :type "[array-of-passwordsPrivate.InsecureCredentials]"}]}
+    {:id ::on-weak-credentials-changed,
+     :name "onWeakCredentialsChanged",
+     :params [{:name "weak-credentials", :type "[array-of-passwordsPrivate.InsecureCredentials]"}]}
     {:id ::on-password-check-status-changed,
      :name "onPasswordCheckStatusChanged",
      :params [{:name "status", :type "passwordsPrivate.PasswordCheckStatus"}]}]})

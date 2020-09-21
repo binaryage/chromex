@@ -57,6 +57,9 @@
 (defn get-compromised-credentials* [config]
   (gen-wrap :function ::get-compromised-credentials config))
 
+(defn get-weak-credentials* [config]
+  (gen-wrap :function ::get-weak-credentials config))
+
 (defn get-plaintext-insecure-password* [config credential reason]
   (gen-wrap :function ::get-plaintext-insecure-password config credential reason))
 
@@ -91,6 +94,9 @@
 
 (defn on-compromised-credentials-changed* [config channel & args]
   (gen-wrap :event ::on-compromised-credentials-changed config channel args))
+
+(defn on-weak-credentials-changed* [config channel & args]
+  (gen-wrap :event ::on-weak-credentials-changed config channel args))
 
 (defn on-password-check-status-changed* [config channel & args]
   (gen-wrap :event ::on-password-check-status-changed config channel args))
