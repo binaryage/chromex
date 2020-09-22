@@ -26,6 +26,7 @@
 | [chrome.displaySource](https://developer.chrome.com/extensions/displaySource) | [chromex/app/display_source.clj](chromex/app/display_source.clj) |
 | [chrome.dns](https://developer.chrome.com/extensions/dns) | [chromex/app/dns.clj](chromex/app/dns.clj) |
 | [chrome.documentScan](https://developer.chrome.com/extensions/documentScan) | [chromex/app/document_scan.clj](chromex/app/document_scan.clj) |
+| [chrome.dom](https://developer.chrome.com/extensions/dom) | [chromex/app/dom.clj](chromex/app/dom.clj) |
 | [chrome.enterprise.deviceAttributes](https://developer.chrome.com/extensions/enterprise.deviceAttributes) | [chromex/app/enterprise/device_attributes.clj](chromex/app/enterprise/device_attributes.clj) |
 | [chrome.enterprise.platformKeys](https://developer.chrome.com/extensions/enterprise.platformKeys) | [chromex/app/enterprise/platform_keys.clj](chromex/app/enterprise/platform_keys.clj) |
 | [chrome.fileBrowserHandler](https://developer.chrome.com/extensions/fileBrowserHandler) | [chromex/app/file_browser_handler.clj](chromex/app/file_browser_handler.clj) |
@@ -76,7 +77,7 @@
 
 ### API stats
 
-Generated 68 namespaces containing 32 properties, 454 functions and 155 events:
+Generated 69 namespaces containing 32 properties, 455 functions and 155 events:
 
 
     |                         :namespace | :properties | :functions | :events |
@@ -103,6 +104,7 @@ Generated 68 namespaces containing 32 properties, 454 functions and 155 events:
     |               chrome.displaySource |           0 |          4 |       3 |
     |                         chrome.dns |           0 |          1 |       0 |
     |                chrome.documentScan |           0 |          1 |       0 |
+    |                         chrome.dom |           0 |          1 |       0 |
     | chrome.enterprise.deviceAttributes |           0 |          5 |       0 |
     |     chrome.enterprise.platformKeys |           0 |          6 |       0 |
     |          chrome.fileBrowserHandler |           0 |          1 |       1 |
@@ -249,6 +251,9 @@ Generated 68 namespaces containing 32 properties, 454 functions and 155 events:
 
     [chromex.app.document-scan refer:[
       scan tap-all-events]]
+
+    [chromex.app.dom refer:[
+      open-or-closed-shadow-root tap-all-events]]
 
     [chromex.app.enterprise.device-attributes refer:[
       get-directory-device-id get-device-serial-number get-device-asset-id get-device-annotated-location
