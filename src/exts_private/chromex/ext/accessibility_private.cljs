@@ -42,8 +42,8 @@
 (defn send-synthetic-mouse-event* [config mouse-event]
   (gen-wrap :function ::send-synthetic-mouse-event config mouse-event))
 
-(defn on-select-to-speak-state-changed* [config state]
-  (gen-wrap :function ::on-select-to-speak-state-changed config state))
+(defn set-select-to-speak-state* [config state]
+  (gen-wrap :function ::set-select-to-speak-state config state))
 
 (defn on-scrollable-bounds-for-point-found* [config rect]
   (gen-wrap :function ::on-scrollable-bounds-for-point-found config rect))
@@ -83,8 +83,8 @@
 (defn on-announce-for-accessibility* [config channel & args]
   (gen-wrap :event ::on-announce-for-accessibility config channel args))
 
-(defn find-scrollable-bounds-for-point* [config channel & args]
-  (gen-wrap :event ::find-scrollable-bounds-for-point config channel args))
+(defn on-scrollable-bounds-for-point-requested* [config channel & args]
+  (gen-wrap :event ::on-scrollable-bounds-for-point-requested config channel args))
 
 (defn on-custom-spoken-feedback-toggled* [config channel & args]
   (gen-wrap :event ::on-custom-spoken-feedback-toggled config channel args))

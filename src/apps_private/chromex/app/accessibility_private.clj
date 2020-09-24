@@ -106,16 +106,17 @@
      |mouse-event| - The event to send."
   ([mouse-event] (gen-call :function ::send-synthetic-mouse-event &form mouse-event)))
 
-(defmacro on-select-to-speak-state-changed
+(defmacro set-select-to-speak-state
   "Called by the Select-to-Speak extension when Select-to-Speak has changed states, between selecting with the mouse,
    speaking, and inactive.
 
      |state| - ?"
-  ([state] (gen-call :function ::on-select-to-speak-state-changed &form state)))
+  ([state] (gen-call :function ::set-select-to-speak-state &form state)))
 
 (defmacro on-scrollable-bounds-for-point-found
-  "Called by the Accessibility Common extension when findScrollableBoundsForPoint has found a scrolling container. |rect| will
-   be the bounds of the nearest scrollable ancestor of the node at the point requested using findScrollableBoundsForPoint.
+  "Called by the Accessibility Common extension when onScrollableBoundsForPointRequested has found a scrolling container.
+   |rect| will be the bounds of the nearest scrollable ancestor of the node at the point requested using
+   onScrollableBoundsForPointRequested.
 
      |rect| - ?"
   ([rect] (gen-call :function ::on-scrollable-bounds-for-point-found &form rect)))
@@ -213,17 +214,17 @@
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-announce-for-accessibility &form channel args)))
 
-(defmacro tap-find-scrollable-bounds-for-point-events
+(defmacro tap-on-scrollable-bounds-for-point-requested-events
   "Fired when an internal component within accessibility wants to find the nearest scrolling container at a given screen
    coordinate. Used in Automatic Clicks.
 
-   Events will be put on the |channel| with signature [::find-scrollable-bounds-for-point [x y]] where:
+   Events will be put on the |channel| with signature [::on-scrollable-bounds-for-point-requested [x y]] where:
 
      |x| - X screen coordinate of the point.
      |y| - Y screen coordinate of the point.
 
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
-  ([channel & args] (apply gen-call :event ::find-scrollable-bounds-for-point &form channel args)))
+  ([channel & args] (apply gen-call :event ::on-scrollable-bounds-for-point-requested &form channel args)))
 
 (defmacro tap-on-custom-spoken-feedback-toggled-events
   "Fired when a custom spoken feedback on the active window gets enabled or disabled. Called from ARC++ accessibility.
@@ -305,9 +306,9 @@
      :name "sendSyntheticMouseEvent",
      :since "71",
      :params [{:name "mouse-event", :type "accessibilityPrivate.SyntheticMouseEvent"}]}
-    {:id ::on-select-to-speak-state-changed,
-     :name "onSelectToSpeakStateChanged",
-     :since "68",
+    {:id ::set-select-to-speak-state,
+     :name "setSelectToSpeakState",
+     :since "master",
      :params [{:name "state", :type "accessibilityPrivate.SelectToSpeakState"}]}
     {:id ::on-scrollable-bounds-for-point-found,
      :name "onScrollableBoundsForPointFound",
@@ -343,9 +344,9 @@
      :name "onAnnounceForAccessibility",
      :since "74",
      :params [{:name "announce-text", :type "[array-of-strings]"}]}
-    {:id ::find-scrollable-bounds-for-point,
-     :name "findScrollableBoundsForPoint",
-     :since "77",
+    {:id ::on-scrollable-bounds-for-point-requested,
+     :name "onScrollableBoundsForPointRequested",
+     :since "master",
      :params [{:name "x", :type "double"} {:name "y", :type "double"}]}
     {:id ::on-custom-spoken-feedback-toggled,
      :name "onCustomSpokenFeedbackToggled",

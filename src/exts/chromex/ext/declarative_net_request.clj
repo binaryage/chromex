@@ -254,7 +254,7 @@
      :params [{:name "enable", :type "boolean"}]}
     {:id ::is-regex-supported,
      :name "isRegexSupported",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "regex-options", :type "object"}

@@ -104,12 +104,12 @@ Generated 40 namespaces containing 0 properties, 492 functions and 84 events:
       set-focus-rings set-highlights set-keyboard-listener darken-screen
       forward-key-events-to-switch-access update-switch-access-bubble
       set-native-chrome-vox-arc-support-for-current-app send-synthetic-key-event
-      enable-chrome-vox-mouse-events send-synthetic-mouse-event on-select-to-speak-state-changed
+      enable-chrome-vox-mouse-events send-synthetic-mouse-event set-select-to-speak-state
       on-scrollable-bounds-for-point-found toggle-dictation set-virtual-keyboard-visible
       open-settings-subpage perform-accelerator-action tap-on-introduce-chrome-vox
       tap-on-accessibility-gesture tap-on-two-finger-touch-start tap-on-two-finger-touch-stop
       tap-on-select-to-speak-state-change-requested tap-on-switch-access-command
-      tap-on-announce-for-accessibility tap-find-scrollable-bounds-for-point
+      tap-on-announce-for-accessibility tap-on-scrollable-bounds-for-point-requested
       tap-on-custom-spoken-feedback-toggled tap-all-events]]
 
     [chromex.ext.activity-log-private refer:[
