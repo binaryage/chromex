@@ -23,6 +23,7 @@
    whether the operation succeeded.
 
      |ids| - The ids for the password entry being updated.
+     |new-username| - The new username.
      |new-password| - The new password.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
@@ -30,7 +31,7 @@
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([ids new-password] (gen-call :function ::change-saved-password &form ids new-password)))
+  ([ids new-username new-password] (gen-call :function ::change-saved-password &form ids new-username new-password)))
 
 (defmacro remove-saved-password
   "Removes the saved password corresponding to |id|. If no saved password for this pair exists, this function is a no-op.
@@ -356,6 +357,7 @@
      :callback? true,
      :params
      [{:name "ids", :type "[array-of-integers]"}
+      {:name "new-username", :type "string"}
       {:name "new-password", :type "string"}
       {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-saved-password, :name "removeSavedPassword", :params [{:name "id", :type "integer"}]}

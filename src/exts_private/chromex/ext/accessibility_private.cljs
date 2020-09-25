@@ -45,8 +45,8 @@
 (defn set-select-to-speak-state* [config state]
   (gen-wrap :function ::set-select-to-speak-state config state))
 
-(defn on-scrollable-bounds-for-point-found* [config rect]
-  (gen-wrap :function ::on-scrollable-bounds-for-point-found config rect))
+(defn handle-scrollable-bounds-for-point-found* [config rect]
+  (gen-wrap :function ::handle-scrollable-bounds-for-point-found config rect))
 
 (defn toggle-dictation* [config]
   (gen-wrap :function ::toggle-dictation config))

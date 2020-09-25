@@ -113,13 +113,13 @@
      |state| - ?"
   ([state] (gen-call :function ::set-select-to-speak-state &form state)))
 
-(defmacro on-scrollable-bounds-for-point-found
+(defmacro handle-scrollable-bounds-for-point-found
   "Called by the Accessibility Common extension when onScrollableBoundsForPointRequested has found a scrolling container.
    |rect| will be the bounds of the nearest scrollable ancestor of the node at the point requested using
    onScrollableBoundsForPointRequested.
 
      |rect| - ?"
-  ([rect] (gen-call :function ::on-scrollable-bounds-for-point-found &form rect)))
+  ([rect] (gen-call :function ::handle-scrollable-bounds-for-point-found &form rect)))
 
 (defmacro toggle-dictation
   "Toggles dictation between active and inactive states."
@@ -310,9 +310,9 @@
      :name "setSelectToSpeakState",
      :since "master",
      :params [{:name "state", :type "accessibilityPrivate.SelectToSpeakState"}]}
-    {:id ::on-scrollable-bounds-for-point-found,
-     :name "onScrollableBoundsForPointFound",
-     :since "77",
+    {:id ::handle-scrollable-bounds-for-point-found,
+     :name "handleScrollableBoundsForPointFound",
+     :since "master",
      :params [{:name "rect", :type "accessibilityPrivate.ScreenRect"}]}
     {:id ::toggle-dictation, :name "toggleDictation", :since "71"}
     {:id ::set-virtual-keyboard-visible,
