@@ -81,8 +81,8 @@
   ([] (gen-call :property ::cursor-highlight &form)))
 
 (defmacro get-cursor-color
-  "ChromeOS only.Cursor color. The value indicates whether the feature is enabled or not. get() requires
-   accessibilityFeatures.read permission. set() and clear() require accessibilityFeatures.modify permission.
+  "ChromeOS only.Cursor color. The value indicates whether the feature is enabled or not, doesn't indicate the color of it.
+   get() requires accessibilityFeatures.read permission. set() and clear() require accessibilityFeatures.modify permission.
 
    https://developer.chrome.com/apps/accessibilityFeatures#property-cursorColor."
   ([] (gen-call :property ::cursor-color &form)))
