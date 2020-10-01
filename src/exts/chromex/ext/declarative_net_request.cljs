@@ -26,14 +26,14 @@
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
-(defn update-dynamic-rules* [config rule-ids-to-remove rules-to-add]
-  (gen-wrap :function ::update-dynamic-rules config rule-ids-to-remove rules-to-add))
+(defn update-dynamic-rules* [config options]
+  (gen-wrap :function ::update-dynamic-rules config options))
 
 (defn get-dynamic-rules* [config]
   (gen-wrap :function ::get-dynamic-rules config))
 
-(defn update-enabled-rulesets* [config ruleset-ids-to-disable ruleset-ids-to-enable]
-  (gen-wrap :function ::update-enabled-rulesets config ruleset-ids-to-disable ruleset-ids-to-enable))
+(defn update-enabled-rulesets* [config options]
+  (gen-wrap :function ::update-enabled-rulesets config options))
 
 (defn get-enabled-rulesets* [config]
   (gen-wrap :function ::get-enabled-rulesets config))

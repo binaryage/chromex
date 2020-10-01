@@ -350,6 +350,15 @@
      |volume-label| - ?"
   ([volume-id filesystem volume-label] (gen-call :function ::format-volume &form volume-id filesystem volume-label)))
 
+(defmacro single-partition-format
+  "Deletes partitions of removable device, creates a new partition and format it. |deviceStoragePath| Storage path of the
+   device to be formatted. |filesystem| Filesystem type to be formatted to. |volumeLabel| Label of the drive after formatting.
+
+     |device-storage-path| - ?
+     |filesystem| - ?
+     |volume-label| - ?"
+  ([device-storage-path filesystem volume-label] (gen-call :function ::single-partition-format &form device-storage-path filesystem volume-label)))
+
 (defmacro rename-volume
   "Renames a mounted volume. |volumeId| ID of the volume to be renamed. |newName| New name of the target volume.
 
@@ -1104,8 +1113,15 @@
      :name "formatVolume",
      :params
      [{:name "volume-id", :type "string"}
-      {:name "filesystem", :since "77", :type "unknown-type"}
+      {:name "filesystem", :since "77", :type "fileManagerPrivate.FormatFileSystemType"}
       {:name "volume-label", :since "77", :type "string"}]}
+    {:id ::single-partition-format,
+     :name "singlePartitionFormat",
+     :since "master",
+     :params
+     [{:name "device-storage-path", :type "string"}
+      {:name "filesystem", :type "fileManagerPrivate.FormatFileSystemType"}
+      {:name "volume-label", :type "string"}]}
     {:id ::rename-volume,
      :name "renameVolume",
      :since "62",

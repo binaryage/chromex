@@ -48,6 +48,9 @@
 (defn handle-scrollable-bounds-for-point-found* [config rect]
   (gen-wrap :function ::handle-scrollable-bounds-for-point-found config rect))
 
+(defn move-magnifier-to-rect* [config rect]
+  (gen-wrap :function ::move-magnifier-to-rect config rect))
+
 (defn toggle-dictation* [config]
   (gen-wrap :function ::toggle-dictation config))
 

@@ -1,6 +1,6 @@
 # chromex [![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg)](license.txt) [![Clojars Project](https://img.shields.io/clojars/v/binaryage/chromex.svg)](https://clojars.org/binaryage/chromex) [![Travis](https://img.shields.io/travis/binaryage/chromex.svg)](https://travis-ci.org/binaryage/chromex) [![Example Projects](https://img.shields.io/badge/project-examples-ff69b4.svg)](https://github.com/binaryage/chromex/tree/master/examples)
 
-This library is auto-generated. Current version was **generated on 2020-09-29** from [**Chromium @ 378450342cf6**](https://chromium.googlesource.com/chromium/src.git/+/378450342cf6aa160663d0ce3a178a11b570c25a).
+This library is auto-generated. Current version was **generated on 2020-10-01** from [**Chromium @ 5d991b7d4fa3**](https://chromium.googlesource.com/chromium/src.git/+/5d991b7d4fa3985a97dcc9ff1cc91734c51f0e67).
 
 Looking for a nightly version? Check out [**nightly branch**](https://github.com/binaryage/chromex/tree/nightly) which gets updated if there are any new API changes.
 
@@ -10,10 +10,10 @@ For Chrome Extensions and also for Chrome Apps:
 
 | API family | namespaces | properties | functions | events |
 | --- | --- | --- | --- | --- |
-| [Public Chrome Extension APIs](src/exts) | 81 | 61 | 395 | 181 |
-| [Public Chrome App APIs](src/apps) | 68 | 32 | 454 | 155 |
-| [Private Chrome Extension APIs](src/exts_private) | 40 | 0 | 492 | 84 |
-| [Private Chrome App APIs](src/apps_private) | 37 | 0 | 365 | 79 |
+| [Public Chrome Extension APIs](src/exts) | 82 | 61 | 396 | 181 |
+| [Public Chrome App APIs](src/apps) | 69 | 32 | 455 | 155 |
+| [Private Chrome Extension APIs](src/exts_private) | 40 | 0 | 494 | 84 |
+| [Private Chrome App APIs](src/apps_private) | 37 | 0 | 367 | 79 |
 
 Note: Chromex generator uses the same data source as [developer.chrome.com/extensions/api_index](https://developer.chrome.com/extensions/api_index) and
 [developer.chrome.com/apps/api_index](https://developer.chrome.com/apps/api_index) docs.

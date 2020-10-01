@@ -121,6 +121,15 @@
      |rect| - ?"
   ([rect] (gen-call :function ::handle-scrollable-bounds-for-point-found &form rect)))
 
+(defmacro move-magnifier-to-rect
+  "Called by the Accessibility Common extension to move |rect| within the magnifier viewport (e.g. when focus has changed). If
+   |rect| is already completely within the viewport, magnifier doesn't move. If any edge of |rect| is outside the viewport
+   (e.g. if rect is larger than or extends partially beyond the viewport), magnifier will center the overflowing dimensions of
+   the viewport on center of |rect| (e.g. center viewport vertically if |rect| extends beyond bottom of screen).
+
+     |rect| - Rect to ensure visible in the magnified viewport."
+  ([rect] (gen-call :function ::move-magnifier-to-rect &form rect)))
+
 (defmacro toggle-dictation
   "Toggles dictation between active and inactive states."
   ([] (gen-call :function ::toggle-dictation &form)))
@@ -312,6 +321,10 @@
      :params [{:name "state", :type "accessibilityPrivate.SelectToSpeakState"}]}
     {:id ::handle-scrollable-bounds-for-point-found,
      :name "handleScrollableBoundsForPointFound",
+     :since "master",
+     :params [{:name "rect", :type "accessibilityPrivate.ScreenRect"}]}
+    {:id ::move-magnifier-to-rect,
+     :name "moveMagnifierToRect",
      :since "master",
      :params [{:name "rect", :type "accessibilityPrivate.ScreenRect"}]}
     {:id ::toggle-dictation, :name "toggleDictation", :since "71"}

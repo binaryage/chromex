@@ -81,6 +81,9 @@
 (defn format-volume* [config volume-id filesystem volume-label]
   (gen-wrap :function ::format-volume config volume-id filesystem volume-label))
 
+(defn single-partition-format* [config device-storage-path filesystem volume-label]
+  (gen-wrap :function ::single-partition-format config device-storage-path filesystem volume-label))
+
 (defn rename-volume* [config volume-id new-name]
   (gen-wrap :function ::rename-volume config volume-id new-name))
 

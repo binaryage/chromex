@@ -48,12 +48,12 @@
 
 ### API stats
 
-Generated 40 namespaces containing 0 properties, 492 functions and 84 events:
+Generated 40 namespaces containing 0 properties, 494 functions and 84 events:
 
 
     |                            :namespace | :properties | :functions | :events |
     |---------------------------------------+-------------+------------+---------|
-    |           chrome.accessibilityPrivate |           0 |         19 |       9 |
+    |           chrome.accessibilityPrivate |           0 |         20 |       9 |
     |             chrome.activityLogPrivate |           0 |          5 |       1 |
     |       chrome.autofillAssistantPrivate |           0 |          4 |       2 |
     |                chrome.autofillPrivate |           0 |         13 |       1 |
@@ -71,7 +71,7 @@ Generated 40 namespaces containing 0 properties, 492 functions and 84 events:
     | chrome.enterprise.platformKeysPrivate |           0 |          2 |       0 |
     |    chrome.enterprise.reportingPrivate |           0 |          5 |       0 |
     |                chrome.feedbackPrivate |           0 |          6 |       1 |
-    |             chrome.fileManagerPrivate |           0 |         65 |      10 |
+    |             chrome.fileManagerPrivate |           0 |         66 |      10 |
     |             chrome.imageWriterPrivate |           0 |          5 |       5 |
     |             chrome.inputMethodPrivate |           0 |         24 |      12 |
     |        chrome.languageSettingsPrivate |           0 |         14 |       4 |
@@ -105,12 +105,12 @@ Generated 40 namespaces containing 0 properties, 492 functions and 84 events:
       forward-key-events-to-switch-access update-switch-access-bubble
       set-native-chrome-vox-arc-support-for-current-app send-synthetic-key-event
       enable-chrome-vox-mouse-events send-synthetic-mouse-event set-select-to-speak-state
-      handle-scrollable-bounds-for-point-found toggle-dictation set-virtual-keyboard-visible
-      open-settings-subpage perform-accelerator-action tap-on-introduce-chrome-vox
-      tap-on-accessibility-gesture tap-on-two-finger-touch-start tap-on-two-finger-touch-stop
-      tap-on-select-to-speak-state-change-requested tap-on-switch-access-command
-      tap-on-announce-for-accessibility tap-on-scrollable-bounds-for-point-requested
-      tap-on-custom-spoken-feedback-toggled tap-all-events]]
+      handle-scrollable-bounds-for-point-found move-magnifier-to-rect toggle-dictation
+      set-virtual-keyboard-visible open-settings-subpage perform-accelerator-action
+      tap-on-introduce-chrome-vox tap-on-accessibility-gesture tap-on-two-finger-touch-start
+      tap-on-two-finger-touch-stop tap-on-select-to-speak-state-change-requested
+      tap-on-switch-access-command tap-on-announce-for-accessibility
+      tap-on-scrollable-bounds-for-point-requested tap-on-custom-spoken-feedback-toggled tap-all-events]]
 
     [chromex.ext.activity-log-private refer:[
       get-extension-activities delete-activities delete-activities-by-extension delete-database
@@ -212,8 +212,8 @@ Generated 40 namespaces containing 0 properties, 492 functions and 84 events:
       remove-file-watch enable-external-file-scheme grant-access select-files select-file
       get-entry-properties pin-drive-file resolve-isolated-entries add-mount remove-mount
       get-volume-metadata-list copy-image-to-clipboard start-copy cancel-copy get-size-stats
-      format-volume rename-volume get-preferences set-preferences search-drive search-drive-metadata
-      search-files-by-hashes search-files zip-selection get-drive-connection-state
+      format-volume single-partition-format rename-volume get-preferences set-preferences search-drive
+      search-drive-metadata search-files-by-hashes search-files zip-selection get-drive-connection-state
       validate-path-name-length zoom request-web-store-access-token get-download-url get-profiles
       open-inspector open-settings-subpage compute-checksum get-providers add-provided-file-system
       configure-volume get-custom-actions execute-custom-action get-directory-size get-recent-files
