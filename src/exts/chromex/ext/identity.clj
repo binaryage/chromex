@@ -86,6 +86,19 @@
    https://developer.chrome.com/extensions/identity#method-removeCachedAuthToken."
   ([details] (gen-call :function ::remove-cached-auth-token &form details)))
 
+(defmacro clear-all-cached-auth-tokens
+  "Resets the state of the Identity API: - Removes all OAuth2 access tokens from the token cache - Removes user's account
+   preferences - De-authorizes the user from all auth flows
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/extensions/identity#method-clearAllCachedAuthTokens."
+  ([] (gen-call :function ::clear-all-cached-auth-tokens &form)))
+
 (defmacro launch-web-auth-flow
   "Starts an auth flow at the specified URL.This method enables auth flows with non-Google identity providers by launching a
    web view and navigating it to the first URL in the provider's auth flow. When the provider redirects to a URL matching the
@@ -180,6 +193,11 @@
      :name "removeCachedAuthToken",
      :callback? true,
      :params [{:name "details", :type "object"} {:name "callback", :optional? true, :type :callback}]}
+    {:id ::clear-all-cached-auth-tokens,
+     :name "clearAllCachedAuthTokens",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback}]}
     {:id ::launch-web-auth-flow,
      :name "launchWebAuthFlow",
      :callback? true,

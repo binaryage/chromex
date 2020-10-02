@@ -65,6 +65,9 @@
 (defn insert-css* [config tab-id details]
   (gen-wrap :function ::insert-css config tab-id details))
 
+(defn remove-css* [config tab-id details]
+  (gen-wrap :function ::remove-css config tab-id details))
+
 (defn set-zoom* [config tab-id zoom-factor]
   (gen-wrap :function ::set-zoom config tab-id zoom-factor))
 

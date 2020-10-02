@@ -351,6 +351,22 @@
    https://developer.chrome.com/apps/tabs#method-insertCSS."
   ([tab-id details] (gen-call :function ::insert-css &form tab-id details)))
 
+(defmacro remove-css
+  "Removes from a page CSS that was previously injected by a call to 'tabs.insertCSS'.
+
+     |tab-id| - The ID of the tab from which to remove the CSS; defaults to the active tab of the current window.
+     |details| - Details of the CSS text to remove. Either the code or the file property must be set, but both may not be
+                 set at the same time.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/apps/tabs#method-removeCSS."
+  ([tab-id details] (gen-call :function ::remove-css &form tab-id details)))
+
 (defmacro set-zoom
   "Zooms a specified tab.
 
@@ -797,6 +813,14 @@
        :callback {:params [{:name "result", :optional? true, :type "[array-of-anys]"}]}}]}
     {:id ::insert-css,
      :name "insertCSS",
+     :callback? true,
+     :params
+     [{:name "tab-id", :optional? true, :type "integer"}
+      {:name "details", :type "object"}
+      {:name "callback", :optional? true, :type :callback}]}
+    {:id ::remove-css,
+     :name "removeCSS",
+     :since "master",
      :callback? true,
      :params
      [{:name "tab-id", :optional? true, :type "integer"}

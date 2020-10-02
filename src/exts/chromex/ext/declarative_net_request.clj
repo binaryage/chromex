@@ -147,14 +147,13 @@
   ([filter] (gen-call :function ::get-matched-rules &form filter))
   ([] `(get-matched-rules :omit)))
 
-(defmacro set-action-count-as-badge-text
-  "Sets whether to automatically badge extension's icon to the matched action count for a tab. This preference is persisted
-   across sessions and is false by default.
+(defmacro set-extension-action-options
+  "Configures how matched actions will be displayed on the extension action. This preference is persisted across sessions.
 
-     |enable| - https://developer.chrome.com/extensions/declarativeNetRequest#property-setActionCountAsBadgeText-enable.
+     |options| - https://developer.chrome.com/extensions/declarativeNetRequest#property-setExtensionActionOptions-options.
 
-   https://developer.chrome.com/extensions/declarativeNetRequest#method-setActionCountAsBadgeText."
-  ([enable] (gen-call :function ::set-action-count-as-badge-text &form enable)))
+   https://developer.chrome.com/extensions/declarativeNetRequest#method-setExtensionActionOptions."
+  ([options] (gen-call :function ::set-extension-action-options &form options)))
 
 (defmacro is-regex-supported
   "Checks if the given regular expression will be supported as a regexFilter rule condition.
@@ -240,9 +239,10 @@
      :params
      [{:name "filter", :optional? true, :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "details", :type "object"}]}}]}
-    {:id ::set-action-count-as-badge-text,
-     :name "setActionCountAsBadgeText",
-     :params [{:name "enable", :type "boolean"}]}
+    {:id ::set-extension-action-options,
+     :name "setExtensionActionOptions",
+     :since "master",
+     :params [{:name "options", :type "object"}]}
     {:id ::is-regex-supported,
      :name "isRegexSupported",
      :since "future",

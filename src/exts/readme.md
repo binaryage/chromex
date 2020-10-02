@@ -90,7 +90,7 @@
 
 ### API stats
 
-Generated 82 namespaces containing 61 properties, 396 functions and 181 events:
+Generated 82 namespaces containing 61 properties, 398 functions and 181 events:
 
 
     |                             :namespace | :properties | :functions | :events |
@@ -133,7 +133,7 @@ Generated 82 namespaces containing 61 properties, 396 functions and 181 events:
     |                             chrome.gcm |           1 |          3 |       3 |
     |                         chrome.history |           0 |          6 |       2 |
     |                            chrome.i18n |           0 |          4 |       0 |
-    |                        chrome.identity |           0 |          6 |       1 |
+    |                        chrome.identity |           0 |          7 |       1 |
     |                            chrome.idle |           0 |          3 |       1 |
     |                         chrome.idltest |           0 |          5 |       0 |
     |                       chrome.input.ime |           0 |         14 |      11 |
@@ -167,7 +167,7 @@ Generated 82 namespaces containing 61 properties, 396 functions and 181 events:
     |                  chrome.system.storage |           0 |          3 |       2 |
     |                 chrome.systemIndicator |           0 |          3 |       1 |
     |                      chrome.tabCapture |           0 |          4 |       1 |
-    |                            chrome.tabs |           1 |         26 |      13 |
+    |                            chrome.tabs |           1 |         27 |      13 |
     |                            chrome.test |           0 |         29 |       1 |
     |                        chrome.topSites |           0 |          1 |       0 |
     |                             chrome.tts |           0 |          6 |       0 |
@@ -251,7 +251,7 @@ Generated 82 namespaces containing 61 properties, 396 functions and 181 events:
       get-max-number-of-rules get-max-number-of-dynamic-rules get-getmatchedrules-quota-interval
       get-max-getmatchedrules-calls-per-interval get-max-number-of-regex-rules
       get-max-number-of-static-rulesets get-dynamic-ruleset-id update-dynamic-rules get-dynamic-rules
-      update-enabled-rulesets get-enabled-rulesets get-matched-rules set-action-count-as-badge-text
+      update-enabled-rulesets get-enabled-rulesets get-matched-rules set-extension-action-options
       is-regex-supported tap-on-rule-matched-debug tap-all-events]]
 
     [chromex.ext.declarative-web-request refer:[
@@ -340,8 +340,9 @@ Generated 82 namespaces containing 61 properties, 396 functions and 181 events:
       get-accept-languages get-message get-ui-language detect-language tap-all-events]]
 
     [chromex.ext.identity refer:[
-      get-accounts get-auth-token get-profile-user-info remove-cached-auth-token launch-web-auth-flow
-      get-redirect-url tap-on-sign-in-changed tap-all-events]]
+      get-accounts get-auth-token get-profile-user-info remove-cached-auth-token
+      clear-all-cached-auth-tokens launch-web-auth-flow get-redirect-url tap-on-sign-in-changed
+      tap-all-events]]
 
     [chromex.ext.idle refer:[
       query-state set-detection-interval get-auto-lock-delay tap-on-state-changed tap-all-events]]
@@ -471,10 +472,10 @@ Generated 82 namespaces containing 61 properties, 396 functions and 181 events:
     [chromex.ext.tabs refer:[
       get-tab-id-none get get-current connect send-request send-message get-selected get-all-in-window
       create duplicate query highlight update move reload remove detect-language capture-visible-tab
-      execute-script insert-css set-zoom get-zoom set-zoom-settings get-zoom-settings discard go-forward
-      go-back tap-on-created tap-on-updated tap-on-moved tap-on-selection-changed tap-on-active-changed
-      tap-on-activated tap-on-highlight-changed tap-on-highlighted tap-on-detached tap-on-attached
-      tap-on-removed tap-on-replaced tap-on-zoom-change tap-all-events]]
+      execute-script insert-css remove-css set-zoom get-zoom set-zoom-settings get-zoom-settings discard
+      go-forward go-back tap-on-created tap-on-updated tap-on-moved tap-on-selection-changed
+      tap-on-active-changed tap-on-activated tap-on-highlight-changed tap-on-highlighted tap-on-detached
+      tap-on-attached tap-on-removed tap-on-replaced tap-on-zoom-change tap-all-events]]
 
     [chromex.ext.test refer:[
       get-config notify-fail notify-pass log send-message callback-added fail succeed get-module-system

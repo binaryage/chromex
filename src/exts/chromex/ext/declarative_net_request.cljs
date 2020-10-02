@@ -41,8 +41,8 @@
 (defn get-matched-rules* [config filter]
   (gen-wrap :function ::get-matched-rules config filter))
 
-(defn set-action-count-as-badge-text* [config enable]
-  (gen-wrap :function ::set-action-count-as-badge-text config enable))
+(defn set-extension-action-options* [config options]
+  (gen-wrap :function ::set-extension-action-options config options))
 
 (defn is-regex-supported* [config regex-options]
   (gen-wrap :function ::is-regex-supported config regex-options))

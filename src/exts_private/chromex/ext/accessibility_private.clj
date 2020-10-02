@@ -317,11 +317,11 @@
      :params [{:name "mouse-event", :type "accessibilityPrivate.SyntheticMouseEvent"}]}
     {:id ::set-select-to-speak-state,
      :name "setSelectToSpeakState",
-     :since "master",
+     :since "future",
      :params [{:name "state", :type "accessibilityPrivate.SelectToSpeakState"}]}
     {:id ::handle-scrollable-bounds-for-point-found,
      :name "handleScrollableBoundsForPointFound",
-     :since "master",
+     :since "future",
      :params [{:name "rect", :type "accessibilityPrivate.ScreenRect"}]}
     {:id ::move-magnifier-to-rect,
      :name "moveMagnifierToRect",
@@ -359,7 +359,7 @@
      :params [{:name "announce-text", :type "[array-of-strings]"}]}
     {:id ::on-scrollable-bounds-for-point-requested,
      :name "onScrollableBoundsForPointRequested",
-     :since "master",
+     :since "future",
      :params [{:name "x", :type "double"} {:name "y", :type "double"}]}
     {:id ::on-custom-spoken-feedback-toggled,
      :name "onCustomSpokenFeedbackToggled",

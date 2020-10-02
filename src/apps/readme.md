@@ -77,7 +77,7 @@
 
 ### API stats
 
-Generated 69 namespaces containing 32 properties, 455 functions and 155 events:
+Generated 69 namespaces containing 32 properties, 457 functions and 155 events:
 
 
     |                         :namespace | :properties | :functions | :events |
@@ -113,7 +113,7 @@ Generated 69 namespaces containing 32 properties, 455 functions and 155 events:
     |                         chrome.gcm |           1 |          3 |       3 |
     |                         chrome.hid |           0 |          8 |       2 |
     |                        chrome.i18n |           0 |          4 |       0 |
-    |                    chrome.identity |           0 |          6 |       1 |
+    |                    chrome.identity |           0 |          7 |       1 |
     |                        chrome.idle |           0 |          3 |       1 |
     |                  chrome.instanceID |           0 |          5 |       1 |
     |                  chrome.management |           0 |         15 |       4 |
@@ -143,7 +143,7 @@ Generated 69 namespaces containing 32 properties, 455 functions and 155 events:
     |          chrome.system.powerSource |           0 |          2 |       1 |
     |              chrome.system.storage |           0 |          3 |       2 |
     |             chrome.systemIndicator |           0 |          3 |       1 |
-    |                        chrome.tabs |           1 |         26 |      13 |
+    |                        chrome.tabs |           1 |         27 |      13 |
     |                        chrome.test |           0 |         29 |       1 |
     |                         chrome.tts |           0 |          6 |       0 |
     |                         chrome.usb |           0 |         18 |       2 |
@@ -292,8 +292,9 @@ Generated 69 namespaces containing 32 properties, 455 functions and 155 events:
       get-accept-languages get-message get-ui-language detect-language tap-all-events]]
 
     [chromex.app.identity refer:[
-      get-accounts get-auth-token get-profile-user-info remove-cached-auth-token launch-web-auth-flow
-      get-redirect-url tap-on-sign-in-changed tap-all-events]]
+      get-accounts get-auth-token get-profile-user-info remove-cached-auth-token
+      clear-all-cached-auth-tokens launch-web-auth-flow get-redirect-url tap-on-sign-in-changed
+      tap-all-events]]
 
     [chromex.app.idle refer:[
       query-state set-detection-interval get-auto-lock-delay tap-on-state-changed tap-all-events]]
@@ -418,10 +419,10 @@ Generated 69 namespaces containing 32 properties, 455 functions and 155 events:
     [chromex.app.tabs refer:[
       get-tab-id-none get get-current connect send-request send-message get-selected get-all-in-window
       create duplicate query highlight update move reload remove detect-language capture-visible-tab
-      execute-script insert-css set-zoom get-zoom set-zoom-settings get-zoom-settings discard go-forward
-      go-back tap-on-created tap-on-updated tap-on-moved tap-on-selection-changed tap-on-active-changed
-      tap-on-activated tap-on-highlight-changed tap-on-highlighted tap-on-detached tap-on-attached
-      tap-on-removed tap-on-replaced tap-on-zoom-change tap-all-events]]
+      execute-script insert-css remove-css set-zoom get-zoom set-zoom-settings get-zoom-settings discard
+      go-forward go-back tap-on-created tap-on-updated tap-on-moved tap-on-selection-changed
+      tap-on-active-changed tap-on-activated tap-on-highlight-changed tap-on-highlighted tap-on-detached
+      tap-on-attached tap-on-removed tap-on-replaced tap-on-zoom-change tap-all-events]]
 
     [chromex.app.test refer:[
       get-config notify-fail notify-pass log send-message callback-added fail succeed get-module-system

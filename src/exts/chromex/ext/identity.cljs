@@ -15,6 +15,9 @@
 (defn remove-cached-auth-token* [config details]
   (gen-wrap :function ::remove-cached-auth-token config details))
 
+(defn clear-all-cached-auth-tokens* [config]
+  (gen-wrap :function ::clear-all-cached-auth-tokens config))
+
 (defn launch-web-auth-flow* [config details]
   (gen-wrap :function ::launch-web-auth-flow config details))
 
