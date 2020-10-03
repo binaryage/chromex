@@ -53,6 +53,12 @@
 (defn remove* [config tab-ids]
   (gen-wrap :function ::remove config tab-ids))
 
+(defn group* [config options]
+  (gen-wrap :function ::group config options))
+
+(defn ungroup* [config tab-ids]
+  (gen-wrap :function ::ungroup config tab-ids))
+
 (defn detect-language* [config tab-id]
   (gen-wrap :function ::detect-language config tab-id))
 

@@ -77,7 +77,7 @@
 
 ### API stats
 
-Generated 69 namespaces containing 32 properties, 457 functions and 155 events:
+Generated 69 namespaces containing 32 properties, 459 functions and 155 events:
 
 
     |                         :namespace | :properties | :functions | :events |
@@ -143,7 +143,7 @@ Generated 69 namespaces containing 32 properties, 457 functions and 155 events:
     |          chrome.system.powerSource |           0 |          2 |       1 |
     |              chrome.system.storage |           0 |          3 |       2 |
     |             chrome.systemIndicator |           0 |          3 |       1 |
-    |                        chrome.tabs |           1 |         27 |      13 |
+    |                        chrome.tabs |           1 |         29 |      13 |
     |                        chrome.test |           0 |         29 |       1 |
     |                         chrome.tts |           0 |          6 |       0 |
     |                         chrome.usb |           0 |         18 |       2 |
@@ -418,11 +418,12 @@ Generated 69 namespaces containing 32 properties, 457 functions and 155 events:
 
     [chromex.app.tabs refer:[
       get-tab-id-none get get-current connect send-request send-message get-selected get-all-in-window
-      create duplicate query highlight update move reload remove detect-language capture-visible-tab
-      execute-script insert-css remove-css set-zoom get-zoom set-zoom-settings get-zoom-settings discard
-      go-forward go-back tap-on-created tap-on-updated tap-on-moved tap-on-selection-changed
-      tap-on-active-changed tap-on-activated tap-on-highlight-changed tap-on-highlighted tap-on-detached
-      tap-on-attached tap-on-removed tap-on-replaced tap-on-zoom-change tap-all-events]]
+      create duplicate query highlight update move reload remove group ungroup detect-language
+      capture-visible-tab execute-script insert-css remove-css set-zoom get-zoom set-zoom-settings
+      get-zoom-settings discard go-forward go-back tap-on-created tap-on-updated tap-on-moved
+      tap-on-selection-changed tap-on-active-changed tap-on-activated tap-on-highlight-changed
+      tap-on-highlighted tap-on-detached tap-on-attached tap-on-removed tap-on-replaced
+      tap-on-zoom-change tap-all-events]]
 
     [chromex.app.test refer:[
       get-config notify-fail notify-pass log send-message callback-added fail succeed get-module-system

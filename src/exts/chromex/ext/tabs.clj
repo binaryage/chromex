@@ -273,6 +273,36 @@
    https://developer.chrome.com/extensions/tabs#method-remove."
   ([tab-ids] (gen-call :function ::remove &form tab-ids)))
 
+(defmacro group
+  "Adds one or more tabs to a specified group, or if no group is specified, adds the given tabs to a newly created group.
+
+     |options| - https://developer.chrome.com/extensions/tabs#property-group-options.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [group-id] where:
+
+     |group-id| - The ID of the group that the tabs were added to.
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/extensions/tabs#method-group."
+  ([options] (gen-call :function ::group &form options)))
+
+(defmacro ungroup
+  "Removes one or more tabs from their respective groups. If any groups become empty, they are deleted.
+
+     |tab-ids| - The tab ID or list of tab IDs to remove from their respective groups.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/extensions/tabs#method-ungroup."
+  ([tab-ids] (gen-call :function ::ungroup &form tab-ids)))
+
 (defmacro detect-language
   "Detects the primary language of the content in a tab.
 
@@ -785,6 +815,19 @@
       {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove,
      :name "remove",
+     :callback? true,
+     :params
+     [{:name "tab-ids", :type "integer-or-[array-of-integers]"} {:name "callback", :optional? true, :type :callback}]}
+    {:id ::group,
+     :name "group",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "options", :type "object"}
+      {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "group-id", :type "integer"}]}}]}
+    {:id ::ungroup,
+     :name "ungroup",
+     :since "master",
      :callback? true,
      :params
      [{:name "tab-ids", :type "integer-or-[array-of-integers]"} {:name "callback", :optional? true, :type :callback}]}
