@@ -60,6 +60,9 @@
 (defn get-visible-notifications* [config]
   (gen-wrap :function ::get-visible-notifications config))
 
+(defn remove-all-notifications* [config]
+  (gen-wrap :function ::remove-all-notifications config))
+
 (defn get-arc-start-time* [config]
   (gen-wrap :function ::get-arc-start-time config))
 
@@ -251,6 +254,9 @@
 
 (defn remove-active-desk* [config]
   (gen-wrap :function ::remove-active-desk config))
+
+(defn activate-adjacent-desks-to-target-index* [config index]
+  (gen-wrap :function ::activate-adjacent-desks-to-target-index config index))
 
 (defn mouse-click* [config button]
   (gen-wrap :function ::mouse-click config button))

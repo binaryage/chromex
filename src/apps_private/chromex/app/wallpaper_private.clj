@@ -57,7 +57,7 @@
       {:name "thumbnail", :since "49", :type "binary"}
       {:name "layout", :since "49", :type "wallpaper.WallpaperLayout"}
       {:name "app-name", :since "50", :type "string"}]}
-    {:id ::on-close-preview-wallpaper, :name "onClosePreviewWallpaper", :since "future"}]})
+    {:id ::on-close-preview-wallpaper, :name "onClosePreviewWallpaper", :since "86"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

@@ -109,7 +109,7 @@
      :since "80",
      :callback? true,
      :params
-     [{:name "reset-secret", :optional? true, :since "future", :type "boolean"}
+     [{:name "reset-secret", :optional? true, :since "86", :type "boolean"}
       {:name "callback", :type :callback, :callback {:params [{:name "secret", :type "ArrayBuffer"}]}}]}
     {:id ::get-device-data,
      :name "getDeviceData",

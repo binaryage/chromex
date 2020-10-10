@@ -177,8 +177,11 @@
 (defn import-crostini-image* [config entry]
   (gen-wrap :function ::import-crostini-image config entry))
 
-(defn get-thumbnail* [config entry crop-to-square]
-  (gen-wrap :function ::get-thumbnail config entry crop-to-square))
+(defn get-drive-thumbnail* [config entry crop-to-square]
+  (gen-wrap :function ::get-drive-thumbnail config entry crop-to-square))
+
+(defn get-pdf-thumbnail* [config entry width height]
+  (gen-wrap :function ::get-pdf-thumbnail config entry width height))
 
 (defn detect-character-encoding* [config bytes]
   (gen-wrap :function ::detect-character-encoding config bytes))

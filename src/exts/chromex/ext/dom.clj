@@ -1,7 +1,7 @@
 (ns chromex.ext.dom
   "Use the chrome.dom API to access special DOM APIs for Extensions
 
-     * available since Chrome master
+     * available since Chrome 87
      * https://developer.chrome.com/extensions/dom"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -35,7 +35,7 @@
 
 (def api-table
   {:namespace "chrome.dom",
-   :since "master",
+   :since "87",
    :functions
    [{:id ::open-or-closed-shadow-root,
      :name "openOrClosedShadowRoot",

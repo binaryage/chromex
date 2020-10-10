@@ -547,7 +547,7 @@
      :params [{:name "parameters", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-autocorrect-range,
      :name "getAutocorrectRange",
-     :since "future",
+     :since "86",
      :callback? true,
      :params
      [{:name "parameters", :type "object"}
@@ -556,7 +556,7 @@
        :callback {:params [{:name "autocorrect-character-bounds", :type "object"}]}}]}
     {:id ::get-autocorrect-character-bounds,
      :name "getAutocorrectCharacterBounds",
-     :since "future",
+     :since "86",
      :callback? true,
      :params
      [{:name "parameters", :type "object"}
@@ -608,7 +608,7 @@
      :params [{:name "suggestions", :type "[array-of-strings]"}]}
     {:id ::on-input-method-options-changed,
      :name "onInputMethodOptionsChanged",
-     :since "future",
+     :since "86",
      :params [{:name "engine-id", :type "string"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

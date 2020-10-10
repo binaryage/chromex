@@ -192,7 +192,7 @@
       {:name "on-complete", :optional? true, :type :callback}]}
     {:id ::set-pin-autosubmit-enabled,
      :name "setPinAutosubmitEnabled",
-     :since "future",
+     :since "86",
      :callback? true,
      :params
      [{:name "token", :type "string"}
@@ -201,7 +201,7 @@
       {:name "on-complete", :type :callback, :callback {:params [{:name "value", :type "boolean"}]}}]}
     {:id ::can-authenticate-pin,
      :name "canAuthenticatePin",
-     :since "future",
+     :since "86",
      :callback? true,
      :params [{:name "on-complete", :type :callback, :callback {:params [{:name "value", :type "boolean"}]}}]}
     {:id ::get-available-modes,

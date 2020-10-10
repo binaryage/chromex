@@ -71,7 +71,7 @@
    :events
    [{:id ::on-command,
      :name "onCommand",
-     :params [{:name "command", :type "string"} {:name "tab", :optional? true, :since "future", :type "tabs.Tab"}]}]})
+     :params [{:name "command", :type "string"} {:name "tab", :optional? true, :since "86", :type "tabs.Tab"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

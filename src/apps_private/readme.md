@@ -45,12 +45,12 @@
 
 ### API stats
 
-Generated 37 namespaces containing 0 properties, 367 functions and 79 events:
+Generated 37 namespaces containing 0 properties, 370 functions and 79 events:
 
 
     |                     :namespace | :properties | :functions | :events |
     |--------------------------------+-------------+------------+---------|
-    |    chrome.accessibilityPrivate |           0 |         20 |       9 |
+    |    chrome.accessibilityPrivate |           0 |         21 |       9 |
     |      chrome.activityLogPrivate |           0 |          5 |       1 |
     |         chrome.autofillPrivate |           0 |         13 |       1 |
     |        chrome.bluetoothPrivate |           0 |         10 |       2 |
@@ -64,7 +64,7 @@ Generated 37 namespaces containing 0 properties, 367 functions and 79 events:
     |        chrome.developerPrivate |           0 |         31 |       2 |
     |             chrome.echoPrivate |           0 |          5 |       0 |
     |         chrome.feedbackPrivate |           0 |          6 |       1 |
-    |      chrome.fileManagerPrivate |           0 |         66 |      10 |
+    |      chrome.fileManagerPrivate |           0 |         67 |      10 |
     |         chrome.identityPrivate |           0 |          1 |       1 |
     |      chrome.imageWriterPrivate |           0 |          5 |       5 |
     |      chrome.inputMethodPrivate |           0 |         24 |      12 |
@@ -82,7 +82,7 @@ Generated 37 namespaces containing 0 properties, 367 functions and 79 events:
     |           chrome.systemPrivate |           0 |          3 |       0 |
     |         chrome.terminalPrivate |           0 |         11 |       3 |
     |            chrome.usersPrivate |           0 |          7 |       0 |
-    |  chrome.virtualKeyboardPrivate |           0 |         15 |       3 |
+    |  chrome.virtualKeyboardPrivate |           0 |         16 |       3 |
     |        chrome.wallpaperPrivate |           0 |          0 |       2 |
     |           chrome.webcamPrivate |           0 |          8 |       0 |
     |    chrome.webrtcLoggingPrivate |           0 |         14 |       0 |
@@ -96,7 +96,7 @@ Generated 37 namespaces containing 0 properties, 367 functions and 79 events:
     [chromex.app.accessibility-private refer:[
       get-display-name-for-locale get-battery-description set-native-accessibility-enabled
       set-focus-rings set-highlights set-keyboard-listener darken-screen
-      forward-key-events-to-switch-access update-switch-access-bubble
+      forward-key-events-to-switch-access update-switch-access-bubble enable-point-scan
       set-native-chrome-vox-arc-support-for-current-app send-synthetic-key-event
       enable-chrome-vox-mouse-events send-synthetic-mouse-event set-select-to-speak-state
       handle-scrollable-bounds-for-point-found move-magnifier-to-rect toggle-dictation
@@ -173,10 +173,10 @@ Generated 37 namespaces containing 0 properties, 367 functions and 79 events:
       open-inspector open-settings-subpage compute-checksum get-providers add-provided-file-system
       configure-volume get-custom-actions execute-custom-action get-directory-size get-recent-files
       mount-crostini share-paths-with-crostini unshare-path-with-crostini get-crostini-shared-paths
-      get-linux-package-info install-linux-package import-crostini-image get-thumbnail
-      detect-character-encoding get-android-picker-apps select-android-picker-app sharesheet-has-targets
-      invoke-sharesheet toggle-added-to-holding-space get-holding-space-state tap-on-mount-completed
-      tap-on-file-transfers-updated tap-on-copy-progress tap-on-directory-changed
+      get-linux-package-info install-linux-package import-crostini-image get-drive-thumbnail
+      get-pdf-thumbnail detect-character-encoding get-android-picker-apps select-android-picker-app
+      sharesheet-has-targets invoke-sharesheet toggle-added-to-holding-space get-holding-space-state
+      tap-on-mount-completed tap-on-file-transfers-updated tap-on-copy-progress tap-on-directory-changed
       tap-on-preferences-changed tap-on-drive-connection-status-changed tap-on-device-changed
       tap-on-drive-sync-error tap-on-apps-updated tap-on-crostini-changed tap-all-events]]
 
@@ -276,9 +276,10 @@ Generated 37 namespaces containing 0 properties, 367 functions and 79 events:
 
     [chromex.app.virtual-keyboard-private refer:[
       insert-text send-key-event hide-keyboard set-hotrod-keyboard lock-keyboard keyboard-loaded
-      get-keyboard-config open-settings set-container-behavior set-draggable-area set-keyboard-state
-      set-occluded-bounds set-hit-test-bounds set-area-to-remain-on-screen set-window-bounds-in-screen
-      tap-on-bounds-changed tap-on-keyboard-closed tap-on-keyboard-config-changed tap-all-events]]
+      get-keyboard-config open-settings open-suggestion-settings set-container-behavior
+      set-draggable-area set-keyboard-state set-occluded-bounds set-hit-test-bounds
+      set-area-to-remain-on-screen set-window-bounds-in-screen tap-on-bounds-changed
+      tap-on-keyboard-closed tap-on-keyboard-config-changed tap-all-events]]
 
     [chromex.app.wallpaper-private refer:[
       tap-on-wallpaper-changed-by3rd-party tap-on-close-preview-wallpaper tap-all-events]]

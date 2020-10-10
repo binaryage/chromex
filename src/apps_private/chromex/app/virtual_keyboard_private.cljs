@@ -27,6 +27,9 @@
 (defn open-settings* [config]
   (gen-wrap :function ::open-settings config))
 
+(defn open-suggestion-settings* [config]
+  (gen-wrap :function ::open-suggestion-settings config))
+
 (defn set-container-behavior* [config options]
   (gen-wrap :function ::set-container-behavior config options))
 

@@ -48,16 +48,16 @@
 
 ### API stats
 
-Generated 40 namespaces containing 0 properties, 494 functions and 84 events:
+Generated 40 namespaces containing 0 properties, 499 functions and 84 events:
 
 
     |                            :namespace | :properties | :functions | :events |
     |---------------------------------------+-------------+------------+---------|
-    |           chrome.accessibilityPrivate |           0 |         20 |       9 |
+    |           chrome.accessibilityPrivate |           0 |         21 |       9 |
     |             chrome.activityLogPrivate |           0 |          5 |       1 |
     |       chrome.autofillAssistantPrivate |           0 |          4 |       2 |
     |                chrome.autofillPrivate |           0 |         13 |       1 |
-    |                chrome.autotestPrivate |           0 |        101 |       1 |
+    |                chrome.autotestPrivate |           0 |        103 |       1 |
     |               chrome.bluetoothPrivate |           0 |         10 |       2 |
     |         chrome.bookmarkManagerPrivate |           0 |         11 |       3 |
     |          chrome.brailleDisplayPrivate |           0 |          3 |       2 |
@@ -71,7 +71,7 @@ Generated 40 namespaces containing 0 properties, 494 functions and 84 events:
     | chrome.enterprise.platformKeysPrivate |           0 |          2 |       0 |
     |    chrome.enterprise.reportingPrivate |           0 |          5 |       0 |
     |                chrome.feedbackPrivate |           0 |          6 |       1 |
-    |             chrome.fileManagerPrivate |           0 |         66 |      10 |
+    |             chrome.fileManagerPrivate |           0 |         67 |      10 |
     |             chrome.imageWriterPrivate |           0 |          5 |       5 |
     |             chrome.inputMethodPrivate |           0 |         24 |      12 |
     |        chrome.languageSettingsPrivate |           0 |         14 |       4 |
@@ -87,7 +87,7 @@ Generated 40 namespaces containing 0 properties, 494 functions and 84 events:
     |                  chrome.systemPrivate |           0 |          3 |       0 |
     |                chrome.terminalPrivate |           0 |         11 |       3 |
     |                   chrome.usersPrivate |           0 |          7 |       0 |
-    |         chrome.virtualKeyboardPrivate |           0 |         15 |       3 |
+    |         chrome.virtualKeyboardPrivate |           0 |         16 |       3 |
     |                  chrome.webcamPrivate |           0 |          8 |       0 |
     |             chrome.webrtcAudioPrivate |           0 |          2 |       1 |
     |    chrome.webrtcDesktopCapturePrivate |           0 |          2 |       0 |
@@ -102,7 +102,7 @@ Generated 40 namespaces containing 0 properties, 494 functions and 84 events:
     [chromex.ext.accessibility-private refer:[
       get-display-name-for-locale get-battery-description set-native-accessibility-enabled
       set-focus-rings set-highlights set-keyboard-listener darken-screen
-      forward-key-events-to-switch-access update-switch-access-bubble
+      forward-key-events-to-switch-access update-switch-access-bubble enable-point-scan
       set-native-chrome-vox-arc-support-for-current-app send-synthetic-key-event
       enable-chrome-vox-mouse-events send-synthetic-mouse-event set-select-to-speak-state
       handle-scrollable-bounds-for-point-found move-magnifier-to-rect toggle-dictation
@@ -131,13 +131,13 @@ Generated 40 namespaces containing 0 properties, 494 functions and 84 events:
       get-all-enterprise-policies refresh-enterprise-policies simulate-asan-memory-bug
       set-touchpad-sensitivity set-tap-to-click set-three-finger-click set-tap-dragging
       set-natural-scroll set-mouse-sensitivity set-primary-button-right set-mouse-reverse-scroll
-      get-visible-notifications get-arc-start-time get-arc-state get-play-store-state get-printer-list
-      is-app-shown is-arc-provisioned get-arc-app get-arc-package wait-for-system-web-apps-install
-      get-registered-system-web-apps launch-arc-app launch-app launch-system-web-app close-app
-      update-printer remove-printer set-play-store-enabled get-clipboard-text-data
-      set-clipboard-text-data run-crostini-installer run-crostini-uninstaller set-crostini-enabled
-      export-crostini import-crostini set-plugin-vm-policy show-plugin-vm-installer register-component
-      take-screenshot take-screenshot-for-display bootstrap-machine-learning-service
+      get-visible-notifications remove-all-notifications get-arc-start-time get-arc-state
+      get-play-store-state get-printer-list is-app-shown is-arc-provisioned get-arc-app get-arc-package
+      wait-for-system-web-apps-install get-registered-system-web-apps launch-arc-app launch-app
+      launch-system-web-app close-app update-printer remove-printer set-play-store-enabled
+      get-clipboard-text-data set-clipboard-text-data run-crostini-installer run-crostini-uninstaller
+      set-crostini-enabled export-crostini import-crostini set-plugin-vm-policy show-plugin-vm-installer
+      register-component take-screenshot take-screenshot-for-display bootstrap-machine-learning-service
       set-assistant-enabled enable-assistant-and-wait-for-ready send-assistant-text-query
       wait-for-assistant-query-status is-arc-package-list-initial-refreshed set-whitelisted-pref
       set-crostini-app-scaled get-primary-display-scale-factor is-tablet-mode-enabled
@@ -147,10 +147,10 @@ Generated 40 namespaces containing 0 properties, 494 functions and 84 events:
       arc-app-tracing-stop-and-analyze swap-windows-in-split-view set-arc-app-window-focus
       wait-for-display-rotation get-app-window-list set-app-window-state close-app-window
       install-pwa-for-current-url activate-accelerator wait-for-launcher-state wait-for-overview-state
-      create-new-desk activate-desk-at-index remove-active-desk mouse-click mouse-press mouse-release
-      mouse-move set-metrics-enabled start-tracing stop-tracing set-arc-touch-mode
-      get-scrollable-shelf-info-for-state get-shelf-ui-info-for-state set-window-bounds
-      start-smoothness-tracking stop-smoothness-tracking disable-switch-access-dialog
+      create-new-desk activate-desk-at-index remove-active-desk activate-adjacent-desks-to-target-index
+      mouse-click mouse-press mouse-release mouse-move set-metrics-enabled start-tracing stop-tracing
+      set-arc-touch-mode get-scrollable-shelf-info-for-state get-shelf-ui-info-for-state
+      set-window-bounds start-smoothness-tracking stop-smoothness-tracking disable-switch-access-dialog
       wait-for-ambient-photo-animation disable-automation start-throughput-tracker-data-collection
       stop-throughput-tracker-data-collection tap-on-clipboard-data-changed tap-all-events]]
 
@@ -218,10 +218,10 @@ Generated 40 namespaces containing 0 properties, 494 functions and 84 events:
       open-inspector open-settings-subpage compute-checksum get-providers add-provided-file-system
       configure-volume get-custom-actions execute-custom-action get-directory-size get-recent-files
       mount-crostini share-paths-with-crostini unshare-path-with-crostini get-crostini-shared-paths
-      get-linux-package-info install-linux-package import-crostini-image get-thumbnail
-      detect-character-encoding get-android-picker-apps select-android-picker-app sharesheet-has-targets
-      invoke-sharesheet toggle-added-to-holding-space get-holding-space-state tap-on-mount-completed
-      tap-on-file-transfers-updated tap-on-copy-progress tap-on-directory-changed
+      get-linux-package-info install-linux-package import-crostini-image get-drive-thumbnail
+      get-pdf-thumbnail detect-character-encoding get-android-picker-apps select-android-picker-app
+      sharesheet-has-targets invoke-sharesheet toggle-added-to-holding-space get-holding-space-state
+      tap-on-mount-completed tap-on-file-transfers-updated tap-on-copy-progress tap-on-directory-changed
       tap-on-preferences-changed tap-on-drive-connection-status-changed tap-on-device-changed
       tap-on-drive-sync-error tap-on-apps-updated tap-on-crostini-changed tap-all-events]]
 
@@ -316,9 +316,10 @@ Generated 40 namespaces containing 0 properties, 494 functions and 84 events:
 
     [chromex.ext.virtual-keyboard-private refer:[
       insert-text send-key-event hide-keyboard set-hotrod-keyboard lock-keyboard keyboard-loaded
-      get-keyboard-config open-settings set-container-behavior set-draggable-area set-keyboard-state
-      set-occluded-bounds set-hit-test-bounds set-area-to-remain-on-screen set-window-bounds-in-screen
-      tap-on-bounds-changed tap-on-keyboard-closed tap-on-keyboard-config-changed tap-all-events]]
+      get-keyboard-config open-settings open-suggestion-settings set-container-behavior
+      set-draggable-area set-keyboard-state set-occluded-bounds set-hit-test-bounds
+      set-area-to-remain-on-screen set-window-bounds-in-screen tap-on-bounds-changed
+      tap-on-keyboard-closed tap-on-keyboard-config-changed tap-all-events]]
 
     [chromex.ext.webcam-private refer:[
       open-serial-webcam close-webcam get set reset set-home restore-camera-preset set-camera-preset

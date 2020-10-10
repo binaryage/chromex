@@ -163,31 +163,31 @@
      :params [{:name "details", :type "object"} {:name "callback", :type :callback}]}
     {:id ::set-certificates,
      :name "setCertificates",
-     :since "future",
+     :since "86",
      :callback? true,
      :params [{:name "details", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::report-signature,
      :name "reportSignature",
-     :since "future",
+     :since "86",
      :callback? true,
      :params [{:name "details", :type "object"} {:name "callback", :optional? true, :type :callback}]}],
    :events
    [{:id ::on-certificates-update-requested,
      :name "onCertificatesUpdateRequested",
-     :since "future",
+     :since "86",
      :params [{:name "request", :type "object"}]}
     {:id ::on-signature-requested,
      :name "onSignatureRequested",
-     :since "future",
+     :since "86",
      :params [{:name "request", :type "object"}]}
     {:id ::on-certificates-requested,
      :name "onCertificatesRequested",
-     :since "future",
+     :since "86",
      :deprecated "Use 'onCertificatesUpdateRequested' instead.",
      :params [{:name "report-callback", :type :callback}]}
     {:id ::on-sign-digest-requested,
      :name "onSignDigestRequested",
-     :since "future",
+     :since "86",
      :deprecated "Use 'onSignatureRequested' instead.",
      :params [{:name "request", :type "object"} {:name "report-callback", :type :callback}]}]})
 

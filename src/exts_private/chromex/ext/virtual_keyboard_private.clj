@@ -79,8 +79,12 @@
   ([] (gen-call :function ::get-keyboard-config &form)))
 
 (defmacro open-settings
-  "Opens chrome://settings/languages page."
+  "Opens chrome://os-settings/osLanguages page."
   ([] (gen-call :function ::open-settings &form)))
+
+(defmacro open-suggestion-settings
+  "Opens chrome://os-settings/osLanguages/smartInputs page."
+  ([] (gen-call :function ::open-suggestion-settings &form)))
 
 (defmacro set-container-behavior
   "Sets the virtual keyboard container behavior
@@ -211,6 +215,7 @@
        :type :callback,
        :callback {:params [{:name "config", :type "virtualKeyboardPrivate.KeyboardConfig"}]}}]}
     {:id ::open-settings, :name "openSettings", :since "37"}
+    {:id ::open-suggestion-settings, :name "openSuggestionSettings", :since "master"}
     {:id ::set-container-behavior,
      :name "setContainerBehavior",
      :since "67",

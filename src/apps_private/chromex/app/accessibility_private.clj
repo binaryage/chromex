@@ -82,6 +82,12 @@
   ([bubble show anchor] `(update-switch-access-bubble ~bubble ~show ~anchor :omit))
   ([bubble show] `(update-switch-access-bubble ~bubble ~show :omit :omit)))
 
+(defmacro enable-point-scan
+  "Enables or disables point scanning in Switch Access.
+
+     |enabled| - True for start point scanning, false for end point scanning."
+  ([enabled] (gen-call :function ::enable-point-scan &form enabled)))
+
 (defmacro set-native-chrome-vox-arc-support-for-current-app
   "Sets current ARC app to use native ARC support.
 
@@ -299,6 +305,7 @@
       {:name "show", :type "boolean"}
       {:name "anchor", :optional? true, :type "accessibilityPrivate.ScreenRect"}
       {:name "actions", :optional? true, :type "[array-of-accessibilityPrivate.SwitchAccessMenuActions]"}]}
+    {:id ::enable-point-scan, :name "enablePointScan", :since "master", :params [{:name "enabled", :type "boolean"}]}
     {:id ::set-native-chrome-vox-arc-support-for-current-app,
      :name "setNativeChromeVoxArcSupportForCurrentApp",
      :since "63",
@@ -325,7 +332,7 @@
      :params [{:name "rect", :type "accessibilityPrivate.ScreenRect"}]}
     {:id ::move-magnifier-to-rect,
      :name "moveMagnifierToRect",
-     :since "master",
+     :since "future",
      :params [{:name "rect", :type "accessibilityPrivate.ScreenRect"}]}
     {:id ::toggle-dictation, :name "toggleDictation", :since "71"}
     {:id ::set-virtual-keyboard-visible,
@@ -344,8 +351,8 @@
      :since "52",
      :params
      [{:name "gesture", :type "accessibilityPrivate.Gesture"}
-      {:name "x", :since "future", :type "integer"}
-      {:name "y", :since "future", :type "integer"}]}
+      {:name "x", :since "86", :type "integer"}
+      {:name "y", :since "86", :type "integer"}]}
     {:id ::on-two-finger-touch-start, :name "onTwoFingerTouchStart", :since "59"}
     {:id ::on-two-finger-touch-stop, :name "onTwoFingerTouchStop", :since "59"}
     {:id ::on-select-to-speak-state-change-requested, :name "onSelectToSpeakStateChangeRequested", :since "68"}

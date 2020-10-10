@@ -746,9 +746,9 @@
      |entry| - ?"
   ([entry] (gen-call :function ::import-crostini-image &form entry)))
 
-(defmacro get-thumbnail
-  "For a given file entry, retrieves its thumbnail. If |cropToSquare| is true, returns a thumbnail appropriate for file list
-   or grid views; otherwise, returns a thumbnail appropriate for quickview.
+(defmacro get-drive-thumbnail
+  "For a file in DriveFS, retrieves its thumbnail. If |cropToSquare| is true, returns a thumbnail appropriate for file list or
+   grid views; otherwise, returns a thumbnail appropriate for quickview.
 
      |entry| - ?
      |crop-to-square| - ?
@@ -760,7 +760,23 @@
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([entry crop-to-square] (gen-call :function ::get-thumbnail &form entry crop-to-square)))
+  ([entry crop-to-square] (gen-call :function ::get-drive-thumbnail &form entry crop-to-square)))
+
+(defmacro get-pdf-thumbnail
+  "For a local PDF file, retrieves its thumbnail with a given |width| and |height|.
+
+     |entry| - ?
+     |width| - ?
+     |height| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [thumbnail-data-url] where:
+
+     |thumbnail-data-url| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([entry width height] (gen-call :function ::get-pdf-thumbnail &form entry width height)))
 
 (defmacro detect-character-encoding
   "Returns a guessed character encoding of a hex-encoded string. Every 2 characters of |bytes| represent one byte by 2-digit
@@ -997,14 +1013,14 @@
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "string"}]}}]}
     {:id ::get-content-mime-type,
      :name "getContentMimeType",
-     :since "future",
+     :since "86",
      :callback? true,
      :params
      [{:name "file-entry", :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "string"}]}}]}
     {:id ::get-content-metadata,
      :name "getContentMetadata",
-     :since "future",
+     :since "86",
      :callback? true,
      :params
      [{:name "file-entry", :type "object"}
@@ -1074,7 +1090,7 @@
      :callback? true,
      :params
      [{:name "source", :type "string"}
-      {:name "password", :optional? true, :since "future", :type "string"}
+      {:name "password", :optional? true, :since "86", :type "string"}
       {:name "callback", :type :callback, :callback {:params [{:name "source-path", :type "string"}]}}]}
     {:id ::remove-mount, :name "removeMount", :params [{:name "volume-id", :type "string"}]}
     {:id ::get-volume-metadata-list,
@@ -1117,7 +1133,7 @@
       {:name "volume-label", :since "77", :type "string"}]}
     {:id ::single-partition-format,
      :name "singlePartitionFormat",
-     :since "master",
+     :since "future",
      :params
      [{:name "device-storage-path", :type "string"}
       {:name "filesystem", :type "fileManagerPrivate.FormatFileSystemType"}
@@ -1311,13 +1327,22 @@
        :type :callback,
        :callback {:params [{:name "response", :type "unknown-type"} {:name "failure-reason", :type "string"}]}}]}
     {:id ::import-crostini-image, :name "importCrostiniImage", :since "78", :params [{:name "entry", :type "object"}]}
-    {:id ::get-thumbnail,
-     :name "getThumbnail",
-     :since "71",
+    {:id ::get-drive-thumbnail,
+     :name "getDriveThumbnail",
+     :since "master",
      :callback? true,
      :params
-     [{:name "entry", :type "FileEntry"}
+     [{:name "entry", :type "object"}
       {:name "crop-to-square", :type "boolean"}
+      {:name "callback", :type :callback, :callback {:params [{:name "thumbnail-data-url", :type "string"}]}}]}
+    {:id ::get-pdf-thumbnail,
+     :name "getPdfThumbnail",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "entry", :type "object"}
+      {:name "width", :type "integer"}
+      {:name "height", :type "integer"}
       {:name "callback", :type :callback, :callback {:params [{:name "thumbnail-data-url", :type "string"}]}}]}
     {:id ::detect-character-encoding,
      :name "detectCharacterEncoding",
@@ -1343,14 +1368,14 @@
      :params [{:name "android-app", :type "fileManagerPrivate.AndroidApp"} {:name "callback", :type :callback}]}
     {:id ::sharesheet-has-targets,
      :name "sharesheetHasTargets",
-     :since "future",
+     :since "86",
      :callback? true,
      :params
      [{:name "entries", :type "[array-of-objects]"}
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
     {:id ::invoke-sharesheet,
      :name "invokeSharesheet",
-     :since "future",
+     :since "86",
      :callback? true,
      :params [{:name "entries", :type "[array-of-objects]"} {:name "callback", :type :callback}]}
     {:id ::toggle-added-to-holding-space,

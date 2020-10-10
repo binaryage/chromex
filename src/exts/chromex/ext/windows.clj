@@ -272,10 +272,7 @@
    [{:id ::on-created, :name "onCreated", :params [{:name "window", :type "windows.Window"}]}
     {:id ::on-removed, :name "onRemoved", :params [{:name "window-id", :type "integer"}]}
     {:id ::on-focus-changed, :name "onFocusChanged", :params [{:name "window-id", :type "integer"}]}
-    {:id ::on-bounds-changed,
-     :name "onBoundsChanged",
-     :since "future",
-     :params [{:name "window", :type "windows.Window"}]}]})
+    {:id ::on-bounds-changed, :name "onBoundsChanged", :since "86", :params [{:name "window", :type "windows.Window"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

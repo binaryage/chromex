@@ -430,7 +430,7 @@
       {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::set-assistive-window-button-highlighted,
      :name "setAssistiveWindowButtonHighlighted",
-     :since "future",
+     :since "86",
      :callback? true,
      :params [{:name "parameters", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::set-menu-items,

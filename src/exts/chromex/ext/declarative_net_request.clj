@@ -216,7 +216,7 @@
    [{:id ::update-dynamic-rules,
      :name "updateDynamicRules",
      :callback? true,
-     :params [{:name "options", :since "master", :type "object"} {:name "callback", :optional? true, :type :callback}]}
+     :params [{:name "options", :since "future", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-dynamic-rules,
      :name "getDynamicRules",
      :callback? true,
@@ -227,7 +227,7 @@
     {:id ::update-enabled-rulesets,
      :name "updateEnabledRulesets",
      :callback? true,
-     :params [{:name "options", :since "master", :type "object"} {:name "callback", :optional? true, :type :callback}]}
+     :params [{:name "options", :since "future", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-enabled-rulesets,
      :name "getEnabledRulesets",
      :callback? true,
