@@ -249,7 +249,7 @@
   ([parameters] (gen-call :function ::set-composing-range &form parameters)))
 
 (defmacro get-autocorrect-range
-  "Get the autocorrected word's bounds.
+  "Get the autocorrected word's bounds. Returns an empty range if there is no autocorrected word.
 
      |parameters| - ?
 
