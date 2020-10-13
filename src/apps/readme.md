@@ -41,7 +41,6 @@
 | [chrome.management](https://developer.chrome.com/extensions/management) | [chromex/app/management.clj](chromex/app/management.clj) |
 | [chrome.mdns](https://developer.chrome.com/extensions/mdns) | [chromex/app/mdns.clj](chromex/app/mdns.clj) |
 | [chrome.mediaGalleries](https://developer.chrome.com/extensions/mediaGalleries) | [chromex/app/media_galleries.clj](chromex/app/media_galleries.clj) |
-| [chrome.networking.config](https://developer.chrome.com/extensions/networking.config) | [chromex/app/networking/config.clj](chromex/app/networking/config.clj) |
 | [chrome.networking.onc](https://developer.chrome.com/extensions/networking.onc) | [chromex/app/networking/onc.clj](chromex/app/networking/onc.clj) |
 | [chrome.notifications](https://developer.chrome.com/extensions/notifications) | [chromex/app/notifications.clj](chromex/app/notifications.clj) |
 | [chrome.permissions](https://developer.chrome.com/extensions/permissions) | [chromex/app/permissions.clj](chromex/app/permissions.clj) |
@@ -77,7 +76,7 @@
 
 ### API stats
 
-Generated 69 namespaces containing 32 properties, 459 functions and 155 events:
+Generated 68 namespaces containing 32 properties, 450 functions and 153 events:
 
 
     |                         :namespace | :properties | :functions | :events |
@@ -118,8 +117,7 @@ Generated 69 namespaces containing 32 properties, 459 functions and 155 events:
     |                  chrome.instanceID |           0 |          5 |       1 |
     |                  chrome.management |           0 |         15 |       4 |
     |                        chrome.mdns |           1 |          1 |       1 |
-    |              chrome.mediaGalleries |           0 |         13 |       2 |
-    |           chrome.networking.config |           0 |          2 |       1 |
+    |              chrome.mediaGalleries |           0 |          6 |       1 |
     |              chrome.networking.onc |           0 |         15 |       4 |
     |               chrome.notifications |           0 |          5 |       5 |
     |                 chrome.permissions |           0 |          4 |       2 |
@@ -312,14 +310,8 @@ Generated 69 namespaces containing 32 properties, 459 functions and 155 events:
       get-max-service-instances-per-event force-discovery tap-on-service-list tap-all-events]]
 
     [chromex.app.media-galleries refer:[
-      get-media-file-systems add-user-selected-folder drop-permission-for-media-file-system
-      start-media-scan cancel-media-scan add-scan-results get-media-file-system-metadata
-      get-all-media-file-system-metadata get-metadata add-gallery-watch remove-gallery-watch
-      get-all-gallery-watch remove-all-gallery-watch tap-on-gallery-changed tap-on-scan-progress
-      tap-all-events]]
-
-    [chromex.app.networking.config refer:[
-      set-network-filter finish-authentication tap-on-captive-portal-detected tap-all-events]]
+      get-media-file-systems add-user-selected-folder get-media-file-system-metadata get-metadata
+      add-gallery-watch remove-gallery-watch tap-on-gallery-changed tap-all-events]]
 
     [chromex.app.networking.onc refer:[
       get-properties get-managed-properties get-state set-properties create-network forget-network

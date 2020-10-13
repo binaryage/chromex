@@ -51,7 +51,6 @@
 | [chrome.loginScreenStorage](https://developer.chrome.com/extensions/loginScreenStorage) | [chromex/ext/login_screen_storage.clj](chromex/ext/login_screen_storage.clj) |
 | [chrome.loginState](https://developer.chrome.com/extensions/loginState) | [chromex/ext/login_state.clj](chromex/ext/login_state.clj) |
 | [chrome.management](https://developer.chrome.com/extensions/management) | [chromex/ext/management.clj](chromex/ext/management.clj) |
-| [chrome.networking.config](https://developer.chrome.com/extensions/networking.config) | [chromex/ext/networking/config.clj](chromex/ext/networking/config.clj) |
 | [chrome.notifications](https://developer.chrome.com/extensions/notifications) | [chromex/ext/notifications.clj](chromex/ext/notifications.clj) |
 | [chrome.omnibox](https://developer.chrome.com/extensions/omnibox) | [chromex/ext/omnibox.clj](chromex/ext/omnibox.clj) |
 | [chrome.pageAction](https://developer.chrome.com/extensions/pageAction) | [chromex/ext/page_action.clj](chromex/ext/page_action.clj) |
@@ -90,7 +89,7 @@
 
 ### API stats
 
-Generated 82 namespaces containing 61 properties, 400 functions and 181 events:
+Generated 81 namespaces containing 61 properties, 397 functions and 180 events:
 
 
     |                             :namespace | :properties | :functions | :events |
@@ -135,14 +134,13 @@ Generated 82 namespaces containing 61 properties, 400 functions and 181 events:
     |                            chrome.i18n |           0 |          4 |       0 |
     |                        chrome.identity |           0 |          7 |       1 |
     |                            chrome.idle |           0 |          3 |       1 |
-    |                         chrome.idltest |           0 |          5 |       0 |
+    |                         chrome.idltest |           0 |          4 |       0 |
     |                       chrome.input.ime |           0 |         14 |      11 |
     |                      chrome.instanceID |           0 |          5 |       1 |
     |                           chrome.login |           0 |          5 |       0 |
     |              chrome.loginScreenStorage |           0 |          4 |       0 |
     |                      chrome.loginState |           0 |          2 |       1 |
     |                      chrome.management |           0 |         15 |       4 |
-    |               chrome.networking.config |           0 |          2 |       1 |
     |                   chrome.notifications |           0 |          5 |       5 |
     |                         chrome.omnibox |           0 |          1 |       5 |
     |                      chrome.pageAction |           0 |          7 |       1 |
@@ -348,8 +346,7 @@ Generated 82 namespaces containing 61 properties, 400 functions and 181 events:
       query-state set-detection-interval get-auto-lock-delay tap-on-state-changed tap-all-events]]
 
     [chromex.ext.idltest refer:[
-      send-array-buffer send-array-buffer-view get-array-buffer nocompile-func nodefine-func
-      tap-all-events]]
+      send-array-buffer send-array-buffer-view get-array-buffer nocompile-func tap-all-events]]
 
     [chromex.ext.input.ime refer:[
       set-composition clear-composition commit-text send-key-events hide-input-view
@@ -377,9 +374,6 @@ Generated 82 namespaces containing 61 properties, 400 functions and 181 events:
       uninstall uninstall-self launch-app create-app-shortcut set-launch-type generate-app-for-link
       can-install-replacement-android-app install-replacement-android-app install-replacement-web-app
       tap-on-installed tap-on-uninstalled tap-on-enabled tap-on-disabled tap-all-events]]
-
-    [chromex.ext.networking.config refer:[
-      set-network-filter finish-authentication tap-on-captive-portal-detected tap-all-events]]
 
     [chromex.ext.notifications refer:[
       create update clear get-all get-permission-level tap-on-closed tap-on-clicked tap-on-button-clicked

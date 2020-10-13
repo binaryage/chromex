@@ -49,48 +49,6 @@
    https://developer.chrome.com/apps/mediaGalleries#method-addUserSelectedFolder."
   ([] (gen-call :function ::add-user-selected-folder &form)))
 
-(defmacro drop-permission-for-media-file-system
-  "Give up access to a given media gallery.
-
-     |gallery-id| - https://developer.chrome.com/apps/mediaGalleries#property-dropPermissionForMediaFileSystem-galleryId.
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [].
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error.
-
-   https://developer.chrome.com/apps/mediaGalleries#method-dropPermissionForMediaFileSystem."
-  ([gallery-id] (gen-call :function ::drop-permission-for-media-file-system &form gallery-id)))
-
-(defmacro start-media-scan
-  "Start a scan of the user's hard disks for directories containing media. The scan may take a long time so progress and
-   completion is communicated by events. No permission is granted as a result of the scan, see addScanResults.
-
-   https://developer.chrome.com/apps/mediaGalleries#method-startMediaScan."
-  ([] (gen-call :function ::start-media-scan &form)))
-
-(defmacro cancel-media-scan
-  "Cancel any pending media scan.  Well behaved apps should provide a way for the user to cancel scans they start.
-
-   https://developer.chrome.com/apps/mediaGalleries#method-cancelMediaScan."
-  ([] (gen-call :function ::cancel-media-scan &form)))
-
-(defmacro add-scan-results
-  "Show the user the scan results and let them add any or all of them as galleries. This should be used after the 'finish'
-   onScanProgress() event has happened. All galleries the app has access to are returned, not just the newly added galleries.
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [media-file-systems] where:
-
-     |media-file-systems| - https://developer.chrome.com/apps/mediaGalleries#property-callback-mediaFileSystems.
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error.
-
-   https://developer.chrome.com/apps/mediaGalleries#method-addScanResults."
-  ([] (gen-call :function ::add-scan-results &form)))
-
 (defmacro get-media-file-system-metadata
   "Get metadata about a specific media file system.
 
@@ -98,20 +56,6 @@
 
    https://developer.chrome.com/apps/mediaGalleries#method-getMediaFileSystemMetadata."
   ([media-file-system] (gen-call :function ::get-media-file-system-metadata &form media-file-system)))
-
-(defmacro get-all-media-file-system-metadata
-  "Get metadata for all available media galleries.
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [metadata] where:
-
-     |metadata| - https://developer.chrome.com/apps/mediaGalleries#property-callback-metadata.
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error.
-
-   https://developer.chrome.com/apps/mediaGalleries#method-getAllMediaFileSystemMetadata."
-  ([] (gen-call :function ::get-all-media-file-system-metadata &form)))
 
 (defmacro get-metadata
   "Gets the media-specific metadata for a media file. This should work for files in media galleries as well as other DOM
@@ -157,26 +101,6 @@
    https://developer.chrome.com/apps/mediaGalleries#method-removeGalleryWatch."
   ([gallery-id] (gen-call :function ::remove-gallery-watch &form gallery-id)))
 
-(defmacro get-all-gallery-watch
-  "Notifies which galleries are being watched via the given callback.
-
-   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [gallery-ids] where:
-
-     |gallery-ids| - https://developer.chrome.com/apps/mediaGalleries#property-callback-galleryIds.
-
-   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
-   chromex.error/get-last-error.
-
-   https://developer.chrome.com/apps/mediaGalleries#method-getAllGalleryWatch."
-  ([] (gen-call :function ::get-all-gallery-watch &form)))
-
-(defmacro remove-all-gallery-watch
-  "Removes all gallery watches.
-
-   https://developer.chrome.com/apps/mediaGalleries#method-removeAllGalleryWatch."
-  ([] (gen-call :function ::remove-all-gallery-watch &form)))
-
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -192,18 +116,6 @@
 
    https://developer.chrome.com/apps/mediaGalleries#event-onGalleryChanged."
   ([channel & args] (apply gen-call :event ::on-gallery-changed &form channel args)))
-
-(defmacro tap-on-scan-progress-events
-  "The pending media scan has changed state. See details for more information.
-
-   Events will be put on the |channel| with signature [::on-scan-progress [details]] where:
-
-     |details| - https://developer.chrome.com/apps/mediaGalleries#property-onScanProgress-details.
-
-   Note: |args| will be passed as additional parameters into Chrome event's .addListener call.
-
-   https://developer.chrome.com/apps/mediaGalleries#event-onScanProgress."
-  ([channel & args] (apply gen-call :event ::on-scan-progress &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
@@ -238,40 +150,10 @@
        {:params
         [{:name "media-file-systems", :type "[array-of-DOMFileSystems]"}
          {:name "selected-file-system-name", :type "string"}]}}]}
-    {:id ::drop-permission-for-media-file-system,
-     :name "dropPermissionForMediaFileSystem",
-     :since "51",
-     :deprecated "The user can manually drop access to galleries\\n    via the permissions dialog.",
-     :callback? true,
-     :params [{:name "gallery-id", :type "string"} {:name "callback", :optional? true, :type :callback}]}
-    {:id ::start-media-scan,
-     :name "startMediaScan",
-     :since "51",
-     :deprecated "The mediaGalleries API no longer supports scanning."}
-    {:id ::cancel-media-scan,
-     :name "cancelMediaScan",
-     :since "51",
-     :deprecated "The mediaGalleries API no longer supports scanning."}
-    {:id ::add-scan-results,
-     :name "addScanResults",
-     :since "51",
-     :deprecated "The mediaGalleries API no longer supports scanning.",
-     :callback? true,
-     :params
-     [{:name "callback",
-       :type :callback,
-       :callback {:params [{:name "media-file-systems", :type "[array-of-DOMFileSystems]"}]}}]}
     {:id ::get-media-file-system-metadata,
      :name "getMediaFileSystemMetadata",
      :return-type "object",
      :params [{:name "media-file-system", :type "DOMFileSystem"}]}
-    {:id ::get-all-media-file-system-metadata,
-     :name "getAllMediaFileSystemMetadata",
-     :since "51",
-     :deprecated "Use getMediaFileSystemMetadata instead.",
-     :callback? true,
-     :params
-     [{:name "callback", :type :callback, :callback {:params [{:name "metadata", :type "[array-of-objects]"}]}}]}
     {:id ::get-metadata,
      :name "getMetadata",
      :since "38",
@@ -290,25 +172,9 @@
     {:id ::remove-gallery-watch,
      :name "removeGalleryWatch",
      :since "39",
-     :params [{:name "gallery-id", :type "string"}]}
-    {:id ::get-all-gallery-watch,
-     :name "getAllGalleryWatch",
-     :since "51",
-     :deprecated "Applications should store their own gallery watches\\n    as they are added.",
-     :callback? true,
-     :params
-     [{:name "callback", :type :callback, :callback {:params [{:name "gallery-ids", :type "[array-of-strings]"}]}}]}
-    {:id ::remove-all-gallery-watch,
-     :name "removeAllGalleryWatch",
-     :since "51",
-     :deprecated "Use removeGalleryWatch instead."}],
+     :params [{:name "gallery-id", :type "string"}]}],
    :events
-   [{:id ::on-gallery-changed, :name "onGalleryChanged", :since "38", :params [{:name "details", :type "object"}]}
-    {:id ::on-scan-progress,
-     :name "onScanProgress",
-     :since "51",
-     :deprecated "The mediaGalleries API no longer supports scanning.",
-     :params [{:name "details", :type "object"}]}]})
+   [{:id ::on-gallery-changed, :name "onGalleryChanged", :since "38", :params [{:name "details", :type "object"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 
