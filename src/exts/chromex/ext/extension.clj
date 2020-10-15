@@ -2,7 +2,7 @@
   "The chrome.extension API has utilities that can be used by any extension page. It includes support for exchanging messages
    between an extension and its content scripts or between extensions, as described in detail in Message Passing.
 
-     * available since Chrome 36
+     * available since Chrome 38
      * https://developer.chrome.com/extensions/extension"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -166,7 +166,7 @@
 
 (def api-table
   {:namespace "chrome.extension",
-   :since "36",
+   :since "38",
    :properties
    [{:id ::last-error,
      :name "lastError",
@@ -177,7 +177,7 @@
    :functions
    [{:id ::send-request,
      :name "sendRequest",
-     :since "36",
+     :since "38",
      :deprecated "Please use 'runtime.sendMessage'.",
      :callback? true,
      :params
@@ -200,7 +200,7 @@
     {:id ::get-background-page, :name "getBackgroundPage", :return-type "Window"}
     {:id ::get-extension-tabs,
      :name "getExtensionTabs",
-     :since "36",
+     :since "38",
      :deprecated "Please use 'extension.getViews' {type: \"tab\"}.",
      :return-type "[array-of-Windows]",
      :params [{:name "window-id", :optional? true, :type "integer"}]}
@@ -216,7 +216,7 @@
    :events
    [{:id ::on-request,
      :name "onRequest",
-     :since "36",
+     :since "38",
      :deprecated "Please use 'runtime.onMessage'.",
      :params
      [{:name "request", :optional? true, :type "any"}
@@ -224,7 +224,7 @@
       {:name "send-response", :type :callback}]}
     {:id ::on-request-external,
      :name "onRequestExternal",
-     :since "36",
+     :since "38",
      :deprecated "Please use 'runtime.onMessageExternal'.",
      :params
      [{:name "request", :optional? true, :type "any"}

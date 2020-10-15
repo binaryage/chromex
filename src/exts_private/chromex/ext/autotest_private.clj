@@ -2,7 +2,7 @@
   "API for integration testing. To be used on test images with a test component
    extension.
 
-     * available since Chrome 36"
+     * available since Chrome 38"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -1194,7 +1194,7 @@
 
 (def api-table
   {:namespace "chrome.autotestPrivate",
-   :since "36",
+   :since "38",
    :functions
    [{:id ::initialize-events, :name "initializeEvents", :since "79"}
     {:id ::logout, :name "logout"}

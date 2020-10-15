@@ -2,7 +2,7 @@
   "Use the chrome.devtools.panels API to integrate your extension into Developer Tools window UI: create your own panels,
    access existing panels, and add sidebars.
 
-     * available since Chrome 36
+     * available since Chrome 38
      * https://developer.chrome.com/extensions/devtools.panels"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -95,10 +95,10 @@
 
 (def api-table
   {:namespace "chrome.devtools.panels",
-   :since "36",
+   :since "38",
    :properties
    [{:id ::elements, :name "elements", :return-type "devtools.panels.ElementsPanel"}
-    {:id ::sources, :name "sources", :since "38", :return-type "devtools.panels.SourcesPanel"}
+    {:id ::sources, :name "sources", :return-type "devtools.panels.SourcesPanel"}
     {:id ::theme-name, :name "themeName", :since "59", :return-type "string"}],
    :functions
    [{:id ::create,
@@ -122,7 +122,6 @@
        :callback {:params [{:name "resource", :type "devtools.inspectedWindow.Resource"}]}}]}
     {:id ::open-resource,
      :name "openResource",
-     :since "38",
      :callback? true,
      :params
      [{:name "url", :type "string"}

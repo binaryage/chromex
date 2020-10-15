@@ -4,7 +4,7 @@
 
    Generic Attribute Profile (GATT).
 
-     * available since Chrome 37
+     * available since Chrome 38
      * https://developer.chrome.com/apps/bluetoothLowEnergy"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -608,7 +608,7 @@
 
 (def api-table
   {:namespace "chrome.bluetoothLowEnergy",
-   :since "37",
+   :since "38",
    :functions
    [{:id ::connect,
      :name "connect",

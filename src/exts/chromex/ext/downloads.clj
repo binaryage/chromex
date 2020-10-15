@@ -2,7 +2,7 @@
   "Use the chrome.downloads API to programmatically initiate,
    monitor, manipulate, and search for downloads.
 
-     * available since Chrome 36
+     * available since Chrome 38
      * https://developer.chrome.com/extensions/downloads"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -281,7 +281,7 @@
 
 (def api-table
   {:namespace "chrome.downloads",
-   :since "36",
+   :since "38",
    :functions
    [{:id ::download,
      :name "download",

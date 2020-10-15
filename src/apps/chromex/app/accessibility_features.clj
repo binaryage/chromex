@@ -5,7 +5,7 @@
    accessibilityFeatures.modify permission. Note that accessibilityFeatures.modify does not imply accessibilityFeatures.read
    permission.
 
-     * available since Chrome 37
+     * available since Chrome 38
      * https://developer.chrome.com/apps/accessibilityFeatures"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -134,7 +134,7 @@
 
 (def api-table
   {:namespace "chrome.accessibilityFeatures",
-   :since "37",
+   :since "38",
    :properties
    [{:id ::spoken-feedback, :name "spokenFeedback", :return-type "object"}
     {:id ::large-cursor, :name "largeCursor", :return-type "object"}

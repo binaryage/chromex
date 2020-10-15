@@ -1,7 +1,7 @@
 (ns chromex.app.system.display
   "Use the system.display API to query display metadata.
 
-     * available since Chrome 36
+     * available since Chrome 38
      * https://developer.chrome.com/apps/system.display"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -214,7 +214,7 @@
 
 (def api-table
   {:namespace "chrome.system.display",
-   :since "36",
+   :since "38",
    :functions
    [{:id ::get-info,
      :name "getInfo",

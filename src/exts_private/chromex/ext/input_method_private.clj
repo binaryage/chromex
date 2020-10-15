@@ -1,5 +1,5 @@
 (ns chromex.ext.input-method-private
-  "  * available since Chrome 36"
+  "  * available since Chrome 38"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -431,7 +431,7 @@
 
 (def api-table
   {:namespace "chrome.inputMethodPrivate",
-   :since "36",
+   :since "38",
    :functions
    [{:id ::get-input-method-config,
      :name "getInputMethodConfig",
@@ -440,18 +440,15 @@
      :params [{:name "callback", :type :callback, :callback {:params [{:name "config", :type "object"}]}}]}
     {:id ::get-input-methods,
      :name "getInputMethods",
-     :since "37",
      :callback? true,
      :params
      [{:name "callback", :type :callback, :callback {:params [{:name "input-methods", :type "[array-of-objects]"}]}}]}
     {:id ::get-current-input-method,
      :name "getCurrentInputMethod",
-     :since "37",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "input-method-id", :type "string"}]}}]}
     {:id ::set-current-input-method,
      :name "setCurrentInputMethod",
-     :since "37",
      :callback? true,
      :params [{:name "input-method-id", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::fetch-all-dictionary-words,

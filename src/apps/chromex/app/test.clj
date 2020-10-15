@@ -1,5 +1,5 @@
 (ns chromex.app.test
-  "  * available since Chrome 36
+  "  * available since Chrome 38
      * https://developer.chrome.com/apps/test"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -303,7 +303,7 @@
 
 (def api-table
   {:namespace "chrome.test",
-   :since "36",
+   :since "38",
    :functions
    [{:id ::get-config,
      :name "getConfig",

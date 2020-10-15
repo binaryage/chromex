@@ -1,7 +1,7 @@
 (ns chromex.app.desktop-capture
   "Desktop Capture API that can be used to capture content of screen, individual windows or tabs.
 
-     * available since Chrome 36
+     * available since Chrome 38
      * https://developer.chrome.com/apps/desktopCapture"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -59,7 +59,7 @@
 
 (def api-table
   {:namespace "chrome.desktopCapture",
-   :since "36",
+   :since "38",
    :functions
    [{:id ::choose-desktop-media,
      :name "chooseDesktopMedia",

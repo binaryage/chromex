@@ -5,7 +5,7 @@
    authentication, network access or by other extension through
    'platformKeys chrome.platformKeys'.
 
-     * available since Chrome 37
+     * available since Chrome 38
      * https://developer.chrome.com/extensions/enterprise.platformKeys"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -157,7 +157,7 @@
 
 (def api-table
   {:namespace "chrome.enterprise.platformKeys",
-   :since "37",
+   :since "38",
    :functions
    [{:id ::get-tokens,
      :name "getTokens",

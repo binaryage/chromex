@@ -2,7 +2,7 @@
   "Use the chrome.bluetoothSocket API to send and receive data
    to Bluetooth devices using RFCOMM and L2CAP connections.
 
-     * available since Chrome 37
+     * available since Chrome 38
      * https://developer.chrome.com/apps/bluetoothSocket"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -262,7 +262,7 @@
 
 (def api-table
   {:namespace "chrome.bluetoothSocket",
-   :since "37",
+   :since "38",
    :functions
    [{:id ::create,
      :name "create",

@@ -3,7 +3,7 @@
    network using UDP connections. This API supersedes the UDP functionality
    previously found in the 'socket' API.
 
-     * available since Chrome 36
+     * available since Chrome 38
      * https://developer.chrome.com/apps/sockets.udp"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -303,7 +303,7 @@
 
 (def api-table
   {:namespace "chrome.sockets.udp",
-   :since "36",
+   :since "38",
    :functions
    [{:id ::create,
      :name "create",

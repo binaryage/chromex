@@ -2,7 +2,7 @@
   "Use the chrome.contextMenus API to add items to Google Chrome's context menu. You can choose what types of objects your
    context menu additions apply to, such as images, hyperlinks, and pages.
 
-     * available since Chrome 36
+     * available since Chrome 38
      * https://developer.chrome.com/apps/contextMenus"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -110,9 +110,8 @@
 
 (def api-table
   {:namespace "chrome.contextMenus",
-   :since "36",
-   :properties
-   [{:id ::action-menu-top-level-limit, :name "ACTION_MENU_TOP_LEVEL_LIMIT", :since "38", :return-type "unknown-type"}],
+   :since "38",
+   :properties [{:id ::action-menu-top-level-limit, :name "ACTION_MENU_TOP_LEVEL_LIMIT", :return-type "unknown-type"}],
    :functions
    [{:id ::create,
      :name "create",

@@ -3,7 +3,7 @@
    network using TCP connections. This API supersedes the TCP functionality
    previously found in the chrome.socket API.
 
-     * available since Chrome 36
+     * available since Chrome 38
      * https://developer.chrome.com/apps/sockets.tcp"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -257,7 +257,7 @@
 
 (def api-table
   {:namespace "chrome.sockets.tcp",
-   :since "36",
+   :since "38",
    :functions
    [{:id ::create,
      :name "create",
@@ -308,7 +308,6 @@
      :params [{:name "socket-id", :type "integer"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::secure,
      :name "secure",
-     :since "38",
      :callback? true,
      :params
      [{:name "socket-id", :type "integer"}

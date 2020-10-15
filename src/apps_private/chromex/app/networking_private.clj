@@ -24,7 +24,7 @@
    TODO(stevenjb/pneubeck): Merge the ONC documentation with this document and
    use it as the ONC specification.
 
-     * available since Chrome 36"
+     * available since Chrome 38"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -397,7 +397,7 @@
 
 (def api-table
   {:namespace "chrome.networkingPrivate",
-   :since "36",
+   :since "38",
    :functions
    [{:id ::get-properties,
      :name "getProperties",
@@ -440,7 +440,6 @@
      :params [{:name "network-guid", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-networks,
      :name "getNetworks",
-     :since "37",
      :callback? true,
      :params
      [{:name "filter", :type "object"}
@@ -449,11 +448,11 @@
        :callback {:params [{:name "result", :type "[array-of-networkingPrivate.NetworkStatePropertiess]"}]}}]}
     {:id ::get-visible-networks,
      :name "getVisibleNetworks",
-     :since "37",
+     :since "38",
      :deprecated "Use getNetworks.",
      :callback? true,
      :params
-     [{:name "network-type", :since "37", :type "networkingPrivate.NetworkType"}
+     [{:name "network-type", :type "networkingPrivate.NetworkType"}
       {:name "callback",
        :type :callback,
        :callback {:params [{:name "result", :type "[array-of-networkingPrivate.NetworkStatePropertiess]"}]}}]}
@@ -500,7 +499,7 @@
      :name "getCaptivePortalStatus",
      :callback? true,
      :params
-     [{:name "network-guid", :since "37", :type "string"}
+     [{:name "network-guid", :type "string"}
       {:name "callback",
        :type :callback,
        :callback {:params [{:name "result", :type "networkingPrivate.CaptivePortalStatus"}]}}]}
@@ -547,9 +546,7 @@
     {:id ::on-device-state-list-changed, :name "onDeviceStateListChanged", :since "44"}
     {:id ::on-portal-detection-completed,
      :name "onPortalDetectionCompleted",
-     :params
-     [{:name "network-guid", :since "37", :type "string"}
-      {:name "status", :type "networkingPrivate.CaptivePortalStatus"}]}
+     :params [{:name "network-guid", :type "string"} {:name "status", :type "networkingPrivate.CaptivePortalStatus"}]}
     {:id ::on-certificate-lists-changed, :name "onCertificateListsChanged", :since "60"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------

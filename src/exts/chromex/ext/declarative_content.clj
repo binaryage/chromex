@@ -2,7 +2,7 @@
   "Use the chrome.declarativeContent API to take actions depending on the content of a page, without requiring permission to
    read the page's content.
 
-     * available since Chrome 36
+     * available since Chrome 38
      * https://developer.chrome.com/extensions/declarativeContent"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -37,7 +37,7 @@
 ; ---------------------------------------------------------------------------------------------------------------------------
 
 (def api-table
-  {:namespace "chrome.declarativeContent", :since "36", :events [{:id ::on-page-changed, :name "onPageChanged"}]})
+  {:namespace "chrome.declarativeContent", :since "38", :events [{:id ::on-page-changed, :name "onPageChanged"}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

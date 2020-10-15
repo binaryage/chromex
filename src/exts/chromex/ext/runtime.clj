@@ -3,7 +3,7 @@
    to events in the app or extension lifecycle. You can also use this API to convert the relative path of URLs to
    fully-qualified URLs.
 
-     * available since Chrome 36
+     * available since Chrome 38
      * https://developer.chrome.com/extensions/runtime"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -406,7 +406,7 @@
 
 (def api-table
   {:namespace "chrome.runtime",
-   :since "36",
+   :since "38",
    :properties
    [{:id ::last-error, :name "lastError", :return-type "object"} {:id ::id, :name "id", :return-type "string"}],
    :functions
@@ -428,7 +428,7 @@
      :name "setUninstallURL",
      :since "41",
      :callback? true,
-     :params [{:name "url", :since "36", :type "string"} {:name "callback", :optional? true, :type :callback}]}
+     :params [{:name "url", :since "38", :type "string"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::reload, :name "reload"}
     {:id ::request-update-check,
      :name "requestUpdateCheck",
@@ -496,7 +496,7 @@
     {:id ::on-update-available, :name "onUpdateAvailable", :params [{:name "details", :type "object"}]}
     {:id ::on-browser-update-available,
      :name "onBrowserUpdateAvailable",
-     :since "36",
+     :since "38",
      :deprecated "Please use 'runtime.onRestartRequired'."}
     {:id ::on-connect, :name "onConnect", :params [{:name "port", :type "runtime.Port"}]}
     {:id ::on-connect-external, :name "onConnectExternal", :params [{:name "port", :type "runtime.Port"}]}

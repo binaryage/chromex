@@ -2,7 +2,7 @@
   "Use the chrome.privacy API to control usage of the features in Chrome that can affect a user's privacy. This API relies on
    the ChromeSetting prototype of the type API for getting and setting Chrome's configuration.
 
-     * available since Chrome 36
+     * available since Chrome 38
      * https://developer.chrome.com/extensions/privacy"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -46,7 +46,7 @@
 
 (def api-table
   {:namespace "chrome.privacy",
-   :since "36",
+   :since "38",
    :properties
    [{:id ::network, :name "network", :return-type "object"}
     {:id ::services, :name "services", :return-type "object"}

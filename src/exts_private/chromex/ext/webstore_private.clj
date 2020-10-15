@@ -1,5 +1,5 @@
 (ns chromex.ext.webstore-private
-  "  * available since Chrome 36"
+  "  * available since Chrome 38"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
   (:require [chromex.wrapgen :refer [gen-wrap-helper]]
@@ -224,7 +224,7 @@
 
 (def api-table
   {:namespace "chrome.webstorePrivate",
-   :since "36",
+   :since "38",
    :functions
    [{:id ::install,
      :name "install",
@@ -276,12 +276,10 @@
      :params [{:name "callback", :type :callback, :callback {:params [{:name "is-incognito", :type "boolean"}]}}]}
     {:id ::get-ephemeral-apps-enabled,
      :name "getEphemeralAppsEnabled",
-     :since "38",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "is-enabled", :type "boolean"}]}}]}
     {:id ::launch-ephemeral-app,
      :name "launchEphemeralApp",
-     :since "38",
      :callback? true,
      :params
      [{:name "id", :type "string"}

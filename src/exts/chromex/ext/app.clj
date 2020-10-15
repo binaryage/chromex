@@ -1,5 +1,5 @@
 (ns chromex.ext.app
-  "  * available since Chrome 36
+  "  * available since Chrome 38
      * https://developer.chrome.com/extensions/app"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -56,7 +56,7 @@
 
 (def api-table
   {:namespace "chrome.app",
-   :since "36",
+   :since "38",
    :functions
    [{:id ::get-is-installed, :name "getIsInstalled", :return-type "boolean"}
     {:id ::install-state,

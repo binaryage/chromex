@@ -2,7 +2,7 @@
   "Use the chrome.tabCapture API to interact with tab media
    streams.
 
-     * available since Chrome 36
+     * available since Chrome 38
      * https://developer.chrome.com/extensions/tabCapture"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -121,7 +121,7 @@
 
 (def api-table
   {:namespace "chrome.tabCapture",
-   :since "36",
+   :since "38",
    :functions
    [{:id ::capture,
      :name "capture",

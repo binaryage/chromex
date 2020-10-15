@@ -1,7 +1,7 @@
 (ns chromex.ext.sessions
   "Use the chrome.sessions API to query and restore tabs and windows from a browsing session.
 
-     * available since Chrome 37
+     * available since Chrome 38
      * https://developer.chrome.com/extensions/sessions"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -103,7 +103,7 @@
 
 (def api-table
   {:namespace "chrome.sessions",
-   :since "37",
+   :since "38",
    :properties [{:id ::max-session-results, :name "MAX_SESSION_RESULTS", :return-type "unknown-type"}],
    :functions
    [{:id ::get-recently-closed,

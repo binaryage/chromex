@@ -2,7 +2,7 @@
   "Use the chrome.mediaGalleries API to access media files (audio,
    images, video) from the user's local disks (with the user's consent).
 
-     * available since Chrome 36
+     * available since Chrome 38
      * https://developer.chrome.com/apps/mediaGalleries"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -130,7 +130,7 @@
 
 (def api-table
   {:namespace "chrome.mediaGalleries",
-   :since "36",
+   :since "38",
    :functions
    [{:id ::get-media-file-systems,
      :name "getMediaFileSystems",
@@ -156,11 +156,10 @@
      :params [{:name "media-file-system", :type "DOMFileSystem"}]}
     {:id ::get-metadata,
      :name "getMetadata",
-     :since "38",
      :callback? true,
      :params
-     [{:name "media-file", :since "36", :type "Blob"}
-      {:name "options", :optional? true, :since "36", :type "object"}
+     [{:name "media-file", :type "Blob"}
+      {:name "options", :optional? true, :type "object"}
       {:name "callback", :type :callback, :callback {:params [{:name "metadata", :type "object"}]}}]}
     {:id ::add-gallery-watch,
      :name "addGalleryWatch",
@@ -173,8 +172,7 @@
      :name "removeGalleryWatch",
      :since "39",
      :params [{:name "gallery-id", :type "string"}]}],
-   :events
-   [{:id ::on-gallery-changed, :name "onGalleryChanged", :since "38", :params [{:name "details", :type "object"}]}]})
+   :events [{:id ::on-gallery-changed, :name "onGalleryChanged", :params [{:name "details", :type "object"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

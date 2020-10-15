@@ -1,7 +1,7 @@
 (ns chromex.ext.gcm
   "Use chrome.gcm to enable apps and extensions to send and receive messages through the Google Cloud Messaging Service.
 
-     * available since Chrome 36
+     * available since Chrome 38
      * https://developer.chrome.com/extensions/gcm"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -120,7 +120,7 @@
 
 (def api-table
   {:namespace "chrome.gcm",
-   :since "36",
+   :since "38",
    :properties [{:id ::max-message-size, :name "MAX_MESSAGE_SIZE", :return-type "unknown-type"}],
    :functions
    [{:id ::register,
