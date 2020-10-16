@@ -1329,7 +1329,7 @@
     {:id ::import-crostini-image, :name "importCrostiniImage", :since "78", :params [{:name "entry", :type "object"}]}
     {:id ::get-drive-thumbnail,
      :name "getDriveThumbnail",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "entry", :type "object"}
@@ -1337,7 +1337,7 @@
       {:name "callback", :type :callback, :callback {:params [{:name "thumbnail-data-url", :type "string"}]}}]}
     {:id ::get-pdf-thumbnail,
      :name "getPdfThumbnail",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "entry", :type "object"}

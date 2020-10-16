@@ -2,7 +2,7 @@
   "Use the chrome.signedInDevices API to get a list of devices
    signed into chrome with the same account as the current profile.
 
-     * available since Chrome 87
+     * available since Chrome 88
      * https://developer.chrome.com/extensions/signedInDevices"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -61,7 +61,7 @@
 
 (def api-table
   {:namespace "chrome.signedInDevices",
-   :since "87",
+   :since "88",
    :functions
    [{:id ::get,
      :name "get",

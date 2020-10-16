@@ -164,7 +164,7 @@
    :functions
    [{:id ::get-accounts,
      :name "getAccounts",
-     :since "87",
+     :since "88",
      :callback? true,
      :params
      [{:name "callback",

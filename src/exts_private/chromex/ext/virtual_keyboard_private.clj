@@ -215,7 +215,7 @@
        :type :callback,
        :callback {:params [{:name "config", :type "virtualKeyboardPrivate.KeyboardConfig"}]}}]}
     {:id ::open-settings, :name "openSettings"}
-    {:id ::open-suggestion-settings, :name "openSuggestionSettings", :since "master"}
+    {:id ::open-suggestion-settings, :name "openSuggestionSettings", :since "future"}
     {:id ::set-container-behavior,
      :name "setContainerBehavior",
      :since "67",

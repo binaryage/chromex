@@ -305,7 +305,7 @@
       {:name "show", :type "boolean"}
       {:name "anchor", :optional? true, :type "accessibilityPrivate.ScreenRect"}
       {:name "actions", :optional? true, :type "[array-of-accessibilityPrivate.SwitchAccessMenuActions]"}]}
-    {:id ::enable-point-scan, :name "enablePointScan", :since "master", :params [{:name "enabled", :type "boolean"}]}
+    {:id ::enable-point-scan, :name "enablePointScan", :since "future", :params [{:name "enabled", :type "boolean"}]}
     {:id ::set-native-chrome-vox-arc-support-for-current-app,
      :name "setNativeChromeVoxArcSupportForCurrentApp",
      :since "63",

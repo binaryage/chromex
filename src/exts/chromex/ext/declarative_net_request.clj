@@ -241,7 +241,7 @@
       {:name "callback", :type :callback, :callback {:params [{:name "details", :type "object"}]}}]}
     {:id ::set-extension-action-options,
      :name "setExtensionActionOptions",
-     :since "master",
+     :since "future",
      :params [{:name "options", :type "object"}]}
     {:id ::is-regex-supported,
      :name "isRegexSupported",

@@ -1239,7 +1239,7 @@
      [{:name "callback", :type :callback, :callback {:params [{:name "notifications", :type "[array-of-objects]"}]}}]}
     {:id ::remove-all-notifications,
      :name "removeAllNotifications",
-     :since "master",
+     :since "future",
      :callback? true,
      :params [{:name "callback", :type :callback}]}
     {:id ::get-arc-start-time,
@@ -1604,7 +1604,7 @@
      :params [{:name "callback", :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::activate-adjacent-desks-to-target-index,
      :name "activateAdjacentDesksToTargetIndex",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "index", :type "integer"}

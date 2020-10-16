@@ -820,14 +820,14 @@
      [{:name "tab-ids", :type "integer-or-[array-of-integers]"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::group,
      :name "group",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "options", :type "object"}
       {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "group-id", :type "integer"}]}}]}
     {:id ::ungroup,
      :name "ungroup",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "tab-ids", :type "integer-or-[array-of-integers]"} {:name "callback", :optional? true, :type :callback}]}

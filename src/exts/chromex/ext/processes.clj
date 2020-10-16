@@ -2,7 +2,7 @@
   "Use the chrome.processes API to interact with the browser's
    processes.
 
-     * available since Chrome 87
+     * available since Chrome 88
      * https://developer.chrome.com/extensions/processes"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -154,7 +154,7 @@
 
 (def api-table
   {:namespace "chrome.processes",
-   :since "87",
+   :since "88",
    :functions
    [{:id ::get-process-id-for-tab,
      :name "getProcessIdForTab",
