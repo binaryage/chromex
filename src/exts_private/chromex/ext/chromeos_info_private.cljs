@@ -9,3 +9,6 @@
 (defn set* [config property-name property-value]
   (gen-wrap :function ::set config property-name property-value))
 
+(defn is-tablet-mode-enabled* [config]
+  (gen-wrap :function ::is-tablet-mode-enabled config))
+

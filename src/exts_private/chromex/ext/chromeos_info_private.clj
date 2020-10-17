@@ -32,6 +32,18 @@
      |property-value| - Chrome OS system property value"
   ([property-name property-value] (gen-call :function ::set &form property-name property-value)))
 
+(defmacro is-tablet-mode-enabled
+  "Called to request tablet mode enabled status from the Chrome OS system.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [tablet-mode-enabled] where:
+
+     |tablet-mode-enabled| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::is-tablet-mode-enabled &form)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -55,8 +67,13 @@
       {:name "callback", :type :callback, :callback {:params [{:name "properties-dictionary", :type "object"}]}}]}
     {:id ::set,
      :name "set",
+     :params [{:name "property-name", :type "chromeosInfoPrivate.PropertyName"} {:name "property-value", :type "any"}]}
+    {:id ::is-tablet-mode-enabled,
+     :name "isTabletModeEnabled",
+     :since "master",
+     :callback? true,
      :params
-     [{:name "property-name", :type "chromeosInfoPrivate.PropertyName"} {:name "property-value", :type "any"}]}]})
+     [{:name "callback", :type :callback, :callback {:params [{:name "tablet-mode-enabled", :type "boolean"}]}}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

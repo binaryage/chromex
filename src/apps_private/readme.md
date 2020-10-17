@@ -45,7 +45,7 @@
 
 ### API stats
 
-Generated 37 namespaces containing 0 properties, 370 functions and 79 events:
+Generated 37 namespaces containing 0 properties, 371 functions and 79 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -57,7 +57,7 @@ Generated 37 namespaces containing 0 properties, 370 functions and 79 events:
     |  chrome.bookmarkManagerPrivate |           0 |         11 |       3 |
     |   chrome.brailleDisplayPrivate |           0 |          3 |       2 |
     |              chrome.cecPrivate |           0 |          3 |       0 |
-    |     chrome.chromeosInfoPrivate |           0 |          2 |       0 |
+    |     chrome.chromeosInfoPrivate |           0 |          3 |       0 |
     |      chrome.commandLinePrivate |           0 |          1 |       0 |
     |      chrome.crashReportPrivate |           0 |          1 |       0 |
     |        chrome.dashboardPrivate |           0 |          1 |       0 |
@@ -133,7 +133,7 @@ Generated 37 namespaces containing 0 properties, 370 functions and 79 events:
       send-stand-by send-wake-up query-display-cec-power-state tap-all-events]]
 
     [chromex.app.chromeos-info-private refer:[
-      get set tap-all-events]]
+      get set is-tablet-mode-enabled tap-all-events]]
 
     [chromex.app.command-line-private refer:[
       has-switch tap-all-events]]

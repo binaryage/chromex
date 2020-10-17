@@ -48,7 +48,7 @@
 
 ### API stats
 
-Generated 40 namespaces containing 0 properties, 499 functions and 84 events:
+Generated 40 namespaces containing 0 properties, 500 functions and 84 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -61,7 +61,7 @@ Generated 40 namespaces containing 0 properties, 499 functions and 84 events:
     |               chrome.bluetoothPrivate |           0 |         10 |       2 |
     |         chrome.bookmarkManagerPrivate |           0 |         11 |       3 |
     |          chrome.brailleDisplayPrivate |           0 |          3 |       2 |
-    |            chrome.chromeosInfoPrivate |           0 |          2 |       0 |
+    |            chrome.chromeosInfoPrivate |           0 |          3 |       0 |
     |             chrome.commandLinePrivate |           0 |          1 |       0 |
     |             chrome.crashReportPrivate |           0 |          1 |       0 |
     |             chrome.cryptotokenPrivate |           0 |          5 |       0 |
@@ -168,7 +168,7 @@ Generated 40 namespaces containing 0 properties, 499 functions and 84 events:
       tap-on-key-event tap-all-events]]
 
     [chromex.ext.chromeos-info-private refer:[
-      get set tap-all-events]]
+      get set is-tablet-mode-enabled tap-all-events]]
 
     [chromex.ext.command-line-private refer:[
       has-switch tap-all-events]]
