@@ -183,6 +183,9 @@
 (defn get-pdf-thumbnail* [config entry width height]
   (gen-wrap :function ::get-pdf-thumbnail config entry width height))
 
+(defn get-arc-documents-provider-thumbnail* [config entry width-hint height-hint]
+  (gen-wrap :function ::get-arc-documents-provider-thumbnail config entry width-hint height-hint))
+
 (defn detect-character-encoding* [config bytes]
   (gen-wrap :function ::detect-character-encoding config bytes))
 

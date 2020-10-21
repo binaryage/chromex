@@ -778,6 +778,25 @@
    chromex.error/get-last-error."
   ([entry width height] (gen-call :function ::get-pdf-thumbnail &form entry width height)))
 
+(defmacro get-arc-documents-provider-thumbnail
+  "Retrieves a thumbnail of an ARC DocumentsProvider file, closely matching the hinted size specified by |widthHint| and
+   |heightHint|, but not necessarily the exact size. |callback| is called with thumbnail data encoded as a data URL. If the
+   document does not support thumbnails, |callback| is called with an empty string. Note: The thumbnail data may originate
+   from third-party application code, and is untrustworthy (Security).
+
+     |entry| - ?
+     |width-hint| - ?
+     |height-hint| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [thumbnail-data-url] where:
+
+     |thumbnail-data-url| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([entry width-hint height-hint] (gen-call :function ::get-arc-documents-provider-thumbnail &form entry width-hint height-hint)))
+
 (defmacro detect-character-encoding
   "Returns a guessed character encoding of a hex-encoded string. Every 2 characters of |bytes| represent one byte by 2-digit
    hexadecimal number. The result is preferred MIME name of the detected character encoding system. It is slightly different
@@ -1343,6 +1362,15 @@
      [{:name "entry", :type "object"}
       {:name "width", :type "integer"}
       {:name "height", :type "integer"}
+      {:name "callback", :type :callback, :callback {:params [{:name "thumbnail-data-url", :type "string"}]}}]}
+    {:id ::get-arc-documents-provider-thumbnail,
+     :name "getArcDocumentsProviderThumbnail",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "entry", :type "object"}
+      {:name "width-hint", :type "integer"}
+      {:name "height-hint", :type "integer"}
       {:name "callback", :type :callback, :callback {:params [{:name "thumbnail-data-url", :type "string"}]}}]}
     {:id ::detect-character-encoding,
      :name "detectCharacterEncoding",

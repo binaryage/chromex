@@ -45,7 +45,7 @@
 
 ### API stats
 
-Generated 37 namespaces containing 0 properties, 371 functions and 79 events:
+Generated 37 namespaces containing 0 properties, 372 functions and 79 events:
 
 
     |                     :namespace | :properties | :functions | :events |
@@ -64,7 +64,7 @@ Generated 37 namespaces containing 0 properties, 371 functions and 79 events:
     |        chrome.developerPrivate |           0 |         31 |       2 |
     |             chrome.echoPrivate |           0 |          5 |       0 |
     |         chrome.feedbackPrivate |           0 |          6 |       1 |
-    |      chrome.fileManagerPrivate |           0 |         67 |      10 |
+    |      chrome.fileManagerPrivate |           0 |         68 |      10 |
     |         chrome.identityPrivate |           0 |          1 |       1 |
     |      chrome.imageWriterPrivate |           0 |          5 |       5 |
     |      chrome.inputMethodPrivate |           0 |         24 |      12 |
@@ -174,9 +174,10 @@ Generated 37 namespaces containing 0 properties, 371 functions and 79 events:
       configure-volume get-custom-actions execute-custom-action get-directory-size get-recent-files
       mount-crostini share-paths-with-crostini unshare-path-with-crostini get-crostini-shared-paths
       get-linux-package-info install-linux-package import-crostini-image get-drive-thumbnail
-      get-pdf-thumbnail detect-character-encoding get-android-picker-apps select-android-picker-app
-      sharesheet-has-targets invoke-sharesheet toggle-added-to-holding-space get-holding-space-state
-      tap-on-mount-completed tap-on-file-transfers-updated tap-on-copy-progress tap-on-directory-changed
+      get-pdf-thumbnail get-arc-documents-provider-thumbnail detect-character-encoding
+      get-android-picker-apps select-android-picker-app sharesheet-has-targets invoke-sharesheet
+      toggle-added-to-holding-space get-holding-space-state tap-on-mount-completed
+      tap-on-file-transfers-updated tap-on-copy-progress tap-on-directory-changed
       tap-on-preferences-changed tap-on-drive-connection-status-changed tap-on-device-changed
       tap-on-drive-sync-error tap-on-apps-updated tap-on-crostini-changed tap-all-events]]
 

@@ -319,6 +319,8 @@
      [{:name "options", :type "browsingData.RemovalOptions"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-plugin-data,
      :name "removePluginData",
+     :since "master",
+     :deprecated "Support for Flash has been removed. This function has no effect.",
      :callback? true,
      :params
      [{:name "options", :type "browsingData.RemovalOptions"} {:name "callback", :optional? true, :type :callback}]}
