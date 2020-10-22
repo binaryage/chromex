@@ -436,11 +436,13 @@
     {:id ::set-menu-items,
      :name "setMenuItems",
      :callback? true,
-     :params [{:name "parameters", :type "object"} {:name "callback", :optional? true, :type :callback}]}
+     :params
+     [{:name "parameters", :type "input.ime.MenuParameters"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::update-menu-items,
      :name "updateMenuItems",
      :callback? true,
-     :params [{:name "parameters", :type "object"} {:name "callback", :optional? true, :type :callback}]}
+     :params
+     [{:name "parameters", :type "input.ime.MenuParameters"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::delete-surrounding-text,
      :name "deleteSurroundingText",
      :callback? true,

@@ -218,7 +218,7 @@
      :name "getTitle",
      :callback? true,
      :params
-     [{:name "details", :type "object"}
+     [{:name "details", :type "browserAction.TabDetails"}
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "string"}]}}]}
     {:id ::set-icon,
      :name "setIcon",
@@ -232,7 +232,7 @@
      :name "getPopup",
      :callback? true,
      :params
-     [{:name "details", :type "object"}
+     [{:name "details", :type "browserAction.TabDetails"}
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "string"}]}}]}
     {:id ::set-badge-text,
      :name "setBadgeText",
@@ -242,7 +242,7 @@
      :name "getBadgeText",
      :callback? true,
      :params
-     [{:name "details", :type "object"}
+     [{:name "details", :type "browserAction.TabDetails"}
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "string"}]}}]}
     {:id ::set-badge-background-color,
      :name "setBadgeBackgroundColor",
@@ -252,7 +252,7 @@
      :name "getBadgeBackgroundColor",
      :callback? true,
      :params
-     [{:name "details", :type "object"}
+     [{:name "details", :type "browserAction.TabDetails"}
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "browserAction.ColorArray"}]}}]}
     {:id ::enable,
      :name "enable",

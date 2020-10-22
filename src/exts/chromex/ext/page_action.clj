@@ -165,7 +165,7 @@
      :name "getTitle",
      :callback? true,
      :params
-     [{:name "details", :type "object"}
+     [{:name "details", :type "pageAction.TabDetails"}
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "string"}]}}]}
     {:id ::set-icon,
      :name "setIcon",
@@ -179,7 +179,7 @@
      :name "getPopup",
      :callback? true,
      :params
-     [{:name "details", :type "object"}
+     [{:name "details", :type "pageAction.TabDetails"}
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "string"}]}}]}],
    :events [{:id ::on-clicked, :name "onClicked", :params [{:name "tab", :type "tabs.Tab"}]}]})
 

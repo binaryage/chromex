@@ -18,7 +18,7 @@
    with the longest path will be returned. For cookies with the same path length, the cookie with the earliest creation time
    will be returned.
 
-     |details| - Details to identify the cookie being retrieved.
+     |details| - https://developer.chrome.com/extensions/cookies#property-get-details.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [cookie] where:
@@ -69,7 +69,7 @@
 (defmacro remove
   "Deletes a cookie by name.
 
-     |details| - Information to identify the cookie to remove.
+     |details| - https://developer.chrome.com/extensions/cookies#property-remove-details.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [details] where:
@@ -134,7 +134,7 @@
      :name "get",
      :callback? true,
      :params
-     [{:name "details", :type "object"}
+     [{:name "details", :type "cookies.CookieDetails"}
       {:name "callback",
        :type :callback,
        :callback {:params [{:name "cookie", :optional? true, :type "cookies.Cookie"}]}}]}
@@ -159,7 +159,7 @@
      :name "remove",
      :callback? true,
      :params
-     [{:name "details", :type "object"}
+     [{:name "details", :type "cookies.CookieDetails"}
       {:name "callback",
        :optional? true,
        :type :callback,

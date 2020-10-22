@@ -33,8 +33,8 @@
 (defn get-password-exception-list* [config]
   (gen-wrap :function ::get-password-exception-list config))
 
-(defn move-password-to-account* [config id]
-  (gen-wrap :function ::move-password-to-account config id))
+(defn move-password-to-account* [config ids]
+  (gen-wrap :function ::move-password-to-account config ids))
 
 (defn import-passwords* [config]
   (gen-wrap :function ::import-passwords config))

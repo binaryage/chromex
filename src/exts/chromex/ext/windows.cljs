@@ -11,17 +11,17 @@
 
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
-(defn get* [config window-id get-info]
-  (gen-wrap :function ::get config window-id get-info))
+(defn get* [config window-id query-options]
+  (gen-wrap :function ::get config window-id query-options))
 
-(defn get-current* [config get-info]
-  (gen-wrap :function ::get-current config get-info))
+(defn get-current* [config query-options]
+  (gen-wrap :function ::get-current config query-options))
 
-(defn get-last-focused* [config get-info]
-  (gen-wrap :function ::get-last-focused config get-info))
+(defn get-last-focused* [config query-options]
+  (gen-wrap :function ::get-last-focused config query-options))
 
-(defn get-all* [config get-info]
-  (gen-wrap :function ::get-all config get-info))
+(defn get-all* [config query-options]
+  (gen-wrap :function ::get-all config query-options))
 
 (defn create* [config create-data]
   (gen-wrap :function ::create config create-data))

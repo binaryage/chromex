@@ -365,12 +365,14 @@
      :callback? true,
      :params
      [{:name "id", :type "string"}
-      {:name "options", :optional? true, :type "object"}
+      {:name "options", :optional? true, :type "management.UninstallOptions"}
       {:name "callback", :optional? true, :type :callback}]}
     {:id ::uninstall-self,
      :name "uninstallSelf",
      :callback? true,
-     :params [{:name "options", :optional? true, :type "object"} {:name "callback", :optional? true, :type :callback}]}
+     :params
+     [{:name "options", :optional? true, :type "management.UninstallOptions"}
+      {:name "callback", :optional? true, :type :callback}]}
     {:id ::launch-app,
      :name "launchApp",
      :callback? true,

@@ -32,7 +32,7 @@
   "Gets details about a window.
 
      |window-id| - https://developer.chrome.com/extensions/windows#property-get-windowId.
-     |get-info| - https://developer.chrome.com/extensions/windows#property-get-getInfo.
+     |query-options| - https://developer.chrome.com/extensions/windows#property-get-queryOptions.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [window] where:
@@ -43,13 +43,13 @@
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/windows#method-get."
-  ([window-id get-info] (gen-call :function ::get &form window-id get-info))
+  ([window-id query-options] (gen-call :function ::get &form window-id query-options))
   ([window-id] `(get ~window-id :omit)))
 
 (defmacro get-current
   "Gets the current window.
 
-     |get-info| - https://developer.chrome.com/extensions/windows#property-getCurrent-getInfo.
+     |query-options| - https://developer.chrome.com/extensions/windows#property-getCurrent-queryOptions.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [window] where:
@@ -60,13 +60,13 @@
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/windows#method-getCurrent."
-  ([get-info] (gen-call :function ::get-current &form get-info))
+  ([query-options] (gen-call :function ::get-current &form query-options))
   ([] `(get-current :omit)))
 
 (defmacro get-last-focused
   "Gets the window that was most recently focused &mdash; typically the window 'on top'.
 
-     |get-info| - https://developer.chrome.com/extensions/windows#property-getLastFocused-getInfo.
+     |query-options| - https://developer.chrome.com/extensions/windows#property-getLastFocused-queryOptions.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [window] where:
@@ -77,13 +77,13 @@
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/windows#method-getLastFocused."
-  ([get-info] (gen-call :function ::get-last-focused &form get-info))
+  ([query-options] (gen-call :function ::get-last-focused &form query-options))
   ([] `(get-last-focused :omit)))
 
 (defmacro get-all
   "Gets all windows.
 
-     |get-info| - https://developer.chrome.com/extensions/windows#property-getAll-getInfo.
+     |query-options| - https://developer.chrome.com/extensions/windows#property-getAll-queryOptions.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [windows] where:
@@ -94,7 +94,7 @@
    chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/windows#method-getAll."
-  ([get-info] (gen-call :function ::get-all &form get-info))
+  ([query-options] (gen-call :function ::get-all &form query-options))
   ([] `(get-all :omit)))
 
 (defmacro create
@@ -223,25 +223,25 @@
      :callback? true,
      :params
      [{:name "window-id", :type "integer"}
-      {:name "get-info", :optional? true, :type "object"}
+      {:name "query-options", :optional? true, :since "master", :type "windows.QueryOptions"}
       {:name "callback", :type :callback, :callback {:params [{:name "window", :type "windows.Window"}]}}]}
     {:id ::get-current,
      :name "getCurrent",
      :callback? true,
      :params
-     [{:name "get-info", :optional? true, :type "object"}
+     [{:name "query-options", :optional? true, :since "master", :type "windows.QueryOptions"}
       {:name "callback", :type :callback, :callback {:params [{:name "window", :type "windows.Window"}]}}]}
     {:id ::get-last-focused,
      :name "getLastFocused",
      :callback? true,
      :params
-     [{:name "get-info", :optional? true, :type "object"}
+     [{:name "query-options", :optional? true, :since "master", :type "windows.QueryOptions"}
       {:name "callback", :type :callback, :callback {:params [{:name "window", :type "windows.Window"}]}}]}
     {:id ::get-all,
      :name "getAll",
      :callback? true,
      :params
-     [{:name "get-info", :optional? true, :type "object"}
+     [{:name "query-options", :optional? true, :since "master", :type "windows.QueryOptions"}
       {:name "callback",
        :type :callback,
        :callback {:params [{:name "windows", :type "[array-of-windows.Windows]"}]}}]}
