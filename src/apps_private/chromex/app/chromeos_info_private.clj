@@ -70,7 +70,7 @@
      :params [{:name "property-name", :type "chromeosInfoPrivate.PropertyName"} {:name "property-value", :type "any"}]}
     {:id ::is-tablet-mode-enabled,
      :name "isTabletModeEnabled",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "callback", :type :callback, :callback {:params [{:name "tablet-mode-enabled", :type "boolean"}]}}]}]})
