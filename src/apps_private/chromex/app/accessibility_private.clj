@@ -241,6 +241,16 @@
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-scrollable-bounds-for-point-requested &form channel args)))
 
+(defmacro tap-on-magnifier-bounds-changed-events
+  "Fired when Chrome OS magnifier bounds are updated.
+
+   Events will be put on the |channel| with signature [::on-magnifier-bounds-changed [magnifier-bounds]] where:
+
+     |magnifier-bounds| - Updated bounds of magnifier viewport.
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-magnifier-bounds-changed &form channel args)))
+
 (defmacro tap-on-custom-spoken-feedback-toggled-events
   "Fired when a custom spoken feedback on the active window gets enabled or disabled. Called from ARC++ accessibility.
 
@@ -368,6 +378,10 @@
      :name "onScrollableBoundsForPointRequested",
      :since "future",
      :params [{:name "x", :type "double"} {:name "y", :type "double"}]}
+    {:id ::on-magnifier-bounds-changed,
+     :name "onMagnifierBoundsChanged",
+     :since "master",
+     :params [{:name "magnifier-bounds", :type "accessibilityPrivate.ScreenRect"}]}
     {:id ::on-custom-spoken-feedback-toggled,
      :name "onCustomSpokenFeedbackToggled",
      :since "82",

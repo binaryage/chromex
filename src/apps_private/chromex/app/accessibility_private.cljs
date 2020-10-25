@@ -92,6 +92,9 @@
 (defn on-scrollable-bounds-for-point-requested* [config channel & args]
   (gen-wrap :event ::on-scrollable-bounds-for-point-requested config channel args))
 
+(defn on-magnifier-bounds-changed* [config channel & args]
+  (gen-wrap :event ::on-magnifier-bounds-changed config channel args))
+
 (defn on-custom-spoken-feedback-toggled* [config channel & args]
   (gen-wrap :event ::on-custom-spoken-feedback-toggled config channel args))
 
