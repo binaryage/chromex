@@ -291,7 +291,9 @@
      |entry| - ?
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [].
+   Signature of the result value put on the channel is [result] where:
+
+     |result| - ?
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
@@ -1123,7 +1125,9 @@
      :name "copyImageToClipboard",
      :since "future",
      :callback? true,
-     :params [{:name "entry", :type "object"} {:name "callback", :type :callback}]}
+     :params
+     [{:name "entry", :type "object"}
+      {:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}
     {:id ::start-copy,
      :name "startCopy",
      :callback? true,
