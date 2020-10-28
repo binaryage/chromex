@@ -223,25 +223,25 @@
      :callback? true,
      :params
      [{:name "window-id", :type "integer"}
-      {:name "query-options", :optional? true, :since "master", :type "windows.QueryOptions"}
+      {:name "query-options", :optional? true, :since "future", :type "windows.QueryOptions"}
       {:name "callback", :type :callback, :callback {:params [{:name "window", :type "windows.Window"}]}}]}
     {:id ::get-current,
      :name "getCurrent",
      :callback? true,
      :params
-     [{:name "query-options", :optional? true, :since "master", :type "windows.QueryOptions"}
+     [{:name "query-options", :optional? true, :since "future", :type "windows.QueryOptions"}
       {:name "callback", :type :callback, :callback {:params [{:name "window", :type "windows.Window"}]}}]}
     {:id ::get-last-focused,
      :name "getLastFocused",
      :callback? true,
      :params
-     [{:name "query-options", :optional? true, :since "master", :type "windows.QueryOptions"}
+     [{:name "query-options", :optional? true, :since "future", :type "windows.QueryOptions"}
       {:name "callback", :type :callback, :callback {:params [{:name "window", :type "windows.Window"}]}}]}
     {:id ::get-all,
      :name "getAll",
      :callback? true,
      :params
-     [{:name "query-options", :optional? true, :since "master", :type "windows.QueryOptions"}
+     [{:name "query-options", :optional? true, :since "future", :type "windows.QueryOptions"}
       {:name "callback",
        :type :callback,
        :callback {:params [{:name "windows", :type "[array-of-windows.Windows]"}]}}]}

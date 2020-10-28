@@ -215,6 +215,9 @@
 (defn on-file-transfers-updated* [config channel & args]
   (gen-wrap :event ::on-file-transfers-updated config channel args))
 
+(defn on-pin-transfers-updated* [config channel & args]
+  (gen-wrap :event ::on-pin-transfers-updated config channel args))
+
 (defn on-copy-progress* [config channel & args]
   (gen-wrap :event ::on-copy-progress config channel args))
 

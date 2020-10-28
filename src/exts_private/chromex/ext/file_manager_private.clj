@@ -920,6 +920,15 @@
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-file-transfers-updated &form channel args)))
 
+(defmacro tap-on-pin-transfers-updated-events
+  "
+   Events will be put on the |channel| with signature [::on-pin-transfers-updated [event]] where:
+
+     |event| - ?
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-pin-transfers-updated &form channel args)))
+
 (defmacro tap-on-copy-progress-events
   "
    Events will be put on the |channel| with signature [::on-copy-progress [copy-id status]] where:
@@ -1369,7 +1378,7 @@
       {:name "callback", :type :callback, :callback {:params [{:name "thumbnail-data-url", :type "string"}]}}]}
     {:id ::get-arc-documents-provider-thumbnail,
      :name "getArcDocumentsProviderThumbnail",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "entry", :type "object"}
@@ -1425,7 +1434,13 @@
      :params [{:name "callback", :type :callback, :callback {:params [{:name "state", :type "object"}]}}]}],
    :events
    [{:id ::on-mount-completed, :name "onMountCompleted", :params [{:name "event", :type "object"}]}
-    {:id ::on-file-transfers-updated, :name "onFileTransfersUpdated", :params [{:name "event", :type "object"}]}
+    {:id ::on-file-transfers-updated,
+     :name "onFileTransfersUpdated",
+     :params [{:name "event", :type "fileManagerPrivate.FileTransferStatus"}]}
+    {:id ::on-pin-transfers-updated,
+     :name "onPinTransfersUpdated",
+     :since "master",
+     :params [{:name "event", :type "fileManagerPrivate.FileTransferStatus"}]}
     {:id ::on-copy-progress,
      :name "onCopyProgress",
      :params [{:name "copy-id", :type "integer"} {:name "status", :type "object"}]}
