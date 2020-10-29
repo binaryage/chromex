@@ -96,7 +96,7 @@ Generated 37 namespaces containing 0 properties, 372 functions and 81 events:
     [chromex.app.accessibility-private refer:[
       get-display-name-for-locale get-battery-description set-native-accessibility-enabled
       set-focus-rings set-highlights set-keyboard-listener darken-screen
-      forward-key-events-to-switch-access update-switch-access-bubble enable-point-scan
+      forward-key-events-to-switch-access update-switch-access-bubble activate-point-scan
       set-native-chrome-vox-arc-support-for-current-app send-synthetic-key-event
       enable-chrome-vox-mouse-events send-synthetic-mouse-event set-select-to-speak-state
       handle-scrollable-bounds-for-point-found move-magnifier-to-rect toggle-dictation
@@ -243,7 +243,7 @@ Generated 37 namespaces containing 0 properties, 372 functions and 81 events:
       record-passwords-page-access-in-settings change-saved-password remove-saved-password
       remove-saved-passwords remove-password-exception remove-password-exceptions
       undo-remove-saved-password-or-exception request-plaintext-password get-saved-password-list
-      get-password-exception-list move-password-to-account import-passwords export-passwords
+      get-password-exception-list move-passwords-to-account import-passwords export-passwords
       request-export-progress-status cancel-export-passwords is-opted-in-for-account-storage
       opt-in-for-account-storage get-compromised-credentials get-weak-credentials
       get-plaintext-insecure-password change-insecure-credential remove-insecure-credential

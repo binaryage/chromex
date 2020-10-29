@@ -82,11 +82,9 @@
   ([bubble show anchor] `(update-switch-access-bubble ~bubble ~show ~anchor :omit))
   ([bubble show] `(update-switch-access-bubble ~bubble ~show :omit :omit)))
 
-(defmacro enable-point-scan
-  "Enables or disables point scanning in Switch Access.
-
-     |enabled| - True for start point scanning, false for end point scanning."
-  ([enabled] (gen-call :function ::enable-point-scan &form enabled)))
+(defmacro activate-point-scan
+  "Activates point scanning in Switch Access."
+  ([] (gen-call :function ::activate-point-scan &form)))
 
 (defmacro set-native-chrome-vox-arc-support-for-current-app
   "Sets current ARC app to use native ARC support.
@@ -315,7 +313,7 @@
       {:name "show", :type "boolean"}
       {:name "anchor", :optional? true, :type "accessibilityPrivate.ScreenRect"}
       {:name "actions", :optional? true, :type "[array-of-accessibilityPrivate.SwitchAccessMenuActions]"}]}
-    {:id ::enable-point-scan, :name "enablePointScan", :since "future", :params [{:name "enabled", :type "boolean"}]}
+    {:id ::activate-point-scan, :name "activatePointScan", :since "master"}
     {:id ::set-native-chrome-vox-arc-support-for-current-app,
      :name "setNativeChromeVoxArcSupportForCurrentApp",
      :since "63",

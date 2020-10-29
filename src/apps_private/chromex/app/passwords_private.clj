@@ -103,13 +103,13 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-password-exception-list &form)))
 
-(defmacro move-password-to-account
-  "Moves password currently stored on the device to being stored in the signed-in, non-syncing Google Account. For each id,
+(defmacro move-passwords-to-account
+  "Moves passwords currently stored on the device to being stored in the signed-in, non-syncing Google Account. For each id,
    the result is a no-op if any of these is true: |id| is invalid; |id| corresponds to a password already stored in the
    account; or the user is not using the account-scoped password storage.
 
      |ids| - The ids for the password entries being moved."
-  ([ids] (gen-call :function ::move-password-to-account &form ids)))
+  ([ids] (gen-call :function ::move-passwords-to-account &form ids)))
 
 (defmacro import-passwords
   "Triggers the Password Manager password import functionality."
@@ -388,8 +388,8 @@
      [{:name "callback",
        :type :callback,
        :callback {:params [{:name "exceptions", :type "[array-of-passwordsPrivate.ExceptionEntrys]"}]}}]}
-    {:id ::move-password-to-account,
-     :name "movePasswordToAccount",
+    {:id ::move-passwords-to-account,
+     :name "movePasswordsToAccount",
      :params [{:name "ids", :type "[array-of-integers]"}]}
     {:id ::import-passwords, :name "importPasswords"}
     {:id ::export-passwords, :name "exportPasswords", :callback? true, :params [{:name "callback", :type :callback}]}
