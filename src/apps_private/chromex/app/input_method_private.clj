@@ -292,6 +292,12 @@
   "Resets the current engine to its initial state. Fires an OnReset event."
   ([] (gen-call :function ::reset &form)))
 
+(defmacro on-autocorrect
+  "Called after a word has been autocorrected to show some UI for autocorrect.
+
+     |parameters| - ?"
+  ([parameters] (gen-call :function ::on-autocorrect &form parameters)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -565,7 +571,8 @@
      :since "85",
      :callback? true,
      :params [{:name "parameters", :type "object"} {:name "callback", :optional? true, :type :callback}]}
-    {:id ::reset, :name "reset", :since "81"}],
+    {:id ::reset, :name "reset", :since "81"}
+    {:id ::on-autocorrect, :name "onAutocorrect", :since "master", :params [{:name "parameters", :type "object"}]}],
    :events
    [{:id ::on-changed, :name "onChanged", :params [{:name "new-input-method-id", :type "string"}]}
     {:id ::on-composition-bounds-changed,

@@ -66,6 +66,9 @@
 (defn perform-accelerator-action* [config accelerator-action]
   (gen-wrap :function ::perform-accelerator-action config accelerator-action))
 
+(defn is-feature-enabled* [config feature]
+  (gen-wrap :function ::is-feature-enabled config feature))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-introduce-chrome-vox* [config channel & args]

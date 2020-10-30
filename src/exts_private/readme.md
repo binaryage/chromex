@@ -48,12 +48,12 @@
 
 ### API stats
 
-Generated 40 namespaces containing 0 properties, 501 functions and 86 events:
+Generated 40 namespaces containing 0 properties, 503 functions and 86 events:
 
 
     |                            :namespace | :properties | :functions | :events |
     |---------------------------------------+-------------+------------+---------|
-    |           chrome.accessibilityPrivate |           0 |         21 |      10 |
+    |           chrome.accessibilityPrivate |           0 |         22 |      10 |
     |             chrome.activityLogPrivate |           0 |          5 |       1 |
     |       chrome.autofillAssistantPrivate |           0 |          4 |       2 |
     |                chrome.autofillPrivate |           0 |         13 |       1 |
@@ -73,7 +73,7 @@ Generated 40 namespaces containing 0 properties, 501 functions and 86 events:
     |                chrome.feedbackPrivate |           0 |          6 |       1 |
     |             chrome.fileManagerPrivate |           0 |         68 |      11 |
     |             chrome.imageWriterPrivate |           0 |          5 |       5 |
-    |             chrome.inputMethodPrivate |           0 |         24 |      12 |
+    |             chrome.inputMethodPrivate |           0 |         25 |      12 |
     |        chrome.languageSettingsPrivate |           0 |         14 |       4 |
     |             chrome.mediaPlayerPrivate |           0 |          0 |       3 |
     |                 chrome.metricsPrivate |           0 |         17 |       0 |
@@ -106,7 +106,7 @@ Generated 40 namespaces containing 0 properties, 501 functions and 86 events:
       set-native-chrome-vox-arc-support-for-current-app send-synthetic-key-event
       enable-chrome-vox-mouse-events send-synthetic-mouse-event set-select-to-speak-state
       handle-scrollable-bounds-for-point-found move-magnifier-to-rect toggle-dictation
-      set-virtual-keyboard-visible open-settings-subpage perform-accelerator-action
+      set-virtual-keyboard-visible open-settings-subpage perform-accelerator-action is-feature-enabled
       tap-on-introduce-chrome-vox tap-on-accessibility-gesture tap-on-two-finger-touch-start
       tap-on-two-finger-touch-stop tap-on-select-to-speak-state-change-requested
       tap-on-switch-access-command tap-on-announce-for-accessibility
@@ -239,7 +239,7 @@ Generated 40 namespaces containing 0 properties, 501 functions and 86 events:
       finish-composing-text set-selection-range notify-ime-menu-item-activated show-input-view
       hide-input-view open-options-page get-composition-bounds get-surrounding-text get-settings
       set-settings set-composition-range set-composing-range get-autocorrect-range
-      get-autocorrect-character-bounds set-autocorrect-range reset tap-on-changed
+      get-autocorrect-character-bounds set-autocorrect-range reset on-autocorrect tap-on-changed
       tap-on-composition-bounds-changed tap-on-dictionary-loaded tap-on-dictionary-changed
       tap-on-ime-menu-activation-changed tap-on-ime-menu-list-changed tap-on-ime-menu-items-changed
       tap-on-focus tap-on-settings-changed tap-on-screen-projection-changed tap-on-suggestions-changed

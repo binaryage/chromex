@@ -157,6 +157,20 @@
      |accelerator-action| - ?"
   ([accelerator-action] (gen-call :function ::perform-accelerator-action &form accelerator-action)))
 
+(defmacro is-feature-enabled
+  "Checks to see if an accessibility feature is enabled.
+
+     |feature| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [feature-enabled] where:
+
+     |feature-enabled| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([feature] (gen-call :function ::is-feature-enabled &form feature)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -351,7 +365,14 @@
     {:id ::perform-accelerator-action,
      :name "performAcceleratorAction",
      :since "future",
-     :params [{:name "accelerator-action", :type "accessibilityPrivate.AcceleratorAction"}]}],
+     :params [{:name "accelerator-action", :type "accessibilityPrivate.AcceleratorAction"}]}
+    {:id ::is-feature-enabled,
+     :name "isFeatureEnabled",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "feature", :type "accessibilityPrivate.AccessibilityFeature"}
+      {:name "callback", :type :callback, :callback {:params [{:name "feature-enabled", :type "boolean"}]}}]}],
    :events
    [{:id ::on-introduce-chrome-vox, :name "onIntroduceChromeVox", :since "42"}
     {:id ::on-accessibility-gesture,

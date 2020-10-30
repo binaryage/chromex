@@ -75,6 +75,9 @@
 (defn reset* [config]
   (gen-wrap :function ::reset config))
 
+(defn on-autocorrect* [config parameters]
+  (gen-wrap :function ::on-autocorrect config parameters))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-changed* [config channel & args]
