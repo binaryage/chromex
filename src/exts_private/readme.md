@@ -48,12 +48,12 @@
 
 ### API stats
 
-Generated 40 namespaces containing 0 properties, 503 functions and 86 events:
+Generated 40 namespaces containing 0 properties, 503 functions and 87 events:
 
 
     |                            :namespace | :properties | :functions | :events |
     |---------------------------------------+-------------+------------+---------|
-    |           chrome.accessibilityPrivate |           0 |         22 |      10 |
+    |           chrome.accessibilityPrivate |           0 |         22 |      11 |
     |             chrome.activityLogPrivate |           0 |          5 |       1 |
     |       chrome.autofillAssistantPrivate |           0 |          4 |       2 |
     |                chrome.autofillPrivate |           0 |         13 |       1 |
@@ -109,7 +109,7 @@ Generated 40 namespaces containing 0 properties, 503 functions and 86 events:
       set-virtual-keyboard-visible open-settings-subpage perform-accelerator-action is-feature-enabled
       tap-on-introduce-chrome-vox tap-on-accessibility-gesture tap-on-two-finger-touch-start
       tap-on-two-finger-touch-stop tap-on-select-to-speak-state-change-requested
-      tap-on-switch-access-command tap-on-announce-for-accessibility
+      tap-on-switch-access-command tap-on-point-scan-set tap-on-announce-for-accessibility
       tap-on-scrollable-bounds-for-point-requested tap-on-magnifier-bounds-changed
       tap-on-custom-spoken-feedback-toggled tap-all-events]]
 

@@ -230,6 +230,16 @@
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-switch-access-command &form channel args)))
 
+(defmacro tap-on-point-scan-set-events
+  "Fired when Chrome OS has received the final point of point scanning.
+
+   Events will be put on the |channel| with signature [::on-point-scan-set [point]] where:
+
+     |point| - ?
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-point-scan-set &form channel args)))
+
 (defmacro tap-on-announce-for-accessibility-events
   "Fired when an internal component within accessibility wants to force speech output for an accessibility extension. Do not
    use without approval from accessibility owners.
@@ -389,6 +399,10 @@
      :name "onSwitchAccessCommand",
      :since "77",
      :params [{:name "command", :type "accessibilityPrivate.SwitchAccessCommand"}]}
+    {:id ::on-point-scan-set,
+     :name "onPointScanSet",
+     :since "master",
+     :params [{:name "point", :type "accessibilityPrivate.PointScanPoint"}]}
     {:id ::on-announce-for-accessibility,
      :name "onAnnounceForAccessibility",
      :since "74",

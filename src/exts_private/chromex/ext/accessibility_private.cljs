@@ -89,6 +89,9 @@
 (defn on-switch-access-command* [config channel & args]
   (gen-wrap :event ::on-switch-access-command config channel args))
 
+(defn on-point-scan-set* [config channel & args]
+  (gen-wrap :event ::on-point-scan-set config channel args))
+
 (defn on-announce-for-accessibility* [config channel & args]
   (gen-wrap :event ::on-announce-for-accessibility config channel args))
 
