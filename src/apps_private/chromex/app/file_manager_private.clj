@@ -1439,7 +1439,7 @@
      :params [{:name "event", :type "fileManagerPrivate.FileTransferStatus"}]}
     {:id ::on-pin-transfers-updated,
      :name "onPinTransfersUpdated",
-     :since "master",
+     :since "future",
      :params [{:name "event", :type "fileManagerPrivate.FileTransferStatus"}]}
     {:id ::on-copy-progress,
      :name "onCopyProgress",

@@ -572,7 +572,7 @@
      :callback? true,
      :params [{:name "parameters", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::reset, :name "reset", :since "81"}
-    {:id ::on-autocorrect, :name "onAutocorrect", :since "master", :params [{:name "parameters", :type "object"}]}],
+    {:id ::on-autocorrect, :name "onAutocorrect", :since "future", :params [{:name "parameters", :type "object"}]}],
    :events
    [{:id ::on-changed, :name "onChanged", :params [{:name "new-input-method-id", :type "string"}]}
     {:id ::on-composition-bounds-changed,

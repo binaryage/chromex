@@ -337,7 +337,7 @@
       {:name "show", :type "boolean"}
       {:name "anchor", :optional? true, :type "accessibilityPrivate.ScreenRect"}
       {:name "actions", :optional? true, :type "[array-of-accessibilityPrivate.SwitchAccessMenuActions]"}]}
-    {:id ::activate-point-scan, :name "activatePointScan", :since "master"}
+    {:id ::activate-point-scan, :name "activatePointScan", :since "future"}
     {:id ::set-native-chrome-vox-arc-support-for-current-app,
      :name "setNativeChromeVoxArcSupportForCurrentApp",
      :since "63",
@@ -378,7 +378,7 @@
      :params [{:name "accelerator-action", :type "accessibilityPrivate.AcceleratorAction"}]}
     {:id ::is-feature-enabled,
      :name "isFeatureEnabled",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "feature", :type "accessibilityPrivate.AccessibilityFeature"}
@@ -413,7 +413,7 @@
      :params [{:name "x", :type "double"} {:name "y", :type "double"}]}
     {:id ::on-magnifier-bounds-changed,
      :name "onMagnifierBoundsChanged",
-     :since "master",
+     :since "future",
      :params [{:name "magnifier-bounds", :type "accessibilityPrivate.ScreenRect"}]}
     {:id ::on-custom-spoken-feedback-toggled,
      :name "onCustomSpokenFeedbackToggled",
