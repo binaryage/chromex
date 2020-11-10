@@ -18,8 +18,8 @@
 (defn on-terminal-resize* [config id width height]
   (gen-wrap :function ::on-terminal-resize config id width height))
 
-(defn ack-output* [config tab-id id]
-  (gen-wrap :function ::ack-output config tab-id id))
+(defn ack-output* [config id]
+  (gen-wrap :function ::ack-output config id))
 
 (defn open-window* [config]
   (gen-wrap :function ::open-window config))

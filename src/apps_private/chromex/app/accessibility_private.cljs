@@ -69,6 +69,9 @@
 (defn is-feature-enabled* [config feature]
   (gen-wrap :function ::is-feature-enabled config feature))
 
+(defn update-select-to-speak-panel* [config show anchor is-paused]
+  (gen-wrap :function ::update-select-to-speak-panel config show anchor is-paused))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-introduce-chrome-vox* [config channel & args]

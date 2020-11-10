@@ -90,9 +90,8 @@
   "Called from |onProcessOutput| when the event is dispatched to terminal extension. Observing the terminal process output
    will be paused after |onProcessOutput| is dispatched until this method is called.
 
-     |tab-id| - Tab ID from |onProcessOutput| event.
      |id| - The id of the process to which |onProcessOutput| was dispatched."
-  ([tab-id id] (gen-call :function ::ack-output &form tab-id id)))
+  ([id] (gen-call :function ::ack-output &form id)))
 
 (defmacro open-window
   "Open the Terminal tabbed window.
@@ -240,10 +239,7 @@
       {:name "width", :type "integer"}
       {:name "height", :type "integer"}
       {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
-    {:id ::ack-output,
-     :name "ackOutput",
-     :since "49",
-     :params [{:name "tab-id", :type "integer"} {:name "id", :since "74", :type "string"}]}
+    {:id ::ack-output, :name "ackOutput", :since "49", :params [{:name "id", :since "74", :type "string"}]}
     {:id ::open-window, :name "openWindow", :since "84", :callback? true, :params [{:name "callback", :type :callback}]}
     {:id ::open-options-page,
      :name "openOptionsPage",

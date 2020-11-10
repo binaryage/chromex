@@ -171,6 +171,16 @@
    chromex.error/get-last-error."
   ([feature] (gen-call :function ::is-feature-enabled &form feature)))
 
+(defmacro update-select-to-speak-panel
+  "Updates properties of the Select-to-speak panel.
+
+     |show| - True to show panel, false to hide it
+     |anchor| - A rectangle indicating the bounds of the object the panel should be displayed next to.
+     |is-paused| - True if Select-to-speak playback is paused."
+  ([show anchor is-paused] (gen-call :function ::update-select-to-speak-panel &form show anchor is-paused))
+  ([show anchor] `(update-select-to-speak-panel ~show ~anchor :omit))
+  ([show] `(update-select-to-speak-panel ~show :omit :omit)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -382,7 +392,14 @@
      :callback? true,
      :params
      [{:name "feature", :type "accessibilityPrivate.AccessibilityFeature"}
-      {:name "callback", :type :callback, :callback {:params [{:name "feature-enabled", :type "boolean"}]}}]}],
+      {:name "callback", :type :callback, :callback {:params [{:name "feature-enabled", :type "boolean"}]}}]}
+    {:id ::update-select-to-speak-panel,
+     :name "updateSelectToSpeakPanel",
+     :since "master",
+     :params
+     [{:name "show", :type "boolean"}
+      {:name "anchor", :optional? true, :type "accessibilityPrivate.ScreenRect"}
+      {:name "is-paused", :optional? true, :type "boolean"}]}],
    :events
    [{:id ::on-introduce-chrome-vox, :name "onIntroduceChromeVox", :since "42"}
     {:id ::on-accessibility-gesture,

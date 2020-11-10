@@ -75,6 +75,7 @@
 | [chrome.system.storage](https://developer.chrome.com/extensions/system.storage) | [chromex/ext/system/storage.clj](chromex/ext/system/storage.clj) |
 | [chrome.systemIndicator](https://developer.chrome.com/extensions/systemIndicator) | [chromex/ext/system_indicator.clj](chromex/ext/system_indicator.clj) |
 | [chrome.tabCapture](https://developer.chrome.com/extensions/tabCapture) | [chromex/ext/tab_capture.clj](chromex/ext/tab_capture.clj) |
+| [chrome.tabGroups](https://developer.chrome.com/extensions/tabGroups) | [chromex/ext/tab_groups.clj](chromex/ext/tab_groups.clj) |
 | [chrome.tabs](https://developer.chrome.com/extensions/tabs) | [chromex/ext/tabs.clj](chromex/ext/tabs.clj) |
 | [chrome.test](https://developer.chrome.com/extensions/test) | [chromex/ext/test.clj](chromex/ext/test.clj) |
 | [chrome.topSites](https://developer.chrome.com/extensions/topSites) | [chromex/ext/top_sites.clj](chromex/ext/top_sites.clj) |
@@ -89,7 +90,7 @@
 
 ### API stats
 
-Generated 81 namespaces containing 61 properties, 397 functions and 180 events:
+Generated 82 namespaces containing 62 properties, 400 functions and 180 events:
 
 
     |                             :namespace | :properties | :functions | :events |
@@ -165,6 +166,7 @@ Generated 81 namespaces containing 61 properties, 397 functions and 180 events:
     |                  chrome.system.storage |           0 |          3 |       2 |
     |                 chrome.systemIndicator |           0 |          3 |       1 |
     |                      chrome.tabCapture |           0 |          4 |       1 |
+    |                       chrome.tabGroups |           1 |          3 |       0 |
     |                            chrome.tabs |           1 |         29 |      13 |
     |                            chrome.test |           0 |         29 |       1 |
     |                        chrome.topSites |           0 |          1 |       0 |
@@ -462,6 +464,9 @@ Generated 81 namespaces containing 61 properties, 397 functions and 180 events:
     [chromex.ext.tab-capture refer:[
       capture get-captured-tabs capture-offscreen-tab get-media-stream-id tap-on-status-changed
       tap-all-events]]
+
+    [chromex.ext.tab-groups refer:[
+      get-tab-group-id-none get query update tap-all-events]]
 
     [chromex.ext.tabs refer:[
       get-tab-id-none get get-current connect send-request send-message get-selected get-all-in-window
