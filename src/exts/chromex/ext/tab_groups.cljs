@@ -17,3 +17,6 @@
 (defn update* [config group-id update-properties]
   (gen-wrap :function ::update config group-id update-properties))
 
+(defn move* [config group-id move-properties]
+  (gen-wrap :function ::move config group-id move-properties))
+

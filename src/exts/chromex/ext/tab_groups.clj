@@ -72,6 +72,23 @@
    https://developer.chrome.com/extensions/tabGroups#method-update."
   ([group-id update-properties] (gen-call :function ::update &form group-id update-properties)))
 
+(defmacro move
+  "Moves the group and all its tabs within its window, or to a new window.
+
+     |group-id| - The ID of the group to move.
+     |move-properties| - https://developer.chrome.com/extensions/tabGroups#property-move-moveProperties.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [group] where:
+
+     |group| - Details about the moved group.
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/extensions/tabGroups#method-move."
+  ([group-id move-properties] (gen-call :function ::move &form group-id move-properties)))
+
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
 (defmacro tap-all-events
@@ -108,6 +125,16 @@
      :params
      [{:name "group-id", :type "integer"}
       {:name "update-properties", :type "object"}
+      {:name "callback",
+       :optional? true,
+       :type :callback,
+       :callback {:params [{:name "group", :optional? true, :type "tabGroups.TabGroup"}]}}]}
+    {:id ::move,
+     :name "move",
+     :callback? true,
+     :params
+     [{:name "group-id", :type "integer"}
+      {:name "move-properties", :type "object"}
       {:name "callback",
        :optional? true,
        :type :callback,

@@ -300,8 +300,8 @@
 (defn disable-switch-access-dialog* [config]
   (gen-wrap :function ::disable-switch-access-dialog config))
 
-(defn wait-for-ambient-photo-animation* [config photo-refresh-interval num-completions timeout]
-  (gen-wrap :function ::wait-for-ambient-photo-animation config photo-refresh-interval num-completions timeout))
+(defn wait-for-ambient-photo-animation* [config num-completions timeout]
+  (gen-wrap :function ::wait-for-ambient-photo-animation config num-completions timeout))
 
 (defn disable-automation* [config]
   (gen-wrap :function ::disable-automation config))

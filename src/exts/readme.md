@@ -90,7 +90,7 @@
 
 ### API stats
 
-Generated 82 namespaces containing 62 properties, 400 functions and 180 events:
+Generated 82 namespaces containing 62 properties, 401 functions and 180 events:
 
 
     |                             :namespace | :properties | :functions | :events |
@@ -166,7 +166,7 @@ Generated 82 namespaces containing 62 properties, 400 functions and 180 events:
     |                  chrome.system.storage |           0 |          3 |       2 |
     |                 chrome.systemIndicator |           0 |          3 |       1 |
     |                      chrome.tabCapture |           0 |          4 |       1 |
-    |                       chrome.tabGroups |           1 |          3 |       0 |
+    |                       chrome.tabGroups |           1 |          4 |       0 |
     |                            chrome.tabs |           1 |         29 |      13 |
     |                            chrome.test |           0 |         29 |       1 |
     |                        chrome.topSites |           0 |          1 |       0 |
@@ -466,7 +466,7 @@ Generated 82 namespaces containing 62 properties, 400 functions and 180 events:
       tap-all-events]]
 
     [chromex.ext.tab-groups refer:[
-      get-tab-group-id-none get query update tap-all-events]]
+      get-tab-group-id-none get query update move tap-all-events]]
 
     [chromex.ext.tabs refer:[
       get-tab-id-none get get-current connect send-request send-message get-selected get-all-in-window

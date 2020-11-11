@@ -1124,7 +1124,6 @@
 (defmacro wait-for-ambient-photo-animation
   "Waits for the completion of photo transition animation in ambient mode.
 
-     |photo-refresh-interval| - photo refresh interval in seconds.
      |num-completions| - number of completions of the animation.
      |timeout| - the timeout in seconds.
 
@@ -1133,7 +1132,7 @@
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
-  ([photo-refresh-interval num-completions timeout] (gen-call :function ::wait-for-ambient-photo-animation &form photo-refresh-interval num-completions timeout)))
+  ([num-completions timeout] (gen-call :function ::wait-for-ambient-photo-animation &form num-completions timeout)))
 
 (defmacro disable-automation
   "Disables the automation feature. Note that the event handlers and caches of automation nodes still remain in the test
@@ -1697,8 +1696,7 @@
      :since "85",
      :callback? true,
      :params
-     [{:name "photo-refresh-interval", :type "integer"}
-      {:name "num-completions", :type "integer"}
+     [{:name "num-completions", :type "integer"}
       {:name "timeout", :type "integer"}
       {:name "callback", :type :callback}]}
     {:id ::disable-automation,
