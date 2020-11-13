@@ -65,6 +65,7 @@
 | [chrome.processes](https://developer.chrome.com/extensions/processes) | [chromex/ext/processes.clj](chromex/ext/processes.clj) |
 | [chrome.proxy](https://developer.chrome.com/extensions/proxy) | [chromex/ext/proxy.clj](chromex/ext/proxy.clj) |
 | [chrome.runtime](https://developer.chrome.com/extensions/runtime) | [chromex/ext/runtime.clj](chromex/ext/runtime.clj) |
+| [chrome.scripting](https://developer.chrome.com/extensions/scripting) | [chromex/ext/scripting.clj](chromex/ext/scripting.clj) |
 | [chrome.search](https://developer.chrome.com/extensions/search) | [chromex/ext/search.clj](chromex/ext/search.clj) |
 | [chrome.sessions](https://developer.chrome.com/extensions/sessions) | [chromex/ext/sessions.clj](chromex/ext/sessions.clj) |
 | [chrome.signedInDevices](https://developer.chrome.com/extensions/signedInDevices) | [chromex/ext/signed_in_devices.clj](chromex/ext/signed_in_devices.clj) |
@@ -90,7 +91,7 @@
 
 ### API stats
 
-Generated 82 namespaces containing 62 properties, 401 functions and 180 events:
+Generated 83 namespaces containing 62 properties, 402 functions and 180 events:
 
 
     |                             :namespace | :properties | :functions | :events |
@@ -156,6 +157,7 @@ Generated 82 namespaces containing 62 properties, 401 functions and 180 events:
     |                       chrome.processes |           0 |          3 |       5 |
     |                           chrome.proxy |           1 |          0 |       1 |
     |                         chrome.runtime |           2 |         15 |      12 |
+    |                       chrome.scripting |           0 |          1 |       0 |
     |                          chrome.search |           0 |          1 |       0 |
     |                        chrome.sessions |           1 |          3 |       1 |
     |                 chrome.signedInDevices |           0 |          1 |       1 |
@@ -429,6 +431,9 @@ Generated 82 namespaces containing 62 properties, 401 functions and 180 events:
       tap-on-suspend tap-on-suspend-canceled tap-on-update-available tap-on-browser-update-available
       tap-on-connect tap-on-connect-external tap-on-connect-native tap-on-message tap-on-message-external
       tap-on-restart-required tap-all-events]]
+
+    [chromex.ext.scripting refer:[
+      execute-script tap-all-events]]
 
     [chromex.ext.search refer:[
       query tap-all-events]]
