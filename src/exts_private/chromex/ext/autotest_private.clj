@@ -157,12 +157,12 @@
   ([] (gen-call :function ::remove-all-notifications &form)))
 
 (defmacro get-arc-start-time
-  "Get ARC start time.
+  "Get ARC start time in ticks.
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
-   Signature of the result value put on the channel is [start-time] where:
+   Signature of the result value put on the channel is [start-ticks] where:
 
-     |start-time| - ?
+     |start-ticks| - ?
 
    In case of an error the channel closes without receiving any value and relevant error object can be obtained via
    chromex.error/get-last-error."
@@ -1245,7 +1245,7 @@
      :name "getArcStartTime",
      :since "78",
      :callback? true,
-     :params [{:name "callback", :type :callback, :callback {:params [{:name "start-time", :type "double"}]}}]}
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "start-ticks", :type "double"}]}}]}
     {:id ::get-arc-state,
      :name "getArcState",
      :since "74",
@@ -1292,12 +1292,12 @@
       {:name "callback", :type :callback, :callback {:params [{:name "package", :type "object"}]}}]}
     {:id ::wait-for-system-web-apps-install,
      :name "waitForSystemWebAppsInstall",
-     :since "future",
+     :since "87",
      :callback? true,
      :params [{:name "callback", :type :callback}]}
     {:id ::get-registered-system-web-apps,
      :name "getRegisteredSystemWebApps",
-     :since "future",
+     :since "87",
      :callback? true,
      :params
      [{:name "callback", :type :callback, :callback {:params [{:name "system-apps", :type "[array-of-objects]"}]}}]}
@@ -1316,7 +1316,7 @@
      :params [{:name "app-id", :type "string"} {:name "callback", :type :callback}]}
     {:id ::launch-system-web-app,
      :name "launchSystemWebApp",
-     :since "future",
+     :since "87",
      :callback? true,
      :params [{:name "app-name", :type "string"} {:name "url", :type "string"} {:name "callback", :type :callback}]}
     {:id ::close-app,

@@ -863,7 +863,7 @@
       {:name "callback", :optional? true, :type :callback}]}
     {:id ::remove-css,
      :name "removeCSS",
-     :since "future",
+     :since "87",
      :callback? true,
      :params
      [{:name "tab-id", :optional? true, :type "integer"}

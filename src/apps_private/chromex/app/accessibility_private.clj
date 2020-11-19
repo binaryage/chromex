@@ -366,15 +366,15 @@
      :params [{:name "mouse-event", :type "accessibilityPrivate.SyntheticMouseEvent"}]}
     {:id ::set-select-to-speak-state,
      :name "setSelectToSpeakState",
-     :since "future",
+     :since "87",
      :params [{:name "state", :type "accessibilityPrivate.SelectToSpeakState"}]}
     {:id ::handle-scrollable-bounds-for-point-found,
      :name "handleScrollableBoundsForPointFound",
-     :since "future",
+     :since "87",
      :params [{:name "rect", :type "accessibilityPrivate.ScreenRect"}]}
     {:id ::move-magnifier-to-rect,
      :name "moveMagnifierToRect",
-     :since "future",
+     :since "87",
      :params [{:name "rect", :type "accessibilityPrivate.ScreenRect"}]}
     {:id ::toggle-dictation, :name "toggleDictation", :since "71"}
     {:id ::set-virtual-keyboard-visible,
@@ -384,7 +384,7 @@
     {:id ::open-settings-subpage, :name "openSettingsSubpage", :since "77", :params [{:name "subpage", :type "string"}]}
     {:id ::perform-accelerator-action,
      :name "performAcceleratorAction",
-     :since "future",
+     :since "87",
      :params [{:name "accelerator-action", :type "accessibilityPrivate.AcceleratorAction"}]}
     {:id ::is-feature-enabled,
      :name "isFeatureEnabled",
@@ -426,7 +426,7 @@
      :params [{:name "announce-text", :type "[array-of-strings]"}]}
     {:id ::on-scrollable-bounds-for-point-requested,
      :name "onScrollableBoundsForPointRequested",
-     :since "future",
+     :since "87",
      :params [{:name "x", :type "double"} {:name "y", :type "double"}]}
     {:id ::on-magnifier-bounds-changed,
      :name "onMagnifierBoundsChanged",

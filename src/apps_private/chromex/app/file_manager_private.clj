@@ -1055,7 +1055,7 @@
      :params
      [{:name "file-entry", :type "object"}
       {:name "mime-type", :type "string"}
-      {:name "include-images", :since "future", :type "boolean"}
+      {:name "include-images", :since "87", :type "boolean"}
       {:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}
     {:id ::get-strings,
      :name "getStrings",
@@ -1132,7 +1132,7 @@
        :callback {:params [{:name "volume-metadata-list", :type "[array-of-fileManagerPrivate.VolumeMetadatas]"}]}}]}
     {:id ::copy-image-to-clipboard,
      :name "copyImageToClipboard",
-     :since "future",
+     :since "87",
      :callback? true,
      :params
      [{:name "entry", :type "object"}
@@ -1165,7 +1165,7 @@
       {:name "volume-label", :since "77", :type "string"}]}
     {:id ::single-partition-format,
      :name "singlePartitionFormat",
-     :since "future",
+     :since "87",
      :params
      [{:name "device-storage-path", :type "string"}
       {:name "filesystem", :type "fileManagerPrivate.FormatFileSystemType"}
@@ -1421,7 +1421,7 @@
      :params [{:name "entries", :type "[array-of-objects]"} {:name "callback", :type :callback}]}
     {:id ::toggle-added-to-holding-space,
      :name "toggleAddedToHoldingSpace",
-     :since "future",
+     :since "87",
      :callback? true,
      :params
      [{:name "entries", :type "[array-of-Entrys]"}
@@ -1429,7 +1429,7 @@
       {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-holding-space-state,
      :name "getHoldingSpaceState",
-     :since "future",
+     :since "87",
      :callback? true,
      :params [{:name "callback", :type :callback, :callback {:params [{:name "state", :type "object"}]}}]}],
    :events

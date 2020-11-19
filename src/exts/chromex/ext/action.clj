@@ -106,7 +106,9 @@
   ([details] (gen-call :function ::set-badge-text &form details)))
 
 (defmacro get-badge-text
-  "Gets the badge text of the action. If no tab is specified, the non-tab-specific badge text is returned.
+  "Gets the badge text of the action. If no tab is specified, the non-tab-specific badge text is returned. If
+   displayActionCountAsBadgeText is enabled, a placeholder text will be returned unless the declarativeNetRequestFeedback
+   permission is present or tab-specific badge text was provided.
 
      |details| - https://developer.chrome.com/extensions/action#property-getBadgeText-details.
 

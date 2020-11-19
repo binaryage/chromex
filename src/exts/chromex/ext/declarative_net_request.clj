@@ -24,7 +24,8 @@
   ([] (gen-call :property ::max-number-of-rules &form)))
 
 (defmacro get-max-number-of-dynamic-rules
-  "The maximum number of dynamic rules that an extension can add.
+  "The maximum number of dynamic rules that an extension can add. TODO(crbug.com/1043200): Deprecate this once implementation
+   of session scoped rules is complete.
 
    https://developer.chrome.com/extensions/declarativeNetRequest#property-MAX_NUMBER_OF_DYNAMIC_RULES."
   ([] (gen-call :property ::max-number-of-dynamic-rules &form)))
@@ -216,7 +217,7 @@
    [{:id ::update-dynamic-rules,
      :name "updateDynamicRules",
      :callback? true,
-     :params [{:name "options", :since "future", :type "object"} {:name "callback", :optional? true, :type :callback}]}
+     :params [{:name "options", :since "87", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-dynamic-rules,
      :name "getDynamicRules",
      :callback? true,
@@ -227,7 +228,7 @@
     {:id ::update-enabled-rulesets,
      :name "updateEnabledRulesets",
      :callback? true,
-     :params [{:name "options", :since "future", :type "object"} {:name "callback", :optional? true, :type :callback}]}
+     :params [{:name "options", :since "87", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-enabled-rulesets,
      :name "getEnabledRulesets",
      :callback? true,
@@ -245,7 +246,7 @@
      :params [{:name "options", :type "object"}]}
     {:id ::is-regex-supported,
      :name "isRegexSupported",
-     :since "future",
+     :since "87",
      :callback? true,
      :params
      [{:name "regex-options", :type "object"}

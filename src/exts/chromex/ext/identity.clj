@@ -194,7 +194,7 @@
      :params [{:name "details", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::clear-all-cached-auth-tokens,
      :name "clearAllCachedAuthTokens",
-     :since "future",
+     :since "87",
      :callback? true,
      :params [{:name "callback", :type :callback}]}
     {:id ::launch-web-auth-flow,

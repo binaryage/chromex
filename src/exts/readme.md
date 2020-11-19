@@ -91,7 +91,7 @@
 
 ### API stats
 
-Generated 83 namespaces containing 62 properties, 402 functions and 180 events:
+Generated 83 namespaces containing 62 properties, 403 functions and 180 events:
 
 
     |                             :namespace | :properties | :functions | :events |
@@ -157,7 +157,7 @@ Generated 83 namespaces containing 62 properties, 402 functions and 180 events:
     |                       chrome.processes |           0 |          3 |       5 |
     |                           chrome.proxy |           1 |          0 |       1 |
     |                         chrome.runtime |           2 |         15 |      12 |
-    |                       chrome.scripting |           0 |          1 |       0 |
+    |                       chrome.scripting |           0 |          2 |       0 |
     |                          chrome.search |           0 |          1 |       0 |
     |                        chrome.sessions |           1 |          3 |       1 |
     |                 chrome.signedInDevices |           0 |          1 |       1 |
@@ -433,7 +433,7 @@ Generated 83 namespaces containing 62 properties, 402 functions and 180 events:
       tap-on-restart-required tap-all-events]]
 
     [chromex.ext.scripting refer:[
-      execute-script tap-all-events]]
+      execute-script insert-css tap-all-events]]
 
     [chromex.ext.search refer:[
       query tap-all-events]]

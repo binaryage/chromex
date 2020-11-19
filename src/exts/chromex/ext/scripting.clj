@@ -15,7 +15,7 @@
 ; -- functions --------------------------------------------------------------------------------------------------------------
 
 (defmacro execute-script
-  "Injects a script into a target context.
+  "Injects a script into a target context. The script will be run at document_end.
 
      |injection| - The details of the script which to inject.
 
@@ -29,6 +29,20 @@
 
    https://developer.chrome.com/extensions/scripting#method-executeScript."
   ([injection] (gen-call :function ::execute-script &form injection)))
+
+(defmacro insert-css
+  "Inserts a CSS stylesheet into a target context.
+
+     |injection| - The details of the styles to insert.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/extensions/scripting#method-insertCSS."
+  ([injection] (gen-call :function ::insert-css &form injection)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
@@ -53,7 +67,11 @@
       {:name "callback",
        :optional? true,
        :type :callback,
-       :callback {:params [{:name "results", :type "[array-of-objects]"}]}}]}]})
+       :callback {:params [{:name "results", :type "[array-of-objects]"}]}}]}
+    {:id ::insert-css,
+     :name "insertCSS",
+     :callback? true,
+     :params [{:name "injection", :type "object"} {:name "callback", :optional? true, :type :callback}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

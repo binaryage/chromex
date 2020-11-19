@@ -545,7 +545,7 @@
       {:name "callback", :optional? true, :type :callback, :callback {:params [{:name "success", :type "boolean"}]}}]}
     {:id ::set-composing-range,
      :name "setComposingRange",
-     :since "future",
+     :since "87",
      :callback? true,
      :params [{:name "parameters", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::get-autocorrect-range,

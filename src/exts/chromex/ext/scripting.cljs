@@ -6,3 +6,6 @@
 (defn execute-script* [config injection]
   (gen-wrap :function ::execute-script config injection))
 
+(defn insert-css* [config injection]
+  (gen-wrap :function ::insert-css config injection))
+

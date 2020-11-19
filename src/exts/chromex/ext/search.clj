@@ -40,7 +40,7 @@
 
 (def api-table
   {:namespace "chrome.search",
-   :since "future",
+   :since "87",
    :functions
    [{:id ::query,
      :name "query",
