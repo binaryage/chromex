@@ -3,7 +3,7 @@
    rearrange tab groups in the browser. To group and ungroup tabs, or to query what tabs are in groups, use the chrome.tabs
    API.
 
-     * available since Chrome master
+     * available since Chrome 88
      * https://developer.chrome.com/extensions/tabGroups"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -102,7 +102,7 @@
 
 (def api-table
   {:namespace "chrome.tabGroups",
-   :since "master",
+   :since "88",
    :properties [{:id ::tab-group-id-none, :name "TAB_GROUP_ID_NONE", :return-type "unknown-type"}],
    :functions
    [{:id ::get,

@@ -35,7 +35,7 @@
 
 (def api-table
   {:namespace "chrome.dom",
-   :since "88",
+   :since "future",
    :functions
    [{:id ::open-or-closed-shadow-root,
      :name "openOrClosedShadowRoot",

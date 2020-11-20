@@ -212,7 +212,7 @@
 
 (def api-table
   {:namespace "chrome.action",
-   :since "87",
+   :since "future",
    :functions
    [{:id ::set-title,
      :name "setTitle",

@@ -395,7 +395,7 @@
       {:name "callback", :type :callback, :callback {:params [{:name "feature-enabled", :type "boolean"}]}}]}
     {:id ::update-select-to-speak-panel,
      :name "updateSelectToSpeakPanel",
-     :since "master",
+     :since "future",
      :params
      [{:name "show", :type "boolean"}
       {:name "anchor", :optional? true, :type "accessibilityPrivate.ScreenRect"}
@@ -418,7 +418,7 @@
      :params [{:name "command", :type "accessibilityPrivate.SwitchAccessCommand"}]}
     {:id ::on-point-scan-set,
      :name "onPointScanSet",
-     :since "master",
+     :since "future",
      :params [{:name "point", :type "accessibilityPrivate.PointScanPoint"}]}
     {:id ::on-announce-for-accessibility,
      :name "onAnnounceForAccessibility",

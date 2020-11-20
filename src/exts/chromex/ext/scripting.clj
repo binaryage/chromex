@@ -2,7 +2,7 @@
   "Use the chrome.scripting API to execute script in different
    contexts.
 
-     * available since Chrome master
+     * available since Chrome 88
      * https://developer.chrome.com/extensions/scripting"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -57,7 +57,7 @@
 
 (def api-table
   {:namespace "chrome.scripting",
-   :since "master",
+   :since "88",
    :functions
    [{:id ::execute-script,
      :name "executeScript",
@@ -70,6 +70,7 @@
        :callback {:params [{:name "results", :type "[array-of-objects]"}]}}]}
     {:id ::insert-css,
      :name "insertCSS",
+     :since "master",
      :callback? true,
      :params [{:name "injection", :type "object"} {:name "callback", :optional? true, :type :callback}]}]})
 
