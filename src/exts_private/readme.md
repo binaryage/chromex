@@ -48,12 +48,12 @@
 
 ### API stats
 
-Generated 40 namespaces containing 0 properties, 504 functions and 87 events:
+Generated 40 namespaces containing 0 properties, 504 functions and 88 events:
 
 
     |                            :namespace | :properties | :functions | :events |
     |---------------------------------------+-------------+------------+---------|
-    |           chrome.accessibilityPrivate |           0 |         23 |      11 |
+    |           chrome.accessibilityPrivate |           0 |         23 |      12 |
     |             chrome.activityLogPrivate |           0 |          5 |       1 |
     |       chrome.autofillAssistantPrivate |           0 |          4 |       2 |
     |                chrome.autofillPrivate |           0 |         13 |       1 |
@@ -109,9 +109,10 @@ Generated 40 namespaces containing 0 properties, 504 functions and 87 events:
       set-virtual-keyboard-visible open-settings-subpage perform-accelerator-action is-feature-enabled
       update-select-to-speak-panel tap-on-introduce-chrome-vox tap-on-accessibility-gesture
       tap-on-two-finger-touch-start tap-on-two-finger-touch-stop
-      tap-on-select-to-speak-state-change-requested tap-on-switch-access-command tap-on-point-scan-set
-      tap-on-announce-for-accessibility tap-on-scrollable-bounds-for-point-requested
-      tap-on-magnifier-bounds-changed tap-on-custom-spoken-feedback-toggled tap-all-events]]
+      tap-on-select-to-speak-state-change-requested tap-on-select-to-speak-panel-action
+      tap-on-switch-access-command tap-on-point-scan-set tap-on-announce-for-accessibility
+      tap-on-scrollable-bounds-for-point-requested tap-on-magnifier-bounds-changed
+      tap-on-custom-spoken-feedback-toggled tap-all-events]]
 
     [chromex.ext.activity-log-private refer:[
       get-extension-activities delete-activities delete-activities-by-extension delete-database

@@ -89,6 +89,9 @@
 (defn on-select-to-speak-state-change-requested* [config channel & args]
   (gen-wrap :event ::on-select-to-speak-state-change-requested config channel args))
 
+(defn on-select-to-speak-panel-action* [config channel & args]
+  (gen-wrap :event ::on-select-to-speak-panel-action config channel args))
+
 (defn on-switch-access-command* [config channel & args]
   (gen-wrap :event ::on-switch-access-command config channel args))
 

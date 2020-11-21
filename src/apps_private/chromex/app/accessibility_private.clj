@@ -230,6 +230,16 @@
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-select-to-speak-state-change-requested &form channel args)))
 
+(defmacro tap-on-select-to-speak-panel-action-events
+  "Fired when an action is performed in the Select-to-speak panel.
+
+   Events will be put on the |channel| with signature [::on-select-to-speak-panel-action [action]] where:
+
+     |action| - ?
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-select-to-speak-panel-action &form channel args)))
+
 (defmacro tap-on-switch-access-command-events
   "Fired when Chrome OS has received a key event corresponding to a Switch Access command.
 
@@ -412,6 +422,10 @@
     {:id ::on-two-finger-touch-start, :name "onTwoFingerTouchStart", :since "59"}
     {:id ::on-two-finger-touch-stop, :name "onTwoFingerTouchStop", :since "59"}
     {:id ::on-select-to-speak-state-change-requested, :name "onSelectToSpeakStateChangeRequested", :since "68"}
+    {:id ::on-select-to-speak-panel-action,
+     :name "onSelectToSpeakPanelAction",
+     :since "master",
+     :params [{:name "action", :type "accessibilityPrivate.SelectToSpeakPanelAction"}]}
     {:id ::on-switch-access-command,
      :name "onSwitchAccessCommand",
      :since "77",
