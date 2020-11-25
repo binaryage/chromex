@@ -87,8 +87,8 @@
   ([details] (gen-call :function ::remove-cached-auth-token &form details)))
 
 (defmacro clear-all-cached-auth-tokens
-  "Resets the state of the Identity API: - Removes all OAuth2 access tokens from the token cache - Removes user's account
-   preferences - De-authorizes the user from all auth flows
+  "Resets the state of the Identity API:    Removes all OAuth2 access tokens from the token cache   Removes user's account
+   preferences   De-authorizes the user from all auth flows
 
    This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
    Signature of the result value put on the channel is [].
