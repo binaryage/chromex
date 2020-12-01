@@ -149,9 +149,16 @@
   ([] `(get-matched-rules :omit)))
 
 (defmacro set-extension-action-options
-  "Configures how matched actions will be displayed on the extension action. This preference is persisted across sessions.
+  "Configures if the action count for tabs should be displayed as the extension action's badge text and provides a way for
+   that action count to be incremented.
 
      |options| - https://developer.chrome.com/extensions/declarativeNetRequest#property-setExtensionActionOptions-options.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [].
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error.
 
    https://developer.chrome.com/extensions/declarativeNetRequest#method-setExtensionActionOptions."
   ([options] (gen-call :function ::set-extension-action-options &form options)))
@@ -243,7 +250,8 @@
     {:id ::set-extension-action-options,
      :name "setExtensionActionOptions",
      :since "future",
-     :params [{:name "options", :type "object"}]}
+     :callback? true,
+     :params [{:name "options", :type "object"} {:name "callback", :optional? true, :type :callback}]}
     {:id ::is-regex-supported,
      :name "isRegexSupported",
      :since "87",
