@@ -70,7 +70,6 @@
        :callback {:params [{:name "results", :type "[array-of-objects]"}]}}]}
     {:id ::insert-css,
      :name "insertCSS",
-     :since "master",
      :callback? true,
      :params [{:name "injection", :type "object"} {:name "callback", :optional? true, :type :callback}]}]})
 

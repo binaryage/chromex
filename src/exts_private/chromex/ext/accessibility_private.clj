@@ -176,10 +176,12 @@
 
      |show| - True to show panel, false to hide it
      |anchor| - A rectangle indicating the bounds of the object the panel should be displayed next to.
-     |is-paused| - True if Select-to-speak playback is paused."
-  ([show anchor is-paused] (gen-call :function ::update-select-to-speak-panel &form show anchor is-paused))
-  ([show anchor] `(update-select-to-speak-panel ~show ~anchor :omit))
-  ([show] `(update-select-to-speak-panel ~show :omit :omit)))
+     |is-paused| - True if Select-to-speak playback is paused.
+     |speed| - Current reading speed (TTS speech rate)."
+  ([show anchor is-paused speed] (gen-call :function ::update-select-to-speak-panel &form show anchor is-paused speed))
+  ([show anchor is-paused] `(update-select-to-speak-panel ~show ~anchor ~is-paused :omit))
+  ([show anchor] `(update-select-to-speak-panel ~show ~anchor :omit :omit))
+  ([show] `(update-select-to-speak-panel ~show :omit :omit :omit)))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
@@ -233,9 +235,10 @@
 (defmacro tap-on-select-to-speak-panel-action-events
   "Fired when an action is performed in the Select-to-speak panel.
 
-   Events will be put on the |channel| with signature [::on-select-to-speak-panel-action [action]] where:
+   Events will be put on the |channel| with signature [::on-select-to-speak-panel-action [action value]] where:
 
      |action| - ?
+     |value| - ?
 
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-select-to-speak-panel-action &form channel args)))
@@ -409,7 +412,8 @@
      :params
      [{:name "show", :type "boolean"}
       {:name "anchor", :optional? true, :type "accessibilityPrivate.ScreenRect"}
-      {:name "is-paused", :optional? true, :type "boolean"}]}],
+      {:name "is-paused", :optional? true, :type "boolean"}
+      {:name "speed", :optional? true, :since "master", :type "double"}]}],
    :events
    [{:id ::on-introduce-chrome-vox, :name "onIntroduceChromeVox", :since "42"}
     {:id ::on-accessibility-gesture,
@@ -425,7 +429,9 @@
     {:id ::on-select-to-speak-panel-action,
      :name "onSelectToSpeakPanelAction",
      :since "master",
-     :params [{:name "action", :type "accessibilityPrivate.SelectToSpeakPanelAction"}]}
+     :params
+     [{:name "action", :type "accessibilityPrivate.SelectToSpeakPanelAction"}
+      {:name "value", :optional? true, :type "double"}]}
     {:id ::on-switch-access-command,
      :name "onSwitchAccessCommand",
      :since "77",

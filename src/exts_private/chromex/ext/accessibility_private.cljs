@@ -69,8 +69,8 @@
 (defn is-feature-enabled* [config feature]
   (gen-wrap :function ::is-feature-enabled config feature))
 
-(defn update-select-to-speak-panel* [config show anchor is-paused]
-  (gen-wrap :function ::update-select-to-speak-panel config show anchor is-paused))
+(defn update-select-to-speak-panel* [config show anchor is-paused speed]
+  (gen-wrap :function ::update-select-to-speak-panel config show anchor is-paused speed))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
