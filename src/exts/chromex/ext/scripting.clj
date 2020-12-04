@@ -2,7 +2,7 @@
   "Use the chrome.scripting API to execute script in different
    contexts.
 
-     * available since Chrome 88
+     * available since Chrome 89
      * https://developer.chrome.com/extensions/scripting"
 
   (:refer-clojure :only [defmacro defn apply declare meta let partial])
@@ -57,7 +57,7 @@
 
 (def api-table
   {:namespace "chrome.scripting",
-   :since "88",
+   :since "89",
    :functions
    [{:id ::execute-script,
      :name "executeScript",

@@ -428,10 +428,10 @@
     {:id ::on-select-to-speak-state-change-requested, :name "onSelectToSpeakStateChangeRequested", :since "68"}
     {:id ::on-select-to-speak-panel-action,
      :name "onSelectToSpeakPanelAction",
-     :since "master",
+     :since "future",
      :params
      [{:name "action", :type "accessibilityPrivate.SelectToSpeakPanelAction"}
-      {:name "value", :optional? true, :type "double"}]}
+      {:name "value", :optional? true, :since "master", :type "double"}]}
     {:id ::on-switch-access-command,
      :name "onSwitchAccessCommand",
      :since "77",

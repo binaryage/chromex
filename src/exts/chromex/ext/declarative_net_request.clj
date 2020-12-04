@@ -24,8 +24,7 @@
   ([] (gen-call :property ::max-number-of-rules &form)))
 
 (defmacro get-max-number-of-dynamic-rules
-  "The maximum number of dynamic rules that an extension can add. TODO(crbug.com/1043200): Deprecate this once implementation
-   of session scoped rules is complete.
+  "The maximum number of dynamic rules that an extension can add.
 
    https://developer.chrome.com/extensions/declarativeNetRequest#property-MAX_NUMBER_OF_DYNAMIC_RULES."
   ([] (gen-call :property ::max-number-of-dynamic-rules &form)))
