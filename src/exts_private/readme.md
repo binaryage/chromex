@@ -103,16 +103,15 @@ Generated 40 namespaces containing 0 properties, 504 functions and 88 events:
       get-display-name-for-locale get-battery-description set-native-accessibility-enabled
       set-focus-rings set-highlights set-keyboard-listener darken-screen
       forward-key-events-to-switch-access update-switch-access-bubble activate-point-scan
-      set-native-chrome-vox-arc-support-for-current-app send-synthetic-key-event
-      enable-chrome-vox-mouse-events send-synthetic-mouse-event set-select-to-speak-state
-      handle-scrollable-bounds-for-point-found move-magnifier-to-rect toggle-dictation
-      set-virtual-keyboard-visible open-settings-subpage perform-accelerator-action is-feature-enabled
-      update-select-to-speak-panel tap-on-introduce-chrome-vox tap-on-accessibility-gesture
-      tap-on-two-finger-touch-start tap-on-two-finger-touch-stop
-      tap-on-select-to-speak-state-change-requested tap-on-select-to-speak-panel-action
-      tap-on-switch-access-command tap-on-point-scan-set tap-on-announce-for-accessibility
-      tap-on-scrollable-bounds-for-point-requested tap-on-magnifier-bounds-changed
-      tap-on-custom-spoken-feedback-toggled tap-all-events]]
+      set-native-chrome-vox-arc-support-for-current-app send-synthetic-key-event enable-mouse-events
+      send-synthetic-mouse-event set-select-to-speak-state handle-scrollable-bounds-for-point-found
+      move-magnifier-to-rect toggle-dictation set-virtual-keyboard-visible open-settings-subpage
+      perform-accelerator-action is-feature-enabled update-select-to-speak-panel
+      tap-on-introduce-chrome-vox tap-on-accessibility-gesture tap-on-two-finger-touch-start
+      tap-on-two-finger-touch-stop tap-on-select-to-speak-state-change-requested
+      tap-on-select-to-speak-panel-action tap-on-switch-access-command tap-on-point-scan-set
+      tap-on-announce-for-accessibility tap-on-scrollable-bounds-for-point-requested
+      tap-on-magnifier-bounds-changed tap-on-custom-spoken-feedback-toggled tap-all-events]]
 
     [chromex.ext.activity-log-private refer:[
       get-extension-activities delete-activities delete-activities-by-extension delete-database

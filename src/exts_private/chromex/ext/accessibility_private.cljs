@@ -39,8 +39,8 @@
 (defn send-synthetic-key-event* [config key-event]
   (gen-wrap :function ::send-synthetic-key-event config key-event))
 
-(defn enable-chrome-vox-mouse-events* [config enabled]
-  (gen-wrap :function ::enable-chrome-vox-mouse-events config enabled))
+(defn enable-mouse-events* [config enabled]
+  (gen-wrap :function ::enable-mouse-events config enabled))
 
 (defn send-synthetic-mouse-event* [config mouse-event]
   (gen-wrap :function ::send-synthetic-mouse-event config mouse-event))

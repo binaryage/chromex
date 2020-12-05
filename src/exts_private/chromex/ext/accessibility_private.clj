@@ -98,11 +98,11 @@
      |key-event| - The event to send."
   ([key-event] (gen-call :function ::send-synthetic-key-event &form key-event)))
 
-(defmacro enable-chrome-vox-mouse-events
-  "Enables or disables mouse events in ChromeVox.
+(defmacro enable-mouse-events
+  "Enables or disables mouse events in accessibility extensions
 
-     |enabled| - True if ChromeVox should receive mouse events."
-  ([enabled] (gen-call :function ::enable-chrome-vox-mouse-events &form enabled)))
+     |enabled| - True if accessibility component extensions should receive mouse events."
+  ([enabled] (gen-call :function ::enable-mouse-events &form enabled)))
 
 (defmacro send-synthetic-mouse-event
   "Sends a fabricated mouse event.
@@ -369,9 +369,9 @@
      :name "sendSyntheticKeyEvent",
      :since "65",
      :params [{:name "key-event", :type "accessibilityPrivate.SyntheticKeyboardEvent"}]}
-    {:id ::enable-chrome-vox-mouse-events,
-     :name "enableChromeVoxMouseEvents",
-     :since "71",
+    {:id ::enable-mouse-events,
+     :name "enableMouseEvents",
+     :since "master",
      :params [{:name "enabled", :type "boolean"}]}
     {:id ::send-synthetic-mouse-event,
      :name "sendSyntheticMouseEvent",
