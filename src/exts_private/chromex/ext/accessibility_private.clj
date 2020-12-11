@@ -371,7 +371,7 @@
      :params [{:name "key-event", :type "accessibilityPrivate.SyntheticKeyboardEvent"}]}
     {:id ::enable-mouse-events,
      :name "enableMouseEvents",
-     :since "master",
+     :since "future",
      :params [{:name "enabled", :type "boolean"}]}
     {:id ::send-synthetic-mouse-event,
      :name "sendSyntheticMouseEvent",
@@ -413,7 +413,7 @@
      [{:name "show", :type "boolean"}
       {:name "anchor", :optional? true, :type "accessibilityPrivate.ScreenRect"}
       {:name "is-paused", :optional? true, :type "boolean"}
-      {:name "speed", :optional? true, :since "master", :type "double"}]}],
+      {:name "speed", :optional? true, :since "future", :type "double"}]}],
    :events
    [{:id ::on-introduce-chrome-vox, :name "onIntroduceChromeVox", :since "42"}
     {:id ::on-accessibility-gesture,
@@ -431,7 +431,7 @@
      :since "future",
      :params
      [{:name "action", :type "accessibilityPrivate.SelectToSpeakPanelAction"}
-      {:name "value", :optional? true, :since "master", :type "double"}]}
+      {:name "value", :optional? true, :type "double"}]}
     {:id ::on-switch-access-command,
      :name "onSwitchAccessCommand",
      :since "77",

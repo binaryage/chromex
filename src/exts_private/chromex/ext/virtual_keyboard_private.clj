@@ -139,6 +139,33 @@
      |bounds| - A rectangle defining the new bounds of the window in screen coordinates."
   ([bounds] (gen-call :function ::set-window-bounds-in-screen &form bounds)))
 
+(defmacro get-clipboard-history
+  "Get the clipboard history
+
+     |options| - ?
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [clipboard-history] where:
+
+     |clipboard-history| - List of clipboard items corresponding to the requested items (or everything if 'itemIds' was not
+                           specified).
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([options] (gen-call :function ::get-clipboard-history &form options)))
+
+(defmacro paste-clipboard-item
+  "Pastes a clipboard item from the clipboard history.
+
+     |item-id| - The unique id which identifies this clipboard item."
+  ([item-id] (gen-call :function ::paste-clipboard-item &form item-id)))
+
+(defmacro delete-clipboard-item
+  "Deletes a clipboard item from the clipboard history.
+
+     |item-id| - The unique id which identifies this clipboard item."
+  ([item-id] (gen-call :function ::delete-clipboard-item &form item-id)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -171,6 +198,26 @@
 
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-keyboard-config-changed &form channel args)))
+
+(defmacro tap-on-clipboard-history-changed-events
+  "Fired when the list of items in the clipboard history changes.
+
+   Events will be put on the |channel| with signature [::on-clipboard-history-changed [item-ids]] where:
+
+     |item-ids| - A list of ids for all current items in the clipboard history.
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-clipboard-history-changed &form channel args)))
+
+(defmacro tap-on-clipboard-item-updated-events
+  "Fired when the data in a specific clipboard item is updated (mainly used for sending updated rendered html image).
+
+   Events will be put on the |channel| with signature [::on-clipboard-item-updated [clipboard-history-item]] where:
+
+     |clipboard-history-item| - An existing clipboard history item with changed data
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-clipboard-item-updated &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
@@ -246,7 +293,24 @@
     {:id ::set-window-bounds-in-screen,
      :name "setWindowBoundsInScreen",
      :since "84",
-     :params [{:name "bounds", :type "virtualKeyboardPrivate.Bounds"}]}],
+     :params [{:name "bounds", :type "virtualKeyboardPrivate.Bounds"}]}
+    {:id ::get-clipboard-history,
+     :name "getClipboardHistory",
+     :since "master",
+     :callback? true,
+     :params
+     [{:name "options", :type "object"}
+      {:name "callback",
+       :type :callback,
+       :callback {:params [{:name "clipboard-history", :type "[array-of-virtualKeyboardPrivate.ClipboardItems]"}]}}]}
+    {:id ::paste-clipboard-item,
+     :name "pasteClipboardItem",
+     :since "master",
+     :params [{:name "item-id", :type "string"}]}
+    {:id ::delete-clipboard-item,
+     :name "deleteClipboardItem",
+     :since "master",
+     :params [{:name "item-id", :type "string"}]}],
    :events
    [{:id ::on-bounds-changed,
      :name "onBoundsChanged",
@@ -256,7 +320,15 @@
     {:id ::on-keyboard-config-changed,
      :name "onKeyboardConfigChanged",
      :since "63",
-     :params [{:name "config", :type "virtualKeyboardPrivate.KeyboardConfig"}]}]})
+     :params [{:name "config", :type "virtualKeyboardPrivate.KeyboardConfig"}]}
+    {:id ::on-clipboard-history-changed,
+     :name "onClipboardHistoryChanged",
+     :since "master",
+     :params [{:name "item-ids", :type "[array-of-strings]"}]}
+    {:id ::on-clipboard-item-updated,
+     :name "onClipboardItemUpdated",
+     :since "master",
+     :params [{:name "clipboard-history-item", :type "virtualKeyboardPrivate.ClipboardItem"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

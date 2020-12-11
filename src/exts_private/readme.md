@@ -48,7 +48,7 @@
 
 ### API stats
 
-Generated 40 namespaces containing 0 properties, 504 functions and 88 events:
+Generated 40 namespaces containing 0 properties, 507 functions and 90 events:
 
 
     |                            :namespace | :properties | :functions | :events |
@@ -87,7 +87,7 @@ Generated 40 namespaces containing 0 properties, 504 functions and 88 events:
     |                  chrome.systemPrivate |           0 |          3 |       0 |
     |                chrome.terminalPrivate |           0 |         11 |       3 |
     |                   chrome.usersPrivate |           0 |          7 |       0 |
-    |         chrome.virtualKeyboardPrivate |           0 |         16 |       3 |
+    |         chrome.virtualKeyboardPrivate |           0 |         19 |       5 |
     |                  chrome.webcamPrivate |           0 |          8 |       0 |
     |             chrome.webrtcAudioPrivate |           0 |          2 |       1 |
     |    chrome.webrtcDesktopCapturePrivate |           0 |          2 |       0 |
@@ -321,8 +321,9 @@ Generated 40 namespaces containing 0 properties, 504 functions and 88 events:
       insert-text send-key-event hide-keyboard set-hotrod-keyboard lock-keyboard keyboard-loaded
       get-keyboard-config open-settings open-suggestion-settings set-container-behavior
       set-draggable-area set-keyboard-state set-occluded-bounds set-hit-test-bounds
-      set-area-to-remain-on-screen set-window-bounds-in-screen tap-on-bounds-changed
-      tap-on-keyboard-closed tap-on-keyboard-config-changed tap-all-events]]
+      set-area-to-remain-on-screen set-window-bounds-in-screen get-clipboard-history paste-clipboard-item
+      delete-clipboard-item tap-on-bounds-changed tap-on-keyboard-closed tap-on-keyboard-config-changed
+      tap-on-clipboard-history-changed tap-on-clipboard-item-updated tap-all-events]]
 
     [chromex.ext.webcam-private refer:[
       open-serial-webcam close-webcam get set reset set-home restore-camera-preset set-camera-preset

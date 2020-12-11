@@ -57,7 +57,7 @@
 
 (def api-table
   {:namespace "chrome.scripting",
-   :since "88",
+   :since "future",
    :functions
    [{:id ::execute-script,
      :name "executeScript",

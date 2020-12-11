@@ -51,6 +51,15 @@
 (defn set-window-bounds-in-screen* [config bounds]
   (gen-wrap :function ::set-window-bounds-in-screen config bounds))
 
+(defn get-clipboard-history* [config options]
+  (gen-wrap :function ::get-clipboard-history config options))
+
+(defn paste-clipboard-item* [config item-id]
+  (gen-wrap :function ::paste-clipboard-item config item-id))
+
+(defn delete-clipboard-item* [config item-id]
+  (gen-wrap :function ::delete-clipboard-item config item-id))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-bounds-changed* [config channel & args]
@@ -61,4 +70,10 @@
 
 (defn on-keyboard-config-changed* [config channel & args]
   (gen-wrap :event ::on-keyboard-config-changed config channel args))
+
+(defn on-clipboard-history-changed* [config channel & args]
+  (gen-wrap :event ::on-clipboard-history-changed config channel args))
+
+(defn on-clipboard-item-updated* [config channel & args]
+  (gen-wrap :event ::on-clipboard-item-updated config channel args))
 
