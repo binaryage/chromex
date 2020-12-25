@@ -30,8 +30,8 @@
 (defn update-switch-access-bubble* [config bubble show anchor actions]
   (gen-wrap :function ::update-switch-access-bubble config bubble show anchor actions))
 
-(defn activate-point-scan* [config]
-  (gen-wrap :function ::activate-point-scan config))
+(defn set-point-scan-state* [config state]
+  (gen-wrap :function ::set-point-scan-state config state))
 
 (defn set-native-chrome-vox-arc-support-for-current-app* [config enabled]
   (gen-wrap :function ::set-native-chrome-vox-arc-support-for-current-app config enabled))
@@ -97,6 +97,9 @@
 
 (defn on-point-scan-set* [config channel & args]
   (gen-wrap :event ::on-point-scan-set config channel args))
+
+(defn on-magnifier-command* [config channel & args]
+  (gen-wrap :event ::on-magnifier-command config channel args))
 
 (defn on-announce-for-accessibility* [config channel & args]
   (gen-wrap :event ::on-announce-for-accessibility config channel args))

@@ -45,12 +45,12 @@
 
 ### API stats
 
-Generated 37 namespaces containing 0 properties, 378 functions and 85 events:
+Generated 37 namespaces containing 0 properties, 379 functions and 87 events:
 
 
     |                     :namespace | :properties | :functions | :events |
     |--------------------------------+-------------+------------+---------|
-    |    chrome.accessibilityPrivate |           0 |         23 |      12 |
+    |    chrome.accessibilityPrivate |           0 |         23 |      13 |
     |      chrome.activityLogPrivate |           0 |          5 |       1 |
     |         chrome.autofillPrivate |           0 |         13 |       1 |
     |        chrome.bluetoothPrivate |           0 |         10 |       2 |
@@ -64,7 +64,7 @@ Generated 37 namespaces containing 0 properties, 378 functions and 85 events:
     |        chrome.developerPrivate |           0 |         31 |       2 |
     |             chrome.echoPrivate |           0 |          5 |       0 |
     |         chrome.feedbackPrivate |           0 |          6 |       1 |
-    |      chrome.fileManagerPrivate |           0 |         68 |      11 |
+    |      chrome.fileManagerPrivate |           0 |         69 |      12 |
     |         chrome.identityPrivate |           0 |          1 |       1 |
     |      chrome.imageWriterPrivate |           0 |          5 |       5 |
     |      chrome.inputMethodPrivate |           0 |         25 |      12 |
@@ -96,7 +96,7 @@ Generated 37 namespaces containing 0 properties, 378 functions and 85 events:
     [chromex.app.accessibility-private refer:[
       get-display-name-for-locale get-battery-description set-native-accessibility-enabled
       set-focus-rings set-highlights set-keyboard-listener darken-screen
-      forward-key-events-to-switch-access update-switch-access-bubble activate-point-scan
+      forward-key-events-to-switch-access update-switch-access-bubble set-point-scan-state
       set-native-chrome-vox-arc-support-for-current-app send-synthetic-key-event enable-mouse-events
       send-synthetic-mouse-event set-select-to-speak-state handle-scrollable-bounds-for-point-found
       move-magnifier-to-rect toggle-dictation set-virtual-keyboard-visible open-settings-subpage
@@ -104,8 +104,9 @@ Generated 37 namespaces containing 0 properties, 378 functions and 85 events:
       tap-on-introduce-chrome-vox tap-on-accessibility-gesture tap-on-two-finger-touch-start
       tap-on-two-finger-touch-stop tap-on-select-to-speak-state-change-requested
       tap-on-select-to-speak-panel-action tap-on-switch-access-command tap-on-point-scan-set
-      tap-on-announce-for-accessibility tap-on-scrollable-bounds-for-point-requested
-      tap-on-magnifier-bounds-changed tap-on-custom-spoken-feedback-toggled tap-all-events]]
+      tap-on-magnifier-command tap-on-announce-for-accessibility
+      tap-on-scrollable-bounds-for-point-requested tap-on-magnifier-bounds-changed
+      tap-on-custom-spoken-feedback-toggled tap-all-events]]
 
     [chromex.app.activity-log-private refer:[
       get-extension-activities delete-activities delete-activities-by-extension delete-database
@@ -177,11 +178,11 @@ Generated 37 namespaces containing 0 properties, 378 functions and 85 events:
       get-linux-package-info install-linux-package import-crostini-image get-drive-thumbnail
       get-pdf-thumbnail get-arc-documents-provider-thumbnail detect-character-encoding
       get-android-picker-apps select-android-picker-app sharesheet-has-targets invoke-sharesheet
-      toggle-added-to-holding-space get-holding-space-state tap-on-mount-completed
+      toggle-added-to-holding-space get-holding-space-state is-tablet-mode-enabled tap-on-mount-completed
       tap-on-file-transfers-updated tap-on-pin-transfers-updated tap-on-copy-progress
       tap-on-directory-changed tap-on-preferences-changed tap-on-drive-connection-status-changed
       tap-on-device-changed tap-on-drive-sync-error tap-on-apps-updated tap-on-crostini-changed
-      tap-all-events]]
+      tap-on-tablet-mode-changed tap-all-events]]
 
     [chromex.app.identity-private refer:[
       set-consent-result tap-on-web-flow-request tap-all-events]]

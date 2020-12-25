@@ -82,9 +82,11 @@
   ([bubble show anchor] `(update-switch-access-bubble ~bubble ~show ~anchor :omit))
   ([bubble show] `(update-switch-access-bubble ~bubble ~show :omit :omit)))
 
-(defmacro activate-point-scan
-  "Activates point scanning in Switch Access."
-  ([] (gen-call :function ::activate-point-scan &form)))
+(defmacro set-point-scan-state
+  "Sets point scanning state Switch Access.
+
+     |state| - The point scanning state to set."
+  ([state] (gen-call :function ::set-point-scan-state &form state)))
 
 (defmacro set-native-chrome-vox-arc-support-for-current-app
   "Sets current ARC app to use native ARC support.
@@ -263,6 +265,16 @@
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-point-scan-set &form channel args)))
 
+(defmacro tap-on-magnifier-command-events
+  "Fired when Chrome OS has received a key event corresponding to a Magnifier command.
+
+   Events will be put on the |channel| with signature [::on-magnifier-command [command]] where:
+
+     |command| - ?
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-magnifier-command &form channel args)))
+
 (defmacro tap-on-announce-for-accessibility-events
   "Fired when an internal component within accessibility wants to force speech output for an accessibility extension. Do not
    use without approval from accessibility owners.
@@ -360,7 +372,10 @@
       {:name "show", :type "boolean"}
       {:name "anchor", :optional? true, :type "accessibilityPrivate.ScreenRect"}
       {:name "actions", :optional? true, :type "[array-of-accessibilityPrivate.SwitchAccessMenuActions]"}]}
-    {:id ::activate-point-scan, :name "activatePointScan", :since "future"}
+    {:id ::set-point-scan-state,
+     :name "setPointScanState",
+     :since "master",
+     :params [{:name "state", :type "accessibilityPrivate.PointScanState"}]}
     {:id ::set-native-chrome-vox-arc-support-for-current-app,
      :name "setNativeChromeVoxArcSupportForCurrentApp",
      :since "63",
@@ -440,6 +455,10 @@
      :name "onPointScanSet",
      :since "future",
      :params [{:name "point", :type "accessibilityPrivate.PointScanPoint"}]}
+    {:id ::on-magnifier-command,
+     :name "onMagnifierCommand",
+     :since "master",
+     :params [{:name "command", :type "accessibilityPrivate.MagnifierCommand"}]}
     {:id ::on-announce-for-accessibility,
      :name "onAnnounceForAccessibility",
      :since "74",

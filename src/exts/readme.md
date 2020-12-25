@@ -91,7 +91,7 @@
 
 ### API stats
 
-Generated 83 namespaces containing 62 properties, 403 functions and 180 events:
+Generated 83 namespaces containing 62 properties, 404 functions and 180 events:
 
 
     |                             :namespace | :properties | :functions | :events |
@@ -112,7 +112,7 @@ Generated 83 namespaces containing 62 properties, 403 functions and 180 events:
     |                         chrome.cookies |           0 |          5 |       1 |
     |                        chrome.debugger |           0 |          4 |       2 |
     |              chrome.declarativeContent |           0 |          0 |       1 |
-    |           chrome.declarativeNetRequest |           7 |          7 |       1 |
+    |           chrome.declarativeNetRequest |           7 |          8 |       1 |
     |           chrome.declarativeWebRequest |           0 |          0 |       2 |
     |                  chrome.desktopCapture |           0 |          2 |       0 |
     |        chrome.devtools.inspectedWindow |           1 |          3 |       2 |
@@ -250,11 +250,12 @@ Generated 83 namespaces containing 62 properties, 403 functions and 180 events:
       tap-on-page-changed tap-all-events]]
 
     [chromex.ext.declarative-net-request refer:[
-      get-max-number-of-rules get-max-number-of-dynamic-rules get-getmatchedrules-quota-interval
-      get-max-getmatchedrules-calls-per-interval get-max-number-of-regex-rules
-      get-max-number-of-static-rulesets get-dynamic-ruleset-id update-dynamic-rules get-dynamic-rules
-      update-enabled-rulesets get-enabled-rulesets get-matched-rules set-extension-action-options
-      is-regex-supported tap-on-rule-matched-debug tap-all-events]]
+      get-guaranteed-minimum-static-rules get-max-number-of-dynamic-rules
+      get-getmatchedrules-quota-interval get-max-getmatchedrules-calls-per-interval
+      get-max-number-of-regex-rules get-max-number-of-static-rulesets get-dynamic-ruleset-id
+      update-dynamic-rules get-dynamic-rules update-enabled-rulesets get-enabled-rulesets
+      get-matched-rules set-extension-action-options is-regex-supported get-available-static-rule-count
+      tap-on-rule-matched-debug tap-all-events]]
 
     [chromex.ext.declarative-web-request refer:[
       tap-on-request tap-on-message tap-all-events]]

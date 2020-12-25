@@ -16,12 +16,12 @@
 
 ; -- properties -------------------------------------------------------------------------------------------------------------
 
-(defmacro get-max-number-of-rules
-  "The maximum number of rules that an extension can specify across its enabled static rulesets. Any excess rules will be
-   ignored and an install warning will be raised.
+(defmacro get-guaranteed-minimum-static-rules
+  "The minimum number of static rules guaranteed to an extension across its enabled static rulesets. Any rules above this
+   limit will count towards the global rule limit.
 
-   https://developer.chrome.com/extensions/declarativeNetRequest#property-MAX_NUMBER_OF_RULES."
-  ([] (gen-call :property ::max-number-of-rules &form)))
+   https://developer.chrome.com/extensions/declarativeNetRequest#property-GUARANTEED_MINIMUM_STATIC_RULES."
+  ([] (gen-call :property ::guaranteed-minimum-static-rules &form)))
 
 (defmacro get-max-number-of-dynamic-rules
   "The maximum number of dynamic rules that an extension can add.
@@ -178,6 +178,20 @@
    https://developer.chrome.com/extensions/declarativeNetRequest#method-isRegexSupported."
   ([regex-options] (gen-call :function ::is-regex-supported &form regex-options)))
 
+(defmacro get-available-static-rule-count
+  "Returns the number of static rules an extension can enable before the global static rule limit is reached.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [count] where:
+
+     |count| - https://developer.chrome.com/extensions/declarativeNetRequest#property-callback-count.
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error.
+
+   https://developer.chrome.com/extensions/declarativeNetRequest#method-getAvailableStaticRuleCount."
+  ([] (gen-call :function ::get-available-static-rule-count &form)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -210,7 +224,10 @@
   {:namespace "chrome.declarativeNetRequest",
    :since "84",
    :properties
-   [{:id ::max-number-of-rules, :name "MAX_NUMBER_OF_RULES", :return-type "unknown-type"}
+   [{:id ::guaranteed-minimum-static-rules,
+     :name "GUARANTEED_MINIMUM_STATIC_RULES",
+     :since "master",
+     :return-type "unknown-type"}
     {:id ::max-number-of-dynamic-rules, :name "MAX_NUMBER_OF_DYNAMIC_RULES", :return-type "unknown-type"}
     {:id ::getmatchedrules-quota-interval, :name "GETMATCHEDRULES_QUOTA_INTERVAL", :return-type "unknown-type"}
     {:id ::max-getmatchedrules-calls-per-interval,
@@ -257,7 +274,12 @@
      :callback? true,
      :params
      [{:name "regex-options", :type "object"}
-      {:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}],
+      {:name "callback", :type :callback, :callback {:params [{:name "result", :type "object"}]}}]}
+    {:id ::get-available-static-rule-count,
+     :name "getAvailableStaticRuleCount",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "count", :type "integer"}]}}]}],
    :events
    [{:id ::on-rule-matched-debug, :name "onRuleMatchedDebug", :params [{:name "info", :since "85", :type "object"}]}]})
 

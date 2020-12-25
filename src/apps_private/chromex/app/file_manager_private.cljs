@@ -207,6 +207,9 @@
 (defn get-holding-space-state* [config]
   (gen-wrap :function ::get-holding-space-state config))
 
+(defn is-tablet-mode-enabled* [config]
+  (gen-wrap :function ::is-tablet-mode-enabled config))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 
 (defn on-mount-completed* [config channel & args]
@@ -241,4 +244,7 @@
 
 (defn on-crostini-changed* [config channel & args]
   (gen-wrap :event ::on-crostini-changed config channel args))
+
+(defn on-tablet-mode-changed* [config channel & args]
+  (gen-wrap :event ::on-tablet-mode-changed config channel args))
 

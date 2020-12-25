@@ -898,6 +898,18 @@
    chromex.error/get-last-error."
   ([] (gen-call :function ::get-holding-space-state &form)))
 
+(defmacro is-tablet-mode-enabled
+  "Returns true via `callback` if tablet mode is enabled, false otherwise.
+
+   This function returns a core.async channel of type `promise-chan` which eventually receives a result value.
+   Signature of the result value put on the channel is [result] where:
+
+     |result| - ?
+
+   In case of an error the channel closes without receiving any value and relevant error object can be obtained via
+   chromex.error/get-last-error."
+  ([] (gen-call :function ::is-tablet-mode-enabled &form)))
+
 ; -- events -----------------------------------------------------------------------------------------------------------------
 ;
 ; docs: https://github.com/binaryage/chromex/#tapping-events
@@ -995,6 +1007,15 @@
 
    Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
   ([channel & args] (apply gen-call :event ::on-crostini-changed &form channel args)))
+
+(defmacro tap-on-tablet-mode-changed-events
+  "
+   Events will be put on the |channel| with signature [::on-tablet-mode-changed [enabled]] where:
+
+     |enabled| - ?
+
+   Note: |args| will be passed as additional parameters into Chrome event's .addListener call."
+  ([channel & args] (apply gen-call :event ::on-tablet-mode-changed &form channel args)))
 
 ; -- convenience ------------------------------------------------------------------------------------------------------------
 
@@ -1431,7 +1452,12 @@
      :name "getHoldingSpaceState",
      :since "87",
      :callback? true,
-     :params [{:name "callback", :type :callback, :callback {:params [{:name "state", :type "object"}]}}]}],
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "state", :type "object"}]}}]}
+    {:id ::is-tablet-mode-enabled,
+     :name "isTabletModeEnabled",
+     :since "master",
+     :callback? true,
+     :params [{:name "callback", :type :callback, :callback {:params [{:name "result", :type "boolean"}]}}]}],
    :events
    [{:id ::on-mount-completed, :name "onMountCompleted", :params [{:name "event", :type "object"}]}
     {:id ::on-file-transfers-updated,
@@ -1450,7 +1476,11 @@
     {:id ::on-device-changed, :name "onDeviceChanged", :params [{:name "event", :type "object"}]}
     {:id ::on-drive-sync-error, :name "onDriveSyncError", :params [{:name "event", :type "object"}]}
     {:id ::on-apps-updated, :name "onAppsUpdated", :since "57"}
-    {:id ::on-crostini-changed, :name "onCrostiniChanged", :since "74", :params [{:name "event", :type "object"}]}]})
+    {:id ::on-crostini-changed, :name "onCrostiniChanged", :since "74", :params [{:name "event", :type "object"}]}
+    {:id ::on-tablet-mode-changed,
+     :name "onTabletModeChanged",
+     :since "master",
+     :params [{:name "enabled", :type "boolean"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
 

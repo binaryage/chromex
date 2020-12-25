@@ -3,8 +3,8 @@
 
 ; -- properties -------------------------------------------------------------------------------------------------------------
 
-(defn max-number-of-rules* [config]
-  (gen-wrap :property ::max-number-of-rules config))
+(defn guaranteed-minimum-static-rules* [config]
+  (gen-wrap :property ::guaranteed-minimum-static-rules config))
 
 (defn max-number-of-dynamic-rules* [config]
   (gen-wrap :property ::max-number-of-dynamic-rules config))
@@ -46,6 +46,9 @@
 
 (defn is-regex-supported* [config regex-options]
   (gen-wrap :function ::is-regex-supported config regex-options))
+
+(defn get-available-static-rule-count* [config]
+  (gen-wrap :function ::get-available-static-rule-count config))
 
 ; -- events -----------------------------------------------------------------------------------------------------------------
 

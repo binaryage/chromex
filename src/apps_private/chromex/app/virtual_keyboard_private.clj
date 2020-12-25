@@ -296,7 +296,7 @@
      :params [{:name "bounds", :type "virtualKeyboardPrivate.Bounds"}]}
     {:id ::get-clipboard-history,
      :name "getClipboardHistory",
-     :since "master",
+     :since "future",
      :callback? true,
      :params
      [{:name "options", :type "object"}
@@ -305,11 +305,11 @@
        :callback {:params [{:name "clipboard-history", :type "[array-of-virtualKeyboardPrivate.ClipboardItems]"}]}}]}
     {:id ::paste-clipboard-item,
      :name "pasteClipboardItem",
-     :since "master",
+     :since "future",
      :params [{:name "item-id", :type "string"}]}
     {:id ::delete-clipboard-item,
      :name "deleteClipboardItem",
-     :since "master",
+     :since "future",
      :params [{:name "item-id", :type "string"}]}],
    :events
    [{:id ::on-bounds-changed,
@@ -323,11 +323,11 @@
      :params [{:name "config", :type "virtualKeyboardPrivate.KeyboardConfig"}]}
     {:id ::on-clipboard-history-changed,
      :name "onClipboardHistoryChanged",
-     :since "master",
+     :since "future",
      :params [{:name "item-ids", :type "[array-of-strings]"}]}
     {:id ::on-clipboard-item-updated,
      :name "onClipboardItemUpdated",
-     :since "master",
+     :since "future",
      :params [{:name "clipboard-history-item", :type "virtualKeyboardPrivate.ClipboardItem"}]}]})
 
 ; -- helpers ----------------------------------------------------------------------------------------------------------------
