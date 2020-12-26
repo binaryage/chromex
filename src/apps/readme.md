@@ -61,7 +61,6 @@
 | [chrome.system.display](https://developer.chrome.com/extensions/system.display) | [chromex/app/system/display.clj](chromex/app/system/display.clj) |
 | [chrome.system.memory](https://developer.chrome.com/extensions/system.memory) | [chromex/app/system/memory.clj](chromex/app/system/memory.clj) |
 | [chrome.system.network](https://developer.chrome.com/extensions/system.network) | [chromex/app/system/network.clj](chromex/app/system/network.clj) |
-| [chrome.system.powerSource](https://developer.chrome.com/extensions/system.powerSource) | [chromex/app/system/power_source.clj](chromex/app/system/power_source.clj) |
 | [chrome.system.storage](https://developer.chrome.com/extensions/system.storage) | [chromex/app/system/storage.clj](chromex/app/system/storage.clj) |
 | [chrome.systemIndicator](https://developer.chrome.com/extensions/systemIndicator) | [chromex/app/system_indicator.clj](chromex/app/system_indicator.clj) |
 | [chrome.tabs](https://developer.chrome.com/extensions/tabs) | [chromex/app/tabs.clj](chromex/app/tabs.clj) |
@@ -76,7 +75,7 @@
 
 ### API stats
 
-Generated 68 namespaces containing 32 properties, 450 functions and 153 events:
+Generated 67 namespaces containing 32 properties, 448 functions and 152 events:
 
 
     |                         :namespace | :properties | :functions | :events |
@@ -138,7 +137,6 @@ Generated 68 namespaces containing 32 properties, 450 functions and 153 events:
     |              chrome.system.display |           0 |         14 |       1 |
     |               chrome.system.memory |           0 |          1 |       0 |
     |              chrome.system.network |           0 |          1 |       0 |
-    |          chrome.system.powerSource |           0 |          2 |       1 |
     |              chrome.system.storage |           0 |          3 |       2 |
     |             chrome.systemIndicator |           0 |          3 |       1 |
     |                        chrome.tabs |           1 |         29 |      13 |
@@ -398,9 +396,6 @@ Generated 68 namespaces containing 32 properties, 450 functions and 153 events:
 
     [chromex.app.system.network refer:[
       get-network-interfaces tap-all-events]]
-
-    [chromex.app.system.power-source refer:[
-      get-power-source-info request-status-update tap-on-power-changed tap-all-events]]
 
     [chromex.app.system.storage refer:[
       get-info eject-device get-available-capacity tap-on-attached tap-on-detached tap-all-events]]
